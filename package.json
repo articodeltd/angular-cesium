@@ -1,0 +1,38 @@
+{
+  "name": "angular2-cesium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gonengar/angular2-cesium.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gonengar/angular2-cesium/issues"
+  },
+  "homepage": "https://github.com/gonengar/angular2-cesium#readme",
+  "dependencies": {
+    "cesium": "^1.28.0",
+    "typescript": "^2.1.4",
+    "webpack": "^1.14.0",
+    "@angular/common": "~2.3.0",
+    "@angular/compiler": "~2.3.0",
+    "@angular/core": "~2.3.0",
+    "@angular/forms": "~2.3.0",
+    "@angular/http": "~2.3.0",
+    "@angular/platform-browser": "~2.3.0",
+    "@angular/platform-browser-dynamic": "~2.3.0",
+    "@angular/router": "~3.3.0",
+
+    "angular-in-memory-web-api": "~0.1.17",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-rc.4",
+    "zone.js": "^0.7.2"
+  }
+}
