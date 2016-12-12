@@ -1,3 +1,9 @@
+<script src="app.component.ts"></script>
 <ac-map>
   loading
+  <ac-billboard [props]="{
+    image: track.getImage(),
+    position: track.getPosition(),
+    scale: 0.1
+  }"></ac-billboard>
 </ac-map>

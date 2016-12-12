@@ -1,0 +1,26 @@
+import {Injectable, NgZone} from '@angular/core';
+
+
+@Injectable()
+export class CesiumService {
+  cesium: any;
+  cesiumViewer: any; 
+
+  constructor(private ngZone: NgZone) {
+    this.cesium = Cesium;
+  }
+  
+  init(mapContainer: HTMLElement){
+    this.ngZone.runOutsideAngular(() => {
+      this.cesiumViewer = new this.cesium.Viewer(mapContainer);
+    });
+  }
+  
+  getViewer(){
+    return this.cesiumViewer;
+  }
+
+  getScene(){
+    return this.cesiumViewer.scene;
+  }
+}

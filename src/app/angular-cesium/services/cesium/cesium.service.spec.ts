@@ -1,7 +1,8 @@
-/* tslint:disable:no-unused-variable */
+/*
+/!* tslint:disable:no-unused-variable *!/
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { CesiumService } from './cesium.service';
+import { CesiumService } from './cesium.service.ts';
 
 describe('CesiumService', () => {
   beforeEach(() => {
@@ -14,3 +15,4 @@ describe('CesiumService', () => {
     expect(service).toBeTruthy();
   }));
 });
+*/
