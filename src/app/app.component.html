@@ -1,8 +1,6 @@
 <ac-map>
   loading
-
-
-  <div *AcLayer2="let track = _entity">
+  <div *AcLayer2="let track of tracks$">
     <ac-billboard-desc [props]="{
     image: track.getImage(),
     position: track.getPosition(),
