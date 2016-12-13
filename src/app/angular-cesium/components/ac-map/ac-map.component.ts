@@ -6,7 +6,7 @@ import {BillboardDrawerService} from "../../services/billboard-drawer/billboard-
 
 @Component({
     selector: 'ac-map',
-    template: '',
+    templateUrl: './ac-map.component.html',
     providers: [CesiumService, BillboardDrawerService]
 })
 export class AcMapComponent implements OnInit {

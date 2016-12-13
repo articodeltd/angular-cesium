@@ -22,16 +22,10 @@ export class AcLayerComponent implements OnInit {
   entity: string;
 
   ngOnInit() {
-    this.observable.subscribe((notification)=>{
+    this.observable.subscribe((notification) => {
       this[this.entity] = notification.entity;
       this.changeDetector.detectChanges();
       this.layerService.setCurrentNotification(notification);
     });
   }
-
-
-
-
-
-
 }
