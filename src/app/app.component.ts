@@ -1,5 +1,5 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
-import {Observable, TimeInterval} from "rxjs";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -9,18 +9,40 @@ import {Observable, TimeInterval} from "rxjs";
 export class AppComponent implements OnInit{
   title: string = 'app works!';
   track: any;
+  tracks$: Observable<any>;
+  staticPosition: Object;
+  staticColor: Object;
 
   constructor(private cd: ChangeDetectorRef){
     this.track = {getImage: () => '', getPosition: () => ''};
+    this.staticPosition = Cesium.Cartesian3.fromDegrees(-72.59777, 38.03883);
+    this.staticColor = Cesium.Color.RED;
   }
 
   ngOnInit(){
-    setTimeout(() => {
-      this.track.getImage = () => "/assets/airplane-png-25.png";
-      this.track.getPosition = () => Cesium.Cartesian3.fromDegrees(-75.59777, 40.03883);
-    }, 1000);
-    setTimeout(() => {
-      this.track.getPosition = () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883);
-    }, 5000);
+    this.tracks$ = Observable.from([
+      {
+        id: 1,
+        action: 'ADD_OR_UPDATE',
+        entity: {
+          getImage: () => "/assets/bear-tongue_1558824i.jpg",
+          getPosition: () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883)
+        }
+      },
+      {
+        id: 2,
+        action: 'ADD_OR_UPDATE',
+        entity: {
+          getImage: () => "/assets/bear-tongue_1558824i.jpg",
+          getPosition: () => Cesium.Cartesian3.fromDegrees(-45.59777, 20.03883)
+        }
+      }
+    ]);
+
+    // setTimeout(() => {
+    //   this.track.getImage = () => "/assets/bear-tongue_1558824i.jpg";
+    //   this.track.getPosition = () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883);
+    // }, 1000);
+
   }
 }
