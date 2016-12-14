@@ -1,5 +1,5 @@
+import { LayerService } from './../../services/layer-service/layer-service.service';
 import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {LayerService} from "../../services/layer-service/layer-service.service";
 import {BillboardDrawerService} from "../../services/billboard-drawer/billboard-drawer.service";
 
 @Component({
@@ -11,9 +11,11 @@ export class AcBillboardDescComponent implements OnInit, OnChanges {
   @Input()
   props: any;
 
+  counter : number = 0;
 
 
-  constructor(private billboardDrawer : BillboardDrawerService) { }
+
+  constructor(private billboardDrawer : BillboardDrawerService, layer: LayerService) { }
   ngOnInit() {
 
   }
@@ -23,10 +25,8 @@ export class AcBillboardDescComponent implements OnInit, OnChanges {
     if(props.currentValue !== props.previousValue){
       // const notification = this.layerService.getCurrentNotification();
       // if(notification.action === 'ADD_OR_UPDATE'){
-        this.billboardDrawer.addOrUpdate(1, props.currentValue);
+        this.billboardDrawer.addOrUpdate(++this.counter, props.currentValue);
       // }
     }
   }
-
-
 }

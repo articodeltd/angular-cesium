@@ -1,44 +1,46 @@
 import { Observable } from 'rxjs';
 import { LayerService } from './../services/layer-service/layer-service.service';
-import { Directive, TemplateRef, ViewContainerRef, OnInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Directive, TemplateRef, ViewContainerRef, OnInit, ChangeDetectorRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 export class LayerContext {
-  constructor(private data: Object) {
-  }
-
-  setData(val) {
-    this.data = val;
-  }
+  constructor(
+    public entity: Object,
+    public $implicit: any
+  ) { }
 }
 
 @Directive({
   selector: '[acLayer2]',
-  providers: [LayerService]
+  providers: []
 })
-export class AcLayer2Directive implements OnInit {
+export class AcLayer2Directive {
 
+  private _observable: Observable<any>
   @Input()
-  acLayer2Of : Observable<any>
+  set acLayer2Of(observable: Observable<any>) {
+    if (this._observable) {
+      return;
+    }
+    
+    this._observable = observable;
+    const contex = new LayerContext(null, null);
+    let view = null;
 
-  @Input()
-  entity: string;
-  
+    observable.subscribe((data) => {
+      if (!view) {
+        view = this.viewContainerRef.createEmbeddedView(this.templateRef, contex);
+      }
+      contex.$implicit = data;
+      contex.entity = data.entity;
+      this.changeDetector.detectChanges();
+      //this.layerService.change.detectChanges();
+    });
+  }
+
   constructor(
     private templateRef: TemplateRef<any>,
     private viewContainerRef: ViewContainerRef,
-    private changeDetector : ChangeDetectorRef , 
+    private changeDetector: ChangeDetectorRef,
     private layerService: LayerService
   ) { }
-
-  ngOnInit() {
-
-    this.viewContainerRef.createEmbeddedView(
-          this.templateRef
-        //   new LayerContext({
-        //   getImage: () => "/assets/bear-tongue_1558824i.jpg",
-        //   getPosition: () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883)
-        // })
-        );
-        let doda = 'sack';
-  }
 }

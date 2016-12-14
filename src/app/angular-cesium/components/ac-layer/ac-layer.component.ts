@@ -7,25 +7,23 @@ import {LayerService} from "../../services/layer-service/layer-service.service";
   selector: 'ac-layer',
   templateUrl: './ac-layer.component.html',
   styleUrls: ['./ac-layer.component.css'],
-  providers: [BillboardDrawerService, LayerService],
-  changeDetection: ChangeDetectionStrategy.OnPush 
-    
+  providers: [ LayerService],    
 })
-export class AcLayerComponent implements OnInit {
+export class AcLayerComponent  {
 
   constructor(private changeDetector : ChangeDetectorRef , private layerService: LayerService) { }
 
-  @Input()
-  observable : Observable<any>;
+  // @Input()
+  // observable : Observable<any>;
 
-  @Input()
-  entity: string;
+  // @Input()
+  // entity: string;
 
-  ngOnInit() {
-    this.observable.subscribe((notification) => {
-      this[this.entity] = notification.entity;
-      this.changeDetector.detectChanges();
-      this.layerService.setCurrentNotification(notification);
-    });
-  }
+  // ngOnInit() {
+  //   this.observable.subscribe((notification) => {
+  //     this[this.entity] = notification.entity;
+  //     this.changeDetector.detectChanges();
+  //     this.layerService.setCurrentNotification(notification);
+  //   });
+  // }
 }
