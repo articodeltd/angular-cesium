@@ -4,36 +4,37 @@ import { Directive, TemplateRef, ViewContainerRef, OnInit, ChangeDetectorRef, In
 
 export class LayerContext {
   constructor(
-    public entity: Object,
-    public $implicit: any
+    public entity: Object = null,
+    public $implicit: any = null
   ) { }
 }
 
 @Directive({
-  selector: '[acLayer2]',
-  providers: []
+  selector: '[acLayer2]'
 })
 export class AcLayer2Directive {
 
-  private _observable: Observable<any>
+  private _observable: Observable<any>;
+
   @Input()
   set acLayer2Of(observable: Observable<any>) {
     if (this._observable) {
       return;
     }
-    
-    this._observable = observable;
-    const contex = new LayerContext(null, null);
+
     let view = null;
+    this._observable = observable;
+    const context = new LayerContext();
 
     observable.subscribe((data) => {
       if (!view) {
-        view = this.viewContainerRef.createEmbeddedView(this.templateRef, contex);
+        view = this.viewContainerRef.createEmbeddedView(this.templateRef, context);
       }
-      contex.$implicit = data;
-      contex.entity = data.entity;
+
+      context.$implicit = data;
+      context.entity = data.entity;
+      this.layerService.setCurrentNotification(data);
       this.changeDetector.detectChanges();
-      //this.layerService.change.detectChanges();
     });
   }
 

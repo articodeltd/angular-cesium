@@ -3,30 +3,27 @@ import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core'
 import {BillboardDrawerService} from "../../services/billboard-drawer/billboard-drawer.service";
 
 @Component({
-  selector: 'ac-billboard-desc',
-  templateUrl: './ac-billborad-desc.component.html',
-  styleUrls: ['./ac-billborad-desc.component.css']
+    selector: 'ac-billboard-desc',
+    templateUrl: './ac-billborad-desc.component.html',
+    styleUrls: ['./ac-billborad-desc.component.css']
 })
-export class AcBillboardDescComponent implements OnInit, OnChanges {
-  @Input()
-  props: any;
+export class AcBillboardDescComponent implements OnChanges {
 
-  counter : number = 0;
+    @Input()
+    props:any;
 
+    constructor(
+        private layerService :LayerService,
+        private billboardDrawer:BillboardDrawerService
+    ) {}
 
-
-  constructor(private billboardDrawer : BillboardDrawerService, layer: LayerService) { }
-  ngOnInit() {
-
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const props = changes['props'];
-    if(props.currentValue !== props.previousValue){
-      // const notification = this.layerService.getCurrentNotification();
-      // if(notification.action === 'ADD_OR_UPDATE'){
-        this.billboardDrawer.addOrUpdate(++this.counter, props.currentValue);
-      // }
+    ngOnChanges(changes:SimpleChanges):void {
+        const props = changes['props'];
+        if (props.currentValue !== props.previousValue) {
+            const notification = this.layerService.getCurrentNotification();
+            if (notification.action === 'ADD_OR_UPDATE') {
+                this.billboardDrawer.addOrUpdate(notification.id, props.currentValue);
+            }
+        }
     }
-  }
 }

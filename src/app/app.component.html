@@ -1,19 +1,13 @@
 <ac-map>
-  loading
-  <ac-layer>
-    <div *acLayer2="let data of tracks$; let track=entity">
-      <ac-billboard-desc [props]="{
-          image: track.getImage(),
-          position: track.getPosition(),
-          scale: 0.09,
-          name: track.name
-        }">
-      </ac-billboard-desc>
-    </div>
-  </ac-layer>
-  <!--<div *acLayer2="let track of tracks$; let ent=entity">
-    {{track}}
-    
-    {{ent}}
-  </div>-->
+    <ac-layer>
+        <div *acLayer2="let data of tracks$; let track = entity">
+            <ac-billboard-desc [props]="{
+              image: track.getImage(),
+              position: track.getPosition(),
+              scale: 0.09,
+              name: track.name
+            }">
+            </ac-billboard-desc>
+        </div>
+    </ac-layer>
 </ac-map>

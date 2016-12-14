@@ -11,19 +11,7 @@ import {LayerService} from "../../services/layer-service/layer-service.service";
 })
 export class AcLayerComponent  {
 
-  constructor(private changeDetector : ChangeDetectorRef , private layerService: LayerService) { }
-
-  // @Input()
-  // observable : Observable<any>;
-
-  // @Input()
-  // entity: string;
-
-  // ngOnInit() {
-  //   this.observable.subscribe((notification) => {
-  //     this[this.entity] = notification.entity;
-  //     this.changeDetector.detectChanges();
-  //     this.layerService.setCurrentNotification(notification);
-  //   });
-  // }
+  constructor(private changeDetector : ChangeDetectorRef) {
+    this.changeDetector.detach();
+  }
 }
