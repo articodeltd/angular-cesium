@@ -1,10 +1,12 @@
+import { LayerService } from './angular-cesium/services/layer-service/layer-service.service';
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: []
 })
 export class AppComponent implements OnInit{
   title: string = 'app works!';
@@ -20,29 +22,45 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.tracks$ = Observable.from([
-      {
-        id: 1,
-        action: 'ADD_OR_UPDATE',
-        entity: {
-          getImage: () => "/assets/bear-tongue_1558824i.jpg",
-          getPosition: () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883)
-        }
-      },
-      {
-        id: 2,
-        action: 'ADD_OR_UPDATE',
-        entity: {
-          getImage: () => "/assets/bear-tongue_1558824i.jpg",
-          getPosition: () => Cesium.Cartesian3.fromDegrees(-45.59777, 20.03883)
-        }
-      }
-    ]);
+    //let thousandStream = Observable.range(0, 30000);
+    //this.tracks$ = thousandStream.map((value)=>({
+    //    id: value,
+    //    action: 'ADD_OR_UPDATE',
+    //    entity: {
+    //      name: 'tomer',
+    //      getImage: () => "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
+    //      getPosition: () => Cesium.Cartesian3.fromDegrees(Math.random() * 80, Math.random() * 80)
+    //  }
+    //}));
 
-    // setTimeout(() => {
-    //   this.track.getImage = () => "/assets/bear-tongue_1558824i.jpg";
-    //   this.track.getPosition = () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883);
-    // }, 1000);
-
+     this.tracks$ = Observable.from([
+       {
+         id: 1,
+         action: 'ADD_OR_UPDATE',
+         entity: {
+           name: 'tomer',
+           getImage: () => "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
+           getPosition: () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883)
+         }
+       },
+       {
+         id: 2,
+         action: 'ADD_OR_UPDATE',
+         entity: {
+           name: 'onen',
+           getImage: () => "/assets/bear-tongue_1558824i.jpg",
+           getPosition: () => Cesium.Cartesian3.fromDegrees(-45.59777, 20.03883)
+         }
+       },
+        {
+         id: 2,
+         action: 'ADD_OR_UPDATE',
+         entity: {
+            name: 'eitan',
+           getImage: () => "/assets/bear-tongue_1558824i.jpg",
+           getPosition: () => Cesium.Cartesian3.fromDegrees(-40.59777, 15.03883)
+         }
+       }
+     ]);
   }
 }

@@ -1,23 +1,13 @@
-<script src="app.component.ts"></script>
 <ac-map>
-  loading
-  <ac-billboard [props]="{
-    image: track.getImage(),
-    position: track.getPosition(),
-    scale: 0.3
-  }"></ac-billboard>
-  <ac-billboard [props]="{
-    image: '/assets/14141771_10210342250822703_4768968253746041744_n.jpg',
-    position: staticPosition,
-    scale: 0.4
-  }"></ac-billboard>
-
-
-  <ac-layer [observable]="tracks$" entity="track">
-    <ac-billboard-desc [props]="{
-    image: track.getImage(),
-    position: track.getPosition(),
-    scale: 0.4
-    }"></ac-billboard-desc>
-  </ac-layer>
+    <ac-layer>
+        <div *acLayer2="let data of tracks$; let track = entity">
+            <ac-billboard-desc [props]="{
+              image: track.getImage(),
+              position: track.getPosition(),
+              scale: 0.09,
+              name: track.name
+            }">
+            </ac-billboard-desc>
+        </div>
+    </ac-layer>
 </ac-map>
