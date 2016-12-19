@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { LayerService } from './../services/layer-service/layer-service.service';
 import { Directive, TemplateRef, ViewContainerRef, OnInit, ChangeDetectorRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-export class LayerContext {
+export class LayerData {
   constructor(
     public entity: Object = null,
     public $implicit: any = null
@@ -24,7 +24,7 @@ export class AcLayer2Directive {
 
     let view = null;
     this._observable = observable;
-    const context = new LayerContext();
+    const context = new LayerData();
 
     observable.subscribe((data) => {
       if (!view) {
