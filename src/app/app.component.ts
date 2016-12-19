@@ -1,4 +1,3 @@
-import { LayerService } from './angular-cesium/services/layer-service/layer-service.service';
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { LayerContext } from './angular-cesium/decorators/layer-context.decorator';
 import {Observable} from "rxjs";
