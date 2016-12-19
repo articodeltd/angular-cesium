@@ -159,13 +159,19 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     }
 
     // TODO
-    visitLiteralArray(ast: LiteralArray, context: any): any {
+    visitLiteralArray(ast: LiteralArray, context:    any): any {
         return this.visitAll(ast.expressions, context);
     }
 
     // TODO
     visitLiteralMap(ast: LiteralMap, context: any): any {
-        return this.visitAll(ast.values, context);
+        let values = this.visitAll(ast.values, context);
+        let keys = ast.keys;
+        let resultObject = {};
+        for(let i=0; i<keys.length; i++){
+            resultObject[keys[i]] = values[i];
+        }
+        return resultObject;
     }
 
     visitLiteralPrimitive(ast: LiteralPrimitive, context: any): any {
@@ -173,12 +179,14 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     }
 
     visitMethodCall(ast: MethodCall, context: any): any {
-        if (!isJsObject(context) || !isFunction(context[ast.name])) {
+        let functionContext = ast.receiver.visit(this, context);
+
+        if (!isJsObject(functionContext) || !isFunction(functionContext[ast.name])) {
             return null;
         }
 
         const args = this.visitAll(ast.args, context);
-        return context[ast.name].apply(context, args);
+        return functionContext[ast.name].apply(context, args);
     }
 
     visitPrefixNot(ast: PrefixNot, context: any): any {

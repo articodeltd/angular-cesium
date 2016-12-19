@@ -1,72 +1,101 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
-import { LayerContext } from './angular-cesium/decorators/layer-context.decorator';
+import {LayerContext} from './angular-cesium/decorators/layer-context.decorator';
 import {Observable} from "rxjs";
 
 import {Parser, Lexer} from '@angular/compiler';
 import {A2Parse} from './angular-cesium/services/a2-parse/a2-parse.service';
+import {LayerContextService} from './angular-cesium/services/layer-context/layer-context.service';
+import {BasicLayer} from "./angular-cesium/services/basic-layer/basic-layer.service";
 
 @LayerContext()
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [Parser, Lexer, A2Parse]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    providers: [Parser, Lexer, A2Parse]
 })
-export class AppComponent implements OnInit{
-  title: string = 'app works!';
-  track: any;
-  tracks$: Observable<any>;
-  staticPosition: Object;
-  staticColor: Object;
+export class AppComponent extends BasicLayer implements OnInit {
+    title: string = 'app works!';
+    track: any;
+    tracks$: Observable<any>;
+    staticPosition: Object;
+    staticColor: Object;
+    Cesium = Cesium;
 
-  constructor(private cd: ChangeDetectorRef, private a2Parse: A2Parse){
-    this.track = {getImage: () => '', getPosition: () => ''};
-    this.staticPosition = Cesium.Cartesian3.fromDegrees(-72.59777, 38.03883);
-    this.staticColor = Cesium.Color.RED;
-  }
+    constructor(private cd: ChangeDetectorRef,
+                private a2Parse: A2Parse,
+                layerContext: LayerContextService) {
+        super(layerContext);
+        this.track = {getImage: () => '', getPosition: () => ''};
+        this.staticPosition = Cesium.Cartesian3.fromDegrees(-72.59777, 38.03883);
+        this.staticColor = Cesium.Color.RED;
+    }
 
-  ngOnInit(){
-    //let thousandStream = Observable.range(0, 30000);
-    //this.tracks$ = thousandStream.map((value)=>({
-    //    id: value,
-    //    action: 'ADD_OR_UPDATE',
-    //    entity: {
-    //      name: 'tomer',
-    //      getImage: () => "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
-    //      getPosition: () => Cesium.Cartesian3.fromDegrees(Math.random() * 80, Math.random() * 80)
-    //  }
-    //}));
+    ngOnInit() {
+        //let thousandStream = Observable.range(0, 30000);
+        //this.tracks$ = thousandStream.map((value)=>({
+        //    id: value,
+        //    action: 'ADD_OR_UPDATE',
+        //    entity: {
+        //      name: 'tomer',
+        //      getImage: () => "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
+        //      getPosition: () => Cesium.Cartesian3.fromDegrees(Math.random() * 80, Math.random() * 80)
+        //  }
+        //}));
 
-    const result1 = this.a2Parse.$parse("getPosition() | json")({getPosition(){return {x: 5};}});
+        const result1 = this.a2Parse.$parse("getPosition() | json")({
+            getPosition(){
+                return {x: 5};
+            }
+        });
 
-     this.tracks$ = Observable.from([
-       {
-         id: 1,
-         action: 'ADD_OR_UPDATE',
-         entity: {
-           name: 'tomer',
-           getImage: () => "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
-           getPosition: () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883)
-         }
-       },
-       {
-         id: 2,
-         action: 'ADD_OR_UPDATE',
-         entity: {
-           name: 'onen',
-           getImage: () => "/assets/bear-tongue_1558824i.jpg",
-           getPosition: () => Cesium.Cartesian3.fromDegrees(-45.59777, 20.03883)
-         }
-       },
-        {
-         id: 2,
-         action: 'ADD_OR_UPDATE',
-         entity: {
-            name: 'eitan',
-           getImage: () => "/assets/bear-tongue_1558824i.jpg",
-           getPosition: () => Cesium.Cartesian3.fromDegrees(-40.59777, 15.03883)
-         }
-       }
-     ]);
-  }
+        //     this.tracks$ = Observable.from([
+        //         {
+        //             id: 1,
+        //             action: 'ADD_OR_UPDATE',
+        //             entity: {
+        //                 name: 'tomer',
+        //                 getImage: () => "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
+        //                 getPosition: () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883)
+        //             }
+        //         },
+        //         {
+        //             id: 2,
+        //             action: 'ADD_OR_UPDATE',
+        //             entity: {
+        //                 name: 'onen',
+        //                 getImage: () => "/assets/bear-tongue_1558824i.jpg",
+        //                 getPosition: () => Cesium.Cartesian3.fromDegrees(-45.59777, 20.03883)
+        //             }
+        //         },
+        //         {
+        //             id: 2,
+        //             action: 'ADD_OR_UPDATE',
+        //             entity: {
+        //                 name: 'eitan',
+        //                 getImage: () => "/assets/bear-tongue_1558824i.jpg",
+        //                 getPosition: () => Cesium.Cartesian3.fromDegrees(-40.59777, 15.03883)
+        //             }
+        //         }
+        //     ]);
+
+        var socket = io.connect('http://localhost:3000');
+        this.tracks$ = Observable.create((observer) => {
+            socket.on('birds', (data) => {
+                data.forEach((entity) => {
+                    entity.entity = this.convertToCesiumObj(entity)
+                    observer.next(entity);
+                });
+            });
+        })
+    }
+
+    convertToCesiumObj(data): any {
+        return {
+            image: data.entity.image,
+            scale: data.id === 1 ? 0.3 : 0.15,
+            color: data.id === 1 ? Cesium.Color.RED : undefined,
+            position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random())
+        }
+    }
 }

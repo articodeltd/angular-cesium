@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LayerService {
-  private notification: any;
+  private descriptions :any[] = [];
 
-  getCurrentNotification(){
-    return this.notification;
+  registerDescription(descriptionComponent: any){
+        this.descriptions.push(descriptionComponent);
   }
 
-  setCurrentNotification(notification: any){
-    this.notification = notification;
+  getDescriptions(): any[]{
+    return this.descriptions;
   }
-
 }

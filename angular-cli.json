@@ -22,7 +22,8 @@
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/cesium/Build/Cesium/Cesium.js"
+        "../node_modules/cesium/Build/Cesium/Cesium.js",
+        "../node_modules/socket.io-client/dist/socket.io.js"
       ],
       "environments": {
         "source": "environments/environment.ts",
