@@ -4,11 +4,14 @@ import { LayerContext } from './angular-cesium/decorators/layer-context.decorato
 import {Observable} from "rxjs";
 
 @LayerContext()
+import {Parser, Lexer} from '@angular/compiler';
+import {A2Parse} from './angular-cesium/services/a2-parse/a2-parse.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: []
+  providers: [Parser, Lexer, A2Parse]
 })
 export class AppComponent implements OnInit{
   title: string = 'app works!';
@@ -17,7 +20,7 @@ export class AppComponent implements OnInit{
   staticPosition: Object;
   staticColor: Object;
 
-  constructor(private cd: ChangeDetectorRef){
+  constructor(private cd: ChangeDetectorRef, private a2Parse: A2Parse){
     this.track = {getImage: () => '', getPosition: () => ''};
     this.staticPosition = Cesium.Cartesian3.fromDegrees(-72.59777, 38.03883);
     this.staticColor = Cesium.Color.RED;
@@ -34,6 +37,8 @@ export class AppComponent implements OnInit{
     //      getPosition: () => Cesium.Cartesian3.fromDegrees(Math.random() * 80, Math.random() * 80)
     //  }
     //}));
+
+    const result1 = this.a2Parse.$parse("getPosition() | json")({getPosition(){return {x: 5};}});
 
      this.tracks$ = Observable.from([
        {
