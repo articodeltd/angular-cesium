@@ -31,7 +31,7 @@ export class A2Parse {
         }
 
         return (target: any, context: any = window): any => {
-            visitor.setContext(target, context);
+            //visitor.setContext(target, context);
             return ast.visit(visitor, target);
         };
     }

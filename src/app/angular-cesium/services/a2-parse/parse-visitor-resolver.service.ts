@@ -6,7 +6,7 @@ import {
 } from '@angular/compiler/src/expression_parser/ast';
 
 function isPresent(obj) {
-    return obj != null;
+    return obj !== null && obj !== undefined;
 }
 
 function isBlank(obj) {
@@ -44,25 +44,11 @@ const BinaryOperations = new Map<string, any>([
 ]);
 
 export class ParseVisitorResolver extends RecursiveAstVisitor {
-    /**
-     * This is the main object to resolve the parsed string against.
-     */
-    target:any;
-
-    /**
-     * This is the context to witch variables in the string are resolved against.
-     * The resolver defaults this to the window.
-     */
-    context:any;
-    contextResolver:ParseVisitorResolver;
 
     pipes: Map<string, any> = new Map<string, any>();
 
-    constructor(private _compiler: any, main: boolean = true) {
+    constructor(private _compiler: any) {
         super();
-        if (main) {
-            this.contextResolver = new ParseVisitorResolver(this._compiler, false);
-        }
 
         const pipeCache = this._compiler._delegate._metadataResolver._pipeCache;
 
@@ -71,29 +57,17 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
         }
     };
 
-    /**
-     * Updates the target and context objects to resolve visit.
-     * @param target - The main object
-     * @param context - The object to resolve disconnected variables against.
-     */
-    setContext(target:any, context:any) {
-        this.target = target;
-        this.context = context;
-        if (this.contextResolver != null) {
-            this.contextResolver.setContext(this.context, undefined);
-        }
-    }
-
     visitBinary(ast: Binary, context: any): any {
         const execFn = BinaryOperations.get(ast.operation);
 
         if (!execFn) {
-            throw new Error(`Unknown operator ${ast.operation}`);
+            throw new Error(`Parse ERROR: on visitBinary, unknown operator ${ast.operation}`);
         }
 
         return execFn(ast.left.visit(this, context), ast.right.visit(this, context));
     }
 
+    // TODO
     visitChain(ast: Chain, context: any): any {
         return this.visitAll(ast.expressions, context);
     }
@@ -115,12 +89,12 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
             throw new Error(`pipe ${ast.name} not found.`);
         }
 
+        if (!pipe.transform) {
+            throw new Error(`Parse ERROR: on visitPipe, transform method doesn't exist on pipe ${ast.name}.`);
+        }
+
         const value = ast.exp.visit(this, context);
         const pipeArgs = this.visitAll(ast.args, context);
-
-        if (!pipe.transform) {
-            throw new Error(`Invalid pipe.`);
-        }
 
         pipeArgs.unshift(value);
 
@@ -129,43 +103,53 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
 
     // TODO
     visitFunctionCall(ast: FunctionCall, context: any): any {
-        ast.target.visit(this);
-        this.visitAll(ast.args, context);
-        return null;
+        const target = ast.target.visit(this, context);
+
+        if (!isFunction(target)) {
+            throw new Error(`Parse ERROR: on visitFunctionCall, target is not a function.`);
+        }
+
+        const args = this.visitAll(ast.args, context);
+        return target.apply(null, args);
     }
 
+    // TODO
     visitImplicitReceiver(ast: ImplicitReceiver, context: any): any {
         return context;
     }
 
-    // TODO
     visitInterpolation(ast: Interpolation, context: any): any {
-        return this.visitAll(ast.expressions, context);
+        return this.visitAll(ast.expressions, context)[0];
     }
 
-    // TODO
     visitKeyedRead(ast: KeyedRead, context: any): any {
-        ast.obj.visit(this);
-        ast.key.visit(this);
-        return null;
+        const obj = ast.obj.visit(this, context);
+        const key = ast.key.visit(this);
+        return obj[key];
     }
 
-    // TODO
     visitKeyedWrite(ast: KeyedWrite, context: any): any {
-        ast.obj.visit(this);
-        ast.key.visit(this);
-        ast.value.visit(this);
+        const obj = ast.obj.visit(this, context);
+        const key = ast.key.visit(this, context);
+        const value = ast.value.visit(this, context);
+        obj[key] = value;
         return null;
     }
 
-    // TODO
     visitLiteralArray(ast: LiteralArray, context: any): any {
         return this.visitAll(ast.expressions, context);
     }
 
-    // TODO
     visitLiteralMap(ast: LiteralMap, context: any): any {
-        return this.visitAll(ast.values, context);
+        const result = {};
+        const keys = this.visitAll(ast.keys, context);
+        const values = this.visitAll(ast.values, context);
+
+        for (let i = 0, length = keys.length; i < length; i++) {
+            result[keys[i]] = values[i];
+        }
+
+        return result;
     }
 
     visitLiteralPrimitive(ast: LiteralPrimitive, context: any): any {
@@ -173,43 +157,72 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     }
 
     visitMethodCall(ast: MethodCall, context: any): any {
-        if (!isJsObject(context) || !isFunction(context[ast.name])) {
-            return null;
+        const receiver = ast.receiver.visit(this, context);
+
+        if (!isJsObject(receiver)) {
+            throw new Error(`Parse ERROR: on visitMethodCall, invalid method receiver.`);
+        }
+
+        const method = receiver[ast.name];
+
+        if (!isFunction(method)) {
+            throw new Error(`Parse ERROR: on visitMethodCall, method ${ast.name} doesn't exist on receiver.`);
         }
 
         const args = this.visitAll(ast.args, context);
-        return context[ast.name].apply(context, args);
+        return method.apply(receiver, args);
     }
 
     visitPrefixNot(ast: PrefixNot, context: any): any {
-        ast.expression.visit(this);
-        return null;
+        return ast.expression.visit(this, context);
     }
 
     visitPropertyRead(ast: PropertyRead, context: any): any {
-        const obj = ast.receiver.visit(this, context);
+        const receiver = ast.receiver.visit(this, context);
 
-        if (!isJsObject(obj)) {
-            return null;
+        if (!isJsObject(receiver)) {
+            throw new Error(`Parse ERROR: on visitPropertyRead, invalid property receiver.`);
         }
 
-        return obj[ast.name];
+        return receiver[ast.name];
     }
 
     visitPropertyWrite(ast: PropertyWrite, context: any): any {
-        ast.receiver.visit(this);
-        ast.value.visit(this);
+        const receiver = ast.receiver.visit(this, context);
+
+        if (!isJsObject(receiver)) {
+            throw new Error(`Parse ERROR: on visitPropertyRead, invalid property receiver.`);
+        }
+
+        receiver[ast.name] = ast.value.visit(this, context);
         return null;
     }
 
     visitSafePropertyRead(ast: SafePropertyRead, context: any): any {
-        ast.receiver.visit(this);
-        return null;
+        const receiver = ast.receiver.visit(this, context);
+
+        if (!isJsObject(receiver)) {
+            throw new Error(`Parse ERROR: on visitSafePropertyRead, invalid property receiver.`);
+        }
+
+        return receiver[ast.name];
     }
 
     visitSafeMethodCall(ast: SafeMethodCall, context: any): any {
-        ast.receiver.visit(this);
-        return this.visitAll(ast.args, context);
+        const receiver = ast.receiver.visit(this, context);
+
+        if (!isJsObject(receiver)) {
+            throw new Error(`Parse ERROR: on visitSafeMethodCall, invalid method receiver.`);
+        }
+
+        const method = receiver[ast.name];
+
+        if (!isFunction(method)) {
+            throw new Error(`Parse ERROR: on visitSafeMethodCall, method ${ast.name} doesn't exist on receiver.`);
+        }
+
+        const args = this.visitAll(ast.args, context);
+        return method.apply(receiver, args);
     }
 
     visitAll(asts: AST[], context: any): any {
@@ -217,6 +230,6 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     }
 
     visitQuote(ast: Quote, context: any): any {
-        return null;
+        throw new Error(`Parse ERROR: on visitQuote, quote expression not allowed.`);
     }
 }

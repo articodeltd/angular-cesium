@@ -38,7 +38,19 @@ export class AppComponent implements OnInit{
     //  }
     //}));
 
-    const result1 = this.a2Parse.$parse("getPosition() | json")({getPosition(){return {x: 5};}});
+    //const result1 = this.a2Parse.$parse("getPosition()['x']")({getPosition(){return {x: 5};}});
+
+    const result1 = this.a2Parse.$parse("getPosition()")({
+      getPosition(){
+        return {
+          x: 5,
+          getNumber() {
+            return {x: 7};
+          }
+        };
+      }});
+
+    //const result1 = this.a2Parse.$parse("function () { return getPosition().x; }")({getPosition(){return {x: 5};}});
 
      this.tracks$ = Observable.from([
        {
