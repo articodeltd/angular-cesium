@@ -11,18 +11,6 @@ function compileToJSON (json) {
 
 export class EvalParseVisitorResolver extends RecursiveAstVisitor {
 
-    pipes: Map<string, any> = new Map<string, any>();
-
-    constructor(private _compiler: any) {
-        super();
-
-        const pipeCache = this._compiler._delegate._metadataResolver._pipeCache;
-
-        for (let [pipe, pipeMetadata] of pipeCache) {
-            this.pipes.set(pipeMetadata.name, new pipe());
-        }
-    };
-
     visitBinary(ast: Binary): any {
         const left = ast.left.visit(this);
         const right = ast.right.visit(this);
@@ -50,23 +38,6 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
         args.unshift(value);
 
         return `this.$pipesCache.get('${pipe}').transform.apply(null, ${compileToJSON(args)})`;
-
-        //const pipe = this.pipes.get(ast.name);
-        //
-        //if (!pipe) {
-        //    throw new Error(`pipe ${ast.name} not found.`);
-        //}
-        //
-        //if (!pipe.transform) {
-        //    throw new Error(`Parse ERROR: on visitPipe, transform method doesn't exist on pipe ${ast.name}.`);
-        //}
-        //
-        //const value = ast.exp.visit(this, context);
-        //const pipeArgs = this.visitAll(ast.args, context);
-        //
-        //pipeArgs.unshift(value);
-        //
-        //return pipe.transform.apply(null, pipeArgs);
     }
 
     // TODO

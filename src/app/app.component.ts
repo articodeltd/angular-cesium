@@ -1,8 +1,6 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { LayerContext } from './angular-cesium/decorators/layer-context.decorator';
 import {Observable} from "rxjs";
-
-
 import {Parser, Lexer} from '@angular/compiler';
 import {A2Parse} from './angular-cesium/services/a2-parse/a2-parse.service';
 
@@ -53,6 +51,7 @@ export class AppComponent implements OnInit{
 
     const context = {getPosition(){return {x: 5};}};
 
+    //const result = this.a2Parse.$parse(`getPosition() | json`)(context);
     const result = this.a2Parse.$evalParse(`getPosition() | json`)(context);
 
      this.tracks$ = Observable.from([

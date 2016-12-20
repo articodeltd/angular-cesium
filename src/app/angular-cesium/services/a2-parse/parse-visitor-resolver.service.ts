@@ -9,16 +9,8 @@ function isPresent(obj) {
     return obj !== null && obj !== undefined;
 }
 
-function isBlank(obj) {
-    return obj == null;
-}
-
 function isJsObject(obj) {
     return obj !== null && (typeof obj === 'function' || typeof obj === 'object');
-}
-
-export function isPrimitive(obj) {
-    return !isJsObject(obj);
 }
 
 function isFunction(val) {
@@ -45,16 +37,8 @@ const BinaryOperations = new Map<string, any>([
 
 export class ParseVisitorResolver extends RecursiveAstVisitor {
 
-    pipes: Map<string, any> = new Map<string, any>();
-
-    constructor(private _compiler: any) {
+    constructor(private pipes: Map<string, any>) {
         super();
-
-        const pipeCache = this._compiler._delegate._metadataResolver._pipeCache;
-
-        for (let [pipe, pipeMetadata] of pipeCache) {
-            this.pipes.set(pipeMetadata.name, new pipe());
-        }
     };
 
     visitBinary(ast: Binary, context: any): any {
