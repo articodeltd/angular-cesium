@@ -5,7 +5,7 @@ import {
     LiteralMap, PrefixNot, PropertyWrite, SafePropertyRead, SafeMethodCall, Quote
 } from '@angular/compiler/src/expression_parser/ast';
 
-function compileJSON (json) {
+function compileToJSON (json) {
     return JSON.stringify(json).replace(/"/g, '')
 }
 
@@ -32,7 +32,7 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
 
     // TODO
     visitChain(ast: Chain): any {
-        return compileJSON(this.visitAll(ast.expressions));
+        return compileToJSON(this.visitAll(ast.expressions));
     }
 
     visitConditional(ast: Conditional): any {
@@ -44,7 +44,13 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
     }
 
     visitPipe(ast: BindingPipe): any {
-        return ``;
+        const pipe = ast.name;
+        const args = this.visitAll(ast.args);
+        const value = ast.exp.visit(this);
+        args.unshift(value);
+
+        return `this.$pipesCache.get('${pipe}').transform.apply(null, ${compileToJSON(args)})`;
+
         //const pipe = this.pipes.get(ast.name);
         //
         //if (!pipe) {
@@ -66,7 +72,7 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
     // TODO
     visitFunctionCall(ast: FunctionCall): any {
         const target = ast.target.visit(this);
-        const args = compileJSON(this.visitAll(ast.args));
+        const args = compileToJSON(this.visitAll(ast.args));
 
         return `${target}.apply(null, ${args})`;
     }
@@ -92,7 +98,7 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
     }
 
     visitLiteralArray(ast: LiteralArray): any {
-        return compileJSON(this.visitAll(ast.expressions));
+        return compileToJSON(this.visitAll(ast.expressions));
     }
 
     visitLiteralMap(ast: LiteralMap): any {
@@ -104,7 +110,7 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
             result[keys[i]] = values[i];
         }
 
-        return compileJSON(result);
+        return compileToJSON(result);
     }
 
     visitLiteralPrimitive(ast: LiteralPrimitive): any {
@@ -114,7 +120,7 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
     visitMethodCall(ast: MethodCall): any {
         const methodName = ast.name;
         const receiver = ast.receiver.visit(this);
-        const args = compileJSON(this.visitAll(ast.args));
+        const args = compileToJSON(this.visitAll(ast.args));
 
         return `${receiver}['${methodName}'].apply(null, ${args})`;
     }
@@ -144,7 +150,7 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
     visitSafeMethodCall(ast: SafeMethodCall): any {
         const methodName = ast.name;
         const receiver = ast.receiver.visit(this);
-        const args = compileJSON(this.visitAll(ast.args));
+        const args = compileToJSON(this.visitAll(ast.args));
 
         return `${receiver}['${methodName}'].apply(null, ${args})`;
     }
@@ -162,6 +168,6 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
     }
 
     visitQuote(ast: Quote): any {
-        throw new Error(`Parse ERROR: on visitQuote, quote expression not allowed.`);
+        return null;
     }
 }

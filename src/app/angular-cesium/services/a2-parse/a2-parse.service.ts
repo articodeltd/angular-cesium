@@ -5,14 +5,19 @@ import {EvalParseVisitorResolver} from './eval-parse-visitor-resolver.service';
 
 @Injectable()
 export class A2Parse {
+    private _pipesCache: Map<string, any> = new Map<string, any>();
 
     /**
      * Used to dependency inject the Angular 2 parser.
      */
-    constructor(
-        private _parser: Parser,
-        private _compiler : Compiler
-    ) {}
+    constructor(private _parser: Parser, private _compiler : Compiler) {
+        const compiler: any = this._compiler;
+        const pipeCache = compiler._delegate._metadataResolver._pipeCache;
+
+        for (let [pipe, pipeMetadata] of pipeCache) {
+            this._pipesCache.set(pipeMetadata.name, new pipe());
+        }
+    }
 
     $evalParse(parseText: string): any {
         const visitor = new EvalParseVisitorResolver(this._compiler);
@@ -26,7 +31,11 @@ export class A2Parse {
 
         const fnBody =  ast.visit(visitor);
         const getFn = eval(`(function () { return ${fnBody};})`);
-        return (context) => getFn.call(context);
+
+        return (context) => {
+            context.$pipesCache = this._pipesCache;
+            return getFn.call(context);
+        };
     }
 
     /**

@@ -50,12 +50,10 @@ export class AppComponent implements OnInit{
     //    };
     //  }});
 
-    //const result1 = this.a2Parse.$parse("function () { return getPosition().x; }")({getPosition(){return {x: 5};}});
+
     const context = {getPosition(){return {x: 5};}};
-    //const getFn = this.a2Parse.$evalParse("getPosition(getPosition()).x + 5 * 7 / getPosition().x");
-    //const getFn = this.a2Parse.$evalParse(`{a: getPosition().x, b: getPosition, c: getPosition(), d: "tsahi", e: 50, f: {a: 1, b: '2'}}`);
-    const getFn = this.a2Parse.$evalParse(`[getPosition().x, 1, 2, 'tsahi']`);
-    const result1 = getFn(context);
+
+    const result = this.a2Parse.$evalParse(`getPosition() | json`)(context);
 
      this.tracks$ = Observable.from([
        {
