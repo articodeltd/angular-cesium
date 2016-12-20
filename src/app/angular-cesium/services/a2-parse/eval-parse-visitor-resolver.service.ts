@@ -5,43 +5,9 @@ import {
     LiteralMap, PrefixNot, PropertyWrite, SafePropertyRead, SafeMethodCall, Quote
 } from '@angular/compiler/src/expression_parser/ast';
 
-function isPresent(obj) {
-    return obj !== null && obj !== undefined;
+function compileJSON (json) {
+    return JSON.stringify(json).replace(/"/g, '')
 }
-
-function isBlank(obj) {
-    return obj == null;
-}
-
-function isJsObject(obj) {
-    return obj !== null && (typeof obj === 'function' || typeof obj === 'object');
-}
-
-export function isPrimitive(obj) {
-    return !isJsObject(obj);
-}
-
-function isFunction(val) {
-    return typeof val === 'function';
-}
-
-const BinaryOperations = new Map<string, any>([
-    ['==', (left, right) => left == right],
-    ['===', (left, right) => left === right],
-    ['!=', (left, right) => left != right],
-    ['!==', (left, right) => left !== right],
-    ['&&', (left, right) => left && right],
-    ['||', (left, right) => left || right],
-    ['+', (left, right) => left + right],
-    ['-', (left, right) => left - right],
-    ['/', (left, right) => left / right],
-    ['*', (left, right) => left * right],
-    ['%', (left, right) => left % right],
-    ['<', (left, right) => left < right],
-    ['<=', (left, right) => left <= right],
-    ['>', (left, right) => left > right],
-    ['>=', (left, right) => left >= right],
-]);
 
 export class EvalParseVisitorResolver extends RecursiveAstVisitor {
 
@@ -57,36 +23,27 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
         }
     };
 
-    visitBinary(ast: Binary, context: any): any {
-        return `${ast.left.visit(this, context)} ${ast.operation} ${ast.right.visit(this, context)}`;
+    visitBinary(ast: Binary): any {
+        const left = ast.left.visit(this);
+        const right = ast.right.visit(this);
 
-        //const execFn = BinaryOperations.get(ast.operation);
-        //
-        //if (!execFn) {
-        //    throw new Error(`Parse ERROR: on visitBinary, unknown operator ${ast.operation}`);
-        //}
-        //
-        //return execFn(ast.left.visit(this, context), ast.right.visit(this, context));
+        return `${left} ${ast.operation} ${right}`;
     }
 
     // TODO
-    visitChain(ast: Chain, context: any): any {
-        return JSON.stringify(this.visitAll(ast.expressions, context));
+    visitChain(ast: Chain): any {
+        return compileJSON(this.visitAll(ast.expressions));
     }
 
-    visitConditional(ast: Conditional, context: any): any {
-        return `${ast.condition.visit(this, context)} ? ${ast.trueExp.visit(this, context)} : ${ast.falseExp.visit(this, context)}`;
+    visitConditional(ast: Conditional): any {
+        const condition = ast.condition.visit(this);
+        const trueExp = ast.trueExp.visit(this);
+        const falseExp = ast.falseExp.visit(this);
 
-        //if (ast.condition.visit(this, context)) {
-        //    return ast.trueExp.visit(this, context);
-        //} else if (isPresent(ast.falseExp)) {
-        //    return ast.falseExp.visit(this, context);
-        //}
-        //
-        //return null;
+        return `${condition} ? ${trueExp} : ${falseExp}`;
     }
 
-    visitPipe(ast: BindingPipe, context: any): any {
+    visitPipe(ast: BindingPipe): any {
         return ``;
         //const pipe = this.pipes.get(ast.name);
         //
@@ -107,153 +64,104 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
     }
 
     // TODO
-    visitFunctionCall(ast: FunctionCall, context: any): any {
-        return ``;
+    visitFunctionCall(ast: FunctionCall): any {
+        const target = ast.target.visit(this);
+        const args = compileJSON(this.visitAll(ast.args));
 
-        //const target = ast.target.visit(this, context);
-        //
-        //if (!isFunction(target)) {
-        //    throw new Error(`Parse ERROR: on visitFunctionCall, target is not a function.`);
-        //}
-        //
-        //const args = this.visitAll(ast.args, context);
-        //return target.apply(null, args);
+        return `${target}.apply(null, ${args})`;
     }
 
     // TODO
-    visitImplicitReceiver(ast: ImplicitReceiver, context: any): any {
+    visitImplicitReceiver(ast: ImplicitReceiver): any {
         return `this`;
-        //return context;
     }
 
-    visitInterpolation(ast: Interpolation, context: any): any {
-        return this.visitAll(ast.expressions, context)[0];
+    visitInterpolation(ast: Interpolation): any {
+        return this.visitAll(ast.expressions)[0];
     }
 
-    visitKeyedRead(ast: KeyedRead, context: any): any {
-        return `${ast.obj.visit(this, context)}['${ast.key.visit(this, context)}']`;
+    visitKeyedRead(ast: KeyedRead): any {
+        const obj = ast.obj.visit(this);
+        const key = ast.key.visit(this);
 
-        //const obj = ast.obj.visit(this, context);
-        //const key = ast.key.visit(this, context);
-        //return obj[key];
+        return `${obj}['${key}']`;
     }
 
-    visitKeyedWrite(ast: KeyedWrite, context: any): any {
-        return ``;
-
-        //const obj = ast.obj.visit(this, context);
-        //const key = ast.key.visit(this, context);
-        //const value = ast.value.visit(this, context);
-        //obj[key] = value;
-        //return null;
+    visitKeyedWrite(ast: KeyedWrite): any {
+        return null;
     }
 
-    visitLiteralArray(ast: LiteralArray, context: any): any {
-        return JSON.stringify(this.visitAll(ast.expressions, context));
+    visitLiteralArray(ast: LiteralArray): any {
+        return compileJSON(this.visitAll(ast.expressions));
     }
 
-    visitLiteralMap(ast: LiteralMap, context: any): any {
+    visitLiteralMap(ast: LiteralMap): any {
         const result = {};
-        const keys = this.visitAll(ast.keys, context);
-        const values = this.visitAll(ast.values, context);
+        const keys = ast.keys;
+        const values = this.visitAll(ast.values);
 
         for (let i = 0, length = keys.length; i < length; i++) {
             result[keys[i]] = values[i];
         }
 
-        return JSON.stringify(result);
+        return compileJSON(result);
     }
 
-    visitLiteralPrimitive(ast: LiteralPrimitive, context: any): any {
+    visitLiteralPrimitive(ast: LiteralPrimitive): any {
         return ast.value;
     }
 
-    visitMethodCall(ast: MethodCall, context: any): any {
-        return `${ast.receiver.visit(this, context)}['${ast.name}'].apply(null, ${JSON.stringify(this.visitAll(ast.args, context)).replace(/"/g, '')})`;
+    visitMethodCall(ast: MethodCall): any {
+        const methodName = ast.name;
+        const receiver = ast.receiver.visit(this);
+        const args = compileJSON(this.visitAll(ast.args));
 
-        //const receiver = ast.receiver.visit(this, context);
-        //
-        //if (!isJsObject(receiver)) {
-        //    throw new Error(`Parse ERROR: on visitMethodCall, invalid method receiver.`);
-        //}
-        //
-        //const method = receiver[ast.name];
-        //
-        //if (!isFunction(method)) {
-        //    throw new Error(`Parse ERROR: on visitMethodCall, method ${ast.name} doesn't exist on receiver.`);
-        //}
-        //
-        //const args = this.visitAll(ast.args, context);
-        //return method.apply(receiver, args);
+        return `${receiver}['${methodName}'].apply(null, ${args})`;
     }
 
-    visitPrefixNot(ast: PrefixNot, context: any): any {
-        return ast.expression.visit(this, context);
+    visitPrefixNot(ast: PrefixNot): any {
+        return ast.expression.visit(this);
     }
 
-    visitPropertyRead(ast: PropertyRead, context: any): any {
-        return `${ast.receiver.visit(this, context)}['${ast.name}']`;
+    visitPropertyRead(ast: PropertyRead): any {
+        const property = ast.name;
+        const receiver = ast.receiver.visit(this);
 
-        //const receiver = ast.receiver.visit(this, context);
-        //
-        //if (!isJsObject(receiver)) {
-        //    throw new Error(`Parse ERROR: on visitPropertyRead, invalid property receiver.`);
-        //}
-        //
-        //return receiver[ast.name];
+        return `${receiver}['${property}']`;
     }
 
-    visitPropertyWrite(ast: PropertyWrite, context: any): any {
-        return ``;
-
-        //const receiver = ast.receiver.visit(this, context);
-        //
-        //if (!isJsObject(receiver)) {
-        //    throw new Error(`Parse ERROR: on visitPropertyRead, invalid property receiver.`);
-        //}
-        //
-        //receiver[ast.name] = ast.value.visit(this, context);
-        //return null;
+    visitPropertyWrite(ast: PropertyWrite): any {
+        return null;
     }
 
-    visitSafePropertyRead(ast: SafePropertyRead, context: any): any {
-        return `${ast.receiver.visit(this, context)}['${ast.name}']`;
+    visitSafePropertyRead(ast: SafePropertyRead): any {
+        const property = ast.name;
+        const receiver = ast.receiver.visit(this);
 
-
-        //const receiver = ast.receiver.visit(this, context);
-        //
-        //if (!isJsObject(receiver)) {
-        //    throw new Error(`Parse ERROR: on visitSafePropertyRead, invalid property receiver.`);
-        //}
-        //
-        //return receiver[ast.name];
+        return `${receiver}['${property}']`;
     }
 
-    visitSafeMethodCall(ast: SafeMethodCall, context: any): any {
-        return `${ast.receiver.visit(this, context)}['${ast.name}'].apply(null, ${JSON.stringify(this.visitAll(ast.args, context))})`;
+    visitSafeMethodCall(ast: SafeMethodCall): any {
+        const methodName = ast.name;
+        const receiver = ast.receiver.visit(this);
+        const args = compileJSON(this.visitAll(ast.args));
 
-
-        //const receiver = ast.receiver.visit(this, context);
-        //
-        //if (!isJsObject(receiver)) {
-        //    throw new Error(`Parse ERROR: on visitSafeMethodCall, invalid method receiver.`);
-        //}
-        //
-        //const method = receiver[ast.name];
-        //
-        //if (!isFunction(method)) {
-        //    throw new Error(`Parse ERROR: on visitSafeMethodCall, method ${ast.name} doesn't exist on receiver.`);
-        //}
-        //
-        //const args = this.visitAll(ast.args, context);
-        //return method.apply(receiver, args);
+        return `${receiver}['${methodName}'].apply(null, ${args})`;
     }
 
-    visitAll(asts: AST[], context: any): any {
-        return asts.map(ast => ast.visit(this, context));
+    visitAll(asts: AST[]): any {
+        return asts.map(ast => {
+            let result = ast.visit(this);
+
+            if (ast instanceof LiteralPrimitive && typeof result === 'string') {
+                result = `'${result}'`
+            }
+
+            return result;
+        });
     }
 
-    visitQuote(ast: Quote, context: any): any {
+    visitQuote(ast: Quote): any {
         throw new Error(`Parse ERROR: on visitQuote, quote expression not allowed.`);
     }
 }
