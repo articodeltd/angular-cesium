@@ -73,10 +73,10 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     }
 
     visitConditional(ast: Conditional, context: any): any {
-        if (ast.condition.visit(this)) {
-            return ast.trueExp.visit(this);
+        if (ast.condition.visit(this, context)) {
+            return ast.trueExp.visit(this, context);
         } else if (isPresent(ast.falseExp)) {
-            return ast.falseExp.visit(this);
+            return ast.falseExp.visit(this, context);
         }
 
         return null;
@@ -124,7 +124,7 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
 
     visitKeyedRead(ast: KeyedRead, context: any): any {
         const obj = ast.obj.visit(this, context);
-        const key = ast.key.visit(this);
+        const key = ast.key.visit(this, context);
         return obj[key];
     }
 

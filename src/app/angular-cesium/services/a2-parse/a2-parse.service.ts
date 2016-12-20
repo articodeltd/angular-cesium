@@ -1,6 +1,7 @@
 import {Injectable, Compiler} from "@angular/core";
 import {Parser} from '@angular/compiler';
 import {ParseVisitorResolver} from './parse-visitor-resolver.service';
+import {EvalParseVisitorResolver} from './eval-parse-visitor-resolver.service';
 
 @Injectable()
 export class A2Parse {
@@ -12,6 +13,21 @@ export class A2Parse {
         private _parser: Parser,
         private _compiler : Compiler
     ) {}
+
+    $evalParse(parseText: string): any {
+        const visitor = new EvalParseVisitorResolver(this._compiler);
+
+        let ast = this._parser.parseInterpolation(parseText, 'A2Parse');
+
+        if (!ast) {
+            //The idea here is that the text is going to be parsable. Something like name.first
+            ast = this._parser.parseBinding(parseText, 'A2Parse');
+        }
+
+        const fnBody =  ast.visit(visitor);
+        const getFn = eval(`(function () { return ${fnBody};})`);
+        return (context) => getFn.call(context);
+    }
 
     /**
      * This is the main entry point to using the $parse type functionality.
