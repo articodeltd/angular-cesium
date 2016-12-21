@@ -1,5 +1,5 @@
 <ac-map>
-    <ac-layer acFor="let track of tracks$">
+    <ac-layer acFor="let track of tracks$" #layer>
             <ac-billboard-desc props="{
               image: track.image,
               position: track.position,
@@ -8,7 +8,6 @@
               name: track.name
             }">
             </ac-billboard-desc>
-        </div>
     </ac-layer>
 </ac-map>
 <performance-form (cleanMap)="layer.removeAll()"></performance-form>

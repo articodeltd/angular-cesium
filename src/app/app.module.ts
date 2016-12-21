@@ -5,11 +5,11 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {AngularCesiumModule} from "./angular-cesium/angular-cesium.module";
-import {Angular2ParseModule} from "./angular2-parse/src/angular2-parse.module";
+import {PerformanceFormComponent} from "./performence-test/performance-form/performance-form.component";
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent,PerformanceFormComponent
     ],
     imports: [
         BrowserModule,

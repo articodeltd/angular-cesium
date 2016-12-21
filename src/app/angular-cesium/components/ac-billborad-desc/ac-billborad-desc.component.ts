@@ -1,7 +1,7 @@
-import { LayerService } from './../../services/layer-service/layer-service.service';
-import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {LayerService} from "../../services/layer-service/layer-service.service";
+import {Component, OnInit, Input} from "@angular/core";
 import {BillboardDrawerService} from "../../services/billboard-drawer/billboard-drawer.service";
-import {A2Parse} from "../../services/a2-parse/a2-parse.service";
+import {Parse} from "../../../angular2-parse/src/services/parse/parse.service";
 
 @Component({
     selector: 'ac-billboard-desc',
@@ -16,7 +16,7 @@ export class AcBillboardDescComponent implements OnInit {
 
     constructor(private billboardDrawer:BillboardDrawerService,
                 private layerService: LayerService,
-                private parser: A2Parse
+                private parser: Parse
     ) {}
 
     draw(context, id): any{
@@ -26,6 +26,6 @@ export class AcBillboardDescComponent implements OnInit {
 
     ngOnInit(): void {
         this.layerService.registerDescription(this);
-        this.propsEvaluator  = this.parser.$parse(this.props);
+        this.propsEvaluator  = this.parser.$evalParse(this.props);
     }
 }

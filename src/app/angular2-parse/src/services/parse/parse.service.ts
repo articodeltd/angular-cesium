@@ -30,7 +30,7 @@ export class Parse {
         }
 
         const fnBody =  ast.visit(visitor);
-        const getFn = eval(`(function () { return ${fnBody};})`);
+        const getFn = eval(`(function evalParse() { return ${fnBody};})`);
 
         return (context) => {
             context.$pipesCache = this._pipesCache;
