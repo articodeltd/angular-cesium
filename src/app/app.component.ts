@@ -49,10 +49,7 @@ export class AppComponent implements OnInit{
 
     const context = {getPosition(){return {x: 5, y: [1, 2, 3]};}, getIndex() {return 'y'}};
 
-    //const result = this.parse.$parse(`getPosition() | json`)(context);
-    //const result1 = this.parse.$evalParse(`getPosition() | json`)(context);
-    //const result2 = this.parse.$evalParse(`getPosition()['x']`)(context);
-    const result3 = this.parse.$evalParse(`getPosition()[getIndex()][2]`)(context);
+    const result = this.parse.$parse(`getPosition() | json`)(context);
 
      this.tracks$ = Observable.from([
        {
