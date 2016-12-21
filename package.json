@@ -5,6 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
+    "test-server" : "node src/app/performence-test/server.js",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
@@ -22,7 +23,10 @@
     "@angular/router": "3.2.3",
     "cesium": "^1.28.0",
     "core-js": "^2.4.1",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
     "rxjs": "5.0.0-beta.12",
+    "socket.io": "^1.7.2",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
   },

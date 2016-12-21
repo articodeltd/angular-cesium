@@ -33,7 +33,7 @@ export class AcLayer2Directive {
 
       context.$implicit = data;
       context.entity = data.entity;
-      this.layerService.setCurrentNotification(data);
+      // this.layerService.setCurrentNotification(data);
       this.changeDetector.detectChanges();
     });
   }

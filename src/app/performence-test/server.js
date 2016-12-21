@@ -22,14 +22,19 @@ httpServer.listen(3000, function () {
 });
 
 
-let numOfEntities = 500;
-let interval = 2;
-let sendOption = 'oneByOne';
-var intervalID;
+let numOfEntities = 50;
+let interval = 1000;
+let sendOption = 'chunk';
+let intervalId;
+let dataChunk;
+let socket;
 
 io.on('connection', function (connectionSocket) {
-    intervalID = sendOneByOne();
-    console.log(intervalID);
+    socket = connectionSocket;
+    let dataChunk = createChunck(numOfEntities);
+    intervalId = setInterval(() => {
+        io.emit('birds', dataChunk);
+    }, interval);
 });
 
 app.post('/change', function (req, res, next) {
@@ -39,19 +44,16 @@ app.post('/change', function (req, res, next) {
     interval = req.body.interval;
     sendOption = req.body.sendOption;
 
-    console.log(intervalID);
-    clearInterval(intervalID);
-     console.log(intervalID);
+    clearInterval(intervalId);
     switch (sendOption) {
         case 'oneByOne':
             console.log('oneByOne')
-            intervalID = sendOneByOne();
+            intervalId = sendOneByOne();
             break;
         case 'chunk':
-            dataChunck = createChunck(numOfEntities);
+            dataChunk = createChunck(numOfEntities);
             intervalId = setInterval(() => {
-                console.log('emit chunk');
-                io.emit('birds', dataChunck);
+                io.emit('birds', dataChunk);
             }, interval);
 
             break;
@@ -66,7 +68,6 @@ function sendOneByOne() {
     let counter = 0;
     console.log(interval);
     const id = setInterval(() => {
-        console.log('oneByOne');
         io.emit('birds', [{
             id: counter++ % numOfEntities,
             action: 'ADD_OR_UPDATE',
@@ -93,4 +94,31 @@ function createChunck(numOfEntities) {
         });
     }
     return data;
+}
+
+function jsonStringToJsonTree(str){
+    if(str[0] !== '{' || str[str.length-1] !== '}'){
+        throw 'not a json!'
+    }
+    let jsonTree = new Map();
+    str.splice(0, 1);
+    str.splice(str.length-1, 1);
+    str.trim();
+    while(str.length > 0){
+        let index = str.indexOf(':');
+        let key = str.splice(0, index);
+        jsonTree.set(key, undefined); //set key
+        str.trim();
+        index = str.indexOf(':');
+        if(index === -1){
+            jsonTree.set(key, str);
+            str.length = 0;
+        }
+        else{
+            str.lastIndexOf()
+        }
+
+        // todo check if index+1 is {
+    }
+
 }
