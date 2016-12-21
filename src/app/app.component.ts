@@ -1,7 +1,6 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { LayerContext } from './angular-cesium/decorators/layer-context.decorator';
 import {Observable} from "rxjs";
-import {A2Parse} from './angular-cesium/services/a2-parse/a2-parse.service';
 import {Parse} from "./angular2-parse/src/services/parse/parse.service";
 
 @LayerContext()
@@ -48,10 +47,9 @@ export class AppComponent implements OnInit{
     //    };
     //  }});
 
-    const context = {getPosition(){return {x: 5};}};
+    const context = {getPosition(){return {x: 5, y: [1, 2, 3]};}, getIndex() {return 'y'}};
 
     const result = this.parse.$parse(`getPosition() | json`)(context);
-    const result1 = this.parse.$evalParse(`getPosition() | json`)(context);
 
      this.tracks$ = Observable.from([
        {
