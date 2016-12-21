@@ -56,9 +56,13 @@ export class ParseVisitorCompiler extends RecursiveAstVisitor {
 
     visitKeyedRead(ast: KeyedRead): any {
         const obj = ast.obj.visit(this);
-        const key = ast.key.visit(this);
+        let key = ast.key.visit(this);
 
-        return `${obj}['${key}']`;
+        if (ast.key instanceof LiteralPrimitive && typeof key === 'string') {
+            key = `'${key}'`
+        }
+
+        return `${obj}[${key}]`;
     }
 
     visitKeyedWrite(ast: KeyedWrite): any {
