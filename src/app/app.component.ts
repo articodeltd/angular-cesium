@@ -1,17 +1,15 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { LayerContext } from './angular-cesium/decorators/layer-context.decorator';
 import {Observable} from "rxjs";
-
-
-import {Parser, Lexer} from '@angular/compiler';
 import {A2Parse} from './angular-cesium/services/a2-parse/a2-parse.service';
+import {Parse} from "./angular2-parse/src/services/parse/parse.service";
 
 @LayerContext()
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [Parser, Lexer, A2Parse]
+  providers: [Parse]
 })
 export class AppComponent implements OnInit{
   title: string = 'app works!';
@@ -20,7 +18,7 @@ export class AppComponent implements OnInit{
   staticPosition: Object;
   staticColor: Object;
 
-  constructor(private cd: ChangeDetectorRef, private a2Parse: A2Parse){
+  constructor(private cd: ChangeDetectorRef, private parse: Parse){
     this.track = {getImage: () => '', getPosition: () => ''};
     this.staticPosition = Cesium.Cartesian3.fromDegrees(-72.59777, 38.03883);
     this.staticColor = Cesium.Color.RED;
@@ -38,7 +36,22 @@ export class AppComponent implements OnInit{
     //  }
     //}));
 
-    const result1 = this.a2Parse.$parse("getPosition() | json")({getPosition(){return {x: 5};}});
+    //const result1 = this.a2Parse.$parse("getPosition()['x']")({getPosition(){return {x: 5};}});
+
+    //const result1 = this.a2Parse.$parse("getPosition()")({
+    //  getPosition(){
+    //    return {
+    //      x: 5,
+    //      getNumber() {
+    //        return {x: 7};
+    //      }
+    //    };
+    //  }});
+
+    const context = {getPosition(){return {x: 5};}};
+
+    const result = this.parse.$parse(`getPosition() | json`)(context);
+    const result1 = this.parse.$evalParse(`getPosition() | json`)(context);
 
      this.tracks$ = Observable.from([
        {

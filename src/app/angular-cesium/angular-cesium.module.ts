@@ -6,10 +6,12 @@ import { AcLayerComponent } from './components/ac-layer/ac-layer.component';
 import { AcBillboardComponent } from './components/ac-billboard/ac-billboard.component';
 import {AcBillboardDescComponent} from './components/ac-billborad-desc/ac-billborad-desc.component';
 import { AcLayer2Directive } from './directives/ac-layer-2.directive';
+import {Angular2ParseModule} from "../angular2-parse/src/angular2-parse.module";
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        Angular2ParseModule
     ],
     declarations: [AngularCesiumComponent,
         AcMapComponent,
