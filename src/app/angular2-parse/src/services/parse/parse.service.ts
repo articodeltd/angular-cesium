@@ -1,16 +1,17 @@
 import {Injectable, Compiler} from "@angular/core";
-import {Parser} from '@angular/compiler';
-import {ParseVisitorResolver} from './parse-visitor-resolver.service';
-import {EvalParseVisitorResolver} from './eval-parse-visitor-resolver.service';
+import {Parser, Lexer} from '@angular/compiler';
+import {ParseVisitorResolver} from '../parse-visitor-resolver/parse-visitor-resolver.service';
+import {ParseVisitorCompiler} from '../parse-visitor-compiler/parse-visitor-compiler.service';
 
 @Injectable()
-export class A2Parse {
+export class Parse {
+    private _parser: Parser = new Parser(new Lexer());
     private _pipesCache: Map<string, any> = new Map<string, any>();
 
     /**
      * Used to dependency inject the Angular 2 parser.
      */
-    constructor(private _parser: Parser, private _compiler : Compiler) {
+    constructor(private _compiler : Compiler) {
         const compiler: any = this._compiler;
         const pipeCache = compiler._delegate._metadataResolver._pipeCache;
 
@@ -20,12 +21,11 @@ export class A2Parse {
     }
 
     $evalParse(parseText: string): any {
-        const visitor = new EvalParseVisitorResolver();
+        const visitor = new ParseVisitorCompiler();
 
         let ast = this._parser.parseInterpolation(parseText, 'A2Parse');
 
         if (!ast) {
-            //The idea here is that the text is going to be parsable. Something like name.first
             ast = this._parser.parseBinding(parseText, 'A2Parse');
         }
 

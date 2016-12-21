@@ -5,11 +5,9 @@ import {
     LiteralMap, PrefixNot, PropertyWrite, SafePropertyRead, SafeMethodCall, Quote
 } from '@angular/compiler/src/expression_parser/ast';
 
-function compileToJSON (json) {
-    return JSON.stringify(json).replace(/"/g, '')
-}
+import {compileToJSON} from '../parse-utils/parse-utils.service';
 
-export class EvalParseVisitorResolver extends RecursiveAstVisitor {
+export class ParseVisitorCompiler extends RecursiveAstVisitor {
 
     visitBinary(ast: Binary): any {
         const left = ast.left.visit(this);
@@ -48,7 +46,6 @@ export class EvalParseVisitorResolver extends RecursiveAstVisitor {
         return `${target}.apply(null, ${args})`;
     }
 
-    // TODO
     visitImplicitReceiver(ast: ImplicitReceiver): any {
         return `this`;
     }

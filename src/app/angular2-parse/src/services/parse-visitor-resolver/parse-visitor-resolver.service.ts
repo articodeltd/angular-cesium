@@ -5,35 +5,7 @@ import {
     LiteralMap, PrefixNot, PropertyWrite, SafePropertyRead, SafeMethodCall, Quote
 } from '@angular/compiler/src/expression_parser/ast';
 
-function isPresent(obj) {
-    return obj !== null && obj !== undefined;
-}
-
-function isJsObject(obj) {
-    return obj !== null && (typeof obj === 'function' || typeof obj === 'object');
-}
-
-function isFunction(val) {
-    return typeof val === 'function';
-}
-
-const BinaryOperations = new Map<string, any>([
-    ['==', (left, right) => left == right],
-    ['===', (left, right) => left === right],
-    ['!=', (left, right) => left != right],
-    ['!==', (left, right) => left !== right],
-    ['&&', (left, right) => left && right],
-    ['||', (left, right) => left || right],
-    ['+', (left, right) => left + right],
-    ['-', (left, right) => left - right],
-    ['/', (left, right) => left / right],
-    ['*', (left, right) => left * right],
-    ['%', (left, right) => left % right],
-    ['<', (left, right) => left < right],
-    ['<=', (left, right) => left <= right],
-    ['>', (left, right) => left > right],
-    ['>=', (left, right) => left >= right],
-]);
+import * as utils from '../parse-utils/parse-utils.service';
 
 export class ParseVisitorResolver extends RecursiveAstVisitor {
 
@@ -42,7 +14,7 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     };
 
     visitBinary(ast: Binary, context: any): any {
-        const execFn = BinaryOperations.get(ast.operation);
+        const execFn = utils.BinaryOperations.get(ast.operation);
 
         if (!execFn) {
             throw new Error(`Parse ERROR: on visitBinary, unknown operator ${ast.operation}`);
@@ -59,7 +31,7 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     visitConditional(ast: Conditional, context: any): any {
         if (ast.condition.visit(this, context)) {
             return ast.trueExp.visit(this, context);
-        } else if (isPresent(ast.falseExp)) {
+        } else if (utils.isPresent(ast.falseExp)) {
             return ast.falseExp.visit(this, context);
         }
 
@@ -89,7 +61,7 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     visitFunctionCall(ast: FunctionCall, context: any): any {
         const target = ast.target.visit(this, context);
 
-        if (!isFunction(target)) {
+        if (!utils.isFunction(target)) {
             throw new Error(`Parse ERROR: on visitFunctionCall, target is not a function.`);
         }
 
@@ -97,7 +69,6 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
         return target.apply(null, args);
     }
 
-    // TODO
     visitImplicitReceiver(ast: ImplicitReceiver, context: any): any {
         return context;
     }
@@ -143,13 +114,13 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     visitMethodCall(ast: MethodCall, context: any): any {
         const receiver = ast.receiver.visit(this, context);
 
-        if (!isJsObject(receiver)) {
+        if (!utils.isJsObject(receiver)) {
             throw new Error(`Parse ERROR: on visitMethodCall, invalid method receiver.`);
         }
 
         const method = receiver[ast.name];
 
-        if (!isFunction(method)) {
+        if (!utils.isFunction(method)) {
             throw new Error(`Parse ERROR: on visitMethodCall, method ${ast.name} doesn't exist on receiver.`);
         }
 
@@ -164,7 +135,7 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     visitPropertyRead(ast: PropertyRead, context: any): any {
         const receiver = ast.receiver.visit(this, context);
 
-        if (!isJsObject(receiver)) {
+        if (!utils.isJsObject(receiver)) {
             throw new Error(`Parse ERROR: on visitPropertyRead, invalid property receiver.`);
         }
 
@@ -174,7 +145,7 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     visitPropertyWrite(ast: PropertyWrite, context: any): any {
         const receiver = ast.receiver.visit(this, context);
 
-        if (!isJsObject(receiver)) {
+        if (!utils.isJsObject(receiver)) {
             throw new Error(`Parse ERROR: on visitPropertyRead, invalid property receiver.`);
         }
 
@@ -185,7 +156,7 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     visitSafePropertyRead(ast: SafePropertyRead, context: any): any {
         const receiver = ast.receiver.visit(this, context);
 
-        if (!isJsObject(receiver)) {
+        if (!utils.isJsObject(receiver)) {
             throw new Error(`Parse ERROR: on visitSafePropertyRead, invalid property receiver.`);
         }
 
@@ -195,13 +166,13 @@ export class ParseVisitorResolver extends RecursiveAstVisitor {
     visitSafeMethodCall(ast: SafeMethodCall, context: any): any {
         const receiver = ast.receiver.visit(this, context);
 
-        if (!isJsObject(receiver)) {
+        if (!utils.isJsObject(receiver)) {
             throw new Error(`Parse ERROR: on visitSafeMethodCall, invalid method receiver.`);
         }
 
         const method = receiver[ast.name];
 
-        if (!isFunction(method)) {
+        if (!utils.isFunction(method)) {
             throw new Error(`Parse ERROR: on visitSafeMethodCall, method ${ast.name} doesn't exist on receiver.`);
         }
 

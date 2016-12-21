@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {AngularCesiumModule} from "./angular-cesium/angular-cesium.module";
+import {Angular2ParseModule} from "./angular2-parse/src/angular2-parse.module";
 
 @NgModule({
     declarations: [
