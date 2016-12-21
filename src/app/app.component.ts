@@ -1,9 +1,7 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {LayerContext} from './angular-cesium/decorators/layer-context.decorator';
 import {Observable} from "rxjs";
-
-import {Parser, Lexer} from '@angular/compiler';
-import {A2Parse} from './angular-cesium/services/a2-parse/a2-parse.service';
+import {Parse} from "./angular2-parse/src/services/parse/parse.service";
 import {LayerContextService} from './angular-cesium/services/layer-context/layer-context.service';
 import {BasicLayer} from "./angular-cesium/services/basic-layer/basic-layer.service";
 
@@ -12,7 +10,7 @@ import {BasicLayer} from "./angular-cesium/services/basic-layer/basic-layer.serv
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [Parser, Lexer, A2Parse]
+    providers: [Parse]
 })
 export class AppComponent extends BasicLayer implements OnInit {
     title: string = 'app works!';
@@ -23,7 +21,7 @@ export class AppComponent extends BasicLayer implements OnInit {
     Cesium = Cesium;
 
     constructor(private cd: ChangeDetectorRef,
-                private a2Parse: A2Parse,
+                private parse: Parse,
                 layerContext: LayerContextService) {
         super(layerContext);
         this.track = {getImage: () => '', getPosition: () => ''};
@@ -43,11 +41,10 @@ export class AppComponent extends BasicLayer implements OnInit {
         //  }
         //}));
 
-        const result1 = this.a2Parse.$parse("getPosition() | json")({
-            getPosition(){
-                return {x: 5};
-            }
-        });
+    const context = {getPosition(){return {x: 5};}};
+
+    const result = this.parse.$parse(`getPosition() | json`)(context);
+    const result1 = this.parse.$evalParse(`getPosition() | json`)(context);
 
         //     this.tracks$ = Observable.from([
         //         {

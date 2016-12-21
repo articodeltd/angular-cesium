@@ -1,0 +1,13 @@
+  .settingForm {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      z-index: 100;
+      background-color: black;
+      text-align: end;
+      padding: 3px;
+  }
+  
+  .settingForm label {
+      color: white;
+  }

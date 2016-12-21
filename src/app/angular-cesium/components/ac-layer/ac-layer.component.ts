@@ -1,4 +1,5 @@
-import {Component, OnInit, Input, ContentChildren, QueryList, AfterContentInit} from "@angular/core";
+import { BillboardDrawerService } from './../../services/billboard-drawer/billboard-drawer.service';
+import {Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {Observable} from "rxjs";
 import {LayerContextService} from "../../services/layer-context/layer-context.service";
 import {AcBillboardDescComponent} from "../ac-billborad-desc/ac-billborad-desc.component";
@@ -8,7 +9,7 @@ import {LayerService} from "../../services/layer-service/layer-service.service";
   selector: 'ac-layer',
   templateUrl: './ac-layer.component.html',
   styleUrls: ['./ac-layer.component.css'],
-  providers:[LayerService]
+  providers: [ LayerService,BillboardDrawerService]    
 })
 export class AcLayerComponent implements OnInit, AfterContentInit{
   @Input()
@@ -17,6 +18,9 @@ export class AcLayerComponent implements OnInit, AfterContentInit{
   observable: Observable<any>;
   layerContext: any;
 
+  constructor(private changeDetector : ChangeDetectorRef,
+              private billboardDrawerService : BillboardDrawerService) {
+    this.changeDetector.detach();
   constructor(private layerContextService: LayerContextService, private layerService: LayerService) {
     this.layerContext = layerContextService.getContext();
   }
@@ -34,5 +38,9 @@ export class AcLayerComponent implements OnInit, AfterContentInit{
         descriptionComponent.draw(this.layerContext, data.id);
       })
     })
+  }
+
+  removeAll(){
+    this.billboardDrawerService.removeAll();
   }
 }
