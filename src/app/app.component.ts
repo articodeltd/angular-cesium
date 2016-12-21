@@ -41,10 +41,10 @@ export class AppComponent extends BasicLayer implements OnInit {
         //  }
         //}));
 
-    const context = {getPosition(){return {x: 5};}};
+    //const context = {getPosition(){return {x: 5};}};
 
-    const result = this.parse.$parse(`getPosition() | json`)(context);
-    const result1 = this.parse.$evalParse(`getPosition() | json`)(context);
+    //const result = this.parse.$parse(`getPosition() | json`)(context);
+    //const result1 = this.parse.$evalParse(`getPosition() | json`)(context);
 
         //     this.tracks$ = Observable.from([
         //         {
