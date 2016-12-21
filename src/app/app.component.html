@@ -1,6 +1,6 @@
 <ac-map>
     <ac-layer>
-        <div *acLayer2="let data of tracks$; let track = entity">
+        <div *acLayer2="let data of tracks$; let track = entity" #layer>
             <ac-billboard-desc [props]="{
               image: track.getImage(),
               position: track.getPosition(),
@@ -11,3 +11,4 @@
         </div>
     </ac-layer>
 </ac-map>
+<performance-form (cleanMap)="layer.removeAll()"></performance-form>

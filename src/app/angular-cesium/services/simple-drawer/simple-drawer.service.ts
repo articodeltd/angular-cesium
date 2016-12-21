@@ -37,4 +37,10 @@ export abstract class SimpleDrawerService {
         this.entitiesMap.delete(key);
     }
 
+
+    removeAll(){
+        this.cesiumCollection.removeAll();
+        this.entitiesMap.clear();
+    }
+
 }
