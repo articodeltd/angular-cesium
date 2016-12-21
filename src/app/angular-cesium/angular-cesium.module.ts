@@ -7,6 +7,7 @@ import { AcBillboardComponent } from './components/ac-billboard/ac-billboard.com
 import {AcBillboardDescComponent} from './components/ac-billborad-desc/ac-billborad-desc.component';
 import { AcLayer2Directive } from './directives/ac-layer-2.directive';
 import {Angular2ParseModule} from "../angular2-parse/src/angular2-parse.module";
+import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import {Angular2ParseModule} from "../angular2-parse/src/angular2-parse.module";
         AcLayerComponent,
         AcBillboardComponent,
         AcBillboardDescComponent,
-        AcLayer2Directive],
+        AcLayer2Directive,
+        PixelOffsetPipe],
     exports: [AcMapComponent, AcBillboardComponent, AcBillboardDescComponent, AcLayerComponent, AcLayer2Directive]
 })
 export class AngularCesiumModule {

@@ -17,11 +17,9 @@ export class AcLayerComponent implements OnInit, AfterContentInit {
     observable: Observable<any>;
     layerContext: any;
 
-    constructor(private changeDetector: ChangeDetectorRef,
-                private billboardDrawerService: BillboardDrawerService,
+    constructor(private billboardDrawerService: BillboardDrawerService,
                 private layerContextService: LayerContextService,
                 private  layerService: LayerService) {
-        // this.changeDetector.detach();
         this.layerContext = layerContextService.getContext();
     }
 
@@ -34,12 +32,12 @@ export class AcLayerComponent implements OnInit, AfterContentInit {
     ngAfterContentInit(): void {
         this.observable.subscribe((data) => {
             this.layerContext[this.entityName] = data.entity;
+            // [b1,b2]
             this.layerService.getDescriptions().forEach((descriptionComponent) => {
                 descriptionComponent.draw(this.layerContext, data.id);
             })
         });
     }
-
 
     removeAll(): void {
         this.billboardDrawerService.removeAll();

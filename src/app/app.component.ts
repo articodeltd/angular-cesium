@@ -91,8 +91,10 @@ export class AppComponent extends BasicLayer implements OnInit {
         return {
             image: data.entity.image,
             scale: data.id === 1 ? 0.3 : 0.15,
-            color: data.id === 1 ? Cesium.Color.RED : undefined,
-            position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random())
+            color: Cesium.Color.BLUE,
+            color1: data.id === 1 ? Cesium.Color.RED : undefined,
+            position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
+            position1: Cesium.Cartesian3.fromRadians(Math.random(), Math.random())
         }
     }
 }

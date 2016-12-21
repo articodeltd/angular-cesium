@@ -10,22 +10,35 @@ import {Parse} from "../../../angular2-parse/src/services/parse/parse.service";
 })
 export class AcBillboardDescComponent implements OnInit {
     @Input()
-    props:any;
+    props: any;
+
+    private primitiveMap = new Map();
 
     private propsEvaluator: Function;
 
-    constructor(private billboardDrawer:BillboardDrawerService,
+    constructor(private billboardDrawer: BillboardDrawerService,
                 private layerService: LayerService,
-                private parser: Parse
-    ) {}
+                private parser: Parse) {
+    }
 
-    draw(context, id): any{
-        let cesiumObject = this.propsEvaluator(context);
-        return this.billboardDrawer.addOrUpdate(id, cesiumObject);
+    draw(context, id): any {
+        let cesiumProps = this.propsEvaluator(context);
+        if (!this.primitiveMap.has(id)) {
+            const primitive = this.billboardDrawer.add(cesiumProps);
+            this.primitiveMap.set(id, primitive);
+        } else {
+            const primitive = this.primitiveMap.get(id);
+            this.billboardDrawer.update(primitive, cesiumProps);
+        }
+    }
+
+    remove(id){
+        const primitive = this.primitiveMap.get(id);
+        this.billboardDrawer.remove(primitive);
     }
 
     ngOnInit(): void {
         this.layerService.registerDescription(this);
-        this.propsEvaluator  = this.parser.$evalParse(this.props);
+        this.propsEvaluator = this.parser.$evalParse(this.props);
     }
 }
