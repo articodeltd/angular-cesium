@@ -1,7 +1,6 @@
 import {BillboardDrawerService} from "./../../services/billboard-drawer/billboard-drawer.service";
-import {Component, OnInit, Input, ChangeDetectorRef, AfterContentInit} from "@angular/core";
+import {Component, OnInit, Input, ChangeDetectorRef, AfterContentInit, ElementRef} from "@angular/core";
 import {Observable} from "rxjs";
-import {LayerContextService} from "../../services/layer-context/layer-context.service";
 import {LayerService} from "../../services/layer-service/layer-service.service";
 
 @Component({
@@ -10,26 +9,26 @@ import {LayerService} from "../../services/layer-service/layer-service.service";
     styleUrls: ['./ac-layer.component.css'],
     providers: [LayerService, BillboardDrawerService]
 })
-export class AcLayerComponent implements OnInit, AfterContentInit {
+export class AcLayerComponent implements OnInit{
+    @Input()
+    context: any;
+
     @Input()
     acFor: string;
     entityName: string;
     observable: Observable<any>;
     layerContext: any;
 
-    constructor(private billboardDrawerService: BillboardDrawerService,
-                private layerContextService: LayerContextService,
-                private  layerService: LayerService) {
-        this.layerContext = layerContextService.getContext();
+
+    constructor(private billboardDrawerService: BillboardDrawerService, private  layerService: LayerService) {
     }
 
-    ngOnInit(): void {
+    init(context){
+        this.layerContext = context;
         const acForArr = this.acFor.split(' ');
         this.observable = this.layerContext[acForArr[3]];
         this.entityName = acForArr[1];
-    }
-
-    ngAfterContentInit(): void {
+        console.log(this.context);
         this.observable.subscribe((data) => {
             this.layerContext[this.entityName] = data.entity;
             // [b1,b2]
@@ -37,6 +36,9 @@ export class AcLayerComponent implements OnInit, AfterContentInit {
                 descriptionComponent.draw(this.layerContext, data.id);
             })
         });
+    }
+
+    ngOnInit(): void {
     }
 
     removeAll(): void {
