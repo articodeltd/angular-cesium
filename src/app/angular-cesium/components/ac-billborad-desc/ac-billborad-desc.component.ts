@@ -2,6 +2,7 @@ import {LayerService} from "../../services/layer-service/layer-service.service";
 import {Component, OnInit, Input} from "@angular/core";
 import {BillboardDrawerService} from "../../services/billboard-drawer/billboard-drawer.service";
 import {Parse} from "../../../angular2-parse/src/services/parse/parse.service";
+import {JsonMapper} from "../../services/json-mapper/json-mapper.service";
 
 @Component({
     selector: 'ac-billboard-desc',
@@ -18,7 +19,13 @@ export class AcBillboardDescComponent implements OnInit {
 
     constructor(private billboardDrawer: BillboardDrawerService,
                 private layerService: LayerService,
-                private parser: Parse) {
+                private jsonMapper: JsonMapper,
+                private parser: Parse
+    ) {}
+
+    ngOnInit(): void {
+        this.layerService.registerDescription(this);
+        this.propsEvaluator = this.parser.$evalParse(this.props);
     }
 
     draw(context, id): any {
@@ -35,10 +42,5 @@ export class AcBillboardDescComponent implements OnInit {
     remove(id){
         const primitive = this.primitiveMap.get(id);
         this.billboardDrawer.remove(primitive);
-    }
-
-    ngOnInit(): void {
-        this.layerService.registerDescription(this);
-        this.propsEvaluator = this.parser.$evalParse(this.props);
     }
 }

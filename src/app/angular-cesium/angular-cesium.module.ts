@@ -8,6 +8,7 @@ import {AcBillboardDescComponent} from './components/ac-billborad-desc/ac-billbo
 import { AcLayer2Directive } from './directives/ac-layer-2.directive';
 import {Angular2ParseModule} from "../angular2-parse/src/angular2-parse.module";
 import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
+import {JsonMapper} from "./services/json-mapper/json-mapper.service";
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
         AcBillboardDescComponent,
         AcLayer2Directive,
         PixelOffsetPipe],
+    providers: [JsonMapper],
     exports: [AcMapComponent, AcBillboardComponent, AcBillboardDescComponent, AcLayerComponent, AcLayer2Directive]
 })
 export class AngularCesiumModule {

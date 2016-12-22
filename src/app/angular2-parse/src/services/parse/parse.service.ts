@@ -20,13 +20,13 @@ export class Parse {
         }
     }
 
-    $evalParse(parseText: string): any {
+    $evalParse(expression: string): any {
         const visitor = new ParseVisitorCompiler();
 
-        let ast = this._parser.parseInterpolation(parseText, 'A2Parse');
+        let ast = this._parser.parseInterpolation(expression, 'Parse');
 
         if (!ast) {
-            ast = this._parser.parseBinding(parseText, 'A2Parse');
+            ast = this._parser.parseBinding(expression, 'Parse');
         }
 
         const fnBody =  ast.visit(visitor);
@@ -38,13 +38,13 @@ export class Parse {
         };
     }
 
-    $parse(parseText: string): any {
+    $parse(expression: string): any {
         const visitor = new ParseVisitorResolver(this._pipesCache);
 
-        let ast = this._parser.parseInterpolation(parseText, 'A2Parse');
+        let ast = this._parser.parseInterpolation(expression, 'Parse');
 
         if (!ast) {
-            ast = this._parser.parseBinding(parseText, 'A2Parse');
+            ast = this._parser.parseBinding(expression, 'Parse');
         }
 
         return (context: any): any => {

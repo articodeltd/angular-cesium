@@ -4,13 +4,14 @@ import {Observable} from "rxjs";
 import {Parse} from "./angular2-parse/src/services/parse/parse.service";
 import {LayerContextService} from './angular-cesium/services/layer-context/layer-context.service';
 import {BasicLayer} from "./angular-cesium/services/basic-layer/basic-layer.service";
+import {JsonMapper} from "./angular-cesium/services/json-mapper/json-mapper.service";
 
 @LayerContext()
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [Parse]
+    providers: [Parse, JsonMapper]
 })
 export class AppComponent extends BasicLayer implements OnInit {
     title: string = 'app works!';
@@ -22,7 +23,9 @@ export class AppComponent extends BasicLayer implements OnInit {
 
     constructor(private cd: ChangeDetectorRef,
                 private parse: Parse,
-                layerContext: LayerContextService) {
+                private jsonMapper: JsonMapper,
+                layerContext: LayerContextService
+    ) {
         super(layerContext);
         this.track = {getImage: () => '', getPosition: () => ''};
         this.staticPosition = Cesium.Cartesian3.fromDegrees(-72.59777, 38.03883);
@@ -30,6 +33,15 @@ export class AppComponent extends BasicLayer implements OnInit {
     }
 
     ngOnInit() {
+        const map = this.jsonMapper.map(`{a: getPosition(), b: 1, c: track.color}`);
+
+        const a = 1;
+
+
+
+
+
+
         //let thousandStream = Observable.range(0, 30000);
         //this.tracks$ = thousandStream.map((value)=>({
         //    id: value,
@@ -46,45 +58,48 @@ export class AppComponent extends BasicLayer implements OnInit {
     //const result = this.parse.$parse(`getPosition() | json`)(context);
     //const result1 = this.parse.$evalParse(`getPosition() | json`)(context);
 
-        //     this.tracks$ = Observable.from([
-        //         {
-        //             id: 1,
-        //             action: 'ADD_OR_UPDATE',
-        //             entity: {
-        //                 name: 'tomer',
-        //                 getImage: () => "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
-        //                 getPosition: () => Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883)
-        //             }
-        //         },
-        //         {
-        //             id: 2,
-        //             action: 'ADD_OR_UPDATE',
-        //             entity: {
-        //                 name: 'onen',
-        //                 getImage: () => "/assets/bear-tongue_1558824i.jpg",
-        //                 getPosition: () => Cesium.Cartesian3.fromDegrees(-45.59777, 20.03883)
-        //             }
-        //         },
-        //         {
-        //             id: 2,
-        //             action: 'ADD_OR_UPDATE',
-        //             entity: {
-        //                 name: 'eitan',
-        //                 getImage: () => "/assets/bear-tongue_1558824i.jpg",
-        //                 getPosition: () => Cesium.Cartesian3.fromDegrees(-40.59777, 15.03883)
-        //             }
-        //         }
-        //     ]);
-
-        var socket = io.connect('http://localhost:3000');
-        this.tracks$ = Observable.create((observer) => {
-            socket.on('birds', (data) => {
-                data.forEach((entity) => {
-                    entity.entity = this.convertToCesiumObj(entity)
-                    observer.next(entity);
-                });
+            this.tracks$ = Observable.from([
+                {
+                    id: 1,
+                    action: 'ADD_OR_UPDATE',
+                    entity: {
+                        name: 'tomer',
+                        image: "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
+                        position: Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883)
+                    }
+                },
+                {
+                    id: 2,
+                    action: 'ADD_OR_UPDATE',
+                    entity: {
+                        name: 'onen',
+                        image: "/assets/bear-tongue_1558824i.jpg",
+                        position: Cesium.Cartesian3.fromDegrees(-45.59777, 20.03883)
+                    }
+                },
+                {
+                    id: 2,
+                    action: 'ADD_OR_UPDATE',
+                    entity: {
+                        name: 'eitan',
+                        image: "/assets/bear-tongue_1558824i.jpg",
+                        position: Cesium.Cartesian3.fromDegrees(-40.59777, 15.03883)
+                    }
+                }
+            ]).map((data) => {
+                data.entity = this.convertToCesiumObj(data);
+                return data;
             });
-        })
+
+        // var socket = io.connect('http://localhost:3000');
+        // this.tracks$ = Observable.create((observer) => {
+        //     socket.on('birds', (data) => {
+        //         data.forEach((entity) => {
+        //             entity.entity = this.convertToCesiumObj(entity)
+        //             observer.next(entity);
+        //         });
+        //     });
+        // })
     }
 
     convertToCesiumObj(data): any {
