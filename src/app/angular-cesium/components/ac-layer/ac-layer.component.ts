@@ -11,7 +11,7 @@ import {ComputationCache} from "../../services/computation-cache/computation-cac
     styleUrls: ['./ac-layer.component.css'],
     providers: [LayerService, ComputationCache, BillboardDrawerService]
 })
-export class AcLayerComponent implements OnInit, AfterContentInit {
+export class AcLayerComponent implements OnInit {
     @Input()
     acFor: string;
     entityName: string;
@@ -19,28 +19,26 @@ export class AcLayerComponent implements OnInit, AfterContentInit {
     layerContext: any;
 
     constructor(private billboardDrawerService: BillboardDrawerService,
-                private layerContextService: LayerContextService,
                 private  layerService: LayerService,
                 private _computationCache: ComputationCache
-    ) {
-        this.layerContext = layerContextService.getContext();
-    }
+    ) {}
 
-    ngOnInit(): void {
+    init(context){
+        this.layerContext = context;
         const acForArr = this.acFor.split(' ');
         this.observable = this.layerContext[acForArr[3]];
         this.entityName = acForArr[1];
-    }
 
-    ngAfterContentInit(): void {
         this.observable.subscribe((data) => {
             this._computationCache.clear();
             this.layerContext[this.entityName] = data.entity;
-            // [b1,b2]
             this.layerService.getDescriptions().forEach((descriptionComponent) => {
                 descriptionComponent.draw(this.layerContext, data.id);
             })
         });
+    }
+
+    ngOnInit(): void {
     }
 
     removeAll(): void {
