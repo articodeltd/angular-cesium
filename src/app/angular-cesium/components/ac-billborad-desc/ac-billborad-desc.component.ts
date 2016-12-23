@@ -1,8 +1,8 @@
 import {LayerService} from "../../services/layer-service/layer-service.service";
 import {Component, OnInit, Input} from "@angular/core";
 import {BillboardDrawerService} from "../../services/billboard-drawer/billboard-drawer.service";
-import {Parse} from "../../../angular2-parse/src/services/parse/parse.service";
-import {JsonMapper} from "../../services/json-mapper/json-mapper.service";
+import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
+import {CesiumProperty, CesiumProperties} from "../../services/cesium-properties/cesium-properties.service";
 
 @Component({
     selector: 'ac-billboard-desc',
@@ -15,21 +15,26 @@ export class AcBillboardDescComponent implements OnInit {
 
     private primitiveMap = new Map();
 
-    private propsEvaluator: Function;
+    private propsMap: Map<string, CesiumProperty>;
 
     constructor(private billboardDrawer: BillboardDrawerService,
                 private layerService: LayerService,
-                private jsonMapper: JsonMapper,
-                private parser: Parse
+                private _computationCache: ComputationCache,
+                private _cesiumProperties: CesiumProperties,
     ) {}
+
+    _propsEvaluator(context) {
+        return this._cesiumProperties.createCesiumProps(this.propsMap, this._computationCache, context);
+    }
 
     ngOnInit(): void {
         this.layerService.registerDescription(this);
-        this.propsEvaluator = this.parser.$evalParse(this.props);
+        this.propsMap = this._cesiumProperties.createPropsMap(this.props);
     }
 
     draw(context, id): any {
-        let cesiumProps = this.propsEvaluator(context);
+        const cesiumProps = this._propsEvaluator(context);
+
         if (!this.primitiveMap.has(id)) {
             const primitive = this.billboardDrawer.add(cesiumProps);
             this.primitiveMap.set(id, primitive);

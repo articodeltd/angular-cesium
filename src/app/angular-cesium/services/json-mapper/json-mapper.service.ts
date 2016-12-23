@@ -7,7 +7,7 @@ import {JsonMapperVisitor} from "../json-mapper-visitor/json-mapper-visitor.serv
 export class JsonMapper {
     private _parser: Parser = new Parser(new Lexer());
 
-    map(expression: string): any {
+    map(expression: string): Map<string, string> {
         const visitor = new JsonMapperVisitor();
 
         let ast = this._parser.parseInterpolation(expression, 'JsonMapper');
@@ -23,6 +23,14 @@ export class JsonMapper {
             throw new Error(`JsonMapper ERROR: given expression must be json expression.`);
         }
 
-        return ast.visit(visitor, true);
+        const jsonMap = new Map<string, string>();
+        const resultObj = ast.visit(visitor, true);
+        const keys = Object.keys(resultObj);
+
+        for (let i = 0, length = keys.length; i < length; i++) {
+            jsonMap.set(keys[i], resultObj[keys[i]]);
+        }
+
+        return jsonMap;
     }
 }

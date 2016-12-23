@@ -3,12 +3,13 @@ import {Component, OnInit, Input, ChangeDetectorRef, AfterContentInit} from "@an
 import {Observable} from "rxjs";
 import {LayerContextService} from "../../services/layer-context/layer-context.service";
 import {LayerService} from "../../services/layer-service/layer-service.service";
+import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
 
 @Component({
     selector: 'ac-layer',
     templateUrl: './ac-layer.component.html',
     styleUrls: ['./ac-layer.component.css'],
-    providers: [LayerService, BillboardDrawerService]
+    providers: [LayerService, ComputationCache, BillboardDrawerService]
 })
 export class AcLayerComponent implements OnInit, AfterContentInit {
     @Input()
@@ -19,7 +20,9 @@ export class AcLayerComponent implements OnInit, AfterContentInit {
 
     constructor(private billboardDrawerService: BillboardDrawerService,
                 private layerContextService: LayerContextService,
-                private  layerService: LayerService) {
+                private  layerService: LayerService,
+                private _computationCache: ComputationCache
+    ) {
         this.layerContext = layerContextService.getContext();
     }
 
@@ -31,6 +34,7 @@ export class AcLayerComponent implements OnInit, AfterContentInit {
 
     ngAfterContentInit(): void {
         this.observable.subscribe((data) => {
+            this._computationCache.clear();
             this.layerContext[this.entityName] = data.entity;
             // [b1,b2]
             this.layerService.getDescriptions().forEach((descriptionComponent) => {
