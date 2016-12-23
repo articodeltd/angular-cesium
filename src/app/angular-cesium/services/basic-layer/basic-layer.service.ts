@@ -1,8 +1,16 @@
-import {LayerContextService} from '../layer-context/layer-context.service';
+import {ContentChildren, QueryList, AfterContentInit, ViewChildren, AfterViewInit} from "@angular/core";
+import {AcLayerComponent} from "../../components/ac-layer/ac-layer.component";
 
-export class BasicLayer {
+export abstract class BasicLayer implements AfterViewInit, AfterContentInit{
+    @ViewChildren(AcLayerComponent) acLayersView: QueryList<AcLayerComponent>;
+    @ContentChildren(AcLayerComponent) acLayersContent: QueryList<AcLayerComponent>;
+    constructor() {}
 
-    constructor(private _layerContext: LayerContextService) {
-        this._layerContext.setContext(this);
+    ngAfterViewInit(): void {
+        this.acLayersView.forEach((layer) => layer.init(this));
+    }
+
+    ngAfterContentInit(): void {
+        this.acLayersContent.forEach((layer) => layer.init(this));
     }
 }

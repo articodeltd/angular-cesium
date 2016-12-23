@@ -1,115 +1,15 @@
-import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
-import {LayerContext} from './angular-cesium/decorators/layer-context.decorator';
-import {Observable} from "rxjs";
+import {Component, OnInit} from '@angular/core';
 import {Parse} from "./angular2-parse/src/services/parse/parse.service";
-import {LayerContextService} from './angular-cesium/services/layer-context/layer-context.service';
-import {BasicLayer} from "./angular-cesium/services/basic-layer/basic-layer.service";
-import {JsonMapper} from "./angular-cesium/services/json-mapper/json-mapper.service";
 
-@LayerContext()
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [Parse, JsonMapper]
+    providers: [Parse]
 })
-export class AppComponent extends BasicLayer implements OnInit {
-    title: string = 'app works!';
-    track: any;
-    tracks$: Observable<any>;
-    staticPosition: Object;
-    staticColor: Object;
-    Cesium = Cesium;
 
-    constructor(private cd: ChangeDetectorRef,
-                private parse: Parse,
-                private jsonMapper: JsonMapper,
-                layerContext: LayerContextService
-    ) {
-        super(layerContext);
-        this.track = {getImage: () => '', getPosition: () => ''};
-        this.staticPosition = Cesium.Cartesian3.fromDegrees(-72.59777, 38.03883);
-        this.staticColor = Cesium.Color.RED;
-    }
+export class AppComponent implements OnInit {
+    constructor() {}
 
-    ngOnInit() {
-        const map = this.jsonMapper.map(`{a: getPosition(), b: 1, c: track.color}`);
-
-        const a = 1;
-
-
-
-
-
-
-        //let thousandStream = Observable.range(0, 30000);
-        //this.tracks$ = thousandStream.map((value)=>({
-        //    id: value,
-        //    action: 'ADD_OR_UPDATE',
-        //    entity: {
-        //      name: 'tomer',
-        //      getImage: () => "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
-        //      getPosition: () => Cesium.Cartesian3.fromDegrees(Math.random() * 80, Math.random() * 80)
-        //  }
-        //}));
-
-    //const context = {getPosition(){return {x: 5};}};
-
-    //const result = this.parse.$parse(`getPosition() | json`)(context);
-    //const result1 = this.parse.$evalParse(`getPosition() | json`)(context);
-
-            this.tracks$ = Observable.from([
-                {
-                    id: 1,
-                    action: 'ADD_OR_UPDATE',
-                    entity: {
-                        name: 'tomer',
-                        image: "/assets/14141771_10210342250822703_4768968253746041744_n.jpg",
-                        position: Cesium.Cartesian3.fromDegrees(-25.59777, 80.03883)
-                    }
-                },
-                {
-                    id: 2,
-                    action: 'ADD_OR_UPDATE',
-                    entity: {
-                        name: 'onen',
-                        image: "/assets/bear-tongue_1558824i.jpg",
-                        position: Cesium.Cartesian3.fromDegrees(-45.59777, 20.03883)
-                    }
-                },
-                {
-                    id: 2,
-                    action: 'ADD_OR_UPDATE',
-                    entity: {
-                        name: 'eitan',
-                        image: "/assets/bear-tongue_1558824i.jpg",
-                        position: Cesium.Cartesian3.fromDegrees(-40.59777, 15.03883)
-                    }
-                }
-            ]).map((data) => {
-                data.entity = this.convertToCesiumObj(data);
-                return data;
-            });
-
-        // var socket = io.connect('http://localhost:3000');
-        // this.tracks$ = Observable.create((observer) => {
-        //     socket.on('birds', (data) => {
-        //         data.forEach((entity) => {
-        //             entity.entity = this.convertToCesiumObj(entity)
-        //             observer.next(entity);
-        //         });
-        //     });
-        // })
-    }
-
-    convertToCesiumObj(data): any {
-        return {
-            image: data.entity.image,
-            scale: data.id === 1 ? 0.3 : 0.15,
-            color: Cesium.Color.BLUE,
-            color1: data.id === 1 ? Cesium.Color.RED : undefined,
-            position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
-            position1: Cesium.Cartesian3.fromRadians(Math.random(), Math.random())
-        }
-    }
+    ngOnInit() {}
 }
