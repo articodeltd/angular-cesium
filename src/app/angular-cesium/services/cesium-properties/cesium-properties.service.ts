@@ -55,4 +55,16 @@ export class CesiumProperties {
 
         return cesiumDesc;
     }
+
+    compileCesiumProps(propsMap: Map<string, CesiumProperty>): Function {
+        const cesiumDesc = {};
+
+        for (let [propName, cesiumProp] of propsMap){
+            cesiumDesc[propName ? propName : 'undefined'] = `cache.get('${cesiumProp.expression}', () => propsMap.get('${propName}').get(context))`;
+        }
+
+        const fnBody = JSON.stringify(cesiumDesc).replace(/"/g, '');
+
+        return eval(`(function parseProps(cache, context) { return ${fnBody}; })`);
+    }
 }

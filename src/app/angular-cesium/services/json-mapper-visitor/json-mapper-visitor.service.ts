@@ -6,7 +6,7 @@ import {
 } from '@angular/compiler/src/expression_parser/ast';
 
 function compileToJSON (json) {
-    return JSON.stringify(json).replace(/"/g, '')
+    return JSON.stringify(json).replace(/"/g, '');
 }
 
 export class JsonMapperVisitor extends RecursiveAstVisitor {
