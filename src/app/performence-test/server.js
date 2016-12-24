@@ -95,30 +95,3 @@ function createChunck(numOfEntities) {
     }
     return data;
 }
-
-function jsonStringToJsonTree(str){
-    if(str[0] !== '{' || str[str.length-1] !== '}'){
-        throw 'not a json!'
-    }
-    let jsonTree = new Map();
-    str.splice(0, 1);
-    str.splice(str.length-1, 1);
-    str.trim();
-    while(str.length > 0){
-        let index = str.indexOf(':');
-        let key = str.splice(0, index);
-        jsonTree.set(key, undefined); //set key
-        str.trim();
-        index = str.indexOf(':');
-        if(index === -1){
-            jsonTree.set(key, str);
-            str.length = 0;
-        }
-        else{
-            str.lastIndexOf()
-        }
-
-        // todo check if index+1 is {
-    }
-
-}
