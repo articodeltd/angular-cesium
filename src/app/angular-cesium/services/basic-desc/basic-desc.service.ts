@@ -10,6 +10,7 @@ export class BasicDesc implements OnInit {
 
     private _primitiveMap = new Map();
     private _propsMap: Map<string, CesiumProperty>;
+    private _propsArr: CesiumProperty[];
     private _propsGetter: Function;
 
     constructor(private _drawer: SimpleDrawerService,
@@ -19,13 +20,15 @@ export class BasicDesc implements OnInit {
     ) {}
 
     _propsEvaluator(context) {
-        //return this._cesiumProperties.createCesiumProps(this._propsMap, this._computationCache, context);
-        return this._propsGetter(this._computationCache, context);
+        //return this._cesiumProperties.createCesiumPropsFromMap(this._propsMap, this._computationCache, context);
+        return this._cesiumProperties.createCesiumPropsFromArry(this._propsArr, this._computationCache, context);
+        //return this._propsGetter(this._computationCache, context);
     }
 
     ngOnInit(): void {
         this._layerService.registerDescription(this);
         this._propsMap = this._cesiumProperties.createPropsMap(this.props);
+        this._propsArr = this._cesiumProperties.createPropsArray(this.props);
         this._propsGetter = this._cesiumProperties.compileCesiumProps(this._propsMap);
     }
 

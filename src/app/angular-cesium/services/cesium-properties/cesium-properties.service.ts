@@ -46,11 +46,32 @@ export class CesiumProperties {
         return propsMap;
     }
 
-    createCesiumProps(propsMap: Map<string, CesiumProperty>, cache: ComputationCache, context: Object): Object {
+    createPropsArray(propsAttr: string): CesiumProperty[] {
+        const propsMap = [];
+        const resultMap = this._jsonMapper.map(propsAttr);
+
+        for (let [prop, expression] of resultMap) {
+            propsMap.push(new CesiumProperty(prop, expression, this._parser));
+        }
+
+        return propsMap;
+    }
+
+    createCesiumPropsFromMap(propsMap: Map<string, CesiumProperty>, cache: ComputationCache, context: Object): Object {
         const cesiumDesc = {};
 
         for (let [propName, cesiumProp] of propsMap){
             cesiumDesc[propName] = cache.get(cesiumProp.expression, () => cesiumProp.get(context));
+        }
+
+        return cesiumDesc;
+    }
+
+    createCesiumPropsFromArry(propsArr: CesiumProperty[], cache: ComputationCache, context: Object): Object {
+        const cesiumDesc = {};
+
+        for (let i = 0, length = propsArr.length; i < length; i++) {
+            cesiumDesc[propsArr[i].name] = cache.get(propsArr[i].expression, () => propsArr[i].get(context));
         }
 
         return cesiumDesc;
