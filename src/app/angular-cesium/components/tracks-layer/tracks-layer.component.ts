@@ -28,11 +28,6 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
     })
   }
 
-  //Used to test if basic layer's hook is called
-  ngAfterViewInit(): void {
-    console.log('tracksLayer');
-  }
-
   convertToCesiumObj(data): any {
     return {
       image: data.entity.image,

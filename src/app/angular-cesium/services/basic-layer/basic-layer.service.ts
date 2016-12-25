@@ -19,7 +19,6 @@ export abstract class BasicLayer implements AfterViewInit {
     }
 
     private initAcLayersView(): void {
-        console.log('basic layer');
         this.acLayersView.forEach((layer) => layer.init(this));
     }
 }
