@@ -3,7 +3,6 @@ import {AcLayerComponent} from "../../components/ac-layer/ac-layer.component";
 
 export abstract class BasicLayer implements AfterViewInit {
     @ViewChildren(AcLayerComponent) acLayersView: QueryList<AcLayerComponent>;
-    @ContentChildren(AcLayerComponent) acLayersContent: QueryList<AcLayerComponent>;
 
     constructor() {
         //Used to prevent overriding of our core function
