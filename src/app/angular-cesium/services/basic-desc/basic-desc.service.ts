@@ -2,16 +2,14 @@ import {OnInit, Input} from "@angular/core";
 import {LayerService} from "../layer-service/layer-service.service";
 import {SimpleDrawerService} from "../simple-drawer/simple-drawer.service";
 import {ComputationCache} from "../computation-cache/computation-cache.service";
-import {CesiumProperty, CesiumProperties} from "../cesium-properties/cesium-properties.service";
+import {CesiumProperties} from "../cesium-properties/cesium-properties.service";
 
 export class BasicDesc implements OnInit {
     @Input()
     props: any;
 
     private _primitiveMap = new Map();
-    private _propsMap: Map<string, CesiumProperty>;
-    private _propsArr: CesiumProperty[];
-    private _propsGetter: Function;
+    private _propsEvaluateFn: Function;
 
     constructor(private _drawer: SimpleDrawerService,
                 private _layerService: LayerService,
@@ -19,17 +17,14 @@ export class BasicDesc implements OnInit {
                 private _cesiumProperties: CesiumProperties,
     ) {}
 
-    _propsEvaluator(context) {
-        //return this._cesiumProperties.createCesiumPropsFromMap(this._propsMap, this._computationCache, context);
-        return this._cesiumProperties.createCesiumPropsFromArry(this._propsArr, this._computationCache, context);
-        //return this._propsGetter(this._computationCache, context);
+    _propsEvaluator(context: Object): any {
+        return this._propsEvaluateFn(this._computationCache, context);
     }
 
     ngOnInit(): void {
         this._layerService.registerDescription(this);
-        this._propsMap = this._cesiumProperties.createPropsMap(this.props);
-        this._propsArr = this._cesiumProperties.createPropsArray(this.props);
-        this._propsGetter = this._cesiumProperties.compileCesiumProps(this._propsMap);
+        this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
+        this._drawer.setPropsAssigner(this._cesiumProperties.createAssigner(this.props));
     }
 
     draw(context, id): any {

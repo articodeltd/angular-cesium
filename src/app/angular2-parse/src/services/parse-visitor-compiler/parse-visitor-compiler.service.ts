@@ -35,7 +35,7 @@ export class ParseVisitorCompiler extends RecursiveAstVisitor {
         const value = ast.exp.visit(this);
         args.unshift(value);
 
-        return `this.$pipesCache.get('${pipe}').transform.apply(null, ${compileToJSON(args)})`;
+        return `pipesCache.get('${pipe}').transform.apply(null, ${compileToJSON(args)})`;
     }
 
     // TODO
@@ -47,7 +47,7 @@ export class ParseVisitorCompiler extends RecursiveAstVisitor {
     }
 
     visitImplicitReceiver(ast: ImplicitReceiver): any {
-        return `this`;
+        return `context`;
     }
 
     visitInterpolation(ast: Interpolation): any {

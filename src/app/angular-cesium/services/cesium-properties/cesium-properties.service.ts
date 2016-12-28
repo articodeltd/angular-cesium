@@ -3,89 +3,73 @@ import {JsonMapper} from "../json-mapper/json-mapper.service";
 import {Parse} from "../../../angular2-parse/src/services/parse/parse.service";
 import {ComputationCache} from "../computation-cache/computation-cache.service";
 
-export class CesiumProperty {
-    private _get: Function;
-
-    constructor(
-        private _name: string,
-        private _expression: string,
-        private _parser: Parse
-    ){
-        this._get = this._parser.$evalParse(this._expression);
-    }
-
-    get name(): string {
-        return this._name;
-    }
-
-    get expression(): string {
-        return this._expression;
-    }
-
-    get(context: Object): any {
-        return this._get(context);
-    }
-}
-
 @Injectable()
 export class CesiumProperties {
+    private _assignersCache: Map<string, Function> = new Map<string, Function>();
+    private _evaluatorsCache: Map<string, Function> = new Map<string, Function>();
 
     constructor(
         private _parser: Parse,
         private _jsonMapper: JsonMapper
     ) {}
 
-    createPropsMap(propsAttr: string): Map<string, CesiumProperty> {
-        const propsMap = new Map<string, CesiumProperty>();
-        const resultMap = this._jsonMapper.map(propsAttr);
+    _compile(expression: string): Function {
+        const cesiumDesc = {};
+        const propsMap = new Map<string, any>();
+
+        const resultMap = this._jsonMapper.map(expression);
 
         for (let [prop, expression] of resultMap) {
-            propsMap.set(prop, new CesiumProperty(prop, expression, this._parser));
+            propsMap.set(prop, {expression, get: this._parser.eval(expression)});
         }
-
-        return propsMap;
-    }
-
-    createPropsArray(propsAttr: string): CesiumProperty[] {
-        const propsMap = [];
-        const resultMap = this._jsonMapper.map(propsAttr);
-
-        for (let [prop, expression] of resultMap) {
-            propsMap.push(new CesiumProperty(prop, expression, this._parser));
-        }
-
-        return propsMap;
-    }
-
-    createCesiumPropsFromMap(propsMap: Map<string, CesiumProperty>, cache: ComputationCache, context: Object): Object {
-        const cesiumDesc = {};
-
-        for (let [propName, cesiumProp] of propsMap){
-            cesiumDesc[propName] = cache.get(cesiumProp.expression, () => cesiumProp.get(context));
-        }
-
-        return cesiumDesc;
-    }
-
-    createCesiumPropsFromArry(propsArr: CesiumProperty[], cache: ComputationCache, context: Object): Object {
-        const cesiumDesc = {};
-
-        for (let i = 0, length = propsArr.length; i < length; i++) {
-            cesiumDesc[propsArr[i].name] = cache.get(propsArr[i].expression, () => propsArr[i].get(context));
-        }
-
-        return cesiumDesc;
-    }
-
-    compileCesiumProps(propsMap: Map<string, CesiumProperty>): Function {
-        const cesiumDesc = {};
 
         for (let [propName, cesiumProp] of propsMap){
             cesiumDesc[propName ? propName : 'undefined'] = `cache.get('${cesiumProp.expression}', () => propsMap.get('${propName}').get(context))`;
         }
 
         const fnBody = JSON.stringify(cesiumDesc).replace(/"/g, '');
+        const getFn = new Function('propsMap', 'cache', 'context', `return ${fnBody}`);
 
-        return eval(`(function parseProps(cache, context) { return ${fnBody}; })`);
+        return function evaluateCesiumProps(cache: ComputationCache, context: Object): any {
+            return getFn(propsMap, cache, context);
+        };
+    }
+
+    _build(expression: string): Function {
+        let fnBody = ``;
+        const resultMap = this._jsonMapper.map(expression);
+
+        for (let prop of resultMap.keys()) {
+            fnBody += `dst['${prop}'] = src['${prop}'];`;
+        }
+
+        fnBody += `return dst;`;
+        const assignFn = new Function('dst', 'src', `${fnBody}`);
+
+        return function assignCesiumProps(oldVal: any, newVal: any) {
+            return assignFn(oldVal, newVal);
+        };
+    }
+
+    createEvaluator(expression: string): Function {
+        if (this._evaluatorsCache.has(expression)) {
+            return this._evaluatorsCache.get(expression);
+        }
+
+        const evaluatorFn = this._compile(expression);
+        this._evaluatorsCache.set(expression, evaluatorFn);
+
+        return evaluatorFn;
+    }
+
+    createAssigner(expression: string): Function {
+        if (this._assignersCache.has(expression)) {
+            return this._assignersCache.get(expression);
+        }
+
+        const assignFn = this._build(expression);
+        this._assignersCache.set(expression, assignFn);
+
+        return assignFn;
     }
 }

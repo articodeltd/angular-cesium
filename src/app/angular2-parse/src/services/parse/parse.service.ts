@@ -1,5 +1,6 @@
 import {Injectable, Compiler} from "@angular/core";
 import {Parser, Lexer} from '@angular/compiler';
+import {ASTWithSource} from '@angular/compiler/src/expression_parser/ast';
 import {ParseVisitorResolver} from '../parse-visitor-resolver/parse-visitor-resolver.service';
 import {ParseVisitorCompiler} from '../parse-visitor-compiler/parse-visitor-compiler.service';
 
@@ -7,6 +8,8 @@ import {ParseVisitorCompiler} from '../parse-visitor-compiler/parse-visitor-comp
 export class Parse {
     private _parser: Parser = new Parser(new Lexer());
     private _pipesCache: Map<string, any> = new Map<string, any>();
+    private _evalCache: Map<string, ASTWithSource> = new Map<string, ASTWithSource>();
+    private _calcCache: Map<string, ASTWithSource> = new Map<string, ASTWithSource>();
 
     /**
      * Used to dependency inject the Angular 2 parser.
@@ -20,34 +23,50 @@ export class Parse {
         }
     }
 
-    $evalParse(expression: string): any {
+    eval(expression: string): Function {
+        let ast: ASTWithSource = null;
         const visitor = new ParseVisitorCompiler();
 
-        let ast = this._parser.parseInterpolation(expression, 'Parse');
+        if (this._evalCache.has(expression)) {
+            ast = this._evalCache.get(expression);
+        }
+        else {
+            ast = this._parser.parseInterpolation(expression, 'Parse');
 
-        if (!ast) {
-            ast = this._parser.parseBinding(expression, 'Parse');
+            if (!ast) {
+                ast = this._parser.parseBinding(expression, 'Parse');
+            }
+
+            this._evalCache.set(expression, ast);
         }
 
         const fnBody =  ast.visit(visitor);
-        const getFn = eval(`(function evalParse() { return ${fnBody};})`);
+        const pipesCache = this._pipesCache;
+        const getFn = new Function ('context', 'pipesCache', `return ${fnBody};`);
 
-        return (context) => {
-            context.$pipesCache = this._pipesCache;
-            return getFn.call(context);
+        return function evalParse(context: Object): any {
+            return getFn(context, pipesCache);
         };
     }
 
-    $parse(expression: string): any {
+    calc(expression: string): Function {
+        let ast: ASTWithSource = null;
         const visitor = new ParseVisitorResolver(this._pipesCache);
 
-        let ast = this._parser.parseInterpolation(expression, 'Parse');
+        if (this._calcCache.has(expression)) {
+            ast = this._calcCache.get(expression);
+        }
+        else {
+            ast = this._parser.parseInterpolation(expression, 'Parse');
 
-        if (!ast) {
-            ast = this._parser.parseBinding(expression, 'Parse');
+            if (!ast) {
+                ast = this._parser.parseBinding(expression, 'Parse');
+            }
+
+            this._calcCache.set(expression, ast);
         }
 
-        return (context: any): any => {
+        return function calcParse(context: Object): any {
             return ast.visit(visitor, context);
         };
     }
