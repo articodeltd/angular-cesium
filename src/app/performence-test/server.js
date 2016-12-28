@@ -22,8 +22,8 @@ httpServer.listen(3000, function () {
 });
 
 
-let numOfEntities = 50;
-let interval = 1000;
+let numOfEntities = 5000;
+let interval = 500;
 let sendOption = 'chunk';
 let intervalId;
 let dataChunk;

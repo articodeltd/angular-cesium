@@ -1,5 +1,5 @@
 export function compileToJSON (json) {
-    return JSON.stringify(json).replace(/"/g, '')
+    return JSON.stringify(json).replace(/"/g, '');
 }
 
 export function isPresent(obj) {

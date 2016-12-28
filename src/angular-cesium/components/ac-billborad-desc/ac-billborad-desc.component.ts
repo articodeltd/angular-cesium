@@ -1,44 +1,20 @@
+import {Component} from "@angular/core";
+import {BasicDesc} from "../../services/basic-desc/basic-desc.service";
 import {LayerService} from "../../services/layer-service/layer-service.service";
-import {Component, OnInit, Input} from "@angular/core";
 import {BillboardDrawerService} from "../../services/billboard-drawer/billboard-drawer.service";
-import {Parse} from "../../../angular2-parse/src/services/parse/parse.service";
+import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
+import {CesiumProperties} from "../../services/cesium-properties/cesium-properties.service";
 
 @Component({
     selector: 'ac-billboard-desc',
     templateUrl: './ac-billborad-desc.component.html',
     styleUrls: ['./ac-billborad-desc.component.css']
 })
-export class AcBillboardDescComponent implements OnInit {
-    @Input()
-    props: any;
+export class AcBillboardDescComponent extends BasicDesc {
 
-    private primitiveMap = new Map();
-
-    private propsEvaluator: Function;
-
-    constructor(private billboardDrawer: BillboardDrawerService,
-                private layerService: LayerService,
-                private parser: Parse) {
-    }
-
-    draw(context, id): any {
-        let cesiumProps = this.propsEvaluator(context);
-        if (!this.primitiveMap.has(id)) {
-            const primitive = this.billboardDrawer.add(cesiumProps);
-            this.primitiveMap.set(id, primitive);
-        } else {
-            const primitive = this.primitiveMap.get(id);
-            this.billboardDrawer.update(primitive, cesiumProps);
-        }
-    }
-
-    remove(id){
-        const primitive = this.primitiveMap.get(id);
-        this.billboardDrawer.remove(primitive);
-    }
-
-    ngOnInit(): void {
-        this.layerService.registerDescription(this);
-        this.propsEvaluator = this.parser.$evalParse(this.props);
+    constructor(billboardDrawer: BillboardDrawerService, layerService: LayerService,
+                computationCache: ComputationCache, cesiumProperties: CesiumProperties
+    ) {
+        super(billboardDrawer, layerService, computationCache, cesiumProperties);
     }
 }
