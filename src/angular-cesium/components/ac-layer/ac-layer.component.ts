@@ -1,9 +1,10 @@
 import {BillboardDrawerService} from "./../../services/billboard-drawer/billboard-drawer.service";
-import {Component, OnInit, Input, ChangeDetectorRef, AfterContentInit, ElementRef} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 import {Observable} from "rxjs";
 import {LayerService} from "../../services/layer-service/layer-service.service";
 import {acEntity} from "../../models/ac-entity";
 import {ActionType} from "../../models/action-type.enum";
+import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
 
 @Component({
     selector: 'ac-layer',

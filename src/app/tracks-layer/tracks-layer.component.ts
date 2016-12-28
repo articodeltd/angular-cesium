@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Observable} from "rxjs";
 import {BasicLayer} from "../../angular-cesium/services/basic-layer/basic-layer.service";
 import {acEntity} from "../../angular-cesium/models/ac-entity";
+import {ActionType} from "../../angular-cesium/models/action-type.enum";
 
 @Component({
   selector: 'tracks-layer',
@@ -22,6 +23,7 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
     this.tracks$ = Observable.create((observer) => {
       socket.on('birds', (data) => {
         data.forEach((acEntity) => {
+          acEntity.actionType = ActionType.ADD_UPDATE;
           acEntity.entity = this.convertToCesiumObj(acEntity);
           observer.next(acEntity);
         });
