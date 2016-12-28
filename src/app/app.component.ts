@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Parse} from "./angular2-parse/src/services/parse/parse.service";
+import {Component, OnInit} from "@angular/core";
+import {Parse} from "../angular2-parse/src/services/parse/parse.service";
 
 @Component({
     selector: 'app-root',

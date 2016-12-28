@@ -1,8 +1,7 @@
-import {Observable} from 'rxjs';
-import 'rxjs/add/operator/catch';
-
-import {Http, Response} from '@angular/http';
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Observable} from "rxjs";
+import "rxjs/add/operator/catch";
+import {Http, Response} from "@angular/http";
+import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 
 
 class SendOption {

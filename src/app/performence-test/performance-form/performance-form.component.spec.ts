@@ -1,9 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { PerformanceFormComponent } from './performance-form.component';
+import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {PerformanceFormComponent} from "./performance-form.component";
 
 describe('PerformanceFormComponent', () => {
   let component: PerformanceFormComponent;
