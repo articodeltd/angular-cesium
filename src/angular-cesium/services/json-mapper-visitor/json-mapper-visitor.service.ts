@@ -92,10 +92,6 @@ export class JsonMapperVisitor extends RecursiveAstVisitor {
         const obj = ast.obj.visit(this);
         let key = ast.key.visit(this);
 
-        if (ast.key instanceof LiteralPrimitive && typeof key === 'string') {
-            key = `'${key}'`
-        }
-
         return `${obj}[${key}]`;
     }
 
@@ -130,7 +126,11 @@ export class JsonMapperVisitor extends RecursiveAstVisitor {
     }
 
     visitLiteralPrimitive(ast: LiteralPrimitive): any {
-        return ast.value;
+        let value  = ast.value;
+        if (typeof value === 'string') {
+            value = `'${value}'`
+        }
+        return value;
     }
 
     visitMethodCall(ast: MethodCall): any {
@@ -174,10 +174,6 @@ export class JsonMapperVisitor extends RecursiveAstVisitor {
     visitAll(asts: AST[]): any {
         return asts.map(ast => {
             let result = ast.visit(this);
-
-            if (ast instanceof LiteralPrimitive && typeof result === 'string') {
-                result = `'${result}'`
-            }
 
             return result;
         });

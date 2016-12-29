@@ -10,27 +10,33 @@ import {Angular2ParseModule} from "../angular2-parse/src/angular2-parse.module";
 import {PixelOffsetPipe} from "./pipes/pixel-offset/pixel-offset.pipe";
 import {JsonMapper} from "./services/json-mapper/json-mapper.service";
 import {CesiumProperties} from "./services/cesium-properties/cesium-properties.service";
+import {AcLabelDescComponent} from "./components/ac-label-desc/ac-label-desc.component";
+import {UtilsModule} from "../utils/utils.module";
+import {AsyncService} from "../utils/services/async/async.service";
 
 @NgModule({
     imports: [
         CommonModule,
-        Angular2ParseModule
+        Angular2ParseModule,
+        UtilsModule
     ],
     declarations: [AngularCesiumComponent,
         AcMapComponent,
         AcLayerComponent,
         AcBillboardComponent,
         AcBillboardDescComponent,
+        AcLabelDescComponent,
         AcLayer2Directive,
         PixelOffsetPipe],
     exports: [
         AcMapComponent,
         AcBillboardComponent,
         AcBillboardDescComponent,
+        AcLabelDescComponent,
         AcLayerComponent,
         AcLayer2Directive,
         ],
-    providers: [JsonMapper, CesiumProperties],
+    providers: [JsonMapper, CesiumProperties, AsyncService],
 })
 export class AngularCesiumModule {
 }
