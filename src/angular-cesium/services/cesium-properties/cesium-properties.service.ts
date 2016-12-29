@@ -24,7 +24,7 @@ export class CesiumProperties {
         }
 
         for (let [propName, cesiumProp] of propsMap){
-            cesiumDesc[propName ? propName : 'undefined'] = `cache.get(${this.expressionToStringedExpression(cesiumProp.expression.toString())}, () => propsMap.get('${propName}').get(context))`;
+            cesiumDesc[propName ? propName : 'undefined'] = `cache.get(${this.stringifyExpression(cesiumProp.expression.toString())}, () => propsMap.get('${propName}').get(context))`;
         }
 
         const fnBody = JSON.stringify(cesiumDesc).replace(/"/g, '');
@@ -73,7 +73,7 @@ export class CesiumProperties {
         return assignFn;
     }
 
-    expressionToStringedExpression(expression: string){
+    stringifyExpression(expression: string){
         if(expression[0] === '\'' && expression[expression.length-1] === '\''){
             expression = expression.substring(0, expression.length-1);
             return `${expression}#string'`;
