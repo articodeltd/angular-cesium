@@ -75,7 +75,8 @@ export class CesiumProperties {
 
     expressionToStringedExpression(expression: string){
         if(expression[0] === '\'' && expression[expression.length-1] === '\''){
-            return expression;
+            expression = expression.substring(0, expression.length-1);
+            return `${expression}#string'`;
         }
         else{
             return `'${expression}'`;
