@@ -13,7 +13,7 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
 
   tracks$ : Observable<acEntity>;
   Cesium = Cesium;
-
+  show =true;
   constructor() {
     super();
   }

@@ -1,10 +1,11 @@
 import {BillboardDrawerService} from "./../../services/billboard-drawer/billboard-drawer.service";
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, OnInit, Input, OnChanges, SimpleChanges} from "@angular/core";
 import {Observable} from "rxjs";
 import {LayerService} from "../../services/layer-service/layer-service.service";
 import {acEntity} from "../../models/ac-entity";
 import {ActionType} from "../../models/action-type.enum";
 import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
+import {SimpleDrawerService} from "../../services/simple-drawer/simple-drawer.service";
 
 @Component({
     selector: 'ac-layer',
@@ -12,22 +13,25 @@ import {ComputationCache} from "../../services/computation-cache/computation-cac
     styleUrls: ['./ac-layer.component.css'],
     providers: [LayerService, ComputationCache, BillboardDrawerService]
 })
-export class AcLayerComponent implements OnInit{
-    @Input()
-    context: any;
+export class AcLayerComponent implements OnInit, OnChanges {
 
     @Input()
-    acFor: string;
-    entityName: string;
-    observable: Observable<acEntity>;
-    layerContext: any;
+    show:boolean = true;
 
-    constructor(private billboardDrawerService: BillboardDrawerService,
-                private  layerService: LayerService,
-                private _computationCache: ComputationCache
-    ) {}
+    @Input()
+    acFor:string;
+    entityName:string;
+    observable:Observable<acEntity>;
+    layerContext:any;
+    _drawerList:SimpleDrawerService[] = [];
 
-    init(context){
+    constructor(private  layerService:LayerService,
+                private _computationCache:ComputationCache,
+                billboardDrawerService:BillboardDrawerService) {
+        this._drawerList.push(billboardDrawerService);
+    }
+
+    init(context) {
         this.layerContext = context;
         const acForArr = this.acFor.split(' ');
         this.observable = this.layerContext[acForArr[3]];
@@ -51,10 +55,18 @@ export class AcLayerComponent implements OnInit{
         });
     }
 
-    ngOnInit(): void {
+    ngOnInit():void {
     }
 
-    removeAll(): void {
-        this.billboardDrawerService.removeAll();
+    ngOnChanges(changes:SimpleChanges):void {
+        if (changes['show']) {
+            const showValue = changes['show'].currentValue;
+            this._drawerList.forEach((drawer)=>drawer.showAll(showValue));
+        }
     }
+
+    removeAll():void {
+        this._drawerList.forEach((drawer)=>drawer.removeAll());
+    }
+
 }
