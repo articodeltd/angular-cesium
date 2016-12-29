@@ -6,7 +6,7 @@ function *arrayIterator(array: Array<any>, callback: Function, bulkSize: number,
             callback(array[j]);
         }
         i += bulkSize;
-        yield setTimeout(()=> nextCallback(), 1);
+        yield setTimeout(()=> nextCallback(), 0);
     }
     if (doneCallback) {
         yield doneCallback();
