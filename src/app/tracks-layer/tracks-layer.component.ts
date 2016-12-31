@@ -26,7 +26,14 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
                 this.asyncService.forEach(
                     data,
                     (acEntity) => {
-                        acEntity.actionType = acEntity.action;
+                        let action;
+                        if(acEntity.action === "ADD_OR_UPDATE"){
+                            action = ActionType.ADD_UPDATE;
+                        }
+                        else if(acEntity.action === "DELETE"){
+                            action = ActionType.DELETE
+                        }
+                        acEntity.actionType = action;
                         acEntity.entity = this.convertToCesiumObj(acEntity);
                         observer.next(acEntity);
                     },
