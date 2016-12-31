@@ -8,7 +8,7 @@ import {AsyncService} from "../../utils/services/async/async.service";
 @Component({
     selector: 'tracks-layer',
     templateUrl: './tracks-layer.component.html',
-    styleUrls: ['./tracks-layer.component.css'],
+    styleUrls: ['./tracks-layer.component.css']
 })
 export class TracksLayerComponent extends BasicLayer implements OnInit {
 
@@ -26,7 +26,7 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
                 this.asyncService.forEach(
                     data,
                     (acEntity) => {
-                        acEntity.actionType = ActionType.ADD_UPDATE;
+                        acEntity.actionType = acEntity.action;
                         acEntity.entity = this.convertToCesiumObj(acEntity);
                         observer.next(acEntity);
                     },
