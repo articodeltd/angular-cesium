@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 
 function *arrayIterator(array: Array<any>, callback: Function, bulkSize: number, doneCallback: Function, nextCallback: Function) {
-    for (let i = 0, len = array.length; i < len;) {
+    let i = 0;
+    let len = array.length;
+    while (i < len) {
         for (let j = i, end = Math.min(i + bulkSize, len); j < end; j++) {
             callback(array[j]);
         }
