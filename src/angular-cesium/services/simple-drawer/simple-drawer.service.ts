@@ -37,7 +37,7 @@ export abstract class SimpleDrawerService {
         this.cesiumCollection.removeAll();
     }
 
-    showAll(showValue : boolean){
+    setShow(showValue : boolean){
         this._showAll = showValue;
         for (let i = 0; i < this.cesiumCollection.length; i++){
             const primitive = this.cesiumCollection.get(i);

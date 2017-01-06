@@ -14,7 +14,7 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
 
     tracks$: Observable<acEntity>;
     Cesium = Cesium;
-    show =true;
+    showTracks =true;
 
     constructor(private asyncService: AsyncService) {
         super();
@@ -52,5 +52,9 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
             position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
             position1: Cesium.Cartesian3.fromRadians(Math.random(), Math.random())
         }
+    }
+
+    removeAll(){
+        this.acLayersView.forEach((layer)=>layer.removeAll());
     }
 }
