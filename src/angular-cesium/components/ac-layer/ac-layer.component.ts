@@ -5,13 +5,13 @@ import {LayerService} from "../../services/layer-service/layer-service.service";
 import {acEntity} from "../../models/ac-entity";
 import {ActionType} from "../../models/action-type.enum";
 import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
-import {SimpleDrawerService} from "../../services/simple-drawer/simple-drawer.service";
+import {LabelDrawerService} from "../../services/label-drawer/label-drawer.service";
 
 @Component({
     selector: 'ac-layer',
     templateUrl: './ac-layer.component.html',
     styleUrls: ['./ac-layer.component.css'],
-    providers: [LayerService, ComputationCache, BillboardDrawerService]
+    providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges {
 
