@@ -6,14 +6,15 @@ import {ActionType} from "../../angular-cesium/models/action-type.enum";
 import {AsyncService} from "../../utils/services/async/async.service";
 
 @Component({
-    selector: 'tracks-layer',
-    templateUrl: './tracks-layer.component.html',
-    styleUrls: ['./tracks-layer.component.css']
+  selector: 'tracks-layer',
+  templateUrl: './tracks-layer.component.html',
+  styleUrls: ['./tracks-layer.component.css']
 })
 export class TracksLayerComponent extends BasicLayer implements OnInit {
 
     tracks$: Observable<acEntity>;
     Cesium = Cesium;
+    showTracks =true;
 
     constructor(private asyncService: AsyncService) {
         super();
@@ -51,5 +52,9 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
             position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
             position1: Cesium.Cartesian3.fromRadians(Math.random(), Math.random())
         }
+    }
+
+    removeAll(){
+        this.acLayersView.forEach((layer)=>layer.removeAll());
     }
 }

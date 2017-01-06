@@ -3,6 +3,7 @@ import {CesiumService} from "../cesium/cesium.service";
 export abstract class SimpleDrawerService {
     private cesiumCollection: any;
     private _propsAssigner: Function;
+    private _showAll;
 
     constructor(drawerType: any, cesiumService: CesiumService) {
         this.cesiumCollection = new drawerType();
@@ -13,9 +14,9 @@ export abstract class SimpleDrawerService {
         this._propsAssigner = assigner;
     }
 
-    add(cesiumProps:Object): any {
+    add(cesiumProps:any): any {
         //Todo: Take care of show = false
-
+        cesiumProps.show = this._showAll;
         return this.cesiumCollection.add(cesiumProps);
     }
 
@@ -34,6 +35,14 @@ export abstract class SimpleDrawerService {
 
     removeAll(){
         this.cesiumCollection.removeAll();
+    }
+
+    setShow(showValue : boolean){
+        this._showAll = showValue;
+        for (let i = 0; i < this.cesiumCollection.length; i++){
+            const primitive = this.cesiumCollection.get(i);
+            primitive.show = showValue;
+        }
     }
 
 }
