@@ -1,8 +1,8 @@
 import {BillboardDrawerService} from "./../../services/billboard-drawer/billboard-drawer.service";
 import {Component, OnInit, Input, OnChanges, SimpleChanges} from "@angular/core";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {LayerService} from "../../services/layer-service/layer-service.service";
-import {acEntity} from "../../models/ac-entity";
+import {AcEntity} from "../../models/ac-entity";
 import {ActionType} from "../../models/action-type.enum";
 import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
 import {LabelDrawerService} from "../../services/label-drawer/label-drawer.service";
@@ -22,9 +22,10 @@ export class AcLayerComponent implements OnInit, OnChanges {
     @Input()
     acFor:string;
     entityName:string;
-    observable:Observable<acEntity>;
-    layerContext:any;
-    _drawerList:SimpleDrawerService[] = [];
+    observable:Observable<AcEntity>;
+    private layerContext:any;
+    private _drawerList:SimpleDrawerService[] = [];
+    private _updateStream: Subject<AcEntity> = new Subject<AcEntity>();
 
     constructor(private  layerService:LayerService,
                 private _computationCache:ComputationCache,
@@ -40,7 +41,7 @@ export class AcLayerComponent implements OnInit, OnChanges {
         this.observable = this.layerContext[acForArr[3]];
         this.entityName = acForArr[1];
 
-        this.observable.subscribe((data) => {
+        this.observable.merge(this._updateStream).subscribe((data) => {
             this._computationCache.clear();
             this.layerContext[this.entityName] = data.entity;
             this.layerService.getDescriptions().forEach((descriptionComponent) => {
@@ -71,5 +72,18 @@ export class AcLayerComponent implements OnInit, OnChanges {
     removeAll():void {
         this._drawerList.forEach((drawer)=>drawer.removeAll());
     }
+
+    remove(entityId: number){
+        this._updateStream.next({id: entityId, actionType: ActionType.DELETE})
+    }
+    update(entity: AcEntity): void{
+        this._updateStream.next(entity);
+    }
+
+    refreshAll(collection : AcEntity[]): void{
+        Observable.from(collection).subscribe((entity)=>this._updateStream.next(entity));
+    }
+
+
 
 }

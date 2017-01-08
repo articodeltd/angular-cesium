@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Observable} from "rxjs";
 import {BasicLayer} from "../../angular-cesium/services/basic-layer/basic-layer.service";
-import {acEntity} from "../../angular-cesium/models/ac-entity";
+import {AcEntity} from "../../angular-cesium/models/ac-entity";
 import {ActionType} from "../../angular-cesium/models/action-type.enum";
 import {AsyncService} from "../../utils/services/async/async.service";
 
@@ -12,7 +12,7 @@ import {AsyncService} from "../../utils/services/async/async.service";
 })
 export class TracksLayerComponent extends BasicLayer implements OnInit {
 
-    tracks$: Observable<acEntity>;
+    tracks$: Observable<AcEntity>;
     Cesium = Cesium;
     showTracks =true;
 
