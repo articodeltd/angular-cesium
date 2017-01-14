@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {Observable} from "rxjs";
-import {AcEntity} from "../../angular-cesium/models/ac-entity";
+import {AcNotification} from "../../angular-cesium/models/ac-notification";
 import {ActionType} from "../../angular-cesium/models/action-type.enum";
 import {AsyncService} from "../../utils/services/async/async.service";
 import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-layer.component";
@@ -13,7 +13,7 @@ import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-laye
 export class TracksLayerComponent implements OnInit {
     @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
-    tracks$: Observable<AcEntity>;
+    tracks$: Observable<AcNotification>;
     Cesium = Cesium;
     showTracks = true;
 

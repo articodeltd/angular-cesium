@@ -1,6 +1,6 @@
 import {Component, OnInit, AfterViewInit, ViewChild} from "@angular/core";
 import {Observable} from "rxjs";
-import {AcEntity} from "../../angular-cesium/models/ac-entity";
+import {AcNotification} from "../../angular-cesium/models/ac-notification";
 import {ActionType} from "../../angular-cesium/models/action-type.enum";
 import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-layer.component";
 
@@ -12,10 +12,10 @@ import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-laye
 export class BaseLayerComponent implements OnInit, AfterViewInit {
     @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
-    bases$: Observable<AcEntity>;
+    bases$: Observable<AcNotification>;
 
     constructor() {
-        const base1: AcEntity = {
+        const base1: AcNotification = {
             id: 0,
             actionType: ActionType.ADD_UPDATE,
             entity: {name: 'base haifa', position: Cesium.Cartesian3.fromRadians(1.5, 1.5)}

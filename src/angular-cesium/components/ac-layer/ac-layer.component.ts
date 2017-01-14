@@ -2,7 +2,7 @@ import {BillboardDrawerService} from "./../../services/billboard-drawer/billboar
 import {Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit} from "@angular/core";
 import {Observable, Subject} from "rxjs";
 import {LayerService} from "../../services/layer-service/layer-service.service";
-import {AcEntity} from "../../models/ac-entity";
+import {AcNotification} from "../../models/ac-notification";
 import {ActionType} from "../../models/action-type.enum";
 import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
 import {LabelDrawerService} from "../../services/label-drawer/label-drawer.service";
@@ -23,9 +23,9 @@ export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
     context:any;
 
     private entityName:string;
-    private observable:Observable<AcEntity>;
+    private observable: Observable<AcNotification>;
     private _drawerList:SimpleDrawerService[] = [];
-    private _updateStream: Subject<AcEntity> = new Subject<AcEntity>();
+    private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 
     constructor(private  layerService:LayerService,
                 private _computationCache:ComputationCache,
@@ -40,19 +40,19 @@ export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
         this.observable = this.context[acForArr[3]];
         this.entityName = acForArr[1];
 
-        this.observable.merge(this._updateStream).subscribe((data) => {
-            this._computationCache.clear();
-            this.context[this.entityName] = data.entity;
+        this.observable.merge(this._updateStream).subscribe((notification) => {
+            this._computationCache.clear()
+            this.context[this.entityName] = notification.entity;
             this.layerService.getDescriptions().forEach((descriptionComponent) => {
-                switch (data.actionType) {
+                switch (notification.actionType) {
                     case ActionType.ADD_UPDATE:
-                        descriptionComponent.draw(this.context, data.id);
+                        descriptionComponent.draw(this.context, notification.id);
                         break;
                     case ActionType.DELETE:
-                        descriptionComponent.remove(data.id);
+                        descriptionComponent.remove(notification.id);
                         break;
                     default:
-                        console.error('unknown action type: ' + data.actionType)
+                        console.error('unknown action type: ' + notification.actionType)
                 }
             })
         });
@@ -78,11 +78,13 @@ export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
     remove(entityId: number){
         this._updateStream.next({id: entityId, actionType: ActionType.DELETE})
     }
-    update(entity: AcEntity): void{
-        this._updateStream.next(entity);
+
+    update(notification: AcNotification): void {
+        this._updateStream.next(notification);
     }
 
-    refreshAll(collection : AcEntity[]): void{
+    refreshAll(collection: AcNotification[]): void {
+        // TODO make entity interface: collection of type entity not notification
         Observable.from(collection).subscribe((entity)=>this._updateStream.next(entity));
     }
 }

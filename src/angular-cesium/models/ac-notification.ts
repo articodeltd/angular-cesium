@@ -1,5 +1,5 @@
 import {ActionType} from "./action-type.enum";
-export interface AcEntity{
+export interface AcNotification {
     id : number,
     entity?: any;
     actionType: ActionType;
