@@ -1,5 +1,5 @@
 import {BillboardDrawerService} from "./../../services/billboard-drawer/billboard-drawer.service";
-import {Component, OnInit, Input, OnChanges, SimpleChanges} from "@angular/core";
+import {Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit} from "@angular/core";
 import {Observable, Subject} from "rxjs";
 import {LayerService} from "../../services/layer-service/layer-service.service";
 import {AcEntity} from "../../models/ac-entity";
@@ -14,16 +14,16 @@ import {SimpleDrawerService} from "../../services/simple-drawer/simple-drawer.se
     styleUrls: ['./ac-layer.component.css'],
     providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService]
 })
-export class AcLayerComponent implements OnInit, OnChanges {
-
+export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
     @Input()
     show:boolean = true;
-
     @Input()
     acFor:string;
-    entityName:string;
-    observable:Observable<AcEntity>;
-    private layerContext:any;
+    @Input()
+    context:any;
+
+    private entityName:string;
+    private observable:Observable<AcEntity>;
     private _drawerList:SimpleDrawerService[] = [];
     private _updateStream: Subject<AcEntity> = new Subject<AcEntity>();
 
@@ -35,19 +35,18 @@ export class AcLayerComponent implements OnInit, OnChanges {
         this._drawerList.push(labelDrawerService);
     }
 
-    init(context) {
-        this.layerContext = context;
+    init() {
         const acForArr = this.acFor.split(' ');
-        this.observable = this.layerContext[acForArr[3]];
+        this.observable = this.context[acForArr[3]];
         this.entityName = acForArr[1];
 
         this.observable.merge(this._updateStream).subscribe((data) => {
             this._computationCache.clear();
-            this.layerContext[this.entityName] = data.entity;
+            this.context[this.entityName] = data.entity;
             this.layerService.getDescriptions().forEach((descriptionComponent) => {
                 switch (data.actionType) {
                     case ActionType.ADD_UPDATE:
-                        descriptionComponent.draw(this.layerContext, data.id);
+                        descriptionComponent.draw(this.context, data.id);
                         break;
                     case ActionType.DELETE:
                         descriptionComponent.remove(data.id);
@@ -59,6 +58,9 @@ export class AcLayerComponent implements OnInit, OnChanges {
         });
     }
 
+    ngAfterContentInit(): void {
+        this.init();
+    }
     ngOnInit():void {
     }
 
@@ -70,7 +72,7 @@ export class AcLayerComponent implements OnInit, OnChanges {
     }
 
     removeAll():void {
-        this._drawerList.forEach((drawer)=>drawer.removeAll());
+        this.layerService.getDescriptions().forEach((description)=>description.removeAll());
     }
 
     remove(entityId: number){
@@ -83,7 +85,4 @@ export class AcLayerComponent implements OnInit, OnChanges {
     refreshAll(collection : AcEntity[]): void{
         Observable.from(collection).subscribe((entity)=>this._updateStream.next(entity));
     }
-
-
-
 }

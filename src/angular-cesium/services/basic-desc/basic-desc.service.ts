@@ -29,7 +29,6 @@ export class BasicDesc implements OnInit {
 
     draw(context, id): any {
         const cesiumProps = this._propsEvaluator(context);
-
         if (!this._primitiveMap.has(id)) {
             const primitive = this._drawer.add(cesiumProps);
             this._primitiveMap.set(id, primitive);
@@ -42,5 +41,11 @@ export class BasicDesc implements OnInit {
     remove(id){
         const primitive = this._primitiveMap.get(id);
         this._drawer.remove(primitive);
+        this._primitiveMap.delete(id);
+    }
+
+    removeAll(){
+        this._primitiveMap.clear();
+        this._drawer.removeAll();
     }
 }

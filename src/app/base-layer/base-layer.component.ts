@@ -1,40 +1,47 @@
-import {Component, OnInit} from '@angular/core';
-import {BasicLayer} from "../../angular-cesium/services/basic-layer/basic-layer.service";
+import {Component, OnInit, AfterViewInit, ViewChild} from "@angular/core";
 import {Observable} from "rxjs";
 import {AcEntity} from "../../angular-cesium/models/ac-entity";
 import {ActionType} from "../../angular-cesium/models/action-type.enum";
+import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-layer.component";
 
 @Component({
     selector: 'base-layer',
     templateUrl: './base-layer.component.html',
     styleUrls: ['./base-layer.component.css']
 })
-export class BaseLayerComponent extends BasicLayer implements OnInit {
+export class BaseLayerComponent implements OnInit, AfterViewInit {
+    @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
     bases$: Observable<AcEntity>;
 
     constructor() {
-        super();
         const base1: AcEntity = {
             id: 0,
             actionType: ActionType.ADD_UPDATE,
-            entity: {name: 'eitan', position: Cesium.Cartesian3.fromRadians(0.5, 0.5)}
+            entity: {name: 'base haifa', position: Cesium.Cartesian3.fromRadians(1.5, 1.5)}
         };
         const base2  = {
             id: 1,
             actionType: ActionType.ADD_UPDATE,
-            entity: {name: 'tomer', position: Cesium.Cartesian3.fromRadians(0.6, 0.6)}
+            entity: {name: 'base yafo', position: Cesium.Cartesian3.fromRadians(1.9, 1.9)}
         };
         const baseArray = [base1, base2];
         this.bases$ = Observable.from(baseArray);
 
         setTimeout(()=>{
-            base2.entity.name = 'onen';
-            super.update(base2);
-        },5000)
+            base2.entity.name = 'base tel aviv';
+            this.layer.update(base2);
+        },5000);
+        setTimeout(()=>{
+            this.layer.refreshAll(baseArray);
+        },10000);
     }
 
     ngOnInit() {
+    }
+
+    ngAfterViewInit(){
+
     }
 
 }

@@ -1,23 +1,23 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {Observable} from "rxjs";
-import {BasicLayer} from "../../angular-cesium/services/basic-layer/basic-layer.service";
 import {AcEntity} from "../../angular-cesium/models/ac-entity";
 import {ActionType} from "../../angular-cesium/models/action-type.enum";
 import {AsyncService} from "../../utils/services/async/async.service";
+import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-layer.component";
 
 @Component({
-  selector: 'tracks-layer',
-  templateUrl: './tracks-layer.component.html',
-  styleUrls: ['./tracks-layer.component.css']
+    selector: 'tracks-layer',
+    templateUrl: './tracks-layer.component.html',
+    styleUrls: ['./tracks-layer.component.css']
 })
-export class TracksLayerComponent extends BasicLayer implements OnInit {
+export class TracksLayerComponent implements OnInit {
+    @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
     tracks$: Observable<AcEntity>;
     Cesium = Cesium;
-    showTracks =true;
+    showTracks = true;
 
     constructor(private asyncService: AsyncService) {
-        super();
     }
 
     ngOnInit() {
@@ -28,10 +28,10 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
                     data,
                     (acEntity) => {
                         let action;
-                        if(acEntity.action === "ADD_OR_UPDATE"){
+                        if (acEntity.action === "ADD_OR_UPDATE") {
                             action = ActionType.ADD_UPDATE;
                         }
-                        else if(acEntity.action === "DELETE"){
+                        else if (acEntity.action === "DELETE") {
                             action = ActionType.DELETE
                         }
                         acEntity.actionType = action;
@@ -47,14 +47,14 @@ export class TracksLayerComponent extends BasicLayer implements OnInit {
         return {
             image: data.entity.image,
             scale: data.id === 1 ? 0.3 : 0.15,
-            color: Cesium.Color.BLUE,
-            color1: data.id === 1 ? Cesium.Color.RED : undefined,
+            color1: Cesium.Color.BLUE,
+            color: data.id === 1 ? Cesium.Color.RED : undefined,
             position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
             position1: Cesium.Cartesian3.fromRadians(Math.random(), Math.random())
         }
     }
 
-    removeAll(){
-        this.acLayersView.forEach((layer)=>layer.removeAll());
+    removeAll() {
+        this.layer.removeAll();
     }
 }
