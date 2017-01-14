@@ -1,0 +1,9 @@
+The Owners of this repository are:
+
+Tomer Moshe - tomosher@gmail.com
+Eitan Frailich - eitan.fr5@gmail.com
+Tsahi Tal - ‫t.tsahi@gmail.com‬‏
+Gonen Jerby - gonengar@gmail.com
+
+All rights reserved to the owners of this repository.
+No one may reproduce, distribute, or create derivative works from the code and all content of this repository.
