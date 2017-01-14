@@ -1,4 +1,4 @@
-<ac-layer acFor="let track of tracks$" [show]="showTracks">
+<ac-layer acFor="let track of tracks$" [show]="showTracks" [context]="this">
     <ac-billboard-desc props="{
               image: track.image,
               position: track.position,
