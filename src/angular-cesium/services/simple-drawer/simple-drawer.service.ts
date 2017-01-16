@@ -16,7 +16,7 @@ export abstract class SimpleDrawerService {
 
     add(cesiumProps:any): any {
         //Todo: Take care of show = false
-        cesiumProps.show = this._showAll;
+        cesiumProps.show = true;
         return this.cesiumCollection.add(cesiumProps);
     }
 
@@ -44,5 +44,4 @@ export abstract class SimpleDrawerService {
             primitive.show = showValue;
         }
     }
-
 }
