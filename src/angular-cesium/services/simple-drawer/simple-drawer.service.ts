@@ -14,13 +14,18 @@ export abstract class SimpleDrawerService {
         this._propsAssigner = assigner;
     }
 
-    add(cesiumProps:any): any {
+    add(id:number, cesiumProps:any): any {
         //Todo: Take care of show = false
         cesiumProps.show = true;
-        return this.cesiumCollection.add(cesiumProps);
+        let primitive = this.cesiumCollection.add(cesiumProps);
+        primitive.id = id;
+
+        return primitive;
     }
 
-    update(primitive: any, cesiumProps: Object) {
+    update(id: number, cesiumProps: Object) {
+        let primitive = this.getPrimitiveById(id);
+
         if (this._propsAssigner) {
             this._propsAssigner(primitive, cesiumProps);
         }
@@ -43,5 +48,26 @@ export abstract class SimpleDrawerService {
             const primitive = this.cesiumCollection.get(i);
             primitive.show = showValue;
         }
+    }
+
+    contains(id:number){
+        let primitive = this.getPrimitiveById(id);
+
+        return primitive !== undefined && primitive !== null;
+    }
+
+    private getPrimitiveById(id:number){
+        let primitive = null;
+        let index = this.cesiumCollection.length;
+
+        while (primitive === null && index-- > 0){
+            let currPrimitive = this.cesiumCollection.get(index);
+
+            if (currPrimitive.id === id){
+                primitive = currPrimitive;
+            }
+        }
+
+        return primitive;
     }
 }
