@@ -8,7 +8,6 @@ export class BasicDesc implements OnInit {
     @Input()
     props: any;
 
-    private _primitiveMap = new Map();
     private _propsEvaluateFn: Function;
 
     constructor(private _drawer: SimpleDrawerService,
@@ -29,23 +28,18 @@ export class BasicDesc implements OnInit {
 
     draw(context, id): any {
         const cesiumProps = this._propsEvaluator(context);
-        if (!this._primitiveMap.has(id)) {
-            const primitive = this._drawer.add(cesiumProps);
-            this._primitiveMap.set(id, primitive);
+        if (!this._drawer.contains(id)) {
+            const primitive = this._drawer.add(id, cesiumProps);
         } else {
-            const primitive = this._primitiveMap.get(id);
-            this._drawer.update(primitive, cesiumProps);
+            this._drawer.update(id, cesiumProps);
         }
     }
 
     remove(id){
-        const primitive = this._primitiveMap.get(id);
-        this._drawer.remove(primitive);
-        this._primitiveMap.delete(id);
+        this._drawer.remove(id);
     }
 
     removeAll(){
-        this._primitiveMap.clear();
         this._drawer.removeAll();
     }
 }
