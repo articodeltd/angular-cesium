@@ -13,7 +13,15 @@ export class CesiumService {
   init(mapContainer: HTMLElement) {
     this.ngZone.runOutsideAngular(() => {
       window['CESIUM_BASE_URL'] = './assets/Cesium';
-      this.cesiumViewer = new this.cesium.Viewer(mapContainer);
+      this.cesiumViewer = new this.cesium.Viewer(mapContainer,
+          {
+              // Poor internet connection - use default globe image
+            imageryProvider: Cesium.createTileMapServiceImageryProvider({
+              url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
+            }),
+            baseLayerPicker: false,
+            geocoder: false
+          });
     });
   }
 
