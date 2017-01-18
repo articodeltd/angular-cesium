@@ -8,8 +8,7 @@ import {CesiumProperties} from "../../services/cesium-properties/cesium-properti
 @Component({
     selector: 'ac-dynamic-polyline-desc',
     templateUrl: './ac-dynamic-polyline-desc.component.html',
-    styleUrls: ['./ac-dynamic-polyline-desc.component.css'],
-    providers: [PolylineDynamicDrawerService]
+    styleUrls: ['./ac-dynamic-polyline-desc.component.css']
 })
 export class AcDynamicPolylineDescComponent extends BasicDesc {
 
@@ -17,6 +16,5 @@ export class AcDynamicPolylineDescComponent extends BasicDesc {
                 computationCache: ComputationCache, cesiumProperties: CesiumProperties
     ) {
         super(polylineDynamicDrawer, layerService, computationCache, cesiumProperties);
-        console.log(this.props);
     }
 }
