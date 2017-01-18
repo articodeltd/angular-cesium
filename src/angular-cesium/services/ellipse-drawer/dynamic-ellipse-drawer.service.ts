@@ -2,6 +2,11 @@ import {Injectable} from '@angular/core';
 import {SimpleDrawerService} from "../simple-drawer/simple-drawer.service";
 import {CesiumService} from "../cesium/cesium.service";
 
+/**
+ *  This drawer is responsible for creating the dynamic version of the ellipse component.
+ *  This implementation uses polylines in order to draw the ellipses in a performant way.
+ *  This also allows up to change the position of the ellipses without creating a new primitive object as Cesium does not allow updating an ellipse.
+ */
 @Injectable()
 export class DynamicEllipseDrawerService extends SimpleDrawerService {
     constructor(cesiumService: CesiumService) {
