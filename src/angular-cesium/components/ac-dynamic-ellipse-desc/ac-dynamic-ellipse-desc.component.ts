@@ -3,18 +3,17 @@ import {CesiumProperties} from "../../services/cesium-properties/cesium-properti
 import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
 import {LayerService} from "../../services/layer-service/layer-service.service";
 import {BasicDesc} from "../../services/basic-desc/basic-desc.service";
-import {EllipseDrawerService} from "../../services/ellipse-drawer/ellipse-drawer.service";
+import {DynamicEllipseDrawerService} from "../../services/ellipse-drawer/dynamic-ellipse-drawer.service";
 
 
 @Component({
     selector: 'ac-dynamic-ellipse-desc',
     templateUrl: 'ac-dynamic-ellipse-desc.component.html',
-    styleUrls: ['ac-dynamic-ellipse-desc.component.css'],
-    providers:[EllipseDrawerService]
+    styleUrls: ['ac-dynamic-ellipse-desc.component.css']
 })
 export class AcDynamicEllipseDescComponent extends BasicDesc {
 
-    constructor(ellipseDrawer: EllipseDrawerService, layerService: LayerService,
+    constructor(ellipseDrawer: DynamicEllipseDrawerService, layerService: LayerService,
                 computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
         super(ellipseDrawer, layerService, computationCache, cesiumProperties);
     }

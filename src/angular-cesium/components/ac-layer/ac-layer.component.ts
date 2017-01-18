@@ -1,4 +1,4 @@
-import {BillboardDrawerService} from "./../../services/billboard-drawer/billboard-drawer.service";
+import {BillboardDrawerService} from "../../services/billboard-drawer/billboard-drawer.service";
 import {Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit} from "@angular/core";
 import {Observable, Subject} from "rxjs";
 import {LayerService} from "../../services/layer-service/layer-service.service";
@@ -7,12 +7,13 @@ import {ActionType} from "../../models/action-type.enum";
 import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
 import {LabelDrawerService} from "../../services/label-drawer/label-drawer.service";
 import {SimpleDrawerService} from "../../services/simple-drawer/simple-drawer.service";
+import {DynamicEllipseDrawerService} from "../../services/ellipse-drawer/dynamic-ellipse-drawer.service";
 
 @Component({
     selector: 'ac-layer',
     templateUrl: './ac-layer.component.html',
     styleUrls: ['./ac-layer.component.css'],
-    providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService]
+    providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, DynamicEllipseDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
     @Input()
@@ -41,7 +42,7 @@ export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
         this.entityName = acForArr[1];
 
         this.observable.merge(this._updateStream).subscribe((notification) => {
-            this._computationCache.clear()
+            this._computationCache.clear();
             this.context[this.entityName] = notification.entity;
             this.layerService.getDescriptions().forEach((descriptionComponent) => {
                 switch (notification.actionType) {
