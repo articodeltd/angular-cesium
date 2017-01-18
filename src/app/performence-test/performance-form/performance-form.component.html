@@ -1,11 +1,17 @@
-  <form class="settingForm" id="settingForm" >
+<form class="settingForm" id="settingForm">
     <label for="numOfEntities">Number of Entities</label>
     <input id="numOfEntities" type="number" name="numOfEntities" [(ngModel)]="numOfEntities"> <br>
     <label for="interval">interval (Ms)</label>
     <input id="interval" type="number" name="interval" [(ngModel)]="interval"> <br>
     <label for="female" title="every interval a chunck of numOfEntities will be sent">Chunk</label>
-    <input type="radio" name="sendOption" id="female" value="chunk" [(ngModel)]="sendOption" ><br>
+    <input type="radio" name="sendOption" id="female" value="chunk" [(ngModel)]="sendOption"><br>
     <label for="other" title="recursively: one entity every interval ">One By One</label>
     <input type="radio" name="sendOption" id="other" value="oneByOne" [(ngModel)]="sendOption"><br><br>
+    <form>
+        <label for="dynamic-polyline" title="Dynamic polyline entities">Dynamic Polyline</label>
+        <input type="radio" name="trackOption" id="dynamic-polyline" value="dinamicPolyline" [(ngModel)]="trackOption"><br>
+        <label for="other-tracks" title="Other track entities">Other Tracks</label>
+        <input type="radio" name="trackOption" id="other-tracks" value="otherTrack" [(ngModel)]="trackOption"><br><br>
+    </form>
     <button type="button" (click)="change()">change</button>
-  </form>
+</form>

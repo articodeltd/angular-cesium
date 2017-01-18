@@ -5,6 +5,7 @@ let httpServer = http.createServer(app);
 let io = require('socket.io')(httpServer);
 let bodyParser = require('body-parser');
 let cors = require('cors');
+let dynamicPolylineGenerator = require('./dynamic-polyline/dynamic-polyline-generator');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -22,8 +23,9 @@ httpServer.listen(3000, function () {
 });
 
 
-let numOfEntities = 5000;
-let interval = 500;
+let numOfEntities = 2;
+let interval = 5000;
+let width = 3;
 let sendOption = 'chunk';
 let intervalId;
 let dataChunk;
@@ -31,9 +33,13 @@ let socket;
 
 io.on('connection', function (connectionSocket) {
     socket = connectionSocket;
-    let dataChunk = createChunck(numOfEntities);
+    /*let dataChunk = createChunck(numOfEntities);
     intervalId = setInterval(() => {
         io.emit('birds', dataChunk);
+    }, interval);*/
+    let dataChunk = dynamicPolylineGenerator.generateChunck(numOfEntities,width)
+    intervalId = setInterval(() => {
+        io.emit('dynamic-polyline', dataChunk);
     }, interval);
 });
 

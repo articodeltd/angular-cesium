@@ -54,6 +54,14 @@ export class TracksLayerComponent implements OnInit {
         }
     }
 
+    convertToCesiumDynamicPolyline(data): any {
+        return {
+            width: data.entity.width,
+            color: Cesium.Color.BLUE,
+            position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
+        }
+    }
+
     removeAll() {
         this.layer.removeAll();
     }
