@@ -33,8 +33,9 @@ export class BasicDesc implements OnInit {
             const primitive = this._drawer.add(cesiumProps);
             this._primitiveMap.set(id, primitive);
         } else {
-            const primitive = this._primitiveMap.get(id);
-            this._drawer.update(primitive, cesiumProps);
+            let primitive = this._primitiveMap.get(id);
+            primitive = this._drawer.update(primitive, cesiumProps);
+            this._primitiveMap.set(id, primitive);
         }
     }
 
