@@ -1,20 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {AcBillboardComponent} from "./ac-polyline-dynamic.component";
+import {AcDynamicPolylineDescComponent} from "./ac-dynamic-polyline-desc.component";
 
-describe('AcBillboardComponent', () => {
-  let component: AcBillboardComponent;
-  let fixture: ComponentFixture<AcBillboardComponent>;
+describe('AcBillboradDescComponent', () => {
+  let component: AcDynamicPolylineDescComponent;
+  let fixture: ComponentFixture<AcDynamicPolylineDescComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AcBillboardComponent ]
+      declarations: [ AcDynamicPolylineDescComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AcBillboardComponent);
+    fixture = TestBed.createComponent(AcDynamicPolylineDescComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

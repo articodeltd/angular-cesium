@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import {TestBed, inject} from "@angular/core/testing";
-import {PolylineDynamicDrawerService} from "./polyline-dynamic-drawer.service";
+import {PolylineDynamicDrawerService} from "./dynamic-polyline-drawer.service";
 
 describe('BillboardDrawerService', () => {
   beforeEach(() => {
