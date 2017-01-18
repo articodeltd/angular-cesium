@@ -13,7 +13,9 @@ export class DynamicEllipseDrawerService extends SimpleDrawerService {
 
         let polyline = this.cesiumCollection.add({
             positions: positions,
-            width: 1
+            loop: true,
+            width: cesiumProps.width,
+            material: cesiumProps.material
         });
 
         polyline.id = id;
@@ -36,8 +38,6 @@ export class DynamicEllipseDrawerService extends SimpleDrawerService {
         for (let startIndex = 0; startIndex < points.outerPositions.length; startIndex += 3) {
             positions.push(Cesium.Cartesian3.fromArray(points.outerPositions, startIndex));
         }
-
-        positions.push(Cesium.Cartesian3.fromArray(points.outerPositions));
 
         return positions;
     }
