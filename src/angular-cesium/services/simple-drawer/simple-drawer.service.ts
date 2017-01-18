@@ -1,7 +1,7 @@
 import {CesiumService} from "../cesium/cesium.service";
 
 export abstract class SimpleDrawerService {
-    protected cesiumCollection: any;
+    private cesiumCollection: any;
     private primitivesMap : Map<string, any> = new Map();
     private _propsAssigner: Function;
     private _showAll;
