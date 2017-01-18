@@ -2,6 +2,7 @@ import {CesiumService} from "../cesium/cesium.service";
 
 export abstract class SimpleDrawerService {
     protected cesiumCollection: any;
+    private primitivesMap : Map<string, any> = new Map();
     private _propsAssigner: Function;
     private _showAll;
 
@@ -14,16 +15,16 @@ export abstract class SimpleDrawerService {
         this._propsAssigner = assigner;
     }
 
-    add(id:number, cesiumProps:any): any {
+    add(id:string, cesiumProps:any): any {
         //Todo: Take care of show = false
         cesiumProps.show = true;
         let primitive = this.cesiumCollection.add(cesiumProps);
-        primitive.id = id;
+        this.primitivesMap.set(id, primitive);
 
         return primitive;
     }
 
-    update(id: number, cesiumProps: Object) {
+    update(id: string, cesiumProps: Object) {
         let primitive = this.getPrimitiveById(id);
 
         if (this._propsAssigner) {
@@ -34,12 +35,16 @@ export abstract class SimpleDrawerService {
         }
     }
 
-    remove(primitive: any) {
+    remove(id: string) {
+        let primitive = this.primitivesMap.get(id);
+
+        this.primitivesMap.delete(id);
         this.cesiumCollection.remove(primitive);
     }
 
     removeAll(){
         this.cesiumCollection.removeAll();
+        this.primitivesMap.clear();
     }
 
     setShow(showValue : boolean){
@@ -50,24 +55,11 @@ export abstract class SimpleDrawerService {
         }
     }
 
-    contains(id:number){
-        let primitive = this.getPrimitiveById(id);
-
-        return primitive !== undefined && primitive !== null;
+    contains(id:string){
+        return this.primitivesMap.has(id);
     }
 
-    protected getPrimitiveById(id:number){
-        let primitive = null;
-        let index = this.cesiumCollection.length;
-
-        while (primitive === null && index-- > 0){
-            let currPrimitive = this.cesiumCollection.get(index);
-
-            if (currPrimitive.id === id){
-                primitive = currPrimitive;
-            }
-        }
-
-        return primitive;
+    protected getPrimitiveById(id:string){
+        return this.primitivesMap.get(id);
     }
 }
