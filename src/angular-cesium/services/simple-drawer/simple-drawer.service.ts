@@ -1,7 +1,7 @@
 import {CesiumService} from "../cesium/cesium.service";
 
 export abstract class SimpleDrawerService {
-    private cesiumCollection: any;
+    protected cesiumCollection: any;
     private _propsAssigner: Function;
     private _showAll;
 
@@ -56,7 +56,7 @@ export abstract class SimpleDrawerService {
         return primitive !== undefined && primitive !== null;
     }
 
-    private getPrimitiveById(id:number){
+    protected getPrimitiveById(id:number){
         let primitive = null;
         let index = this.cesiumCollection.length;
 
