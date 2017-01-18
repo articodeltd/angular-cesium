@@ -1,8 +1,7 @@
 import {CesiumService} from "../cesium/cesium.service";
 
 export abstract class SimpleDrawerService {
-    private cesiumCollection: any;
-    private primitivesMap : Map<string, any> = new Map();
+    protected cesiumCollection: any;
     private _propsAssigner: Function;
     private _showAll;
 
@@ -15,18 +14,13 @@ export abstract class SimpleDrawerService {
         this._propsAssigner = assigner;
     }
 
-    add(id:string, cesiumProps:any): any {
+    add(cesiumProps:any): any {
         //Todo: Take care of show = false
         cesiumProps.show = this._showAll;
-        let primitive = this.cesiumCollection.add(cesiumProps);
-        this.primitivesMap.set(id, primitive);
-
-        return primitive;
+        return this.cesiumCollection.add(cesiumProps);
     }
 
-    update(id: string, cesiumProps: Object) {
-        let primitive = this.getPrimitiveById(id);
-
+    update(primitive: any, cesiumProps: Object) {
         if (this._propsAssigner) {
             this._propsAssigner(primitive, cesiumProps);
         }
@@ -35,16 +29,12 @@ export abstract class SimpleDrawerService {
         }
     }
 
-    remove(id: string) {
-        let primitive = this.primitivesMap.get(id);
-
-        this.primitivesMap.delete(id);
+    remove(primitive: any) {
         this.cesiumCollection.remove(primitive);
     }
 
     removeAll(){
         this.cesiumCollection.removeAll();
-        this.primitivesMap.clear();
     }
 
     setShow(showValue : boolean){
@@ -53,13 +43,5 @@ export abstract class SimpleDrawerService {
             const primitive = this.cesiumCollection.get(i);
             primitive.show = showValue;
         }
-    }
-
-    contains(id:string){
-        return this.primitivesMap.has(id);
-    }
-
-    protected getPrimitiveById(id:string){
-        return this.primitivesMap.get(id);
     }
 }
