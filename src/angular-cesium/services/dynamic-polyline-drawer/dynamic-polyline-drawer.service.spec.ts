@@ -1,15 +1,15 @@
 /* tslint:disable:no-unused-variable */
 import {TestBed, inject} from "@angular/core/testing";
-import {PolylineDynamicDrawerService} from "./dynamic-polyline-drawer.service";
+import {DynamicPolylineDrawerService} from "./dynamic-polyline-drawer.service";
 
 describe('BillboardDrawerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PolylineDynamicDrawerService]
+      providers: [DynamicPolylineDrawerService]
     });
   });
 
-  it('should ...', inject([PolylineDynamicDrawerService], (service: PolylineDynamicDrawerService) => {
+  it('should ...', inject([DynamicPolylineDrawerService], (service: DynamicPolylineDrawerService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -7,13 +7,13 @@ import {ActionType} from "../../models/action-type.enum";
 import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
 import {LabelDrawerService} from "../../services/label-drawer/label-drawer.service";
 import {SimpleDrawerService} from "../../services/simple-drawer/simple-drawer.service";
-import {PolylineDynamicDrawerService} from "../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service";
+import {DynamicPolylineDrawerService} from "../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service";
 
 @Component({
     selector: 'ac-layer',
     templateUrl: './ac-layer.component.html',
     styleUrls: ['./ac-layer.component.css'],
-    providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, PolylineDynamicDrawerService]
+    providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, DynamicPolylineDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
     @Input()
@@ -32,10 +32,10 @@ export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
                 private _computationCache:ComputationCache,
                 billboardDrawerService:BillboardDrawerService,
                 labelDrawerService: LabelDrawerService,
-                polylineDynamicDrawerService: PolylineDynamicDrawerService) {
+                dynamicPolylineDrawerService: DynamicPolylineDrawerService) {
         this._drawerList.push(billboardDrawerService);
         this._drawerList.push(labelDrawerService);
-        this._drawerList.push(polylineDynamicDrawerService);
+        this._drawerList.push(dynamicPolylineDrawerService);
     }
 
     init() {
