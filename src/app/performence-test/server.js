@@ -27,20 +27,16 @@ let numOfEntities = 2;
 let interval = 5000;
 let width = 3;
 let sendOption = 'chunk';
+let trackOption = 'dynamicPolyline';
 let intervalId;
 let dataChunk;
 let socket;
 
 io.on('connection', function (connectionSocket) {
     socket = connectionSocket;
-    /*let dataChunk = createChunck(numOfEntities);
-    intervalId = setInterval(() => {
-        io.emit('birds', dataChunk);
-    }, interval);*/
-    let dataChunk = dynamicPolylineGenerator.generateChunck(numOfEntities,width)
-    intervalId = setInterval(() => {
-        io.emit('dynamic-polyline', dataChunk);
-    }, interval);
+    let dataChunk = createChunck(numOfEntities);
+    intervalId = setInterval(() => {io.emit('birds', dataChunk);
+     }, interval);
 });
 
 app.post('/change', function (req, res, next) {
@@ -49,18 +45,42 @@ app.post('/change', function (req, res, next) {
     numOfEntities = req.body.numOfEntities;
     interval = req.body.interval;
     sendOption = req.body.sendOption;
+    trackOption = req.body.trackOption;
 
     clearInterval(intervalId);
     switch (sendOption) {
         case 'oneByOne':
-            console.log('oneByOne')
-            intervalId = sendOneByOne();
+            console.log('oneByOne');
+            switch (trackOption) {
+                case 'dynamicPolyline':
+                    intervalId = dynamicPolylineGenerator.sendOneByOne(io, interval, numOfEntities, width);
+                    break;
+                case 'otherTrack':
+                    intervalId = sendOneByOne();
+                    break;
+                default:
+                    console.log('WTF wrong trackOption');
+            }
             break;
         case 'chunk':
-            dataChunk = createChunck(numOfEntities);
-            intervalId = setInterval(() => {
-                io.emit('birds', dataChunk);
-            }, interval);
+            console.log('chunk');
+            switch (trackOption) {
+                case 'dynamicPolyline':
+                    dataChunk = dynamicPolylineGenerator.generateChunck(numOfEntities, width);
+                    intervalId = setInterval(() => {
+                        io.emit('dynamic-polyline', dataChunk);
+                    }, interval);
+                    break;
+                case 'otherTrack':
+                    dataChunk = createChunck(numOfEntities);
+                    intervalId = setInterval(() => {
+                        io.emit('birds', dataChunk);
+                    }, interval);
+                    break;
+                default:
+                    console.log('WTF wrong trackOption');
+            }
+
 
             break;
         default:

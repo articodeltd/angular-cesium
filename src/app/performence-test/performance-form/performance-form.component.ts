@@ -10,7 +10,7 @@ class SendOption {
 }
 
 class TrackOption {
-    static DYNAMIC_POLYLINE = 'dinamicPolyline';
+    static DYNAMIC_POLYLINE = 'dynamicPolyline';
     static OTHER_TRACK = 'otherTrack';
 }
 
@@ -40,7 +40,8 @@ export class PerformanceFormComponent implements OnInit {
             {
                 interval: this.interval,
                 numOfEntities: this.numOfEntities,
-                sendOption: this.sendOption
+                sendOption: this.sendOption,
+                trackOption: this.trackOption
             }).catch(this.handleError)
             .subscribe(() => {
                 this.cleanMap.emit();

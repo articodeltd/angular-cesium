@@ -11,11 +11,14 @@ import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-laye
     styleUrls: ['./tracks-layer.component.css']
 })
 export class TracksLayerComponent implements OnInit {
-    @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+    @ViewChild('layer') layer: AcLayerComponent;
+    @ViewChild('layer2') layer2: AcLayerComponent;
 
     tracks$: Observable<AcNotification>;
     Cesium = Cesium;
     showTracks = true;
+    Polylinetracks$: Observable<AcNotification>;
+    showPolylineTracks = true;
 
     constructor(private asyncService: AsyncService) {
     }
@@ -40,7 +43,27 @@ export class TracksLayerComponent implements OnInit {
                     },
                     2000);
             });
-        })
+        });
+
+        this.Polylinetracks$ = Observable.create((observer) => {
+            socket.on('dynamic-polyline', (data) => {
+                this.asyncService.forEach(
+                    data,
+                    (acDynamicPolyline) => {
+                        let action;
+                        if (acDynamicPolyline.action === "ADD_OR_UPDATE") {
+                            action = ActionType.ADD_UPDATE;
+                        }
+                        else if (acDynamicPolyline.action === "DELETE") {
+                            action = ActionType.DELETE
+                        }
+                        acDynamicPolyline.actionType = action;
+                        acDynamicPolyline.entity = this.convertToCesiumDynamicPolyline(acDynamicPolyline);
+                        observer.next(acDynamicPolyline);
+                    },
+                    2000);
+            });
+        });
     }
 
     convertToCesiumObj(data): any {
@@ -57,12 +80,31 @@ export class TracksLayerComponent implements OnInit {
     convertToCesiumDynamicPolyline(data): any {
         return {
             width: data.entity.width,
-            color: Cesium.Color.BLUE,
-            position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
-        }
+            positions: Cesium.Cartesian3.fromDegreesArray([
+                (Math.random() * 10), (Math.random() * 10),
+                (Math.random() * 10), (Math.random() * 10),
+                (Math.random() * 10), (Math.random() * 10)]),
+            material: data.id === 1 ?
+                new Cesium.Material({
+                fabric : {
+                    type : 'Color',
+                    uniforms : {
+                        color : new Cesium.Color(1.0, 0.0, 0.0, 1.0)
+                    }
+                }}) :
+                new Cesium.Material({
+                fabric : {
+                    type : 'Color',
+                    uniforms : {
+                        color : new Cesium.Color(1.0, 1.0, 0.0, 1.0)
+                    }
+                }
+            })
+        };
     }
 
     removeAll() {
         this.layer.removeAll();
+        this.layer2.removeAll();
     }
 }
