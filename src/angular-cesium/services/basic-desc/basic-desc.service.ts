@@ -8,18 +8,14 @@ export class BasicDesc implements OnInit {
     @Input()
     props: any;
 
-    private static idSequence :number = 0;
-
+    private _primitiveMap = new Map();
     private _propsEvaluateFn: Function;
-    private id :string;
 
     constructor(private _drawer: SimpleDrawerService,
                 private _layerService: LayerService,
                 private _computationCache: ComputationCache,
                 private _cesiumProperties: CesiumProperties,
-    ) {
-        this.id = this.generateId();
-    }
+    ) {}
 
     _propsEvaluator(context: Object): any {
         return this._propsEvaluateFn(this._computationCache, context);
@@ -32,27 +28,25 @@ export class BasicDesc implements OnInit {
     }
 
     draw(context, id): any {
-        id = `${this.id}.${id}`;
-
         const cesiumProps = this._propsEvaluator(context);
-        if (!this._drawer.contains(id)) {
-            this._drawer.add(id, cesiumProps);
+        if (!this._primitiveMap.has(id)) {
+            const primitive = this._drawer.add(cesiumProps);
+            this._primitiveMap.set(id, primitive);
         } else {
-            this._drawer.update(id, cesiumProps);
+            let primitive = this._primitiveMap.get(id);
+            primitive = this._drawer.update(primitive, cesiumProps);
+            this._primitiveMap.set(id, primitive);
         }
     }
 
     remove(id){
-        id = `${this.id}.${id}`;
-
-        this._drawer.remove(id);
+        const primitive = this._primitiveMap.get(id);
+        this._drawer.remove(primitive);
+        this._primitiveMap.delete(id);
     }
 
     removeAll(){
+        this._primitiveMap.clear();
         this._drawer.removeAll();
-    }
-
-    protected generateId() : string{
-        return `${this.constructor.name}.${BasicDesc.idSequence++}`;
     }
 }
