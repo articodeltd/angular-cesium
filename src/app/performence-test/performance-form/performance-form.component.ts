@@ -9,11 +9,6 @@ class SendOption {
     static ONE_BY_ONE = 'oneByOne';
 }
 
-class TrackOption {
-    static DYNAMIC_POLYLINE = 'dynamicPolyline';
-    static OTHER_TRACK = 'otherTrack';
-}
-
 @Component({
     selector: 'performance-form',
     templateUrl: './performance-form.component.html',
@@ -25,8 +20,6 @@ export class PerformanceFormComponent implements OnInit {
     private numOfEntities = 500;
     private interval = 500;
     private sendOption = SendOption.CHUNK;
-    private trackOption = TrackOption.DYNAMIC_POLYLINE;
-
 
     constructor(private http: Http) {
     }
@@ -40,8 +33,7 @@ export class PerformanceFormComponent implements OnInit {
             {
                 interval: this.interval,
                 numOfEntities: this.numOfEntities,
-                sendOption: this.sendOption,
-                trackOption: this.trackOption
+                sendOption: this.sendOption
             }).catch(this.handleError)
             .subscribe(() => {
                 this.cleanMap.emit();

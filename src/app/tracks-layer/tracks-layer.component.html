@@ -1,4 +1,4 @@
-<ac-layer #layer acFor="let track of tracks$" [show]="showTracks" [context]="this">
+<ac-layer acFor="let track of tracks$" [show]="showTracks" [context]="this">
     <ac-billboard-desc props="{
               image: track.image,
               position: track.position,
@@ -111,11 +111,4 @@
     <!--pixelOffset : [61,1] | pixelOffset-->
     <!--}">-->
     <!--</ac-billboard-desc>-->
-</ac-layer>
-<ac-layer #layer2 acFor="let track of Polylinetracks$" [show]="showPolylineTracks" [context]="this">
-    <ac-dynamic-polyline-desc props="{
-                           width : track.width,
-                           positions: track.positions,
-                           material: track.material
-                          }"></ac-dynamic-polyline-desc>
 </ac-layer>
