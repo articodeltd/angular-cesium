@@ -13,7 +13,7 @@ export class DynamicEllipseDrawerService extends SimpleDrawerService {
         super(Cesium.PolylineCollection, cesiumService);
     }
 
-    add(id: string, cesiumProps: any): any {
+    add(cesiumProps: any): any {
         let positions = DynamicEllipseDrawerService.generatePositions(cesiumProps);
 
         let polylinedEllipse = {
@@ -23,19 +23,14 @@ export class DynamicEllipseDrawerService extends SimpleDrawerService {
             material: cesiumProps.material
         };
 
-        let ellipsePrimitive = super.add(id, polylinedEllipse);
-
-        ellipsePrimitive.center = cesiumProps.center;
-
-        return ellipsePrimitive;
+        return super.add(polylinedEllipse);
     }
 
-    update(id: string, cesiumProps: Object): any {
-        let ellipse = this.getPrimitiveById(id);
-
+    update(ellipse: any, cesiumProps: Object): any {
         ellipse.positions = DynamicEllipseDrawerService.generatePositions(cesiumProps);
-    }
 
+        return ellipse;
+    }
 
     private static generatePositions(cesiumProps: any) {
         let points = Cesium.EllipseGeometryLibrary.computeEllipsePositions(cesiumProps, false, true);
