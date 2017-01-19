@@ -30,7 +30,6 @@ import {DynamicEllipseDrawerService} from "../../services/ellipse-drawer/dynamic
     styleUrls: ['ac-dynamic-ellipse-desc.component.css']
 })
 export class AcDynamicEllipseDescComponent extends BasicDesc {
-
     constructor(ellipseDrawer: DynamicEllipseDrawerService, layerService: LayerService,
                 computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
         super(ellipseDrawer, layerService, computationCache, cesiumProperties);
