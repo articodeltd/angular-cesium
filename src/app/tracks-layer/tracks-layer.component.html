@@ -1,0 +1,17 @@
+<ac-layer acFor="let track of tracks$" [show]="showTracks" [context]="this">
+    <ac-billboard-desc props="{
+              image: track.image,
+              position: track.position,
+              scale: track.scale,
+              color: track.color,
+              name: track.name
+            }">
+    </ac-billboard-desc>
+    <ac-label-desc props="{
+            position: track.position,
+            pixelOffset : [-15,20] | pixelOffset,
+            text: track.name,
+            font: '15px sans-serif'
+    }">
+    </ac-label-desc>
+</ac-layer>
