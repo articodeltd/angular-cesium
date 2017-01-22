@@ -8,10 +8,11 @@ import {PerformanceFormComponent} from "./performence-test/performance-form/perf
 import {TracksLayerComponent} from "./tracks-layer/tracks-layer.component";
 import { AcLabelDescComponent } from '../angular-cesium/components/ac-label-desc/ac-label-desc.component';
 import { BaseLayerComponent } from './base-layer/base-layer.component';
+import {EllipseLayerComponent} from "./ellipse-layer/ellipse-layer.component";
 
 @NgModule({
     declarations: [
-        AppComponent,PerformanceFormComponent,TracksLayerComponent, BaseLayerComponent
+        AppComponent,PerformanceFormComponent,TracksLayerComponent, EllipseLayerComponent, BaseLayerComponent
     ],
     imports: [
         BrowserModule,
