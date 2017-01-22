@@ -21,7 +21,6 @@ httpServer.listen(3000, function () {
     console.log('listening on *:3000');
 });
 
-
 let numOfEntities = 1000;
 let interval = 500;
 let sendOption = 'chunk';
