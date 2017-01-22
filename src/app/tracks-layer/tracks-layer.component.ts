@@ -40,10 +40,7 @@ export class TracksLayerComponent implements OnInit {
                     },
                     2000);
             });
-        })
-
-        // this.tracks$ = Observable.from([{entity:Cesium.Cartesian3.fromRadians(Math.random(), Math.random()), actionType:ActionType.ADD_UPDATE, id:1}]);
-
+        });
     }
 
     convertToCesiumObj(data): any {
