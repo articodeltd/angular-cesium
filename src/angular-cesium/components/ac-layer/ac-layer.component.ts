@@ -25,15 +25,15 @@ export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
 
     private entityName:string;
     private observable: Observable<AcNotification>;
-    private _drawerList:SimpleDrawerService[] = [];
+    private _drawerList:SimpleDrawerService[];
     private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 
     constructor(private  layerService:LayerService,
                 private _computationCache:ComputationCache,
                 billboardDrawerService:BillboardDrawerService,
-                labelDrawerService: LabelDrawerService) {
-        this._drawerList.push(billboardDrawerService);
-        this._drawerList.push(labelDrawerService);
+                labelDrawerService: LabelDrawerService,
+                dynamicEllipseDrawerService: DynamicEllipseDrawerService) {
+        this._drawerList = Array.of(billboardDrawerService, labelDrawerService, dynamicEllipseDrawerService);
     }
 
     init() {
