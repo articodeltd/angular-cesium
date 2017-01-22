@@ -26,32 +26,28 @@ export class TracksLayerComponent implements OnInit {
             socket.on('birds', (data) => {
                 this.asyncService.forEach(
                     data,
-                    (acEntity) => {
+                    (acNotification) => {
                         let action;
-                        if (acEntity.action === "ADD_OR_UPDATE") {
+                        if (acNotification.action === "ADD_OR_UPDATE") {
                             action = ActionType.ADD_UPDATE;
                         }
-                        else if (acEntity.action === "DELETE") {
+                        else if (acNotification.action === "DELETE") {
                             action = ActionType.DELETE
                         }
-                        acEntity.actionType = action;
-                        acEntity.entity = this.convertToCesiumObj(acEntity);
-                        observer.next(acEntity);
+                        acNotification.actionType = action;
+                        acNotification.entity = this.convertToCesiumObj(acNotification.entity);
+                        observer.next(acNotification);
                     },
                     2000);
             });
         });
     }
 
-    convertToCesiumObj(data): any {
-        return {
-            image: data.entity.image,
-            scale: data.id === 1 ? 0.3 : 0.15,
-            color1: Cesium.Color.BLUE,
-            color: data.id === 1 ? Cesium.Color.RED : undefined,
-            position: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
-            position1: Cesium.Cartesian3.fromRadians(Math.random(), Math.random())
-        }
+    convertToCesiumObj(entity): any {
+        entity.scale = entity.id === 1 ? 0.3 : 0.15;
+        entity.color = entity.id === 1 ? Cesium.Color.RED : undefined;
+        entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat);
+        return entity;
     }
 
     removeAll() {

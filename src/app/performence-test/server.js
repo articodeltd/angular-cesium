@@ -22,7 +22,7 @@ httpServer.listen(3000, function () {
 });
 
 
-let numOfEntities = 5000;
+let numOfEntities = 1000;
 let interval = 500;
 let sendOption = 'chunk';
 let intervalId;
@@ -31,10 +31,8 @@ let socket;
 
 io.on('connection', function (connectionSocket) {
     socket = connectionSocket;
-    let dataChunk = createChunck(numOfEntities);
-    intervalId = setInterval(() => {
-        io.emit('birds', dataChunk);
-    }, interval);
+    dataChunk = createChunk(numOfEntities);
+    intervalId = sendChunk();
 });
 
 app.post('/change', function (req, res, next) {
@@ -47,15 +45,11 @@ app.post('/change', function (req, res, next) {
     clearInterval(intervalId);
     switch (sendOption) {
         case 'oneByOne':
-            console.log('oneByOne')
             intervalId = sendOneByOne();
             break;
         case 'chunk':
-            dataChunk = createChunck(numOfEntities);
-            intervalId = setInterval(() => {
-                io.emit('birds', dataChunk);
-            }, interval);
-
+            dataChunk = createChunk(numOfEntities);
+            intervalId = sendChunk()
             break;
         default:
             console.log('WTF wrong sendOption');
@@ -64,6 +58,14 @@ app.post('/change', function (req, res, next) {
     res.send('changed successfully');
 });
 
+function sendChunk() {
+    let id = setInterval(() => {
+        dataChunk = updateChunk(dataChunk);
+        io.emit('birds', dataChunk);
+    }, interval);
+    return id;
+
+}
 function sendOneByOne() {
     let counter = 0;
     console.log(interval);
@@ -81,15 +83,29 @@ function sendOneByOne() {
     return id;
 }
 
-function createChunck(numOfEntities) {
+function updateChunk(dataArr) {
+    for (let i = 0; i < dataArr.length; i++) {
+        let entity = dataArr[i].entity;
+        entity.position.lat += 0.04;
+        entity.position.long += 0.08;
+    }
+    return dataArr;
+}
+
+function createChunk(numOfEntities) {
     const data = [];
-    for (let i =0; i < numOfEntities; i++) {
+    for (let i = 0; i < numOfEntities; i++) {
+        let getSign = ()=>Math.round(Math.random()) * 2 - 1;
         data.push({
             id: i,
             action: 'ADD_OR_UPDATE',
             entity: {
-                name: 'bird',
-                image: "/assets/angry-bird-blue-icon.png"
+                name: 'bird' + i,
+                image: "/assets/angry-bird-blue-icon.png",
+                position: {
+                    lat: 60 * Math.random() * getSign(),
+                    long: 100 * Math.random() * getSign()
+                }
             }
         });
     }
