@@ -12,9 +12,10 @@ import {DynamicEllipseDrawerService} from "../../services/ellipse-drawer/dynamic
         center: data.position,
         semiMajorAxis:250000.0,
         semiMinorAxis:400000.0,
+        rotation : 0.785398,
         width:3, // Optional
-        rotation : 0.785398
         granularity:0.08 // Optional
+        }">
     }">
 
  @param {Cesium.Cartesian3} center
