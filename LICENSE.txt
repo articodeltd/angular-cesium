@@ -1,13 +1,9 @@
-﻿Copyright © 2017 Tomer Moshe, Eitan Frailich, Tsahi Tal, Gonen Jerby. All rights reserved.
+Copyright © 2017 Tomer Moshe, Eitan Frailich. All rights reserved.
 
-The Owners of this repository and project (also referred to as "the owners"):
 Tomer Moshe - tomosher1@gmail.com
 Eitan Frailich - eitan.fr5@gmail.com
-Tsahi Tal - t.tsahi@gmail.com
-Gonen Jerby - gonengar@gmail.com
 
-All rights reserved to the owners.
+All rights reserved to Tomer Moshe and Eitan Frailich.
 No one may reproduce and/or distribute and/or use for any kind of commercial use
-unless granted specific and explicit permission in writing from the owners.
-
-You may use the content of this repository for non comercial private use BUT you must give proper credit to the owners.
+and/or create derivative works from the code and all content of this repository
+unless granted specific and explicit permission in writing from this repository's owners.
