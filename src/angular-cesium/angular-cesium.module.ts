@@ -5,6 +5,8 @@ import {AcMapComponent} from "./components/ac-map/ac-map.component";
 import {AcLayerComponent} from "./components/ac-layer/ac-layer.component";
 import {AcBillboardComponent} from "./components/ac-billboard/ac-billboard.component";
 import {AcBillboardDescComponent} from "./components/ac-billborad-desc/ac-billborad-desc.component";
+import {AcDynamicPolylineDescComponent} from "./components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component";
+
 import {AcLayer2Directive} from "./directives/ac-layer-2.directive";
 import {Angular2ParseModule} from "../angular2-parse/src/angular2-parse.module";
 import {PixelOffsetPipe} from "./pipes/pixel-offset/pixel-offset.pipe";
@@ -27,6 +29,7 @@ import {AsyncService} from "../utils/services/async/async.service";
         AcBillboardDescComponent,
         AcLabelDescComponent,
         AcLayer2Directive,
+        AcDynamicPolylineDescComponent,
         PixelOffsetPipe],
     exports: [
         AcMapComponent,
@@ -35,6 +38,7 @@ import {AsyncService} from "../utils/services/async/async.service";
         AcLabelDescComponent,
         AcLayerComponent,
         AcLayer2Directive,
+        AcDynamicPolylineDescComponent
         ],
     providers: [JsonMapper, CesiumProperties, AsyncService],
 })
