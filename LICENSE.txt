@@ -1,9 +1,0 @@
-Copyright © 2017 Tomer Moshe, Eitan Frailich. All rights reserved.
-
-Tomer Moshe - tomosher1@gmail.com
-Eitan Frailich - eitan.fr5@gmail.com
-
-All rights reserved to Tomer Moshe and Eitan Frailich.
-No one may reproduce and/or distribute and/or use for any kind of commercial use
-and/or create derivative works from the code and all content of this repository
-unless granted specific and explicit permission in writing from this repository's owners.
