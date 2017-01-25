@@ -31,9 +31,11 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	constructor(private  layerService: LayerService,
 	            private _computationCache: ComputationCache,
 	            billboardDrawerService: BillboardDrawerService,
-	            labelDrawerService: LabelDrawerService) {
+	            labelDrawerService: LabelDrawerService,
+	            ellipseDrawerService: EllipseDrawerService) {
 		this._drawerList.push(billboardDrawerService);
 		this._drawerList.push(labelDrawerService);
+		this._drawerList.push(ellipseDrawerService);
 	}
 
 	init() {
