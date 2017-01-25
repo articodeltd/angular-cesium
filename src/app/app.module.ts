@@ -8,10 +8,11 @@ import { PerformanceFormComponent } from "./performence-test/performance-form/pe
 import { TracksLayerComponent } from "./tracks-layer/tracks-layer.component";
 import { EllipseLayerComponent } from "./ellipse-layer/ellipse-layer.component";
 import { BaseLayerComponent } from './base-layer/base-layer.component';
+import { PolygonLayerComponent } from './polygon-layer/polygon-layer.component';
 
 @NgModule({
 	declarations: [
-		AppComponent, PerformanceFormComponent, TracksLayerComponent, BaseLayerComponent, EllipseLayerComponent
+		AppComponent, PerformanceFormComponent, TracksLayerComponent, BaseLayerComponent, EllipseLayerComponent, PolygonLayerComponent
 	],
 	imports: [
 		BrowserModule,
