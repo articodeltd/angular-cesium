@@ -8,12 +8,13 @@ import {ComputationCache} from "../../services/computation-cache/computation-cac
 import {LabelDrawerService} from "../../services/label-drawer/label-drawer.service";
 import {SimpleDrawerService} from "../../services/simple-drawer/simple-drawer.service";
 import {DynamicEllipseDrawerService} from "../../services/ellipse-drawer/dynamic-ellipse-drawer.service";
+import {DynamicPolylineDrawerService} from "../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service";
 
 @Component({
     selector: 'ac-layer',
     templateUrl: './ac-layer.component.html',
     styleUrls: ['./ac-layer.component.css'],
-    providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, DynamicEllipseDrawerService]
+    providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
     @Input()
@@ -32,8 +33,14 @@ export class AcLayerComponent implements OnInit, OnChanges , AfterContentInit {
                 private _computationCache:ComputationCache,
                 billboardDrawerService:BillboardDrawerService,
                 labelDrawerService: LabelDrawerService,
-                dynamicEllipseDrawerService: DynamicEllipseDrawerService) {
-        this._drawerList = Array.of(billboardDrawerService, labelDrawerService, dynamicEllipseDrawerService);
+                dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+                dynamicPolylineDrawerService: DynamicPolylineDrawerService) {
+        this._drawerList = Array.of(
+            billboardDrawerService,
+            labelDrawerService,
+            dynamicEllipseDrawerService,
+            dynamicPolylineDrawerService
+        );
     }
 
     init() {
