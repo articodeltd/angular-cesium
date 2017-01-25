@@ -1,13 +1,14 @@
-import { BillboardDrawerService } from "./../../services/billboard-drawer/billboard-drawer.service";
-import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from "@angular/core";
-import { Observable, Subject } from "rxjs";
-import { LayerService } from "../../services/layer-service/layer-service.service";
-import { AcNotification } from "../../models/ac-notification";
-import { ActionType } from "../../models/action-type.enum";
-import { ComputationCache } from "../../services/computation-cache/computation-cache.service";
-import { EllipseDrawerService } from "../../services/ellipse-drawer/ellipse-drawer.service";
-import { LabelDrawerService } from "../../services/label-drawer/label-drawer.service";
-import { SimpleDrawerService } from "../../services/simple-drawer/simple-drawer.service";
+import { BillboardDrawerService } from './../../services/billboard-drawer/billboard-drawer.service';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { LayerService } from '../../services/layer-service/layer-service.service';
+import { AcNotification } from '../../models/ac-notification';
+import { ActionType } from '../../models/action-type.enum';
+import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
+import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
+import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
+import { SimpleDrawerService } from '../../services/simple-drawer/simple-drawer.service';
+import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
 
 @Component({
 	selector: 'ac-layer',
@@ -32,10 +33,12 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            private _computationCache: ComputationCache,
 	            billboardDrawerService: BillboardDrawerService,
 	            labelDrawerService: LabelDrawerService,
-	            ellipseDrawerService: EllipseDrawerService) {
+	            ellipseDrawerService: EllipseDrawerService,
+	            polygonDrawerService: PolygonDrawerService) {
 		this._drawerList.push(billboardDrawerService);
 		this._drawerList.push(labelDrawerService);
 		this._drawerList.push(ellipseDrawerService);
+		this._drawerList.push(polygonDrawerService);
 	}
 
 	init() {
