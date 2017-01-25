@@ -14,7 +14,7 @@ export class KavimLayerComponent implements OnInit, AfterViewInit {
 
     kavim$:Observable<AcNotification>;
 
-    private Cartesian3 : any
+    private Cartesian3 : any;
 
     constructor() {
 

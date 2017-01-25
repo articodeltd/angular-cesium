@@ -23,9 +23,9 @@ import {CesiumProperties} from "../../services/cesium-properties/cesium-properti
 })
 export class AcDynamicPolylineDescComponent extends BasicDesc {
 
-    constructor(polylineDynamicDrawer: DynamicPolylineDrawerService, layerService: LayerService,
+    constructor(dynamicPolylineDrawerService: DynamicPolylineDrawerService, layerService: LayerService,
                 computationCache: ComputationCache, cesiumProperties: CesiumProperties
     ) {
-        super(polylineDynamicDrawer, layerService, computationCache, cesiumProperties);
+        super(dynamicPolylineDrawerService, layerService, computationCache, cesiumProperties);
     }
 }
