@@ -14,7 +14,7 @@ import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-draw
 	selector: 'ac-layer',
 	templateUrl: './ac-layer.component.html',
 	styleUrls: ['./ac-layer.component.css'],
-	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService]
+	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, PolygonDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	@Input()
