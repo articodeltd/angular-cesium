@@ -31,14 +31,17 @@ export class BasicStaticPrimitiveDesc extends BasicDesc {
 	}
 
 	draw(context, id): any {
-		if (!this._primitiveMap.has(id)) {
-			const geometryProps = this._specificPropsEvaluator(context, this._geometryPropsFn);
-			const instanceProps = this._specificPropsEvaluator(context, this._instancePropsFn);
-			const primitiveProps = this._specificPropsEvaluator(context, this._primitivePropsFn);
+		const geometryProps = this._specificPropsEvaluator(context, this._geometryPropsFn);
+		const instanceProps = this._specificPropsEvaluator(context, this._instancePropsFn);
+		const primitiveProps = this._specificPropsEvaluator(context, this._primitivePropsFn);
 
+		if (!this._primitiveMap.has(id)) {
 			const primitive = this._staticPrimitiveDrawer.add(geometryProps, instanceProps, primitiveProps);
 
 			this._primitiveMap.set(id, primitive);
+		} else {
+			const primitive = this._primitiveMap.get(id);
+			this._staticPrimitiveDrawer.update(primitive, geometryProps, instanceProps, primitiveProps);
 		}
 	}
 

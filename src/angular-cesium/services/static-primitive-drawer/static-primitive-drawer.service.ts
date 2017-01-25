@@ -13,6 +13,6 @@ export abstract class StaticPrimitiveDrawer extends SimpleDrawerService {
 		return super.add(new Cesium.Primitive(primitiveProps));
 	}
 
-	update(primitive: any, cesiumProps: any) {
+	update(primitive: any, geometryProps: any, instanceProps: any, primitiveProps: any) {
 	}
 }
