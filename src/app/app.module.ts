@@ -8,10 +8,16 @@ import {PerformanceFormComponent} from "./performence-test/performance-form/perf
 import {TracksLayerComponent} from "./tracks-layer/tracks-layer.component";
 import { BaseLayerComponent } from './base-layer/base-layer.component';
 import {EllipseLayerComponent} from "./ellipse-layer/ellipse-layer.component";
+import { KavimLayerComponent } from './kavim-layer/kavim-layer.component';
 
 @NgModule({
     declarations: [
-        AppComponent,PerformanceFormComponent,TracksLayerComponent, EllipseLayerComponent, BaseLayerComponent
+        AppComponent,
+        PerformanceFormComponent,
+        TracksLayerComponent,
+        EllipseLayerComponent,
+        BaseLayerComponent,
+        KavimLayerComponent
     ],
     imports: [
         BrowserModule,

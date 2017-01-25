@@ -13,6 +13,7 @@ import {CesiumProperties} from "./services/cesium-properties/cesium-properties.s
 import {AcLabelDescComponent} from "./components/ac-label-desc/ac-label-desc.component";
 import {UtilsModule} from "../utils/utils.module";
 import {AcDynamicEllipseDescComponent} from "./components/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component";
+import {AcDynamicPolylineDescComponent} from "./components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component";
 
 @NgModule({
     imports: [
@@ -29,6 +30,7 @@ import {AcDynamicEllipseDescComponent} from "./components/ac-dynamic-ellipse-des
         AcLabelDescComponent,
         AcLayer2Directive,
         AcDynamicEllipseDescComponent,
+        AcDynamicPolylineDescComponent,
         PixelOffsetPipe
     ],
     exports: [
@@ -37,6 +39,7 @@ import {AcDynamicEllipseDescComponent} from "./components/ac-dynamic-ellipse-des
         AcBillboardDescComponent,
         AcLabelDescComponent,
         AcDynamicEllipseDescComponent,
+        AcDynamicPolylineDescComponent,
         AcLayerComponent,
         AcLayer2Directive
         ],
