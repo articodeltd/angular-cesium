@@ -21,7 +21,7 @@ export abstract class SimpleDrawerService {
 		return this._cesiumCollection.add(cesiumProps);
 	}
 
-	update(primitive: any, cesiumProps: Object) {
+	update(primitive: any, cesiumProps: Object, ...moreProps) {
 		if (this._propsAssigner) {
 			this._propsAssigner(primitive, cesiumProps);
 		}
