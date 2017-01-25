@@ -12,6 +12,7 @@ import {JsonMapper} from "./services/json-mapper/json-mapper.service";
 import {CesiumProperties} from "./services/cesium-properties/cesium-properties.service";
 import {AcLabelDescComponent} from "./components/ac-label-desc/ac-label-desc.component";
 import {UtilsModule} from "../utils/utils.module";
+import {AcDynamicEllipseDescComponent} from "./components/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component";
 
 @NgModule({
     imports: [
@@ -19,21 +20,25 @@ import {UtilsModule} from "../utils/utils.module";
         Angular2ParseModule,
         UtilsModule
     ],
-    declarations: [AngularCesiumComponent,
+    declarations: [
+        AngularCesiumComponent,
         AcMapComponent,
         AcLayerComponent,
         AcBillboardComponent,
         AcBillboardDescComponent,
         AcLabelDescComponent,
         AcLayer2Directive,
-        PixelOffsetPipe],
+        AcDynamicEllipseDescComponent,
+        PixelOffsetPipe
+    ],
     exports: [
         AcMapComponent,
         AcBillboardComponent,
         AcBillboardDescComponent,
         AcLabelDescComponent,
+        AcDynamicEllipseDescComponent,
         AcLayerComponent,
-        AcLayer2Directive,
+        AcLayer2Directive
         ],
     providers: [JsonMapper, CesiumProperties],
 })
