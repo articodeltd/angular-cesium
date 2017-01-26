@@ -1,15 +1,15 @@
-<ac-layer acFor="let circle of tracks$" [show]="true" [context]="this">
+<ac-layer acFor="let circle of circles$" [show]="true" [context]="this">
     <ac-static-circle
             geometryProps="{
-				center: circle.geometry.center,
-				radius: circle.geometry.radius,
-				height: circle.height
+				center: circle.staticCircle.geometry.center,
+				radius: circle.staticCircle.geometry.radius,
+				height: circle.staticCircle.height
 			}"
             instanceProps="{
-                attributes: circle.attributes
+                attributes: circle.staticCircle.attributes
              }"
             primitiveProps="{
-                appearance: circle.appearance
+                appearance: circle.staticCircle.appearance
             }
     ">
     </ac-static-circle>

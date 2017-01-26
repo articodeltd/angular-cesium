@@ -19,5 +19,21 @@ export function convertToCesiumObj(entity): any {
 	};
 	entity.appearance = oneAndOnlyMaterial;
 
+	entity.staticCircle = {
+		geometry: {
+			center: Cesium.Cartesian3.fromDegrees(Math.random() * 90, Math.random() * 90),
+			radius: 100000.0,
+			height: 1000000
+		},
+		attributes: {
+			color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+		},
+		appearance: new Cesium.PerInstanceColorAppearance({
+			translucent: false,
+			closed: true
+		})
+	};
+
 	return entity;
 }
+
