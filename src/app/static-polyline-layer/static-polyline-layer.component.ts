@@ -10,7 +10,7 @@ import { TracksDataProvider } from '../../utils/services/dataProvider/tracksData
 	templateUrl: 'static-polyline-layer.component.html',
 	providers: [TracksDataProvider]
 })
-export class PolyLayerComponent implements OnInit {
+export class staticPolylineLayerComponent implements OnInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
 	staticPolylines$: Observable<AcNotification>;

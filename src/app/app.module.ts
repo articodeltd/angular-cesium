@@ -11,7 +11,7 @@ import { EllipseLayerComponent } from './ellipse-layer/ellipse-layer.component';
 import { BaseLayerComponent } from './base-layer/base-layer.component';
 import { DynamicEllipseLayerComponent } from './dynamic-ellipse-layer/dynamic-ellipse-layer.component';
 import { KavimLayerComponent } from './kavim-layer/kavim-layer.component';
-import { PolyLayerComponent } from './static-polyline-layer/static-polyline-layer.component';
+import { staticPolylineLayerComponent } from './static-polyline-layer/static-polyline-layer.component';
 import { StaticCircleLayerComponent } from './static-circle-layer/static-circle-layer.component';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { StaticCircleLayerComponent } from './static-circle-layer/static-circle-
 		DynamicEllipseLayerComponent,
 		EllipseLayerComponent,
 		KavimLayerComponent,
-		PolyLayerComponent,
+		staticPolylineLayerComponent,
 		KavimLayerComponent,
 		StaticCircleLayerComponent
 	],
