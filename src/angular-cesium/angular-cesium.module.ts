@@ -6,6 +6,8 @@ import { AcLayerComponent } from "./components/ac-layer/ac-layer.component";
 import { AcBillboardComponent } from "./components/ac-billboard/ac-billboard.component";
 import { AcBillboardDescComponent } from "./components/ac-billborad-desc/ac-billborad-desc.component";
 import { AcEllipseStaticDescComponent } from "./components/ac-ellipse-static/ac-ellipse-static-desc.component";
+import {AcDynamicEllipseDescComponent} from "./components/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component";
+import {AcDynamicPolylineDescComponent} from "./components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component";
 import { AcLayer2Directive } from "./directives/ac-layer-2.directive";
 import { Angular2ParseModule } from "../angular2-parse/src/angular2-parse.module";
 import { PixelOffsetPipe } from "./pipes/pixel-offset/pixel-offset.pipe";
@@ -28,6 +30,8 @@ import { AsyncService } from '../utils/services/async/async.service';
 		AcBillboardDescComponent,
 		AcLabelDescComponent,
 		AcEllipseStaticDescComponent,
+		AcDynamicEllipseDescComponent,
+		AcDynamicPolylineDescComponent,
 		AcLayer2Directive,
 		PixelOffsetPipe],
 	exports: [
@@ -36,6 +40,8 @@ import { AsyncService } from '../utils/services/async/async.service';
 		AcBillboardDescComponent,
 		AcLabelDescComponent,
 		AcEllipseStaticDescComponent,
+		AcDynamicEllipseDescComponent,
+		AcDynamicPolylineDescComponent,
 		AcLayerComponent,
 		AcLayer2Directive,
 	],
