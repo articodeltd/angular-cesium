@@ -1,21 +1,21 @@
-import {BillboardDrawerService} from "./../../services/billboard-drawer/billboard-drawer.service";
-import {Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit} from "@angular/core";
-import {Observable, Subject} from "rxjs";
-import {LayerService} from "../../services/layer-service/layer-service.service";
-import {AcNotification} from "../../models/ac-notification";
-import {ActionType} from "../../models/action-type.enum";
-import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
-import {LabelDrawerService} from "../../services/label-drawer/label-drawer.service";
-import {SimpleDrawerService} from "../../services/simple-drawer/simple-drawer.service";
-import { EllipseDrawerService } from "../../services/ellipse-drawer/ellipse-drawer.service";
-import {DynamicEllipseDrawerService} from "../../services/ellipse-drawer/dynamic-ellipse-drawer.service";
-import {DynamicPolylineDrawerService} from "../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service";
+import { BillboardDrawerService } from './../../services/billboard-drawer/billboard-drawer.service';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { LayerService } from '../../services/layer-service/layer-service.service';
+import { AcNotification } from '../../models/ac-notification';
+import { ActionType } from '../../models/action-type.enum';
+import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
+import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
+import { SimpleDrawerService } from '../../services/simple-drawer/simple-drawer.service';
+import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
+import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 
 @Component({
 	selector: 'ac-layer',
 	templateUrl: './ac-layer.component.html',
 	styleUrls: ['./ac-layer.component.css'],
-	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService]
+	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	@Input()
@@ -30,21 +30,21 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	private _drawerList: SimpleDrawerService[] = [];
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 
-    constructor(private  layerService:LayerService,
-                private _computationCache:ComputationCache,
-                billboardDrawerService:BillboardDrawerService,
-                labelDrawerService: LabelDrawerService,
-                ellipseDrawerService: EllipseDrawerService,
-                dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-                dynamicPolylineDrawerService: DynamicPolylineDrawerService) {
-        this._drawerList = Array.of(
-            billboardDrawerService,
-            labelDrawerService,
-	        ellipseDrawerService,
-            dynamicEllipseDrawerService,
-            dynamicPolylineDrawerService
-        );
-    }
+	constructor(private  layerService: LayerService,
+	            private _computationCache: ComputationCache,
+	            billboardDrawerService: BillboardDrawerService,
+	            labelDrawerService: LabelDrawerService,
+	            ellipseDrawerService: EllipseDrawerService,
+	            dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+	            dynamicPolylineDrawerService: DynamicPolylineDrawerService) {
+		this._drawerList = Array.of(
+			billboardDrawerService,
+			labelDrawerService,
+			ellipseDrawerService,
+			dynamicEllipseDrawerService,
+			dynamicPolylineDrawerService
+		);
+	}
 
 	init() {
 		const acForArr = this.acFor.split(' ');

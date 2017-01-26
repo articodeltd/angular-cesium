@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EllipseLayerComponent } from './ellipse-layer.component';
 
-describe('EllipseLayerComponent', () => {
+describe('DynamicEllipseLayerComponent', () => {
 	let component: EllipseLayerComponent;
 	let fixture: ComponentFixture<EllipseLayerComponent>;
 
