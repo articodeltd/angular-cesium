@@ -14,9 +14,9 @@ export class BasicStaticPrimitiveDesc extends BasicDesc {
 	@Input()
 	primitiveProps: any;
 
-	private _geometryPropsFn: Function;
-	private _instancePropsFn: Function;
-	private _primitivePropsFn: Function;
+	private _geometryPropsEvaluator: Function;
+	private _instancePropsEvaluator: Function;
+	private _primitivePropsEvaluator: Function;
 
 	constructor(protected _staticPrimitiveDrawer: StaticPrimitiveDrawer, layerService: LayerService,
 	            computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
@@ -25,15 +25,16 @@ export class BasicStaticPrimitiveDesc extends BasicDesc {
 
 	ngOnInit(): void {
 		this._layerService.registerDescription(this);
-		this._geometryPropsFn = this._cesiumProperties.createEvaluator(this.geometryProps);
-		this._instancePropsFn = this._cesiumProperties.createEvaluator(this.instanceProps);
-		this._primitivePropsFn = this._cesiumProperties.createEvaluator(this.primitiveProps);
+
+		this._geometryPropsEvaluator = this._cesiumProperties.createEvaluator(this.geometryProps);
+		this._instancePropsEvaluator = this._cesiumProperties.createEvaluator(this.instanceProps);
+		this._primitivePropsEvaluator = this._cesiumProperties.createEvaluator(this.primitiveProps);
 	}
 
 	draw(context, id): any {
-		const geometryProps = this._specificPropsEvaluator(context, this._geometryPropsFn);
-		const instanceProps = this._specificPropsEvaluator(context, this._instancePropsFn);
-		const primitiveProps = this._specificPropsEvaluator(context, this._primitivePropsFn);
+		const geometryProps = this._geometryPropsEvaluator(this._computationCache, context);
+		const instanceProps = this._instancePropsEvaluator(this._computationCache, context);
+		const primitiveProps = this._primitivePropsEvaluator(this._computationCache, context);
 
 		if (!this._primitiveMap.has(id)) {
 			const primitive = this._staticPrimitiveDrawer.add(geometryProps, instanceProps, primitiveProps);
@@ -44,9 +45,5 @@ export class BasicStaticPrimitiveDesc extends BasicDesc {
 			const primitive = this._primitiveMap.get(id);
 			this._staticPrimitiveDrawer.update(primitive, geometryProps, instanceProps, primitiveProps);
 		}
-	}
-
-	private _specificPropsEvaluator(context: Object, propFn: Function) {
-		return propFn(this._computationCache, context);
 	}
 }
