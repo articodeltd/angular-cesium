@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { AngularCesiumComponent } from './angular-cesium.component';
 import { AcMapComponent } from './components/ac-map/ac-map.component';
 import { AcLayerComponent } from './components/ac-layer/ac-layer.component';
@@ -8,6 +9,7 @@ import { AcBillboardDescComponent } from './components/ac-billborad-desc/ac-bill
 import { AcEllipseStaticDescComponent } from './components/ac-ellipse-static/ac-ellipse-static-desc.component';
 import { AcDynamicEllipseDescComponent } from './components/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';
 import { AcDynamicPolylineDescComponent } from './components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
+import { AcStaticCircleDescComponent } from "./components/ac-static-circle-desc/ac-static-circle-desc.component";
 import { AcLayer2Directive } from './directives/ac-layer-2.directive';
 import { Angular2ParseModule } from '../angular2-parse/src/angular2-parse.module';
 import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
@@ -23,7 +25,8 @@ import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-d
 		Angular2ParseModule,
 		UtilsModule
 	],
-	declarations: [AngularCesiumComponent,
+	declarations: [
+		AngularCesiumComponent,
 		AcMapComponent,
 		AcLayerComponent,
 		AcBillboardComponent,
@@ -34,6 +37,7 @@ import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-d
 		AcDynamicPolylineDescComponent,
 		AcLayer2Directive,
 		PixelOffsetPipe,
+		AcStaticCircleDescComponent,
 		AcStaticPolylineDescComponent
 	],
 	exports: [
@@ -46,6 +50,7 @@ import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-d
 		AcDynamicPolylineDescComponent,
 		AcLayerComponent,
 		AcLayer2Directive,
+		AcStaticCircleDescComponent,
 		AcStaticPolylineDescComponent
 	],
 	providers: [JsonMapper, CesiumProperties],
