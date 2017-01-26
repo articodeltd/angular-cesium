@@ -43,6 +43,10 @@ export class BasicStaticPrimitiveDesc extends BasicDesc {
 			const primitive = this._primitiveMap.get(id);
 			this._staticPrimitiveDrawer.update(primitive, geometryProps, instanceProps, primitiveProps);
 		}
+		else {
+			const primitive = this._primitiveMap.get(id);
+			this._staticPrimitiveDrawer.update(primitive, geometryProps, instanceProps, primitiveProps);
+		}
 	}
 
 	private _specificPropsEvaluator(context: Object, propFn: Function) {
