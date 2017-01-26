@@ -19,5 +19,25 @@ export function convertToCesiumObj(entity): any {
 	};
 	entity.appearance = oneAndOnlyMaterial;
 
+	entity.staticPolyline = {
+		geometry: {
+			width: 1,
+			height: 50,
+			positions: Cesium.Cartesian3.fromDegreesArray(
+				[
+					Math.floor(Math.random() * 50), Math.floor(Math.random() * 50),
+					Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)
+				]),
+		},
+		attributes: {
+			color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+		},
+		appearance: new Cesium.PolylineColorAppearance({
+			closed: true,
+			translucent: false
+		})
+	}
+	;
+
 	return entity;
 }

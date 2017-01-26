@@ -1,14 +1,14 @@
-<ac-layer acFor="let poly of tracks$" [show]="true" [context]="this">
+<ac-layer acFor="let poly of staticPolylines$" [show]="true" [context]="this">
     <ac-static-polyline-desc
             geometryProps="{
-				width: poly.geometry.width,
-				positions: poly.geometry.positions
+				width: poly.staticPolyline.geometry.width,
+				positions: poly.staticPolyline.geometry.positions
 			}"
             instanceProps="{
-            attributes: poly.attributes
+            attributes: poly.staticPolyline.attributes
              }"
             primitiveProps="{
-            appearance: poly.appearance
+            appearance: poly.staticPolyline.appearance
             }">
     </ac-static-polyline-desc>
 </ac-layer>
