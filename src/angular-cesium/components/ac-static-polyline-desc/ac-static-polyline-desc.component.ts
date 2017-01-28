@@ -9,17 +9,19 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 /**
  *  This is a static implementation of an polyline.
  *  Usage :
- *    <ac-static-polyline geometryProps="{
+ *    <ac-static-polyline
+ *    		geometryProps="{
 				width: poly.geometry.width,
 				positions: poly.geometry.positions
-				}"
- instanceProps="{
+			}"
+ 			instanceProps="{
                     attributes: {
                        Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
                    }
-                }"
- primitiveProps="{
-                   appearance: new Cesium.PolylineColorAppearance({}}">
+            }"
+ 			primitiveProps="{
+                   appearance: new Cesium.PolylineColorAppearance()
+            }">
 
  @param {Cesium.Cartesian3} positions
  @param {number} [1] width
