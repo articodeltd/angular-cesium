@@ -10,7 +10,9 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "compodoc": "compodoc -p src/tsconfig.json"
+    "compile-docs": "compodoc -p ./src/angular-cesium/tsconfig.json -n \"Angular 2 Cesium\"",
+    "serve-docs": "compodoc -s",
+    "compileNserve-docs": "npm run compile-docs && npm run serve-docs"
   },
   "private": true,
   "dependencies": {
