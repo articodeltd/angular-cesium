@@ -21,8 +21,6 @@ export class CesiumEventBuilder {
 		this.eventsHandler = cesiumService.getViewer().screenSpaceEventHandler;
 	}
 
-	ß
-
 	static getEventFullName(event: CesiumEvent, modifier?: CesiumEventModifier): string {
 		if (modifier)
 			return `${event}_${modifier}`;
