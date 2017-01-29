@@ -1,15 +1,15 @@
 <ac-layer acFor="let polygon in polygons$" [context]="this" [show]="true">
     <ac-polygon-static-desc
         geometryProps="{
-            polygonHierarchy: polygon.geometry.polygonHierarchy,
-            height: polygon.geometry.height,
-            granularity: polygon.geometry.granularity
+            polygonHierarchy: polygon.polygonProps.geometry.polygonHierarchy,
+            height: polygon.polygonProps.geometry.height,
+            granularity: polygon.polygonProps.geometry.granularity
         }"
         instanceProps="{
-            attributes: polygon.attributes
+            attributes: polygon.polygonProps.attributes
         }"
         primitiveProps="{
-            appearance: polygon.appearance
+            appearance: polygon.polygonProps.appearance
         }"
     >
     </ac-polygon-static-desc>

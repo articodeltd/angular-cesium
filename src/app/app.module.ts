@@ -24,7 +24,7 @@ import { PolygonLayerComponent } from './polygon-layer/polygon-layer.component';
 		DynamicEllipseLayerComponent,
 		EllipseLayerComponent,
 		KavimLayerComponent,
-		PolygonLayerComponent
+		PolygonLayerComponent,
 		staticPolylineLayerComponent,
 		KavimLayerComponent,
 		StaticCircleLayerComponent

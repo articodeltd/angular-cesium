@@ -51,8 +51,26 @@ export function convertToCesiumObj(entity): any {
 			closed: true,
 			translucent: false
 		})
-	}
-	;
+	};
+
+	entity.polygonProps = {
+		geometry: {
+			height: 15000.0,
+			polygonHierarchy: new Cesium.PolygonHierarchy(
+				Cesium.Cartesian3.fromDegreesArray([
+					30 * Math.random(), 30 * Math.random(),
+					30 * Math.random(), 30 * Math.random(),
+					30 * Math.random(), 30 * Math.random(),
+					30 * Math.random(), 30 * Math.random(),
+					30 * Math.random(), 30 * Math.random()
+				])
+			)
+		},
+		attributes: {
+			color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+		},
+		appearance: oneAndOnlyMaterial
+	};
 
 	return entity;
 }
