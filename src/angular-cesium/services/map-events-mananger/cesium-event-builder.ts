@@ -108,8 +108,6 @@ export class CesiumEventBuilder {
         else {
             cesiumEventObservable = new CesiumPureEventObserver(event, modifier).init(this.eventsHandler).publish();
         }
-        // TODO put subscribe and connect last
-        cesiumEventObservable.subscribe();
         cesiumEventObservable.connect();
         return cesiumEventObservable;
     }
