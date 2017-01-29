@@ -117,6 +117,7 @@ function createChunk(numOfEntities) {
             id: i,
             action: 'ADD_OR_UPDATE',
             entity: {
+                id : i ,
                 name: 'bird' + i,
                 image: "/assets/angry-bird-blue-icon.png",
                 position: {

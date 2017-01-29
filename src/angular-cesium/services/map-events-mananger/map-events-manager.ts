@@ -8,13 +8,19 @@ import {PickOptions} from "./consts/pickOptions.enum";
 import {CesiumEvent} from "./consts/cesium-event.enum";
 import {CesiumEventModifier} from "./consts/cesium-event-modifier.enum";
 
+/**
+ * Manages all map events
+ * usage : MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
+ * priority - the bigger the number the bigger the priority. default : 0.
+ * entityType - entity type class that you are interested like (Track). the class must extends AcEntity
+ */
 @Injectable()
 export class MapEventsManagerService {
 
     private scene;
     private registrationsObservables = new Map<string, any[]>();
 
-    constructor(cesiumService: CesiumService, private eventBuilder : CesiumEventBuilder) {
+    constructor(cesiumService: CesiumService, private eventBuilder: CesiumEventBuilder) {
         this.scene = cesiumService.getScene();
     }
 
