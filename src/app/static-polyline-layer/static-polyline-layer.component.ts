@@ -1,19 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { AcNotification } from '../../angular-cesium/models/ac-notification';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
-	selector: 'ellipse-layer',
-	templateUrl: './ellipse-layer.component.html',
-	styleUrls: ['./ellipse-layer.component.css'],
+	selector: 'static-polyline-layer',
+	templateUrl: 'static-polyline-layer.component.html',
 	providers: [TracksDataProvider]
 })
-export class EllipseLayerComponent implements OnInit {
+export class staticPolylineLayerComponent implements OnInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
-	ellipses$: Observable<AcNotification>;
+	staticPolylines$: Observable<AcNotification>;
 	Cesium = Cesium;
 	show = true;
 
@@ -21,7 +21,7 @@ export class EllipseLayerComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.ellipses$ = this.tracksDataProvider.get();
+		this.staticPolylines$ = this.tracksDataProvider.get();
 	}
 
 	removeAll() {

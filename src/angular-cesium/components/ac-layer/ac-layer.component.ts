@@ -5,16 +5,20 @@ import { LayerService } from '../../services/layer-service/layer-service.service
 import { AcNotification } from '../../models/ac-notification';
 import { ActionType } from '../../models/action-type.enum';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
-import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
 import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
 import { SimpleDrawerService } from '../../services/simple-drawer/simple-drawer.service';
+import { StaticCircleDrawerService } from '../../services/static-circle-drawer/static-circle-drawer.service';
+import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
+import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
 import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
 
 @Component({
 	selector: 'ac-layer',
 	templateUrl: './ac-layer.component.html',
 	styleUrls: ['./ac-layer.component.css'],
-	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, PolygonDrawerService]
+	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, PolygonDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	@Input()
@@ -34,11 +38,21 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            billboardDrawerService: BillboardDrawerService,
 	            labelDrawerService: LabelDrawerService,
 	            ellipseDrawerService: EllipseDrawerService,
+	            dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
+	            staticCircleDrawerService : StaticCircleDrawerService,
+	            staticPolylineDrawerService: StaticPolylineDrawerService,
 	            polygonDrawerService: PolygonDrawerService) {
-		this._drawerList.push(billboardDrawerService);
-		this._drawerList.push(labelDrawerService);
-		this._drawerList.push(ellipseDrawerService);
-		this._drawerList.push(polygonDrawerService);
+		this._drawerList = Array.of(
+			billboardDrawerService,
+			labelDrawerService,
+			ellipseDrawerService,
+			dynamicEllipseDrawerService,
+			dynamicPolylineDrawerService,
+			staticCircleDrawerService,
+			staticPolylineDrawerService,
+			polygonDrawerService
+		);
 	}
 
 	init() {
