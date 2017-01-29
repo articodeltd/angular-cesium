@@ -7,7 +7,6 @@ import { DisposableObservable } from './disposable-observable';
 import { PickOptions } from './consts/pickOptions.enum';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
-import { AcEntity } from '../../models/ac-entity';
 import { UtilsService } from '../../../utils/services/utils/utils.service';
 
 /**
@@ -142,8 +141,8 @@ export class MapEventsManagerService {
 }
 export interface EventResult {
     movement: any,
-    primitives: any,
-    entities: AcEntity[]
+	primitives: any[],
+	entities: any[]
 }
 class Registration {
     constructor(public observable: Observable<EventResult>,
