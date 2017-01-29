@@ -6,3 +6,8 @@
     background-color: rgba(0,0,0,0.2);
     font-family: sans-serif;
 }
+
+.plonter-item {
+    cursor: pointer;
+    margin: 2px;
+}

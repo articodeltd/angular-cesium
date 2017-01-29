@@ -8,6 +8,7 @@ import { PickOptions } from './consts/pickOptions.enum';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { UtilsService } from '../../../utils/services/utils/utils.service';
+import { PlonterService } from '../plonter/plonter.service';
 
 /**
  * Manages all map events
@@ -81,7 +82,6 @@ export class MapEventsManagerService {
     }
 
     private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier, entityType, pickOption: PickOptions, priority: number): Registration {
-        // TODO run outside zone
         const cesiumEventObservable = this.eventBuilder.get(event, modifier);
         const stopper = new Subject();
 
@@ -93,7 +93,7 @@ export class MapEventsManagerService {
             .map((movement) => this.triggerPick(movement, pickOption))
             .filter((result) => result.primitives !== null)
             .map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption))
-            .flatMap((entitiesAndMovement)=> this.plonter(entitiesAndMovement,pickOption))
+	        .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption))
             .filter((result) => result.entities !== null)
             .takeUntil(stopper);
 
@@ -143,7 +143,7 @@ export class MapEventsManagerService {
     }
 
     private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions) : Observable<EventResult> {
-        if (pickOption === PickOptions.PICK_FIRST){
+	    if (pickOption === PickOptions.PICK_ALL && entitiesAndMovement.entities.length > 1) { // TODO change
             return this.plonterService.plonterIt(entitiesAndMovement);
         }else {
             return Observable.of(entitiesAndMovement);

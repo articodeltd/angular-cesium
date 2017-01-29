@@ -1,20 +1,23 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
-import {Observable} from "rxjs";
-import {AcNotification} from "../../angular-cesium/models/ac-notification";
-import {ActionType} from "../../angular-cesium/models/action-type.enum";
-import {MapEventsManagerService} from "../../angular-cesium/services/map-events-mananger/map-events-manager";
-import {AcEntity} from "../../angular-cesium/models/ac-entity";
-import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-layer.component";
-import {CesiumEvent} from "../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum";
-import {PickOptions} from "../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum";
-import {PlonterService} from "../../angular-cesium/services/plonter/plonter.service";
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AcNotification } from '../../angular-cesium/models/ac-notification';
+import { ActionType } from '../../angular-cesium/models/action-type.enum';
+import { MapEventsManagerService } from '../../angular-cesium/services/map-events-mananger/map-events-manager';
+import { AcEntity } from '../../angular-cesium/models/ac-entity';
+import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
+import { CesiumEvent } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
+import { PickOptions } from '../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
+import { PlonterService } from '../../angular-cesium/services/plonter/plonter.service';
 
 @Component({
     selector: 'event-test-layer',
     templateUrl: './event-test-layer.component.html',
     styleUrls: ['./event-test-layer.component.css']
 })
-export class EventTestLayerComponent implements OnInit {
+export class EventTestLayerComponent implements OnInit, OnChanges {
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log('change', changes);
+    }
     @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
 
@@ -23,7 +26,8 @@ export class EventTestLayerComponent implements OnInit {
     showPlonterContextMenu = false;
 
     constructor(private eventManager: MapEventsManagerService,
-                private plonterService : PlonterService) {
+                public plonterService: PlonterService,
+                private cd: ChangeDetectorRef) {
         const track1: AcNotification = {
             id: 0,
             actionType: ActionType.ADD_UPDATE,
@@ -75,8 +79,8 @@ export class EventTestLayerComponent implements OnInit {
     }
 
     testPlonter(){
-        this.entitiesToPlonter = this.plonterService.entitesToPlonter;
-        this.eventManager.register({event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST}).subscribe((pos) => {
+        this.plonterService.notifyPlonterChange.subscribe(() => this.cd.detectChanges());
+        this.eventManager.register({event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_ALL}).subscribe((pos) => {
             console.log('plonter-click', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         });
     }
@@ -128,6 +132,8 @@ export class EventTestLayerComponent implements OnInit {
             console.log('click3', 'toggle color');
             entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
             this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
+
+            // this.cd.detectChanges();
         });
         // this.eventManager.register(inputConf).subscribe((result) => {
         //     console.log('click3', result.movement, 'primitives:', result.primitives, 'entities', result.entities);

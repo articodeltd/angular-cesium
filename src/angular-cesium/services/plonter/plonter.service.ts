@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {AcEntity} from "../../models/ac-entity";
-import {Subject} from "rxjs";
-import {EventResult} from "../map-events-mananger/map-events-manager";
+import { Injectable, EventEmitter } from '@angular/core';
+import { AcEntity } from '../../models/ac-entity';
+import { Subject } from 'rxjs';
+import { EventResult } from '../map-events-mananger/map-events-manager';
 
 @Injectable()
 export class PlonterService {
@@ -9,6 +9,8 @@ export class PlonterService {
     private _entitesToPlonter: AcEntity[] = [];
     private plonterObserver: Subject<EventResult>;
     private eventResult: EventResult;
+
+    public notifyPlonterChange: EventEmitter<any> = new EventEmitter();
 
     constructor() {
         this.plonterObserver = new Subject<EventResult>();
@@ -28,12 +30,16 @@ export class PlonterService {
         this._entitesToPlonter = eventResult.entities;
         this._plonterShown = true;
 
+        this.notifyPlonterChange.emit(0);
         return this.plonterObserver;
     }
 
     resolvePlonter(entity: AcEntity) {
         this._plonterShown = false;
         this.eventResult.entities = [entity];
+
+        this.notifyPlonterChange.emit(0);
         this.plonterObserver.next(this.eventResult);
     }
+
 }
