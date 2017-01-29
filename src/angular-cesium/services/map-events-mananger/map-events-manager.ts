@@ -1,12 +1,14 @@
-import {Injectable} from "@angular/core";
-import {Observable, Subject} from "rxjs";
-import {CesiumService} from "../cesium/cesium.service";
-import {CesiumEventBuilder} from "./cesium-event-builder";
-import {EventRegistrationInput} from "./event-registration-input";
-import {DisposableObservable} from "./disposable-observable";
-import {PickOptions} from "./consts/pickOptions.enum";
-import {CesiumEvent} from "./consts/cesium-event.enum";
-import {CesiumEventModifier} from "./consts/cesium-event-modifier.enum";
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { CesiumService } from '../cesium/cesium.service';
+import { CesiumEventBuilder } from './cesium-event-builder';
+import { EventRegistrationInput } from './event-registration-input';
+import { DisposableObservable } from './disposable-observable';
+import { PickOptions } from './consts/pickOptions.enum';
+import { CesiumEvent } from './consts/cesium-event.enum';
+import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
+import { AcEntity } from '../../models/ac-entity';
+import { UtilsService } from '../../../utils/services/utils/utils.service';
 
 /**
  * Manages all map events
@@ -18,7 +20,7 @@ import {CesiumEventModifier} from "./consts/cesium-event-modifier.enum";
 export class MapEventsManagerService {
 
     private scene;
-    private registrationsObservables = new Map<string, any[]>();
+    private registrationsObservables = new Map<string, Registration[]>();
 
     constructor(cesiumService: CesiumService, private eventBuilder: CesiumEventBuilder) {
         this.scene = cesiumService.getScene();
@@ -28,12 +30,10 @@ export class MapEventsManagerService {
         if (this.scene === undefined) {
             throw 'CesiumService has not been initialized yet - MapEventsManagerService must be injected  under ac-map';
         }
-        if (input.pick === undefined) {
-            input.pick = PickOptions.NO_PICK;
-        }
-        if (input.priority === undefined) {
-            input.priority = 0;
-        }
+
+        input.pick = input.pick || PickOptions.NO_PICK;
+        input.priority = input.priority || 0;
+
         if (input.entityType && input.pick === PickOptions.NO_PICK) {
             throw 'MapEventsManagerService: can\'t register an event with entityType and PickOptions.NO_PICK - It doesn\'t make sense ';
         }
@@ -130,12 +130,9 @@ export class MapEventsManagerService {
             } else {
                 entities = picksAndMovement.primitives.map((pick) => pick.primitive.acEntity);
             }
+
             // best way to do unique on objects
-            entities = entities.reduce((accumulator, currentValue) => {
-                if (accumulator.indexOf(currentValue) < 0)
-                    accumulator.push(currentValue);
-                return accumulator;
-            }, []);
+            entities = UtilsService.unique(entities);
             if (entities.length === 0) {
                 entities = null;
             }
@@ -146,7 +143,7 @@ export class MapEventsManagerService {
 export interface EventResult {
     movement: any,
     primitives: any,
-    entities: any
+    entities: AcEntity[]
 }
 class Registration {
     constructor(public observable: Observable<EventResult>,
