@@ -7,6 +7,7 @@ import {AcEntity} from "../../angular-cesium/models/ac-entity";
 import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-layer.component";
 import {CesiumEvent} from "../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum";
 import {PickOptions} from "../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum";
+import {PlonterService} from "../../angular-cesium/services/plonter/plonter.service";
 
 @Component({
     selector: 'event-test-layer',
@@ -18,8 +19,11 @@ export class EventTestLayerComponent implements OnInit {
 
 
     tracks$: Observable<AcNotification>;
+    entitiesToPlonter : AcEntity[]= [];
+    showPlonterContextMenu = false;
 
-    constructor(private eventManager: MapEventsManagerService) {
+    constructor(private eventManager: MapEventsManagerService,
+                private plonterService : PlonterService) {
         const track1: AcNotification = {
             id: 0,
             actionType: ActionType.ADD_UPDATE,
@@ -29,8 +33,26 @@ export class EventTestLayerComponent implements OnInit {
                 position: Cesium.Cartesian3.fromRadians(0.5, 0.5),
             })
         };
+        const track2: AcNotification = {
+            id: 1,
+            actionType: ActionType.ADD_UPDATE,
+            entity: AcEntity.create({
+                id: 1,
+                name: 'choose me',
+                position: Cesium.Cartesian3.fromRadians(0.7, 0.7),
+            })
+        };
+        const track3: AcNotification = {
+            id: 2,
+            actionType: ActionType.ADD_UPDATE,
+            entity: AcEntity.create({
+                id: 2,
+                name: 'click me too',
+                position: Cesium.Cartesian3.fromRadians(0.71, 0.7),
+            })
+        };
 
-        const trackArray = [track1];
+        const trackArray = [track1,track2,track3];
         this.tracks$ = Observable.from(trackArray);
     }
 
@@ -47,6 +69,19 @@ export class EventTestLayerComponent implements OnInit {
         // Example for long left down
         // this.testLongLeftDown();
 
+        // Example for plonter
+        this.testPlonter();
+
+    }
+
+    testPlonter(){
+        this.entitiesToPlonter = this.plonterService.entitesToPlonter;
+        this.eventManager.register({event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST}).subscribe((pos) => {
+            console.log('plonter-click', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
+        });
+    }
+    chooseEntity(entity){
+        this.plonterService.resolvePlonter(entity);
     }
 
     testLongLeftDown() {

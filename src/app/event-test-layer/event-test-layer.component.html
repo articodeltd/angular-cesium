@@ -5,3 +5,9 @@
                           fillColor: track.color
                         }"></ac-label-desc>
 </ac-layer>
+
+<div class="plonter-context-menu" [hidden]="!plonterService.plonterShown">
+  <div *ngFor="let entity of entitiesToPlonter">
+    <label (click)="chooseEntity(entity.name)">{{entity}}</label>
+  </div>
+</div>

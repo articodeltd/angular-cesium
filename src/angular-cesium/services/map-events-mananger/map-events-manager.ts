@@ -7,6 +7,7 @@ import {DisposableObservable} from "./disposable-observable";
 import {PickOptions} from "./consts/pickOptions.enum";
 import {CesiumEvent} from "./consts/cesium-event.enum";
 import {CesiumEventModifier} from "./consts/cesium-event-modifier.enum";
+import {PlonterService} from "../plonter/plonter.service";
 
 /**
  * Manages all map events
@@ -20,7 +21,9 @@ export class MapEventsManagerService {
     private scene;
     private registrationsObservables = new Map<string, any[]>();
 
-    constructor(cesiumService: CesiumService, private eventBuilder: CesiumEventBuilder) {
+    constructor(cesiumService: CesiumService,
+                private eventBuilder: CesiumEventBuilder,
+                private plonterService : PlonterService) {
         this.scene = cesiumService.getScene();
     }
 
@@ -92,6 +95,7 @@ export class MapEventsManagerService {
             .map((movement) => this.triggerPick(movement, pickOption))
             .filter((result) => result.primitives !== null)
             .map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption))
+            .flatMap((entitiesAndMovement)=> this.plonter(entitiesAndMovement,pickOption))
             .filter((result) => result.entities !== null)
             .takeUntil(stopper);
 
@@ -141,6 +145,14 @@ export class MapEventsManagerService {
             }
         }
         return Object.assign(picksAndMovement, {entities: entities});
+    }
+
+    private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions) : Observable<EventResult> {
+        if (pickOption === PickOptions.PICK_FIRST){
+            return this.plonterService.plonterIt(entitiesAndMovement);
+        }else {
+            return Observable.of(entitiesAndMovement);
+        }
     }
 }
 export interface EventResult {

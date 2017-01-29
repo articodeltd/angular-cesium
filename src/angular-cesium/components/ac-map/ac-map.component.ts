@@ -4,12 +4,13 @@ import {CesiumService} from "../../services/cesium/cesium.service";
 import {BillboardDrawerService} from "../../services/billboard-drawer/billboard-drawer.service";
 import {MapEventsManagerService} from "../../services/map-events-mananger/map-events-manager";
 import {CesiumEventBuilder} from "../../services/map-events-mananger/cesium-event-builder";
+import {PlonterService} from "../../services/plonter/plonter.service";
 
 
 @Component({
     selector: 'ac-map',
     templateUrl: './ac-map.component.html',
-    providers: [CesiumService, BillboardDrawerService,CesiumEventBuilder, MapEventsManagerService ]
+    providers: [CesiumService, BillboardDrawerService,CesiumEventBuilder, MapEventsManagerService,PlonterService ]
 })
 export class AcMapComponent implements OnInit {
 
