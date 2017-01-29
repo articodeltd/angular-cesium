@@ -13,6 +13,7 @@ import { DynamicEllipseLayerComponent } from './dynamic-ellipse-layer/dynamic-el
 import { KavimLayerComponent } from './kavim-layer/kavim-layer.component';
 import { staticPolylineLayerComponent } from './static-polyline-layer/static-polyline-layer.component';
 import { StaticCircleLayerComponent } from './static-circle-layer/static-circle-layer.component';
+import {EventTestLayerComponent} from "./event-test-layer/event-test-layer.component";
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,8 @@ import { StaticCircleLayerComponent } from './static-circle-layer/static-circle-
 		KavimLayerComponent,
 		staticPolylineLayerComponent,
 		KavimLayerComponent,
-		StaticCircleLayerComponent
+		StaticCircleLayerComponent,
+		EventTestLayerComponent
 	],
 	imports: [
 		BrowserModule,
