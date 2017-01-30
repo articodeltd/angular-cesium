@@ -8,6 +8,6 @@
 
 <div class="plonter-context-menu" [hidden]="!plonterService.plonterShown">
   <div *ngFor="let entity of plonterService.entitesToPlonter">
-    <label class="plonter-item" (click)="chooseEntity(entity)">{{entity.name}}</label>
+    <div class="plonter-item" (click)="chooseEntity(entity)">{{entity.name}}</div>
   </div>
 </div>

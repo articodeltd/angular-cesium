@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AcNotification } from '../../angular-cesium/models/ac-notification';
 import { ActionType } from '../../angular-cesium/models/action-type.enum';
@@ -14,16 +14,9 @@ import { PlonterService } from '../../angular-cesium/services/plonter/plonter.se
     templateUrl: './event-test-layer.component.html',
     styleUrls: ['./event-test-layer.component.css']
 })
-export class EventTestLayerComponent implements OnInit, OnChanges {
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log('change', changes);
-    }
+export class EventTestLayerComponent implements OnInit {
     @ViewChild(AcLayerComponent) layer: AcLayerComponent;
-
-
     tracks$: Observable<AcNotification>;
-    entitiesToPlonter : AcEntity[]= [];
-    showPlonterContextMenu = false;
 
     constructor(private eventManager: MapEventsManagerService,
                 public plonterService: PlonterService,
@@ -75,13 +68,16 @@ export class EventTestLayerComponent implements OnInit, OnChanges {
 
         // Example for plonter
         this.testPlonter();
-
     }
 
     testPlonter(){
-        this.plonterService.notifyPlonterChange.subscribe(() => this.cd.detectChanges());
-        this.eventManager.register({event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_ALL}).subscribe((pos) => {
-            console.log('plonter-click', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
+        this.plonterService.plonterChangeNotifier.subscribe(() => this.cd.detectChanges());
+        this.eventManager.register({
+            event: CesiumEvent.LEFT_CLICK,
+            pick: PickOptions.PICK_ONE
+        }).map((result) => result.entities).subscribe((result) => {
+            console.log('plonter result: ' + JSON.stringify(result));
+            alert('picked: ' + JSON.stringify(result));
         });
     }
     chooseEntity(entity){
@@ -132,8 +128,6 @@ export class EventTestLayerComponent implements OnInit, OnChanges {
             console.log('click3', 'toggle color');
             entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
             this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
-
-            // this.cd.detectChanges();
         });
         // this.eventManager.register(inputConf).subscribe((result) => {
         //     console.log('click3', result.movement, 'primitives:', result.primitives, 'entities', result.entities);

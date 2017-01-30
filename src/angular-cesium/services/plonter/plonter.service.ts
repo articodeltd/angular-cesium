@@ -3,18 +3,24 @@ import { AcEntity } from '../../models/ac-entity';
 import { Subject } from 'rxjs';
 import { EventResult } from '../map-events-mananger/map-events-manager';
 
+/**
+ * Service for solving plonter.
+ * Used by map-event-manager and plonter context component
+ */
 @Injectable()
 export class PlonterService {
     private _plonterShown: boolean;
     private _entitesToPlonter: AcEntity[] = [];
-    private plonterObserver: Subject<EventResult>;
-    private eventResult: EventResult;
-
-    public notifyPlonterChange: EventEmitter<any> = new EventEmitter();
+    private _plonterObserver: Subject<EventResult>;
+    private _eventResult: EventResult;
+    private _plonterChangeNotifier: EventEmitter<any> = new EventEmitter();
 
     constructor() {
-        this.plonterObserver = new Subject<EventResult>();
+        this._plonterObserver = new Subject<EventResult>();
+    }
 
+    get plonterChangeNotifier(): EventEmitter<any> {
+        return this._plonterChangeNotifier;
     }
 
     get plonterShown(): boolean {
@@ -26,20 +32,19 @@ export class PlonterService {
     }
 
     plonterIt(eventResult: EventResult) {
-        this.eventResult = eventResult;
+        this._eventResult = eventResult;
         this._entitesToPlonter = eventResult.entities;
         this._plonterShown = true;
 
-        this.notifyPlonterChange.emit(0);
-        return this.plonterObserver;
+        this._plonterChangeNotifier.emit(0);
+        return this._plonterObserver;
     }
 
     resolvePlonter(entity: AcEntity) {
         this._plonterShown = false;
-        this.eventResult.entities = [entity];
+        this._eventResult.entities = [entity];
 
-        this.notifyPlonterChange.emit(0);
-        this.plonterObserver.next(this.eventResult);
+        this._plonterChangeNotifier.emit(0);
+        this._plonterObserver.next(this._eventResult);
     }
-
 }

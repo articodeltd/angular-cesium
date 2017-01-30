@@ -14,7 +14,7 @@ import { PlonterService } from '../plonter/plonter.service';
  * Manages all map events
  * usage : MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
  * priority - the bigger the number the bigger the priority. default : 0.
- * entityType - entity type class that you are interested like (Track). the class must extends AcEntity
+ * entityType - entity type class that you are interested like (Track). the class must extends AcEntity.
  */
 @Injectable()
 export class MapEventsManagerService {
@@ -93,8 +93,8 @@ export class MapEventsManagerService {
             .map((movement) => this.triggerPick(movement, pickOption))
             .filter((result) => result.primitives !== null)
             .map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption))
+	        .filter((result) => result.entities !== null)
 	        .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption))
-            .filter((result) => result.entities !== null)
             .takeUntil(stopper);
 
         registration.observable = observable;
@@ -104,12 +104,12 @@ export class MapEventsManagerService {
     private triggerPick(movement: any, pickOptions: PickOptions) {
         let picks: any = [];
         switch (pickOptions) {
+            case PickOptions.PICK_ONE:
             case PickOptions.PICK_ALL:
                 picks = this.scene.drillPick(movement.endPosition);
                 picks = picks.length == 0 ? null : picks;
                 break;
             case PickOptions.PICK_FIRST:
-                // TODO plonter
                 const pick = this.scene.pick(movement.endPosition);
                 picks = pick === undefined ? null : [pick];
                 break;
@@ -143,7 +143,7 @@ export class MapEventsManagerService {
     }
 
     private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions) : Observable<EventResult> {
-	    if (pickOption === PickOptions.PICK_ALL && entitiesAndMovement.entities.length > 1) { // TODO change
+        if (pickOption === PickOptions.PICK_ONE && entitiesAndMovement.entities.length > 1) {
             return this.plonterService.plonterIt(entitiesAndMovement);
         }else {
             return Observable.of(entitiesAndMovement);
