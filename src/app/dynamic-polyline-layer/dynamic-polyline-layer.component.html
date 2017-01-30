@@ -1,0 +1,10 @@
+<ac-layer acFor="let polyline in polylines$" [context]="this" [show]="true">
+    <ac-dynamic-polyline-desc
+        props = "{
+            width : polyline.dynamicPolyline.width,
+            positions: polyline.dynamicPolyline.positions,
+            material: polyline.dynamicPolyline.material
+        }"
+    >
+    </ac-dynamic-polyline-desc>
+</ac-layer>
