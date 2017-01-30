@@ -5,7 +5,7 @@ import {mock, when, instance, verify, anything} from "ts-mockito";
 import {CesiumService} from "../cesium/cesium.service";
 
 
-fdescribe('DynamicEllipseDrawerService', () => {
+describe('DynamicEllipseDrawerService', () => {
 
   let ellipseProps = {center: new Cesium.Cartesian3.fromArray([1014908.2920381048, -6260819.093129401, -670601.4009049088]), granularity :0.04,rotation:0, semiMajorAxis:250000, semiMinorAxis:400000};
   let ellipseProps2 = {width: 2, center: new Cesium.Cartesian3.fromArray([2014908.2920381048, -7260819.093129401, -670601.4009049088]), granularity :0.04,rotation:0, semiMajorAxis:240000, semiMinorAxis:300000};
