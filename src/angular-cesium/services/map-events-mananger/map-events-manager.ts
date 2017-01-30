@@ -11,7 +11,7 @@ import { UtilsService } from '../../../utils/services/utils/utils.service';
 import { PlonterService } from '../plonter/plonter.service';
 
 /**
- * Manages all map events
+ * Manages all map events . Notice events will run outside of Agular zone
  * usage : MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
  * priority - the bigger the number the bigger the priority. default : 0.
  * entityType - entity type class that you are interested like (Track). the class must extends AcEntity.
