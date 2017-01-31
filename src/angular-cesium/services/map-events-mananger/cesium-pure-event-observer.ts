@@ -15,7 +15,7 @@ export class CesiumPureEventObserver {
 						movement.startPosition = movement.position;
 						movement.endPosition = movement.position;
 					}
-					observer.next(movement)
+					observer.next(movement);
 				}, this.event, this.modifier);
 			}
 		);
