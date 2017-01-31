@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { SimpleDrawerService } from "../simple-drawer/simple-drawer.service";
-import { CesiumService } from "../cesium/cesium.service";
+import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
+import { CesiumService } from '../cesium/cesium.service';
+import Checker from "../../utils/checker";
 
 /**
  *  This drawer is responsible for creating the dynamic version of the ellipse component.
@@ -34,6 +35,8 @@ export class DynamicEllipseDrawerService extends SimpleDrawerService {
 	}
 
 	private static generatePositions(cesiumProps: any) {
+		Checker.throwIfAnyNotPresent(cesiumProps, ['center', 'semiMajorAxis', 'semiMinorAxis', 'rotation']);
+
 		let points = Cesium.EllipseGeometryLibrary.computeEllipsePositions(cesiumProps, false, true);
 		let positions = [];
 
