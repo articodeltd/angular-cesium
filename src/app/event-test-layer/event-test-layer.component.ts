@@ -1,12 +1,12 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
-import {Observable} from "rxjs";
-import {AcNotification} from "../../angular-cesium/models/ac-notification";
-import {ActionType} from "../../angular-cesium/models/action-type.enum";
-import {MapEventsManagerService} from "../../angular-cesium/services/map-events-mananger/map-events-manager";
-import {AcEntity} from "../../angular-cesium/models/ac-entity";
-import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-layer.component";
-import {CesiumEvent} from "../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum";
-import {PickOptions} from "../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AcNotification } from '../../angular-cesium/models/ac-notification';
+import { ActionType } from '../../angular-cesium/models/action-type.enum';
+import { MapEventsManagerService } from '../../angular-cesium/services/map-events-mananger/map-events-manager';
+import { AcEntity } from '../../angular-cesium/models/ac-entity';
+import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
+import { CesiumEvent } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
+import { PickOptions } from '../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 
 @Component({
     selector: 'event-test-layer',
@@ -51,7 +51,7 @@ export class EventTestLayerComponent implements OnInit {
 
     testLongLeftDown() {
         this.eventManager.register({
-            event: CesiumEvent.LONG_LEFT_DOWN,
+            event: CesiumEvent.LONG_LEFT_PRESS,
             pick: PickOptions.PICK_ALL
         }).subscribe((pos) => {
             console.log('long left', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
