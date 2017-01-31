@@ -8,7 +8,7 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service'
 import { mock } from 'ts-mockito';
 
-fdescribe('AcStaticCircleDescComponent', () => {
+describe('AcStaticCircleDescComponent', () => {
 	let component: AcStaticCircleDescComponent;
 	let fixture: ComponentFixture<AcStaticCircleDescComponent>;
 
