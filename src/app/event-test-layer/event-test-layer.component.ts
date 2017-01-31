@@ -45,11 +45,11 @@ export class EventTestLayerComponent implements OnInit {
         // Example for click and change entity color
         this.testColorChange();
         // Example for long left down
-        // this.testLongLeftDown();
+        // this.testLongPressDown();
 
     }
 
-    testLongLeftDown() {
+    testLongPressDown() {
         this.eventManager.register({
             event: CesiumEvent.LONG_LEFT_PRESS,
             pick: PickOptions.PICK_ALL
