@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { AcNotification } from "../../angular-cesium/models/ac-notification";
 import { ActionType } from "../../angular-cesium/models/action-type.enum";
 import { AcLayerComponent } from "../../angular-cesium/components/ac-layer/ac-layer.component";
+import {AcEntity} from "../../angular-cesium/models/ac-entity";
 
 @Component({
     selector: 'kavim-layer',
@@ -67,7 +68,7 @@ export class KavimLayerComponent implements OnInit, AfterViewInit {
         this.kavim$ = Observable.from(kavimArray);
 
         setTimeout(()=> {
-            kav1.entity.positions = Cesium.Cartesian3.fromDegreesArray([
+            kav1.entity['positions'] = Cesium.Cartesian3.fromDegreesArray([
                 -75.10, 39.57,
                 -77.02, 38.53,
                 -77.12, 38.63,
@@ -76,8 +77,8 @@ export class KavimLayerComponent implements OnInit, AfterViewInit {
         }, 5000);
         setInterval(()=> {
             this.changePosition();
-            kav2.entity.positions = Cesium.Cartesian3.fromDegreesArray(this.Cartesian3);
-            kav2.entity.material = new Cesium.Material({
+            kav2.entity['positions'] = Cesium.Cartesian3.fromDegreesArray(this.Cartesian3);
+            kav2.entity['material'] = new Cesium.Material({
                 fabric : {
                     type : 'Color',
                     uniforms : {
