@@ -64,7 +64,7 @@ export class EventTestLayerComponent implements OnInit {
 		// Example for click and change entity color
 		this.testColorChange();
 		// Example for long left down
-		// this.testLongPressDown();
+		// this.testLongPress();
 
 		// Example for plonter
 		this.testPlonter();
@@ -85,7 +85,7 @@ export class EventTestLayerComponent implements OnInit {
 		this.plonterService.resolvePlonter(entity);
 	}
 
-	testLongPressDown() {
+	testLongPress() {
 		this.eventManager.register({
 			event: CesiumEvent.LONG_LEFT_PRESS,
 			pick: PickOptions.PICK_ALL

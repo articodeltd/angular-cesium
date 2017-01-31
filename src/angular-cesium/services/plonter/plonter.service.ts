@@ -36,7 +36,7 @@ export class PlonterService {
         this._entitesToPlonter = eventResult.entities;
         this._plonterShown = true;
 
-        this._plonterChangeNotifier.emit(0);
+        this._plonterChangeNotifier.emit();
         return this._plonterObserver;
     }
 
@@ -44,7 +44,7 @@ export class PlonterService {
         this._plonterShown = false;
         this._eventResult.entities = [entity];
 
-        this._plonterChangeNotifier.emit(0);
+        this._plonterChangeNotifier.emit();
         this._plonterObserver.next(this._eventResult);
     }
 }
