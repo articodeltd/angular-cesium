@@ -7,11 +7,11 @@ import { ActionType } from '../../models/action-type.enum';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
 import { SimpleDrawerService } from '../../services/simple-drawer/simple-drawer.service';
-import { StaticCircleDrawerService } from "../../services/static-circle-drawer/static-circle-drawer.service";
+import { StaticCircleDrawerService } from '../../services/static-circle-drawer/static-circle-drawer.service';
 import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
 import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
 import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
-import { StaticPolylineDrawerService } from "../../services/static-polyline-drawer/static-polyline-drawer.service";
+import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
 
 @Component({
 	selector: 'ac-layer',
@@ -20,6 +20,8 @@ import { StaticPolylineDrawerService } from "../../services/static-polyline-draw
 	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
+	private static acForRgx = /^let\s+.+\s+of\s+.+$/;
+
 	@Input()
 	show: boolean = true;
 	@Input()
@@ -53,9 +55,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	}
 
 	init() {
-		const acForArr = this.acFor.split(' ');
-		this.observable = this.context[acForArr[3]];
-		this.entityName = acForArr[1];
+		this.initValidParams();
 
 		this.observable.merge(this._updateStream).subscribe((notification) => {
 			this._computationCache.clear()
@@ -73,6 +73,19 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 				}
 			})
 		});
+	}
+
+	private initValidParams() {
+		if (!AcLayerComponent.acForRgx.test(this.acFor)) {
+			throw 'ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
+			+ 'instead received: ' + this.acFor;
+		}
+		const acForArr = this.acFor.split(' ');
+		this.observable = this.context[acForArr[3]];
+		this.entityName = acForArr[1];
+		if (!this.observable || !(this.observable instanceof Observable)) {
+			throw  'ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable;
+		}
 	}
 
 	ngAfterContentInit(): void {

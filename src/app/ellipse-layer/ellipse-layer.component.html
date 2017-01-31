@@ -1,4 +1,4 @@
-<ac-layer acFor="let ellipse in ellipses$" [context]="this" [show]="true">
+<ac-layer acFor="let ellipse of ellipses$" [context]="this" [show]="true">
     <ac-ellipse-static-desc
         geometryProps="{
             center: ellipse.geometry.center,
