@@ -1,5 +1,5 @@
 
-export default class Checker{
+export class Checker{
     static throwIfAnyNotPresent(values:Object, propertyNames:string[]){
         propertyNames.forEach(propertyName => Checker.throwIfNotPresent(values, propertyName))
     }
