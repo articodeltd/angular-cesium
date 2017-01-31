@@ -8,7 +8,7 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { mockProvider, providerFromMock } from '../../utils/testingUtils';
 
-fdescribe('AcDynamicEllipseDescComponent', () => {
+describe('AcDynamicEllipseDescComponent', () => {
     let component: AcDynamicEllipseDescComponent;
     let fixture: ComponentFixture<AcDynamicEllipseDescComponent>;
 
