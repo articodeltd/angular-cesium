@@ -17,23 +17,6 @@ export class AcMapLayerProviderComponent implements OnInit {
 
     constructor(private cesiumService: CesiumService) {}
 
-    private createWebMapServiceProvider() {
-        return new Cesium.WebMapServiceImageryProvider(this.options);
-    }
-
-    private createWebMapTileServiceProvider() {
-        return new Cesium.WebMapTileServiceImageryProvider(this.options);
-    }
-
-    private createArcGisMapServerProvider(){
-        return new Cesium.ArcGisMapServerImageryProvider(this.options);
-    }
-
-    private createOfflineMapProvider(){
-        return Cesium.createTileMapServiceImageryProvider({
-            url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')});
-    }
-
     ngOnInit() {
         if(this.options.url === undefined && this.provider !== MapLayerProviderOptions.OFFLINE){
             throw 'options must have a url'
@@ -57,6 +40,23 @@ export class AcMapLayerProviderComponent implements OnInit {
                 break;
         }
         this.cesiumService.getScene().imageryLayers.addImageryProvider(provider);
+    }
+
+    private createWebMapServiceProvider() {
+        return new Cesium.WebMapServiceImageryProvider(this.options);
+    }
+
+    private createWebMapTileServiceProvider() {
+        return new Cesium.WebMapTileServiceImageryProvider(this.options);
+    }
+
+    private createArcGisMapServerProvider(){
+        return new Cesium.ArcGisMapServerImageryProvider(this.options);
+    }
+
+    private createOfflineMapProvider(){
+        return Cesium.createTileMapServiceImageryProvider({
+            url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')});
     }
 
 }
