@@ -19,6 +19,7 @@ import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.c
 import { UtilsModule } from '../utils/utils.module';
 import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-desc/ac-static-polyline-desc.component";
 import {AcMapLayerProviderComponent} from "./components/ac-map-layer-provider/ac-map-layer-provider.component";
+import {GeoUtilsService} from "./services/geo-utils/geo-utils.service";
 
 @NgModule({
 	imports: [
@@ -56,7 +57,7 @@ import {AcMapLayerProviderComponent} from "./components/ac-map-layer-provider/ac
 		AcStaticPolylineDescComponent,
 		AcMapLayerProviderComponent
 	],
-	providers: [JsonMapper, CesiumProperties],
+	providers: [JsonMapper, CesiumProperties, GeoUtilsService],
 })
 export class AngularCesiumModule {
 }
