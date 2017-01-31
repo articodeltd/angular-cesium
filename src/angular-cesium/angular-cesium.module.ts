@@ -18,6 +18,7 @@ import { CesiumProperties } from './services/cesium-properties/cesium-properties
 import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.component';
 import { UtilsModule } from '../utils/utils.module';
 import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-desc/ac-static-polyline-desc.component";
+import {GeoUtilsService} from "./services/geo-utils/geo-utils.service";
 
 @NgModule({
 	imports: [
@@ -53,7 +54,7 @@ import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-d
 		AcStaticCircleDescComponent,
 		AcStaticPolylineDescComponent
 	],
-	providers: [JsonMapper, CesiumProperties],
+	providers: [JsonMapper, CesiumProperties, GeoUtilsService],
 })
 export class AngularCesiumModule {
 }
