@@ -44,4 +44,10 @@ describe('DynamicEllipseDrawerService', () => {
 
     expect(oldWidth).not.toEqual(ellipsePrimitive.width);
   }));
+
+  it('should create the ellipse with loop = true', inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
+    const ellipsePrimitive = service.add(ellipseProps);
+
+    expect(ellipsePrimitive._loop).toBeTruthy();
+  }));
 });
