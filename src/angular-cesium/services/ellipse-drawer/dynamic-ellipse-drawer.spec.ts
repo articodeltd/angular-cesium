@@ -1,16 +1,16 @@
 
 import { TestBed, inject } from '@angular/core/testing';
 import { DynamicEllipseDrawerService } from './dynamic-ellipse-drawer.service';
-import {mock, when, instance, verify, anything} from "ts-mockito";
-import {CesiumService} from "../cesium/cesium.service";
+import { mock, when, instance, verify, anything } from 'ts-mockito';
+import { CesiumService } from '../cesium/cesium.service';
 
 
 describe('DynamicEllipseDrawerService', () => {
 
-  let ellipseProps = {center: new Cesium.Cartesian3.fromArray([1014908.2920381048, -6260819.093129401, -670601.4009049088]), granularity :0.04,rotation:0, semiMajorAxis:250000, semiMinorAxis:400000};
-  let ellipseProps2 = {width: 2, center: new Cesium.Cartesian3.fromArray([2014908.2920381048, -7260819.093129401, -670601.4009049088]), granularity :0.04,rotation:0, semiMajorAxis:240000, semiMinorAxis:300000};
-  let cesiumService = mock(CesiumService);
-  let primitiveCollection = mock(Cesium.PrimitiveCollection);
+  const ellipseProps = {center: new Cesium.Cartesian3.fromArray([1014908.2920381048, -6260819.093129401, -670601.4009049088]), granularity :0.04,rotation:0, semiMajorAxis:250000, semiMinorAxis:400000};
+  const ellipseProps2 = {width: 2, center: new Cesium.Cartesian3.fromArray([2014908.2920381048, -7260819.093129401, -670601.4009049088]), granularity :0.04,rotation:0, semiMajorAxis:240000, semiMinorAxis:300000};
+  const cesiumService = mock(CesiumService);
+  const primitiveCollection = mock(Cesium.PrimitiveCollection);
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 
@@ -21,15 +21,15 @@ describe('DynamicEllipseDrawerService', () => {
   });
 
   it('should create and return a new ellipse primitive.', inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
-    let ellipsePrimitive = service.add(ellipseProps);
+    const ellipsePrimitive = service.add(ellipseProps);
 
     verify(primitiveCollection.add(anything())).once();
     expect(ellipsePrimitive).toBeDefined();
   }));
 
   it('should update a given ellipse\'s positions', inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
-    let ellipsePrimitive = service.add(ellipseProps);
-    let oldPositions = ellipsePrimitive.positions;
+    const ellipsePrimitive = service.add(ellipseProps);
+    const oldPositions = ellipsePrimitive.positions;
 
     service.update(ellipsePrimitive, ellipseProps2);
 
@@ -37,8 +37,8 @@ describe('DynamicEllipseDrawerService', () => {
   }));
 
   it('should update a given ellipse\'s width', inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
-    let ellipsePrimitive = service.add(ellipseProps);
-    let oldWidth = ellipsePrimitive.width;
+    const ellipsePrimitive = service.add(ellipseProps);
+    const oldWidth = ellipsePrimitive.width;
 
     service.update(ellipsePrimitive, ellipseProps2);
 
