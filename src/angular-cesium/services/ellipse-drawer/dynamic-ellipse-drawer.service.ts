@@ -28,7 +28,7 @@ export class DynamicEllipseDrawerService extends SimpleDrawerService {
 
 	update(ellipse: any, cesiumProps: any): any {
 		ellipse.positions = DynamicEllipseDrawerService.generatePositions(cesiumProps);
-		super.update(ellipse, {width: cesiumProps.width, material: cesiumProps.material});
+		super.update(ellipse, {width: cesiumProps.width || ellipse.width, material: cesiumProps.material || ellipse.material});
 
 		return ellipse;
 	}

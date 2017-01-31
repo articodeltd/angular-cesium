@@ -1,20 +1,19 @@
-/* tslint:disable:no-unused-variable */
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {AcBillboradDescComponent} from "./ac-dynamic-ellipse-desc.component";
+import {AcDynamicEllipseDescComponent} from "./ac-dynamic-ellipse-desc.component";
 
-describe('AcBillboradDescComponent', () => {
-  let component: AcBillboradDescComponent;
-  let fixture: ComponentFixture<AcBillboradDescComponent>;
+describe('AcDynamicEllipseDescComponent', () => {
+  let component: AcDynamicEllipseDescComponent;
+  let fixture: ComponentFixture<AcDynamicEllipseDescComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AcBillboradDescComponent ]
+      declarations: [ AcDynamicEllipseDescComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AcBillboradDescComponent);
+    fixture = TestBed.createComponent(AcDynamicEllipseDescComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
