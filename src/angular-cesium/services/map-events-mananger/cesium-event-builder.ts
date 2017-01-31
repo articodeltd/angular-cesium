@@ -4,17 +4,17 @@ import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { Injectable } from '@angular/core';
 import { CesiumPureEventObserver } from './cesium-pure-event-observer';
-import { CesiumLongDownObserver } from './cesium-long-down-observer';
+import { CesiumLongPressObserver } from './cesium-long-press-observer';
 
 @Injectable()
 export class CesiumEventBuilder {
 	private eventsHandler: any;
 	private cesiumEventsObservables = new Map<string, ConnectableObservable<any>>();
 
-	public static longDownEvents: Set<CesiumEvent> = new Set([
-		CesiumEvent.LONG_LEFT_DOWN,
-		CesiumEvent.LONG_RIGHT_DOWN,
-		CesiumEvent.LONG_MIDDLE_DOWN
+	public static longPressEvents: Set<CesiumEvent> = new Set([
+		CesiumEvent.LONG_LEFT_PRESS,
+		CesiumEvent.LONG_RIGHT_PRESS,
+		CesiumEvent.LONG_MIDDLE_PRESS
 	]);
 
 	constructor(cesiumService: CesiumService) {
@@ -41,7 +41,7 @@ export class CesiumEventBuilder {
 
 	private createCesiumEventObservable(event: CesiumEvent, modifier?: CesiumEventModifier): ConnectableObservable<any> {
 		let cesiumEventObservable: ConnectableObservable<any> = undefined;
-		if (CesiumEventBuilder.longDownEvents.has(event)) {
+		if (CesiumEventBuilder.longPressEvents.has(event)) {
 			cesiumEventObservable = this.createSpecialCesiumEventObservable(event, modifier);
 		}
 		else {
@@ -53,7 +53,7 @@ export class CesiumEventBuilder {
 
 	private createSpecialCesiumEventObservable(event: CesiumEvent, modifier: CesiumEventModifier): ConnectableObservable<any> {
 		// could support more events if needed
-		return new CesiumLongDownObserver(event, modifier, this).init();
+		return new CesiumLongPressObserver(event, modifier, this).init();
 	}
 }
 

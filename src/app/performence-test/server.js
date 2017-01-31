@@ -61,7 +61,7 @@ app.post('/change', function (req, res, next) {
 function sendChunk() {
     let counter = 0;
     let id = setInterval(() => {
-        if(counter % 10 === 0) {
+        if (counter % 10 === 0) {
             counter = 0;
             dataChunk = updateChunk(dataChunk);
         }
@@ -70,14 +70,14 @@ function sendChunk() {
 
         io.emit('birds', chunk);
         counter++;
-    }, interval/10);
+    }, interval / 10);
     return id;
 }
 
-function getChunkPart(part){
+function getChunkPart(part) {
     let result = [];
-    let index = (numOfEntities/10)*(part+1);
-    for(let i=(numOfEntities/10)*part; i<index; i++){
+    let index = (numOfEntities / 10) * (part + 1);
+    for (let i = (numOfEntities / 10) * part; i < index; i++) {
         result.push(dataChunk[i])
     }
     return result;
@@ -112,12 +112,12 @@ function updateChunk(dataArr) {
 function createChunk(numOfEntities) {
     const data = [];
     for (let i = 0; i < numOfEntities; i++) {
-        let getSign = ()=>Math.round(Math.random()) * 2 - 1;
+        let getSign = () => Math.round(Math.random()) * 2 - 1;
         data.push({
             id: i,
             action: 'ADD_OR_UPDATE',
             entity: {
-                id : i ,
+                id: i,
                 name: 'bird' + i,
                 image: "/assets/angry-bird-blue-icon.png",
                 position: {

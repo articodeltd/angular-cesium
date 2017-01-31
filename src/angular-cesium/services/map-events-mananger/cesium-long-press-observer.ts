@@ -4,7 +4,7 @@ import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { CesiumEventBuilder } from './cesium-event-builder';
 import { Observable } from 'rxjs';
 
-export class CesiumLongDownObserver extends CesiumPureEventObserver {
+export class CesiumLongPressObserver extends CesiumPureEventObserver {
 	public static LONG_PRESS_EVENTS_DURATION = 250;
 
 	constructor(protected event: CesiumEvent,
@@ -17,17 +17,17 @@ export class CesiumLongDownObserver extends CesiumPureEventObserver {
 		let startEvent: CesiumEvent;
 		let stopEvent: CesiumEvent;
 
-		if (this.event === CesiumEvent.LONG_LEFT_DOWN) {
+		if (this.event === CesiumEvent.LONG_LEFT_PRESS) {
 			startEvent = CesiumEvent.LEFT_DOWN;
 			stopEvent = CesiumEvent.LEFT_UP;
 		}
 
-		else if (this.event === CesiumEvent.LONG_RIGHT_DOWN) {
+		else if (this.event === CesiumEvent.LONG_RIGHT_PRESS) {
 			startEvent = CesiumEvent.RIGHT_DOWN;
 			stopEvent = CesiumEvent.RIGHT_UP;
 		}
 
-		else if (this.event === CesiumEvent.LONG_MIDDLE_DOWN) {
+		else if (this.event === CesiumEvent.LONG_MIDDLE_PRESS) {
 			startEvent = CesiumEvent.MIDDLE_DOWN;
 			stopEvent = CesiumEvent.MIDDLE_UP;
 		}
@@ -37,7 +37,7 @@ export class CesiumLongDownObserver extends CesiumPureEventObserver {
 
 		// publish for preventing side effect
 		const longPressObservable = startEventObservable
-			.flatMap((e) => Observable.of(e).delay(CesiumLongDownObserver.LONG_PRESS_EVENTS_DURATION).takeUntil(stopEventObservable)).publish();
+			.flatMap((e) => Observable.of(e).delay(CesiumLongPressObserver.LONG_PRESS_EVENTS_DURATION).takeUntil(stopEventObservable)).publish();
 
 		return longPressObservable;
 	}

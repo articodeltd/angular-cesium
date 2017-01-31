@@ -1,9 +1,10 @@
 <ac-layer acFor="let track of tracks$" [context]="this">
-  <ac-label-desc props="{
+    <ac-label-desc props="{
                           text: track.name,
                           position: track.position,
                           fillColor: track.color
-                        }"></ac-label-desc>
+                          }">
+    </ac-label-desc>
 </ac-layer>
 
 <div class="plonter-context-menu" [hidden]="!plonterService.plonterShown">

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { AcNotification } from '../../angular-cesium/models/ac-notification';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
@@ -10,7 +9,7 @@ import { TracksDataProvider } from '../../utils/services/dataProvider/tracksData
 	templateUrl: 'static-polyline-layer.component.html',
 	providers: [TracksDataProvider]
 })
-export class staticPolylineLayerComponent implements OnInit {
+export class StaticPolylineLayerComponent implements OnInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
 	staticPolylines$: Observable<AcNotification>;

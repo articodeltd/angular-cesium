@@ -16,7 +16,7 @@ export enum CesiumEvent{
 	RIGHT_DOWN = Cesium.ScreenSpaceEventType.RIGHT_DOWN,
 	RIGHT_UP = Cesium.ScreenSpaceEventType.RIGHT_UP,
 	WHEEL = Cesium.ScreenSpaceEventType.WHEEL,
-	LONG_LEFT_DOWN = 110,
-	LONG_RIGHT_DOWN,
-	LONG_MIDDLE_DOWN
+	LONG_LEFT_PRESS = 110,
+	LONG_RIGHT_PRESS,
+	LONG_MIDDLE_PRESS
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AcNotification } from '../../angular-cesium/models/ac-notification';
 import { ActionType } from '../../angular-cesium/models/action-type.enum';
@@ -64,7 +64,7 @@ export class EventTestLayerComponent implements OnInit {
         // Example for click and change entity color
         this.testColorChange();
         // Example for long left down
-        // this.testLongLeftDown();
+        // this.testLongPressDown();
 
         // Example for plonter
         this.testPlonter();
@@ -84,9 +84,9 @@ export class EventTestLayerComponent implements OnInit {
         this.plonterService.resolvePlonter(entity);
     }
 
-    testLongLeftDown() {
+    testLongPressDown() {
         this.eventManager.register({
-            event: CesiumEvent.LONG_LEFT_DOWN,
+            event: CesiumEvent.LONG_LEFT_PRESS,
             pick: PickOptions.PICK_ALL
         }).subscribe((pos) => {
             console.log('long left', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
