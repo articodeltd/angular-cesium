@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {CesiumService} from "../../services/cesium/cesium.service";
+import {MapLayerProviderOptions} from "./enums/map-layer-provider-options.enum";
 
 @Component({
     selector: 'ac-map-layer-provider',
@@ -9,33 +10,53 @@ import {CesiumService} from "../../services/cesium/cesium.service";
 export class AcMapLayerProviderComponent implements OnInit {
 
     @Input()
-    url: string;
+    options: any = {};
     @Input()
-    layers: string;
-    @Input()
-    srs: string;
-    @Input()
-    format: string;
+    provider: MapLayerProviderOptions = MapLayerProviderOptions.OFFLINE;
 
-    constructor(private cesiumService: CesiumService) {
-        this.createWMSLayer();
+
+    constructor(private cesiumService: CesiumService) {}
+
+    private createWebMapServiceProvider() {
+        return new Cesium.WebMapServiceImageryProvider(this.options);
     }
 
-    private createWMSLayer() {
-        const provider = new Cesium.WebMapServieImageryProvider({
-            url: this.url,
-            layers: this.layers,
-            parameters:{
-                transparent: true,
-                format: this.format,
-                srs: this.srs
-            }
-        });
+    private createWebMapTileServiceProvider() {
+        return new Cesium.WebMapTileServiceImageryProvider(this.options);
+    }
 
-        this.cesiumService.getScene().imageryLayers.addImageryProvider(provider);
+    private createArcGisMapServerProvider(){
+        return new Cesium.ArcGisMapServerImageryProvider(this.options);
+    }
+
+    private createOfflineMapProvider(){
+        return Cesium.createTileMapServiceImageryProvider({
+            url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')});
     }
 
     ngOnInit() {
+        if(this.options.url === undefined && this.provider !== MapLayerProviderOptions.OFFLINE){
+            throw 'options must have a url'
+        }
+
+        let provider;
+
+        switch(this.provider){
+            case MapLayerProviderOptions.WebMapService:
+                provider = this.createWebMapServiceProvider();
+                break;
+            case MapLayerProviderOptions.WebMapTileService:
+                provider = this.createWebMapTileServiceProvider();
+                break;
+            case MapLayerProviderOptions.ArcGisMapServer:
+                provider = this.createArcGisMapServerProvider();
+                break;
+            case MapLayerProviderOptions.OFFLINE:
+            default:
+                provider = this.createOfflineMapProvider();
+                break;
+        }
+        this.cesiumService.getScene().imageryLayers.addImageryProvider(provider);
     }
 
 }
