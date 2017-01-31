@@ -18,6 +18,7 @@ import { CesiumProperties } from './services/cesium-properties/cesium-properties
 import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.component';
 import { UtilsModule } from '../utils/utils.module';
 import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-desc/ac-static-polyline-desc.component";
+import {AcMapLayerProviderComponent} from "./components/ac-map-layer-provider/ac-map-layer-provider.component";
 
 @NgModule({
 	imports: [
@@ -38,7 +39,8 @@ import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-d
 		AcLayer2Directive,
 		PixelOffsetPipe,
 		AcStaticCircleDescComponent,
-		AcStaticPolylineDescComponent
+		AcStaticPolylineDescComponent,
+		AcMapLayerProviderComponent
 	],
 	exports: [
 		AcMapComponent,
@@ -51,7 +53,8 @@ import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-d
 		AcLayerComponent,
 		AcLayer2Directive,
 		AcStaticCircleDescComponent,
-		AcStaticPolylineDescComponent
+		AcStaticPolylineDescComponent,
+		AcMapLayerProviderComponent
 	],
 	providers: [JsonMapper, CesiumProperties],
 })
