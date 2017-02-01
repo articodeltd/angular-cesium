@@ -4,7 +4,7 @@ import { mock, when, instance, verify, anything } from 'ts-mockito';
 import { CesiumService } from '../cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 
-fdescribe('PolygonDrawerService', () => {
+describe('PolygonDrawerService', () => {
 	let geometryProps: any = {
 		height: 15000.0,
 		polygonHierarchy: new Cesium.PolygonHierarchy(
