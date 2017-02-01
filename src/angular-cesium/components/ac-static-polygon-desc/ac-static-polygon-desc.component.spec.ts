@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AcPolygonStaticDescComponent } from './ac-polygon-static-desc.component';
 
-describe('AcPolygonStaticDescComponent', () => {
+describe('AcStaticPolygonDescComponent', () => {
 	let component: AcPolygonStaticDescComponent;
 	let fixture: ComponentFixture<AcPolygonStaticDescComponent>;
 
