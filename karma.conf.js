@@ -12,6 +12,8 @@ module.exports = function (config) {
       require('angular-cli/plugins/karma')
     ],
     files: [
+      { pattern: './node_modules/cesium/Build/Cesium/Cesium.js', watched: false },
+//        { pattern: './node_modules/cesium/Build/CesiumUnminified/Cesium.js', watched: false }, // Uncomment if you wanna work with the unminified version of cesium.
       { pattern: './src/test.ts', watched: false }
     ],
     preprocessors: {
