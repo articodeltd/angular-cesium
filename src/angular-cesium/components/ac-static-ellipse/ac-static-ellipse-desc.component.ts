@@ -7,7 +7,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 
 /**
  *  This is a static (position, color, etc.. are not updated) implementation of an ellipse.
- *  Usage :
+ *  @example
  *    <ac-static-ellipse-desc
  geometryProps="{
             center: ellipse.geometry.center,
