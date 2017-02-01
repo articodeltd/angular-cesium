@@ -1,9 +1,9 @@
-import {Component} from "@angular/core";
-import {BasicDesc} from "../../services/basic-desc/basic-desc.service";
-import {LayerService} from "../../services/layer-service/layer-service.service";
-import {DynamicPolylineDrawerService} from "../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service";
-import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
-import {CesiumProperties} from "../../services/cesium-properties/cesium-properties.service";
+import { Component } from '@angular/core';
+import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
+import { LayerService } from '../../services/layer-service/layer-service.service';
+import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
+import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 
 /**
  *  This is a dynamic(position is updatable) implementation of an polyline.
@@ -17,15 +17,14 @@ import {CesiumProperties} from "../../services/cesium-properties/cesium-properti
  </ac-dynamic-polyline-desc>
  */
 @Component({
-    selector: 'ac-dynamic-polyline-desc',
-    templateUrl: './ac-dynamic-polyline-desc.component.html',
-    styleUrls: ['./ac-dynamic-polyline-desc.component.css']
+	selector: 'ac-dynamic-polyline-desc',
+	templateUrl: './ac-dynamic-polyline-desc.component.html',
+	styleUrls: ['./ac-dynamic-polyline-desc.component.css']
 })
 export class AcDynamicPolylineDescComponent extends BasicDesc {
 
-    constructor(dynamicPolylineDrawerService: DynamicPolylineDrawerService, layerService: LayerService,
-                computationCache: ComputationCache, cesiumProperties: CesiumProperties
-    ) {
-        super(dynamicPolylineDrawerService, layerService, computationCache, cesiumProperties);
-    }
+	constructor(dynamicPolylineDrawerService: DynamicPolylineDrawerService, layerService: LayerService,
+	            computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
+		super(dynamicPolylineDrawerService, layerService, computationCache, cesiumProperties);
+	}
 }

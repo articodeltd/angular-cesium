@@ -1,6 +1,5 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AcEllipseStaticDescComponent } from './ac-ellipse-static-desc.component';
 
 describe('AcEllipseStaticDescComponent', () => {

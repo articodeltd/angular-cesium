@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { StaticCircleDrawerService } from '../../services/static-circle-drawer/static-circle-drawer.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';

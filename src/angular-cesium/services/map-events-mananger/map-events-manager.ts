@@ -23,11 +23,11 @@ export class MapEventsManagerService {
 	private scene;
 	private eventRegistrations = new Map<string, Registration[]>();
 
-    constructor(cesiumService: CesiumService,
-                private eventBuilder: CesiumEventBuilder,
-                private plonterService : PlonterService) {
-        this.scene = cesiumService.getScene();
-    }
+	constructor(cesiumService: CesiumService,
+	            private eventBuilder: CesiumEventBuilder,
+	            private plonterService: PlonterService) {
+		this.scene = cesiumService.getScene();
+	}
 
 	register(input: EventRegistrationInput): DisposableObservable<EventResult> {
 		if (this.scene === undefined) {
@@ -140,10 +140,10 @@ export class MapEventsManagerService {
 		return Object.assign(picksAndMovement, {entities: entities});
 	}
 
-	private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions) : Observable<EventResult> {
+	private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable<EventResult> {
 		if (pickOption === PickOptions.PICK_ONE && entitiesAndMovement.entities.length > 1) {
 			return this.plonterService.plonterIt(entitiesAndMovement);
-		}else {
+		} else {
 			return Observable.of(entitiesAndMovement);
 		}
 	}

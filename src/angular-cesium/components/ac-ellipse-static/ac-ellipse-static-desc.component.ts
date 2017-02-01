@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
