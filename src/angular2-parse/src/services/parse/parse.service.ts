@@ -2,13 +2,11 @@ import {Injectable, Compiler} from "@angular/core";
 import {Parser, Lexer} from '@angular/compiler';
 import {ASTWithSource} from '@angular/compiler/src/expression_parser/ast';
 import {ParseVisitorResolver} from '../parse-visitor-resolver/parse-visitor-resolver.service';
-import {ParseVisitorCompiler} from '../parse-visitor-compiler/parse-visitor-compiler.service';
 
 @Injectable()
 export class Parse {
     private _parser: Parser = new Parser(new Lexer());
     private _pipesCache: Map<string, any> = new Map<string, any>();
-    private _evalCache: Map<string, ASTWithSource> = new Map<string, ASTWithSource>();
     private _calcCache: Map<string, ASTWithSource> = new Map<string, ASTWithSource>();
 
     /**
@@ -24,32 +22,6 @@ export class Parse {
     }
 
     eval(expression: string): Function {
-        let ast: ASTWithSource = null;
-        const visitor = new ParseVisitorCompiler();
-
-        if (this._evalCache.has(expression)) {
-            ast = this._evalCache.get(expression);
-        }
-        else {
-            ast = this._parser.parseInterpolation(expression, 'Parse');
-
-            if (!ast) {
-                ast = this._parser.parseBinding(expression, 'Parse');
-            }
-
-            this._evalCache.set(expression, ast);
-        }
-
-        const fnBody =  ast.visit(visitor);
-        const pipesCache = this._pipesCache;
-        const getFn = new Function ('context', 'pipesCache', `return ${fnBody};`);
-
-        return function evalParse(context: Object): any {
-            return getFn(context, pipesCache);
-        };
-    }
-
-    calc(expression: string): Function {
         let ast: ASTWithSource = null;
         const visitor = new ParseVisitorResolver(this._pipesCache);
 

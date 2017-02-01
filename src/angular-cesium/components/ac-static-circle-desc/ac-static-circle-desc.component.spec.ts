@@ -1,21 +1,21 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EllipseLayerComponent } from './ellipse-layer.component';
+import { AcEllipseStaticDescComponent } from './ac-ellipse-static-desc.component';
 
-describe('DynamicEllipseLayerComponent', () => {
-	let component: EllipseLayerComponent;
-	let fixture: ComponentFixture<EllipseLayerComponent>;
+describe('AcEllipseStaticDescComponent', () => {
+	let component: AcEllipseStaticDescComponent;
+	let fixture: ComponentFixture<AcEllipseStaticDescComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [EllipseLayerComponent]
+			declarations: [AcEllipseStaticDescComponent]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(EllipseLayerComponent);
+		fixture = TestBed.createComponent(AcEllipseStaticDescComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

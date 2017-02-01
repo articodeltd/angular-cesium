@@ -1,3 +1,4 @@
+import { AcEntity } from '../../../angular-cesium/models/ac-entity';
 let oneAndOnlyMaterial = new Cesium.PerInstanceColorAppearance({
 	translucent: false,
 	closed: true
@@ -19,5 +20,41 @@ export function convertToCesiumObj(entity): any {
 	};
 	entity.appearance = oneAndOnlyMaterial;
 
-	return entity;
+	entity.staticCircle = {
+		geometry: {
+			center: Cesium.Cartesian3.fromDegrees(Math.random() * 90, Math.random() * 90),
+			radius: 100000.0,
+			height: 1000000
+		},
+		attributes: {
+			color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+		},
+		appearance: new Cesium.PerInstanceColorAppearance({
+			translucent: false,
+			closed: true
+		})
+	};
+
+	entity.staticPolyline = {
+		geometry: {
+			width: 1,
+			height: 50,
+			positions: Cesium.Cartesian3.fromDegreesArray(
+				[
+					Math.floor(Math.random() * 50), Math.floor(Math.random() * 50),
+					Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)
+				]),
+		},
+		attributes: {
+			color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+		},
+		appearance: new Cesium.PolylineColorAppearance({
+			closed: true,
+			translucent: false
+		})
+	}
+	;
+
+	return AcEntity.create(entity);
 }
+
