@@ -26,7 +26,6 @@ import { EventTestLayerComponent } from './event-test-layer/event-test-layer.com
 		KavimLayerComponent,
 		StaticPolylineLayerComponent,
 		PolygonLayerComponent,
-		staticPolylineLayerComponent,
 		KavimLayerComponent,
 		StaticCircleLayerComponent,
 		EventTestLayerComponent
