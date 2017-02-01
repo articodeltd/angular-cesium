@@ -23,12 +23,8 @@ export class CesiumProperties {
             propsMap.set(prop, {expression, get: this._parser.eval(expression)});
         }
 
-        for (let [propName, cesiumProp] of propsMap){
-            cesiumDesc[propName ? propName : 'undefined'] = `cache.get(${this.stringifyExpression(cesiumProp.expression.toString())}, () => propsMap.get('${propName}').get(context))`;
-        }
-
-        const fnBody = JSON.stringify(cesiumDesc).replace(/"/g, '');
-        const getFn = new Function('propsMap', 'cache', 'context', `return ${fnBody}`);
+        const fnBody = `const cesiumDesc={};for (let [propName, cesiumProp] of propsMap)cesiumDesc[propName ? propName : 'undefined'] = cache.get(cesiumProp.expression.toString(), ()=>propsMap.get(propName).get(context));return cesiumDesc;`;
+        const getFn = new Function('propsMap', 'cache', 'context', fnBody);
 
         return function evaluateCesiumProps(cache: ComputationCache, context: Object): any {
             return getFn(propsMap, cache, context);

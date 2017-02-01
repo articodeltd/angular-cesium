@@ -63,7 +63,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			this.layerService.getDescriptions().forEach((descriptionComponent) => {
 				switch (notification.actionType) {
 					case ActionType.ADD_UPDATE:
-						descriptionComponent.draw(this.context, notification.id);
+						descriptionComponent.draw(this.context, notification.id, notification.entity);
 						break;
 					case ActionType.DELETE:
 						descriptionComponent.remove(notification.id);

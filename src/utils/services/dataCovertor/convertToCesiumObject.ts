@@ -1,3 +1,4 @@
+import { AcEntity } from '../../../angular-cesium/models/ac-entity';
 let oneAndOnlyMaterial = new Cesium.PerInstanceColorAppearance({
 	translucent: false,
 	closed: true
@@ -81,6 +82,6 @@ export function convertToCesiumObj(entity): any {
 		material: entity.id === 1 ? yellowMatirial : redMatirial
 	};
 
-	return entity;
+	return AcEntity.create(entity);
 }
 
