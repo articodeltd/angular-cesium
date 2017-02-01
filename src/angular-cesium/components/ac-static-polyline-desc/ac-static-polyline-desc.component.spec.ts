@@ -7,41 +7,23 @@ import { LayerService } from '../../services/layer-service/layer-service.service
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service'
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service'
 import { mock } from 'ts-mockito';
+import { providerFromMock, mockProvider } from '../../utils/testingUtils';
 
 describe('AcStaticPolylineDescComponent', () => {
 	let component: AcStaticPolylineDescComponent;
 	let fixture: ComponentFixture<AcStaticPolylineDescComponent>;
 
 	beforeEach(async(() => {
-		const mockCesiumService = mock(CesiumService);
-		const mockStaticPolylineDrawerService = mock(StaticPolylineDrawerService);
-		const mockLayerService = mock(LayerService);
-		const mockComputationCache = mock(ComputationCache);
-		const mockCesiumProperties = mock(CesiumProperties);
+		const cesiumService = mock(CesiumService);
 
 		TestBed.configureTestingModule({
 			declarations: [AcStaticPolylineDescComponent],
 			providers: [
-				{
-					provide: CesiumService,
-					useValue: mockCesiumService
-				},
-				{
-					provide: StaticPolylineDrawerService,
-					useValue: mockStaticPolylineDrawerService
-				},
-				{
-					provide: LayerService,
-					useValue: mockLayerService
-				},
-				{
-					provide: ComputationCache,
-					useValue: mockComputationCache
-				},
-				{
-					provide: CesiumProperties,
-					useValue: mockCesiumProperties
-				}
+				providerFromMock(CesiumService, cesiumService),
+				mockProvider(LayerService),
+				mockProvider(StaticPolylineDrawerService),
+				mockProvider(CesiumProperties),
+				mockProvider(ComputationCache)
 			]
 		})
 			.compileComponents();
