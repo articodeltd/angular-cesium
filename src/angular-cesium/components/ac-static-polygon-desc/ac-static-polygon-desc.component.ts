@@ -7,7 +7,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 
 /**
  *  This is a static (position, color, etc.. are not updated) implementation of a polygon.
- *  Usage :
+ *  @example
  *    <ac-static-polygon-desc
  geometryProps="{
             polygonHierarchy: polygon.geometry.polygonHierarchy,
