@@ -60,22 +60,17 @@ app.post('/change', function (req, res, next) {
 
 function sendChunk() {
     let counter = 0;
-    let id = setInterval(() = > {
-            if (counter % 10 === 0
-)
-    {
-        counter = 0;
-        dataChunk = updateChunk(dataChunk);
-    }
+    let id = setInterval(() => {
+            if (counter % 10 === 0) {
+                counter = 0;
+                dataChunk = updateChunk(dataChunk);
+            }
 
-    let chunk = getChunkPart(counter);
+            let chunk = getChunkPart(counter);
 
-    io.emit('birds', chunk);
-    counter++;
-},
-    interval / 10
-)
-    ;
+            io.emit('birds', chunk);
+            counter++;
+        }, interval / 10);
     return id;
 }
 
@@ -91,19 +86,16 @@ function getChunkPart(part) {
 function sendOneByOne() {
     let counter = 0;
     console.log(interval);
-    const id = setInterval(() = > {
+    const id = setInterval(() => {
             io.emit('birds', [{
-            id: counter++ % numOfEntities,
-            action: 'ADD_OR_UPDATE',
-            entity: {
-                name: 'bird',
-                image: "/assets/angry-bird-blue-icon.png"
-            }
-        }]);
-},
-    interval
-)
-    ;
+                id: counter++ % numOfEntities,
+                action: 'ADD_OR_UPDATE',
+                entity: {
+                    name: 'bird',
+                    image: "/assets/angry-bird-blue-icon.png"
+                }
+            }]);
+        }, interval);
 
     return id;
 }
@@ -120,8 +112,7 @@ function updateChunk(dataArr) {
 function createChunk(numOfEntities) {
     const data = [];
     for (let i = 0; i < numOfEntities; i++) {
-        let getSign = () =
-    >
+        let getSign = () =>
         Math.round(Math.random()) * 2 - 1;
         data.push({
             id: i,
