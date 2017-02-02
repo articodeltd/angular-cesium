@@ -7,7 +7,7 @@ import {CesiumService} from './cesium.service';
 import {ViewerFactory} from "../viewer-factory/viewer-factory.service";
 import {providerFromMock} from "../../utils/testingUtils";
 
-fdescribe('CesiumService', () => {
+describe('CesiumService', () => {
 
     const defaultZooms = 1;
     const viewerFactory = mock(ViewerFactory);
