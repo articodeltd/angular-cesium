@@ -57,22 +57,28 @@ describe('PolygonDrawerService', () => {
 		expect(polygonPrimitive).toBeDefined();
 	}));
 
-	it('should not update a given polygon\'s positions', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
+	it('should not update a given polygon\'s height', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
 		const polygonPrimitive = service.add(geometryProps, instanceProps, primitiveProps);
-		const oldPositions = polygonPrimitive.positions;
+		const oldPositions = polygonPrimitive.height;
 
 		service.update(polygonPrimitive, otherGeometryProps, instanceProps, primitiveProps);
 
-		expect(oldPositions).toEqual(polygonPrimitive.positions);
+		expect(oldPositions).toEqual(polygonPrimitive.height);
 	}));
 
-	it('should not update given polygon\'s width', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
+	it('should not update given polygon\'s polygon hierarchy', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
 		const polygonPrimitive = service.add(geometryProps, instanceProps, primitiveProps);
-		const oldWidth = polygonPrimitive.width;
+		const oldWidth = polygonPrimitive.polygonHierarchy;
 
 		service.update(polygonPrimitive, otherGeometryProps, instanceProps, primitiveProps);
 
-		expect(oldWidth).toEqual(polygonPrimitive.width);
+		expect(oldWidth).toEqual(polygonPrimitive.polygonHierarchy);
+	}));
+
+	it('should throw if geometry props are empty', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
+		geometryProps = {};
+
+		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
 	}));
 
 	it('should throw if geometry props are not given', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
@@ -81,10 +87,22 @@ describe('PolygonDrawerService', () => {
 		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
 	}));
 
+	it('should throw if instance props are empty', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
+		instanceProps = {};
+
+		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
+	}));
+
 	it('should throw if instance props are not given', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
 		instanceProps = undefined;
 
 		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
+	}));
+
+	it('should NOT throw if primitive props are empty', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
+		primitiveProps = {};
+
+		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toBeDefined();
 	}));
 
 	it('should throw if primitive props are not given', inject([PolygonDrawerService], (service: PolygonDrawerService) => {
