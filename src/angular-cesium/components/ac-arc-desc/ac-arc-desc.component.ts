@@ -5,6 +5,20 @@ import {ComputationCache} from "../../services/computation-cache/computation-cac
 import {ArcDrawerService} from "../../services/arc-drawer/arc-drawer.service";
 import {BasicDesc} from "../../services/basic-desc/basic-desc.service";
 
+/**
+ *  This is a dynamic(position is updatable) implementation of an arc.
+ *  The ac-arc-desc element must be a child of ac-layer element.
+ *  An arc is not cesium natively implemented and therefore it's API doesn't appear anywhere
+ *  Usage :
+ *    <ac-arc-desc props="{
+ *    center: arc.center,
+    angle: arc.angle,
+    delta: arc.delta,
+    radius: arc.radius,
+                         }">
+ </ac-arc-desc>
+ */
+
 @Component({
   selector: 'ac-arc-desc',
   template: ''
