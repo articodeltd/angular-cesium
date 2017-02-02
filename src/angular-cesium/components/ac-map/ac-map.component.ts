@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Inject } from '@angular/core';
+import {Component, OnInit, ElementRef, Inject, Input} from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
@@ -12,15 +12,24 @@ import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-ev
 })
 export class AcMapComponent implements OnInit {
 
+	private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
+	private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
+
+	@Input()
+	minimumZoom : number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
+
+	@Input()
+	maximumZoom : number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
+
 	constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
 		let mapContainer = this.document.createElement('div');
 		this._elemRef.nativeElement.appendChild(mapContainer);
 		this._cesiumService.init(mapContainer);
-
 	}
 
 	ngOnInit() {
-
+		this._cesiumService.setMinimumZoom(this.minimumZoom);
+		this._cesiumService.setMaximumZoom(this.maximumZoom);
 	}
 
 }

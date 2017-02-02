@@ -19,6 +19,7 @@ import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.c
 import { UtilsModule } from '../utils/utils.module';
 import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-desc/ac-static-polyline-desc.component";
 import {GeoUtilsService} from "./services/geo-utils/geo-utils.service";
+import {ViewerFactory} from "./services/viewer-factory/viewer-factory.service";
 
 @NgModule({
 	imports: [
@@ -54,7 +55,7 @@ import {GeoUtilsService} from "./services/geo-utils/geo-utils.service";
 		AcStaticCircleDescComponent,
 		AcStaticPolylineDescComponent
 	],
-	providers: [JsonMapper, CesiumProperties, GeoUtilsService],
+	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })
 export class AngularCesiumModule {
 }
