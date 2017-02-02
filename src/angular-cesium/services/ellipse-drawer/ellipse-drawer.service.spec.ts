@@ -74,7 +74,6 @@ describe('EllipseDrawerService', () => {
 		expect(oldRotation).toEqual(ellipsePrimitive.rotation);
 	}));
 
-
 	it('should not update given ellipse\'s center', inject([EllipseDrawerService], (service: EllipseDrawerService) => {
 		const ellipsePrimitive = service.add(geometryProps, instanceProps, primitiveProps);
 		const oldCenter = ellipsePrimitive.center;
@@ -84,9 +83,20 @@ describe('EllipseDrawerService', () => {
 		expect(oldCenter).toEqual(ellipsePrimitive.center);
 	}));
 
+	it('should throw if geometry props are empty', inject([EllipseDrawerService], (service: EllipseDrawerService) => {
+		geometryProps = {};
+
+		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
+	}));
 
 	it('should throw if geometry props are not given', inject([EllipseDrawerService], (service: EllipseDrawerService) => {
 		geometryProps = undefined;
+
+		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
+	}));
+
+	it('should throw if instance props are empty', inject([EllipseDrawerService], (service: EllipseDrawerService) => {
+		instanceProps = {};
 
 		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
 	}));
@@ -95,6 +105,12 @@ describe('EllipseDrawerService', () => {
 		instanceProps = undefined;
 
 		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
+	}));
+
+	it('should NOT throw if primitive props are empty', inject([EllipseDrawerService], (service: EllipseDrawerService) => {
+		primitiveProps = {};
+
+		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toBeDefined();
 	}));
 
 	it('should throw if primitive props are not given', inject([EllipseDrawerService], (service: EllipseDrawerService) => {
