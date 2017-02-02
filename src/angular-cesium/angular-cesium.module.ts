@@ -19,6 +19,7 @@ import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.c
 import { UtilsModule } from '../utils/utils.module';
 import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-desc/ac-static-polyline-desc.component";
 import {GeoUtilsService} from "./services/geo-utils/geo-utils.service";
+import {AcArcDescComponent} from "./components/ac-arc-desc/ac-arc-desc.component";
 
 @NgModule({
 	imports: [
@@ -39,7 +40,8 @@ import {GeoUtilsService} from "./services/geo-utils/geo-utils.service";
 		AcLayer2Directive,
 		PixelOffsetPipe,
 		AcStaticCircleDescComponent,
-		AcStaticPolylineDescComponent
+		AcStaticPolylineDescComponent,
+		AcArcDescComponent
 	],
 	exports: [
 		AcMapComponent,
@@ -52,7 +54,8 @@ import {GeoUtilsService} from "./services/geo-utils/geo-utils.service";
 		AcLayerComponent,
 		AcLayer2Directive,
 		AcStaticCircleDescComponent,
-		AcStaticPolylineDescComponent
+		AcStaticPolylineDescComponent,
+		AcArcDescComponent
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService],
 })
