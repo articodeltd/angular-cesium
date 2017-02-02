@@ -1,6 +1,3 @@
-// Karma configuration file, see link for more information
-// https://karma-runner.github.io/0.13/config/configuration-file.html
-
 module.exports = function (config) {
     config.set({
         basePath: '',
@@ -12,13 +9,15 @@ module.exports = function (config) {
             require('angular-cli/plugins/karma')
         ],
         files: [
-            {pattern: './src/test.ts', watched: false}
+            { pattern: './node_modules/cesium/Build/Cesium/Cesium.js', watched: false },
+//        { pattern: './node_modules/cesium/Build/CesiumUnminified/Cesium.js', watched: false }, // Uncomment if you wanna work with the unminified version of cesium.
+            { pattern: './src/test.ts', watched: false }
         ],
         preprocessors: {
             './src/test.ts': ['angular-cli']
         },
         mime: {
-            'text/x-typescript': ['ts', 'tsx']
+            'text/x-typescript': ['ts','tsx']
         },
         remapIstanbulReporter: {
             reports: {
