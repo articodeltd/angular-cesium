@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
@@ -8,8 +7,8 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 
 /**
  *  This is a static (position, color, etc.. are not updated) implementation of an ellipse.
- *  Usage :
- *    <ac-ellipse-static-desc
+ *  @example
+ *    <ac-static-ellipse-desc
  geometryProps="{
             center: ellipse.geometry.center,
             semiMajorAxis: ellipse.geometry.semiMajorAxis,
@@ -26,11 +25,11 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  >
  */
 @Component({
-	selector: 'ac-ellipse-static-desc',
-	templateUrl: './ac-ellipse-static-desc.component.html',
-	styleUrls: ['./ac-ellipse-static-desc.component.css']
+	selector: 'ac-static-ellipse-desc',
+	templateUrl: './ac-static-ellipse-desc.component.html',
+	styleUrls: ['./ac-static-ellipse-desc.component.css']
 })
-export class AcEllipseStaticDescComponent extends BasicStaticPrimitiveDesc {
+export class AcStaticEllipseDescComponent extends BasicStaticPrimitiveDesc {
 	constructor(ellipseDrawer: EllipseDrawerService, layerService: LayerService,
 	            computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
 		super(ellipseDrawer, layerService, computationCache, cesiumProperties);
