@@ -6,7 +6,7 @@ import {ArcDrawerService} from "../../services/arc-drawer/arc-drawer.service";
 import {BasicDesc} from "../../services/basic-desc/basic-desc.service";
 
 /**
- *  This is a dynamic(position is updatable) implementation of an arc.
+ *  This is an implementation of an arc.
  *  The ac-arc-desc element must be a child of ac-layer element.
  *  An arc is not cesium natively implemented and therefore it's API doesn't appear anywhere
  *  Usage :
@@ -14,7 +14,7 @@ import {BasicDesc} from "../../services/basic-desc/basic-desc.service";
  *    center: arc.center,
     angle: arc.angle,
     delta: arc.delta,
-    radius: arc.radius,
+    radius: arc.radius
                          }">
  </ac-arc-desc>
  */
