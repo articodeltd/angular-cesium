@@ -20,7 +20,7 @@ import { StaticPolylineDrawerService } from '../../services/static-polyline-draw
 	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
-	private static acForRgx = /^let\s+.+\s+of\s+.+$/;
+	private static readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 
 	@Input()
 	show: boolean = true;
