@@ -24,7 +24,7 @@ export class CesiumService {
   }
 
     /**
-     * Gets the minimum zoom value
+     * Gets the minimum zoom value in meters
      * @returns {any}
      */
   getMinimumZoom() : number {
@@ -32,7 +32,7 @@ export class CesiumService {
   }
 
     /**
-     * Sets the minimum zoom value
+     * Sets the minimum zoom value in meters
      * @param amount - new value
      */
   setMinimumZoom(amount : number) : void {
@@ -40,7 +40,7 @@ export class CesiumService {
   }
 
     /**
-     * Gets the maxmimum zoom value
+     * Gets the maxmimum zoom value in meters
      * @returns {any}
      */
   getMaximumZoom() : number {
@@ -48,7 +48,7 @@ export class CesiumService {
   }
 
     /**
-     * Sets the maximum zoom value
+     * Sets the maximum zoom value in meters
      * @param amount - new value
      */
   setMaximumZoom(amount : number) : void {

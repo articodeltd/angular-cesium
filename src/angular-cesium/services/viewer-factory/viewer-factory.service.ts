@@ -9,31 +9,27 @@ export class ViewerFactory {
     }
 
     /**
-     * Creates a viewer with default options
+     * Creates a viewer with default or custom options
      * @param mapContainer - container to initialize the viewer on
-     * @returns {any} new viewer
-     */
-    createViewer(mapContainer: HTMLElement) {
-        window['CESIUM_BASE_URL'] = './assets/Cesium';
-        return new this.cesium.Viewer(mapContainer,
-            {
-                // Poor internet connection - use default globe image, TODO: should be removed
-                imageryProvider: Cesium.createTileMapServiceImageryProvider({
-                    url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
-                }),
-                baseLayerPicker: false,
-                geocoder: false
-            });
-    }
+     * @param options - Options to create the viewer with - Optional
 
-    /**
-     * Creates a viewer with the received options
-     * @param mapContainer - container to initialize the viewer on
-     * @param options - Options to create the viewer with
      * @returns {any} new viewer
      */
-    createViewerWithOptions(mapContainer: HTMLElement, options: any) {
+    createViewer(mapContainer: HTMLElement, options?: any) {
         window['CESIUM_BASE_URL'] = './assets/Cesium';
-        return new this.cesium.Viewer(mapContainer, options);
+
+        if (options) {
+            return new this.cesium.Viewer(mapContainer, options);
+        } else {
+            return new this.cesium.Viewer(mapContainer,
+                {
+                    // Poor internet connection - use default globe image, TODO: should be removed
+                    imageryProvider: Cesium.createTileMapServiceImageryProvider({
+                        url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
+                    }),
+                    baseLayerPicker: false,
+                    geocoder: false
+                });
+        }
     }
 }
