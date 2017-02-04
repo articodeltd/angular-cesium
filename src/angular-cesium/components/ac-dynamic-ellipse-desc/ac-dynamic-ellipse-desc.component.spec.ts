@@ -1,25 +1,41 @@
-/* tslint:disable:no-unused-variable */
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {AcBillboradDescComponent} from "./ac-dynamic-ellipse-desc.component";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AcDynamicEllipseDescComponent } from './ac-dynamic-ellipse-desc.component';
+import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { mock, instance, when } from 'ts-mockito';
+import { LayerService } from '../../services/layer-service/layer-service.service';
+import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
+import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
+import { CesiumService } from '../../services/cesium/cesium.service';
+import { mockProvider, providerFromMock } from '../../utils/testingUtils';
 
-describe('AcBillboradDescComponent', () => {
-  let component: AcBillboradDescComponent;
-  let fixture: ComponentFixture<AcBillboradDescComponent>;
+describe('AcDynamicEllipseDescComponent', () => {
+    let component: AcDynamicEllipseDescComponent;
+    let fixture: ComponentFixture<AcDynamicEllipseDescComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AcBillboradDescComponent ]
-    })
-    .compileComponents();
-  }));
+    const cesiumService = mock(CesiumService);
+    const primitiveCollection = mock(Cesium.PrimitiveCollection);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AcBillboradDescComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [AcDynamicEllipseDescComponent],
+            providers: [DynamicEllipseDrawerService,
+                        providerFromMock(CesiumService, cesiumService),
+                        mockProvider(LayerService),
+                        mockProvider(CesiumProperties),
+                        mockProvider(ComputationCache)]
+        })
+            .compileComponents();
+    }));
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AcDynamicEllipseDescComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
