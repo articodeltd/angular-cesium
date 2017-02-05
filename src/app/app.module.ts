@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
 import { AppComponent } from './app.component';
 import { AngularCesiumModule } from '../angular-cesium/angular-cesium.module';
 import { PerformanceFormComponent } from './performence-test/performance-form/performance-form.component';
@@ -13,7 +14,7 @@ import { DynamicPolylineLayerComponent } from './dynamic-polyline-layer/dynamic-
 import { StaticPolylineLayerComponent } from './static-polyline-layer/static-polyline-layer.component';
 import { StaticCircleLayerComponent } from './static-circle-layer/static-circle-layer.component';
 import { EventTestLayerComponent } from './event-test-layer/event-test-layer.component';
-import {ArcLayerComponent} from "./arc-layer/arc-layer.component";
+import { ArcLayerComponent } from "./arc-layer/arc-layer.component";
 
 @NgModule({
 	declarations: [

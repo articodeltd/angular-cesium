@@ -29,7 +29,8 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
                     delta: randomDelta,
                     radius: randomRadius,
                     name: 'base haifa',
-                    center: randCenter
+                    center: randCenter,
+                    color: Cesium.Color.RED
                 }
             })
         }
