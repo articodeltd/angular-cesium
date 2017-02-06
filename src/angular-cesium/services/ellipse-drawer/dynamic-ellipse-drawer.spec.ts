@@ -9,7 +9,7 @@ describe('DynamicEllipseDrawerService', () => {
   let ellipseProps;
   const ellipseProps2 = {width: 2, center: new Cesium.Cartesian3.fromArray([2014908.2920381048, -7260819.093129401, -670601.4009049088]), granularity :0.04,rotation:0, semiMajorAxis:240000, semiMinorAxis:300000};
   const cesiumService = mock(CesiumService);
-  const primitiveCollection = mock(Cesium.PrimitiveCollection);
+  const primitiveCollection : any = mock(Cesium.PrimitiveCollection);
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 
