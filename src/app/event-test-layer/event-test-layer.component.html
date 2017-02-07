@@ -6,3 +6,9 @@
                           }">
     </ac-label-desc>
 </ac-layer>
+
+<div class="plonter-context-menu" [hidden]="!plonterService.plonterShown">
+    <div *ngFor="let entity of plonterService.entitesToPlonter">
+        <div class="plonter-item" (click)="chooseEntity(entity)">{{entity.name}}</div>
+    </div>
+</div>
