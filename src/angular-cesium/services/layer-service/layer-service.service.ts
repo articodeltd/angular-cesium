@@ -1,14 +1,14 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LayerService {
-  private descriptions :any[] = [];
+	private descriptions: any[] = [];
 
-  registerDescription(descriptionComponent: any){
-        this.descriptions.push(descriptionComponent);
-  }
+	registerDescription(descriptionComponent: any) {
+		this.descriptions.push(descriptionComponent);
+	}
 
-  getDescriptions(): any[]{
-    return this.descriptions;
-  }
+	getDescriptions(): any[] {
+		return this.descriptions;
+	}
 }

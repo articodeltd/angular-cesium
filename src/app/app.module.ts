@@ -9,7 +9,7 @@ import { TracksLayerComponent } from './tracks-layer/tracks-layer.component';
 import { EllipseLayerComponent } from './ellipse-layer/ellipse-layer.component';
 import { BaseLayerComponent } from './base-layer/base-layer.component';
 import { DynamicEllipseLayerComponent } from './dynamic-ellipse-layer/dynamic-ellipse-layer.component';
-import { KavimLayerComponent } from './kavim-layer/kavim-layer.component';
+import { DynamicPolylineLayerComponent } from './dynamic-polyline-layer/dynamic-polyline-layer.component';
 import { StaticPolylineLayerComponent } from './static-polyline-layer/static-polyline-layer.component';
 import { StaticCircleLayerComponent } from './static-circle-layer/static-circle-layer.component';
 import { EventTestLayerComponent } from './event-test-layer/event-test-layer.component';
@@ -22,9 +22,8 @@ import { EventTestLayerComponent } from './event-test-layer/event-test-layer.com
 		BaseLayerComponent,
 		DynamicEllipseLayerComponent,
 		EllipseLayerComponent,
-		KavimLayerComponent,
+		DynamicPolylineLayerComponent,
 		StaticPolylineLayerComponent,
-		KavimLayerComponent,
 		StaticCircleLayerComponent,
 		EventTestLayerComponent
 	],
