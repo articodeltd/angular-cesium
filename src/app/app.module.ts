@@ -14,7 +14,7 @@ import { DynamicPolylineLayerComponent } from './dynamic-polyline-layer/dynamic-
 import { StaticPolylineLayerComponent } from './static-polyline-layer/static-polyline-layer.component';
 import { StaticCircleLayerComponent } from './static-circle-layer/static-circle-layer.component';
 import { EventTestLayerComponent } from './event-test-layer/event-test-layer.component';
-import { ArcLayerComponent } from "./arc-layer/arc-layer.component";
+import { ArcLayerComponent } from './arc-layer/arc-layer.component';
 
 @NgModule({
 	declarations: [

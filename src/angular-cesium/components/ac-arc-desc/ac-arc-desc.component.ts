@@ -10,6 +10,7 @@ import { BasicDesc } from "../../services/basic-desc/basic-desc.service";
  *  This is an implementation of an arc.
  *  The ac-arc-desc element must be a child of ac-layer element.
  *  An arc is not cesium natively implemented and therefore it's API doesn't appear anywhere
+ *  Usage :
  *  @example
  *    <ac-arc-desc props="{
  *                  center: arc.center,

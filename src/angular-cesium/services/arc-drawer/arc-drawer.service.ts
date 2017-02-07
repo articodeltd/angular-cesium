@@ -11,50 +11,50 @@ import { CesiumService } from "../cesium/cesium.service";
 
 @Injectable()
 export class ArcDrawerService extends SimpleDrawerService {
-    constructor(cesiumService: CesiumService) {
-        super(Cesium.PrimitiveCollection, cesiumService);
-    }
+	constructor(cesiumService: CesiumService) {
+		super(Cesium.PrimitiveCollection, cesiumService);
+	}
 
-    add(cesiumProps: any) {
-        let arcPositions = this.generatePositions(cesiumProps);
-        let colorMaterial = Cesium.Material.fromType('Color');
-        colorMaterial.uniforms.color = cesiumProps.color || Cesium.Color.WHITE;
-        return super.add(new Cesium.Primitive({
-            geometryInstances: new Cesium.GeometryInstance({
-                geometry: new Cesium.PolylineGeometry({
-                    positions: arcPositions
-                })
-            }),
-            appearance: new Cesium.PolylineMaterialAppearance({
-                material: colorMaterial
-            })
-        }));
-    }
+	add(cesiumProps: any) {
+		let arcPositions = this.generatePositions(cesiumProps);
+		let colorMaterial = Cesium.Material.fromType('Color');
+		colorMaterial.uniforms.color = cesiumProps.color || Cesium.Color.WHITE;
+		return super.add(new Cesium.Primitive({
+			geometryInstances: new Cesium.GeometryInstance({
+				geometry: new Cesium.PolylineGeometry({
+					positions: arcPositions
+				})
+			}),
+			appearance: new Cesium.PolylineMaterialAppearance({
+				material: colorMaterial
+			})
+		}));
+	}
 
-    private generatePositions(cesiumProps: any): Array<any> {
-        let arcPositions = [];
-        const defaultGranularity = 0.004;
-        let numOfSamples = 1 / (cesiumProps.granularity || defaultGranularity);
-        for (let i = 0; i < numOfSamples + 1; i++) {
-            let currentAngle = cesiumProps.angle + cesiumProps.delta * i / numOfSamples;
-            let distance = cesiumProps.radius / Cesium.Ellipsoid.WGS84.maximumRadius;
-            let curLat = Cesium.Cartographic.fromCartesian(cesiumProps.center).latitude;
-            let curLon = Cesium.Cartographic.fromCartesian(cesiumProps.center).longitude;
+	private generatePositions(cesiumProps: any): Array<any> {
+		let arcPositions = [];
+		const defaultGranularity = 0.004;
+		let numOfSamples = 1 / (cesiumProps.granularity || defaultGranularity);
+		for (let i = 0; i < numOfSamples + 1; i++) {
+			let currentAngle = cesiumProps.angle + cesiumProps.delta * i / numOfSamples;
+			let distance = cesiumProps.radius / Cesium.Ellipsoid.WGS84.maximumRadius;
+			let curLat = Cesium.Cartographic.fromCartesian(cesiumProps.center).latitude;
+			let curLon = Cesium.Cartographic.fromCartesian(cesiumProps.center).longitude;
 
-            let destinationLat = Math.asin(
-                Math.sin(curLat) * Math.cos(distance) +
-                Math.cos(curLat) * Math.sin(distance) * Math.cos(currentAngle)
-            );
+			let destinationLat = Math.asin(
+				Math.sin(curLat) * Math.cos(distance) +
+				Math.cos(curLat) * Math.sin(distance) * Math.cos(currentAngle)
+			);
 
-            let destinationLon = curLon + Math.atan2(Math.sin(currentAngle) * Math.sin(distance) * Math.cos(curLat),
-                    Math.cos(distance) - Math.sin(curLat) * Math.sin(destinationLat)
-                );
+			let destinationLon = curLon + Math.atan2(Math.sin(currentAngle) * Math.sin(distance) * Math.cos(curLat),
+					Math.cos(distance) - Math.sin(curLat) * Math.sin(destinationLat)
+				);
 
-            destinationLon = (destinationLon + 3 * Math.PI) % (2 * Math.PI) - Math.PI;
+			destinationLon = (destinationLon + 3 * Math.PI) % (2 * Math.PI) - Math.PI;
 
-            arcPositions.push(Cesium.Cartesian3.fromRadians(destinationLon, destinationLat));
-        }
+			arcPositions.push(Cesium.Cartesian3.fromRadians(destinationLon, destinationLat));
+		}
 
-        return arcPositions;
-    }
+		return arcPositions;
+	}
 }
