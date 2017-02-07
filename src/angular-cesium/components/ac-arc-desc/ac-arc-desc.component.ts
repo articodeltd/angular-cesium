@@ -10,17 +10,18 @@ import { BasicDesc } from "../../services/basic-desc/basic-desc.service";
  *  This is an implementation of an arc.
  *  The ac-arc-desc element must be a child of ac-layer element.
  *  An arc is not cesium natively implemented and therefore it's API doesn't appear anywhere
- *  Usage :
- *  @example
- *    <ac-arc-desc props="{
+ *  __Usage :__
+ *  ```
+ *    &lt;ac-arc-desc props="{
  *                  center: arc.center,
  *                  angle: arc.angle,
  *                  delta: arc.delta,
  *                  radius: arc.radius,
  *                  color: Cesium.Color.WHITE,
  *                  granularity: arc.granularity //optional
- *                  }">
- *    </ac-arc-desc>
+ *                  }"&gt;
+ *    &lt;/ac-arc-desc&gt;
+ *    ```
  */
 
 @Component({
