@@ -8,7 +8,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 
 /**
  *  This is a static (position, color, etc.. are not updated) implementation of an circle.
- *  Usage :
+ *  @example
  *    <ac-static-circle-desc
  geometryProps="{
             center: circle.geometry.center,
@@ -20,10 +20,6 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  primitiveProps="{
             appearance: circle.appearance //Optional
         }">
-
- @param {Cesium.Cartesian3} center
- @param {number} radius
- @param {appearance} Cesium.PerInstanceColorAppearance
  */
 @Component({
 	selector: 'ac-static-circle',
