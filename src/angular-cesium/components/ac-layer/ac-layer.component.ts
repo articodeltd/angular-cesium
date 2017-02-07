@@ -34,14 +34,14 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 
 	constructor(private  layerService: LayerService,
-	            private _computationCache: ComputationCache,
-	            billboardDrawerService: BillboardDrawerService,
-	            labelDrawerService: LabelDrawerService,
-	            ellipseDrawerService: EllipseDrawerService,
-	            dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-	            staticCircleDrawerService: StaticCircleDrawerService,
-	            staticPolylineDrawerService: StaticPolylineDrawerService,
+				private _computationCache: ComputationCache,
+				billboardDrawerService: BillboardDrawerService,
+				labelDrawerService: LabelDrawerService,
+				ellipseDrawerService: EllipseDrawerService,
+				dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+				dynamicPolylineDrawerService: DynamicPolylineDrawerService,
+				staticCircleDrawerService: StaticCircleDrawerService,
+				staticPolylineDrawerService: StaticPolylineDrawerService,
 				arcDrawerService: ArcDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
