@@ -7,11 +7,11 @@ import { ActionType } from '../../models/action-type.enum';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
 import { SimpleDrawerService } from '../../services/simple-drawer/simple-drawer.service';
-import { StaticCircleDrawerService } from "../../services/static-circle-drawer/static-circle-drawer.service";
+import { StaticCircleDrawerService } from '../../services/static-circle-drawer/static-circle-drawer.service';
 import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
 import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
 import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
-import { StaticPolylineDrawerService } from "../../services/static-polyline-drawer/static-polyline-drawer.service";
+import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
 
 @Component({
 	selector: 'ac-layer',
@@ -39,7 +39,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            ellipseDrawerService: EllipseDrawerService,
 	            dynamicEllipseDrawerService: DynamicEllipseDrawerService,
 	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-	            staticCircleDrawerService : StaticCircleDrawerService,
+	            staticCircleDrawerService: StaticCircleDrawerService,
 	            staticPolylineDrawerService: StaticPolylineDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
@@ -85,12 +85,12 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['show']) {
 			const showValue = changes['show'].currentValue;
-			this._drawerList.forEach((drawer)=>drawer.setShow(showValue));
+			this._drawerList.forEach((drawer) => drawer.setShow(showValue));
 		}
 	}
 
 	removeAll(): void {
-		this.layerService.getDescriptions().forEach((description)=>description.removeAll());
+		this.layerService.getDescriptions().forEach((description) => description.removeAll());
 	}
 
 	remove(entityId: number) {
@@ -103,6 +103,6 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 
 	refreshAll(collection: AcNotification[]): void {
 		// TODO make entity interface: collection of type entity not notification
-		Observable.from(collection).subscribe((entity)=>this._updateStream.next(entity));
+		Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
 	}
 }
