@@ -49,7 +49,7 @@ app.post('/change', function (req, res, next) {
             break;
         case 'chunk':
             dataChunk = createChunk(numOfEntities);
-            intervalId = sendChunk()
+            intervalId = sendChunk();
             break;
         default:
             console.log('WTF wrong sendOption');
