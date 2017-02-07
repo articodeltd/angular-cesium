@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {LayerService} from "../../services/layer-service/layer-service.service";
-import {CesiumProperties} from "../../services/cesium-properties/cesium-properties.service";
-import {ComputationCache} from "../../services/computation-cache/computation-cache.service";
-import {ArcDrawerService} from "../../services/arc-drawer/arc-drawer.service";
-import {BasicDesc} from "../../services/basic-desc/basic-desc.service";
+import { LayerService } from "../../services/layer-service/layer-service.service";
+import { CesiumProperties } from "../../services/cesium-properties/cesium-properties.service";
+import { ComputationCache } from "../../services/computation-cache/computation-cache.service";
+import { ArcDrawerService } from "../../services/arc-drawer/arc-drawer.service";
+import { BasicDesc } from "../../services/basic-desc/basic-desc.service";
 
 /**
  *  This is an implementation of an arc.
@@ -19,7 +19,7 @@ import {BasicDesc} from "../../services/basic-desc/basic-desc.service";
  *                  color: Cesium.Color.WHITE,
  *                  granularity: arc.granularity //optional
  *                  }">
- </ac-arc-desc>
+ *    </ac-arc-desc>
  */
 
 @Component({

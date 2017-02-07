@@ -1,8 +1,8 @@
-import {Component, AfterViewInit, OnInit, ViewChild} from "@angular/core";
-import {ActionType} from "../../angular-cesium/models/action-type.enum";
-import {Observable} from "rxjs";
-import {AcNotification} from "../../angular-cesium/models/ac-notification";
-import {AcLayerComponent} from "../../angular-cesium/components/ac-layer/ac-layer.component";
+import { Component, AfterViewInit, OnInit, ViewChild } from "@angular/core";
+import { ActionType } from "../../angular-cesium/models/action-type.enum";
+import { Observable } from "rxjs";
+import { AcNotification } from "../../angular-cesium/models/ac-notification";
+import { AcLayerComponent } from "../../angular-cesium/components/ac-layer/ac-layer.component";
 
 @Component({
     selector: 'arc-layer',

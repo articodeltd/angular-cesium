@@ -20,7 +20,6 @@ import { AcStaticPolylineDescComponent } from './components/ac-static-polyline-d
 import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcArcDescComponent } from "./components/ac-arc-desc/ac-arc-desc.component";
 
-
 @NgModule({
     imports: [
         CommonModule,
