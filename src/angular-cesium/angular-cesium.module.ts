@@ -18,8 +18,7 @@ import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.c
 import { UtilsModule } from '../utils/utils.module';
 import { AcStaticPolylineDescComponent } from './components/ac-static-polyline-desc/ac-static-polyline-desc.component';
 import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
-import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-desc/ac-static-polyline-desc.component";
-import {AcArcDescComponent} from "./components/ac-arc-desc/ac-arc-desc.component";
+import { AcArcDescComponent } from "./components/ac-arc-desc/ac-arc-desc.component";
 
 
 @NgModule({
