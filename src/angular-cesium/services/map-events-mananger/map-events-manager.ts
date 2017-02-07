@@ -8,9 +8,10 @@ import { PickOptions } from './consts/pickOptions.enum';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { UtilsService } from '../../../utils/services/utils/utils.service';
+import { PlonterService } from '../plonter/plonter.service';
 
 /**
- * Manages all map events
+ * Manages all map events. Notice events will run outside of Agular zone
  * usage : MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
  * @param priority - the bigger the number the bigger the priority. default : 0.
  * @param entityType - entity type class that you are interested like (Track). the class must extends AcEntity
@@ -22,7 +23,9 @@ export class MapEventsManagerService {
 	private scene;
 	private eventRegistrations = new Map<string, Registration[]>();
 
-	constructor(cesiumService: CesiumService, private eventBuilder: CesiumEventBuilder) {
+	constructor(cesiumService: CesiumService,
+	            private eventBuilder: CesiumEventBuilder,
+	            private plonterService: PlonterService) {
 		this.scene = cesiumService.getScene();
 	}
 
@@ -91,6 +94,7 @@ export class MapEventsManagerService {
 			.filter((result) => result.primitives !== null)
 			.map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption))
 			.filter((result) => result.entities !== null)
+			.switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption))
 			.takeUntil(stopper);
 
 		registration.observable = observable;
@@ -100,12 +104,12 @@ export class MapEventsManagerService {
 	private triggerPick(movement: any, pickOptions: PickOptions) {
 		let picks: any = [];
 		switch (pickOptions) {
+			case PickOptions.PICK_ONE:
 			case PickOptions.PICK_ALL:
 				picks = this.scene.drillPick(movement.endPosition);
 				picks = picks.length == 0 ? null : picks;
 				break;
 			case PickOptions.PICK_FIRST:
-				// TODO plonter
 				const pick = this.scene.pick(movement.endPosition);
 				picks = pick === undefined ? null : [pick];
 				break;
@@ -128,13 +132,20 @@ export class MapEventsManagerService {
 				entities = picksAndMovement.primitives.map((pick) => pick.primitive.acEntity);
 			}
 
-			// best way to do unique on objects
 			entities = UtilsService.unique(entities);
 			if (entities.length === 0) {
 				entities = null;
 			}
 		}
 		return Object.assign(picksAndMovement, {entities: entities});
+	}
+
+	private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable<EventResult> {
+		if (pickOption === PickOptions.PICK_ONE && entitiesAndMovement.entities.length > 1) {
+			return this.plonterService.plonterIt(entitiesAndMovement);
+		} else {
+			return Observable.of(entitiesAndMovement);
+		}
 	}
 }
 export interface EventResult {

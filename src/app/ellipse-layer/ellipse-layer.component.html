@@ -1,5 +1,5 @@
 <ac-layer acFor="let ellipse in ellipses$" [context]="this" [show]="true">
-    <ac-ellipse-static-desc
+    <ac-static-ellipse-desc
         geometryProps="{
             center: ellipse.geometry.center,
             semiMajorAxis: ellipse.geometry.semiMajorAxis,
@@ -14,5 +14,5 @@
             appearance: ellipse.appearance
         }"
     >
-    </ac-ellipse-static-desc>
+    </ac-static-ellipse-desc>
 </ac-layer>

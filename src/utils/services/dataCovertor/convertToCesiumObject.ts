@@ -4,6 +4,24 @@ let oneAndOnlyMaterial = new Cesium.PerInstanceColorAppearance({
 	closed: true
 });
 
+let yellowMatirial = new Cesium.Material({
+	fabric : {
+		type : 'Color',
+		uniforms : {
+			color : new Cesium.Color(1.0, 1.0, 0.0, 1.0)
+		}
+	}
+});
+
+let redMatirial = new Cesium.Material({
+	fabric : {
+		type : 'Color',
+		uniforms : {
+			color : new Cesium.Color(1.0, 0.0, 0.0, 1.0)
+		}
+	}
+});
+
 export function convertToCesiumObj(entity): any {
 	entity.scale = entity.id === 1 ? 0.3 : 0.15;
 	entity.color = entity.id === 1 ? Cesium.Color.RED : undefined;
@@ -71,6 +89,17 @@ export function convertToCesiumObj(entity): any {
 			color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
 		},
 		appearance: oneAndOnlyMaterial
+	};
+	};
+
+	entity.dynamicPolyline = {
+		width : 2,
+		positions: Cesium.Cartesian3.fromDegreesArray(
+			[
+				Math.floor(Math.random() * 50), Math.floor(Math.random() * 50),
+				Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)
+			]),
+		material: entity.id === 1 ? yellowMatirial : redMatirial
 	};
 
 	return AcEntity.create(entity);
