@@ -2,6 +2,16 @@ import {Component, OnInit, Input} from '@angular/core';
 import {CesiumService} from "../../services/cesium/cesium.service";
 import {MapLayerProviderOptions} from "./enums/map-layer-provider-options.enum";
 
+/**
+ * This component is used for adding a map provider service to the map (ac-map).
+ * The component must be a child of <ac-map>.
+ *
+ * Usage: <ac-map-layer-provider options="optionsObject" provider="MapLayerProviderOptions.WebMapService"> .
+ *
+ * @param {Object} options
+ * @param {MapLayerProviderOptions} provider
+ */
+
 @Component({
     selector: 'ac-map-layer-provider',
     templateUrl: 'ac-map-layer-provider.component.html',
@@ -58,5 +68,4 @@ export class AcMapLayerProviderComponent implements OnInit {
         return Cesium.createTileMapServiceImageryProvider({
             url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')});
     }
-
 }
