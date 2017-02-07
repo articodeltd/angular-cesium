@@ -90,7 +90,6 @@ export function convertToCesiumObj(entity): any {
 		},
 		appearance: oneAndOnlyMaterial
 	};
-	};
 
 	entity.dynamicPolyline = {
 		width : 2,

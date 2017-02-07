@@ -17,8 +17,8 @@ import { JsonMapper } from './services/json-mapper/json-mapper.service';
 import { CesiumProperties } from './services/cesium-properties/cesium-properties.service';
 import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.component';
 import { UtilsModule } from '../utils/utils.module';
-import { AcStaticPolylineDescComponent } from './components/ac-static-polyline-desc/ac-static-polyline-desc.component';
-import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
+import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-desc/ac-static-polyline-desc.component";
+import { GeoUtilsService } from "./services/geo-utils/geo-utils.service";
 
 @NgModule({
 	imports: [

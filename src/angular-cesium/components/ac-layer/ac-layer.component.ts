@@ -1,4 +1,4 @@
-import { BillboardDrawerService } from './../../services/billboard-drawer/billboard-drawer.service';
+import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
 import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { LayerService } from '../../services/layer-service/layer-service.service';
