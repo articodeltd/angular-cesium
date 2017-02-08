@@ -1,0 +1,8 @@
+<ac-layer acFor="let circle of circles$" [show]="show" [context]="this">
+    <ac-dynamic-circle-desc props="{
+            center: circle.position,
+            radius:250000,
+            rotation:0,
+            granularity:0.04
+        }"></ac-dynamic-circle-desc>
+</ac-layer>
