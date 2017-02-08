@@ -61,16 +61,16 @@ app.post('/change', function (req, res, next) {
 function sendChunk() {
     let counter = 0;
     let id = setInterval(() => {
-            if (counter % 10 === 0) {
-                counter = 0;
-                dataChunk = updateChunk(dataChunk);
-            }
+        if (counter % 10 === 0) {
+            counter = 0;
+            dataChunk = updateChunk(dataChunk);
+        }
 
-            let chunk = getChunkPart(counter);
+        let chunk = getChunkPart(counter);
 
-            io.emit('birds', chunk);
-            counter++;
-        }, interval / 10);
+        io.emit('birds', chunk);
+        counter++;
+    }, interval);
     return id;
 }
 
@@ -87,15 +87,15 @@ function sendOneByOne() {
     let counter = 0;
     console.log(interval);
     const id = setInterval(() => {
-            io.emit('birds', [{
-                id: counter++ % numOfEntities,
-                action: 'ADD_OR_UPDATE',
-                entity: {
-                    name: 'bird',
-                    image: "/assets/angry-bird-blue-icon.png"
-                }
-            }]);
-        }, interval);
+        io.emit('birds', [{
+            id: counter++ % numOfEntities,
+            action: 'ADD_OR_UPDATE',
+            entity: {
+                name: 'bird',
+                image: "/assets/angry-bird-blue-icon.png"
+            }
+        }]);
+    }, interval);
 
     return id;
 }
