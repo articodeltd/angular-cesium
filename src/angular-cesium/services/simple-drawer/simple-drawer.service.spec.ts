@@ -64,7 +64,7 @@ describe('SimpleDrawerService', () => {
 		expect(geometryInstance).toBeDefined();
 	}));
 
-	it('should update a given primitive\'s attribute positions', inject([SimpleDrawerServiceTestClass], (service: SimpleDrawerServiceTestClass, done) => {
+	it('should update a given primitive\'s attribute positions', inject([SimpleDrawerServiceTestClass], (service: SimpleDrawerServiceTestClass) => {
 		const geometryInstance = service.add(geometryProps);
 		const oldPositions = geometryInstance.attributes.position.values;
 		service.update(geometryInstance, geometryProps2);
