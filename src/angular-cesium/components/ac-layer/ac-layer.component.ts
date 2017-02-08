@@ -1,4 +1,4 @@
-import { BillboardDrawerService } from './../../services/billboard-drawer/billboard-drawer.service';
+import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
 import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -12,12 +12,14 @@ import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-draw
 import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
 import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
+import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
 import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
 
 @Component({
 	selector: 'ac-layer',
 	templateUrl: './ac-layer.component.html',
 	styleUrls: ['./ac-layer.component.css'],
+	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, PolygonDrawerService]
 	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, ArcDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
@@ -34,6 +36,15 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 
 	constructor(private  layerService: LayerService,
+	            private _computationCache: ComputationCache,
+	            billboardDrawerService: BillboardDrawerService,
+	            labelDrawerService: LabelDrawerService,
+	            ellipseDrawerService: EllipseDrawerService,
+	            dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
+	            staticCircleDrawerService: StaticCircleDrawerService,
+	            staticPolylineDrawerService: StaticPolylineDrawerService,
+	            polygonDrawerService: PolygonDrawerService) {
 				private _computationCache: ComputationCache,
 				billboardDrawerService: BillboardDrawerService,
 				labelDrawerService: LabelDrawerService,
@@ -50,6 +61,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			dynamicEllipseDrawerService,
 			dynamicPolylineDrawerService,
 			staticCircleDrawerService,
+			staticPolylineDrawerService,
+			polygonDrawerService
 			staticPolylineDrawerService,
 			arcDrawerService
 		);
