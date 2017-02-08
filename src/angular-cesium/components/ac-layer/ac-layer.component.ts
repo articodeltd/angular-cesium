@@ -19,8 +19,7 @@ import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
 	selector: 'ac-layer',
 	templateUrl: './ac-layer.component.html',
 	styleUrls: ['./ac-layer.component.css'],
-	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, PolygonDrawerService]
-	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, ArcDrawerService]
+	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	@Input()
@@ -44,16 +43,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
 	            staticCircleDrawerService: StaticCircleDrawerService,
 	            staticPolylineDrawerService: StaticPolylineDrawerService,
-	            polygonDrawerService: PolygonDrawerService) {
-				private _computationCache: ComputationCache,
-				billboardDrawerService: BillboardDrawerService,
-				labelDrawerService: LabelDrawerService,
-				ellipseDrawerService: EllipseDrawerService,
-				dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-				dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-				staticCircleDrawerService: StaticCircleDrawerService,
-				staticPolylineDrawerService: StaticPolylineDrawerService,
-				arcDrawerService: ArcDrawerService) {
+	            polygonDrawerService: PolygonDrawerService,
+	            arcDrawerService: ArcDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,
@@ -62,8 +53,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			dynamicPolylineDrawerService,
 			staticCircleDrawerService,
 			staticPolylineDrawerService,
-			polygonDrawerService
-			staticPolylineDrawerService,
+			polygonDrawerService,
 			arcDrawerService
 		);
 	}
