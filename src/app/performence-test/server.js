@@ -22,7 +22,7 @@ httpServer.listen(3000, function () {
 });
 
 
-let numOfEntities = 1000 ;
+let numOfEntities = 1000;
 let interval = 1000;
 let sendOption = 'chunk';
 let intervalId;
@@ -49,7 +49,7 @@ app.post('/change', function (req, res, next) {
             break;
         case 'chunk':
             dataChunk = createChunk(numOfEntities);
-            intervalId = sendChunk()
+            intervalId = sendChunk();
             break;
         default:
             console.log('WTF wrong sendOption');
@@ -61,16 +61,16 @@ app.post('/change', function (req, res, next) {
 function sendChunk() {
     let counter = 0;
     let id = setInterval(() => {
-        if (counter % 10 === 0) {
-            counter = 0;
-            dataChunk = updateChunk(dataChunk);
-        }
+            if (counter % 10 === 0) {
+                counter = 0;
+                dataChunk = updateChunk(dataChunk);
+            }
 
-        let chunk = getChunkPart(counter);
+            let chunk = getChunkPart(counter);
 
-        io.emit('birds', chunk);
-        counter++;
-    }, interval / 10);
+            io.emit('birds', chunk);
+            counter++;
+        }, interval / 10);
     return id;
 }
 
@@ -87,15 +87,15 @@ function sendOneByOne() {
     let counter = 0;
     console.log(interval);
     const id = setInterval(() => {
-        io.emit('birds', [{
-            id: counter++ % numOfEntities,
-            action: 'ADD_OR_UPDATE',
-            entity: {
-                name: 'bird',
-                image: "/assets/angry-bird-blue-icon.png"
-            }
-        }]);
-    }, interval);
+            io.emit('birds', [{
+                id: counter++ % numOfEntities,
+                action: 'ADD_OR_UPDATE',
+                entity: {
+                    name: 'bird',
+                    image: "/assets/angry-bird-blue-icon.png"
+                }
+            }]);
+        }, interval);
 
     return id;
 }
@@ -112,7 +112,8 @@ function updateChunk(dataArr) {
 function createChunk(numOfEntities) {
     const data = [];
     for (let i = 0; i < numOfEntities; i++) {
-        let getSign = () => Math.round(Math.random()) * 2 - 1;
+        let getSign = () =>
+        Math.round(Math.random()) * 2 - 1;
         data.push({
             id: i,
             action: 'ADD_OR_UPDATE',

@@ -1,4 +1,4 @@
-import { BillboardDrawerService } from './../../services/billboard-drawer/billboard-drawer.service';
+import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
 import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -7,17 +7,18 @@ import { ActionType } from '../../models/action-type.enum';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
 import { SimpleDrawerService } from '../../services/simple-drawer/simple-drawer.service';
-import { StaticCircleDrawerService } from "../../services/static-circle-drawer/static-circle-drawer.service";
+import { StaticCircleDrawerService } from '../../services/static-circle-drawer/static-circle-drawer.service';
 import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
 import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
 import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
-import { StaticPolylineDrawerService } from "../../services/static-polyline-drawer/static-polyline-drawer.service";
+import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
+import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
 
 @Component({
 	selector: 'ac-layer',
 	templateUrl: './ac-layer.component.html',
 	styleUrls: ['./ac-layer.component.css'],
-	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService]
+	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, PolygonDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	@Input()
@@ -39,8 +40,9 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            ellipseDrawerService: EllipseDrawerService,
 	            dynamicEllipseDrawerService: DynamicEllipseDrawerService,
 	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-	            staticCircleDrawerService : StaticCircleDrawerService,
-	            staticPolylineDrawerService: StaticPolylineDrawerService) {
+	            staticCircleDrawerService: StaticCircleDrawerService,
+	            staticPolylineDrawerService: StaticPolylineDrawerService,
+	            polygonDrawerService: PolygonDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,
@@ -48,7 +50,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			dynamicEllipseDrawerService,
 			dynamicPolylineDrawerService,
 			staticCircleDrawerService,
-			staticPolylineDrawerService
+			staticPolylineDrawerService,
+			polygonDrawerService
 		);
 	}
 
@@ -85,12 +88,12 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['show']) {
 			const showValue = changes['show'].currentValue;
-			this._drawerList.forEach((drawer)=>drawer.setShow(showValue));
+			this._drawerList.forEach((drawer) => drawer.setShow(showValue));
 		}
 	}
 
 	removeAll(): void {
-		this.layerService.getDescriptions().forEach((description)=>description.removeAll());
+		this.layerService.getDescriptions().forEach((description) => description.removeAll());
 	}
 
 	remove(entityId: number) {
@@ -103,6 +106,6 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 
 	refreshAll(collection: AcNotification[]): void {
 		// TODO make entity interface: collection of type entity not notification
-		Observable.from(collection).subscribe((entity)=>this._updateStream.next(entity));
+		Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
 	}
 }

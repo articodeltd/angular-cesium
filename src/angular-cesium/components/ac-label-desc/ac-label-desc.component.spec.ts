@@ -1,28 +1,41 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { mock, instance, when } from 'ts-mockito';
+import { LayerService } from '../../services/layer-service/layer-service.service';
+import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
+import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
+import { CesiumService } from '../../services/cesium/cesium.service';
+import { mockProvider, providerFromMock } from '../../utils/testingUtils';
 import { AcLabelDescComponent } from './ac-label-desc.component';
+import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
 
 describe('AcLabelDescComponent', () => {
-  let component: AcLabelDescComponent;
-  let fixture: ComponentFixture<AcLabelDescComponent>;
+	let component: AcLabelDescComponent;
+	let fixture: ComponentFixture<AcLabelDescComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AcLabelDescComponent ]
-    })
-    .compileComponents();
-  }));
+	const cesiumService = mock(CesiumService);
+	const labelCollection = mock(Cesium.LabelCollection);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AcLabelDescComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	when(cesiumService.getScene()).thenReturn({primitives: instance(labelCollection)});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [AcLabelDescComponent],
+			providers: [LabelDrawerService,
+				providerFromMock(CesiumService, cesiumService),
+				mockProvider(LayerService),
+				mockProvider(CesiumProperties),
+				mockProvider(ComputationCache)]
+		})
+			.compileComponents();
+	}));
+
+	beforeEach(() => {
+		fixture = TestBed.createComponent(AcLabelDescComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });
