@@ -9,6 +9,7 @@ import { AcStaticEllipseDescComponent } from './components/ac-static-ellipse/ac-
 import { AcDynamicEllipseDescComponent } from './components/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';
 import { AcDynamicPolylineDescComponent } from './components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
 import { AcStaticCircleDescComponent } from './components/ac-static-circle-desc/ac-static-circle-desc.component';
+import { AcStaticPolygonDescComponent } from './components/ac-static-polygon-desc/ac-static-polygon-desc.component';
 import { AcLayer2Directive } from './directives/ac-layer-2.directive';
 import { Angular2ParseModule } from '../angular2-parse/src/angular2-parse.module';
 import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
@@ -35,6 +36,7 @@ import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 		AcStaticEllipseDescComponent,
 		AcDynamicEllipseDescComponent,
 		AcDynamicPolylineDescComponent,
+		AcStaticPolygonDescComponent,
 		AcLayer2Directive,
 		PixelOffsetPipe,
 		AcStaticCircleDescComponent,
@@ -48,6 +50,7 @@ import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 		AcStaticEllipseDescComponent,
 		AcDynamicEllipseDescComponent,
 		AcDynamicPolylineDescComponent,
+		AcStaticPolygonDescComponent,
 		AcLayerComponent,
 		AcLayer2Directive,
 		AcStaticCircleDescComponent,

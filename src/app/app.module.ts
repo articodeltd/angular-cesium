@@ -12,6 +12,7 @@ import { DynamicEllipseLayerComponent } from './dynamic-ellipse-layer/dynamic-el
 import { DynamicPolylineLayerComponent } from './dynamic-polyline-layer/dynamic-polyline-layer.component';
 import { StaticPolylineLayerComponent } from './static-polyline-layer/static-polyline-layer.component';
 import { StaticCircleLayerComponent } from './static-circle-layer/static-circle-layer.component';
+import { PolygonLayerComponent } from './polygon-layer/polygon-layer.component';
 import { EventTestLayerComponent } from './event-test-layer/event-test-layer.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { EventTestLayerComponent } from './event-test-layer/event-test-layer.com
 		EllipseLayerComponent,
 		DynamicPolylineLayerComponent,
 		StaticPolylineLayerComponent,
+		PolygonLayerComponent,
 		StaticCircleLayerComponent,
 		EventTestLayerComponent
 	],
