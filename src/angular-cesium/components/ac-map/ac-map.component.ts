@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, Inject, Input} from '@angular/core';
+import { Component, OnInit, ElementRef, Inject, Input } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';

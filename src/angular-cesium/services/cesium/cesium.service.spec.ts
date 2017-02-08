@@ -1,10 +1,9 @@
-import { when, mock } from "ts-mockito";
 /!* tslint:disable:no-unused-variable *!/
-
+import { when, mock } from 'ts-mockito';
 import {TestBed, async, inject} from '@angular/core/testing';
 import {CesiumService} from './cesium.service';
-import {ViewerFactory} from "../viewer-factory/viewer-factory.service";
-import {providerFromMock} from "../../utils/testingUtils";
+import {ViewerFactory} from '../viewer-factory/viewer-factory.service';
+import {providerFromMock} from '../../utils/testingUtils';
 
 describe('CesiumService', () => {
 

@@ -18,7 +18,7 @@ import { CesiumProperties } from './services/cesium-properties/cesium-properties
 import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.component';
 import { UtilsModule } from '../utils/utils.module';
 import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-desc/ac-static-polyline-desc.component";
-import { ViewerFactory } from "./services/viewer-factory/viewer-factory.service";
+import { ViewerFactory } from './services/viewer-factory/viewer-factory.service';
 import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
 
