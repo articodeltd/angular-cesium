@@ -1,5 +1,4 @@
-///<reference path="../../../../node_modules/@types/jasmine/index.d.ts"/>
-import {when, mock} from "ts-mockito";
+import { when, mock } from "ts-mockito";
 /!* tslint:disable:no-unused-variable *!/
 
 import {TestBed, async, inject} from '@angular/core/testing';

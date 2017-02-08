@@ -1,5 +1,5 @@
-import {Injectable, NgZone} from "@angular/core";
-import {ViewerFactory} from "../viewer-factory/viewer-factory.service";
+import { Injectable, NgZone } from "@angular/core";
+import { ViewerFactory } from "../viewer-factory/viewer-factory.service";
 
 
 @Injectable()
