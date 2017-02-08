@@ -7,7 +7,7 @@ import { SimpleDrawerService } from './simple-drawer.service';
 import { CesiumService } from '../cesium/cesium.service';
 
 @Injectable()
-export class SimpleDrawerServiceTestClass extends SimpleDrawerService {
+class SimpleDrawerServiceTestClass extends SimpleDrawerService {
 	constructor(cesiumService: CesiumService) {
 		super(Cesium.PrimitiveCollection, cesiumService);
 	}
