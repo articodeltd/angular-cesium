@@ -20,10 +20,33 @@ export class PerformanceFormComponent implements OnInit {
 	private interval = 500;
 	private sendOption = SendOption.CHUNK;
 
-	constructor(private http: Http) {
+	constructor(private http:Http) {
 	}
 
 	ngOnInit() {
+		this.getInterval().subscribe((data) => {
+			this.numOfEntities = data.numOfEntities;
+			data.sendOption === 'chunk' ? this.sendOption = SendOption.CHUNK : this.sendOption = SendOption.ONE_BY_ONE;
+			this.interval = data.interval;
+
+			this.http.post('http://localhost:3000/change',
+				{
+					interval: this.interval,
+					numOfEntities: this.numOfEntities,
+					sendOption: this.sendOption
+				}).catch(this.handleError)
+				.subscribe(() => {
+					this.cleanMap.emit();
+				});
+		});
+	}
+
+	private getInterval() {
+		return this.http.get('http://localhost:3000/data').map((res:Response) => {
+				let body = res.json();
+				return body || {};
+			}
+		)
 	}
 
 	change() {
@@ -39,9 +62,9 @@ export class PerformanceFormComponent implements OnInit {
 			});
 	}
 
-	private handleError(error: Response | any) {
+	private handleError(error:Response | any) {
 		// In a real world app, we might use a remote logging infrastructure
-		let errMsg: string;
+		let errMsg:string;
 		if (error instanceof Response) {
 			const body = error.json() || '';
 			const err = body.error || JSON.stringify(body);

@@ -26,13 +26,28 @@ let numOfEntities = 1000;
 let interval = 1000;
 let sendOption = 'chunk';
 let intervalId;
-let dataChunk;
 let socket;
 
 io.on('connection', function (connectionSocket) {
     socket = connectionSocket;
-    dataChunk = createChunk(numOfEntities);
-    intervalId = sendChunk();
+    switch (sendOption) {
+        case 'oneByOne':
+            intervalId = sendOneByOne();
+            break;
+        case 'chunk':
+            intervalId = sendChunk(createChunk(numOfEntities));
+            break;
+        default:
+            console.log('WTF wrong sendOption');
+    }
+});
+
+app.get('/data', function (req, res) {
+    res.send({
+        numOfEntities: numOfEntities,
+        sendOption : sendOption,
+        interval : interval
+    });
 });
 
 app.post('/change', function (req, res, next) {
@@ -41,15 +56,12 @@ app.post('/change', function (req, res, next) {
     numOfEntities = req.body.numOfEntities;
     interval = req.body.interval;
     sendOption = req.body.sendOption;
-
-    clearInterval(intervalId);
     switch (sendOption) {
         case 'oneByOne':
             intervalId = sendOneByOne();
             break;
         case 'chunk':
-            dataChunk = createChunk(numOfEntities);
-            intervalId = sendChunk();
+            intervalId = sendChunk(numOfEntities);
             break;
         default:
             console.log('WTF wrong sendOption');
@@ -58,62 +70,42 @@ app.post('/change', function (req, res, next) {
     res.send('changed successfully');
 });
 
-function sendChunk() {
-    let counter = 0;
-    let id = setInterval(() => {
-            if (counter % 10 === 0) {
-                counter = 0;
-                dataChunk = updateChunk(dataChunk);
-            }
-
-            let chunk = getChunkPart(counter);
-
-            io.emit('birds', chunk);
-            counter++;
-        }, interval / 10);
-    return id;
-}
-
-function getChunkPart(part) {
-    let result = [];
-    let index = (numOfEntities / 10) * (part + 1);
-    for (let i = (numOfEntities / 10) * part; i < index; i++) {
-        result.push(dataChunk[i])
-    }
-    return result;
+function sendChunk(numOfEntities) {
+    clearInterval(intervalId);
+    return setInterval(() => {
+        io.emit('birds', createChunk(numOfEntities));
+    }, interval);
 }
 
 function sendOneByOne() {
     let counter = 0;
     console.log(interval);
+    clearInterval(intervalId);
+    let entityId =  counter++ % numOfEntities
     const id = setInterval(() => {
-            io.emit('birds', [{
-                id: counter++ % numOfEntities,
-                action: 'ADD_OR_UPDATE',
-                entity: {
-                    name: 'bird',
-                    image: "/assets/angry-bird-blue-icon.png"
+        let getSign = Math.random() > 0.5 ? 1 : -1;
+        io.emit('birds', [{
+            id: entityId,
+            action: 'ADD_OR_UPDATE',
+            entity: {
+                id: entityId,
+                name: 'bird' + counter++ % numOfEntities,
+                image: "/assets/angry-bird-blue-icon.png",
+                position: {
+                    lat: 60 * Math.random() * getSign,
+                    long: 100 * Math.random() * getSign
                 }
-            }]);
-        }, interval);
+            }
+        }]);
+    }, interval);
 
     return id;
-}
-
-function updateChunk(dataArr) {
-    for (let i = 0; i < dataArr.length; i++) {
-        let entity = dataArr[i].entity;
-        entity.position.lat += 0.04;
-        entity.position.long += 0.08;
-    }
-    return dataArr;
 }
 
 function createChunk(numOfEntities) {
     const data = [];
     for (let i = 0; i < numOfEntities; i++) {
-        let getSign = () =>
-        Math.round(Math.random()) * 2 - 1;
+        let getSign = Math.random() > 0.5 ? 1 : -1;
         data.push({
             id: i,
             action: 'ADD_OR_UPDATE',
@@ -122,8 +114,8 @@ function createChunk(numOfEntities) {
                 name: 'bird' + i,
                 image: "/assets/angry-bird-blue-icon.png",
                 position: {
-                    lat: 60 * Math.random() * getSign(),
-                    long: 100 * Math.random() * getSign()
+                    lat: 60 * Math.random() * getSign,
+                    long: 100 * Math.random() * getSign
                 }
             }
         });
