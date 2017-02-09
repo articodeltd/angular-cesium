@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Parser, Lexer } from '@angular/compiler';
-import { LiteralMap, LiteralArray, ASTWithSource, ParseSpan } from '@angular/compiler/src/expression_parser/ast';
 import { JsonMapperVisitor } from '../json-mapper-visitor/json-mapper-visitor.service';
 
 @Injectable()
 export class JsonMapper {
 	private _parser: Parser = new Parser(new Lexer());
-	private _cache: Map<string, ASTWithSource> = new Map<string, ASTWithSource>();
+	private _cache: Map<string, any> = new Map<string, any>();
 
 	map(expression: string): Map<string, string> {
-		let ast: ASTWithSource = null;
+		let ast: any = null;
 		const visitor = new JsonMapperVisitor();
 
 		if (this._cache.has(expression)) {
@@ -25,21 +24,8 @@ export class JsonMapper {
 				ast = this._parser.parseBinding(expression, 'Parse');
 			}
 
-			console.log(LiteralMap);
-			if (!(ast.ast instanceof LiteralMap)) {
-				// throw new Error(`JsonMapper ERROR: given expression must be json expression.`);
-				console.log(LiteralMap)
-			}
-
-			if (this._parser instanceof Parser) {
-				console.log('OH YEAH');
-				console.log(typeof this._parser);
-			}
-
-			let blat = new LiteralArray(<ParseSpan>{end: 2, start: 1}, ['blat']);
-
-			if (blat instanceof LiteralArray) {
-				console.log('Ad Matay');
+			if (!(ast.ast && ast.ast.hasOwnProperty('keys') && ast.ast.hasOwnProperty('values'))) {
+				throw new Error(`JsonMapper ERROR: given expression must be json expression.`);
 			}
 
 			this._cache.set(expression, ast);
