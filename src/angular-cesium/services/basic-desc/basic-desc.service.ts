@@ -16,7 +16,7 @@ export class BasicDesc implements OnInit {
 	constructor(protected _drawer: SimpleDrawerService,
 	            protected _layerService: LayerService,
 	            protected _computationCache: ComputationCache,
-	            protected _cesiumProperties: CesiumProperties,) {
+	            protected _cesiumProperties: CesiumProperties) {
 	}
 
 	protected _propsEvaluator(context: Object): any {
