@@ -81,8 +81,8 @@ function sendOneByOne() {
     let counter = 0;
     console.log(interval);
     clearInterval(intervalId);
-    let entityId =  counter++ % numOfEntities
     const id = setInterval(() => {
+        let entityId =  counter++ % numOfEntities;
         let getSign = Math.random() > 0.5 ? 1 : -1;
         io.emit('birds', [{
             id: entityId,
