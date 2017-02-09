@@ -3,13 +3,17 @@ import {CesiumService} from "../../services/cesium/cesium.service";
 import {MapLayerProviderOptions} from "./enums/map-layer-provider-options.enum";
 
 /**
- * This component is used for adding a map provider service to the map (ac-map).
- * The component must be a child of <ac-map>.
+ *  This component is used for adding a map provider service to the map (ac-map).
+ *  The component must be a child of <ac-map>.
  *
- * Usage: <ac-map-layer-provider options="optionsObject" provider="MapLayerProviderOptions.WebMapService"> .
+ *  __Usage :__
+ *  ```
+ *    &lt;ac-map-layer-provider options="optionsObject" provider="MapLayerProviderOptions.WebMapService"&gt;
+ *    &lt;/ac-map-layer-provider&gt;
+ *  ```
  *
- * @param {Object} options
- * @param {MapLayerProviderOptions} provider
+ *  @param {Object} options
+ *  @param {MapLayerProviderOptions} provider
  */
 
 @Component({
