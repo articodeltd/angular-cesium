@@ -11,12 +11,12 @@ export class CesiumService {
 
 	init(mapContainer: HTMLElement) {
 		this.ngZone.runOutsideAngular(() => {
-			window['CESIUM_BASE_URL'] = './assets/Cesium';
+			window['CESIUM_BASE_URL'] = '/node_modules/cesium/Build/Cesium';
 			this.cesiumViewer = new this.cesium.Viewer(mapContainer,
 				{
 					// Poor internet connection - use default globe image, TODO: should be removed
 					imageryProvider: Cesium.createTileMapServiceImageryProvider({
-						url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
+						url: Cesium.buildModuleUrl('/Assets/Textures/NaturalEarthII')
 					}),
 					baseLayerPicker: false,
 					geocoder: false

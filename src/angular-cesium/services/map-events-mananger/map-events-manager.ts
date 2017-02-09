@@ -7,7 +7,7 @@ import { DisposableObservable } from './disposable-observable';
 import { PickOptions } from './consts/pickOptions.enum';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
-import { UtilsService } from '../../../utils/services/utils/utils.service';
+import { UtilsService } from '../../../../demo/utils/services/utils/utils.service';
 import { PlonterService } from '../plonter/plonter.service';
 
 /**
