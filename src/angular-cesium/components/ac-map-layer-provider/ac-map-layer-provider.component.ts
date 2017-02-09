@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {CesiumService} from "../../services/cesium/cesium.service";
-import {MapLayerProviderOptions} from "./enums/map-layer-provider-options.enum";
-import {Checker} from "../../utils/checker";
+import {CesiumService} from '../../services/cesium/cesium.service';
+import {MapLayerProviderOptions} from './enums/map-layer-provider-options.enum';
+import {Checker} from '../../utils/checker';
 
 /**
  *  This component is used for adding a map provider service to the map (ac-map).

@@ -21,7 +21,7 @@ import { AcStaticPolylineDescComponent } from './components/ac-static-polyline-d
 import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
 import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
-import { AcMapLayerProviderComponent } from "./components/ac-map-layer-provider/ac-map-layer-provider.component";
+import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
 
 @NgModule({
 	imports: [
