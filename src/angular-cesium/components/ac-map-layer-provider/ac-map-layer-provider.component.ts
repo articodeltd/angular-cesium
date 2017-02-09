@@ -19,8 +19,7 @@ import {Checker} from "../../utils/checker";
 
 @Component({
     selector: 'ac-map-layer-provider',
-    templateUrl: 'ac-map-layer-provider.component.html',
-    styleUrls: ['ac-map-layer-provider.component.css']
+    template: '',
 })
 export class AcMapLayerProviderComponent implements OnInit {
 
