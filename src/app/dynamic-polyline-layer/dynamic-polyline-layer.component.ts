@@ -5,14 +5,15 @@ import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-la
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
-	selector: 'ac-static-circle-layer',
-	templateUrl: 'static-circle-layer.component.html',
+	selector: 'dynamic-polyline-layer',
+	templateUrl: './dynamic-polyline-layer.component.html',
+	styleUrls: ['./dynamic-polyline-layer.component.css'],
 	providers: [TracksDataProvider]
 })
-export class StaticCircleLayerComponent implements OnInit {
+export class DynamicPolylineLayerComponent implements OnInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
-	circles$: Observable<AcNotification>;
+	polylines$: Observable<AcNotification>;
 	Cesium = Cesium;
 	show = true;
 
@@ -20,7 +21,7 @@ export class StaticCircleLayerComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.circles$ = this.tracksDataProvider.get();
+		this.polylines$ = this.tracksDataProvider.get();
 	}
 
 	removeAll() {

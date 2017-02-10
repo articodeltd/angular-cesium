@@ -1,5 +1,4 @@
 import { Input } from '@angular/core';
-
 import { BasicDesc } from '../basic-desc/basic-desc.service';
 import { LayerService } from '../layer-service/layer-service.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';

@@ -1,20 +1,19 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LayerContextService {
 
-  private context: any;
+	private context: any;
 
-  constructor() { }
+	constructor() {
+	}
 
-  getContext() {
-    return this.context;
-  }
+	getContext() {
+		return this.context;
+	}
 
-  setContext(value) {
-    this.context = value;
-  }
-
-
+	setContext(value) {
+		this.context = value;
+	}
 
 }
