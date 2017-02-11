@@ -47,6 +47,7 @@ class BasicDescTestClass extends BasicDesc {
 }
 
 fdescribe('BasicDescTestClass', () => {
+	const id = 0;
 	const cesiumProperties = mock(CesiumProperties);
 	const simpleDrawerServiceTestClass = mock(SimpleDrawerServiceTestClass);
 	let component: BasicDescTestClass;
@@ -82,19 +83,19 @@ fdescribe('BasicDescTestClass', () => {
 	});
 
 	it('should draw', () => {
-		component.draw({}, 0, {});
+		component.draw({}, id, {});
 		verify(simpleDrawerServiceTestClass.add(anything())).once();
 	});
 
 	it('should remove', () => {
-		component.draw({}, 0, {});
-		component.remove(0);
+		component.draw({}, id, {});
+		component.remove(id);
 		verify(simpleDrawerServiceTestClass.remove(anything())).once();
 	});
 
 	it('should update', () => {
-		component.draw({}, 0, {});
-		component.draw({}, 0, {});
+		component.draw({}, id, {});
+		component.draw({}, id, {});
 		verify(simpleDrawerServiceTestClass.update(anything(), anything())).once();
 	});
 
