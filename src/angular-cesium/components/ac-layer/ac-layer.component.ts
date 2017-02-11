@@ -76,6 +76,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	}
 
 	private initValidParams() {
+		if (!this.context)
+			throw 'ac-layer: must initialize [context] ';
 		if (!AcLayerComponent.acForRgx.test(this.acFor)) {
 			throw 'ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
 			+ 'instead received: ' + this.acFor;
