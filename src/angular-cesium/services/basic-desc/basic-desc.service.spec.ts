@@ -1,5 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, Injectable } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
 
 import { CesiumService } from '../cesium/cesium.service';
 import { LayerService } from '../layer-service/layer-service.service';
@@ -10,35 +10,12 @@ import { providerFromMock, mockProvider } from '../../utils/testingUtils';
 import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
 import { BasicDesc } from './basic-desc.service';
 
-@Injectable()
-class SimpleDrawerServiceTestClass extends SimpleDrawerService {
-	constructor(cesiumService: CesiumService) {
-		super(Cesium.PrimitiveCollection, cesiumService);
-	}
-
-	setPropsAssigner(assigner: Function) {
-	}
-
-	add(cesiumProps: any, ...moreProps): any {
-		return {};
-	}
-
-	remove(primitive: any) {
-	}
-
-	update(primitive: any, cesiumProps: Object, ...moreProps) {
-	}
-
-	removeAll() {
-	}
-}
-
 @Component({
 	template: '',
 	selector: 'basic-desc-test-class',
 })
 class BasicDescTestClass extends BasicDesc {
-	constructor(drawer: SimpleDrawerServiceTestClass,
+	constructor(drawer: SimpleDrawerService,
 	            layerService: LayerService,
 	            computationCache: ComputationCache,
 	            cesiumProperties: CesiumProperties) {
@@ -46,31 +23,31 @@ class BasicDescTestClass extends BasicDesc {
 	}
 }
 
-fdescribe('BasicDescTestClass', () => {
+describe('BasicDescTestClass', () => {
 	const id = 0;
 	const cesiumProperties = mock(CesiumProperties);
-	const simpleDrawerServiceTestClass = mock(SimpleDrawerServiceTestClass);
 	let component: BasicDescTestClass;
 	let fixture: ComponentFixture<BasicDescTestClass>;
+	let simpleDrawerService = mock(SimpleDrawerService);
 
 	when(cesiumProperties.createEvaluator(anything())).thenReturn(() => {
 		return {}
 	});
-	when(simpleDrawerServiceTestClass.add(anything())).thenReturn({});
+	when(simpleDrawerService.add(anything())).thenReturn({});
 
-	beforeEach(async(() => {
+	beforeEach(async() => {
 		TestBed.configureTestingModule({
 			declarations: [BasicDescTestClass],
 			providers: [
 				providerFromMock(CesiumProperties, cesiumProperties),
-				providerFromMock(SimpleDrawerServiceTestClass, simpleDrawerServiceTestClass),
+				providerFromMock(SimpleDrawerService, simpleDrawerService),
 				mockProvider(LayerService),
 				mockProvider(CesiumService),
 				mockProvider(ComputationCache)
 			]
 		})
 			.compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(BasicDescTestClass);
@@ -84,23 +61,23 @@ fdescribe('BasicDescTestClass', () => {
 
 	it('should draw', () => {
 		component.draw({}, id, {});
-		verify(simpleDrawerServiceTestClass.add(anything())).once();
+		verify(simpleDrawerService.add(anything())).once();
 	});
 
 	it('should remove', () => {
 		component.draw({}, id, {});
 		component.remove(id);
-		verify(simpleDrawerServiceTestClass.remove(anything())).once();
+		verify(simpleDrawerService.remove(anything())).once();
 	});
 
 	it('should update', () => {
 		component.draw({}, id, {});
 		component.draw({}, id, {});
-		verify(simpleDrawerServiceTestClass.update(anything(), anything())).once();
+		verify(simpleDrawerService.update(anything(), anything())).once();
 	});
 
 	it('should remove all', () => {
 		component.removeAll();
-		verify(simpleDrawerServiceTestClass.removeAll()).once();
+		verify(simpleDrawerService.removeAll()).once();
 	});
 });
