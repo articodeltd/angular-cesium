@@ -19,7 +19,7 @@ export class BasicDesc implements OnInit {
 	            protected _cesiumProperties: CesiumProperties,) {
 	}
 
-	private _propsEvaluator(context: Object): any {
+	protected _propsEvaluator(context: Object): any {
 		return this._propsEvaluateFn(this._computationCache, context);
 	}
 
