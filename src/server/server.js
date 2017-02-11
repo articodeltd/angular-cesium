@@ -22,10 +22,11 @@ httpServer.listen(3000, function () {
 });
 
 
-let numOfEntities = 1000;
-let interval = 1000;
-let sendOption = 'chunk';
+let numOfEntities = 30;
+let interval = 500;
+let sendOption = 'all';
 let intervalId;
+let numOfObjectsInPart = 20;
 let socket;
 
 io.on('connection', function (connectionSocket) {
@@ -34,8 +35,11 @@ io.on('connection', function (connectionSocket) {
         case 'oneByOne':
             intervalId = sendOneByOne();
             break;
-        case 'chunk':
-            intervalId = sendChunk(createChunk(numOfEntities));
+        case 'all':
+            intervalId = sendAll(createData(numOfEntities));
+            break;
+        case 'partsByParts':
+            intervalId = sendPartsByParts(numOfObjectsInPart);
             break;
         default:
             console.log('WTF wrong sendOption');
@@ -45,8 +49,9 @@ io.on('connection', function (connectionSocket) {
 app.get('/data', function (req, res) {
     res.send({
         numOfEntities: numOfEntities,
-        sendOption : sendOption,
-        interval : interval
+        sendOption: sendOption,
+        interval: interval,
+        numOfObjectsInPart: numOfObjectsInPart
     });
 });
 
@@ -56,12 +61,17 @@ app.post('/change', function (req, res, next) {
     numOfEntities = req.body.numOfEntities;
     interval = req.body.interval;
     sendOption = req.body.sendOption;
+    numOfObjectsInPart = req.body.numOfObjectsInPart;
+
     switch (sendOption) {
         case 'oneByOne':
             intervalId = sendOneByOne();
             break;
-        case 'chunk':
-            intervalId = sendChunk(numOfEntities);
+        case 'all':
+            intervalId = sendAll(createData(numOfEntities));
+            break;
+        case 'partsByParts':
+            intervalId = sendPartsByParts(numOfObjectsInPart);
             break;
         default:
             console.log('WTF wrong sendOption');
@@ -70,26 +80,25 @@ app.post('/change', function (req, res, next) {
     res.send('changed successfully');
 });
 
-function sendChunk(numOfEntities) {
+function sendAll(data) {
     clearInterval(intervalId);
     return setInterval(() => {
-        io.emit('birds', createChunk(numOfEntities));
+        io.emit('birds', data);
     }, interval);
 }
 
 function sendOneByOne() {
     let counter = 0;
-    console.log(interval);
     clearInterval(intervalId);
     const id = setInterval(() => {
-        let entityId =  counter++ % numOfEntities;
+        let entityId = counter % numOfEntities;
         let getSign = Math.random() > 0.5 ? 1 : -1;
         io.emit('birds', [{
             id: entityId,
             action: 'ADD_OR_UPDATE',
             entity: {
                 id: entityId,
-                name: 'bird' + counter++ % numOfEntities,
+                name: 'bird' + counter % numOfEntities,
                 image: "/assets/angry-bird-blue-icon.png",
                 position: {
                     lat: 60 * Math.random() * getSign,
@@ -97,14 +106,49 @@ function sendOneByOne() {
                 }
             }
         }]);
+        counter++;
     }, interval);
 
     return id;
 }
 
-function createChunk(numOfEntities) {
+function createData(numOfEntities) {
     const data = [];
     for (let i = 0; i < numOfEntities; i++) {
+        let getSign = Math.random() > 0.5 ? 1 : -1;
+        data.push({
+            id: i,
+            action: 'ADD_OR_UPDATE',
+            entity: {
+                id: i,
+                name: 'bird' + i,
+                image: "/assets/angry-bird-blue-icon.png",
+                position: {
+                    lat: 60 * Math.random() * getSign,
+                    long: 100 * Math.random() * getSign
+                }
+            }
+        });
+    }
+    return data;
+}
+
+function sendPartsByParts(numberOfObjects) {
+    let counter = 0;
+    clearInterval(intervalId);
+    const id = setInterval(() => {
+        let entityId = counter % numOfEntities;
+        counter += numberOfObjects;
+        let data = createCollection(entityId, numberOfObjects);
+        io.emit('birds', data);
+    }, interval);
+
+    return id;
+}
+
+function createCollection(startId, numberOfObjects) {
+    let data = [];
+    for (let i = startId; i < numOfEntities && i < startId + numberOfObjects; i++) {
         let getSign = Math.random() > 0.5 ? 1 : -1;
         data.push({
             id: i,

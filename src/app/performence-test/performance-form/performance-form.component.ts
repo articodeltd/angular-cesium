@@ -4,8 +4,9 @@ import { Http, Response } from '@angular/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 class SendOption {
-	static CHUNK = 'chunk';
+	static ALL = 'all';
 	static ONE_BY_ONE = 'oneByOne';
+	static PARTS_BY_PARTS = 'partsByParts';
 }
 
 @Component({
@@ -18,7 +19,8 @@ export class PerformanceFormComponent implements OnInit {
 
 	private numOfEntities = 500;
 	private interval = 500;
-	private sendOption = SendOption.CHUNK;
+	private sendOption = SendOption.ALL;
+	private numOfObjectsInPart = 20;
 
 	constructor(private http:Http) {
 	}
@@ -26,14 +28,28 @@ export class PerformanceFormComponent implements OnInit {
 	ngOnInit() {
 		this.getInterval().subscribe((data) => {
 			this.numOfEntities = data.numOfEntities;
-			data.sendOption === 'chunk' ? this.sendOption = SendOption.CHUNK : this.sendOption = SendOption.ONE_BY_ONE;
+			this.numOfObjectsInPart = data.numOfObjectsInPart;
+			switch (data.sendOption) {
+				case 'oneByOne':
+					this.sendOption = SendOption.ONE_BY_ONE;
+					break;
+				case 'all':
+					this.sendOption = SendOption.ALL;
+					break;
+				case 'partsByParts':
+					this.sendOption = SendOption.PARTS_BY_PARTS;
+					break;
+				default:
+					console.log('WTF wrong sendOption');
+			}
 			this.interval = data.interval;
 
 			this.http.post('http://localhost:3000/change',
 				{
 					interval: this.interval,
 					numOfEntities: this.numOfEntities,
-					sendOption: this.sendOption
+					sendOption: this.sendOption,
+					numOfObjectsInPart: this.numOfObjectsInPart
 				}).catch(this.handleError)
 				.subscribe(() => {
 					this.cleanMap.emit();
@@ -54,7 +70,8 @@ export class PerformanceFormComponent implements OnInit {
 			{
 				interval: this.interval,
 				numOfEntities: this.numOfEntities,
-				sendOption: this.sendOption
+				sendOption: this.sendOption,
+				numOfObjectsInPart: this.numOfObjectsInPart
 			}).catch(this.handleError)
 			.subscribe(() => {
 				this.cleanMap.emit();

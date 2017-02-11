@@ -1,10 +1,14 @@
 <form class="settingForm" id="settingForm">
     <label for="numOfEntities">Number of Entities</label>
     <input id="numOfEntities" type="number" name="numOfEntities" [(ngModel)]="numOfEntities"> <br>
+    <label *ngIf="sendOption === 'partsByParts'" for="collection">Number in Collection</label>
+    <input *ngIf="sendOption === 'partsByParts'" id="collection" type="number" name="collection" [(ngModel)]="numOfObjectsInPart"> <br>
     <label for="interval">interval (Ms)</label>
     <input id="interval" type="number" name="interval" [(ngModel)]="interval"> <br>
-    <label for="female" title="every interval a chunck of numOfEntities will be sent">Chunk</label>
-    <input type="radio" name="sendOption" id="female" value="chunk" [(ngModel)]="sendOption"><br>
+    <label for="female" title="every interval a all of numOfEntities will be sent">All</label>
+    <input type="radio" name="sendOption" id="female" value="all" [(ngModel)]="sendOption"><br>
+    <label for="male" title="recursively: one part every interval ">Parts by parts</label>
+    <input type="radio" name="sendOption" id="male" value="partsByParts" [(ngModel)]="sendOption"><br>
     <label for="other" title="recursively: one entity every interval ">One By One</label>
     <input type="radio" name="sendOption" id="other" value="oneByOne" [(ngModel)]="sendOption"><br><br>
     <button type="button" (click)="change()">change</button>
