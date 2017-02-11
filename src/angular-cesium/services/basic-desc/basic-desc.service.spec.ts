@@ -84,27 +84,22 @@ fdescribe('BasicDescTestClass', () => {
 	it('should draw', () => {
 		component.draw({}, 0, {});
 		verify(simpleDrawerServiceTestClass.add(anything())).once();
-		expect(component._primitiveMap.size).toEqual(1);
 	});
 
 	it('should remove', () => {
 		component.draw({}, 0, {});
 		component.remove(0);
 		verify(simpleDrawerServiceTestClass.remove(anything())).once();
-		expect(component._primitiveMap.size).toEqual(0);
 	});
 
 	it('should update', () => {
 		component.draw({}, 0, {});
 		component.draw({}, 0, {});
-		verify(simpleDrawerServiceTestClass.update(anything())).once();
+		verify(simpleDrawerServiceTestClass.update(anything(), anything())).once();
 	});
 
 	it('should remove all', () => {
-		component.draw({}, 0, {});
-		component.draw({}, 1, {});
 		component.removeAll();
 		verify(simpleDrawerServiceTestClass.removeAll()).once();
-		expect(component._primitiveMap.size).toEqual(0);
 	});
 });
