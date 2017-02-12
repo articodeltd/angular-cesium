@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 
 import { CesiumService } from '../cesium/cesium.service';
 import { LayerService } from '../layer-service/layer-service.service';
-import { CesiumProperties } from '../cesium-properties/cesium-properties.service'
-import { ComputationCache } from '../computation-cache/computation-cache.service'
+import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
+import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { mock, anything, when, verify } from 'ts-mockito';
 import { providerFromMock, mockProvider } from '../../utils/testingUtils';
 import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
