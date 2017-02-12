@@ -14,10 +14,6 @@ export class CesiumService {
 			window['CESIUM_BASE_URL'] = './assets/Cesium';
 			this.cesiumViewer = new this.cesium.Viewer(mapContainer,
 				{
-					// Poor internet connection - use default globe image, TODO: should be removed
-					imageryProvider: Cesium.createTileMapServiceImageryProvider({
-						url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
-					}),
 					baseLayerPicker: false,
 					geocoder: false
 				});
