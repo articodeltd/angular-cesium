@@ -3,12 +3,6 @@ import 'rxjs/add/operator/catch';
 import { Http, Response } from '@angular/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-class SendOption {
-	static ALL = 'all';
-	static ONE_BY_ONE = 'oneByOne';
-	static PARTS_BY_PARTS = 'partsByParts';
-}
-
 @Component({
 	selector: 'performance-form',
 	templateUrl: './performance-form.component.html',
@@ -19,7 +13,6 @@ export class PerformanceFormComponent implements OnInit {
 
 	private numOfEntities = 500;
 	private interval = 500;
-	private sendOption = SendOption.ALL;
 	private numOfObjectsInPart = 20;
 
 	constructor(private http:Http) {
@@ -29,26 +22,11 @@ export class PerformanceFormComponent implements OnInit {
 		this.getInterval().subscribe((data) => {
 			this.numOfEntities = data.numOfEntities;
 			this.numOfObjectsInPart = data.numOfObjectsInPart;
-			switch (data.sendOption) {
-				case 'oneByOne':
-					this.sendOption = SendOption.ONE_BY_ONE;
-					break;
-				case 'all':
-					this.sendOption = SendOption.ALL;
-					break;
-				case 'partsByParts':
-					this.sendOption = SendOption.PARTS_BY_PARTS;
-					break;
-				default:
-					console.log('WTF wrong sendOption');
-			}
 			this.interval = data.interval;
-
 			this.http.post('http://localhost:3000/change',
 				{
 					interval: this.interval,
 					numOfEntities: this.numOfEntities,
-					sendOption: this.sendOption,
 					numOfObjectsInPart: this.numOfObjectsInPart
 				}).catch(this.handleError)
 				.subscribe(() => {
@@ -70,7 +48,6 @@ export class PerformanceFormComponent implements OnInit {
 			{
 				interval: this.interval,
 				numOfEntities: this.numOfEntities,
-				sendOption: this.sendOption,
 				numOfObjectsInPart: this.numOfObjectsInPart
 			}).catch(this.handleError)
 			.subscribe(() => {
