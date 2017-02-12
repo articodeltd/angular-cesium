@@ -21,6 +21,8 @@ import { AcStaticPolylineDescComponent } from "./components/ac-static-polyline-d
 import { ViewerFactory } from './services/viewer-factory/viewer-factory.service';
 import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
+import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
+import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
 
 @NgModule({
 	imports: [
@@ -43,7 +45,9 @@ import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-des
 		PixelOffsetPipe,
 		AcStaticCircleDescComponent,
 		AcDynamicCircleDescComponent,
-		AcStaticPolylineDescComponent
+		AcStaticPolylineDescComponent,
+		AcArcDescComponent,
+        AcMapLayerProviderComponent
 	],
 	exports: [
 		AcMapComponent,
@@ -58,7 +62,9 @@ import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-des
 		AcLayer2Directive,
 		AcStaticCircleDescComponent,
 		AcDynamicCircleDescComponent,
-		AcStaticPolylineDescComponent
+		AcStaticPolylineDescComponent,
+		AcArcDescComponent,
+        AcMapLayerProviderComponent
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })
