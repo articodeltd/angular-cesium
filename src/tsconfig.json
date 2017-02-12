@@ -12,8 +12,8 @@
     "module": "es6",
     "moduleResolution": "node",
     "outDir": "../dist/out-tsc",
-    "target": "es6",
     "sourceMap": true,
+    "target": "es6",
     "typeRoots": [
       "../node_modules/@types"
     ]
