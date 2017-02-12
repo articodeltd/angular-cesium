@@ -16,7 +16,7 @@ import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
 import { JsonMapper } from './services/json-mapper/json-mapper.service';
 import { CesiumProperties } from './services/cesium-properties/cesium-properties.service';
 import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.component';
-import { UtilsModule } from '../../demo/utils/utils.module';
+import { UtilsModule } from './utils/utils.module';
 import { AcStaticPolylineDescComponent } from './components/ac-static-polyline-desc/ac-static-polyline-desc.component';
 import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
