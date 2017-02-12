@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AcNotification } from '../../angular-cesium/models/ac-notification';
+import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { Observable } from 'rxjs';
-import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
-import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
+import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
+import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
 	selector: 'dynamic-circle-layer',

@@ -14,6 +14,8 @@ import { StaticPolylineLayerComponent } from './layers/static-polyline-layer/sta
 import { StaticCircleLayerComponent } from './layers/static-circle-layer/static-circle-layer.component';
 import { PolygonLayerComponent } from './layers/polygon-layer/polygon-layer.component';
 import { EventTestLayerComponent } from './layers/event-test-layer/event-test-layer.component';
+import { ArcLayerComponent } from './layers/arc-layer/arc-layer.component';
+import { DynamicCircleLayerComponent } from './layers/dynamic-circle-layer/dynamic-circle-layer.component';
 
 @NgModule({
 	declarations: [
@@ -22,12 +24,14 @@ import { EventTestLayerComponent } from './layers/event-test-layer/event-test-la
 		TracksLayerComponent,
 		BaseLayerComponent,
 		DynamicEllipseLayerComponent,
+		DynamicCircleLayerComponent,
 		EllipseLayerComponent,
 		DynamicPolylineLayerComponent,
 		StaticPolylineLayerComponent,
 		PolygonLayerComponent,
 		StaticCircleLayerComponent,
-		EventTestLayerComponent
+		EventTestLayerComponent,
+		ArcLayerComponent
 	],
 	imports: [
 		BrowserModule,

@@ -5,7 +5,6 @@ import { CesiumService } from '../cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 
 describe('DynamicEllipseDrawerService', () => {
-
 	let ellipseProps;
 	const ellipseProps2 = {
 		width: 2,
