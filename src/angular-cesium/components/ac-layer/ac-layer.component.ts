@@ -13,12 +13,13 @@ import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynam
 import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
 import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
+import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
 
 @Component({
 	selector: 'ac-layer',
 	templateUrl: './ac-layer.component.html',
 	styleUrls: ['./ac-layer.component.css'],
-	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, PolygonDrawerService]
+	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	@Input()
@@ -42,7 +43,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
 	            staticCircleDrawerService: StaticCircleDrawerService,
 	            staticPolylineDrawerService: StaticPolylineDrawerService,
-	            polygonDrawerService: PolygonDrawerService) {
+	            polygonDrawerService: PolygonDrawerService,
+	            arcDrawerService: ArcDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,
@@ -51,7 +53,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			dynamicPolylineDrawerService,
 			staticCircleDrawerService,
 			staticPolylineDrawerService,
-			polygonDrawerService
+			polygonDrawerService,
+			arcDrawerService
 		);
 	}
 

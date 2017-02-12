@@ -1,5 +1,8 @@
 import { CesiumService } from '../cesium/cesium.service';
 
+/**
+ *  This is abstract drawer who provides some implementation for other drawers that extends it.
+ */
 export abstract class SimpleDrawerService {
 	protected _showAll = true;
 
