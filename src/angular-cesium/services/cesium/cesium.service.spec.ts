@@ -1,18 +1,19 @@
-/*
- /!* tslint:disable:no-unused-variable *!/
+import { NgZone } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 
- import { TestBed, async, inject } from '@angular/core/testing';
- import { CesiumService } from './cesium.service.ts';
+import { mockProvider } from '../../utils/testingUtils';
+import { CesiumService } from './cesium.service';
 
- describe('CesiumService', () => {
- beforeEach(() => {
- TestBed.configureTestingModule({
- providers: [CesiumService]
- });
- });
+describe('CesiumService', () => {
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [
+				CesiumService,
+				mockProvider(NgZone)
+			]
+		});
+	});
 
- it('should ...', inject([CesiumService], (service: CesiumService) => {
- expect(service).toBeTruthy();
- }));
- });
- */
+	it('should create', () => {
+	});
+});
