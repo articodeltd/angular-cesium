@@ -3,9 +3,12 @@ import { TestBed, inject } from '@angular/core/testing';
 import { CesiumService } from './cesium.service';
 
 fdescribe('CesiumService', () => {
-	let mapContainer = document.createElement('mapContainer');
+	let mapContainer;
 
 	beforeEach(() => {
+		mapContainer = document.createElement('mapContainer');
+		document.body.appendChild(mapContainer);
+
 		TestBed.configureTestingModule({
 			providers: [CesiumService]
 		});
