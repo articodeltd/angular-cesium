@@ -3,11 +3,6 @@ import 'rxjs/add/operator/catch';
 import { Http, Response } from '@angular/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-class SendOption {
-	static CHUNK = 'chunk';
-	static ONE_BY_ONE = 'oneByOne';
-}
-
 @Component({
 	selector: 'performance-form',
 	templateUrl: './performance-form.component.html',
@@ -18,12 +13,34 @@ export class PerformanceFormComponent implements OnInit {
 
 	private numOfEntities = 500;
 	private interval = 500;
-	private sendOption = SendOption.CHUNK;
+	private numOfObjectsInPart = 20;
 
-	constructor(private http: Http) {
+	constructor(private http:Http) {
 	}
 
 	ngOnInit() {
+		this.getInterval().subscribe((data) => {
+			this.numOfEntities = data.numOfEntities;
+			this.numOfObjectsInPart = data.numOfObjectsInPart;
+			this.interval = data.interval;
+			this.http.post('http://localhost:3000/change',
+				{
+					interval: this.interval,
+					numOfEntities: this.numOfEntities,
+					numOfObjectsInPart: this.numOfObjectsInPart
+				}).catch(this.handleError)
+				.subscribe(() => {
+					this.cleanMap.emit();
+				});
+		});
+	}
+
+	private getInterval() {
+		return this.http.get('http://localhost:3000/data').map((res:Response) => {
+				let body = res.json();
+				return body || {};
+			}
+		)
 	}
 
 	change() {
@@ -31,7 +48,7 @@ export class PerformanceFormComponent implements OnInit {
 			{
 				interval: this.interval,
 				numOfEntities: this.numOfEntities,
-				sendOption: this.sendOption
+				numOfObjectsInPart: this.numOfObjectsInPart
 			}).catch(this.handleError)
 			.subscribe(() => {
 				this.cleanMap.emit();
@@ -39,9 +56,9 @@ export class PerformanceFormComponent implements OnInit {
 			});
 	}
 
-	private handleError(error: Response | any) {
+	private handleError(error:Response | any) {
 		// In a real world app, we might use a remote logging infrastructure
-		let errMsg: string;
+		let errMsg:string;
 		if (error instanceof Response) {
 			const body = error.json() || '';
 			const err = body.error || JSON.stringify(body);
