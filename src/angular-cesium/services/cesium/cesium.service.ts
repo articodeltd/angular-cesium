@@ -1,5 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
 
+/**
+ *  Service that initialize cesium viewer and expose cesium viewer and scene.
+ */
+
 @Injectable()
 export class CesiumService {
 	cesium: any;
