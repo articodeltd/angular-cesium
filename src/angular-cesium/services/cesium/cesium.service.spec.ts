@@ -22,7 +22,7 @@ describe('CesiumService', () => {
 		expect(service.cesium).toBeDefined();
 	}));
 
-	it('should create', inject([CesiumService], (service: CesiumService) => {
+	it('should initialize and return viewer', inject([CesiumService], (service: CesiumService) => {
 		service.init(mapContainer);
 		expect(service.getViewer()).toBeDefined();
 	}));
