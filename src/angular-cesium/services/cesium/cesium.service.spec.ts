@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { CesiumService } from './cesium.service';
 
-fdescribe('CesiumService', () => {
+describe('CesiumService', () => {
 	let mapContainer;
 
 	beforeEach(() => {
