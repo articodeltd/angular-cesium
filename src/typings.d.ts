@@ -1,1 +1,1 @@
-declare var Cesium;
+export declare var Cesium;

@@ -29,5 +29,8 @@
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true
-  }
+  },
+  "typings": [
+    "./src/typings.d.ts"
+  ]
 }
