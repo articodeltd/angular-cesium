@@ -1,57 +1,56 @@
 import { Injectable, NgZone } from '@angular/core';
 import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
 
-
 @Injectable()
 export class CesiumService {
-  cesiumViewer: any;
+	cesiumViewer: any;
 
-  constructor(private ngZone : NgZone, private viewerFactory : ViewerFactory) {
-  }
+	constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory) {
+	}
 
-  init(mapContainer: HTMLElement) {
-    this.ngZone.runOutsideAngular(() => {
-            this.cesiumViewer = this.viewerFactory.createViewer(mapContainer);
-    });
-  }
+	init(mapContainer: HTMLElement) {
+		this.ngZone.runOutsideAngular(() => {
+			this.cesiumViewer = this.viewerFactory.createViewer(mapContainer);
+		});
+	}
 
-  getViewer() {
-    return this.cesiumViewer;
-  }
+	getViewer() {
+		return this.cesiumViewer;
+	}
 
-  getScene() {
-    return this.cesiumViewer.scene;
-  }
+	getScene() {
+		return this.cesiumViewer.scene;
+	}
 
-    /**
-     * Gets the minimum zoom value in meters
-     * @returns {any}
-     */
-  getMinimumZoom() : number {
-      return this.getScene().screenSpaceCameraController.minimumZoomDistance;
-  }
+	/**
+	 * Gets the minimum zoom value in meters
+	 * @returns {any}
+	 */
+	getMinimumZoom(): number {
+		return this.getScene().screenSpaceCameraController.minimumZoomDistance;
+	}
 
-    /**
-     * Sets the minimum zoom value in meters
-     * @param amount - new value
-     */
-  setMinimumZoom(amount : number) : void {
-      this.getScene().screenSpaceCameraController.minimumZoomDistance = amount;
-  }
+	/**
+	 * Sets the minimum zoom value in meters
+	 * @param amount - new value
+	 */
+	setMinimumZoom(amount: number): void {
+		this.getScene().screenSpaceCameraController.minimumZoomDistance = amount;
+	}
 
-    /**
-     * Gets the maxmimum zoom value in meters
-     * @returns {any}
-     */
-  getMaximumZoom() : number {
-      return this.getScene().screenSpaceCameraController.maximumZoomDistance;
-  }
+	/**
+	 * Gets the maxmimum zoom value in meters
+	 * @returns {any}
+	 */
+	getMaximumZoom(): number {
+		return this.getScene().screenSpaceCameraController.maximumZoomDistance;
+	}
 
-    /**
-     * Sets the maximum zoom value in meters
-     * @param amount - new value
-     */
-  setMaximumZoom(amount : number) : void {
-      this.getScene().screenSpaceCameraController.maximumZoomDistance = amount;
-  }
+	/**
+	 * Sets the maximum zoom value in meters
+	 * @param amount - new value
+	 */
+	setMaximumZoom(amount: number): void {
+		this.getScene().screenSpaceCameraController.maximumZoomDistance = amount;
+	}
 }

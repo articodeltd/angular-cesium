@@ -17,10 +17,10 @@ export class AcMapComponent implements OnInit {
 	private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
 
 	@Input()
-	minimumZoom : number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
+	minimumZoom: number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
 
 	@Input()
-	maximumZoom : number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
+	maximumZoom: number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
 
 	constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
 		let mapContainer = this.document.createElement('div');
