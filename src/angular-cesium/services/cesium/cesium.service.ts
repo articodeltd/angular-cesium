@@ -42,7 +42,7 @@ export class CesiumService {
 	}
 
 	/**
-	 * Gets the maxmimum zoom value in meters
+	 * Gets the maximum zoom value in meters
 	 * @returns {any}
 	 */
 	getMaximumZoom(): number {
