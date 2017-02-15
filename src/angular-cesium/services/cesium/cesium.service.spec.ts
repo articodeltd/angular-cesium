@@ -1,16 +1,16 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CesiumService } from './cesium.service';
-import { when, mock } from 'ts-mockito';
+import { when, mock, anything } from 'ts-mockito';
 import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
+import { providerFromMock } from '../../utils/testingUtils';
 
-describe('CesiumService', () => {
+fdescribe('CesiumService', () => {
 	let mapContainer;
 	const defaultZooms = 1;
 	const viewerFactory = mock(ViewerFactory);
-	const element = document.createElement("div");
 
-	when(viewerFactory.createViewer(element)).thenReturn({
+	when(viewerFactory.createViewer(anything())).thenReturn({
 		scene: {
 			screenSpaceCameraController: {
 				minimumZoomDistance: defaultZooms,
@@ -24,11 +24,12 @@ describe('CesiumService', () => {
 		document.body.appendChild(mapContainer);
 
 		TestBed.configureTestingModule({
-			providers: [CesiumService]
+			providers: [CesiumService, providerFromMock(ViewerFactory, viewerFactory)]
 		});
 	});
+
 	beforeEach(inject([CesiumService], (service: CesiumService) => {
-		service.init(element);
+		service.init(mapContainer);
 	}));
 
 	afterEach(() => {
@@ -36,21 +37,15 @@ describe('CesiumService', () => {
 	});
 
 	it('should create', inject([CesiumService], (service: CesiumService) => {
-		expect(service.cesium).toBeDefined();
+		expect(service).toBeDefined();
 	}));
 
 	it('should initialize and return viewer', inject([CesiumService], (service: CesiumService) => {
-		service.init(mapContainer);
 		expect(service.getViewer()).toBeDefined();
 	}));
 
 	it('should return scene', inject([CesiumService], (service: CesiumService) => {
-		service.init(mapContainer);
 		expect(service.getScene()).toBeDefined();
-	}));
-});
-	it('should ...', inject([CesiumService], (service: CesiumService) => {
-		expect(service).toBeTruthy();
 	}));
 
 	it('Set minimum zoom', inject([CesiumService], (service: CesiumService) => {
