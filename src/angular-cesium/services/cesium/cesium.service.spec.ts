@@ -5,7 +5,7 @@ import { when, mock, anything } from 'ts-mockito';
 import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
 import { providerFromMock } from '../../utils/testingUtils';
 
-fdescribe('CesiumService', () => {
+describe('CesiumService', () => {
 	let mapContainer;
 	const defaultZooms = 1;
 	const viewerFactory = mock(ViewerFactory);
