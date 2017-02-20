@@ -36,6 +36,11 @@ export class AcDynamicCircleDescComponent extends BasicDesc {
 		super(ellipseDrawer, layerService, computationCache, cesiumProperties);
 	}
 
+	/**
+	 *
+	 * @param {Object} context
+	 * @returns {any}
+	 */
 	protected _propsEvaluator(context: Object): any {
 		let cesiumProps = super._propsEvaluator(context);
 

@@ -13,8 +13,8 @@ import {Checker} from '../../utils/checker';
  *    &lt;/ac-map-layer-provider&gt;
  *  ```
  *
- *  @param {Object} options - refer to cesium docs for details https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html
- *  @param {MapLayerProviderOptions} provider
+ *  __param:__ {Object} options - refer to cesium docs for details https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html
+ *  __param:__ {MapLayerProviderOptions} provider
  */
 
 @Component({
