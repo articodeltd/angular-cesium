@@ -12,7 +12,7 @@ import { BasicDesc } from './basic-desc.service';
 
 @Component({
 	template: '',
-	selector: 'basic-desc-test-class',
+	selector: 'basic-desc-test-class'
 })
 class BasicDescTestClass extends BasicDesc {
 	constructor(drawer: SimpleDrawerService,
@@ -35,7 +35,7 @@ describe('BasicDescTestClass', () => {
 	});
 	when(simpleDrawerService.add(anything())).thenReturn({});
 
-	beforeEach(async() => {
+	beforeEach(() => {
 		TestBed.configureTestingModule({
 			declarations: [BasicDescTestClass],
 			providers: [
