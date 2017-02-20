@@ -18,6 +18,7 @@ import { CesiumProperties } from './services/cesium-properties/cesium-properties
 import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.component';
 import { UtilsModule } from '../utils/utils.module';
 import { AcStaticPolylineDescComponent } from './components/ac-static-polyline-desc/ac-static-polyline-desc.component';
+import { ViewerFactory } from './services/viewer-factory/viewer-factory.service';
 import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
 import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
@@ -46,7 +47,7 @@ import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/
 		AcDynamicCircleDescComponent,
 		AcStaticPolylineDescComponent,
 		AcArcDescComponent,
-        AcMapLayerProviderComponent
+		AcMapLayerProviderComponent
 	],
 	exports: [
 		AcMapComponent,
@@ -63,9 +64,9 @@ import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/
 		AcDynamicCircleDescComponent,
 		AcStaticPolylineDescComponent,
 		AcArcDescComponent,
-        AcMapLayerProviderComponent
+		AcMapLayerProviderComponent
 	],
-	providers: [JsonMapper, CesiumProperties, GeoUtilsService],
+	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })
 export class AngularCesiumModule {
 }

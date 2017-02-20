@@ -1,4 +1,4 @@
-<ac-layer acFor="let polyline in polylines$" [context]="this" [show]="true">
+<ac-layer acFor="let polyline of polylines$" [context]="this" [show]="true">
     <ac-dynamic-polyline-desc
         props = "{
             width : polyline.dynamicPolyline.width,
