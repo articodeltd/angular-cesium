@@ -5,7 +5,7 @@ import { CesiumService } from '../cesium/cesium.service';
 import { LayerService } from '../layer-service/layer-service.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
-import { mock, anything, when, verify } from 'ts-mockito';
+import { mock, anything, when, verify, resetCalls } from 'ts-mockito';
 import { providerFromMock, mockProvider } from '../../utils/testingUtils';
 import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
 import { BasicDesc } from './basic-desc.service';
@@ -23,8 +23,9 @@ class BasicDescTestClass extends BasicDesc {
 	}
 }
 
-describe('BasicDescTestClass', () => {
-	const id = 0;
+fdescribe('BasicDescTestClass', () => {
+	const id: number = 0;
+	const secondId: number = 1;
 	const cesiumProperties = mock(CesiumProperties);
 	let component: BasicDescTestClass;
 	let fixture: ComponentFixture<BasicDescTestClass>;
@@ -34,6 +35,12 @@ describe('BasicDescTestClass', () => {
 		return {}
 	});
 	when(simpleDrawerService.add(anything())).thenReturn({});
+
+	function addComponentsAddRemoveAll() {
+		component.draw({}, id, {});
+		component.draw({}, secondId, {});
+		component.removeAll();
+	}
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -53,6 +60,7 @@ describe('BasicDescTestClass', () => {
 		fixture = TestBed.createComponent(BasicDescTestClass);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
+		resetCalls(simpleDrawerService);
 	});
 
 	it('should create', () => {
@@ -60,6 +68,7 @@ describe('BasicDescTestClass', () => {
 	});
 
 	it('should draw', () => {
+		component.draw({}, id, {});
 		component.draw({}, id, {});
 		verify(simpleDrawerService.add(anything())).once();
 	});
@@ -70,14 +79,32 @@ describe('BasicDescTestClass', () => {
 		verify(simpleDrawerService.remove(anything())).once();
 	});
 
+	it('should add after remove', () => {
+		component.draw({}, id, {});
+		component.remove(id);
+		component.draw({}, id, {});
+		verify(simpleDrawerService.update(anything(), anything())).never();
+		verify(simpleDrawerService.add(anything())).twice();
+	});
+
 	it('should update', () => {
 		component.draw({}, id, {});
+		component.draw({}, id, {});
+		component.remove(id);
 		component.draw({}, id, {});
 		verify(simpleDrawerService.update(anything(), anything())).once();
 	});
 
 	it('should remove all', () => {
-		component.removeAll();
+		addComponentsAddRemoveAll();
 		verify(simpleDrawerService.removeAll()).once();
+	});
+
+	it('should add after remove all', () => {
+		addComponentsAddRemoveAll();
+		component.draw({}, id, {});
+		component.draw({}, secondId, {});
+		verify(simpleDrawerService.update(anything(), anything())).never();
+		verify(simpleDrawerService.add(anything())).times(4);
 	});
 });
