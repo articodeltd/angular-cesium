@@ -13,6 +13,7 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
 	bases$: Observable<AcNotification>;
+	show = true;
 
 	constructor() {
 		const base1: AcNotification = {
@@ -42,6 +43,14 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 
 	ngAfterViewInit() {
 
+	}
+
+	removeAll() {
+		this.layer.removeAll();
+	}
+
+	setShow($event) {
+		this.show = $event
 	}
 
 }
