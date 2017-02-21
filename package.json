@@ -11,7 +11,7 @@
     "test": "karma start",
     "ngc": "ngc -p tsconfig.aot.json",
     "aot": "webpack --config webpack.aot.config.js -p",
-    "build": "npm run cleanup && npm run ngc && npm run aot && rimraf dist/main.bundle.js dist/main.bundle.js.map",
+    "build": "npm run cleanup && npm run ngc",
     "build-demo": "rimraf dist && webpack --config config/webpack.dev.js --progress --profile --bail",
     "test-server": "node demo/performance-server/server.js",
     "compile-docs": "compodoc -p ./src/angular-cesium/tsconfig.json -n \"Angular 2 Cesium\"",

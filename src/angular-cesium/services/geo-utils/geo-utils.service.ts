@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
+declare var Cesium;
 
 @Injectable()
 export class GeoUtilsService {

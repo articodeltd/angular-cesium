@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
+    "removeComments": true,
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "declaration": true,
@@ -14,7 +15,6 @@
       "node_modules/@types"
     ],
     "types": [
-      "core-js",
       "node",
       "jasmine"
     ]

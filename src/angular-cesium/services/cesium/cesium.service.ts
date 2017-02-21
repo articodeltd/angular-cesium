@@ -1,4 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
+declare var Cesium;
 
 @Injectable()
 export class CesiumService {

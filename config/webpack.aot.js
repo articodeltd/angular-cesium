@@ -53,7 +53,7 @@ module.exports = {
     resolve: {
         extensions: ['', '.ts', '.js'],
         alias: {
-            'angular2-grid': 'angular2-grid/dist/main.js'
+            'cesium': 'cesium/Build/CesiumUnminified/Cesium.js'
         }
     },
 
