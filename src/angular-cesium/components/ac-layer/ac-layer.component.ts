@@ -22,6 +22,8 @@ import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
 	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
+	private static readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
+
 	@Input()
 	show: boolean = true;
 	@Input()
@@ -59,9 +61,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	}
 
 	init() {
-		const acForArr = this.acFor.split(' ');
-		this.observable = this.context[acForArr[3]];
-		this.entityName = acForArr[1];
+		this.initValidParams();
 
 		this.observable.merge(this._updateStream).subscribe((notification) => {
 			this._computationCache.clear()
@@ -79,6 +79,21 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 				}
 			})
 		});
+	}
+
+	private initValidParams() {
+		if (!this.context)
+			throw 'ac-layer: must initialize [context] ';
+		if (!AcLayerComponent.acForRgx.test(this.acFor)) {
+			throw 'ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
+			+ 'instead received: ' + this.acFor;
+		}
+		const acForArr = this.acFor.split(' ');
+		this.observable = this.context[acForArr[3]];
+		this.entityName = acForArr[1];
+		if (!this.observable || !(this.observable instanceof Observable)) {
+			throw  'ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable;
+		}
 	}
 
 	ngAfterContentInit(): void {

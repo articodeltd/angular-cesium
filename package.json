@@ -43,7 +43,7 @@
     "awesome-typescript-loader": "^3.0.0-beta.17",
     "bower": "^1.7.9",
     "browserify": "^13.1.1",
-    "compodoc": "0.0.38",
+    "compodoc": "0.0.41",
     "concurrently": "^3.1.0",
     "copy-webpack-plugin": "^4.0.1",
     "core-js": "^2.4.1",
