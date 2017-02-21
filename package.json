@@ -1,5 +1,5 @@
 {
-  "name": "angular-cesium",
+  "name": "angular2-cesium",
   "version": "0.0.1",
   "license": "MIT",
   "description": "Angular2 library seed - based on Webpack",
@@ -51,6 +51,7 @@
     "del": "^2.2.0",
     "es6-module-loader": "^0.17.11",
     "es6-shim": "^0.35.2",
+    "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.1",
@@ -78,7 +79,9 @@
     "rimraf": "^2.5.2",
     "run-sequence": "^1.2.1",
     "rxjs": "5.0.0-beta.12",
+    "socket.io": "^1.7.2",
     "style-loader": "^0.13.1",
+    "ts-helpers": "^1.1.1",
     "ts-mockito": "^1.1.3",
     "typescript": "2.0.6",
     "watchify": "^3.8.0",
@@ -91,10 +94,7 @@
     "cesium": "^1.28.0",
     "core-js": "^2.4.1",
     "cors": "^2.8.1",
-    "express": "^4.14.0",
     "rxjs": "5.0.0-beta.12",
-    "socket.io": "^1.7.2",
-    "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
   }
 }
