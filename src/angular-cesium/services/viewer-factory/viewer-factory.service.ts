@@ -1,3 +1,4 @@
+declare var Cesium;
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -16,7 +17,7 @@ export class ViewerFactory {
 	 * @returns {any} new viewer
 	 */
 	createViewer(mapContainer: HTMLElement, options?: any) {
-		window['CESIUM_BASE_URL'] = './assets/Cesium';
+		window['CESIUM_BASE_URL'] = '/node_modules/cesium/Build/Cesium';
 
 		if (options) {
 			return new this.cesium.Viewer(mapContainer, options);
