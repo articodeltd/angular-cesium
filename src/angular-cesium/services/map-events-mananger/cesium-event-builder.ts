@@ -28,7 +28,7 @@ export class CesiumEventBuilder {
 			return event.toString();
 	}
 
-	get(event: CesiumEvent, modifier: CesiumEventModifier = undefined): Observable<any> {
+	get(event: CesiumEvent, modifier: CesiumEventModifier = undefined): ConnectableObservable<any> {
 		const eventName = CesiumEventBuilder.getEventFullName(event, modifier);
 		if (this.cesiumEventsObservables.has(eventName)) {
 			return this.cesiumEventsObservables.get(eventName);
