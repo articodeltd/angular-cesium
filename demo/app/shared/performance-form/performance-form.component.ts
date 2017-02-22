@@ -10,10 +10,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class PerformanceFormComponent implements OnInit {
 	@Output() cleanMap = new EventEmitter();
+	@Output() showEvent = new EventEmitter();
 
 	private numOfEntities = 500;
 	private interval = 500;
 	private numOfObjectsInPart = 20;
+	private isShow = true;
 
 	constructor(private http:Http) {
 	}
@@ -54,6 +56,11 @@ export class PerformanceFormComponent implements OnInit {
 				this.cleanMap.emit();
 				alert('changed');
 			});
+	}
+
+	show() {
+		this.isShow = !this.isShow;
+		this.showEvent.emit(this.isShow);
 	}
 
 	private handleError(error:Response | any) {

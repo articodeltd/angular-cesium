@@ -9,12 +9,15 @@ describe('CesiumService', () => {
 	let mapContainer;
 	const defaultZooms = 1;
 	const viewerFactory = mock(ViewerFactory);
+	const element = document.createElement("div");
+	const defaultTilt = true;
 
 	when(viewerFactory.createViewer(anything())).thenReturn({
 		scene: {
 			screenSpaceCameraController: {
 				minimumZoomDistance: defaultZooms,
-				maximumZoomDistance: defaultZooms
+				maximumZoomDistance: defaultZooms,
+				enableTilt: defaultTilt
 			}
 		}
 	});
@@ -60,5 +63,12 @@ describe('CesiumService', () => {
 		expect(service.getScene().screenSpaceCameraController.maximumZoomDistance).toBe(defaultZooms);
 		service.setMaximumZoom(newMaxZoom);
 		expect(service.getScene().screenSpaceCameraController.maximumZoomDistance).toBe(newMaxZoom);
+	}));
+
+	it('Set EnableTilt', inject([CesiumService], (service: CesiumService) => {
+		let newTilt = false;
+		expect(service.getScene().screenSpaceCameraController.enableTilt).toBe(defaultTilt);
+		service.setEnableTilt(newTilt);
+		expect(service.getScene().screenSpaceCameraController.enableTilt).toBe(newTilt);
 	}));
 });

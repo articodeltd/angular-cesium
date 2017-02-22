@@ -27,4 +27,9 @@ export class DynamicPolylineLayerComponent implements OnInit {
 	removeAll() {
 		this.layer.removeAll();
 	}
+
+	setShow($event) {
+		this.show = $event
+	}
+
 }

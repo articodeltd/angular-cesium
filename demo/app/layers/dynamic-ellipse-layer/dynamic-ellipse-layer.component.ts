@@ -27,4 +27,8 @@ export class DynamicEllipseLayerComponent implements OnInit {
 	removeAll() {
 		this.layer.removeAll();
 	}
+
+	setShow($event) {
+		this.show = $event
+	}
 }

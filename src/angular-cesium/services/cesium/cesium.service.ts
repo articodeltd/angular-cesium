@@ -57,4 +57,13 @@ export class CesiumService {
 	setMaximumZoom(amount: number): void {
 		this.getScene().screenSpaceCameraController.maximumZoomDistance = amount;
 	}
+
+	/**
+	 * Sets the enableTilt of screenSpaceCameraController
+	 * @param {boolean} isTilt
+	 */
+	setEnableTilt(isTilt: boolean):void {
+		this.getScene().screenSpaceCameraController.enableTilt  = isTilt;
+	}
+
 }

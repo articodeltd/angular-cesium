@@ -15,6 +15,7 @@ export class PolygonLayerComponent implements OnInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
 	polygons$: Observable<AcNotification>;
+	show = true;
 
 	constructor(private tracksDataProvider: TracksDataProvider) {
 	}
@@ -25,5 +26,9 @@ export class PolygonLayerComponent implements OnInit {
 
 	removeAll() {
 		this.layer.removeAll();
+	}
+
+	setShow($event) {
+		this.show = $event
 	}
 }
