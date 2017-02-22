@@ -2,14 +2,14 @@
     <ac-map-layer-provider></ac-map-layer-provider>
     <!--<tracks-layer #layer></tracks-layer>-->
     <!--<tracks-layer #layer></tracks-layer>-->
-    <!--<ellipse-layer></ellipse-layer>-->
-    <dynamic-ellipse-layer #layer></dynamic-ellipse-layer>
-    <!--<ac-static-circle-layer></ac-static-circle-layer>-->
-    <!--<base-layer></base-layer>-->
-    <!--<static-polyline-layer></static-polyline-layer>-->
-    <!--<dynamic-circle-layer></dynamic-circle-layer>-->
+    <!--<ellipse-layer #layer></ellipse-layer>-->
+    <!--<dynamic-ellipse-layer #layer></dynamic-ellipse-layer>-->
+    <!--<ac-static-circle-layer #layer></ac-static-circle-layer>-->
+    <base-layer #layer></base-layer>
+    <!--<static-polyline-layer #layer></static-polyline-layer>-->
+    <!--<dynamic-circle-layer #layer></dynamic-circle-layer>-->
     <!--<dynamic-polyline-layer #layer></dynamic-polyline-layer>-->
     <!--<event-test-layer></event-test-layer>-->
-    <!--<arc-layer></arc-layer>-->
+    <!--<arc-layer #layer></arc-layer>-->
 </ac-map>
-<performance-form (cleanMap)="layer.removeAll();"></performance-form>
+<performance-form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"></performance-form>

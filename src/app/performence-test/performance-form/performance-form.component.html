@@ -6,4 +6,8 @@
     <label for="interval">interval (Ms)</label>
     <input id="interval" type="number" name="interval" [(ngModel)]="interval"> <br>
     <button type="button" (click)="change()">change</button>
+    <label>
+        <input type="checkbox" name="isActive" (click)="show()" checked>
+        Is Show
+    </label>
 </form>
