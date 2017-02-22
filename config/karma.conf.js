@@ -7,11 +7,78 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
 
         files: [
-            {pattern: './config/karma-test-shim.js', watched: false}
+            {pattern: './config/karma-test-shim.js', watched: false},
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Widgets/Images/**/*.svg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Widgets/InfoBox/*.css',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/**/*.svg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/**/*.svg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/*.json',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/**/*.json',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Workers/*.js',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/Textures/SkyBox/*.jpg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/Textures/*.jpg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            }
         ],
 
         preprocessors: {
             './config/karma-test-shim.js': ['webpack', 'sourcemap']
+        },
+
+        proxies: {
+            '/assets/': '/node_modules/cesium/Build/'
         },
 
         webpack: webpackConfig,
