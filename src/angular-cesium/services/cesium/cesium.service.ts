@@ -53,4 +53,30 @@ export class CesiumService {
 	setMaximumZoom(amount: number): void {
 		this.getScene().screenSpaceCameraController.maximumZoomDistance = amount;
 	}
+
+	/**
+	 * Sets the map to 2D mode.
+	 * @param {number} [2.0] duration - The duration of scene morph animations, in seconds
+	 * Warning: for high performance use Columbus view & turn the tilt off.
+	 */
+	morphTo2D (duration: number = 2.0){
+		new Cesium.SceneModePickerViewModel(this.getScene(), duration).morphTo2D();
+	}
+
+	/**
+	 * Sets the map to 3D mode.
+	 * @param {number} [2.0] duration - The duration of scene morph animations, in seconds
+	 */
+	morphTo3D(duration: number = 2.0){
+		new Cesium.SceneModePickerViewModel(this.getScene(), duration).morphTo3D();
+	}
+
+	/**
+	 * Sets the map to Columbus view mode.
+	 * @param {number} [2.0] duration - The duration of scene morph animations, in seconds
+	 */
+	morphToColumbusView(duration: number = 2.0){
+		new Cesium.SceneModePickerViewModel(this.getScene(), duration).morphToColumbusView();
+	}
+
 }

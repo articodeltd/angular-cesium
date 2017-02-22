@@ -10,13 +10,17 @@ describe('CesiumService', () => {
 	const defaultZooms = 1;
 	const viewerFactory = mock(ViewerFactory);
 	const element = document.createElement("div");
+	const mode3D  = 3;
+	const mode2D  = 2;
+	const modeColombus  = 1;
 
 	when(viewerFactory.createViewer(element)).thenReturn({
 		scene: {
 			screenSpaceCameraController: {
 				minimumZoomDistance: defaultZooms,
 				maximumZoomDistance: defaultZooms
-			}
+			},
+			mode: mode3D
 		}
 	});
 
@@ -46,5 +50,23 @@ describe('CesiumService', () => {
 		expect(service.getScene().screenSpaceCameraController.maximumZoomDistance).toBe(defaultZooms);
 		service.setMaximumZoom(newMaxZoom);
 		expect(service.getScene().screenSpaceCameraController.maximumZoomDistance).toBe(newMaxZoom);
+	}));
+
+	it('Set to 2D mode', inject([CesiumService], (service: CesiumService) => {
+		expect(service.getScene().mode).toBe(mode3D);
+		service.morphTo2D();
+		expect(service.getScene().mode).toBe(mode2D);
+	}));
+
+	it('Set to 3D mode', inject([CesiumService], (service: CesiumService) => {
+		expect(service.getScene().mode).toBe(mode3D);
+		service.morphTo3D();
+		expect(service.getScene().mode).toBe(mode3D);
+	}));
+
+	it('Set to Columbus mode', inject([CesiumService], (service: CesiumService) => {
+		expect(service.getScene().mode).toBe(mode3D);
+		service.morphToColumbusView();
+		expect(service.getScene().mode).toBe(modeColombus);
 	}));
 });
