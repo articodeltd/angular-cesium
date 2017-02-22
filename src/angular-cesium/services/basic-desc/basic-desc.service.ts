@@ -5,6 +5,10 @@ import { ComputationCache } from '../computation-cache/computation-cache.service
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { AcEntity } from '../../models/ac-entity';
 
+/**
+ *  the ancestor class for creating components.
+ *  extend this class to create desc component.
+ */
 export class BasicDesc implements OnInit {
 	@Input()
 	props: any;
@@ -16,7 +20,7 @@ export class BasicDesc implements OnInit {
 	constructor(protected _drawer: SimpleDrawerService,
 	            protected _layerService: LayerService,
 	            protected _computationCache: ComputationCache,
-	            protected _cesiumProperties: CesiumProperties,) {
+	            protected _cesiumProperties: CesiumProperties) {
 	}
 
 	protected _propsEvaluator(context: Object): any {

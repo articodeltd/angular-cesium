@@ -26,4 +26,8 @@ export class StaticCircleLayerComponent implements OnInit {
 	removeAll() {
 		this.layer.removeAll();
 	}
+
+	setShow($event) {
+		this.show = $event
+	}
 }

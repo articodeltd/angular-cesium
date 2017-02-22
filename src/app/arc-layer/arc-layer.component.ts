@@ -11,6 +11,7 @@ import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-la
 
 export class ArcLayerComponent implements OnInit, AfterViewInit {
     arcs$: Observable<AcNotification>;
+    show = true;
     @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
 
@@ -44,5 +45,11 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
     }
 
+    removeAll() {
+        //do nothing
+    }
 
+    setShow($event) {
+        this.show = $event
+    }
 }
