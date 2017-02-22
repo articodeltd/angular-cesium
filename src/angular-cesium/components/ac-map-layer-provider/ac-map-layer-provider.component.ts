@@ -55,8 +55,7 @@ export class AcMapLayerProviderComponent implements OnInit {
 				provider = AcMapLayerProviderComponent.createOfflineMapProvider();
 				break;
 		}
-		this.index ? this.cesiumService.getScene().imageryLayers.addImageryProvider(provider, this.index) :
-			this.cesiumService.getScene().imageryLayers.addImageryProvider(provider);
+		this.cesiumService.getScene().imageryLayers.addImageryProvider(provider, this.index);
 	}
 
 	static createWebMapServiceProvider(options) {
