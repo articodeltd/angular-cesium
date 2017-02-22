@@ -15,6 +15,7 @@ import { Checker } from '../../utils/checker';
  *
  *  @param {Object} options - refer to cesium docs for details https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html
  *  @param {MapLayerProviderOptions} provider
+ *  @param {Number} index (optional) - The index to add the layer at. If omitted, the layer will added on top of all existing layers.
  */
 
 @Component({
