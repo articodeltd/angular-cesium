@@ -2,9 +2,12 @@ declare var Cesium;
 import { Injectable, NgZone } from '@angular/core';
 import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
 
+/**
+ *  Service that initialize cesium viewer and expose cesium viewer and scene.
+ */
 @Injectable()
 export class CesiumService {
-	cesiumViewer: any;
+	private cesiumViewer: any;
 
 	constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory) {
 	}
@@ -40,7 +43,7 @@ export class CesiumService {
 	}
 
 	/**
-	 * Gets the maxmimum zoom value in meters
+	 * Gets the maximum zoom value in meters
 	 * @returns {any}
 	 */
 	getMaximumZoom(): number {
