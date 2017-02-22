@@ -9,15 +9,81 @@ module.exports = function (config) {
             require('angular-cli/plugins/karma')
         ],
         files: [
-            { pattern: './node_modules/cesium/Build/Cesium/Cesium.js', watched: false },
-//        { pattern: './node_modules/cesium/Build/CesiumUnminified/Cesium.js', watched: false }, // Uncomment if you wanna work with the unminified version of cesium.
-            { pattern: './src/test.ts', watched: false }
+            {pattern: './node_modules/cesium/Build/Cesium/Cesium.js', watched: false},
+            //{ pattern: './node_modules/cesium/Build/CesiumUnminified/Cesium.js', watched: false }, // Uncomment if you wanna work with the unminified version of cesium.
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Widgets/Images/**/*.svg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Widgets/InfoBox/*.css',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/**/*.svg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/**/*.svg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/*.json',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/**/*.json',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Workers/*.js',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/Textures/SkyBox/*.jpg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {
+                pattern: './node_modules/cesium/Build/Cesium/Assets/Textures/*.jpg',
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false
+            },
+            {pattern: './src/test.ts', watched: false}
         ],
         preprocessors: {
             './src/test.ts': ['angular-cli']
         },
+        proxies: {
+            '/assets/': '/base/node_modules/cesium/Build/'
+        },
         mime: {
-            'text/x-typescript': ['ts','tsx']
+            'text/x-typescript': ['ts', 'tsx']
         },
         remapIstanbulReporter: {
             reports: {
