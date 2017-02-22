@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
-import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { Observable } from 'rxjs';
+import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
 
@@ -11,6 +11,7 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
 
 export class ArcLayerComponent implements OnInit, AfterViewInit {
 	arcs$: Observable<AcNotification>;
+	show = true;
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
 	constructor() {
@@ -43,4 +44,11 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 	ngAfterViewInit(): void {
 	}
 
+	removeAll() {
+		//do nothing
+	}
+
+	setShow($event) {
+		this.show = $event
+	}
 }
