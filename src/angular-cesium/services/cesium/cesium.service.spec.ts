@@ -11,9 +11,9 @@ describe('CesiumService', () => {
 	const viewerFactory = mock(ViewerFactory);
 	const element = document.createElement("div");
 	const defaultTilt = true;
-	const mode3D = 3;
-	const mode2D = 2;
-	const modeColombus = 1;
+	const mode3D = Cesium.SceneMode.SCENE3D;
+	const mode2D = Cesium.SceneMode.SCENE2D;
+	const modeColumbus = Cesium.SceneMode.COLUMBUS_VIEW;
 
 	when(viewerFactory.createViewer(anything())).thenReturn({
 		scene: {
@@ -27,7 +27,7 @@ describe('CesiumService', () => {
 				this.mode = mode2D;
 			},
 			morphToColumbusView: function () {
-				this.mode = modeColombus;
+				this.mode = modeColumbus;
 			},
 			morphTo3D: function () {
 				this.mode = mode3D;
@@ -97,6 +97,6 @@ describe('CesiumService', () => {
 
 	it('Set to Columbus mode', inject([CesiumService], (service:CesiumService) => {
 		service.morphToColumbusView();
-		expect(service.getScene().mode).toBe(modeColombus);
+		expect(service.getScene().mode).toBe(modeColumbus);
 	}));
 });
