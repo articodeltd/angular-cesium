@@ -78,6 +78,7 @@
     "socket.io": "^1.7.2",
     "style-loader": "^0.13.1",
     "ts-helpers": "^1.1.1",
+    "ts-mockito": "1.1.4",
     "tslint": "4.4.2",
     "webpack": "2.1.0-beta.15",
     "webpack-dev-server": "1.16.3",
