@@ -50,4 +50,8 @@ export class TracksLayerComponent implements OnInit {
 	removeAll() {
 		this.layer.removeAll();
 	}
+
+	setShow($event) {
+		this.showTracks = $event
+	}
 }

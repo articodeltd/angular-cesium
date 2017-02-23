@@ -25,12 +25,16 @@ export class AcMapComponent implements OnInit {
 
 	private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
 	private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
+	private static readonly DEFAULT_TILT_ENABLE = true;
 
 	@Input()
 	minimumZoom: number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
 
 	@Input()
 	maximumZoom: number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
+
+	@Input()
+	enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
 
 	constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
 		let mapContainer = this.document.createElement('div');
@@ -41,6 +45,7 @@ export class AcMapComponent implements OnInit {
 	ngOnInit() {
 		this._cesiumService.setMinimumZoom(this.minimumZoom);
 		this._cesiumService.setMaximumZoom(this.maximumZoom);
+		this._cesiumService.setEnableTilt(this.enableTilt);
 	}
 
 }
