@@ -1,9 +1,12 @@
 import { Injectable, NgZone } from '@angular/core';
 import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
 
+/**
+ *  Service that initialize cesium viewer and expose cesium viewer and scene.
+ */
 @Injectable()
 export class CesiumService {
-	cesiumViewer: any;
+	private cesiumViewer: any;
 
 	constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory) {
 	}
@@ -39,7 +42,7 @@ export class CesiumService {
 	}
 
 	/**
-	 * Gets the maxmimum zoom value in meters
+	 * Gets the maximum zoom value in meters
 	 * @returns {any}
 	 */
 	getMaximumZoom(): number {
@@ -54,6 +57,14 @@ export class CesiumService {
 		this.getScene().screenSpaceCameraController.maximumZoomDistance = amount;
 	}
 
+	/**
+	 * Sets the enableTilt of screenSpaceCameraController
+	 * @param {boolean} isTilt
+	 */
+	setEnableTilt(isTilt: boolean):void {
+		this.getScene().screenSpaceCameraController.enableTilt  = isTilt;
+	}
+	
 	/**
 	 * Sets the map to 2D mode.
 	 * @param {number} [2.0] duration - The duration of scene morph animations, in seconds
@@ -78,5 +89,4 @@ export class CesiumService {
 	morphToColumbusView(duration: number = 2.0){
 		new Cesium.SceneModePickerViewModel(this.getScene(), duration).morphToColumbusView();
 	}
-
 }
