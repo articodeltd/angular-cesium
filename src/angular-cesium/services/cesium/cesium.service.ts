@@ -71,7 +71,7 @@ export class CesiumService {
 	 * Warning: for high performance use Columbus view & turn the tilt off.
 	 */
 	morphTo2D (duration: number = 2.0){
-		new Cesium.SceneModePickerViewModel(this.getScene(), duration).morphTo2D();
+		this.getScene().morphTo2D(duration);
 	}
 
 	/**
@@ -79,7 +79,7 @@ export class CesiumService {
 	 * @param {number} [2.0] duration - The duration of scene morph animations, in seconds
 	 */
 	morphTo3D(duration: number = 2.0){
-		new Cesium.SceneModePickerViewModel(this.getScene(), duration).morphTo3D();
+		this.getScene().morphTo3D(duration);
 	}
 
 	/**
@@ -87,6 +87,6 @@ export class CesiumService {
 	 * @param {number} [2.0] duration - The duration of scene morph animations, in seconds
 	 */
 	morphToColumbusView(duration: number = 2.0){
-		new Cesium.SceneModePickerViewModel(this.getScene(), duration).morphToColumbusView();
+		this.getScene().morphToColumbusView(duration);
 	}
 }
