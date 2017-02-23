@@ -38,12 +38,13 @@
     "@angular/router": "~3.3.0",
     "@types/core-js": "^0.9.35",
     "@types/jasmine": "2.5.36",
-    "@types/node": "^6.0.46",
+    "@types/node": "6.0.63",
     "@types/selenium-webdriver": "^2.53.33",
     "angular2-template-loader": "^0.4.0",
-    "awesome-typescript-loader": "^3.0.0-beta.17",
+    "awesome-typescript-loader": "3.0.3",
     "bower": "^1.7.9",
     "browserify": "^13.1.1",
+    "cesium": "1.30.0",
     "codelyzer": "^2.0.1",
     "compodoc": "0.0.41",
     "concurrently": "^3.1.0",
@@ -77,6 +78,10 @@
     "socket.io": "^1.7.2",
     "style-loader": "^0.13.1",
     "ts-helpers": "^1.1.1",
+    "tslint": "4.4.2",
+    "webpack": "2.1.0-beta.15",
+    "webpack-dev-server": "1.16.3",
+    "webpack-merge": "0.14.1",
     "zone.js": "^0.6.23"
   }
 }
