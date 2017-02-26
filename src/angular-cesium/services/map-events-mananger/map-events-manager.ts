@@ -12,10 +12,15 @@ import { PlonterService } from '../plonter/plonter.service';
 
 /**
  * Manages all map events. Notice events will run outside of Agular zone
- * usage : MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
- * @param priority - the bigger the number the bigger the priority. default : 0.
- * @param entityType - entity type class that you are interested like (Track). the class must extends AcEntity
- * @param pickOption - self explained
+ * __usage:__
+ * ```
+ * MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
+ * ```
+ * __param:__ {CesiumEvent} event
+ * __param:__ {CesiumEventModifier} modifier
+ * __param:__ priority - the bigger the number the bigger the priority. default : 0.
+ * __param:__ entityType - entity type class that you are interested like (Track). the class must extends AcEntity
+ * __param:__ pickOption - self explained
  */
 @Injectable()
 export class MapEventsManagerService {
