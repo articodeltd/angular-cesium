@@ -4,6 +4,7 @@ import { LayerService } from '../layer-service/layer-service.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
+import { AcEntity } from '../../models/ac-entity';
 
 export class BasicStaticPrimitiveDesc extends BasicDesc {
 	@Input()
@@ -30,14 +31,14 @@ export class BasicStaticPrimitiveDesc extends BasicDesc {
 		this._primitivePropsEvaluator = this._cesiumProperties.createEvaluator(this.primitiveProps);
 	}
 
-	draw(context, id): any {
+	draw(context, id, entity: AcEntity): any {
 		const geometryProps = this._geometryPropsEvaluator(this._computationCache, context);
 		const instanceProps = this._instancePropsEvaluator(this._computationCache, context);
 		const primitiveProps = this._primitivePropsEvaluator(this._computationCache, context);
 
 		if (!this._primitiveMap.has(id)) {
 			const primitive = this._staticPrimitiveDrawer.add(geometryProps, instanceProps, primitiveProps);
-
+			primitive.acEntity = entity; // set the entity on the primitive for later usage
 			this._primitiveMap.set(id, primitive);
 		} else {
 			const primitive = this._primitiveMap.get(id);
