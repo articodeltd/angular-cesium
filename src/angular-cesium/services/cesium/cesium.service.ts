@@ -72,5 +72,29 @@ export class CesiumService {
 	setEnableTilt(isTilt: boolean):void {
 		this.getScene().screenSpaceCameraController.enableTilt  = isTilt;
 	}
+	
+	/**
+	 * Sets the map to 2D mode.
+	 * @param {number} [2.0] duration - The duration of scene morph animations, in seconds
+	 * Warning: for high performance use Columbus view & turn the tilt off.
+	 */
+	morphTo2D (duration: number = 2.0){
+		this.getScene().morphTo2D(duration);
+	}
 
+	/**
+	 * Sets the map to 3D mode.
+	 * @param {number} [2.0] duration - The duration of scene morph animations, in seconds
+	 */
+	morphTo3D(duration: number = 2.0){
+		this.getScene().morphTo3D(duration);
+	}
+
+	/**
+	 * Sets the map to Columbus view mode.
+	 * @param {number} [2.0] duration - The duration of scene morph animations, in seconds
+	 */
+	morphToColumbusView(duration: number = 2.0){
+		this.getScene().morphToColumbusView(duration);
+	}
 }
