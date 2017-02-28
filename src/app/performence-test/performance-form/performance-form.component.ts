@@ -16,6 +16,8 @@ export class PerformanceFormComponent implements OnInit {
 	private interval = 500;
 	private numOfObjectsInPart = 20;
 	private isShow = true;
+	long = 0;
+	lat = 0;
 
 	constructor(private http:Http) {
 	}
@@ -35,6 +37,8 @@ export class PerformanceFormComponent implements OnInit {
 					this.cleanMap.emit();
 				});
 		});
+
+		setInterval(()=>{}, 1000);
 	}
 
 	private getInterval() {
@@ -64,7 +68,7 @@ export class PerformanceFormComponent implements OnInit {
 	}
 
 	private handleError(error:Response | any) {
-		// In a real world app, we might use a remote logging infrastructure
+		// In a real world app, we might use a remoteF logging infrastructure
 		let errMsg:string;
 		if (error instanceof Response) {
 			const body = error.json() || '';
@@ -75,5 +79,10 @@ export class PerformanceFormComponent implements OnInit {
 		}
 		alert(`error: ${errMsg}`);
 		return Observable.throw(errMsg);
+	}
+
+	setLongLat(value){
+		this.lat = value.latitude;
+		this.long = value.longitude;
 	}
 }
