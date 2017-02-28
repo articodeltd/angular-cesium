@@ -10,12 +10,13 @@ import { Checker } from '../../utils/checker';
  *
  *  __Usage :__
  *  ```
- *    &lt;ac-map-layer-provider options="optionsObject" provider="MapLayerProviderOptions.WebMapService"&gt;
+ *    &lt;ac-map-layer-provider [options]="optionsObject" [provider]="myProvider"&gt;
  *    &lt;/ac-map-layer-provider&gt;
  *  ```
  *
  *  @param {Object} options - refer to cesium docs for details https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html
  *  @param {MapLayerProviderOptions} provider
+ *  @param {Number} index (optional) - The index to add the layer at. If omitted, the layer will added on top of all existing layers.
  */
 
 @Component({
@@ -25,11 +26,13 @@ import { Checker } from '../../utils/checker';
 export class AcMapLayerProviderComponent implements OnInit {
 
 	@Input()
-	options: {url?: string} = {};
+	options:{url?:string} = {};
 	@Input()
-	provider: MapLayerProviderOptions = MapLayerProviderOptions.OFFLINE;
+	provider:MapLayerProviderOptions = MapLayerProviderOptions.OFFLINE;
+	@Input()
+	index:Number;
 
-	constructor(private cesiumService: CesiumService) {
+	constructor(private cesiumService:CesiumService) {
 	}
 
 	ngOnInit() {
@@ -54,7 +57,7 @@ export class AcMapLayerProviderComponent implements OnInit {
 				provider = AcMapLayerProviderComponent.createOfflineMapProvider();
 				break;
 		}
-		this.cesiumService.getScene().imageryLayers.addImageryProvider(provider);
+		this.cesiumService.getScene().imageryLayers.addImageryProvider(provider, this.index);
 	}
 
 	static createWebMapServiceProvider(options) {

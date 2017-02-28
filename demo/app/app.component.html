@@ -1,5 +1,9 @@
 <ac-map [enableTilt]="false">
-    <ac-map-layer-provider></ac-map-layer-provider>
+    <ac-map-layer-provider [provider]="arcGisMapServerProvider"
+                           [options]="{
+                                url : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
+                            }">
+    </ac-map-layer-provider>
     <!--<tracks-layer #layer></tracks-layer>-->
     <!--<tracks-layer #layer></tracks-layer>-->
     <!--<ellipse-layer #layer></ellipse-layer>-->
@@ -11,5 +15,6 @@
     <!--<dynamic-polyline-layer #layer></dynamic-polyline-layer>-->
     <!--<event-test-layer></event-test-layer>-->
     <!--<arc-layer #layer></arc-layer>-->
+    <!--<symbology-layer #layer></symbology-layer>-->
 </ac-map>
 <performance-form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"></performance-form>
