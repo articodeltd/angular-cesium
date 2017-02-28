@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AcNotification } from '../../angular-cesium/models/ac-notification';
-import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
-import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
-import { MapEventsManagerService } from '../../angular-cesium/services/map-events-mananger/map-events-manager';
-import { CesiumEvent } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
-import { PickOptions } from '../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
+import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
+import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
+import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
+import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
+import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
+import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 
 @Component({
 	selector: 'symbology-layer',

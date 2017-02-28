@@ -16,6 +16,7 @@ import { PolygonLayerComponent } from './layers/polygon-layer/polygon-layer.comp
 import { EventTestLayerComponent } from './layers/event-test-layer/event-test-layer.component';
 import { ArcLayerComponent } from './layers/arc-layer/arc-layer.component';
 import { DynamicCircleLayerComponent } from './layers/dynamic-circle-layer/dynamic-circle-layer.component';
+import { SymbologyLayerComponent } from './layers/symbology-layer/symbology-layer.component';
 
 @NgModule({
 	declarations: [
@@ -31,7 +32,8 @@ import { DynamicCircleLayerComponent } from './layers/dynamic-circle-layer/dynam
 		PolygonLayerComponent,
 		StaticCircleLayerComponent,
 		EventTestLayerComponent,
-		ArcLayerComponent
+		ArcLayerComponent,
+		SymbologyLayerComponent
 	],
 	imports: [
 		BrowserModule,

@@ -5,11 +5,11 @@ import '@angular/core';
 import '@angular/common';
 import '@angular/http';
 import '@angular/router';
-// RxJS
 import 'rxjs';
+import './css/main.css';
+// RxJS
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
-import './css/main.css';
 require('../node_modules/cesium/Build/Cesium/Cesium');
-// require('../node_modules/socket.io-client/dist/socket.io.js');
+require('../node_modules/primitive-primitives/dist/main');
