@@ -1,161 +1,179 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { mock, when, instance, verify } from 'ts-mockito';
+import { mock, when, instance } from 'ts-mockito';
+import { providerFromMock } from '../../utils/testingUtils';
 import { CoordinateConverter } from './coordinate-converter.service';
 import { CesiumService } from '../cesium/cesium.service';
-import { providerFromMock } from '../../utils/testingUtils';
 
 fdescribe('CoordinateConverter', () => {
 	const cesiumService = mock(CesiumService);
-	const cesiumViewer = mock(Cesium.Viewer);
+	const cesiumCamera = mock(Cesium.Camera);
 
-	when(cesiumService.getViewer()).thenReturn({camera: instance(cesiumViewer)});
+	when(cesiumService.getViewer()).thenReturn({camera: instance(cesiumCamera)});
 
-	beforeEach(() => {
-		TestBed.configureTestingModule({
-			providers: [CoordinateConverter, providerFromMock(CesiumService, cesiumService)]
+	describe('Exception', ()=> {
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				providers: [CoordinateConverter]
+			});
 		});
-	});
 
-	describe('Screen -> Cartesian3', ()=> {
-		it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartesian3 = service.screenToCartesian3({x: 10, y: 20});
+		it('should throw when CesiumService was not passed', inject([CoordinateConverter], (service: CoordinateConverter) => {
+			let testPassed = false;
+			try {
+				service.screenToCartesian3({x: 10, y: 20});
+			} catch (e) {
+				testPassed = true;
+			}
 
-			verify(cesiumService.getViewer().once());
-			expect(cartesian3).toBeDefined();
-		}));
-
-		it('should consist of Cartesian3 interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartesian3 = service.screenToCartesian3({x: 10, y: 20});
-
-			expect(cartesian3.x).toBeDefined();
-			expect(cartesian3.y).toBeDefined();
-			expect(cartesian3.z).toBeDefined();
+			expect(testPassed).toBeTruthy();
 		}));
 	});
 
-	describe('Cartesian3 -> Cartographic', ()=> {
-		it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30});
+	describe('Covert test:', ()=> {
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				providers: [CoordinateConverter, providerFromMock(CesiumService, cesiumService)]
+			});
+		});
 
-			expect(cartographic).toBeDefined();
-		}));
+		describe('Screen -> Cartesian3', ()=> {
+			it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartesian3 = service.screenToCartesian3({x: 10, y: 20});
 
-		it('should consist of Cartographic interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30});
+				expect(cartesian3).toBeDefined();
+			}));
+		});
 
-			expect(cartographic.longitude).toBeDefined();
-			expect(cartographic.latitude).toBeDefined();
-			expect(cartographic.height).toBeDefined();
-		}));
-	});
+		describe('Screen -> Cartographic', ()=> {
+			it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				expect('Transitive test').toBeDefined();
+			}));
+		});
 
-	describe('Degrees -> Cartographic', ()=> {
-		it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.degreesToCartographic(10, 20, 30);
+		describe('Cartesian3 -> Cartographic', ()=> {
+			it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30});
 
-			expect(cartographic).toBeDefined();
-		}));
+				expect(cartographic).toBeDefined();
+			}));
 
-		it('should consist of Cartographic interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.degreesToCartographic(10, 20, 30);
+			it('should consist of Cartographic interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30});
 
-			expect(cartographic.longitude).toBeDefined();
-			expect(cartographic.latitude).toBeDefined();
-			expect(cartographic.height).toBeDefined();
-		}));
+				expect(cartographic.longitude).toBeDefined();
+				expect(cartographic.latitude).toBeDefined();
+				expect(cartographic.height).toBeDefined();
+			}));
+		});
 
-		it('should convert when no height provided.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.degreesToCartographic(10, 20);
+		describe('Degrees -> Cartographic', ()=> {
+			it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.degreesToCartographic(10, 20, 30);
 
-			expect(cartographic).toBeDefined();
-			expect(cartographic.longitude).toBeDefined();
-			expect(cartographic.latitude).toBeDefined();
-			expect(cartographic.height).toEqual(0);
-		}));
+				expect(cartographic).toBeDefined();
+			}));
 
-		it('should convert by degree to radian calculation', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.degreesToCartographic(10, 20, 30);
+			it('should consist of Cartographic interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.degreesToCartographic(10, 20, 30);
 
-			expect((cartographic.longitude / Math.PI) * (180)).toEqual(10);
-			expect((cartographic.latitude / Math.PI) * (180)).toEqual(20);
-			expect(cartographic.height).toEqual(30);
-		}));
-	});
+				expect(cartographic.longitude).toBeDefined();
+				expect(cartographic.latitude).toBeDefined();
+				expect(cartographic.height).toBeDefined();
+			}));
 
-	describe('Radians -> Cartographic', ()=> {
-		it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.radiansToCartographic(10, 20, 30);
+			it('should convert when no height provided.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.degreesToCartographic(10, 20);
 
-			expect(cartographic).toBeDefined();
-		}));
+				expect(cartographic).toBeDefined();
+				expect(cartographic.longitude).toBeDefined();
+				expect(cartographic.latitude).toBeDefined();
+				expect(cartographic.height).toEqual(0);
+			}));
 
-		it('should consist of Cartographic interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.radiansToCartographic(10, 20, 30);
+			it('should convert by degree to radian calculation', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.degreesToCartographic(10, 20, 30);
 
-			expect(cartographic.longitude).toBeDefined();
-			expect(cartographic.latitude).toBeDefined();
-			expect(cartographic.height).toBeDefined();
-		}));
+				expect((cartographic.longitude / Math.PI) * (180)).toEqual(10);
+				expect((cartographic.latitude / Math.PI) * (180)).toEqual(20);
+				expect(cartographic.height).toEqual(30);
+			}));
+		});
 
-		it('should convert when no height provided.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.radiansToCartographic(10, 20);
+		describe('Radians -> Cartographic', ()=> {
+			it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.radiansToCartographic(10, 20, 30);
 
-			expect(cartographic).toBeDefined();
-			expect(cartographic.longitude).toBeDefined();
-			expect(cartographic.latitude).toBeDefined();
-			expect(cartographic.height).toEqual(0);
-		}));
+				expect(cartographic).toBeDefined();
+			}));
 
-		it('should convert but be different from degrees (except for height)', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let latLongHeightObject = {long: 10, lat: 20, height: 30};
-			let cartographicFromDegrees = service.degreesToCartographic(latLongHeightObject.long, latLongHeightObject.lat, latLongHeightObject.height);
-			let cartographicFromRadians = service.radiansToCartographic(latLongHeightObject.long, latLongHeightObject.lat, latLongHeightObject.height);
+			it('should consist of Cartographic interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.radiansToCartographic(10, 20, 30);
 
-			expect(cartographicFromDegrees.longitude == cartographicFromRadians.longitude).toBeFalsy();
-			expect(cartographicFromDegrees.latitude == cartographicFromRadians.latitude).toBeFalsy();
-			expect(cartographicFromDegrees.height).toEqual(cartographicFromRadians.height);
-		}));
+				expect(cartographic.longitude).toBeDefined();
+				expect(cartographic.latitude).toBeDefined();
+				expect(cartographic.height).toBeDefined();
+			}));
 
-		it('should convert and be equal to the sent parameters', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let latLongHeightObject = {long: 10, lat: 20, height: 30};
-			let cartographicFromRadians = service.radiansToCartographic(latLongHeightObject.long, latLongHeightObject.lat, latLongHeightObject.height);
+			it('should convert when no height provided.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.radiansToCartographic(10, 20);
 
-			expect(cartographicFromRadians.longitude).toEqual(10);
-			expect(cartographicFromRadians.latitude).toEqual(20);
-			expect(cartographicFromRadians.height).toEqual(30);
-		}));
-	});
+				expect(cartographic).toBeDefined();
+				expect(cartographic.longitude).toBeDefined();
+				expect(cartographic.latitude).toBeDefined();
+				expect(cartographic.height).toEqual(0);
+			}));
 
-	describe('Degrees -> UTM', ()=> {
-		it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let utmData = service.degreesToUTM(10, 20, 30);
+			it('should convert but be different from degrees (except for height)', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let latLongHeightObject = {long: 10, lat: 20, height: 30};
+				let cartographicFromDegrees = service.degreesToCartographic(latLongHeightObject.long, latLongHeightObject.lat, latLongHeightObject.height);
+				let cartographicFromRadians = service.radiansToCartographic(latLongHeightObject.long, latLongHeightObject.lat, latLongHeightObject.height);
 
-			expect(utmData).toBeDefined();
-		}));
+				expect(cartographicFromDegrees.longitude == cartographicFromRadians.longitude).toBeFalsy();
+				expect(cartographicFromDegrees.latitude == cartographicFromRadians.latitude).toBeFalsy();
+				expect(cartographicFromDegrees.height).toEqual(cartographicFromRadians.height);
+			}));
 
-		it('should consist of UTM interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let utmData = service.degreesToUTM(10, 20, 30);
+			it('should convert and be equal to the sent parameters', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let latLongHeightObject = {long: 10, lat: 20, height: 30};
+				let cartographicFromRadians = service.radiansToCartographic(latLongHeightObject.long, latLongHeightObject.lat, latLongHeightObject.height);
 
-			expect(utmData.zone).toBeDefined();
-			expect(utmData.hemisphere).toBeDefined();
-			expect(utmData.easting).toBeDefined();
-			expect(utmData.northing).toBeDefined();
-		}));
-	});
+				expect(cartographicFromRadians.longitude).toEqual(10);
+				expect(cartographicFromRadians.latitude).toEqual(20);
+				expect(cartographicFromRadians.height).toEqual(30);
+			}));
+		});
 
-	describe('UTM -> Degrees', ()=> {
-		it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.UTMToDegrees(10, 'N', 20, 30);
+		describe('Degrees -> UTM', ()=> {
+			it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let utmData = service.degreesToUTM(10, 20, 30);
 
-			expect(cartographic).toBeDefined();
-		}));
+				expect(utmData).toBeDefined();
+			}));
 
-		it('should consist of Degrees interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-			let cartographic = service.UTMToDegrees(10, 'N', 20, 30);
+			it('should consist of UTM interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let utmData = service.degreesToUTM(10, 20, 30);
 
-			expect(cartographic.longitude).toBeDefined();
-			expect(cartographic.latitude).toBeDefined();
-			expect(cartographic.height).toBeDefined();
-		}));
+				expect(utmData.zone).toBeDefined();
+				expect(utmData.hemisphere).toBeDefined();
+				expect(utmData.easting).toBeDefined();
+				expect(utmData.northing).toBeDefined();
+			}));
+		});
+
+		describe('UTM -> Degrees', ()=> {
+			it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.UTMToDegrees(10, 'N', 20, 30);
+
+				expect(cartographic).toBeDefined();
+			}));
+
+			it('should consist of Degrees interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
+				let cartographic = service.UTMToDegrees(10, 'N', 20, 30);
+
+				expect(cartographic.longitude).toBeDefined();
+				expect(cartographic.latitude).toBeDefined();
+				expect(cartographic.height).toBeDefined();
+			}));
+		});
 	});
 });
