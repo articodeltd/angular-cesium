@@ -86,7 +86,7 @@
     "zone.js": "^0.6.23"
   },
   "dependencies": {
-    "angular2parse": "^1.0.2",
+    "angular2parse": "^1.0.3",
     "primitive-primitives": "0.0.5"
   }
 }
