@@ -32,7 +32,7 @@ export class PerformanceFormComponent implements OnInit {
 					numOfObjectsInPart: this.numOfObjectsInPart
 				}).catch(this.handleError)
 				.subscribe(() => {
-					this.cleanMap.emit();
+		//			this.cleanMap.emit();
 				});
 		});
 	}

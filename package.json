@@ -29,6 +29,7 @@
     "core-js": "^2.4.1",
     "cors": "^2.8.1",
     "express": "^4.14.0",
+    "primitive-primitives": "0.0.4",
     "rxjs": "5.0.0-beta.12",
     "socket.io": "^1.7.2",
     "ts-helpers": "^1.1.1",
