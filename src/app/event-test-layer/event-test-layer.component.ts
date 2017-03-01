@@ -19,7 +19,6 @@ import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-uti
 export class EventTestLayerComponent implements OnInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 	tracks$: Observable<AcNotification>;
-
 	@Output() mouseMove = new EventEmitter();
 
 	constructor(private eventManager: MapEventsManagerService,
@@ -64,19 +63,15 @@ export class EventTestLayerComponent implements OnInit {
 			console.log('click2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
 		});
 
-		// Pass event only if clicked and contains at least one entity.
+		// Send mouse location
 		this.eventManager.register({event: CesiumEvent.RIGHT_CLICK}).subscribe((pos) => {
 			try{
 
 				let x = Cesium.Cartographic.fromCartesian(this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition));
 				x.latitude = x.latitude * 180 / Math.PI;
 				x.longitude = x.longitude * 180 / Math.PI;
-				//console.log(x);
-
 				this.mouseMove.emit(x);
-			} catch (e) {
-				//console.log(e);
-			}
+			} catch (e) {}
 		});
 
 		// Example for Priority change
