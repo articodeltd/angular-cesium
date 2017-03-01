@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JsonMapper } from '../json-mapper/json-mapper.service';
-import { Parse } from '../../../angular2-parse/src/services/parse/parse.service';
+import { Parse } from 'angular2parse';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 
 @Injectable()
