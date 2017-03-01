@@ -7,13 +7,13 @@
   "typings": "dist/main.d.ts",
   "scripts": {
     "cleanup": "rimraf src/*.ngfactory.ts src/*.ngstyle.ts src/*.ngsummary.json build dist",
-    "start": "webpack-dev-server --inline --progress --port 8080",
+    "start": "node_modules\\.bin\\webpack-dev-server --inline --progress --port 8080",
     "lint": "tslint -c tslint.json --project tsconfig.aot.json",
     "test": "karma start",
     "ngc": "ngc -p tsconfig.aot.json",
-    "aot": "webpack --config webpack.aot.config.js -p",
+    "aot": "node_modules\\.bin\\webpack --config webpack.aot.config.js -p",
     "build": "npm run cleanup && npm run lint && npm run ngc",
-    "build-demo": "rimraf dist && webpack --config config/webpack.dev.js --progress --profile --bail",
+    "build-demo": "rimraf dist && node_modules\\.bin\\webpack --config config/webpack.dev.js --progress --profile --bail",
     "test-server": "node demo/performance-server/server.js",
     "compile-docs": "compodoc -p tsconfig.json -n \"Angular 2 Cesium\"",
     "serve-docs": "compodoc -s",
@@ -75,7 +75,7 @@
     "rimraf": "^2.5.2",
     "run-sequence": "^1.2.1",
     "rxjs": "5.0.0-beta.12",
-    "socket.io": "^1.7.2",
+    "socket.io": "^1.7.3",
     "style-loader": "^0.13.1",
     "ts-helpers": "^1.1.1",
     "ts-mockito": "1.1.4",
@@ -86,6 +86,8 @@
     "zone.js": "^0.6.23"
   },
   "dependencies": {
+    "angular2parse": "^1.0.3",
     "geodesy": "^1.1.1"
+    "primitive-primitives": "0.0.5"
   }
 }

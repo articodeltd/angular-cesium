@@ -1,0 +1,32 @@
+<ac-layer acFor="let entity of entities" [show]="show" [context]="this">
+    <ac-static-ellipse-desc
+            geometryProps="{
+            center: entity.geometry.center,
+            semiMajorAxis: entity.geometry.semiMajorAxis,
+            semiMinorAxis: entity.geometry.semiMinorAxis,
+            height: entity.geometry.height,
+            rotation: entity.geometry.rotation
+        }"
+            instanceProps="{
+            attributes: entity.attributes
+        }"
+            primitiveProps="{
+            appearance: entity.appearance
+        }"
+    >
+    </ac-static-ellipse-desc>
+    <ac-static-polygon-desc
+            geometryProps="{
+            polygonHierarchy: entity.polygonProps.geometry.polygonHierarchy,
+            height: entity.polygonProps.geometry.height,
+            granularity: entity.polygonProps.geometry.granularity
+        }"
+            instanceProps="{
+            attributes: entity.polygonProps.attributes
+        }"
+            primitiveProps="{
+            appearance: entity.polygonProps.appearance
+        }"
+    >
+    </ac-static-polygon-desc>
+</ac-layer>
