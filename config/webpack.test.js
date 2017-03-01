@@ -32,6 +32,8 @@ module.exports = {
                 include: [root.root('demo', 'app'), root.root('src')],
                 loader: 'raw'
             }
-        ]
+        ],
+
+        exprContextCritical: false
     }
 };
