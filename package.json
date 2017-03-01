@@ -86,6 +86,6 @@
     "zone.js": "^0.6.23"
   },
   "dependencies": {
-    "primitive-primitives": "0.0.4"
+    "primitive-primitives": "0.0.5"
   }
 }
