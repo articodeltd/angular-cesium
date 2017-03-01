@@ -65,7 +65,7 @@ export class EventTestLayerComponent implements OnInit {
 		});
 
 		// Pass event only if clicked and contains at least one entity.
-		this.eventManager.register({event: CesiumEvent.MOUSE_MOVE}).subscribe((pos) => {
+		this.eventManager.register({event: CesiumEvent.RIGHT_CLICK}).subscribe((pos) => {
 			try{
 
 				let x = Cesium.Cartographic.fromCartesian(this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition));
