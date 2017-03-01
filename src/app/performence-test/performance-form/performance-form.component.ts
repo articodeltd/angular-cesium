@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { Http, Response } from '@angular/http';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, NgZone } from '@angular/core';
 
 @Component({
 	selector: 'performance-form',
@@ -16,10 +16,11 @@ export class PerformanceFormComponent implements OnInit {
 	private interval = 500;
 	private numOfObjectsInPart = 20;
 	private isShow = true;
-	long = 0;
-	lat = 0;
+	private currentLongitude = 0;
+	private currentLatitude = 0;
 
-	constructor(private http:Http) {
+	constructor(private http:Http,
+	            public zone: NgZone) {
 	}
 
 	ngOnInit() {
@@ -37,8 +38,6 @@ export class PerformanceFormComponent implements OnInit {
 					this.cleanMap.emit();
 				});
 		});
-
-		setInterval(()=>{}, 1000);
 	}
 
 	private getInterval() {
@@ -82,7 +81,9 @@ export class PerformanceFormComponent implements OnInit {
 	}
 
 	setLongLat(value){
-		this.lat = value.latitude;
-		this.long = value.longitude;
+		this.zone.run(() => {
+			this.currentLongitude = value.latitude.toFixed(4);
+			this.currentLatitude = value.longitude.toFixed(4);
+		});
 	}
 }
