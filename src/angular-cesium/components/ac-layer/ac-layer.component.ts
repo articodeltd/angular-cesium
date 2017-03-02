@@ -16,9 +16,10 @@ import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-draw
 import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
 
 @Component({
+	moduleId: module.id,
 	selector: 'ac-layer',
-	templateUrl: './ac-layer.component.html',
-	styleUrls: ['./ac-layer.component.css'],
+	templateUrl: 'ac-layer.component.html',
+	styleUrls: ['ac-layer.component.css'],
 	providers: [
 		LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
 		DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,

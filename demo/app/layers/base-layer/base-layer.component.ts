@@ -5,9 +5,10 @@ import { ActionType } from '../../../../src/angular-cesium/models/action-type.en
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
 
 @Component({
+	moduleId: module.id,
 	selector: 'base-layer',
-	templateUrl: './base-layer.component.html',
-	styleUrls: ['./base-layer.component.css']
+	templateUrl: 'base-layer.component.html',
+	styleUrls: ['base-layer.component.css']
 })
 export class BaseLayerComponent implements OnInit, AfterViewInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;

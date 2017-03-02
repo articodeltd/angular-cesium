@@ -23,6 +23,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  >
  */
 @Component({
+	moduleId: module.id,
 	selector: 'ac-static-polygon-desc',
 	templateUrl: 'ac-static-polygon-desc.component.html',
 	styleUrls: ['ac-static-polygon-desc.component.css']

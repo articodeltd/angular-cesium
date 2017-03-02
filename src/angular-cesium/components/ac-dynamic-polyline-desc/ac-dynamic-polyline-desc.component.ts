@@ -18,9 +18,10 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
  *</ac-dynamic-polyline-desc>
  */
 @Component({
+	moduleId: module.id,
 	selector: 'ac-dynamic-polyline-desc',
-	templateUrl: './ac-dynamic-polyline-desc.component.html',
-	styleUrls: ['./ac-dynamic-polyline-desc.component.css']
+	templateUrl: 'ac-dynamic-polyline-desc.component.html',
+	styleUrls: ['ac-dynamic-polyline-desc.component.css']
 })
 export class AcDynamicPolylineDescComponent extends BasicDesc {
 

@@ -5,9 +5,10 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
+	moduleId: module.id,
 	selector: 'dynamic-polyline-layer',
-	templateUrl: './dynamic-polyline-layer.component.html',
-	styleUrls: ['./dynamic-polyline-layer.component.css'],
+	templateUrl: 'dynamic-polyline-layer.component.html',
+	styleUrls: ['dynamic-polyline-layer.component.css'],
 	providers: [TracksDataProvider]
 })
 export class DynamicPolylineLayerComponent implements OnInit {
