@@ -19,13 +19,17 @@ import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
 	selector: 'ac-layer',
 	templateUrl: './ac-layer.component.html',
 	styleUrls: ['./ac-layer.component.css'],
-	providers: [LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService, DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService, StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService]
+	providers: [
+		LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
+		DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,
+		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService
+	]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	private static readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 
 	@Input()
-	show: boolean = true;
+	show = true;
 	@Input()
 	acFor: string;
 	@Input()
@@ -75,15 +79,17 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 						descriptionComponent.remove(notification.id);
 						break;
 					default:
-						console.error('unknown action type: ' + notification.actionType)
+						console.error('unknown action type: ' + notification.actionType);
 				}
-			})
+			});
 		});
 	}
 
 	private initValidParams() {
-		if (!this.context)
+		if (!this.context) {
 			throw 'ac-layer: must initialize [context] ';
+		}
+
 		if (!AcLayerComponent.acForRgx.test(this.acFor)) {
 			throw 'ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
 			+ 'instead received: ' + this.acFor;
@@ -115,7 +121,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	}
 
 	remove(entityId: number) {
-		this._updateStream.next({id: entityId, actionType: ActionType.DELETE})
+		this._updateStream.next({id: entityId, actionType: ActionType.DELETE});
 	}
 
 	update(notification: AcNotification): void {

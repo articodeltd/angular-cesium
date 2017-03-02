@@ -1,4 +1,4 @@
-export enum MapLayerProviderOptions{
+export enum MapLayerProviderOptions {
     ArcGisMapServer,
     WebMapTileService,
     WebMapService,

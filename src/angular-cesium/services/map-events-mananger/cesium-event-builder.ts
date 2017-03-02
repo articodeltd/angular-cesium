@@ -8,24 +8,17 @@ import { CesiumLongPressObserver } from './cesium-long-press-observer';
 
 @Injectable()
 export class CesiumEventBuilder {
-	private eventsHandler: any;
-	private cesiumEventsObservables = new Map<string, ConnectableObservable<any>>();
-
 	public static longPressEvents: Set<CesiumEvent> = new Set([
 		CesiumEvent.LONG_LEFT_PRESS,
 		CesiumEvent.LONG_RIGHT_PRESS,
 		CesiumEvent.LONG_MIDDLE_PRESS
 	]);
 
+	private eventsHandler: any;
+	private cesiumEventsObservables = new Map<string, ConnectableObservable<any>>();
+
 	constructor(cesiumService: CesiumService) {
 		this.eventsHandler = cesiumService.getViewer().screenSpaceEventHandler;
-	}
-
-	static getEventFullName(event: CesiumEvent, modifier?: CesiumEventModifier): string {
-		if (modifier)
-			return `${event}_${modifier}`;
-		else
-			return event.toString();
 	}
 
 	get(event: CesiumEvent, modifier: CesiumEventModifier = undefined): ConnectableObservable<any> {
@@ -36,6 +29,15 @@ export class CesiumEventBuilder {
 			const eventObserver = this.createCesiumEventObservable(event, modifier);
 			this.cesiumEventsObservables.set(eventName, eventObserver);
 			return eventObserver;
+		}
+	}
+
+	public static getEventFullName(event: CesiumEvent, modifier?: CesiumEventModifier): string {
+		if (modifier) {
+			return `${event}_${modifier}`;
+		}
+		else {
+			return event.toString();
 		}
 	}
 

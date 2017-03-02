@@ -1,6 +1,6 @@
 declare var Cesium;
 
-export enum CesiumEvent{
+export enum CesiumEvent {
 	MOUSE_MOVE = Cesium.ScreenSpaceEventType.MOUSE_MOVE,
 	LEFT_CLICK = Cesium.ScreenSpaceEventType.LEFT_CLICK,
 	LEFT_DOUBLE_CLICK = Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK,

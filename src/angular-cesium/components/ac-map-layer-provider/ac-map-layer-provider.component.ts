@@ -26,18 +26,18 @@ import { Checker } from '../../utils/checker';
 export class AcMapLayerProviderComponent implements OnInit {
 
 	@Input()
-	options:{url?:string} = {};
+	options: {url?: string} = {};
 	@Input()
-	provider:MapLayerProviderOptions = MapLayerProviderOptions.OFFLINE;
+	provider: MapLayerProviderOptions = MapLayerProviderOptions.OFFLINE;
 	@Input()
-	index:Number;
+	index: Number;
 
-	constructor(private cesiumService:CesiumService) {
+	constructor(private cesiumService: CesiumService) {
 	}
 
 	ngOnInit() {
 		if (!Checker.present(this.options.url) && this.provider !== MapLayerProviderOptions.OFFLINE) {
-			throw 'options must have a url'
+			throw 'options must have a url';
 		}
 
 		let provider;
@@ -53,6 +53,7 @@ export class AcMapLayerProviderComponent implements OnInit {
 				provider = AcMapLayerProviderComponent.createArcGisMapServerProvider(this.options);
 				break;
 			case MapLayerProviderOptions.OFFLINE:
+				break;
 			default:
 				provider = AcMapLayerProviderComponent.createOfflineMapProvider();
 				break;

@@ -145,7 +145,7 @@ export class JsonMapperVisitor extends RecursiveAstVisitor {
 	visitLiteralPrimitive(ast: LiteralPrimitive): any {
 		let value = ast.value;
 		if (typeof value === 'string') {
-			value = `'${value}'`
+			value = `'${value}'`;
 		}
 		return value;
 	}

@@ -19,7 +19,7 @@ export class AcBillboardComponent implements OnChanges {
 	ngOnChanges(changes: SimpleChanges) {
 		const props = changes['props'];
 		if (props.currentValue !== props.previousValue) {
-			//this.billboardDrawer.addOrUpdate(this.key, props.currentValue);
+			// this.billboardDrawer.addOrUpdate(this.key, props.currentValue);
 		}
 	}
 

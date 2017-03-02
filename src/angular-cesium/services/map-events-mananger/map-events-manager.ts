@@ -81,7 +81,8 @@ export class MapEventsManagerService {
 
 	}
 
-	private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier, entityType, pickOption: PickOptions, priority: number): Registration {
+	private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier,
+	                                entityType, pickOption: PickOptions, priority: number): Registration {
 		const cesiumEventObservable = this.eventBuilder.get(event, modifier);
 		const stopper = new Subject();
 
@@ -107,13 +108,14 @@ export class MapEventsManagerService {
 			case PickOptions.PICK_ONE:
 			case PickOptions.PICK_ALL:
 				picks = this.scene.drillPick(movement.endPosition);
-				picks = picks.length == 0 ? null : picks;
+				picks = picks.length === 0 ? null : picks;
 				break;
 			case PickOptions.PICK_FIRST:
 				const pick = this.scene.pick(movement.endPosition);
 				picks = pick === undefined ? null : [pick];
 				break;
 			case PickOptions.NO_PICK:
+				break;
 			default:
 				break;
 		}
@@ -148,10 +150,11 @@ export class MapEventsManagerService {
 		}
 	}
 }
+
 export interface EventResult {
-	movement: any,
-	primitives: any[],
-	entities: any[]
+	movement: any;
+	primitives: any[];
+	entities: any[];
 }
 class Registration {
 	constructor(public observable: Observable<EventResult>,

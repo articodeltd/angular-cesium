@@ -12,8 +12,7 @@
     "eofline": true,
     "forin": true,
     "indent": [
-      true,
-      "spaces"
+      true
     ],
     "label-position": true,
     "max-line-length": [
@@ -23,7 +22,6 @@
     "member-access": false,
     "member-ordering": [
       true,
-      "static-before-instance",
       "variables-before-functions"
     ],
     "no-arg": true,
@@ -54,7 +52,6 @@
       true,
       "check-open-brace",
       "check-catch",
-      "check-else",
       "check-whitespace"
     ],
     "quotemark": [
@@ -91,13 +88,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "",
       "kebab-case"
     ],
     "use-input-property-decorator": true,
@@ -105,7 +102,6 @@
     "use-host-property-decorator": true,
     "no-input-rename": true,
     "no-output-rename": true,
-    "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
