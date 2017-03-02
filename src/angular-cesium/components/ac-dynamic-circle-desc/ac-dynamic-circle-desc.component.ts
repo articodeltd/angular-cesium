@@ -23,7 +23,7 @@ import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynam
  *   __param__: {number} rotation
  *   __param__: {number} radius in meters
  *   __param__: {number} [1] width
- *   __param__: {number} granularity
+ *   __param__: {number} [0.003] granularity
  */
 @Component({
 	selector: 'ac-dynamic-circle-desc',
