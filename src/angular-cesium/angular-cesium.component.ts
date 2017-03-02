@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'app-angular-cesium',
+	selector: 'angular-cesium',
 	templateUrl: './angular-cesium.component.html',
 	styleUrls: ['./angular-cesium.component.css']
 })
