@@ -19,7 +19,7 @@ export class CesiumProperties {
 		const resultMap = this._jsonMapper.map(expression);
 
 		resultMap.forEach((resultExpression, prop) => propsMap.set(prop, {
-			resultExpression,
+			expression: resultExpression,
 			get: this._parser.eval(resultExpression)
 		}));
 
