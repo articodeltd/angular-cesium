@@ -18,9 +18,7 @@ export class CesiumProperties {
 
 		const resultMap = this._jsonMapper.map(expression);
 
-		for (let [prop, resultExpression] of resultMap) {
-			propsMap.set(prop, {resultExpression, get: this._parser.eval(resultExpression)});
-		}
+		resultMap.forEach((expression, prop) => propsMap.set(prop, {expression, get: this._parser.eval(expression)}));
 
 		const fnBody = 'const cesiumDesc={};for (let [propName, cesiumProp] of propsMap)cesiumDesc[propName ? ' +
 			'propName : \'undefined\'] = cache.get(cesiumProp.expression.toString(), ' +
@@ -36,9 +34,7 @@ export class CesiumProperties {
 		let fnBody = ``;
 		const resultMap = this._jsonMapper.map(expression);
 
-		for (let prop of resultMap.keys()) {
-			fnBody += `dst['${prop}'] = src['${prop}'];`;
-		}
+		resultMap.forEach((value, prop) => fnBody += `dst['${prop}'] = src['${prop}'];`);
 
 		fnBody += `return dst;`;
 		const assignFn = new Function('dst', 'src', `${fnBody}`);
