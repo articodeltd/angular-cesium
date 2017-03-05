@@ -71,7 +71,9 @@ export class EventTestLayerComponent implements OnInit {
 				x.latitude = x.latitude * 180 / Math.PI;
 				x.longitude = x.longitude * 180 / Math.PI;
 				this.mouseMove.emit(x);
-			} catch (e) {}
+			} catch (e) {
+				console.log('The mouse is outside of the map');
+			}
 		});
 
 		// Example for Priority change
