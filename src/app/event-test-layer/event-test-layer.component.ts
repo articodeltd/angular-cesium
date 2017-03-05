@@ -65,13 +65,15 @@ export class EventTestLayerComponent implements OnInit {
 
 		// Send mouse location
 		this.eventManager.register({event: CesiumEvent.RIGHT_CLICK}).subscribe((pos) => {
-			try{
 
-				let x = Cesium.Cartographic.fromCartesian(this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition));
-				x.latitude = x.latitude * 180 / Math.PI;
-				x.longitude = x.longitude * 180 / Math.PI;
-				this.mouseMove.emit(x);
-			} catch (e) {
+			let	screenPositionCartesian = this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition);
+			if (screenPositionCartesian){
+				let	screenPositionCartographic = Cesium.Cartographic.fromCartesian(screenPositionCartesian);
+				screenPositionCartographic.latitude = screenPositionCartographic.latitude * 180 / Math.PI;
+				screenPositionCartographic.longitude = screenPositionCartographic.longitude * 180 / Math.PI;
+				this.mouseMove.emit(screenPositionCartographic);
+			}
+			else {
 				console.log('The mouse is outside of the map');
 			}
 		});
