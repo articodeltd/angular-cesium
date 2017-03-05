@@ -1,5 +1,5 @@
 /**
- * Created by user on 24/12/2016.
+ * Action to do on entity
  */
 export enum ActionType{
 	ADD_UPDATE,
