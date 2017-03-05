@@ -21,9 +21,8 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
         }">
  */
 @Component({
-	moduleId: module.id,
 	selector: 'ac-static-circle',
-	templateUrl: 'ac-static-circle-desc.component.html'
+	template: ''
 })
 export class AcStaticCircleDescComponent extends BasicStaticPrimitiveDesc {
 	constructor(staticCircleDrawer: StaticCircleDrawerService, layerService: LayerService,

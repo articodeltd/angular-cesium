@@ -5,7 +5,6 @@ import { AcNotification } from '../../../../src/angular-cesium/models/ac-notific
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
 
 @Component({
-	moduleId: module.id,
 	selector: 'arc-layer',
 	templateUrl: 'arc-layer.component.html'
 })

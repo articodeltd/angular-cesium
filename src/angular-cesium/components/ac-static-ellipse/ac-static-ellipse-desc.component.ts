@@ -25,10 +25,8 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  >
  */
 @Component({
-	moduleId: module.id,
 	selector: 'ac-static-ellipse-desc',
-	templateUrl: 'ac-static-ellipse-desc.component.html',
-	styleUrls: ['ac-static-ellipse-desc.component.css']
+	template: ''
 })
 export class AcStaticEllipseDescComponent extends BasicStaticPrimitiveDesc {
 	constructor(ellipseDrawer: EllipseDrawerService, layerService: LayerService,

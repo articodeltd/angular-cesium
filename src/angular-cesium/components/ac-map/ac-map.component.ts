@@ -7,9 +7,8 @@ import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-ev
 import { PlonterService } from '../../services/plonter/plonter.service';
 
 @Component({
-	moduleId: module.id,
 	selector: 'ac-map',
-	templateUrl: 'ac-map.component.html',
+	template: '<ng-content></ng-content>',
 	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService]
 })
 export class AcMapComponent implements OnInit {

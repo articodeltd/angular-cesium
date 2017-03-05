@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-	moduleId: module.id,
 	selector: 'angular-cesium',
-	templateUrl: 'angular-cesium.component.html',
-	styleUrls: ['angular-cesium.component.css']
+	template: '<p>angular-cesium works!</p>',
 })
 export class AngularCesiumComponent implements OnInit {
 

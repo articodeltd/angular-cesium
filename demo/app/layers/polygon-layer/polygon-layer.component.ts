@@ -6,7 +6,6 @@ import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksD
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
 
 @Component({
-	moduleId: module.id,
 	selector: 'polygon-layer',
 	templateUrl: 'polygon-layer.component.html',
 	styleUrls: ['polygon-layer.component.css'],

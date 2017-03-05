@@ -24,10 +24,8 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
  */
 
 @Component({
-	moduleId: module.id,
 	selector: 'ac-billboard-desc',
-	templateUrl: 'ac-billborad-desc.component.html',
-	styleUrls: ['ac-billborad-desc.component.css']
+	template: ''
 })
 export class AcBillboardDescComponent extends BasicDesc {
 

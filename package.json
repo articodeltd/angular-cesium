@@ -10,7 +10,7 @@
     "start": "node_modules\\.bin\\webpack-dev-server --inline --progress --port 8080",
     "lint": "tslint -c tslint.json --project tsconfig.aot.json",
     "test": "karma start",
-    "ngc": "ngc -p tsconfig.aot.json",
+    "ngc": "node_modules\\.bin\\ngc -p tsconfig.aot.json",
     "aot": "node_modules\\.bin\\webpack --config webpack.aot.config.js -p",
     "bundle": "npm run cleanup && npm run lint && npm run ngc && npm run aot",
     "build": "rimraf dist && node_modules\\.bin\\webpack --config config/webpack.dev.js --progress --profile --bail",

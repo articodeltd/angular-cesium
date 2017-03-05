@@ -10,7 +10,6 @@ import { PickOptions } from '../../../../src/angular-cesium/services/map-events-
 import { PlonterService } from '../../../../src/angular-cesium/services/plonter/plonter.service';
 
 @Component({
-	moduleId: module.id,
 	selector: 'event-test-layer',
 	templateUrl: 'event-test-layer.component.html',
 	styleUrls: ['event-test-layer.component.css']
