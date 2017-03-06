@@ -7,18 +7,21 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 
 /**
  *  This is a static (position, color, etc.. are not updated) implementation of an circle.
- *  @example
- *    <ac-static-circle-desc
- geometryProps="{
-            center: circle.geometry.center,
-            radius: circle.geometry.radius,
-        }"
- instanceProps="{
-            attributes: circle.attributes //Optional
-        }"
- primitiveProps="{
-            appearance: circle.appearance //Optional
-        }">
+ *  __usage:__
+ *  ```
+ *    &lt;ac-static-circle-desc
+ *      geometryProps="{
+ *          center: circle.geometry.center,
+ *          radius: circle.geometry.radius,
+ *      }"
+ *      instanceProps="{
+ *          attributes: circle.attributes //Optional
+ *      }"
+ *      primitiveProps="{
+ *          appearance: circle.appearance //Optional
+ *      }"&gt;
+ *    &lt;/ac-static-circle-desc&gt;
+ *    ```
  */
 @Component({
 	selector: 'ac-static-circle',

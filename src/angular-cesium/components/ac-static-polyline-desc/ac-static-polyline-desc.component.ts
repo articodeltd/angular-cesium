@@ -7,20 +7,22 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 
 /**
  *  This is a static implementation of an polyline.
- *  @example
- *    <ac-static-polyline
+ *  __usage:__
+ *  ```
+ *    &ltac-static-polyline
  *            geometryProps="{
-				width: poly.geometry.width,
-				positions: poly.geometry.positions
-			}"
- instanceProps="{
-                    attributes: {
-                       Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
-                   }
-            }"
- primitiveProps="{
-                   appearance: new Cesium.PolylineColorAppearance()
-            }">
+ *            	width: poly.geometry.width,
+ *            	positions: poly.geometry.positions
+ *            }"
+ *            instanceProps="{
+ *              attributes: {
+ *                  Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+ *              }
+ *            }"
+ *            primitiveProps="{
+ *              appearance: new Cesium.PolylineColorAppearance()
+ *    }"&gt&lt/ac-static-polyline&gt
+ *  ```
  */
 @Component({
 	selector: 'ac-static-polyline-desc',

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
@@ -8,19 +8,23 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
 import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 import { PlonterService } from '../../../../src/angular-cesium/services/plonter/plonter.service';
+import { GeoUtilsService } from '../../../../src/angular-cesium/services/geo-utils/geo-utils.service';
 
 @Component({
 	selector: 'event-test-layer',
 	templateUrl: 'event-test-layer.component.html',
-	styleUrls: ['event-test-layer.component.css']
+	styleUrls: ['event-test-layer.component.css'],
+	providers: [GeoUtilsService]
 })
 export class EventTestLayerComponent implements OnInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 	tracks$: Observable<AcNotification>;
+	@Output() mouseMove = new EventEmitter();
 
 	constructor(private eventManager: MapEventsManagerService,
 	            public  plonterService: PlonterService,
-	            private cd: ChangeDetectorRef) {
+	            private cd: ChangeDetectorRef,
+				private geoUtilsService: GeoUtilsService) {
 		const track1: AcNotification = {
 			id: 0,
 			actionType: ActionType.ADD_UPDATE,
@@ -57,6 +61,21 @@ export class EventTestLayerComponent implements OnInit {
 		// Pass event only if clicked and contains at least one entity.
 		this.eventManager.register({event: CesiumEvent.LEFT_CLICK}).subscribe((pos) => {
 			console.log('click2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
+		});
+
+		// Send mouse location
+		this.eventManager.register({event: CesiumEvent.RIGHT_CLICK}).subscribe((pos) => {
+
+			let	screenPositionCartesian = this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition);
+			if (screenPositionCartesian){
+				let	screenPositionCartographic = Cesium.Cartographic.fromCartesian(screenPositionCartesian);
+				screenPositionCartographic.latitude = screenPositionCartographic.latitude * 180 / Math.PI;
+				screenPositionCartographic.longitude = screenPositionCartographic.longitude * 180 / Math.PI;
+				this.mouseMove.emit(screenPositionCartographic);
+			}
+			else {
+				console.log('The mouse is outside of the map');
+			}
 		});
 
 		// Example for Priority change

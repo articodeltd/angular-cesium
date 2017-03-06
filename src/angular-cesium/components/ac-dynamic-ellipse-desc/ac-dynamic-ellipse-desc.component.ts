@@ -7,23 +7,26 @@ import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynam
 
 /**
  *  This is a dynamic(position is updatable) implementation of an ellipse.
- *  Usage :
- *    <ac-dynamic-ellipse-desc props="{
-        center: data.position,
-        semiMajorAxis:250000.0,
-        semiMinorAxis:400000.0,
-        rotation : 0.785398,
-        width:3, // Optional
-        granularity:0.08 // Optional
-        }">
- }">
-
- @param {Cesium.Cartesian3} center
- @param {number} semiMajorAxis
- @param {number} semiMinorAxis
- @param {number} rotation
- @param {number} [1] width
- @param {number} granularity
+ *
+ *  __Usage :__
+ *  ```
+ *    &lt;ac-dynamic-ellipse-desc props="{
+ *      center: data.position,
+ *      semiMajorAxis:250000.0,
+ *      semiMinorAxis:400000.0,
+ *      rotation : 0.785398,
+ *      width:3, // Optional
+ *      granularity:0.08 // Optional
+ *      }"&gt;
+ *    ">
+ *    &lt;/ac-dynamic-ellipse-desc&gt;
+ *  ```
+ *  __param:__ {Cesium.Cartesian3} center
+ *  __param:__ {number} semiMajorAxis
+ *  __param:__ {number} semiMinorAxis
+ *  __param:__ {number} rotation
+ *   __param__: {number} [1] width
+ *   __param__: {number} [0.003] granularity
  */
 @Component({
 	selector: 'ac-dynamic-ellipse-desc',

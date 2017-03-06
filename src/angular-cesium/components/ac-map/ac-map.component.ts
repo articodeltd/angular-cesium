@@ -6,6 +6,16 @@ import { MapEventsManagerService } from '../../services/map-events-mananger/map-
 import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-event-builder';
 import { PlonterService } from '../../services/plonter/plonter.service';
 
+/**
+ * This is a map implementation.
+ * Every layer should be tag inside ac-map tag
+ *
+ * @example
+ * <ac-map>
+ *     <ac-map-layer-provider></ac-map-layer-provider>
+ *     <dynamic-ellipse-layer #layer></dynamic-ellipse-layer>
+ * </ac-map>
+ */
 @Component({
 	selector: 'ac-map',
 	template: '<ng-content></ng-content>',

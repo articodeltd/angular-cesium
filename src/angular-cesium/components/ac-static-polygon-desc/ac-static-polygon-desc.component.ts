@@ -7,20 +7,22 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 
 /**
  *  This is a static (position, color, etc.. are not updated) implementation of a polygon.
- *  @example
- *    <ac-static-polygon-desc
- geometryProps="{
-            polygonHierarchy: polygon.geometry.polygonHierarchy,
-            height: polygon.geometry.height,
-            granularity: polygon.geometry.granularity
-        }"
- instanceProps="{
-            attributes: polygon.attributes
-        }"
- primitiveProps="{
-            appearance: polygon.appearance
-        }"
- >
+ *  __Usage:__
+ *  ```
+ *    &lt;ac-static-polygon-desc
+ *          geometryProps="{
+ *                     polygonHierarchy: polygon.geometry.polygonHierarchy,
+ *                     height: polygon.geometry.height,
+ *                     granularity: polygon.geometry.granularity
+ *                 }"
+ *          instanceProps="{
+ *                     attributes: polygon.attributes
+ *                 }"
+ *          primitiveProps="{
+ *                     appearance: polygon.appearance
+ *                 }"
+ *    &gt;&lt;/ac-static-polygon-desc&gt;
+ *    ```
  */
 @Component({
 	selector: 'ac-static-polygon-desc',
