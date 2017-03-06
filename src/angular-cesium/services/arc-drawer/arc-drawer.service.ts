@@ -4,10 +4,10 @@ import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
 import { CesiumService } from '../cesium/cesium.service';
 
 /**
- + *  This drawer is responsible for drawing an arc over the Cesium map.
- + *  This implementation uses simple PolylineGeometry and Primitive parameters.
- + *  This doesn't allow us to change the position, color, etc.. of the arc but show only.
- + */
+  +  This drawer is responsible for drawing an arc over the Cesium map.
+  +  This implementation uses simple PolylineGeometry and Primitive parameters.
+  +  This doesn't allow us to change the position, color, etc.. of the arc but show only.
+  */
 
 @Injectable()
 export class ArcDrawerService extends SimpleDrawerService {

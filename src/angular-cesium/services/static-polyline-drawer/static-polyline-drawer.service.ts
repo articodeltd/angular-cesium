@@ -13,6 +13,14 @@ export class StaticPolylineDrawerService extends StaticPrimitiveDrawer {
 		super(Cesium.PolylineGeometry, cesiumService);
 	}
 
+	/**
+	 * Updste function can only change the primitive color.
+	 * @param primitive
+	 * @param geometryProps
+	 * @param instanceProps
+	 * @param primitiveProps
+	 * @returns {any}
+	 */
 	update(primitive: any, geometryProps: any, instanceProps: any, primitiveProps: any) {
 		const color = instanceProps.attributes.color.value;
 
