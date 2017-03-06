@@ -1,3 +1,4 @@
+declare var Cesium;
 import { Component, OnInit, Input } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { MapLayerProviderOptions } from './enums/map-layer-provider-options.enum';

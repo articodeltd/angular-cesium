@@ -2,7 +2,7 @@ import { CesiumPureEventObserver } from './cesium-pure-event-observer';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { CesiumEventBuilder } from './cesium-event-builder';
-import { Observable } from 'rxjs';
+import { Observable, ConnectableObservable } from 'rxjs';
 
 export class CesiumLongPressObserver extends CesiumPureEventObserver {
 	public static LONG_PRESS_EVENTS_DURATION = 250;
@@ -13,7 +13,7 @@ export class CesiumLongPressObserver extends CesiumPureEventObserver {
 		super(event, modifier)
 	};
 
-	init() {
+	init(): ConnectableObservable<any> {
 		let startEvent: CesiumEvent;
 		let stopEvent: CesiumEvent;
 
@@ -41,5 +41,4 @@ export class CesiumLongPressObserver extends CesiumPureEventObserver {
 
 		return longPressObservable;
 	}
-
 }

@@ -1,3 +1,5 @@
+declare var Cesium;
+
 /**
  * Event options for registration on map-event-manager.
  */

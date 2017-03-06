@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JsonMapper } from '../json-mapper/json-mapper.service';
-import { Parse } from '../../../angular2-parse/src/services/parse/parse.service';
+import { Parse } from 'angular2parse';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 
 @Injectable()
@@ -18,9 +18,7 @@ export class CesiumProperties {
 
 		const resultMap = this._jsonMapper.map(expression);
 
-		for (let [prop, expression] of resultMap) {
-			propsMap.set(prop, {expression, get: this._parser.eval(expression)});
-		}
+		resultMap.forEach((expression, prop) => propsMap.set(prop, {expression, get: this._parser.eval(expression)}));
 
 		const fnBody = `const cesiumDesc={};for (let [propName, cesiumProp] of propsMap)cesiumDesc[propName ? propName : 'undefined'] = cache.get(cesiumProp.expression.toString(), ()=>propsMap.get(propName).get(context));return cesiumDesc;`;
 		const getFn = new Function('propsMap', 'cache', 'context', fnBody);
@@ -34,9 +32,7 @@ export class CesiumProperties {
 		let fnBody = ``;
 		const resultMap = this._jsonMapper.map(expression);
 
-		for (let prop of resultMap.keys()) {
-			fnBody += `dst['${prop}'] = src['${prop}'];`;
-		}
+		resultMap.forEach((value, prop) => fnBody += `dst['${prop}'] = src['${prop}'];`);
 
 		fnBody += `return dst;`;
 		const assignFn = new Function('dst', 'src', `${fnBody}`);

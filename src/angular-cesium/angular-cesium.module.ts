@@ -10,12 +10,12 @@ import { AcDynamicPolylineDescComponent } from './components/ac-dynamic-polyline
 import { AcStaticCircleDescComponent } from './components/ac-static-circle-desc/ac-static-circle-desc.component';
 import { AcStaticPolygonDescComponent } from './components/ac-static-polygon-desc/ac-static-polygon-desc.component';
 import { AcLayer2Directive } from './directives/ac-layer-2.directive';
-import { Angular2ParseModule } from '../angular2-parse/src/angular2-parse.module';
+import { Angular2ParseModule } from 'angular2parse';
 import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
 import { JsonMapper } from './services/json-mapper/json-mapper.service';
 import { CesiumProperties } from './services/cesium-properties/cesium-properties.service';
 import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.component';
-import { UtilsModule } from '../utils/utils.module';
+import { UtilsModule } from './utils/utils.module';
 import { AcStaticPolylineDescComponent } from './components/ac-static-polyline-desc/ac-static-polyline-desc.component';
 import { ViewerFactory } from './services/viewer-factory/viewer-factory.service';
 import { GeoUtilsService } from './services/geo-utils/geo-utils.service';

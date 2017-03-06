@@ -1,31 +1,72 @@
-# Angular2Cesium
+# angular2-webpack-library-seed
+Angular2 library seed - based on Webpack
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.22-1.
+## Getting started
+```bash
+$ git clone https://github.com/bargoldi/ng2-package-starter
+$ cd project_directory
+$ npm install
+```
+## Usage
+In order to run a webpack dev-server, use the command:
+```bash
+$ npm start
+```
+## Running tests
+```bash
+$ npm test
+```
 
-## Development server
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Publishing
+```bash
+$ npm run build
+$ npm publish
+```
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Deploying to Github Pages
-
-Run `ng github-pages:deploy` to deploy to Github Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Directory Structure
+```
+├───config
+│       karma-test-shim.js
+│       karma.conf.js
+│       root-helper.js
+│       webpack.aot.js
+│       webpack.common.js
+│       webpack.dev.js
+│       webpack.test.js
+│
+├───demo
+│   │   index.html
+│   │   polyfills.ts
+│   │   tsconfig.json
+│   │   vendor.ts
+│   │
+│   ├───app
+│   │   │   app.component.html
+│   │   │   app.component.ts
+│   │   │   app.module.ts
+│   │   │   main.ts
+│   │   │
+│   │   └───shared
+│   │           shared.module.ts
+│   │
+│   ├───assets
+│   │       data.json
+│   │
+│   └───css
+│           main.css
+│
+├───src
+│       main.ts
+│   .gitignore
+│   .npmignore
+│   karma.conf.js
+│   LICENSE.txt
+│   package.json
+│   README.md
+│   tsconfig.aot.json
+│   tsconfig.json
+│   webpack.aot.config.js
+│   webpack.config.js
+```
+## Coming Soon
+- Webpack bundling ability
