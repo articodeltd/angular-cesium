@@ -18,17 +18,25 @@ export class CesiumService {
 		});
 	}
 
+	/**
+	 * For more information see https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classFilter=viewe
+	 * @returns {any}
+	 */
 	getViewer() {
 		return this.cesiumViewer;
 	}
 
+	/**
+	 * For more information see https://cesiumjs.org/Cesium/Build/Documentation/Scene.html?classFilter=scene
+	 * @returns {{Scene}|any}
+	 */
 	getScene() {
 		return this.cesiumViewer.scene;
 	}
 
 	/**
 	 * Gets the minimum zoom value in meters
-	 * @returns {any}
+	 * @returns {number}
 	 */
 	getMinimumZoom(): number {
 		return this.getScene().screenSpaceCameraController.minimumZoomDistance;
@@ -36,7 +44,7 @@ export class CesiumService {
 
 	/**
 	 * Sets the minimum zoom value in meters
-	 * @param amount - new value
+	 * @param {number} amount
 	 */
 	setMinimumZoom(amount: number): void {
 		this.getScene().screenSpaceCameraController.minimumZoomDistance = amount;
@@ -44,7 +52,7 @@ export class CesiumService {
 
 	/**
 	 * Gets the maximum zoom value in meters
-	 * @returns {any}
+	 * @returns {number}
 	 */
 	getMaximumZoom(): number {
 		return this.getScene().screenSpaceCameraController.maximumZoomDistance;
@@ -52,7 +60,7 @@ export class CesiumService {
 
 	/**
 	 * Sets the maximum zoom value in meters
-	 * @param amount - new value
+	 * @param {number} amount
 	 */
 	setMaximumZoom(amount: number): void {
 		this.getScene().screenSpaceCameraController.maximumZoomDistance = amount;
