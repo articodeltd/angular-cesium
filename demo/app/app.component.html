@@ -7,14 +7,15 @@
     <!--<tracks-layer #layer></tracks-layer>-->
     <!--<tracks-layer #layer></tracks-layer>-->
     <!--<ellipse-layer #layer></ellipse-layer>-->
-    <!--<dynamic-ellipse-layer #layer></dynamic-ellipse-layer>-->
+    <dynamic-ellipse-layer #layer></dynamic-ellipse-layer>
     <!--<ac-static-circle-layer #layer></ac-static-circle-layer>-->
-    <base-layer #layer></base-layer>
+    <!--<base-layer #layer></base-layer>-->
     <!--<static-polyline-layer #layer></static-polyline-layer>-->
     <!--<dynamic-circle-layer #layer></dynamic-circle-layer>-->
     <!--<dynamic-polyline-layer #layer></dynamic-polyline-layer>-->
-    <!--<event-test-layer></event-test-layer>-->
+    <event-test-layer (mouseMove)="form.setLongLat($event)"></event-test-layer>
     <!--<arc-layer #layer></arc-layer>-->
     <!--<symbology-layer #layer></symbology-layer>-->
 </ac-map>
-<performance-form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"></performance-form>
+<performance-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"
+></performance-form>
