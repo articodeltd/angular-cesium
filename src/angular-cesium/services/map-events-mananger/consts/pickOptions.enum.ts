@@ -4,7 +4,7 @@
  *  PICK_ONE    - in case a few entities are picked plonter is resolved . use Cesium.scene.drillPick()
  *  PICK_ALL    - all entities are picked. use Cesium.scene.drillPick()
  */
-export enum PickOptions{
+export enum PickOptions {
 	NO_PICK,
 	PICK_FIRST,
 	PICK_ONE,

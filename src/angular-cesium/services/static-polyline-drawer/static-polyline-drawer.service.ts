@@ -28,8 +28,8 @@ export class StaticPolylineDrawerService extends StaticPrimitiveDrawer {
 			primitive.getGeometryInstanceAttributes().color = color;
 		}
 		else {
-			Cesium.when(primitive.readyPromise).then(function (primitive) {
-				primitive.getGeometryInstanceAttributes().color.value = color;
+			Cesium.when(primitive.readyPromise).then((readyPrimitive) => {
+				readyPrimitive.getGeometryInstanceAttributes().color.value = color;
 			});
 		}
 

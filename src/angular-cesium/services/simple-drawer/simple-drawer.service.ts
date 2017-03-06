@@ -19,7 +19,7 @@ export abstract class SimpleDrawerService {
 	}
 
 	add(cesiumProps: any, ...moreProps): any {
-		//Todo: Take care of show = false
+		// Todo: Take care of show = false
 		cesiumProps.show = this._showAll;
 		return this._cesiumCollection.add(cesiumProps);
 	}

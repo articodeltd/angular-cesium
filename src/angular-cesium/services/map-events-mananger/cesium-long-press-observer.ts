@@ -10,7 +10,7 @@ export class CesiumLongPressObserver extends CesiumPureEventObserver {
 	constructor(protected event: CesiumEvent,
 	            protected modifier: CesiumEventModifier,
 	            private eventFactory: CesiumEventBuilder) {
-		super(event, modifier)
+		super(event, modifier);
 	};
 
 	init(): ConnectableObservable<any> {

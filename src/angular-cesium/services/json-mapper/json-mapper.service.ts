@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { JsonStringMapper} from 'json-string-mapper';
+import { JsonStringMapper } from 'json-string-mapper';
 
 @Injectable()
 export class JsonMapper {

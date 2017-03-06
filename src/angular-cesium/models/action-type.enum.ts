@@ -1,7 +1,7 @@
 /**
  * Action to do on entity
  */
-export enum ActionType{
+export enum ActionType {
 	ADD_UPDATE,
 	DELETE
 }
