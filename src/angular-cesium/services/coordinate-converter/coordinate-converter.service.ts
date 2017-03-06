@@ -5,6 +5,29 @@ let geodesy = require('geodesy');
 let UTM = geodesy.Utm;
 let LatLonEllipsoidal = geodesy.LatLonEllipsoidal;
 
+/**
+ *  Given different types of coordinates, we provide you a service converting those types to the most common other types.
+ *  We are using the geodesy implementation of UTM conversion. see: https://github.com/chrisveness/geodesy.
+ *  @example
+ *   import { Component, OnInit } from '@angular/core';
+     import { CoordinateConverter } from 'angular2-cesium';
+
+	 @Component({
+		selector:'my-component',
+		template:'<div>{{showCartographic}}</div>',
+		providers:[CoordinateConverter]
+	})
+	 export class MyComponent implements OnInit {
+		showCartographic;
+
+		constructor(private coordinateConverter:CoordinateConverter){
+		}
+
+		ngOnInit(){
+			this.showCartographic = this.coordinateConverter.degreesToCartographic(5, 5, 5);
+		}
+	}
+ */
 @Injectable()
 export class CoordinateConverter {
 	constructor(@Optional() private cesiumService?: CesiumService) {
