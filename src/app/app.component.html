@@ -13,8 +13,9 @@
     <!--<static-polyline-layer #layer></static-polyline-layer>-->
     <!--<dynamic-circle-layer #layer></dynamic-circle-layer>-->
     <!--<dynamic-polyline-layer #layer></dynamic-polyline-layer>-->
-    <!--<event-test-layer></event-test-layer>-->
+    <event-test-layer (mouseMove)="form.setLongLat($event)"></event-test-layer>
     <!--<arc-layer #layer></arc-layer>-->
     <!--<symbology-layer #layer></symbology-layer>-->
 </ac-map>
-<performance-form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"></performance-form>
+<performance-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"
+></performance-form>

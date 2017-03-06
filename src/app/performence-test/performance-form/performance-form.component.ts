@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { Http, Response } from '@angular/http';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 @Component({
 	selector: 'performance-form',
@@ -16,8 +16,11 @@ export class PerformanceFormComponent implements OnInit {
 	private interval = 500;
 	private numOfObjectsInPart = 20;
 	private isShow = true;
+	private currentLongitude = 0;
+	private currentLatitude = 0;
 
-	constructor(private http:Http) {
+	constructor(private http:Http,
+	            public ref: ChangeDetectorRef) {
 	}
 
 	ngOnInit() {
@@ -75,5 +78,11 @@ export class PerformanceFormComponent implements OnInit {
 		}
 		alert(`error: ${errMsg}`);
 		return Observable.throw(errMsg);
+	}
+
+	setLongLat(value){
+		this.currentLongitude = value.latitude.toFixed(4);
+		this.currentLatitude = value.longitude.toFixed(4);
+		this.ref.detectChanges();
 	}
 }
