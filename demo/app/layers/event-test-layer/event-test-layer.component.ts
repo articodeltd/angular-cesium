@@ -12,8 +12,8 @@ import { GeoUtilsService } from '../../../../src/angular-cesium/services/geo-uti
 
 @Component({
 	selector: 'event-test-layer',
-	templateUrl: './event-test-layer.component.html',
-	styleUrls: ['./event-test-layer.component.css'],
+	templateUrl: 'event-test-layer.component.html',
+	styleUrls: ['event-test-layer.component.css'],
 	providers: [GeoUtilsService]
 })
 export class EventTestLayerComponent implements OnInit {

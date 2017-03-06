@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocketSupplier';
-import { MapLayerProviderOptions } from '../../src/angular-cesium/components/ac-map-layer-provider/enums/map-layer-provider-options.enum';
+import { MapLayerProviderOptions } from '../../src/angular-cesium/models/map-layer-provider-options.enum';
 
 @Component({
 	selector: 'app-root',

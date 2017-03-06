@@ -6,8 +6,8 @@ import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksD
 
 @Component({
 	selector: 'ellipse-layer',
-	templateUrl: './ellipse-layer.component.html',
-	styleUrls: ['./ellipse-layer.component.css'],
+	templateUrl: 'ellipse-layer.component.html',
+	styleUrls: ['ellipse-layer.component.css'],
 	providers: [TracksDataProvider]
 })
 export class EllipseLayerComponent implements OnInit {

@@ -26,8 +26,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  */
 @Component({
 	selector: 'ac-static-polygon-desc',
-	templateUrl: 'ac-static-polygon-desc.component.html',
-	styleUrls: ['ac-static-polygon-desc.component.css']
+	template: '',
 })
 export class AcStaticPolygonDescComponent extends BasicStaticPrimitiveDesc {
 	constructor(polygonDrawer: PolygonDrawerService, layerService: LayerService,

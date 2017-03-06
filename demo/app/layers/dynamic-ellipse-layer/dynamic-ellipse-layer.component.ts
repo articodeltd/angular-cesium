@@ -6,8 +6,8 @@ import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksD
 
 @Component({
 	selector: 'dynamic-ellipse-layer',
-	templateUrl: './dynamic-ellipse-layer.component.html',
-	styleUrls: ['./dynamic-ellipse-layer.component.css'],
+	templateUrl: 'dynamic-ellipse-layer.component.html',
+	styleUrls: ['dynamic-ellipse-layer.component.css'],
 	providers: [TracksDataProvider]
 })
 export class DynamicEllipseLayerComponent implements OnInit {

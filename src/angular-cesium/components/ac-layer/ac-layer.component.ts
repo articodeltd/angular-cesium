@@ -47,8 +47,7 @@ import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
  */
 @Component({
 	selector: 'ac-layer',
-	templateUrl: './ac-layer.component.html',
-	styleUrls: ['./ac-layer.component.css'],
+	template: '',
 	providers: [
 		LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
 		DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,

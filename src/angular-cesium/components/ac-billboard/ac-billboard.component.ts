@@ -6,8 +6,7 @@ import { BillboardDrawerService } from '../../services/billboard-drawer/billboar
  */
 @Component({
 	selector: 'ac-billboard',
-	templateUrl: './ac-billboard.component.html',
-	styleUrls: ['./ac-billboard.component.css']
+	template: ''
 })
 export class AcBillboardComponent implements OnChanges {
 

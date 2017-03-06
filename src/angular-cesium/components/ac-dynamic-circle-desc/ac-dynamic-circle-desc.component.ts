@@ -27,8 +27,7 @@ import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynam
  */
 @Component({
 	selector: 'ac-dynamic-circle-desc',
-	templateUrl: 'ac-dynamic-circle-desc.component.html',
-	styleUrls: ['ac-dynamic-circle-desc.component.css']
+	template: ''
 })
 export class AcDynamicCircleDescComponent extends BasicDesc {
 	constructor(ellipseDrawer: DynamicEllipseDrawerService, layerService: LayerService,

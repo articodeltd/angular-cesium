@@ -24,8 +24,7 @@ import { LabelDrawerService } from '../../services/label-drawer/label-drawer.ser
 
 @Component({
 	selector: 'ac-label-desc',
-	templateUrl: './ac-label-desc.component.html',
-	styleUrls: ['./ac-label-desc.component.css']
+	template: '',
 })
 export class AcLabelDescComponent extends BasicDesc {
 

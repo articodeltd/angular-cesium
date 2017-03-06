@@ -6,8 +6,8 @@ import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksD
 
 @Component({
 	selector: 'dynamic-polyline-layer',
-	templateUrl: './dynamic-polyline-layer.component.html',
-	styleUrls: ['./dynamic-polyline-layer.component.css'],
+	templateUrl: 'dynamic-polyline-layer.component.html',
+	styleUrls: ['dynamic-polyline-layer.component.css'],
 	providers: [TracksDataProvider]
 })
 export class DynamicPolylineLayerComponent implements OnInit {

@@ -7,8 +7,8 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
 
 @Component({
 	selector: 'polygon-layer',
-	templateUrl: './polygon-layer.component.html',
-	styleUrls: ['./polygon-layer.component.css'],
+	templateUrl: 'polygon-layer.component.html',
+	styleUrls: ['polygon-layer.component.css'],
 	providers: [TracksDataProvider]
 })
 export class PolygonLayerComponent implements OnInit {

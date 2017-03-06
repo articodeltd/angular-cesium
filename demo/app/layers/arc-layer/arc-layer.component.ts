@@ -6,7 +6,7 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
 
 @Component({
 	selector: 'arc-layer',
-	templateUrl: './arc-layer.component.html'
+	templateUrl: 'arc-layer.component.html'
 })
 
 export class ArcLayerComponent implements OnInit, AfterViewInit {

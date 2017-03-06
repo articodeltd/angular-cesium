@@ -6,8 +6,8 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
 
 @Component({
 	selector: 'base-layer',
-	templateUrl: './base-layer.component.html',
-	styleUrls: ['./base-layer.component.css']
+	templateUrl: 'base-layer.component.html',
+	styleUrls: ['base-layer.component.css']
 })
 export class BaseLayerComponent implements OnInit, AfterViewInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
