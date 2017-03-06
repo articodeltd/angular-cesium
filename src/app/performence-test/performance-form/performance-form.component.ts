@@ -84,8 +84,5 @@ export class PerformanceFormComponent implements OnInit {
 		this.currentLongitude = value.latitude.toFixed(4);
 		this.currentLatitude = value.longitude.toFixed(4);
 		this.ref.detectChanges();
-		/*() => {
-
-		});*/
 	}
 }
