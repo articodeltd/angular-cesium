@@ -5,7 +5,6 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
-	moduleId: module.id,
 	selector: 'dynamic-circle-layer',
 	templateUrl: 'dynamic-circle-layer.component.html',
 	styleUrls: ['dynamic-circle-layer.component.css'],

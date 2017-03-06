@@ -5,7 +5,6 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
-	moduleId: module.id,
 	selector: 'ellipse-layer',
 	templateUrl: 'ellipse-layer.component.html',
 	styleUrls: ['ellipse-layer.component.css'],

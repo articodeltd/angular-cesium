@@ -5,7 +5,6 @@ import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksD
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
 
 @Component({
-	moduleId: module.id,
 	selector: 'ac-static-circle-layer',
 	templateUrl: 'static-circle-layer.component.html',
 	providers: [TracksDataProvider]
