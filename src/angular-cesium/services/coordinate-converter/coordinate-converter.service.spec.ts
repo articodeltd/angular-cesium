@@ -4,7 +4,7 @@ import { providerFromMock } from '../../utils/testingUtils';
 import { CoordinateConverter } from './coordinate-converter.service';
 import { CesiumService } from '../cesium/cesium.service';
 
-fdescribe('CoordinateConverter', () => {
+describe('CoordinateConverter', () => {
 	const cesiumService = mock(CesiumService);
 	const cesiumCamera = mock(Cesium.Camera);
 
