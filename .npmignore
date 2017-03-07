@@ -12,5 +12,11 @@ src/**/*.ts
 !src/*.d.ts
 !src/**/*.d.ts
 
+# configuration files
 karma.conf.js
 webpack.config.js
+webpack.aot.config.js
+tslint.json
+tsconfig.json
+tsconfig.aot.json
+protractor.conf.js
