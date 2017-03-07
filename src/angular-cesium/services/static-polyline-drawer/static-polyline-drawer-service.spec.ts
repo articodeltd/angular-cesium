@@ -69,7 +69,7 @@ describe('StaticPolylineDrawerService', () => {
 		expect(staticPolylineProps.getGeometryInstanceAttributes).toHaveBeenCalled();
 	})));
 
-	it('should throw if positions is not given', inject([StaticPolylineDrawerService], (service: StaticPolylineDrawerService, done) => {
+	it('should throw if positions is not given', inject([StaticPolylineDrawerService], (service: StaticPolylineDrawerService) => {
 		staticPolylineProps.geometry.positions = undefined;
 
 		expect(() => service.add(staticPolylineProps.geometry, staticPolylineProps.attributes, staticPolylineProps.appearance)).toThrow();
