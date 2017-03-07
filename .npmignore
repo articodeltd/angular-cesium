@@ -1,7 +1,16 @@
 .idea/
 config/
 node_modules/
+documentation/
+demo/
 
-gulpfile.js
+# ignore the .ts files
+src/*.ts
+src/**/*.ts
+
+# include the .d.ts files
+!src/*.d.ts
+!src/**/*.d.ts
+
 karma.conf.js
 webpack.config.js

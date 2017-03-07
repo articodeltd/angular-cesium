@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { AngularCesiumModule } from '../../src/angular-cesium/angular-cesium.module';
+import { AngularCesiumModule } from '../../src/angular-cesium.module';
 import { PerformanceFormComponent } from './shared/performance-form/performance-form.component';
 import { TracksLayerComponent } from './layers/tracks-layer/tracks-layer.component';
 import { EllipseLayerComponent } from './layers/ellipse-layer/ellipse-layer.component';
