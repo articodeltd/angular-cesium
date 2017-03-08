@@ -1,4 +1,4 @@
-import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
+import { AcEntity } from '../../../../src/models/ac-entity';
 let oneAndOnlyMaterial = new Cesium.PerInstanceColorAppearance({
 	translucent: false,
 	closed: true

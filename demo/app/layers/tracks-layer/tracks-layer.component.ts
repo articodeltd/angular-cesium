@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
-import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
-import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
+import { AcNotification } from '../../../../src/models/ac-notification';
+import { ActionType } from '../../../../src/models/action-type.enum';
+import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
 
 @Component({
 	selector: 'tracks-layer',

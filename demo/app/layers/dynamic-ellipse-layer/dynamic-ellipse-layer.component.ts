@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
+import { AcNotification } from '../../../../src/models/ac-notification';
 import { Observable } from 'rxjs';
-import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
+import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({

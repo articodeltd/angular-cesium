@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "license": "MIT",
   "description": "Angular2 library seed - based on Webpack",
-  "main": "dist/main.js",
-  "typings": "dist/main.d.ts",
+  "main": "bundles/angular2-cesium.umd.js",
+  "typings": "src/main.d.ts",
   "scripts": {
-    "cleanup": "rimraf src/*.ngfactory.ts src/*.ngstyle.ts src/*.ngsummary.json build dist",
+    "cleanup": "rimraf src/*.ngfactory.ts src/*.ngstyle.ts src/*.ngsummary.json build bundles",
     "start": "node_modules\\.bin\\webpack-dev-server --inline --progress --port 8080",
     "lint": "tslint -c tslint.json --project tsconfig.aot.json",
     "test": "karma start",
@@ -20,9 +20,6 @@
     "compileNserve-docs": "npm run compile-docs && npm run serve-docs"
   },
   "private": true,
-  "files": [
-    "dist/"
-  ],
   "peerDependencies": {
     "@angular/core": "2.0.1"
   },
@@ -42,6 +39,10 @@
     "@types/selenium-webdriver": "^2.53.33",
     "angular2-template-loader": "^0.4.0",
     "awesome-typescript-loader": "3.0.3",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
+    "babel-preset-env": "^1.2.1",
     "bower": "^1.7.9",
     "browserify": "^13.1.1",
     "cesium": "1.30.0",
@@ -84,6 +85,7 @@
     "webpack": "2.1.0-beta.15",
     "webpack-dev-server": "1.16.3",
     "webpack-merge": "0.14.1",
+    "webpack-node-externals": "^1.5.4",
     "zone.js": "^0.6.23"
   },
   "dependencies": {

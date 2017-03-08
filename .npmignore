@@ -1,7 +1,22 @@
 .idea/
 config/
 node_modules/
+documentation/
+demo/
 
-gulpfile.js
+# ignore the .ts files
+src/*.ts
+src/**/*.ts
+
+# include the .d.ts files
+!src/*.d.ts
+!src/**/*.d.ts
+
+# configuration files
 karma.conf.js
 webpack.config.js
+webpack.aot.config.js
+tslint.json
+tsconfig.json
+tsconfig.aot.json
+protractor.conf.js

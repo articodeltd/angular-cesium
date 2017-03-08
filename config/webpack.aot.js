@@ -1,42 +1,33 @@
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var nodeExternals = require('webpack-node-externals');
 
 var root = require('./root-helper');
 
 module.exports = {
     entry: {
-        'main': './dist/main.js'
+        'main': './src/main.js'
     },
 
     output: {
-        path: root.root('dist'),
-        filename: '[name].bundle.js'
+        path: root.root('bundles'),
+        filename: 'angular2-cesium.umd.js',
+        libraryTarget: 'umd'
     },
+
+    externals: [nodeExternals()],
+
+    target: 'node',
 
     module: {
         loaders: [
             {
-                test: /\.ts$/,
-                loaders: [
-                    'awesome-typescript?tsconfig=tsconfig.aot.json',
-                    'angular2-template'
-                ]
-            },
-            {
-                test: /\.html$/,
-                loader: 'raw',
-                include: [
-                    root.root('src')
-                ],
-                loaders: ['required-loader']
-            },
-            {
-                test: /\.html$/,
-                loaders: 'html-loader'
-            },
-            {
-                test: /\.css$/,
-                loaders: ['to-string-loader', 'css-loader']
+                test: /.js$/,
+                exclude: root.root('node_modules'),
+                loader: 'babel-loader',
+                query: {
+                    plugins: ['transform-es2015-modules-commonjs']
+                }
             }
         ]
     },
@@ -51,7 +42,7 @@ module.exports = {
     ],
 
     resolve: {
-        extensions: ['', '.ts', '.js'],
+        extensions: ['', '.js'],
         alias: {
             'cesium': 'cesium/Build/CesiumUnminified/Cesium.js'
         }
