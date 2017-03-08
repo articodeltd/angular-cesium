@@ -1,8 +1,8 @@
 {
   "name": "angular2-cesium",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "description": "Angular2 library seed - based on Webpack",
+  "description": "Angular2 library for working with Cesium.",
   "main": "bundles/angular2-cesium.umd.js",
   "typings": "src/main.d.ts",
   "scripts": {
@@ -19,7 +19,6 @@
     "serve-docs": "compodoc -s",
     "compileNserve-docs": "npm run compile-docs && npm run serve-docs"
   },
-  "private": true,
   "peerDependencies": {
     "@angular/core": "2.0.1"
   },
