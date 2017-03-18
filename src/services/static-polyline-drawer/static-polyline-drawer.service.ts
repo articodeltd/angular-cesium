@@ -14,7 +14,7 @@ export class StaticPolylineDrawerService extends StaticPrimitiveDrawer {
 	}
 
 	/**
-	 * Updste function can only change the primitive color.
+	 * Update function can only change the primitive color.
 	 * @param primitive
 	 * @param geometryProps
 	 * @param instanceProps

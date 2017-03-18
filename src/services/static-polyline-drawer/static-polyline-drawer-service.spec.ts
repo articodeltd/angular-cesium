@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 
 import { mock, when, instance, verify, anything } from 'ts-mockito';
 import { StaticPolylineDrawerService } from './static-polyline-drawer.service';
@@ -23,7 +23,12 @@ describe('StaticPolylineDrawerService', () => {
 		appearance: new Cesium.PolylineColorAppearance({
 			closed: true,
 			translucent: false
-		})
+		}),
+		ready: null,
+		readyPromise: null,
+		getGeometryInstanceAttributes: () => {
+			return {color: null}
+		}
 	};
 
 	const cesiumService = mock(CesiumService);
@@ -33,7 +38,9 @@ describe('StaticPolylineDrawerService', () => {
 
 	beforeEach(() => {
 		staticPolylineAttribute = {
-			color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+			attributes: {
+				color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+			}
 		};
 
 		TestBed.configureTestingModule({
@@ -48,19 +55,21 @@ describe('StaticPolylineDrawerService', () => {
 		expect(staticPolyline).toBeDefined();
 	}));
 
-	it('should update a given static polyline\'s color', inject([StaticPolylineDrawerService], (service: StaticPolylineDrawerService, done) => {
-		const staticPolyline = service.add(staticPolylineProps.geometry, staticPolylineProps.attributes, staticPolylineProps.appearance);
-		let oldColors;
+	it('should update a given static polyline\'s color', fakeAsync(inject([StaticPolylineDrawerService], (service: StaticPolylineDrawerService) => {
+		staticPolylineProps.ready = true;
+		let spy = spyOn(staticPolylineProps, "getGeometryInstanceAttributes").and.returnValue({color: null});
+		service.update(staticPolylineProps, null, staticPolylineAttribute, null);
+		expect(staticPolylineProps.getGeometryInstanceAttributes).toHaveBeenCalled();
 
-		Cesium.when(staticPolyline.readyPromise).then(function (primitive) {
-			oldColors = primitive.getGeometryInstanceAttributes().color.value;
-			service.update(staticPolylineProps, null, staticPolylineAttribute, null);
-			expect(oldColors).not.toEqual(staticPolylineProps.attributes.color);
-			done();
-		});
-	}));
+		spy.calls.reset();
+		staticPolylineProps.ready = null;
+		staticPolylineProps.readyPromise = Promise.resolve(staticPolylineProps);
+		service.update(staticPolylineProps, null, staticPolylineAttribute, null);
+		tick();
+		expect(staticPolylineProps.getGeometryInstanceAttributes).toHaveBeenCalled();
+	})));
 
-	it('should throw if positions is not given', inject([StaticPolylineDrawerService], (service: StaticPolylineDrawerService, done) => {
+	it('should throw if positions is not given', inject([StaticPolylineDrawerService], (service: StaticPolylineDrawerService) => {
 		staticPolylineProps.geometry.positions = undefined;
 
 		expect(() => service.add(staticPolylineProps.geometry, staticPolylineProps.attributes, staticPolylineProps.appearance)).toThrow();
