@@ -5,7 +5,10 @@
   "description": "Angular2 library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular2cesium",
   "keywords": [
-    "Angular2", "Cesium","Angular Cesium", "Angular2 Cesium"
+    "Angular2",
+    "Cesium",
+    "Angular Cesium",
+    "Angular2 Cesium"
   ],
   "homepage": "https://github.com/TGFTech/angular2cesium#readme",
   "main": "bundles/angular2-cesium.umd.js",
