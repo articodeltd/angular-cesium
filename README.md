@@ -31,7 +31,7 @@ to `scripts` in `.angular-cli.json` file.
 
 + Add `declare var Cesium;` to `typing.d.ts` file
 
-### Usage
+## Usage
 
 + In your HTML file use `ac-map` tag to show the map:
   ```
@@ -60,4 +60,7 @@ to `scripts` in `.angular-cli.json` file.
     $ npm start
     $ open http://localhost:8080
     ```
+
+# License
+[Mit License](https://opensource.org/licenses/MIT)
     
