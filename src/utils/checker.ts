@@ -5,7 +5,7 @@ export class Checker {
 
 	static throwIfNotPresent(value: any, name: string) {
 		if (!Checker.present(value[name])) {
-			throw `Error: ${name} was not given.`;
+			throw new Error(`Error: ${name} was not given.`);
 		}
 	}
 

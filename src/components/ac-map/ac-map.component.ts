@@ -37,7 +37,7 @@ export class AcMapComponent implements OnInit {
 	enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
 
 	constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
-		let mapContainer = this.document.createElement('div');
+		const mapContainer = this.document.createElement('div');
 		this._elemRef.nativeElement.appendChild(mapContainer);
 		this._cesiumService.init(mapContainer);
 	}
