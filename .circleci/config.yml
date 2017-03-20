@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+        name: Pre-Dependencies
+        command: mkdir ~/angular2cesium/artifacts
+      - run:
           name: Install Dependencies
           command: npm install
       - run:
