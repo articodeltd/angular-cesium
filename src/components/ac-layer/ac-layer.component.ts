@@ -1,6 +1,7 @@
 import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
 import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { AcNotification } from '../../models/ac-notification';
 import { ActionType } from '../../models/action-type.enum';
@@ -116,18 +117,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 
 	private initValidParams() {
 		if (!this.context) {
-			throw 'ac-layer: must initialize [context] ';
+			throw new Error ('ac-layer: must initialize [context] ');
 		}
 
 		if (!AcLayerComponent.acForRgx.test(this.acFor)) {
-			throw 'ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
-			+ 'instead received: ' + this.acFor;
+			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
+			+ 'instead received: ' + this.acFor);
 		}
 		const acForArr = this.acFor.split(' ');
 		this.observable = this.context[acForArr[3]];
 		this.entityName = acForArr[1];
 		if (!this.observable || !(this.observable instanceof Observable)) {
-			throw  'ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable;
+			throw  new Error ('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
 	}
 

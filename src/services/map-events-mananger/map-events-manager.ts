@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEventBuilder } from './cesium-event-builder';
 import { EventRegistrationInput } from './event-registration-input';
@@ -36,14 +37,14 @@ export class MapEventsManagerService {
 
 	register(input: EventRegistrationInput): DisposableObservable<EventResult> {
 		if (this.scene === undefined) {
-			throw 'CesiumService has not been initialized yet - MapEventsManagerService must be injected  under ac-map';
+			throw new Error('CesiumService has not been initialized yet - MapEventsManagerService must be injected  under ac-map');
 		}
 
 		input.pick = input.pick || PickOptions.NO_PICK;
 		input.priority = input.priority || 0;
 
 		if (input.entityType && input.pick === PickOptions.NO_PICK) {
-			throw 'MapEventsManagerService: can\'t register an event with entityType and PickOptions.NO_PICK - It doesn\'t make sense ';
+			throw new Error('MapEventsManagerService: can\'t register an event with entityType and PickOptions.NO_PICK - It doesn\'t make sense ');
 		}
 
 		const eventName = CesiumEventBuilder.getEventFullName(input.event, input.modifier);
@@ -91,7 +92,7 @@ export class MapEventsManagerService {
 		const cesiumEventObservable = this.eventBuilder.get(event, modifier);
 		const stopper = new Subject();
 
-		let registration = new Registration(undefined, stopper, priority, false);
+		const registration = new Registration(undefined, stopper, priority, false);
 		let observable: Observable<EventResult>;
 
 		observable = cesiumEventObservable
