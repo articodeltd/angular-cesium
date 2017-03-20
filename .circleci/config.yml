@@ -12,8 +12,5 @@ jobs:
       - run:
           name: Install Dependencies
           command: npm install
-      - run:
-          name: NPM lint
-          command: npm run lint
       - store_artifacts:
           path: ~/angular2cesium/artifacts
