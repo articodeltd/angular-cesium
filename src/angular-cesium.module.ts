@@ -55,7 +55,6 @@ import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/
 		AcDynamicPolylineDescComponent,
 		AcStaticPolygonDescComponent,
 		AcLayerComponent,
-		AcLayer2Directive,
 		AcStaticCircleDescComponent,
 		AcDynamicCircleDescComponent,
 		AcStaticPolylineDescComponent,
