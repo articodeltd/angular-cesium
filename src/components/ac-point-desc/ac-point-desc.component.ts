@@ -15,14 +15,14 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
  *  Usage :
  *  @example
  *    <ac-point-desc props="{
- *                         pixelSize : point.width, //optional
+ *                         pixelSize : point.pixelSize, //optional
  *                         position : point.positions,
  *                         color : point.color  //optional
  *                        }">
  *	  </ac-point-desc>
  */
 @Component({
-	selector: 'ac-dynamic-polyline-desc',
+	selector: 'ac-point-desc',
 	template: ''
 })
 export class AcPointDescComponent extends BasicDesc {
