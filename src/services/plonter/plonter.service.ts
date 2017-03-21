@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { AcEntity } from '../../models/ac-entity';
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 import { EventResult } from '../map-events-mananger/map-events-manager';
 
 /**

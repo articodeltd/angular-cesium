@@ -41,7 +41,7 @@ export class AcDynamicCircleDescComponent extends BasicDesc {
 	 * @returns {any}
 	 */
 	protected _propsEvaluator(context: Object): any {
-		let cesiumProps = super._propsEvaluator(context);
+		const cesiumProps = super._propsEvaluator(context);
 
 		cesiumProps.semiMajorAxis = cesiumProps.radius;
 		cesiumProps.semiMinorAxis = cesiumProps.radius;
