@@ -1,5 +1,5 @@
 # angular2cesium
-[![CircleCI](https://circleci.com/gh/TGFTech/angular2cesium.svg?style=svg)](https://circleci.com/gh/TGFTech/angular2cesium)
+[![CircleCI](https://circleci.com/gh/TGFTech/angular2cesium.svg?style=shield)](https://circleci.com/gh/TGFTech/angular2cesium)
 [![npm version](https://img.shields.io/npm/v/angular2-cesium.svg?style=flat-square)](https://www.npmjs.com/package/angular2-cesium)
 
 Create map based applications using cesium and angular components.
