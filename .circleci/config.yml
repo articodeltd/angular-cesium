@@ -15,5 +15,8 @@ jobs:
       - run:
           name: Run Lint
           command: npm run lint
+      - run:
+          name: Run tests
+          command: npm run test
       - store_artifacts:
           path: ~/angular2cesium/artifacts
