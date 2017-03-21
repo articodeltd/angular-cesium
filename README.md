@@ -1,4 +1,7 @@
 # angular2cesium
+[![CircleCI](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg)](https://circleci.com/gh/TGFTech/angular2cesium)
+[![npm version](https://img.shields.io/npm/v/angular2-cesium.svg?style=flat-square)](https://www.npmjs.com/package/angular2-cesium)
+
 Create map based applications using cesium and angular components.
 Focusing on high performance with easy usage.
 
