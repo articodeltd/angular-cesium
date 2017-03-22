@@ -59,15 +59,37 @@ to `scripts` in `.angular-cli.json` file.
     $ npm start
     $ open http://localhost:8080
     ```
+  
+## Basic example
 
-## Usage
-Anuglar-Cesium allow you to write your cesium map application using angular components  
-#### Basic example
-
-+ In your HTML file use `ac-map` tag to show the map:
++ In your HTML file :
   ```html
-  <ac-map></ac-map>
+    <ac-map>
+        <ac-layer acFor="let plane of planes$" [show]="showTracks" [context]="this">
+            <ac-billboard-desc props="{
+                      image: plane.image,
+                      position: plane.position,
+                    }">
+            </ac-billboard-desc>
+            <ac-label-desc props="{
+                    position: plane.position,
+                    text: plane.name,
+            }">
+            </ac-label-desc>
+        </ac-layer>
+    </ac-map>
   ```
++ `ac-map` creates the map
++ `ac-layer` component represent an array of entities that will be displayed on the map.
+  + `acFor` attribute accepts an RxObserver `planes$` , `ac-layer` will subscribe to the observer
+  and will handle all updates for you. 
+  
++ Add descriptions components to determine which primitives to render, 
+  in our example: `ac-billboard` and `ac-label` .
+  + This example will render a billboard(icon) and label for each plane in the stream.
+  + `props` accepts the same member options as cesium corresponding class.
+  For example `ac-billborad-desc` accepts same members as [cesium Billboard](https://cesiumjs.org/refdoc.html).
+
 + Add to `style.css`:
   ```typescript
     @import url(/node_modules/cesium/Build/Cesium/Widgets/widgets.css);
@@ -79,37 +101,9 @@ Anuglar-Cesium allow you to write your cesium map application using angular comp
       overflow: hidden;
     }
   ```
-+ Add a `ac-layer` to represent an array of entities that will be displayed on the map.
-  + `acFor` attribute accepts an RxObserver `planes$` , `ac-layer` will subscribe to the observer
-  and will handle all updates for you. 
-  ```html
-  <ac-map>
-      <ac-layer acFor="let plane of planes$" [context]="this">
-       // ...
-      </ac-layer>
-  </ac-map>
-  ```
-+ Add descriptions components to determine which primitives to render
-  ```html
-  <ac-map>
-      <ac-layer acFor="let plane of planes$" [show]="showTracks" [context]="this">
-          <ac-billboard-desc props="{
-                    image: plane.image,
-                    position: track.position,
-                  }">
-          </ac-billboard-desc>
-          <ac-label-desc props="{
-                  position: plane.position,
-                  text: track.name,
-          }">
-          </ac-label-desc>
-      </ac-layer>
-  </ac-map>
-  ```
-  + This example will render an icon and a label for each plane in the stream.
-  + `props` accepts the same member options as cesium corresponding class.
-  For example `ac-biilborad-desc` accepts same members as [cesium Billboard](https://cesiumjs.org/refdoc.html).
-
+## Usage
+Anuglar-Cesium allow you to write your cesium map application using angular components
+##### more doc coming soon...
 # License
 [Mit License](https://opensource.org/licenses/MIT)
     
