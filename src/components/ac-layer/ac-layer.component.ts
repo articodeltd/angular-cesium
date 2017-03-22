@@ -16,7 +16,6 @@ import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-draw
 import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
 import { PointDrawerService } from '../../services/point-drawer/point-drawer.service';
 
-
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.
