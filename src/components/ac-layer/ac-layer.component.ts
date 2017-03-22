@@ -82,7 +82,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            staticPolylineDrawerService: StaticPolylineDrawerService,
 	            polygonDrawerService: PolygonDrawerService,
 	            arcDrawerService: ArcDrawerService,
-				pointDraweeSrvice: PointDrawerService) {
+	            pointDraweeSrvice: PointDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,

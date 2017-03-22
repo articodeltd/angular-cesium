@@ -19,7 +19,6 @@ import { DynamicCircleLayerComponent } from './layers/dynamic-circle-layer/dynam
 import { SymbologyLayerComponent } from './layers/symbology-layer/symbology-layer.component';
 import { PointLayerComponent } from './layers/point-layer/point-layer.component';
 
-
 @NgModule({
 	declarations: [
 		AppComponent,

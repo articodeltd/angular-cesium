@@ -24,7 +24,6 @@ import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.compone
 import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
 import { AcPointDescComponent } from './components/ac-point-desc/ac-point-desc.component';
 
-
 @NgModule({
 	imports: [
 		CommonModule,
