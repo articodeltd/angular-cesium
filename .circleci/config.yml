@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:7.4.0
+    working_directory: ~/angular2cesium
+    steps:
+      - checkout
+      - run:
+          name: Pre-Dependencies
+          command: mkdir -p ~/angular2cesium/artifacts
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Run Lint
+          command: npm run lint
+      - run:
+          name: Run tests
+          command: npm run test
+      - store_artifacts:
+          path: ~/angular2cesium/artifacts

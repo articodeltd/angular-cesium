@@ -3,6 +3,7 @@ config/
 node_modules/
 documentation/
 demo/
+.circleci/
 
 # ignore the .ts files
 src/*.ts
