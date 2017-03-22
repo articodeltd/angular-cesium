@@ -8,6 +8,7 @@ import { PlonterService } from '../../services/plonter/plonter.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
+import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 
 /**
  * This is a map implementation.
@@ -23,7 +24,7 @@ import { LabelDrawerService } from '../../services/label-drawer/label-drawer.ser
 	selector: 'ac-map',
 	template: '<ng-content></ng-content>',
 	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
-	LayerService, ComputationCache, LabelDrawerService]
+	LayerService, ComputationCache, LabelDrawerService, DynamicPolylineDrawerService]
 })
 export class AcMapComponent implements OnInit {
 
