@@ -13,6 +13,11 @@ export class BasicDesc implements OnInit {
 	@Input()
 	props: any;
 
+	@Input()
+	isOnMap: boolean = false;
+
+	private selfPrimitive: any;
+
 	protected _primitiveMap = new Map();
 
 	private _propsEvaluateFn: Function;
@@ -28,6 +33,10 @@ export class BasicDesc implements OnInit {
 	}
 
 	ngOnInit(): void {
+		if (this.isOnMap) {
+			this.drawOnMap();
+			return;
+		}
 		this._layerService.registerDescription(this);
 		this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
 		this._drawer.setPropsAssigner(this._cesiumProperties.createAssigner(this.props));
@@ -54,5 +63,13 @@ export class BasicDesc implements OnInit {
 	removeAll() {
 		this._primitiveMap.clear();
 		this._drawer.removeAll();
+	}
+
+	drawOnMap() {
+		return this.selfPrimitive = this._drawer.add(this.props);
+	}
+
+	removeFromMap() {
+		return this._drawer.remove(this.selfPrimitive);
 	}
 }

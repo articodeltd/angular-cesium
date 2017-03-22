@@ -11,7 +11,7 @@ import { MapLayerProviderOptions } from '../../src/models/map-layer-provider-opt
 
 export class AppComponent implements OnInit {
 	arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
-
+	position = Cesium.Cartesian3.fromDegrees(34.0, 32.0);
 	constructor() {
 	}
 
