@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
 	position = Cesium.Cartesian3.fromDegrees(34.0, 32.0);
 	positions = Cesium.Cartesian3.fromDegreesArray(
 		[
-			Math.floor(Math.random() * 50), Math.floor(Math.random() * 50),
-			Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)
+			34.1, 35.1,
+			35.1, 50.0,
 		]);
 	redMatirial = new Cesium.Material({
 		fabric : {
@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 			}
 		}
 	});
+	aquamarine = Cesium.Color.AQUAMARINE;
 
 	@ViewChild(AcLabelDescComponent) label: AcLabelDescComponent;
 	constructor() {

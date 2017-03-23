@@ -15,9 +15,17 @@
     <!--<event-test-layer (mouseMove)="form.setLongLat($event)"></event-test-layer>-->
     <!--<arc-layer #layer></arc-layer>-->
     <!--<symbology-layer #layer></symbology-layer>-->
-    <ac-label-desc #label [props]="{position: position, text: 'shilo', font: '15px sans-serif'}" [isOnMap]="true">
+    <ac-label-desc #label
+                   [props]="{position: position,
+                                text: 'shilo',
+                                font: '30px sans-serif',
+                                fillColor : aquamarine}"
+                   [isOnMap]="true">
     </ac-label-desc>
-    <ac-dynamic-polyline-desc #polyline [isOnMap]="true" [props]="{positions: positions, width: 3, material: redMatirial}">
+    <ac-dynamic-polyline-desc #polyline [isOnMap]="true"
+                              [props]="{positions: positions,
+                               width: 3,
+                                material: redMatirial}">
     </ac-dynamic-polyline-desc>
 </ac-map>
 <performance-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"
