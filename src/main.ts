@@ -1,4 +1,6 @@
 export * from './angular-cesium.module';
 export * from './models/index';
-export { AcLayerComponent } from './components/ac-layer/ac-layer.component';
-export { GeoUtilsService } from './services/geo-utils/geo-utils.service';
+export * from './components/index';
+export * from './services/index';
+export * from './pipes/pixel-offset/pixel-offset.pipe'
+export * from './decorators/layer-context.decorator';
