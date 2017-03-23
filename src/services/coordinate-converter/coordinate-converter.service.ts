@@ -1,23 +1,24 @@
+declare var Cesium;
 import { Injectable, Optional } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 
-let geodesy = require('geodesy');
-let UTM = geodesy.Utm;
-let LatLonEllipsoidal = geodesy.LatLonEllipsoidal;
+const geodesy = require('geodesy');
+const UTM = geodesy.Utm;
+const LatLonEllipsoidal = geodesy.LatLonEllipsoidal;
 
 /**
  *  Given different types of coordinates, we provide you a service converting those types to the most common other types.
  *  We are using the geodesy implementation of UTM conversion. see: https://github.com/chrisveness/geodesy.
  *  @example
  *   import { Component, OnInit } from '@angular/core';
-     import { CoordinateConverter } from 'angular2-cesium';
+ import { CoordinateConverter } from 'angular2-cesium';
 
-	 @Component({
+ @Component({
 		selector:'my-component',
 		template:'<div>{{showCartographic}}</div>',
 		providers:[CoordinateConverter]
 	})
-	 export class MyComponent implements OnInit {
+ export class MyComponent implements OnInit {
 		showCartographic;
 
 		constructor(private coordinateConverter:CoordinateConverter){
@@ -38,7 +39,7 @@ export class CoordinateConverter {
 			throw new Error('ANGULAR2-CESIUM - Cesium service should be provided in order to do screen position calculations');
 		}
 		else {
-			let camera = this.cesiumService.getViewer().camera;
+			const camera = this.cesiumService.getViewer().camera;
 
 			return camera.pickEllipsoid(screenPos);
 		}
@@ -68,11 +69,11 @@ export class CoordinateConverter {
 		return this.geodesyToCesiumObject(new UTM(zone, hemisphere, easting, northing).toLatLonE());
 	}
 
-	private geodesyToCesiumObject(geodesy) {
+	private geodesyToCesiumObject(geodesyRadians) {
 		return {
-			longitude: geodesy.lon,
-			latitude: geodesy.lat,
-			height: geodesy.height ? geodesy.height : 0
-		}
+			longitude: geodesyRadians.lon,
+			latitude: geodesyRadians.lat,
+			height: geodesyRadians.height ? geodesyRadians.height : 0
+		};
 	}
 }
