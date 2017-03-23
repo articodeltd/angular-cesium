@@ -38,6 +38,7 @@ export class AcMapComponent implements OnInit {
 
 	constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
 		const mapContainer = this.document.createElement('div');
+		mapContainer.style.height = '100%';
 		this._elemRef.nativeElement.appendChild(mapContainer);
 		this._cesiumService.init(mapContainer);
 	}

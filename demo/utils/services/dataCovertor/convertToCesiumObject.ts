@@ -1,10 +1,10 @@
 import { AcEntity } from '../../../../src/models/ac-entity';
-let oneAndOnlyMaterial = new Cesium.PerInstanceColorAppearance({
+const oneAndOnlyMaterial = new Cesium.PerInstanceColorAppearance({
 	translucent: false,
 	closed: true
 });
 
-let yellowMatirial = new Cesium.Material({
+const yellowMaterial = new Cesium.Material({
 	fabric : {
 		type : 'Color',
 		uniforms : {
@@ -13,7 +13,7 @@ let yellowMatirial = new Cesium.Material({
 	}
 });
 
-let redMatirial = new Cesium.Material({
+const redMaterial = new Cesium.Material({
 	fabric : {
 		type : 'Color',
 		uniforms : {
@@ -98,7 +98,7 @@ export function convertToCesiumObj(entity): any {
 				Math.floor(Math.random() * 50), Math.floor(Math.random() * 50),
 				Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)
 			]),
-		material: entity.id === 1 ? yellowMatirial : redMatirial
+		material: entity.id === 1 ? yellowMaterial : redMaterial
 	};
 
 	return AcEntity.create(entity);
