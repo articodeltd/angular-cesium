@@ -11,6 +11,10 @@ import { MapLayerProviderOptions } from '../../src/models/map-layer-provider-opt
 
 export class AppComponent implements OnInit {
 	arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
+	flyToOptions = {
+		duration: 2,
+		destination: Cesium.Cartesian3.fromDegrees(-117.16, 32.71, 15000.0),
+	};
 
 	constructor() {
 	}
