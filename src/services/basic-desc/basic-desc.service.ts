@@ -1,4 +1,4 @@
-import { OnInit, Input } from '@angular/core';
+import { OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
 import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
@@ -18,6 +18,8 @@ export class BasicDesc implements OnInit {
 
 	private selfPrimitive: any;
 
+	private selfPrimitiveIsDraw: boolean;
+
 	protected _primitiveMap = new Map();
 
 	private _propsEvaluateFn: Function;
@@ -34,12 +36,20 @@ export class BasicDesc implements OnInit {
 
 	ngOnInit(): void {
 		if (this.isOnMap) {
+			this.selfPrimitiveIsDraw = false;
 			this.drawOnMap();
 			return;
 		}
 		this._layerService.registerDescription(this);
 		this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
 		this._drawer.setPropsAssigner(this._cesiumProperties.createAssigner(this.props));
+	}
+
+	ngOnChanges(changes: SimpleChanges) {
+		const props = changes['props'];
+		if (props.currentValue !== props.previousValue) {
+			this.updateOnMap();
+		}
 	}
 
 	draw(context: any, id: number, entity: AcEntity): any {
@@ -66,10 +76,19 @@ export class BasicDesc implements OnInit {
 	}
 
 	drawOnMap() {
+		this.selfPrimitiveIsDraw =true;
 		return this.selfPrimitive = this._drawer.add(this.props);
 	}
 
 	removeFromMap() {
+		this.selfPrimitiveIsDraw = false;
 		return this._drawer.remove(this.selfPrimitive);
+	}
+
+	updateOnMap() {
+		if (this.selfPrimitiveIsDraw) {
+			this.removeFromMap();
+			this.drawOnMap();
+		}
 	}
 }
