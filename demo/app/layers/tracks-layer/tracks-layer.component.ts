@@ -6,6 +6,7 @@ import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.c
 import { MapEventsManagerService } from '../../../../src/services/map-events-mananger/map-events-manager';
 import { CesiumEvent } from '../../../../src/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../src/services/map-events-mananger/consts/pickOptions.enum';
+import { AcEntity } from "../../../../src/models/ac-entity";
 
 @Component({
     selector: 'tracks-layer',
@@ -18,6 +19,7 @@ export class TracksLayerComponent implements OnInit {
     tracks$: Observable<AcNotification>;
     Cesium = Cesium;
     showTracks = true;
+    private lastPickTrack;
 
     constructor(private mapEventsManager: MapEventsManagerService) {
     }
@@ -37,6 +39,7 @@ export class TracksLayerComponent implements OnInit {
                         }
                         acNotification.actionType = action;
                         acNotification.entity = this.convertToCesiumObj(acNotification.entity);
+                        acNotification.entity = AcEntity.create(acNotification.entity);
                         observer.next(acNotification);
                     });
             });
@@ -45,12 +48,19 @@ export class TracksLayerComponent implements OnInit {
         const observable = this.mapEventsManager.register({
             event: CesiumEvent.MOUSE_MOVE,
             pick: PickOptions.PICK_FIRST,
-            priority: 2
+            priority: 2,
         });
         observable.subscribe((event) => {
-            const track = event.entities[0];
-            track.picked = true;
-            this.layer.update({ entity: track, actionType: ActionType.ADD_UPDATE, id: track.id });
+            const track = event.entities !== null ? event.entities[0] : null;
+            if (this.lastPickTrack && (!track || track.id !== this.lastPickTrack.id)) {
+                this.lastPickTrack.picked = false;
+                this.layer.update({ entity: this.lastPickTrack, actionType: ActionType.ADD_UPDATE, id: this.lastPickTrack.id });
+            }
+            if (track && (!this.lastPickTrack || track.id !== this.lastPickTrack.id)) {
+                track.picked = true;
+                this.layer.update({ entity: track, actionType: ActionType.ADD_UPDATE, id: track.id });
+            }
+            this.lastPickTrack = track;
         });
     }
 

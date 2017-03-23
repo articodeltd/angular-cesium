@@ -2,8 +2,8 @@
     <ac-billboard-desc props="{
               image: track.image,
               position: track.position,
-              scale: track.scale,
-              color: track.color,
+              color: getTrackColor(track),
+              scale: 0.1,
               name: track.name,
               rotation: track.heading
             }">
