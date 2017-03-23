@@ -102,7 +102,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 
 		this.observable.merge(this._updateStream).subscribe((notification) => {
 			this._computationCache.clear();
-			this.context[this.entityName] = notification.entity;
+			this.context[this.entityName] = notification.entity; // TODO: BAD! we might have extra client data on entity
 			this.layerService.getDescriptions().forEach((descriptionComponent) => {
 				switch (notification.actionType) {
 					case ActionType.ADD_UPDATE:

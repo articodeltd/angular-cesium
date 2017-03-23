@@ -20,6 +20,7 @@ export class TracksLayerComponent implements OnInit {
     Cesium = Cesium;
     showTracks = true;
     private lastPickTrack;
+    private tracks = new Map<number, any>();
 
     constructor(private mapEventsManager: MapEventsManagerService) {
     }
@@ -38,8 +39,16 @@ export class TracksLayerComponent implements OnInit {
                             action = ActionType.DELETE;
                         }
                         acNotification.actionType = action;
-                        acNotification.entity = this.convertToCesiumObj(acNotification.entity);
-                        acNotification.entity = AcEntity.create(acNotification.entity);
+                        acNotification.entity = AcEntity.create(this.convertToCesiumObj(acNotification.entity));
+                        const entity = acNotification.entity;
+                        const track = this.tracks.get(acNotification.id);
+                        if (!this.tracks.has(acNotification.id)) {
+                            this.tracks.set(acNotification.id, entity);
+                        }
+                        else {
+                            Object.assign(track, entity);
+                            acNotification.entity = track;
+                        }
                         observer.next(acNotification);
                     });
             });
@@ -54,7 +63,11 @@ export class TracksLayerComponent implements OnInit {
             const track = event.entities !== null ? event.entities[0] : null;
             if (this.lastPickTrack && (!track || track.id !== this.lastPickTrack.id)) {
                 this.lastPickTrack.picked = false;
-                this.layer.update({ entity: this.lastPickTrack, actionType: ActionType.ADD_UPDATE, id: this.lastPickTrack.id });
+                this.layer.update({
+                    entity: this.lastPickTrack,
+                    actionType: ActionType.ADD_UPDATE,
+                    id: this.lastPickTrack.id
+                });
             }
             if (track && (!this.lastPickTrack || track.id !== this.lastPickTrack.id)) {
                 track.picked = true;
