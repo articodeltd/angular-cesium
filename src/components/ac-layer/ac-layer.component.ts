@@ -15,6 +15,8 @@ import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-dr
 import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
 import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
 import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/from';
 
 /**
  *  This is a ac-layer implementation.
@@ -117,18 +119,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 
 	private initValidParams() {
 		if (!this.context) {
-			throw new Error ('ac-layer: must initialize [context] ');
+			throw new Error('ac-layer: must initialize [context] ');
 		}
 
 		if (!AcLayerComponent.acForRgx.test(this.acFor)) {
 			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
-			+ 'instead received: ' + this.acFor);
+				+ 'instead received: ' + this.acFor);
 		}
 		const acForArr = this.acFor.split(' ');
 		this.observable = this.context[acForArr[3]];
 		this.entityName = acForArr[1];
 		if (!this.observable || !(this.observable instanceof Observable)) {
-			throw  new Error ('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
+			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
 	}
 

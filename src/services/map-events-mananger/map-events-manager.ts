@@ -10,6 +10,11 @@ import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { UtilsService } from '../../utils/utils.service';
 import { PlonterService } from '../plonter/plonter.service';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/merge';
+import 'rxjs/add/operator/switchMap';
 
 /**
  * Manages all map events. Notice events will run outside of Agular zone
