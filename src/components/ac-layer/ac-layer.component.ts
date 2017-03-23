@@ -15,6 +15,7 @@ import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-dr
 import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
 import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
 import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
+import { PointDrawerService } from '../../services/point-drawer/point-drawer.service';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/observable/from';
 
@@ -54,7 +55,7 @@ import 'rxjs/add/observable/from';
 	providers: [
 		LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
 		DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,
-		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService
+		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService, PointDrawerService
 	]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
@@ -82,7 +83,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            staticCircleDrawerService: StaticCircleDrawerService,
 	            staticPolylineDrawerService: StaticPolylineDrawerService,
 	            polygonDrawerService: PolygonDrawerService,
-	            arcDrawerService: ArcDrawerService) {
+	            arcDrawerService: ArcDrawerService,
+	            pointDraweeSrvice: PointDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,
@@ -92,7 +94,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			staticCircleDrawerService,
 			staticPolylineDrawerService,
 			polygonDrawerService,
-			arcDrawerService
+			arcDrawerService,
+			pointDraweeSrvice
 		);
 	}
 
