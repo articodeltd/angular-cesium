@@ -104,6 +104,14 @@ to `scripts` in `.angular-cli.json` file.
 ## Usage
 Anuglar-Cesium allow you to write your cesium map application using angular components
 ##### more doc coming soon...
+
+## Documents
++ Generate full documentation:
+    ```bash
+    $ npm run compileNserve-docs
+    ```
+    open  http://localhost:4200
+ 
 # License
 [Mit License](https://opensource.org/licenses/MIT)
     
