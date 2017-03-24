@@ -7,10 +7,10 @@ import { LabelDrawerService } from '../../services/label-drawer/label-drawer.ser
 
 /**
  *  This is a label implementation.
- *  The ac-label-desc element must be a child of ac-layer element.
+ *  The ac-label-desc element must be a child of ac-layer element or ac-map element.
  *  The properties of props are the same as the properties of label:
  *  https://cesiumjs.org/Cesium/Build/Documentation/Label.html
- *  __Usage :__
+ *  __Usage when the parent element is ac-layer:__
  *  ```
  *    &lt;ac-label-desc props="{
  *       position: track.position,
@@ -19,6 +19,16 @@ import { LabelDrawerService } from '../../services/label-drawer/label-drawer.ser
  *       font: '15px sans-serif'
  *    }"&gt;
  *    &lt;/ac-label-desc&gt;
+ *  ```
+ *  __Usage when the parnet element is ac-map:__
+ *  ```
+ *  &lt;ac-label-desc [props]="{position: position,
+ *                               text: 'labelText',
+ *                               font: '30px sans-serif',
+ *                               fillColor : aquamarine}"
+ *                    [isOnMap]="true"
+ *  &gt;
+ *  &lt;/ac-label-desc&gt;
  *  ```
  */
 
