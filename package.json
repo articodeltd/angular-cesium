@@ -23,8 +23,8 @@
     "bundle": "npm run cleanup && npm run lint && npm run ngc && npm run aot",
     "build": "rimraf dist && node_modules\\.bin\\webpack --config config/webpack.dev.js --progress --profile --bail",
     "test-server": "node demo/performance-server/server.js",
-    "compile-docs": "compodoc -p tsconfig.json -n \"Angular 2 Cesium\"",
-    "serve-docs": "compodoc -s",
+    "compile-docs": "compodoc -p src/tsconfig.json -n \"Angular 2 Cesium\"",
+    "serve-docs": "compodoc -s -r 4200",
     "compileNserve-docs": "npm run compile-docs && npm run serve-docs"
   },
   "peerDependencies": {

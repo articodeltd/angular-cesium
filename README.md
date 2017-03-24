@@ -61,6 +61,13 @@ to `scripts` in `.angular-cli.json` file.
     $ open http://localhost:8080
     ```
 
+## Documents
++ Generate full documentation:
+    ```bash
+    $ npm run compileNserve-docs
+    ```
+    open  http://localhost:4200
+ 
 # License
 [Mit License](https://opensource.org/licenses/MIT)
     
