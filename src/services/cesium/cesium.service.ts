@@ -98,4 +98,8 @@ export class CesiumService {
 	morphToColumbusView(duration = 2.0) {
 		this.getScene().morphToColumbusView(duration);
 	}
+
+	flyTo(options: any) {
+		this.getViewer().camera.flyTo(options);
+	}
 }
