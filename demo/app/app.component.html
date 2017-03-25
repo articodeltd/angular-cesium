@@ -23,10 +23,27 @@
                    [isOnMap]="true">
     </ac-label-desc>
     <ac-dynamic-polyline-desc #polyline [isOnMap]="true"
-                              [props]="{positions: positions,
+                              [props]="{positions: positions[0],
                                width: 3,
                                 material: redMatirial}">
     </ac-dynamic-polyline-desc>
+    <ac-dynamic-polyline-desc  [isOnMap]="true"
+                              [props]="{positions: positions[1],
+                               width: 3,
+                                material: redMatirial}">
+    </ac-dynamic-polyline-desc>
+    <ac-dynamic-ellipse-desc [isOnMap]="true"
+                             [props]="{
+                                        center: position,
+                                        semiMajorAxis:25000.0,
+                                        semiMinorAxis:40000.0,
+                                        rotation : 0.785398,
+                                        width:3,
+                                        granularity:0.03,
+                                        borderColor:[7,7,7,1]
+                             }"
+    >
+    </ac-dynamic-ellipse-desc>
 </ac-map>
 <performance-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"
 ></performance-form>

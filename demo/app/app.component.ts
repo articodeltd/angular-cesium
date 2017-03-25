@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocketSupplier';
 import { MapLayerProviderOptions } from '../../src/models/map-layer-provider-options.enum';
 import { AcLabelDescComponent } from '../../src/components/ac-label-desc/ac-label-desc.component';
-import { AcDynamicPolylineDescComponent } from '../../src/components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
 
 @Component({
 	selector: 'app-root',
@@ -14,14 +13,13 @@ import { AcDynamicPolylineDescComponent } from '../../src/components/ac-dynamic-
 export class AppComponent implements OnInit {
 	private arcGisMapServerProvider: MapLayerProviderOptions;
 	private position: any;
-	private positions: any;
+	private positions: any[] = new Array(2);
 	private redMatirial: any;
 	private aquamarine: any;
 	private longitude: number;
 	private latitude: number;
 
 	@ViewChild(AcLabelDescComponent) label: AcLabelDescComponent;
-	@ViewChild(AcDynamicPolylineDescComponent) polyline: AcDynamicPolylineDescComponent;
 
 	constructor() {
 	}
@@ -31,10 +29,15 @@ export class AppComponent implements OnInit {
 		this.latitude = 0.1;
 		this.arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
 		this.position = Cesium.Cartesian3.fromDegrees(34.0, 32.0);
-		this.positions = Cesium.Cartesian3.fromDegreesArray(
+		this.positions[0] = Cesium.Cartesian3.fromDegreesArray(
 			[
 				34.1, 35.1,
 				this.longitude, this.latitude
+			]);
+		this.positions[1] = Cesium.Cartesian3.fromDegreesArray(
+			[
+				1.1, 1.1,
+				40.0, 40.0
 			]);
 		this.redMatirial = new Cesium.Material({
 			fabric: {
@@ -50,7 +53,7 @@ export class AppComponent implements OnInit {
 			this.label.removeFromMap();
 		}, 10000);
 		setInterval(() => {
-			this.positions = Cesium.Cartesian3.fromDegreesArray(
+			this.positions[0] = Cesium.Cartesian3.fromDegreesArray(
 				[
 					34.1, 35.1,
 					++this.longitude, ++this.latitude

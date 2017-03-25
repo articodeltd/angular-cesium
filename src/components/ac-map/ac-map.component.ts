@@ -9,6 +9,7 @@ import { LayerService } from '../../services/layer-service/layer-service.service
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
 import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
 
 /**
  * This is a map implementation.
@@ -24,7 +25,7 @@ import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-dr
 	selector: 'ac-map',
 	template: '<ng-content></ng-content>',
 	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
-	LayerService, ComputationCache, LabelDrawerService, DynamicPolylineDrawerService]
+	LayerService, ComputationCache, LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService]
 })
 export class AcMapComponent implements OnInit {
 
