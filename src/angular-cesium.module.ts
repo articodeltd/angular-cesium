@@ -22,7 +22,16 @@ import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-des
 import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
 import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
 import { AcPointDescComponent } from './components/ac-point-desc/ac-point-desc.component';
-
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/merge';
+import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/publish';
+import 'rxjs/add/operator/mergeMap';
 @NgModule({
 	imports: [
 		CommonModule,
