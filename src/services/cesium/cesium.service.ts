@@ -1,4 +1,3 @@
-declare var Cesium;
 import { Injectable, NgZone } from '@angular/core';
 import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
 
