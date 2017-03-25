@@ -106,7 +106,7 @@ Anuglar-Cesium allow you to write your cesium map application using angular comp
 ##### more coming soon...
 
 ## Documents
-+ ##### Check out our api [Docs](https://tgftech.github.io/angular2cesium/)   (beta)
++ #### Check out our api [Docs](https://tgftech.github.io/angular2cesium/)   (beta)
  
 # License
 [Mit License](https://opensource.org/licenses/MIT)
