@@ -8,14 +8,25 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 /**
  *  This is a dynamic(position is updatable) implementation of an polyline.
  *  The ac-dynamic-polyline-desc element must be a child of ac-layer element.
- *  Usage :
- *  @example
- *    <ac-dynamic-polyline-desc props="{
- *                         width : polyline.width, //optional
- *                         positions: polyline.positions,
- *                         material: polyline.material //optional
- *                        }">
- *</ac-dynamic-polyline-desc>
+ *  __Usage when the parent element is ac-layer:__
+ *  ```
+ *    &lt;ac-dynamic-polyline-desc props="{width : polyline.width, //optional
+ *                                      positions: polyline.positions,
+ *                                      material: polyline.material //optional
+ *                                      }"
+ *    &gt;
+ *    &lt;/ac-dynamic-polyline-desc&gt;
+ * ```
+ *  __Usage when the parent element is ac-map:__
+ *  ```
+ *    &lt;ac-dynamic-polyline-desc [props]="{positions: positions,
+ *                                          width: 3,
+ *                                          material: redMatirial}"
+ *                                 [isOnMap]="true"
+ *    &gt;
+ *    &lt;/ac-dynamic-polyline-desc&gt;
+ * ```
+
  */
 @Component({
 	selector: 'ac-dynamic-polyline-desc',
