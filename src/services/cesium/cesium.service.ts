@@ -1,4 +1,3 @@
-declare var Cesium;
 import { Injectable, NgZone } from '@angular/core';
 import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
 
@@ -97,5 +96,9 @@ export class CesiumService {
 	 */
 	morphToColumbusView(duration = 2.0) {
 		this.getScene().morphToColumbusView(duration);
+	}
+
+	flyTo(options: any) {
+		this.getViewer().camera.flyTo(options);
 	}
 }
