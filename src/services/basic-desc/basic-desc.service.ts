@@ -9,7 +9,7 @@ import { AcEntity } from '../../models/ac-entity';
  *  the ancestor class for creating components.
  *  extend this class to create desc component.
  */
-export class BasicDesc implements OnInit{
+export class BasicDesc implements OnInit {
 	@Input()
 	props: any;
 

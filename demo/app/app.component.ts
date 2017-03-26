@@ -38,11 +38,6 @@ export class AppComponent implements OnInit {
 				34.1, 35.1,
 				this.longitude, this.latitude
 			]);
-		this.positions[1] = Cesium.Cartesian3.fromDegreesArray(
-			[
-				1.1, 1.1,
-				40.0, 40.0
-			]);
 		this.redMatirial = new Cesium.Material({
 			fabric: {
 				type: 'Color',

@@ -10,7 +10,7 @@ import { LabelDrawerService } from '../../services/label-drawer/label-drawer.ser
  *  The ac-label-desc element must be a child of ac-layer element.
  *  The properties of props are the same as the properties of label:
  *  https://cesiumjs.org/Cesium/Build/Documentation/Label.html
- *  __Usage:__
+ *  __Usage :__
  *  ```
  *    &lt;ac-label-desc props="{
  *       position: track.position,

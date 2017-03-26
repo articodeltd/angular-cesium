@@ -5,8 +5,6 @@ import { BillboardDrawerService } from '../../services/billboard-drawer/billboar
 import { MapEventsManagerService } from '../../services/map-events-mananger/map-events-manager';
 import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-event-builder';
 import { PlonterService } from '../../services/plonter/plonter.service';
-import { LayerService } from '../../services/layer-service/layer-service.service';
-import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
 import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
@@ -25,7 +23,7 @@ import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynam
 	selector: 'ac-map',
 	template: '<ng-content></ng-content>',
 	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
-	LayerService, ComputationCache, LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService]
+	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService]
 })
 export class AcMapComponent implements OnChanges, OnInit {
 	private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
