@@ -99,6 +99,7 @@
     "angular2parse": "^1.0.4",
     "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",
+    "lodash.findindex": "^4.6.0",
     "primitive-primitives": "0.0.5"
   }
 }
