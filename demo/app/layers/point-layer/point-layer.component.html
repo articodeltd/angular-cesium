@@ -1,0 +1,10 @@
+<ac-layer acFor="let point of points$" [context]="this" [show]="show">
+    <ac-point-desc
+        props = "{
+            width : point.point.pixelSize,
+            position: point.point.position,
+            color: point.point.color
+        }"
+    >
+    </ac-point-desc>
+</ac-layer>

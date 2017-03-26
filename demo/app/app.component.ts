@@ -12,6 +12,10 @@ import { AcLabelDescComponent } from '../../src/components/ac-label-desc/ac-labe
 
 export class AppComponent implements OnInit {
 	private arcGisMapServerProvider: MapLayerProviderOptions;
+	flyToOptions = {
+		duration: 2,
+		destination: Cesium.Cartesian3.fromDegrees(-117.16, 32.71, 15000.0),
+	};
 	private position: any;
 	private positions: any[] = new Array(2);
 	private redMatirial: any;

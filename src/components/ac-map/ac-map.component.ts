@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Inject, Input } from '@angular/core';
+import { Component, OnChanges, OnInit, ElementRef, Inject, Input, SimpleChanges } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
@@ -27,8 +27,7 @@ import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynam
 	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
 	LayerService, ComputationCache, LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService]
 })
-export class AcMapComponent implements OnInit {
-
+export class AcMapComponent implements OnChanges, OnInit {
 	private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
 	private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
 	private static readonly DEFAULT_TILT_ENABLE = true;
@@ -42,6 +41,9 @@ export class AcMapComponent implements OnInit {
 	@Input()
 	enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
 
+	@Input()
+	flyTo: any;
+
 	constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
 		const mapContainer = this.document.createElement('div');
 		this._elemRef.nativeElement.appendChild(mapContainer);
@@ -54,4 +56,9 @@ export class AcMapComponent implements OnInit {
 		this._cesiumService.setEnableTilt(this.enableTilt);
 	}
 
+	ngOnChanges(changes: SimpleChanges): void {
+		if (changes['flyTo']) {
+			this._cesiumService.flyTo(changes['flyTo'].currentValue);
+		}
+	}
 }
