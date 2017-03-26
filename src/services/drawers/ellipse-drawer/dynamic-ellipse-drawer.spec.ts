@@ -1,8 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { DynamicEllipseDrawerService } from './dynamic-ellipse-drawer.service';
 import { mock, when, instance, verify, anything } from 'ts-mockito';
-import { CesiumService } from '../cesium/cesium.service';
-import { providerFromMock } from '../../utils/testingUtils';
+import { CesiumService } from '../../cesium/cesium.service';
+import { providerFromMock } from '../../../utils/testingUtils';
 
 describe('DynamicEllipseDrawerService', () => {
 	let ellipseProps;

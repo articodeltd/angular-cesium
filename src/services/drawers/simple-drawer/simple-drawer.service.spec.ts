@@ -1,9 +1,9 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { Injectable } from '@angular/core';
 import { mock, when, instance, verify, anything } from 'ts-mockito';
-import { providerFromMock } from '../../utils/testingUtils';
+import { providerFromMock } from '../../../utils/testingUtils';
 import { SimpleDrawerService } from './simple-drawer.service';
-import { CesiumService } from '../cesium/cesium.service';
+import { CesiumService } from '../../cesium/cesium.service';
 
 @Injectable()
 class SimpleDrawerServiceTestClass extends SimpleDrawerService {

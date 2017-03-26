@@ -1,4 +1,4 @@
-import { CesiumService } from '../cesium/cesium.service';
+import { CesiumService } from '../../cesium/cesium.service';
 
 /**
  *  This is abstract drawer who provides some implementation for other drawers that extends it.

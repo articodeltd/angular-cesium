@@ -1,6 +1,6 @@
 declare var Cesium;
 import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
-import { CesiumService } from '../cesium/cesium.service';
+import { CesiumService } from '../../cesium/cesium.service';
 
 export abstract class StaticPrimitiveDrawer extends SimpleDrawerService {
 	constructor(private geometryType: any, cesiumService: CesiumService) {

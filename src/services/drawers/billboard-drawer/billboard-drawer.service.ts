@@ -1,7 +1,7 @@
 declare var Cesium;
 import { Injectable } from '@angular/core';
 import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
-import { CesiumService } from '../cesium/cesium.service';
+import { CesiumService } from '../../cesium/cesium.service';
 
 /**
  *  This drawer is responsible for creating billboard component over the Cesium map.

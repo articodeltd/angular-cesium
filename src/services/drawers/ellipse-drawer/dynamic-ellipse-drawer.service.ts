@@ -1,9 +1,9 @@
+import { CesiumService } from '../../cesium/cesium.service';
 declare var Cesium;
 import { Injectable } from '@angular/core';
 import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
-import { CesiumService } from '../cesium/cesium.service';
-import { Checker } from '../../utils/checker';
 import { EllipsePrimitive } from 'primitive-primitives';
+import { Checker } from '../../../utils/checker';
 
 
 /**

@@ -2,8 +2,8 @@ import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 
 import { mock, when, instance, verify, anything } from 'ts-mockito';
 import { StaticPolylineDrawerService } from './static-polyline-drawer.service';
-import { CesiumService } from '../cesium/cesium.service';
-import { providerFromMock } from '../../utils/testingUtils';
+import { CesiumService } from '../../cesium/cesium.service';
+import { providerFromMock } from '../../../utils/testingUtils';
 
 describe('StaticPolylineDrawerService', () => {
 

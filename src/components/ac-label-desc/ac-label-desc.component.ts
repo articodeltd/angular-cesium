@@ -3,7 +3,7 @@ import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
-import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
+import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
 
 /**
  *  This is a label implementation.
