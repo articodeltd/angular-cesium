@@ -10,7 +10,7 @@ import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { UtilsService } from '../../utils/utils.service';
 import { PlonterService } from '../plonter/plonter.service';
 
-let findIndex = require('lodash.findindex');
+import * as _ from 'lodash';
 
 /**
  * Manages all map events. Notice events will run outside of Angular zone
@@ -132,7 +132,7 @@ export class MapEventsManagerService {
 	private triggerMultiPick(movement: any, event) {
 		const newPick = this.scene.pick(movement.endPosition);
 		if (newPick) {
-			const indexInArray = findIndex(this.multiPickEventMap.get(event), (entity) => {
+			const indexInArray = _.findIndex(this.multiPickEventMap.get(event), (entity) => {
 				return entity.primitive.acEntity.id === newPick.primitive.acEntity.id;
 			});
 			if (indexInArray === -1) {
