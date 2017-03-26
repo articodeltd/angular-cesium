@@ -1,14 +1,14 @@
-# angular2cesium
-[![CircleCI](https://circleci.com/gh/TGFTech/angular2cesium.svg?style=shield)](https://circleci.com/gh/TGFTech/angular2cesium)
-[![npm version](https://img.shields.io/npm/v/angular2-cesium.svg?style=flat-square)](https://www.npmjs.com/package/angular2-cesium)
+# Angular-Cesium
+[![CircleCI](https://circleci.com/gh/TGFTech/angular-cesium.svg?style=shield)](https://circleci.com/gh/TGFTech/angular-cesium)
+[![npm version](https://img.shields.io/npm/v/angular-cesium.svg?style=flat-square)](https://www.npmjs.com/package/angular-cesium)
 
 Create map based applications using cesium and angular components.
 Focusing on high performance with easy usage.
 
 ## Getting started
-+ install `angular2-cesium`:
++ install `angular-cesium`:
   ```bash
-  $ npm install --save angular2-cesium
+  $ npm install --save angular-cesium
   ```
   
 ##### Angular cli
@@ -50,10 +50,10 @@ to `scripts` in `.angular-cli.json` file.
 + Add `declare var Cesium;` to `typing.d.ts` file
 
 ## Demo
-+ You can try and learn about angular2-cesium from our demo:
++ You can try and learn about angular-cesium from our demo:
     ```
-    $ git clone https://github.com/TGFTech/angular2cesium.git
-    $ cd angular2cesium
+    $ git clone https://github.com/TGFTech/angular-cesium.git
+    $ cd angular-cesium
     $ npm install
     $ npm run test-server
     $ npm start
@@ -101,13 +101,9 @@ to `scripts` in `.angular-cli.json` file.
       overflow: hidden;
     }
   ```
-## Usage
-Anuglar-Cesium allow you to write your cesium map application using angular components
-##### more coming soon...
 
 ## Documents
-+ #### Check out our api [Docs](https://tgftech.github.io/angular2cesium/)   (beta)
++ #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   
  
 # License
 [Mit License](https://opensource.org/licenses/MIT)
-    
