@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 import { CesiumPureEventObserver } from './cesium-pure-event-observer';
 import { CesiumLongPressObserver } from './cesium-long-press-observer';
 import { ConnectableObservable } from 'rxjs/observable/ConnectableObservable';
-import 'rxjs/add/operator/publish';
 
 @Injectable()
 export class CesiumEventBuilder {

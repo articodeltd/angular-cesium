@@ -16,8 +16,6 @@ import { StaticPolylineDrawerService } from '../../services/static-polyline-draw
 import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
 import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
 import { PointDrawerService } from '../../services/point-drawer/point-drawer.service';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/observable/from';
 
 /**
  *  This is a ac-layer implementation.
