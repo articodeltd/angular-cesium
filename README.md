@@ -1,5 +1,5 @@
 # Angular-Cesium
-<img src="https://preview.ibb.co/cpDuwF/angular_cesium.png" alt="Drawing" style="width: 100px;margin:10"/>
+<img src="https://preview.ibb.co/cpDuwF/angular_cesium.png" width=150 alt="Drawing" style="margin:10"/>
 
 [![CircleCI](https://circleci.com/gh/TGFTech/angular-cesium.svg?style=shield)](https://circleci.com/gh/TGFTech/angular-cesium)
 [![npm version](https://img.shields.io/npm/v/angular-cesium.svg?style=flat-square)](https://www.npmjs.com/package/angular-cesium)
