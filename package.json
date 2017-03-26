@@ -1,17 +1,17 @@
 {
-  "name": "angular2-cesium",
-  "version": "0.0.2",
+  "name": "angular-cesium",
+  "version": "0.0.04",
   "license": "MIT",
-  "description": "Angular2 library for working with Cesium.",
-  "repository": "https://github.com/TGFTech/angular2cesium",
+  "description": "Angular library for working with Cesium.",
+  "repository": "https://github.com/TGFTech/angular-cesium",
   "keywords": [
     "Angular2",
     "Cesium",
     "Angular Cesium",
     "Angular2 Cesium"
   ],
-  "homepage": "https://github.com/TGFTech/angular2cesium#readme",
-  "main": "bundles/angular2-cesium.umd.js",
+  "homepage": "https://github.com/TGFTech/angular-cesium#readme",
+  "main": "bundles/angular-cesium.umd.js",
   "typings": "src/main.d.ts",
   "scripts": {
     "cleanup": "rimraf src/*.ngfactory.ts src/*.ngstyle.ts src/*.ngsummary.json build bundles",

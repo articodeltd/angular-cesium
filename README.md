@@ -107,4 +107,3 @@ to `scripts` in `.angular-cli.json` file.
  
 # License
 [Mit License](https://opensource.org/licenses/MIT)
-    
