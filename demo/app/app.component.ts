@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocketSupplier';
 import { MapLayerProviderOptions } from '../../src/models/map-layer-provider-options.enum';
 import { AcLabelDescComponent } from '../../src/components/ac-label-desc/ac-label-desc.component';
-import { AcDynamicPolylineDescComponent } from '../../src/components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
 
 @Component({
 	selector: 'app-root',
@@ -25,7 +24,6 @@ export class AppComponent implements OnInit {
 	private latitude: number;
 
 	@ViewChild(AcLabelDescComponent) label: AcLabelDescComponent;
-	@ViewChild(AcDynamicPolylineDescComponent) polyline: AcDynamicPolylineDescComponent;
 
 	constructor() {
 	}
