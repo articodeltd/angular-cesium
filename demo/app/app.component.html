@@ -5,9 +5,9 @@
                                 url : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
                             }">
     </ac-map-layer-provider>
-    <tracks-layer #layer></tracks-layer>
+    <!--<tracks-layer #layer></tracks-layer>-->
     <!--<ellipse-layer #layer></ellipse-layer>-->
-    <!--<dynamic-ellipse-layer #layer></dynamic-ellipse-layer>-->
+    <dynamic-ellipse-layer #layer></dynamic-ellipse-layer>
     <!--<ac-static-circle-layer #layer></ac-static-circle-layer>-->
     <!--<base-layer #layer></base-layer>-->
     <!--<static-polyline-layer #layer></static-polyline-layer>-->
@@ -17,7 +17,7 @@
     <!--<event-test-layer (mouseMove)="form.setLongLat($event)"></event-test-layer>-->
     <!--<arc-layer #layer></arc-layer>-->
     <!--<symbology-layer #layer></symbology-layer>-->
-    <!--<ac-label #label
+    <ac-label #label
                    [props]="{position: position,
                                 text: 'shilo',
                                 font: '30px sans-serif',
@@ -27,22 +27,15 @@
                                                     width: 3,
                                                     material: redMatirial}">
     </ac-polyline>
-    <ac-polyline [props]="{positions: positions[1],
-                                            width: 3,
-                                            material: redMatirial}">
-    </ac-polyline>-->
-<!--    <ac-dynamic-ellipse-desc [isOnMap]="true"
-                             [props]="{
-                                        center: position,
-                                        semiMajorAxis:25000.0,
-                                        semiMinorAxis:40000.0,
-                                        rotation : 0.785398,
-                                        width:3,
-                                        granularity:0.03,
-                                        borderColor:[7,7,7,1]
-                             }"
-    >
-    </ac-dynamic-ellipse-desc>-->
+    <ac-ellipse [props]="{
+                     center: position,
+                     semiMajorAxis:25000.0,
+                     semiMinorAxis:40000.0,
+                     rotation : 0.785398,
+                     width:3,
+                     granularity:0.03,
+                     color:[0,0,0,0.5]}">
+    </ac-ellipse>
 </ac-map>
 <performance-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"
 ></performance-form>
