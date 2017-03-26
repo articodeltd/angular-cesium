@@ -28,17 +28,17 @@
     "compileNserve-docs": "npm run compile-docs && npm run serve-docs"
   },
   "peerDependencies": {
-    "@angular/core": "2.4.x"
+    "@angular/core": "4.0.x"
   },
   "devDependencies": {
-    "@angular/common": "~2.4.0",
-    "@angular/compiler": "~2.4.0",
-    "@angular/compiler-cli": "~2.4.0",
-    "@angular/core": "~2.4.0",
-    "@angular/forms": "~2.4.0",
-    "@angular/http": "~2.4.0",
-    "@angular/platform-browser": "~2.4.0",
-    "@angular/platform-browser-dynamic": "~2.4.0",
+    "@angular/compiler-cli": "~4.0.0",
+    "@angular/common": "~4.0.0",
+    "@angular/compiler": "~4.0.0",
+    "@angular/core": "~4.0.0",
+    "@angular/forms": "~4.0.0",
+    "@angular/http": "~4.0.0",
+    "@angular/platform-browser": "~4.0.0",
+    "@angular/platform-browser-dynamic": "~4.0.0",
     "@types/jasmine": "2.5.46",
     "@types/node": "7.0.8",
     "@types/selenium-webdriver": "^3.0.0",
@@ -87,12 +87,12 @@
     "ts-helpers": "^1.1.1",
     "ts-mockito": "1.2.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.0.10",
+    "typescript": "~2.2.0",
     "webpack": "2.2.1",
     "webpack-dev-server": "2.4.1",
     "webpack-merge": "^3.0.0",
     "webpack-node-externals": "^1.5.4",
-    "zone.js": "^0.7.6"
+    "zone.js": "^0.8.4"
   },
   "dependencies": {
     "angular2parse": "^1.0.4",
