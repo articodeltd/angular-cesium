@@ -5,7 +5,7 @@
                                 url : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
                             }">
     </ac-map-layer-provider>
-    <!--<tracks-layer #layer></tracks-layer>-->
+    <tracks-layer #layer></tracks-layer>
     <!--<ellipse-layer #layer></ellipse-layer>-->
     <!--<dynamic-ellipse-layer #layer></dynamic-ellipse-layer>-->
     <!--<ac-static-circle-layer #layer></ac-static-circle-layer>-->
@@ -14,27 +14,24 @@
     <!--<dynamic-circle-layer #layer></dynamic-circle-layer>-->
     <!--<dynamic-polyline-layer #layer></dynamic-polyline-layer>-->
     <!--<point-layer></point-layer>-->
-    <event-test-layer (mouseMove)="form.setLongLat($event)"></event-test-layer>
+    <!--<event-test-layer (mouseMove)="form.setLongLat($event)"></event-test-layer>-->
     <!--<arc-layer #layer></arc-layer>-->
     <!--<symbology-layer #layer></symbology-layer>-->
-    <ac-label-desc #label
+    <!--<ac-label #label
                    [props]="{position: position,
                                 text: 'shilo',
                                 font: '30px sans-serif',
-                                fillColor : aquamarine}"
-                   [isOnMap]="true">
-    </ac-label-desc>
-    <ac-dynamic-polyline-desc #polyline [isOnMap]="true"
-                              [props]="{positions: positions[0],
-                               width: 3,
-                                material: redMatirial}">
-    </ac-dynamic-polyline-desc>
-    <ac-dynamic-polyline-desc  [isOnMap]="true"
-                              [props]="{positions: positions[1],
-                               width: 3,
-                                material: redMatirial}">
-    </ac-dynamic-polyline-desc>
-    <ac-dynamic-ellipse-desc [isOnMap]="true"
+                                fillColor : aquamarine}">
+    </ac-label>
+    <ac-polyline #polyline [props]="{positions: positions[0],
+                                                    width: 3,
+                                                    material: redMatirial}">
+    </ac-polyline>
+    <ac-polyline [props]="{positions: positions[1],
+                                            width: 3,
+                                            material: redMatirial}">
+    </ac-polyline>-->
+<!--    <ac-dynamic-ellipse-desc [isOnMap]="true"
                              [props]="{
                                         center: position,
                                         semiMajorAxis:25000.0,
@@ -45,7 +42,7 @@
                                         borderColor:[7,7,7,1]
                              }"
     >
-    </ac-dynamic-ellipse-desc>
+    </ac-dynamic-ellipse-desc>-->
 </ac-map>
 <performance-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"
 ></performance-form>

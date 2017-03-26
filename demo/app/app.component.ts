@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocketSupplier';
 import { MapLayerProviderOptions } from '../../src/models/map-layer-provider-options.enum';
-import { AcLabelDescComponent } from '../../src/components/ac-label-desc/ac-label-desc.component';
+import { AcLabelComponent } from '../../src/components/ac-label/ac-label.component';
 
 @Component({
 	selector: 'app-root',
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 	private longitude: number;
 	private latitude: number;
 
-	@ViewChild(AcLabelDescComponent) label: AcLabelDescComponent;
+	@ViewChild(AcLabelComponent) label: AcLabelComponent;
 
 	constructor() {
 	}
