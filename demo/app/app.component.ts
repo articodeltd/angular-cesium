@@ -13,6 +13,10 @@ import { AcDynamicPolylineDescComponent } from '../../src/components/ac-dynamic-
 
 export class AppComponent implements OnInit {
 	private arcGisMapServerProvider: MapLayerProviderOptions;
+	flyToOptions = {
+		duration: 2,
+		destination: Cesium.Cartesian3.fromDegrees(-117.16, 32.71, 15000.0),
+	};
 	private position: any;
 	private positions: any;
 	private redMatirial: any;

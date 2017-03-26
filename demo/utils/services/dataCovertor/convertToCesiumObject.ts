@@ -101,6 +101,12 @@ export function convertToCesiumObj(entity): any {
 		material: entity.id === 1 ? yellowMatirial : redMatirial
 	};
 
+	entity.point = {
+		pixelSize : 15,
+		color : new Cesium.Color(1.0, 1.0, 0.0, 1.0),
+		position : new Cesium.Cartesian3.fromDegrees(Math.floor(Math.random() * 50), Math.floor(Math.random() * 50))
+	};
+
 	return AcEntity.create(entity);
 }
 
