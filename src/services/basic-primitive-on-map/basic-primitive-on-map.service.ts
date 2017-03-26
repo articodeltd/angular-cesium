@@ -2,8 +2,7 @@ import { OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
 
 /**
- *  the ancestor class for creating components.
- *  extend this class to create desc component.
+ *  Extend this class to create drawing on map components.
  */
 export class BasicPrimitiveOnMap implements OnInit, OnChanges {
 	@Input()

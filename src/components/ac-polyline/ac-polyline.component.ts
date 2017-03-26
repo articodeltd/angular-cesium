@@ -3,17 +3,16 @@ import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic
 import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 
 /**
- *  This is a label implementation.
- *  The ac-label element must be a child ac-map element.
- *  The properties of props are the same as the properties of label:
- *  https://cesiumjs.org/Cesium/Build/Documentation/Label.html
+ *  This is a polyline implementation.
+ *  The ac-polyline element must be a child ac-map element.
  *  __Usage:__
- *  &lt;ac-label-desc [props]="{position: position,
+ *  ```
+ *  &lt;ac-polyline [props]="{position: position,
  *                               text: 'labelText',
  *                               font: '30px sans-serif',
  *                               fillColor : aquamarine}"
  *  &gt;
- *  &lt;/ac-label-desc&gt;
+ *  &lt;/ac-polyline&gt;
  *  ```
  */
 

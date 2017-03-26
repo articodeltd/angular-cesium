@@ -3,17 +3,19 @@ import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic
 import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
 
 /**
- *  This is a label implementation.
- *  The ac-label element must be a child ac-map element.
- *  The properties of props are the same as the properties of label:
- *  https://cesiumjs.org/Cesium/Build/Documentation/Label.html
+ *  This is a ellipse implementation.
+ *  The ac-ellipse element must be a child ac-map element.
  *  __Usage:__
- *  &lt;ac-label-desc [props]="{position: position,
- *                               text: 'labelText',
- *                               font: '30px sans-serif',
- *                               fillColor : aquamarine}"
+ *  ```
+ *  &lt;ac-ellipse [props]="{center: position,
+ *                           semiMajorAxis:25000.0,
+ *                           semiMinorAxis:40000.0,
+ *                           rotation : 0.785398,
+ *                           width:3,
+ *                           granularity:0.03,
+ *                           color:[0,0,0,0.5]}"
  *  &gt;
- *  &lt;/ac-label-desc&gt;
+ *  &lt;/ac-ellipse&gt;
  *  ```
  */
 

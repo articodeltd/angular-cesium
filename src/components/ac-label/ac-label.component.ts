@@ -8,12 +8,13 @@ import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic
  *  The properties of props are the same as the properties of label:
  *  https://cesiumjs.org/Cesium/Build/Documentation/Label.html
  *  __Usage:__
- *  &lt;ac-label-desc [props]="{position: position,
- *                               text: 'labelText',
- *                               font: '30px sans-serif',
- *                               fillColor : aquamarine}"
+ *  ```
+ *  &lt;ac-label [props]="{position: position,
+ *                         text: 'labelText',
+ *                         font: '30px sans-serif',
+ *                         fillColor : aquamarine}"
  *  &gt;
- *  &lt;/ac-label-desc&gt;
+ *  &lt;/ac-label&gt;
  *  ```
  */
 
