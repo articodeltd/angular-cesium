@@ -4,7 +4,7 @@
 [![CircleCI](https://circleci.com/gh/TGFTech/angular-cesium.svg?style=shield)](https://circleci.com/gh/TGFTech/angular-cesium)
 [![npm version](https://img.shields.io/npm/v/angular-cesium.svg?style=flat-square)](https://www.npmjs.com/package/angular-cesium)
 
-Create map based applications using cesium and angular components.
+Create map based applications using cesium and angular2 components.
 Focusing on high performance with easy usage.
 
 ## Getting started
