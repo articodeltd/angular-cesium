@@ -17,25 +17,7 @@
     <!--<event-test-layer (mouseMove)="form.setLongLat($event)"></event-test-layer>-->
     <!--<arc-layer #layer></arc-layer>-->
     <!--<symbology-layer #layer></symbology-layer>-->
-    <ac-label #label
-                   [props]="{position: position,
-                                text: 'shilo',
-                                font: '30px sans-serif',
-                                fillColor : aquamarine}">
-    </ac-label>
-    <ac-polyline #polyline [props]="{positions: positions[0],
-                                                    width: 3,
-                                                    material: redMatirial}">
-    </ac-polyline>
-    <ac-ellipse [props]="{
-                     center: position,
-                     semiMajorAxis:25000.0,
-                     semiMinorAxis:40000.0,
-                     rotation : 0.785398,
-                     width:3,
-                     granularity:0.03,
-                     color:[0,0,0,0.5]}">
-    </ac-ellipse>
+    <draw-on-map-layer></draw-on-map-layer>
 </ac-map>
 <performance-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"
 ></performance-form>
