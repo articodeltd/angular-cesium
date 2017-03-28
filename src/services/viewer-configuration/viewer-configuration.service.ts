@@ -15,13 +15,13 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class ViewerConfiguration {
-  private _viwerOptions: any;
+  private _viewerOptions: any;
 
-  get viwerOptions(): any {
-    return this._viwerOptions;
+  get viewerOptions(): any {
+    return this._viewerOptions;
   }
 
-  set viwerOptions(value: any) {
-    this._viwerOptions = value;
+  set viewerOptions(value: any) {
+    this._viewerOptions = value;
   }
 }

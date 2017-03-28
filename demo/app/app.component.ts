@@ -18,7 +18,7 @@ export class AppComponent {
 	};
 
 	constructor(viewerConf: ViewerConfiguration) {
-		viewerConf.viwerOptions = {
+		viewerConf.viewerOptions = {
 			geocoder: false,
 			timeline: false,
 		};

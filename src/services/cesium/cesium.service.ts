@@ -14,7 +14,7 @@ export class CesiumService {
 
 	init(mapContainer: HTMLElement) {
 		this.ngZone.runOutsideAngular(() => {
-			const options = this.viewConf ? this.viewConf.viwerOptions : undefined ;
+			const options = this.viewConf ? this.viewConf.viewerOptions : undefined ;
 			this.cesiumViewer = this.viewerFactory.createViewer(mapContainer, options);
 		});
 	}
