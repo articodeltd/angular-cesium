@@ -47,7 +47,8 @@ import { TracksDialogComponent } from './layers/tracks-layer/track-dialog/track-
     AngularCesiumModule,
     MaterialModule
   ],
-  bootstrap: [AppComponent, TracksDialogComponent]
+  entryComponents: [TracksDialogComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
