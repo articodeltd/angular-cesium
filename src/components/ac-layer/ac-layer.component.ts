@@ -14,7 +14,7 @@ import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-draw
 import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 import { StaticPolylineDrawerService } from '../../services/drawers/static-polyline-drawer/static-polyline-drawer.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
-import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
+import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 
 /**
