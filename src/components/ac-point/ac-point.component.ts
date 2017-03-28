@@ -8,9 +8,7 @@ import { PointDrawerService } from '../../services/point-drawer/point-drawer.ser
  *  __Usage:__
  *  ```
  *  &lt;ac-point [props]="{position: position,
- *                         text: 'labelText',
- *                         font: '30px sans-serif',
- *                         fillColor : aquamarine}"
+ *                         width: 3,
  *  &gt;
  *  &lt;/ac-point&gt;
  *  ```
