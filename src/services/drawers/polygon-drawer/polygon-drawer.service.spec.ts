@@ -1,8 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { PolygonDrawerService } from './polygon-drawer.service';
 import { mock, when, instance, verify, anything } from 'ts-mockito';
-import { CesiumService } from '../cesium/cesium.service';
-import { providerFromMock } from '../../utils/testingUtils';
+import { CesiumService } from '../../cesium/cesium.service';
+import { providerFromMock } from '../../../utils/testingUtils';
 
 describe('PolygonDrawerService', () => {
 	let geometryProps: any = {
