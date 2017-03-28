@@ -18,32 +18,36 @@ import { ArcLayerComponent } from './layers/arc-layer/arc-layer.component';
 import { DynamicCircleLayerComponent } from './layers/dynamic-circle-layer/dynamic-circle-layer.component';
 import { SymbologyLayerComponent } from './layers/symbology-layer/symbology-layer.component';
 import { PointLayerComponent } from './layers/point-layer/point-layer.component';
+import { MaterialModule } from '@angular/material';
+import { TracksDialogComponent } from './layers/tracks-layer/track-dialog/track-dialog.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		PerformanceFormComponent,
-		TracksLayerComponent,
-		BaseLayerComponent,
-		DynamicEllipseLayerComponent,
-		DynamicCircleLayerComponent,
-		EllipseLayerComponent,
-		DynamicPolylineLayerComponent,
-		StaticPolylineLayerComponent,
-		PolygonLayerComponent,
-		StaticCircleLayerComponent,
-		EventTestLayerComponent,
-		ArcLayerComponent,
-		SymbologyLayerComponent,
-		PointLayerComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		AngularCesiumModule
-	],
-	bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    PerformanceFormComponent,
+    TracksLayerComponent,
+    BaseLayerComponent,
+    DynamicEllipseLayerComponent,
+    DynamicCircleLayerComponent,
+    EllipseLayerComponent,
+    DynamicPolylineLayerComponent,
+    StaticPolylineLayerComponent,
+    PolygonLayerComponent,
+    StaticCircleLayerComponent,
+    EventTestLayerComponent,
+    ArcLayerComponent,
+    SymbologyLayerComponent,
+    PointLayerComponent,
+    TracksDialogComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AngularCesiumModule,
+    MaterialModule
+  ],
+  bootstrap: [AppComponent, TracksDialogComponent]
 })
 export class AppModule {
 }

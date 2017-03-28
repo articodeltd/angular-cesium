@@ -4,3 +4,4 @@
 @import "./monokai-sublime.css";
 @import "./font-awesome.min.css";
 @import "./compodoc.css";
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';

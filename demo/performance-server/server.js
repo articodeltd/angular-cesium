@@ -29,6 +29,13 @@ let intervalId;
 let dataChunk;
 let socket;
 
+const maxMovementDistance = 0.08 * interval/1000;
+const maxHeadingChange = Math.PI/4 * interval/1000;
+const maxAltitudeChange = 200 * interval/1000;
+const chanceToChangeDirection = 0.10 * interval/1000;
+
+let getSign = () => Math.round(Math.random()) * 2 - 1;
+
 io.on('connection', function (connectionSocket) {
   socket = connectionSocket;
   dataChunk = createChunk(numOfEntities);
@@ -102,17 +109,15 @@ function sendOneByOne() {
 }
 
 function updateChunk(dataArr) {
-  const distance = 0.08;
-  const headingMaxChange = Math.PI/10;
-  const chanceToChangeDirection = 0.20;
   for (let i = 0; i < dataArr.length; i++) {
     let entity = dataArr[i].entity;
     if(Math.random() <= chanceToChangeDirection){
-      entity.heading += (-1*headingMaxChange + Math.random()*2*headingMaxChange);
+      entity.heading += Math.random() * maxHeadingChange * getSign();
     }
 
-    entity.position.lat += Math.cos(entity.heading) * distance;
-    entity.position.long -= Math.sin(entity.heading) * distance;
+    entity.position.lat += Math.cos(entity.heading) * maxMovementDistance;
+    entity.position.long -= Math.sin(entity.heading) * maxMovementDistance;
+    entity.position.altitude += Math.random() * maxAltitudeChange * getSign();
   }
   return dataArr;
 }
@@ -120,20 +125,20 @@ function updateChunk(dataArr) {
 function createChunk(numOfEntities) {
   const data = [];
   for (let i = 0; i < numOfEntities; i++) {
-    let getSign = () =>
-    Math.round(Math.random()) * 2 - 1;
     data.push({
       id: i,
       action: 'ADD_OR_UPDATE',
       entity: {
         id: i,
-        name: 'bird' + i,
+        isTarget: i % 2 === 0,
+        name: 'track' + i,
         image: "/assets/fighter-jet.png",
         heading: Math.random()*2*Math.PI,
         lastDirectionChanged: 0,
         position: {
           lat: 60 * Math.random() * getSign(),
-          long: 100 * Math.random() * getSign()
+          long: 100 * Math.random() * getSign(),
+          altitude: 10000 * Math.random()
         }
       }
     });

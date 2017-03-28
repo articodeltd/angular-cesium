@@ -96,6 +96,7 @@
     "zone.js": "^0.6.23"
   },
   "dependencies": {
+    "@angular/material": "^2.0.0-beta.2",
     "angular2parse": "^1.0.4",
     "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",

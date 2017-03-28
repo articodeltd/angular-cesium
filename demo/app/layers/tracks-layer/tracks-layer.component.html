@@ -12,7 +12,16 @@
             position: track.position,
             pixelOffset : [-15,20] | pixelOffset,
             text: track.name,
-            font: '15px sans-serif'
+            font: '15px sans-serif',
+            fillColor: getTextColor(track)
+    }">
+    </ac-label-desc>
+    <ac-label-desc props="{
+            position: track.position,
+            pixelOffset : [-15,35] | pixelOffset,
+            text: track.altitude.toString(),
+            font: '15px sans-serif',
+            fillColor: getTextColor(track)
     }">
     </ac-label-desc>
 </ac-layer>

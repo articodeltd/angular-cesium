@@ -1,0 +1,7 @@
+.track-dialog{
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    background-color: rgba(60,60,60,0.8);
+    top: 10px;
+}
