@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, ElementRef, Inject, Input, SimpleChanges } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { CesiumService } from '../../services/cesium/cesium.service';
-import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
+import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import { MapEventsManagerService } from '../../services/map-events-mananger/map-events-manager';
 import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-event-builder';
 import { PlonterService } from '../../services/plonter/plonter.service';

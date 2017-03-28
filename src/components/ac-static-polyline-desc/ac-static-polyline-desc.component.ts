@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
+import { StaticPolylineDrawerService } from '../../services/drawers/static-polyline-drawer/static-polyline-drawer.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';

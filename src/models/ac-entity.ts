@@ -1,5 +1,5 @@
 /**
- * Angular2Cesium entity implementation.
+ * Angular Cesium parent entity, all entities should inherit from it.
  * @example
  * entity= AcEntity.create({
  *  	id: 0,

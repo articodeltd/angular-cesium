@@ -6,7 +6,7 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { mockProvider, providerFromMock } from '../../utils/testingUtils';
 import { AcLabelDescComponent } from './ac-label-desc.component';
-import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
+import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
 
 describe('AcLabelDescComponent', () => {
 	let component: AcLabelDescComponent;
