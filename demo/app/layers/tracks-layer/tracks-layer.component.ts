@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
