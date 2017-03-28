@@ -8,7 +8,7 @@
                                                     width: 3,
                                                     material: redMatirial}">
 </ac-polyline>
-<ac-ellipse [props]="{
+<!--<ac-ellipse [props]="{
                      center: position,
                      semiMajorAxis:50000.0,
                      semiMinorAxis:80000.0,
@@ -16,4 +16,9 @@
                      width:3,
                      granularity:0.03,
                      color:[0,1,0,0.5]}">
-</ac-ellipse>
+</ac-ellipse>-->
+<ac-point
+        [props] = "{
+            width: 3,
+            position: position}">
+</ac-point>

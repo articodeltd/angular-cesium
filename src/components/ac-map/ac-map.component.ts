@@ -8,6 +8,7 @@ import { PlonterService } from '../../services/plonter/plonter.service';
 import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
 import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { PointDrawerService } from '../../services/point-drawer/point-drawer.service';
 
 /**
  * This is a map implementation.
@@ -23,7 +24,7 @@ import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynam
 	selector: 'ac-map',
 	template: '<ng-content></ng-content>',
 	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
-	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService]
+	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService]
 })
 export class AcMapComponent implements OnChanges, OnInit {
 	private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
