@@ -172,9 +172,6 @@
                                     <a href="classes/StaticPrimitiveDrawer.html" >StaticPrimitiveDrawer</a>
                                 </li>
                                 <li class="link">
-                                    <a href="classes/UtilsModuleInjector.html" >UtilsModuleInjector</a>
-                                </li>
-                                <li class="link">
                                     <a href="classes/UtilsService.html" >UtilsService</a>
                                 </li>
                         </ul>
@@ -254,6 +251,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="injectables/StaticPolylineDrawerService.html" >StaticPolylineDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/ViewerFactory.html" >ViewerFactory</a>
@@ -478,9 +478,6 @@
                                            <a href="classes/StaticPrimitiveDrawer.html" >StaticPrimitiveDrawer</a>
                                        </li>
                                        <li class="link">
-                                           <a href="classes/UtilsModuleInjector.html" >UtilsModuleInjector</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="classes/UtilsService.html" >UtilsService</a>
                                        </li>
                                </ul>
@@ -562,6 +559,9 @@
                                            <a href="injectables/StaticPolylineDrawerService.html" >StaticPolylineDrawerService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="injectables/ViewerFactory.html" >ViewerFactory</a>
                                        </li>
                                </ul>
@@ -628,12 +628,13 @@
                </div>
                <div class="content readme">
                    <div class="content-data">
-<h1 id="angular2cesium">angular2cesium</h1>
-<p><a href="https://circleci.com/gh/TGFTech/angular2cesium"><img src="https://circleci.com/gh/TGFTech/angular2cesium.svg?style=shield" alt="CircleCI" class="img-responsive"></a><br><a href="https://www.npmjs.com/package/angular2-cesium"><img src="https://img.shields.io/npm/v/angular2-cesium.svg?style=flat-square" alt="npm version" class="img-responsive"></a></p>
-<p>Create map based applications using cesium and angular components.<br>Focusing on high performance with easy usage.</p>
+<h1 id="angular-cesium">Angular-Cesium</h1>
+<p><img src="https://preview.ibb.co/cpDuwF/angular_cesium.png" width=150 alt="Drawing" style="margin:10"/></p>
+<p><a href="https://circleci.com/gh/TGFTech/angular-cesium"><img src="https://circleci.com/gh/TGFTech/angular-cesium.svg?style=shield" alt="CircleCI" class="img-responsive"></a><br><a href="https://www.npmjs.com/package/angular-cesium"><img src="https://img.shields.io/npm/v/angular-cesium.svg?style=flat-square" alt="npm version" class="img-responsive"></a></p>
+<p>Create map based applications using cesium and angular2 components.<br>Focusing on high performance with easy usage.</p>
 <h2 id="getting-started">Getting started</h2>
 <ul>
-<li>install <code>angular2-cesium</code>:<pre><code class="hljs bash">$ npm install --save angular2-cesium</code></pre></li>
+<li>install <code>angular-cesium</code>:<pre><code class="hljs bash">$ npm install --save angular-cesium</code></pre></li>
 </ul>
 <h5 id="angular-cli">Angular cli</h5>
 <ul>
@@ -652,7 +653,7 @@
 </ul>
 <h2 id="demo">Demo</h2>
 <ul>
-<li>You can try and learn about angular2-cesium from our demo:<pre><code class="hljs undefined">  $ git clone https://github.com/TGFTech/angular2cesium.git<br>  $ cd angular2cesium<br>  $ npm install<br>  $ npm run test-server<br>  $ npm start<br>  $ open http://localhost:8080</code></pre></li>
+<li>You can try and learn about angular-cesium from our demo:<pre><code class="hljs undefined">  $ git clone https://github.com/TGFTech/angular-cesium.git<br>  $ cd angular-cesium<br>  $ npm install<br>  $ npm run test-server<br>  $ npm start<br>  $ open http://localhost:8080</code></pre></li>
 </ul>
 <h2 id="basic-example">Basic example</h2>
 <ul>
@@ -670,14 +671,12 @@
 </ul>
 </li>
 <li><p>Add to <code>style.css</code>:</p>
-<pre><code class="hljs typescript">  <span class="hljs-meta">@import</span> url(<span class="hljs-regexp">/node_modules/</span>cesium/Build/Cesium/Widgets/widgets.css);<br>  html, body, #cesiumContainer {<br>    width: <span class="hljs-number">100</span>%;<br>    height: <span class="hljs-number">100</span>%;<br>    margin: <span class="hljs-number">0</span>;<br>    padding: <span class="hljs-number">0</span>;<br>    overflow: hidden;<br>  }</code></pre><h2 id="usage">Usage</h2>
-<p>Anuglar-Cesium allow you to write your cesium map application using angular components</p>
-<h5 id="more-doc-coming-soon-">more doc coming soon...</h5>
-</li>
+<pre><code class="hljs typescript">  <span class="hljs-meta">@import</span> url(<span class="hljs-regexp">/node_modules/</span>cesium/Build/Cesium/Widgets/widgets.css);<br>  html, body, #cesiumContainer {<br>    width: <span class="hljs-number">100</span>%;<br>    height: <span class="hljs-number">100</span>%;<br>    margin: <span class="hljs-number">0</span>;<br>    padding: <span class="hljs-number">0</span>;<br>    overflow: hidden;<br>  }</code></pre></li>
 </ul>
 <h2 id="documents">Documents</h2>
 <ul>
-<li>Generate full documentation:<pre><code class="hljs bash">  $ npm run compileNserve-docs</code></pre>  open  <a href="http://localhost:4200">http://localhost:4200</a></li>
+<li><h4 id="check-out-our-api-docs-https-tgftech-github-io-angular-cesium-">Check out our api <a href="https://tgftech.github.io/angular-cesium/">Docs</a></h4>
+</li>
 </ul>
 <h1 id="license">License</h1>
 <p><a href="https://opensource.org/licenses/MIT">Mit License</a></p>

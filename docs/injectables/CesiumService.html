@@ -172,9 +172,6 @@
                                     <a href="../classes/StaticPrimitiveDrawer.html" >StaticPrimitiveDrawer</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/UtilsModuleInjector.html" >UtilsModuleInjector</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/UtilsService.html" >UtilsService</a>
                                 </li>
                         </ul>
@@ -254,6 +251,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/StaticPolylineDrawerService.html" >StaticPolylineDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>
@@ -478,9 +478,6 @@
                                            <a href="../classes/StaticPrimitiveDrawer.html" >StaticPrimitiveDrawer</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/UtilsModuleInjector.html" >UtilsModuleInjector</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/UtilsService.html" >UtilsService</a>
                                        </li>
                                </ul>
@@ -560,6 +557,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/StaticPolylineDrawerService.html" >StaticPolylineDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>
@@ -669,7 +669,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(ngZone: <a href="https://angular.io/docs/ts/latest/api/core/index/NgZone-class.html" target="_blank" >NgZone</a>, viewerFactory: <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>)</code>
+                                    <code>constructor(ngZone: <a href="https://angular.io/docs/ts/latest/api/core/index/NgZone-class.html" target="_blank" >NgZone</a>, viewerFactory: <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>, viewConf: <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>)</code>
                                 </td>
                             </tr>
             
@@ -1077,8 +1077,9 @@
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { Injectable, NgZone } from &#x27;@angular/core&#x27;;
+        <pre><code class="hljs javascript">import { Injectable, NgZone, Optional } from &#x27;@angular/core&#x27;;
 import { ViewerFactory } from &#x27;../viewer-factory/viewer-factory.service&#x27;;
+import { ViewerConfiguration } from &#x27;../viewer-configuration/viewer-configuration.service&#x27;;
 
 /**
  *  Service that initialize cesium viewer and expose cesium viewer and scene.
@@ -1087,12 +1088,13 @@ import { ViewerFactory } from &#x27;../viewer-factory/viewer-factory.service&#x2
 export class CesiumService {
 	private cesiumViewer: any;
 
-	constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory) {
+	constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory, @Optional() private viewConf: ViewerConfiguration) {
 	}
 
 	init(mapContainer: HTMLElement) {
 		this.ngZone.runOutsideAngular(() &#x3D;&gt; {
-			this.cesiumViewer &#x3D; this.viewerFactory.createViewer(mapContainer);
+			const options &#x3D; this.viewConf ? this.viewConf.viwerOptions : undefined ;
+			this.cesiumViewer &#x3D; this.viewerFactory.createViewer(mapContainer, options);
 		});
 	}
 
