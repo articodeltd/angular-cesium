@@ -7,7 +7,7 @@ import { CesiumProperties } from '../cesium-properties/cesium-properties.service
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { mock, anything, when, verify, resetCalls } from 'ts-mockito';
 import { providerFromMock, mockProvider } from '../../utils/testingUtils';
-import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
+import { SimpleDrawerService } from '../drawers/simple-drawer/simple-drawer.service';
 import { BasicDesc } from './basic-desc.service';
 
 @Component({

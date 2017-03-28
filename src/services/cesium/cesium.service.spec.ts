@@ -15,7 +15,7 @@ describe('CesiumService', () => {
 	const mode2D = Cesium.SceneMode.SCENE2D;
 	const modeColumbus = Cesium.SceneMode.COLUMBUS_VIEW;
 
-	when(viewerFactory.createViewer(anything())).thenReturn({
+	when(viewerFactory.createViewer(anything(),anything())).thenReturn({
 		scene: {
 			screenSpaceCameraController: {
 				minimumZoomDistance: defaultZooms,
