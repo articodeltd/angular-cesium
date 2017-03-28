@@ -11,8 +11,11 @@ import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { UtilsService } from '../../utils/utils.service';
 import { PlonterService } from '../plonter/plonter.service';
 
+import * as _ from 'lodash';
+
 /**
- * Manages all map events. Notice events will run outside of Agular zone
+ * Manages all map events. Notice events will run outside of Angular zone
+ * __Notice__: When using multi selection, if registering to the same event more then once, the array of picks will reset.
  * __usage:__
  * ```
  * MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
@@ -28,6 +31,12 @@ export class MapEventsManagerService {
 
 	private scene;
 	private eventRegistrations = new Map<string, Registration[]>();
+	private multiPickEventMap = new Map<CesiumEvent, Array<{}>>();
+	private triggerPickJson = {
+		'PICK_ONE': this.triggerPickFirst.bind(this),
+		'PICK_ALL': this.triggerPickAll.bind(this),
+		'MULTI_PICK': this.triggerMultiPick.bind(this)
+	};
 
 	constructor(cesiumService: CesiumService,
 	            private eventBuilder: CesiumEventBuilder,
@@ -48,6 +57,10 @@ export class MapEventsManagerService {
 		}
 
 		const eventName = CesiumEventBuilder.getEventFullName(input.event, input.modifier);
+
+		if (input.pick === PickOptions.MULTI_PICK) {
+			this.multiPickEventMap.set(input.event, [])
+		}
 
 		if (!this.eventRegistrations.has(eventName)) {
 			this.eventRegistrations.set(eventName, []);
@@ -84,11 +97,9 @@ export class MapEventsManagerService {
 		registrations.forEach((registration) => {
 			registration.isPaused = registration.priority < currentPriority;
 		});
-
 	}
 
-	private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier,
-	                                entityType, pickOption: PickOptions, priority: number): Registration {
+	private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier, entityType, pickOption: PickOptions, priority: number): Registration {
 		const cesiumEventObservable = this.eventBuilder.get(event, modifier);
 		const stopper = new Subject();
 
@@ -97,7 +108,7 @@ export class MapEventsManagerService {
 
 		observable = cesiumEventObservable
 			.filter(() => !registration.isPaused)
-			.map((movement) => this.triggerPick(movement, pickOption))
+			.map((movement) => this.triggerPick(movement, pickOption, event))
 			.filter((result) => result.primitives !== null)
 			.map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption))
 			.filter((result) => result.entities !== null)
@@ -108,23 +119,37 @@ export class MapEventsManagerService {
 		return registration;
 	}
 
-	private triggerPick(movement: any, pickOptions: PickOptions) {
-		let picks: any = [];
-		switch (pickOptions) {
-			case PickOptions.PICK_ONE:
-			case PickOptions.PICK_ALL:
-				picks = this.scene.drillPick(movement.endPosition);
-				picks = picks.length === 0 ? null : picks;
-				break;
-			case PickOptions.PICK_FIRST:
-				const pick = this.scene.pick(movement.endPosition);
-				picks = pick === undefined ? null : [pick];
-				break;
-			case PickOptions.NO_PICK:
-				break;
-			default:
-				break;
+	private triggerPick(movement: any, pickOption: PickOptions, event) {
+		return this.triggerPickJson[PickOptions[pickOption]](movement, event);
+	}
+
+	private triggerPickAll(movement: any) {
+		let picks = this.scene.drillPick(movement.endPosition);
+		picks = picks.length === 0 ? null : picks;
+
+		return {movement: movement, primitives: picks};
+	}
+
+	private triggerMultiPick(movement: any, event) {
+		const newPick = this.scene.pick(movement.endPosition);
+		if (newPick) {
+			const indexInArray = _.findIndex(this.multiPickEventMap.get(event), (entity) => {
+				return entity.primitive.acEntity.id === newPick.primitive.acEntity.id;
+			});
+			if (indexInArray === -1) {
+				this.multiPickEventMap.get(event).push(newPick);
+			}
+			else {
+				this.multiPickEventMap.get(event).splice(indexInArray, 1);
+			}
 		}
+
+		return {movement: movement, primitives: this.multiPickEventMap.get(event)};
+	}
+
+	private triggerPickFirst(movement: any) {
+		const pick = this.scene.pick(movement.endPosition);
+		const picks = pick === undefined ? null : [pick];
 
 		return {movement: movement, primitives: picks};
 	}
@@ -162,6 +187,7 @@ export interface EventResult {
 	primitives: any[];
 	entities: any[];
 }
+
 class Registration {
 	constructor(public observable: Observable<EventResult>,
 	            public  stopper: Subject<any>,
