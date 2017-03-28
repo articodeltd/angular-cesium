@@ -16,6 +16,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ViewerConfiguration {
   private _viewerOptions: any;
+  private _viewerModifier: Function;
 
   get viewerOptions(): any {
     return this._viewerOptions;
@@ -23,5 +24,13 @@ export class ViewerConfiguration {
 
   set viewerOptions(value: any) {
     this._viewerOptions = value;
+  }
+
+  set viewerModifier(value: Function) {
+    this._viewerModifier = value;
+  }
+
+  get viewerModifier(): Function {
+    return this._viewerModifier;
   }
 }

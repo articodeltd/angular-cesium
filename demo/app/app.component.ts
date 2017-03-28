@@ -19,8 +19,20 @@ export class AppComponent {
 
 	constructor(viewerConf: ViewerConfiguration) {
 		viewerConf.viewerOptions = {
-			geocoder: false,
+			selectionIndicator: false,
 			timeline: false,
+			infoBox: false,
+			baseLayerPicker: false,
+			animation: false,
+			homeButton: false,
+			geocoder: false,
+			navigationHelpButton: false,
+			navigationInstructionsInitiallyVisible: false,
+		};
+
+		viewerConf.viewerModifier = (viewer) => {
+			viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
+			viewer.bottomContainer.remove();
 		};
 	}
 

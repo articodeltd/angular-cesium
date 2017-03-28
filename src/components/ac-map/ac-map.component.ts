@@ -41,10 +41,10 @@ export class AcMapComponent implements OnChanges, OnInit {
 	private mapContainer: HTMLElement;
 
 	constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
-		const mapContainer = this.document.createElement('div');
-		this._elemRef.nativeElement.appendChild(mapContainer);
-        this.mapContainer.style.height = '100%';
-		this._cesiumService.init(mapContainer);
+		this.mapContainer = this.document.createElement('div');
+		this.mapContainer.style.height = '100%';
+		this._elemRef.nativeElement.appendChild(this.mapContainer);
+		this._cesiumService.init(this.mapContainer);
 	}
 
 	ngOnInit() {
