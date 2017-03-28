@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'track-dialog',
@@ -7,7 +7,10 @@ import { MdDialogRef } from '@angular/material';
   styleUrls: ['./track-dialog.component.css']
 })
 export class TracksDialogComponent implements OnInit {
-  constructor(public dialogRef: MdDialogRef<TracksDialogComponent>) {
+  public track;
+
+  constructor(public dialogRef: MdDialogRef<TracksDialogComponent>, @Inject(MD_DIALOG_DATA) public data: any) {
+    this.track = data.track;
   }
 
   ngOnInit(): void {

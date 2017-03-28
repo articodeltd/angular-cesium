@@ -95,7 +95,7 @@ export class TracksLayerComponent implements OnInit {
 
   openDialog(track) {
     this.dialog.closeAll();
-    this.dialog.open(TracksDialogComponent);
+    this.dialog.open(TracksDialogComponent, {data: {track}});
   }
 
   getTrackColor(track): any {
