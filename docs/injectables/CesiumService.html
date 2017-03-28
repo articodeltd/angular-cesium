@@ -229,9 +229,6 @@
                                     <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/LayerService.html" >LayerService</a>
                                 </li>
                                 <li class="link">
@@ -533,9 +530,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/LayerContextService.html" >LayerContextService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LayerService.html" >LayerService</a>
@@ -1047,10 +1041,28 @@
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>according to <a href="https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo">https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo</a></p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>options</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>void</code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1093,7 +1105,7 @@ export class CesiumService {
 
 	init(mapContainer: HTMLElement) {
 		this.ngZone.runOutsideAngular(() &#x3D;&gt; {
-			const options &#x3D; this.viewConf ? this.viewConf.viwerOptions : undefined ;
+			const options &#x3D; this.viewConf ? this.viewConf.viewerOptions : undefined ;
 			this.cesiumViewer &#x3D; this.viewerFactory.createViewer(mapContainer, options);
 		});
 	}
@@ -1179,6 +1191,10 @@ export class CesiumService {
 		this.getScene().morphToColumbusView(duration);
 	}
 
+	/**
+	 * according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter&#x3D;cam#flyTo
+	 * @param options
+	 */
 	flyTo(options: any) {
 		this.getViewer().camera.flyTo(options);
 	}

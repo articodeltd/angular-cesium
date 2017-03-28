@@ -229,9 +229,6 @@
                                     <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/LayerService.html" >LayerService</a>
                                 </li>
                                 <li class="link">
@@ -535,9 +532,6 @@
                                            <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../injectables/LayerService.html" >LayerService</a>
                                        </li>
                                        <li class="link">
@@ -839,56 +833,55 @@ import { ConnectableObservable } from &#x27;rxjs/observable/ConnectableObservabl
 
 @Injectable()
 export class CesiumEventBuilder {
-  public static getEventFullName(event: CesiumEvent, modifier?: CesiumEventModifier): string {
-    if (modifier) {
-      return &#x60;${event}_${modifier}&#x60;;
-    }
-    else {
-      return event.toString();
-    }
-  }
+	public static getEventFullName(event: CesiumEvent, modifier?: CesiumEventModifier): string {
+		if (modifier) {
+			return &#x60;${event}_${modifier}&#x60;;
+		}
+		else {
+			return event.toString();
+		}
+	}
 
-  public static longPressEvents: Set&lt;CesiumEvent&gt; &#x3D; new Set([
-    CesiumEvent.LONG_LEFT_PRESS,
-    CesiumEvent.LONG_RIGHT_PRESS,
-    CesiumEvent.LONG_MIDDLE_PRESS
-  ]);
+	public static longPressEvents: Set&lt;CesiumEvent&gt; &#x3D; new Set([
+		CesiumEvent.LONG_LEFT_PRESS,
+		CesiumEvent.LONG_RIGHT_PRESS,
+		CesiumEvent.LONG_MIDDLE_PRESS
+	]);
 
-  private eventsHandler: any;
-  private cesiumEventsObservables &#x3D; new Map&lt;string, ConnectableObservable&lt;any&gt;&gt;();
+	private eventsHandler: any;
+	private cesiumEventsObservables &#x3D; new Map&lt;string, ConnectableObservable&lt;any&gt;&gt;();
 
-  constructor(cesiumService: CesiumService) {
-    this.eventsHandler &#x3D; cesiumService.getViewer().screenSpaceEventHandler;
-  }
+	constructor(cesiumService: CesiumService) {
+		this.eventsHandler &#x3D; cesiumService.getViewer().screenSpaceEventHandler;
+	}
 
-  get(event: CesiumEvent, modifier: CesiumEventModifier &#x3D; undefined): ConnectableObservable&lt;any&gt; {
-    const eventName &#x3D; CesiumEventBuilder.getEventFullName(event, modifier);
-    if (this.cesiumEventsObservables.has(eventName)) {
-      return this.cesiumEventsObservables.get(eventName);
-    } else {
-      const eventObserver &#x3D; this.createCesiumEventObservable(event, modifier);
-      this.cesiumEventsObservables.set(eventName, eventObserver);
-      return eventObserver;
-    }
-  }
+	get(event: CesiumEvent, modifier: CesiumEventModifier &#x3D; undefined): ConnectableObservable&lt;any&gt; {
+		const eventName &#x3D; CesiumEventBuilder.getEventFullName(event, modifier);
+		if (this.cesiumEventsObservables.has(eventName)) {
+			return this.cesiumEventsObservables.get(eventName);
+		} else {
+			const eventObserver &#x3D; this.createCesiumEventObservable(event, modifier);
+			this.cesiumEventsObservables.set(eventName, eventObserver);
+			return eventObserver;
+		}
+	}
 
+	private createCesiumEventObservable(event: CesiumEvent, modifier?: CesiumEventModifier): ConnectableObservable&lt;any&gt; {
+		let cesiumEventObservable: ConnectableObservable&lt;any&gt; &#x3D; undefined;
+		if (CesiumEventBuilder.longPressEvents.has(event)) {
+			cesiumEventObservable &#x3D; this.createSpecialCesiumEventObservable(event, modifier);
+		}
+		else {
+			cesiumEventObservable &#x3D; new CesiumPureEventObserver(event, modifier).init(this.eventsHandler).publish();
+		}
+		cesiumEventObservable.connect();
+		return cesiumEventObservable;
+	}
 
-  private createCesiumEventObservable(event: CesiumEvent, modifier?: CesiumEventModifier): ConnectableObservable&lt;any&gt; {
-    let cesiumEventObservable: ConnectableObservable&lt;any&gt; &#x3D; undefined;
-    if (CesiumEventBuilder.longPressEvents.has(event)) {
-      cesiumEventObservable &#x3D; this.createSpecialCesiumEventObservable(event, modifier);
-    }
-    else {
-      cesiumEventObservable &#x3D; new CesiumPureEventObserver(event, modifier).init(this.eventsHandler).publish();
-    }
-    cesiumEventObservable.connect();
-    return cesiumEventObservable;
-  }
-
-  private createSpecialCesiumEventObservable(event: CesiumEvent, modifier: CesiumEventModifier): ConnectableObservable&lt;any&gt; {
-    // could support more events if needed
-    return new CesiumLongPressObserver(event, modifier, this).init();
-  }
+	private createSpecialCesiumEventObservable(event: CesiumEvent, modifier: CesiumEventModifier): ConnectableObservable&lt;any&gt; {
+		// could support more events if needed
+		return new CesiumLongPressObserver(event, modifier, this).init();
+	}
 }
 
 </code></pre>

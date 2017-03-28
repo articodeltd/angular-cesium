@@ -229,9 +229,6 @@
                                     <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/LayerService.html" >LayerService</a>
                                 </li>
                                 <li class="link">
@@ -535,9 +532,6 @@
                                            <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../injectables/LayerService.html" >LayerService</a>
                                        </li>
                                        <li class="link">
@@ -652,7 +646,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/services/point-drawer/point-drawer.service.ts</code>
+            <code>src/services/drawers/point-drawer/point-drawer.service.ts</code>
         </p>
 
             <p class="comment">
@@ -683,7 +677,7 @@
         <pre><code class="hljs javascript">declare var Cesium;
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { SimpleDrawerService } from &#x27;../simple-drawer/simple-drawer.service&#x27;;
-import { CesiumService } from &#x27;../cesium/cesium.service&#x27;;
+import { CesiumService } from &#x27;../../cesium/cesium.service&#x27;;
 
 /**
  *  This drawer is responsible for creating the dynamic version of the point component.

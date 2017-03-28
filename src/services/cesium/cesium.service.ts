@@ -100,6 +100,10 @@ export class CesiumService {
 		this.getScene().morphToColumbusView(duration);
 	}
 
+	/**
+	 * according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
+	 * @param options
+	 */
 	flyTo(options: any) {
 		this.getViewer().camera.flyTo(options);
 	}

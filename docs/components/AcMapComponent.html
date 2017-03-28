@@ -229,9 +229,6 @@
                                     <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/LayerService.html" >LayerService</a>
                                 </li>
                                 <li class="link">
@@ -535,9 +532,6 @@
                                            <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../injectables/LayerService.html" >LayerService</a>
                                        </li>
                                        <li class="link">
@@ -657,7 +651,7 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>This is a map implementation.<br>Every layer should be tag inside ac-map tag</p>
+        <p>This is a map implementation, creates the cesium map.<br>Every layer should be tag inside ac-map tag</p>
 
     </p>
 
@@ -728,6 +722,8 @@
                             <code>enableTilt</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>Sets the enableTilt of screenSpaceCameraController</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>boolean</code>
 
@@ -743,6 +739,8 @@
                             <code>flyTo</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>flyTo options according to <a href="https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo">https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo</a></p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>any</code>
 
@@ -758,6 +756,8 @@
                             <code>maximumZoom</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>in meters</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>number</code>
 
@@ -773,6 +773,8 @@
                             <code>minimumZoom</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>in meters</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>number</code>
 
@@ -862,13 +864,13 @@
             <pre><code class="hljs javascript">import { Component, OnChanges, OnInit, ElementRef, Inject, Input, SimpleChanges } from &#x27;@angular/core&#x27;;
 import { DOCUMENT } from &#x27;@angular/platform-browser&#x27;;
 import { CesiumService } from &#x27;../../services/cesium/cesium.service&#x27;;
-import { BillboardDrawerService } from &#x27;../../services/billboard-drawer/billboard-drawer.service&#x27;;
+import { BillboardDrawerService } from &#x27;../../services/drawers/billboard-drawer/billboard-drawer.service&#x27;;
 import { MapEventsManagerService } from &#x27;../../services/map-events-mananger/map-events-manager&#x27;;
 import { CesiumEventBuilder } from &#x27;../../services/map-events-mananger/cesium-event-builder&#x27;;
 import { PlonterService } from &#x27;../../services/plonter/plonter.service&#x27;;
 
 /**
- * This is a map implementation.
+ * This is a map implementation, creates the cesium map.
  * Every layer should be tag inside ac-map tag
  *
  * @example
@@ -887,15 +889,30 @@ export class AcMapComponent implements OnChanges, OnInit {
 	private static readonly DEFAULT_MAXIMUM_ZOOM &#x3D; Number.POSITIVE_INFINITY;
 	private static readonly DEFAULT_TILT_ENABLE &#x3D; true;
 
+	/**
+	 * in meters
+	 * @type {number}
+	 */
 	@Input()
 	minimumZoom: number &#x3D; AcMapComponent.DEFAULT_MINIMUM_ZOOM;
 
+	/**
+	 * in meters
+	 * @type {number}
+	 */
 	@Input()
 	maximumZoom: number &#x3D; AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
 
+	/**
+	 * Sets the enableTilt of screenSpaceCameraController
+	 * @type {boolean}
+	 */
 	@Input()
 	enableTilt: boolean &#x3D; AcMapComponent.DEFAULT_TILT_ENABLE;
 
+	/**
+	 * flyTo options according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter&#x3D;cam#flyTo
+	 */
 	@Input()
 	flyTo: any;
 

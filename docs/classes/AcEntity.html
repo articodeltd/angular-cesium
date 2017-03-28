@@ -229,9 +229,6 @@
                                     <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/LayerService.html" >LayerService</a>
                                 </li>
                                 <li class="link">
@@ -535,9 +532,6 @@
                                            <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../injectables/LayerService.html" >LayerService</a>
                                        </li>
                                        <li class="link">
@@ -661,8 +655,8 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Angular2Cesium entity implementation.</p>
-
+                <p>Angular Cesium parent entity, all entities should inherit from it.</p>
+<pre><code class="hljs typescript">entity= AcEntity.create({<br>      id: <span class="hljs-number">0</span>,<br>      name: <span class="hljs-string">'click me'</span>,<br>      position: Cesium.Cartesian3.fromRadians(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>),<br>});</code></pre>
             </p>
 
 
@@ -687,10 +681,29 @@
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>Creates entity from a json</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>json</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>void</code>
             
                                         </div>
+                                            <div class="io-description">
+                                                <p>entity</p>
+            
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -701,6 +714,12 @@
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
         <pre><code class="hljs javascript">export class AcEntity {
+
+	/**
+	 * Creates entity from a json
+	 * @param json
+	 * @returns {AcEntity} entity
+	 */
 	static create(json?: any) {
 		if (json) {
 			return Object.assign(new AcEntity(), json);

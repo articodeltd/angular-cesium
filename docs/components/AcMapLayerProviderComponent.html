@@ -229,9 +229,6 @@
                                     <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/LayerService.html" >LayerService</a>
                                 </li>
                                 <li class="link">
@@ -535,9 +532,6 @@
                                            <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/LayerContextService.html" >LayerContextService</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../injectables/LayerService.html" >LayerService</a>
                                        </li>
                                        <li class="link">
@@ -662,11 +656,6 @@
 <pre><code class="hljs undefined">   &lt;ac-map-layer-provider [options]="optionsObject" [provider]="myProvider"&gt;<br>   &lt;/ac-map-layer-provider&gt;</code></pre>
     </p>
 
-    <p class="comment">
-        <h3>Example</h3>
-    </p>
-    <div class="io-description">
-    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -707,6 +696,8 @@
                             <code>index</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>index (optional) - The index to add the layer at. If omitted, the layer will added on top of all existing layers.</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>Number</code>
 
@@ -722,6 +713,8 @@
                             <code>options</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>refer to cesium docs for details <a href="https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html">https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html</a></p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>{ url?: string; }</code>
 
@@ -737,6 +730,8 @@
                             <code>provider</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>the provider</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>MapLayerProviderOptions</code>
 
@@ -768,14 +763,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Static</span> createWebMapServiceProvider</b>
+                            <b><span class="modifier">Private</span> createWebMapServiceProvider</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play export">
-                                    <span class="fa fa-export"></span>
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
                                 </span>
                             <code>createWebMapServiceProvider(options: any)</code>
                         </td>
@@ -795,14 +790,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Static</span> createWebMapTileServiceProvider</b>
+                            <b><span class="modifier">Private</span> createWebMapTileServiceProvider</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play export">
-                                    <span class="fa fa-export"></span>
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
                                 </span>
                             <code>createWebMapTileServiceProvider(options: any)</code>
                         </td>
@@ -822,14 +817,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Static</span> createArcGisMapServerProvider</b>
+                            <b><span class="modifier">Private</span> createArcGisMapServerProvider</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play export">
-                                    <span class="fa fa-export"></span>
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
                                 </span>
                             <code>createArcGisMapServerProvider(options: any)</code>
                         </td>
@@ -849,14 +844,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Static</span> createOfflineMapProvider</b>
+                            <b><span class="modifier">Private</span> createOfflineMapProvider</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play export">
-                                    <span class="fa fa-export"></span>
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
                                 </span>
                             <code>createOfflineMapProvider()</code>
                         </td>
@@ -891,39 +886,48 @@ import { Checker } from &#x27;../../utils/checker&#x27;;
  *    &amp;lt;ac-map-layer-provider [options]&#x3D;&quot;optionsObject&quot; [provider]&#x3D;&quot;myProvider&quot;&amp;gt;
  *    &amp;lt;/ac-map-layer-provider&amp;gt;
  *  &#x60;&#x60;&#x60;
- *
- *  @param {Object} options - refer to cesium docs for details https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html
- *  @param {MapLayerProviderOptions} provider
- *  @param {Number} index (optional) - The index to add the layer at. If omitted, the layer will added on top of all existing layers.
  */
-
 @Component({
 	selector: &#x27;ac-map-layer-provider&#x27;,
 	template: &#x27;&#x27;,
 })
 export class AcMapLayerProviderComponent implements OnInit {
-	static createWebMapServiceProvider(options) {
+	private static createWebMapServiceProvider(options) {
 		return new Cesium.WebMapServiceImageryProvider(options);
 	}
 
-	static createWebMapTileServiceProvider(options) {
+	private static createWebMapTileServiceProvider(options) {
 		return new Cesium.WebMapTileServiceImageryProvider(options);
 	}
 
-	static createArcGisMapServerProvider(options) {
+	private static createArcGisMapServerProvider(options) {
 		return new Cesium.ArcGisMapServerImageryProvider(options);
 	}
 
-	static createOfflineMapProvider() {
+	private static createOfflineMapProvider() {
 		return Cesium.createTileMapServiceImageryProvider({
 			url: Cesium.buildModuleUrl(&#x27;Assets/Textures/NaturalEarthII&#x27;)
 		});
 	}
 
+	/**
+	 * refer to cesium docs for details https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html
+	 * @type {{Object}}
+	 */
 	@Input()
 	options: {url?: string} &#x3D; {};
+
+	/**
+	 * the provider
+	 * @type {MapLayerProviderOptions}
+	 */
 	@Input()
 	provider: MapLayerProviderOptions &#x3D; MapLayerProviderOptions.OFFLINE;
+
+	/**
+	 * index (optional) - The index to add the layer at. If omitted, the layer will added on top of all existing layers.
+	 * @type {Number}
+	 */
 	@Input()
 	index: Number;
 
