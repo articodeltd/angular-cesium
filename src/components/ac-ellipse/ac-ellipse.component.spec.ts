@@ -18,16 +18,13 @@ describe('AcEllipseComponent', () => {
         TestBed.configureTestingModule({
             declarations: [AcEllipseComponent],
             providers: [DynamicEllipseDrawerService,
-                        providerFromMock(CesiumService, cesiumService)]
+                providerFromMock(CesiumService, cesiumService)]
         })
-            .compileComponents();
-    }));
-
-    beforeEach(() => {
+	        .compileComponents();
         fixture = TestBed.createComponent(AcEllipseComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+
+    }));
 
     it('should create', () => {
         expect(component).toBeTruthy();
