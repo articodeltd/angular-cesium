@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
@@ -95,7 +95,15 @@ export class TracksLayerComponent implements OnInit {
 
   openDialog(track) {
     this.dialog.closeAll();
-    this.dialog.open(TracksDialogComponent, {data: {track}});
+    const trackObservable = this.getSingleTrackObservable(track.id);
+    const dialogUpdateStream = new Subject<AcNotification>();
+    trackObservable.merge(dialogUpdateStream);
+    this.dialog.open(TracksDialogComponent, { data: { trackObservable } });
+    dialogUpdateStream.next(track);
+  }
+
+  getSingleTrackObservable(trackId) {
+    return this.tracks$.filter((notification) => notification.id === trackId).map((notification) => notification.entity);
   }
 
   getTrackColor(track): any {
