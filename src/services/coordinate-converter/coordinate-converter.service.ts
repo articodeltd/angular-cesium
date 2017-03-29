@@ -1,4 +1,3 @@
-declare var Cesium;
 import { Injectable, Optional } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 

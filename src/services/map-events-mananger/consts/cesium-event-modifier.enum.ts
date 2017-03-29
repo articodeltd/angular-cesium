@@ -1,4 +1,4 @@
-declare var Cesium;
+;
 
 /**
  * EventModifier options for registration on map-event-manager.
