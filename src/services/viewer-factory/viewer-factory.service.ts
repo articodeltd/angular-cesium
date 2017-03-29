@@ -1,4 +1,4 @@
-declare var Cesium;
+;
 import { Injectable } from '@angular/core';
 
 @Injectable()
