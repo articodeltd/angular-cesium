@@ -19,19 +19,19 @@ import { Checker } from '../../utils/checker';
 	template: '',
 })
 export class AcMapLayerProviderComponent implements OnInit {
-	private static createWebMapServiceProvider(options) {
+	private createWebMapServiceProvider(options) {
 		return new Cesium.WebMapServiceImageryProvider(options);
 	}
 
-	private static createWebMapTileServiceProvider(options) {
+	private createWebMapTileServiceProvider(options) {
 		return new Cesium.WebMapTileServiceImageryProvider(options);
 	}
 
-	private static createArcGisMapServerProvider(options) {
+	private createArcGisMapServerProvider(options) {
 		return new Cesium.ArcGisMapServerImageryProvider(options);
 	}
 
-	private static createOfflineMapProvider() {
+	private createOfflineMapProvider() {
 		return Cesium.createTileMapServiceImageryProvider({
 			url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
 		});
@@ -70,18 +70,18 @@ export class AcMapLayerProviderComponent implements OnInit {
 
 		switch (this.provider) {
 			case MapLayerProviderOptions.WebMapService:
-				provider = AcMapLayerProviderComponent.createWebMapServiceProvider(this.options);
+				provider = this.createWebMapServiceProvider(this.options);
 				break;
 			case MapLayerProviderOptions.WebMapTileService:
-				provider = AcMapLayerProviderComponent.createWebMapTileServiceProvider(this.options);
+				provider = this.createWebMapTileServiceProvider(this.options);
 				break;
 			case MapLayerProviderOptions.ArcGisMapServer:
-				provider = AcMapLayerProviderComponent.createArcGisMapServerProvider(this.options);
+				provider = this.createArcGisMapServerProvider(this.options);
 				break;
 			case MapLayerProviderOptions.OFFLINE:
 				break;
 			default:
-				provider = AcMapLayerProviderComponent.createOfflineMapProvider();
+				provider = this.createOfflineMapProvider();
 				break;
 		}
 		this.cesiumService.getScene().imageryLayers.addImageryProvider(provider, this.index);
