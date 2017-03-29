@@ -1,4 +1,3 @@
-declare var Cesium;
 import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../../cesium/cesium.service';

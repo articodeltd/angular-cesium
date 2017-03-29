@@ -1,4 +1,3 @@
-declare var Cesium;
 import { Pipe, PipeTransform } from '@angular/core';
 
 /**

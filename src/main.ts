@@ -1,3 +1,5 @@
+/// <reference path="./typings.d.ts" />
+
 import './operators';
 export * from './angular-cesium.module';
 export * from './models';
