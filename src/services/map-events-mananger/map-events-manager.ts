@@ -50,7 +50,8 @@ export class MapEventsManagerService {
     input.priority = input.priority || 0;
 
     if (input.entityType && input.pick === PickOptions.NO_PICK) {
-      throw new Error('MapEventsManagerService: can\'t register an event with entityType and PickOptions.NO_PICK - It doesn\'t make sense ');
+      throw new Error('MapEventsManagerService: can\'t register an event ' +
+        'with entityType and PickOptions.NO_PICK - It doesn\'t make sense ');
     }
 
     const eventName = CesiumEventBuilder.getEventFullName(input.event, input.modifier);
