@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 import { PickOptions } from '../map-events-mananger/consts/pickOptions.enum';
 import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
-import {
-    EventRegistration
-    Input, MapEventsManagerService
-} from '../map-events-mananger/map-events-manager';
-import { EventRegistrationInput } from "../map-events-mananger/event-registration-input";
+import { EventResult, MapEventsManagerService } from '../map-events-mananger/map-events-manager';
+import { EventRegistrationInput } from '../map-events-mananger/event-registration-input';
+import { UtilsService } from '../../utils/utils.service';
 
 let findIndex = require('lodash.findindex');
 
@@ -29,7 +27,7 @@ export class MapSelectionService {
     private scene;
     private multiPickEventMap = new Map<CesiumEvent, Array<{}>>();
     private triggerPickJson = {
-        'PICK_ONE': this.triggerPickFirst.bind(this),
+        'PICK_FIRST': this.triggerPickFirst.bind(this),
         'PICK_ALL': this.triggerPickAll.bind(this),
         'MULTI_PICK': this.triggerMultiPick.bind(this)
     };
@@ -40,10 +38,21 @@ export class MapSelectionService {
     }
 
     select(input: EventRegistrationInput) {
+        if (input.pick === PickOptions.MULTI_PICK) {
+            this.multiPickEventMap.set(input.event, []);
+        }
+
+        return this.mapEventsManagerService.register(input)
+            .map((movement) => this.triggerPick(movement, input.pick, input.event))
+            .filter((result) => result.primitives !== null)
+            .map((picksAndMovement) => this.addEntities(picksAndMovement, input.entityType, input.pick))
+            .filter((result) => result.entities !== null);
     }
 
     private triggerPick(movement: any, pickOption: PickOptions, event) {
-        return this.triggerPickJson[PickOptions[pickOption]](movement, event);
+        if (PickOptions[pickOption]) {
+            return this.triggerPickJson[PickOptions[pickOption]](movement, event);
+        }
     }
 
     private triggerPickAll(movement: any) {

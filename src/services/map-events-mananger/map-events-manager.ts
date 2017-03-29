@@ -48,10 +48,6 @@ export class MapEventsManagerService {
 
         const eventName = CesiumEventBuilder.getEventFullName(input.event, input.modifier);
 
-        if (input.pick === PickOptions.MULTI_PICK) {
-            this.multiPickEventMap.set(input.event, []);
-        }
-
         if (!this.eventRegistrations.has(eventName)) {
             this.eventRegistrations.set(eventName, []);
         }
@@ -98,12 +94,8 @@ export class MapEventsManagerService {
 
         observable = cesiumEventObservable
             .filter(() => !registration.isPaused)
-            .map((movement) => this.triggerPick(movement, pickOption, event))
-            .filter((result) => result.primitives !== null)
-            .map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption))
-            .filter((result) => result.entities !== null)
-            .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption))
-            .takeUntil(stopper);
+            .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption));
+            // .takeUntil(stopper);
 
         registration.observable = observable;
         return registration;
