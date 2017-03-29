@@ -102,7 +102,7 @@ export class TracksLayerComponent implements OnInit {
     dialogUpdateStream.next(track);
   }
 
-  getSingleTrackObservable(trackId) {
+  getSingleTrackObservable(trackId) { // TODO: bug: makes track with mouse over to become invisible
     return this.tracks$.filter((notification) => notification.id === trackId).map((notification) => notification.entity);
   }
 
