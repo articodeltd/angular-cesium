@@ -47,12 +47,17 @@ module.exports = {
   },
   
   plugins: [
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)@angular/,
+      root.root('demo'),
+      {}
+    ),
     new webpack.optimize.CommonsChunkPlugin({
       name: [ 'app', 'vendor', 'polyfills' ]
     }),
     
     new HtmlWebpackPlugin({
       template: 'demo/index.html'
-    })
+    }),
   ]
 };
