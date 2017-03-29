@@ -13,39 +13,48 @@ import { Checker } from '../../utils/checker';
  *    &lt;ac-map-layer-provider [options]="optionsObject" [provider]="myProvider"&gt;
  *    &lt;/ac-map-layer-provider&gt;
  *  ```
- *
- *  @param {Object} options - refer to cesium docs for details https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html
- *  @param {MapLayerProviderOptions} provider
- *  @param {Number} index (optional) - The index to add the layer at. If omitted, the layer will added on top of all existing layers.
  */
-
 @Component({
 	selector: 'ac-map-layer-provider',
 	template: '',
 })
 export class AcMapLayerProviderComponent implements OnInit {
-	static createWebMapServiceProvider(options) {
+	private static createWebMapServiceProvider(options) {
 		return new Cesium.WebMapServiceImageryProvider(options);
 	}
 
-	static createWebMapTileServiceProvider(options) {
+	private static createWebMapTileServiceProvider(options) {
 		return new Cesium.WebMapTileServiceImageryProvider(options);
 	}
 
-	static createArcGisMapServerProvider(options) {
+	private static createArcGisMapServerProvider(options) {
 		return new Cesium.ArcGisMapServerImageryProvider(options);
 	}
 
-	static createOfflineMapProvider() {
+	private static createOfflineMapProvider() {
 		return Cesium.createTileMapServiceImageryProvider({
 			url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
 		});
 	}
 
+	/**
+	 * refer to cesium docs for details https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html
+	 * @type {{Object}}
+	 */
 	@Input()
 	options: {url?: string} = {};
+
+	/**
+	 * the provider
+	 * @type {MapLayerProviderOptions}
+	 */
 	@Input()
 	provider: MapLayerProviderOptions = MapLayerProviderOptions.OFFLINE;
+
+	/**
+	 * index (optional) - The index to add the layer at. If omitted, the layer will added on top of all existing layers.
+	 * @type {Number}
+	 */
 	@Input()
 	index: Number;
 

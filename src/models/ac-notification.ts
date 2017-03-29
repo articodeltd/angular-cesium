@@ -3,6 +3,7 @@ import { AcEntity } from './ac-entity';
 
 /**
  * Interface of  Angular2Cesium notification.
+ * ac-layer receives an observer of AcNotifications
  */
 export interface AcNotification {
 	id: number;
