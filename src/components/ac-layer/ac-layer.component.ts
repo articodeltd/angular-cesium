@@ -15,6 +15,7 @@ import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-dr
 import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
 import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
 import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
+import {HtmlDrawerService} from "../../services/html-drawer/html-drawer.service";
 
 /**
  *  This is a ac-layer implementation.
@@ -48,11 +49,11 @@ import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
  */
 @Component({
 	selector: 'ac-layer',
-	template: '',
+	template: '<ng-content></ng-content>',
 	providers: [
 		LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
 		DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,
-		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService
+		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService, HtmlDrawerService
 	]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
@@ -80,7 +81,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            staticCircleDrawerService: StaticCircleDrawerService,
 	            staticPolylineDrawerService: StaticPolylineDrawerService,
 	            polygonDrawerService: PolygonDrawerService,
-	            arcDrawerService: ArcDrawerService) {
+	            arcDrawerService: ArcDrawerService,
+				htmlDrawerService: HtmlDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,
@@ -90,7 +92,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			staticCircleDrawerService,
 			staticPolylineDrawerService,
 			polygonDrawerService,
-			arcDrawerService
+			arcDrawerService,
+			htmlDrawerService
 		);
 	}
 
@@ -124,12 +127,17 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
 			+ 'instead received: ' + this.acFor);
 		}
+
 		const acForArr = this.acFor.split(' ');
 		this.observable = this.context[acForArr[3]];
 		this.entityName = acForArr[1];
+
 		if (!this.observable || !(this.observable instanceof Observable)) {
 			throw  new Error ('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
+
+		this.layerService.setContext(this.context);
+		this.layerService.setEntityName(this.entityName);
 	}
 
 	ngAfterContentInit(): void {

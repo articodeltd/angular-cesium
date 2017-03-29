@@ -21,6 +21,10 @@ import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
 import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
 import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
+import { CesiumExtender } from './cesium-extender';
+import {AcHtmlDescComponent} from "./components/ac-html-dec/ac-html-desc.component";
+import {AcHtmlDirective} from "./directives/ac-html/ac-html.directive";
+import {acHtmlContainerDirective} from "./directives/ac-html-container/ac-html-container.directive";
 
 @NgModule({
 	imports: [
@@ -43,7 +47,10 @@ import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/
 		AcDynamicCircleDescComponent,
 		AcStaticPolylineDescComponent,
 		AcArcDescComponent,
-		AcMapLayerProviderComponent
+		AcMapLayerProviderComponent,
+		AcHtmlDescComponent,
+		AcHtmlDirective,
+		acHtmlContainerDirective
 	],
 	exports: [
 		AcMapComponent,
@@ -59,9 +66,13 @@ import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/
 		AcDynamicCircleDescComponent,
 		AcStaticPolylineDescComponent,
 		AcArcDescComponent,
-		AcMapLayerProviderComponent
+		AcMapLayerProviderComponent,
+		AcHtmlDescComponent
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })
 export class AngularCesiumModule {
+	constructor() {
+		CesiumExtender.extend();
+	}
 }

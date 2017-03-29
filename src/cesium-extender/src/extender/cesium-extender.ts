@@ -1,4 +1,3 @@
-import {Cesium} from "../cesium-ref/cesium-ref";
 import {HtmlPrimitive} from "../primitives";
 import {HtmlCollection} from "../collections";
 

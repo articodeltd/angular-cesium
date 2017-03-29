@@ -1,5 +1,4 @@
 import {Cartesian3, Cartesian2} from "../../types/cesium-types";
-import {Cesium} from "../../cesium-ref/cesium-ref";
 import {HtmlCollection} from "../../collections";
 
 export class HtmlPrimitive {

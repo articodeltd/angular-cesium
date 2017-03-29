@@ -1,0 +1,5 @@
+<div *acHtml="let acHtmlEntityId = id; let acHtmlContext = context">
+    <div [acHtmlContainer]="acHtmlEntityId">
+        <template [ngTemplateOutlet]="acHtmlTemplate" [ngOutletContext]="acHtmlContext"></template>
+    </div>
+</div>

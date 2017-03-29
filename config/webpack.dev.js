@@ -5,8 +5,9 @@ var root = require('./root-helper');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
-  devtool: 'cheap-module-eval-source-map',
-  
+  //devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
+
   output: {
     path: root.root('dist'),
     publicPath: '/',
