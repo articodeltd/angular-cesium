@@ -8,7 +8,6 @@
 export enum PickOptions {
 	NO_PICK,
 	PICK_FIRST,
-	PICK_ONE,
 	PICK_ALL,
 	MULTI_PICK
 }

@@ -5,7 +5,8 @@ import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
 import { EventResult, MapEventsManagerService } from '../map-events-mananger/map-events-manager';
 import { EventRegistrationInput } from '../map-events-mananger/event-registration-input';
 import { UtilsService } from '../../utils/utils.service';
-
+import { Observable } from 'rxjs';
+import { PlonterService } from '../plonter/plonter.service';
 let findIndex = require('lodash.findindex');
 
 /**
@@ -32,12 +33,16 @@ export class MapSelectionService {
         'MULTI_PICK': this.triggerMultiPick.bind(this)
     };
 
+
     constructor(cesiumService: CesiumService,
-                private mapEventsManagerService: MapEventsManagerService) {
+                private mapEventsManagerService: MapEventsManagerService,
+                private plonterService: PlonterService) {
         this.scene = cesiumService.getScene();
     }
 
     select(input: EventRegistrationInput) {
+        // const eventName = CesiumEventBuilder.getEventFullName(input.event, input.modifier);
+
         if (input.pick === PickOptions.MULTI_PICK) {
             this.multiPickEventMap.set(input.event, []);
         }
@@ -46,7 +51,8 @@ export class MapSelectionService {
             .map((movement) => this.triggerPick(movement, input.pick, input.event))
             .filter((result) => result.primitives !== null)
             .map((picksAndMovement) => this.addEntities(picksAndMovement, input.entityType, input.pick))
-            .filter((result) => result.entities !== null);
+            .filter((result) => result.entities !== null)
+            .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, input.pick));
     }
 
     private triggerPick(movement: any, pickOption: PickOptions, event) {
@@ -103,5 +109,13 @@ export class MapSelectionService {
         const picks = pick === undefined ? null : [pick];
 
         return {movement: movement, primitives: picks};
+    }
+
+    private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable<EventResult> {
+        if (pickOption === PickOptions.PICK_FIRST && entitiesAndMovement.entities.length > 1) {
+            return this.plonterService.plonterIt(entitiesAndMovement);
+        } else {
+            return Observable.of(entitiesAndMovement);
+        }
     }
 }

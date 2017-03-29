@@ -29,8 +29,7 @@ export class MapEventsManagerService {
     private eventRegistrations = new Map<string, Registration[]>();
 
     constructor(cesiumService: CesiumService,
-                private eventBuilder: CesiumEventBuilder,
-                private plonterService: PlonterService) {
+                private eventBuilder: CesiumEventBuilder) {
         this.scene = cesiumService.getScene();
     }
 
@@ -52,7 +51,7 @@ export class MapEventsManagerService {
             this.eventRegistrations.set(eventName, []);
         }
 
-        const eventRegistration = this.createEventRegistration(input.event, input.modifier, input.entityType, input.pick, input.priority);
+        const eventRegistration = this.createEventRegistration(input.event, input.modifier, input.priority);
         const registrationObservable: any = eventRegistration.observable;
         registrationObservable.dispose = () => this.disposeObservable(eventRegistration, eventName);
         this.eventRegistrations.get(eventName).push(eventRegistration);
@@ -85,7 +84,7 @@ export class MapEventsManagerService {
         });
     }
 
-    private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier, entityType, pickOption: PickOptions, priority: number): Registration {
+    private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier, priority: number): Registration {
         const cesiumEventObservable = this.eventBuilder.get(event, modifier);
         const stopper = new Subject();
 
@@ -94,19 +93,10 @@ export class MapEventsManagerService {
 
         observable = cesiumEventObservable
             .filter(() => !registration.isPaused)
-            .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption));
-            // .takeUntil(stopper);
+            .takeUntil(stopper);
 
         registration.observable = observable;
         return registration;
-    }
-
-    private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable<EventResult> {
-        if (pickOption === PickOptions.PICK_ONE && entitiesAndMovement.entities.length > 1) {
-            return this.plonterService.plonterIt(entitiesAndMovement);
-        } else {
-            return Observable.of(entitiesAndMovement);
-        }
     }
 }
 
