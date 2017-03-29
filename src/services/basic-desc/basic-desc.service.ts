@@ -1,6 +1,6 @@
 import { OnInit, Input } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
-import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
+import { SimpleDrawerService } from '../drawers/simple-drawer/simple-drawer.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { AcEntity } from '../../models/ac-entity';

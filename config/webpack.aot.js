@@ -11,7 +11,7 @@ module.exports = {
 
     output: {
         path: root.root('bundles'),
-        filename: 'angular2-cesium.umd.js',
+        filename: 'angular-cesium.umd.js',
         libraryTarget: 'umd'
     },
 

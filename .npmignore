@@ -2,6 +2,7 @@
 config/
 node_modules/
 documentation/
+docs/
 demo/
 .circleci/
 
