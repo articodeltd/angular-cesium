@@ -53,7 +53,8 @@ import { AcPointComponent } from './components/ac-point/ac-point.component';
 		AcLabelComponent,
 		AcPolylineComponent,
 		AcEllipseComponent,
-		AcPointComponent
+		AcPointComponent,
+		AcBillboardComponent
 	],
 	exports: [
 		AcMapComponent,
@@ -74,7 +75,8 @@ import { AcPointComponent } from './components/ac-point/ac-point.component';
 		AcLabelComponent,
 		AcPolylineComponent,
 		AcEllipseComponent,
-		AcPointComponent
+		AcPointComponent,
+		AcBillboardComponent
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })
