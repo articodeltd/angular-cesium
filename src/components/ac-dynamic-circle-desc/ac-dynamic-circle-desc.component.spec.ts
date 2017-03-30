@@ -6,7 +6,7 @@ import { ComputationCache } from '../../services/computation-cache/computation-c
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { mockProvider, providerFromMock } from '../../utils/testingUtils';
-import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
 
 describe('AcDynamicCircleDescComponent', () => {
     let component: AcDynamicCircleDescComponent;
