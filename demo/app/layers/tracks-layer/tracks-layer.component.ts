@@ -103,9 +103,6 @@ export class TracksLayerComponent implements OnInit {
     trackObservable.merge(dialogUpdateStream);
     this.dialog.open(TracksDialogComponent, { data: { trackObservable } }).afterClosed().subscribe(() => end$.next(0));
     dialogUpdateStream.next(track);
-    trackObservable.subscribe((a) => {
-      console.log(a);
-    });
   }
 
   getSingleTrackObservable(trackId, end$) {
