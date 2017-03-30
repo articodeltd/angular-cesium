@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { ConnectableObservable, Observable, Subject } from 'rxjs';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
@@ -18,7 +18,7 @@ import { TracksDialogComponent } from './track-dialog/track-dialog.component';
 export class TracksLayerComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
-  tracks$: Observable<AcNotification>;
+  tracks$: ConnectableObservable<AcNotification>;
   Cesium = Cesium;
   showTracks = true;
   private lastPickTrack;
@@ -54,7 +54,9 @@ export class TracksLayerComponent implements OnInit {
             observer.next(acNotification);
           });
       });
-    });
+    }).publish();
+
+    this.tracks$.connect();
 
     const mouseOverObservable = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
@@ -95,15 +97,20 @@ export class TracksLayerComponent implements OnInit {
 
   openDialog(track) {
     this.dialog.closeAll();
-    const trackObservable = this.getSingleTrackObservable(track.id);
+    const end$ = new Subject();
+    const trackObservable = this.getSingleTrackObservable(track.id, end$);
     const dialogUpdateStream = new Subject<AcNotification>();
     trackObservable.merge(dialogUpdateStream);
-    this.dialog.open(TracksDialogComponent, { data: { trackObservable } });
+    this.dialog.open(TracksDialogComponent, { data: { trackObservable } }).afterClosed().subscribe(() => end$.next(0));
     dialogUpdateStream.next(track);
+    trackObservable.subscribe((a) => {
+      console.log(a);
+    });
   }
 
-  getSingleTrackObservable(trackId) { // TODO: bug: makes track with mouse over to become invisible
-    return this.tracks$.filter((notification) => notification.id === trackId).map((notification) => notification.entity);
+  getSingleTrackObservable(trackId, end$) {
+    return this.tracks$
+      .filter((notification) => notification.id === trackId).map((notification) => notification.entity).takeUntil(end$);
   }
 
   getTrackColor(track): any {
@@ -121,7 +128,6 @@ export class TracksLayerComponent implements OnInit {
 
   convertToCesiumObj(entity): any {
     entity.scale = entity.id === 1 ? 0.3 : 0.15;
-    entity.color = entity.id === 1 ? Cesium.Color.RED : undefined;
     entity.altitude = Math.round(entity.position.altitude);
     entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.position.altitude);
     return entity;

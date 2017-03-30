@@ -73,7 +73,7 @@ function sendChunk() {
       dataChunk = updateChunk(dataChunk);
     }
 
-    let chunk = getChunkPart(counter);
+    let chunk = numOfEntities > 10 ? getChunkPart(counter) : dataChunk;
 
     io.emit('birds', chunk);
     counter++;
@@ -134,7 +134,6 @@ function createChunk(numOfEntities) {
         name: 'track' + i,
         image: "/assets/fighter-jet.png",
         heading: Math.random()*2*Math.PI,
-        lastDirectionChanged: 0,
         position: {
           lat: 60 * Math.random() * getSign(),
           long: 100 * Math.random() * getSign(),

@@ -1,4 +1,5 @@
 <div class="track-dialog">
     <h1 md-dialog-title>Track {{(track$ | async)?.id}}</h1>
+    <h1 md-dialog-title>altitude: {{(track$ | async)?.altitude}}</h1>
     <button md-button (click)="dialogRef.close()">Close</button>
 </div>
