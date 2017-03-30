@@ -16,6 +16,7 @@ export class DrawOnMapComponent implements OnInit {
 	private aquamarine: any;
 	private longitude: number;
 	private latitude: number;
+	private htmlElement: string;
 
 	@ViewChild(AcLabelComponent) label: AcLabelComponent;
 	@ViewChild(AcHtmlComponent) html: AcHtmlComponent;
@@ -23,6 +24,7 @@ export class DrawOnMapComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit() {
+		this.htmlElement = "shilo";
 		this.longitude = 35.1;
 		this.latitude = 0.1;
 		this.position = Cesium.Cartesian3.fromDegrees(34.0, 32.0);
@@ -42,12 +44,8 @@ export class DrawOnMapComponent implements OnInit {
 		this.aquamarine = Cesium.Color.AQUAMARINE;
 
 		setTimeout(() => {
-			this.label.removeFromMap();
-			this.html.position = Cesium.Cartesian3.fromDegreesArray(
-				[
-					40.1, 40.1,
-					this.longitude, this.latitude
-				]);
+			this.html.position = Cesium.Cartesian3.fromDegrees(40.0, 40.0);
+			this.htmlElement = "drot";
 		}, 5000);
 
 		setTimeout(() => {

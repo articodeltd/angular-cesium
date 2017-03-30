@@ -2,25 +2,23 @@ import { Component, Input, OnInit, ElementRef, OnChanges, SimpleChanges } from '
 import { CesiumService } from '../../services/cesium/cesium.service';
 
 /**
- *  This is a label implementation.
- *  The ac-label element must be a child ac-map element.
- *  The properties of props are the same as the properties of label:
- *  https://cesiumjs.org/Cesium/Build/Documentation/Label.html
+ *  This is an html implementation.
+ *  The ac-html element must be a child ac-map element.
  *  __Usage:__
  *  ```
- *  &lt;ac-label [props]="{position: position,
- *                         text: 'labelText',
- *                         font: '30px sans-serif',
- *                         fillColor : aquamarine}"
- *  &gt;
- *  &lt;/ac-label&gt;
+ *  &lt;ac-html [position]="position"&gt;
+ *      &lt;p&gt;html element&lt;/p&gt;
+ *  &lt;/ac-html&gt;
  *  ```
  */
 
 @Component({
 	selector: 'ac-html',
 	template: `<ng-content></ng-content>`,
-	styleUrls: ['ac-html.component.css']
+	styles: [`:host {
+                position: absolute;
+                z-index: 1;
+				}`]
 })
 export class AcHtmlComponent implements OnInit, OnChanges{
 
