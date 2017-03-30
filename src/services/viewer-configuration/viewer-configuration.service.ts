@@ -29,11 +29,11 @@ export class ViewerConfiguration {
     this._viewerOptions = value;
   }
 
-  set viewerModifier(value: Function) {
-    this._viewerModifier = value;
-  }
-
   get viewerModifier(): Function {
     return this._viewerModifier;
+  }
+
+  set viewerModifier(value: Function) {
+    this._viewerModifier = value;
   }
 }
