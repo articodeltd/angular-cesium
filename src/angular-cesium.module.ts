@@ -26,6 +26,7 @@ import { AcLabelComponent } from './components/ac-label/ac-label.component';
 import { AcPolylineComponent } from './components/ac-polyline/ac-polyline.component';
 import { AcEllipseComponent } from './components/ac-ellipse/ac-ellipse.component';
 import { AcPointComponent } from './components/ac-point/ac-point.component';
+import { AcHtmlComponent } from './components/ac-html/ac-html.component';
 
 @NgModule({
 	imports: [
@@ -54,7 +55,8 @@ import { AcPointComponent } from './components/ac-point/ac-point.component';
 		AcPolylineComponent,
 		AcEllipseComponent,
 		AcPointComponent,
-		AcBillboardComponent
+		AcBillboardComponent,
+		AcHtmlComponent
 	],
 	exports: [
 		AcMapComponent,
@@ -76,7 +78,8 @@ import { AcPointComponent } from './components/ac-point/ac-point.component';
 		AcPolylineComponent,
 		AcEllipseComponent,
 		AcPointComponent,
-		AcBillboardComponent
+		AcBillboardComponent,
+		AcHtmlComponent
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })
