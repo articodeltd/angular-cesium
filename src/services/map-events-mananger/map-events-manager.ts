@@ -7,7 +7,6 @@ import { DisposableObservable } from './disposable-observable';
 import { PickOptions } from './consts/pickOptions.enum';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
-import { PlonterService } from '../plonter/plonter.service';
 
 /**
  * Manages all map events. Notice events will run outside of Angular zone
