@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
-import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
+import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 
 /**
  *  This is a billboard implementation.

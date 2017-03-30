@@ -3,7 +3,7 @@ import { mock, instance, when } from 'ts-mockito';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 import { AcPointComponent } from './ac-point.component';
-import { PointDrawerService } from '../../services/point-drawer/point-drawer.service';
+import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 
 describe('AcPointComponent', () => {
 	let component: AcPointComponent;

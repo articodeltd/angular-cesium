@@ -3,7 +3,7 @@ import { mock, instance, when } from 'ts-mockito';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 import { AcBillboardComponent } from './ac-billboard.component';
-import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
+import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 
 describe('AcBillboardComponent', () => {
     let component: AcBillboardComponent;

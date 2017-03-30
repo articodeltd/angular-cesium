@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
 import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
+import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
 
 /**
  *  This is a label implementation.

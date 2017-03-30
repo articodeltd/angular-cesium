@@ -5,10 +5,10 @@ import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/
 import { MapEventsManagerService } from '../../services/map-events-mananger/map-events-manager';
 import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-event-builder';
 import { PlonterService } from '../../services/plonter/plonter.service';
-import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
-import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
-import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
-import { PointDrawerService } from '../../services/point-drawer/point-drawer.service';
+import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
+import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 
 /**
  * This is a map implementation, creates the cesium map.

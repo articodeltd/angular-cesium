@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
-import { PointDrawerService } from '../../services/point-drawer/point-drawer.service';
+import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 
 /**
  *  This is a point implementation.
