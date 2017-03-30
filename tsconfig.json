@@ -31,8 +31,5 @@
     "dist",
     "src"
   ],
-  "compileOnSave": false,
-  "typings": [
-    "./src/typings.d.ts"
-  ]
+  "compileOnSave": false
 }

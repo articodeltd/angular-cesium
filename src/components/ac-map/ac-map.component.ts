@@ -7,7 +7,7 @@ import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-ev
 import { PlonterService } from '../../services/plonter/plonter.service';
 
 /**
- * This is a map implementation.
+ * This is a map implementation, creates the cesium map.
  * Every layer should be tag inside ac-map tag
  *
  * @example
@@ -26,15 +26,30 @@ export class AcMapComponent implements OnChanges, OnInit {
 	private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
 	private static readonly DEFAULT_TILT_ENABLE = true;
 
+	/**
+	 * in meters
+	 * @type {number}
+	 */
 	@Input()
 	minimumZoom: number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
 
+	/**
+	 * in meters
+	 * @type {number}
+	 */
 	@Input()
 	maximumZoom: number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
 
+	/**
+	 * Sets the enableTilt of screenSpaceCameraController
+	 * @type {boolean}
+	 */
 	@Input()
 	enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
 
+	/**
+	 * flyTo options according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
+	 */
 	@Input()
 	flyTo: any;
 
