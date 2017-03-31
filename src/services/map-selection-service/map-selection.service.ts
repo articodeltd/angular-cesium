@@ -7,14 +7,15 @@ import { EventRegistrationInput } from '../map-events-mananger/event-registratio
 import { UtilsService } from '../../utils/utils.service';
 import { Observable } from 'rxjs';
 import { PlonterService } from '../plonter/plonter.service';
+import { DisposableObservable } from '../map-events-mananger/disposable-observable';
 let findIndex = require('lodash.findindex');
 
 /**
- * Manages all map events. Notice events will run outside of Angular zone
+ * Manages all map selection events. Notice events will run outside of Angular zone
  * __Notice__: When using multi selection, if registering to the same event more then once, the array of picks will reset.
  * __usage:__
  * ```
- * MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
+ * MapSelectionService.select({event, modifier, priority, entityType, pickOption}).subscribe()
  * ```
  * __param:__ {CesiumEvent} event
  * __param:__ {CesiumEventModifier} modifier
@@ -25,97 +26,94 @@ let findIndex = require('lodash.findindex');
 @Injectable()
 export class MapSelectionService {
 
-    private scene;
-    private multiPickEventMap = new Map<CesiumEvent, Array<{}>>();
-    private triggerPickJson = {
-        'PICK_FIRST': this.triggerPickFirst.bind(this),
-        'PICK_ALL': this.triggerPickAll.bind(this),
-        'MULTI_PICK': this.triggerMultiPick.bind(this)
-    };
+	private scene;
+	private multiPickEventMap = new Map<CesiumEvent, Array<{}>>();
+	private triggerPickJson = {
+		'PICK_FIRST': this.triggerPickFirst.bind(this),
+		'PICK_ALL': this.triggerPickAll.bind(this),
+		'MULTI_PICK': this.triggerMultiPick.bind(this)
+	};
 
+	constructor(cesiumService: CesiumService,
+	            private mapEventsManagerService: MapEventsManagerService,
+	            private plonterService: PlonterService) {
+		this.scene = cesiumService.getScene();
+	}
 
-    constructor(cesiumService: CesiumService,
-                private mapEventsManagerService: MapEventsManagerService,
-                private plonterService: PlonterService) {
-        this.scene = cesiumService.getScene();
-    }
+	select(input: EventRegistrationInput): DisposableObservable<EventResult> {
+		if (input.pick === PickOptions.MULTI_PICK) {
+			this.multiPickEventMap.set(input.event, []);
+		}
 
-    select(input: EventRegistrationInput) {
-        // const eventName = CesiumEventBuilder.getEventFullName(input.event, input.modifier);
+		let selection = this.mapEventsManagerService.register(input)
+			.map((movement) => this.triggerPick(movement, input.pick, input.event))
+			.filter((result) => result.primitives !== null)
+			.map((picksAndMovement) => this.addEntities(picksAndMovement, input.entityType, input.pick))
+			.filter((result) => result.entities !== null)
+			.switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, input.pick));
 
-        if (input.pick === PickOptions.MULTI_PICK) {
-            this.multiPickEventMap.set(input.event, []);
-        }
+		return <DisposableObservable<EventResult>>selection;
+	}
 
-        return this.mapEventsManagerService.register(input)
-            .map((movement) => this.triggerPick(movement, input.pick, input.event))
-            .filter((result) => result.primitives !== null)
-            .map((picksAndMovement) => this.addEntities(picksAndMovement, input.entityType, input.pick))
-            .filter((result) => result.entities !== null)
-            .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, input.pick));
-    }
+	private triggerPick(movement: any, pickOption: PickOptions, event) {
+		return this.triggerPickJson[PickOptions[pickOption]](movement, event);
+	}
 
-    private triggerPick(movement: any, pickOption: PickOptions, event) {
-        if (PickOptions[pickOption]) {
-            return this.triggerPickJson[PickOptions[pickOption]](movement, event);
-        }
-    }
+	private triggerPickAll(movement: any) {
+		let picks = this.scene.drillPick(movement.endPosition);
+		picks = picks.length === 0 ? null : picks;
 
-    private triggerPickAll(movement: any) {
-        let picks = this.scene.drillPick(movement.endPosition);
-        picks = picks.length === 0 ? null : picks;
+		return {movement: movement, primitives: picks};
+	}
 
-        return {movement: movement, primitives: picks};
-    }
+	private triggerMultiPick(movement: any, event) {
+		const newPick = this.scene.pick(movement.endPosition);
+		if (newPick) {
+			const indexInArray = findIndex(this.multiPickEventMap.get(event), (entity) => {
+				return entity.primitive.acEntity.id === newPick.primitive.acEntity.id;
+			});
+			if (indexInArray === -1) {
+				this.multiPickEventMap.get(event).push(newPick);
+			}
+			else {
+				this.multiPickEventMap.get(event).splice(indexInArray, 1);
+			}
+		}
 
-    private triggerMultiPick(movement: any, event) {
-        const newPick = this.scene.pick(movement.endPosition);
-        if (newPick) {
-            const indexInArray = findIndex(this.multiPickEventMap.get(event), (entity) => {
-                return entity.primitive.acEntity.id === newPick.primitive.acEntity.id;
-            });
-            if (indexInArray === -1) {
-                this.multiPickEventMap.get(event).push(newPick);
-            }
-            else {
-                this.multiPickEventMap.get(event).splice(indexInArray, 1);
-            }
-        }
+		return {movement: movement, primitives: this.multiPickEventMap.get(event)};
+	}
 
-        return {movement: movement, primitives: this.multiPickEventMap.get(event)};
-    }
+	private addEntities(picksAndMovement, entityType, pickOption: PickOptions): EventResult {
+		let entities = [];
+		if (pickOption !== PickOptions.NO_PICK) {
+			if (entityType) {
+				entities = picksAndMovement.primitives.map((pick) => pick.primitive.acEntity).filter((acEntity) => {
+					return acEntity && acEntity instanceof entityType;
+				});
+			} else {
+				entities = picksAndMovement.primitives.map((pick) => pick.primitive.acEntity);
+			}
 
-    private addEntities(picksAndMovement, entityType, pickOption: PickOptions): EventResult {
-        let entities = [];
-        if (pickOption !== PickOptions.NO_PICK) {
-            if (entityType) {
-                entities = picksAndMovement.primitives.map((pick) => pick.primitive.acEntity).filter((acEntity) => {
-                    return acEntity && acEntity instanceof entityType;
-                });
-            } else {
-                entities = picksAndMovement.primitives.map((pick) => pick.primitive.acEntity);
-            }
+			entities = UtilsService.unique(entities);
+			if (entities.length === 0) {
+				entities = null;
+			}
+		}
+		return Object.assign(picksAndMovement, {entities: entities});
+	}
 
-            entities = UtilsService.unique(entities);
-            if (entities.length === 0) {
-                entities = null;
-            }
-        }
-        return Object.assign(picksAndMovement, {entities: entities});
-    }
+	private triggerPickFirst(movement: any) {
+		const pick = this.scene.pick(movement.endPosition);
+		const picks = pick === undefined ? null : [pick];
 
-    private triggerPickFirst(movement: any) {
-        const pick = this.scene.pick(movement.endPosition);
-        const picks = pick === undefined ? null : [pick];
+		return {movement: movement, primitives: picks};
+	}
 
-        return {movement: movement, primitives: picks};
-    }
-
-    private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable<EventResult> {
-        if (pickOption === PickOptions.PICK_FIRST && entitiesAndMovement.entities.length > 1) {
-            return this.plonterService.plonterIt(entitiesAndMovement);
-        } else {
-            return Observable.of(entitiesAndMovement);
-        }
-    }
+	private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable<EventResult> {
+		if (pickOption === PickOptions.PICK_FIRST && entitiesAndMovement.entities.length > 1) {
+			return this.plonterService.plonterIt(entitiesAndMovement);
+		} else {
+			return Observable.of(entitiesAndMovement);
+		}
+	}
 }
