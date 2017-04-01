@@ -83,12 +83,54 @@ describe('MapSelectionService', () => {
 	describe('multi selection', () => {
 		it('should return one picked entity', async(inject([MapSelectionService], (service: MapSelectionService) => {
 			service.select(eventRegistrationInput).map((result) => result.entities).subscribe((entities) => {
-
 				expect(entities.length).toBe(1);
 			});
 
 			movement = createMovement();
 			triggeredEventObserver.next(movement);
 		})));
+
+		it('should add and remove entity from multi pick array', inject([MapSelectionService], (service: MapSelectionService) => {
+			let pickCounter = 0;
+			service.select(eventRegistrationInput).map((result) => result.entities).subscribe((entities) => {
+				pickCounter++;
+				if (pickCounter === 3) {
+					expect(entities.length).toBe(1);
+				}
+			});
+
+			movement = createMovement();
+			triggeredEventObserver.next(movement);
+			triggeredEventObserver.next(movement);
+			triggeredEventObserver.next(movement);
+		}));
+
+		it('should return 2 picked entities', inject([MapSelectionService], (service: MapSelectionService) => {
+			let pickCounter = 0;
+			service.select(eventRegistrationInput).map((result) => result.entities).subscribe((entities) => {
+				pickCounter++;
+				if (pickCounter === 2) {
+					expect(entities.length).toBe(2);
+				}
+			});
+
+			movement = createMovement();
+			triggeredEventObserver.next(movement);
+			cesiumScene.pick = () => acEntity2;
+			triggeredEventObserver.next(movement);
+		}));
+
+		it('should not add entity (pick did not return entity)', inject([MapSelectionService], (service: MapSelectionService) => {
+			let pickCounter = 0;
+			acEntity1 = undefined;
+			service.select(eventRegistrationInput).map((result) => result.entities).subscribe(() => {
+				pickCounter++;
+			});
+
+			movement = createMovement();
+			triggeredEventObserver.next(movement);
+
+			expect(pickCounter).toBe(0);
+		}));
 	});
 });
