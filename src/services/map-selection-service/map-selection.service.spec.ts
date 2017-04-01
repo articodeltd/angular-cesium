@@ -1,16 +1,27 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { mock, when, instance } from 'ts-mockito';
+import { async, TestBed, inject } from '@angular/core/testing';
+import { Observable } from 'rxjs';
+import { mock, when, instance, anything } from 'ts-mockito';
 
 import { providerFromMock, mockProvider } from '../../utils/testingUtils';
 import { MapSelectionService } from './map-selection.service';
-import { MapEventsManagerService } from '../map-events-mananger/map-events-manager';
+import { MapEventsManagerService, EventResult } from '../map-events-mananger/map-events-manager';
 import { CesiumService } from '../cesium/cesium.service';
 import { PlonterService } from '../plonter/plonter.service';
 import { AcEntity } from '../../models/ac-entity';
+import { PickOptions } from '../map-events-mananger/consts/pickOptions.enum';
+import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
+import { CesiumEventBuilder } from '../map-events-mananger/cesium-event-builder';
+import { DisposableObservable } from '../map-events-mananger/disposable-observable';
 
-fdescribe('MapSelectionService', () => {
+describe('MapSelectionService', () => {
 	const cesiumService = mock(CesiumService);
+	const cesiumEventBuilder = mock(CesiumEventBuilder);
+	const mapEventsManagerService = mock(MapEventsManagerService);
 	const primitiveCollection = mock(Cesium.PrimitiveCollection);
+	const eventRegistrationInput = {
+		event: CesiumEvent.LEFT_CLICK,
+		pick: PickOptions.MULTI_PICK
+	};
 
 	let movement;
 
@@ -20,12 +31,35 @@ fdescribe('MapSelectionService', () => {
 		}
 	};
 
+	let acEntity2 = {
+		primitive: {
+			acEntity: AcEntity.create({id: 1})
+		}
+	};
+
+	let triggeredEventObserver;
 	let cesiumScene = {
 		primitives: instance(primitiveCollection),
 		pick: () => acEntity1
 	};
 
+	function createMovement() {
+		let position = {x: 0, y: 0};
+		return {
+			endPosition: position,
+			position: position,
+			startPosition: position
+		}
+	}
+
 	when(cesiumService.getScene()).thenReturn(cesiumScene);
+
+	when(mapEventsManagerService.register(anything())).thenReturn(<DisposableObservable<EventResult>>Observable.create((observer) => {
+		triggeredEventObserver = observer;
+		if (movement) {
+			observer.next(movement);
+		}
+	}, eventRegistrationInput.event, undefined));
 
 	beforeEach(() => {
 		movement = undefined;
@@ -35,7 +69,8 @@ fdescribe('MapSelectionService', () => {
 			providers: [
 				MapSelectionService,
 				mockProvider(PlonterService),
-				mockProvider(MapEventsManagerService),
+				providerFromMock(MapEventsManagerService, mapEventsManagerService),
+				providerFromMock(CesiumEventBuilder, cesiumEventBuilder),
 				providerFromMock(CesiumService, cesiumService)
 			]
 		}).compileComponents();
@@ -44,4 +79,16 @@ fdescribe('MapSelectionService', () => {
 	it('should inject', inject([MapSelectionService], (service: MapSelectionService) => {
 		expect(service).toBeTruthy();
 	}));
+
+	describe('multi selection', () => {
+		it('should return one picked entity', async(inject([MapSelectionService], (service: MapSelectionService) => {
+			service.select(eventRegistrationInput).map((result) => result.entities).subscribe((entities) => {
+
+				expect(entities.length).toBe(1);
+			});
+
+			movement = createMovement();
+			triggeredEventObserver.next(movement);
+		})));
+	});
 });
