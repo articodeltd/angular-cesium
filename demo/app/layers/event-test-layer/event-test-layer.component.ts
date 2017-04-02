@@ -69,20 +69,20 @@ export class EventTestLayerComponent implements OnInit {
             console.log('click2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         });
 
-        // Send mouse location
-        // this.mapSelectionService.select({event: CesiumEvent.LEFT_DOUBLE_CLICK}).subscribe((pos) => {
-        //
-        //     let screenPositionCartesian = this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition);
-        //     if (screenPositionCartesian) {
-        //         let screenPositionCartographic = Cesium.Cartographic.fromCartesian(screenPositionCartesian);
-        //         screenPositionCartographic.latitude = screenPositionCartographic.latitude * 180 / Math.PI;
-        //         screenPositionCartographic.longitude = screenPositionCartographic.longitude * 180 / Math.PI;
-        //         this.mouseMove.emit(screenPositionCartographic);
-        //     }
-        //     else {
-        //         console.log('The mouse is outside of the map');
-        //     }
-        // });
+		// Send mouse location
+		this.eventManager.register({event: CesiumEvent.RIGHT_CLICK}).subscribe((pos) => {
+
+			let	screenPositionCartesian = this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition);
+			if (screenPositionCartesian){
+				let	screenPositionCartographic = Cesium.Cartographic.fromCartesian(screenPositionCartesian);
+				screenPositionCartographic.latitude = screenPositionCartographic.latitude * 180 / Math.PI;
+				screenPositionCartographic.longitude = screenPositionCartographic.longitude * 180 / Math.PI;
+				this.mouseMove.emit(screenPositionCartographic);
+			}
+			else {
+				console.log('The mouse is outside of the map');
+			}
+		});
 
         // Example for Priority change
         // this.testPriority();
@@ -95,44 +95,44 @@ export class EventTestLayerComponent implements OnInit {
         this.testPlonter();
     }
 
-    testPlonter() {
-        this.plonterService.plonterChangeNotifier.subscribe(() => this.cd.detectChanges());
-        this.mapSelectionService.select({event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST})
-            .map((result) => result.entities)
-            .filter(entities => entities[0].id === 1 || entities[0].id === 2)
-            .subscribe((result) => {
-                console.log('plonter result: ' + JSON.stringify(result));
-                alert('picked: ' + JSON.stringify(result));
-            });
-    }
+	testPlonter() {
+		this.plonterService.plonterChangeNotifier.subscribe(() => this.cd.detectChanges());
+		this.eventManager.register({event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_ONE})
+			.map((result) => result.entities)
+			.filter(entities => entities[0].id === 1 || entities[0].id === 2)
+			.subscribe((result) => {
+				console.log('plonter result: ' + JSON.stringify(result));
+				alert('picked: ' + JSON.stringify(result));
+			});
+	}
 
     chooseEntity(entity) {
         this.plonterService.resolvePlonter(entity);
     }
 
-    testLongPress() {
-        this.mapSelectionService.select({
-            event: CesiumEvent.LONG_LEFT_PRESS,
-            pick: PickOptions.PICK_ALL
-        }).subscribe((pos) => {
-            console.log('long left', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
-        });
-    }
+	testLongPress() {
+		this.eventManager.register({
+			event: CesiumEvent.LONG_LEFT_PRESS,
+			pick: PickOptions.PICK_ALL
+		}).subscribe((pos) => {
+			console.log('long left', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
+		});
+	}
 
     testPriority() {
-        const o1 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 1});
+        const o1 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 1});
         o1.subscribe((pos) => {
             console.log('click1P1', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         }, err => null, () => console.log('complete'));
-        const o2 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 2});
+        const o2 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 2});
         o2.subscribe((pos) => {
             console.log('click2P2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         });
-        const o3 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 2});
+        const o3 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 2});
         o3.subscribe((pos) => {
             console.log('click3P2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         });
-        const o4 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 3});
+        const o4 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 3});
         o4.subscribe((pos) => {
             console.log('click4P3', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         });
@@ -148,22 +148,22 @@ export class EventTestLayerComponent implements OnInit {
         }, 15000);
     }
 
-    testColorChange() {
-        let inputConf = {event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST, entityType: AcEntity};
-        this.mapSelectionService.select(inputConf).map((result) => result.entities[0]).filter((entity) => entity.id === 0).subscribe((entity) => {
-            console.log('click3', 'toggle color');
-            entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
-            this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
-        });
-        // this.eventManager.register(inputConf).subscribe((result) => {
-        //     console.log('click3', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
-        //     if (result.entities.length === 1) {
-        //         let entity = result.entities[0];
-        //         entity.color = entity.color === Cesium.Color.GREEN? Cesium.Color.WHITE:Cesium.Color.GREEN;
-        //         this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
-        //     }
-        // });
-    }
+	testColorChange() {
+		let inputConf = {event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST, entityType: AcEntity};
+		this.eventManager.register(inputConf).map((result) => result.entities[0]).filter((entity) => entity.id === 0).subscribe((entity) => {
+			console.log('click3', 'toggle color');
+			entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
+			this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
+		});
+		// this.eventManager.register(inputConf).subscribe((result) => {
+		//     console.log('click3', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
+		//     if (result.entities.length === 1) {
+		//         let entity = result.entities[0];
+		//         entity.color = entity.color === Cesium.Color.GREEN? Cesium.Color.WHITE:Cesium.Color.GREEN;
+		//         this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
+		//     }
+		// });
+	}
 
     multiSelect() {
         let inputConf = {
