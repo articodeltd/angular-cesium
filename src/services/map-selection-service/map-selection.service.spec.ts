@@ -14,7 +14,7 @@ import { CesiumEventBuilder } from '../map-events-mananger/cesium-event-builder'
 import { DisposableObservable } from '../map-events-mananger/disposable-observable';
 import { EventRegistrationInput } from '../map-events-mananger/event-registration-input';
 
-fdescribe('MapSelectionService', () => {
+describe('MapSelectionService', () => {
     const cesiumService = mock(CesiumService);
     const cesiumEventBuilder = mock(CesiumEventBuilder);
     const mapEventsManagerService = mock(MapEventsManagerService);
