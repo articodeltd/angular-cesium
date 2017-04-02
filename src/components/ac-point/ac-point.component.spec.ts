@@ -10,9 +10,9 @@ describe('AcPointComponent', () => {
 	let fixture: ComponentFixture<AcPointComponent>;
 
 	const cesiumService = mock(CesiumService);
-	const labelCollection = mock(Cesium.LabelCollection);
+	const pointCollection = mock(Cesium.PointPrimitiveCollection);
 
-	when(cesiumService.getScene()).thenReturn({primitives: instance(labelCollection)});
+	when(cesiumService.getScene()).thenReturn({primitives: instance(pointCollection)});
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({

@@ -4,11 +4,8 @@ import { AcHtmlComponent } from '../../../../src/components/ac-html/ac-html.comp
 
 @Component({
 	selector: 'draw-on-map-layer',
-	templateUrl: 'draw-on-map-layer.component.html',
-	styleUrls: [],
-	providers: []
+	templateUrl: 'draw-on-map-layer.component.html'
 })
-
 export class DrawOnMapComponent implements OnInit {
 	private position: any;
 	private positions: any;
