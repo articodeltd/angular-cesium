@@ -41,13 +41,13 @@ export class DrawOnMapComponent implements OnInit {
 		this.aquamarine = Cesium.Color.AQUAMARINE;
 
 		setTimeout(() => {
-			this.html.position = Cesium.Cartesian3.fromDegrees(40.0, 40.0);
+			this.html.props.position = Cesium.Cartesian3.fromDegrees(40.0, 40.0);
 			this.htmlElement = "drot";
 		}, 5000);
 
 		setTimeout(() => {
 			this.label.removeFromMap();
-			this.html.remove();
+			this.html.props.show = false;
 		}, 10000);
 
 		setInterval(() => {

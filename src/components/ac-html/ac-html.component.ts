@@ -1,13 +1,12 @@
-import { Component, Input, OnInit, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, ElementRef, DoCheck } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
-import { isUndefined } from 'util';
 
 /**
  *  This is an html implementation.
  *  The ac-html element must be a child ac-map element.
  *  __Usage:__
  *  ```
- *  &lt;ac-html [position]="position"&gt;
+ *  &lt;ac-html [props]="position: position, show: true"&gt;
  *      &lt;p&gt;html element&lt;/p&gt;
  *  &lt;/ac-html&gt;
  *  ```
@@ -21,9 +20,9 @@ import { isUndefined } from 'util';
                 z-index: 1;
 				}`]
 })
-export class AcHtmlComponent implements OnInit, OnChanges{
+export class AcHtmlComponent implements OnInit, DoCheck{
 
-	@Input() props: any = {show: true};
+	@Input() props: any;
 	private isDraw: boolean = false;
 	preRenderEventListener: ()=>void;
 
@@ -31,7 +30,6 @@ export class AcHtmlComponent implements OnInit, OnChanges{
 	}
 
 	ngOnInit():void {
-		this.add();
 	}
 
 	setScreenPosition(screenPosition: any) {
@@ -40,7 +38,7 @@ export class AcHtmlComponent implements OnInit, OnChanges{
 	}
 
 	remove() {
-		if (!this.isDraw){
+		if (this.isDraw){
 			this.isDraw = false;
 			this.cesiumService.getScene().preRender.removeEventListener(this.preRenderEventListener);
 			this.elementRef.nativeElement.style.display = 'none';
@@ -60,9 +58,8 @@ export class AcHtmlComponent implements OnInit, OnChanges{
 		}
 	}
 
-	ngOnChanges(changes:SimpleChanges):void {
-		const props = changes['props'];
-		if (isUndefined(props.currentValue.show) || props.currentValue.show) {
+	ngDoCheck(){
+		if (this.props.show === undefined || this.props.show) {
 			this.add();
 		}
 		else {
