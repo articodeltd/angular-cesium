@@ -64,7 +64,7 @@ export class MapSelectionService {
     }
 
     private triggerPick(movement: any, pickOption: PickOptions, event) {
-        return this.triggerPickJson[PickOptions[pickOption]](movement, event) || this.triggerPickFirst(movement);
+        return this.triggerPickJson[PickOptions[pickOption]](movement, event);
     }
 
     private triggerPickAll(movement: any) {
