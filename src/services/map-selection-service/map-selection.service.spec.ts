@@ -12,125 +12,154 @@ import { PickOptions } from '../map-events-mananger/consts/pickOptions.enum';
 import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
 import { CesiumEventBuilder } from '../map-events-mananger/cesium-event-builder';
 import { DisposableObservable } from '../map-events-mananger/disposable-observable';
+import { EventRegistrationInput } from '../map-events-mananger/event-registration-input';
 
-describe('MapSelectionService', () => {
-	const cesiumService = mock(CesiumService);
-	const cesiumEventBuilder = mock(CesiumEventBuilder);
-	const mapEventsManagerService = mock(MapEventsManagerService);
-	const primitiveCollection = mock(Cesium.PrimitiveCollection);
-	const eventRegistrationInput = {
-		event: CesiumEvent.LEFT_CLICK,
-		pick: PickOptions.MULTI_PICK
-	};
+fdescribe('MapSelectionService', () => {
+    const cesiumService = mock(CesiumService);
+    const cesiumEventBuilder = mock(CesiumEventBuilder);
+    const mapEventsManagerService = mock(MapEventsManagerService);
+    const primitiveCollection = mock(Cesium.PrimitiveCollection);
+    let movement;
+    let acEntity1 = {
+        primitive: {
+            acEntity: AcEntity.create({id: 0})
+        }
+    };
 
-	let movement;
+    let acEntity2 = {
+        primitive: {
+            acEntity: AcEntity.create({id: 1})
+        }
+    };
 
-	let acEntity1 = {
-		primitive: {
-			acEntity: AcEntity.create({id: 0})
-		}
-	};
+    let triggeredEventObserver;
+    let cesiumScene = {
+        primitives: instance(primitiveCollection),
+        pick: () => acEntity1
+    };
 
-	let acEntity2 = {
-		primitive: {
-			acEntity: AcEntity.create({id: 1})
-		}
-	};
+    function createMovement() {
+        let position = {x: 0, y: 0};
+        return {
+            endPosition: position,
+            position: position,
+            startPosition: position
+        };
+    }
 
-	let triggeredEventObserver;
-	let cesiumScene = {
-		primitives: instance(primitiveCollection),
-		pick: () => acEntity1
-	};
+    when(cesiumService.getScene()).thenReturn(cesiumScene);
 
-	function createMovement() {
-		let position = {x: 0, y: 0};
-		return {
-			endPosition: position,
-			position: position,
-			startPosition: position
-		};
-	}
+    when(mapEventsManagerService.register(anything())).thenReturn(<DisposableObservable<EventResult>>Observable.create((observer) => {
+        triggeredEventObserver = observer;
+        if (movement) {
+            observer.next(movement);
+        }
+    }));
 
-	when(cesiumService.getScene()).thenReturn(cesiumScene);
+    beforeEach(() => {
+        movement = undefined;
+        cesiumScene.pick = () => acEntity1;
 
-	when(mapEventsManagerService.register(anything())).thenReturn(<DisposableObservable<EventResult>>Observable.create((observer) => {
-		triggeredEventObserver = observer;
-		if (movement) {
-			observer.next(movement);
-		}
-	}, eventRegistrationInput.event, undefined));
+        TestBed.configureTestingModule({
+            providers: [
+                MapSelectionService,
+                mockProvider(PlonterService),
+                providerFromMock(MapEventsManagerService, mapEventsManagerService),
+                providerFromMock(CesiumEventBuilder, cesiumEventBuilder),
+                providerFromMock(CesiumService, cesiumService)
+            ]
+        }).compileComponents();
+    });
 
-	beforeEach(() => {
-		movement = undefined;
-		cesiumScene.pick = () => acEntity1;
+    it('should inject', inject([MapSelectionService], (service: MapSelectionService) => {
+        expect(service).toBeTruthy();
+    }));
 
-		TestBed.configureTestingModule({
-			providers: [
-				MapSelectionService,
-				mockProvider(PlonterService),
-				providerFromMock(MapEventsManagerService, mapEventsManagerService),
-				providerFromMock(CesiumEventBuilder, cesiumEventBuilder),
-				providerFromMock(CesiumService, cesiumService)
-			]
-		}).compileComponents();
-	});
+    describe('pick first', () => {
+        const pickFirstRegistrationInput: EventRegistrationInput = {
+            event: CesiumEvent.LEFT_CLICK,
+            pick: PickOptions.PICK_FIRST
+        };
 
-	it('should inject', inject([MapSelectionService], (service: MapSelectionService) => {
-		expect(service).toBeTruthy();
-	}));
+        it('should return one picked entity', async(inject([MapSelectionService], (service: MapSelectionService) => {
+            service.select(pickFirstRegistrationInput).map((result) => result.entities).subscribe((entities) => {
+                expect(entities.length).toBe(1);
+            });
 
-	describe('multi selection', () => {
-		it('should return one picked entity', async(inject([MapSelectionService], (service: MapSelectionService) => {
-			service.select(eventRegistrationInput).map((result) => result.entities).subscribe((entities) => {
-				expect(entities.length).toBe(1);
-			});
+            movement = createMovement();
+            triggeredEventObserver.next(movement);
+        })));
 
-			movement = createMovement();
-			triggeredEventObserver.next(movement);
-		})));
+        it('should not add entity (pick did not return entity)', inject([MapSelectionService], (service: MapSelectionService) => {
+            let pickCounter = 0;
+            acEntity1 = undefined;
+            service.select(pickFirstRegistrationInput).map((result) => result.entities).subscribe(() => {
+                pickCounter++;
+            });
 
-		it('should add and remove entity from multi pick array', inject([MapSelectionService], (service: MapSelectionService) => {
-			let pickCounter = 0;
-			service.select(eventRegistrationInput).map((result) => result.entities).subscribe((entities) => {
-				pickCounter++;
-				if (pickCounter === 3) {
-					expect(entities.length).toBe(1);
-				}
-			});
+            movement = createMovement();
+            triggeredEventObserver.next(movement);
 
-			movement = createMovement();
-			triggeredEventObserver.next(movement);
-			triggeredEventObserver.next(movement);
-			triggeredEventObserver.next(movement);
-		}));
+            expect(pickCounter).toBe(0);
+        }));
+    });
 
-		it('should return 2 picked entities', inject([MapSelectionService], (service: MapSelectionService) => {
-			let pickCounter = 0;
-			service.select(eventRegistrationInput).map((result) => result.entities).subscribe((entities) => {
-				pickCounter++;
-				if (pickCounter === 2) {
-					expect(entities.length).toBe(2);
-				}
-			});
+    describe('multi selection', () => {
+        const multiSelectionRegistrationInput: EventRegistrationInput = {
+            event: CesiumEvent.LEFT_CLICK,
+            pick: PickOptions.MULTI_PICK
+        };
 
-			movement = createMovement();
-			triggeredEventObserver.next(movement);
-			cesiumScene.pick = () => acEntity2;
-			triggeredEventObserver.next(movement);
-		}));
+        it('should return one picked entity', async(inject([MapSelectionService], (service: MapSelectionService) => {
+            service.select(multiSelectionRegistrationInput).map((result) => result.entities).subscribe((entities) => {
+                expect(entities.length).toBe(1);
+            });
 
-		it('should not add entity (pick did not return entity)', inject([MapSelectionService], (service: MapSelectionService) => {
-			let pickCounter = 0;
-			acEntity1 = undefined;
-			service.select(eventRegistrationInput).map((result) => result.entities).subscribe(() => {
-				pickCounter++;
-			});
+            movement = createMovement();
+            triggeredEventObserver.next(movement);
+        })));
 
-			movement = createMovement();
-			triggeredEventObserver.next(movement);
+        it('should add and remove entity from multi pick array', inject([MapSelectionService], (service: MapSelectionService) => {
+            let pickCounter = 0;
+            service.select(multiSelectionRegistrationInput).map((result) => result.entities).subscribe((entities) => {
+                pickCounter++;
+                if (pickCounter === 3) {
+                    expect(entities.length).toBe(1);
+                }
+            });
 
-			expect(pickCounter).toBe(0);
-		}));
-	});
+            movement = createMovement();
+            triggeredEventObserver.next(movement);
+            triggeredEventObserver.next(movement);
+            triggeredEventObserver.next(movement);
+        }));
+
+        it('should return 2 picked entities', inject([MapSelectionService], (service: MapSelectionService) => {
+            let pickCounter = 0;
+            service.select(multiSelectionRegistrationInput).map((result) => result.entities).subscribe((entities) => {
+                pickCounter++;
+                if (pickCounter === 2) {
+                    expect(entities.length).toBe(2);
+                }
+            });
+
+            movement = createMovement();
+            triggeredEventObserver.next(movement);
+            cesiumScene.pick = () => acEntity2;
+            triggeredEventObserver.next(movement);
+        }));
+
+        it('should not add entity (pick did not return entity)', inject([MapSelectionService], (service: MapSelectionService) => {
+            let pickCounter = 0;
+            acEntity1 = undefined;
+            service.select(multiSelectionRegistrationInput).map((result) => result.entities).subscribe(() => {
+                pickCounter++;
+            });
+
+            movement = createMovement();
+            triggeredEventObserver.next(movement);
+
+            expect(pickCounter).toBe(0);
+        }));
+    });
 });
