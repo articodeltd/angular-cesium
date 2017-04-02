@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { CesiumService } from '../cesium/cesium.service';
 import { PickOptions } from '../map-events-mananger/consts/pickOptions.enum';
 import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
@@ -7,7 +8,7 @@ import { EventRegistrationInput } from '../map-events-mananger/event-registratio
 import { UtilsService } from '../../utils/utils.service';
 import { Observable } from 'rxjs';
 import { PlonterService } from '../plonter/plonter.service';
-import { DisposableObservable } from "../map-events-mananger/disposable-observable";
+import { DisposableObservable } from '../map-events-mananger/disposable-observable';
 let findIndex = require('lodash.findindex');
 
 /**
@@ -42,6 +43,12 @@ export class MapSelectionService {
     }
 
     select(input: EventRegistrationInput) {
+        input.pick = input.pick || PickOptions.NO_PICK;
+
+        if (input.entityType && input.pick === PickOptions.NO_PICK) {
+            throw 'MapEventsManagerService: can\'t register an event with entityType and PickOptions.NO_PICK - It doesn\'t make sense ';
+        }
+
         if (input.pick === PickOptions.MULTI_PICK) {
             this.multiPickEventMap.set(input.event, []);
         }

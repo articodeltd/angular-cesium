@@ -4,7 +4,6 @@ import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEventBuilder } from './cesium-event-builder';
 import { EventRegistrationInput } from './event-registration-input';
 import { DisposableObservable } from './disposable-observable';
-import { PickOptions } from './consts/pickOptions.enum';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 
@@ -37,13 +36,7 @@ export class MapEventsManagerService {
             throw 'CesiumService has not been initialized yet - MapEventsManagerService must be injected  under ac-map';
         }
 
-        input.pick = input.pick || PickOptions.NO_PICK;
         input.priority = input.priority || 0;
-
-        if (input.entityType && input.pick === PickOptions.NO_PICK) {
-            throw 'MapEventsManagerService: can\'t register an event with entityType and PickOptions.NO_PICK - It doesn\'t make sense ';
-        }
-
         const eventName = CesiumEventBuilder.getEventFullName(input.event, input.modifier);
 
         if (!this.eventRegistrations.has(eventName)) {
@@ -54,8 +47,8 @@ export class MapEventsManagerService {
         const registrationObservable: any = eventRegistration.observable;
         registrationObservable.dispose = () => this.disposeObservable(eventRegistration, eventName);
         this.eventRegistrations.get(eventName).push(eventRegistration);
-
         this.sortRegistrationsByPriority(eventName);
+
         return <DisposableObservable<EventResult>> registrationObservable;
     }
 
