@@ -49,7 +49,7 @@ describe('MapSelectionService', () => {
 			endPosition: position,
 			position: position,
 			startPosition: position
-		}
+		};
 	}
 
 	when(cesiumService.getScene()).thenReturn(cesiumScene);
