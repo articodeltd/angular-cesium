@@ -10,8 +10,6 @@ import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 
 /**
  * Manages all map events. Notice events will run outside of Angular zone
- * __Notice__: When using multi selection, if registering to the same event more then once, the array of picks will reset.
- * __usage:__
  * ```
  * MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
  * ```

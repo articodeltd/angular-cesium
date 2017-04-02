@@ -12,11 +12,11 @@ import { DisposableObservable } from '../map-events-mananger/disposable-observab
 let findIndex = require('lodash.findindex');
 
 /**
- * Manages all map events. Notice events will run outside of Angular zone
+ * Manages all selection events.
  * __Notice__: When using multi selection, if registering to the same event more then once, the array of picks will reset.
  * __usage:__
  * ```
- * MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
+ * MapSelectionService.select({event, modifier, priority, entityType, pickOption}).subscribe()
  * ```
  * __param:__ {CesiumEvent} event
  * __param:__ {CesiumEventModifier} modifier
