@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
+import { isUndefined } from 'util';
 
 /**
  *  This is an html implementation.
@@ -22,12 +23,11 @@ import { CesiumService } from '../../services/cesium/cesium.service';
 })
 export class AcHtmlComponent implements OnInit, OnChanges{
 
-	@Input() position: any;
+	@Input() props: any = {show: true};
+	private isDraw: boolean = false;
 	preRenderEventListener: ()=>void;
-	private selfElementIsDraw: boolean;
 
 	constructor(private cesiumService: CesiumService, private elementRef: ElementRef) {
-		this.selfElementIsDraw = false;
 	}
 
 	ngOnInit():void {
@@ -35,36 +35,38 @@ export class AcHtmlComponent implements OnInit, OnChanges{
 	}
 
 	setScreenPosition(screenPosition: any) {
-		this.elementRef.nativeElement.style.display = 'block';
 		this.elementRef.nativeElement.style.top = `${screenPosition.y}px`;
 		this.elementRef.nativeElement.style.left = `${screenPosition.x}px`;
 	}
 
 	remove() {
-		this.cesiumService.getScene().preRender.removeEventListener(this.preRenderEventListener);
-		this.elementRef.nativeElement.style.display = 'none';
-		this.selfElementIsDraw = false;
+		if (!this.isDraw){
+			this.isDraw = false;
+			this.cesiumService.getScene().preRender.removeEventListener(this.preRenderEventListener);
+			this.elementRef.nativeElement.style.display = 'none';
+		}
 	}
 
 	add() {
-		this.preRenderEventListener = ()=> {
-			let screenPosition = Cesium.SceneTransforms.wgs84ToWindowCoordinates(this.cesiumService.getScene(), this.position);
-			this.setScreenPosition(screenPosition);
-		};
-
-		this.cesiumService.getScene().preRender.addEventListener(this.preRenderEventListener);
-		this.selfElementIsDraw = true;
-	}
-
-	update() {
-		this.remove();
-		this.add();
+		if (!this.isDraw) {
+			this.isDraw = true;
+			this.preRenderEventListener = ()=> {
+				let screenPosition = Cesium.SceneTransforms.wgs84ToWindowCoordinates(this.cesiumService.getScene(),
+					this.props.position);
+				this.setScreenPosition(screenPosition);
+			};
+			this.elementRef.nativeElement.style.display = 'block';
+			this.cesiumService.getScene().preRender.addEventListener(this.preRenderEventListener);
+		}
 	}
 
 	ngOnChanges(changes:SimpleChanges):void {
-		const position = changes['position'];
-		if (position.currentValue !== position.previousValue && this.selfElementIsDraw) {
-			this.update();
+		const props = changes['props'];
+		if (isUndefined(props.currentValue.show) || props.currentValue.show) {
+			this.add();
+		}
+		else {
+			this.remove();
 		}
 	}
 }
