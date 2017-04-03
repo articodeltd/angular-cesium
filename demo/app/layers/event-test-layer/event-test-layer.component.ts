@@ -69,7 +69,7 @@ export class EventTestLayerComponent implements OnInit {
         });
 
         // Send mouse location
-        this.eventManager.select({event: CesiumEvent.RIGHT_CLICK}).subscribe((pos) => {
+        this.eventManager.select({event: CesiumEvent.RIGHT_CLICK, pick: PickOptions.PICK_FIRST}).subscribe((pos) => {
 
             let screenPositionCartesian = this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition);
             if (screenPositionCartesian) {
@@ -154,14 +154,6 @@ export class EventTestLayerComponent implements OnInit {
             entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
             this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
         });
-        // this.eventManager.select(inputConf).subscribe((result) => {
-        //     console.log('click3', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
-        //     if (result.entities.length === 1) {
-        //         let entity = result.entities[0];
-        //         entity.color = entity.color === Cesium.Color.GREEN? Cesium.Color.WHITE:Cesium.Color.GREEN;
-        //         this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
-        //     }
-        // });
     }
 
     multiSelect() {
