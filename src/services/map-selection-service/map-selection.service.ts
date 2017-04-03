@@ -9,7 +9,7 @@ import { UtilsService } from '../../utils/utils.service';
 import { Observable } from 'rxjs';
 import { PlonterService } from '../plonter/plonter.service';
 import { DisposableObservable } from '../map-events-mananger/disposable-observable';
-let findIndex = require('lodash.findindex');
+const findIndex = require('lodash.findindex');
 
 /**
  * Manages all selection events.
@@ -53,7 +53,7 @@ export class MapSelectionService {
             this.multiPickEventMap.set(input.event, []);
         }
 
-        let selectionObservable = this.mapEventsManagerService.register(input)
+        const selectionObservable = this.mapEventsManagerService.register(input)
             .map((movement) => this.triggerPick(movement, input.pick, input.event))
             .filter((result) => result.primitives !== null)
             .map((picksAndMovement) => this.addEntities(picksAndMovement, input.entityType, input.pick))
