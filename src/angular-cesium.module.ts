@@ -22,16 +22,12 @@ import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-des
 import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
 import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
 import { AcPointDescComponent } from './components/ac-point-desc/ac-point-desc.component';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/merge';
-import 'rxjs/add/operator/takeUntil';
-import 'rxjs/add/operator/publish';
-import 'rxjs/add/operator/mergeMap';
+import { AcLabelComponent } from './components/ac-label/ac-label.component';
+import { AcPolylineComponent } from './components/ac-polyline/ac-polyline.component';
+import { AcEllipseComponent } from './components/ac-ellipse/ac-ellipse.component';
+import { AcPointComponent } from './components/ac-point/ac-point.component';
+import { AcHtmlComponent } from './components/ac-html/ac-html.component';
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -55,6 +51,12 @@ import 'rxjs/add/operator/mergeMap';
 		AcArcDescComponent,
 		AcMapLayerProviderComponent,
 		AcPointDescComponent,
+		AcLabelComponent,
+		AcPolylineComponent,
+		AcEllipseComponent,
+		AcPointComponent,
+		AcBillboardComponent,
+		AcHtmlComponent
 	],
 	exports: [
 		AcMapComponent,
@@ -71,7 +73,13 @@ import 'rxjs/add/operator/mergeMap';
 		AcStaticPolylineDescComponent,
 		AcArcDescComponent,
 		AcMapLayerProviderComponent,
-		AcPointDescComponent
+		AcPointDescComponent,
+		AcLabelComponent,
+		AcPolylineComponent,
+		AcEllipseComponent,
+		AcPointComponent,
+		AcBillboardComponent,
+		AcHtmlComponent
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })
