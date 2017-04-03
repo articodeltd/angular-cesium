@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AcStaticPolygonDescComponent } from './ac-static-polygon-desc.component';
-import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
+import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
 import { mock, instance, when } from 'ts-mockito';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';

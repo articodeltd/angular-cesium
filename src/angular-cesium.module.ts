@@ -9,7 +9,6 @@ import { AcDynamicEllipseDescComponent } from './components/ac-dynamic-ellipse-d
 import { AcDynamicPolylineDescComponent } from './components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
 import { AcStaticCircleDescComponent } from './components/ac-static-circle-desc/ac-static-circle-desc.component';
 import { AcStaticPolygonDescComponent } from './components/ac-static-polygon-desc/ac-static-polygon-desc.component';
-import { AcLayer2Directive } from './directives/ac-layer-2.directive';
 import { Angular2ParseModule } from 'angular2parse';
 import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
 import { JsonMapper } from './services/json-mapper/json-mapper.service';
@@ -22,6 +21,12 @@ import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
 import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
 import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
+import { AcPointDescComponent } from './components/ac-point-desc/ac-point-desc.component';
+import { AcLabelComponent } from './components/ac-label/ac-label.component';
+import { AcPolylineComponent } from './components/ac-polyline/ac-polyline.component';
+import { AcEllipseComponent } from './components/ac-ellipse/ac-ellipse.component';
+import { AcPointComponent } from './components/ac-point/ac-point.component';
+import { AcHtmlComponent } from './components/ac-html/ac-html.component';
 
 @NgModule({
 	imports: [
@@ -39,13 +44,19 @@ import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/
 		AcDynamicEllipseDescComponent,
 		AcDynamicPolylineDescComponent,
 		AcStaticPolygonDescComponent,
-		AcLayer2Directive,
 		PixelOffsetPipe,
 		AcStaticCircleDescComponent,
 		AcDynamicCircleDescComponent,
 		AcStaticPolylineDescComponent,
 		AcArcDescComponent,
-		AcMapLayerProviderComponent
+		AcMapLayerProviderComponent,
+		AcPointDescComponent,
+		AcLabelComponent,
+		AcPolylineComponent,
+		AcEllipseComponent,
+		AcPointComponent,
+		AcBillboardComponent,
+		AcHtmlComponent
 	],
 	exports: [
 		AcMapComponent,
@@ -57,12 +68,18 @@ import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/
 		AcDynamicPolylineDescComponent,
 		AcStaticPolygonDescComponent,
 		AcLayerComponent,
-		AcLayer2Directive,
 		AcStaticCircleDescComponent,
 		AcDynamicCircleDescComponent,
 		AcStaticPolylineDescComponent,
 		AcArcDescComponent,
-		AcMapLayerProviderComponent
+		AcMapLayerProviderComponent,
+		AcPointDescComponent,
+		AcLabelComponent,
+		AcPolylineComponent,
+		AcEllipseComponent,
+		AcPointComponent,
+		AcBillboardComponent,
+		AcHtmlComponent
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })

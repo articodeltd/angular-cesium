@@ -1,12 +1,12 @@
-import { Input } from '@angular/core';
+import {Input, OnInit} from '@angular/core';
 import { BasicDesc } from '../basic-desc/basic-desc.service';
 import { LayerService } from '../layer-service/layer-service.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
-import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
+import { StaticPrimitiveDrawer } from '../drawers/static-primitive-drawer/static-primitive-drawer.service';
 import { AcEntity } from '../../models/ac-entity';
 
-export class BasicStaticPrimitiveDesc extends BasicDesc {
+export class BasicStaticPrimitiveDesc extends BasicDesc implements OnInit {
 	@Input()
 	geometryProps: any;
 	@Input()

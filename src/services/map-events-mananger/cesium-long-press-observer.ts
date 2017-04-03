@@ -2,7 +2,8 @@ import { CesiumPureEventObserver } from './cesium-pure-event-observer';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { CesiumEventBuilder } from './cesium-event-builder';
-import { Observable, ConnectableObservable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { ConnectableObservable } from 'rxjs/observable/ConnectableObservable';
 
 export class CesiumLongPressObserver extends CesiumPureEventObserver {
 	public static LONG_PRESS_EVENTS_DURATION = 250;

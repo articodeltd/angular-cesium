@@ -1,13 +1,22 @@
-import { Observable, ConnectableObservable } from 'rxjs';
 import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { Injectable } from '@angular/core';
 import { CesiumPureEventObserver } from './cesium-pure-event-observer';
 import { CesiumLongPressObserver } from './cesium-long-press-observer';
+import { ConnectableObservable } from 'rxjs/observable/ConnectableObservable';
 
 @Injectable()
 export class CesiumEventBuilder {
+	public static getEventFullName(event: CesiumEvent, modifier?: CesiumEventModifier): string {
+		if (modifier) {
+			return `${event}_${modifier}`;
+		}
+		else {
+			return event.toString();
+		}
+	}
+
 	public static longPressEvents: Set<CesiumEvent> = new Set([
 		CesiumEvent.LONG_LEFT_PRESS,
 		CesiumEvent.LONG_RIGHT_PRESS,
@@ -29,15 +38,6 @@ export class CesiumEventBuilder {
 			const eventObserver = this.createCesiumEventObservable(event, modifier);
 			this.cesiumEventsObservables.set(eventName, eventObserver);
 			return eventObserver;
-		}
-	}
-
-	public static getEventFullName(event: CesiumEvent, modifier?: CesiumEventModifier): string {
-		if (modifier) {
-			return `${event}_${modifier}`;
-		}
-		else {
-			return event.toString();
 		}
 	}
 

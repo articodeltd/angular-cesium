@@ -1,19 +1,21 @@
-import { BillboardDrawerService } from '../../services/billboard-drawer/billboard-drawer.service';
+import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { AcNotification } from '../../models/ac-notification';
 import { ActionType } from '../../models/action-type.enum';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
-import { LabelDrawerService } from '../../services/label-drawer/label-drawer.service';
-import { SimpleDrawerService } from '../../services/simple-drawer/simple-drawer.service';
-import { StaticCircleDrawerService } from '../../services/static-circle-drawer/static-circle-drawer.service';
-import { EllipseDrawerService } from '../../services/ellipse-drawer/ellipse-drawer.service';
-import { DynamicEllipseDrawerService } from '../../services/ellipse-drawer/dynamic-ellipse-drawer.service';
-import { DynamicPolylineDrawerService } from '../../services/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
-import { StaticPolylineDrawerService } from '../../services/static-polyline-drawer/static-polyline-drawer.service';
-import { PolygonDrawerService } from '../../services/polygon-drawer/polygon-drawer.service';
-import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
+import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
+import { SimpleDrawerService } from '../../services/drawers/simple-drawer/simple-drawer.service';
+import { StaticCircleDrawerService } from '../../services/drawers/static-circle-drawer/static-circle-drawer.service';
+import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
+import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { StaticPolylineDrawerService } from '../../services/drawers/static-polyline-drawer/static-polyline-drawer.service';
+import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
+import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
+import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 
 /**
  *  This is a ac-layer implementation.
@@ -51,7 +53,7 @@ import { ArcDrawerService } from '../../services/arc-drawer/arc-drawer.service';
 	providers: [
 		LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
 		DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,
-		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService
+		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService, PointDrawerService
 	]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
@@ -79,7 +81,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	            staticCircleDrawerService: StaticCircleDrawerService,
 	            staticPolylineDrawerService: StaticPolylineDrawerService,
 	            polygonDrawerService: PolygonDrawerService,
-	            arcDrawerService: ArcDrawerService) {
+	            arcDrawerService: ArcDrawerService,
+	            pointDraweeSrvice: PointDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,
@@ -89,7 +92,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			staticCircleDrawerService,
 			staticPolylineDrawerService,
 			polygonDrawerService,
-			arcDrawerService
+			arcDrawerService,
+			pointDraweeSrvice
 		);
 	}
 
@@ -116,18 +120,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 
 	private initValidParams() {
 		if (!this.context) {
-			throw 'ac-layer: must initialize [context] ';
+			throw new Error('ac-layer: must initialize [context] ');
 		}
 
 		if (!AcLayerComponent.acForRgx.test(this.acFor)) {
-			throw 'ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
-			+ 'instead received: ' + this.acFor;
+			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
+				+ 'instead received: ' + this.acFor);
 		}
 		const acForArr = this.acFor.split(' ');
 		this.observable = this.context[acForArr[3]];
 		this.entityName = acForArr[1];
 		if (!this.observable || !(this.observable instanceof Observable)) {
-			throw  'ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable;
+			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
 	}
 
