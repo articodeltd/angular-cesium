@@ -9,7 +9,7 @@ import { UtilsService } from '../../utils/utils.service';
 import { Observable } from 'rxjs';
 import { PlonterService } from '../plonter/plonter.service';
 import { DisposableObservable } from '../map-events-mananger/disposable-observable';
-const findIndex = require('lodash.findindex');
+import * as _ from 'lodash';
 
 /**
  * Manages all selection events.
@@ -26,9 +26,8 @@ const findIndex = require('lodash.findindex');
  */
 @Injectable()
 export class MapSelectionService {
-
     private scene;
-    private multiPickEventMap = new Map<CesiumEvent, Array<{}>>();
+    private multiPickEventMap = new Map<CesiumEvent, Array<{ primitive: any }>>();
     private triggerPickJson = {
         'PICK_FIRST': this.triggerPickFirst.bind(this),
         'PICK_ALL': this.triggerPickAll.bind(this),
@@ -77,7 +76,7 @@ export class MapSelectionService {
     private triggerMultiPick(movement: any, event) {
         const newPick = this.scene.pick(movement.endPosition);
         if (newPick) {
-            const indexInArray = findIndex(this.multiPickEventMap.get(event), (entity) => {
+            const indexInArray = _.findIndex(this.multiPickEventMap.get(event), (entity) => {
                 return entity.primitive.acEntity.id === newPick.primitive.acEntity.id;
             });
             if (indexInArray === -1) {

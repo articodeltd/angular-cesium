@@ -42,7 +42,7 @@
     "@angular/router": "~3.3.0",
     "@types/core-js": "^0.9.35",
     "@types/jasmine": "2.5.36",
-    "@types/lodash.findindex": "^4.6.2",
+    "@types/lodash": "ts2.0",
     "@types/node": "6.0.63",
     "@types/selenium-webdriver": "^2.53.33",
     "angular2-template-loader": "^0.4.0",
