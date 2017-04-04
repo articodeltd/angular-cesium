@@ -4,7 +4,7 @@ import { CesiumService } from '../cesium/cesium.service';
 import { PickOptions } from '../map-events-mananger/consts/pickOptions.enum';
 import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
 import { EventResult, MapEventsManagerService } from '../map-events-mananger/map-events-manager';
-import { EventRegistrationInput } from '../map-events-mananger/event-registration-input';
+import { EventSelectionInput } from './EventSelectionInput';
 import { UtilsService } from '../../utils/utils.service';
 import { Observable } from 'rxjs/observable';
 import { PlonterService } from '../plonter/plonter.service';
@@ -41,7 +41,7 @@ export class MapSelectionService {
         this.scene = cesiumService.getScene();
     }
 
-    select(input: EventRegistrationInput) {
+    select(input: EventSelectionInput) {
         input.pick = input.pick || PickOptions.NO_PICK;
 
         if (input.entityType && input.pick === PickOptions.NO_PICK) {
