@@ -119,19 +119,19 @@ export class EventTestLayerComponent implements OnInit {
     }
 
     testPriority() {
-        const o1 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 1});
+        const o1 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 1, pick: PickOptions.PICK_FIRST});
         o1.subscribe((pos) => {
             console.log('click1P1', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         }, err => null, () => console.log('complete'));
-        const o2 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 2});
+        const o2 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 2, pick: PickOptions.PICK_FIRST});
         o2.subscribe((pos) => {
             console.log('click2P2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         });
-        const o3 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 2});
+        const o3 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 2, pick: PickOptions.PICK_FIRST});
         o3.subscribe((pos) => {
             console.log('click3P2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         });
-        const o4 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 3});
+        const o4 = this.eventManager.select({event: CesiumEvent.LEFT_CLICK, priority: 3, pick: PickOptions.PICK_FIRST});
         o4.subscribe((pos) => {
             console.log('click4P3', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
         });
