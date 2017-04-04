@@ -6,7 +6,7 @@ import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
 import { EventResult, MapEventsManagerService } from '../map-events-mananger/map-events-manager';
 import { EventRegistrationInput } from '../map-events-mananger/event-registration-input';
 import { UtilsService } from '../../utils/utils.service';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/observable';
 import { PlonterService } from '../plonter/plonter.service';
 import { DisposableObservable } from '../map-events-mananger/disposable-observable';
 import * as _ from 'lodash';
