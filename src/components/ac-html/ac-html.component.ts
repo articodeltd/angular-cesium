@@ -13,57 +13,57 @@ import { CesiumService } from '../../services/cesium/cesium.service';
  */
 
 @Component({
-	selector: 'ac-html',
-	template: `<ng-content></ng-content>`,
-	styles: [`:host {
+  selector: 'ac-html',
+  template: `<ng-content></ng-content>`,
+  styles: [`:host {
                 position: absolute;
                 z-index: 1;
 				}`]
 })
-export class AcHtmlComponent implements OnInit, DoCheck{
+export class AcHtmlComponent implements OnInit, DoCheck {
 
-	@Input() props: any;
-	private isDraw: boolean = false;
-	preRenderEventListener: ()=>void;
+  @Input() props: any;
+  private isDraw = false;
+  preRenderEventListener: () => void;
 
-	constructor(private cesiumService: CesiumService, private elementRef: ElementRef) {
-	}
+  constructor(private cesiumService: CesiumService, private elementRef: ElementRef) {
+  }
 
-	ngOnInit():void {
-	}
+  ngOnInit(): void {
+  }
 
-	setScreenPosition(screenPosition: any) {
-		this.elementRef.nativeElement.style.top = `${screenPosition.y}px`;
-		this.elementRef.nativeElement.style.left = `${screenPosition.x}px`;
-	}
+  setScreenPosition(screenPosition: any) {
+    this.elementRef.nativeElement.style.top = `${screenPosition.y}px`;
+    this.elementRef.nativeElement.style.left = `${screenPosition.x}px`;
+  }
 
-	remove() {
-		if (this.isDraw){
-			this.isDraw = false;
-			this.cesiumService.getScene().preRender.removeEventListener(this.preRenderEventListener);
-			this.elementRef.nativeElement.style.display = 'none';
-		}
-	}
+  remove() {
+    if (this.isDraw) {
+      this.isDraw = false;
+      this.cesiumService.getScene().preRender.removeEventListener(this.preRenderEventListener);
+      this.elementRef.nativeElement.style.display = 'none';
+    }
+  }
 
-	add() {
-		if (!this.isDraw) {
-			this.isDraw = true;
-			this.preRenderEventListener = ()=> {
-				let screenPosition = Cesium.SceneTransforms.wgs84ToWindowCoordinates(this.cesiumService.getScene(),
-					this.props.position);
-				this.setScreenPosition(screenPosition);
-			};
-			this.elementRef.nativeElement.style.display = 'block';
-			this.cesiumService.getScene().preRender.addEventListener(this.preRenderEventListener);
-		}
-	}
+  add() {
+    if (!this.isDraw) {
+      this.isDraw = true;
+      this.preRenderEventListener = () => {
+        const screenPosition = Cesium.SceneTransforms.wgs84ToWindowCoordinates(this.cesiumService.getScene(),
+          this.props.position);
+        this.setScreenPosition(screenPosition);
+      };
+      this.elementRef.nativeElement.style.display = 'block';
+      this.cesiumService.getScene().preRender.addEventListener(this.preRenderEventListener);
+    }
+  }
 
-	ngDoCheck(){
-		if (this.props.show === undefined || this.props.show) {
-			this.add();
-		}
-		else {
-			this.remove();
-		}
-	}
+  ngDoCheck() {
+    if (this.props.show === undefined || this.props.show) {
+      this.add();
+    }
+    else {
+      this.remove();
+    }
+  }
 }
