@@ -8,7 +8,7 @@ import { PickOptions } from './consts/pickOptions.enum';
  * MapEventsManagerService.register(eventRegistrationInput).subscribe()
  * ```
  */
-export interface EventRegistrationInput {
+export abstract class EventRegistrationInput {
 	event: CesiumEvent;
 	modifier?: CesiumEventModifier;
 	entityType?;
