@@ -2,7 +2,7 @@
 
 import './operators';
 export * from './angular-cesium.module';
-export * from './models';
-export * from './components';
-export * from './services';
+export * from './models/index';
+export * from './components/index';
+export * from './services/index';
 export * from './pipes/pixel-offset/pixel-offset.pipe'
