@@ -4,17 +4,17 @@ import { Http, Response } from '@angular/http';
 import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 @Component({
-  selector: 'performance-form',
-  templateUrl: 'performance-form.component.html',
-  styleUrls: ['performance-form.component.css']
+  selector: 'settings-form',
+  templateUrl: 'settings-form.component.html',
+  styleUrls: ['settings-form.component.css']
 })
-export class PerformanceFormComponent implements OnInit {
+export class SettingsFormComponent implements OnInit {
   @Output() cleanMap = new EventEmitter();
   @Output() showEvent = new EventEmitter();
 
-  private numOfEntities = 500;
-  private interval = 500;
-  private numOfObjectsInPart = 20;
+  public numOfEntities = 0;
+  public rate = 0;
+  public sendOption = 'chunk';
   private isShow = true;
   private currentLongitude = 0;
   private currentLatitude = 0;
@@ -24,22 +24,14 @@ export class PerformanceFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getInterval().subscribe((data) => {
+    this.getServerSettings().subscribe((data) => {
       this.numOfEntities = data.numOfEntities;
-      this.numOfObjectsInPart = data.numOfObjectsInPart;
-      this.interval = data.interval;
-      this.http.post('http://localhost:3000/change',
-        {
-          interval: this.interval,
-          numOfEntities: this.numOfEntities,
-          numOfObjectsInPart: this.numOfObjectsInPart
-        }).catch(this.handleError)
-        .subscribe(() => {
-        });
+      this.rate = data.interval;
+      this.sendOption = data.sendOption;
     });
   }
 
-  private getInterval() {
+  private getServerSettings() {
     return this.http.get('http://localhost:3000/data').catch(this.handleError).map((res: Response) => {
         const body = res.json();
         return body || {};
@@ -47,12 +39,12 @@ export class PerformanceFormComponent implements OnInit {
     );
   }
 
-  change() {
+  applySettings() {
     this.http.post('http://localhost:3000/change',
       {
-        interval: this.interval,
+        rate: this.rate,
         numOfEntities: this.numOfEntities,
-        numOfObjectsInPart: this.numOfObjectsInPart
+        sendOption: 'chunk'
       }).catch(this.handleError)
       .subscribe(() => {
         this.cleanMap.emit();

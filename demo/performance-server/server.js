@@ -22,7 +22,7 @@ httpServer.listen(3000, function () {
 });
 
 
-let numOfEntities = 100;
+let numOfEntities = 500;
 let interval = 1000;
 let sendOption = 'chunk';
 let intervalId;
@@ -46,7 +46,7 @@ app.post('/change', function (req, res, next) {
   console.log(`change to: ${JSON.stringify(req.body)}`);
 
   numOfEntities = req.body.numOfEntities;
-  interval = req.body.interval;
+  interval = req.body.rate;
   sendOption = req.body.sendOption;
 
   clearInterval(intervalId);
@@ -59,10 +59,14 @@ app.post('/change', function (req, res, next) {
       intervalId = sendChunk();
       break;
     default:
-      console.log('WTF wrong sendOption');
+      console.log('missing sendOption');
   }
 
   res.send('changed successfully');
+});
+
+app.get('/data', (req, res) => {
+  res.send({numOfEntities, interval, sendOption})
 });
 
 function sendChunk() {
@@ -117,7 +121,11 @@ function updateChunk(dataArr) {
 
     entity.position.lat += Math.cos(entity.heading) * maxMovementDistance;
     entity.position.long -= Math.sin(entity.heading) * maxMovementDistance;
-    entity.position.altitude += Math.random() * maxAltitudeChange * getSign();
+    let altitudeChange = Math.random() * maxAltitudeChange * getSign();
+    if(entity.position.altitude + altitudeChange < 0 || entity.position.altitude + altitudeChange > 20000){
+      altitudeChange *= -1;
+    }
+    entity.position.altitude += altitudeChange;
   }
   return dataArr;
 }

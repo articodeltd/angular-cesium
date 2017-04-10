@@ -1,5 +1,15 @@
-<div class="track-dialog">
-    <h1 md-dialog-title>Track {{(track$ | async)?.id}}</h1>
-    <h1 md-dialog-title>altitude: {{(track$ | async)?.altitude}}</h1>
-    <button md-button (click)="dialogRef.close()">Close</button>
+<h1 class="title" md-dialog-title>Track {{(track$ | async)?.id}}</h1>
+<div md-dialog-content class="track-dialog">
+    <div class="dialog-line">
+        Callsign: {{(track$ | async)?.name}}
+    </div>
+    <div class="dialog-line">
+        Altitude: {{(track$ | async)?.altitude}}
+    </div>
+    <div class="dialog-line">
+        Heading: {{toRadians((track$ | async)?.heading)}}&deg;
+    </div>
+</div>
+<div md-dialog-actions>
+    <button class="close-button" md-button (click)="dialogRef.close()">Close</button>
 </div>

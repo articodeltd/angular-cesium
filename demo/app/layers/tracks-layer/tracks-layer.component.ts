@@ -68,15 +68,11 @@ export class TracksLayerComponent implements OnInit {
       const track = event.entities !== null ? event.entities[0] : null;
       if (this.lastPickTrack && (!track || track.id !== this.lastPickTrack.id)) {
         this.lastPickTrack.picked = false;
-        this.layer.update({
-          entity: this.lastPickTrack,
-          actionType: ActionType.ADD_UPDATE,
-          id: this.lastPickTrack.id
-        });
+        this.updateTrack(this.lastPickTrack);
       }
       if (track && (!this.lastPickTrack || track.id !== this.lastPickTrack.id)) {
         track.picked = true;
-        this.layer.update({ entity: track, actionType: ActionType.ADD_UPDATE, id: track.id });
+        this.updateTrack(track);
       }
       this.lastPickTrack = track;
     });
@@ -95,13 +91,31 @@ export class TracksLayerComponent implements OnInit {
     });
   }
 
+  updateTrack(track) {
+    this.layer.update({ entity: track, actionType: ActionType.ADD_UPDATE, id: track.id });
+  }
+
   openDialog(track) {
+    track.dialogOpen = true;
+    this.updateTrack(track);
     this.dialog.closeAll();
     const end$ = new Subject();
     const trackObservable = this.getSingleTrackObservable(track.id, end$);
     const dialogUpdateStream = new Subject<AcNotification>();
     trackObservable.merge(dialogUpdateStream);
-    this.dialog.open(TracksDialogComponent, { data: { trackObservable } }).afterClosed().subscribe(() => end$.next(0));
+    this.dialog.open(TracksDialogComponent, {
+      data: { trackObservable },
+      position: {
+        top: '10px',
+        left: '10px',
+      },
+      width: '300px',
+      height: '300px',
+    }).afterClosed().subscribe(() => {
+      end$.next(0);
+      track.dialogOpen = false;
+      this.updateTrack(track);
+    });
     dialogUpdateStream.next(track);
   }
 
@@ -111,6 +125,9 @@ export class TracksLayerComponent implements OnInit {
   }
 
   getTrackColor(track): any {
+    if (track.dialogOpen) {
+      return Cesium.Color.GREENYELLOW;
+    }
     if (track.picked) {
       return Cesium.Color.YELLOW;
     }

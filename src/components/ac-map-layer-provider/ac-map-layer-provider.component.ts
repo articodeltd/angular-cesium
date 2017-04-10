@@ -78,6 +78,7 @@ export class AcMapLayerProviderComponent implements OnInit {
 				provider = AcMapLayerProviderComponent.createArcGisMapServerProvider(this.options);
 				break;
 			case MapLayerProviderOptions.OFFLINE:
+				provider = AcMapLayerProviderComponent.createOfflineMapProvider();
 				break;
 			default:
 				provider = AcMapLayerProviderComponent.createOfflineMapProvider();

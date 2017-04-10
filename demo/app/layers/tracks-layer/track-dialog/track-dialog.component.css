@@ -1,7 +1,23 @@
 .track-dialog{
-    position: absolute;
-    width: 400px;
-    height: 500px;
-    background-color: rgba(60,60,60,0.8);
-    top: 10px;
+    font-family: HelveticaNeue-Light;
+}
+
+.mat-dialog-container{
+    background-color: rgba(80,80,80,0.8);
+}
+
+.cdk-overlay-backdrop{
+    position: initial;
+}
+
+.title{
+    font-family: HelveticaNeue-Bold;
+}
+
+.dialog-line{
+    margin-bottom:10px;
+}
+
+.close-button{
+    background-color:white;
 }

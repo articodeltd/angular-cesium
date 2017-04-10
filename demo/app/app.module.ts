@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AngularCesiumModule } from '../../src/angular-cesium.module';
-import { PerformanceFormComponent } from './shared/performance-form/performance-form.component';
+import { SettingsFormComponent } from './shared/settings-form/settings-form.component';
 import { TracksLayerComponent } from './layers/tracks-layer/tracks-layer.component';
 import { EllipseLayerComponent } from './layers/ellipse-layer/ellipse-layer.component';
 import { BaseLayerComponent } from './layers/base-layer/base-layer.component';
@@ -18,14 +18,16 @@ import { ArcLayerComponent } from './layers/arc-layer/arc-layer.component';
 import { DynamicCircleLayerComponent } from './layers/dynamic-circle-layer/dynamic-circle-layer.component';
 import { SymbologyLayerComponent } from './layers/symbology-layer/symbology-layer.component';
 import { PointLayerComponent } from './layers/point-layer/point-layer.component';
+import 'hammerjs';
 import { MaterialModule } from '@angular/material';
 import { TracksDialogComponent } from './layers/tracks-layer/track-dialog/track-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PerformanceFormComponent,
+    SettingsFormComponent,
     TracksLayerComponent,
+    TracksDialogComponent,
     BaseLayerComponent,
     DynamicEllipseLayerComponent,
     DynamicCircleLayerComponent,

@@ -3,6 +3,8 @@
  * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
  */
 import { enableProdMode } from '@angular/core';
+import '../../node_modules/@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
 // The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 // Load i18n providers
