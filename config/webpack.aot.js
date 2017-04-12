@@ -20,7 +20,7 @@ module.exports = {
     target: 'node',
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /.js$/,
                 exclude: root.root('node_modules'),
@@ -42,7 +42,7 @@ module.exports = {
     ],
 
     resolve: {
-        extensions: ['', '.js'],
+        extensions: [ '.js'],
         alias: {
             'cesium': 'cesium/Build/CesiumUnminified/Cesium.js'
         }

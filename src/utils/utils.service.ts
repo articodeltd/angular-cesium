@@ -1,5 +1,5 @@
-export class UtilsService {
-	static unique(array: any[]): any[] {
+export const UtilsService = {
+  unique: (array: any[]): any[] =>  {
 		return array.reduce((accumulator, currentValue) => {
 			if (accumulator.indexOf(currentValue) < 0) {
 				accumulator.push(currentValue);
@@ -7,4 +7,5 @@ export class UtilsService {
 			return accumulator;
 		}, []);
 	}
-}
+};
+
