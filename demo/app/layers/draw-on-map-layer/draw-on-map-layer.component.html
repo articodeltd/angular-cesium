@@ -1,0 +1,32 @@
+<ac-label #label
+          [props]="{position: position,
+                                text: 'shilo',
+                                font: '30px sans-serif',
+                                fillColor : aquamarine}">
+</ac-label>
+<ac-polyline #polyline [props]="{positions: positions,
+                                                    width: 3,
+                                                    material: redMatirial}">
+</ac-polyline>
+<!--<ac-ellipse [props]="{
+                     center: position,
+                     semiMajorAxis:50000.0,
+                     semiMinorAxis:80000.0,
+                     rotation : 0.785398,
+                     width:3,
+                     granularity:0.03,
+                     color:[0,1,0,0.5]}">
+</ac-ellipse>-->
+<!--<ac-point
+        [props] = "{
+            width: 3,
+            position: position}">
+</ac-point>-->
+<!--<ac-billboard [props] = "{image: '/assets/angry-bird-blue-icon.png',
+                            position: position,
+                            scale: 0.3,
+                            name: 'billboard'}">
+</ac-billboard>-->
+<ac-html #html [props]="{position: position}">
+    <p>{{htmlElement}}</p>
+</ac-html>

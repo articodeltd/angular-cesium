@@ -21,6 +21,8 @@ import { PointLayerComponent } from './layers/point-layer/point-layer.component'
 import 'hammerjs';
 import { MaterialModule } from '@angular/material';
 import { TracksDialogComponent } from './layers/tracks-layer/track-dialog/track-dialog.component';
+import { DrawOnMapComponent } from './layers/draw-on-map-layer/draw-on-map-layer.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { TracksDialogComponent } from './layers/tracks-layer/track-dialog/track-
     ArcLayerComponent,
     SymbologyLayerComponent,
     PointLayerComponent,
-    TracksDialogComponent
+    TracksDialogComponent,
+		DrawOnMapComponent
   ],
   imports: [
     BrowserModule,

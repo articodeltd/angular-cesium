@@ -41,6 +41,7 @@ export class BasicDesc implements OnInit {
 			this._primitiveMap.set(id, primitive);
 		} else {
 			const primitive = this._primitiveMap.get(id);
+      primitive.acEntity = entity; // set the entity on the primitive for later usage
 			this._drawer.update(primitive, cesiumProps);
 		}
 	}

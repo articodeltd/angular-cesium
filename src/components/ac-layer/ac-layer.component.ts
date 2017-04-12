@@ -157,32 +157,33 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
     this.layerService.getDescriptions().forEach((description) => description.removeAll());
   }
 
-  /**
-   * remove 1 entity from the layer
-   * @param {number} entityId
-   */
-  remove(entityId: number) {
-    this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
-  }
+	/**
+	 * remove entity from the layer
+	 * @param {number} entityId
+	 */
+	remove(entityId: number) {
+		this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
+	}
 
-  /**
-   * update 1 entity from the layer
-   * @param {AcNotification} notification
-   */
-  update(notification: AcNotification): void {
-    this._updateStream.next(notification);
-  }
+	/**
+	 * add/update entity to/from the layer
+	 * @param {AcNotification} notification
+	 */
+	updateNotification(notification: AcNotification): void {
+		this._updateStream.next(notification);
+	}
 
-  updateEntity(entity: AcEntity, id: number): void {
-		this._updateStream.next({entity, id, actionType: ActionType.ADD_UPDATE});
-  }
+	/**
+	 * add/update entity to/from the layer
+	 * @param {AcEntity} entity
+	 * @param {number} id
+	 */
+	update(entity: AcEntity, id: number): void {
+		this._updateStream.next({ entity, id, actionType: ActionType.ADD_UPDATE });
+	}
 
-  deleteEntity(id: number): void {
-    this._updateStream.next({id, actionType: ActionType.DELETE});
-  }
-
-  refreshAll(collection: AcNotification[]): void {
-    // TODO make entity interface: collection of type entity not notification
-    Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
-  }
+	refreshAll(collection: AcNotification[]): void {
+		// TODO make entity interface: collection of type entity not notification
+		Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
+	}
 }
