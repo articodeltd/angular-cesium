@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { MapEventsManagerService } from '../../../../src/services/map-events-mananger/map-events-manager';
