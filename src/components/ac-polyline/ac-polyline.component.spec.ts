@@ -10,7 +10,7 @@ describe('AcPolylineComponent', () => {
 	let fixture: ComponentFixture<AcPolylineComponent>;
 
 	const cesiumService = mock(CesiumService);
-	const polylineCollection = mock(Cesium.PolylineCollection);
+  const polylineCollection = mock(Cesium.PrimitiveCollection);
 
 	when(cesiumService.getScene()).thenReturn({primitives: instance(polylineCollection)});
 

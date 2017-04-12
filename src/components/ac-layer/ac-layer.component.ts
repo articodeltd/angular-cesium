@@ -57,8 +57,6 @@ import { PointDrawerService } from '../../services/drawers/point-drawer/point-dr
 	]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
-	private static readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
-
 	@Input()
 	show = true;
 	@Input()
@@ -66,6 +64,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	@Input()
 	context: any;
 
+	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 	private entityName: string;
 	private observable: Observable<AcNotification>;
 	private _drawerList: SimpleDrawerService[] = [];
@@ -123,7 +122,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			throw new Error('ac-layer: must initialize [context] ');
 		}
 
-		if (!AcLayerComponent.acForRgx.test(this.acFor)) {
+		if (!this.acForRgx.test(this.acFor)) {
 			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
 				+ 'instead received: ' + this.acFor);
 		}

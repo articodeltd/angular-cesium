@@ -21,15 +21,11 @@
     "suppressImplicitAnyIndexErrors": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
-    "noFallthroughCasesInSwitch": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
+    "noFallthroughCasesInSwitch": true
   },
   "exclude": [
     "node_modules",
-    "dist",
-    "src"
+    "dist"
   ],
   "compileOnSave": false
 }

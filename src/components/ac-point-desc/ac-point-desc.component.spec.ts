@@ -13,9 +13,9 @@ describe('AcPointDescComponent', () => {
 	let fixture: ComponentFixture<AcPointDescComponent>;
 
 	const cesiumService = mock(CesiumService);
-	const polylineCollection = mock(Cesium.PolylineCollection);
+	const pointCollection = mock(Cesium.PointPrimitiveCollection);
 
-	when(cesiumService.getScene()).thenReturn({primitives: instance(polylineCollection)});
+	when(cesiumService.getScene()).thenReturn({primitives: instance(pointCollection)});
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({

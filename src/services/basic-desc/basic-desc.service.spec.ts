@@ -29,7 +29,7 @@ describe('BasicDescTestClass', () => {
 	const cesiumProperties = mock(CesiumProperties);
 	let component: BasicDescTestClass;
 	let fixture: ComponentFixture<BasicDescTestClass>;
-	let simpleDrawerService = mock(SimpleDrawerService);
+	let simpleDrawerService: any = mock(SimpleDrawerService);
 
 	when(cesiumProperties.createEvaluator(anything())).thenReturn(() => {
 		return {}
