@@ -97,7 +97,10 @@
   },
   "dependencies": {
     "angular2parse": "^1.0.4",
+    "apollo-angular": "^0.13.0",
+    "apollo-client": "^1.0.2",
     "geodesy": "^1.1.1",
+    "graphql-tag": "^2.0.0",
     "json-string-mapper": "^1.0.0",
     "primitive-primitives": "0.0.5"
   }

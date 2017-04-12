@@ -19,33 +19,36 @@ import { DynamicCircleLayerComponent } from './layers/dynamic-circle-layer/dynam
 import { SymbologyLayerComponent } from './layers/symbology-layer/symbology-layer.component';
 import { PointLayerComponent } from './layers/point-layer/point-layer.component';
 import { DrawOnMapComponent } from './layers/draw-on-map-layer/draw-on-map-layer.component';
+import { ApolloModule } from 'apollo-angular';
+import { getApolloClient } from '../utils/apollo/apollo-client';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		PerformanceFormComponent,
-		TracksLayerComponent,
-		BaseLayerComponent,
-		DynamicEllipseLayerComponent,
-		DynamicCircleLayerComponent,
-		EllipseLayerComponent,
-		DynamicPolylineLayerComponent,
-		StaticPolylineLayerComponent,
-		PolygonLayerComponent,
-		StaticCircleLayerComponent,
-		EventTestLayerComponent,
-		ArcLayerComponent,
-		SymbologyLayerComponent,
-		PointLayerComponent,
-		DrawOnMapComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		AngularCesiumModule
-	],
-	bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    PerformanceFormComponent,
+    TracksLayerComponent,
+    BaseLayerComponent,
+    DynamicEllipseLayerComponent,
+    DynamicCircleLayerComponent,
+    EllipseLayerComponent,
+    DynamicPolylineLayerComponent,
+    StaticPolylineLayerComponent,
+    PolygonLayerComponent,
+    StaticCircleLayerComponent,
+    EventTestLayerComponent,
+    ArcLayerComponent,
+    SymbologyLayerComponent,
+    PointLayerComponent,
+    DrawOnMapComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AngularCesiumModule,
+    ApolloModule.forRoot(getApolloClient),
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
