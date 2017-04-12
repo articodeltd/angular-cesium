@@ -147,14 +147,14 @@ export class EventTestLayerComponent implements OnInit {
 		this.eventManager.register(inputConf).map((result) => result.entities[0]).filter((entity) => entity.id === 0).subscribe((entity) => {
 			console.log('click3', 'toggle color');
 			entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
-			this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
+			this.layer.updateNotification({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
 		});
 		// this.eventManager.register(inputConf).subscribe((result) => {
 		//     console.log('click3', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
 		//     if (result.entities.length === 1) {
 		//         let entity = result.entities[0];
 		//         entity.color = entity.color === Cesium.Color.GREEN? Cesium.Color.WHITE:Cesium.Color.GREEN;
-		//         this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
+		//         this.layer.updateNotification({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
 		//     }
 		// });
 	}

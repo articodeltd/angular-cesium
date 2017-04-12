@@ -31,7 +31,7 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 
 		setTimeout(() => {
 			base2.entity.name = 'base tel aviv';
-			this.layer.update(base2);
+			this.layer.updateNotification(base2);
 		}, 5000);
 		setTimeout(() => {
 			this.layer.refreshAll(baseArray);

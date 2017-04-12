@@ -16,6 +16,7 @@ import { StaticPolylineDrawerService } from '../../services/drawers/static-polyl
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
+import { AcEntity } from '../../models/ac-entity';
 
 /**
  *  This is a ac-layer implementation.
@@ -72,17 +73,17 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 
 	constructor(private  layerService: LayerService,
-	            private _computationCache: ComputationCache,
-	            billboardDrawerService: BillboardDrawerService,
-	            labelDrawerService: LabelDrawerService,
-	            ellipseDrawerService: EllipseDrawerService,
-	            dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-	            staticCircleDrawerService: StaticCircleDrawerService,
-	            staticPolylineDrawerService: StaticPolylineDrawerService,
-	            polygonDrawerService: PolygonDrawerService,
-	            arcDrawerService: ArcDrawerService,
-	            pointDraweeSrvice: PointDrawerService) {
+							private _computationCache: ComputationCache,
+							billboardDrawerService: BillboardDrawerService,
+							labelDrawerService: LabelDrawerService,
+							ellipseDrawerService: EllipseDrawerService,
+							dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+							dynamicPolylineDrawerService: DynamicPolylineDrawerService,
+							staticCircleDrawerService: StaticCircleDrawerService,
+							staticPolylineDrawerService: StaticPolylineDrawerService,
+							polygonDrawerService: PolygonDrawerService,
+							arcDrawerService: ArcDrawerService,
+							pointDraweeSrvice: PointDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,
@@ -161,15 +162,24 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	 * @param {number} entityId
 	 */
 	remove(entityId: number) {
-		this._updateStream.next({id: entityId, actionType: ActionType.DELETE});
+		this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
 	}
 
 	/**
 	 * update 1 entity from the layer
 	 * @param {AcNotification} notification
 	 */
-	update(notification: AcNotification): void {
+	updateNotification(notification: AcNotification): void {
 		this._updateStream.next(notification);
+	}
+
+	/**
+	 * add/update 1 entity to/from the layer
+	 * @param {AcEntity} entity
+	 * @param {number} id
+	 */
+	update(entity: AcEntity, id: number): void {
+		this._updateStream.next({ entity, id, actionType: ActionType.ADD_UPDATE });
 	}
 
 	refreshAll(collection: AcNotification[]): void {
