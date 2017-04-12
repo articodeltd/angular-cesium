@@ -1,5 +1,4 @@
-<ac-map [enableTilt]="false"
-        [flyTo]="flyToOptions">
+<ac-map [enableTilt]="false">
     <ac-map-layer-provider [provider]="arcGisMapServerProvider"
                            [options]="{
                                 url : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
@@ -17,7 +16,7 @@
     <!--<event-test-layer (mouseMove)="form.setLongLat($event)"></event-test-layer>-->
     <!--<arc-layer #layer></arc-layer>-->
     <!--<symbology-layer #layer></symbology-layer>-->
-    <draw-on-map-layer></draw-on-map-layer>
+    <!--<draw-on-map-layer></draw-on-map-layer>-->
 </ac-map>
-<performance-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"
-></performance-form>
+<!--<performance-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"-->
+<!--&gt;</performance-form>-->

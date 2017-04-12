@@ -8,7 +8,7 @@ export class GeoUtilsService {
 	constructor(private cesiumService: CesiumService) {
 	}
 
-	pointByLocationDistanceAndAzimuth(currentLocation, meterDistance, radianAzimuth, isInputCartesian = false) {
+	static pointByLocationDistanceAndAzimuth(currentLocation, meterDistance, radianAzimuth, isInputCartesian = false) {
 		const distance = meterDistance / Cesium.Ellipsoid.WGS84.maximumRadius;
 		const curLat = isInputCartesian ? Cesium.Cartographic.fromCartesian(currentLocation).latitude : currentLocation.latitude;
 		const curLon = isInputCartesian ? Cesium.Cartographic.fromCartesian(currentLocation).longitude : currentLocation.longitude;
