@@ -72,17 +72,17 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 
 	constructor(private  layerService: LayerService,
-	            private _computationCache: ComputationCache,
-	            billboardDrawerService: BillboardDrawerService,
-	            labelDrawerService: LabelDrawerService,
-	            ellipseDrawerService: EllipseDrawerService,
-	            dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-	            staticCircleDrawerService: StaticCircleDrawerService,
-	            staticPolylineDrawerService: StaticPolylineDrawerService,
-	            polygonDrawerService: PolygonDrawerService,
-	            arcDrawerService: ArcDrawerService,
-	            pointDraweeSrvice: PointDrawerService) {
+							private _computationCache: ComputationCache,
+							billboardDrawerService: BillboardDrawerService,
+							labelDrawerService: LabelDrawerService,
+							ellipseDrawerService: EllipseDrawerService,
+							dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+							dynamicPolylineDrawerService: DynamicPolylineDrawerService,
+							staticCircleDrawerService: StaticCircleDrawerService,
+							staticPolylineDrawerService: StaticPolylineDrawerService,
+							polygonDrawerService: PolygonDrawerService,
+							arcDrawerService: ArcDrawerService,
+							pointDrawerSrvice: PointDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,
@@ -93,14 +93,14 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			staticPolylineDrawerService,
 			polygonDrawerService,
 			arcDrawerService,
-			pointDraweeSrvice
+			pointDrawerSrvice
 		);
 	}
 
 	init() {
 		this.initValidParams();
 
-		this.observable.merge(this._updateStream).subscribe((notification) => {
+		Observable.merge(this._updateStream, this.observable).subscribe((notification) => {
 			this._computationCache.clear();
 			this.context[this.entityName] = notification.entity;
 			this.layerService.getDescriptions().forEach((descriptionComponent) => {
@@ -112,7 +112,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 						descriptionComponent.remove(notification.id);
 						break;
 					default:
-						console.error('unknown action type: ' + notification.actionType);
+						console.error('[ac-layer] unknown AcNotification action type: ' + notification.actionType);
 				}
 			});
 		});
