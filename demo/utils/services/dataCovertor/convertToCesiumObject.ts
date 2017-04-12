@@ -28,10 +28,10 @@ export function convertToCesiumObj(entity): any {
 	entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat);
 	entity.geometry = {
 		center: entity.position,
-		semiMajorAxis: 500000.0,
-		semiMinorAxis: 300000.0,
-		height: 15000.0,
-		rotation: Cesium.Math.toRadians(45)
+		semiMajorAxis: 50000.0,
+		semiMinorAxis: 30000.0,
+		height: 0,
+		rotation: 0
 	};
 	entity.attributes = {
 		color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())

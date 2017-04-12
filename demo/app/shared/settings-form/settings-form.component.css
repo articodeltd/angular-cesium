@@ -1,6 +1,6 @@
 .settings-form {
     height: 100%;
-    background-color: rgba(80,80,80,0.8);
+    background-color: rgba(200,200,200,0.6);
     /*position: absolute;*/
     /*left: 10px;*/
     /*top: 10px;*/
@@ -12,6 +12,7 @@
 }
 
 .ok-button{
+    margin-top: 15px;
     background-color: white;
 }
 
@@ -19,10 +20,6 @@
     color: white;
 }
 
-p {
-    color: white;
-}
-
-.entities-number-slider{
-    width: 300px;
+.settings-form-header{
+    font-style: italic;
 }

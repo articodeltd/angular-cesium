@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, ViewChild, NgZone } from '@angular/core';
 import { ConnectableObservable, Observable, Subject } from 'rxjs';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
@@ -9,145 +9,150 @@ import { PickOptions } from '../../../../src/services/map-events-mananger/consts
 import { AcEntity } from '../../../../src/models/ac-entity';
 import { MdDialog } from '@angular/material';
 import { TracksDialogComponent } from './track-dialog/track-dialog.component';
+import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 
 @Component({
-  selector: 'tracks-layer',
-  templateUrl: './tracks-layer.component.html',
-  styleUrls: ['./tracks-layer.component.css']
+	selector: 'tracks-layer',
+	templateUrl: './tracks-layer.component.html',
+	styleUrls: ['./tracks-layer.component.css']
 })
 export class TracksLayerComponent implements OnInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
-  tracks$: ConnectableObservable<AcNotification>;
-  Cesium = Cesium;
-  showTracks = true;
-  private lastPickTrack;
-  private tracks = new Map<number, any>();
+	@Input()
+	show: boolean;
 
-  constructor(private mapEventsManager: MapEventsManagerService, public dialog: MdDialog) {
-  }
+	tracks$: ConnectableObservable<AcNotification>;
+	Cesium = Cesium;
+	private lastPickTrack;
+	private tracks = new Map<number, any>();
 
-  ngOnInit() {
-    const socket = io.connect('http://localhost:3000');
-    this.tracks$ = Observable.create((observer) => {
-      socket.on('birds', (data) => {
-        data.forEach(
-          (acNotification) => {
-            if (acNotification.action === 'ADD_OR_UPDATE') {
-              acNotification.actionType = ActionType.ADD_UPDATE;
-              acNotification.entity = AcEntity.create(this.convertToCesiumObj(acNotification.entity));
-              const entity = acNotification.entity;
-              const track = this.tracks.get(acNotification.id);
-              if (!this.tracks.has(acNotification.id)) {
-                this.tracks.set(acNotification.id, entity);
-              }
-              else {
-                Object.assign(track, entity);
-                acNotification.entity = track;
-              }
-            }
-            else if (acNotification.action === 'DELETE') {
-              acNotification.actionType = ActionType.DELETE;
-              const id = acNotification.id;
-              this.tracks.delete(id);
-            }
-            observer.next(acNotification);
-          });
-      });
-    }).publish();
+	constructor(private mapEventsManager: MapEventsManagerService, public dialog: MdDialog, private webSocketSupllier: WebSocketSupplier,
+							private cd: ChangeDetectorRef, private ngZone: NgZone) {
+	}
 
-    this.tracks$.connect();
+	ngOnInit() {
+		const socket = this.webSocketSupllier.get();
+		this.tracks$ = Observable.create((observer) => {
+			socket.on('birds', (data) => {
+				data.forEach(
+					(acNotification) => {
+						if (acNotification.action === 'ADD_OR_UPDATE') {
+							acNotification.actionType = ActionType.ADD_UPDATE;
+							acNotification.entity = AcEntity.create(this.convertToCesiumObj(acNotification.entity));
+							const entity = acNotification.entity;
+							const track = this.tracks.get(acNotification.id);
+							if (!this.tracks.has(acNotification.id)) {
+								this.tracks.set(acNotification.id, entity);
+							}
+							else {
+								Object.assign(track, entity);
+								acNotification.entity = track;
+							}
+						}
+						else if (acNotification.action === 'DELETE') {
+							acNotification.actionType = ActionType.DELETE;
+							const id = acNotification.id;
+							this.tracks.delete(id);
+						}
+						observer.next(acNotification);
+					});
+			});
+		}).publish();
 
-    const mouseOverObservable = this.mapEventsManager.register({
-      event: CesiumEvent.MOUSE_MOVE,
-      pick: PickOptions.PICK_FIRST,
-      priority: 2,
-    });
+		this.tracks$.connect();
 
-    mouseOverObservable.subscribe((event) => {
-      const track = event.entities !== null ? event.entities[0] : null;
-      if (this.lastPickTrack && (!track || track.id !== this.lastPickTrack.id)) {
-        this.lastPickTrack.picked = false;
-        this.layer.updateEntity(this.lastPickTrack, this.lastPickTrack.id);
-      }
-      if (track && (!this.lastPickTrack || track.id !== this.lastPickTrack.id)) {
-        track.picked = true;
-        this.layer.updateEntity(track, track.id);
-      }
-      this.lastPickTrack = track;
-    });
+		const mouseOverObservable = this.mapEventsManager.register({
+			event: CesiumEvent.MOUSE_MOVE,
+			pick: PickOptions.PICK_FIRST,
+			priority: 2,
+		});
 
-    const doubleClickObservable = this.mapEventsManager.register({
-      event: CesiumEvent.LEFT_DOUBLE_CLICK,
-      pick: PickOptions.PICK_FIRST,
-      priority: 2,
-    });
+		mouseOverObservable.subscribe((event) => {
+			const track = event.entities !== null ? event.entities[0] : null;
+			if (this.lastPickTrack && (!track || track.id !== this.lastPickTrack.id)) {
+				this.lastPickTrack.picked = false;
+				this.layer.update(this.lastPickTrack, this.lastPickTrack.id);
+			}
+			if (track && (!this.lastPickTrack || track.id !== this.lastPickTrack.id)) {
+				track.picked = true;
+				this.layer.update(track, track.id);
+			}
+			this.lastPickTrack = track;
+		});
 
-    doubleClickObservable.subscribe((event) => {
-      const track = event.entities !== null ? event.entities[0] : null;
-      if (track) {
-        this.openDialog(track);
-      }
-    });
-  }
+		const doubleClickObservable = this.mapEventsManager.register({
+			event: CesiumEvent.LEFT_DOUBLE_CLICK,
+			pick: PickOptions.PICK_FIRST,
+			priority: 2,
+		});
 
-  openDialog(track) {
-    track.dialogOpen = true;
-    this.layer.updateEntity(track, track.id);
-    this.dialog.closeAll();
-    const end$ = new Subject();
-    const trackObservable = this.getSingleTrackObservable(track.id, end$);
-    const dialogUpdateStream = new Subject<AcNotification>();
-    trackObservable.merge(dialogUpdateStream);
-    this.dialog.open(TracksDialogComponent, {
-      data: { trackObservable },
-      position: {
-        top: '10px',
-        left: '10px',
-      },
-      width: '300px',
-      height: '300px',
-    }).afterClosed().subscribe(() => {
-      end$.next(0);
-      track.dialogOpen = false;
-      this.layer.updateEntity(track, track.id);
-    });
-    dialogUpdateStream.next(track);
-  }
+		doubleClickObservable.subscribe((event) => {
+			const track = event.entities !== null ? event.entities[0] : null;
+			if (track) {
+				this.ngZone.run(() => this.openDialog(track));
+			}
+		});
+	}
 
-  getSingleTrackObservable(trackId, end$) {
-    return this.tracks$
-      .filter((notification) => notification.id === trackId).map((notification) => notification.entity).takeUntil(end$);
-  }
+	openDialog(track) {
+		track.dialogOpen = true;
+		this.layer.update(track, track.id);
+		this.dialog.closeAll();
+		const end$ = new Subject();
+		const trackObservable = this.getSingleTrackObservable(track.id, end$);
+		const dialogUpdateStream = new Subject<AcNotification>();
+		trackObservable.merge(dialogUpdateStream);
+		this.ngZone.run(() => dialogUpdateStream.next(track));
+		this.dialog.open(TracksDialogComponent, {
+			data: { trackObservable },
+			position: {
+				top: '10px',
+				left: '10px',
+			},
+			width: '300px',
+			height: '300px',
+		}).afterClosed().subscribe(() => {
+			end$.next(0);
+			track.dialogOpen = false;
+			this.layer.update(track, track.id);
+		});
+		// this.layer.update(track, track.id);
+	}
 
-  getTrackColor(track): any {
-    if (track.dialogOpen) {
-      return Cesium.Color.GREENYELLOW;
-    }
-    if (track.picked) {
-      return Cesium.Color.YELLOW;
-    }
-    else {
-      return track.isTarget ? Cesium.Color.RED : Cesium.Color.BLUE;
-    }
-  }
+	getSingleTrackObservable(trackId, end$) {
+		return this.tracks$
+			.filter((notification) => notification.id === trackId).map((notification) => notification.entity).takeUntil(end$);
+	}
 
-  getTextColor(track): any {
-    return Cesium.Color.BLACK;
-  }
+	getTrackColor(track): any {
+		if (track.dialogOpen) {
+			return Cesium.Color.GREENYELLOW;
+		}
+		if (track.picked) {
+			return Cesium.Color.YELLOW;
+		}
+		else {
+			return track.isTarget ? Cesium.Color.RED : Cesium.Color.BLUE;
+		}
+	}
 
-  convertToCesiumObj(entity): any {
-    entity.scale = entity.id === 1 ? 0.3 : 0.15;
-    entity.altitude = Math.round(entity.position.altitude);
-    entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.position.altitude);
-    return entity;
-  }
+	getTextColor(track): any {
+		return Cesium.Color.BLACK;
+	}
 
-  removeAll() {
-    this.layer.removeAll();
-  }
+	convertToCesiumObj(entity): any {
+		entity.scale = entity.id === 1 ? 0.3 : 0.15;
+		entity.altitude = Math.round(entity.position.altitude);
+		entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.position.altitude);
+		return entity;
+	}
 
-  setShow($event) {
-    this.showTracks = $event;
-  }
+	removeAll() {
+		this.layer.removeAll();
+	}
+
+	setShow($event) {
+		this.show = $event;
+	}
 }

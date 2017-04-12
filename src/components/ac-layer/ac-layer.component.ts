@@ -28,7 +28,7 @@ import { AcEntity } from '../../models/ac-entity';
  *  __Usage :__
  *  ```
  *  &lt;ac-map&gt;
- *      &lt;ac-layer acFor="let track of tracks$" [show]="showTracks" [context]="this"&gt;
+ *      &lt;ac-layer acFor="let track of tracks$" [show]="show" [context]="this"&gt;
  *          &lt;ac-billboard-desc props="{
  *               image: track.image,
  *               position: track.position,

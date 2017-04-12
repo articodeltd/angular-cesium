@@ -14,17 +14,22 @@
 <!--</form>-->
 
 <md-card class="settings-form">
-    <h2 class="entities-counter-h2">Settings</h2>
+    <h1 class="settings-form-header">Settings</h1>
+    <h2 class="settings-from-sub-header">Entities</h2>
     <div>
         <md-input-container class="settings-input">
-            <input mdInput placeholder="Number of entities" [(ngModel)]="numOfEntities">
+            <input mdInput placeholder="Number of entities" [(ngModel)]="settingsService.numOfEntities">
         </md-input-container>
         <md-input-container class="settings-input">
-            <input mdInput placeholder="Rate (ms)" [(ngModel)]="rate">
+            <input mdInput placeholder="Rate (ms)" [(ngModel)]="settingsService.entitiesUpdateRate">
         </md-input-container>
     </div>
     <div>
         <button md-button class="ok-button" (click)="applySettings()">Ok</button>
+    </div>
+    <h2 class="settings-from-sub-header">Layers</h2>
+    <div>
+        <md-checkbox [(ngModel)]="settingsService.showTracksLayer">Tracks Layer</md-checkbox>
     </div>
 </md-card>
 
