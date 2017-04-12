@@ -33,23 +33,23 @@ export class TracksLayerComponent implements OnInit {
       socket.on('birds', (data) => {
         data.forEach(
           (acNotification) => {
-            let action;
             if (acNotification.action === 'ADD_OR_UPDATE') {
-              action = ActionType.ADD_UPDATE;
+              acNotification.actionType = ActionType.ADD_UPDATE;
+              acNotification.entity = AcEntity.create(this.convertToCesiumObj(acNotification.entity));
+              const entity = acNotification.entity;
+              const track = this.tracks.get(acNotification.id);
+              if (!this.tracks.has(acNotification.id)) {
+                this.tracks.set(acNotification.id, entity);
+              }
+              else {
+                Object.assign(track, entity);
+                acNotification.entity = track;
+              }
             }
             else if (acNotification.action === 'DELETE') {
-              action = ActionType.DELETE;
-            }
-            acNotification.actionType = action;
-            acNotification.entity = AcEntity.create(this.convertToCesiumObj(acNotification.entity));
-            const entity = acNotification.entity;
-            const track = this.tracks.get(acNotification.id);
-            if (!this.tracks.has(acNotification.id)) {
-              this.tracks.set(acNotification.id, entity);
-            }
-            else {
-              Object.assign(track, entity);
-              acNotification.entity = track;
+              acNotification.actionType = ActionType.DELETE;
+              const id = acNotification.id;
+              this.tracks.delete(id);
             }
             observer.next(acNotification);
           });
@@ -68,11 +68,11 @@ export class TracksLayerComponent implements OnInit {
       const track = event.entities !== null ? event.entities[0] : null;
       if (this.lastPickTrack && (!track || track.id !== this.lastPickTrack.id)) {
         this.lastPickTrack.picked = false;
-        this.updateTrack(this.lastPickTrack);
+        this.layer.updateEntity(this.lastPickTrack, this.lastPickTrack.id);
       }
       if (track && (!this.lastPickTrack || track.id !== this.lastPickTrack.id)) {
         track.picked = true;
-        this.updateTrack(track);
+        this.layer.updateEntity(track, track.id);
       }
       this.lastPickTrack = track;
     });
@@ -91,13 +91,9 @@ export class TracksLayerComponent implements OnInit {
     });
   }
 
-  updateTrack(track) {
-    this.layer.update({ entity: track, actionType: ActionType.ADD_UPDATE, id: track.id });
-  }
-
   openDialog(track) {
     track.dialogOpen = true;
-    this.updateTrack(track);
+    this.layer.updateEntity(track, track.id);
     this.dialog.closeAll();
     const end$ = new Subject();
     const trackObservable = this.getSingleTrackObservable(track.id, end$);
@@ -114,7 +110,7 @@ export class TracksLayerComponent implements OnInit {
     }).afterClosed().subscribe(() => {
       end$.next(0);
       track.dialogOpen = false;
-      this.updateTrack(track);
+      this.layer.updateEntity(track, track.id);
     });
     dialogUpdateStream.next(track);
   }
