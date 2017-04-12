@@ -12,7 +12,7 @@ import { PickOptions } from '../map-events-mananger/consts/pickOptions.enum';
 import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
 import { CesiumEventBuilder } from '../map-events-mananger/cesium-event-builder';
 import { DisposableObservable } from '../map-events-mananger/disposable-observable';
-import { EventRegistrationInput } from '../map-events-mananger/event-registration-input';
+import { EventSelectionInput } from './EventSelectionInput';
 
 describe('MapSelectionService', () => {
     const cesiumService = mock(CesiumService);
@@ -76,7 +76,7 @@ describe('MapSelectionService', () => {
     }));
 
     describe('pick first', () => {
-        const pickFirstRegistrationInput: EventRegistrationInput = {
+        const pickFirstRegistrationInput: EventSelectionInput = {
             event: CesiumEvent.LEFT_CLICK,
             pick: PickOptions.PICK_FIRST
         };
@@ -105,7 +105,7 @@ describe('MapSelectionService', () => {
     });
 
     describe('multi selection', () => {
-        const multiSelectionRegistrationInput: EventRegistrationInput = {
+        const multiSelectionRegistrationInput: EventSelectionInput = {
             event: CesiumEvent.LEFT_CLICK,
             pick: PickOptions.MULTI_PICK
         };
