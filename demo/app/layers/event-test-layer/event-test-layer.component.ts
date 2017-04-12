@@ -22,9 +22,9 @@ export class EventTestLayerComponent implements OnInit {
 	@Output() mouseMove = new EventEmitter();
 
 	constructor(private eventManager: MapEventsManagerService,
-	            public  plonterService: PlonterService,
-	            private cd: ChangeDetectorRef,
-				private geoUtilsService: GeoUtilsService) {
+							public  plonterService: PlonterService,
+							private cd: ChangeDetectorRef,
+							private geoUtilsService: GeoUtilsService) {
 		const track1: AcNotification = {
 			id: 0,
 			actionType: ActionType.ADD_UPDATE,
@@ -59,16 +59,16 @@ export class EventTestLayerComponent implements OnInit {
 
 	ngOnInit(): void {
 		// Pass event only if clicked and contains at least one entity.
-		this.eventManager.register({event: CesiumEvent.LEFT_CLICK}).subscribe((pos) => {
+		this.eventManager.register({ event: CesiumEvent.LEFT_CLICK }).subscribe((pos) => {
 			console.log('click2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
 		});
 
 		// Send mouse location
-		this.eventManager.register({event: CesiumEvent.RIGHT_CLICK}).subscribe((pos) => {
+		this.eventManager.register({ event: CesiumEvent.RIGHT_CLICK }).subscribe((pos) => {
 
-			let	screenPositionCartesian = this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition);
-			if (screenPositionCartesian){
-				let	screenPositionCartographic = Cesium.Cartographic.fromCartesian(screenPositionCartesian);
+			const screenPositionCartesian = this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition);
+			if (screenPositionCartesian) {
+				const screenPositionCartographic = Cesium.Cartographic.fromCartesian(screenPositionCartesian);
 				screenPositionCartographic.latitude = screenPositionCartographic.latitude * 180 / Math.PI;
 				screenPositionCartographic.longitude = screenPositionCartographic.longitude * 180 / Math.PI;
 				this.mouseMove.emit(screenPositionCartographic);
@@ -91,7 +91,7 @@ export class EventTestLayerComponent implements OnInit {
 
 	testPlonter() {
 		this.plonterService.plonterChangeNotifier.subscribe(() => this.cd.detectChanges());
-		this.eventManager.register({event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_ONE})
+		this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_ONE })
 			.map((result) => result.entities)
 			.filter(entities => entities[0].id === 1 || entities[0].id === 2)
 			.subscribe((result) => {
@@ -114,19 +114,19 @@ export class EventTestLayerComponent implements OnInit {
 	}
 
 	testPriority() {
-		const o1 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 1});
+		const o1 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 1 });
 		o1.subscribe((pos) => {
 			console.log('click1P1', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
 		}, err => null, () => console.log('complete'));
-		const o2 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 2});
+		const o2 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 2 });
 		o2.subscribe((pos) => {
 			console.log('click2P2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
 		});
-		const o3 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 2});
+		const o3 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 2 });
 		o3.subscribe((pos) => {
 			console.log('click3P2', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
 		});
-		const o4 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 3});
+		const o4 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 3 });
 		o4.subscribe((pos) => {
 			console.log('click4P3', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
 		});
@@ -143,19 +143,19 @@ export class EventTestLayerComponent implements OnInit {
 	}
 
 	testColorChange() {
-		let inputConf = {event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST, entityType: AcEntity};
+		const inputConf = { event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST, entityType: AcEntity };
 		this.eventManager.register(inputConf).map((result) => result.entities[0]).filter((entity) => entity.id === 0).subscribe((entity) => {
 			console.log('click3', 'toggle color');
 			entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
-			this.layer.updateNotification({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
+			this.layer.updateNotification({ actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id });
 		});
 		// this.eventManager.register(inputConf).subscribe((result) => {
-		//     console.log('click3', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
-		//     if (result.entities.length === 1) {
-		//         let entity = result.entities[0];
-		//         entity.color = entity.color === Cesium.Color.GREEN? Cesium.Color.WHITE:Cesium.Color.GREEN;
-		//         this.layer.updateNotification({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
-		//     }
+		// 	console.log('click3', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
+		// 	if (result.entities.length === 1) {
+		// 		const entity = result.entities[0];
+		// 		entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
+		// 		this.layer.updateNotification({ actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id });
+		// 	}
 		// });
 	}
 

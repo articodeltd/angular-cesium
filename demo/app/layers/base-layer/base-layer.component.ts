@@ -50,7 +50,7 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 	}
 
 	setShow($event) {
-		this.show = $event
+		this.show = $event;
 	}
 
 }
