@@ -158,7 +158,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	}
 
 	/**
-	 * remove 1 entity from the layer
+	 * remove entity from the layer
 	 * @param {number} entityId
 	 */
 	remove(entityId: number) {
@@ -166,7 +166,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	}
 
 	/**
-	 * update 1 entity from the layer
+	 * add/update entity to/from the layer
 	 * @param {AcNotification} notification
 	 */
 	updateNotification(notification: AcNotification): void {
@@ -174,7 +174,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	}
 
 	/**
-	 * add/update 1 entity to/from the layer
+	 * add/update entity to/from the layer
 	 * @param {AcEntity} entity
 	 * @param {number} id
 	 */
