@@ -23,6 +23,7 @@
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
     "typeRoots": [
+      "./src/typings",
       "./node_modules/@types"
     ]
   },
