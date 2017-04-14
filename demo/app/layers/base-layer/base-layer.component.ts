@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
@@ -31,7 +31,7 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 
 		setTimeout(() => {
 			base2.entity.name = 'base tel aviv';
-			this.layer.update(base2);
+			this.layer.updateNotification(base2);
 		}, 5000);
 		setTimeout(() => {
 			this.layer.refreshAll(baseArray);
@@ -50,7 +50,7 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 	}
 
 	setShow($event) {
-		this.show = $event
+		this.show = $event;
 	}
 
 }
