@@ -11,7 +11,6 @@ import { PlonterService } from '../plonter/plonter.service';
 
 /**
  * Manages all selection events.
- * __Notice__: When using multi selection, if registering to the same event more then once, the array of picks will reset.
  * __usage:__
  * ```
  * MapSelectionService.select({event, modifier, priority, entityType, pickOption}).subscribe()

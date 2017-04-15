@@ -13,7 +13,7 @@ import * as _ from 'lodash';
  * __Notice__: If registering to the same event more then once, the array of picks will reset.
  * __usage:__
  * ```
- * MapSelectionService.select({event, modifier, priority, entityType, PickOptions.MULTI_PICK}).subscribe()
+ * MultiSelectionService.select({event, modifier, priority, entityType, PickOptions.MULTI_PICK}).subscribe()
  * ```
  * __param:__ {CesiumEvent} event
  * __param:__ {CesiumEventModifier} modifier

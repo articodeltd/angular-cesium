@@ -155,7 +155,7 @@ export class EventTestLayerComponent implements OnInit {
 		this.eventManager.select(inputConf).map((result) => result.entities[0]).filter((entity) => entity.id === 0).subscribe((entity) => {
 			console.log('click3', 'toggle color');
 			entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
-			this.layer.updateNotification({ actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id });
+			this.layer.updateNotification({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
 		});
 	}
 
