@@ -1,6 +1,4 @@
-;
 import { Injectable } from '@angular/core';
-
 import { CesiumService } from '../../cesium/cesium.service';
 import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
 

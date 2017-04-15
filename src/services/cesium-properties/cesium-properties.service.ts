@@ -6,16 +6,15 @@ import { ComputationCache } from '../computation-cache/computation-cache.service
 
 @Injectable()
 export class CesiumProperties {
-	private _assignersCache: Map<string, Function> = new Map<string, Function>();
-	private _evaluatorsCache: Map<string, Function> = new Map<string, Function>();
+	private _assignersCache = new Map<string, (oldVal: Object, newVal: Object) => Object>();
+	private _evaluatorsCache = new Map<string, (cache: ComputationCache, context: Object) => Object>();
 
 	constructor(private _parser: Parse,
-	            private _jsonMapper: JsonMapper) {
-	}
+	            private _jsonMapper: JsonMapper) {}
 
-	_compile(expression: string): Function {
+	_compile(expression: string): (cache: ComputationCache, context: Object) => Object {
 		const cesiumDesc = {};
-		const propsMap = new Map<string, any>();
+		const propsMap = new Map<string, {expression: string, get: Function}>();
 
 		const resultMap = this._jsonMapper.map(expression);
 
@@ -31,21 +30,21 @@ export class CesiumProperties {
 		const fnBody = `return ${JSON.stringify(cesiumDesc).replace(/"/g, '')};`;
 		const getFn = new Function('propsMap', 'cache', 'context', fnBody);
 
-		return function evaluateCesiumProps(cache: ComputationCache, context: Object): any {
+		return function evaluateCesiumProps(cache: ComputationCache, context: Object): Object {
 			return getFn(propsMap, cache, context);
 		};
 	}
 
-	_build(expression: string): Function {
+	_build(expression: string): (oldVal: Object, newVal: Object) => Object {
 		const props = Array.from(this._jsonMapper.map(expression).keys());
 		const smartAssigner = SmartAssigner.create(props, false);
 
-		return function assignCesiumProps(oldVal: any, newVal: any) {
+		return function assignCesiumProps(oldVal: Object, newVal: Object) {
 			return smartAssigner(oldVal, newVal);
 		};
 	}
 
-	createEvaluator(expression: string): Function {
+	createEvaluator(expression: string): (cache: ComputationCache, context: Object) => Object {
 		if (this._evaluatorsCache.has(expression)) {
 			return this._evaluatorsCache.get(expression);
 		}
@@ -56,7 +55,7 @@ export class CesiumProperties {
 		return evaluatorFn;
 	}
 
-	createAssigner(expression: string): Function {
+	createAssigner(expression: string): (oldVal: Object, newVal: Object) => Object {
 		if (this._assignersCache.has(expression)) {
 			return this._assignersCache.get(expression);
 		}
