@@ -8,6 +8,19 @@ import { MapEventsManagerService } from '../map-events-mananger/map-events-manag
 import { PlonterService } from '../plonter/plonter.service';
 import * as _ from 'lodash';
 
+/**
+ * Manages multi-selection events.
+ * __Notice__: If registering to the same event more then once, the array of picks will reset.
+ * __usage:__
+ * ```
+ * MapSelectionService.select({event, modifier, priority, entityType, PickOptions.MULTI_PICK}).subscribe()
+ * ```
+ * __param:__ {CesiumEvent} event
+ * __param:__ {CesiumEventModifier} modifier
+ * __param:__ priority - the bigger the number the bigger the priority. default : 0.
+ * __param:__ entityType - entity type class that you are interested like (Track). the class must extends AcEntity
+ * __param:__ pickOption - self explained
+ */
 @Injectable()
 export class MultiSelectionService extends MapSelectionService {
 	private multiPickEventMap = new Map<CesiumEvent, Array<{ primitive: any }>>();
