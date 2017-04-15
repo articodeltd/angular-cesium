@@ -160,7 +160,7 @@ export class EventTestLayerComponent implements OnInit {
 	}
 
 	multiSelect() {
-		let inputConf: MultiSelectionInput = {
+		const inputConf: MultiSelectionInput = {
 			event: CesiumEvent.RIGHT_CLICK,
 			pick: PickOptions.MULTI_PICK,
 			modifier: CesiumEventModifier.CTRL,
