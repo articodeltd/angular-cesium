@@ -23,9 +23,11 @@ export class CesiumProperties {
 			get: this._parser.eval(resultExpression)
 		}));
 
-		const fnBody = 'const cesiumDesc={};for (let [propName, cesiumProp] of propsMap)cesiumDesc[propName ? ' +
-			'propName : \'undefined\'] = cache.get(cesiumProp.expression.toString(), ' +
-			'()=>propsMap.get(propName).get(context));return cesiumDesc;';
+		propsMap.forEach((value, prop) => {
+			cesiumDesc[prop || 'undefined'] = `cache.get(\`${value.expression}\`, () => propsMap.get('${prop}').get(context))`;
+		});
+
+		const fnBody = `return ${JSON.stringify(cesiumDesc).replace(/"/g, '')};`;
 		const getFn = new Function('propsMap', 'cache', 'context', fnBody);
 
 		return function evaluateCesiumProps(cache: ComputationCache, context: Object): any {
@@ -67,15 +69,5 @@ export class CesiumProperties {
 		this._assignersCache.set(expression, assignFn);
 
 		return assignFn;
-	}
-
-	stringifyExpression(expression: string) {
-		if (expression[0] === '\'' && expression[expression.length - 1] === '\'') {
-			// expression = expression.substring(0, expression.length-1);
-			return `\`${expression}\``;
-		}
-		else {
-			return `'${expression}'`;
-		}
 	}
 }
