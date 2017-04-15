@@ -1,4 +1,4 @@
-<ac-map [enableTilt]="false" <!--[flyTo]="flyToOptions"--> >
+<ac-map [enableTilt]="false">
     <ac-map-layer-provider [provider]="arcGisMapServerProvider"
                            [options]="{
                                 url : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
@@ -10,7 +10,7 @@
     <ac-static-circle-layer #layer></ac-static-circle-layer>
     <base-layer #layer></base-layer>
     <static-polyline-layer #layer></static-polyline-layer>
-    <dynamic-circle-layer #layer></dynamic-circle-layer>
+    <!--<dynamic-circle-layer #layer></dynamic-circle-layer>-->
     <dynamic-polyline-layer #layer></dynamic-polyline-layer>
     <point-layer></point-layer>
     <event-test-layer (mouseMove)="form.setLongLat($event)"></event-test-layer>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { JsonMapper } from '../json-mapper/json-mapper.service';
 import { Parse } from 'angular2parse';
+import { SmartAssigner } from "../smart-assigner/smart-assigner.service";
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 
 @Injectable()
@@ -36,16 +37,11 @@ export class CesiumProperties {
 	}
 
 	_build(expression: string): Function {
-		let fnBody = ``;
-		const resultMap = this._jsonMapper.map(expression);
-
-		resultMap.forEach((value, prop) => fnBody += `dst['${prop}'] = src['${prop}'];`);
-
-		fnBody += `return dst;`;
-		const assignFn = new Function('dst', 'src', `${fnBody}`);
+		const props = Array.from(this._jsonMapper.map(expression).keys());
+		const smartAssigner = SmartAssigner.create(props, false);
 
 		return function assignCesiumProps(oldVal: any, newVal: any) {
-			return assignFn(oldVal, newVal);
+			return smartAssigner(oldVal, newVal);
 		};
 	}
 
