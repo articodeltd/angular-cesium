@@ -10,6 +10,7 @@ import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-pol
 import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { MapSelectionService } from '../../services/map-selection-service/map-selection.service';
+import { MultiSelectionService } from '../../services/multi-selection-service/multi-selection.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -24,7 +25,7 @@ import { MapSelectionService } from '../../services/map-selection-service/map-se
 @Component({
 	selector: 'ac-map',
 	template: '<ng-content></ng-content>',
-	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
+	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService, MultiSelectionService,
 		LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService, MapSelectionService]
 })
 export class AcMapComponent implements OnChanges, OnInit {
