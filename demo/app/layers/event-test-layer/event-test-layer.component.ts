@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { MapSelectionService } from '../../../../src/services/map-selection-service/map-selection.service';
@@ -74,9 +74,9 @@ export class EventTestLayerComponent implements OnInit {
 		// Send mouse location
 		this.eventManager.select({event: CesiumEvent.RIGHT_CLICK, pick: PickOptions.PICK_FIRST}).subscribe((pos) => {
 
-			let screenPositionCartesian = this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition);
+			const screenPositionCartesian = this.geoUtilsService.screenPositionToCartesian3(pos.movement.endPosition);
 			if (screenPositionCartesian) {
-				let screenPositionCartographic = Cesium.Cartographic.fromCartesian(screenPositionCartesian);
+				const screenPositionCartographic = Cesium.Cartographic.fromCartesian(screenPositionCartesian);
 				screenPositionCartographic.latitude = screenPositionCartographic.latitude * 180 / Math.PI;
 				screenPositionCartographic.longitude = screenPositionCartographic.longitude * 180 / Math.PI;
 				this.mouseMove.emit(screenPositionCartographic);
@@ -151,11 +151,11 @@ export class EventTestLayerComponent implements OnInit {
 	}
 
 	testColorChange() {
-		let inputConf = {event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST, entityType: AcEntity};
+		const inputConf = {event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST, entityType: AcEntity};
 		this.eventManager.select(inputConf).map((result) => result.entities[0]).filter((entity) => entity.id === 0).subscribe((entity) => {
 			console.log('click3', 'toggle color');
 			entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
-			this.layer.update({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
+			this.layer.updateNotification({ actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id });
 		});
 	}
 
