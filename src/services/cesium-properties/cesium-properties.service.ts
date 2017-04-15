@@ -37,7 +37,7 @@ export class CesiumProperties {
 
 	_build(expression: string): (oldVal: Object, newVal: Object) => Object {
 		const props = Array.from(this._jsonMapper.map(expression).keys());
-		const smartAssigner = SmartAssigner.create(props, false);
+		const smartAssigner = SmartAssigner.create(props);
 
 		return function assignCesiumProps(oldVal: Object, newVal: Object) {
 			return smartAssigner(oldVal, newVal);
