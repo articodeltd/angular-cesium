@@ -20,6 +20,11 @@
     "typeRoots" : [
       "./src/typings",
       "./node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "cesium",
+      "geodesy"
     ]
   },
   "exclude": [
