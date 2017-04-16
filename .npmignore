@@ -22,4 +22,5 @@ tslint.json
 tsconfig.json
 tsconfig.aot.json
 protractor.conf.js
+rollup.config.js
 npm-debug.log
