@@ -1,4 +1,4 @@
-export * from './map-events-mananger';
+export * from './map-events-mananger/index';
 export * from './cesium/cesium.service';
 export * from './coordinate-converter/coordinate-converter.service';
 export * from './geo-utils/geo-utils.service';
