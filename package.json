@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -30,7 +30,8 @@
     "compileNserve-docs": "npm run compile-docs && npm run serve-docs"
   },
   "peerDependencies": {
-    "@angular/core": "2.0.1"
+    "@angular/core": "^2.4.8",
+    "@angular/common": "^2.3.0"
   },
   "devDependencies": {
     "@angular/common": "~2.3.0",
