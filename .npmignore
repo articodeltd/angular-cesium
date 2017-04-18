@@ -15,6 +15,7 @@ src/**/*.ts
 !src/**/*.d.ts
 
 # configuration files
+index.ts
 karma.conf.js
 webpack.config.js
 webpack.aot.config.js
