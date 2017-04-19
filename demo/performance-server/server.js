@@ -24,6 +24,7 @@ httpServer.listen(3000, function () {
 
 let numOfEntities = 500;
 let interval = 1000;
+let intervalDivider = 6;
 let sendOption = 'chunk';
 let intervalId;
 let dataChunk;
@@ -71,23 +72,23 @@ app.get('/data', (req, res) => {
 function sendChunk() {
 	let counter = 0;
 	let id = setInterval(() => {
-		if (counter % 10 === 0) {
+		if (counter % intervalDivider === 0) {
 			counter = 0;
 			dataChunk = updateChunk(dataChunk);
 		}
 
-		let chunk = numOfEntities > 10 ? getChunkPart(counter) : dataChunk;
+		let chunk = numOfEntities > intervalDivider ? getChunkPart(counter) : dataChunk;
 
 		io.emit('birds', chunk);
 		counter++;
-	}, interval / 10);
+	}, interval / intervalDivider);
 	return id;
 }
 
 function getChunkPart(part) {
 	let result = [];
-	let index = (numOfEntities / 10) * (part + 1);
-	for (let i = (numOfEntities / 10) * part; i < index; i++) {
+	let index = (numOfEntities / intervalDivider) * (part + 1);
+	for (let i = (numOfEntities / intervalDivider) * part; i < index; i++) {
 		result.push(dataChunk[i])
 	}
 	return result;
