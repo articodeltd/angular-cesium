@@ -2,6 +2,7 @@
 config/
 node_modules/
 documentation/
+docs/
 demo/
 .circleci/
 
@@ -14,6 +15,7 @@ src/**/*.ts
 !src/**/*.d.ts
 
 # configuration files
+index.ts
 karma.conf.js
 webpack.config.js
 webpack.aot.config.js
@@ -21,4 +23,5 @@ tslint.json
 tsconfig.json
 tsconfig.aot.json
 protractor.conf.js
+rollup.config.js
 npm-debug.log

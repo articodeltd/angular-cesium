@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "es5",
+      "es2015",
+      "dom"
+    ],
+    "sourceMap": true,
+    "pretty": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noFallthroughCasesInSwitch": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "./services/drawers/arc-drawer/arc-drawer.service.ts",
+    "./services/drawers/billboard-drawer/billboard-drawer.service.ts",
+    "./services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service.ts",
+    "./services/drawers/ellipse-drawer/ellipse-drawer.service.ts",
+    "./services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service.ts",
+    "./services/drawers/label-drawer/label-drawer.service.ts",
+    "./services/drawers/point-drawer/point-drawer.service.ts",
+    "./services/drawers/polygon-drawer/polygon-drawer.service.ts",
+    "./services/drawers/simple-drawer/simple-drawer.service.ts",
+    "./services/drawers/static-circle-drawer/static-circle-drawer.service.ts",
+    "./services/drawers/static-polyline-drawer/static-polyline-drawer.service.ts",
+    "./services/drawers/static-primitive-drawer/static-primitive-drawer.service.ts",
+    "./services/computation-cache/computation-cache.service.ts",
+    "./services/json-mapper/json-mapper.service.ts",
+    "./services/basic-desc/basic-desc.service.ts",
+    "./services/basic-primitive-desc/basic-static-primitive-desc.service.ts",
+    "./services/map-events-mananger/cesium-event-builder.ts",
+    "./services/map-events-mananger/cesium-long-press-observer.ts",
+    "./services/map-events-mananger/cesium-pure-event-observer.ts",
+    "./services/layer-service/layer-service.service.ts",
+    "./utils/checker.ts",
+    "./utils/utils.service.ts"
+  ],
+  "compileOnSave": false
+}

@@ -18,6 +18,7 @@ import { ArcLayerComponent } from './layers/arc-layer/arc-layer.component';
 import { DynamicCircleLayerComponent } from './layers/dynamic-circle-layer/dynamic-circle-layer.component';
 import { SymbologyLayerComponent } from './layers/symbology-layer/symbology-layer.component';
 import { PointLayerComponent } from './layers/point-layer/point-layer.component';
+import { DrawOnMapComponent } from './layers/draw-on-map-layer/draw-on-map-layer.component';
 
 @NgModule({
 	declarations: [
@@ -35,7 +36,8 @@ import { PointLayerComponent } from './layers/point-layer/point-layer.component'
 		EventTestLayerComponent,
 		ArcLayerComponent,
 		SymbologyLayerComponent,
-		PointLayerComponent
+		PointLayerComponent,
+		DrawOnMapComponent
 	],
 	imports: [
 		BrowserModule,

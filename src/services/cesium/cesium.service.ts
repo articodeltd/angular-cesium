@@ -1,5 +1,6 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, Optional } from '@angular/core';
 import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
+import { ViewerConfiguration } from '../viewer-configuration/viewer-configuration.service';
 
 /**
  *  Service that initialize cesium viewer and expose cesium viewer and scene.
@@ -8,12 +9,13 @@ import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
 export class CesiumService {
 	private cesiumViewer: any;
 
-	constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory) {
+	constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory, @Optional() private viewConf: ViewerConfiguration) {
 	}
 
 	init(mapContainer: HTMLElement) {
 		this.ngZone.runOutsideAngular(() => {
-			this.cesiumViewer = this.viewerFactory.createViewer(mapContainer);
+			const options = this.viewConf ? this.viewConf.viewerOptions : undefined ;
+			this.cesiumViewer = this.viewerFactory.createViewer(mapContainer, options);
 		});
 	}
 
@@ -98,6 +100,10 @@ export class CesiumService {
 		this.getScene().morphToColumbusView(duration);
 	}
 
+	/**
+	 * according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
+	 * @param options
+	 */
 	flyTo(options: any) {
 		this.getViewer().camera.flyTo(options);
 	}

@@ -1,6 +1,6 @@
-import { OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { OnInit, Input } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
-import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
+import { SimpleDrawerService } from '../drawers/simple-drawer/simple-drawer.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { AcEntity } from '../../models/ac-entity';
@@ -13,16 +13,9 @@ export class BasicDesc implements OnInit {
 	@Input()
 	props: any;
 
-	@Input()
-	isOnMap: boolean = false;
-
-	private selfPrimitive: any;
-
-	private selfPrimitiveIsDraw: boolean;
-
 	protected _primitiveMap = new Map();
-
 	private _propsEvaluateFn: Function;
+	private _propsAssignerFn: Function;
 
 	constructor(protected _drawer: SimpleDrawerService,
 	            protected _layerService: LayerService,
@@ -34,22 +27,14 @@ export class BasicDesc implements OnInit {
 		return this._propsEvaluateFn(this._computationCache, context);
 	}
 
-	ngOnInit(): void {
-		if (this.isOnMap) {
-			this.selfPrimitiveIsDraw = false;
-			this.drawOnMap();
-			return;
-		}
-		this._layerService.registerDescription(this);
-		this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
-		this._drawer.setPropsAssigner(this._cesiumProperties.createAssigner(this.props));
+	protected _getPropsAssigner(): (primitive: Object, desc: Object) => Object {
+		return (primitive: Object, desc: Object) => this._propsAssignerFn(primitive, desc);
 	}
 
-	ngOnChanges(changes: SimpleChanges) {
-		const props = changes['props'];
-		if (props.currentValue !== props.previousValue) {
-			this.updateOnMap();
-		}
+	ngOnInit(): void {
+		this._layerService.registerDescription(this);
+		this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
+		this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
 	}
 
 	draw(context: any, id: number, entity: AcEntity): any {
@@ -60,6 +45,8 @@ export class BasicDesc implements OnInit {
 			this._primitiveMap.set(id, primitive);
 		} else {
 			const primitive = this._primitiveMap.get(id);
+      		primitive.acEntity = entity; // set the entity on the primitive for later usage
+			this._drawer.setPropsAssigner(this._getPropsAssigner());
 			this._drawer.update(primitive, cesiumProps);
 		}
 	}
@@ -73,22 +60,5 @@ export class BasicDesc implements OnInit {
 	removeAll() {
 		this._primitiveMap.clear();
 		this._drawer.removeAll();
-	}
-
-	drawOnMap() {
-		this.selfPrimitiveIsDraw =true;
-		return this.selfPrimitive = this._drawer.add(this.props);
-	}
-
-	removeFromMap() {
-		this.selfPrimitiveIsDraw = false;
-		return this._drawer.remove(this.selfPrimitive);
-	}
-
-	updateOnMap() {
-		if (this.selfPrimitiveIsDraw) {
-			this.removeFromMap();
-			this.drawOnMap();
-		}
 	}
 }

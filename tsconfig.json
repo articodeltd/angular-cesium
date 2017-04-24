@@ -23,6 +23,7 @@
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
     "typeRoots": [
+      "./src/typings",
       "./node_modules/@types"
     ]
   },
@@ -31,8 +32,5 @@
     "dist",
     "src"
   ],
-  "compileOnSave": false,
-  "typings": [
-    "./src/typings.d.ts"
-  ]
+  "compileOnSave": false
 }
