@@ -8,4 +8,4 @@ export * from './services/cesium/cesium.service';
 export * from './services/coordinate-converter/coordinate-converter.service';
 export * from './services/geo-utils/geo-utils.service';
 export * from './services/plonter/plonter.service';
-
+export * from './services/viewer-configuration/viewer-configuration.service';
