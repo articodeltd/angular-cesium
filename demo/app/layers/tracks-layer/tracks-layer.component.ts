@@ -117,7 +117,6 @@ export class TracksLayerComponent implements OnInit {
 			track.dialogOpen = false;
 			this.layer.update(track, track.id);
 		});
-		// this.layer.update(track, track.id);
 	}
 
 	getSingleTrackObservable(trackId, end$) {
@@ -141,10 +140,23 @@ export class TracksLayerComponent implements OnInit {
 		return Cesium.Color.BLACK;
 	}
 
+	getPolylineColor() {
+		return new Cesium.Material({
+			fabric: {
+				type: 'Color',
+				uniforms: {
+					color: new Cesium.Color(0.6, 1.0, 0.6, 1.0)
+				}
+			}
+		});
+	}
+
 	convertToCesiumObj(entity): any {
 		entity.scale = entity.id === 1 ? 0.3 : 0.15;
 		entity.altitude = Math.round(entity.position.altitude);
 		entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.position.altitude);
+		entity.futurePosition =
+			Cesium.Cartesian3.fromDegrees(entity.futurePosition.long, entity.futurePosition.lat, entity.futurePosition.altitude);
 		return entity;
 	}
 
