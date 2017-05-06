@@ -23,6 +23,7 @@ import { MaterialModule } from '@angular/material';
 import { TracksDialogComponent } from './layers/tracks-layer/track-dialog/track-dialog.component';
 import { DrawOnMapComponent } from './layers/draw-on-map-layer/draw-on-map-layer.component';
 import { ApolloModule } from 'apollo-angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { getApolloClient } from '../utils/apollo/apollo-client';
 
 
@@ -52,6 +53,7 @@ import { getApolloClient } from '../utils/apollo/apollo-client';
     FormsModule,
     HttpModule,
     AngularCesiumModule,
+    BrowserAnimationsModule,
     MaterialModule,
     ApolloModule.forRoot(getApolloClient),
   ],

@@ -50,7 +50,7 @@ app.get('/data', (req, res) => {
   res.send(getSimSendingParams());
 });
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   startSendingSimulativeData(io);
   console.log('server started on: ' + PORT)
 });
