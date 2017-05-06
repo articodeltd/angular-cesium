@@ -16,6 +16,7 @@ import { StaticPolylineDrawerService } from '../../services/drawers/static-polyl
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
+import { AcEntity } from '../../models/ac-entity';
 
 /**
  *  This is a ac-layer implementation.
@@ -156,19 +157,28 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	}
 
 	/**
-	 * remove 1 entity from the layer
+	 * remove entity from the layer
 	 * @param {number} entityId
 	 */
 	remove(entityId: number) {
-		this._updateStream.next({id: entityId, actionType: ActionType.DELETE});
+		this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
 	}
 
 	/**
-	 * update 1 entity from the layer
+	 * add/update entity to/from the layer
 	 * @param {AcNotification} notification
 	 */
-	update(notification: AcNotification): void {
+	updateNotification(notification: AcNotification): void {
 		this._updateStream.next(notification);
+	}
+
+	/**
+	 * add/update entity to/from the layer
+	 * @param {AcEntity} entity
+	 * @param {number} id
+	 */
+	update(entity: AcEntity, id: number): void {
+		this._updateStream.next({ entity, id, actionType: ActionType.ADD_UPDATE });
 	}
 
 	refreshAll(collection: AcNotification[]): void {

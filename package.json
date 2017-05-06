@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -14,13 +14,15 @@
   "main": "bundles/angular-cesium.umd.js",
   "typings": "src/main.d.ts",
   "scripts": {
-    "cleanup": "rimraf src/*.ngfactory.ts src/*.ngstyle.ts src/*.ngsummary.json build bundles",
+    "clean_src": "rimraf src/*.d.ts src/components/**/*.d.ts src/models/**/*.d.ts src/pipes/**/*.d.ts src/services/**/*.d.ts src/utils/**/*.d.ts src/**/*.metadata.json src/**/*.js src/**/*.js.map src/**/*.ngfactory.ts src/**/*.ngstyle.ts src/**/*.ngsummary.json",
+    "cleanup": "npm run clean_src && rimraf index.js index.js.map index.d.ts index.metadata.json build bundles",
     "start": "webpack-dev-server --inline --progress --port 8080",
     "lint": "tslint -c tslint.json --project tsconfig.aot.json",
     "test": "karma start",
     "ngc": "ngc -p tsconfig.aot.json",
     "aot": "webpack --config webpack.aot.config.js -p",
-    "bundle": "npm run cleanup && npm run lint && npm run ngc && npm run aot",
+    "rollup": "rollup -cza",
+    "bundle": "npm run cleanup && npm run lint && npm run ngc && npm run rollup",
     "build": "rimraf dist && webpack --config config/webpack.dev.js --progress --profile --bail",
     "test-server": "node demo/performance-server/server.js",
     "server": "nodemon --exec ./node_modules/.bin/ts-node -- ./demo/server/src/main.ts",
@@ -29,7 +31,8 @@
     "compileNserve-docs": "npm run compile-docs && npm run serve-docs"
   },
   "peerDependencies": {
-    "@angular/core": "4.0.x"
+    "@angular/core": "4.0.x",
+    "@angular/common": "4.0.x"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~4.0.0",
@@ -79,6 +82,10 @@
     "raw-loader": "^0.5.1",
     "reflect-metadata": "0.1.10",
     "rimraf": "^2.5.2",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
     "run-sequence": "^1.2.1",
     "rxjs": "^5.1.0",
     "socket.io": "^1.7.3",
@@ -105,14 +112,14 @@
     "@types/express": "^4.0.35",
     "@types/request-promise": "^4.1.33",
     "nodemon": "^1.11.0",
+    "apollo-angular": "^0.13.0",
+    "apollo-client": "^1.0.2",
+    "graphql-tag": "^2.0.0",
     "ts-node": "^3.0.2"
   },
   "dependencies": {
     "angular2parse": "^1.0.4",
-    "apollo-angular": "^0.13.0",
-    "apollo-client": "^1.0.2",
     "geodesy": "^1.1.1",
-    "graphql-tag": "^2.0.0",
     "json-string-mapper": "^1.0.0",
     "primitive-primitives": "0.0.5"
   }

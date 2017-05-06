@@ -10,8 +10,6 @@
     "noImplicitAny": false,
     "module": "es2015",
     "moduleResolution": "node",
-    "rootDir": "./src",
-    "outDir": "./src",
     "sourceMap": true,
     "inlineSources": true,
     "skipLibCheck": true,
@@ -19,15 +17,21 @@
       "es2015",
       "dom"
     ],
-    "typeRoots": [
+    "typeRoots" : [
+      "./src/typings",
       "./node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "cesium",
+      "geodesy"
     ]
   },
   "exclude": [
-    "./node_modules/@types/core-js"
+    "node_modules"
   ],
   "files": [
-    "./src/main.ts"
+    "./index.ts"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
