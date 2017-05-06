@@ -11,6 +11,7 @@ import { AcStaticCircleDescComponent } from './components/ac-static-circle-desc/
 import { AcStaticPolygonDescComponent } from './components/ac-static-polygon-desc/ac-static-polygon-desc.component';
 import { Angular2ParseModule } from 'angular2parse';
 import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
+import { RadiansToDegreesPipe } from './pipes/radians-to-degrees/radians-to-degrees.pipe';
 import { JsonMapper } from './services/json-mapper/json-mapper.service';
 import { CesiumProperties } from './services/cesium-properties/cesium-properties.service';
 import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.component';
@@ -45,6 +46,7 @@ import { AcHtmlComponent } from './components/ac-html/ac-html.component';
 		AcDynamicPolylineDescComponent,
 		AcStaticPolygonDescComponent,
 		PixelOffsetPipe,
+		RadiansToDegreesPipe,
 		AcStaticCircleDescComponent,
 		AcDynamicCircleDescComponent,
 		AcStaticPolylineDescComponent,

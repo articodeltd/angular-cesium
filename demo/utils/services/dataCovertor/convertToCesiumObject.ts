@@ -1,10 +1,10 @@
 import { AcEntity } from '../../../../src/models/ac-entity';
-let oneAndOnlyMaterial = new Cesium.PerInstanceColorAppearance({
+const oneAndOnlyMaterial = new Cesium.PerInstanceColorAppearance({
 	translucent: false,
 	closed: true
 });
 
-let yellowMatirial = new Cesium.Material({
+const yellowMaterial = new Cesium.Material({
 	fabric : {
 		type : 'Color',
 		uniforms : {
@@ -13,7 +13,7 @@ let yellowMatirial = new Cesium.Material({
 	}
 });
 
-let redMatirial = new Cesium.Material({
+const redMaterial = new Cesium.Material({
 	fabric : {
 		type : 'Color',
 		uniforms : {
@@ -23,15 +23,15 @@ let redMatirial = new Cesium.Material({
 });
 
 export function convertToCesiumObj(entity): any {
-	entity.scale = entity.id === 1 ? 0.3 : 0.15;
-	entity.color = entity.id === 1 ? Cesium.Color.RED : undefined;
+	// entity.scale = entity.id === 1 ? 0.3 : 0.15;
+	// entity.color = entity.id === 1 ? Cesium.Color.RED : undefined;
 	entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat);
 	entity.geometry = {
-		center: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
-		semiMajorAxis: 500000.0,
-		semiMinorAxis: 300000.0,
-		height: 15000.0,
-		rotation: Cesium.Math.toRadians(45)
+		center: entity.position,
+		semiMajorAxis: 50000.0,
+		semiMinorAxis: 30000.0,
+		height: 0,
+		rotation: 0
 	};
 	entity.attributes = {
 		color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
@@ -98,7 +98,7 @@ export function convertToCesiumObj(entity): any {
 				Math.floor(Math.random() * 50), Math.floor(Math.random() * 50),
 				Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)
 			]),
-		material: entity.id === 1 ? yellowMatirial : redMatirial
+		material: entity.id === 1 ? yellowMaterial : redMaterial
 	};
 
 	entity.point = {

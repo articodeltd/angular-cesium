@@ -1,0 +1,25 @@
+.settings-form {
+    height: 100%;
+    background-color: rgba(200,200,200,0.6);
+    /*position: absolute;*/
+    /*left: 10px;*/
+    /*top: 10px;*/
+    /*z-index: 100;*/
+    /*background-color: black;*/
+    /*color: white;*/
+    /*text-align: end;*/
+    /*padding: 3px;*/
+}
+
+.ok-button{
+    margin-top: 15px;
+    background-color: white;
+}
+
+.settingForm label {
+    color: white;
+}
+
+.settings-form-header{
+    font-style: italic;
+}

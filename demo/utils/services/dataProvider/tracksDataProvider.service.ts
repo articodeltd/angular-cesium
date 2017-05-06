@@ -22,7 +22,7 @@ export class TracksDataProvider {
 							action = ActionType.ADD_UPDATE;
 						}
 						else if (acNotification.action === 'DELETE') {
-							action = ActionType.DELETE
+							action = ActionType.DELETE;
 						}
 						acNotification.actionType = action;
 						acNotification.entity = convertToCesiumObj(acNotification.entity);

@@ -115,7 +115,8 @@
     "webpack-dev-server": "2.4.1",
     "webpack-merge": "^3.0.0",
     "webpack-node-externals": "^1.5.4",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "@angular/material": "^2.0.0-beta.2",
   },
   "dependencies": {
     "angular2parse": "^1.0.4",
