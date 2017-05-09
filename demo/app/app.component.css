@@ -1,14 +1,4 @@
-.cesium-viewer {
-    position: absolute !important;
-}
-
 .settings-button {
-    position: absolute !important;
-    background: gray;
-    width: 55px !important;
-    min-width: 0px !important;
-    bottom: 0px;
-    left: 0px;
 }
 
 .sidenav-container {
@@ -22,6 +12,9 @@
 }
 
 .sidenav {
-    background: transparent;
     width: 350px;
+}
+
+.fill-remaining-space {
+    flex: 1 1;
 }
