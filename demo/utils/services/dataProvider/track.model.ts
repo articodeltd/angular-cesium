@@ -4,7 +4,7 @@ export interface Track {
   callsign: string | null;
   from: string | null;
   to: string | null;
-  azimuth: number | null;
+  heading: number | null;
   position: Position | null;
   groundSpeed: number | null;
   type: string | null;
