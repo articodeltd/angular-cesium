@@ -22,14 +22,15 @@
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
+    "types": []
   },
   "exclude": [
-    "node_modules",
-    "dist",
-    "src"
+    "../node_modules",
+    "../dist",
+    "../src"
   ],
-  "compileOnSave": false
+  "compileOnSave": false,
+  "awesomeTypescriptLoaderOptions": {
+    "transpileOnly": true
+  }
 }

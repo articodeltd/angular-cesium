@@ -6,12 +6,12 @@
         <span>Angular-Cesium Demo</span>
         <!-- This fills the remaining space of the current row -->
         <span class="fill-remaining-space"></span>
-        <button md-button>REAL TRACKS</button>
-        <button md-button>SIMULATED TRACKS</button>
+        <button md-button (click)="tracksRealData=true">REAL TRACKS</button>
+        <button md-button (click)="tracksRealData=false">SIMULATED TRACKS</button>
     </md-toolbar>
     <md-sidenav #sidenav class="sidenav">
         <settings-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"></settings-form>
     </md-sidenav>
 
-    <demo-map></demo-map>
+    <demo-map [tracksRealData]="tracksRealData"></demo-map>
 </md-sidenav-container>

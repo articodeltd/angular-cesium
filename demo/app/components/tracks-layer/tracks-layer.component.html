@@ -1,0 +1,33 @@
+<ac-layer acFor="let track of tracks$" [show]="show" [context]="this">
+    <ac-billboard-desc props="{
+              image: track.image,
+              position: track.position,
+              color: getTrackColor(track),
+              scale: 0.1,
+              name: track.callsign,
+              rotation: track.heading
+            }">
+    </ac-billboard-desc>
+    <ac-label-desc props="{
+            position: track.position,
+            pixelOffset : [-15,20] | pixelOffset,
+            text: track.callsign,
+            font: '15px sans-serif',
+            fillColor: getTextColor(track)
+    }">
+    </ac-label-desc>
+    <ac-label-desc props="{
+            position: track.position,
+            pixelOffset : [-15,35] | pixelOffset,
+            text: track.alt.toString(),
+            font: '15px sans-serif',
+            fillColor: getTextColor(track)
+    }">
+    </ac-label-desc>
+    <!--<ac-dynamic-polyline-desc props="{-->
+    <!--positions: [track.position, track.futurePosition],-->
+    <!--width: 1,-->
+    <!--material: getPolylineColor()-->
+    <!--}">-->
+    <!--</ac-dynamic-polyline-desc>-->
+</ac-layer>

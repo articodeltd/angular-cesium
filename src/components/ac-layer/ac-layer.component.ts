@@ -82,7 +82,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 							staticPolylineDrawerService: StaticPolylineDrawerService,
 							polygonDrawerService: PolygonDrawerService,
 							arcDrawerService: ArcDrawerService,
-							pointDrawerSrvice: PointDrawerService) {
+							pointDrawerService: PointDrawerService) {
 		this._drawerList = Array.of(
 			billboardDrawerService,
 			labelDrawerService,
@@ -93,7 +93,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			staticPolylineDrawerService,
 			polygonDrawerService,
 			arcDrawerService,
-			pointDrawerSrvice
+			pointDrawerService
 		);
 	}
 
@@ -160,7 +160,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	 * remove entity from the layer
 	 * @param {number} entityId
 	 */
-	remove(entityId: number) {
+	remove(entityId: string) {
 		this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
 	}
 
@@ -177,7 +177,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	 * @param {AcEntity} entity
 	 * @param {number} id
 	 */
-	update(entity: AcEntity, id: number): void {
+	update(entity: AcEntity, id: string): void {
 		this._updateStream.next({ entity, id, actionType: ActionType.ADD_UPDATE });
 	}
 

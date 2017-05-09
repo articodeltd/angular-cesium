@@ -1,5 +1,5 @@
 let io;
-let numOfEntities = 10;
+let numOfEntities = 100;
 let interval = 1000;
 let intervalDivider = 10;
 let sendOption = 'chunk';
@@ -51,7 +51,6 @@ function sendChunk() {
     }
     
     let chunk = numOfEntities > intervalDivider ? getChunkPart(counter) : dataChunk;
-    
     io.emit('birds', chunk);
     counter++;
   }, interval / intervalDivider);

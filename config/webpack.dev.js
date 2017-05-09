@@ -6,7 +6,6 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
   devtool: 'cheap-source-map',
-  
   output: {
     path: root.root('dist'),
     publicPath: '/',

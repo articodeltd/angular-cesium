@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ViewerConfiguration } from '../../../../src/services/viewer-configuration/viewer-configuration.service';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 import { MapLayerProviderOptions } from '../../../../src/models/map-layer-provider-options.enum';
@@ -9,6 +9,8 @@ import { MapLayerProviderOptions } from '../../../../src/models/map-layer-provid
   styleUrls : ['./demo-map.component.css']
 })
 export class DemoMapComponent {
+  @Input() tracksRealData: boolean;
+  
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   
   constructor(private viewerConf: ViewerConfiguration, private appSettingsService: AppSettingsService) {
