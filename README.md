@@ -152,11 +152,12 @@ Now, Let's look at this piece of code:
         </ac-layer>
     </ac-map>
   ```
-+ `ac-map` - is a directive which presents the map and create a new Cesium instance.
-+ `ac-layer` - is our current directive which presents a plan layer. Remember that the data source must be a stream? In our case the stream is `planes$`.
-+ `acFor` - is a directive which lets you decide how would you call a single plane(or a single entity on the stream) in order to write the relevant expressions inside the directive(we'll see this in a moment). It should be noticed that the format for acFor is: `let {x} of {our stream}`.
-+ `context` - the context of the observable (`planes$`) and the cesium descriptions `props` (same context as `getColor`). Usually it will be the context of the component itself - `this`.
-+ `store` - a boolean that tells Ac-Layer if it should store the entities it receives. Ac-Layer store extends the the stored entities with notifications from the stream (`planes$`).The entities store is an <entity id, entity> map.
++ `ac-map` - Is a directive which presents the map and create a new Cesium instance.
++ `ac-layer` - Is our current directive which presents a plan layer. Remember that the data source must be a stream? In our case the stream is `planes$`.
++ `acFor` - Is a directive which lets you decide how would you call a single plane(or a single entity on the stream) in order to write the relevant expressions inside the directive(we'll see this in a moment). It should be noticed that the format for acFor is: `let {x} of {our stream}`.
++ `context` - The context of the observable (`planes$`) and the cesium descriptions `props` (same context as `getColor`). Usually it will be the context of the component itself - `this`.
++ `store` - Default: false. Tells Ac-Layer if it should store the entities it receives. The entities stored in the Ac-Layer store are extends by notifications from the stream (`planes$`).The store is an <entity id, entity> map. 
+This in an optional basic data store. You can you use any kind of third party data store (e.g. ngrx/store).
 
 Now, after we have defined our layer and decided that each entity on the stream will be called `plane`, let's drill down into the definitions of how an entity should look like.
 + `ac-billboard-desc` - which presents billboard from CesiumJs. This directive allows you to pass props(expressions) to this billboard. You may see that although we do pass props - we actually pass expressions that are based on the `plane` that we defined earlier. Actually we say: 'Dear `angular-cesium`, please create and manage a `billboard` using those expressions for each `plane`'.
