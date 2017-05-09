@@ -1,6 +1,3 @@
-.track-dialog{
-    font-family: HelveticaNeue-Light;
-}
 
 .mat-dialog-container{
     background-color: rgba(100,100,100,0.8);
@@ -8,10 +5,6 @@
 
 .cdk-overlay-backdrop{
     position: initial;
-}
-
-.title{
-    font-family: HelveticaNeue-Bold;
 }
 
 .dialog-line{

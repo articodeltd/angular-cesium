@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 import { Observable } from 'rxjs';
-import { RadiansToDegreesPipe } from '../../../../../src/pipes/radians-to-degrees/radians-to-degrees.pipe';
 
 @Component({
 	selector: 'track-dialog',
