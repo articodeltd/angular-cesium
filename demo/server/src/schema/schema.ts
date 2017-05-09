@@ -13,7 +13,7 @@ type Track {
     callsign: String
     from: String
     to: String
-    azimuth: Int # degrees
+    heading: Int # degrees
     position: Position
     groundSpeed: Int # kts
     type: String # aircraft type code

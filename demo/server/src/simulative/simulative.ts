@@ -1,5 +1,5 @@
 let io;
-let numOfEntities = 1000;
+let numOfEntities = 10;
 let interval = 1000;
 let intervalDivider = 10;
 let sendOption = 'chunk';
@@ -128,7 +128,7 @@ function createChunk(numOfEntities) {
       entity : {
         id : i,
         isTarget : i % 2 === 0,
-        name : 'track' + i,
+        callsign : 'track' + i,
         image : '/assets/fighter-jet.png',
         heading,
         position,

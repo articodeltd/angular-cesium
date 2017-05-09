@@ -13,7 +13,7 @@ const TracksDataQuery = gql`
             callsign
             id
             groundSpeed
-            azimuth
+            heading
             position {
                 lat
                 long
@@ -35,9 +35,9 @@ export class RealTracksDataProvider {
   private convertToCesiumEntity(trackData): AcNotification {
     const track = Object.assign({}, trackData);
     track.scale = 0.2;
-    track.color = undefined;
-    track.image = "/assets/angry-bird-blue-icon.png";
+    track.image = '/assets/fighter-jet.png';
     track.position = Cesium.Cartesian3.fromDegrees(trackData.position.long, trackData.position.lat);
+    track.alt = trackData.position.alt;
     return {id: track.id, entity: track, actionType: ActionType.ADD_UPDATE}
   }
 
@@ -49,7 +49,7 @@ export class RealTracksDataProvider {
     const track = <Track>trackNotification.entity;
     if (track.groundSpeed) {
       const distanceMeter = this.KNOTS_METER_PER_SEC * track.groundSpeed * this.INTERPOLATE_RATE / 1000;
-      const radianAzimuth = track.azimuth * (Math.PI / 180);
+      const radianAzimuth = track.heading * (Math.PI / 180);
       track.position = GeoUtilsService.pointByLocationDistanceAndAzimuth(track.position, distanceMeter, radianAzimuth, true);
       trackNotification.entity = track;
     }

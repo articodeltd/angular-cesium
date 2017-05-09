@@ -5,7 +5,7 @@ export function parseToTrack(dataArray, keyId): Track {
   const modeScode = dataArray[0];
   const lat = dataArray[1];
   const long = dataArray[2];
-  const azimuth = dataArray[3]; //degree
+  const heading = dataArray[3]; //degree
   const alt = dataArray[4];
   const groundSpeed = dataArray[5];
   const type = dataArray[8];
@@ -22,7 +22,7 @@ export function parseToTrack(dataArray, keyId): Track {
     from,
     to,
     callsign,
-    azimuth,
+    heading,
     position,
     groundSpeed,
   }
