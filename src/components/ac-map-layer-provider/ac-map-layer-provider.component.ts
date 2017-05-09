@@ -109,10 +109,8 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
 					this.imageryLayer = this.imageryLayers.addImageryProvider(this.layerProvider, this.index);
 				}
 			}
-			else {
-				if (this.imageryLayer) {
-					this.imageryLayers.remove(this.imageryLayer, false);
-				}
+			else if (this.imageryLayer) {
+				this.imageryLayers.remove(this.imageryLayer, false);
 			}
 		}
 	}
