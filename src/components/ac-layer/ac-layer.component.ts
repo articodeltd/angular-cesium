@@ -164,7 +164,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 		}
 	}
 
-	getStore(): Map<any, any> {
+	getStore(): Map<number, any> {
 		return this.entitiesStore;
 	};
 
