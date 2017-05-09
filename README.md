@@ -24,12 +24,6 @@ Focusing on high performance with easy usage.
     $ ng new PROJECT_NAME
     $ cd PROJECT_NAME
     ```
-    
-+ install `cesium` via:
-  ```bash
-  $ npm install --save cesium
-  ```
-
 + Import and add `AngularCesiumModule` to your app root module:
     ```typescript
     import { AngularCesiumModule } from 'angular-cesium/angular-cesium.module';
@@ -46,10 +40,36 @@ Focusing on high performance with easy usage.
     }
     ```
 
-+ Add `"../node_modules/cesium/Build/Cesium/Cesium.js"`
-to `scripts` in `.angular-cli.json` file.
+###### Cesuim configuration
+> <sup>In order to use cesium you must serve some assets from cesium package. The following configuration is for angular-cli projects,
+for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/).</sup>
++ install `cesium` via:
+  ```bash
+  $ npm install --save cesium
+  ```
+  
+ + Add cesium assets, script and css in `.angular-cli.json` file:
+  ```json
+  "assets": [ // ...
+    { "glob": "**/*", "input": "../node_modules/cesium/Build/Cesium", "output": "./assets/cesium" }
+   ],
+  "styles": [ // ...
+    "../node_modules/cesium/Build/Cesium/Widgets/widgets.css"
+  ],
+  "scripts": [ //...
+    "../node_modules/cesium/Build/Cesium/Cesium.js"
+  ],
+  ```
++ Add `CESIUM_BASE_URL` in `main.ts` file , before bootstraping:
+  ```typescript
+    // ...
+    window['CESIUM_BASE_URL'] = '/assets/cesium';
+    platformBrowserDynamic().bootstrapModule(AppModule);
+    ```
 
-+ Add `declare var Cesium;` to `typing.d.ts` file
++ Add `declare var Cesium;` to `typing.d.ts` file.
+
++ Live long and prosper
 
 ## Demo
 + You can try and learn about angular-cesium from our demo:
