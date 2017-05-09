@@ -13,7 +13,7 @@ Focusing on high performance with easy usage.
   $ npm install --save angular-cesium
   ```
   
-##### Angular cli
+#### Angular cli
 + If you didn't installed [Angular CLI](https://github.com/angular/angular-cli) yet:
     ```bash
     $ npm install -g @angular/cli
@@ -70,12 +70,12 @@ to `scripts` in `.angular-cli.json` file.
         <ac-layer acFor="let plane of planes$" [show]="showTracks" [context]="this">
             <ac-billboard-desc props="{
                       image: plane.image,
-                      position: plane.position,
+                      position: plane.position
                     }">
             </ac-billboard-desc>
             <ac-label-desc props="{
                     position: plane.position,
-                    text: plane.name,
+                    text: plane.name
             }">
             </ac-label-desc>
         </ac-layer>
@@ -109,8 +109,8 @@ ac-layer is a directive which is meant to define a whole layer.
 In case you have previous knowledge about CesiumJs, you would notice that there are lots of map objects e.g. billboard, label, etc'.
 In the real world - we would like to merge all of this map objects into a single entity e.g. an airplane consists of a billboard(icon) and a label.
 Now, let's create a simple airplanes layer and go through it's definitions:
-First of all - the data source for a layer must be a stream(RxJs).
-Second - every entity should consits of this schema:
+First of all - the data source for a layer must be an RxJs stream.
+Second - every notification on the stream should be of type AcNotification:
 ```js
 export class AcNotification {
 	id: number;
@@ -118,7 +118,7 @@ export class AcNotification {
 	actionType: ActionType;
 }
 ```
-This schema means that every entity passed through this stream must have an `id`, a property named `entity` which is the data itself for the entity and `actionType` which presents what happened to the entity.
+id - unique entity key, `entity`- the data itself for the entity, `actionType`- presents what happened to the entity.
 `actionType` can be one of those values:
 ```js
 export enum ActionType {
@@ -137,15 +137,16 @@ Now, assuming that each entity on this stream presents a plane, lets assume that
 Now, Let's look at this piece of code:
   ```html
     <ac-map>
-        <ac-layer acFor="let plane of planes$" [context]="this">
+        <ac-layer acFor="let plane of planes$" [context]="this" [store]="true">
             <ac-billboard-desc props="{
                       image: plane.image,
-                      position: plane.position,
+                      position: plane.position
                     }">
             </ac-billboard-desc>
             <ac-label-desc props="{
                     position: plane.position,
                     text: plane.name,
+                    fillColor: getColor(plane)
             }">
             </ac-label-desc>
         </ac-layer>
@@ -154,7 +155,8 @@ Now, Let's look at this piece of code:
 + `ac-map` - is a directive which presents the map and create a new Cesium instance.
 + `ac-layer` - is our current directive which presents a plan layer. Remember that the data source must be a stream? In our case the stream is `planes$`.
 + `acFor` - is a directive which lets you decide how would you call a single plane(or a single entity on the stream) in order to write the relevant expressions inside the directive(we'll see this in a moment). It should be noticed that the format for acFor is: `let {x} of {our stream}`.
-+ `context` - must be the same in order for the directive to know the context. Without this it won't work.
++ `context` - the context of the observable (`planes$`) and the cesium descriptions `props` (same context as `getColor`). Usually it will be the context of the component itself - `this`.
++ `store` - a boolean that tells Ac-Layer if it should store the entities it receives. Ac-Layer store extends the the stored entities with notifications from the stream (`planes$`).The entities store is an <entity id, entity> map.
 
 Now, after we have defined our layer and decided that each entity on the stream will be called `plane`, let's drill down into the definitions of how an entity should look like.
 + `ac-billboard-desc` - which presents billboard from CesiumJs. This directive allows you to pass props(expressions) to this billboard. You may see that although we do pass props - we actually pass expressions that are based on the `plane` that we defined earlier. Actually we say: 'Dear `angular-cesium`, please create and manage a `billboard` using those expressions for each `plane`'.
@@ -166,7 +168,7 @@ It should be mentioned that `ac-billboard-desc` & `ac-label-desc` are all exposi
 After explaining a little bit about `ac-layer` we hope that you may see it's benefits:
 + Easily defining a layer
 + Easily add/update/remove entities - all you have to do is pass a message through the stream and `angular-cesium` will keep track of all the rest.
-+ Readible code - when reading your html which describes your layer - it is pretty easy to understand how your layer would look like.
++ Readable code - when reading your html which describes your layer - it is pretty easy to understand how your layer would look like.
 + Maintainable code.
 
 ## Documents

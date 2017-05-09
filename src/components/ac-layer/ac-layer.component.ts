@@ -106,17 +106,12 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 
 		this.observable.merge(this._updateStream).subscribe((notification) => {
 			this._computationCache.clear();
+
 			let contextEntity = notification.entity;
 			if (this.store) {
-				if (this.entitiesStore.has(notification.id)) {
-					const entity = this.entitiesStore.get(notification.id);
-					Object.assign(entity, notification.entity);
-					contextEntity = entity;
-				}
-				else {
-					this.entitiesStore.set(notification.id, notification.entity);
-				}
+				contextEntity = this.updateStore(notification);
 			}
+
 			this.context[this.entityName] = contextEntity;
 			this.layerService.getDescriptions().forEach((descriptionComponent) => {
 				switch (notification.actionType) {
@@ -131,6 +126,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 				}
 			});
 		});
+	}
+
+	private updateStore(notification: AcNotification): any {
+		if (this.entitiesStore.has(notification.id)) {
+			const entity = this.entitiesStore.get(notification.id);
+			Object.assign(entity, notification.entity);
+			return entity;
+		}
+		else {
+			this.entitiesStore.set(notification.id, notification.entity);
+			return notification.entity;
+		}
 	}
 
 	private initValidParams() {
@@ -164,6 +171,9 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 		}
 	}
 
+	/**
+	 * Returns the store.
+	 */
 	getStore(): Map<number, any> {
 		return this.entitiesStore;
 	};
