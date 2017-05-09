@@ -117,7 +117,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
 
 	ngOnDestroy(): void {
 		if (this.imageryLayer) {
-			this.imageryLayers.remove(this.imageryLayer, false);
+			this.imageryLayers.remove(this.imageryLayer, true);
 		}
 	}
 }
