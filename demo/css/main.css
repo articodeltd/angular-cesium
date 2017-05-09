@@ -7,3 +7,7 @@ html, body, #cesiumContainer {
     padding: 0;
     overflow: hidden;
 }
+
+html, body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
