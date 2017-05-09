@@ -6,25 +6,26 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AngularCesiumModule } from '../../src/angular-cesium.module';
 import { SettingsFormComponent } from './shared/settings-form/settings-form.component';
-import { TracksLayerComponent } from './layers/tracks-layer/tracks-layer.component';
-import { EllipseLayerComponent } from './layers/ellipse-layer/ellipse-layer.component';
-import { BaseLayerComponent } from './layers/base-layer/base-layer.component';
-import { DynamicEllipseLayerComponent } from './layers/dynamic-ellipse-layer/dynamic-ellipse-layer.component';
-import { DynamicPolylineLayerComponent } from './layers/dynamic-polyline-layer/dynamic-polyline-layer.component';
-import { StaticPolylineLayerComponent } from './layers/static-polyline-layer/static-polyline-layer.component';
-import { StaticCircleLayerComponent } from './layers/static-circle-layer/static-circle-layer.component';
-import { PolygonLayerComponent } from './layers/polygon-layer/polygon-layer.component';
-import { EventTestLayerComponent } from './layers/event-test-layer/event-test-layer.component';
-import { ArcLayerComponent } from './layers/arc-layer/arc-layer.component';
-import { DynamicCircleLayerComponent } from './layers/dynamic-circle-layer/dynamic-circle-layer.component';
-import { SymbologyLayerComponent } from './layers/symbology-layer/symbology-layer.component';
-import { PointLayerComponent } from './layers/point-layer/point-layer.component';
-import { MaterialModule } from '@angular/material';
-import { TracksDialogComponent } from './layers/tracks-layer/track-dialog/track-dialog.component';
-import { DrawOnMapComponent } from './layers/draw-on-map-layer/draw-on-map-layer.component';
+import { TracksLayerComponent } from './components/tracks-layer/tracks-layer.component';
+import { EllipseLayerComponent } from './components/ellipse-layer/ellipse-layer.component';
+import { BaseLayerComponent } from './components/base-layer/base-layer.component';
+import { DynamicEllipseLayerComponent } from './components/dynamic-ellipse-layer/dynamic-ellipse-layer.component';
+import { DynamicPolylineLayerComponent } from './components/dynamic-polyline-layer/dynamic-polyline-layer.component';
+import { StaticPolylineLayerComponent } from './components/static-polyline-layer/static-polyline-layer.component';
+import { StaticCircleLayerComponent } from './components/static-circle-layer/static-circle-layer.component';
+import { PolygonLayerComponent } from './components/polygon-layer/polygon-layer.component';
+import { EventTestLayerComponent } from './components/event-test-layer/event-test-layer.component';
+import { ArcLayerComponent } from './components/arc-layer/arc-layer.component';
+import { DynamicCircleLayerComponent } from './components/dynamic-circle-layer/dynamic-circle-layer.component';
+import { SymbologyLayerComponent } from './components/symbology-layer/symbology-layer.component';
+import { PointLayerComponent } from './components/point-layer/point-layer.component';
+import { TracksDialogComponent } from './components/tracks-layer/track-dialog/track-dialog.component';
+import { DrawOnMapComponent } from './components/draw-on-map-layer/draw-on-map-layer.component';
 import { ApolloModule } from 'apollo-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { getApolloClient } from '../utils/apollo/apollo-client';
+import { AppMaterialModule } from './app.material.module';
+import { DemoMapComponent } from './components/demo-map/demo-map.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { getApolloClient } from '../utils/apollo/apollo-client';
     SymbologyLayerComponent,
     PointLayerComponent,
     TracksDialogComponent,
-		DrawOnMapComponent
+    DrawOnMapComponent,
+    DemoMapComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ import { getApolloClient } from '../utils/apollo/apollo-client';
     HttpModule,
     AngularCesiumModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    AppMaterialModule,
     ApolloModule.forRoot(getApolloClient),
   ],
   entryComponents: [TracksDialogComponent],
