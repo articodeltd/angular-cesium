@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ViewerFactory {
   cesium: any;
-  
+
   constructor() {
     this.cesium = Cesium;
   }
@@ -17,7 +17,7 @@ export class ViewerFactory {
    * @returns {any} new viewer
    */
   createViewer(mapContainer: HTMLElement, options?: any) {
-    // For backwards compatibility, Should be removed.
+    // For backwards compatibility, TODO: should be removed
     if (!window['CESIUM_BASE_URL']) {
       window['CESIUM_BASE_URL'] = '/node_modules/cesium/Build/Cesium';
     }
