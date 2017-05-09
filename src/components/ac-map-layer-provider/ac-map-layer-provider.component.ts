@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, SimpleChanges, OnChanges } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { MapLayerProviderOptions } from '../../models/map-layer-provider-options.enum';
 import { Checker } from '../../utils/checker';
@@ -17,7 +17,7 @@ import { Checker } from '../../utils/checker';
 	selector: 'ac-map-layer-provider',
 	template: '',
 })
-export class AcMapLayerProviderComponent implements OnInit {
+export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy {
 	private static createWebMapServiceProvider(options) {
 		return new Cesium.WebMapServiceImageryProvider(options);
 	}
@@ -41,7 +41,7 @@ export class AcMapLayerProviderComponent implements OnInit {
 	 * @type {{Object}}
 	 */
 	@Input()
-	options: {url?: string} = {};
+	options: { url?: string } = {};
 
 	/**
 	 * the provider
@@ -57,7 +57,19 @@ export class AcMapLayerProviderComponent implements OnInit {
 	@Input()
 	index: Number;
 
+	/**
+	 * show (optional) - Determines if the map layer is shown.
+	 * @type {Boolean}
+	 */
+	@Input()
+	show = true;
+
+	private imageryLayer;
+	private imageryLayers;
+	private layerProvider;
+
 	constructor(private cesiumService: CesiumService) {
+		this.imageryLayers = this.cesiumService.getScene().imageryLayers;
 	}
 
 	ngOnInit() {
@@ -65,24 +77,47 @@ export class AcMapLayerProviderComponent implements OnInit {
 			throw new Error('options must have a url');
 		}
 
-		let provider;
-
 		switch (this.provider) {
 			case MapLayerProviderOptions.WebMapService:
-				provider = AcMapLayerProviderComponent.createWebMapServiceProvider(this.options);
+				this.layerProvider = AcMapLayerProviderComponent.createWebMapServiceProvider(this.options);
 				break;
 			case MapLayerProviderOptions.WebMapTileService:
-				provider = AcMapLayerProviderComponent.createWebMapTileServiceProvider(this.options);
+				this.layerProvider = AcMapLayerProviderComponent.createWebMapTileServiceProvider(this.options);
 				break;
 			case MapLayerProviderOptions.ArcGisMapServer:
-				provider = AcMapLayerProviderComponent.createArcGisMapServerProvider(this.options);
+				this.layerProvider = AcMapLayerProviderComponent.createArcGisMapServerProvider(this.options);
 				break;
 			case MapLayerProviderOptions.OFFLINE:
 				break;
 			default:
-				provider = AcMapLayerProviderComponent.createOfflineMapProvider();
+				this.layerProvider = AcMapLayerProviderComponent.createOfflineMapProvider();
 				break;
 		}
-		this.cesiumService.getScene().imageryLayers.addImageryProvider(provider, this.index);
+		if (this.show) {
+			this.imageryLayer = this.imageryLayers.addImageryProvider(this.layerProvider, this.index);
+		}
+	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		if (!changes['show'].isFirstChange() && changes['show']) {
+			const showValue = changes['show'].currentValue;
+			if (showValue) {
+				if (this.imageryLayer) {
+					this.imageryLayers.add(this.imageryLayer, this.index);
+				}
+				else {
+					this.imageryLayer = this.imageryLayers.addImageryProvider(this.layerProvider, this.index);
+				}
+			}
+			else if (this.imageryLayer) {
+				this.imageryLayers.remove(this.imageryLayer, false);
+			}
+		}
+	}
+
+	ngOnDestroy(): void {
+		if (this.imageryLayer) {
+			this.imageryLayers.remove(this.imageryLayer, true);
+		}
 	}
 }
