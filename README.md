@@ -49,16 +49,16 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
   ```
   
  + Add cesium assets, script and css in `.angular-cli.json` file:
-  ```json
-  "assets": [ // ...
-    { "glob": "**/*", "input": "../node_modules/cesium/Build/Cesium", "output": "./assets/cesium" }
-   ],
-  "styles": [ // ...
-    "../node_modules/cesium/Build/Cesium/Widgets/widgets.css"
-  ],
-  "scripts": [ //...
-    "../node_modules/cesium/Build/Cesium/Cesium.js"
-  ],
+  ```javascript
+	  "assets": [ // ...
+	    { "glob": "**/*", "input": "../node_modules/cesium/Build/Cesium", "output": "./assets/cesium" }
+	   ],
+	  "styles": [ // ...
+	    "../node_modules/cesium/Build/Cesium/Widgets/widgets.css"
+	  ],
+	  "scripts": [ // ...
+	    "../node_modules/cesium/Build/Cesium/Cesium.js"
+	  ],
   ```
 + Add `CESIUM_BASE_URL` in `main.ts` file , before bootstraping:
   ```typescript
