@@ -7,7 +7,6 @@ import * as cors from 'cors';
 import * as socketIo from 'socket.io';
 import scheme from './schema/schema';
 import { resolverMap } from './resolvers/resolvers';
-import { GraphQLSchema } from 'graphql';
 import {
   changeSimSendingParams, getSimSendingParams,
   startSendingSimulativeData
@@ -34,9 +33,9 @@ app.use(bodyParser.urlencoded({
 
 const myGraphQLSchema = makeExecutableSchema({typeDefs : scheme, resolvers : resolverMap});
 app.use('/graphql', bodyParser.json(), graphqlExpress({
-  schema : myGraphQLSchema as GraphQLSchema,
+  schema : myGraphQLSchema,
   debug : true
-}));
+} as any));
 app.use('/graphiql', graphiqlExpress({
   endpointURL : '/graphql',
 }));
@@ -52,5 +51,5 @@ app.get('/data', (req, res) => {
 
 httpServer.listen(PORT, () => {
   startSendingSimulativeData(io);
-  console.log('server started on: ' + PORT)
+  console.log('server started on: ' + PORT);
 });
