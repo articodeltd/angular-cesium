@@ -18,3 +18,8 @@
 .fill-remaining-space {
     flex: 1 1;
 }
+
+.github{
+    width: 56px;
+    height: 56px;
+}

@@ -3,7 +3,8 @@
     background-color: rgba(200,200,200,0.6);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding: 20px;
 }
 
 .ok-button{
@@ -16,5 +17,17 @@
 }
 
 .settings-form-header{
-    font-style: italic;
+    align-self: center;
+    margin-bottom: 0px;
+}
+
+.settings-form-sub-header {
+    margin: 10px 0;
+}
+
+.divider {
+    width: 99%;
+    border-top: 1px solid;
+    margin-top: 25px;
+    border-color: rgba(0,0,0,0.12);
 }

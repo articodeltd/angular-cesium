@@ -8,10 +8,13 @@
         <span class="fill-remaining-space"></span>
         <button md-button (click)="tracksRealData=true">REAL TRACKS</button>
         <button md-button (click)="tracksRealData=false">SIMULATED TRACKS</button>
+        <a href="https://github.com/TGFTech/angular-cesium">
+            <img class="github" src="../assets/GitHub-Mark-Light.png">
+        </a>
     </md-toolbar>
     <md-sidenav #sidenav class="sidenav">
-        <settings-form #form (cleanMap)="layer.removeAll();" (showEvent)="layer.setShow($event);"></settings-form>
+        <settings-form (cleanMap)="map.removeAll();" (showEvent)="layer.setShow($event);"></settings-form>
     </md-sidenav>
 
-    <demo-map [tracksRealData]="tracksRealData"></demo-map>
+    <demo-map [tracksRealData]="tracksRealData" #map></demo-map>
 </md-sidenav-container>

@@ -5,13 +5,17 @@ import {
   MdIconModule,
   MdInputModule,
   MdSidenavModule,
-  MdToolbarModule
+  MdToolbarModule,
+  MdSlideToggleModule,
+  MdSnackBarModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  imports : [MdButtonModule, MdCheckboxModule, MdSidenavModule, MdDialogModule, MdInputModule, MdIconModule, MdToolbarModule],
-  exports : [MdButtonModule, MdCheckboxModule, MdSidenavModule, MdDialogModule, MdInputModule, MdIconModule, MdToolbarModule],
+  imports : [MdButtonModule, MdCheckboxModule, MdSidenavModule, MdSnackBarModule,
+    MdDialogModule, MdInputModule, MdIconModule, MdToolbarModule, MdSlideToggleModule],
+  exports : [MdButtonModule, MdCheckboxModule, MdSidenavModule, MdSnackBarModule,
+    MdDialogModule, MdInputModule, MdIconModule, MdToolbarModule, MdSlideToggleModule],
 })
 export class AppMaterialModule {
 }

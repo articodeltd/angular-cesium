@@ -1,21 +1,7 @@
-<!--<form class="settingForm" id="settingForm">-->
-<!--<label for="numOfEntities">Number of Entities</label>-->
-<!--<input id="numOfEntities" type="number" name="numOfEntities" [(ngModel)]="numOfEntities"> <br>-->
-<!--<label for="collection">Number in Collection</label>-->
-<!--<input id="collection" type="number" name="collection" [(ngModel)]="numOfObjectsInPart"> <br>-->
-<!--<label for="interval">interval (Ms)</label>-->
-<!--<input id="interval" type="number" name="interval" [(ngModel)]="interval"> <br>-->
-<!--<button type="button" (click)="change()">change</button>-->
-<!--<label>-->
-<!--<input type="checkbox" name="isActive" (click)="show()" checked>-->
-<!--Is Show-->
-<!--</label>-->
-<!--<p>Longitude: {{currentLongitude}}, Latitude: {{currentLatitude}}</p>-->
-<!--</form>-->
 
-<md-card class="settings-form">
+<div class="settings-form">
     <h1 class="settings-form-header">Settings</h1>
-    <h2 class="settings-from-sub-header">Entities</h2>
+    <h2 class="settings-form-sub-header">Entities</h2>
     <md-input-container>
         <input mdInput class="settings-input" placeholder="Number of entities"
                [(ngModel)]="settingsService.numOfEntities">
@@ -27,9 +13,10 @@
     <div>
         <button md-button class="ok-button" (click)="applySettings()">Ok</button>
     </div>
-    <h2 class="settings-from-sub-header">Layers</h2>
+    <div class="divider "></div>
+    <h2 class="settings-form-sub-header">Layers</h2>
     <div>
-        <md-checkbox [(ngModel)]="settingsService.showTracksLayer">Tracks Layer</md-checkbox>
+        <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.showTracksLayer">Tracks Layer</md-slide-toggle>
     </div>
-</md-card>
+</div>
 
