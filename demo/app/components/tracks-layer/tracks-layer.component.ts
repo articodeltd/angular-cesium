@@ -2,7 +2,7 @@ import {
   ChangeDetectorRef, Component, Input, NgZone, OnChanges, OnInit, SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { ConnectableObservable, Observable, Subject } from 'rxjs';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
@@ -21,21 +21,21 @@ import { RealTracksDataProvider } from '../../../utils/services/dataProvider/rea
   styleUrls : ['./tracks-layer.component.css']
 })
 export class TracksLayerComponent implements OnInit, OnChanges {
-  
+
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
-  
+
   @Input()
   show: boolean;
-  
+
   @Input()
-  realData: boolean = false;
-  
-  private tracks$: Observable<AcNotification>;
+  realData = false;
+
+  private tracks$: ConnectableObservable<AcNotification>;
   private Cesium = Cesium;
   private lastPickTrack;
   private realTracksPauser: PauseableObserver;
   private simTracksPauser: PauseableObserver;
-  
+
   constructor(private mapEventsManager: MapEventsManagerService, public dialog: MdDialog, private webSocketSupllier: WebSocketSupplier,
               private cd: ChangeDetectorRef, private ngZone: NgZone, private dataProvider: RealTracksDataProvider) {
     const socket = this.webSocketSupllier.get();
@@ -55,20 +55,21 @@ export class TracksLayerComponent implements OnInit, OnChanges {
           });
       });
     });
-    
+
     this.realTracksPauser = new PauseableObserver(realTracks$);
     this.simTracksPauser = new PauseableObserver(simTracks$);
     this.tracks$ = Observable.merge(this.simTracksPauser.getObserver(),
-      this.realTracksPauser.getObserver());
+      this.realTracksPauser.getObserver()).publish();
+    this.tracks$.connect();
   }
-  
+
   ngOnInit() {
     const mouseOverObservable = this.mapEventsManager.register({
       event : CesiumEvent.MOUSE_MOVE,
       pick : PickOptions.PICK_FIRST,
       priority : 2,
     });
-    
+
     mouseOverObservable.subscribe((event) => {
       const track = event.entities !== null ? event.entities[0] : null;
       if (this.lastPickTrack && (!track || track.id !== this.lastPickTrack.id)) {
@@ -81,13 +82,13 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       }
       this.lastPickTrack = track;
     });
-    
+
     const doubleClickObservable = this.mapEventsManager.register({
       event : CesiumEvent.LEFT_DOUBLE_CLICK,
       pick : PickOptions.PICK_FIRST,
       priority : 2,
     });
-    
+
     doubleClickObservable.subscribe((event) => {
       const track = event.entities !== null ? event.entities[0] : null;
       if (track) {
@@ -95,7 +96,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       }
     });
   }
-  
+
   openDialog(track) {
     track.dialogOpen = true;
     this.layer.update(track, track.id);
@@ -103,13 +104,13 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     const end$ = new Subject();
     const trackObservable = this.getSingleTrackObservable(track.id, end$);
     const dialogUpdateStream = new Subject<AcNotification>();
-    trackObservable.merge(dialogUpdateStream);
-    this.ngZone.run(() => dialogUpdateStream.next(track));
+    // this.ngZone.run(() => );
+    dialogUpdateStream.next(track);
     this.dialog.open(TracksDialogComponent, {
-      data : {trackObservable},
+      data : {trackObservable: trackObservable.merge(dialogUpdateStream)},
       position : {
-        top : '10px',
-        left : '10px',
+        top : '64px',
+        left : '0',
       },
       width : '300px',
       height : '300px',
@@ -119,16 +120,16 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       this.layer.update(track, track.id);
     });
   }
-  
+
   getSingleTrackObservable(trackId, end$) {
     return this.tracks$
       .filter((notification) => notification.id === trackId).map((notification) => notification.entity).takeUntil(end$);
   }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['show']) {
       this.show = changes['show'].currentValue;
-      
+
     }
     if (changes['realData']) {
       const isRealTracks = changes['realData'].currentValue;
@@ -143,7 +144,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       }
     }
   }
-  
+
   getTrackColor(track): any {
     if (track.dialogOpen) {
       return Cesium.Color.GREENYELLOW;
@@ -155,11 +156,11 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       return track.isTarget ? Cesium.Color.RED : Cesium.Color.BLUE;
     }
   }
-  
+
   getTextColor(track): any {
     return Cesium.Color.BLACK;
   }
-  
+
   getPolylineColor() {
     return new Cesium.Material({
       fabric : {
@@ -170,7 +171,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       }
     });
   }
-  
+
   convertToCesiumObj(entity): any {
     entity.scale = entity.id === 1 ? 0.3 : 0.15;
     entity.alt = Math.round(entity.position.altitude);
@@ -179,11 +180,11 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       Cesium.Cartesian3.fromDegrees(entity.futurePosition.long, entity.futurePosition.lat, entity.futurePosition.altitude);
     return entity;
   }
-  
+
   removeAll() {
     this.layer.removeAll();
   }
-  
+
   setShow($event) {
     this.show = $event;
   }
@@ -191,20 +192,20 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
 class PauseableObserver {
   private observer: Observable<any>;
-  private pauser: boolean = true;
-  
+  private pauser = true;
+
   constructor(observer: Observable<any>) {
     this.observer = observer.filter(() => this.pauser);
   }
-  
+
   pause() {
     this.pauser = false;
   }
-  
+
   continue() {
     this.pauser = true;
   }
-  
+
   getObserver() {
     return this.observer;
   }
