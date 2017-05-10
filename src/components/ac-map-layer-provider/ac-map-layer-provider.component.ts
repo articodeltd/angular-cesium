@@ -99,7 +99,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
-		if (!changes['show'].isFirstChange() && changes['show']) {
+		if (changes['show'] && !changes['show'].isFirstChange() ) {
 			const showValue = changes['show'].currentValue;
 			if (showValue) {
 				if (this.imageryLayer) {
