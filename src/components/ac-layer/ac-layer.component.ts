@@ -73,7 +73,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	private observable: Observable<AcNotification>;
 	private _drawerList: SimpleDrawerService[] = [];
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
-	private entitiesStore = new Map<number, any>();
+	private entitiesStore = new Map<string, any>();
 
 	constructor(private  layerService: LayerService,
 							private _computationCache: ComputationCache,
@@ -179,7 +179,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	/**
 	 * Returns the store.
 	 */
-	getStore(): Map<number, any> {
+	getStore(): Map<string, any> {
 		return this.entitiesStore;
 	};
 
