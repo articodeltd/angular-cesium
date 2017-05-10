@@ -40,7 +40,7 @@ Focusing on high performance with easy usage.
     }
     ```
 
-###### Cesuim configuration
+###### Cesium configuration
 > <sup>In order to use cesium you must serve some assets from cesium package. The following configuration is for angular-cli projects,
 for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/).</sup>
 + install `cesium` via:
