@@ -1,5 +1,5 @@
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
-import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -57,19 +57,23 @@ import { AcEntity } from '../../models/ac-entity';
 		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService, PointDrawerService
 	]
 })
-export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
+export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
 	@Input()
 	show = true;
 	@Input()
 	acFor: string;
 	@Input()
 	context: any;
+	@Input()
+	store = false;
 
 	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 	private entityName: string;
+	private stopObservable = new Subject();
 	private observable: Observable<AcNotification>;
 	private _drawerList: SimpleDrawerService[] = [];
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
+	private entitiesStore = new Map<number, any>();
 
 	constructor(private  layerService: LayerService,
 							private _computationCache: ComputationCache,
@@ -100,9 +104,15 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 	init() {
 		this.initValidParams();
 
-		Observable.merge(this._updateStream, this.observable).subscribe((notification) => {
+		Observable.merge(this._updateStream, this.observable).takeUntil(this.stopObservable).subscribe((notification) => {
 			this._computationCache.clear();
-			this.context[this.entityName] = notification.entity;
+
+			let contextEntity = notification.entity;
+			if (this.store) {
+				contextEntity = this.updateStore(notification);
+			}
+
+			this.context[this.entityName] = contextEntity;
 			this.layerService.getDescriptions().forEach((descriptionComponent) => {
 				switch (notification.actionType) {
 					case ActionType.ADD_UPDATE:
@@ -116,6 +126,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 				}
 			});
 		});
+	}
+
+	private updateStore(notification: AcNotification): any {
+		if (this.entitiesStore.has(notification.id)) {
+			const entity = this.entitiesStore.get(notification.id);
+			Object.assign(entity, notification.entity);
+			return entity;
+		}
+		else {
+			this.entitiesStore.set(notification.id, notification.entity);
+			return notification.entity;
+		}
 	}
 
 	private initValidParams() {
@@ -148,6 +170,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 			this._drawerList.forEach((drawer) => drawer.setShow(showValue));
 		}
 	}
+
+	ngOnDestroy(): void {
+		this.stopObservable.next(true);
+		this.removeAll();
+	}
+
+	/**
+	 * Returns the store.
+	 */
+	getStore(): Map<number, any> {
+		return this.entitiesStore;
+	};
 
 	/**
 	 * Remove all the entities from the layer.
