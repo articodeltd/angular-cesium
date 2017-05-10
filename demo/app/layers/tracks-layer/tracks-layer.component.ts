@@ -102,10 +102,8 @@ export class TracksLayerComponent implements OnInit {
 		const end$ = new Subject();
 		const trackObservable = this.getSingleTrackObservable(track.id, end$);
 		const dialogUpdateStream = new Subject<AcNotification>();
-		trackObservable.merge(dialogUpdateStream);
-		this.ngZone.run(() => dialogUpdateStream.next(track));
 		this.dialog.open(TracksDialogComponent, {
-			data: { trackObservable },
+			data: { trackObservable: trackObservable.merge(dialogUpdateStream)},
 			position: {
 				top: '10px',
 				left: '10px',
@@ -117,6 +115,7 @@ export class TracksLayerComponent implements OnInit {
 			track.dialogOpen = false;
 			this.layer.update(track, track.id);
 		});
+		dialogUpdateStream.next(track);
 	}
 
 	getSingleTrackObservable(trackId, end$) {

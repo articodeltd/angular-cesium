@@ -1,14 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 import { Observable } from 'rxjs';
-import { RadiansToDegreesPipe } from '../../../../../src/pipes/radians-to-degrees/radians-to-degrees.pipe';
 
 @Component({
 	selector: 'track-dialog',
 	templateUrl: './track-dialog.component.html',
 	styleUrls: ['./track-dialog.component.css'],
 	encapsulation: ViewEncapsulation.None,
-	changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class TracksDialogComponent {
@@ -17,10 +15,6 @@ export class TracksDialogComponent {
 	constructor(public dialogRef: MdDialogRef<TracksDialogComponent>, @Inject(MD_DIALOG_DATA) public data: any,
 							private cd: ChangeDetectorRef) {
 		this.track$ = data.trackObservable;
-		this.track$.subscribe(() => {
-			cd.markForCheck();
-			cd.detectChanges();
-		});
 	}
 
 	toRadians(value) {
