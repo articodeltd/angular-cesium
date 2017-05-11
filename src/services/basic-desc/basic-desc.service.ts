@@ -36,7 +36,7 @@ export class BasicDesc implements OnInit {
 		this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
 		this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
 	}
-	
+
 	draw(context: any, id: string, entity: AcEntity): any {
 		const cesiumProps = this._propsEvaluator(context);
 		if (!this._primitiveMap.has(id)) {
