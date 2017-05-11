@@ -17,7 +17,6 @@ export class TracksDialogComponent {
 							private cd: ChangeDetectorRef) {
 		this.track$ = data.trackObservable;
 		this.track$.subscribe(() => {
-			cd.markForCheck();
 			cd.detectChanges();
 		});
 	}
