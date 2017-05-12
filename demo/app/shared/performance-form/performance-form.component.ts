@@ -13,7 +13,6 @@ export class PerformanceFormComponent implements OnInit {
   @Output() showEvent = new EventEmitter();
   @Output() showMapEvent = new EventEmitter();
 
-
   private numOfEntities = 500;
   private interval = 500;
   private numOfObjectsInPart = 20;
@@ -91,6 +90,5 @@ export class PerformanceFormComponent implements OnInit {
   updateShowMap(){
     this.showMap = !this.showMap;
     this.showMapEvent.emit(this.showMap);
-
   }
 }
