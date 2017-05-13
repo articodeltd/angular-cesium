@@ -21,7 +21,7 @@ export class TracksDialogComponent {
 		});
 	}
 
-	toRadians(value) {
+	toDegrees(value) {
 		const result = (360 - Math.round(180 * value / Math.PI)) % 360;
 		return result < 0 ? result + 360 : result;
 	}

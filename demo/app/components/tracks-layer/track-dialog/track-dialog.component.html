@@ -7,7 +7,7 @@
         Altitude: {{(track$ | async)?.alt}}
     </div>
     <div class="dialog-line">
-        Heading: {{toRadians((track$ | async)?.heading)}}&deg;
+        Heading: {{toDegrees((track$ | async)?.heading)}}&deg;
     </div>
 </div>
 <div md-dialog-actions>

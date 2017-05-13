@@ -36,7 +36,7 @@ export class DemoMapComponent {
     this.appSettingsService.showTracksLayer = true;
 	}
 
-  removeAll(){
+  removeAll() {
     this.layers.forEach((layer) => layer.removeAll());
   }
 }
