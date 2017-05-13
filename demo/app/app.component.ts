@@ -16,7 +16,11 @@ export class AppComponent {
 		duration: 2,
 		destination: Cesium.Cartesian3.fromDegrees(-117.16, 32.71, 15000.0),
 	};
+	showMap = true;
 
+	setShowMap(event){
+		this.showMap = event;
+	}
 	constructor(viewerConf: ViewerConfiguration) {
 		viewerConf.viewerOptions = {
 			geocoder: false,
