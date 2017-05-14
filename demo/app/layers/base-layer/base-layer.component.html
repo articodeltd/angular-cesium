@@ -1,5 +1,6 @@
 <ac-layer acFor="let base of bases$" [context]="this" [show]="show">
     <ac-label-desc props="{
+                          show: base.show,
                           text: base.name,
                           position: base.position
                         }"></ac-label-desc>

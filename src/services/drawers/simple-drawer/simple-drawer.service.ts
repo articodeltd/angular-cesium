@@ -20,11 +20,16 @@ export abstract class SimpleDrawerService {
 
 	add(cesiumProps: any, ...moreProps): any {
 		// Todo: Take care of show = false
-		cesiumProps.show = this._showAll;
+		if (!this._showAll) {
+			cesiumProps.show = this._showAll;
+		}
 		return this._cesiumCollection.add(cesiumProps);
 	}
 
-	update(primitive: any, cesiumProps: Object, ...moreProps) {
+	update(primitive: any, cesiumProps: any, ...moreProps) {
+		if (!this._showAll) {
+			cesiumProps.show = this._showAll;
+		}
 		if (this._propsAssigner) {
 			this._propsAssigner(primitive, cesiumProps);
 		}
