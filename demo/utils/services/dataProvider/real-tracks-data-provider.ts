@@ -32,6 +32,7 @@ export class RealTracksDataProvider {
 	private readonly KNOTS_METER_PER_SEC = 0.5144444;
 	private readonly INTERPOLATE_RATE = 500;
 	private readonly POLLING_RATE = 5000;
+	private readonly RECONNECT_MS = 5000;
 	private tracksCache = new Map<string, AcNotification>();
 
 	constructor(private apollo: Apollo, private cesiumService: CesiumService) {
@@ -69,10 +70,24 @@ export class RealTracksDataProvider {
 		return interpolate;
 	}
 
+	tryReconnect(err) {
+		console.log(`Error connecting to Graphql: ${err}. Try to reconnect in ${this.RECONNECT_MS} ...`);
+		return Observable.timer(this.RECONNECT_MS)
+			.flatMap(() =>
+				this.apollo.watchQuery<any>({
+					query: TracksDataQuery,
+          pollInterval: this.POLLING_RATE,
+          fetchPolicy: 'network-only'})
+					.catch(error => this.tryReconnect(error)));
+	}
+
 	get() {
 		const interpolateTracks$ = this.createInterpolateObserver();
 
-		const fromServerTracks$ = this.apollo.watchQuery<any>({ query: TracksDataQuery, pollInterval: this.POLLING_RATE })
+		const watchQuery$ = this.apollo.watchQuery<any>({ query: TracksDataQuery,
+			pollInterval: this.POLLING_RATE, fetchPolicy: 'network-only'});
+		const fromServerTracks$ = watchQuery$
+			.catch(err => this.tryReconnect(err))
 			.map(({ data }) => data.tracks)
 			.flatMap(track => track)
 			.map(this.convertToCesiumEntity)
