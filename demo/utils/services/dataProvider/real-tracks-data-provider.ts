@@ -32,7 +32,7 @@ export class RealTracksDataProvider {
 	private readonly RECONNECT_MS = 5000;
 	private tracksCache = new Map<string, AcNotification>();
 
-	constructor(private apollo: Apollo, private cesiumService: CesiumService) {
+	constructor(private apollo: Apollo) {
 	}
 
 	private convertToCesiumEntity(trackData): AcNotification {
