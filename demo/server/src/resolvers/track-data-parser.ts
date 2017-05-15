@@ -5,7 +5,6 @@ const degreesToRadians = (degrees: number) => {
 };
 
 export function parseToTrack(dataArray, keyId): Track {
-	// http://iatacodes.org/
 	const modeScode = dataArray[0];
 	const lat = dataArray[1];
 	const long = dataArray[2];

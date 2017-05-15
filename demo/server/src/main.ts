@@ -6,7 +6,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import * as cors from 'cors';
 import * as socketIo from 'socket.io';
 import scheme from './schema/schema';
-import { resolverMap } from './resolvers/resolvers';
+import { resolverMap, trackResolver } from './resolvers/resolvers';
 import {
   changeSimSendingParams, getSimSendingParams,
   startSendingSimulativeData
@@ -31,7 +31,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-const myGraphQLSchema = makeExecutableSchema({typeDefs : scheme, resolvers : resolverMap});
+const myGraphQLSchema = makeExecutableSchema({typeDefs : scheme,
+  resolvers : Object.assign(resolverMap, trackResolver)});
 app.use('/graphql', bodyParser.json(), graphqlExpress({
   schema : myGraphQLSchema,
   debug : true
