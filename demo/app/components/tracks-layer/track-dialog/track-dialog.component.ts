@@ -58,15 +58,15 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
           id : this.data.realTrack.id,
         },
         pollInterval : this.POLL_INTERVAL,
+        fetchPolicy: 'network-only',
       });
       this.track$.subscribe((result) => {
           console.log(result);
           this.track = result.data.track;
-          console.log(this.track);
           this.cd.markForCheck();
         },
         err => console.log('track dialog err: ' + err));
-  
+
     } else {
       this.track$ = this.data.trackObservable;
       this.track$.subscribe(() => {
@@ -74,7 +74,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
       });
     }
   }
-  
+
   ngOnDestroy(){
     const track$ = this.track$ as ApolloQueryObservable<Track>;
     track$.stopPolling();

@@ -1,35 +1,30 @@
-import * as rp from 'request-promise';
-import * as DataLoader from 'dataloader';
 import * as airportJson from '../assets/airports.json';
+import { IataLoader } from './iata-loader';
 
 const airports: Map<string, any> = (airportJson as any).reduce((map: Map<string, any>, val) => map.set(val['iata'], val), new Map());
+const airportLoader = new IataLoader('airports');
+const aircraftsLoader = new IataLoader('aircrafts');
 
 export function parseAirportCodeFromJson(code: string): string {
   const airportName = airports.get(code);
-  return airportName ? airportName.name : null;
+  return airportName && airportName.name ? airportName.name : code;
 }
-export async function parseAirportCode(code: string): Promise<string> {
-  return getDataFromIataCodes('airports', code);
-}
-
-export function parseAirplaneTypeCode(code: string): Promise<string> {
-  return getDataFromIataCodes('aircrafts', code.slice(1));
+export function parseAirportCode(code: string): Promise<string> {
+  return getDataFromIataCodes(airportLoader, code);
 }
 
-const API_KEY = '1cc7eb2c-713a-4040-9a7c-da046d68cc29';
-async function getDataFromIataCodes(type: string, code?: string): Promise<string> {
-  // TODO save it in cache
-  const uri = `https://iatacodes.org/api/v6/${type}.json?code=${code}&api_key=${API_KEY}`;
-  let result = null;
+export async function parseAirplaneTypeCode(code: string): Promise<string> {
+  const codeValue = code.slice(1);
+  return getDataFromIataCodes(aircraftsLoader, codeValue);;
+}
+
+async function getDataFromIataCodes(loader, code: string): Promise<string>{
+  let name = code;
   try {
-    result = await rp({
-      uri,
-      json : true,
-      strictSSL : false
-    });
-  } catch (e) {
-    console.log('iata code error:' + e);
+    name = await loader.load(code);
+  }catch (e) {
+    console.log('Couldn\'t load Iata code ' + code + ' will return default value, ' + e);
   }
 
-  return result && result.response && result.response.length ? result.response[0].name : code;
+  return name;
 }
