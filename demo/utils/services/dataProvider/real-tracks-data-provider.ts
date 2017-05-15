@@ -3,12 +3,8 @@ import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcNotification } from '../../../../src/models/ac-notification';
-import {
-	Observable,
-	Observer
-} from 'rxjs';
-import { GeoUtilsService } from '../../../../src/services/geo-utils/geo-utils.service';
-import { Track, Position } from './track.model';
+import { Observable } from 'rxjs/Observable';
+import { Track } from './track.model';
 import { CesiumService } from '../../../../src/services/cesium/cesium.service';
 import { Subject } from 'rxjs/Subject';
 import server = require('socket.io');
