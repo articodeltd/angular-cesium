@@ -5,7 +5,6 @@ import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { Observable } from 'rxjs/Observable';
 import { Track } from './track.model';
-import { CesiumService } from '../../../../src/services/cesium/cesium.service';
 import { Subject } from 'rxjs/Subject';
 import server = require('socket.io');
 
