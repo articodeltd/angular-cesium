@@ -1,5 +1,11 @@
 import {
-  ChangeDetectorRef, Component, Input, NgZone, OnChanges, OnInit, SimpleChanges,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  NgZone,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import { ConnectableObservable, Observable, Subject } from 'rxjs';
@@ -105,13 +111,15 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     const trackObservable = this.getSingleTrackObservable(track.id, end$);
     const dialogUpdateStream = new Subject<AcNotification>();
     this.dialog.open(TracksDialogComponent, {
-      data : {trackObservable: trackObservable.merge(dialogUpdateStream)},
+      data : {
+        trackObservable : trackObservable.merge(dialogUpdateStream),
+        realTrack : track,
+        realData: this.realData,
+      },
       position : {
         top : '64px',
         left : '0',
       },
-      width : '300px',
-      height : '300px',
     }).afterClosed().subscribe(() => {
       end$.next(0);
       track.dialogOpen = false;

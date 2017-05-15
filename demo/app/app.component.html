@@ -6,8 +6,8 @@
         <span>Angular-Cesium Demo</span>
         <!-- This fills the remaining space of the current row -->
         <span class="fill-remaining-space"></span>
-        <button md-button (click)="tracksRealData=true">REAL TRACKS</button>
-        <button md-button (click)="tracksRealData=false">SIMULATED TRACKS</button>
+        <button md-button (click)="appSettingsService.realTracksData=true">REAL TRACKS</button>
+        <button md-button (click)="appSettingsService.realTracksData=false">SIMULATED TRACKS</button>
         <a href="https://github.com/TGFTech/angular-cesium">
             <img class="github" src="../assets/GitHub-Mark-Light.png">
         </a>
@@ -16,5 +16,5 @@
         <settings-form (cleanMap)="map.removeAll();" (showEvent)="layer.setShow($event);"></settings-form>
     </md-sidenav>
 
-    <demo-map [tracksRealData]="tracksRealData" #map></demo-map>
+    <demo-map [tracksRealData]="appSettingsService.realTracksData" #map></demo-map>
 </md-sidenav-container>

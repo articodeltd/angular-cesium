@@ -1,7 +1,7 @@
 import * as rp from 'request-promise';
 import { Track, TracksQueryArgs } from '../models/types';
 import { parseToTrack } from './track-data-parser';
-import { parseAirplaneTypeCode, parseAirportCode } from './iata-codes-parser';
+import { parseAirplaneTypeCode, parseAirportCode, parseAirportCodeFromJson } from './iata-codes-parser';
 
 export const resolverMap = {
   Query : {
@@ -34,12 +34,12 @@ export const resolverMap = {
 export const trackResolver = {
   Track: {
     from(track: Track) {
-      return parseAirportCode(track.from);
+      return parseAirportCodeFromJson(track.from);
     },
     to(track: Track) {
-      return parseAirportCode(track.to);
+      return parseAirportCodeFromJson(track.to);
     },
-    type(track: Track){
+    async type(track: Track){
       return parseAirplaneTypeCode(track.type);
     }
   }
