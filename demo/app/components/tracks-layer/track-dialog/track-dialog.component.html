@@ -2,14 +2,18 @@
 <div class="divider modal-divider"></div>
 <md-dialog-content md-dialog-content class="track-dialog" *ngIf="!data.realData">
     <div class="dialog-line">
-
-        Callsign: {{(track$ | async)?.callsign}}
+        <label>Callsign:</label>
+        <span>{{(track$ | async)?.callsign}}</span>
     </div>
     <div class="dialog-line">
-        Altitude: {{(track$ | async)?.alt}}
+        <label>Altitude:</label>
+        <span>
+            {{(track$ | async)?.alt}} <small><i>feet</i></small>
+        </span>
     </div>
     <div class="dialog-line">
-        Heading: {{toDegrees((track$ | async)?.heading)}}&deg;
+        <label>Heading:</label>
+        <span>{{toDegrees((track$ | async)?.heading)}}&deg;</span>
     </div>
 </md-dialog-content>
 
