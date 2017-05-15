@@ -2,15 +2,16 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  Inject, OnDestroy,
+  Inject,
+  OnDestroy,
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MD_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs';
 import { Apollo, ApolloQueryObservable } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Track } from '../../../../utils/services/dataProvider/track.model'; import { SettingsFormComponent } from '../../../shared/settings-form/settings-form.component'; import { AppSettingsService } from '../../../services/app-settings-service/app-settings-service';
+import { Track } from '../../../../utils/services/dataProvider/track.model'; import { text } from 'body-parser';
 
 
 const TrackDataQuery = gql`
@@ -51,16 +52,16 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.track = this.data.track;
     if (this.data.realData) {
       this.track$ = this.apollo.watchQuery<Track>({
         query : TrackDataQuery,
         variables : {
-          id : this.data.realTrack.id,
+          id : this.data.track.id,
         },
         pollInterval : this.POLL_INTERVAL,
-        fetchPolicy: 'network-only',
+        fetchPolicy : 'network-only',
       });
-      this.track = this.data.realTrack;
       this.track$.subscribe((result) => {
           this.track = result.data.track;
           this.cd.markForCheck();
@@ -68,15 +69,23 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
         err => console.log('track dialog err: ' + err));
 
     } else {
+      this.cd.detectChanges();
       this.track$ = this.data.trackObservable;
-      this.track$.subscribe(() => {
+      this.track$.subscribe((track) => {
+        this.track = track;
+        const pos = Cesium.Cartographic.fromCartesian(track.position);
+        this.track.position = {
+          lat : this.toDegrees(pos.latitude),
+          long : this.toDegrees(pos.longitude),
+          alt : pos.height
+        };
         this.cd.detectChanges();
       });
     }
   }
 
   ngOnDestroy() {
-    if (this.track$ instanceof ApolloQueryObservable){
+    if (this.track$ instanceof ApolloQueryObservable) {
       this.track$.stopPolling();
     }
   }
@@ -84,5 +93,13 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   toDegrees(value) {
     const result = (360 - Math.round(180 * value / Math.PI)) % 360;
     return result < 0 ? result + 360 : result;
+  }
+
+  fixTextSize(text) {
+    console.log(text);
+    console.log(text && text.length);
+    if (text && text.length > 25) {
+      return text.slice(0, 25).concat('...');
+    }
   }
 }

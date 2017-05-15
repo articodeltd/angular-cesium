@@ -109,11 +109,10 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     this.dialog.closeAll();
     const end$ = new Subject();
     const trackObservable = this.getSingleTrackObservable(track.id, end$);
-    const dialogUpdateStream = new Subject<AcNotification>();
     this.dialog.open(TracksDialogComponent, {
       data : {
-        trackObservable : trackObservable.merge(dialogUpdateStream),
-        realTrack : track,
+        trackObservable : trackObservable,
+        track,
         realData: this.realData,
       },
       position : {
@@ -121,11 +120,10 @@ export class TracksLayerComponent implements OnInit, OnChanges {
         left : '0',
       },
     }).afterClosed().subscribe(() => {
-      end$.next(0);
+      end$.next(true);
       track.dialogOpen = false;
       this.layer.update(track, track.id);
     });
-    dialogUpdateStream.next(track);
   }
 
   getSingleTrackObservable(trackId, end$) {
