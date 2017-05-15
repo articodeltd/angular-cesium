@@ -31,3 +31,8 @@
     margin-top: 25px;
     border-color: rgba(0,0,0,0.12);
 }
+
+.layer-container{
+    display: flex;
+    flex-direction: column;
+}

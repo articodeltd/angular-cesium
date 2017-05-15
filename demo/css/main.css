@@ -11,3 +11,8 @@ html, body, #cesiumContainer {
 html, body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+md-toolbar-row {
+    flex-wrap: wrap;
+    height: auto !important;
+}
