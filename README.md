@@ -26,7 +26,7 @@ Focusing on high performance with easy usage.
     ```
 + Import and add `AngularCesiumModule` to your app root module:
     ```javascript
-    import { AngularCesiumModule } from 'angular-cesium/angular-cesium.module';
+    import { AngularCesiumModule } from 'angular-cesium';
     // ....
     @NgModule({
     	declarations: [],
