@@ -175,9 +175,9 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     });
   }
 
-  showVelocityPolyline(): boolean {
-    return !this.realData;
-  }
+  // showVelocityPolyline(): boolean {
+  //   return !this.realData;
+  // }
 
   convertToCesiumObj(entity): any {
     entity.scale = entity.id === 1 ? 0.3 : 0.15;

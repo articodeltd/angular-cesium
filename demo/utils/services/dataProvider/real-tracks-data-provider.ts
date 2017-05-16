@@ -28,7 +28,9 @@ export class RealTracksDataProvider {
 	private readonly INTERPOLATION_RATE = 500;
 	private readonly POLLING_RATE = 10000;
 	private readonly RECONNECT_MS = 5000;
+	private readonly MAX_MOVEMENT_DISTANCE = 0.1;
 	private tracksCache = new Map<string, AcNotification>();
+	private lastIntervalStopper: Subject<any>;
 
 	constructor(private apollo: Apollo) {
 	}
@@ -39,11 +41,24 @@ export class RealTracksDataProvider {
 		track.image = '/assets/fighter-jet.png';
 		track.position = Cesium.Cartesian3.fromDegrees(trackData.position.long, trackData.position.lat);
 		track.alt = trackData.position.alt;
+		track.futurePosition = this.getFuturePosition(trackData.position, trackData.heading);
 		return { id: track.id, entity: track, actionType: ActionType.ADD_UPDATE };
 	}
 
 	private saveInCache(track: AcNotification) {
 		this.tracksCache.set(track.id, track);
+	}
+
+	getFuturePosition(position, heading) {
+		return Cesium.Cartesian3.fromDegrees(
+			position.long - (Math.sin(heading) * this.MAX_MOVEMENT_DISTANCE),
+			position.lat + (Math.cos(heading) * this.MAX_MOVEMENT_DISTANCE)
+		);
+		// return {
+		// 	lat: position.lat + Math.cos(heading) * this.MAX_MOVEMENT_DISTANCE * 30,
+		// 	long: position.long - Math.sin(heading) * this.MAX_MOVEMENT_DISTANCE * 30,
+		// 	altitude: position.altitude
+		// };
 	}
 
 	getPositionDelta(startingPosition, finalPosition, legs: number) {
@@ -64,6 +79,9 @@ export class RealTracksDataProvider {
 		const interpolationSubject = new Subject<AcNotification>();
 		const interpolationLegs = this.POLLING_RATE / this.INTERPOLATION_RATE;
 		serverDataObservable.subscribe(serverTracks => {
+			if (this.lastIntervalStopper) {
+				this.lastIntervalStopper.next(0);
+			}
 			const serverTrackNotifications = serverTracks.map(track => {
 				const trackNotification = this.convertToCesiumEntity(track);
 				if (!this.tracksCache.has(track.id)) {
@@ -72,30 +90,47 @@ export class RealTracksDataProvider {
 				return trackNotification;
 			});
 
+			const stopper$ = new Subject();
+
 			Observable.interval(this.INTERPOLATION_RATE)
 				.timeInterval()
 				.take(interpolationLegs)
+				.takeUntil(stopper$)
 				.subscribe(({ value }) => {
-					serverTrackNotifications.forEach(notification => {
-						const serverTrack = notification.entity;
-						const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
-						const cachedTrack = <Track>cachedTrackNotification.entity;
-						if (!serverTrack.positionDelta) {
-							serverTrack.positionDelta =
-								this.getPositionDelta(cachedTrack.position, serverTrack.position, interpolationLegs);
-						}
+						serverTrackNotifications.forEach(notification => {
+							const serverTrack = notification.entity;
+							const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
+							const cachedTrack = <Track>cachedTrackNotification.entity;
+							if (!serverTrack.positionDelta) {
+								serverTrack.positionDelta =
+									this.getPositionDelta(cachedTrack.position, serverTrack.position, interpolationLegs);
+							}
 
-						if (value === interpolationLegs - 1) {
+							if (value === interpolationLegs - 1) {
+								serverTrack.positionDelta = undefined;
+								cachedTrackNotification.entity = serverTrack;
+								interpolationSubject.next(cachedTrackNotification);
+							}
+							else {
+								this.addPositionDelta(cachedTrack.position, serverTrack.positionDelta);
+								interpolationSubject.next(cachedTrackNotification);
+							}
+						});
+					},
+					() => {
+					},
+					() => {
+						serverTrackNotifications.forEach(notification => {
+							const serverTrack = notification.entity;
+							const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
 							serverTrack.positionDelta = undefined;
 							cachedTrackNotification.entity = serverTrack;
 							interpolationSubject.next(cachedTrackNotification);
-						}
-						else {
-							this.addPositionDelta(cachedTrack.position, serverTrack.positionDelta);
-							interpolationSubject.next(cachedTrackNotification);
-						}
+						});
+
 					});
-				});
+
+			this.lastIntervalStopper = stopper$;
 		});
 
 		return interpolationSubject;
