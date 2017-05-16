@@ -129,14 +129,20 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	}
 
 	private updateStore(notification: AcNotification): any {
-		if (this.entitiesStore.has(notification.id)) {
-			const entity = this.entitiesStore.get(notification.id);
-			Object.assign(entity, notification.entity);
-			return entity;
+		if (notification.actionType === ActionType.DELETE) {
+			this.entitiesStore.delete(notification.id);
+			return undefined;
 		}
 		else {
-			this.entitiesStore.set(notification.id, notification.entity);
-			return notification.entity;
+			if (this.entitiesStore.has(notification.id)) {
+				const entity = this.entitiesStore.get(notification.id);
+				Object.assign(entity, notification.entity);
+				return entity;
+			}
+			else {
+				this.entitiesStore.set(notification.id, notification.entity);
+				return notification.entity;
+			}
 		}
 	}
 
@@ -188,6 +194,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	 */
 	removeAll(): void {
 		this.layerService.getDescriptions().forEach((description) => description.removeAll());
+		this.entitiesStore.clear();
 	}
 
 	/**
@@ -196,6 +203,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	 */
 	remove(entityId: string) {
 		this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
+		this.entitiesStore.delete(entityId);
 	}
 
 	/**
