@@ -11,7 +11,7 @@ import { MD_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs';
 import { Apollo, ApolloQueryObservable } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Track } from '../../../../utils/services/dataProvider/track.model'; import { text } from 'body-parser';
+import { Track } from '../../../../utils/services/dataProvider/track.model';
 import { Subject } from 'rxjs/Subject';
 
 
@@ -85,9 +85,9 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   private changeTrackPosToDeg(track) {
     const pos = Cesium.Cartographic.fromCartesian(track.position);
     this.track.position = {
-      lat : this.toDegrees(pos.latitude),
-      long : this.toDegrees(pos.longitude),
-      alt : pos.height
+      lat: this.toDegrees(pos.latitude),
+      long: this.toDegrees(pos.longitude),
+      alt: pos.height
     };
   }
 
