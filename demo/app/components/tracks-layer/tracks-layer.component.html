@@ -26,11 +26,10 @@
             fillColor: getTextColor(track)
     }">
     </ac-label-desc>
-    <ac-dynamic-polyline-desc props="{
+    <ac-dynamic-polyline-desc *ngIf="showVelocityPolyline()" props="{
             positions: [track.position, track.futurePosition],
             width: 1,
-            material: getPolylineColor(),
-            show: track.futurePosition !== undefined
+            material: getPolylineColor()
     }">
     </ac-dynamic-polyline-desc>
 </ac-layer>
