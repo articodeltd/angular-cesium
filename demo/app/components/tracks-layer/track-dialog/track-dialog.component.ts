@@ -8,7 +8,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { MD_DIALOG_DATA } from '@angular/material';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Apollo, ApolloQueryObservable } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Track } from '../../../../utils/services/dataProvider/track.model';
@@ -75,7 +75,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
       this.cd.detectChanges();
       this.track$ = this.data.trackObservable.takeUntil(this.stopper$);
       this.track$.subscribe((track) => {
-        this.track = track;
+        this.track = Object.assign({}, track);
         this.changeTrackPosToDeg(track);
         this.cd.detectChanges();
       });
