@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { Apollo, ApolloQueryObservable } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Track } from '../../../../utils/services/dataProvider/track.model'; import { text } from 'body-parser';
+import { Subject } from 'rxjs/Subject';
 
 
 const TrackDataQuery = gql`
@@ -46,6 +47,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   private readonly POLL_INTERVAL = 2000;
   public track$: Observable<any>;
   public track: Track;
+  private stopper$ = new Subject();
 
   constructor(@Inject(MD_DIALOG_DATA) private data: any,
               private cd: ChangeDetectorRef, private apollo: Apollo) {
@@ -53,6 +55,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.track = this.data.track;
+
     if (this.data.realData) {
       this.track$ = this.apollo.watchQuery<Track>({
         query : TrackDataQuery,
@@ -61,7 +64,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
         },
         pollInterval : this.POLL_INTERVAL,
         fetchPolicy : 'network-only',
-      });
+      }).takeUntil(this.stopper$);
       this.track$.subscribe((result) => {
           this.track = result.data.track;
           this.cd.markForCheck();
@@ -70,24 +73,29 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
 
     } else {
       this.cd.detectChanges();
-      this.track$ = this.data.trackObservable;
+      this.track$ = this.data.trackObservable.takeUntil(this.stopper$);
       this.track$.subscribe((track) => {
         this.track = track;
-        const pos = Cesium.Cartographic.fromCartesian(track.position);
-        this.track.position = {
-          lat : this.toDegrees(pos.latitude),
-          long : this.toDegrees(pos.longitude),
-          alt : pos.height
-        };
+        this.changeTrackPosToDeg(track);
         this.cd.detectChanges();
       });
     }
+  }
+
+  private changeTrackPosToDeg(track) {
+    const pos = Cesium.Cartographic.fromCartesian(track.position);
+    this.track.position = {
+      lat : this.toDegrees(pos.latitude),
+      long : this.toDegrees(pos.longitude),
+      alt : pos.height
+    };
   }
 
   ngOnDestroy() {
     if (this.track$ instanceof ApolloQueryObservable) {
       this.track$.stopPolling();
     }
+    this.stopper$.next(true);
   }
 
   toDegrees(value) {
@@ -96,8 +104,6 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   }
 
   fixTextSize(text) {
-    console.log(text);
-    console.log(text && text.length);
     if (text && text.length > 25) {
       return text.slice(0, 25).concat('...');
     }

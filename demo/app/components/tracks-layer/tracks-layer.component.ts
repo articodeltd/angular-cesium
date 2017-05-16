@@ -107,8 +107,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     track.dialogOpen = true;
     this.layer.update(track, track.id);
     this.dialog.closeAll();
-    const end$ = new Subject();
-    const trackObservable = this.getSingleTrackObservable(track.id, end$);
+    const trackObservable = this.getSingleTrackObservable(track.id);
     this.dialog.open(TracksDialogComponent, {
       data : {
         trackObservable : trackObservable,
@@ -120,15 +119,14 @@ export class TracksLayerComponent implements OnInit, OnChanges {
         left : '0',
       },
     }).afterClosed().subscribe(() => {
-      end$.next(true);
       track.dialogOpen = false;
       this.layer.update(track, track.id);
     });
   }
 
-  getSingleTrackObservable(trackId, end$) {
+  getSingleTrackObservable(trackId) {
     return this.tracks$
-      .filter((notification) => notification.id === trackId).map((notification) => notification.entity).takeUntil(end$);
+      .filter((notification) => notification.id === trackId).map((notification) => notification.entity);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
