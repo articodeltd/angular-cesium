@@ -25,139 +25,134 @@ const TracksDataQuery = gql`
 
 @Injectable()
 export class RealTracksDataProvider {
-	private readonly INTERPOLATION_RATE = 500;
-	private readonly POLLING_RATE = 10000;
-	private readonly RECONNECT_MS = 5000;
-	private readonly MAX_MOVEMENT_DISTANCE = 0.1;
-	private tracksCache = new Map<string, AcNotification>();
-	private lastIntervalStopper: Subject<any>;
+  private readonly INTERPOLATION_RATE = 500;
+  private readonly POLLING_RATE = 10000;
+  private readonly RECONNECT_MS = 5000;
+  private readonly MAX_MOVEMENT_DISTANCE = 0.1;
+  private tracksCache = new Map<string, AcNotification>();
+  private lastIntervalStopper: Subject<any>;
 
-	constructor(private apollo: Apollo) {
-	}
+  constructor(private apollo: Apollo) {
+  }
 
-	private convertToCesiumEntity(trackData): AcNotification {
-		const track = Object.assign({}, trackData);
-		track.scale = 0.2;
-		track.image = '/assets/fighter-jet.png';
-		track.position = Cesium.Cartesian3.fromDegrees(trackData.position.long, trackData.position.lat);
-		track.alt = trackData.position.alt;
-		track.futurePosition = this.getFuturePosition(trackData.position, trackData.heading);
-		return { id: track.id, entity: track, actionType: ActionType.ADD_UPDATE };
-	}
+  private convertToCesiumEntity(trackData): AcNotification {
+    const track = Object.assign({}, trackData);
+    track.scale = 0.2;
+    track.image = '/assets/fighter-jet.png';
+    track.position = Cesium.Cartesian3.fromDegrees(trackData.position.long, trackData.position.lat);
+    track.alt = trackData.position.alt;
+    track.futurePosition = this.getFuturePosition(trackData.position, trackData.heading);
+    return { id: track.id, entity: track, actionType: ActionType.ADD_UPDATE };
+  }
 
-	private saveInCache(track: AcNotification) {
-		this.tracksCache.set(track.id, track);
-	}
+  private saveInCache(track: AcNotification) {
+    this.tracksCache.set(track.id, track);
+  }
 
-	getFuturePosition(position, heading) {
-		return Cesium.Cartesian3.fromDegrees(
-			position.long - (Math.sin(heading) * this.MAX_MOVEMENT_DISTANCE),
-			position.lat + (Math.cos(heading) * this.MAX_MOVEMENT_DISTANCE)
-		);
-		// return {
-		// 	lat: position.lat + Math.cos(heading) * this.MAX_MOVEMENT_DISTANCE * 30,
-		// 	long: position.long - Math.sin(heading) * this.MAX_MOVEMENT_DISTANCE * 30,
-		// 	altitude: position.altitude
-		// };
-	}
+  getFuturePosition(position, heading) {
+    return Cesium.Cartesian3.fromDegrees(
+      position.long - (Math.sin(heading) * this.MAX_MOVEMENT_DISTANCE),
+      position.lat + (Math.cos(heading) * this.MAX_MOVEMENT_DISTANCE)
+    );
+  }
 
-	getPositionDelta(startingPosition, finalPosition, legs: number) {
-		return {
-			x: (finalPosition.x - startingPosition.x) / legs,
-			y: (finalPosition.y - startingPosition.y) / legs,
-			z: (finalPosition.z - startingPosition.z) / legs,
-		};
-	}
+  getPositionDelta(startingPosition, finalPosition, legs: number) {
+    return {
+      x: (finalPosition.x - startingPosition.x) / legs,
+      y: (finalPosition.y - startingPosition.y) / legs,
+      z: (finalPosition.z - startingPosition.z) / legs,
+    };
+  }
 
-	addPositionDelta(position, delta) {
-		position.x += delta.x;
-		position.y += delta.y;
-		position.z += delta.z;
-	}
+  addPositionDelta(position, delta) {
+    position.x += delta.x;
+    position.y += delta.y;
+    position.z += delta.z;
+  }
 
-	private createInterpolatedTracksObservable(serverDataObservable: Observable<any>) {
-		const interpolationSubject = new Subject<AcNotification>();
-		const interpolationLegs = this.POLLING_RATE / this.INTERPOLATION_RATE;
-		serverDataObservable.subscribe(serverTracks => {
-			if (this.lastIntervalStopper) {
-				this.lastIntervalStopper.next(0);
-			}
-			const serverTrackNotifications = serverTracks.map(track => {
-				const trackNotification = this.convertToCesiumEntity(track);
-				if (!this.tracksCache.has(track.id)) {
-					this.saveInCache(trackNotification);
-				}
-				return trackNotification;
-			});
+  private createInterpolatedTracksObservable(serverDataObservable: Observable<any>) {
+    const interpolationSubject = new Subject<AcNotification>();
+    const interpolationLegs = this.POLLING_RATE / this.INTERPOLATION_RATE;
+    serverDataObservable.subscribe(serverTracks => {
+      if (this.lastIntervalStopper) {
+        this.lastIntervalStopper.next(0);
+      }
+      const serverTrackNotifications = serverTracks.map(track => {
+        const trackNotification = this.convertToCesiumEntity(track);
+        if (!this.tracksCache.has(track.id)) {
+          this.saveInCache(trackNotification);
+        }
+        return trackNotification;
+      });
 
-			const stopper$ = new Subject();
+      const stopper$ = new Subject();
 
-			Observable.interval(this.INTERPOLATION_RATE)
-				.timeInterval()
-				.take(interpolationLegs)
-				.takeUntil(stopper$)
-				.subscribe(({ value }) => {
-						serverTrackNotifications.forEach(notification => {
-							const serverTrack = notification.entity;
-							const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
-							const cachedTrack = <Track>cachedTrackNotification.entity;
-							if (!serverTrack.positionDelta) {
-								serverTrack.positionDelta =
-									this.getPositionDelta(cachedTrack.position, serverTrack.position, interpolationLegs);
-							}
+      Observable.interval(this.INTERPOLATION_RATE)
+        .timeInterval()
+        .take(interpolationLegs)
+        .takeUntil(stopper$)
+        .subscribe(({ value }) => {
+            serverTrackNotifications.forEach(notification => {
+              const serverTrack = notification.entity;
+              const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
+              const cachedTrack = <Track>cachedTrackNotification.entity;
+              if (!serverTrack.positionDelta) {
+                serverTrack.positionDelta =
+                  this.getPositionDelta(cachedTrack.position, serverTrack.position, interpolationLegs);
+              }
 
-							if (value === interpolationLegs - 1) {
-								serverTrack.positionDelta = undefined;
-								cachedTrackNotification.entity = serverTrack;
-								interpolationSubject.next(cachedTrackNotification);
-							}
-							else {
-								this.addPositionDelta(cachedTrack.position, serverTrack.positionDelta);
-								interpolationSubject.next(cachedTrackNotification);
-							}
-						});
-					},
-					() => {
-					},
-					() => {
-						serverTrackNotifications.forEach(notification => {
-							const serverTrack = notification.entity;
-							const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
-							serverTrack.positionDelta = undefined;
-							cachedTrackNotification.entity = serverTrack;
-							interpolationSubject.next(cachedTrackNotification);
-						});
+              if (value === interpolationLegs - 1) {
+                serverTrack.positionDelta = undefined;
+                cachedTrackNotification.entity = serverTrack;
+                interpolationSubject.next(cachedTrackNotification);
+              }
+              else {
+                this.addPositionDelta(cachedTrack.position, serverTrack.positionDelta);
+                interpolationSubject.next(cachedTrackNotification);
+              }
+            });
+          },
+          () => {
+          },
+          () => {
+            serverTrackNotifications.forEach(notification => {
+              const serverTrack = notification.entity;
+              const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
+              serverTrack.positionDelta = undefined;
+              cachedTrackNotification.entity = serverTrack;
+              interpolationSubject.next(cachedTrackNotification);
+            });
 
-					});
+          });
 
-			this.lastIntervalStopper = stopper$;
-		});
+      this.lastIntervalStopper = stopper$;
+    });
 
-		return interpolationSubject;
-	}
+    return interpolationSubject;
+  }
 
-	tryReconnect(err) {
-		console.log(`Error connecting to Graphql: ${err}. Try to reconnect in ${this.RECONNECT_MS} ...`);
-		return Observable.timer(this.RECONNECT_MS)
-			.flatMap(() =>
-				this.apollo.watchQuery<any>({
-					query: TracksDataQuery,
-					pollInterval: this.POLLING_RATE,
-					fetchPolicy: 'network-only'
-				})
-					.catch(error => this.tryReconnect(error)));
-	}
+  tryReconnect(err) {
+    console.log(`Error connecting to Graphql: ${err}. Try to reconnect in ${this.RECONNECT_MS} ...`);
+    return Observable.timer(this.RECONNECT_MS)
+      .flatMap(() =>
+        this.apollo.watchQuery<any>({
+          query: TracksDataQuery,
+          pollInterval: this.POLLING_RATE,
+          fetchPolicy: 'network-only'
+        })
+          .catch(error => this.tryReconnect(error)));
+  }
 
-	get() {
-		const watchQuery$ = this.apollo.watchQuery<any>({
-			query: TracksDataQuery,
-			pollInterval: this.POLLING_RATE, fetchPolicy: 'network-only'
-		});
+  get() {
+    const watchQuery$ = this.apollo.watchQuery<any>({
+      query: TracksDataQuery,
+      pollInterval: this.POLLING_RATE, fetchPolicy: 'network-only'
+    });
 
-		const fromServerTracks$ = watchQuery$
-			.catch(err => this.tryReconnect(err))
-			.map(({ data }) => data.tracks);
+    const fromServerTracks$ = watchQuery$
+      .catch(err => this.tryReconnect(err))
+      .map(({ data }) => data.tracks);
 
-		return this.createInterpolatedTracksObservable(fromServerTracks$);
-	}
+    return this.createInterpolatedTracksObservable(fromServerTracks$);
+  }
 }
