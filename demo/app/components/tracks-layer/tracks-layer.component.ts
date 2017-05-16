@@ -170,12 +170,26 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 		if (track.picked) {
 			return Cesium.Color.YELLOW;
 		}
+		else if (!this.realData) {
+			return track.isTarget ? Cesium.Color.BLACK : Cesium.Color.fromCssColorString('#673ab7');
+		}
 		else {
-			return track.isTarget ? Cesium.Color.RED : Cesium.Color.BLUE;
+			const lastChar = track.id.charAt(track.id.length - 1);
+			if (lastChar <= '3') {
+				return Cesium.Color.fromCssColorString('#424242');
+			} else if (lastChar <= '9') {
+				return Cesium.Color.fromCssColorString('#212121');
+			}
+			else {
+				return Cesium.Color.fromCssColorString('#616161');
+			}
 		}
 	}
 
 	getTextColor(track): any {
+		if (this.realData) {
+			return this.getTrackColor(track);
+		}
 		return Cesium.Color.BLACK;
 	}
 
