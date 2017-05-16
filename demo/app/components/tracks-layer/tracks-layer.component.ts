@@ -151,8 +151,11 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     if (track.picked) {
       return Cesium.Color.YELLOW;
     }
+    else if (!this.realData) {
+      return track.isTarget ? Cesium.Color.BLACK : Cesium.Color.fromCssColorString('#673ab7');
+    }
     else {
-      return track.isTarget ? Cesium.Color.RED : Cesium.Color.BLUE;
+      return track.id > 0.5 ? Cesium.Color.BLACK : Cesium.Color.GOLD;
     }
   }
 
