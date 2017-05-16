@@ -6,7 +6,6 @@ import { AcNotification } from '../../../../src/models/ac-notification';
 import { Observable } from 'rxjs/Observable';
 import { Track } from './track.model';
 import { Subject } from 'rxjs/Subject';
-import server = require('socket.io');
 
 const TracksDataQuery = gql`
     query TracksData {
