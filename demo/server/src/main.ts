@@ -54,15 +54,3 @@ httpServer.listen(PORT, () => {
   startSendingSimulativeData(io);
   console.log('server started on: ' + PORT);
 });
-
-
-// async function test(){
-//   throw new Error('aaa');
-// }
-//
-// try {
-//   test().then((v)=>console.log('val',v)).catch(e=>console.log('err',e));
-//
-// }catch (e){
-//   console.log('catch');
-// }
