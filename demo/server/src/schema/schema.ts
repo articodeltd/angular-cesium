@@ -5,6 +5,7 @@ schema {
 
 type Query {
     tracks(bounds: BoundsInput): [Track]
+    track(id: String!): Track
 }
 
 type Track {
@@ -35,4 +36,4 @@ input BoundsInput {
     end: PositionInput
 }
 
-`
+`;

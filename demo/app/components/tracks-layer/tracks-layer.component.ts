@@ -1,5 +1,11 @@
 import {
-  ChangeDetectorRef, Component, Input, NgZone, OnChanges, OnInit, SimpleChanges,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  NgZone,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import { ConnectableObservable, Observable, Subject } from 'rxjs';
@@ -101,28 +107,26 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     track.dialogOpen = true;
     this.layer.update(track, track.id);
     this.dialog.closeAll();
-    const end$ = new Subject();
-    const trackObservable = this.getSingleTrackObservable(track.id, end$);
-    const dialogUpdateStream = new Subject<AcNotification>();
+    const trackObservable = this.getSingleTrackObservable(track.id);
     this.dialog.open(TracksDialogComponent, {
-      data : {trackObservable: trackObservable.merge(dialogUpdateStream)},
+      data : {
+        trackObservable : trackObservable,
+        track,
+        realData: this.realData,
+      },
       position : {
         top : '64px',
         left : '0',
       },
-      width : '300px',
-      height : '300px',
     }).afterClosed().subscribe(() => {
-      end$.next(0);
       track.dialogOpen = false;
       this.layer.update(track, track.id);
     });
-    dialogUpdateStream.next(track);
   }
 
-  getSingleTrackObservable(trackId, end$) {
+  getSingleTrackObservable(trackId) {
     return this.tracks$
-      .filter((notification) => notification.id === trackId).map((notification) => notification.entity).takeUntil(end$);
+      .filter((notification) => notification.id === trackId).map((notification) => notification.entity);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
