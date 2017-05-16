@@ -17,7 +17,7 @@
             fillColor: getTextColor(track)
     }">
     </ac-label-desc>
-    <ac-label-desc props="{
+    <ac-label-desc *ngIf="!realData" props="{
             position: track.position,
             pixelOffset : [-15,35] | pixelOffset,
             text: track.alt.toString(),

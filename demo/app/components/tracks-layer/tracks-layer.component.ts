@@ -1,5 +1,11 @@
 import {
-  ChangeDetectorRef, Component, Input, NgZone, OnChanges, OnInit, SimpleChanges,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  NgZone,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import { ConnectableObservable, Observable, Subject } from 'rxjs';
@@ -105,7 +111,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     const trackObservable = this.getSingleTrackObservable(track.id, end$);
     const dialogUpdateStream = new Subject<AcNotification>();
     this.dialog.open(TracksDialogComponent, {
-      data : {trackObservable: trackObservable.merge(dialogUpdateStream)},
+      data : {trackObservable : trackObservable.merge(dialogUpdateStream)},
       position : {
         top : '64px',
         left : '0',
@@ -155,11 +161,22 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       return track.isTarget ? Cesium.Color.BLACK : Cesium.Color.fromCssColorString('#673ab7');
     }
     else {
-      return track.id > 0.5 ? Cesium.Color.BLACK : Cesium.Color.GOLD;
+      const lastChar = track.id.charAt(track.id.length - 1);
+      if (lastChar <= '3') {
+        return Cesium.Color.fromCssColorString('#424242');
+      } else if (lastChar <= '9') {
+        return Cesium.Color.fromCssColorString('#212121');
+      }
+      else {
+        return Cesium.Color.fromCssColorString('#616161');
+      }
     }
   }
 
   getTextColor(track): any {
+    if (this.realData) {
+      return this.getTrackColor(track);
+    }
     return Cesium.Color.BLACK;
   }
 
