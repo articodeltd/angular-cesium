@@ -49,182 +49,182 @@ import { AcEntity } from '../../models/ac-entity';
  *  ```
  */
 @Component({
-	selector: 'ac-layer',
-	template: '',
-	providers: [
-		LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
-		DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,
-		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService, PointDrawerService
-	]
+  selector: 'ac-layer',
+  template: '',
+  providers: [
+    LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
+    DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,
+    StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService, PointDrawerService
+  ]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
-	@Input()
-	show = true;
-	@Input()
-	acFor: string;
-	@Input()
-	context: any;
-	@Input()
-	store = false;
+  @Input()
+  show = true;
+  @Input()
+  acFor: string;
+  @Input()
+  context: any;
+  @Input()
+  store = false;
 
-	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
-	private entityName: string;
-	private stopObservable = new Subject();
-	private observable: Observable<AcNotification>;
-	private _drawerList: SimpleDrawerService[] = [];
-	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
-	private entitiesStore = new Map<string, any>();
+  private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
+  private entityName: string;
+  private stopObservable = new Subject();
+  private observable: Observable<AcNotification>;
+  private _drawerList: SimpleDrawerService[] = [];
+  private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
+  private entitiesStore = new Map<string, any>();
 
-	constructor(private  layerService: LayerService,
-							private _computationCache: ComputationCache,
-							billboardDrawerService: BillboardDrawerService,
-							labelDrawerService: LabelDrawerService,
-							ellipseDrawerService: EllipseDrawerService,
-							dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-							dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-							staticCircleDrawerService: StaticCircleDrawerService,
-							staticPolylineDrawerService: StaticPolylineDrawerService,
-							polygonDrawerService: PolygonDrawerService,
-							arcDrawerService: ArcDrawerService,
-							pointDrawerService: PointDrawerService) {
-		this._drawerList = Array.of(
-			billboardDrawerService,
-			labelDrawerService,
-			ellipseDrawerService,
-			dynamicEllipseDrawerService,
-			dynamicPolylineDrawerService,
-			staticCircleDrawerService,
-			staticPolylineDrawerService,
-			polygonDrawerService,
-			arcDrawerService,
-			pointDrawerService
-		);
-	}
+  constructor(private  layerService: LayerService,
+              private _computationCache: ComputationCache,
+              billboardDrawerService: BillboardDrawerService,
+              labelDrawerService: LabelDrawerService,
+              ellipseDrawerService: EllipseDrawerService,
+              dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+              dynamicPolylineDrawerService: DynamicPolylineDrawerService,
+              staticCircleDrawerService: StaticCircleDrawerService,
+              staticPolylineDrawerService: StaticPolylineDrawerService,
+              polygonDrawerService: PolygonDrawerService,
+              arcDrawerService: ArcDrawerService,
+              pointDrawerService: PointDrawerService) {
+    this._drawerList = Array.of(
+      billboardDrawerService,
+      labelDrawerService,
+      ellipseDrawerService,
+      dynamicEllipseDrawerService,
+      dynamicPolylineDrawerService,
+      staticCircleDrawerService,
+      staticPolylineDrawerService,
+      polygonDrawerService,
+      arcDrawerService,
+      pointDrawerService
+    );
+  }
 
-	init() {
-		this.initValidParams();
+  init() {
+    this.initValidParams();
 
-		Observable.merge(this._updateStream, this.observable).takeUntil(this.stopObservable).subscribe((notification) => {
-			this._computationCache.clear();
+    Observable.merge(this._updateStream, this.observable).takeUntil(this.stopObservable).subscribe((notification) => {
+      this._computationCache.clear();
 
-			let contextEntity = notification.entity;
-			if (this.store) {
-				contextEntity = this.updateStore(notification);
-			}
+      let contextEntity = notification.entity;
+      if (this.store) {
+        contextEntity = this.updateStore(notification);
+      }
 
-			this.context[this.entityName] = contextEntity;
-			this.layerService.getDescriptions().forEach((descriptionComponent) => {
-				switch (notification.actionType) {
-					case ActionType.ADD_UPDATE:
-						descriptionComponent.draw(this.context, notification.id, notification.entity);
-						break;
-					case ActionType.DELETE:
-						descriptionComponent.remove(notification.id);
-						break;
-					default:
-						console.error('[ac-layer] unknown AcNotification action type: ' + notification.actionType);
-				}
-			});
-		});
-	}
+      this.context[this.entityName] = contextEntity;
+      this.layerService.getDescriptions().forEach((descriptionComponent) => {
+        switch (notification.actionType) {
+          case ActionType.ADD_UPDATE:
+            descriptionComponent.draw(this.context, notification.id, notification.entity);
+            break;
+          case ActionType.DELETE:
+            descriptionComponent.remove(notification.id);
+            break;
+          default:
+            console.error('[ac-layer] unknown AcNotification action type: ' + notification.actionType);
+        }
+      });
+    });
+  }
 
-	private updateStore(notification: AcNotification): any {
-		if (notification.actionType === ActionType.DELETE) {
-			this.entitiesStore.delete(notification.id);
-			return undefined;
-		}
-		else {
-			if (this.entitiesStore.has(notification.id)) {
-				const entity = this.entitiesStore.get(notification.id);
-				Object.assign(entity, notification.entity);
-				return entity;
-			}
-			else {
-				this.entitiesStore.set(notification.id, notification.entity);
-				return notification.entity;
-			}
-		}
-	}
+  private updateStore(notification: AcNotification): any {
+    if (notification.actionType === ActionType.DELETE) {
+      this.entitiesStore.delete(notification.id);
+      return undefined;
+    }
+    else {
+      if (this.entitiesStore.has(notification.id)) {
+        const entity = this.entitiesStore.get(notification.id);
+        Object.assign(entity, notification.entity);
+        return entity;
+      }
+      else {
+        this.entitiesStore.set(notification.id, notification.entity);
+        return notification.entity;
+      }
+    }
+  }
 
-	private initValidParams() {
-		if (!this.context) {
-			throw new Error('ac-layer: must initialize [context] ');
-		}
+  private initValidParams() {
+    if (!this.context) {
+      throw new Error('ac-layer: must initialize [context] ');
+    }
 
-		if (!this.acForRgx.test(this.acFor)) {
-			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
-				+ 'instead received: ' + this.acFor);
-		}
-		const acForArr = this.acFor.split(' ');
-		this.observable = this.context[acForArr[3]];
-		this.entityName = acForArr[1];
-		if (!this.observable || !(this.observable instanceof Observable)) {
-			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
-		}
-	}
+    if (!this.acForRgx.test(this.acFor)) {
+      throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
+        + 'instead received: ' + this.acFor);
+    }
+    const acForArr = this.acFor.split(' ');
+    this.observable = this.context[acForArr[3]];
+    this.entityName = acForArr[1];
+    if (!this.observable || !(this.observable instanceof Observable)) {
+      throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
+    }
+  }
 
-	ngAfterContentInit(): void {
-		this.init();
-	}
+  ngAfterContentInit(): void {
+    this.init();
+  }
 
-	ngOnInit(): void {
-	}
+  ngOnInit(): void {
+  }
 
-	ngOnChanges(changes: SimpleChanges): void {
-		if (changes['show']) {
-			const showValue = changes['show'].currentValue;
-			this._drawerList.forEach((drawer) => drawer.setShow(showValue));
-		}
-	}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['show']) {
+      const showValue = changes['show'].currentValue;
+      this._drawerList.forEach((drawer) => drawer.setShow(showValue));
+    }
+  }
 
-	ngOnDestroy(): void {
-		this.stopObservable.next(true);
-		this.removeAll();
-	}
+  ngOnDestroy(): void {
+    this.stopObservable.next(true);
+    this.removeAll();
+  }
 
-	/**
-	 * Returns the store.
-	 */
-	getStore(): Map<string, any> {
-		return this.entitiesStore;
-	};
+  /**
+   * Returns the store.
+   */
+  getStore(): Map<string, any> {
+    return this.entitiesStore;
+  };
 
-	/**
-	 * Remove all the entities from the layer.
-	 */
-	removeAll(): void {
-		this.layerService.getDescriptions().forEach((description) => description.removeAll());
-		this.entitiesStore.clear();
-	}
+  /**
+   * Remove all the entities from the layer.
+   */
+  removeAll(): void {
+    this.layerService.getDescriptions().forEach((description) => description.removeAll());
+    this.entitiesStore.clear();
+  }
 
-	/**
-	 * remove entity from the layer
-	 * @param {number} entityId
-	 */
-	remove(entityId: string) {
-		this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
-		this.entitiesStore.delete(entityId);
-	}
+  /**
+   * remove entity from the layer
+   * @param {number} entityId
+   */
+  remove(entityId: string) {
+    this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
+    this.entitiesStore.delete(entityId);
+  }
 
-	/**
-	 * add/update entity to/from the layer
-	 * @param {AcNotification} notification
-	 */
-	updateNotification(notification: AcNotification): void {
-		this._updateStream.next(notification);
-	}
+  /**
+   * add/update entity to/from the layer
+   * @param {AcNotification} notification
+   */
+  updateNotification(notification: AcNotification): void {
+    this._updateStream.next(notification);
+  }
 
-	/**
-	 * add/update entity to/from the layer
-	 * @param {AcEntity} entity
-	 * @param {number} id
-	 */
-	update(entity: AcEntity, id: string): void {
-		this._updateStream.next({ entity, id, actionType: ActionType.ADD_UPDATE });
-	}
+  /**
+   * add/update entity to/from the layer
+   * @param {AcEntity} entity
+   * @param {number} id
+   */
+  update(entity: AcEntity, id: string): void {
+    this._updateStream.next({ entity, id, actionType: ActionType.ADD_UPDATE });
+  }
 
-	refreshAll(collection: AcNotification[]): void {
-		// TODO make entity interface: collection of type entity not notification
-		Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
-	}
+  refreshAll(collection: AcNotification[]): void {
+    // TODO make entity interface: collection of type entity not notification
+    Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
+  }
 }
