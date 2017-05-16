@@ -198,7 +198,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 			fabric: {
 				type: 'Color',
 				uniforms: {
-					color: new Cesium.Color(0.7, 1.0, 0.6, 1.0)
+					color: new Cesium.Color(0.3, 1.0, 0.3, 1.0)
 				}
 			}
 		});
