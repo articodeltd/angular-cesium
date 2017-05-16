@@ -26,10 +26,11 @@
             fillColor: getTextColor(track)
     }">
     </ac-label-desc>
-    <!--<ac-dynamic-polyline-desc props="{-->
-    <!--positions: [track.position, track.futurePosition],-->
-    <!--width: 1,-->
-    <!--material: getPolylineColor()-->
-    <!--}">-->
-    <!--</ac-dynamic-polyline-desc>-->
+    <ac-dynamic-polyline-desc props="{
+            positions: [track.position, track.futurePosition],
+            width: 1,
+            material: getPolylineColor(),
+            show: track.futurePosition !== undefined
+    }">
+    </ac-dynamic-polyline-desc>
 </ac-layer>
