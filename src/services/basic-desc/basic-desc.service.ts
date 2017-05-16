@@ -1,4 +1,4 @@
-import { OnInit, Input } from '@angular/core';
+import { OnInit, Input, OnDestroy } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
 import { SimpleDrawerService } from '../drawers/simple-drawer/simple-drawer.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
@@ -9,7 +9,7 @@ import { AcEntity } from '../../models/ac-entity';
  *  the ancestor class for creating components.
  *  extend this class to create desc component.
  */
-export class BasicDesc implements OnInit {
+export class BasicDesc implements OnInit, OnDestroy {
 	@Input()
 	props: any;
 
@@ -60,5 +60,10 @@ export class BasicDesc implements OnInit {
 	removeAll() {
 		this._primitiveMap.clear();
 		this._drawer.removeAll();
+	}
+
+	ngOnDestroy() {
+		this._layerService.unregisterDescription(this);
+		this.removeAll();
 	}
 }

@@ -4,12 +4,21 @@ export class AppSettingsService {
 		numberOfEntities: 0,
 		entitiesUpdateRate: 0,
 		showTracksLayer: true,
+		showMapLayer: true,
 	};
 
 	setSettings(settings) {
 		Object.assign(this.settings, settings);
 	}
-
+	
+	get showMapLayer(): boolean {
+		return this.settings.showMapLayer;
+	}
+	
+	set showMapLayer(value: boolean) {
+		this.settings.showMapLayer = value;
+	}
+	
 	get showTracksLayer(): boolean {
 		return this.settings.showTracksLayer;
 	}
