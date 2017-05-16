@@ -5,6 +5,7 @@ export class AppSettingsService {
 		entitiesUpdateRate: 0,
 		showTracksLayer: true,
 		showMapLayer: true,
+		realTracksData: false,
 	};
 
 	setSettings(settings) {
@@ -17,6 +18,14 @@ export class AppSettingsService {
 	
 	set showMapLayer(value: boolean) {
 		this.settings.showMapLayer = value;
+	}
+	
+	get realTracksData(): boolean {
+		return this.settings.realTracksData;
+	}
+	
+	set realTracksData(value: boolean) {
+		this.settings.realTracksData = value;
 	}
 	
 	get showTracksLayer(): boolean {

@@ -1,7 +1,7 @@
 
 <div class="settings-form">
     <h1 class="settings-form-header">Settings</h1>
-    <h2 class="settings-form-sub-header">Entities</h2>
+    <h2 class="settings-form-sub-header">Sim Entities</h2>
     <md-input-container>
         <input mdInput class="settings-input" placeholder="Number of entities"
                [(ngModel)]="settingsService.numOfEntities">
@@ -13,7 +13,7 @@
     <div>
         <button md-button class="ok-button" (click)="applySettings()">Ok</button>
     </div>
-    <div class="divider "></div>
+    <div class="divider setting-divider"></div>
     <h2 class="settings-form-sub-header">Layers</h2>
     <div class="layer-container">
         <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.showTracksLayer">Tracks Layer</md-slide-toggle>

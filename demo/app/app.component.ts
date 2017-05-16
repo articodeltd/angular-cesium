@@ -48,7 +48,7 @@ export class AppComponent {
 
 		this.appSettingsService.showTracksLayer = true;
 	}
-
+	
 	settingsClick(sidenav) {
 		this.dialog.closeAll();
 		sidenav.open();

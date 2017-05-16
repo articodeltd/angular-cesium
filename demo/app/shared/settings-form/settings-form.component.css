@@ -25,11 +25,8 @@
     margin: 10px 0;
 }
 
-.divider {
-    width: 99%;
-    border-top: 1px solid;
+.setting-divider {
     margin-top: 25px;
-    border-color: rgba(0,0,0,0.12);
 }
 
 .layer-container{
