@@ -42,6 +42,13 @@ module.exports = {
         test: /\.css$/,
         include: [ root.root('demo', 'app'), root.root('src') ],
         loader: 'raw-loader'
+      },
+      {
+        test: require.resolve('socket.io-client'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'io'
+        }]
       }
     ]
   },

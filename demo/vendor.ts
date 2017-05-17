@@ -12,3 +12,4 @@ import './css/main.css';
 // You can import js, ts, css, sass, ...
 require('../node_modules/cesium/Build/Cesium/Cesium');
 require('../node_modules/primitive-primitives/dist/main');
+require('../node_modules/socket.io-client');

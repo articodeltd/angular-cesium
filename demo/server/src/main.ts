@@ -19,12 +19,13 @@ const io = socketIo(httpServer);
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/../../../dist'));
+app.use(express.static(__dirname + '/../../../'));
 
 console.log(__dirname);
 app.get('/', function (req, res) {
   // TODO demo client
-  res.sendFile(__dirname + '/app/index.html');
+  res.sendFile(__dirname + '../../../dist/index.html');
 });
 app.use(bodyParser.urlencoded({
   extended : true

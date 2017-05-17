@@ -28,7 +28,8 @@
     "server": "nodemon --exec ./node_modules/.bin/ts-node -- ./demo/server/src/main.ts",
     "compile-docs": "rimraf docs && compodoc -p src/tsconfig.compodoc.json -d docs -n \"Angular 2 Cesium\"",
     "serve-docs": "compodoc -s -d ./docs -r 4200",
-    "compileNserve-docs": "npm run compile-docs && npm run serve-docs"
+    "compileNserve-docs": "npm run compile-docs && npm run serve-docs",
+    "heroku-postbuild": "npm run build"
   },
   "peerDependencies": {
     "@angular/common": "4.0.x",
@@ -109,6 +110,7 @@
     "run-sequence": "^1.2.1",
     "rxjs": "^5.1.0",
     "socket.io": "^2.0.1",
+    "socket.io-client": "^2.0.1",
     "style-loader": "^0.15.0",
     "ts-helpers": "^1.1.1",
     "ts-mockito": "1.2.0",
@@ -119,6 +121,7 @@
     "webpack-dev-server": "2.4.1",
     "webpack-merge": "^3.0.0",
     "webpack-node-externals": "^1.5.4",
+    "expose-loader": "^0.7.3",
     "zone.js": "^0.8.4"
   },
   "dependencies": {
