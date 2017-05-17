@@ -19,5 +19,6 @@ import { AppModule } from './app.module';
 // let TP = new TranslationProviders();
 // TP.getTranslationFile().then((providers: any) => {
   // const options: any = { providers };
+Cesium.BingMapsApi.defaultKey = 'AtIXLwI-EOgRtuDna0r-bcIAfj7G_cN6fb98u3A1DbgEEW-SquLhxEi8KnGrlJkA';
   platformBrowserDynamic().bootstrapModule(AppModule/*, options*/);
 // });
