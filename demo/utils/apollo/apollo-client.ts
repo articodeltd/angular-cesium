@@ -1,12 +1,12 @@
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
 
-// by default, this client will send queries to `/graphql` (relative to the URL of your app)
+// by default, this client will send queries to `/graphql` (relative to the URL of your app) // TODO
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
-    uri: 'http://localhost:3000/graphql',
+    uri: '/graphql',
   }),
 });
 
 export function getApolloClient(): ApolloClient {
-  return client
+  return client;
 }
