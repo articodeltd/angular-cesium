@@ -27,6 +27,7 @@ import { AcPolylineComponent } from './components/ac-polyline/ac-polyline.compon
 import { AcEllipseComponent } from './components/ac-ellipse/ac-ellipse.component';
 import { AcPointComponent } from './components/ac-point/ac-point.component';
 import { AcHtmlComponent } from './components/ac-html/ac-html.component';
+import { AcCircleComponent } from './components/ac-circle/ac-circle.component';
 
 @NgModule({
 	imports: [
@@ -56,7 +57,8 @@ import { AcHtmlComponent } from './components/ac-html/ac-html.component';
 		AcEllipseComponent,
 		AcPointComponent,
 		AcBillboardComponent,
-		AcHtmlComponent
+		AcHtmlComponent,
+		AcCircleComponent
 	],
 	exports: [
 		AcMapComponent,
@@ -79,7 +81,8 @@ import { AcHtmlComponent } from './components/ac-html/ac-html.component';
 		AcEllipseComponent,
 		AcPointComponent,
 		AcBillboardComponent,
-		AcHtmlComponent
+		AcHtmlComponent,
+		AcCircleComponent
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })

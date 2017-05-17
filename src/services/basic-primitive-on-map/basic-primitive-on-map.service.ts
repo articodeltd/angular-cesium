@@ -8,9 +8,9 @@ export class BasicPrimitiveOnMap implements OnInit, OnChanges {
   @Input()
   props: any;
 
-  private selfPrimitive: any;
+  protected selfPrimitive: any;
 
-  private selfPrimitiveIsDraw: boolean;
+  protected selfPrimitiveIsDraw: boolean;
 
   constructor(protected _drawer: SimpleDrawerService) {
   }
