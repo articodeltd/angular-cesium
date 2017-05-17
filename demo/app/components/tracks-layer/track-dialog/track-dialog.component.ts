@@ -14,7 +14,6 @@ import gql from 'graphql-tag';
 import { Track } from '../../../../utils/services/dataProvider/track.model';
 import { Subject } from 'rxjs/Subject';
 
-
 const TrackDataQuery = gql`
     query TrackData($id: String!) {
         track(id: $id){
@@ -48,13 +47,14 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   public track$: Observable<any>;
   public track: Track;
   private stopper$ = new Subject();
+  private singleTrackQuery$: ApolloQueryObservable<Track>;
 
   constructor(@Inject(MD_DIALOG_DATA) private data: any,
               private cd: ChangeDetectorRef, private apollo: Apollo) {
   }
 
   ngOnInit(): void {
-    this.track = Object.assign({}, this.data.track);
+    this.track = this.data.track;
     this.track$ = this.data.trackObservable;
 
     if (this.data.realData) {
@@ -65,23 +65,26 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
         },
         err => console.log('track dialog err: ' + err));
 
-      this.apollo.watchQuery<Track>({
+      this.singleTrackQuery$ = this.apollo.watchQuery<Track>({
         query: TrackDataQuery,
         variables: {
           id: this.data.track.id,
         },
         pollInterval: this.POLL_INTERVAL,
         fetchPolicy: 'network-only',
-      }).takeUntil(this.stopper$)
+      });
+
+      this.singleTrackQuery$
+        .takeUntil(this.stopper$)
         .subscribe((result: any) => {
-          const track = result.data.track;
-          Object.assign(this.track, {
-            from: track.from,
-            to: track.to,
-            type: track.type,
-          });
-          this.cd.markForCheck();
+        const track = result.data.track;
+        Object.assign(this.track, {
+          from: track.from,
+          to: track.to,
+          type: track.type,
         });
+        this.cd.markForCheck();
+      });
     }
     else {
       this.cd.detectChanges();
@@ -106,8 +109,8 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.track$ instanceof ApolloQueryObservable) {
-      this.track$.stopPolling();
+    if (this.singleTrackQuery$) {
+      this.singleTrackQuery$.stopPolling();
     }
     this.stopper$.next(true);
   }

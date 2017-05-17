@@ -88,9 +88,9 @@ export class RealTracksDataProvider {
 
       Observable.interval(this.INTERPOLATION_RATE)
         .timeInterval()
-        .take(interpolationLegs)
+        .take(interpolationLegs - 1)
         .takeUntil(stopper$)
-        .subscribe(({ value }) => {
+        .subscribe(() => {
             serverTrackNotifications.forEach(notification => {
               const serverTrack = notification.entity;
               const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
@@ -100,16 +100,9 @@ export class RealTracksDataProvider {
                   this.getPositionDelta(cachedTrack.position, serverTrack.position, interpolationLegs);
               }
 
-              if (value === interpolationLegs - 1) {
-                serverTrack.positionDelta = undefined;
-                cachedTrackNotification.entity = serverTrack;
-                interpolationSubject.next(cachedTrackNotification);
-              }
-              else {
-                this.addPositionDelta(cachedTrack.position, serverTrack.positionDelta);
-                this.addPositionDelta(cachedTrack.futurePosition, serverTrack.positionDelta);
-                interpolationSubject.next(cachedTrackNotification);
-              }
+              this.addPositionDelta(cachedTrack.position, serverTrack.positionDelta);
+              this.addPositionDelta(cachedTrack.futurePosition, serverTrack.positionDelta);
+              interpolationSubject.next(cachedTrackNotification);
             });
           },
           () => {
@@ -121,6 +114,7 @@ export class RealTracksDataProvider {
               serverTrack.positionDelta = undefined;
               cachedTrackNotification.entity = serverTrack;
               interpolationSubject.next(cachedTrackNotification);
+              this.lastIntervalStopper = undefined;
             });
 
           });
