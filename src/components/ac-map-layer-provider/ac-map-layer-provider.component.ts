@@ -88,7 +88,6 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
 				this.layerProvider = this.createArcGisMapServerProvider(this.options);
 				break;
 			case MapLayerProviderOptions.OFFLINE:
-				break;
 			default:
 				this.layerProvider = this.createOfflineMapProvider();
 				break;
