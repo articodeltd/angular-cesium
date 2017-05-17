@@ -8,6 +8,8 @@ import 'rxjs';
 import './css/main.css';
 // RxJS
 
+Cesium.BingMapsApi.defaultKey = 'AtIXLwI-EOgRtuDna0r-bcIAfj7G_cN6fb98u3A1DbgEEW-SquLhxEi8KnGrlJkA';
+
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
 require('../node_modules/cesium/Build/Cesium/Cesium');
