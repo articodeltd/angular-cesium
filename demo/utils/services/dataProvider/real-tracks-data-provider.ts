@@ -4,7 +4,6 @@ import { Apollo } from 'apollo-angular';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { Observable } from 'rxjs/Observable';
-import { Track } from './track.model';
 import { Subject } from 'rxjs/Subject';
 
 const TracksDataQuery = gql`
@@ -95,7 +94,7 @@ export class RealTracksDataProvider {
             serverTrackNotifications.forEach(notification => {
               const serverTrack = notification.entity;
               const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
-              const cachedTrack = <Track>cachedTrackNotification.entity;
+              const cachedTrack = <any>cachedTrackNotification.entity;
               if (!serverTrack.positionDelta) {
                 serverTrack.positionDelta =
                   this.getPositionDelta(cachedTrack.position, serverTrack.position, interpolationLegs);
@@ -108,6 +107,7 @@ export class RealTracksDataProvider {
               }
               else {
                 this.addPositionDelta(cachedTrack.position, serverTrack.positionDelta);
+                this.addPositionDelta(cachedTrack.futurePosition, serverTrack.positionDelta);
                 interpolationSubject.next(cachedTrackNotification);
               }
             });
