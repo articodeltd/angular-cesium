@@ -115,8 +115,8 @@ function createChunk(numOfEntities) {
   const data = [];
   for (let i = 0; i < numOfEntities; i++) {
     const position = {
-      lat : 60 * Math.random() * getSign(),
-      long : 100 * Math.random() * getSign(),
+      lat : 70 * Math.random() * getSign(),
+      long : 180 * Math.random() * getSign(),
       altitude : 10000 * Math.random()
     };
     const heading = Math.random() * 2 * Math.PI;

@@ -1,54 +1,63 @@
 export class AppSettingsService {
 
-	private settings = {
-		numberOfEntities: 0,
-		entitiesUpdateRate: 0,
-		showTracksLayer: true,
-		showMapLayer: true,
-		realTracksData: false,
-	};
+  private settings = {
+    numberOfEntities: 0,
+    entitiesUpdateRate: 0,
+    showTracksLayer: true,
+    showMapLayer: true,
+    realTracksData: false,
+    showVelocityVectors: false,
+  };
 
-	setSettings(settings) {
-		Object.assign(this.settings, settings);
-	}
-	
-	get showMapLayer(): boolean {
-		return this.settings.showMapLayer;
-	}
-	
-	set showMapLayer(value: boolean) {
-		this.settings.showMapLayer = value;
-	}
-	
-	get realTracksData(): boolean {
-		return this.settings.realTracksData;
-	}
-	
-	set realTracksData(value: boolean) {
-		this.settings.realTracksData = value;
-	}
-	
-	get showTracksLayer(): boolean {
-		return this.settings.showTracksLayer;
-	}
+  setSettings(settings) {
+    Object.assign(this.settings, settings);
+  }
 
-	set showTracksLayer(value: boolean) {
-		this.settings.showTracksLayer = value;
-	}
+  get showMapLayer(): boolean {
+    return this.settings.showMapLayer;
+  }
 
-	get entitiesUpdateRate(): number {
-		return this.settings.entitiesUpdateRate;
-	}
+  get showVelocityVectors(): boolean {
+    return this.settings.showVelocityVectors;
+  }
 
-	set entitiesUpdateRate(value: number) {
-		this.settings.entitiesUpdateRate = value;
-	}
+  set showVelocityVectors(value: boolean) {
+    this.settings.showVelocityVectors = value;
+  }
 
-	get numOfEntities(): number {
-		return this.settings.numberOfEntities;
-	}
+  set showMapLayer(value: boolean) {
+    this.settings.showMapLayer = value;
+  }
 
-	set numOfEntities(value: number) {
-		this.settings.numberOfEntities = value;
-	}
+  get realTracksData(): boolean {
+    return this.settings.realTracksData;
+  }
+
+  set realTracksData(value: boolean) {
+    this.settings.realTracksData = value;
+  }
+
+  get showTracksLayer(): boolean {
+    return this.settings.showTracksLayer;
+  }
+
+  set showTracksLayer(value: boolean) {
+    this.settings.showTracksLayer = value;
+  }
+
+  get entitiesUpdateRate(): number {
+    return this.settings.entitiesUpdateRate;
+  }
+
+  set entitiesUpdateRate(value: number) {
+    this.settings.entitiesUpdateRate = value;
+  }
+
+  get numOfEntities(): number {
+    return this.settings.numberOfEntities;
+  }
+
+  set numOfEntities(value: number) {
+    this.settings.numberOfEntities = value;
+  }
 }
