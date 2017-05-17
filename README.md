@@ -25,8 +25,8 @@ Focusing on high performance with easy usage.
     $ cd PROJECT_NAME
     ```
 + Import and add `AngularCesiumModule` to your app root module:
-    ```typescript
-    import { AngularCesiumModule } from 'angular-cesium/angular-cesium.module';
+    ```javascript
+    import { AngularCesiumModule } from 'angular-cesium';
     // ....
     @NgModule({
     	declarations: [],
@@ -61,13 +61,25 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
 	  ],
   ```
 + Add `CESIUM_BASE_URL` in `main.ts` file , before bootstraping:
-  ```typescript
+  ```javascript
     // ...
     window['CESIUM_BASE_URL'] = '/assets/cesium';
     platformBrowserDynamic().bootstrapModule(AppModule);
     ```
 
 + Add `declare var Cesium;` to `typing.d.ts` file.
+
++ You can configure cesium viewer style:
+   ```css
+   // styles.css
+   html, body, #cesiumContainer {
+       width: 100%;
+       height: 100%;
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+   }
+   ```
 
 + Live long and prosper
 
