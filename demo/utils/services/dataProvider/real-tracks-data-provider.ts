@@ -24,7 +24,7 @@ const TracksDataQuery = gql`
 
 @Injectable()
 export class RealTracksDataProvider {
-  private readonly INTERPOLATION_RATE = 500;
+  private readonly INTERPOLATION_RATE = 1000;
   private readonly POLLING_RATE = 10000;
   private readonly RECONNECT_MS = 5000;
   private readonly MAX_MOVEMENT_DISTANCE = 0.1;
@@ -38,8 +38,8 @@ export class RealTracksDataProvider {
     const track = Object.assign({}, trackData);
     track.scale = 0.2;
     track.image = '/assets/fighter-jet.png';
-    track.position = Cesium.Cartesian3.fromDegrees(trackData.position.long, trackData.position.lat);
     track.alt = trackData.position.alt;
+    track.position = Cesium.Cartesian3.fromDegrees(trackData.position.long, trackData.position.lat);
     track.futurePosition = this.getFuturePosition(trackData.position, trackData.heading);
     return { id: track.id, entity: track, actionType: ActionType.ADD_UPDATE };
   }

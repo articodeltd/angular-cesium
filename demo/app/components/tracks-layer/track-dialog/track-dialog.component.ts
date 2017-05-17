@@ -54,24 +54,36 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.track = this.data.track;
+    this.track = Object.assign({}, this.data.track);
+    this.track$ = this.data.trackObservable;
 
     if (this.data.realData) {
-      this.track$ = this.apollo.watchQuery<Track>({
+      this.track$.subscribe((track) => {
+          this.track = Object.assign(this.track, track);
+          this.changeTrackPosToDeg(track);
+          this.cd.markForCheck();
+        },
+        err => console.log('track dialog err: ' + err));
+
+      this.apollo.watchQuery<Track>({
         query: TrackDataQuery,
         variables: {
           id: this.data.track.id,
         },
         pollInterval: this.POLL_INTERVAL,
         fetchPolicy: 'network-only',
-      }).takeUntil(this.stopper$);
-      this.track$.subscribe((result) => {
-          this.track = result.data.track;
+      }).takeUntil(this.stopper$)
+        .subscribe((result: any) => {
+          const track = result.data.track;
+          Object.assign(this.track, {
+            from: track.from,
+            to: track.to,
+            type: track.type,
+          });
           this.cd.markForCheck();
-        },
-        err => console.log('track dialog err: ' + err));
-
-    } else {
+        });
+    }
+    else {
       this.cd.detectChanges();
       this.track$ = this.data.trackObservable.takeUntil(this.stopper$);
       this.track$.subscribe((track) => {
@@ -80,6 +92,8 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
         this.cd.detectChanges();
       });
     }
+
+    this.cd.markForCheck();
   }
 
   private changeTrackPosToDeg(track) {
@@ -87,7 +101,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
     this.track.position = {
       lat: this.toDegrees(pos.latitude),
       long: this.toDegrees(pos.longitude),
-      alt: pos.height
+      alt: track.alt
     };
   }
 
@@ -99,7 +113,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   }
 
   toDegrees(value) {
-    const result = (360 - Math.round(180 * value / Math.PI)) % 360;
+    const result = Math.round((360 - (180 * value / Math.PI) % 360.0) * 100) / 100;
     return result < 0 ? result + 360 : result;
   }
 
