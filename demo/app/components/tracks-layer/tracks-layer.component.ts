@@ -20,11 +20,12 @@ import { MdDialog } from '@angular/material';
 import { TracksDialogComponent } from './track-dialog/track-dialog.component';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 import { RealTracksDataProvider } from '../../../utils/services/dataProvider/real-tracks-data-provider';
+import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 @Component({
-  selector : 'tracks-layer',
-  templateUrl : './tracks-layer.component.html',
-  providers : [RealTracksDataProvider],
-  styleUrls : ['./tracks-layer.component.css']
+  selector: 'tracks-layer',
+  templateUrl: './tracks-layer.component.html',
+  providers: [RealTracksDataProvider],
+  styleUrls: ['./tracks-layer.component.css']
 })
 export class TracksLayerComponent implements OnInit, OnChanges {
 
@@ -41,9 +42,12 @@ export class TracksLayerComponent implements OnInit, OnChanges {
   private lastPickTrack;
   private realTracksPauser: PauseableObserver;
   private simTracksPauser: PauseableObserver;
+  private isDialogOpen = false;
+  private wasDialogClosedByRealDataChange = false;
 
   constructor(private mapEventsManager: MapEventsManagerService, public dialog: MdDialog, private webSocketSupllier: WebSocketSupplier,
-              private cd: ChangeDetectorRef, private ngZone: NgZone, private dataProvider: RealTracksDataProvider) {
+              private cd: ChangeDetectorRef, private ngZone: NgZone, private dataProvider: RealTracksDataProvider,
+              private appSettingsService: AppSettingsService) {
     const socket = this.webSocketSupllier.get();
     const realTracks$ = this.dataProvider.get();
     const simTracks$ = Observable.create((observer) => {
@@ -71,9 +75,9 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     const mouseOverObservable = this.mapEventsManager.register({
-      event : CesiumEvent.MOUSE_MOVE,
-      pick : PickOptions.PICK_FIRST,
-      priority : 2,
+      event: CesiumEvent.MOUSE_MOVE,
+      pick: PickOptions.PICK_FIRST,
+      priority: 2,
     });
 
     mouseOverObservable.subscribe((event) => {
@@ -90,9 +94,9 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     });
 
     const doubleClickObservable = this.mapEventsManager.register({
-      event : CesiumEvent.LEFT_DOUBLE_CLICK,
-      pick : PickOptions.PICK_FIRST,
-      priority : 2,
+      event: CesiumEvent.LEFT_DOUBLE_CLICK,
+      pick: PickOptions.PICK_FIRST,
+      priority: 2,
     });
 
     doubleClickObservable.subscribe((event) => {
@@ -109,19 +113,26 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     this.dialog.closeAll();
     const trackObservable = this.getSingleTrackObservable(track.id);
     this.dialog.open(TracksDialogComponent, {
-      data : {
-        trackObservable : trackObservable,
+      data: {
+        trackObservable: trackObservable,
         track,
         realData: this.realData,
       },
-      position : {
-        top : '64px',
-        left : '0',
+      position: {
+        top: '64px',
+        left: '0',
       },
     }).afterClosed().subscribe(() => {
+
       track.dialogOpen = false;
-      this.layer.update(track, track.id);
+      if (!this.wasDialogClosedByRealDataChange) {
+        this.layer.update(track, track.id);
+      }
+      this.isDialogOpen = false;
+      this.wasDialogClosedByRealDataChange = false;
     });
+    this.isDialogOpen = true;
+    this.wasDialogClosedByRealDataChange = false;
   }
 
   getSingleTrackObservable(trackId) {
@@ -135,6 +146,10 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
     }
     if (changes['realData']) {
+      if (this.isDialogOpen) {
+        this.wasDialogClosedByRealDataChange = true;
+      }
+      this.dialog.closeAll();
       const isRealTracks = changes['realData'].currentValue;
       if (isRealTracks) {
         this.simTracksPauser.pause();
@@ -180,13 +195,17 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
   getPolylineColor() {
     return new Cesium.Material({
-      fabric : {
-        type : 'Color',
-        uniforms : {
-          color : new Cesium.Color(0.6, 1.0, 0.6, 1.0)
+      fabric: {
+        type: 'Color',
+        uniforms: {
+          color: new Cesium.Color(0.3, 1.0, 0.3, 1.0)
         }
       }
     });
+  }
+
+  showVelocityVectors(): boolean {
+    return this.appSettingsService.showVelocityVectors;
   }
 
   convertToCesiumObj(entity): any {

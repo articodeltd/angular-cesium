@@ -8,7 +8,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { MD_DIALOG_DATA } from '@angular/material';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Apollo, ApolloQueryObservable } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Track } from '../../../../utils/services/dataProvider/track.model';
@@ -36,11 +36,11 @@ const TrackDataQuery = gql`
 
 
 @Component({
-  selector : 'track-dialog',
-  templateUrl : './track-dialog.component.html',
-  styleUrls : ['./track-dialog.component.css'],
-  encapsulation : ViewEncapsulation.None,
-  changeDetection : ChangeDetectionStrategy.OnPush
+  selector: 'track-dialog',
+  templateUrl: './track-dialog.component.html',
+  styleUrls: ['./track-dialog.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class TracksDialogComponent implements OnInit, OnDestroy {
@@ -58,12 +58,12 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
 
     if (this.data.realData) {
       this.track$ = this.apollo.watchQuery<Track>({
-        query : TrackDataQuery,
-        variables : {
-          id : this.data.track.id,
+        query: TrackDataQuery,
+        variables: {
+          id: this.data.track.id,
         },
-        pollInterval : this.POLL_INTERVAL,
-        fetchPolicy : 'network-only',
+        pollInterval: this.POLL_INTERVAL,
+        fetchPolicy: 'network-only',
       }).takeUntil(this.stopper$);
       this.track$.subscribe((result) => {
           this.track = result.data.track;
@@ -75,7 +75,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
       this.cd.detectChanges();
       this.track$ = this.data.trackObservable.takeUntil(this.stopper$);
       this.track$.subscribe((track) => {
-        this.track = track;
+        this.track = Object.assign({}, track);
         this.changeTrackPosToDeg(track);
         this.cd.detectChanges();
       });
