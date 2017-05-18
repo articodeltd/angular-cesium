@@ -29,7 +29,7 @@ export class SettingsFormComponent {
 	}
 
 	private getServerSettings() {
-		return this.http.get('http://localhost:3000/data').catch(this.handleError).map((res: Response) => {
+		return this.http.get(`${process.env.SERVER}/data`).catch(this.handleError).map((res: Response) => {
 				const body = res.json();
 				return body || {};
 			}
@@ -37,7 +37,7 @@ export class SettingsFormComponent {
 	}
 
 	applySettings() {
-		this.http.post('http://localhost:3000/change',
+		this.http.post(`${process.env.SERVER}/change`,
 			{
 				rate: this.settingsService.entitiesUpdateRate,
 				numOfEntities: this.settingsService.numOfEntities,

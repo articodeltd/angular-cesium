@@ -23,13 +23,13 @@
     "aot": "webpack --config webpack.aot.config.js -p",
     "rollup": "rollup -cza",
     "bundle": "npm run cleanup && npm run lint && npm run ngc && npm run rollup",
-    "build": "rimraf dist && webpack --config config/webpack.dev.js --progress --profile --bail",
+    "build-demo": "rimraf dist && webpack --config config/webpack.dev.js --progress --profile --bail",
     "test-server": "node demo/performance-server/server.js",
     "server": "nodemon --exec ./node_modules/.bin/ts-node -- ./demo/server/src/main.ts",
     "compile-docs": "rimraf docs && compodoc -p src/tsconfig.compodoc.json -d docs -n \"Angular 2 Cesium\"",
     "serve-docs": "compodoc -s -d ./docs -r 4200",
     "compileNserve-docs": "npm run compile-docs && npm run serve-docs",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build-demo"
   },
   "peerDependencies": {
     "@angular/common": "4.0.x",
