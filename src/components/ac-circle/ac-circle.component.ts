@@ -27,7 +27,7 @@ export class AcCircleComponent extends BasicPrimitiveOnMap {
 		super(dynamicEllipseDrawer);
 	}
 
-	private updateEllipseProps(){
+	private updateEllipseProps() {
 		this.props.semiMajorAxis = this.props.radius;
 		this.props.semiMinorAxis = this.props.radius;
 		this.props.rotation = 0.0;
