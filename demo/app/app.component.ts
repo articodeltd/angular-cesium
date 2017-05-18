@@ -26,7 +26,6 @@ export class AppComponent {
 							iconRegistry: MdIconRegistry,
 							sanitizer: DomSanitizer,
 							private dialog: MdDialog) {
-		Cesium.BingMapsApi.defaultKey = 'AtIXLwI-EOgRtuDna0r-bcIAfj7G_cN6fb98u3A1DbgEEW-SquLhxEi8KnGrlJkA';
 		iconRegistry.addSvgIcon(
 			'settings',
 			sanitizer.bypassSecurityTrustResourceUrl('/assets/settings.svg'));
