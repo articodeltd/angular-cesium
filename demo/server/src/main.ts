@@ -12,20 +12,21 @@ import {
   startSendingSimulativeData
 } from './simulative/simulative';
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 const httpServer = http.createServer(app);
 const io = socketIo(httpServer);
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname));
 
-console.log(__dirname);
+// Serve client
+app.use(express.static(__dirname + '/../../../dist'));
+app.use(express.static(__dirname + '/../../../'));
 app.get('/', function (req, res) {
-  // TODO demo client
-  res.sendFile(__dirname + '/app/index.html');
+  res.sendFile(__dirname + '../../../dist/index.html');
 });
+
 app.use(bodyParser.urlencoded({
   extended : true
 }));

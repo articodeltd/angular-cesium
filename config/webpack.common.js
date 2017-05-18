@@ -3,6 +3,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var root = require('./root-helper');
 
+var ENV = process.env.npm_lifecycle_event;
+var SERVER = ENV === 'build-demo' ? '' :'http://localhost:3000';
+
 module.exports = {
   entry: {
     'polyfills': './demo/polyfills.ts',
@@ -42,11 +45,30 @@ module.exports = {
         test: /\.css$/,
         include: [ root.root('demo', 'app'), root.root('src') ],
         loader: 'raw-loader'
+      },
+      {
+        test: require.resolve('socket.io-client'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'io'
+        }]
       }
     ]
   },
   
   plugins: [
+    new webpack.DefinePlugin({
+      // Environment helpers
+      'process.env': {
+        ENV: JSON.stringify(ENV)
+      }
+    }),
+    new webpack.DefinePlugin({
+      // Environment helpers
+      'process.env': {
+        SERVER: JSON.stringify(SERVER),
+      }
+    }),
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)@angular/,
       root.root('demo'),
