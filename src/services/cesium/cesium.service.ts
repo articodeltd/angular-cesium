@@ -10,7 +10,6 @@ export class CesiumService {
   private cesiumViewer: any;
 
   constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory, @Optional() private viewerConfiguration: ViewerConfiguration) {
-    Cesium.BingMapsApi.defaultKey = 'AtIXLwI-EOgRtuDna0r-bcIAfj7G_cN6fb98u3A1DbgEEW-SquLhxEi8KnGrlJkA';
   }
 
   init(mapContainer: HTMLElement) {
