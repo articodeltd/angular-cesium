@@ -1,5 +1,5 @@
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
-import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit, OnDestroy } from '@angular/core';
+import { AfterContentInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -116,7 +116,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
       this.layerService.getDescriptions().forEach((descriptionComponent) => {
         switch (notification.actionType) {
           case ActionType.ADD_UPDATE:
-            descriptionComponent.draw(this.context, notification.id, notification.entity);
+            descriptionComponent.draw(this.context, notification.id, contextEntity);
             break;
           case ActionType.DELETE:
             descriptionComponent.remove(notification.id);
