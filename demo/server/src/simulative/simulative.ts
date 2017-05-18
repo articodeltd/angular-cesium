@@ -1,5 +1,5 @@
 let io;
-let numOfEntities = 100;
+let numOfEntities = 500;
 let interval = 1000;
 let intervalDivider = 10;
 let sendOption = 'chunk';
