@@ -24,7 +24,7 @@ const TracksDataQuery = gql`
 
 @Injectable()
 export class RealTracksDataProvider {
-  private readonly INTERPOLATION_RATE = 500;
+  private readonly INTERPOLATION_RATE = 1000;
   private readonly POLLING_RATE = 10000;
   private readonly RECONNECT_MS = 5000;
   private readonly MAX_MOVEMENT_DISTANCE = 0.1;
@@ -38,8 +38,8 @@ export class RealTracksDataProvider {
     const track = Object.assign({}, trackData);
     track.scale = 0.2;
     track.image = '/assets/fighter-jet.png';
-    track.position = Cesium.Cartesian3.fromDegrees(trackData.position.long, trackData.position.lat);
     track.alt = trackData.position.alt;
+    track.position = Cesium.Cartesian3.fromDegrees(trackData.position.long, trackData.position.lat);
     track.futurePosition = this.getFuturePosition(trackData.position, trackData.heading);
     return { id: track.id, entity: track, actionType: ActionType.ADD_UPDATE };
   }
@@ -88,9 +88,9 @@ export class RealTracksDataProvider {
 
       Observable.interval(this.INTERPOLATION_RATE)
         .timeInterval()
-        .take(interpolationLegs)
+        .take(interpolationLegs - 1)
         .takeUntil(stopper$)
-        .subscribe(({ value }) => {
+        .subscribe(() => {
             serverTrackNotifications.forEach(notification => {
               const serverTrack = notification.entity;
               const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
@@ -100,16 +100,9 @@ export class RealTracksDataProvider {
                   this.getPositionDelta(cachedTrack.position, serverTrack.position, interpolationLegs);
               }
 
-              if (value === interpolationLegs - 1) {
-                serverTrack.positionDelta = undefined;
-                cachedTrackNotification.entity = serverTrack;
-                interpolationSubject.next(cachedTrackNotification);
-              }
-              else {
-                this.addPositionDelta(cachedTrack.position, serverTrack.positionDelta);
-                this.addPositionDelta(cachedTrack.futurePosition, serverTrack.positionDelta);
-                interpolationSubject.next(cachedTrackNotification);
-              }
+              this.addPositionDelta(cachedTrack.position, serverTrack.positionDelta);
+              this.addPositionDelta(cachedTrack.futurePosition, serverTrack.positionDelta);
+              interpolationSubject.next(cachedTrackNotification);
             });
           },
           () => {
@@ -121,6 +114,7 @@ export class RealTracksDataProvider {
               serverTrack.positionDelta = undefined;
               cachedTrackNotification.entity = serverTrack;
               interpolationSubject.next(cachedTrackNotification);
+              this.lastIntervalStopper = undefined;
             });
 
           });

@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { ConnectableObservable, Observable, Subject } from 'rxjs';
+import { ConnectableObservable, Observable } from 'rxjs';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
@@ -109,13 +109,14 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
   openDialog(track) {
     track.dialogOpen = true;
+    track.picked = false;
     this.layer.update(track, track.id);
     this.dialog.closeAll();
     const trackObservable = this.getSingleTrackObservable(track.id);
     this.dialog.open(TracksDialogComponent, {
       data: {
         trackObservable: trackObservable,
-        track,
+        track: Object.assign({}, track),
         realData: this.realData,
       },
       position: {
