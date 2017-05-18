@@ -17,18 +17,9 @@ import { Subject } from 'rxjs/Subject';
 const TrackDataQuery = gql`
     query TrackData($id: String!) {
         track(id: $id){
-            callsign
             from
             to
             type
-            heading
-            id
-            groundSpeed
-            position {
-                lat
-                long
-                alt
-            }
         }
     }
 `;
