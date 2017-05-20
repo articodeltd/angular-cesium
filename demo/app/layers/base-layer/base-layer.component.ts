@@ -19,12 +19,12 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 		const base1: AcNotification = {
 			id: 0,
 			actionType: ActionType.ADD_UPDATE,
-			entity: {name: 'base haifa', position: Cesium.Cartesian3.fromRadians(1.5, 1.5)}
+			entity: {name: 'base haifa', position: Cesium.Cartesian3.fromRadians(1.5, 1.5), show: true}
 		};
 		const base2 = {
 			id: 1,
 			actionType: ActionType.ADD_UPDATE,
-			entity: {name: 'base yafo', position: Cesium.Cartesian3.fromRadians(1.9, 1.9)}
+			entity: {name: 'base yafo', position: Cesium.Cartesian3.fromRadians(1.9, 1.9), show: true}
 		};
 		const baseArray = [base1, base2];
 		this.bases$ = Observable.from(baseArray);
