@@ -9,9 +9,6 @@ import { CesiumEvent } from '../../../../src/services/map-events-mananger/consts
 import { PickOptions } from '../../../../src/services/map-events-mananger/consts/pickOptions.enum';
 import { PlonterService } from '../../../../src/services/plonter/plonter.service';
 import { GeoUtilsService } from '../../../../src/services/geo-utils/geo-utils.service';
-import { CesiumEventModifier } from '../../../../src/services/map-events-mananger/consts/cesium-event-modifier.enum';
-import { MultiSelectionService } from '../../../../src/services/multi-selection-service/multi-selection.service';
-import { MultiSelectionInput } from '../../../../src/services/multi-selection-service/MultiSelectionInput.model';
 
 @Component({
 	selector: 'event-test-layer',
@@ -28,8 +25,7 @@ export class EventTestLayerComponent implements OnInit {
 	            public  plonterService: PlonterService,
 	            private mapSelectionService: MapSelectionService,
 	            private cd: ChangeDetectorRef,
-	            private geoUtilsService: GeoUtilsService,
-	            private multiSelectionService: MultiSelectionService) {
+	            private geoUtilsService: GeoUtilsService) {
 		const track1: AcNotification = {
 			id: 0,
 			actionType: ActionType.ADD_UPDATE,
@@ -92,7 +88,6 @@ export class EventTestLayerComponent implements OnInit {
 		// this.testColorChange();
 		// Example for long left down
 		// this.testLongPress();
-		this.multiSelect();
 		// Example for plonter
 		this.testPlonter();
 	}
@@ -156,18 +151,6 @@ export class EventTestLayerComponent implements OnInit {
 			console.log('click3', 'toggle color');
 			entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
 			this.layer.updateNotification({actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id});
-		});
-	}
-
-	multiSelect() {
-		const inputConf: MultiSelectionInput = {
-			event: CesiumEvent.RIGHT_CLICK,
-			pick: PickOptions.MULTI_PICK,
-			modifier: CesiumEventModifier.CTRL,
-			entityType: AcEntity
-		};
-		this.multiSelectionService.select(inputConf).map((result) => result.entities).subscribe((entities) => {
-			console.log(entities);
 		});
 	}
 }
