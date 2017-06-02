@@ -11,6 +11,7 @@ import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@ang
 export class PerformanceFormComponent implements OnInit {
   @Output() cleanMap = new EventEmitter();
   @Output() showEvent = new EventEmitter();
+  @Output() showMapEvent = new EventEmitter();
 
   private numOfEntities = 500;
   private interval = 500;
@@ -18,6 +19,7 @@ export class PerformanceFormComponent implements OnInit {
   private isShow = true;
   private currentLongitude = 0;
   private currentLatitude = 0;
+  private showMap: boolean = true;
 
   constructor(private http: Http,
               public ref: ChangeDetectorRef) {
@@ -83,5 +85,10 @@ export class PerformanceFormComponent implements OnInit {
     this.currentLongitude = value.latitude.toFixed(4);
     this.currentLatitude = value.longitude.toFixed(4);
     this.ref.detectChanges();
+  }
+
+  updateShowMap(){
+    this.showMap = !this.showMap;
+    this.showMapEvent.emit(this.showMap);
   }
 }

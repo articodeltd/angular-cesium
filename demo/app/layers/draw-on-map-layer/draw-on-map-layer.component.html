@@ -27,6 +27,11 @@
                             scale: 0.3,
                             name: 'billboard'}">
 </ac-billboard>-->
+<ac-circle [props]="{
+                     center: position,
+                     radius:80000.0,
+                     granularity:0.03,
+                     color:[0,1,0,0.5]}"></ac-circle>
 <ac-html #html [props]="{position: position}">
     <p>{{htmlElement}}</p>
 </ac-html>

@@ -10,3 +10,9 @@ export interface AcNotification {
 	entity?: AcEntity;
 	actionType: ActionType;
 }
+
+export class AcNotification {
+	id: number;
+	entity?: AcEntity;
+	actionType: ActionType;
+}
