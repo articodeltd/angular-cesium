@@ -15,6 +15,18 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
 	constructor() {
+		let yellowMatirial = new Cesium.Material({
+			fabric : {
+				type : 'Color',
+				uniforms : {
+					color : new Cesium.Color(1.0, 1.0, 0.0, 1.0)
+				}
+			}
+		});
+
+		const colorMaterial = Cesium.Material.fromType('Color');
+		colorMaterial.uniforms.color = Cesium.Color.RED;
+
 		const arcArray = [];
 		for (let i = 0; i < 1000; i++) {
 			let randCenter = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
@@ -30,7 +42,13 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 					radius: randomRadius,
 					name: 'base haifa',
 					center: randCenter,
-					color: Cesium.Color.RED
+					color: Cesium.Color.RED,
+					appearance: new Cesium.PolylineMaterialAppearance({
+						material: colorMaterial
+					}),
+					attributes: {
+						color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+					},
 				}
 			})
 		}

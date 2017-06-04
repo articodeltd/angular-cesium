@@ -1,7 +1,6 @@
-import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
-;
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../../cesium/cesium.service';
+import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
 
 /**
   +  This drawer is responsible for drawing an arc over the Cesium map.
@@ -10,25 +9,17 @@ import { CesiumService } from '../../cesium/cesium.service';
   */
 
 @Injectable()
-export class ArcDrawerService extends SimpleDrawerService {
+export class ArcDrawerService extends StaticPrimitiveDrawer {
 	constructor(cesiumService: CesiumService) {
-		super(Cesium.PrimitiveCollection, cesiumService);
+		super(Cesium.PolylineGeometry, cesiumService);
 	}
 
-	add(cesiumProps: any) {
-		const arcPositions = this.generatePositions(cesiumProps);
-		const colorMaterial = Cesium.Material.fromType('Color');
-		colorMaterial.uniforms.color = cesiumProps.color || Cesium.Color.WHITE;
-		return super.add(new Cesium.Primitive({
-			geometryInstances: new Cesium.GeometryInstance({
-				geometry: new Cesium.PolylineGeometry({
-					positions: arcPositions
-				})
-			}),
-			appearance: new Cesium.PolylineMaterialAppearance({
-				material: colorMaterial
-			})
-		}));
+	add(geometryProps: any, instanceProps: any, primitiveProps: any) {
+		geometryProps.positions = this.generatePositions(geometryProps);
+		// const colorMaterial = Cesium.Material.fromType('Color');
+		// colorMaterial.uniforms.color = cesiumProps.color || Cesium.Color.WHITE;
+
+		return super.add(geometryProps, instanceProps, primitiveProps);
 	}
 
 	private generatePositions(cesiumProps: any): Array<any> {
