@@ -16,16 +16,16 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 
 	constructor() {
 		let yellowMatirial = new Cesium.Material({
-			fabric : {
-				type : 'Color',
-				uniforms : {
-					color : new Cesium.Color(1.0, 1.0, 0.0, 1.0)
+			fabric: {
+				type: 'Color',
+				uniforms: {
+					color: new Cesium.Color(1.0, 1.0, 0.0, 1.0)
 				}
 			}
 		});
 
 		const colorMaterial = Cesium.Material.fromType('Color');
-		colorMaterial.uniforms.color = Cesium.Color.RED;
+		colorMaterial.uniforms.color = Cesium.Color.YELLOW;
 
 		const arcArray = [];
 		for (let i = 0; i < 1000; i++) {
@@ -42,7 +42,6 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 					radius: randomRadius,
 					name: 'base haifa',
 					center: randCenter,
-					color: Cesium.Color.RED,
 					appearance: new Cesium.PolylineMaterialAppearance({
 						material: colorMaterial
 					}),
@@ -53,7 +52,22 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 			})
 		}
 
-		this.arcs$ = Observable.from(arcArray);
+		this.arcs$ = Observable.create(function (observable) {
+			arcArray.forEach(function (arc) {
+				observable.next(arc);
+			});
+
+			setTimeout(function () {
+				colorMaterial.uniforms.color = Cesium.Color.RED;
+				arcArray.forEach(function (arc) {
+					arc.entity.appearance = new Cesium.PolylineMaterialAppearance({
+						material: colorMaterial
+					});
+
+					observable.next(arc);
+				});
+			}, 8000);
+		});
 	}
 
 	ngOnInit(): void {
