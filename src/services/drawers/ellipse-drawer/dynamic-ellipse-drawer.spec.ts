@@ -55,10 +55,9 @@ describe('DynamicEllipseDrawerService', () => {
 		expect(() => service.add(ellipseProps)).toThrow();
 	}));
 
-	it('should throw if rotation is not given', inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
+	it('should not throw if rotation is not given', inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
 		ellipseProps.rotation = undefined;
-
-		expect(() => service.add(ellipseProps)).toThrow();
+		expect(() => service.add(ellipseProps)).not.toThrow();
 	}));
 
 	it('should throw if semiMajorAxis is not given', inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
