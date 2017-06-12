@@ -11,14 +11,17 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  *  An arc is not cesium natively implemented and therefore it's API doesn't appear anywhere
  *  __Usage :__
  *  ```
- *    &lt;ac-arc-desc props="{
- *                  center: arc.center,
- *                  angle: arc.angle,
- *                  delta: arc.delta,
- *                  radius: arc.radius,
- *                  color: Cesium.Color.WHITE,
- *                  granularity: arc.granularity //optional
- *                  }"&gt;
+ *    &lt;ac-arc-desc geometryProps="{
+            center: arc.center,
+            angle: arc.angle,
+            delta: arc.delta,
+            radius: arc.radius
+        }"
+        instanceProps="{
+            attributes: arc.attributes
+        }"
+        primitiveProps="{
+            appearance: arc.appearance"&gt;
  *    &lt;/ac-arc-desc&gt;
  *    ```
  */
