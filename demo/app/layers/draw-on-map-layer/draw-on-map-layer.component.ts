@@ -13,6 +13,7 @@ export class DrawOnMapComponent implements OnInit {
 	private aquamarine: any;
 	private longitude: number;
 	private latitude: number;
+	private radius: number;
 	private htmlElement: string;
 
 	@ViewChild(AcLabelComponent) label: AcLabelComponent;
@@ -21,6 +22,7 @@ export class DrawOnMapComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit() {
+		this.radius = 80000.0;
 		this.htmlElement = "shilo";
 		this.longitude = 35.1;
 		this.latitude = 0.1;
@@ -56,6 +58,7 @@ export class DrawOnMapComponent implements OnInit {
 					34.1, 35.1,
 					++this.longitude, ++this.latitude
 				]);
-		}, 500);
+			this.radius += 500;
+		}, 1000);
 	}
 }
