@@ -3,10 +3,10 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
 
 /**
-  +  This drawer is responsible for drawing an arc over the Cesium map.
-  +  This implementation uses simple PolylineGeometry and Primitive parameters.
-  +  This doesn't allow us to change the position, color, etc.. of the arc but show only.
-  */
+ +  This drawer is responsible for drawing an arc over the Cesium map.
+ +  This implementation uses simple PolylineGeometry and Primitive parameters.
+ +  This doesn't allow us to change the position, color, etc.. of the arc but show only.
+ */
 
 @Injectable()
 export class ArcDrawerService extends StaticPrimitiveDrawer {
@@ -16,8 +16,6 @@ export class ArcDrawerService extends StaticPrimitiveDrawer {
 
 	add(geometryProps: any, instanceProps: any, primitiveProps: any) {
 		geometryProps.positions = this.generatePositions(geometryProps);
-		// const colorMaterial = Cesium.Material.fromType('Color');
-		// colorMaterial.uniforms.color = cesiumProps.color || Cesium.Color.WHITE;
 
 		return super.add(geometryProps, instanceProps, primitiveProps);
 	}
@@ -26,6 +24,7 @@ export class ArcDrawerService extends StaticPrimitiveDrawer {
 		const arcPositions = [];
 		const defaultGranularity = 0.004;
 		const numOfSamples = 1 / (cesiumProps.granularity || defaultGranularity);
+
 		for (let i = 0; i < numOfSamples + 1; i++) {
 			const currentAngle = cesiumProps.angle + cesiumProps.delta * i / numOfSamples;
 			const distance = cesiumProps.radius / Cesium.Ellipsoid.WGS84.maximumRadius;
@@ -47,5 +46,26 @@ export class ArcDrawerService extends StaticPrimitiveDrawer {
 		}
 
 		return arcPositions;
+	}
+
+	update(primitive: any, geometryProps: any, instanceProps: any, primitiveProps: any) {
+		if (instanceProps && instanceProps.attributes && instanceProps.attributes.color) {
+			const color = instanceProps.attributes.color.value;
+
+			if (primitive.ready) {
+				primitive.getGeometryInstanceAttributes().color = color;
+			}
+			else {
+				Cesium.when(primitive.readyPromise).then((readyPrimitive) => {
+					readyPrimitive.getGeometryInstanceAttributes().color.value = color;
+				});
+			}
+		}
+
+		if (primitiveProps.appearance) {
+			primitive.appearance = primitiveProps.appearance;
+		}
+
+		return primitive;
 	}
 }
