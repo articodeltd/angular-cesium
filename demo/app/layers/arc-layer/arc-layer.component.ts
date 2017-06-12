@@ -15,24 +15,16 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
 	constructor() {
-		let yellowMatirial = new Cesium.Material({
-			fabric: {
-				type: 'Color',
-				uniforms: {
-					color: new Cesium.Color(1.0, 1.0, 0.0, 1.0)
-				}
-			}
-		});
-
 		const colorMaterial = Cesium.Material.fromType('Color');
 		colorMaterial.uniforms.color = Cesium.Color.YELLOW;
 
 		const arcArray = [];
 		for (let i = 0; i < 1000; i++) {
-			let randCenter = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
-			let randomDelta = Math.PI;
-			let randomRadius = Math.random() * 1000000;
-			let randomAngle = Math.random() * 3 - 1;
+			const randCenter = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
+			const randomDelta = Math.PI;
+			const randomRadius = Math.random() * 1000000;
+			const randomAngle = Math.random() * 3 - 1;
+
 			arcArray.push({
 				id: i,
 				actionType: ActionType.ADD_UPDATE,
@@ -40,7 +32,6 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 					angle: randomAngle,
 					delta: randomDelta,
 					radius: randomRadius,
-					name: 'base haifa',
 					center: randCenter,
 					appearance: new Cesium.PolylineMaterialAppearance({
 						material: colorMaterial
@@ -49,7 +40,7 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 						color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
 					},
 				}
-			})
+			});
 		}
 
 		this.arcs$ = Observable.create(function (observable) {
@@ -58,15 +49,21 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 			});
 
 			setTimeout(function () {
-				colorMaterial.uniforms.color = Cesium.Color.RED;
+				const newColorMaterial = Cesium.Material.fromType('Color');
+				newColorMaterial.uniforms.color = Cesium.Color.RED;
+
 				arcArray.forEach(function (arc) {
-					arc.entity.appearance = new Cesium.PolylineMaterialAppearance({
-						material: colorMaterial
+					const newArc = Object.assign({}, arc);
+
+					newArc.entity = {};
+
+					newArc.entity.appearance = new Cesium.PolylineMaterialAppearance({
+						material: newColorMaterial
 					});
 
-					observable.next(arc);
+					observable.next(newArc);
 				});
-			}, 8000);
+			}, 2000);
 		});
 	}
 
@@ -77,10 +74,9 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 	}
 
 	removeAll() {
-		//do nothing
 	}
 
 	setShow($event) {
-		this.show = $event
+		this.show = $event;
 	}
 }
