@@ -14,6 +14,7 @@ export class DrawOnMapComponent implements OnInit {
 	private longitude: number;
 	private latitude: number;
 	private htmlElement: string;
+	private circleToggle: boolean;
 
 	@ViewChild(AcLabelComponent) label: AcLabelComponent;
 	@ViewChild(AcHtmlComponent) html: AcHtmlComponent;
@@ -21,6 +22,7 @@ export class DrawOnMapComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit() {
+		this.circleToggle = true;
 		this.htmlElement = "shilo";
 		this.longitude = 35.1;
 		this.latitude = 0.1;
@@ -56,6 +58,7 @@ export class DrawOnMapComponent implements OnInit {
 					34.1, 35.1,
 					++this.longitude, ++this.latitude
 				]);
+			this.circleToggle = !this.circleToggle;
 		}, 500);
 	}
 }

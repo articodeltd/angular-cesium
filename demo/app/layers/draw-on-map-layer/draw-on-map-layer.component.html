@@ -27,7 +27,7 @@
                             scale: 0.3,
                             name: 'billboard'}">
 </ac-billboard>-->
-<ac-circle [props]="{
+<ac-circle *ngIf="circleToggle" [props]="{
                      center: position,
                      radius:80000.0,
                      granularity:0.03,
