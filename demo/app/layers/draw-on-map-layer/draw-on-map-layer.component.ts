@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AcLabelComponent } from '../../../../src/components/ac-label/ac-label.component';
 import { AcHtmlComponent } from '../../../../src/components/ac-html/ac-html.component';
+import { AcArcComponent } from '../../../../src/components/ac-arc/ac-arc.component';
 
 @Component({
 	selector: 'draw-on-map-layer',
@@ -14,9 +15,15 @@ export class DrawOnMapComponent implements OnInit {
 	private longitude: number;
 	private latitude: number;
 	private htmlElement: string;
+	private center = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
+	private delta = Math.PI;
+	private radius = Math.random() * 1000000;
+	private angle = Math.random() * 3 - 1;
+	private color = Cesium.Color.RED;
 
 	@ViewChild(AcLabelComponent) label: AcLabelComponent;
 	@ViewChild(AcHtmlComponent) html: AcHtmlComponent;
+	@ViewChild(AcArcComponent) arc: AcArcComponent;
 
 	constructor() {}
 
@@ -48,6 +55,7 @@ export class DrawOnMapComponent implements OnInit {
 		setTimeout(() => {
 			this.label.removeFromMap();
 			this.html.props.show = false;
+			this.arc.removeFromMap()
 		}, 10000);
 
 		setInterval(() => {
