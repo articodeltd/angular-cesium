@@ -29,4 +29,11 @@ export class AcArcComponent extends BasicPrimitiveOnMap {
 	constructor(arcDrawer: ArcDrawerService) {
 		super(arcDrawer);
 	}
+
+	updateOnMap() {
+		if (this.selfPrimitiveIsDraw) {
+			this.removeFromMap();
+			this.drawOnMap();
+		}
+	}
 }

@@ -64,6 +64,7 @@ export class DrawOnMapComponent implements OnInit {
 					34.1, 35.1,
 					++this.longitude, ++this.latitude
 				]);
+			this.center = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
 		}, 500);
 	}
 }
