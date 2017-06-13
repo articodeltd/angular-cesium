@@ -9,7 +9,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  *  This is a static implementation of an polyline.
  *  __usage:__
  *  ```
- *    &ltac-static-polyline
+ *    &ltac-static-polyline-desc
  *            geometryProps="{
  *            	width: poly.geometry.width,
  *            	positions: poly.geometry.positions
@@ -21,7 +21,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  *            }"
  *            primitiveProps="{
  *              appearance: new Cesium.PolylineColorAppearance()
- *    }"&gt&lt/ac-static-polyline&gt
+ *    }"&gt&lt/ac-static-polyline-desc&gt
  *  ```
  */
 @Component({
