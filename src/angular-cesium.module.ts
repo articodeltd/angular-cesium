@@ -28,7 +28,7 @@ import { AcEllipseComponent } from './components/ac-ellipse/ac-ellipse.component
 import { AcPointComponent } from './components/ac-point/ac-point.component';
 import { AcHtmlComponent } from './components/ac-html/ac-html.component';
 import { AcCircleComponent } from './components/ac-circle/ac-circle.component';
-import { AcArcComponent } from  './components/ac-arc/ac-arc.component';
+import { AcArcComponent } from './components/ac-arc/ac-arc.component';
 
 @NgModule({
 	imports: [
