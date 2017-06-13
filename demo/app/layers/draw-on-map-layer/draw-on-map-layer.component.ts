@@ -14,7 +14,7 @@ export class DrawOnMapComponent implements OnInit {
 	private longitude: number;
 	private latitude: number;
 	private htmlElement: string;
-	private circleToggle: boolean;
+	private toggle: boolean;
 
 	@ViewChild(AcLabelComponent) label: AcLabelComponent;
 	@ViewChild(AcHtmlComponent) html: AcHtmlComponent;
@@ -22,7 +22,7 @@ export class DrawOnMapComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit() {
-		this.circleToggle = true;
+		this.toggle = true;
 		this.htmlElement = "shilo";
 		this.longitude = 35.1;
 		this.latitude = 0.1;
@@ -43,13 +43,12 @@ export class DrawOnMapComponent implements OnInit {
 		this.aquamarine = Cesium.Color.AQUAMARINE;
 
 		setTimeout(() => {
-			this.html.props.position = Cesium.Cartesian3.fromDegrees(40.0, 40.0);
+			this.position = Cesium.Cartesian3.fromDegrees(40.0, 40.0);
 			this.htmlElement = "drot";
 		}, 5000);
 
 		setTimeout(() => {
 			this.label.removeFromMap();
-			this.html.props.show = false;
 		}, 10000);
 
 		setInterval(() => {
@@ -58,7 +57,7 @@ export class DrawOnMapComponent implements OnInit {
 					34.1, 35.1,
 					++this.longitude, ++this.latitude
 				]);
-			this.circleToggle = !this.circleToggle;
+			this.toggle = !this.toggle;
 		}, 500);
 	}
 }

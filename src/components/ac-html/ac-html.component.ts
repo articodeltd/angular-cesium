@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ElementRef, DoCheck } from '@angular/core';
+import { Component, Input, ElementRef, DoCheck, OnDestroy } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
 
 /**
@@ -20,16 +20,13 @@ import { CesiumService } from '../../services/cesium/cesium.service';
                 z-index: 1;
 				}`]
 })
-export class AcHtmlComponent implements OnInit, DoCheck {
+export class AcHtmlComponent implements DoCheck, OnDestroy {
 
   @Input() props: any;
   private isDraw = false;
   preRenderEventListener: () => void;
 
   constructor(private cesiumService: CesiumService, private elementRef: ElementRef) {
-  }
-
-  ngOnInit(): void {
   }
 
   setScreenPosition(screenPosition: any) {
@@ -66,4 +63,8 @@ export class AcHtmlComponent implements OnInit, DoCheck {
       this.remove();
     }
   }
+
+  ngOnDestroy(): void {
+		this.remove();
+	}
 }
