@@ -55,7 +55,7 @@
     "babel-preset-env": "^1.2.1",
     "bower": "^1.7.9",
     "browserify": "^13.1.1",
-    "cesium": "1.30.0",
+    "cesium": "1.32.1",
     "codelyzer": "^3.0.1",
     "compodoc": "0.0.41",
     "concurrently": "^3.1.0",
@@ -106,6 +106,6 @@
     "angular2parse": "^1.0.4",
     "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",
-    "primitive-primitives": "0.0.5"
+    "primitive-primitives": "0.0.6"
   }
 }
