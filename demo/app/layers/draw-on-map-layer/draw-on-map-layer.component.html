@@ -29,7 +29,7 @@
 </ac-billboard>-->
 <ac-circle *ngIf="toggle" [props]="{
                      center: position,
-                     radius:80000.0,
+                     radius: radius,
                      granularity:0.03,
                      color:[0,1,0,0.5]}"></ac-circle>
 <ac-html #html *ngIf="toggle" [props]="{position: position}">
