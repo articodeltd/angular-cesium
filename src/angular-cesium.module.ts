@@ -4,7 +4,7 @@ import { AcMapComponent } from './components/ac-map/ac-map.component';
 import { AcLayerComponent } from './components/ac-layer/ac-layer.component';
 import { AcBillboardComponent } from './components/ac-billboard/ac-billboard.component';
 import { AcBillboardDescComponent } from './components/ac-billborad-desc/ac-billborad-desc.component';
-import { AcStaticEllipseDescComponent } from './components/ac-static-ellipse/ac-static-ellipse-desc.component';
+import { AcStaticEllipseDescComponent } from './components/ac-static-ellipse-desc/ac-static-ellipse-desc.component';
 import { AcDynamicEllipseDescComponent } from './components/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';
 import { AcDynamicPolylineDescComponent } from './components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
 import { AcStaticCircleDescComponent } from './components/ac-static-circle-desc/ac-static-circle-desc.component';
