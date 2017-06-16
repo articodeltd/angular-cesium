@@ -9,7 +9,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  *  This is a static (position, color, etc.. are not updated) implementation of an ellipse.
  *  __usage:__
  *  ```
- *  &lt;ac-static-ellipse-desc
+ *  &lt;ac-static-ellipse-desc-desc
  *      geometryProps="{
  *          center: ellipse.geometry.center,
  *          semiMajorAxis: ellipse.geometry.semiMajorAxis,
@@ -23,7 +23,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  *      primitiveProps="{
  *          appearance: ellipse.appearance //Optional
  *      }"&gt;
- *  &lt;/ac-static-ellipse-desc&gt;
+ *  &lt;/ac-static-ellipse-desc-desc&gt;
  *  ```
  */
 @Component({

@@ -18,7 +18,7 @@ export class DynamicEllipseDrawerService extends SimpleDrawerService {
 	}
 
 	add(cesiumProps: any): any {
-		Checker.throwIfAnyNotPresent(cesiumProps, ['center', 'semiMajorAxis', 'semiMinorAxis', 'rotation']);
+		Checker.throwIfAnyNotPresent(cesiumProps, ['center', 'semiMajorAxis', 'semiMinorAxis']);
 
 		return super.add(new EllipsePrimitive(cesiumProps));
 	}
