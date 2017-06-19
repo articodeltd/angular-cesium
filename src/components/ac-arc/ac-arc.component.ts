@@ -28,7 +28,7 @@ import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.s
 	selector: 'ac-arc',
 	template: '',
 })
-export class AcArcComponent extends BasicPrimitiveOnMap {
+export class AcArcComponent extends BasicPrimitiveOnMap implements OnChanges {
 
 	@Input()
 	geometryProps: any;
