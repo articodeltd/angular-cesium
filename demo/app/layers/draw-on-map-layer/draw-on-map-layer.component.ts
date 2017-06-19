@@ -8,6 +8,7 @@ import { AcArcComponent } from '../../../../src/components/ac-arc/ac-arc.compone
 	templateUrl: 'draw-on-map-layer.component.html'
 })
 export class DrawOnMapComponent implements OnInit {
+	private toggle: boolean;
 	private position: any;
 	private positions: any;
 	private redMatirial: any;
