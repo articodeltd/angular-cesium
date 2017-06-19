@@ -35,10 +35,16 @@
 <ac-html #html [props]="{position: position}">
     <p>{{htmlElement}}</p>
 </ac-html>
-<ac-arc [props]="{
-                    center: center,
-                    angle: angle,
-                    delta: delta,
-                    radius: radius,
-                    color: color
-                }"></ac-arc>
+<ac-arc [geometryProps]="{
+            center: center,
+            angle: angle,
+            delta: delta,
+            radius: arcRadius
+        }"
+        [instanceProps]="{
+            attributes: attributes
+        }"
+        [primitiveProps]="{
+            appearance: appearance
+        }"
+></ac-arc>

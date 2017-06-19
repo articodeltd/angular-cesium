@@ -17,10 +17,16 @@ export class DrawOnMapComponent implements OnInit {
 	private radius: number;
 	private htmlElement: string;
 	private center = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
+
+	//props for arc
 	private delta = Math.PI;
-	private radius = Math.random() * 1000000;
+	private arcRadius = Math.random() * 1000000;
 	private angle = Math.random() * 3 - 1;
 	private color = Cesium.Color.RED;
+	private attributes = {
+		color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+	};
+	private appearance: any;
 
 	@ViewChild(AcLabelComponent) label: AcLabelComponent;
 	@ViewChild(AcHtmlComponent) html: AcHtmlComponent;
@@ -29,6 +35,12 @@ export class DrawOnMapComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit() {
+		const colorMaterial = Cesium.Material.fromType('Color');
+		colorMaterial.uniforms.color = Cesium.Color.YELLOW;
+		this.appearance = new Cesium.PolylineMaterialAppearance({
+			material: colorMaterial
+		});
+
 		this.radius = 80000.0;
 		this.htmlElement = "shilo";
 		this.longitude = 35.1;
