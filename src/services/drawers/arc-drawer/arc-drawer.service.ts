@@ -1,39 +1,30 @@
-import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../../cesium/cesium.service';
+import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
 
 /**
-  +  This drawer is responsible for drawing an arc over the Cesium map.
-  +  This implementation uses simple PolylineGeometry and Primitive parameters.
-  +  This doesn't allow us to change the position, color, etc.. of the arc but show only.
-  */
+ +  This drawer is responsible for drawing an arc over the Cesium map.
+ +  This implementation uses simple PolylineGeometry and Primitive parameters.
+ +  This doesn't allow us to change the position, color, etc.. of the arc but show only.
+ */
 
 @Injectable()
-export class ArcDrawerService extends SimpleDrawerService {
+export class ArcDrawerService extends StaticPrimitiveDrawer {
 	constructor(cesiumService: CesiumService) {
-		super(Cesium.PrimitiveCollection, cesiumService);
+		super(Cesium.PolylineGeometry, cesiumService);
 	}
 
-	add(cesiumProps: any) {
-		const arcPositions = this.generatePositions(cesiumProps);
-		const colorMaterial = Cesium.Material.fromType('Color');
-		colorMaterial.uniforms.color = cesiumProps.color || Cesium.Color.WHITE;
-		return super.add(new Cesium.Primitive({
-			geometryInstances: new Cesium.GeometryInstance({
-				geometry: new Cesium.PolylineGeometry({
-					positions: arcPositions
-				})
-			}),
-			appearance: new Cesium.PolylineMaterialAppearance({
-				material: colorMaterial
-			})
-		}));
+	add(geometryProps: any, instanceProps: any, primitiveProps: any) {
+		geometryProps.positions = this.generatePositions(geometryProps);
+
+		return super.add(geometryProps, instanceProps, primitiveProps);
 	}
 
 	private generatePositions(cesiumProps: any): Array<any> {
 		const arcPositions = [];
 		const defaultGranularity = 0.004;
 		const numOfSamples = 1 / (cesiumProps.granularity || defaultGranularity);
+
 		for (let i = 0; i < numOfSamples + 1; i++) {
 			const currentAngle = cesiumProps.angle + cesiumProps.delta * i / numOfSamples;
 			const distance = cesiumProps.radius / Cesium.Ellipsoid.WGS84.maximumRadius;
@@ -55,5 +46,26 @@ export class ArcDrawerService extends SimpleDrawerService {
 		}
 
 		return arcPositions;
+	}
+
+	update(primitive: any, geometryProps: any, instanceProps: any, primitiveProps: any) {
+		if (instanceProps && instanceProps.attributes && instanceProps.attributes.color) {
+			const color = instanceProps.attributes.color.value;
+
+			if (primitive.ready) {
+				primitive.getGeometryInstanceAttributes().color = color;
+			}
+			else {
+				Cesium.when(primitive.readyPromise).then((readyPrimitive) => {
+					readyPrimitive.getGeometryInstanceAttributes().color.value = color;
+				});
+			}
+		}
+
+		if (primitiveProps.appearance) {
+			primitive.appearance = primitiveProps.appearance;
+		}
+
+		return primitive;
 	}
 }
