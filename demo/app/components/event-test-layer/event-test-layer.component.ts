@@ -26,28 +26,28 @@ export class EventTestLayerComponent implements OnInit {
 							private cd: ChangeDetectorRef,
 							private geoUtilsService: GeoUtilsService) {
 		const track1: AcNotification = {
-			id: 0,
+			id: '0',
 			actionType: ActionType.ADD_UPDATE,
 			entity: AcEntity.create({
-				id: 0,
+				id: '0',
 				name: 'click me',
 				position: Cesium.Cartesian3.fromRadians(0.5, 0.5),
 			})
 		};
 		const track2: AcNotification = {
-			id: 1,
+			id: '1',
 			actionType: ActionType.ADD_UPDATE,
 			entity: AcEntity.create({
-				id: 1,
+				id: '1',
 				name: 'choose me',
 				position: Cesium.Cartesian3.fromRadians(0.7, 0.7),
 			})
 		};
 		const track3: AcNotification = {
-			id: 2,
+			id: '2',
 			actionType: ActionType.ADD_UPDATE,
 			entity: AcEntity.create({
-				id: 2,
+				id: '2',
 				name: 'click me too',
 				position: Cesium.Cartesian3.fromRadians(0.71, 0.7),
 			})

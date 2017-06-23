@@ -17,12 +17,12 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 
 	constructor() {
 		const base1: AcNotification = {
-			id: 0,
+			id: '0',
 			actionType: ActionType.ADD_UPDATE,
 			entity: {name: 'base haifa', position: Cesium.Cartesian3.fromRadians(1.5, 1.5), show: true}
 		};
 		const base2 = {
-			id: 1,
+			id: '1',
 			actionType: ActionType.ADD_UPDATE,
 			entity: {name: 'base yafo', position: Cesium.Cartesian3.fromRadians(1.9, 1.9), show: true}
 		};

@@ -8,6 +8,8 @@ export * from './components/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.comp
 export * from './components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
 export * from './components/ac-label-desc/ac-label-desc.component';
 export * from './components/ac-static-circle-desc/ac-static-circle-desc.component';
-export * from './components/ac-static-ellipse/ac-static-ellipse-desc.component';
+export * from './components/ac-static-ellipse-desc/ac-static-ellipse-desc.component';
 export * from './components/ac-static-polygon-desc/ac-static-polygon-desc.component';
 export * from './components/ac-static-polyline-desc/ac-static-polyline-desc.component';
+export * from './components/ac-circle/ac-circle.component';
+export * from './components/ac-arc/ac-arc.component';

@@ -1,4 +1,4 @@
-<ac-map>
+<ac-map [enableTilt]="false">
     <ac-map-layer-provider *ngIf="appSettingsService.showMapLayer" [provider]="arcGisMapServerProvider"
                            [options]="{
                                 url : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'

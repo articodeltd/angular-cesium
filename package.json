@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -36,7 +36,7 @@
     "@angular/core": "4.0.x"
   },
   "devDependencies": {
-    "@angular/animations": "^4.1.1",
+    "@angular/animations": "4.1.3",
     "@angular/common": "~4.0.0",
     "@angular/compiler": "~4.0.0",
     "@angular/compiler-cli": "~4.0.0",
@@ -122,13 +122,13 @@
     "webpack-merge": "^3.0.0",
     "webpack-node-externals": "^1.5.4",
     "expose-loader": "^0.7.3",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "dataloader": "^1.3.0"
   },
   "dependencies": {
     "angular2parse": "^1.0.4",
-    "dataloader": "^1.3.0",
     "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",
-    "primitive-primitives": "0.0.5"
+    "primitive-primitives": "0.0.6"
   }
 }

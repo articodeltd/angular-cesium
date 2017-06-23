@@ -16,7 +16,9 @@ export class CesiumService {
     this.ngZone.runOutsideAngular(() => {
       const options = this.viewerConfiguration ? this.viewerConfiguration.viewerOptions : undefined;
       this.cesiumViewer = this.viewerFactory.createViewer(mapContainer, options);
-      if (typeof this.viewerConfiguration.viewerModifier === 'function') {
+
+      if (this.viewerConfiguration && this.viewerConfiguration.viewerModifier &&
+        typeof this.viewerConfiguration.viewerModifier === 'function') {
         this.viewerConfiguration.viewerModifier(this.cesiumViewer);
       }
     });
