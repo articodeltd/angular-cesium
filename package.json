@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -12,7 +12,7 @@
   ],
   "homepage": "https://github.com/TGFTech/angular-cesium#readme",
   "main": "bundles/angular-cesium.umd.js",
-  "typings": "src/main.d.ts",
+  "typings": "index.d.ts",
   "scripts": {
     "clean_src": "rimraf src/*.d.ts src/components/**/*.d.ts src/models/**/*.d.ts src/pipes/**/*.d.ts src/services/**/*.d.ts src/utils/**/*.d.ts src/**/*.metadata.json src/**/*.js src/**/*.js.map src/**/*.ngfactory.ts src/**/*.ngstyle.ts src/**/*.ngsummary.json",
     "cleanup": "npm run clean_src && rimraf index.js index.js.map index.d.ts index.metadata.json build bundles",
@@ -73,9 +73,11 @@
     "core-js": "^2.4.1",
     "cors": "^2.8.3",
     "css-loader": "^0.26.1",
+    "dataloader": "^1.3.0",
     "del": "^2.2.0",
     "es6-module-loader": "^0.17.11",
     "es6-shim": "^0.35.2",
+    "expose-loader": "^0.7.3",
     "express": "^4.15.2",
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "^0.10.1",
@@ -121,9 +123,7 @@
     "webpack-dev-server": "2.4.1",
     "webpack-merge": "^3.0.0",
     "webpack-node-externals": "^1.5.4",
-    "expose-loader": "^0.7.3",
-    "zone.js": "^0.8.4",
-    "dataloader": "^1.3.0"
+    "zone.js": "^0.8.4"
   },
   "dependencies": {
     "angular2parse": "^1.0.4",
