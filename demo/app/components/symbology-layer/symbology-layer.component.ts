@@ -27,7 +27,7 @@ export class SymbologyLayerComponent implements OnInit {
 
 		this.eventManager.register({event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST}).subscribe((result) => {
 			console.log(result);
-		})
+		});
 	}
 
 	removeAll() {
@@ -35,6 +35,6 @@ export class SymbologyLayerComponent implements OnInit {
 	}
 
 	setShow($event) {
-		this.show = $event
+		this.show = $event;
 	}
 }
