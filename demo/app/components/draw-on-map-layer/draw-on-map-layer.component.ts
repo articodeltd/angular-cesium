@@ -44,7 +44,7 @@ export class DrawOnMapComponent implements OnInit {
 
 		this.radius = 80000.0;
 		this.toggle = true;
-		this.htmlElement = "shilo";
+		this.htmlElement = 'shilo';
 		this.longitude = 35.1;
 		this.latitude = 0.1;
 		this.position = Cesium.Cartesian3.fromDegrees(34.0, 32.0);
@@ -65,7 +65,7 @@ export class DrawOnMapComponent implements OnInit {
 
 		setTimeout(() => {
 			this.position = Cesium.Cartesian3.fromDegrees(40.0, 40.0);
-			this.htmlElement = "drot";
+			this.htmlElement = 'drot';
 		}, 5000);
 
 		setTimeout(() => {

@@ -80,8 +80,10 @@ export class EventTestLayerComponent implements OnInit {
 
 		// Example for Priority change
 		// this.testPriority();
+
 		// Example for click and change entity color
 		this.testColorChange();
+
 		// Example for long left down
 		// this.testLongPress();
 
@@ -93,7 +95,7 @@ export class EventTestLayerComponent implements OnInit {
 		this.plonterService.plonterChangeNotifier.subscribe(() => this.cd.detectChanges());
 		this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_ONE })
 			.map((result) => result.entities)
-			.filter(entities => entities[0].id === 1 || entities[0].id === 2)
+			.filter(entities => entities[0].id === '1' || entities[0].id === '2')
 			.subscribe((result) => {
 				console.log('plonter result: ' + JSON.stringify(result));
 				alert('picked: ' + JSON.stringify(result));
@@ -144,7 +146,7 @@ export class EventTestLayerComponent implements OnInit {
 
 	testColorChange() {
 		const inputConf = { event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST, entityType: AcEntity };
-		this.eventManager.register(inputConf).map((result) => result.entities[0]).filter((entity) => entity.id === 0).subscribe((entity) => {
+		this.eventManager.register(inputConf).map((result) => result.entities[0]).filter((entity) => entity.id === '0').subscribe((entity) => {
 			console.log('click3', 'toggle color');
 			entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.WHITE : Cesium.Color.GREEN;
 			this.layer.updateNotification({ actionType: ActionType.ADD_UPDATE, entity: entity, id: entity.id });
