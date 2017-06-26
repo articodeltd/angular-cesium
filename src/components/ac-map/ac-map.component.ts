@@ -9,8 +9,8 @@ import { LabelDrawerService } from '../../services/drawers/label-drawer/label-dr
 import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
+import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
 import { MapSelectionService } from '../../services/map-selection-service/map-selection.service';
-import { MultiSelectionService } from '../../services/multi-selection-service/multi-selection.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -25,8 +25,8 @@ import { MultiSelectionService } from '../../services/multi-selection-service/mu
 @Component({
 	selector: 'ac-map',
 	template: '<ng-content></ng-content>',
-	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService, MultiSelectionService,
-		LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService, MapSelectionService]
+	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService, MapSelectionService,
+	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService, ArcDrawerService]
 })
 export class AcMapComponent implements OnChanges, OnInit {
 	private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;

@@ -12,3 +12,4 @@ export * from './components/ac-static-ellipse-desc/ac-static-ellipse-desc.compon
 export * from './components/ac-static-polygon-desc/ac-static-polygon-desc.component';
 export * from './components/ac-static-polyline-desc/ac-static-polyline-desc.component';
 export * from './components/ac-circle/ac-circle.component';
+export * from './components/ac-arc/ac-arc.component';
