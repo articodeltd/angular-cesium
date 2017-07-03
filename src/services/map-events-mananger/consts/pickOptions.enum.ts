@@ -3,8 +3,8 @@
  *  PICK_FIRST  - first entity will be picked . use Cesium.scene.pick()
  *  PICK_ALL    - all entities are picked. use Cesium.scene.drillPick()
  */
-export const enum PickOptions {
-	NO_PICK,
-	PICK_FIRST,
-	PICK_ALL
+export enum PickOptions {
+    NO_PICK,
+    PICK_FIRST,
+    PICK_ALL
 }
