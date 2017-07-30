@@ -95,7 +95,7 @@ export class EventTestLayerComponent implements OnInit {
 		this.plonterService.plonterChangeNotifier.subscribe(() => this.cd.detectChanges());
 		this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_ONE })
 			.map((result) => result.entities)
-			.filter(entities => entities[0].id === '1' || entities[0].id === '2')
+			.filter(entities => entities && (entities[0].id === '1' || entities[0].id === '2'))
 			.subscribe((result) => {
 				console.log('plonter result: ' + JSON.stringify(result));
 				alert('picked: ' + JSON.stringify(result));
