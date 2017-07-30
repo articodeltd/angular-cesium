@@ -6,13 +6,13 @@ import { AcEntity } from './ac-entity';
  * ac-layer receives an observer of AcNotifications
  */
 export interface AcNotification {
-	id: number;
+  id: string;
 	entity?: AcEntity;
 	actionType: ActionType;
 }
 
 export class AcNotification {
-	id: number;
+  id: string;
 	entity?: AcEntity;
 	actionType: ActionType;
 }

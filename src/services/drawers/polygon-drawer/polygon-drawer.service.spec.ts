@@ -40,7 +40,7 @@ describe('PolygonDrawerService', () => {
 	};
 
 	const cesiumService = mock(CesiumService);
-	const primitiveCollection = mock(Cesium.PrimitiveCollection);
+	const primitiveCollection: any = mock(Cesium.PrimitiveCollection);
 
 	when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 

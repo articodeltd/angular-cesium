@@ -5,10 +5,7 @@ import { CesiumService } from '../cesium/cesium.service';
 @Injectable()
 export class GeoUtilsService {
 
-	constructor(private cesiumService: CesiumService) {
-	}
-
-	pointByLocationDistanceAndAzimuth(currentLocation, meterDistance, radianAzimuth, isInputCartesian = false) {
+	static pointByLocationDistanceAndAzimuth(currentLocation, meterDistance, radianAzimuth, isInputCartesian = false) {
 		const distance = meterDistance / Cesium.Ellipsoid.WGS84.maximumRadius;
 		const curLat = isInputCartesian ? Cesium.Cartographic.fromCartesian(currentLocation).latitude : currentLocation.latitude;
 		const curLon = isInputCartesian ? Cesium.Cartographic.fromCartesian(currentLocation).longitude : currentLocation.longitude;
@@ -25,6 +22,9 @@ export class GeoUtilsService {
 		destinationLon = (destinationLon + 3 * Math.PI) % (2 * Math.PI) - Math.PI;
 
 		return Cesium.Cartesian3.fromRadians(destinationLon, destinationLat);
+	}
+
+	constructor(private cesiumService: CesiumService) {
 	}
 
 	screenPositionToCartesian3(screenPos: {x: number, y: number}) {

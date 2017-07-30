@@ -37,7 +37,7 @@ export class BasicDesc implements OnInit, OnDestroy {
 		this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
 	}
 
-	draw(context: any, id: number, entity: AcEntity): any {
+	draw(context: any, id: string, entity: AcEntity): any {
 		const cesiumProps = this._propsEvaluator(context);
 		if (!this._primitiveMap.has(id)) {
 			const primitive = this._drawer.add(cesiumProps);

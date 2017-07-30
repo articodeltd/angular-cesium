@@ -18,19 +18,19 @@ import { Checker } from '../../utils/checker';
 	template: '',
 })
 export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy {
-	private static createWebMapServiceProvider(options) {
+	private createWebMapServiceProvider(options) {
 		return new Cesium.WebMapServiceImageryProvider(options);
 	}
 
-	private static createWebMapTileServiceProvider(options) {
+	private createWebMapTileServiceProvider(options) {
 		return new Cesium.WebMapTileServiceImageryProvider(options);
 	}
 
-	private static createArcGisMapServerProvider(options) {
+	private createArcGisMapServerProvider(options) {
 		return new Cesium.ArcGisMapServerImageryProvider(options);
 	}
 
-	private static createOfflineMapProvider() {
+	private createOfflineMapProvider() {
 		return Cesium.createTileMapServiceImageryProvider({
 			url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
 		});
@@ -79,18 +79,17 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
 
 		switch (this.provider) {
 			case MapLayerProviderOptions.WebMapService:
-				this.layerProvider = AcMapLayerProviderComponent.createWebMapServiceProvider(this.options);
+				this.layerProvider = this.createWebMapServiceProvider(this.options);
 				break;
 			case MapLayerProviderOptions.WebMapTileService:
-				this.layerProvider = AcMapLayerProviderComponent.createWebMapTileServiceProvider(this.options);
+				this.layerProvider = this.createWebMapTileServiceProvider(this.options);
 				break;
 			case MapLayerProviderOptions.ArcGisMapServer:
-				this.layerProvider = AcMapLayerProviderComponent.createArcGisMapServerProvider(this.options);
+				this.layerProvider = this.createArcGisMapServerProvider(this.options);
 				break;
 			case MapLayerProviderOptions.OFFLINE:
-				break;
 			default:
-				this.layerProvider = AcMapLayerProviderComponent.createOfflineMapProvider();
+				this.layerProvider = this.createOfflineMapProvider();
 				break;
 		}
 		if (this.show) {
@@ -99,7 +98,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
-		if (changes['show'] && !changes['show'].isFirstChange() ) {
+		if (changes['show'] && !changes['show'].isFirstChange()) {
 			const showValue = changes['show'].currentValue;
 			if (showValue) {
 				if (this.imageryLayer) {

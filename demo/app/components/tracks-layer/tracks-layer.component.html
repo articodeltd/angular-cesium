@@ -1,0 +1,35 @@
+<ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [store]="true">
+    <ac-billboard-desc props="{
+              image: track.image,
+              position: track.position,
+              color: getTrackColor(track),
+              scale: 0.1,
+              name: track.callsign,
+              rotation: track.heading
+            }">
+    </ac-billboard-desc>
+    <ac-label-desc props="{
+            position: track.position,
+            pixelOffset : [-15,20] | pixelOffset,
+            text: track.callsign,
+            font: '30px sans-serif',
+            scale: 0.5,
+            fillColor: getTextColor(track)
+    }">
+    </ac-label-desc>
+    <ac-label-desc *ngIf="!realData" props="{
+            position: track.position,
+            pixelOffset : [-15,35] | pixelOffset,
+            text: track.alt.toString(),
+            font: '30px sans-serif',
+            scale: 0.5,
+            fillColor: getTextColor(track)
+    }">
+    </ac-label-desc>
+    <ac-dynamic-polyline-desc *ngIf="showVelocityVectors()" props="{
+            positions: [track.position, track.futurePosition],
+            width: 1,
+            material: getPolylineColor()
+    }">
+    </ac-dynamic-polyline-desc>
+</ac-layer>

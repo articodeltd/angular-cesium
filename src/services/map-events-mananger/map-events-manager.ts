@@ -8,11 +8,11 @@ import { DisposableObservable } from './disposable-observable';
 import { PickOptions } from './consts/pickOptions.enum';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
-import { UtilsService } from '../../utils/utils.service';
 import { PlonterService } from '../plonter/plonter.service';
+import { UtilsService } from '../../utils/utils.service';
 
 /**
- * Manages all map events. Notice events will run outside of Agular zone
+ * Manages all map events. Notice events will run outside of Angular zone
  * __usage:__
  * ```
  * MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
@@ -105,9 +105,9 @@ export class MapEventsManagerService {
     observable = cesiumEventObservable
       .filter(() => !registration.isPaused)
       .map((movement) => this.triggerPick(movement, pickOption))
-      .filter((result) => result.primitives !== null)
+      .filter((result) => result.primitives !== null || entityType === undefined)
       .map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption))
-      .filter((result) => result.entities !== null)
+      .filter((result) => result.entities !== null || entityType === undefined)
       .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption))
       .takeUntil(stopper);
 
@@ -133,10 +133,14 @@ export class MapEventsManagerService {
         break;
     }
 
-    return {movement: movement, primitives: picks};
+    return { movement: movement, primitives: picks };
   }
 
   private addEntities(picksAndMovement, entityType, pickOption: PickOptions): EventResult {
+    if (picksAndMovement.primitives === null) {
+      picksAndMovement.entities = null;
+      return picksAndMovement;
+    }
     let entities = [];
     if (pickOption !== PickOptions.NO_PICK) {
       if (entityType) {
@@ -152,11 +156,13 @@ export class MapEventsManagerService {
         entities = null;
       }
     }
-    return Object.assign(picksAndMovement, {entities: entities});
+
+    picksAndMovement.entities = entities;
+    return picksAndMovement;
   }
 
   private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable<EventResult> {
-    if (pickOption === PickOptions.PICK_ONE && entitiesAndMovement.entities.length > 1) {
+    if (pickOption === PickOptions.PICK_ONE && entitiesAndMovement.entities !== null && entitiesAndMovement.entities.length > 1) {
       return this.plonterService.plonterIt(entitiesAndMovement);
     } else {
       return Observable.of(entitiesAndMovement);

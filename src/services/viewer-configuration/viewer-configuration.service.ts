@@ -19,6 +19,7 @@ export class ViewerConfiguration {
    * cesium viewer options According to [Viewer]{@link https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classFilter=vie}
    */
   private _viewerOptions: any;
+  private _viewerModifier: Function;
 
   get viewerOptions(): any {
     return this._viewerOptions;
@@ -26,5 +27,13 @@ export class ViewerConfiguration {
 
   set viewerOptions(value: any) {
     this._viewerOptions = value;
+  }
+
+  get viewerModifier(): Function {
+    return this._viewerModifier;
+  }
+
+  set viewerModifier(value: Function) {
+    this._viewerModifier = value;
   }
 }

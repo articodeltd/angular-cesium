@@ -7,3 +7,18 @@ html, body, #cesiumContainer {
     padding: 0;
     overflow: hidden;
 }
+
+html, body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+md-toolbar-row {
+    flex-wrap: wrap;
+    height: auto !important;
+}
+
+.divider {
+    width: 99%;
+    border-top: 1px solid;
+    border-color: rgba(0,0,0,0.12);
+}

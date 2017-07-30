@@ -1,0 +1,21 @@
+<ac-map [enableTilt]="false">
+    <ac-map-layer-provider *ngIf="appSettingsService.showMapLayer" [provider]="arcGisMapServerProvider"
+                           [options]="{
+                                url : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
+                            }">
+    </ac-map-layer-provider>
+    <tracks-layer #layer [show]="appSettingsService.showTracksLayer"
+                  [realData]="tracksRealData"></tracks-layer>
+    <!--<dynamic-ellipse-layer #layer></dynamic-ellipse-layer>-->
+    <!--<ellipse-layer #layer></ellipse-layer>-->
+    <!--<ac-static-circle-layer #layer></ac-static-circle-layer>-->
+    <!--<base-layer #layer></base-layer>-->
+    <!--<static-polyline-layer #layer></static-polyline-layer>-->
+    <!--<dynamic-circle-layer #layer></dynamic-circle-layer>-->
+    <!--<dynamic-polyline-layer #layer></dynamic-polyline-layer>-->
+    <!--<point-layer></point-layer>-->
+    <!--<event-test-layer></event-test-layer>-->
+    <!--<arc-layer #layer></arc-layer>-->
+    <!--<symbology-layer #layer></symbology-layer>-->
+    <!--<draw-on-map-layer></draw-on-map-layer>-->
+</ac-map>

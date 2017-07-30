@@ -24,15 +24,15 @@ class BasicDescTestClass extends BasicDesc {
 }
 
 describe('BasicDescTestClass', () => {
-	const id: number = 0;
-	const secondId: number = 1;
+	const id = '0';
+	const secondId= '1';
 	const cesiumProperties = mock(CesiumProperties);
 	let component: BasicDescTestClass;
 	let fixture: ComponentFixture<BasicDescTestClass>;
-	let simpleDrawerService = mock(SimpleDrawerService);
+	let simpleDrawerService: any = mock(SimpleDrawerService);
 
 	when(cesiumProperties.createEvaluator(anything())).thenReturn(() => {
-		return {}
+		return {};
 	});
 	when(simpleDrawerService.add(anything())).thenReturn({});
 
