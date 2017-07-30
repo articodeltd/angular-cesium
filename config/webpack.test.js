@@ -33,7 +33,11 @@ module.exports = {
         test: /\.css$/,
         include: [helpers.root('demo', 'app'), helpers.root('src')],
         loader: 'raw-loader'
-      }
+      },
+      {
+        test: /Cesium\.js$/,
+        loader: 'script-loader'
+      },
     ]
   },
   
