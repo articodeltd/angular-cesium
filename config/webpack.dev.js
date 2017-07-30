@@ -13,10 +13,19 @@ module.exports = webpackMerge(commonConfig, {
     chunkFilename: '[id].chunk.js'
   },
   
+  module: {
+    rules: [
+      {
+        test: /Cesium\.js$/,
+        loader: 'script-loader'
+      }
+    ]
+  },
+  
   plugins: [
     new ExtractTextPlugin('[name].css'),
     new CopyWebpackPlugin([
-      { from: './assets/**/*', context: 'demo', to: './' },
+       { from: './assets/**/*', context: 'demo', to: './' },
     ])
   ],
   
