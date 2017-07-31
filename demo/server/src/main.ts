@@ -7,10 +7,7 @@ import * as cors from 'cors';
 import * as socketIo from 'socket.io';
 import scheme from './schema/schema';
 import { resolverMap, trackResolver } from './resolvers/resolvers';
-import {
-  changeSimSendingParams, getSimSendingParams,
-  startSendingSimulativeData
-} from './simulative/simulative';
+import { Simulative } from './simulative/simulative';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -43,15 +40,17 @@ app.use('/graphiql', graphiqlExpress({
 }));
 
 app.post('/change', (req, res, next) => {
-  changeSimSendingParams(req.body);
+  // changeSimSendingParams(req.body);
   res.send('changed successfully');
 });
 
 app.get('/data', (req, res) => {
-  res.send(getSimSendingParams());
+  res.send({numOfEntities: 1, interval: 1, sendOption: 'chunk'});
 });
 
 httpServer.listen(PORT, () => {
-  startSendingSimulativeData(io);
+
+  const simulative = new Simulative(io);
+  simulative.startSendingSimulativeData();
   console.log('server started on: ' + PORT);
 });
