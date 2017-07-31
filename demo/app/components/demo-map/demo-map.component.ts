@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ContentChildren, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ViewerConfiguration } from '../../../../src/services/viewer-configuration/viewer-configuration.service';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 import { MapLayerProviderOptions } from '../../../../src/models/map-layer-provider-options.enum';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
+import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
 @Component({
   selector : 'demo-map',
   templateUrl : './demo-map.component.html',
@@ -12,7 +13,7 @@ import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.c
 export class DemoMapComponent {
   @Input() tracksRealData: boolean;
 
-  @ViewChildren(AcLayerComponent) layers: QueryList<AcLayerComponent>;
+  @ViewChild('layer') tracksLayer: TracksLayerComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
 
   constructor(private viewerConf: ViewerConfiguration, private appSettingsService: AppSettingsService) {
@@ -37,6 +38,6 @@ export class DemoMapComponent {
 	}
 
   removeAll() {
-    this.layers.forEach((layer) => layer.removeAll());
+    this.tracksLayer.removeAll();
   }
 }
