@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, DoCheck, OnDestroy } from '@angular/core';
+import { Component, Input, ElementRef, DoCheck, OnDestroy, Renderer2 } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
 
 /**
@@ -26,19 +26,21 @@ export class AcHtmlComponent implements DoCheck, OnDestroy {
   private isDraw = false;
   preRenderEventListener: () => void;
 
-  constructor(private cesiumService: CesiumService, private elementRef: ElementRef) {
+  constructor(private cesiumService: CesiumService, private elementRef: ElementRef, private renderer: Renderer2) {
   }
 
   setScreenPosition(screenPosition: any) {
-    this.elementRef.nativeElement.style.top = `${screenPosition.y}px`;
-    this.elementRef.nativeElement.style.left = `${screenPosition.x}px`;
+    if (screenPosition) {
+      this.renderer.setStyle(this.elementRef.nativeElement, 'top', `${screenPosition.y}px`);
+      this.renderer.setStyle(this.elementRef.nativeElement, 'left', `${screenPosition.x}px`);
+    }
   }
 
   remove() {
     if (this.isDraw) {
       this.isDraw = false;
       this.cesiumService.getScene().preRender.removeEventListener(this.preRenderEventListener);
-      this.elementRef.nativeElement.style.display = 'none';
+      this.renderer.setStyle(this.elementRef.nativeElement, 'display', `none`);
     }
   }
 
@@ -50,7 +52,7 @@ export class AcHtmlComponent implements DoCheck, OnDestroy {
           this.props.position);
         this.setScreenPosition(screenPosition);
       };
-      this.elementRef.nativeElement.style.display = 'block';
+      this.renderer.setStyle(this.elementRef.nativeElement, 'display', `block`);
       this.cesiumService.getScene().preRender.addEventListener(this.preRenderEventListener);
     }
   }
