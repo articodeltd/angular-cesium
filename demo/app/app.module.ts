@@ -26,6 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { getApolloClient } from '../utils/apollo/apollo-client';
 import { AppMaterialModule } from './app.material.module';
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
+import { MaxValidatorDirective } from './shared/settings-form/max-validtor.directive';
+import { MinValidatorDirective } from './shared/settings-form/min-validator.directive';
 
 
 @NgModule({
@@ -49,6 +51,8 @@ import { DemoMapComponent } from './components/demo-map/demo-map.component';
     TracksDialogComponent,
     DrawOnMapComponent,
     DemoMapComponent,
+    MaxValidatorDirective,
+    MinValidatorDirective,
   ],
   imports: [
     BrowserModule,

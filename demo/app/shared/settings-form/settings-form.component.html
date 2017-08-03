@@ -3,15 +3,19 @@
     <h1 class="settings-form-header">Settings</h1>
     <h2 class="settings-form-sub-header">Sim Entities</h2>
     <md-input-container>
-        <input mdInput class="settings-input" placeholder="Number of entities"
-               [(ngModel)]="settingsService.numOfEntities">
-    </md-input-container>
-    <md-input-container>
-        <input mdInput class="settings-input" placeholder="Rate (ms)"
-               [(ngModel)]="settingsService.entitiesUpdateRate">
+        <input mdInput class="settings-input" placeholder="Number of entities" #entityNum="ngModel"
+               [(ngModel)]="settingsService.numOfEntities" type="number" required max="5000" validateMax>
+        <md-error>Max value reached</md-error>
     </md-input-container>
     <div>
-        <button md-button class="ok-button" (click)="applySettings()">Ok</button>
+    </div>
+    <md-input-container>
+        <input mdInput class="settings-input" placeholder="Rate (ms)"  #rate="ngModel"
+               [(ngModel)]="settingsService.entitiesUpdateRate" type="number" required min="100" validateMin>
+        <md-error>Min value reached</md-error>
+    </md-input-container>
+    <div>
+        <button md-button [disabled]="!entityNum.valid || !rate.valid" class="ok-button" (click)="applySettings()">Ok</button>
     </div>
     <div class="divider setting-divider"></div>
     <h2 class="settings-form-sub-header">Layers</h2>
