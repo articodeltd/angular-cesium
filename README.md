@@ -127,18 +127,6 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
   + `props` accepts the same member options as cesium corresponding class.
   For example `ac-billborad-desc` accepts same members as [cesium Billboard](https://cesiumjs.org/refdoc.html).
 
-+ Add to `style.css`:
-  ```typescript
-    @import url(/node_modules/cesium/Build/Cesium/Widgets/widgets.css);
-    html, body, #cesiumContainer {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-  ```
-
 ## AC Layer
 ac-layer is a directive which is meant to define a whole layer.
 In case you have previous knowledge about CesiumJs, you would notice that there are lots of map objects e.g. billboard, label, etc'.
