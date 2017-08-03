@@ -99,6 +99,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "2.0.1",
     "merge2": "^1.0.2",
+    "newrelic": "^2.0.2",
     "nodemon": "^1.11.0",
     "null-loader": "^0.1.1",
     "phantomjs-prebuilt": "^2.1.7",
