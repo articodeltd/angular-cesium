@@ -39,15 +39,6 @@ app.use('/graphiql', graphiqlExpress({
   endpointURL : '/graphql',
 }));
 
-app.post('/change', (req, res, next) => {
-  // changeSimSendingParams(req.body);
-  res.send('changed successfully');
-});
-
-app.get('/data', (req, res) => {
-  res.send({numOfEntities: 1, interval: 1, sendOption: 'chunk'});
-});
-
 httpServer.listen(PORT, () => {
 
   const simulative = new Simulative(io);
