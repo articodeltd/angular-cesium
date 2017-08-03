@@ -18,5 +18,8 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
+      - run:
+          name: Run bundle
+          command: npm run bundle
       - store_artifacts:
           path: ~/angular2cesium/artifacts
