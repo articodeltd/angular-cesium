@@ -11,6 +11,20 @@ import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { PlonterService } from '../plonter/plonter.service';
 import { UtilsService } from '../../utils/utils.service';
 
+class Registration {
+  constructor(public observable: Observable<EventResult>,
+              public  stopper: Subject<any>,
+              public  priority: number,
+              public  isPaused: boolean) {
+  }
+}
+
+export interface EventResult {
+  movement: any;
+  primitives: any[];
+  entities: any[];
+}
+
 /**
  * Manages all map events. Notice events will run outside of Angular zone
  * __usage:__
@@ -97,7 +111,7 @@ export class MapEventsManagerService {
   private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier,
                                   entityType, pickOption: PickOptions, priority: number): Registration {
     const cesiumEventObservable = this.eventBuilder.get(event, modifier);
-    const stopper = new Subject();
+    const stopper = new Subject<any>();
 
     const registration = new Registration(undefined, stopper, priority, false);
     let observable: Observable<EventResult>;
@@ -167,18 +181,5 @@ export class MapEventsManagerService {
     } else {
       return Observable.of(entitiesAndMovement);
     }
-  }
-}
-
-export interface EventResult {
-  movement: any;
-  primitives: any[];
-  entities: any[];
-}
-class Registration {
-  constructor(public observable: Observable<EventResult>,
-              public  stopper: Subject<any>,
-              public  priority: number,
-              public  isPaused: boolean) {
   }
 }
