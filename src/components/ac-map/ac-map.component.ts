@@ -23,7 +23,10 @@ import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.s
  */
 @Component({
 	selector: 'ac-map',
-	template: '<ng-content></ng-content>',
+	template: `
+			<ac-default-plonter *ngIf="!disableDefaultPlonter"></ac-default-plonter>
+			<ng-content></ng-content>
+	`,
 	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
 	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService, ArcDrawerService]
 })
@@ -31,7 +34,13 @@ export class AcMapComponent implements OnChanges, OnInit {
 	private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
 	private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
 	private static readonly DEFAULT_TILT_ENABLE = true;
-
+  
+  /**
+	 * Disable default plonter context menu
+   */
+	@Input()
+  disableDefaultPlonter: boolean = false;
+	
 	/**
 	 * in meters
 	 * @type {number}
