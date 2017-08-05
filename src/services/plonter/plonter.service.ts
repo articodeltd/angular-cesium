@@ -30,6 +30,10 @@ export class PlonterService {
 	get entitesToPlonter(): AcEntity[] {
 		return this._entitesToPlonter;
 	}
+	
+	get plonterClickPosition(){
+		return this._eventResult.movement;
+	}
 
 	plonterIt(eventResult: EventResult) {
 		this._eventResult = eventResult;
