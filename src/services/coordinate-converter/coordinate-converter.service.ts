@@ -35,14 +35,20 @@ export class CoordinateConverter {
   constructor(@Optional() private cesiumService?: CesiumService) {
   }
 
-  screenToCartesian3(screenPos: {x: number, y: number}) {
+  screenToCartesian3(screenPos: {x: number, y: number}, addMapCanvansBoundsToPos?: boolean) {
     if (!this.cesiumService) {
       throw new Error('ANGULAR2-CESIUM - Cesium service should be provided in order to do screen position calculations');
     }
     else {
+      const screenPosition = {...screenPos};
+      if (addMapCanvansBoundsToPos) {
+        const mapBounds = this.cesiumService.getViewer().canvas.getBoundingClientRect();
+        screenPos.x += mapBounds.left;
+        screenPos.y += mapBounds.top;
+      }
+      
       const camera = this.cesiumService.getViewer().camera;
-
-      return camera.pickEllipsoid(screenPos);
+      return camera.pickEllipsoid(screenPosition);
     }
   }
 
