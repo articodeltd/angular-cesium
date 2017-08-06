@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, ElementRef, Inject, Input, SimpleChanges } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import { MapEventsManagerService } from '../../services/map-events-mananger/map-events-manager';
@@ -39,7 +39,7 @@ export class AcMapComponent implements OnChanges, OnInit {
 	 * Disable default plonter context menu
    */
 	@Input()
-  disableDefaultPlonter: boolean = false;
+  disableDefaultPlonter = false;
 	
 	/**
 	 * in meters
