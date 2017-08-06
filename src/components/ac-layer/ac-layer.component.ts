@@ -122,7 +122,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
             descriptionComponent.remove(notification.id);
             break;
           default:
-            console.error('[ac-layer] unknown AcNotification action type: ' + notification.actionType);
+            console.error('[ac-layer] unknown AcNotification.actionType for notification: ' + notification);
         }
       });
     });
