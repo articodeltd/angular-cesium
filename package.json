@@ -22,7 +22,7 @@
     "ngc": "ngc -p tsconfig.aot.json",
     "aot": "webpack --config webpack.aot.config.js -p",
     "rollup": "rollup -cza",
-    "bundle": "npm run cleanup && npm run lint && npm run ngc && npm run rollup",
+    "bundle": "npm run mincleanup && npm run lint && npm run ngc && npm run rollup",
     "build-demo": "rimraf dist && webpack --config config/webpack.dev.js --progress --profile --bail",
     "test-server": "node demo/performance-server/server.js",
     "server": "nodemon --exec ./node_modules/.bin/ts-node -- ./demo/server/src/main.ts",

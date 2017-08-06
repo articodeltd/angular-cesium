@@ -203,6 +203,10 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     return this.appSettingsService.showVelocityVectors;
   }
 
+  showEllipses(): boolean {
+    return this.appSettingsService.showEllipses;
+  }
+
   convertToCesiumObj(entity): any {
     entity.scale = entity.id === 1 ? 0.3 : 0.15;
     entity.alt = Math.round(entity.position.altitude);

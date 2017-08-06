@@ -14,7 +14,6 @@ import { PointDrawerService } from '../../services/drawers/point-drawer/point-dr
 import { AcEntity } from '../../models/ac-entity';
 import { BasicDrawerService } from '../../services/drawers/basic-drawer/basic-drawer.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
-import { AccurateEllipseDrawerService } from '../../services/drawers/accurate-ellipse-drawer/accurate-ellipse-drawer.service';
 
 /**
  *  This is a ac-layer implementation.
@@ -59,7 +58,6 @@ import { AccurateEllipseDrawerService } from '../../services/drawers/accurate-el
     ArcDrawerService,
     PointDrawerService,
     PolygonDrawerService,
-    AccurateEllipseDrawerService,
   ]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
@@ -85,7 +83,6 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
               billboardDrawerService: BillboardDrawerService,
               labelDrawerService: LabelDrawerService,
               ellipseDrawerService: EllipseDrawerService,
-              accurateEllipseDrawer: AccurateEllipseDrawerService,
               polylineDrawerService: PolylineDrawerService,
               polygonDrawerService: PolygonDrawerService,
               arcDrawerService: ArcDrawerService,
@@ -94,7 +91,6 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
       billboardDrawerService,
       labelDrawerService,
       ellipseDrawerService,
-      accurateEllipseDrawer,
       polylineDrawerService,
       polygonDrawerService,
       arcDrawerService,

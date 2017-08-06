@@ -11,7 +11,6 @@ import { PointDrawerService } from '../../services/drawers/point-drawer/point-dr
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
-import { AccurateEllipseDrawerService } from '../../services/drawers/accurate-ellipse-drawer/accurate-ellipse-drawer.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -35,7 +34,6 @@ import { AccurateEllipseDrawerService } from '../../services/drawers/accurate-el
     LabelDrawerService,
     PolylineDrawerService,
     EllipseDrawerService,
-    AccurateEllipseDrawerService,
     PointDrawerService,
     ArcDrawerService,
     PolygonDrawerService,

@@ -18,7 +18,7 @@ export class PolylineDrawerService extends SimpleDrawerService {
       cesiumProps.material = material;
     }
 
-    return this.cesiumCollection.add(cesiumProps);
+    return this._cesiumCollection.add(cesiumProps);
   }
 
   update(primitive: any, cesiumProps: any) {

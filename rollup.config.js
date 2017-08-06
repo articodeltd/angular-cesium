@@ -28,6 +28,5 @@ export default {
         'angular2parse': 'ng.parse',
         'json-string-mapper': 'jsonStringMapper',
         'geodesy': 'geodesy',
-        'primitive-primitives': 'primitive_primitives'
     }
 }
