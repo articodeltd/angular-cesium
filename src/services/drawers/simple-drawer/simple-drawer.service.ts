@@ -7,12 +7,15 @@ import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
 export abstract class SimpleDrawerService extends BasicDrawerService {
   private _show = true;
   protected _cesiumCollection: any;
+  private _primitiveCollectionWrap;
   protected _propsAssigner: Function;
 
   constructor(drawerType: any, cesiumService: CesiumService) {
     super();
     this._cesiumCollection = new drawerType();
-    cesiumService.getScene().primitives.add(this._cesiumCollection);
+    this._primitiveCollectionWrap = new Cesium.PrimitiveCollection();
+    this._primitiveCollectionWrap.add(this._cesiumCollection);
+    cesiumService.getScene().primitives.add(this._primitiveCollectionWrap);
   }
 
   add(cesiumProps: any, ...args): any {
@@ -38,7 +41,7 @@ export abstract class SimpleDrawerService extends BasicDrawerService {
 
   setShow(showValue: boolean) {
     this._show = showValue;
-    this._cesiumCollection.show = showValue;
+    this._primitiveCollectionWrap.show = showValue;
   }
 
   getShow(): boolean {
