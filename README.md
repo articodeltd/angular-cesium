@@ -84,7 +84,7 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
 + Live long and prosper
 
 ## Demo
-+ You can try and learn about angular-cesium from our demo:
++ You can try and learn about angular-cesium from our demo: [http://www.angular-cesium.com/](http://www.angular-cesium.com/)
 + The demo contains 2 examples
   + Real data: showing real planes using **GraphQL** to warp an exiting REST service.
   + Simulated data: displaying planes data and sending using **Socket.io**. 
