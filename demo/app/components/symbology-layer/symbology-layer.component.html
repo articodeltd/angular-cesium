@@ -1,5 +1,5 @@
 <ac-layer acFor="let entity of entities" [show]="show" [context]="this">
-    <ac-static-ellipse-desc
+    <ac-ellipse-desc
             geometryProps="{
             center: entity.geometry.center,
             semiMajorAxis: entity.geometry.semiMajorAxis,
@@ -14,8 +14,8 @@
             appearance: entity.appearance
         }"
     >
-    </ac-static-ellipse-desc>
-    <ac-static-polygon-desc
+    </ac-ellipse-desc>
+    <ac-polygon-desc
             geometryProps="{
             polygonHierarchy: entity.polygonProps.geometry.polygonHierarchy,
             height: entity.polygonProps.geometry.height,
@@ -28,5 +28,5 @@
             appearance: entity.polygonProps.appearance
         }"
     >
-    </ac-static-polygon-desc>
+    </ac-polygon-desc>
 </ac-layer>

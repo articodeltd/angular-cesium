@@ -3,14 +3,14 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
-import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 
 /**
  *  This is a dynamic(position is updatable) implementation of an ellipse.
  *
  *  __Usage :__
  *  ```
- *    &lt;ac-dynamic-ellipse-desc props="{
+ *    &lt;ac-ellipse-desc props="{
  *      center: data.position,
  *      semiMajorAxis:250000.0,
  *      semiMinorAxis:400000.0,
@@ -19,7 +19,7 @@ import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-draw
  *      granularity:0.08 // Optional
  *      }"&gt;
  *    ">
- *    &lt;/ac-dynamic-ellipse-desc&gt;
+ *    &lt;/ac-ellipse-desc&gt;
  *  ```
  *  __param:__ {Cesium.Cartesian3} center
  *  __param:__ {number} semiMajorAxis
@@ -29,11 +29,11 @@ import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-draw
  *   __param__: {number} [0.003] granularity
  */
 @Component({
-	selector: 'ac-dynamic-ellipse-desc',
+	selector: 'ac-ellipse-desc',
 	template: '',
 })
-export class AcDynamicEllipseDescComponent extends BasicDesc {
-	constructor(ellipseDrawer: DynamicEllipseDrawerService, layerService: LayerService,
+export class AcEllipseDescComponent extends BasicDesc {
+	constructor(ellipseDrawer: EllipseDrawerService, layerService: LayerService,
 	            computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
 		super(ellipseDrawer, layerService, computationCache, cesiumProperties);
 	}

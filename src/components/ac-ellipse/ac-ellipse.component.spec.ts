@@ -3,7 +3,7 @@ import { mock, instance, when } from 'ts-mockito';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 import { AcEllipseComponent } from './ac-ellipse.component';
-import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ELLIPSE-drawer.service';
 
 describe('AcEllipseComponent', () => {
     let component: AcEllipseComponent;

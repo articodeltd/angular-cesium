@@ -58,7 +58,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
 	index: Number;
 
 	/**
-	 * show (optional) - Determines if the map layer is shown.
+	 * setShow (optional) - Determines if the map layer is shown.
 	 * @type {Boolean}
 	 */
 	@Input()

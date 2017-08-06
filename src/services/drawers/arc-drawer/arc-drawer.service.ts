@@ -5,7 +5,7 @@ import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primiti
 /**
  +  This drawer is responsible for drawing an arc over the Cesium map.
  +  This implementation uses simple PolylineGeometry and Primitive parameters.
- +  This doesn't allow us to change the position, color, etc.. of the arc but show only.
+ +  This doesn't allow us to change the position, color, etc.. of the arc but setShow only.
  */
 
 @Injectable()

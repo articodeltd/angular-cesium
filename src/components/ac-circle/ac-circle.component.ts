@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
-import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 
 /**
  *  This is a circle implementation.
@@ -23,8 +23,8 @@ import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-draw
 })
 export class AcCircleComponent extends BasicPrimitiveOnMap {
 
-	constructor(dynamicEllipseDrawer: DynamicEllipseDrawerService) {
-		super(dynamicEllipseDrawer);
+	constructor(ellipseDrawerService: EllipseDrawerService) {
+		super(ellipseDrawerService);
 	}
 
 	private updateEllipseProps() {

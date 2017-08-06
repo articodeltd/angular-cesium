@@ -1,5 +1,5 @@
 <ac-layer acFor="let polygon in polygons$" [context]="this" [show]="true">
-    <ac-static-polygon-desc
+    <ac-polygon-desc
         geometryProps="{
             polygonHierarchy: polygon.polygonProps.geometry.polygonHierarchy,
             height: polygon.polygonProps.geometry.height,
@@ -12,5 +12,5 @@
             appearance: polygon.polygonProps.appearance
         }"
     >
-    </ac-static-polygon-desc>
+    </ac-polygon-desc>
 </ac-layer>

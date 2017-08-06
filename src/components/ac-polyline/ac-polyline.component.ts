@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
-import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 
 /**
  *  This is a polyline implementation.
@@ -22,7 +22,7 @@ import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-pol
 })
 export class AcPolylineComponent extends BasicPrimitiveOnMap {
 
-	constructor(dynamicPolylineDrawer: DynamicPolylineDrawerService) {
+	constructor(dynamicPolylineDrawer: PolylineDrawerService) {
 		super(dynamicPolylineDrawer);
 	}
 }

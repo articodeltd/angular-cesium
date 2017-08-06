@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AcDynamicPolylineDescComponent } from './ac-dynamic-polyline-desc.component';
-import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { AcPolylineDescComponent } from './ac-polyline-desc.component';
+import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 import { mock, when, instance } from 'ts-mockito';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
@@ -8,9 +8,9 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { mockProvider, providerFromMock } from '../../utils/testingUtils';
 
-describe('AcDynamicPolylineDescComponent', () => {
-  let component: AcDynamicPolylineDescComponent;
-  let fixture: ComponentFixture<AcDynamicPolylineDescComponent>;
+describe('AcPolylineDescComponent', () => {
+  let component: AcPolylineDescComponent;
+  let fixture: ComponentFixture<AcPolylineDescComponent>;
 
   const cesiumService = mock(CesiumService);
   const collection = mock(Cesium.PrimitiveCollection);
@@ -19,8 +19,8 @@ describe('AcDynamicPolylineDescComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AcDynamicPolylineDescComponent],
-      providers: [DynamicPolylineDrawerService,
+      declarations: [AcPolylineDescComponent],
+      providers: [PolylineDrawerService,
         providerFromMock(CesiumService, cesiumService),
         mockProvider(LayerService),
         mockProvider(CesiumProperties),
@@ -30,7 +30,7 @@ describe('AcDynamicPolylineDescComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AcDynamicPolylineDescComponent);
+    fixture = TestBed.createComponent(AcPolylineDescComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

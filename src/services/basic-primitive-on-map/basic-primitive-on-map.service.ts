@@ -1,5 +1,5 @@
 import { OnInit, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
-import { SimpleDrawerService } from '../drawers/simple-drawer/simple-drawer.service';
+import { BasicDrawerService } from '../drawers/basic-drawer/basic-drawer.service';
 
 /**
  *  Extend this class to create drawing on map components.
@@ -12,7 +12,7 @@ export class BasicPrimitiveOnMap implements OnInit, OnChanges, OnDestroy {
 
   protected selfPrimitiveIsDraw: boolean;
 
-  constructor(protected _drawer: SimpleDrawerService) {
+  constructor(protected _drawer: BasicDrawerService) {
   }
 
   ngOnInit(): void {

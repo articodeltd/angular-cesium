@@ -6,10 +6,12 @@ import { MapEventsManagerService } from '../../services/map-events-mananger/map-
 import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-event-builder';
 import { PlonterService } from '../../services/plonter/plonter.service';
 import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
-import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
-import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
+import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
+import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
+import { AccurateEllipseDrawerService } from '../../services/drawers/accurate-ellipse-drawer/accurate-ellipse-drawer.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -22,62 +24,74 @@ import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.s
  * </ac-map>
  */
 @Component({
-	selector: 'ac-map',
-	template: '<ng-content></ng-content>',
-	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
-	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService, ArcDrawerService]
+  selector: 'ac-map',
+  template: '<ng-content></ng-content>',
+  providers: [
+    CesiumService,
+    BillboardDrawerService,
+    CesiumEventBuilder,
+    MapEventsManagerService,
+    PlonterService,
+    LabelDrawerService,
+    PolylineDrawerService,
+    EllipseDrawerService,
+    AccurateEllipseDrawerService,
+    PointDrawerService,
+    ArcDrawerService,
+    PolygonDrawerService,
+  ]
 })
 export class AcMapComponent implements OnChanges, OnInit {
-	private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
-	private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
-	private static readonly DEFAULT_TILT_ENABLE = true;
+  private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
+  private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
+  private static readonly DEFAULT_TILT_ENABLE = true;
 
-	/**
-	 * in meters
-	 * @type {number}
-	 */
-	@Input()
-	minimumZoom: number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
+  /**
+   * in meters
+   * @type {number}
+   */
+  @Input()
+  minimumZoom: number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
 
-	/**
-	 * in meters
-	 * @type {number}
-	 */
-	@Input()
-	maximumZoom: number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
+  /**
+   * in meters
+   * @type {number}
+   */
+  @Input()
+  maximumZoom: number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
 
-	/**
-	 * Sets the enableTilt of screenSpaceCameraController
-	 * @type {boolean}
-	 */
-	@Input()
-	enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
+  /**
+   * Sets the enableTilt of screenSpaceCameraController
+   * @type {boolean}
+   */
+  @Input()
+  enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
 
-	/**
-	 * flyTo options according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
-	 */
-	@Input()
-	flyTo: any;
+  /**
+   * flyTo options according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
+   */
+  @Input()
+  flyTo: any;
 
-	private mapContainer: HTMLElement;
+  private mapContainer: HTMLElement;
 
-	constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
-		this.mapContainer = this.document.createElement('div');
-		this.mapContainer.className = 'map-container';
-		// this.mapContainer.style.height = '100%';
-		this._elemRef.nativeElement.appendChild(this.mapContainer);
-		this._cesiumService.init(this.mapContainer);
-	}
+  constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
+    this.mapContainer = this.document.createElement('div');
+    this.mapContainer.className = 'map-container';
+    // this.mapContainer.style.height = '100%';
+    this._elemRef.nativeElement.appendChild(this.mapContainer);
+    this._cesiumService.init(this.mapContainer);
+  }
 
-	ngOnInit() {
-		this._cesiumService.setMinimumZoom(this.minimumZoom);
-		this._cesiumService.setMaximumZoom(this.maximumZoom);
-		this._cesiumService.setEnableTilt(this.enableTilt);
-	}
+  ngOnInit() {
+    this._cesiumService.setMinimumZoom(this.minimumZoom);
+    this._cesiumService.setMaximumZoom(this.maximumZoom);
+    this._cesiumService.setEnableTilt(this.enableTilt);
+  }
 
-	ngOnChanges(changes: SimpleChanges): void {
-		if (changes['flyTo']) {
-			this._cesiumService.flyTo(changes['flyTo'].currentValue);
-		}
-	}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['flyTo']) {
+      this._cesiumService.flyTo(changes['flyTo'].currentValue);
+    }
+  }
 }

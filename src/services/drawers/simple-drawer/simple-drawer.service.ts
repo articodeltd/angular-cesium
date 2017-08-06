@@ -1,56 +1,47 @@
 import { CesiumService } from '../../cesium/cesium.service';
+import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
 
 /**
  *  This is abstract drawer who provides some implementation for other drawers that extends it.
  */
-export abstract class SimpleDrawerService {
-	protected _showAll = true;
+export abstract class SimpleDrawerService extends BasicDrawerService {
+  private _show = true;
+  protected _cesiumCollection: any;
+  protected _propsAssigner: Function;
 
-	private _cesiumCollection: any;
-	private _propsAssigner: Function;
+  constructor(drawerType: any, cesiumService: CesiumService) {
+    super();
+    this._cesiumCollection = new drawerType();
+    cesiumService.getScene().primitives.add(this._cesiumCollection);
+  }
 
-	constructor(drawerType: any, cesiumService: CesiumService) {
-		this._cesiumCollection = new drawerType();
-		cesiumService.getScene().primitives.add(this._cesiumCollection);
-	}
+  add(cesiumProps: any, ...args): any {
+    return this._cesiumCollection.add(cesiumProps);
+  }
 
-	setPropsAssigner(assigner: Function) {
-		this._propsAssigner = assigner;
-	}
+  update(entity: any, cesiumProps: any, ...args) {
+    if (this._propsAssigner) {
+      this._propsAssigner(entity, cesiumProps);
+    }
+    else {
+      Object.assign(entity, cesiumProps);
+    }
+  }
 
-	add(cesiumProps: any, ...moreProps): any {
-		// Todo: Take care of show = false
-		if (!this._showAll) {
-			cesiumProps.show = this._showAll;
-		}
-		return this._cesiumCollection.add(cesiumProps);
-	}
+  remove(entity: any) {
+    this._cesiumCollection.remove(entity);
+  }
 
-	update(primitive: any, cesiumProps: any, ...moreProps) {
-		if (!this._showAll) {
-			cesiumProps.show = this._showAll;
-		}
-		if (this._propsAssigner) {
-			this._propsAssigner(primitive, cesiumProps);
-		}
-		else {
-			Object.assign(primitive, cesiumProps);
-		}
-	}
+  removeAll() {
+    this._cesiumCollection.removeAll();
+  }
 
-	remove(primitive: any) {
-		this._cesiumCollection.remove(primitive);
-	}
+  setShow(showValue: boolean) {
+    this._show = showValue;
+    this._cesiumCollection.show = showValue;
+  }
 
-	removeAll() {
-		this._cesiumCollection.removeAll();
-	}
-
-	setShow(showValue: boolean) {
-		this._showAll = showValue;
-		for (let i = 0; i < this._cesiumCollection.length; i++) {
-			const primitive = this._cesiumCollection.get(i);
-			primitive.show = showValue;
-		}
-	}
+  getShow(): boolean {
+    return this._show;
+  }
 }

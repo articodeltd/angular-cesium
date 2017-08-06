@@ -1,5 +1,5 @@
 <ac-layer acFor="let circle of circles$" [show]="show" [context]="this">
-    <ac-static-circle
+    <ac-circle
             geometryProps="{
 				center: circle.staticCircle.geometry.center,
 				radius: circle.staticCircle.geometry.radius,
@@ -12,5 +12,5 @@
                 appearance: circle.staticCircle.appearance
             }
     ">
-    </ac-static-circle>
+    </ac-circle>
 </ac-layer>

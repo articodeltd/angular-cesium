@@ -8,7 +8,8 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { ConnectableObservable, Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { ConnectableObservable } from 'rxjs/observable/ConnectableObservable';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
@@ -195,14 +196,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
   }
 
   getPolylineColor() {
-    return new Cesium.Material({
-      fabric: {
-        type: 'Color',
-        uniforms: {
-          color: new Cesium.Color(0.3, 1.0, 0.3, 1.0)
-        }
-      }
-    });
+    return new Cesium.Color(0.3, 1.0, 0.3, 1.0);
   }
 
   showVelocityVectors(): boolean {

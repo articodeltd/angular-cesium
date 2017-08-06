@@ -6,7 +6,7 @@ import { CesiumService } from '../../services/cesium/cesium.service';
  *  The ac-html element must be a child ac-map element.
  *  __Usage:__
  *  ```
- *  &lt;ac-html [props]="position: position, show: true"&gt;
+ *  &lt;ac-html [props]="position: position, setShow: true"&gt;
  *      &lt;p&gt;html element&lt;/p&gt;
  *  &lt;/ac-html&gt;
  *  ```

@@ -3,20 +3,20 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
-import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 
 /**
  *  This is a dynamic(position is updatable) implementation of an circle.
  __Usage :__
  *  ```
- *    &lt;ac-dynamic-circle-desc props="{
+ *    &lt;ac-circle-desc props="{
  *      center: data.position,
  *      radius: 5
  *      rotation : 0.785398,
  *      width:3, // Optional
  *      granularity:0.08 // Optional
  *      }"&gt;
- *    &lt;/ac-dynamic-circle-desc&gt;
+ *    &lt;/ac-circle-desc&gt;
  *  ```
  *
  *  __param__: {Cesium.Cartesian3} center
@@ -26,11 +26,11 @@ import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-draw
  *   __param__: {number} [0.003] granularity
  */
 @Component({
-	selector: 'ac-dynamic-circle-desc',
+	selector: 'ac-circle-desc',
 	template: ''
 })
-export class AcDynamicCircleDescComponent extends BasicDesc {
-	constructor(ellipseDrawer: DynamicEllipseDrawerService, layerService: LayerService,
+export class AcCircleDescComponent extends BasicDesc {
+	constructor(ellipseDrawer: EllipseDrawerService, layerService: LayerService,
 	            computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
 		super(ellipseDrawer, layerService, computationCache, cesiumProperties);
 	}

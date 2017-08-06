@@ -3,7 +3,7 @@ import { mock, instance, when } from 'ts-mockito';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 import { AcPolylineComponent } from './ac-polyline.component';
-import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 
 describe('AcPolylineComponent', () => {
 	let component: AcPolylineComponent;
@@ -17,7 +17,7 @@ describe('AcPolylineComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [AcPolylineComponent],
-			providers: [DynamicPolylineDrawerService,
+			providers: [PolylineDrawerService,
 				providerFromMock(CesiumService, cesiumService)]
 		})
 			.compileComponents();

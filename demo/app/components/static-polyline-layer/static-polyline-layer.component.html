@@ -1,5 +1,5 @@
 <ac-layer acFor="let poly of staticPolylines$" [show]="show" [context]="this">
-    <ac-static-polyline-desc
+    <ac-polyline-desc
             geometryProps="{
 				width: poly.staticPolyline.geometry.width,
 				positions: poly.staticPolyline.geometry.positions
@@ -10,5 +10,5 @@
             primitiveProps="{
             appearance: poly.staticPolyline.appearance
             }">
-    </ac-static-polyline-desc>
+    </ac-polyline-desc>
 </ac-layer>

@@ -7,28 +7,26 @@ import { AcNotification } from '../../models/ac-notification';
 import { ActionType } from '../../models/action-type.enum';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
-import { SimpleDrawerService } from '../../services/drawers/simple-drawer/simple-drawer.service';
-import { StaticCircleDrawerService } from '../../services/drawers/static-circle-drawer/static-circle-drawer.service';
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
-import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
-import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
-import { StaticPolylineDrawerService } from '../../services/drawers/static-polyline-drawer/static-polyline-drawer.service';
-import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
+import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { AcEntity } from '../../models/ac-entity';
+import { BasicDrawerService } from '../../services/drawers/basic-drawer/basic-drawer.service';
+import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
+import { AccurateEllipseDrawerService } from '../../services/drawers/accurate-ellipse-drawer/accurate-ellipse-drawer.service';
 
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.
  *  __param:__ {string} acfor - get the track observable and entityName (see the example)
- *  __param:__ {boolean} show - show/hide layer's entities
+ *  __param:__ {boolean} setShow - setShow/hide layer's entities
  *  __param:__ {any} context - get the context layer that will use the componnet (most of the time equal to "this")
  *
  *  __Usage :__
  *  ```
  *  &lt;ac-map&gt;
- *      &lt;ac-layer acFor="let track of tracks$" [show]="show" [context]="this"&gt;
+ *      &lt;ac-layer acFor="let track of tracks$" [setShow]="setShow" [context]="this"&gt;
  *          &lt;ac-billboard-desc props="{
  *               image: track.image,
  *               position: track.position,
@@ -52,9 +50,16 @@ import { AcEntity } from '../../models/ac-entity';
   selector: 'ac-layer',
   template: '',
   providers: [
-    LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
-    DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,
-    StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService, PointDrawerService
+    LayerService,
+    ComputationCache,
+    BillboardDrawerService,
+    LabelDrawerService,
+    EllipseDrawerService,
+    PolylineDrawerService,
+    ArcDrawerService,
+    PointDrawerService,
+    PolygonDrawerService,
+    AccurateEllipseDrawerService,
   ]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
@@ -71,7 +76,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
   private entityName: string;
   private stopObservable = new Subject();
   private observable: Observable<AcNotification>;
-  private _drawerList: SimpleDrawerService[] = [];
+  private _drawerList: BasicDrawerService[] = [];
   private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
   private entitiesStore = new Map<string, any>();
 
@@ -80,21 +85,17 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
               billboardDrawerService: BillboardDrawerService,
               labelDrawerService: LabelDrawerService,
               ellipseDrawerService: EllipseDrawerService,
-              dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-              dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-              staticCircleDrawerService: StaticCircleDrawerService,
-              staticPolylineDrawerService: StaticPolylineDrawerService,
+              accurateEllipseDrawer: AccurateEllipseDrawerService,
+              polylineDrawerService: PolylineDrawerService,
               polygonDrawerService: PolygonDrawerService,
               arcDrawerService: ArcDrawerService,
               pointDrawerService: PointDrawerService) {
-    this._drawerList = Array.of(
+    this._drawerList = Array.of<BasicDrawerService>(
       billboardDrawerService,
       labelDrawerService,
       ellipseDrawerService,
-      dynamicEllipseDrawerService,
-      dynamicPolylineDrawerService,
-      staticCircleDrawerService,
-      staticPolylineDrawerService,
+      accurateEllipseDrawer,
+      polylineDrawerService,
       polygonDrawerService,
       arcDrawerService,
       pointDrawerService
