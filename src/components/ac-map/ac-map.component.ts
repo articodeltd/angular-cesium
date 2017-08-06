@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, ElementRef, Inject, Input, SimpleChanges } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import { MapEventsManagerService } from '../../services/map-events-mananger/map-events-manager';
@@ -24,7 +24,9 @@ import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/poly
  */
 @Component({
   selector: 'ac-map',
-  template: '<ng-content></ng-content>',
+  template: `
+      <ac-default-plonter *ngIf="!disableDefaultPlonter"></ac-default-plonter>
+      <ng-content></ng-content>`,
   providers: [
     CesiumService,
     BillboardDrawerService,
@@ -43,6 +45,12 @@ export class AcMapComponent implements OnChanges, OnInit {
   private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
   private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
   private static readonly DEFAULT_TILT_ENABLE = true;
+
+  /**
+   * Disable default plonter context menu
+   */
+  @Input()
+  disableDefaultPlonter = false;
 
   /**
    * in meters

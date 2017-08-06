@@ -26,18 +26,15 @@
                 <ul class="list">
             
                     <li class="title">
-                        <a href="../">Angular 2 Cesium</a>
+                        <a href="../index.html">Angular 2 Cesium</a>
                     </li>
             
                     <li class="divider"></li>
             
             
                     <li class="chapter">
-                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
                         <ul class="links">
-                                <li class="link">
-                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
-                                </li>
                                 <li class="link">
                                     <a 
                                         
@@ -47,18 +44,30 @@
                                         <span class="fa fa-th"></span>Overview
                                     </a>
                                 </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
-                            <span class="fa fa-archive"></span>
-                            <span>Modules</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
                                     data-target="#xs-modules-links"
-                            ></span>
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
                         </a>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-modules-links"
                             >
                                 <li class="link">
@@ -71,16 +80,19 @@
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
                             <span class="fa fa-cogs"></span>
                             <span>Components</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-components-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-components-links"
                             >
+                                <li class="link">
+                                    <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                </li>
                                 <li class="link">
                                     <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                 </li>
@@ -89,6 +101,12 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
@@ -100,10 +118,19 @@
                                     <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcLabelDescComponent.html" >AcLabelDescComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AcLayerComponent.html"  class="active" >AcLayerComponent</a>
+                                    <a href="../components/AcLayerComponent.html"  data-type="entity-link" class="active" >AcLayerComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcMapComponent.html" >AcMapComponent</a>
@@ -112,7 +139,13 @@
                                     <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
@@ -131,18 +164,39 @@
             
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
                             <span class="fa fa-file-code-o"></span>
                             <span>Classes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-classes-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-classes-links"
                             >
                                 <li class="link">
                                     <a href="../classes/AcEntity.html" >AcEntity</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicDesc.html" >BasicDesc</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicPrimitiveOnMap.html" >BasicPrimitiveOnMap</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicStaticPrimitiveDesc.html" >BasicStaticPrimitiveDesc</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumEvent2.html" >CesiumEvent2</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumLongPressObserver.html" >CesiumLongPressObserver</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumPureEventObserver.html" >CesiumPureEventObserver</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Checker.html" >Checker</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
@@ -150,21 +204,38 @@
                                 <li class="link">
                                     <a href="../classes/Registration.html" >Registration</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../classes/SimpleDrawerService.html" >SimpleDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/StaticPrimitiveDrawer.html" >StaticPrimitiveDrawer</a>
+                                </li>
                         </ul>
                     </li>
             
-            
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
                             <span class="fa fa-long-arrow-down"></span>
                             <span>Injectables</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-injectables-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-injectables-links"
                             >
+                                <li class="link">
+                                    <a href="../injectables/ArcDrawerService.html" >ArcDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/BillboardDrawerService.html" >BillboardDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CesiumEventBuilder.html" >CesiumEventBuilder</a>
+                                </li>
                                 <li class="link">
                                     <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
                                 </li>
@@ -172,16 +243,49 @@
                                     <a href="../injectables/CesiumService.html" >CesiumService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/ComputationCache.html" >ComputationCache</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/DynamicEllipseDrawerService.html" >DynamicEllipseDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/DynamicPolylineDrawerService.html" >DynamicPolylineDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/EllipseDrawerService.html" >EllipseDrawerService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/JsonMapper.html" >JsonMapper</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LayerService.html" >LayerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PointDrawerService.html" >PointDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolygonDrawerService.html" >PolygonDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StaticCircleDrawerService.html" >StaticCircleDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StaticPolylineDrawerService.html" >StaticPolylineDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
@@ -193,19 +297,16 @@
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
                             <span class="fa fa-info"></span>
                             <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-interfaces-links"
                             >
-                                <li class="link">
-                                    <a href="../interfaces/AcNotification.html" >AcNotification</a>
-                                </li>
                                 <li class="link">
                                     <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
                                 </li>
@@ -216,21 +317,25 @@
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
                             <span class="fa fa-plus"></span>
                             <span>Pipes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-pipes-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-pipes-links"
                             >
                                 <li class="link">
                                     <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                </li>
                         </ul>
                     </li>
+            
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
@@ -242,7 +347,7 @@
             
                     <li class="divider"></li>
                     <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                         <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                             </a>
                     </li>
@@ -260,7 +365,7 @@
                        <ul class="list">
                    
                            <li class="title">
-                               <a href="../">Angular 2 Cesium</a>
+                               <a href="../index.html">Angular 2 Cesium</a>
                            </li>
                    
                            <li class="divider"></li>
@@ -270,11 +375,8 @@
                                </div>
                    
                            <li class="chapter">
-                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
                                <ul class="links">
-                                       <li class="link">
-                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
-                                       </li>
                                        <li class="link">
                                            <a 
                                                
@@ -284,18 +386,30 @@
                                                <span class="fa fa-th"></span>Overview
                                            </a>
                                        </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
-                                   <span class="fa fa-archive"></span>
-                                   <span>Modules</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
                                            data-target="#modules-links"
-                                   ></span>
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
                                </a>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="modules-links"
                    >
                                        <li class="link">
@@ -308,16 +422,19 @@
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
                                    <span class="fa fa-cogs"></span>
                                    <span>Components</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#components-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="components-links"
                    >
+                                       <li class="link">
+                                           <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                        </li>
@@ -326,6 +443,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
@@ -337,10 +460,19 @@
                                            <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcLabelDescComponent.html" >AcLabelDescComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AcLayerComponent.html"  class="active" >AcLayerComponent</a>
+                                           <a href="../components/AcLayerComponent.html"  data-type="entity-link" class="active" >AcLayerComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcMapComponent.html" >AcMapComponent</a>
@@ -349,7 +481,13 @@
                                            <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
@@ -368,18 +506,39 @@
                    
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
                                    <span class="fa fa-file-code-o"></span>
                                    <span>Classes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#classes-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="classes-links"
                    >
                                        <li class="link">
                                            <a href="../classes/AcEntity.html" >AcEntity</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicDesc.html" >BasicDesc</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicPrimitiveOnMap.html" >BasicPrimitiveOnMap</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicStaticPrimitiveDesc.html" >BasicStaticPrimitiveDesc</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumEvent2.html" >CesiumEvent2</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumLongPressObserver.html" >CesiumLongPressObserver</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumPureEventObserver.html" >CesiumPureEventObserver</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Checker.html" >Checker</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
@@ -387,21 +546,38 @@
                                        <li class="link">
                                            <a href="../classes/Registration.html" >Registration</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../classes/SimpleDrawerService.html" >SimpleDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/StaticPrimitiveDrawer.html" >StaticPrimitiveDrawer</a>
+                                       </li>
                                </ul>
                            </li>
                    
-                   
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
                                    <span class="fa fa-long-arrow-down"></span>
                                    <span>Injectables</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#injectables-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="injectables-links"
                    >
+                                       <li class="link">
+                                           <a href="../injectables/ArcDrawerService.html" >ArcDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/BillboardDrawerService.html" >BillboardDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CesiumEventBuilder.html" >CesiumEventBuilder</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
                                        </li>
@@ -409,16 +585,49 @@
                                            <a href="../injectables/CesiumService.html" >CesiumService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/ComputationCache.html" >ComputationCache</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/DynamicEllipseDrawerService.html" >DynamicEllipseDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/DynamicPolylineDrawerService.html" >DynamicPolylineDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/EllipseDrawerService.html" >EllipseDrawerService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/JsonMapper.html" >JsonMapper</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LayerService.html" >LayerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PointDrawerService.html" >PointDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolygonDrawerService.html" >PolygonDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StaticCircleDrawerService.html" >StaticCircleDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StaticPolylineDrawerService.html" >StaticPolylineDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
@@ -430,19 +639,16 @@
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
                                    <span class="fa fa-info"></span>
                                    <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="interfaces-links"
                    >
-                                       <li class="link">
-                                           <a href="../interfaces/AcNotification.html" >AcNotification</a>
-                                       </li>
                                        <li class="link">
                                            <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
                                        </li>
@@ -453,21 +659,25 @@
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
                                    <span class="fa fa-plus"></span>
                                    <span>Pipes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#pipes-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="pipes-links"
                    >
                                        <li class="link">
                                            <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                       </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
@@ -479,7 +689,7 @@
                    
                            <li class="divider"></li>
                            <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                                <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                                    </a>
                            </li>
@@ -492,23 +702,29 @@
                    <div class="content-data">
 
 
+
+
 <ol class="breadcrumb">
   <li>Components</li>
   <li>AcLayerComponent</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
 
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -519,9 +735,42 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>This is a ac-layer implementation.<br>The ac-layer element must be a child of ac-map element.<br><strong>param:</strong> {string} acfor - get the track observable and entityName (see the example)<br><strong>param:</strong> {boolean} show - show/hide layer&#39;s entities<br><strong>param:</strong> {any} context - get the context layer that will use the componnet (most of the time equal to &quot;this&quot;)</p>
+        <p>This is a ac-layer implementation.
+The ac-layer element must be a child of ac-map element.
+<strong>param:</strong> {string} acfor - get the track observable and entityName (see the example)
+<strong>param:</strong> {boolean} show - show/hide layer&#39;s entities
+<strong>param:</strong> {any} context - get the context layer that will use the componnet (most of the time equal to &quot;this&quot;)</p>
 <p><strong>Usage :</strong></p>
-<pre><code class="hljs undefined">&lt;ac-map&gt;<br>     &lt;ac-layer acFor="let track of tracks$" [show]="showTracks" [context]="this"&gt;<br>         &lt;ac-billboard-desc props="{<br>              image: track.image,<br>              position: track.position,<br>              scale: track.scale,<br>              color: track.color,<br>              name: track.name<br>         }"&gt;<br>     &lt;/ac-billboard-desc><br>         &lt;ac-label-desc props="{<br>              position: track.position,<br>              pixelOffset : [-15,20] | pixelOffset,<br>              text: track.name,<br>              font: '15px sans-serif'<br>         }"&gt;<br>         &lt;/ac-label-desc&gt;<br>     &lt;/ac-layer&gt;<br>&lt;/ac-map&gt;</code></pre>
+<pre class="line-numbers"><code class="language-none">&amp;lt;ac-map&amp;gt;
+     &amp;lt;ac-layer acFor=&quot;let track of tracks$&quot; [show]=&quot;show&quot; [context]=&quot;this&quot;&amp;gt;
+         &amp;lt;ac-billboard-desc props=&quot;{
+              image: track.image,
+              position: track.position,
+              scale: track.scale,
+              color: track.color,
+              name: track.name
+         }&quot;&amp;gt;
+     &amp;lt;/ac-billboard-desc&gt;
+         &amp;lt;ac-label-desc props=&quot;{
+              position: track.position,
+              pixelOffset : [-15,20] | pixelOffset,
+              text: track.name,
+              font: &#39;15px sans-serif&#39;
+         }&quot;&amp;gt;
+         &amp;lt;/ac-label-desc&amp;gt;
+     &amp;lt;/ac-layer&amp;gt;
+&amp;lt;/ac-map&amp;gt;</code></pre>
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/AfterContentInit-interface.html" target="_blank" >AfterContentInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-interface.html" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -589,6 +838,11 @@
                               </p>
                         </td>
                     </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:64</a></div>
+                                </td>
+                            </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -604,6 +858,11 @@
                               </p>
                         </td>
                     </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:66</a></div>
+                                </td>
+                            </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -618,6 +877,30 @@
                             </p>
                         </td>
                     </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:62</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>store</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>false</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:68</a></div>
+                                </td>
+                            </tr>
                 </tbody>
             </table>
     </section>
@@ -629,16 +912,24 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(layerService: LayerService, _computationCache: ComputationCache, billboardDrawerService: BillboardDrawerService, labelDrawerService: LabelDrawerService, ellipseDrawerService: EllipseDrawerService, dynamicEllipseDrawerService: DynamicEllipseDrawerService, dynamicPolylineDrawerService: DynamicPolylineDrawerService, staticCircleDrawerService: StaticCircleDrawerService, staticPolylineDrawerService: StaticPolylineDrawerService, polygonDrawerService: PolygonDrawerService, arcDrawerService: ArcDrawerService, pointDraweeSrvice: PointDrawerService)</code>
+                            <code>constructor(layerService: <a href="../injectables/LayerService.html">LayerService</a>, _computationCache: <a href="../injectables/ComputationCache.html">ComputationCache</a>, billboardDrawerService: <a href="../injectables/BillboardDrawerService.html">BillboardDrawerService</a>, labelDrawerService: <a href="../injectables/LabelDrawerService.html">LabelDrawerService</a>, ellipseDrawerService: <a href="../injectables/EllipseDrawerService.html">EllipseDrawerService</a>, dynamicEllipseDrawerService: <a href="../injectables/EllipseDrawerService.html">DynamicEllipseDrawerService</a>, dynamicPolylineDrawerService: <a href="../injectables/DynamicPolylineDrawerService.html">DynamicPolylineDrawerService</a>, staticCircleDrawerService: <a href="../injectables/StaticCircleDrawerService.html">StaticCircleDrawerService</a>, staticPolylineDrawerService: <a href="../injectables/StaticPolylineDrawerService.html">StaticPolylineDrawerService</a>, polygonDrawerService: <a href="../injectables/PolygonDrawerService.html">PolygonDrawerService</a>, arcDrawerService: <a href="../injectables/ArcDrawerService.html">ArcDrawerService</a>, pointDrawerService: <a href="../injectables/PointDrawerService.html">PointDrawerService</a>)</code>
                         </td>
                     </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:76</a></div>
+                                </td>
+                            </tr>
     
                 </tbody>
             </table>
     </section>
 
     <section>
-        <h3 id="methods">Methods</h3>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -646,17 +937,56 @@
                             <b> init</b>
                         </td>
                     </tr>
-    
                     <tr>
                         <td class="col-md-4">
     <code>init()</code>
                         </td>
                     </tr>
     
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:104</a></div>
+                                </td>
+                            </tr>
+    
                     <tr>
                         <td class="col-md-4">
+    
                                 <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> updateStore</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock"></span>
+                            <code>updateStore(notification: AcNotification)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:131</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>any</code>
     
                                 </div>
                         </td>
@@ -670,20 +1000,182 @@
                             <b><span class="modifier">Private</span> initValidParams</b>
                         </td>
                     </tr>
-    
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play lock">
-                                    <span class="fa fa-lock"></span>
-                                </span>
+                                <span class="modifier-icon method fa fa-play lock"></span>
                             <code>initValidParams()</code>
                         </td>
                     </tr>
     
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:149</a></div>
+                                </td>
+                            </tr>
+    
                     <tr>
                         <td class="col-md-4">
+    
                                 <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> ngAfterContentInit</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngAfterContentInit()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:166</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> ngOnInit</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnInit()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:170</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> ngOnChanges</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnChanges(changes: <a href="https://angular.io/docs/ts/latest/api/core/index/SimpleChanges-interface.html" target="_blank">SimpleChanges</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:173</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> ngOnDestroy</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnDestroy()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:180</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> getStore</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>getStore()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:188</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Returns the store.</p>
+    </div>
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>Map&lt;stringany&gt;</code>
     
                                 </div>
                         </td>
@@ -697,19 +1189,26 @@
                             <b> removeAll</b>
                         </td>
                     </tr>
-    
                     <tr>
                         <td class="col-md-4">
     <code>removeAll()</code>
                         </td>
                     </tr>
     
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:195</a></div>
+                                </td>
+                            </tr>
+    
                     <tr>
                         <td class="col-md-4">
                                 <div class="io-description"><p>Remove all the entities from the layer.</p>
     </div>
+    
                                 <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
+                                    <b>Returns : </b>    <code>void</code>
     
                                 </div>
                         </td>
@@ -723,17 +1222,24 @@
                             <b> remove</b>
                         </td>
                     </tr>
-    
                     <tr>
                         <td class="col-md-4">
-    <code>remove(entityId: number)</code>
+    <code>remove(entityId: string)</code>
                         </td>
                     </tr>
     
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:204</a></div>
+                                </td>
+                            </tr>
+    
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>remove 1 entity from the layer</p>
+                                <div class="io-description"><p>remove entity from the layer</p>
     </div>
+    
                                 <div class="io-description">
                                         <b>Parameters :</b>
                                         <ul class="jsdoc-params">
@@ -748,7 +1254,7 @@
                                         </ul>
                                 </div>
                                 <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
+                                    <b>Returns : </b>    <code>void</code>
     
                                 </div>
                                     <div class="io-description">
@@ -762,20 +1268,27 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> update</b>
+                            <b> updateNotification</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>updateNotification(notification: AcNotification)</code>
                         </td>
                     </tr>
     
-                    <tr>
-                        <td class="col-md-4">
-    <code>update(notification: AcNotification)</code>
-                        </td>
-                    </tr>
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:213</a></div>
+                                </td>
+                            </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>update 1 entity from the layer</p>
+                                <div class="io-description"><p>add/update entity to/from the layer</p>
     </div>
+    
                                 <div class="io-description">
                                         <b>Parameters :</b>
                                         <ul class="jsdoc-params">
@@ -792,7 +1305,66 @@
                                         </ul>
                                 </div>
                                 <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> update</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>update(entity: <a href="../classes/AcEntity.html">AcEntity</a>, id: string)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:222</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>add/update entity to/from the layer</p>
+    </div>
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>entity</b>
+                                                            :     <code><a href="../classes/AcEntity.html" target="_self" >AcEntity</a></code>
+    
+                                                    </div>
+                                                    <div>
+                                                        
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>id</b>
+                                                    </div>
+                                                    <div>
+                                                        
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
     
                                 </div>
                                     <div class="io-description">
@@ -809,17 +1381,24 @@
                             <b> refreshAll</b>
                         </td>
                     </tr>
-    
                     <tr>
                         <td class="col-md-4">
-    <code>refreshAll(collection: AcNotification[])</code>
+    <code>refreshAll(collection: [])</code>
                         </td>
                     </tr>
     
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:226</a></div>
+                                </td>
+                            </tr>
+    
                     <tr>
                         <td class="col-md-4">
+    
                                 <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
+                                    <b>Returns : </b>    <code>void</code>
     
                                 </div>
                         </td>
@@ -829,7 +1408,10 @@
     </section>
 
     <section>
-        <h3 id="inputs">Properties</h3>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -839,10 +1421,21 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>_drawerList:     <code>SimpleDrawerService[]</code>
+                            <span class="modifier-icon fa fa-lock"></span><code>_drawerList:     <code>[]</code>
     </bcode>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>[]</code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:74</a></div>
+                                </td>
+                            </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -858,6 +1451,17 @@
     </bcode>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>Subject&lt;AcNotification&gt;</code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:75</a></div>
+                                </td>
+                            </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -869,15 +1473,40 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>acForRgx:     <code>RegExp</code>
+                            <span class="modifier-icon fa fa-lock"></span><code>acForRgx:     <code></code>
     </bcode>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Default value: </i><code>/^let\s+.+\s+of\s+.+$/</code>
+                                <i>Default value : </i><code>/^let\s+.+\s+of\s+.+$/</code>
                             </td>
                         </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:70</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> entitiesStore</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>entitiesStore:     <code></code>
+    </bcode>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:76</a></div>
+                                </td>
+                            </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -893,6 +1522,17 @@
     </bcode>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>string</code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:71</a></div>
+                                </td>
+                            </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -908,13 +1548,46 @@
     </bcode>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>Observable&lt;AcNotification&gt;</code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:73</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> stopObservable</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>stopObservable:     <code></code>
+    </bcode>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/components/ac-layer/ac-layer.component.ts:72</a></div>
+                                </td>
+                            </tr>
                 </tbody>
             </table>
     </section>
 </div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { BillboardDrawerService } from &#x27;../../services/drawers/billboard-drawer/billboard-drawer.service&#x27;;
-import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterContentInit } from &#x27;@angular/core&#x27;;
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { BillboardDrawerService } from &#x27;../../services/drawers/billboard-drawer/billboard-drawer.service&#x27;;
+import { AfterContentInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs/Observable&#x27;;
 import { Subject } from &#x27;rxjs/Subject&#x27;;
 import { LayerService } from &#x27;../../services/layer-service/layer-service.service&#x27;;
@@ -931,6 +1604,7 @@ import { StaticPolylineDrawerService } from &#x27;../../services/drawers/static-
 import { PolygonDrawerService } from &#x27;../../services/drawers/polygon-drawer/polygon-drawer.service&#x27;;
 import { ArcDrawerService } from &#x27;../../services/drawers/arc-drawer/arc-drawer.service&#x27;;
 import { PointDrawerService } from &#x27;../../services/drawers/point-drawer/point-drawer.service&#x27;;
+import { AcEntity } from &#x27;../../models/ac-entity&#x27;;
 
 /**
  *  This is a ac-layer implementation.
@@ -942,7 +1616,7 @@ import { PointDrawerService } from &#x27;../../services/drawers/point-drawer/poi
  *  __Usage :__
  *  &#x60;&#x60;&#x60;
  *  &amp;lt;ac-map&amp;gt;
- *      &amp;lt;ac-layer acFor&#x3D;&quot;let track of tracks$&quot; [show]&#x3D;&quot;showTracks&quot; [context]&#x3D;&quot;this&quot;&amp;gt;
+ *      &amp;lt;ac-layer acFor&#x3D;&quot;let track of tracks$&quot; [show]&#x3D;&quot;show&quot; [context]&#x3D;&quot;this&quot;&amp;gt;
  *          &amp;lt;ac-billboard-desc props&#x3D;&quot;{
  *               image: track.image,
  *               position: track.position,
@@ -963,139 +1637,218 @@ import { PointDrawerService } from &#x27;../../services/drawers/point-drawer/poi
  *  &#x60;&#x60;&#x60;
  */
 @Component({
-	selector: &#x27;ac-layer&#x27;,
-	template: &#x27;&#x27;,
-	providers: [
-		LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
-		DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,
-		StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService, PointDrawerService
-	]
+  selector: &#x27;ac-layer&#x27;,
+  template: &#x27;&#x27;,
+  providers: [
+    LayerService, ComputationCache, BillboardDrawerService, LabelDrawerService, EllipseDrawerService,
+    DynamicEllipseDrawerService, DynamicPolylineDrawerService, StaticCircleDrawerService,
+    StaticPolylineDrawerService, PolygonDrawerService, ArcDrawerService, PointDrawerService
+  ]
 })
-export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
-	private static readonly acForRgx &#x3D; /^let\s+.+\s+of\s+.+$/;
+export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
+  @Input()
+  show &#x3D; true;
+  @Input()
+  acFor: string;
+  @Input()
+  context: any;
+  @Input()
+  store &#x3D; false;
 
-	@Input()
-	show &#x3D; true;
-	@Input()
-	acFor: string;
-	@Input()
-	context: any;
+  private readonly acForRgx &#x3D; /^let\s+.+\s+of\s+.+$/;
+  private entityName: string;
+  private stopObservable &#x3D; new Subject();
+  private observable: Observable&lt;AcNotification&gt;;
+  private _drawerList: SimpleDrawerService[] &#x3D; [];
+  private _updateStream: Subject&lt;AcNotification&gt; &#x3D; new Subject&lt;AcNotification&gt;();
+  private entitiesStore &#x3D; new Map&lt;string, any&gt;();
 
-	private entityName: string;
-	private observable: Observable&lt;AcNotification&gt;;
-	private _drawerList: SimpleDrawerService[] &#x3D; [];
-	private _updateStream: Subject&lt;AcNotification&gt; &#x3D; new Subject&lt;AcNotification&gt;();
+  constructor(private  layerService: LayerService,
+              private _computationCache: ComputationCache,
+              billboardDrawerService: BillboardDrawerService,
+              labelDrawerService: LabelDrawerService,
+              ellipseDrawerService: EllipseDrawerService,
+              dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+              dynamicPolylineDrawerService: DynamicPolylineDrawerService,
+              staticCircleDrawerService: StaticCircleDrawerService,
+              staticPolylineDrawerService: StaticPolylineDrawerService,
+              polygonDrawerService: PolygonDrawerService,
+              arcDrawerService: ArcDrawerService,
+              pointDrawerService: PointDrawerService) {
+    this._drawerList &#x3D; Array.of(
+      billboardDrawerService,
+      labelDrawerService,
+      ellipseDrawerService,
+      dynamicEllipseDrawerService,
+      dynamicPolylineDrawerService,
+      staticCircleDrawerService,
+      staticPolylineDrawerService,
+      polygonDrawerService,
+      arcDrawerService,
+      pointDrawerService
+    );
+  }
 
-	constructor(private  layerService: LayerService,
-	            private _computationCache: ComputationCache,
-	            billboardDrawerService: BillboardDrawerService,
-	            labelDrawerService: LabelDrawerService,
-	            ellipseDrawerService: EllipseDrawerService,
-	            dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-	            dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-	            staticCircleDrawerService: StaticCircleDrawerService,
-	            staticPolylineDrawerService: StaticPolylineDrawerService,
-	            polygonDrawerService: PolygonDrawerService,
-	            arcDrawerService: ArcDrawerService,
-	            pointDraweeSrvice: PointDrawerService) {
-		this._drawerList &#x3D; Array.of(
-			billboardDrawerService,
-			labelDrawerService,
-			ellipseDrawerService,
-			dynamicEllipseDrawerService,
-			dynamicPolylineDrawerService,
-			staticCircleDrawerService,
-			staticPolylineDrawerService,
-			polygonDrawerService,
-			arcDrawerService,
-			pointDraweeSrvice
-		);
-	}
+  init() {
+    this.initValidParams();
 
-	init() {
-		this.initValidParams();
+    Observable.merge(this._updateStream, this.observable).takeUntil(this.stopObservable).subscribe((notification) &#x3D;&gt; {
+      this._computationCache.clear();
 
-		this.observable.merge(this._updateStream).subscribe((notification) &#x3D;&gt; {
-			this._computationCache.clear();
-			this.context[this.entityName] &#x3D; notification.entity;
-			this.layerService.getDescriptions().forEach((descriptionComponent) &#x3D;&gt; {
-				switch (notification.actionType) {
-					case ActionType.ADD_UPDATE:
-						descriptionComponent.draw(this.context, notification.id, notification.entity);
-						break;
-					case ActionType.DELETE:
-						descriptionComponent.remove(notification.id);
-						break;
-					default:
-						console.error(&#x27;unknown action type: &#x27; + notification.actionType);
-				}
-			});
-		});
-	}
+      let contextEntity &#x3D; notification.entity;
+      if (this.store) {
+        contextEntity &#x3D; this.updateStore(notification);
+      }
 
-	private initValidParams() {
-		if (!this.context) {
-			throw new Error(&#x27;ac-layer: must initialize [context] &#x27;);
-		}
+      this.context[this.entityName] &#x3D; contextEntity;
+      this.layerService.getDescriptions().forEach((descriptionComponent) &#x3D;&gt; {
+        switch (notification.actionType) {
+          case ActionType.ADD_UPDATE:
+            descriptionComponent.draw(this.context, notification.id, contextEntity);
+            break;
+          case ActionType.DELETE:
+            descriptionComponent.remove(notification.id);
+            break;
+          default:
+            console.error(&#x27;[ac-layer] unknown AcNotification.actionType for notification: &#x27; + notification);
+        }
+      });
+    });
+  }
 
-		if (!AcLayerComponent.acForRgx.test(this.acFor)) {
-			throw new Error(&#x27;ac-layer: must initialize [acFor] with a valid syntax \&#x27; [acFor]&#x3D;\&quot;let item of observer$\&quot; \&#x27; &#x27;
-				+ &#x27;instead received: &#x27; + this.acFor);
-		}
-		const acForArr &#x3D; this.acFor.split(&#x27; &#x27;);
-		this.observable &#x3D; this.context[acForArr[3]];
-		this.entityName &#x3D; acForArr[1];
-		if (!this.observable || !(this.observable instanceof Observable)) {
-			throw  new Error(&#x27;ac-layer: must initailize [acFor] with rx observable, instead received: &#x27; + this.observable);
-		}
-	}
+  private updateStore(notification: AcNotification): any {
+    if (notification.actionType &#x3D;&#x3D;&#x3D; ActionType.DELETE) {
+      this.entitiesStore.delete(notification.id);
+      return undefined;
+    }
+    else {
+      if (this.entitiesStore.has(notification.id)) {
+        const entity &#x3D; this.entitiesStore.get(notification.id);
+        Object.assign(entity, notification.entity);
+        return entity;
+      }
+      else {
+        this.entitiesStore.set(notification.id, notification.entity);
+        return notification.entity;
+      }
+    }
+  }
 
-	ngAfterContentInit(): void {
-		this.init();
-	}
+  private initValidParams() {
+    if (!this.context) {
+      throw new Error(&#x27;ac-layer: must initialize [context] &#x27;);
+    }
 
-	ngOnInit(): void {
-	}
+    if (!this.acForRgx.test(this.acFor)) {
+      throw new Error(&#x27;ac-layer: must initialize [acFor] with a valid syntax \&#x27; [acFor]&#x3D;\&quot;let item of observer$\&quot; \&#x27; &#x27;
+        + &#x27;instead received: &#x27; + this.acFor);
+    }
+    const acForArr &#x3D; this.acFor.split(&#x27; &#x27;);
+    this.observable &#x3D; this.context[acForArr[3]];
+    this.entityName &#x3D; acForArr[1];
+    if (!this.observable || !(this.observable instanceof Observable)) {
+      throw  new Error(&#x27;ac-layer: must initailize [acFor] with rx observable, instead received: &#x27; + this.observable);
+    }
+  }
 
-	ngOnChanges(changes: SimpleChanges): void {
-		if (changes[&#x27;show&#x27;]) {
-			const showValue &#x3D; changes[&#x27;show&#x27;].currentValue;
-			this._drawerList.forEach((drawer) &#x3D;&gt; drawer.setShow(showValue));
-		}
-	}
+  ngAfterContentInit(): void {
+    this.init();
+  }
 
-	/**
-	 * Remove all the entities from the layer.
-	 */
-	removeAll(): void {
-		this.layerService.getDescriptions().forEach((description) &#x3D;&gt; description.removeAll());
-	}
+  ngOnInit(): void {
+  }
 
-	/**
-	 * remove 1 entity from the layer
-	 * @param {number} entityId
-	 */
-	remove(entityId: number) {
-		this._updateStream.next({id: entityId, actionType: ActionType.DELETE});
-	}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes[&#x27;show&#x27;]) {
+      const showValue &#x3D; changes[&#x27;show&#x27;].currentValue;
+      this._drawerList.forEach((drawer) &#x3D;&gt; drawer.setShow(showValue));
+    }
+  }
 
-	/**
-	 * update 1 entity from the layer
-	 * @param {AcNotification} notification
-	 */
-	update(notification: AcNotification): void {
-		this._updateStream.next(notification);
-	}
+  ngOnDestroy(): void {
+    this.stopObservable.next(true);
+    this.removeAll();
+  }
 
-	refreshAll(collection: AcNotification[]): void {
-		// TODO make entity interface: collection of type entity not notification
-		Observable.from(collection).subscribe((entity) &#x3D;&gt; this._updateStream.next(entity));
-	}
+  /**
+   * Returns the store.
+   */
+  getStore(): Map&lt;string, any&gt; {
+    return this.entitiesStore;
+  };
+
+  /**
+   * Remove all the entities from the layer.
+   */
+  removeAll(): void {
+    this.layerService.getDescriptions().forEach((description) &#x3D;&gt; description.removeAll());
+    this.entitiesStore.clear();
+  }
+
+  /**
+   * remove entity from the layer
+   * @param {number} entityId
+   */
+  remove(entityId: string) {
+    this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
+    this.entitiesStore.delete(entityId);
+  }
+
+  /**
+   * add/update entity to/from the layer
+   * @param {AcNotification} notification
+   */
+  updateNotification(notification: AcNotification): void {
+    this._updateStream.next(notification);
+  }
+
+  /**
+   * add/update entity to/from the layer
+   * @param {AcEntity} entity
+   * @param {number} id
+   */
+  update(entity: AcEntity, id: string): void {
+    this._updateStream.next({ entity, id, actionType: ActionType.ADD_UPDATE });
+  }
+
+  refreshAll(collection: AcNotification[]): void {
+    // TODO make entity interface: collection of type entity not notification
+    Observable.from(collection).subscribe((entity) &#x3D;&gt; this._updateStream.next(entity));
+  }
 }
 </code></pre>
-        </div>
     </div>
 
+
+    <div class="tab-pane fade" id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div></div>'
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AcLayerComponent'};
+</script>
+<script src="../js/tree.js"></script>
 
 
 
@@ -1127,20 +1880,17 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit {
 
        <script src="../js/compodoc.js"></script>
 
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
        <script src="../js/search/search.js"></script>
        <script src="../js/search/lunr.min.js"></script>
        <script src="../js/search/search-lunr.js"></script>
 
+       <script src="../js/tabs.js"></script>
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
        <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
 
     </body>
 </html>

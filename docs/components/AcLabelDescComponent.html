@@ -26,18 +26,15 @@
                 <ul class="list">
             
                     <li class="title">
-                        <a href="../">Angular 2 Cesium</a>
+                        <a href="../index.html">Angular 2 Cesium</a>
                     </li>
             
                     <li class="divider"></li>
             
             
                     <li class="chapter">
-                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
                         <ul class="links">
-                                <li class="link">
-                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
-                                </li>
                                 <li class="link">
                                     <a 
                                         
@@ -47,18 +44,30 @@
                                         <span class="fa fa-th"></span>Overview
                                     </a>
                                 </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
-                            <span class="fa fa-archive"></span>
-                            <span>Modules</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
                                     data-target="#xs-modules-links"
-                            ></span>
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
                         </a>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-modules-links"
                             >
                                 <li class="link">
@@ -71,16 +80,19 @@
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
                             <span class="fa fa-cogs"></span>
                             <span>Components</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-components-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-components-links"
                             >
+                                <li class="link">
+                                    <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                </li>
                                 <li class="link">
                                     <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                 </li>
@@ -89,6 +101,12 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
@@ -100,7 +118,16 @@
                                     <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AcLabelDescComponent.html"  class="active" >AcLabelDescComponent</a>
+                                    <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelDescComponent.html"  data-type="entity-link" class="active" >AcLabelDescComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcLayerComponent.html" >AcLayerComponent</a>
@@ -112,7 +139,13 @@
                                     <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
@@ -131,18 +164,39 @@
             
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
                             <span class="fa fa-file-code-o"></span>
                             <span>Classes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-classes-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-classes-links"
                             >
                                 <li class="link">
                                     <a href="../classes/AcEntity.html" >AcEntity</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicDesc.html" >BasicDesc</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicPrimitiveOnMap.html" >BasicPrimitiveOnMap</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicStaticPrimitiveDesc.html" >BasicStaticPrimitiveDesc</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumEvent2.html" >CesiumEvent2</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumLongPressObserver.html" >CesiumLongPressObserver</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumPureEventObserver.html" >CesiumPureEventObserver</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Checker.html" >Checker</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
@@ -150,21 +204,38 @@
                                 <li class="link">
                                     <a href="../classes/Registration.html" >Registration</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../classes/SimpleDrawerService.html" >SimpleDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/StaticPrimitiveDrawer.html" >StaticPrimitiveDrawer</a>
+                                </li>
                         </ul>
                     </li>
             
-            
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
                             <span class="fa fa-long-arrow-down"></span>
                             <span>Injectables</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-injectables-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-injectables-links"
                             >
+                                <li class="link">
+                                    <a href="../injectables/ArcDrawerService.html" >ArcDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/BillboardDrawerService.html" >BillboardDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CesiumEventBuilder.html" >CesiumEventBuilder</a>
+                                </li>
                                 <li class="link">
                                     <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
                                 </li>
@@ -172,16 +243,49 @@
                                     <a href="../injectables/CesiumService.html" >CesiumService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/ComputationCache.html" >ComputationCache</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/DynamicEllipseDrawerService.html" >DynamicEllipseDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/DynamicPolylineDrawerService.html" >DynamicPolylineDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/EllipseDrawerService.html" >EllipseDrawerService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/JsonMapper.html" >JsonMapper</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LayerService.html" >LayerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PointDrawerService.html" >PointDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolygonDrawerService.html" >PolygonDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StaticCircleDrawerService.html" >StaticCircleDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StaticPolylineDrawerService.html" >StaticPolylineDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
@@ -193,19 +297,16 @@
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
                             <span class="fa fa-info"></span>
                             <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-interfaces-links"
                             >
-                                <li class="link">
-                                    <a href="../interfaces/AcNotification.html" >AcNotification</a>
-                                </li>
                                 <li class="link">
                                     <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
                                 </li>
@@ -216,21 +317,25 @@
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
                             <span class="fa fa-plus"></span>
                             <span>Pipes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-pipes-links"
-                                ></span>
+                            <span class="fa fa-angle-down"></span>
                         </div>
-                        <ul class="links collapse in"
+                        <ul class="links collapse "
                                 id="xs-pipes-links"
                             >
                                 <li class="link">
                                     <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                </li>
                         </ul>
                     </li>
+            
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
@@ -242,7 +347,7 @@
             
                     <li class="divider"></li>
                     <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                         <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                             </a>
                     </li>
@@ -260,7 +365,7 @@
                        <ul class="list">
                    
                            <li class="title">
-                               <a href="../">Angular 2 Cesium</a>
+                               <a href="../index.html">Angular 2 Cesium</a>
                            </li>
                    
                            <li class="divider"></li>
@@ -270,11 +375,8 @@
                                </div>
                    
                            <li class="chapter">
-                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
                                <ul class="links">
-                                       <li class="link">
-                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
-                                       </li>
                                        <li class="link">
                                            <a 
                                                
@@ -284,18 +386,30 @@
                                                <span class="fa fa-th"></span>Overview
                                            </a>
                                        </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
-                                   <span class="fa fa-archive"></span>
-                                   <span>Modules</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
                                            data-target="#modules-links"
-                                   ></span>
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
                                </a>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="modules-links"
                    >
                                        <li class="link">
@@ -308,16 +422,19 @@
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
                                    <span class="fa fa-cogs"></span>
                                    <span>Components</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#components-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="components-links"
                    >
+                                       <li class="link">
+                                           <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                        </li>
@@ -326,6 +443,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
@@ -337,7 +460,16 @@
                                            <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AcLabelDescComponent.html"  class="active" >AcLabelDescComponent</a>
+                                           <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelDescComponent.html"  data-type="entity-link" class="active" >AcLabelDescComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcLayerComponent.html" >AcLayerComponent</a>
@@ -349,7 +481,13 @@
                                            <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
@@ -368,18 +506,39 @@
                    
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
                                    <span class="fa fa-file-code-o"></span>
                                    <span>Classes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#classes-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="classes-links"
                    >
                                        <li class="link">
                                            <a href="../classes/AcEntity.html" >AcEntity</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicDesc.html" >BasicDesc</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicPrimitiveOnMap.html" >BasicPrimitiveOnMap</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicStaticPrimitiveDesc.html" >BasicStaticPrimitiveDesc</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumEvent2.html" >CesiumEvent2</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumLongPressObserver.html" >CesiumLongPressObserver</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumPureEventObserver.html" >CesiumPureEventObserver</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Checker.html" >Checker</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
@@ -387,21 +546,38 @@
                                        <li class="link">
                                            <a href="../classes/Registration.html" >Registration</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../classes/SimpleDrawerService.html" >SimpleDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/StaticPrimitiveDrawer.html" >StaticPrimitiveDrawer</a>
+                                       </li>
                                </ul>
                            </li>
                    
-                   
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
                                    <span class="fa fa-long-arrow-down"></span>
                                    <span>Injectables</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#injectables-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="injectables-links"
                    >
+                                       <li class="link">
+                                           <a href="../injectables/ArcDrawerService.html" >ArcDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/BillboardDrawerService.html" >BillboardDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CesiumEventBuilder.html" >CesiumEventBuilder</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
                                        </li>
@@ -409,16 +585,49 @@
                                            <a href="../injectables/CesiumService.html" >CesiumService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/ComputationCache.html" >ComputationCache</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/DynamicEllipseDrawerService.html" >DynamicEllipseDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/DynamicPolylineDrawerService.html" >DynamicPolylineDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/EllipseDrawerService.html" >EllipseDrawerService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/JsonMapper.html" >JsonMapper</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LabelDrawerService.html" >LabelDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LayerService.html" >LayerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PointDrawerService.html" >PointDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolygonDrawerService.html" >PolygonDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StaticCircleDrawerService.html" >StaticCircleDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StaticPolylineDrawerService.html" >StaticPolylineDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
@@ -430,19 +639,16 @@
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
                                    <span class="fa fa-info"></span>
                                    <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="interfaces-links"
                    >
-                                       <li class="link">
-                                           <a href="../interfaces/AcNotification.html" >AcNotification</a>
-                                       </li>
                                        <li class="link">
                                            <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
                                        </li>
@@ -453,21 +659,25 @@
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
                                    <span class="fa fa-plus"></span>
                                    <span>Pipes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#pipes-links"
-                   ></span>
+                                   <span class="fa fa-angle-down"></span>
                                </div>
-                               <ul class="links collapse in"
+                               <ul class="links collapse "
                                        id="pipes-links"
                    >
                                        <li class="link">
                                            <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                       </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
@@ -479,7 +689,7 @@
                    
                            <li class="divider"></li>
                            <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
                                                <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
                                    </a>
                            </li>
@@ -492,23 +702,29 @@
                    <div class="content-data">
 
 
+
+
 <ol class="breadcrumb">
   <li>Components</li>
   <li>AcLabelDescComponent</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
 
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -519,9 +735,27 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>This is a label implementation.<br>The ac-label-desc element must be a child of ac-layer element.<br>The properties of props are the same as the properties of label:<br><a href="https://cesiumjs.org/Cesium/Build/Documentation/Label.html">https://cesiumjs.org/Cesium/Build/Documentation/Label.html</a><br><strong>Usage :</strong></p>
-<pre><code class="hljs undefined">   &lt;ac-label-desc props="{<br>      position: track.position,<br>      pixelOffset : [-15,20] | pixelOffset,<br>      text: track.name,<br>      font: '15px sans-serif'<br>   }"&gt;<br>   &lt;/ac-label-desc&gt;</code></pre>
+        <p>This is a label implementation.
+The ac-label-desc element must be a child of ac-layer element.
+The properties of props are the same as the properties of label:
+<a href="https://cesiumjs.org/Cesium/Build/Documentation/Label.html">https://cesiumjs.org/Cesium/Build/Documentation/Label.html</a>
+<strong>Usage :</strong></p>
+<pre class="line-numbers"><code class="language-none">   &amp;lt;ac-label-desc props=&quot;{
+      position: track.position,
+      pixelOffset : [-15,20] | pixelOffset,
+      text: track.name,
+      font: &#39;15px sans-serif&#39;
+   }&quot;&amp;gt;
+   &amp;lt;/ac-label-desc&amp;gt;</code></pre>
     </p>
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code><a href="../classes/BasicDesc.html" target="_self" >BasicDesc</a></code>
+    </p>
+
 
 
 <section>
@@ -562,9 +796,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(labelDrawer: LabelDrawerService, layerService: LayerService, computationCache: ComputationCache, cesiumProperties: <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>)</code>
+                            <code>constructor(labelDrawer: <a href="../injectables/LabelDrawerService.html">LabelDrawerService</a>, layerService: <a href="../injectables/LayerService.html">LayerService</a>, computationCache: <a href="../injectables/ComputationCache.html">ComputationCache</a>, cesiumProperties: <a href="../injectables/CesiumProperties.html">CesiumProperties</a>)</code>
                         </td>
                     </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/components/ac-label-desc/ac-label-desc.component.ts:29</a></div>
+                                </td>
+                            </tr>
     
                 </tbody>
             </table>
@@ -572,8 +811,10 @@
 
 
 </div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component } from &#x27;@angular/core&#x27;;
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { BasicDesc } from &#x27;../../services/basic-desc/basic-desc.service&#x27;;
 import { CesiumProperties } from &#x27;../../services/cesium-properties/cesium-properties.service&#x27;;
 import { ComputationCache } from &#x27;../../services/computation-cache/computation-cache.service&#x27;;
@@ -609,9 +850,38 @@ export class AcLabelDescComponent extends BasicDesc {
 	}
 }
 </code></pre>
-        </div>
     </div>
 
+
+    <div class="tab-pane fade" id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div></div>'
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AcLabelDescComponent'};
+</script>
+<script src="../js/tree.js"></script>
 
 
 
@@ -643,20 +913,17 @@ export class AcLabelDescComponent extends BasicDesc {
 
        <script src="../js/compodoc.js"></script>
 
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
        <script src="../js/search/search.js"></script>
        <script src="../js/search/lunr.min.js"></script>
        <script src="../js/search/search-lunr.js"></script>
 
+       <script src="../js/tabs.js"></script>
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
        <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
 
     </body>
 </html>
