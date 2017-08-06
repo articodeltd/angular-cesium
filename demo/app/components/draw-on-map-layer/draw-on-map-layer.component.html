@@ -1,50 +1,69 @@
-<ac-label #label
-          [props]="{position: position,
-                                text: 'shilo',
-                                font: '30px sans-serif',
-                                fillColor : aquamarine}">
+<ac-label #label [props]="{
+    position: position,
+    text: 'TGFTech',
+    font: '30px sans-serif',
+    fillColor : aquamarine
+}">
 </ac-label>
-<ac-polyline #polyline [props]="{positions: positions,
-                                                    width: 3,
-                                                    material: redMatirial}">
+
+<ac-polyline #polyline [props]="{
+    positions: positions,
+    width : 4,
+    material: polylineMaterial
+}">
 </ac-polyline>
-<!--<ac-ELLIPSE [props]="{
-                     center: position,
-                     semiMajorAxis:50000.0,
-                     semiMinorAxis:80000.0,
-                     rotation : 0.785398,
-                     width:3,
-                     granularity:0.03,
-                     color:[0,1,0,0.5]}">
-</ac-ELLIPSE>-->
-<!--<ac-point
-        [props] = "{
-            width: 3,
-            position: position}">
-</ac-point>-->
-<!--<ac-billboard [props] = "{image: '/assets/angry-bird-blue-icon.png',
-                            position: position,
-                            scale: 0.3,
-                            name: 'billboard'}">
-</ac-billboard>-->
+
+<ac-ellipse [props]="{
+    position: position,
+    semiMajorAxis:500000.0,
+    semiMinorAxis:200000.0,
+    rotation : 0.785398,
+    fill: false,
+    outline: true,
+    outlineColor: Cesium.Color.PURPLE,
+    granularity: 0.005
+}">
+</ac-ellipse>
+
+<ac-billboard [props] = "{
+    image: '/assets/angry-bird-blue-icon.png',
+    position: position,
+    scale: 0.2,
+    name: 'billboard'
+}">
+</ac-billboard>
+
+<ac-point [props] = "{
+    width: 3,
+    position: position,
+    color: Cesium.Color.YELLOW
+}">
+</ac-point>
+
 <ac-circle *ngIf="toggle" [props]="{
-                     center: position,
-                     radius: radius,
-                     granularity:0.03,
-                     color:[0,1,0,0.5]}"></ac-circle>
+    position: position,
+    radius: radius,
+    fill: false,
+    outline: true,
+    outlineColor: Cesium.Color.GREEN
+}">
+</ac-circle>
+
 <ac-html #html *ngIf="toggle" [props]="{position: position}">
     <p>{{htmlElement}}</p>
 </ac-html>
-<ac-arc [geometryProps]="{
-            center: center,
-            angle: angle,
-            delta: delta,
-            radius: arcRadius
-        }"
-        [instanceProps]="{
-            attributes: attributes
-        }"
-        [primitiveProps]="{
-            appearance: appearance
-        }"
+
+<ac-arc
+    [geometryProps]="{
+        center: center,
+        angle: angle,
+        delta: delta,
+        radius: arcRadius
+    }"
+    [instanceProps]="{
+        attributes: attributes
+    }"
+    [primitiveProps]="{
+        appearance: appearance
+    }"
 ></ac-arc>

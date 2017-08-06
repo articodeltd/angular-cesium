@@ -12,7 +12,6 @@ import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/elli
  *    &lt;ac-circle-desc props="{
  *      center: data.position,
  *      radius: 5
- *      rotation : 0.785398,
  *      width:3, // Optional
  *      granularity:0.08 // Optional
  *      }"&gt;

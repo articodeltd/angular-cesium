@@ -1,8 +1,7 @@
 <ac-layer acFor="let circle of circles$" [show]="show" [context]="this">
     <ac-circle-desc props="{
-            position: circle.position,
-            radius:250000,
-            rotation:0,
-            granularity:0.04
-        }"></ac-circle-desc>
+        position: circle.position,
+        radius:250000,
+        material: Cesium.Color.GREEN
+    }"></ac-circle-desc>
 </ac-layer>

@@ -22,7 +22,7 @@ import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/po
 })
 export class AcPolylineComponent extends BasicPrimitiveOnMap {
 
-	constructor(dynamicPolylineDrawer: PolylineDrawerService) {
-		super(dynamicPolylineDrawer);
+	constructor(polylineDrawer: PolylineDrawerService) {
+		super(polylineDrawer);
 	}
 }
