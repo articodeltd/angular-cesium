@@ -1,10 +1,11 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocketSupplier';
 import { MapLayerProviderOptions } from '../../src/models/map-layer-provider-options.enum';
 import { ViewerConfiguration } from '../../src/services/viewer-configuration/viewer-configuration.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdDialog, MdIconRegistry } from '@angular/material';
 import { AppSettingsService } from './services/app-settings-service/app-settings-service';
+import { ViewerFactory } from '../../src/services/viewer-factory/viewer-factory.service';
 
 @Component({
 	selector: 'app-root',
@@ -14,7 +15,7 @@ import { AppSettingsService } from './services/app-settings-service/app-settings
 	encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
 	arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
 	flyToOptions = {
 		duration: 2,
@@ -25,7 +26,8 @@ export class AppComponent {
 							viewerConf: ViewerConfiguration,
 							iconRegistry: MdIconRegistry,
 							sanitizer: DomSanitizer,
-							private dialog: MdDialog) {
+							private dialog: MdDialog,
+							private viewerFactory: ViewerFactory) {
 		iconRegistry.addSvgIcon(
 			'settings',
 			sanitizer.bypassSecurityTrustResourceUrl('/assets/settings.svg'));
@@ -52,6 +54,11 @@ export class AppComponent {
 	settingsClick(sidenav) {
 		this.dialog.closeAll();
 		sidenav.open();
+	}
+	
+	ngOnInit(){
+		// example for getting the viewer outside of the ac-map hierarchy
+		const viewer = this.viewerFactory.getViewer('map-1');
 	}
 
 }
