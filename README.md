@@ -200,7 +200,7 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + Maintainable code.
 
 ## Map Events
-`MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), easy API for entity selection and event priority management.
+`MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection and event priority management.
 
 Usage:  
 ```javascript
@@ -229,17 +229,16 @@ In the example above we start listing to Click events. according to `eventRegisr
 - `eventManager.register()` 
   - Returns RxJs observer  of type `DisposableObservable<EventResult>` that we can subsribe to. 
   - To remove the event registration just do: `resultObserver.dispose()`
-- **entityType** it is possible to register events on a specific entities types.  
- e.g raise event only when `TrackEntity` is RIGHT_UP.
+- **entityType:** it is possible to register to events on a specific entities types, e.g raise event only when `TrackEntity` is Clicked.
    - `AcEntity` is the base class for all angular-cesium entities, it is a part of `AcNotification` and is
      required for `MapEventManager` to work properly.
   - All entities should inherit from `AcEntity`  
    e.g `class TrackEntity extends AcEntity {}`
-- **Priority** by setting the priority you can register same events and only the one with the higher priority will be raised. For example 
-   lets say when you left_click on the map context menu should appear but if you in a drag and drop state you want that 
+- **Priority:** by setting the priority you can register same events and only the one with the higher priority will be raised. For example 
+   lets say when you left_click on the map a context menu should appear but if you in a drag and drop state you want that 
    left_click will raise a drop event only, you can achive this by setting different priority 
    to each event.
-- **PickOptions** according to the `PickOptions` enum, set the different strategies for picking entities on the map:
+- **PickOptions:** according to the `PickOptions` enum, set the different strategies for picking entities on the map:
      *  NO_PICK    - will not pick entities
      *  PICK_FIRST  - first entity will be picked . use Cesium.scene.pick()
      *  PICK_ONE    - in case a few entities are picked plonter is resolved . use Cesium.scene.drillPick()
@@ -248,9 +247,9 @@ In the example above we start listing to Click events. according to `eventRegisr
 ##### All cesium map  events run out side angular zone  
 Meaning that the the callback that you pass to map event manager
 will be executed outside of angular zone. That is because Cesium run outside of Angular zone
-in case of performance reasons , king of `ON_PUSH` strategy.  
-For example if you update your html template for every map event and you want it to render 
-you should use `ChangeDetectorRef` or warp your function with `ZgZone.run()`
+in case for performance reasons , kind of `ON_PUSH` strategy.  
+For example if you update your html template for every map event and you want it to render, 
+you should use `ChangeDetectorRef` or warp your function with `NgZone.run()`
 ```javascript
 class MyComponent {
   constructor(eventManager: MapEventsManagerService, ngZone: NgZone){
@@ -265,13 +264,13 @@ class MyComponent {
       
 ##### Plonter  
 In case a two or more entities are in the same location and both are clicked you have a plonter (which entity should be picked?).  
-This is resolved according to the `PickOptions` pass to the event registration:
--  NO_PICK    - non of the entities will be picked, you only interested in the map location
+This is resolved according to the `PickOptions` that we pass to the event registration:
+-  NO_PICK    - non of the entities will be picked, you only interested in the map location.
 -  PICK_FIRST - the first(upper) entity will be picked.
 -  PICK_ALL    - all entities are picked and returned. 
--  PICK_ONE    - only one should be picked, a context will appear allowing the client to choose which entity he wants, selected entity will be passed to the event call back.
+-  PICK_ONE    - only one should be picked, a context will appear allowing the client to choose which entity he wants, selected entity will be passed to the eventcall back.
 
-angular-cesium come with `ac-default-plonter` a basic implementation for the plonter context menu. showing a list of entities names to select.  
+angular-cesium comes with `ac-default-plonter` a basic implementation for the plonter context menu. showing a list of entities names to select from.  
 It is possible to create your own plonter context menu just take a look at `ac-default-plonter` implementation, and disable the default plonter:
 ```html
 <ac-map [disableDefaultPlonter]="true"></ac-map>
