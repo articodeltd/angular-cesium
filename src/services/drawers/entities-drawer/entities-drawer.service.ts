@@ -51,13 +51,20 @@ export class EntitiesDrawerService extends BasicDrawerService {
     }
 
     const graphicsClass = this.graphicsType as any;
-    return optimizedEntityCollection.add(
-      {
-        position: cesiumProps.position !== undefined ? cesiumProps.position : undefined,
-        show: cesiumProps.show !== undefined ? cesiumProps.show : true,
-        [this.graphicsTypeName]: new graphicsClass(cesiumProps)
+    const entityObject = {
+      position: cesiumProps.position !== undefined ? cesiumProps.position : undefined,
+      show: cesiumProps.show !== undefined ? cesiumProps.show : true,
+      description: cesiumProps.description !== undefined ? cesiumProps.description : undefined,
+      orientation: cesiumProps.orientation !== undefined ? cesiumProps.orientation : undefined,
+      viewFrom: cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : undefined,
+      [this.graphicsTypeName]: new graphicsClass(cesiumProps)
+    };
 
-      });
+    if (cesiumProps.name !== undefined) {
+      entityObject.name = cesiumProps.name;
+    }
+
+    return optimizedEntityCollection.add(entityObject);
   }
 
   update(entity: any, cesiumProps: any) {
@@ -65,6 +72,11 @@ export class EntitiesDrawerService extends BasicDrawerService {
 
     entity.position = cesiumProps.position !== undefined ? cesiumProps.position : undefined;
     entity.show = cesiumProps.show !== undefined ? cesiumProps.show : entity.show;
+    entity.name = cesiumProps.name !== undefined ? cesiumProps.name : entity.name;
+    entity.description = cesiumProps.description !== undefined ? cesiumProps.description : entity.description;
+    entity.orientation = cesiumProps.orientation !== undefined ? cesiumProps.orientation : entity.orientation;
+    entity.viewFrom = cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : entity.viewFrom;
+
     if (this._propsAssigner) {
       this._propsAssigner(entity[this.graphicsTypeName], cesiumProps);
     }
@@ -110,7 +122,7 @@ export class OptimizedEntityCollection {
   private _onEventSuspensionCallback: { once: boolean, callback: Function };
   private _onEventResumeCallback: { once: boolean, callback: Function };
 
-  constructor(private entityCollection: any, collectionSize = -1 , updateRate = -1) {
+  constructor(private entityCollection: any, collectionSize = -1, updateRate = -1) {
     this._updateRate = updateRate;
     this._collectionSize = collectionSize;
 
