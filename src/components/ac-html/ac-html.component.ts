@@ -17,7 +17,7 @@ import { CesiumService } from '../../services/cesium/cesium.service';
   template: `<ng-content></ng-content>`,
   styles: [`:host {
                 position: absolute;
-                z-index: 1;
+                z-index: 100;
 				}`]
 })
 export class AcHtmlComponent implements DoCheck, OnDestroy {

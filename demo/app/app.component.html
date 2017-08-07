@@ -1,6 +1,6 @@
 <md-sidenav-container class="sidenav-container">
     <md-toolbar color="primary">
-        <button md-icon-button (click)="settingsClick(sidenav)">
+        <button md-icon-button (click)="settingsClick(sidenav)" class="settings-button">
             <md-icon>settings</md-icon>
         </button>
         <span>Angular-Cesium Demo</span>
@@ -8,7 +8,7 @@
         <span class="fill-remaining-space"></span>
         <button md-button (click)="appSettingsService.realTracksData=true">REAL TRACKS</button>
         <button md-button (click)="appSettingsService.realTracksData=false">SIMULATED TRACKS</button>
-        <a href="https://github.com/TGFTech/angular-cesium">
+        <a href="https://github.com/TGFTech/angular-cesium" class="github-link">
             <img class="github" src="../assets/GitHub-Mark-Light.png">
         </a>
     </md-toolbar>
