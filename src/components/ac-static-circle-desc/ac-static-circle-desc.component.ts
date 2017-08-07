@@ -24,12 +24,12 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  *    ```
  */
 @Component({
-  selector: 'ac-static-circle',
-  template: ''
+	selector: 'ac-static-circle',
+	template: ''
 })
 export class AcStaticCircleDescComponent extends BasicStaticPrimitiveDesc {
-  constructor(staticCircleDrawer: StaticCircleDrawerService, layerService: LayerService,
-              computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
-    super(staticCircleDrawer, layerService, computationCache, cesiumProperties);
-  }
+	constructor(staticCircleDrawer: StaticCircleDrawerService, layerService: LayerService,
+	            computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
+		super(staticCircleDrawer, layerService, computationCache, cesiumProperties);
+	}
 }

@@ -9,51 +9,51 @@ import { ComputationCache } from '../../services/computation-cache/computation-c
 import { mock } from 'ts-mockito';
 
 describe('AcStaticCircleDescComponent', () => {
-  let component: AcStaticCircleDescComponent;
-  let fixture: ComponentFixture<AcStaticCircleDescComponent>;
-  
-  beforeEach(async(() => {
-    const mockCesiumService = mock(CesiumService);
-    const mockStaticCircleDrawerService = mock(StaticCircleDrawerService);
-    const mockLayerService = mock(LayerService);
-    const mockComputationCache = mock(ComputationCache);
-    const mockCesiumProperties = mock(CesiumProperties);
-    
-    TestBed.configureTestingModule({
-      declarations: [AcStaticCircleDescComponent],
-      providers: [
-        {
-          provide: CesiumService,
-          useValue: mockCesiumService
-        },
-        {
-          provide: StaticCircleDrawerService,
-          useValue: mockStaticCircleDrawerService
-        },
-        {
-          provide: LayerService,
-          useValue: mockLayerService
-        },
-        {
-          provide: ComputationCache,
-          useValue: mockComputationCache
-        },
-        {
-          provide: CesiumProperties,
-          useValue: mockCesiumProperties
-        }
-      ]
-    })
-      .compileComponents();
-  }));
-  
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AcStaticCircleDescComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-  
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	let component: AcStaticCircleDescComponent;
+	let fixture: ComponentFixture<AcStaticCircleDescComponent>;
+
+	beforeEach(async(() => {
+		const mockCesiumService = mock(CesiumService);
+		const mockStaticCircleDrawerService = mock(StaticCircleDrawerService);
+		const mockLayerService = mock(LayerService);
+		const mockComputationCache = mock(ComputationCache);
+		const mockCesiumProperties = mock(CesiumProperties);
+
+		TestBed.configureTestingModule({
+			declarations: [AcStaticCircleDescComponent],
+			providers: [
+				{
+					provide: CesiumService,
+					useValue: mockCesiumService
+				},
+				{
+					provide: StaticCircleDrawerService,
+					useValue: mockStaticCircleDrawerService
+				},
+				{
+					provide: LayerService,
+					useValue: mockLayerService
+				},
+				{
+					provide: ComputationCache,
+					useValue: mockComputationCache
+				},
+				{
+					provide: CesiumProperties,
+					useValue: mockCesiumProperties
+				}
+			]
+		})
+			.compileComponents();
+	}));
+
+	beforeEach(() => {
+		fixture = TestBed.createComponent(AcStaticCircleDescComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

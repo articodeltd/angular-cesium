@@ -27,12 +27,12 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  *  ```
  */
 @Component({
-  selector: 'ac-static-ellipse-desc',
-  template: ''
+	selector: 'ac-static-ellipse-desc',
+	template: ''
 })
 export class AcStaticEllipseDescComponent extends BasicStaticPrimitiveDesc {
-  constructor(ellipseDrawer: EllipseDrawerService, layerService: LayerService,
-              computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
-    super(ellipseDrawer, layerService, computationCache, cesiumProperties);
-  }
+	constructor(ellipseDrawer: EllipseDrawerService, layerService: LayerService,
+	            computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
+		super(ellipseDrawer, layerService, computationCache, cesiumProperties);
+	}
 }

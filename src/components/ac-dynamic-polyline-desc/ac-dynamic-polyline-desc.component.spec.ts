@@ -1,26 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AcStaticPolygonDescComponent } from './ac-static-polygon-desc.component';
-import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
-import { mock, instance, when } from 'ts-mockito';
+import { AcDynamicPolylineDescComponent } from './ac-dynamic-polyline-desc.component';
+import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { mock, when, instance } from 'ts-mockito';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { mockProvider, providerFromMock } from '../../utils/testingUtils';
 
-describe('AcStaticPolygonDescComponent', () => {
-  let component: AcStaticPolygonDescComponent;
-  let fixture: ComponentFixture<AcStaticPolygonDescComponent>;
-  
+describe('AcDynamicPolylineDescComponent', () => {
+  let component: AcDynamicPolylineDescComponent;
+  let fixture: ComponentFixture<AcDynamicPolylineDescComponent>;
+
   const cesiumService = mock(CesiumService);
-  const primitiveCollection = mock(Cesium.PrimitiveCollection);
-  
-  when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
-  
+  const collection = mock(Cesium.PrimitiveCollection);
+
+  when(cesiumService.getScene()).thenReturn({primitives: instance(collection)});
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AcStaticPolygonDescComponent],
-      providers: [PolygonDrawerService,
+      declarations: [AcDynamicPolylineDescComponent],
+      providers: [DynamicPolylineDrawerService,
         providerFromMock(CesiumService, cesiumService),
         mockProvider(LayerService),
         mockProvider(CesiumProperties),
@@ -28,13 +28,13 @@ describe('AcStaticPolygonDescComponent', () => {
     })
       .compileComponents();
   }));
-  
+
   beforeEach(() => {
-    fixture = TestBed.createComponent(AcStaticPolygonDescComponent);
+    fixture = TestBed.createComponent(AcDynamicPolylineDescComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
