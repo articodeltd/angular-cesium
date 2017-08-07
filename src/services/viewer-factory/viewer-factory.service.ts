@@ -13,7 +13,6 @@ export class ViewerFactory {
    * Creates a viewer with default or custom options
    * @param mapContainer - container to initialize the viewer on
    * @param options - Options to create the viewer with - Optional
-   * @param viewerId - map id name
    *
    * @returns {any} new viewer
    */
