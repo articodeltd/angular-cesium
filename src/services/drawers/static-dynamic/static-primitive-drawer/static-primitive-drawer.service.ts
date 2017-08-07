@@ -1,5 +1,5 @@
-import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.service';
-import { CesiumService } from '../../cesium/cesium.service';
+import { PrimitivesDrawerService } from '../../primitives-drawer/primitives-drawer.service';
+import { CesiumService } from '../../../cesium/cesium.service';
 
 export abstract class StaticPrimitiveDrawer extends PrimitivesDrawerService {
 	constructor(private geometryType: any, cesiumService: CesiumService) {

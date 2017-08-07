@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AcStaticCircleDescComponent } from './ac-static-circle-desc.component';
-import { CesiumService } from '../../services/cesium/cesium.service';
-import { StaticCircleDrawerService } from '../../services/drawers/static-circle-drawer/static-circle-drawer.service';
-import { LayerService } from '../../services/layer-service/layer-service.service';
-import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
-import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
+import { CesiumService } from '../../../services/cesium/cesium.service';
+import { StaticCircleDrawerService } from '../../../services/drawers/static-dynamic/static-circle-drawer/static-circle-drawer.service';
+import { LayerService } from '../../../services/layer-service/layer-service.service';
+import { CesiumProperties } from '../../../services/cesium-properties/cesium-properties.service';
+import { ComputationCache } from '../../../services/computation-cache/computation-cache.service';
 import { mock } from 'ts-mockito';
 
 describe('AcStaticCircleDescComponent', () => {

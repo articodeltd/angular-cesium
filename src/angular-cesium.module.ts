@@ -28,6 +28,13 @@ import { AcCircleComponent } from './components/ac-circle/ac-circle.component';
 import { AcArcComponent } from './components/ac-arc/ac-arc.component';
 import { AcPolygonDescComponent } from './components/ac-polygon-desc/ac-polygon-desc.component';
 import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-default-plonter.component';
+import { AcStaticEllipseDescComponent } from './components/static-dynamic/ac-static-ellipse-desc/ac-static-ellipse-desc.component';
+import { AcDynamicEllipseDescComponent } from './components/static-dynamic/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';
+import { AcDynamicPolylineDescComponent } from './components/static-dynamic/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
+import { AcStaticPolygonDescComponent } from './components/static-dynamic/ac-static-polygon-desc/ac-static-polygon-desc.component';
+import { AcStaticCircleDescComponent } from './components/static-dynamic/ac-static-circle-desc/ac-static-circle-desc.component';
+import { AcDynamicCircleDescComponent } from './components/static-dynamic/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
+import { AcStaticPolylineDescComponent } from './components/static-dynamic/ac-static-polyline-desc/ac-static-polyline-desc.component';
 
 @NgModule({
 	imports: [
@@ -59,6 +66,14 @@ import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-de
 		AcArcComponent,
     AcPolygonDescComponent,
     AcDefaultPlonterComponent,
+    
+    AcStaticEllipseDescComponent,
+  	AcDynamicEllipseDescComponent,
+  	AcDynamicPolylineDescComponent,
+		AcStaticPolylineDescComponent,
+		AcDynamicCircleDescComponent,
+    AcStaticCircleDescComponent,
+  	AcStaticPolygonDescComponent,
 	],
 	exports: [
 		AcMapComponent,
@@ -82,6 +97,14 @@ import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-de
 		AcArcComponent,
     AcPolygonDescComponent,
     AcDefaultPlonterComponent,
+    
+    AcStaticEllipseDescComponent,
+    AcDynamicEllipseDescComponent,
+    AcDynamicPolylineDescComponent,
+    AcStaticPolylineDescComponent,
+    AcDynamicCircleDescComponent,
+    AcStaticCircleDescComponent,
+    AcStaticPolygonDescComponent,
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
 })

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { LayerService } from '../../services/layer-service/layer-service.service';
-import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
-import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
-import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
-import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/basic-static-primitive-desc.service';
+import { LayerService } from '../../../services/layer-service/layer-service.service';
+import { ComputationCache } from '../../../services/computation-cache/computation-cache.service';
+import { CesiumProperties } from '../../../services/cesium-properties/cesium-properties.service';
+import { BasicStaticPrimitiveDesc } from '../../../services/basic-primitive-desc/basic-static-primitive-desc.service';
+import { StaticEllipseDrawerService } from '../../../services/drawers/static-dynamic/ellipse-drawer/ellipse-drawer.service';
 
 /**
  *  This is a static (position, color, etc.. are not updated) implementation of an ellipse.
@@ -31,7 +31,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 	template: ''
 })
 export class AcStaticEllipseDescComponent extends BasicStaticPrimitiveDesc {
-	constructor(ellipseDrawer: EllipseDrawerService, layerService: LayerService,
+	constructor(ellipseDrawer: StaticEllipseDrawerService, layerService: LayerService,
 	            computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
 		super(ellipseDrawer, layerService, computationCache, cesiumProperties);
 	}
