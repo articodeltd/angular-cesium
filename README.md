@@ -277,6 +277,20 @@ It is possible to create your own plonter context menu just take a look at `ac-d
 ```
 
 
+### Map layers
+With angular cesium you can define your map provider in a declarative way using `ac-map-layer-provider` :
+```html
+    <ac-map-layer-provider *ngIf="appSettingsService.showMapLayer" [provider]="MapLayerProviderOptions.ArcGisMapServer"
+                           [options]="{
+                                url : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
+                            }">
+    </ac-map-layer-provider>
+``` 
+- All cesium imagery map layers are supported , defined with `[provider]` according to the `MapLayerProviderOptions` enum
+- Pass additional configuration to `[options]` . `url` is mandatory. 
+- Support multi map layers, map ordering and map image layer configuration.
+- Check out usage example from our demo [here](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-layer.component.html)
+
 
 ## Documents
 + #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   
