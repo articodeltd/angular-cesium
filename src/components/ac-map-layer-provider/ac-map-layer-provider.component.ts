@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { Checker } from '../../utils/checker';
 import { MapLayerProviderOptions } from '../../models';
-import { MapLayerProviderOptionsToProvider } from '../../models/map-layer-provider-options.enum';
 
 /**
  *  This component is used for adding a map provider service to the map (ac-map)
