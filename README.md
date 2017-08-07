@@ -195,6 +195,20 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + Readable code - when reading your html which describes your layer - it is pretty easy to understand how your layer would look like.
 + Maintainable code.
 
+### Map layers
+with angular cesium you can define your map in a declarative way using `ac-map-layer-provider` :
+```html
+    <ac-map-layer-provider *ngIf="appSettingsService.showMapLayer" [provider]="MapLayerProviderOptions.ArcGisMapServer"
+                           [options]="{
+                                url : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
+                            }">
+    </ac-map-layer-provider>
+``` 
+- All cesium imagery map layers are supported , defined with `[provider]` by the `MapLayerProviderOptions` enum
+- Pass additional configuration to `[options]` . `url` is mandatory. 
+- Support multi map layer, map ordering and map image layer configuration.
+- Check out usage example from our demo [here](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-layer.component.html)
+
 ## Documents
 + #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   
  
