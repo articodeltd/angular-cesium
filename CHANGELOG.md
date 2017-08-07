@@ -4,5 +4,6 @@
 * AcNotification id filed changed to string from number
 
 ## 0.0.13
-### Features 
+### Features
+* ac-map-layer-provider - Support all cesium imagery providers
 * Expose cesium viewer through ViewesManagerService and `ac-map`
