@@ -30,6 +30,7 @@ import { AcPointComponent } from './components/ac-point/ac-point.component';
 import { AcHtmlComponent } from './components/ac-html/ac-html.component';
 import { AcCircleComponent } from './components/ac-circle/ac-circle.component';
 import { AcArcComponent } from './components/ac-arc/ac-arc.component';
+import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-default-plonter.component';
 
 @NgModule({
 	imports: [
@@ -62,7 +63,8 @@ import { AcArcComponent } from './components/ac-arc/ac-arc.component';
 		AcBillboardComponent,
 		AcHtmlComponent,
 		AcCircleComponent,
-		AcArcComponent
+		AcArcComponent,
+    AcDefaultPlonterComponent
 	],
 	exports: [
 		AcMapComponent,

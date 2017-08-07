@@ -5,7 +5,8 @@
 [![npm version](https://img.shields.io/npm/v/angular-cesium.svg?style=flat-square)](https://www.npmjs.com/package/angular-cesium)
 
 Create map based applications using cesium and angular2 components.
-Focusing on high performance with easy usage.
+Focusing on high performance with easy usage.  
+Check out our [Demo](http://www.angular-cesium.com) that contains small app built with angular-cesium.
 
 ## Getting started
 + install `angular-cesium`:
@@ -84,7 +85,7 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
 + Live long and prosper
 
 ## Demo
-+ You can try and learn about angular-cesium from our demo: [http://www.angular-cesium.com/](http://www.angular-cesium.com/)
++ You can try and learn about angular-cesium from our demo: [http://www.angular-cesium.com](http://www.angular-cesium.com) ( most optimized as desktop application ).
 + The demo contains 2 examples
   + Real data: showing real planes using **GraphQL** to warp an exiting REST service.
   + Simulated data: displaying planes data and sending using **Socket.io**. 
@@ -141,7 +142,7 @@ export class AcNotification {
 	actionType: ActionType;
 }
 ```
-id - unique entity key, `entity`- the data itself for the entity, `actionType`- presents what happened to the entity.
+`id` - unique entity key, `entity`- the data itself for the entity, `actionType`- presents what happened to the entity.
 `actionType` can be one of those values:
 ```js
 export enum ActionType {
@@ -188,12 +189,93 @@ Now, when an entity is passed through the stream - based on it's `id`, `actionTy
 When passing data with the same `id` and `actionType=ADD_UPDATE` - the entity will be updated on the map for every message.
 + `ac-label-desc` - the same as ac-billboard but just for labels.
 It should be mentioned that `ac-billboard-desc` & `ac-label-desc` are all exposing the same API as Cesium expose for each map-entity.
+  
+It is important to mention that angular-cesium doesn't duplicate the description component for each different plane in `$plane` (as `ngFor` does).  
+why? because  there is no reason to, cesium entities are drawn on the canvas map using javascript API i.e. entities aren't represented as HTML, by doing so we gain a boost of performance.
 
 After explaining a little bit about `ac-layer` we hope that you may see it's benefits:
 + Easily defining a layer
 + Easily add/update/remove entities - all you have to do is pass a message through the stream and `angular-cesium` will keep track of all the rest.
 + Readable code - when reading your html which describes your layer - it is pretty easy to understand how your layer would look like.
 + Maintainable code.
+
+## Map Events
+`MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection and event priority management.
+
+Usage:  
+```javascript
+@Component(...)
+export class SomeComponent{
+  constructor(private eventManager: MapEventsManagerService){
+    
+    // Input about the wanted event 
+    const eventRegistration: EventRegistrationInput = {
+      event: CesiumEvent.LEFT_CLICK, // event type enum. [required!]
+      modifier: CesiumEventModifier.CTRL, // event modifier enum. [optional]
+      entityType: AcEntity, // raise event only if AcEntity is clicked. [optional] 
+      priority: 0, // event priority, default 0 . [optional]
+      pick: PickOptions.PICK_FIRST // entity pick option, default PickOptions.NO_PICK. [optional]
+    };
+    const clickEvent = this.eventManager.register(eventRegistration).subscribe((result) => {
+          // The EventResult will contain: 
+          // movement(screen location of the event), entities(your entities) , primitives( cesium primitives, like label,billboard...)
+    	  console.log('map click', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
+    	});
+  }
+  
+}
+```  
+In the example above we start listing to Click events. according to `eventRegisration` object.
+- `eventManager.register()` 
+  - Returns RxJs observer  of type `DisposableObservable<EventResult>` that we can subsribe to. 
+  - To remove the event registration just do: `resultObserver.dispose()`
+- **entityType:** it is possible to register to events on a specific entities types, e.g raise event only when `TrackEntity` is Clicked.
+   - `AcEntity` is the base class for all angular-cesium entities, it is a part of `AcNotification` and is
+     required for `MapEventManager` to work properly.
+  - All entities should inherit from `AcEntity`  
+   e.g `class TrackEntity extends AcEntity {}`
+- **Priority:** by setting the priority you can register same events and only the one with the higher priority will be raised. For example 
+   lets say when you left_click on the map a context menu should appear but if you in a drag and drop state you want that 
+   left_click will raise a drop event only, you can achive this by setting different priority 
+   to each event.
+- **PickOptions:** according to the `PickOptions` enum, set the different strategies for picking entities on the map:
+     *  NO_PICK    - will not pick entities
+     *  PICK_FIRST  - first entity will be picked . use Cesium.scene.pick()
+     *  PICK_ONE    - in case a few entities are picked plonter is resolved . use Cesium.scene.drillPick()
+     *  PICK_ALL    - all entities are picked. use Cesium.scene.drillPick()
+     
+##### All cesium map  events run out side angular zone  
+Meaning that the the callback that you pass to map event manager
+will be executed outside of angular zone. That is because Cesium run outside of Angular zone
+in case for performance reasons , kind of `ON_PUSH` strategy.  
+For example if you update your html template for every map event and you want it to render, 
+you should use `ChangeDetectorRef` or warp your function with `NgZone.run()`
+```javascript
+class MyComponent {
+  constructor(eventManager: MapEventsManagerService, ngZone: NgZone){
+      eventManager.register(eventRegistration).subscribe((result) => {
+          ngZone.run(()=>{
+              this.textShownInTheTemplateHtml = result.movment;
+          }); 
+       });
+  }
+}
+```
+      
+##### Plonter  
+In case a two or more entities are in the same location and both are clicked you have a plonter (which entity should be picked?).  
+This is resolved according to the `PickOptions` that we pass to the event registration:
+-  NO_PICK    - non of the entities will be picked, you only interested in the map location.
+-  PICK_FIRST - the first(upper) entity will be picked.
+-  PICK_ALL    - all entities are picked and returned. 
+-  PICK_ONE    - only one should be picked, a context will appear allowing the client to choose which entity he wants, selected entity will be passed to the eventcall back.
+
+angular-cesium comes with `ac-default-plonter` a basic implementation for the plonter context menu. showing a list of entities names to select from.  
+It is possible to create your own plonter context menu just take a look at `ac-default-plonter` implementation, and disable the default plonter:
+```html
+<ac-map [disableDefaultPlonter]="true"></ac-map>
+```
+
 
 ### Map layers
 with angular cesium you can define your map in a declarative way using `ac-map-layer-provider` :
@@ -209,8 +291,9 @@ with angular cesium you can define your map in a declarative way using `ac-map-l
 - Support multi map layer, map ordering and map image layer configuration.
 - Check out usage example from our demo [here](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-layer.component.html)
 
+
 ## Documents
 + #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   
  
-# License
+## License
 [Mit License](https://opensource.org/licenses/MIT)
