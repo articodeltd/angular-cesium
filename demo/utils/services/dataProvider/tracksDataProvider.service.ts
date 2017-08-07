@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { convertToCesiumObj } from '../dataCovertor/convertToCesiumObject';
 import { WebSocketSupplier } from '../webSocketSupplier/webSocketSupplier';
