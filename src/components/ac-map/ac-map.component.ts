@@ -10,6 +10,7 @@ import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-pol
 import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
+import { ViewersManagerService } from '../../services/viewers-service/viewers-manager.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -17,7 +18,7 @@ import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.s
  *
  * Accessing cesium viewer:
  * 1. acMapComponent.getViewer()
- * 2. Use ViewerFactoryService.getCesiumViewer(mapId).
+ * 2. Use ViewerManagerService.getCesiumViewer(mapId).
  * 		mapId auto-generated string: 'map-[index]'
  *
  * @example
@@ -70,10 +71,11 @@ export class AcMapComponent implements OnChanges, OnInit {
  
 	/**
 	 * Set the id name of the map
-	 * default: 'default-[index]'
+	 * default: 'default-map-id-[index]'
    * @type {string}
    */
-	id  = 'map-' + AcMapComponent.defaultIdCounter++;
+	@Input()
+	id;
 
 	/**
 	 * flyTo options according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
@@ -85,17 +87,19 @@ export class AcMapComponent implements OnChanges, OnInit {
 
 	constructor(private _cesiumService: CesiumService,
 							private _elemRef: ElementRef,
-							@Inject(DOCUMENT) private document: any) {
+							@Inject(DOCUMENT) private document: any,
+							private viewersManager: ViewersManagerService) {
 		this.mapContainer = this.document.createElement('div');
 		this.mapContainer.className = 'map-container';
 		this._elemRef.nativeElement.appendChild(this.mapContainer);
-		this._cesiumService.init(this.mapContainer, this.id);
+		this._cesiumService.init(this.mapContainer);
 	}
 
 	ngOnInit() {
 		this._cesiumService.setMinimumZoom(this.minimumZoom);
 		this._cesiumService.setMaximumZoom(this.maximumZoom);
 		this._cesiumService.setEnableTilt(this.enableTilt);
+		this.viewersManager.setViewer(this.id, this.getCesiumViewer());
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {

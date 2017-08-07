@@ -31,6 +31,7 @@ import { AcHtmlComponent } from './components/ac-html/ac-html.component';
 import { AcCircleComponent } from './components/ac-circle/ac-circle.component';
 import { AcArcComponent } from './components/ac-arc/ac-arc.component';
 import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-default-plonter.component';
+import { ViewersManagerService } from './services/viewers-service/viewers-manager.service';
 
 @NgModule({
 	imports: [
@@ -91,7 +92,7 @@ import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-de
 		AcCircleComponent,
 		AcArcComponent
 	],
-	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
+	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, ViewersManagerService],
 })
 export class AngularCesiumModule {
 }

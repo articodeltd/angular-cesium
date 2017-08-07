@@ -1,22 +1,12 @@
-;
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ViewerFactory {
   cesium: any;
-  viewersMap = new Map<string, any>();
+  
 
   constructor() {
     this.cesium = Cesium;
-  }
-  
-  /**
-   *
-   * @param {string} id of the map
-   * @returns Cesium viewer object
-   */
-  getViewer(id: string) {
-    return this.viewersMap.get(id);
   }
   
   /**
@@ -27,7 +17,7 @@ export class ViewerFactory {
    *
    * @returns {any} new viewer
    */
-  createViewer(mapContainer: HTMLElement, viewerId: string, options?: any ) {
+  createViewer(mapContainer: HTMLElement, options?: any ) {
     // For backwards compatibility, TODO: should be removed
     if (!window['CESIUM_BASE_URL']) {
       window['CESIUM_BASE_URL'] = '/node_modules/cesium/Build/Cesium';
@@ -48,7 +38,6 @@ export class ViewerFactory {
         });
     }
     
-    this.viewersMap.set(viewerId, viewer);
     return viewer;
   }
 }

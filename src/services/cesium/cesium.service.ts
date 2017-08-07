@@ -12,10 +12,10 @@ export class CesiumService {
   constructor(private ngZone: NgZone, private viewerFactory: ViewerFactory, @Optional() private viewerConfiguration: ViewerConfiguration) {
   }
 
-  init(mapContainer: HTMLElement, viewerId: string) {
+  init(mapContainer: HTMLElement) {
     this.ngZone.runOutsideAngular(() => {
       const options = this.viewerConfiguration ? this.viewerConfiguration.viewerOptions : undefined;
-      this.cesiumViewer = this.viewerFactory.createViewer(mapContainer, viewerId, options);
+      this.cesiumViewer = this.viewerFactory.createViewer(mapContainer, options);
 
       if (this.viewerConfiguration && this.viewerConfiguration.viewerModifier &&
         typeof this.viewerConfiguration.viewerModifier === 'function') {

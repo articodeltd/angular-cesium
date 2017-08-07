@@ -5,4 +5,4 @@
 
 ## 0.0.13
 ### Features 
-* Expose cesium viewer through ViewerFactoryService and `ac-map`
+* Expose cesium viewer through ViewesManagerService and `ac-map`
