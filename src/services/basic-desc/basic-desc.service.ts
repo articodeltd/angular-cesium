@@ -1,6 +1,5 @@
-import { OnInit, Input, OnDestroy } from '@angular/core';
+import { Input, OnDestroy, OnInit } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
-import { SimpleDrawerService } from '../drawers/simple-drawer/simple-drawer.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { AcEntity } from '../../models/ac-entity';
@@ -14,7 +13,7 @@ export class BasicDesc implements OnInit, OnDestroy {
   @Input()
   props: any;
 
-  protected _primitiveMap = new Map();
+  protected _mapEntitiesMap = new Map();
   private _propsEvaluateFn: Function;
   private _propsAssignerFn: Function;
 
@@ -40,26 +39,26 @@ export class BasicDesc implements OnInit, OnDestroy {
 
   draw(context: any, id: string, entity: AcEntity): any {
     const cesiumProps = this._propsEvaluator(context);
-    if (!this._primitiveMap.has(id)) {
-      const primitive = this._drawer.add(cesiumProps);
-      primitive.acEntity = entity; // set the entity on the primitive for later usage
-      this._primitiveMap.set(id, primitive);
+    if (!this._mapEntitiesMap.has(id)) {
+      const mapEntity = this._drawer.add(cesiumProps);
+      mapEntity.acEntity = entity; // set the entity on the mapEntity for later usage
+      this._mapEntitiesMap.set(id, mapEntity);
     } else {
-      const primitive = this._primitiveMap.get(id);
-      primitive.acEntity = entity; // set the entity on the primitive for later usage
+      const mapEntity = this._mapEntitiesMap.get(id);
+      mapEntity.acEntity = entity; // set the entity on the mapEntity for later usage
       this._drawer.setPropsAssigner(this._getPropsAssigner());
-      this._drawer.update(primitive, cesiumProps);
+      this._drawer.update(mapEntity, cesiumProps);
     }
   }
 
   remove(id) {
-    const primitive = this._primitiveMap.get(id);
-    this._drawer.remove(primitive);
-    this._primitiveMap.delete(id);
+    const mapEntity = this._mapEntitiesMap.get(id);
+    this._drawer.remove(mapEntity);
+    this._mapEntitiesMap.delete(id);
   }
 
   removeAll() {
-    this._primitiveMap.clear();
+    this._mapEntitiesMap.clear();
     this._drawer.removeAll();
   }
 

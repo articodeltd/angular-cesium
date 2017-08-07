@@ -1,5 +1,4 @@
 export abstract class BasicDrawerService {
-  protected cesiumCollection: any;
   protected _propsAssigner: Function;
 
   constructor() {
@@ -14,6 +13,8 @@ export abstract class BasicDrawerService {
   abstract removeAll()
 
   abstract setShow(showValue: boolean)
+
+  abstract init(options?: any)
 
   setPropsAssigner(assigner: Function) {
     this._propsAssigner = assigner;

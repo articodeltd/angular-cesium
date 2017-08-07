@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../../cesium/cesium.service';
-import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
+import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.service';
 
 /**
  *  This drawer is responsible of drawing polylines.
  */
 @Injectable()
-export class PolylineDrawerService extends SimpleDrawerService {
+export class PolylineDrawerService extends PrimitivesDrawerService {
 	constructor(cesiumService: CesiumService) {
 		super(Cesium.PolylineCollection, cesiumService);
 	}

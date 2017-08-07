@@ -4,18 +4,21 @@ import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
 /**
  *  This is abstract drawer who provides some implementation for other drawers that extends it.
  */
-export abstract class SimpleDrawerService extends BasicDrawerService {
+export abstract class PrimitivesDrawerService extends BasicDrawerService {
   private _show = true;
-  protected _cesiumCollection: any;
   private _primitiveCollectionWrap;
+  protected _cesiumCollection: any;
   protected _propsAssigner: Function;
 
-  constructor(drawerType: any, cesiumService: CesiumService) {
+  constructor(private drawerType: any, private cesiumService: CesiumService) {
     super();
-    this._cesiumCollection = new drawerType();
+  }
+
+  init() {
+    this._cesiumCollection = new this.drawerType();
     this._primitiveCollectionWrap = new Cesium.PrimitiveCollection();
     this._primitiveCollectionWrap.add(this._cesiumCollection);
-    cesiumService.getScene().primitives.add(this._primitiveCollectionWrap);
+    this.cesiumService.getScene().primitives.add(this._primitiveCollectionWrap);
   }
 
   add(cesiumProps: any, ...args): any {

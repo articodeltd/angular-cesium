@@ -14,6 +14,7 @@ import { PointDrawerService } from '../../services/drawers/point-drawer/point-dr
 import { AcEntity } from '../../models/ac-entity';
 import { BasicDrawerService } from '../../services/drawers/basic-drawer/basic-drawer.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
+import { LayerOptions } from '../../models/layer-options';
 
 /**
  *  This is a ac-layer implementation.
@@ -69,12 +70,14 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
   context: any;
   @Input()
   store = false;
+  @Input()
+  options: LayerOptions;
 
   private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
   private entityName: string;
   private stopObservable = new Subject();
   private observable: Observable<AcNotification>;
-  private _drawerList: BasicDrawerService[] = [];
+  private _drawerList: Map<string, BasicDrawerService>;
   private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
   private entitiesStore = new Map<string, any>();
 
@@ -87,15 +90,15 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
               polygonDrawerService: PolygonDrawerService,
               arcDrawerService: ArcDrawerService,
               pointDrawerService: PointDrawerService) {
-    this._drawerList = Array.of<BasicDrawerService>(
-      billboardDrawerService,
-      labelDrawerService,
-      ellipseDrawerService,
-      polylineDrawerService,
-      polygonDrawerService,
-      arcDrawerService,
-      pointDrawerService
-    );
+    this._drawerList = new Map([
+      ['billboard', billboardDrawerService],
+      ['label', labelDrawerService],
+      ['ellipse', ellipseDrawerService],
+      ['polyline', polylineDrawerService],
+      ['polygon', polygonDrawerService as BasicDrawerService],
+      ['arc', arcDrawerService],
+      ['point', pointDrawerService],
+    ]);
   }
 
   init() {
@@ -165,10 +168,15 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
   }
 
   ngOnInit(): void {
+    this._drawerList.forEach((drawer, drawerName) => {
+      const initOptions = this.options ? this.options[drawerName] : undefined;
+      drawer.init(initOptions);
+      drawer.setShow(this.show);
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['show']) {
+    if (changes.show && !changes.show.firstChange) {
       const showValue = changes['show'].currentValue;
       this._drawerList.forEach((drawer) => drawer.setShow(showValue));
     }

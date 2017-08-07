@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, ElementRef, Inject, Input, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
@@ -81,10 +81,18 @@ export class AcMapComponent implements OnChanges, OnInit {
 
   private mapContainer: HTMLElement;
 
-  constructor(private _cesiumService: CesiumService, private _elemRef: ElementRef, @Inject(DOCUMENT) private document: any) {
+  constructor(private _cesiumService: CesiumService,
+              private _elemRef: ElementRef,
+              @Inject(DOCUMENT) private document: any,
+              private billboardDrawerService: BillboardDrawerService,
+              private labelDrawerService: LabelDrawerService,
+              private ellipseDrawerService: EllipseDrawerService,
+              private polylineDrawerService: PolylineDrawerService,
+              private polygonDrawerService: PolygonDrawerService,
+              private arcDrawerService: ArcDrawerService,
+              private pointDrawerService: PointDrawerService) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
-    // this.mapContainer.style.height = '100%';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
     this._cesiumService.init(this.mapContainer);
   }
@@ -93,6 +101,13 @@ export class AcMapComponent implements OnChanges, OnInit {
     this._cesiumService.setMinimumZoom(this.minimumZoom);
     this._cesiumService.setMaximumZoom(this.maximumZoom);
     this._cesiumService.setEnableTilt(this.enableTilt);
+    this.billboardDrawerService.init();
+    this.labelDrawerService.init();
+    this.ellipseDrawerService.init();
+    this.polylineDrawerService.init();
+    this.polygonDrawerService.init();
+    this.arcDrawerService.init();
+    this.pointDrawerService.init();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
