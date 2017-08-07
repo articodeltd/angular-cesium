@@ -2,3 +2,7 @@
 ### Breaking changes
 * AcEntity id filed changed to string from number
 * AcNotification id filed changed to string from number
+
+## 0.0.13
+### Features 
+* Expose cesium viewer through ViewerFactoryService and `ac-map`
