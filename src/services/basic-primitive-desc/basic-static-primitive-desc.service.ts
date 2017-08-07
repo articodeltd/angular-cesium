@@ -1,4 +1,4 @@
-import {Input, OnInit} from '@angular/core';
+import { Input, OnInit } from '@angular/core';
 import { BasicDesc } from '../basic-desc/basic-desc.service';
 import { LayerService } from '../layer-service/layer-service.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
@@ -36,12 +36,12 @@ export class BasicStaticPrimitiveDesc extends BasicDesc implements OnInit {
 		const instanceProps = this._instancePropsEvaluator(this._computationCache, context);
 		const primitiveProps = this._primitivePropsEvaluator(this._computationCache, context);
 
-		if (!this._primitiveMap.has(id)) {
+		if (!this._mapEntitiesMap.has(id)) {
 			const primitive = this._staticPrimitiveDrawer.add(geometryProps, instanceProps, primitiveProps);
 			primitive.acEntity = entity; // set the entity on the primitive for later usage
-			this._primitiveMap.set(id, primitive);
+			this._mapEntitiesMap.set(id, primitive);
 		} else {
-			const primitive = this._primitiveMap.get(id);
+			const primitive = this._mapEntitiesMap.get(id);
 			this._staticPrimitiveDrawer.update(primitive, geometryProps, instanceProps, primitiveProps);
 		}
 	}

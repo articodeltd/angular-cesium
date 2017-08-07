@@ -2,28 +2,22 @@ import { Injectable } from '@angular/core';
 import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
 import { CesiumService } from '../../cesium/cesium.service';
 import { GraphicsType } from './enums/graphics-type.enum';
+import { BasicEntityDrawerOptions } from '../../../models/basic-entity-drawer-options';
 
 @Injectable()
-export class BasicEntityDrawerService extends BasicDrawerService {
+export class EntitiesDrawerService extends BasicDrawerService {
   private entityCollections = new Map<any, OptimizedEntityCollection>();
   private graphicsTypeName: string;
 
-  constructor(cesiumService: CesiumService,
+  constructor(private cesiumService: CesiumService,
               private graphicsType: GraphicsType,
-              private collectionSuspendTime = -1,
-              private collectionsNumber = 1,
-              private collectionMaxSize = -1) {
+              private defaultOptions: BasicEntityDrawerOptions = {
+                collectionMaxSize: -1,
+                collectionSuspensionTime: -1,
+                collectionsNumber: 1
+              }) {
     super();
     this.graphicsTypeName = GraphicsType[this.graphicsType];
-    for (let i = 0; i < this.collectionsNumber; i++) {
-      const dataSource = new Cesium.CustomDataSource();
-      cesiumService.getViewer().dataSources.add(dataSource);
-      this.entityCollections.set(dataSource.entities,
-        new OptimizedEntityCollection(
-          dataSource.entities,
-          this.collectionMaxSize,
-          this.collectionSuspendTime));
-    }
   }
 
   private getFreeEntitiesCollection(): OptimizedEntityCollection {
@@ -37,13 +31,26 @@ export class BasicEntityDrawerService extends BasicDrawerService {
     return freeEntityCollection;
   }
 
+  init(options?: BasicEntityDrawerOptions) {
+    const finalOptions = options || this.defaultOptions;
+    for (let i = 0; i < finalOptions.collectionsNumber; i++) {
+      const dataSource = new Cesium.CustomDataSource();
+      this.cesiumService.getViewer().dataSources.add(dataSource);
+      this.entityCollections.set(dataSource.entities,
+        new OptimizedEntityCollection(
+          dataSource.entities,
+          finalOptions.collectionMaxSize,
+          finalOptions.collectionSuspensionTime));
+    }
+  }
+
   add(cesiumProps: any) {
     const optimizedEntityCollection = this.getFreeEntitiesCollection();
     if (optimizedEntityCollection === null) {
-      throw new Error('no more free entity collections');
+      throw new Error('No more free entity collections');
     }
 
-    const graphicsClass = <any> this.graphicsType;
+    const graphicsClass = this.graphicsType as any;
     return optimizedEntityCollection.add(
       {
         position: cesiumProps.position !== undefined ? cesiumProps.position : undefined,
@@ -57,7 +64,7 @@ export class BasicEntityDrawerService extends BasicDrawerService {
     this.suspendEntityCollection(entity);
 
     entity.position = cesiumProps.position !== undefined ? cesiumProps.position : undefined;
-    entity.show = cesiumProps.show !== undefined ?  cesiumProps.show : entity.show;
+    entity.show = cesiumProps.show !== undefined ? cesiumProps.show : entity.show;
     if (this._propsAssigner) {
       this._propsAssigner(entity[this.graphicsTypeName], cesiumProps);
     }
@@ -86,7 +93,7 @@ export class BasicEntityDrawerService extends BasicDrawerService {
   private suspendEntityCollection(entity) {
     const id = entity.entityCollection;
     if (!this.entityCollections.has(id)) {
-      throw new Error('no EntityCollection for entity.entityCollection');
+      throw new Error('No EntityCollection for entity.entityCollection');
     }
 
     const entityCollection = this.entityCollections.get(id);
@@ -96,16 +103,17 @@ export class BasicEntityDrawerService extends BasicDrawerService {
 
 export class OptimizedEntityCollection {
   private _updateRate: number;
+  private _collectionSize: number;
   private _isSuspended = false;
   private _isHardSuspend = false;
   private _suspensionTimeout;
   private _onEventSuspensionCallback: { once: boolean, callback: Function };
   private _onEventResumeCallback: { once: boolean, callback: Function };
 
-  constructor(private entityCollection: any, private maxCollectionSize = 900, updateRate: number = undefined) {
-    if (updateRate !== undefined) {
-      this._updateRate = updateRate;
-    }
+  constructor(private entityCollection: any, collectionSize = -1 , updateRate = -1) {
+    this._updateRate = updateRate;
+    this._collectionSize = collectionSize;
+
   }
 
   setShow(show: boolean) {
@@ -117,7 +125,6 @@ export class OptimizedEntityCollection {
   }
 
   get updateRate(): number {
-
     return this._updateRate;
   }
 
@@ -125,12 +132,20 @@ export class OptimizedEntityCollection {
     this._updateRate = value;
   }
 
+  get collectionSize(): number {
+    return this._collectionSize;
+  }
+
+  set collectionSize(value: number) {
+    this._collectionSize = value;
+  }
+
   collection() {
     return this.entityCollection;
   }
 
   isFree(): boolean {
-    return this.maxCollectionSize < 1 || this.entityCollection.values.length < this.maxCollectionSize;
+    return this._collectionSize < 1 || this.entityCollection.values.length < this._collectionSize;
   }
 
   add(entity) {
@@ -190,7 +205,7 @@ export class OptimizedEntityCollection {
   }
 
   public suspend() {
-    if (this._suspensionTimeout < 0) {
+    if (this._updateRate < 0) {
       return;
     }
     if (this._isHardSuspend) {
