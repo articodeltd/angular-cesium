@@ -278,7 +278,7 @@ It is possible to create your own plonter context menu just take a look at `ac-d
 
 
 ### Map layers
-with angular cesium you can define your map in a declarative way using `ac-map-layer-provider` :
+With angular cesium you can define your map provider in a declarative way using `ac-map-layer-provider` :
 ```html
     <ac-map-layer-provider *ngIf="appSettingsService.showMapLayer" [provider]="MapLayerProviderOptions.ArcGisMapServer"
                            [options]="{
@@ -286,9 +286,9 @@ with angular cesium you can define your map in a declarative way using `ac-map-l
                             }">
     </ac-map-layer-provider>
 ``` 
-- All cesium imagery map layers are supported , defined with `[provider]` by the `MapLayerProviderOptions` enum
+- All cesium imagery map layers are supported , defined with `[provider]` according to the `MapLayerProviderOptions` enum
 - Pass additional configuration to `[options]` . `url` is mandatory. 
-- Support multi map layer, map ordering and map image layer configuration.
+- Support multi map layers, map ordering and map image layer configuration.
 - Check out usage example from our demo [here](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-layer.component.html)
 
 
