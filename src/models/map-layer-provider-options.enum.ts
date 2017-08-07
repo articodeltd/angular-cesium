@@ -6,7 +6,7 @@ export enum MapLayerProviderOptions {
   SingleTileImagery = Cesium.SingleTileImageryProvider,
   OpenStreetMap =  Cesium.createOpenStreetMapImageryProvider,
   BingMaps = Cesium.BingMapsImageryProvider,
-  GoogleEarthImagery = Cesium.GoogleEarthImageryProvider,
+  GoogleEarthEnterpriseMaps = Cesium.GoogleEarthEnterpriseMapsProvider,
   MapBox = Cesium.MapboxImageryProvider,
   UrlTemplateImagery = Cesium. UrlTemplateImageryProvider,
   OFFLINE = null,

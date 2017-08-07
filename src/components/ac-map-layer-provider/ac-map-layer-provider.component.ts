@@ -96,7 +96,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
       case MapLayerProviderOptions.ArcGisMapServer:
       case MapLayerProviderOptions.SingleTileImagery:
       case MapLayerProviderOptions.BingMaps:
-      case MapLayerProviderOptions.GoogleEarthImagery:
+      case MapLayerProviderOptions.GoogleEarthEnterpriseMaps:
       case MapLayerProviderOptions.MapBox:
       case MapLayerProviderOptions.UrlTemplateImagery:
         this.layerProvider = new this.provider(this.options);
