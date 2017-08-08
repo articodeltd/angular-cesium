@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PlonterService } from '../../services/plonter/plonter.service';
 import { CoordinateConverter } from '../../services/coordinate-converter/coordinate-converter.service';
 
@@ -34,6 +34,7 @@ import { CoordinateConverter } from '../../services/coordinate-converter/coordin
         }
     
     `],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers : [CoordinateConverter],
   }
 )
@@ -51,6 +52,7 @@ export class AcDefaultPlonterComponent implements OnInit {
   get plonterPosition() {
     if (this.plonterService.plonterShown) {
       const screenPos = this.plonterService.plonterClickPosition.position;
+      console.log('screen pos',screenPos);
       return this.geoConverter.screenToCartesian3(screenPos, true);
     }
   }
