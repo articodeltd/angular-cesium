@@ -4,19 +4,21 @@ import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/
 
 /**
  *  This is a billboard implementation.
- *  The ac-billboard element must be a child of ac-map element.
- *  The properties of props are the same as the properties of billboard:
- *  https://cesiumjs.org/Cesium/Build/Documentation/Billboard.html
+ *  The element must be a child of ac-map element.
+ *  The properties of props are the same as the properties of Entity and BillboardGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/BillboardGraphics.html
+ *
  *  __Usage :__
  *  ```
- *    &lt;ac-billboard [props]="{
+ *    <ac-billboard [props]="{
  *      image: image,
  *      position: position,
  *      scale: scale,
  *      color: color,
  *      name: name
- *    }"&gt;
- *    &lt;/ac-billboard&gt;
+ *    }">;
+ *    </ac-billboard>
  *  ```
  */
 

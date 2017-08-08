@@ -1,7 +1,7 @@
-import { BasicEntityDrawerOptions } from './basic-entity-drawer-options';
+import { EntitiesDrawerOptions } from './entities-drawer-options';
 
 export interface LayerOptions {
-  ellipse?: BasicEntityDrawerOptions;
-  circle?: BasicEntityDrawerOptions;
-  polygon?: BasicEntityDrawerOptions;
+  ellipse?: EntitiesDrawerOptions;
+  circle?: EntitiesDrawerOptions;
+  polygon?: EntitiesDrawerOptions;
 }

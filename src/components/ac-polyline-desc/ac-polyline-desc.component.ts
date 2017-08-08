@@ -6,16 +6,20 @@ import { ComputationCache } from '../../services/computation-cache/computation-c
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 
 /**
- *  This is a dynamic(position is updatable) implementation of an polyline.
- *  The ac-polyline-desc element must be a child of ac-layer element.
+ *  This is a polyline implementation.
+ *  The ac-label element must be a child of ac-map element.
+ *  The properties of props are the same as the properties of Entity and PolylineGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/PolylineGraphics.html
+ *
  *  __Usage:__
  *  ```
- *    &lt;ac-polyline-desc props="{width : polyline.width, //optional
- *                                      positions: polyline.positions,
- *                                      material: polyline.material //optional
- *                                      }"
- *    &gt;
- *    &lt;/ac-polyline-desc&gt;
+ *    <ac-polyline-desc props="{
+ *      width : polyline.width,
+ *      positions: polyline.positions,
+ *      material: polyline.material
+ *    }">
+ *    </ac-polyline-desc>
  * ```
  */
 @Component({

@@ -6,23 +6,22 @@ import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 
 /**
- *  This is a dynamic(position is updatable) implementation of an circle.
- __Usage :__
- *  ```
- *    &lt;ac-circle-desc props="{
- *      center: data.position,
- *      radius: 5
- *      width:3, // Optional
- *      granularity:0.08 // Optional
- *      }"&gt;
- *    &lt;/ac-circle-desc&gt;
- *  ```
+ *  This is a circle implementation.
+ *  The element must be a child of ac-layer element.
+ *  semiMajorAxis ans semiMinorAxis are replaced with radius property.
+ *  All other properties of props are the same as the properties of Entity and EllipseGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/EllipseGraphics.html
  *
- *  __param__: {Cesium.Cartesian3} center
- *   __param__: {number} rotation
- *   __param__: {number} radius in meters
- *   __param__: {number} [1] width
- *   __param__: {number} [0.003] granularity
+ *__Usage :__
+ *  ```
+ *    <ac-circle-desc props="{
+ *      position: data.position,
+ *      radius: 5
+ *      granularity:0.08 // Optional
+ *    }">
+ *    </ac-circle-desc>
+ *  ```
  */
 @Component({
 	selector: 'ac-circle-desc',

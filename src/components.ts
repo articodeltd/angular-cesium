@@ -9,6 +9,7 @@ export * from './components/ac-polyline-desc/ac-polyline-desc.component';
 export * from './components/ac-label/ac-label.component';
 export * from './components/ac-label-desc/ac-label-desc.component';
 export * from './components/ac-polygon-desc/ac-polygon-desc.component';
+export * from './components/ac-polygon/ac-polygon.component';
 export * from './components/ac-polyline/ac-polyline.component';
 export * from './components/ac-point/ac-point.component';
 export * from './components/ac-point-desc/ac-point-desc.component';

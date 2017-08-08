@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { MapLayerProviderOptions } from '../../models/map-layer-provider-options.enum';
 import { Checker } from '../../utils/checker';
@@ -9,8 +9,8 @@ import { Checker } from '../../utils/checker';
  *
  *  __Usage :__
  *  ```
- *    &lt;ac-map-layer-provider [options]="optionsObject" [provider]="myProvider"&gt;
- *    &lt;/ac-map-layer-provider&gt;
+ *    <ac-map-layer-provider [options]="optionsObject" [provider]="myProvider">
+ *    </ac-map-layer-provider>
  *  ```
  */
 @Component({

@@ -4,23 +4,24 @@ import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.s
 
 /**
  *  This is an implementation of an arc.
- *  The ac-arc-desc element must be a child of ac-map element.
- *  An arc is not cesium natively implemented and therefore it's API doesn't appear anywhere
+ *  The element must be a child of ac-map element.
+ *  An arc is not natively implemented in cesium.
+ *
  *  __Usage :__
  *  ```
- *    &lt;ac-arc [geometryProps]="{
- *                  center: center,
- *                  angle: angle,
- *                  delta: delta,
- *                  radius: radius
- *              }"
- *              [instanceProps]="{
- *                  attributes: attributes
- *              }"
- *              [primitiveProps]="{
- *                  appearance: appearance
- *              }"&gt;
- *    &lt;/ac-arc&gt;
+ *    <ac-arc-desc geometryProps="{
+ *          center: arc.center,
+ *          angle: arc.angle,
+ *          delta: arc.delta,
+ *          radius: arc.radius
+ *       }"
+ *       instanceProps="{
+ *          attributes: arc.attributes
+ *       }"
+ *       primitiveProps="{
+ *          appearance: arc.appearance
+ *       }">
+ *    </ac-arc-desc>
  *    ```
  */
 

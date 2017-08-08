@@ -28,6 +28,7 @@ import { AcCircleComponent } from './components/ac-circle/ac-circle.component';
 import { AcArcComponent } from './components/ac-arc/ac-arc.component';
 import { AcPolygonDescComponent } from './components/ac-polygon-desc/ac-polygon-desc.component';
 import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-default-plonter.component';
+import { AcPolygonComponent } from './components/ac-polygon/ac-polygon.component';
 
 @NgModule({
 	imports: [
@@ -58,6 +59,7 @@ import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-de
 		AcCircleComponent,
 		AcArcComponent,
     AcPolygonDescComponent,
+    AcPolygonComponent,
     AcDefaultPlonterComponent,
 	],
 	exports: [
@@ -81,6 +83,7 @@ import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-de
 		AcCircleComponent,
 		AcArcComponent,
     AcPolygonDescComponent,
+    AcPolygonComponent,
     AcDefaultPlonterComponent,
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],

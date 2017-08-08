@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
 import { CesiumService } from '../../cesium/cesium.service';
 import { GraphicsType } from './enums/graphics-type.enum';
-import { BasicEntityDrawerOptions } from '../../../models/basic-entity-drawer-options';
+import { EntitiesDrawerOptions } from '../../../models/entities-drawer-options';
 
 /**
  *  General primitives drawer responsible of drawing Cesium primitives.
@@ -16,7 +16,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
 
   constructor(private cesiumService: CesiumService,
               private graphicsType: GraphicsType,
-              private defaultOptions: BasicEntityDrawerOptions = {
+              private defaultOptions: EntitiesDrawerOptions = {
                 collectionMaxSize: -1,
                 collectionSuspensionTime: -1,
                 collectionsNumber: 1
@@ -36,7 +36,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     return freeEntityCollection;
   }
 
-  init(options?: BasicEntityDrawerOptions) {
+  init(options?: EntitiesDrawerOptions) {
     const finalOptions = options || this.defaultOptions;
     for (let i = 0; i < finalOptions.collectionsNumber; i++) {
       const dataSource = new Cesium.CustomDataSource();
