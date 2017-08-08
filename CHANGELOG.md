@@ -6,4 +6,4 @@
 ## 0.0.13
 ### Features
 * ac-map-layer-provider - Support all cesium imagery providers
-  
+* Expose cesium viewer through ViewesManagerService and `ac-map`
