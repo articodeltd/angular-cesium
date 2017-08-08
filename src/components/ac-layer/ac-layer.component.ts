@@ -19,31 +19,32 @@ import { LayerOptions } from '../../models/layer-options';
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.
- *  __param:__ {string} acfor - get the track observable and entityName (see the example)
- *  __param:__ {boolean} setShow - setShow/hide layer's entities
- *  __param:__ {any} context - get the context layer that will use the componnet (most of the time equal to "this")
+ *  __param:__ {string} acfor - get the track observable and entityName (see the example).
+ *  __param:__ {boolean} setShow - setShow/hide layer's entities.
+ *  __param:__ {any} context - get the context layer that will use the componnet (most of the time equal to "this").
+ *  __param:__ {LayerOptions} options - sets the layer options for each drawer.
  *
  *  __Usage :__
  *  ```
- *  &lt;ac-map&gt;
- *      &lt;ac-layer acFor="let track of tracks$" [setShow]="setShow" [context]="this"&gt;
- *          &lt;ac-billboard-desc props="{
- *               image: track.image,
- *               position: track.position,
- *               scale: track.scale,
- *               color: track.color,
- *               name: track.name
- *          }"&gt;
- *      &lt;/ac-billboard-desc>
- *          &lt;ac-label-desc props="{
- *               position: track.position,
- *               pixelOffset : [-15,20] | pixelOffset,
- *               text: track.name,
- *               font: '15px sans-serif'
- *          }"&gt;
- *          &lt;/ac-label-desc&gt;
- *      &lt;/ac-layer&gt;
- *  &lt;/ac-map&gt;
+ *  <ac-map>
+ *    <ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [options]="options">
+ *      <ac-billboard-desc props="{
+ *        image: track.image,
+ *        position: track.position,
+ *        scale: track.scale,
+ *        color: track.color,
+ *        name: track.name
+ *      }">
+ *      </ac-billboard-desc>
+ *        <ac-label-desc props="{
+ *          position: track.position,
+ *          pixelOffset : [-15,20] | pixelOffset,
+ *          text: track.name,
+ *          font: '15px sans-serif'
+ *        }">
+ *      </ac-label-desc>
+ *    </ac-layer>
+ *  </ac-map>
  *  ```
  */
 @Component({

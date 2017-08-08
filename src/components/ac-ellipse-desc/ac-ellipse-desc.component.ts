@@ -6,26 +6,21 @@ import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 
 /**
- *  This is a dynamic(position is updatable) implementation of an ellipse.
+ *  This is an ellipse implementation.
+ *  The element must be a child of ac-layer element.
+ *  The properties of props are the same as the properties of Entity and EllipseGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/EllipseGraphics.html
  *
  *  __Usage :__
  *  ```
- *    &lt;ac-ellipse-desc props="{
- *      center: data.position,
+ *    <ac-ellipse-desc props="{
+ *      position: data.position,
  *      semiMajorAxis:250000.0,
- *      semiMinorAxis:400000.0,
- *      rotation : 0.785398,
- *      granularity:0.08 // Optional
- *      }"&gt;
- *    ">
- *    &lt;/ac-ellipse-desc&gt;
+ *      semiMinorAxis:400000.0
+ *    }">
+ *    </ac-ellipse-desc>
  *  ```
- *  __param:__ {Cesium.Cartesian3} center
- *  __param:__ {number} semiMajorAxis
- *  __param:__ {number} semiMinorAxis
- *  __param:__ {number} rotation
- *   __param__: {number} [1] width
- *   __param__: {number} [0.003] granularity
  */
 @Component({
 	selector: 'ac-ellipse-desc',

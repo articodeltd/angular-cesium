@@ -4,15 +4,19 @@ import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/po
 
 /**
  *  This is a polyline implementation.
- *  The ac-polyline element must be a child ac-map element.
+ *  The ac-label element must be a child of ac-map element.
+ *  The properties of props are the same as the properties of Entity and PolylineGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/PolylineGraphics.html
+ *
  *  __Usage:__
  *  ```
- *  &lt;ac-polyline [props]="{position: position,
- *                               text: 'labelText',
- *                               font: '30px sans-serif',
- *                               fillColor : aquamarine}"
- *  &gt;
- *  &lt;/ac-polyline&gt;
+ *  <ac-polyline [props]="{
+ *    position: position,
+ *    text: 'labelText',
+ *    font: '30px sans-serif'
+ *  }">;
+ *  </ac-polyline>
  *  ```
  */
 
