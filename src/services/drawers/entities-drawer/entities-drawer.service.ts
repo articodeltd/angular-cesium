@@ -3,7 +3,6 @@ import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
 import { CesiumService } from '../../cesium/cesium.service';
 import { GraphicsType } from './enums/graphics-type.enum';
 import { EntitiesDrawerOptions } from '../../../models/entities-drawer-options';
-import { BasicEntityDrawerOptions } from '../../../models/basic-entity-drawer-options';
 import { OptimizedEntityCollection } from './optimized-entity-collection';
 
 /**
