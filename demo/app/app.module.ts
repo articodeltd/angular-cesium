@@ -11,7 +11,6 @@ import { EllipseLayerComponent } from './components/ellipse-layer/ellipse-layer.
 import { BaseLayerComponent } from './components/base-layer/base-layer.component';
 import { DynamicEllipseLayerComponent } from './components/dynamic-ellipse-layer/dynamic-ellipse-layer.component';
 import { DynamicPolylineLayerComponent } from './components/dynamic-polyline-layer/dynamic-polyline-layer.component';
-import { StaticCircleLayerComponent } from './components/static-circle-layer/static-circle-layer.component';
 import { PolygonLayerComponent } from './components/polygon-layer/polygon-layer.component';
 import { EventTestLayerComponent } from './components/event-test-layer/event-test-layer.component';
 import { ArcLayerComponent } from './components/arc-layer/arc-layer.component';
@@ -40,7 +39,6 @@ import { MinValidatorDirective } from './shared/settings-form/min-validator.dire
     EllipseLayerComponent,
     DynamicPolylineLayerComponent,
     PolygonLayerComponent,
-    StaticCircleLayerComponent,
     EventTestLayerComponent,
     ArcLayerComponent,
     PointLayerComponent,

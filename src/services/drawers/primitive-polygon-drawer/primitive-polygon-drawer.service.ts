@@ -3,8 +3,8 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
 
 /**
- * @deprecated
- * This drawer is deprecated. PolygonDrawerService is used instead.
+ * @deprecated use PolygonDrawerService instead
+ * This drawer is deprecated. use instead PolygonDrawerService.
  * Primitive polygon drawer.
  */
 @Injectable()
