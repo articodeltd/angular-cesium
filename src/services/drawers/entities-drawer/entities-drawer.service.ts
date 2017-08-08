@@ -4,6 +4,11 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { GraphicsType } from './enums/graphics-type.enum';
 import { BasicEntityDrawerOptions } from '../../../models/basic-entity-drawer-options';
 
+/**
+ *  General primitives drawer responsible of drawing Cesium primitives.
+ *  Drawers the handle Cesium primitives extend it.
+ */
+
 @Injectable()
 export class EntitiesDrawerService extends BasicDrawerService {
   private entityCollections = new Map<any, OptimizedEntityCollection>();

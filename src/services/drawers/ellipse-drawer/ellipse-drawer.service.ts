@@ -3,6 +3,9 @@ import { EntitiesDrawerService } from '../entities-drawer/entities-drawer.servic
 import { CesiumService } from '../../cesium/cesium.service';
 import { GraphicsType } from '../entities-drawer/enums/graphics-type.enum';
 
+/**
+ *  This drawer is responsible for drawing ellipses.
+ */
 @Injectable()
 export class EllipseDrawerService extends EntitiesDrawerService {
   constructor(cesiumService: CesiumService) {

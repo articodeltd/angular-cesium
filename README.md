@@ -122,7 +122,7 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
   + `acFor` attribute accepts an RxObserver `planes$` , `ac-layer` will subscribe to the observer
   and will handle all updates for you. 
   
-+ Add descriptions components to determine which primitives to render, 
++ Add descriptions components to determine which entity to render, 
   in our example: `ac-billboard` and `ac-label` .
   + This example will render a billboard(icon) and label for each plane in the stream.
   + `props` accepts the same member options as cesium corresponding class.
@@ -187,17 +187,34 @@ Now, after we have defined our layer and decided that each entity on the stream 
 + `ac-billboard-desc` - which presents billboard from CesiumJs. This directive allows you to pass props(expressions) to this billboard. You may see that although we do pass props - we actually pass expressions that are based on the `plane` that we defined earlier. Actually we say: 'Dear `angular-cesium`, please create and manage a `billboard` using those expressions for each `plane`'.
 Now, when an entity is passed through the stream - based on it's `id`, `actionType` and `entity` - `angular-cesium` will know what to do.
 When passing data with the same `id` and `actionType=ADD_UPDATE` - the entity will be updated on the map for every message.
-+ `ac-label-desc` - the same as ac-billboard but just for labels.
++ `ac-label-desc` - the same as ac-billboard-desc but just for labels.
 It should be mentioned that `ac-billboard-desc` & `ac-label-desc` are all exposing the same API as Cesium expose for each map-entity.
   
-It is important to mention that angular-cesium doesn't duplicate the description component for each different plane in `$plane` (as `ngFor` does).  
-why? because  there is no reason to, cesium entities are drawn on the canvas map using javascript API i.e. entities aren't represented as HTML, by doing so we gain a boost of performance.
+It is important to mention that angular-cesium doesn't duplicate the description component over the DOM for each different plane in `$plane` (as `ngFor` does).  
+why? because  there is no reason to, cesium entities are drawn on the canvas map using javascript API i.e. entities aren't represented as HTML, by doing so we gain a major boost in performance.
 
 After explaining a little bit about `ac-layer` we hope that you may see it's benefits:
 + Easily defining a layer
 + Easily add/update/remove entities - all you have to do is pass a message through the stream and `angular-cesium` will keep track of all the rest.
 + Readable code - when reading your html which describes your layer - it is pretty easy to understand how your layer would look like.
 + Maintainable code.
+
+## Supported Entity types
++ billboard - `ac-billboard-desc` / `ac-billboard`
++ label - `ac-label-desc` / `ac-label`
++ polyline - `ac-polyline-desc` / `ac-polyline`
++ ellipse - `ac-ellipse-desc` / `ac-ellipse`
++ circle - `ac-circle-desc` / `ac-circle` *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis 
++ polygon - `ac-polygon-desc` / `ac-polygon`
++ point - `ac-point-desc` / `ac-point`
+
+## `ac-entity-desc` vs `ac-entity`
++ `ac-entity-desc` component is used to describe how each entity in a stream of entities, managed inside `ac-layer`, should be drawn.
++ `ac-entity` component is used to draw an entity directly on the map, and so, can be used directly under `ac-map`.
+
+## Entities API
+All of the entity components are using a flatten Cesium Entities API.
+e.g: `ac-billboard` `props` input accepts a JSON which can have all properties found in Cesium Entity plus all properties found in Cesium BillboardGraphics.
 
 ## Map Events
 `MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection and event priority management.
@@ -221,8 +238,7 @@ export class SomeComponent{
           // movement(screen location of the event), entities(your entities) , primitives( cesium primitives, like label,billboard...)
     	  console.log('map click', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
     	});
-  }
-  
+  } 
 }
 ```  
 In the example above we start listing to Click events. according to `eventRegisration` object.

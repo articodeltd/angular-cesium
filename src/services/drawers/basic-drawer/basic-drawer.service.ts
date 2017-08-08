@@ -1,3 +1,7 @@
+/**
+ *  Abstract drawer. All drawers extends this class.
+ */
+
 export abstract class BasicDrawerService {
   protected _propsAssigner: Function;
 

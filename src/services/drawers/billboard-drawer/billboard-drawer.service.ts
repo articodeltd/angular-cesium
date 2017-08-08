@@ -3,7 +3,7 @@ import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.
 import { CesiumService } from '../../cesium/cesium.service';
 
 /**
- *  This drawer is responsible for creating billboard component over the Cesium map.
+ *  This drawer is responsible for drawing billboards.
  */
 @Injectable()
 export class BillboardDrawerService extends PrimitivesDrawerService {
