@@ -49,6 +49,10 @@ describe('PrimitivePolygonDrawerService', () => {
 			providers: [PrimitivePolygonDrawerService, providerFromMock(CesiumService, cesiumService)]
 		});
 	});
+  
+  beforeEach(inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
+    service.init();
+  }));
 
 	it('should create and return a new polygon primitive.', inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
 		const polygonPrimitive = service.add(geometryProps, instanceProps, primitiveProps);

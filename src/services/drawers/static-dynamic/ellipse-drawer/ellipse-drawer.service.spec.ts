@@ -39,6 +39,11 @@ describe('EllipseStaticDrawerService', () => {
 			providers: [StaticEllipseDrawerService, providerFromMock(CesiumService, cesiumService)]
 		});
 	});
+  
+  
+  beforeEach(inject([StaticEllipseDrawerService], (service: StaticEllipseDrawerService) => {
+    service.init();
+  }));
 
 	it('should create and return a new ellipse primitive.', inject([StaticEllipseDrawerService], (service: StaticEllipseDrawerService) => {
 		const ellipsePrimitive = service.add(geometryProps, instanceProps, primitiveProps);

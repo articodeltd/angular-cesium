@@ -46,6 +46,10 @@ describe('StaticPolylineDrawerService', () => {
       providers: [StaticPolylineDrawerService, providerFromMock(CesiumService, cesiumService)],
     });
   });
+  
+  beforeEach(inject([StaticPolylineDrawerService], (service: StaticPolylineDrawerService) => {
+    service.init();
+  }));
 
   it('should create and return a new static polyline primitive.',
     inject([StaticPolylineDrawerService], (service: StaticPolylineDrawerService) => {

@@ -32,8 +32,13 @@ describe('DynamicEllipseDrawerService', () => {
 			providers: [DynamicEllipseDrawerService, providerFromMock(CesiumService, cesiumService)]
 		});
 	});
-
-	it('should create and return a new ellipse primitive.', inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
+  
+  beforeEach(inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
+    service.init();
+  }));
+  
+  
+  it('should create and return a new ellipse primitive.', inject([DynamicEllipseDrawerService], (service: DynamicEllipseDrawerService) => {
 		const ellipsePrimitive = service.add(ellipseProps);
 
 		verify(primitiveCollection.add(anything())).once();

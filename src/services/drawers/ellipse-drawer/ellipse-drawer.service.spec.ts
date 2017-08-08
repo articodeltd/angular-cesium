@@ -6,7 +6,7 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { ViewerFactory } from '../../viewer-factory/viewer-factory.service';
 import { mockProvider } from '../../../utils/testingUtils';
 
-fdescribe('EllipseDrawerService', () => {
+describe('EllipseDrawerService', () => {
   
   
   beforeEach(() => {

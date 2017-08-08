@@ -55,6 +55,10 @@ describe('PrimitivesDrawerService', () => {
       providers: [SimpleDrawerServiceTestClass, providerFromMock(CesiumService, cesiumService)],
     });
   });
+  
+  beforeEach(inject([SimpleDrawerServiceTestClass], (service: SimpleDrawerServiceTestClass) => {
+    service.init();
+  }));
 
   it('should create and return a new primitive', inject([SimpleDrawerServiceTestClass], (service: SimpleDrawerServiceTestClass) => {
     const geometryInstance = service.add(geometryProps);
