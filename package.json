@@ -22,7 +22,7 @@
     "ngc": "ngc -p tsconfig.aot.json",
     "aot": "webpack --config webpack.aot.config.js -p",
     "rollup": "rollup -cza",
-    "bundle": "npm run mincleanup && npm run lint && npm run ngc && npm run rollup",
+    "bundle": "npm run cleanup && npm run lint && npm run ngc && npm run rollup",
     "build-demo": "rimraf dist && webpack --config config/webpack.dev.js --progress --profile --bail",
     "test-server": "node demo/performance-server/server.js",
     "server": "nodemon --exec ./node_modules/.bin/ts-node -- ./demo/server/src/main.ts",
@@ -131,6 +131,7 @@
   "dependencies": {
     "angular2parse": "^1.0.5",
     "geodesy": "^1.1.1",
-    "json-string-mapper": "^1.0.0"
+    "json-string-mapper": "^1.0.0",
+    "primitive-primitives": "0.0.6"
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../../cesium/cesium.service';
-import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
+import { StaticPrimitiveDrawer } from '../static-dynamic/static-primitive-drawer/static-primitive-drawer.service';
 
 /**
  +  This drawer is responsible for drawing an arc over the Cesium map.
