@@ -6,6 +6,8 @@ import { BasicStaticPrimitiveDesc } from '../../../services/basic-primitive-desc
 import { StaticPolygonDrawerService } from '../../../services/drawers/static-dynamic/static-polygon-drawer/polygon-drawer.service';
 
 /**
+ * @deprecated use ac-ploygon-desc instead
+ *
  *  This is a static (position, color, etc.. are not updated) implementation of a polygon.
  *  __Usage:__
  *  ```

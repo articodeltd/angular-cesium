@@ -6,6 +6,8 @@ import { BasicStaticPrimitiveDesc } from '../../../services/basic-primitive-desc
 import { StaticCircleDrawerService } from '../../../services/drawers/static-dynamic/static-circle-drawer/static-circle-drawer.service';
 
 /**
+ * @deprecated use ac-
+ *
  *  This is a static (position, color, etc.. are not updated) implementation of an circle.
  *  __usage:__
  *  ```

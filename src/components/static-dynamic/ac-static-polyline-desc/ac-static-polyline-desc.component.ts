@@ -6,6 +6,8 @@ import { ComputationCache } from '../../../services/computation-cache/computatio
 import { BasicStaticPrimitiveDesc } from '../../../services/basic-primitive-desc/basic-static-primitive-desc.service';
 
 /**
+ * @deprecated use ac-ployline-desc instead
+ *
  *  This is a static implementation of an polyline.
  *  __usage:__
  *  ```

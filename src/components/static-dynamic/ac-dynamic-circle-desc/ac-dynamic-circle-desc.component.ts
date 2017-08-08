@@ -6,6 +6,8 @@ import { BasicDesc } from '../../../services/basic-desc/basic-desc.service';
 import { DynamicEllipseDrawerService } from '../../../services/drawers/static-dynamic/ellipse-drawer/dynamic-ellipse-drawer.service';
 
 /**
+ * @deprecated use ac-circle-desc instead
+ *
  *  This is a dynamic(position is updatable) implementation of an circle.
  __Usage :__
  *  ```

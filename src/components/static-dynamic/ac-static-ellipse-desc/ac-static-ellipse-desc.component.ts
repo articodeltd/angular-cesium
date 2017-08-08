@@ -6,6 +6,9 @@ import { BasicStaticPrimitiveDesc } from '../../../services/basic-primitive-desc
 import { StaticEllipseDrawerService } from '../../../services/drawers/static-dynamic/ellipse-drawer/ellipse-drawer.service';
 
 /**
+ *
+ * @deprecated use ac-ellipse-desc instead
+ *
  *  This is a static (position, color, etc.. are not updated) implementation of an ellipse.
  *  __usage:__
  *  ```

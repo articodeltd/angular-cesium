@@ -6,6 +6,8 @@ import { CesiumProperties } from '../../../services/cesium-properties/cesium-pro
 import { DynamicPolylineDrawerService } from '../../../services/drawers/static-dynamic/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 
 /**
+ * @deprecated use ac-polylinc-desc instead
+ *
  *  This is a dynamic(position is updatable) implementation of an polyline.
  *  The ac-dynamic-polyline-desc element must be a child of ac-layer element.
  *  __Usage:__
