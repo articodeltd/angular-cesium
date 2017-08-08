@@ -3,7 +3,7 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.service';
 
 /**
- *  This drawer is responsible for creating label component.
+ *  This drawer is responsible for drawing labels.
  */
 @Injectable()
 export class LabelDrawerService extends PrimitivesDrawerService {

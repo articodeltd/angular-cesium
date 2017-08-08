@@ -3,6 +3,7 @@
 * AcEntity id filed changed to string from number
 * AcNotification id filed changed to string from number
 
+
 ## 0.0.14
 ### Breaking changes 
 * deprecated: 
@@ -13,3 +14,4 @@
   * AcDynamicCircleDescComponent, instead use `ac-circle-desc`
   * AcStaticCircleDescComponent, instead use `ac-circle-desc`
   * AcStaticPolygonDescComponent, instead use `ac-polygon-desc`
+* MapEventManagerService: EventResult.primitives changed to EventResult.cesiumEntities

@@ -3,7 +3,7 @@ import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.
 import { CesiumService } from '../../cesium/cesium.service';
 
 /**
- *  This drawer is responsible for creating the dynamic version of the point component.
+ *  This drawer is responsible for drawing points.
  */
 @Injectable()
 export class PointDrawerService extends PrimitivesDrawerService {

@@ -28,6 +28,7 @@ import { AcCircleComponent } from './components/ac-circle/ac-circle.component';
 import { AcArcComponent } from './components/ac-arc/ac-arc.component';
 import { AcPolygonDescComponent } from './components/ac-polygon-desc/ac-polygon-desc.component';
 import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-default-plonter.component';
+import { AcPolygonComponent } from './components/ac-polygon/ac-polygon.component';
 import { AcStaticEllipseDescComponent } from './components/static-dynamic/ac-static-ellipse-desc/ac-static-ellipse-desc.component';
 import { AcDynamicEllipseDescComponent } from './components/static-dynamic/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';
 import { AcDynamicPolylineDescComponent } from './components/static-dynamic/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
@@ -65,6 +66,7 @@ import { AcStaticPolylineDescComponent } from './components/static-dynamic/ac-st
 		AcCircleComponent,
 		AcArcComponent,
     AcPolygonDescComponent,
+    AcPolygonComponent,
     AcDefaultPlonterComponent,
     
     AcStaticEllipseDescComponent,
@@ -96,6 +98,7 @@ import { AcStaticPolylineDescComponent } from './components/static-dynamic/ac-st
 		AcCircleComponent,
 		AcArcComponent,
     AcPolygonDescComponent,
+    AcPolygonComponent,
     AcDefaultPlonterComponent,
     
     AcStaticEllipseDescComponent,

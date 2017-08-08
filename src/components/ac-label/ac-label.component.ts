@@ -4,17 +4,20 @@ import { LabelDrawerService } from '../../services/drawers/label-drawer/label-dr
 
 /**
  *  This is a label implementation.
- *  The ac-label element must be a child ac-map element.
- *  The properties of props are the same as the properties of label:
- *  https://cesiumjs.org/Cesium/Build/Documentation/Label.html
+ *  The ac-label element must be a child of ac-map element.
+ *  The properties of props are the same as the properties of Entity and LabelGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/LabelGraphics.html
+ *
  *  __Usage:__
  *  ```
- *  &lt;ac-label [props]="{position: position,
- *                         text: 'labelText',
- *                         font: '30px sans-serif',
- *                         fillColor : aquamarine}"
- *  &gt;
- *  &lt;/ac-label&gt;
+ *  <ac-label [props]="{
+ *    position: position,
+ *    text: 'labelText',
+ *    font: '30px sans-serif',
+ *    fillColor : aquamarine
+ *  }">
+ *  </ac-label>;
  *  ```
  */
 

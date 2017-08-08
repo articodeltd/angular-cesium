@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PlonterService } from '../../services/plonter/plonter.service';
 import { CoordinateConverter } from '../../services/coordinate-converter/coordinate-converter.service';
 
@@ -34,6 +34,7 @@ import { CoordinateConverter } from '../../services/coordinate-converter/coordin
         }
     
     `],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers : [CoordinateConverter],
   }
 )

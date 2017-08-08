@@ -3,9 +3,9 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { StaticPrimitiveDrawer } from '../static-dynamic/static-primitive-drawer/static-primitive-drawer.service';
 
 /**
- + This drawer is responsible for drawing a polygon over the Cesium map.
- + This implementation uses simple PolygonGeometry and Primitive parameters.
- + This doesn't allow us to change the position, color, etc.. of the polygons. For that you may use the dynamic polygon component.
+ * @deprecated use PolygonDrawerService instead
+ * This drawer is deprecated. use instead PolygonDrawerService.
+ * Primitive polygon drawer.
  */
 @Injectable()
 export class PrimitivePolygonDrawerService extends StaticPrimitiveDrawer {

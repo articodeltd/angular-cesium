@@ -7,18 +7,20 @@ import { LabelDrawerService } from '../../services/drawers/label-drawer/label-dr
 
 /**
  *  This is a label implementation.
- *  The ac-label-desc element must be a child of ac-layer element.
- *  The properties of props are the same as the properties of label:
- *  https://cesiumjs.org/Cesium/Build/Documentation/Label.html
+ *  The ac-label element must be a child of ac-layer element.
+ *  The properties of props are the same as the properties of Entity and LabelGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/LabelGraphics.html
+ *
  *  __Usage :__
  *  ```
- *    &lt;ac-label-desc props="{
- *       position: track.position,
- *       pixelOffset : [-15,20] | pixelOffset,
- *       text: track.name,
- *       font: '15px sans-serif'
- *    }"&gt;
- *    &lt;/ac-label-desc&gt;
+ *    <ac-label-desc props="{
+ *      position: track.position,
+ *      pixelOffset : [-15,20] | pixelOffset,
+ *      text: track.name,
+ *      font: '15px sans-serif'
+ *    }">
+ *    </ac-label-desc>
  *  ```
  */
 

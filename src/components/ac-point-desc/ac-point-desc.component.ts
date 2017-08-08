@@ -6,20 +6,21 @@ import { ComputationCache } from '../../services/computation-cache/computation-c
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 
 /**
- *  This is a dynamic(position is updatable) implementation of an point.
- *  The ac-point-desc element must be a child of ac-layer element.
- *  see also:
- *  https://cesiumjs.org/Cesium/Build/Documentation/PointPrimitive.html
- *  https://cesiumjs.org/Cesium/Build/Documentation/PointPrimitiveCollection.html
+ *  This is a point implementation.
+ *  The ac-label element must be a child of ac-layer element.
+ *  The properties of props are the same as the properties of Entity and PointGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/PointGraphics.html
  *
- *  Usage :
- *  @example
- *    <ac-point-desc props="{
- *                         pixelSize : point.pixelSize, //optional
- *                         position : point.positions,
- *                         color : point.color  //optional
- *                        }">
- *	  </ac-point-desc>
+ *  __Usage:__
+ *  ```
+ *   <ac-point-desc props="{
+ *     pixelSize : point.pixelSize, //optional
+ *     position : point.positions,
+ *     color : point.color  //optional
+ *   }">
+ *	 </ac-point-desc>
+ *  ```
  */
 @Component({
 	selector: 'ac-point-desc',

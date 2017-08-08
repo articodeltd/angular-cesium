@@ -2,7 +2,8 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
 
 /**
- *  This is abstract drawer who provides some implementation for other drawers that extends it.
+ *  General primitives drawer responsible of drawing Cesium primitives.
+ *  Drawers the handle Cesium primitives extend it.
  */
 export abstract class PrimitivesDrawerService extends BasicDrawerService {
   private _show = true;
