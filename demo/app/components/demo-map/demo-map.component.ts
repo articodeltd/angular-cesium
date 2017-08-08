@@ -18,7 +18,7 @@ export class DemoMapComponent {
   
   constructor(private viewerConf: ViewerConfiguration, private appSettingsService: AppSettingsService) {
     viewerConf.viewerOptions = {
-      sceneMode: Cesium.SceneMode.COLUMBUS_VIEW,
+      // sceneMode: Cesium.SceneMode.COLUMBUS_VIEW,
       selectionIndicator: false,
       timeline: false,
       infoBox: false,
@@ -35,8 +35,8 @@ export class DemoMapComponent {
       viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
       viewer.bottomContainer.remove();
       const screenSpaceCameraController = viewer.scene.screenSpaceCameraController;
-      screenSpaceCameraController.enableTilt = false;
-      screenSpaceCameraController.enableRotate = false;
+      // screenSpaceCameraController.enableTilt = false;
+      // screenSpaceCameraController.enableRotate = false;
     };
     
     this.appSettingsService.showTracksLayer = true;
