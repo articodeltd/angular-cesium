@@ -80,7 +80,7 @@ import { StaticEllipseDrawerService } from '../../services/drawers/static-dynami
     StaticCircleDrawerService,
     StaticPolylineDrawerService,
     StaticPolygonDrawerService,
-    StaticEllipseDrawerService
+    StaticEllipseDrawerService,
   ]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
