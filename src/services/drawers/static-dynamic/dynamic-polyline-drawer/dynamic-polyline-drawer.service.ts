@@ -6,7 +6,7 @@ import { PrimitivesDrawerService } from '../../primitives-drawer/primitives-draw
  *  This drawer is responsible for creating the dynamic version of the polyline component.
  */
 @Injectable()
-export class DynamicPolylineDrawerService extends PrimitivesDrawerService{
+export class DynamicPolylineDrawerService extends PrimitivesDrawerService {
 	constructor(cesiumService: CesiumService) {
 		super(Cesium.PolylineCollection, cesiumService);
 	}

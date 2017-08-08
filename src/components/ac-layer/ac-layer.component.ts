@@ -1,3 +1,4 @@
+// tslint:disable
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import {
   AfterContentInit,
@@ -29,7 +30,7 @@ import { StaticCircleDrawerService } from '../../services/drawers/static-dynamic
 import { StaticPolylineDrawerService } from '../../services/drawers/static-dynamic/static-polyline-drawer/static-polyline-drawer.service';
 import { StaticPolygonDrawerService } from '../../services/drawers/static-dynamic/static-polygon-drawer/polygon-drawer.service';
 import { StaticEllipseDrawerService } from '../../services/drawers/static-dynamic/ellipse-drawer/ellipse-drawer.service';
-
+// tslint:enable
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.
