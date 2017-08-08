@@ -19,7 +19,7 @@ import { ViewersManagerService } from '../../services/viewers-service/viewers-ma
  * Accessing cesium viewer:
  * 1. acMapComponent.getViewer()
  * 2. Use ViewerManagerService.getCesiumViewer(mapId).
- * 		mapId auto-generated string: 'map-[index]'
+ * 		mapId auto-generated string: 'default-map-id-[index]'
  *
  * @example
  * <ac-map>
