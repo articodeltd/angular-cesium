@@ -9,12 +9,18 @@ import { LabelDrawerService } from '../../services/drawers/label-drawer/label-dr
 import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
+import { ViewersManagerService } from '../../services/viewers-service/viewers-manager.service';
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
 
 /**
  * This is a map implementation, creates the cesium map.
  * Every layer should be tag inside ac-map tag
+ *
+ * Accessing cesium viewer:
+ * 1. acMapComponent.getViewer()
+ * 2. Use ViewerManagerService.getCesiumViewer(mapId).
+ * 		mapId auto-generated string: 'default-map-id-[index]'
  *
  * @example
  * <ac-map>
@@ -45,6 +51,7 @@ export class AcMapComponent implements OnChanges, OnInit {
   private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
   private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
   private static readonly DEFAULT_TILT_ENABLE = true;
+  private static defaultIdCounter = 1;
 
   /**
    * Disable default plonter context menu
@@ -74,6 +81,14 @@ export class AcMapComponent implements OnChanges, OnInit {
   enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
 
   /**
+   * Set the id name of the map
+   * default: 'default-map-id-[index]'
+   * @type {string}
+   */
+  @Input()
+  id;
+
+  /**
    * flyTo options according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
    */
   @Input()
@@ -84,6 +99,7 @@ export class AcMapComponent implements OnChanges, OnInit {
   constructor(private _cesiumService: CesiumService,
               private _elemRef: ElementRef,
               @Inject(DOCUMENT) private document: any,
+              private viewersManager: ViewersManagerService,
               private billboardDrawerService: BillboardDrawerService,
               private labelDrawerService: LabelDrawerService,
               private ellipseDrawerService: EllipseDrawerService,
@@ -101,6 +117,7 @@ export class AcMapComponent implements OnChanges, OnInit {
     this._cesiumService.setMinimumZoom(this.minimumZoom);
     this._cesiumService.setMaximumZoom(this.maximumZoom);
     this._cesiumService.setEnableTilt(this.enableTilt);
+    this.viewersManager.setViewer(this.id, this.getCesiumViewer());
     this.billboardDrawerService.init();
     this.labelDrawerService.init();
     this.ellipseDrawerService.init();
@@ -114,5 +131,16 @@ export class AcMapComponent implements OnChanges, OnInit {
     if (changes['flyTo']) {
       this._cesiumService.flyTo(changes['flyTo'].currentValue);
     }
+  }
+
+  /**
+   * @returns {any} map cesium viewer
+   */
+  getCesiumViewer() {
+    return this._cesiumService.getViewer();
+  }
+
+  getId() {
+    return this.id;
   }
 }

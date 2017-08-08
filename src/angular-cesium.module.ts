@@ -29,6 +29,7 @@ import { AcArcComponent } from './components/ac-arc/ac-arc.component';
 import { AcPolygonDescComponent } from './components/ac-polygon-desc/ac-polygon-desc.component';
 import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-default-plonter.component';
 import { AcPolygonComponent } from './components/ac-polygon/ac-polygon.component';
+import { ViewersManagerService } from './services/viewers-service/viewers-manager.service';
 
 @NgModule({
 	imports: [
@@ -86,7 +87,7 @@ import { AcPolygonComponent } from './components/ac-polygon/ac-polygon.component
     AcPolygonComponent,
     AcDefaultPlonterComponent,
 	],
-	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory],
+	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, ViewersManagerService],
 })
 export class AngularCesiumModule {
 }
