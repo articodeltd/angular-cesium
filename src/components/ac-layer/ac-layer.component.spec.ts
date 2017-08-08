@@ -10,7 +10,11 @@ import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/elli
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { mockProvider, provider, providerFromMock } from '../../utils/testingUtils';
 import { mock, instance, when } from 'ts-mockito';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/takeUntil';
+
 
 describe('AcLayerComponent', () => {
   let component: AcLayerComponent;
@@ -18,15 +22,19 @@ describe('AcLayerComponent', () => {
 
   const cesiumService = mock(CesiumService);
   const primitiveCollection = mock(Cesium.PrimitiveCollection);
+  const dataSource = mock(Cesium.DataSource);
 
   when(cesiumService.getScene()).thenReturn({ primitives: instance(primitiveCollection) });
+  when(cesiumService.getViewer()).thenReturn({ dataSources: instance(primitiveCollection) });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AcLayerComponent],
-      providers: [providerFromMock(CesiumService, cesiumService), mockProvider(LayerService), mockProvider(ComputationCache), provider(BillboardDrawerService, {}),
-        mockProvider(LabelDrawerService), mockProvider(EllipseDrawerService), mockProvider(EllipseDrawerService),
-        mockProvider(PolylineDrawerService), mockProvider(CircleDrawerService), mockProvider(PolylineDrawerService)]
+      providers: [providerFromMock(CesiumService, cesiumService), mockProvider(LayerService),
+        mockProvider(ComputationCache), provider(BillboardDrawerService, {}),
+        mockProvider(LabelDrawerService), mockProvider(EllipseDrawerService),
+        mockProvider(EllipseDrawerService), mockProvider(PolylineDrawerService),
+        mockProvider(EllipseDrawerService), mockProvider(PolylineDrawerService)]
     })
       .compileComponents();
   }));

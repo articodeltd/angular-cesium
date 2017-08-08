@@ -6,7 +6,7 @@ import { ComputationCache } from '../../services/computation-cache/computation-c
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { mockProvider, providerFromMock } from '../../utils/testingUtils';
-import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ELLIPSE-drawer.service';
+import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 
 describe('AcCircleDescComponent', () => {
     let component: AcCircleDescComponent;
@@ -20,7 +20,7 @@ describe('AcCircleDescComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [AcCircleDescComponent],
-            providers: [DynamicEllipseDrawerService,
+            providers: [EllipseDrawerService,
                         providerFromMock(CesiumService, cesiumService),
                         mockProvider(LayerService),
                         mockProvider(CesiumProperties),

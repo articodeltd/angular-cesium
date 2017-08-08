@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AcStaticPolygonDescComponent } from './ac-static-polygon-desc.component';
-import { PolygonDrawerService } from '../../../services/drawers/polygon-drawer/polygon-drawer.service';
 import { mock, instance, when } from 'ts-mockito';
 import { LayerService } from '../../../services/layer-service/layer-service.service';
 import { ComputationCache } from '../../../services/computation-cache/computation-cache.service';
 import { CesiumProperties } from '../../../services/cesium-properties/cesium-properties.service';
 import { CesiumService } from '../../../services/cesium/cesium.service';
 import { mockProvider, providerFromMock } from '../../../utils/testingUtils';
+import { StaticPolygonDrawerService } from '../../../services/drawers/static-dynamic/static-polygon-drawer/polygon-drawer.service';
 
 describe('AcStaticPolygonDescComponent', () => {
 	let component: AcStaticPolygonDescComponent;
@@ -20,7 +20,7 @@ describe('AcStaticPolygonDescComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [AcStaticPolygonDescComponent],
-			providers: [PolygonDrawerService,
+			providers: [StaticPolygonDrawerService,
 				providerFromMock(CesiumService, cesiumService),
 				mockProvider(LayerService),
 				mockProvider(CesiumProperties),

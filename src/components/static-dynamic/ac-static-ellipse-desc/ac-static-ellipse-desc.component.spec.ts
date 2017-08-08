@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AcStaticEllipseDescComponent } from './ac-static-ellipse-desc.component';
-import { EllipseDrawerService } from '../../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 import { mock, instance, when } from 'ts-mockito';
 import { LayerService } from '../../../services/layer-service/layer-service.service';
 import { ComputationCache } from '../../../services/computation-cache/computation-cache.service';
 import { CesiumProperties } from '../../../services/cesium-properties/cesium-properties.service';
 import { CesiumService } from '../../../services/cesium/cesium.service';
 import { mockProvider, providerFromMock } from '../../../utils/testingUtils';
+import { StaticEllipseDrawerService } from '../../../services/drawers/static-dynamic/ellipse-drawer/ellipse-drawer.service';
 
 describe('AcStaticEllipseDescComponent', () => {
 	let component: AcStaticEllipseDescComponent;
@@ -20,7 +20,7 @@ describe('AcStaticEllipseDescComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [AcStaticEllipseDescComponent],
-			providers: [EllipseDrawerService,
+			providers: [StaticEllipseDrawerService,
 				providerFromMock(CesiumService, cesiumService),
 				mockProvider(LayerService),
 				mockProvider(CesiumProperties),

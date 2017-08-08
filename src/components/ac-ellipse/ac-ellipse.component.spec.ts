@@ -3,7 +3,7 @@ import { mock, instance, when } from 'ts-mockito';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 import { AcEllipseComponent } from './ac-ellipse.component';
-import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ELLIPSE-drawer.service';
+import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 
 describe('AcEllipseComponent', () => {
     let component: AcEllipseComponent;
@@ -17,7 +17,7 @@ describe('AcEllipseComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [AcEllipseComponent],
-            providers: [DynamicEllipseDrawerService,
+            providers: [EllipseDrawerService,
                 providerFromMock(CesiumService, cesiumService)]
         })
 	        .compileComponents();

@@ -48,6 +48,7 @@ describe('ArcDrawerService', () => {
 	});
 
 	it('should create and return a new  arc primitive.', inject([ArcDrawerService], (service: ArcDrawerService) => {
+		console.log('serice',service.add);
 		const arc = service.add(arcProps.geometryProps, arcProps.instanceProps, arcProps.primitiveProps);
 
 		verify(primitiveCollection.add(anything())).once();

@@ -2,7 +2,7 @@ import { PrimitivesDrawerService } from '../../primitives-drawer/primitives-draw
 import { CesiumService } from '../../../cesium/cesium.service';
 
 /**
- * @deprecated
+ *
  * This drawer is deprecated.
  * General static primitives drawer responsible of drawing static Cesium primitives with material.
  */
