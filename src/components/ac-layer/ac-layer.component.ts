@@ -30,6 +30,7 @@ import { StaticCircleDrawerService } from '../../services/drawers/static-dynamic
 import { StaticPolylineDrawerService } from '../../services/drawers/static-dynamic/static-polyline-drawer/static-polyline-drawer.service';
 import { StaticPolygonDrawerService } from '../../services/drawers/static-dynamic/static-polygon-drawer/polygon-drawer.service';
 import { StaticEllipseDrawerService } from '../../services/drawers/static-dynamic/ellipse-drawer/ellipse-drawer.service';
+import { ModelDrawerService } from '../../services/drawers/model-drawer/model-drawer.service';
 // tslint:enable
 /**
  *  This is a ac-layer implementation.
@@ -75,6 +76,7 @@ import { StaticEllipseDrawerService } from '../../services/drawers/static-dynami
     ArcDrawerService,
     PointDrawerService,
     PolygonDrawerService,
+    ModelDrawerService,
     
     DynamicEllipseDrawerService,
     DynamicPolylineDrawerService,
@@ -113,6 +115,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
               polygonDrawerService: PolygonDrawerService,
               arcDrawerService: ArcDrawerService,
               pointDrawerService: PointDrawerService,
+              modelDrawerService: ModelDrawerService,
+              
               dynamicEllipseDrawerService: DynamicEllipseDrawerService,
               dynamicPolylineDrawerService: DynamicPolylineDrawerService,
               staticCircleDrawerService: StaticCircleDrawerService,
@@ -127,6 +131,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
       ['polygon', polygonDrawerService as BasicDrawerService],
       ['arc', arcDrawerService],
       ['point', pointDrawerService],
+      ['model', modelDrawerService],
       
       ['dynamicEllipse', dynamicEllipseDrawerService],
       ['dynamicPolyline', dynamicPolylineDrawerService],
@@ -265,7 +270,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
   }
   
   refreshAll(collection: AcNotification[]): void {
-    // TODO make entity interface: collection of type entity not notification
-    Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
-  }
+		// TODO make entity interface: collection of type entity not notification
+		Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
+	}
 }

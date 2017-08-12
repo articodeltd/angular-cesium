@@ -37,6 +37,7 @@ import { AcStaticPolygonDescComponent } from './components/static-dynamic/ac-sta
 import { AcStaticCircleDescComponent } from './components/static-dynamic/ac-static-circle-desc/ac-static-circle-desc.component';
 import { AcDynamicCircleDescComponent } from './components/static-dynamic/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
 import { AcStaticPolylineDescComponent } from './components/static-dynamic/ac-static-polyline-desc/ac-static-polyline-desc.component';
+import { AcModelDescComponent } from './components/ac-model-desc/ac-model-desc.component';
 
 @NgModule({
 	imports: [
@@ -69,6 +70,7 @@ import { AcStaticPolylineDescComponent } from './components/static-dynamic/ac-st
     AcPolygonDescComponent,
     AcPolygonComponent,
     AcDefaultPlonterComponent,
+		AcModelDescComponent,
     
     AcStaticEllipseDescComponent,
   	AcDynamicEllipseDescComponent,
@@ -101,6 +103,7 @@ import { AcStaticPolylineDescComponent } from './components/static-dynamic/ac-st
     AcPolygonDescComponent,
     AcPolygonComponent,
     AcDefaultPlonterComponent,
+		AcModelDescComponent,
     
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
