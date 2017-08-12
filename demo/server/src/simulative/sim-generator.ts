@@ -94,7 +94,7 @@ export class SimGenerator {
   private getFuturePosition(position, heading) {
     return {
       lat : position.lat + Math.cos(heading) * this.maxMovementDistance * 30,
-      long : position.long - Math.sin(heading) * this.maxMovementDistance * 30,
+      long : position.long + Math.sin(heading) * this.maxMovementDistance * 30,
       altitude : position.altitude
     };
   }
@@ -107,7 +107,7 @@ export class SimGenerator {
       }
 
       entity.position.lat += Math.cos(entity.heading) * this.maxMovementDistance;
-      entity.position.long -= Math.sin(entity.heading) * this.maxMovementDistance;
+      entity.position.long += Math.sin(entity.heading) * this.maxMovementDistance;
       let altitudeChange = Math.random() * this.maxAltitudeChange * getSign();
       if (entity.position.altitude + altitudeChange < 0 || entity.position.altitude + altitudeChange > 20000) {
         altitudeChange *= -1;
