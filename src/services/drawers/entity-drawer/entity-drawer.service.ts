@@ -5,7 +5,7 @@ import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
 /**
  *  This drawer is responsible for creating an entity, this should be used only if you need to create some kind of Cesium object
  *  we do not provide an API for (e.g, a 3d model).
- *  Caution, using entities is not adviced if performence is a concern.
+ *  Caution, using entities is not adviced if performance is a concern.
  */
 @Injectable()
 export class EntityDrawerService extends SimpleDrawerService {

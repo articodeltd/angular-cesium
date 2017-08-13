@@ -10,23 +10,18 @@ import { EntityDrawerService } from '../../services/drawers/entity-drawer/entity
  *
  *  __Usage :__
  *  ```
- *    &lt;ac-dynamic-ellipse-desc props="{
- *      center: data.position,
- *      semiMajorAxis:250000.0,
- *      semiMinorAxis:400000.0,
- *      rotation : 0.785398,
- *      width:3, // Optional
- *      granularity:0.08 // Optional
+ *    &lt;ac-entity-desc props="{
+ *		        position : model.position,
+ *       orientation : this.getOrientation(model),
+ *       model : {
+ *           uri : this.url,
+ *           minimumPixelSize : 128,
+ *           maximumScale : 20000
+ *       }}
  *      }"&gt;
  *    ">
  *    &lt;/ac-dynamic-ellipse-desc&gt;
  *  ```
- *  __param:__ {Cesium.Cartesian3} center
- *  __param:__ {number} semiMajorAxis
- *  __param:__ {number} semiMinorAxis
- *  __param:__ {number} rotation
- *   __param__: {number} [1] width
- *   __param__: {number} [0.003] granularity
  */
 @Component({
 	selector: 'ac-entity-desc',
