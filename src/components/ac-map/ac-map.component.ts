@@ -35,7 +35,7 @@ import { EntityDrawerService } from '../../services/drawers/entity-drawer/entity
 			<ng-content></ng-content>
 	`,
 	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
-	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService, ArcDrawerService
+	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService, ArcDrawerService,
 	EntityDrawerService]
 })
 export class AcMapComponent implements OnChanges, OnInit {
