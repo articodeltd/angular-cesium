@@ -6,12 +6,16 @@ import { CesiumService } from '../../cesium/cesium.service';
 export abstract class SimpleDrawerService {
 	protected _showAll = true;
 
-	private _cesiumCollection: any;
+	protected _cesiumCollection: any;
 	private _propsAssigner: Function;
 
-	constructor(drawerType: any, cesiumService: CesiumService) {
+	constructor(drawerType: any, protected cesiumService: CesiumService) {
 		this._cesiumCollection = new drawerType();
-		cesiumService.getScene().primitives.add(this._cesiumCollection);
+		this.initialize();
+	}
+
+	protected initialize(): void {
+		this.cesiumService.getScene().primitives.add(this._cesiumCollection);
 	}
 
 	setPropsAssigner(assigner: Function) {

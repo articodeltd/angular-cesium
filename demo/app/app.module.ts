@@ -29,6 +29,7 @@ import { DemoMapComponent } from './components/demo-map/demo-map.component';
 import { MaxValidatorDirective } from './shared/settings-form/max-validtor.directive';
 import { MinValidatorDirective } from './shared/settings-form/min-validator.directive';
 import { MapsLayerComponent } from './components/maps-layer/maps-layer.component';
+import { ModelLayerComponent } from "./components/model-layer/ellipse-layer/model-layer.component";
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { MapsLayerComponent } from './components/maps-layer/maps-layer.component
     StaticCircleLayerComponent,
     EventTestLayerComponent,
     ArcLayerComponent,
+    ModelLayerComponent,
     SymbologyLayerComponent,
     PointLayerComponent,
     TracksDialogComponent,

@@ -11,6 +11,7 @@ import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-draw
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
 import { ViewersManagerService } from '../../services/viewers-service/viewers-manager.service';
+import { EntityDrawerService } from "../../services/drawers/entity-drawer/entity-drawer.service";
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -34,7 +35,8 @@ import { ViewersManagerService } from '../../services/viewers-service/viewers-ma
 			<ng-content></ng-content>
 	`,
 	providers: [CesiumService, BillboardDrawerService, CesiumEventBuilder, MapEventsManagerService, PlonterService,
-	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService, ArcDrawerService]
+	LabelDrawerService, DynamicPolylineDrawerService, DynamicEllipseDrawerService, PointDrawerService, ArcDrawerService
+	EntityDrawerService]
 })
 export class AcMapComponent implements OnChanges, OnInit {
 	private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
