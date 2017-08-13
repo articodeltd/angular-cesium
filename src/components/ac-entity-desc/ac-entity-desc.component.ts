@@ -3,7 +3,7 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
-import { EntityDrawerService } from "../../services/drawers/entity-drawer/entity-drawer.service";
+import { EntityDrawerService } from '../../services/drawers/entity-drawer/entity-drawer.service';
 
 /**
  *  This is an implementation of a Cesium entity.

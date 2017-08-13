@@ -9,14 +9,14 @@ import { SimpleDrawerService } from '../simple-drawer/simple-drawer.service';
  */
 @Injectable()
 export class EntityDrawerService extends SimpleDrawerService {
-  constructor(cesiumService:CesiumService) {
+  constructor(cesiumService: CesiumService) {
     super(Map, cesiumService);
   }
 
   protected initialize(): void {
   }
 
-  add(cesiumProps:any, ...moreProps):any {
+  add(cesiumProps: any, ...moreProps): any {
     const entity = this.cesiumService.getViewer().entities.add(cesiumProps);
 
     this._cesiumCollection.set(entity.id, entity);
@@ -24,14 +24,14 @@ export class EntityDrawerService extends SimpleDrawerService {
     return entity;
   }
 
-  remove(entity:any):any {
+  remove(entity: any): any {
     this._cesiumCollection.delete(entity.id);
 
     return this.cesiumService.getViewer().entities.remove(entity);
   }
 
-  removeAll():any {
-    for (let entity of this._cesiumCollection.values()) {
+  removeAll(): any {
+    for (const entity of this._cesiumCollection.values()) {
       this.cesiumService.getViewer().entities.remove(entity);
     }
 

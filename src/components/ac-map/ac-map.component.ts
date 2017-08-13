@@ -11,7 +11,7 @@ import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-draw
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
 import { ViewersManagerService } from '../../services/viewers-service/viewers-manager.service';
-import { EntityDrawerService } from "../../services/drawers/entity-drawer/entity-drawer.service";
+import { EntityDrawerService } from '../../services/drawers/entity-drawer/entity-drawer.service';
 
 /**
  * This is a map implementation, creates the cesium map.

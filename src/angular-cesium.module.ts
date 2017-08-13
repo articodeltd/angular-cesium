@@ -32,7 +32,7 @@ import { AcCircleComponent } from './components/ac-circle/ac-circle.component';
 import { AcArcComponent } from './components/ac-arc/ac-arc.component';
 import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-default-plonter.component';
 import { ViewersManagerService } from './services/viewers-service/viewers-manager.service';
-import { AcEntityDescComponent } from "./components/ac-entity-desc/ac-entity-desc.component";
+import { AcEntityDescComponent } from './components/ac-entity-desc/ac-entity-desc.component';
 
 @NgModule({
 	imports: [
