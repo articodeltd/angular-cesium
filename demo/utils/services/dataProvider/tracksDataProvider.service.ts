@@ -17,15 +17,6 @@ export class TracksDataProvider {
 			this._socket.on('birds', (data) => {
 				data.forEach(
 					(acNotification) => {
-						let action;
-						if (acNotification.action === 'ADD_OR_UPDATE') {
-							action = ActionType.ADD_UPDATE;
-						}
-						else if (acNotification.action === 'DELETE') {
-							action = ActionType.DELETE;
-						}
-						acNotification.actionType = action;
-						acNotification.entity = convertToCesiumObj(acNotification.entity);
 						observer.next(acNotification);
 					});
 			});
