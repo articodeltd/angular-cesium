@@ -1,0 +1,12 @@
+<ac-layer acFor="let model of models$" [context]="this" [show]="show">
+  <ac-entity-desc props="{
+        position : model.position,
+        orientation : this.getOrientation(model),
+        model : {
+            uri : this.url,
+            minimumPixelSize : 128,
+            maximumScale : 20000
+        }}
+">
+  </ac-entity-desc>
+</ac-layer>
