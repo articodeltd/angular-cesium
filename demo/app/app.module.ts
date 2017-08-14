@@ -26,6 +26,7 @@ import { DemoMapComponent } from './components/demo-map/demo-map.component';
 import { MaxValidatorDirective } from './shared/settings-form/max-validtor.directive';
 import { MinValidatorDirective } from './shared/settings-form/min-validator.directive';
 import { MapsLayerComponent } from './components/maps-layer/maps-layer.component';
+import { ModelsLayerComponent } from './components/models-layer/models-layer.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { MapsLayerComponent } from './components/maps-layer/maps-layer.component
     DrawOnMapComponent,
     DemoMapComponent,
     MapsLayerComponent,
+		ModelsLayerComponent,
     MaxValidatorDirective,
     MinValidatorDirective,
   ],

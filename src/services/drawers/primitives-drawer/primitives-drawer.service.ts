@@ -16,7 +16,6 @@ export abstract class PrimitivesDrawerService extends BasicDrawerService {
   }
 
   init() {
-    console.log(this.drawerType);
     this._cesiumCollection = new this.drawerType();
     this._primitiveCollectionWrap = new Cesium.PrimitiveCollection();
     this._primitiveCollectionWrap.add(this._cesiumCollection);
@@ -24,7 +23,6 @@ export abstract class PrimitivesDrawerService extends BasicDrawerService {
   }
 
   add(cesiumProps: any, ...args): any {
-    console.log(this._cesiumCollection);
     return this._cesiumCollection.add(cesiumProps);
   }
 

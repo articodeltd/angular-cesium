@@ -32,6 +32,9 @@ export class BasicDesc implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if (!this.props) {
+      console.error('ac-desc components error: [props] input is mandatory');
+    }
     this._layerService.registerDescription(this);
     this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
     this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
