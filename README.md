@@ -207,6 +207,7 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + circle - `ac-circle-desc` / `ac-circle` *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis 
 + polygon - `ac-polygon-desc` / `ac-polygon`
 + point - `ac-point-desc` / `ac-point`
++ model - `ac-model-desc` 
 
 ## `ac-entity-desc` vs `ac-entity`
 + `ac-entity-desc` component is used to describe how each entity in a stream of entities, managed inside `ac-layer`, should be drawn.
