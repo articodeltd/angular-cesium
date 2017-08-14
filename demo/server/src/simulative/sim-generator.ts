@@ -31,7 +31,7 @@ export class SimGenerator {
       const position = {
         lat : 70 * Math.random() * getSign(),
         long : 180 * Math.random() * getSign(),
-        altitude : 10000 * Math.random()
+        altitude : 50000 * Math.random()
       };
       const heading = Math.random() * 2 * Math.PI;
       const futurePosition = this.getFuturePosition(position, heading);
