@@ -6,7 +6,7 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 import { ModelDrawerService } from '../../services/drawers/model-drawer/model-drawer.service';
 
 /**
- *  This is a polygon implementation.
+ *  This is a model implementation.
  *  The ac-model element must be a child of ac-layer element.
  *  The properties of props are the same as the properties of Entity and PolygonGraphics:
  *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
