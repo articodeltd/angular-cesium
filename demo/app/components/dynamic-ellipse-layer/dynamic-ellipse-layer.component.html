@@ -1,10 +1,8 @@
 <ac-layer acFor="let ellipse of ellipses$" [show]="show" [context]="this">
-    <ac-dynamic-ellipse-desc props="{
-            center: ellipse.geometry.center,
-            semiMajorAxis:250000.0,
-            semiMinorAxis:400000.0,
-            rotation:0,
-            granularity:0.03,
-            width: 10000
-        }"></ac-dynamic-ellipse-desc>
+    <ac-ellipse-desc props="{
+        position: ellipse.geometry.center,
+        semiMajorAxis:400000.0,
+        semiMinorAxis:250000.0,
+        granularity:0.03,
+    }"></ac-ellipse-desc>
 </ac-layer>

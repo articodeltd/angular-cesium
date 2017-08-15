@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../../cesium/cesium.service';
-import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
+import { StaticPrimitiveDrawer } from '../static-dynamic/static-primitive-drawer/static-primitive-drawer.service';
 
 /**
  +  This drawer is responsible for drawing an arc over the Cesium map.
  +  This implementation uses simple PolylineGeometry and Primitive parameters.
- +  This doesn't allow us to change the position, color, etc.. of the arc but show only.
+ +  This doesn't allow us to change the position, color, etc.. of the arc but setShow only.
  */
 
 @Injectable()

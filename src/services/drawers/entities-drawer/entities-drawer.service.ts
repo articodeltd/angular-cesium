@@ -1,0 +1,120 @@
+import { Injectable } from '@angular/core';
+import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
+import { CesiumService } from '../../cesium/cesium.service';
+import { GraphicsType } from './enums/graphics-type.enum';
+import { EntitiesDrawerOptions } from '../../../models/entities-drawer-options';
+import { OptimizedEntityCollection } from './optimized-entity-collection';
+
+/**
+ *  General primitives drawer responsible of drawing Cesium primitives.
+ *  Drawers the handle Cesium primitives extend it.
+ */
+
+@Injectable()
+export class EntitiesDrawerService extends BasicDrawerService {
+  private entityCollections = new Map<any, OptimizedEntityCollection>();
+  private graphicsTypeName: string;
+
+  constructor(private cesiumService: CesiumService,
+              private graphicsType: GraphicsType,
+              private defaultOptions: EntitiesDrawerOptions = {
+                collectionMaxSize: -1,
+                collectionSuspensionTime: -1,
+                collectionsNumber: 1
+              }) {
+    super();
+    this.graphicsTypeName = GraphicsType[this.graphicsType];
+  }
+
+  private getFreeEntitiesCollection(): OptimizedEntityCollection {
+    let freeEntityCollection = null;
+    this.entityCollections.forEach((entityCollection) => {
+      if (entityCollection.isFree()) {
+        freeEntityCollection = entityCollection;
+      }
+    });
+
+    return freeEntityCollection;
+  }
+
+  init(options?: EntitiesDrawerOptions) {
+    const finalOptions = options || this.defaultOptions;
+    for (let i = 0; i < finalOptions.collectionsNumber; i++) {
+      const dataSource = new Cesium.CustomDataSource();
+      this.cesiumService.getViewer().dataSources.add(dataSource);
+      this.entityCollections.set(dataSource.entities,
+        new OptimizedEntityCollection(
+          dataSource.entities,
+          finalOptions.collectionMaxSize,
+          finalOptions.collectionSuspensionTime));
+    }
+  }
+
+  add(cesiumProps: any) {
+    const optimizedEntityCollection = this.getFreeEntitiesCollection();
+    if (optimizedEntityCollection === null) {
+      throw new Error('No more free entity collections');
+    }
+
+    const graphicsClass = this.graphicsType as any;
+    const entityObject = {
+      position: cesiumProps.position !== undefined ? cesiumProps.position : undefined,
+      show: cesiumProps.show !== undefined ? cesiumProps.show : true,
+      description: cesiumProps.description !== undefined ? cesiumProps.description : undefined,
+      orientation: cesiumProps.orientation !== undefined ? cesiumProps.orientation : undefined,
+      viewFrom: cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : undefined,
+      [this.graphicsTypeName]: new graphicsClass(cesiumProps)
+    };
+
+    if (cesiumProps.name !== undefined) {
+      entityObject.name = cesiumProps.name;
+    }
+
+    return optimizedEntityCollection.add(entityObject);
+  }
+
+  update(entity: any, cesiumProps: any) {
+    this.suspendEntityCollection(entity);
+
+    entity.position = cesiumProps.position !== undefined ? cesiumProps.position : undefined;
+    entity.show = cesiumProps.show !== undefined ? cesiumProps.show : entity.show;
+    entity.name = cesiumProps.name !== undefined ? cesiumProps.name : entity.name;
+    entity.description = cesiumProps.description !== undefined ? cesiumProps.description : entity.description;
+    entity.orientation = cesiumProps.orientation !== undefined ? cesiumProps.orientation : entity.orientation;
+    entity.viewFrom = cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : entity.viewFrom;
+
+    if (this._propsAssigner) {
+      this._propsAssigner(entity[this.graphicsTypeName], cesiumProps);
+    }
+    else {
+      Object.assign(entity[this.graphicsTypeName], cesiumProps);
+    }
+  }
+
+  remove(entity: any) {
+    const optimizedEntityCollection = this.entityCollections.get(entity.entityCollection);
+    optimizedEntityCollection.remove(entity);
+  }
+
+  removeAll() {
+    this.entityCollections.forEach((entityCollection) => {
+      entityCollection.removeAll();
+    });
+  }
+
+  setShow(showValue: boolean) {
+    this.entityCollections.forEach((entityCollection) => {
+      entityCollection.setShow(showValue);
+    });
+  }
+
+  private suspendEntityCollection(entity) {
+    const id = entity.entityCollection;
+    if (!this.entityCollections.has(id)) {
+      throw new Error('No EntityCollection for entity.entityCollection');
+    }
+
+    const entityCollection = this.entityCollections.get(id);
+    entityCollection.suspend();
+  }
+}

@@ -1,15 +1,16 @@
 <ac-layer acFor="let arc of arcs$" [context]="this" [show]="show">
     <ac-arc-desc
-            geometryProps="{
+        geometryProps="{
             center: arc.center,
             angle: arc.angle,
             delta: arc.delta,
             radius: arc.radius
         }"
-            instanceProps="{
+        instanceProps="{
             attributes: arc.attributes
         }"
-            primitiveProps="{
+        primitiveProps="{
             appearance: arc.appearance
-        }"></ac-arc-desc>
+        }"
+    ></ac-arc-desc>
 </ac-layer>

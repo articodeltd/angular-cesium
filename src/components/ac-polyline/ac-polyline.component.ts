@@ -1,18 +1,22 @@
 import { Component } from '@angular/core';
 import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
-import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 
 /**
  *  This is a polyline implementation.
- *  The ac-polyline element must be a child ac-map element.
+ *  The ac-label element must be a child of ac-map element.
+ *  The properties of props are the same as the properties of Polyline Primitive:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Polyline.html
+ *
  *  __Usage:__
  *  ```
- *  &lt;ac-polyline [props]="{position: position,
- *                               text: 'labelText',
- *                               font: '30px sans-serif',
- *                               fillColor : aquamarine}"
- *  &gt;
- *  &lt;/ac-polyline&gt;
+ *  <ac-polyline [props]="{
+ *    position: position,
+ *    text: 'labelText',
+ *    font: '30px sans-serif'
+ *    color: Cesium.Color.GREEN
+ *  }">;
+ *  </ac-polyline>
  *  ```
  */
 
@@ -22,7 +26,7 @@ import { DynamicPolylineDrawerService } from '../../services/drawers/dynamic-pol
 })
 export class AcPolylineComponent extends BasicPrimitiveOnMap {
 
-	constructor(dynamicPolylineDrawer: DynamicPolylineDrawerService) {
-		super(dynamicPolylineDrawer);
+	constructor(polylineDrawer: PolylineDrawerService) {
+		super(polylineDrawer);
 	}
 }

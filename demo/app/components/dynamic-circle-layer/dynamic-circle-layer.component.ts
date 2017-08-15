@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AcNotification } from '../../../../src/models/ac-notification';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/observable';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
 

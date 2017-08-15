@@ -21,7 +21,7 @@ class Registration {
 
 export interface EventResult {
   movement: any;
-  primitives: any[];
+  cesiumEntities: any[];
   entities: any[];
 }
 
@@ -39,16 +39,16 @@ export interface EventResult {
  */
 @Injectable()
 export class MapEventsManagerService {
-
+  
   private scene;
   private eventRegistrations = new Map<string, Registration[]>();
-
+  
   constructor(cesiumService: CesiumService,
               private eventBuilder: CesiumEventBuilder,
               private plonterService: PlonterService) {
     this.scene = cesiumService.getScene();
   }
-
+  
   /**
    * Register to map event
    * @param input {EventRegistrationInput}
@@ -59,30 +59,30 @@ export class MapEventsManagerService {
     if (this.scene === undefined) {
       throw new Error('CesiumService has not been initialized yet - MapEventsManagerService must be injected  under ac-map');
     }
-
+    
     input.pick = input.pick || PickOptions.NO_PICK;
     input.priority = input.priority || 0;
-
+    
     if (input.entityType && input.pick === PickOptions.NO_PICK) {
       throw new Error('MapEventsManagerService: can\'t register an event ' +
         'with entityType and PickOptions.NO_PICK - It doesn\'t make sense ');
     }
-
+    
     const eventName = CesiumEventBuilder.getEventFullName(input.event, input.modifier);
-
+    
     if (!this.eventRegistrations.has(eventName)) {
       this.eventRegistrations.set(eventName, []);
     }
-
+    
     const eventRegistration = this.createEventRegistration(input.event, input.modifier, input.entityType, input.pick, input.priority);
     const registrationObservable: any = eventRegistration.observable;
     registrationObservable.dispose = () => this.disposeObservable(eventRegistration, eventName);
     this.eventRegistrations.get(eventName).push(eventRegistration);
-
+    
     this.sortRegistrationsByPriority(eventName);
     return <DisposableObservable<EventResult>> registrationObservable;
   }
-
+  
   private disposeObservable(eventRegistration, eventName) {
     eventRegistration.stopper.next(1);
     const registrations = this.eventRegistrations.get(eventName);
@@ -92,43 +92,43 @@ export class MapEventsManagerService {
     }
     this.sortRegistrationsByPriority(eventName);
   }
-
+  
   private sortRegistrationsByPriority(eventName: string) {
     const registrations = this.eventRegistrations.get(eventName);
     registrations.sort((a, b) => b.priority - a.priority);
     if (registrations.length === 0) {
       return;
     }
-
+    
     // Active registrations by priority
     const currentPriority = registrations[0].priority;
     registrations.forEach((registration) => {
       registration.isPaused = registration.priority < currentPriority;
     });
-
+    
   }
-
+  
   private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier,
                                   entityType, pickOption: PickOptions, priority: number): Registration {
     const cesiumEventObservable = this.eventBuilder.get(event, modifier);
     const stopper = new Subject<any>();
-
+    
     const registration = new Registration(undefined, stopper, priority, false);
     let observable: Observable<EventResult>;
-
+    
     observable = cesiumEventObservable
       .filter(() => !registration.isPaused)
       .map((movement) => this.triggerPick(movement, pickOption))
-      .filter((result) => result.primitives !== null || entityType === undefined)
+      .filter((result) => result.cesiumEntities !== null || entityType === undefined)
       .map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption))
       .filter((result) => result.entities !== null || entityType === undefined)
       .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption))
       .takeUntil(stopper);
-
+    
     registration.observable = observable;
     return registration;
   }
-
+  
   private triggerPick(movement: any, pickOptions: PickOptions) {
     let picks: any = [];
     switch (pickOptions) {
@@ -146,35 +146,41 @@ export class MapEventsManagerService {
       default:
         break;
     }
-
-    return { movement: movement, primitives: picks };
+    
+    // Picks can be cesium entity or cesium primitive
+    if (picks) {
+      picks = picks.map((pick) => pick.id && pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
+    }
+    
+    return {movement : movement, cesiumEntities : picks};
   }
-
+  
   private addEntities(picksAndMovement, entityType, pickOption: PickOptions): EventResult {
-    if (picksAndMovement.primitives === null) {
+    
+    if (picksAndMovement.cesiumEntities === null) {
       picksAndMovement.entities = null;
       return picksAndMovement;
     }
     let entities = [];
     if (pickOption !== PickOptions.NO_PICK) {
       if (entityType) {
-        entities = picksAndMovement.primitives.map((pick) => pick.primitive.acEntity).filter((acEntity) => {
+        entities = picksAndMovement.cesiumEntities.map((pick) => pick.acEntity).filter((acEntity) => {
           return acEntity && acEntity instanceof entityType;
         });
       } else {
-        entities = picksAndMovement.primitives.map((pick) => pick.primitive.acEntity);
+        entities = picksAndMovement.cesiumEntities.map((pick) => pick.acEntity);
       }
-
+      
       entities = UtilsService.unique(entities);
       if (entities.length === 0) {
         entities = null;
       }
     }
-
+    
     picksAndMovement.entities = entities;
     return picksAndMovement;
   }
-
+  
   private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable<EventResult> {
     if (pickOption === PickOptions.PICK_ONE && entitiesAndMovement.entities !== null && entitiesAndMovement.entities.length > 1) {
       return this.plonterService.plonterIt(entitiesAndMovement);

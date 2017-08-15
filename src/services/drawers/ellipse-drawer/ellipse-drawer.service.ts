@@ -1,16 +1,18 @@
-;
 import { Injectable } from '@angular/core';
+import { EntitiesDrawerService } from '../entities-drawer/entities-drawer.service';
 import { CesiumService } from '../../cesium/cesium.service';
-import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
+import { GraphicsType } from '../entities-drawer/enums/graphics-type.enum';
 
 /**
- + *  This drawer is responsible for drawing an ellipse over the Cesium map.
- + *  This implementation uses simple EllipseGeometry and Primitive parameters.
- + *  This doesn't allow us to change the position, color, etc.. of the ellipses. For that you may use the dynamic ellipse component.
- + */
+ *  This drawer is responsible for drawing ellipses.
+ */
 @Injectable()
-export class EllipseDrawerService extends StaticPrimitiveDrawer {
-	constructor(cesiumService: CesiumService) {
-		super(Cesium.EllipseGeometry, cesiumService);
-	}
+export class EllipseDrawerService extends EntitiesDrawerService {
+  constructor(cesiumService: CesiumService) {
+    super(cesiumService, GraphicsType.ellipse, {
+      collectionsNumber: 100,
+      collectionMaxSize: 100,
+      collectionSuspensionTime: 100
+    });
+  }
 }

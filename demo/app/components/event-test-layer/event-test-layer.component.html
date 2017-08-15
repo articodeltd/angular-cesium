@@ -1,8 +1,14 @@
 <ac-layer acFor="let track of tracks$" [context]="this">
     <ac-label-desc props="{
-                          text: track.name,
-                          position: track.position,
-                          fillColor: track.color
-                          }">
+        text: track.name,
+        position: track.position,
+        fillColor: track.color
+    }">
     </ac-label-desc>
+    <ac-circle-desc props="{
+        position: track.position,
+        radius: 20000,
+        material: circleColor
+    }">
+    </ac-circle-desc>
 </ac-layer>

@@ -7,7 +7,7 @@ import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
 @Component({
   selector : 'demo-map',
   templateUrl : './demo-map.component.html',
-  providers : [],
+  providers : [ViewerConfiguration],
   styleUrls : ['./demo-map.component.css']
 })
 export class DemoMapComponent {
@@ -18,20 +18,25 @@ export class DemoMapComponent {
   
   constructor(private viewerConf: ViewerConfiguration, private appSettingsService: AppSettingsService) {
     viewerConf.viewerOptions = {
-      selectionIndicator : false,
-      timeline : false,
-      infoBox : false,
-      baseLayerPicker : false,
-      animation : false,
-      homeButton : false,
-      geocoder : false,
-      navigationHelpButton : false,
-      navigationInstructionsInitiallyVisible : false,
+      // sceneMode: Cesium.SceneMode.COLUMBUS_VIEW,
+      selectionIndicator: false,
+      timeline: false,
+      infoBox: false,
+      fullscreenButton: false,
+      baseLayerPicker: false,
+      animation: false,
+      homeButton: false,
+      geocoder: false,
+      navigationHelpButton: false,
+      navigationInstructionsInitiallyVisible: false,
     };
     
     viewerConf.viewerModifier = (viewer) => {
       viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
       viewer.bottomContainer.remove();
+      const screenSpaceCameraController = viewer.scene.screenSpaceCameraController;
+      // screenSpaceCameraController.enableTilt = false;
+      // screenSpaceCameraController.enableRotate = false;
     };
     
     this.appSettingsService.showTracksLayer = true;

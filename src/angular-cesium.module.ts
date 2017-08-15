@@ -4,11 +4,8 @@ import { AcMapComponent } from './components/ac-map/ac-map.component';
 import { AcLayerComponent } from './components/ac-layer/ac-layer.component';
 import { AcBillboardComponent } from './components/ac-billboard/ac-billboard.component';
 import { AcBillboardDescComponent } from './components/ac-billborad-desc/ac-billborad-desc.component';
-import { AcStaticEllipseDescComponent } from './components/ac-static-ellipse-desc/ac-static-ellipse-desc.component';
-import { AcDynamicEllipseDescComponent } from './components/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';
-import { AcDynamicPolylineDescComponent } from './components/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
-import { AcStaticCircleDescComponent } from './components/ac-static-circle-desc/ac-static-circle-desc.component';
-import { AcStaticPolygonDescComponent } from './components/ac-static-polygon-desc/ac-static-polygon-desc.component';
+import { AcEllipseDescComponent } from './components/ac-ellipse-desc/ac-ellipse-desc.component';
+import { AcPolylineDescComponent } from './components/ac-polyline-desc/ac-polyline-desc.component';
 import { Angular2ParseModule } from 'angular2parse';
 import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
 import { RadiansToDegreesPipe } from './pipes/radians-to-degrees/radians-to-degrees.pipe';
@@ -16,10 +13,9 @@ import { JsonMapper } from './services/json-mapper/json-mapper.service';
 import { CesiumProperties } from './services/cesium-properties/cesium-properties.service';
 import { AcLabelDescComponent } from './components/ac-label-desc/ac-label-desc.component';
 import { UtilsModule } from './utils/utils.module';
-import { AcStaticPolylineDescComponent } from './components/ac-static-polyline-desc/ac-static-polyline-desc.component';
 import { ViewerFactory } from './services/viewer-factory/viewer-factory.service';
 import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
-import { AcDynamicCircleDescComponent } from './components/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
+import { AcCircleDescComponent } from './components/ac-circle-desc/ac-circle-desc.component';
 import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
 import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
 import { AcPointDescComponent } from './components/ac-point-desc/ac-point-desc.component';
@@ -30,8 +26,18 @@ import { AcPointComponent } from './components/ac-point/ac-point.component';
 import { AcHtmlComponent } from './components/ac-html/ac-html.component';
 import { AcCircleComponent } from './components/ac-circle/ac-circle.component';
 import { AcArcComponent } from './components/ac-arc/ac-arc.component';
+import { AcPolygonDescComponent } from './components/ac-polygon-desc/ac-polygon-desc.component';
 import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-default-plonter.component';
+import { AcPolygonComponent } from './components/ac-polygon/ac-polygon.component';
 import { ViewersManagerService } from './services/viewers-service/viewers-manager.service';
+import { AcStaticEllipseDescComponent } from './components/static-dynamic/ac-static-ellipse-desc/ac-static-ellipse-desc.component';
+import { AcDynamicEllipseDescComponent } from './components/static-dynamic/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';
+import { AcDynamicPolylineDescComponent } from './components/static-dynamic/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
+import { AcStaticPolygonDescComponent } from './components/static-dynamic/ac-static-polygon-desc/ac-static-polygon-desc.component';
+import { AcStaticCircleDescComponent } from './components/static-dynamic/ac-static-circle-desc/ac-static-circle-desc.component';
+import { AcDynamicCircleDescComponent } from './components/static-dynamic/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
+import { AcStaticPolylineDescComponent } from './components/static-dynamic/ac-static-polyline-desc/ac-static-polyline-desc.component';
+import { AcModelDescComponent } from './components/ac-model-desc/ac-model-desc.component';
 
 @NgModule({
 	imports: [
@@ -45,15 +51,11 @@ import { ViewersManagerService } from './services/viewers-service/viewers-manage
 		AcBillboardComponent,
 		AcBillboardDescComponent,
 		AcLabelDescComponent,
-		AcStaticEllipseDescComponent,
-		AcDynamicEllipseDescComponent,
-		AcDynamicPolylineDescComponent,
-		AcStaticPolygonDescComponent,
+		AcEllipseDescComponent,
+		AcPolylineDescComponent,
 		PixelOffsetPipe,
 		RadiansToDegreesPipe,
-		AcStaticCircleDescComponent,
-		AcDynamicCircleDescComponent,
-		AcStaticPolylineDescComponent,
+		AcCircleDescComponent,
 		AcArcDescComponent,
 		AcMapLayerProviderComponent,
 		AcPointDescComponent,
@@ -65,21 +67,28 @@ import { ViewersManagerService } from './services/viewers-service/viewers-manage
 		AcHtmlComponent,
 		AcCircleComponent,
 		AcArcComponent,
-    AcDefaultPlonterComponent
+    AcPolygonDescComponent,
+    AcPolygonComponent,
+    AcDefaultPlonterComponent,
+		AcModelDescComponent,
+    
+    AcStaticEllipseDescComponent,
+  	AcDynamicEllipseDescComponent,
+  	AcDynamicPolylineDescComponent,
+		AcStaticPolylineDescComponent,
+		AcDynamicCircleDescComponent,
+    AcStaticCircleDescComponent,
+  	AcStaticPolygonDescComponent,
 	],
 	exports: [
 		AcMapComponent,
 		AcBillboardComponent,
 		AcBillboardDescComponent,
 		AcLabelDescComponent,
-		AcStaticEllipseDescComponent,
-		AcDynamicEllipseDescComponent,
-		AcDynamicPolylineDescComponent,
-		AcStaticPolygonDescComponent,
+		AcEllipseDescComponent,
+		AcPolylineDescComponent,
 		AcLayerComponent,
-		AcStaticCircleDescComponent,
-		AcDynamicCircleDescComponent,
-		AcStaticPolylineDescComponent,
+		AcCircleDescComponent,
 		AcArcDescComponent,
 		AcMapLayerProviderComponent,
 		AcPointDescComponent,
@@ -90,7 +99,19 @@ import { ViewersManagerService } from './services/viewers-service/viewers-manage
 		AcBillboardComponent,
 		AcHtmlComponent,
 		AcCircleComponent,
-		AcArcComponent
+		AcArcComponent,
+    AcPolygonDescComponent,
+    AcPolygonComponent,
+    AcDefaultPlonterComponent,
+		AcModelDescComponent,
+    
+    AcStaticEllipseDescComponent,
+    AcDynamicEllipseDescComponent,
+    AcDynamicPolylineDescComponent,
+    AcStaticPolylineDescComponent,
+    AcDynamicCircleDescComponent,
+    AcStaticCircleDescComponent,
+    AcStaticPolygonDescComponent,
 	],
 	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, ViewersManagerService],
 })

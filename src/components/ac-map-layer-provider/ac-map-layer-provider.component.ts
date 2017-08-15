@@ -13,8 +13,8 @@ import { MapLayerProviderOptions } from '../../models';
  *
  *  __Usage :__
  *  ```
- *    &lt;ac-map-layer-provider [options]="optionsObject" [provider]="myProvider"&gt;
- *    &lt;/ac-map-layer-provider&gt;
+ *    <ac-map-layer-provider [options]="optionsObject" [provider]="myProvider">
+ *    </ac-map-layer-provider>
  *  ```
  */
 @Component({
@@ -27,65 +27,65 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
       url : Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
     });
   }
-  
-  
+
+
   /**
    * refer to cesium docs for details https://cesiumjs.org/Cesium/Build/Documentation/ImageryProvider.html
    * @type {{Object}}
    */
   @Input()
   options: { url?: string } = {};
-  
+
   /**
    * the provider
    * @type {MapLayerProviderOptions}
    */
   @Input()
   provider: any = MapLayerProviderOptions.OFFLINE;
-  
+
   /**
    * index (optional) - The index to add the layer at. If omitted, the layer will added on top of all existing layers.
    * @type {Number}
    */
   @Input()
   index: Number;
-  
+
   /**
    * show (optional) - Determines if the map layer is shown.
    * @type {Boolean}
    */
   @Input()
   show = true;
-  
+
   /**
    * The alpha blending value of this layer
    * @type {number} 0.0 to 1.0
    */
   @Input()
   alpha = 1.0;
-  
+
   /**
    * The brightness of this layer
    * @type {number} 0.0 to 1.0
    */
   @Input()
   brightness = 1.0;
-  
+
   /**
    * The contrast of this layer
    * @type {number} 0.0 to 1.0
    */
   @Input()
   contrast = 1.0;
-  
+
   public imageryLayer;
   public imageryLayersCollection;
   public layerProvider;
-  
+
   constructor(private cesiumService: CesiumService) {
     this.imageryLayersCollection = this.cesiumService.getScene().imageryLayers;
   }
-  
+
   ngOnInit() {
     if (!Checker.present(this.options.url) && this.provider !== MapLayerProviderOptions.OFFLINE) {
       throw new Error('options must have a url');
@@ -120,7 +120,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
       this.imageryLayer.brightness = this.brightness;
     }
   }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['show'] && !changes['show'].isFirstChange()) {
       const showValue = changes['show'].currentValue;
@@ -139,7 +139,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
         this.imageryLayersCollection.remove(this.imageryLayer, false);
       }
     }
-    
+
     if (changes['alpha'] && !changes['alpha'].isFirstChange() && this.imageryLayer) {
       this.imageryLayer.alpha = this.alpha;
     }
@@ -150,7 +150,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
       this.imageryLayer.brightness = this.brightness;
     }
   }
-  
+
   ngOnDestroy(): void {
     if (this.imageryLayer) {
       this.imageryLayersCollection.remove(this.imageryLayer, true);

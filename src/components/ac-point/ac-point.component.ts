@@ -4,13 +4,18 @@ import { PointDrawerService } from '../../services/drawers/point-drawer/point-dr
 
 /**
  *  This is a point implementation.
- *  The ac-point element must be a child ac-map element.
+ *  The ac-label element must be a child of ac-map element.
+ *  The properties of props are the same as the properties of Entity and PointGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/PointGraphics.html
+ *
  *  __Usage:__
  *  ```
- *  &lt;ac-point [props]="{position: position,
- *                         width: 3,
- *  &gt;
- *  &lt;/ac-point&gt;
+ *  <ac-point [props]="{
+ *    position: position,
+ *    width: 3
+ *  }">
+ *  </ac-point>
  *  ```
  */
 

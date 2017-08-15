@@ -1,14 +1,14 @@
-import { Component, Input, ElementRef, DoCheck, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, DoCheck, ElementRef, Input, OnDestroy, Renderer2 } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
 
 /**
  *  This is an html implementation.
- *  The ac-html element must be a child ac-map element.
+ *  The ac-html element must be a child of ac-map element.
  *  __Usage:__
  *  ```
- *  &lt;ac-html [props]="position: position, show: true"&gt;
- *      &lt;p&gt;html element&lt;/p&gt;
- *  &lt;/ac-html&gt;
+ *  <ac-html [props]="{position: position, show: true}">;
+ *    <p>html element</p>
+ *  </ac-html>
  *  ```
  */
 
