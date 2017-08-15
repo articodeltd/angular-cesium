@@ -1,0 +1,1791 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular 2 Cesium</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Angular 2 Cesium</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">Angular 2 Cesium</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AngularCesiumModule.html" >AngularCesiumModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/UtilsModule.html" >UtilsModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCircleDescComponent.html" >AcCircleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDynamicEllipseDescComponent.html" >AcDynamicEllipseDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcEllipseDescComponent.html" >AcEllipseDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelDescComponent.html" >AcLabelDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLayerComponent.html" >AcLayerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcMapComponent.html" >AcMapComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcModelDescComponent.html" >AcModelDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineDescComponent.html" >AcPolylineDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticEllipseDescComponent.html" >AcStaticEllipseDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticPolygonDescComponent.html" >AcStaticPolygonDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticPolylineDescComponent.html" >AcStaticPolylineDescComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/AcEntity.html" >AcEntity</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicDrawerService.html" >BasicDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicPrimitiveOnMap.html" >BasicPrimitiveOnMap</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/OptimizedEntityCollection.html"  data-type="entity-link" class="active" >OptimizedEntityCollection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/PrimitivesDrawerService.html" >PrimitivesDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Registration.html" >Registration</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CesiumService.html" >CesiumService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/EntitiesDrawerService.html" >EntitiesDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelDrawerService.html" >ModelDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PrimitivePolygonDrawerService.html" >PrimitivePolygonDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ViewersManagerService.html" >ViewersManagerService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EventResult.html" >EventResult</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">Angular 2 Cesium</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AngularCesiumModule.html" >AngularCesiumModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/UtilsModule.html" >UtilsModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCircleDescComponent.html" >AcCircleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDynamicEllipseDescComponent.html" >AcDynamicEllipseDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcEllipseDescComponent.html" >AcEllipseDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelDescComponent.html" >AcLabelDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLayerComponent.html" >AcLayerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcMapComponent.html" >AcMapComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcModelDescComponent.html" >AcModelDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineDescComponent.html" >AcPolylineDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticEllipseDescComponent.html" >AcStaticEllipseDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticPolygonDescComponent.html" >AcStaticPolygonDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticPolylineDescComponent.html" >AcStaticPolylineDescComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/AcEntity.html" >AcEntity</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicDrawerService.html" >BasicDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicPrimitiveOnMap.html" >BasicPrimitiveOnMap</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/OptimizedEntityCollection.html"  data-type="entity-link" class="active" >OptimizedEntityCollection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/PrimitivesDrawerService.html" >PrimitivesDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Registration.html" >Registration</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CesiumService.html" >CesiumService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/EntitiesDrawerService.html" >EntitiesDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelDrawerService.html" >ModelDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PrimitivePolygonDrawerService.html" >PrimitivePolygonDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ViewersManagerService.html" >ViewersManagerService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EventResult.html" >EventResult</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>OptimizedEntityCollection</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/services/drawers/entities-drawer/optimized-entity-collection.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+                <h3 id="index">Index</h3>
+                <table class="table table-sm table-bordered index-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Properties</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#_collectionSize">_collectionSize</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#_isHardSuspend">_isHardSuspend</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#_isSuspended">_isSuspended</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#_onEventResumeCallback">_onEventResumeCallback</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#_onEventSuspensionCallback">_onEventSuspensionCallback</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#_suspensionTimeout">_suspensionTimeout</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#_updateRate">_updateRate</a>
+                                    </li>
+                                    <li>
+                                         <a href="#collectionSize">collectionSize</a>
+                                    </li>
+                                    <li>
+                                         <a href="#isSuspended">isSuspended</a>
+                                    </li>
+                                    <li>
+                                         <a href="#updateRate">updateRate</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Methods</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#add">add</a>
+                                    </li>
+                                    <li>
+                                         <a href="#collection">collection</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#hardResume">hardResume</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#hardSuspend">hardSuspend</a>
+                                    </li>
+                                    <li>
+                                         <a href="#isFree">isFree</a>
+                                    </li>
+                                    <li>
+                                         <a href="#onEventResume">onEventResume</a>
+                                    </li>
+                                    <li>
+                                         <a href="#onEventSuspension">onEventSuspension</a>
+                                    </li>
+                                    <li>
+                                         <a href="#remove">remove</a>
+                                    </li>
+                                    <li>
+                                         <a href="#removeAll">removeAll</a>
+                                    </li>
+                                    <li>
+                                         <a href="#removeNoSuspend">removeNoSuspend</a>
+                                    </li>
+                                    <li>
+                                         <a href="#setShow">setShow</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#suspend">suspend</a>
+                                    </li>
+                                    <li>
+                                         <a href="#triggerEventResume">triggerEventResume</a>
+                                    </li>
+                                    <li>
+                                         <a href="#triggerEventSuspension">triggerEventSuspension</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h3 id="constructor">Constructor</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>constructor(entityCollection: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, collectionSize: , updateRate: )</code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:8</a></div>
+                                        </td>
+                                    </tr>
+            
+                        </tbody>
+                    </table>
+            </section>
+
+            <section>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="add"></a>
+                                    <b> add</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>add(entity: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:48</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="collection"></a>
+                                    <b> collection</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>collection()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:40</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="hardResume"></a>
+                                    <b><span class="modifier">Public</span> hardResume</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play "></span>
+                                    <code>hardResume()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:129</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="hardSuspend"></a>
+                                    <b><span class="modifier">Public</span> hardSuspend</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play "></span>
+                                    <code>hardSuspend()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:124</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="isFree"></a>
+                                    <b> isFree</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>isFree()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:44</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="onEventResume"></a>
+                                    <b> onEventResume</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>onEventResume(callback: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank">Function</a>, once: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:74</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="onEventSuspension"></a>
+                                    <b> onEventSuspension</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>onEventSuspension(callback: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank">Function</a>, once: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:67</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="remove"></a>
+                                    <b> remove</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>remove(entity: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:53</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="removeAll"></a>
+                                    <b> removeAll</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>removeAll()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:62</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="removeNoSuspend"></a>
+                                    <b> removeNoSuspend</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>removeNoSuspend(entity: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:58</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="setShow"></a>
+                                    <b> setShow</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>setShow(show: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:16</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="suspend"></a>
+                                    <b><span class="modifier">Public</span> suspend</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play "></span>
+                                    <code>suspend()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:104</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="triggerEventResume"></a>
+                                    <b> triggerEventResume</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>triggerEventResume()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:94</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="triggerEventSuspension"></a>
+                                    <b> triggerEventSuspension</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>triggerEventSuspension()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:84</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+
+
+            <section>
+                
+                    <h3 id="inputs">
+                        Properties
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_collectionSize"></a>
+                                    <b><span class="modifier">Private</span> _collectionSize</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_collectionSize:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="3" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:3</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_isHardSuspend"></a>
+                                    <b><span class="modifier">Private</span> _isHardSuspend</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_isHardSuspend:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value : </i><code>false</code>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:5</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_isSuspended"></a>
+                                    <b><span class="modifier">Private</span> _isSuspended</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_isSuspended:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value : </i><code>false</code>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:4</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_onEventResumeCallback"></a>
+                                    <b><span class="modifier">Private</span> _onEventResumeCallback</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_onEventResumeCallback:     <code>literal type</code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code>literal type</code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:8</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_onEventSuspensionCallback"></a>
+                                    <b><span class="modifier">Private</span> _onEventSuspensionCallback</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_onEventSuspensionCallback:     <code>literal type</code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code>literal type</code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:7</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_suspensionTimeout"></a>
+                                    <b><span class="modifier">Private</span> _suspensionTimeout</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_suspensionTimeout:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:6</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_updateRate"></a>
+                                    <b><span class="modifier">Private</span> _updateRate</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_updateRate:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="2" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:2</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="collectionSize"></a>
+                                    <b> collectionSize</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>collectionSize:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:32</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="isSuspended"></a>
+                                    <b> isSuspended</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>isSuspended:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:20</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="updateRate"></a>
+                                    <b> updateRate</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>updateRate:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/services/drawers/entities-drawer/optimized-entity-collection.ts:24</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">export class OptimizedEntityCollection {
+  private _updateRate: number;
+  private _collectionSize: number;
+  private _isSuspended &#x3D; false;
+  private _isHardSuspend &#x3D; false;
+  private _suspensionTimeout;
+  private _onEventSuspensionCallback: { once: boolean, callback: Function };
+  private _onEventResumeCallback: { once: boolean, callback: Function };
+  
+  constructor(private entityCollection: any, collectionSize &#x3D; -1, updateRate &#x3D; -1) {
+    this._updateRate &#x3D; updateRate;
+    this._collectionSize &#x3D; collectionSize;
+    
+  }
+  
+  setShow(show: boolean) {
+    this.entityCollection.show &#x3D; show;
+  }
+  
+  get isSuspended(): boolean {
+    return this._isSuspended;
+  }
+  
+  get updateRate(): number {
+    return this._updateRate;
+  }
+  
+  set updateRate(value: number) {
+    this._updateRate &#x3D; value;
+  }
+  
+  get collectionSize(): number {
+    return this._collectionSize;
+  }
+  
+  set collectionSize(value: number) {
+    this._collectionSize &#x3D; value;
+  }
+  
+  collection() {
+    return this.entityCollection;
+  }
+  
+  isFree(): boolean {
+    return this._collectionSize &lt; 1 || this.entityCollection.values.length &lt; this._collectionSize;
+  }
+  
+  add(entity) {
+    this.suspend();
+    return this.entityCollection.add(entity);
+  }
+  
+  remove(entity) {
+    this.suspend();
+    return this.entityCollection.remove(entity);
+  }
+  
+  removeNoSuspend(entity) {
+    this.entityCollection.remove(entity);
+  }
+  
+  removeAll() {
+    this.suspend();
+    this.entityCollection.removeAll();
+  }
+  
+  onEventSuspension(callback: Function, once &#x3D; false): Function {
+    this._onEventSuspensionCallback &#x3D; { callback, once };
+    return () &#x3D;&gt; {
+      this._onEventSuspensionCallback &#x3D; undefined;
+    };
+  }
+  
+  onEventResume(callback: Function, once &#x3D; false): Function {
+    this._onEventResumeCallback &#x3D; { callback, once };
+    if (!this._isSuspended) {
+      this.triggerEventResume();
+    }
+    return () &#x3D;&gt; {
+      this._onEventResumeCallback &#x3D; undefined;
+    };
+  }
+  
+  triggerEventSuspension() {
+    if (this._onEventSuspensionCallback !&#x3D;&#x3D; undefined) {
+      const callback &#x3D; this._onEventSuspensionCallback.callback;
+      if (this._onEventSuspensionCallback.once) {
+        this._onEventSuspensionCallback &#x3D; undefined;
+      }
+      callback();
+    }
+  }
+  
+  triggerEventResume() {
+    if (this._onEventResumeCallback !&#x3D;&#x3D; undefined) {
+      const callback &#x3D; this._onEventResumeCallback.callback;
+      if (this._onEventResumeCallback.once) {
+        this._onEventResumeCallback &#x3D; undefined;
+      }
+      callback();
+    }
+  }
+  
+  public suspend() {
+    if (this._updateRate &lt; 0) {
+      return;
+    }
+    if (this._isHardSuspend) {
+      return;
+    }
+    if (!this._isSuspended) {
+      this._isSuspended &#x3D; true;
+      this.entityCollection.suspendEvents();
+      this.triggerEventSuspension();
+      this._suspensionTimeout &#x3D; setTimeout(() &#x3D;&gt; {
+        this.entityCollection.resumeEvents();
+        this.triggerEventResume();
+        this._isSuspended &#x3D; false;
+        this._suspensionTimeout &#x3D; undefined;
+      }, this._updateRate);
+    }
+  }
+  
+  public hardSuspend() {
+    this.entityCollection.suspendEvents();
+    this._isHardSuspend &#x3D; true;
+  }
+  
+  public hardResume() {
+    this.entityCollection.resumeEvents();
+    this._isHardSuspend &#x3D; false;
+  }
+  
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+    </body>
+</html>
