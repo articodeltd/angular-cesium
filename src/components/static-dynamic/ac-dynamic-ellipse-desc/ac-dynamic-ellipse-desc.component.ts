@@ -7,7 +7,6 @@ import { DynamicEllipseDrawerService } from '../../../services/drawers/static-dy
 
 /**
  *
- * @deprecated use ac-ellipse-desc instead
  *
  *  This is a dynamic(position is updatable) implementation of an ellipse.
  *
