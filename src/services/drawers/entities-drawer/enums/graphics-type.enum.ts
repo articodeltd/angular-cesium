@@ -1,0 +1,17 @@
+export enum GraphicsType {
+  ellipse = Cesium.EllipseGraphics,
+  ellipsoid = Cesium.EllipsoidGraphics,
+  polygon = Cesium.PolygonGraphics,
+  polyline = Cesium.PolylineGraphics,
+  polylineVolume = Cesium.PolylineVolumeGraphics,
+  box = Cesium.BoxGraphics,
+  corridor = Cesium.CorridorGraphics,
+  cylinder = Cesium.CylinderGraphics,
+  label = Cesium.LabelGraphics,
+  billboard = Cesium.BillboardGraphics,
+  model = Cesium.ModelGraphics,
+  path = Cesium.PathGraphics,
+  point = Cesium.PointGraphics,
+  rectangle = Cesium.RectangleGraphics,
+  wall = Cesium.WallGraphics,
+}

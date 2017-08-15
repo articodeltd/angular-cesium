@@ -1,0 +1,34 @@
+import { Component } from '@angular/core';
+import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
+import { LayerService } from '../../services/layer-service/layer-service.service';
+import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
+import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
+import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
+
+/**
+ *  This is a polyline implementation.
+ *  The ac-label element must be a child of ac-map element.
+ *  The properties of props are the same as the properties of Polyline Primitive:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Polyline.html
+ *
+ *  __Usage:__
+ *  ```
+ *    <ac-polyline-desc props="{
+ *      width : polyline.width,
+ *      positions: polyline.positions,
+ *      material: polyline.material
+ *    }">
+ *    </ac-polyline-desc>
+ * ```
+ */
+@Component({
+	selector: 'ac-polyline-desc',
+	template: ''
+})
+export class AcPolylineDescComponent extends BasicDesc {
+
+	constructor(dynamicPolylineDrawerService: PolylineDrawerService, layerService: LayerService,
+              computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
+		super(dynamicPolylineDrawerService, layerService, computationCache, cesiumProperties);
+	}
+}

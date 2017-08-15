@@ -1,18 +1,16 @@
 <ac-layer acFor="let ellipse of ellipses$" [context]="this" [show]="show">
-    <ac-static-ellipse-desc
-        geometryProps="{
+    <ac-dynamic-ellipse-desc props="{
             center: ellipse.geometry.center,
-            semiMajorAxis: ellipse.geometry.semiMajorAxis,
-            semiMinorAxis: ellipse.geometry.semiMinorAxis,
-            height: ellipse.geometry.height,
-            rotation: ellipse.geometry.rotation
-        }"
-        instanceProps="{
-            attributes: ellipse.attributes
-        }"
-        primitiveProps="{
-            appearance: ellipse.appearance
-        }"
-    >
-    </ac-static-ellipse-desc>
+            semiMajorAxis:250000.0,
+            semiMinorAxis:400000.0,
+            rotation:0,
+            granularity:0.03,
+            width: 10000
+        }"></ac-dynamic-ellipse-desc>
+    <ac-dynamic-circle-desc props="{
+            center:  ellipse.geometry.center,
+            radius:250000,
+            rotation:0,
+            granularity:0.04
+        }"></ac-dynamic-circle-desc>
 </ac-layer>

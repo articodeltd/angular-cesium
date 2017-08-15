@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { ActionType } from '../../../../src/models/action-type.enum';
@@ -19,18 +19,18 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 		const base1: AcNotification = {
 			id: '0',
 			actionType: ActionType.ADD_UPDATE,
-			entity: {name: 'base haifa', position: Cesium.Cartesian3.fromRadians(1.5, 1.5), show: true}
+			entity: {name: 'base alpha', position: Cesium.Cartesian3.fromRadians(1.0, 1.0), show: true}
 		};
 		const base2 = {
 			id: '1',
 			actionType: ActionType.ADD_UPDATE,
-			entity: {name: 'base yafo', position: Cesium.Cartesian3.fromRadians(1.9, 1.9), show: true}
+			entity: {name: 'base beta', position: Cesium.Cartesian3.fromRadians(1.2, 1.2), show: true}
 		};
 		const baseArray = [base1, base2];
 		this.bases$ = Observable.from(baseArray);
 
 		setTimeout(() => {
-			base2.entity.name = 'base tel aviv';
+			base2.entity.name = 'base gama';
 			this.layer.updateNotification(base2);
 		}, 5000);
 		setTimeout(() => {

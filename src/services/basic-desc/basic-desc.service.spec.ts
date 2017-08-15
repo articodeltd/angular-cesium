@@ -5,9 +5,9 @@ import { CesiumService } from '../cesium/cesium.service';
 import { LayerService } from '../layer-service/layer-service.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
-import { mock, anything, when, verify, resetCalls } from 'ts-mockito';
-import { providerFromMock, mockProvider } from '../../utils/testingUtils';
-import { SimpleDrawerService } from '../drawers/simple-drawer/simple-drawer.service';
+import { anything, mock, resetCalls, verify, when } from 'ts-mockito';
+import { mockProvider, providerFromMock } from '../../utils/testingUtils';
+import { PrimitivesDrawerService } from '../drawers/primitives-drawer/primitives-drawer.service';
 import { BasicDesc } from './basic-desc.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { BasicDesc } from './basic-desc.service';
 	selector: 'basic-desc-test-class'
 })
 class BasicDescTestClass extends BasicDesc {
-	constructor(drawer: SimpleDrawerService,
+	constructor(drawer: PrimitivesDrawerService,
 	            layerService: LayerService,
 	            computationCache: ComputationCache,
 	            cesiumProperties: CesiumProperties) {
@@ -29,7 +29,7 @@ describe('BasicDescTestClass', () => {
 	const cesiumProperties = mock(CesiumProperties);
 	let component: BasicDescTestClass;
 	let fixture: ComponentFixture<BasicDescTestClass>;
-	let simpleDrawerService: any = mock(SimpleDrawerService);
+	let simpleDrawerService: any = mock(PrimitivesDrawerService);
 
 	when(cesiumProperties.createEvaluator(anything())).thenReturn(() => {
 		return {};
@@ -47,7 +47,7 @@ describe('BasicDescTestClass', () => {
 			declarations: [BasicDescTestClass],
 			providers: [
 				providerFromMock(CesiumProperties, cesiumProperties),
-				providerFromMock(SimpleDrawerService, simpleDrawerService),
+				providerFromMock(PrimitivesDrawerService, simpleDrawerService),
 				mockProvider(LayerService),
 				mockProvider(CesiumService),
 				mockProvider(ComputationCache)

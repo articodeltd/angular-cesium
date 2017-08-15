@@ -17,7 +17,9 @@ export class EventTestLayerComponent implements OnInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
 	tracks$: Observable<AcNotification>;
 	@Output() mouseMove = new EventEmitter();
-
+	
+	circleColor = Cesium.Color.PURPLE;
+	
 	constructor(private eventManager: MapEventsManagerService) {
 		const track1: AcNotification = {
 			id: '0',
@@ -53,9 +55,9 @@ export class EventTestLayerComponent implements OnInit {
 
 	ngOnInit(): void {
 		// Pass event only if clicked
-		this.eventManager.register({ event: CesiumEvent.LEFT_CLICK }).subscribe((result) => {
-			console.log('map click', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
-		});
+		// this.eventManager.register({ event: CesiumEvent.LEFT_CLICK }).subscribe((result) => {
+		// 	console.log('map click', result.movement, 'cesiumEntities:', result.cesiumEntities, 'entities', result.entities);
+		// });
 
 		// Example for Priority change
 		// this.testPriority();
@@ -85,26 +87,26 @@ export class EventTestLayerComponent implements OnInit {
 			event: CesiumEvent.LONG_LEFT_PRESS,
 			pick: PickOptions.PICK_ALL
 		}).subscribe((pos) => {
-			console.log('long left', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
+			console.log('long left', pos.movement, 'cesiumEntities:', pos.cesiumEntities, 'entities', pos.entities);
 		});
 	}
 
 	testPriority() {
 		const o1 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 1 });
 		o1.subscribe((result) => {
-			console.log('click1 Priority 1', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
+			console.log('click1 Priority 1', result.movement, 'cesiumEntities:', result.cesiumEntities, 'entities', result.entities);
 		}, err => null, () => console.log('complete'));
 		const o2 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 2 });
 		o2.subscribe((result) => {
-			console.log('click2 Priority 2', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
+			console.log('click2 Priority 2', result.movement, 'cesiumEntities:', result.cesiumEntities, 'entities', result.entities);
 		});
 		const o3 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 2 });
 		o3.subscribe((result) => {
-			console.log('click3 Priority 2', result.movement, 'primitives:', result.primitives, 'entities', result.entities);
+			console.log('click3 Priority 2', result.movement, 'cesiumEntities:', result.cesiumEntities, 'entities', result.entities);
 		});
 		const o4 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 3 });
 		o4.subscribe((pos) => {
-			console.log('click4 Priority 3', pos.movement, 'primitives:', pos.primitives, 'entities', pos.entities);
+			console.log('click4 Priority 3', pos.movement, 'cesiumEntities:', pos.cesiumEntities, 'entities', pos.entities);
 		}, () => console.log('error'), () => console.log('compelete'));
 
 		setTimeout(() => {

@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
+import { EntitiesDrawerService } from '../entities-drawer/entities-drawer.service';
 import { CesiumService } from '../../cesium/cesium.service';
-import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
+import { GraphicsType } from '../entities-drawer/enums/graphics-type.enum';
 
 /**
- + This drawer is responsible for drawing a polygon over the Cesium map.
- + This implementation uses simple PolygonGeometry and Primitive parameters.
- + This doesn't allow us to change the position, color, etc.. of the polygons. For that you may use the dynamic polygon component.
+ *  This drawer is responsible for drawing polygons.
  */
 @Injectable()
-export class PolygonDrawerService extends StaticPrimitiveDrawer {
-	constructor(cesiumService: CesiumService) {
-		super(Cesium.PolygonGeometry, cesiumService);
-	}
+export class PolygonDrawerService extends EntitiesDrawerService {
+    constructor(cesiumService: CesiumService) {
+        super(cesiumService, GraphicsType.polygon);
+    }
 }

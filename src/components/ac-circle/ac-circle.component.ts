@@ -1,19 +1,23 @@
 import { Component } from '@angular/core';
 import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
-import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-drawer/dynamic-ellipse-drawer.service';
+import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 
 /**
  *  This is a circle implementation.
- *  The ac-circle element must be a child ac-map element.
+ *  The element must be a child of ac-map element.
+ *  semiMajorAxis ans semiMinorAxis are replaced with radius property.
+ *  All other properties of props are the same as the properties of Entity and EllipseGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/EllipseGraphics.html
+ *
  *  __Usage:__
  *  ```
- *  &lt;ac-circle [props]="{center: position,
- *                           radius:40000.0,
- *                           width:3,
- *                           granularity:0.03,
- *                           color:[0,0,0,0.5]}"
- *  &gt;
- *  &lt;/ac-circle&gt;
+ *  <ac-circle [props]="{
+ *    position: position,
+ *    radius:40000.0,
+ *    granularity:0.03,
+ *  }">
+ *  </ac-circle>
  *  ```
  */
 
@@ -23,8 +27,8 @@ import { DynamicEllipseDrawerService } from '../../services/drawers/ellipse-draw
 })
 export class AcCircleComponent extends BasicPrimitiveOnMap {
 
-	constructor(dynamicEllipseDrawer: DynamicEllipseDrawerService) {
-		super(dynamicEllipseDrawer);
+	constructor(ellipseDrawerService: EllipseDrawerService) {
+		super(ellipseDrawerService);
 	}
 
 	private updateEllipseProps() {
