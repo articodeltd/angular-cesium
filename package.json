@@ -32,8 +32,8 @@
     "heroku-postbuild": "npm run build-demo"
   },
   "peerDependencies": {
-    "@angular/common": "^4.0.0 || ^2.3.0",
-    "@angular/core": "^4.0.0 || ^2.3.0"
+    "@angular/common": "^4.2.6",
+    "@angular/core": "^4.2.6"
   },
   "devDependencies": {
     "@angular/animations": "^4.3.2",

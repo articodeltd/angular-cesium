@@ -25,3 +25,6 @@ tsconfig.aot.json
 protractor.conf.js
 rollup.config.js
 npm-debug.log
+newrelic.js
+newrelic_agent.log
+yarn-error.log
