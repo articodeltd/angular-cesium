@@ -214,8 +214,9 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + `ac-entity` component is used to draw an entity directly on the map, and so, can be used directly under `ac-map`.
 
 ## Entities API
-All of the entity components are using a flatten Cesium Entities API.
-e.g: `ac-billboard` `props` input accepts a JSON which can have all properties found in Cesium Entity plus all properties found in Cesium BillboardGraphics.
++ All of the entity components except Polyline (`ac-polyline` & `ac-polyline-desc`) are using a flatten Cesium Entities API.
++ e.g: `ac-billboard` `props` input accepts a JSON which can have all properties found in Cesium Entity plus all properties found in Cesium BillboardGraphics.
++ `ac-polyline` & `ac-polyline-desc` are using the Polyline Primitive API with an extended Material property that accepts Cesium Color Object.
 
 ## Map Events
 `MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection and event priority management.

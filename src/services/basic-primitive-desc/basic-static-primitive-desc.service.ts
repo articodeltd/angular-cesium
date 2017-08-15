@@ -36,12 +36,12 @@ export class BasicStaticPrimitiveDesc extends BasicDesc implements OnInit {
 		const instanceProps = this._instancePropsEvaluator(this._computationCache, context);
 		const primitiveProps = this._primitivePropsEvaluator(this._computationCache, context);
 
-		if (!this._mapEntitiesMap.has(id)) {
+		if (!this._cesiumObjectsMap.has(id)) {
 			const primitive = this._staticPrimitiveDrawer.add(geometryProps, instanceProps, primitiveProps);
 			primitive.acEntity = entity; // set the entity on the primitive for later usage
-			this._mapEntitiesMap.set(id, primitive);
+			this._cesiumObjectsMap.set(id, primitive);
 		} else {
-			const primitive = this._mapEntitiesMap.get(id);
+			const primitive = this._cesiumObjectsMap.get(id);
 			this._staticPrimitiveDrawer.update(primitive, geometryProps, instanceProps, primitiveProps);
 		}
 	}

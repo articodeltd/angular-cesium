@@ -13,7 +13,7 @@ export class BasicDesc implements OnInit, OnDestroy {
   @Input()
   props: any;
 
-  protected _mapEntitiesMap = new Map();
+  protected _cesiumObjectsMap = new Map();
   private _propsEvaluateFn: Function;
   private _propsAssignerFn: Function;
 
@@ -27,8 +27,8 @@ export class BasicDesc implements OnInit, OnDestroy {
     return this._propsEvaluateFn(this._computationCache, context);
   }
 
-  protected _getPropsAssigner(): (primitive: Object, desc: Object) => Object {
-    return (primitive: Object, desc: Object) => this._propsAssignerFn(primitive, desc);
+  protected _getPropsAssigner(): (cesiumObject: Object, desc: Object) => Object {
+    return (cesiumObject: Object, desc: Object) => this._propsAssignerFn(cesiumObject, desc);
   }
 
   ngOnInit(): void {
@@ -42,26 +42,26 @@ export class BasicDesc implements OnInit, OnDestroy {
 
   draw(context: any, id: string, entity: AcEntity): any {
     const cesiumProps = this._propsEvaluator(context);
-    if (!this._mapEntitiesMap.has(id)) {
-      const mapEntity = this._drawer.add(cesiumProps);
-      mapEntity.acEntity = entity; // set the entity on the mapEntity for later usage
-      this._mapEntitiesMap.set(id, mapEntity);
+    if (!this._cesiumObjectsMap.has(id)) {
+      const cesiumObject = this._drawer.add(cesiumProps);
+      cesiumObject.acEntity = entity; // set the entity on the cesiumObject for later usage
+      this._cesiumObjectsMap.set(id, cesiumObject);
     } else {
-      const mapEntity = this._mapEntitiesMap.get(id);
-      mapEntity.acEntity = entity; // set the entity on the mapEntity for later usage
+      const cesiumObject = this._cesiumObjectsMap.get(id);
+      cesiumObject.acEntity = entity; // set the entity on the cesiumObject for later usage
       this._drawer.setPropsAssigner(this._getPropsAssigner());
-      this._drawer.update(mapEntity, cesiumProps);
+      this._drawer.update(cesiumObject, cesiumProps);
     }
   }
 
   remove(id) {
-    const mapEntity = this._mapEntitiesMap.get(id);
-    this._drawer.remove(mapEntity);
-    this._mapEntitiesMap.delete(id);
+    const cesiumObject = this._cesiumObjectsMap.get(id);
+    this._drawer.remove(cesiumObject);
+    this._cesiumObjectsMap.delete(id);
   }
 
   removeAll() {
-    this._mapEntitiesMap.clear();
+    this._cesiumObjectsMap.clear();
     this._drawer.removeAll();
   }
 

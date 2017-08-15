@@ -4970,6 +4970,10 @@ pretty-error@^2.0.2:
     renderkid "^2.0.1"
     utila "~0.4"
 
+primitive-primitives@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/primitive-primitives/-/primitive-primitives-0.0.6.tgz#573deb4aa31d08a1d53a1d34ed8599f105b88d08"
+
 private@^0.1.6, private@~0.1.5:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.7.tgz#68ce5e8a1ef0a23bb570cc28537b5332aba63ef1"

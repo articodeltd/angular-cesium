@@ -211,7 +211,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
   convertToCesiumObj(entity): any {
     entity.scale = entity.id === 1 ? 0.3 : 0.15;
     entity.alt = Math.round(entity.position.altitude);
-    entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat);
+    entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.position.altitude);
     entity.futurePosition =
       Cesium.Cartesian3.fromDegrees(entity.futurePosition.long, entity.futurePosition.lat, entity.futurePosition.altitude);
     return entity;

@@ -7,25 +7,34 @@ import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.
  */
 @Injectable()
 export class PolylineDrawerService extends PrimitivesDrawerService {
-	constructor(cesiumService: CesiumService) {
-		super(Cesium.PolylineCollection, cesiumService);
-	}
+  constructor(cesiumService: CesiumService) {
+    super(Cesium.PolylineCollection, cesiumService);
+  }
 
   add(cesiumProps: any) {
-    if (cesiumProps.color) {
+    return this._cesiumCollection.add(this.withColorMaterial(cesiumProps));
+  }
+
+  update(cesiumObject: any, cesiumProps: any) {
+    if (cesiumProps.material instanceof Cesium.Color) {
+      if (cesiumObject.material && cesiumObject.material.uniforms &&
+        cesiumObject.material.uniforms.color instanceof Cesium.Color) {
+        this.withColorMaterial(cesiumProps);
+      }
+      else if (!cesiumObject.material.uniforms.color.equals(cesiumProps.material)) {
+        cesiumObject.material.uniforms.color = cesiumProps.material;
+      }
+    }
+    super.update(cesiumObject, cesiumProps);
+  }
+
+  withColorMaterial(cesiumProps) {
+    if (cesiumProps.material instanceof Cesium.Color) {
       const material = Cesium.Material.fromType('Color');
-      material.uniforms.color = cesiumProps.color;
+      material.uniforms.color = cesiumProps.material;
       cesiumProps.material = material;
     }
 
-    return this._cesiumCollection.add(cesiumProps);
-  }
-
-  update(primitive: any, cesiumProps: any) {
-    if (!cesiumProps.constantColor && cesiumProps.color &&
-      !primitive.material.uniforms.color.equals(cesiumProps.color)) {
-      primitive.material.uniforms.color = cesiumProps.color;
-    }
-    super.update(primitive, cesiumProps);
+    return cesiumProps;
   }
 }

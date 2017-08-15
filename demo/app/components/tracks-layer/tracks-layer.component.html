@@ -32,18 +32,7 @@
     <ac-polyline-desc *ngIf="showVelocityVectors()" props="{
         positions: [track.position, track.futurePosition],
         width: 1,
-        color: getPolylineColor(),
-        constantColor: true
+        material: getPolylineColor()
     }">
     </ac-polyline-desc>
-
-    <ac-ellipse-desc *ngIf="showEllipses()" props="{
-        position: track.position,
-        semiMinorAxis: 50000.0,
-        semiMajorAxis: 100000.0,
-        fill: false,
-        outline: true,
-        outlineColor: Cesium.Color.RED,
-    }">
-    </ac-ellipse-desc>
 </ac-layer>

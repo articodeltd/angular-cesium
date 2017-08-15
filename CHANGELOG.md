@@ -17,6 +17,7 @@
   * AcStaticCircleDescComponent, instead use `ac-circle-desc`
   * AcStaticPolygonDescComponent, instead use `ac-polygon-desc`
 * MapEventManagerService: EventResult.primitives changed to EventResult.cesiumEntities
+* `ac-polyline-desc` and `ac-polyline` accept Cesium.Color as material in props input.
 
 ### Features 
 * support models `ac-model-desc`
