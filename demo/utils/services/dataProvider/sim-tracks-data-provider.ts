@@ -33,11 +33,17 @@ export class SimTracksDataProvider {
 	}
 	
 	convertToCesiumObj(entity): any {
+		const fixedHeading = entity.heading - (Math.PI / 2);
+		const pitch = Cesium.Math.toRadians(0.0);
+		const roll = Cesium.Math.toRadians(0.0);
+		
 		entity.scale = entity.id === 1 ? 0.3 : 0.15;
 		entity.alt = Math.round(entity.position.altitude);
-		entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.position.altitude);
+		entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.alt);
 		entity.futurePosition =
 			Cesium.Cartesian3.fromDegrees(entity.futurePosition.long, entity.futurePosition.lat, entity.futurePosition.altitude);
+		const hpr = new Cesium.HeadingPitchRoll(fixedHeading, pitch, roll);
+		entity.orientation = Cesium.Transforms.headingPitchRollQuaternion(entity.position, hpr);
 		return entity;
 	}
 }
