@@ -22,11 +22,12 @@ import { TracksDialogComponent } from './track-dialog/track-dialog.component';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 import { RealTracksDataProvider } from '../../../utils/services/dataProvider/real-tracks-data-provider';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
+import { SimTracksDataProvider } from '../../../utils/services/dataProvider/sim-tracks-data-provider';
 
 @Component({
   selector: 'tracks-layer',
   templateUrl: './tracks-layer.component.html',
-  providers: [RealTracksDataProvider],
+  providers: [RealTracksDataProvider, SimTracksDataProvider],
   styleUrls: ['./tracks-layer.component.css']
 })
 export class TracksLayerComponent implements OnInit, OnChanges {
@@ -47,26 +48,11 @@ export class TracksLayerComponent implements OnInit, OnChanges {
   private isDialogOpen = false;
   private wasDialogClosedByRealDataChange = false;
 
-  constructor(private mapEventsManager: MapEventsManagerService, public dialog: MdDialog, private webSocketSupllier: WebSocketSupplier,
-              private cd: ChangeDetectorRef, private ngZone: NgZone, private dataProvider: RealTracksDataProvider,
+  constructor(private mapEventsManager: MapEventsManagerService, public dialog: MdDialog,
+              private ngZone: NgZone, realDataProvider: RealTracksDataProvider, simDataProvider: SimTracksDataProvider,
               private appSettingsService: AppSettingsService) {
-    const socket = this.webSocketSupllier.get();
-    const realTracks$ = this.dataProvider.get();
-    const simTracks$ = Observable.create((observer) => {
-      socket.on('birds', (data) => {
-        data.forEach(
-          (acNotification) => {
-            if (acNotification.action === 'ADD_OR_UPDATE') {
-              acNotification.actionType = ActionType.ADD_UPDATE;
-              acNotification.entity = new AcEntity(this.convertToCesiumObj(acNotification.entity));
-            }
-            else if (acNotification.action === 'DELETE') {
-              acNotification.actionType = ActionType.DELETE;
-            }
-            observer.next(acNotification);
-          });
-      });
-    });
+    const realTracks$ = realDataProvider.get();
+    const simTracks$ = simDataProvider.get();
 
     this.realTracksPauser = new PauseableObserver(realTracks$);
     this.simTracksPauser = new PauseableObserver(simTracks$);
@@ -82,6 +68,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       priority: 2,
     });
 
+    // Change color on hover
     mouseOverObservable.subscribe((event) => {
       const track = event.entities !== null ? event.entities[0] : null;
       if (this.lastPickTrack && (!track || track.id !== this.lastPickTrack.id)) {
@@ -95,12 +82,13 @@ export class TracksLayerComponent implements OnInit, OnChanges {
       this.lastPickTrack = track;
     });
 
+    
+    // Open dialog on double click
     const doubleClickObservable = this.mapEventsManager.register({
       event: CesiumEvent.LEFT_DOUBLE_CLICK,
       pick: PickOptions.PICK_FIRST,
       priority: 2,
     });
-
     doubleClickObservable.subscribe((event) => {
       const track = event.entities !== null ? event.entities[0] : null;
       if (track) {
@@ -206,15 +194,6 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
   showEllipses(): boolean {
     return this.appSettingsService.showEllipses;
-  }
-
-  convertToCesiumObj(entity): any {
-    entity.scale = entity.id === 1 ? 0.3 : 0.15;
-    entity.alt = Math.round(entity.position.altitude);
-    entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.position.altitude);
-    entity.futurePosition =
-      Cesium.Cartesian3.fromDegrees(entity.futurePosition.long, entity.futurePosition.lat, entity.futurePosition.altitude);
-    return entity;
   }
 
   removeAll() {
