@@ -106,7 +106,8 @@ export class AcMapComponent implements OnChanges, OnInit {
               private polylineDrawerService: PolylineDrawerService,
               private polygonDrawerService: PolygonDrawerService,
               private arcDrawerService: ArcDrawerService,
-              private pointDrawerService: PointDrawerService) {
+              private pointDrawerService: PointDrawerService,
+              private mapEventManager: MapEventsManagerService) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
@@ -142,5 +143,9 @@ export class AcMapComponent implements OnChanges, OnInit {
 
   getId() {
     return this.id;
+  }
+  
+  getMapEventManager() {
+    return this.mapEventManager;
   }
 }
