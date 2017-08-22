@@ -119,6 +119,7 @@ export class AcMapComponent implements OnChanges, OnInit {
     this._cesiumService.setMaximumZoom(this.maximumZoom);
     this._cesiumService.setEnableTilt(this.enableTilt);
     this.viewersManager.setViewer(this.id, this.getCesiumViewer());
+    this.mapEventManager.init();
     this.billboardDrawerService.init();
     this.labelDrawerService.init();
     this.ellipseDrawerService.init();
