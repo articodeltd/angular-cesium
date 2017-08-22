@@ -46,10 +46,14 @@ export class MapEventsManagerService {
   private scene;
   private eventRegistrations = new Map<string, Registration[]>();
   
-  constructor(cesiumService: CesiumService,
+  constructor(private cesiumService: CesiumService,
               private eventBuilder: CesiumEventBuilder,
               private plonterService: PlonterService) {
-    this.scene = cesiumService.getScene();
+  }
+  
+  init() {
+    this.eventBuilder.init();
+		this.scene = this.cesiumService.getScene();
   }
   
   /**
