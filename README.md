@@ -207,7 +207,14 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + circle - `ac-circle-desc` / `ac-circle` *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis 
 + polygon - `ac-polygon-desc` / `ac-polygon`
 + point - `ac-point-desc` / `ac-point`
-+ model - `ac-model-desc` 
++ model - `ac-model-desc`
++ box - `ac-box-dec`
++ corridor -`ac-corridor-dec`
++ cylinder - `ac-cylinder-dec`
++ ellipsoid - `ac-ellipsoid-dec`
++ polyline volume - `ac-polyline-volume-dec`
++ wall - `ac-wall-dec`
++ rectangle -`ac-rectangle-dec` 
 
 ## `ac-entity-desc` vs `ac-entity`
 + `ac-entity-desc` component is used to describe how each entity in a stream of entities, managed inside `ac-layer`, should be drawn.
@@ -308,6 +315,8 @@ With angular cesium you can define your map provider in a declarative way using 
 - Pass additional configuration to `[options]` . `url` is mandatory. 
 - Support multi map layers, map ordering and map image layer configuration.
 - Check out usage example from our demo [here](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-layer.component.html)
+
+### 3d Tiles
 
 
 ## Documents

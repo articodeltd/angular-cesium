@@ -1,6 +1,15 @@
 ## 0.0.15
 ### Features
 * Expose `MapEventManagerService` from `<ac-map #map/>` component reference: `acMapComponent.getMapEventManager()`
+* add `<ac-3d-tile-layer/>` for 3d tiles
+* support:
+  * `ac-box-dec`
+  * `ac-corridor-dec`
+  * `ac-cylinder-dec`
+  * `ac-ellipsoid-dec`
+  * `ac-polyline-volume-dec`
+  * `ac-wall-dec`
+  * `ac-rectangle-dec`
 
 
 ## 0.0.14
