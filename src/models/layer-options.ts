@@ -10,5 +10,6 @@ export interface LayerOptions {
 	cylinder?: EntitiesDrawerOptions;
 	ellipsoid?: EntitiesDrawerOptions;
 	polylineVolume?: EntitiesDrawerOptions;
+	rectangle?: EntitiesDrawerOptions;
 	wall?: EntitiesDrawerOptions;
 }

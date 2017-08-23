@@ -7,7 +7,7 @@ import { PolylineVolumeDrawerService } from '../../services/drawers/polyline-vol
 
 /**
  *  This is a point implementation.
- *  The ac-box-desc element must be a child of ac-layer element.
+ *  The element must be a child of ac-layer element.
  *  The properties of props are the same as the properties PointGraphics and the general properties
  *  of Entity
  *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html

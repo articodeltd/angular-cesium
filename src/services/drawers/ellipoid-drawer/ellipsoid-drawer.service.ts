@@ -4,7 +4,7 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { GraphicsType } from '../entities-drawer/enums/graphics-type.enum';
 
 /**
- *  This drawer is responsible for drawing polygons.
+ *  This drawer is responsible for drawing ellipsoid.
  */
 @Injectable()
 export class EllipsoidDrawerService extends EntitiesDrawerService {

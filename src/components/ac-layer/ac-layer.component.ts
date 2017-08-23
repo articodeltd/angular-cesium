@@ -37,6 +37,7 @@ import { CylinderDrawerService } from '../../services/drawers/cylinder-dawer/cyl
 import { EllipsoidDrawerService } from '../../services/drawers/ellipoid-drawer/ellipsoid-drawer.service';
 import { PolylineVolumeDrawerService } from '../../services/drawers/polyline-volume-dawer/polyline-volume-drawer.service';
 import { WallDrawerService } from '../../services/drawers/wall-dawer/wall-drawer.service';
+import { RectangleDrawerService } from '../../services/drawers/rectangle-dawer/rectangle-drawer.service';
 
 // tslint:enable
 /**
@@ -84,6 +85,7 @@ import { WallDrawerService } from '../../services/drawers/wall-dawer/wall-drawer
 		PointDrawerService,
 		PolygonDrawerService,
 		ModelDrawerService,
+		RectangleDrawerService,
 		
 		DynamicEllipseDrawerService,
 		DynamicPolylineDrawerService,
@@ -129,6 +131,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 							ellipsoidDrawerSerice: EllipsoidDrawerService,
 							polylineVolumeDrawerService: PolylineVolumeDrawerService,
 							wallDrawerService: WallDrawerService,
+							rectangleDrawerService: RectangleDrawerService,
+							
 							dynamicEllipseDrawerService: DynamicEllipseDrawerService,
 							dynamicPolylineDrawerService: DynamicPolylineDrawerService,
 							staticCircleDrawerService: StaticCircleDrawerService,
@@ -149,6 +153,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			['cylinder', cylinderDrawerService],
 			['ellipsoid', ellipsoidDrawerSerice],
 			['pollineVolume', polylineVolumeDrawerService],
+			['rectangle', rectangleDrawerService],
 			['wall', wallDrawerService],
 			
 			['dynamicEllipse', dynamicEllipseDrawerService],
