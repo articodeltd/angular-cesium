@@ -85,6 +85,12 @@ import { RectangleDrawerService } from '../../services/drawers/rectangle-dawer/r
 		PointDrawerService,
 		PolygonDrawerService,
 		ModelDrawerService,
+		BoxDrawerService,
+		CorridorDrawerService,
+		CylinderDrawerService,
+		EllipsoidDrawerService,
+		PolylineVolumeDrawerService,
+		WallDrawerService,
 		RectangleDrawerService,
 		
 		DynamicEllipseDrawerService,
@@ -132,7 +138,6 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 							polylineVolumeDrawerService: PolylineVolumeDrawerService,
 							wallDrawerService: WallDrawerService,
 							rectangleDrawerService: RectangleDrawerService,
-							
 							dynamicEllipseDrawerService: DynamicEllipseDrawerService,
 							dynamicPolylineDrawerService: DynamicPolylineDrawerService,
 							staticCircleDrawerService: StaticCircleDrawerService,
