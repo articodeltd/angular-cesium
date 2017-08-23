@@ -38,6 +38,7 @@ import { AcStaticCircleDescComponent } from './components/static-dynamic/ac-stat
 import { AcDynamicCircleDescComponent } from './components/static-dynamic/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
 import { AcStaticPolylineDescComponent } from './components/static-dynamic/ac-static-polyline-desc/ac-static-polyline-desc.component';
 import { AcModelDescComponent } from './components/ac-model-desc/ac-model-desc.component';
+import { AcTileset3dComponent } from './components/ac-3d-tileset/ac-tileset-3d.component';
 import { AcBoxDescComponent } from './components/ac-box-desc/ac-box-desc.component';
 import { AcCylinderDescComponent } from './components/ac-cylinder-desc/ac-cylinder-desc.component';
 import { AcCorridorDescComponent } from './components/ac-corridor-desc/ac-corridor-desc.component';
@@ -50,7 +51,7 @@ import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rect
 	imports: [
 		CommonModule,
 		Angular2ParseModule,
-		UtilsModule
+		UtilsModule,
 	],
 	declarations: [
 		AcMapComponent,
@@ -78,6 +79,7 @@ import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rect
     AcPolygonComponent,
     AcDefaultPlonterComponent,
 		AcModelDescComponent,
+    AcTileset3dComponent,
 		AcBoxDescComponent,
 		AcCylinderDescComponent,
 		AcCorridorDescComponent,
@@ -118,6 +120,7 @@ import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rect
     AcPolygonComponent,
     AcDefaultPlonterComponent,
 		AcModelDescComponent,
+    AcTileset3dComponent,
 		AcBoxDescComponent,
 		AcCylinderDescComponent,
 		AcCorridorDescComponent,
