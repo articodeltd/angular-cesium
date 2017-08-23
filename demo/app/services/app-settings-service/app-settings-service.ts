@@ -26,7 +26,7 @@ export class AppSettingsService {
     realTracksData: false,
     showVelocityVectors: false,
     showEllipses: false,
-    show3dtiles: true,
+    show3dtiles: false,
   };
 
   setSettings(settings) {
