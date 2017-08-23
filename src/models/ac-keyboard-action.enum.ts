@@ -1,0 +1,8 @@
+export enum KeyboardAction {
+  CAMERA_FORWARD,
+  CAMERA_BACKWARD,
+  CAMERA_RIGHT,
+  CAMERA_LEFT,
+  CAMERA_UP,
+  CAMERA_DOWN,
+}

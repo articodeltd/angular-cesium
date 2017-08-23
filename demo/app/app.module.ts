@@ -27,6 +27,7 @@ import { MaxValidatorDirective } from './shared/settings-form/max-validtor.direc
 import { MinValidatorDirective } from './shared/settings-form/min-validator.directive';
 import { MapsLayerComponent } from './components/maps-layer/maps-layer.component';
 import { ModelsLayerComponent } from './components/models-layer/models-layer.component';
+import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ModelsLayerComponent } from './components/models-layer/models-layer.com
 		ModelsLayerComponent,
     MaxValidatorDirective,
     MinValidatorDirective,
+    KeyboardControlLayerComponent,
   ],
   imports: [
     BrowserModule,
