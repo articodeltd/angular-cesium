@@ -5,7 +5,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { isNumber } from 'util';
 import { PREDEFINED_KEYBOARD_ACTIONS } from './predefined-actions';
 
-export type KeyboardControlActionFn = (camera: any, scene: any, key: string) => void;
+export type KeyboardControlActionFn = (camera: any, scene: any, key: string) => boolean;
 export type KeyboardControlValidationFn = (camera: any, scene: any, key: string) => boolean;
 
 export interface KeyboardControlParams {
@@ -111,7 +111,11 @@ export class KeyboardControlService {
           predefinedAction(camera, this._scene, key);
         }
       } else if (typeof execution.action === 'function') {
-        execution.action(camera, this._scene, key);
+        const shouldCancelEvent = execution.action(camera, this._scene, key);
+
+        if (shouldCancelEvent === true) {
+          this._activeDefinitions[key] = null;
+        }
       }
     }
   }
