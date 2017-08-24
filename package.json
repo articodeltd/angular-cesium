@@ -27,8 +27,8 @@
     "test-server": "node demo/performance-server/server.js",
     "server": "nodemon --exec ./node_modules/.bin/ts-node -- ./demo/server/src/main.ts",
     "compile-docs": "rimraf docs && compodoc -p src/tsconfig.compodoc.json -d docs -n \"Angular 2 Cesium\"",
-    "serve-docs": "compodoc -s -d ./docs -r 4200",
-    "compileNserve-docs": "npm run compile-docs && npm run serve-docs",
+    "compileNserve-docs": "npm run compile-docs",
+    "docs": "compodoc -p src/tsconfig.compodoc.json -d docs -n \"Angular 2 Cesium\" --watch --serve",
     "heroku-postbuild": "npm run build-demo"
   },
   "peerDependencies": {
@@ -47,7 +47,7 @@
     "@angular/material": "^2.0.0-beta.8",
     "@angular/platform-browser": "^4.3.2",
     "@angular/platform-browser-dynamic": "^4.3.2",
-    "@compodoc/compodoc": "^1.0.0-beta.13",
+    "@compodoc/compodoc": "^1.0.0-beta.14",
     "@types/body-parser": "^1.16.3",
     "@types/express": "^4.0.35",
     "@types/jasmine": "2.5.46",
