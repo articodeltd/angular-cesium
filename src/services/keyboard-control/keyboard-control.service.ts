@@ -5,12 +5,13 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { isNumber } from 'util';
 import { PREDEFINED_KEYBOARD_ACTIONS } from './predefined-actions';
 
-export type KeyboardControlActionFn = (camera: any, scene: any, key: string) => boolean;
-export type KeyboardControlValidationFn = (camera: any, scene: any, key: string) => boolean;
+export type KeyboardControlActionFn = (camera: any, scene: any, params: any, key: string) => boolean | void;
+export type KeyboardControlValidationFn = (camera: any, scene: any, params: any, key: string) => boolean;
 
 export interface KeyboardControlParams {
   action: KeyboardAction | KeyboardControlActionFn;
   validation?: KeyboardControlValidationFn;
+  params?: { [paramName: string]: any };
 }
 
 interface KeyboardControlDefinition {
@@ -36,6 +37,10 @@ export class KeyboardControlService {
     this._canvas.addEventListener('click', () => {
       this._canvas.focus();
     });
+
+    this.handleKeydown = this.handleKeydown.bind(this);
+    this.handleKeyup = this.handleKeyup.bind(this);
+    this.handleTick = this.handleTick.bind(this);
   }
 
   setKeyboardControls(definitions: KeyboardControlDefinition) {
@@ -95,12 +100,29 @@ export class KeyboardControlService {
     });
   }
 
+  private getParams(paramsDef, camera, scene) {
+    if (!paramsDef) {
+      return {};
+    }
+
+    if (typeof paramsDef === 'function') {
+      return paramsDef(camera, scene);
+    }
+
+    return paramsDef;
+  }
+
   private executeAction(execution: KeyboardControlParams, key: string) {
+    if (!this._currentDefinitions) {
+      return;
+    }
+
     let execute = true;
     const camera = this._viewer.camera;
+    const params = this.getParams(execution.params, camera, this._scene);
 
     if (execution.validation) {
-      execute = execution.validation(camera, this._scene, key);
+      execute = execution.validation(camera, this._scene, params, key);
     }
 
     if (execute === true) {
@@ -108,10 +130,10 @@ export class KeyboardControlService {
         const predefinedAction = PREDEFINED_KEYBOARD_ACTIONS[execution.action];
 
         if (predefinedAction) {
-          predefinedAction(camera, this._scene, key);
+          predefinedAction(camera, this._scene, params, key);
         }
       } else if (typeof execution.action === 'function') {
-        const shouldCancelEvent = execution.action(camera, this._scene, key);
+        const shouldCancelEvent = execution.action(camera, this._scene, params, key);
 
         if (shouldCancelEvent === true) {
           this._activeDefinitions[key] = null;
@@ -121,14 +143,14 @@ export class KeyboardControlService {
   }
 
   registerEvents() {
-    this.document.addEventListener('keydown', this.handleKeydown.bind(this), false);
-    this.document.addEventListener('keyup', this.handleKeyup.bind(this), false);
-    this._viewer.clock.onTick.addEventListener(this.handleTick.bind(this));
+    this.document.addEventListener('keydown', this.handleKeydown);
+    this.document.addEventListener('keyup', this.handleKeyup);
+    this._viewer.clock.onTick.addEventListener(this.handleTick);
   }
 
   unregisterEvents() {
-    this.document.removeEventListener('keydown', this.handleKeydown.bind(this));
-    this.document.removeEventListener('keyup', this.handleKeyup.bind(this));
-    this._viewer.clock.onTick.removeEventListener(this.handleTick.bind(this));
+    this.document.removeEventListener('keydown', this.handleKeydown);
+    this.document.removeEventListener('keyup', this.handleKeyup);
+    this._viewer.clock.onTick.removeEventListener(this.handleTick);
   }
 }

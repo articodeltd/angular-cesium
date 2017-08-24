@@ -7,6 +7,7 @@ interface AppSettings {
   realTracksData: boolean;
   showVelocityVectors: boolean;
   showEllipses: boolean;
+  keyboardControl: boolean;
 }
 
 export class AppSettingsService {
@@ -27,6 +28,7 @@ export class AppSettingsService {
     showVelocityVectors: false,
     showEllipses: false,
     show3dtiles: false,
+    keyboardControl: false,
   };
 
   setSettings(settings) {
@@ -95,5 +97,13 @@ export class AppSettingsService {
 
   set show3dtiles(value: boolean) {
     this._settings.show3dtiles = value;
+  }
+
+  get keyboardControl() {
+    return this._settings.keyboardControl;
+  }
+
+  set keyboardControl(value: boolean) {
+    this._settings.keyboardControl = value;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { KeyboardControlService } from '../../../../src/services/keyboard-control/keyboard-control.service';
 import { KeyboardAction } from '../../../../src/models/ac-keyboard-action.enum';
 
@@ -6,7 +6,7 @@ import { KeyboardAction } from '../../../../src/models/ac-keyboard-action.enum';
   selector: 'keyboard-control-layer',
   template: '',
 })
-export class KeyboardControlLayerComponent implements OnInit {
+export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
   constructor(private keyboardControlService: KeyboardControlService) {
 
   }
@@ -17,8 +17,10 @@ export class KeyboardControlLayerComponent implements OnInit {
       S: { action: KeyboardAction.CAMERA_BACKWARD },
       D: { action: KeyboardAction.CAMERA_RIGHT },
       A: { action: KeyboardAction.CAMERA_LEFT },
-      E: { action: KeyboardAction.CAMERA_DOWN },
-      Q: { action: KeyboardAction.CAMERA_UP },
     });
+  }
+
+  ngOnDestroy() {
+    this.keyboardControlService.removeKeyboardControls();
   }
 }
