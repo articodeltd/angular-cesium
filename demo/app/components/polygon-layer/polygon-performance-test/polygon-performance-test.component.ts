@@ -31,7 +31,7 @@ export class PolygonPerformanceTestComponent implements OnInit {
 		this.polygons$ = Observable.range(1, this.COUNT).map(index => {
 			const entity = new AcEntity({
 				hierarchy : this.createPosition(index),
-				material : Cesium.Color.GREEN,
+				material : Cesium.Color.fromRandom(),
 				height : 0,
 				
 			});
