@@ -23,14 +23,11 @@ export interface KeyboardControlDefinition {
  *  Inject the keyboard control service into any layer, under your `ac-map` component,
  *  And defined you keyboard handlers using `setKeyboardControls`.
  *
- * @example
- * import { Component, OnDestroy, OnInit } from '@angular/core';
- * import { KeyboardControlService } from '../../../../src/services/keyboard-control/keyboard-control.service';
- * import { KeyboardAction } from '../../../../src/models/ac-keyboard-action.enum';
- *
- * @Component({
- *  selector: 'keyboard-control-layer',
- *  template: '',
+ * <caption>Simple Example</caption>
+ * ```typescript
+ * Component({
+ *   selector: 'keyboard-control-layer',
+ *   template: '',
  * })
  * export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
  *   constructor(private keyboardControlService: KeyboardControlService) {}
@@ -48,6 +45,46 @@ export interface KeyboardControlDefinition {
  *     this.keyboardControlService.removeKeyboardControls();
  *   }
  * }
+ * ```
+ *
+ * <caption>Advanced Example</caption>
+ * ```typescript
+ * Component({
+ *   selector: 'keyboard-control-layer',
+ *   template: '',
+ * })
+ * export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
+ *   constructor(private keyboardControlService: KeyboardControlService) {}
+ *
+ *   private myCustomValue = 10;
+ *
+ *   ngOnInit() {
+ *     this.keyboardControlService.setKeyboardControls({
+ *       W: {
+ *          action: KeyboardAction.CAMERA_FORWARD,
+ *          validate: (camera, scene, params, key) => {
+ *            // Replace `checkCamera` you with your validation logic
+ *            if (checkCamera(camera) || params.customParams === true) {
+ *              return true;
+ *            }
+ *
+ *            return false;
+ *          },
+ *          params: () => {
+ *            return {
+ *              myValue: this.myCustomValue,
+ *            };
+ *          },
+ *        }
+ *     });
+ *    }
+ *
+ *   ngOnDestroy() {
+ *     this.keyboardControlService.removeKeyboardControls();
+ *   }
+ * }
+ * ```
+ *
  */
 @Injectable()
 export class KeyboardControlService {
@@ -117,14 +154,26 @@ export class KeyboardControlService {
     this._currentDefinitions = null;
   }
 
+  /**
+   * Returns the current action that handles `char` key string, or `null` if not exists
+   * @param {string} char
+   */
   private getAction(char: string): KeyboardControlParams {
     return this._currentDefinitions[char] || null;
   }
 
+  /**
+   * The default `defaultKeyMappingFn` that maps `KeyboardEvent` into a key string.
+   * @param {KeyboardEvent} keyEvent
+   */
   private defaultKeyMappingFn(keyEvent: KeyboardEvent): string {
     return String.fromCharCode(keyEvent.keyCode);
   }
 
+  /**
+   * document's `keydown` event handler
+   * @param {KeyboardEvent} e
+   */
   private handleKeydown(e: KeyboardEvent) {
     const char = this._keyMappingFn(e);
     const action = this.getAction(char);
@@ -134,6 +183,10 @@ export class KeyboardControlService {
     }
   }
 
+  /**
+   * document's `keyup` event handler
+   * @param {KeyboardEvent} e
+   */
   private handleKeyup(e: KeyboardEvent) {
     const char = this._keyMappingFn(e);
     const action = this.getAction(char);
@@ -143,6 +196,9 @@ export class KeyboardControlService {
     }
   }
 
+  /**
+   * `tick` event handler that triggered by Cesium render loop
+   */
   private handleTick() {
     const activeKeys = Object.keys(this._activeDefinitions);
 
@@ -155,7 +211,17 @@ export class KeyboardControlService {
     });
   }
 
-  private getParams(paramsDef, camera, scene) {
+  /**
+   *
+   * Params resolve function, returns object.
+   * In case of params function, executes it and returns it's return value.
+   * @param {any} paramsDef
+   * @param {Camera} camera
+   * @param {Scene} scene
+   *
+   * @returns {object}
+   */
+  private getParams(paramsDef: any, camera, scene): { [paramName: string]: any } {
     if (!paramsDef) {
       return {};
     }
@@ -167,6 +233,14 @@ export class KeyboardControlService {
     return paramsDef;
   }
 
+  /**
+   *
+   * Executes a given `KeyboardControlParams` object.
+   *
+   * @param {KeyboardControlParams} execution
+   * @param {string} key
+   *
+   */
   private executeAction(execution: KeyboardControlParams, key: string) {
     if (!this._currentDefinitions) {
       return;
@@ -197,12 +271,18 @@ export class KeyboardControlService {
     }
   }
 
+  /**
+   * Registers to keydown, keyup of `document`, and `tick` of Cesium.
+   */
   private registerEvents() {
     this.document.addEventListener('keydown', this.handleKeydown);
     this.document.addEventListener('keyup', this.handleKeyup);
     this._viewer.clock.onTick.addEventListener(this.handleTick);
   }
 
+  /**
+   * Unregisters to keydown, keyup of `document`, and `tick` of Cesium.
+   */
   private unregisterEvents() {
     this.document.removeEventListener('keydown', this.handleKeydown);
     this.document.removeEventListener('keyup', this.handleKeyup);
