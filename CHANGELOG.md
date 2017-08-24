@@ -1,7 +1,7 @@
 ## 0.0.15
 ### Features
 * Expose `MapEventManagerService` from `<ac-map #map/>` component reference: `acMapComponent.getMapEventManager()`
-
+* New `KeyboardControlService` for controlling the camera using the keyboard
 
 ## 0.0.14
 ### Breaking changes 

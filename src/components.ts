@@ -19,3 +19,4 @@ export * from './components/ac-ellipse/ac-ellipse.component';
 export * from './components/ac-html/ac-html.component';
 export * from './components/ac-map-layer-provider/ac-map-layer-provider.component';
 export * from './components/ac-default-plonter/ac-default-plonter.component';
+export * from './components/ac-3d-tileset/ac-tileset-3d.component';
