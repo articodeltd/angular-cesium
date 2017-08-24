@@ -92,7 +92,7 @@ export class EventTestLayerComponent implements OnInit {
 	}
 	
 	testDrag() {
-		this.eventManager.register({event : CesiumEvent.LEFT_CLICK_DRAG, pick : PickOptions.PICK_FIRST})
+		this.eventManager.register({event : CesiumEvent.LEFT_CLICK_DRAG, pick : PickOptions.PICK_FIRST, entityType: AcEntity})
 			.filter((result) => result.entities && result.entities[0].name === 'Drag me')
 			.do((result) => {
 				// disable camera rotation when dragging
