@@ -12,6 +12,7 @@ import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.s
 import { ViewersManagerService } from '../../services/viewers-service/viewers-manager.service';
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
+import { KeyboardControlService } from '../../services/keyboard-control/keyboard-control.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -37,6 +38,7 @@ import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/poly
     CesiumService,
     BillboardDrawerService,
     CesiumEventBuilder,
+    KeyboardControlService,
     MapEventsManagerService,
     PlonterService,
     LabelDrawerService,
@@ -86,7 +88,7 @@ export class AcMapComponent implements OnChanges, OnInit {
    * @type {string}
    */
   @Input()
-  id;
+  id: string;
 
   /**
    * flyTo options according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
@@ -107,7 +109,8 @@ export class AcMapComponent implements OnChanges, OnInit {
               private polygonDrawerService: PolygonDrawerService,
               private arcDrawerService: ArcDrawerService,
               private pointDrawerService: PointDrawerService,
-              private mapEventManager: MapEventsManagerService) {
+              private mapEventManager: MapEventsManagerService,
+              private keyboardControlService: KeyboardControlService) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
@@ -127,6 +130,7 @@ export class AcMapComponent implements OnChanges, OnInit {
     this.polygonDrawerService.init();
     this.arcDrawerService.init();
     this.pointDrawerService.init();
+    this.keyboardControlService.init();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -136,17 +140,30 @@ export class AcMapComponent implements OnChanges, OnInit {
   }
 
   /**
-   * @returns {any} map cesium viewer
+   * @returns {Viewer} map cesium viewer
    */
   getCesiumViewer() {
     return this._cesiumService.getViewer();
   }
 
+  /**
+   * @returns {string} the map id
+   */
   getId() {
     return this.id;
   }
-  
+
+  /**
+   * @returns {MapEventsManagerService}
+   */
   getMapEventManager() {
     return this.mapEventManager;
+  }
+
+  /**
+   * @returns {KeyboardControlService}
+   */
+  getKeyboardControlService() {
+    return this.keyboardControlService;
   }
 }

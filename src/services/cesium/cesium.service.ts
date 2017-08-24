@@ -41,6 +41,14 @@ export class CesiumService {
   }
 
   /**
+   * For more information see https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+   * @returns {{HTMLCanvasElement}|any}
+   */
+  getCanvas(): HTMLCanvasElement {
+    return this.cesiumViewer.canvas as HTMLCanvasElement;
+  }
+
+  /**
    * Gets the minimum zoom value in meters
    * @returns {number}
    */
