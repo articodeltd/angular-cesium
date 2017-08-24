@@ -43,8 +43,8 @@ export class CoordinateConverter {
       const screenPosition = {...screenPos};
       if (addMapCanvansBoundsToPos) {
         const mapBounds = this.cesiumService.getViewer().canvas.getBoundingClientRect();
-        screenPos.x += mapBounds.left;
-        screenPos.y += mapBounds.top;
+				screenPosition.x += mapBounds.left;
+				screenPosition.y += mapBounds.top;
       }
       
       const camera = this.cesiumService.getViewer().camera;
