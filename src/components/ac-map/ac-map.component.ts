@@ -88,7 +88,7 @@ export class AcMapComponent implements OnChanges, OnInit {
    * @type {string}
    */
   @Input()
-  id;
+  id: string;
 
   /**
    * flyTo options according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
@@ -140,17 +140,30 @@ export class AcMapComponent implements OnChanges, OnInit {
   }
 
   /**
-   * @returns {any} map cesium viewer
+   * @returns {Viewer} map cesium viewer
    */
   getCesiumViewer() {
     return this._cesiumService.getViewer();
   }
 
+  /**
+   * @returns {string} the map id
+   */
   getId() {
     return this.id;
   }
-  
+
+  /**
+   * @returns {MapEventsManagerService}
+   */
   getMapEventManager() {
     return this.mapEventManager;
+  }
+
+  /**
+   * @returns {KeyboardControlService}
+   */
+  getKeyboardControlService() {
+    return this.keyboardControlService;
   }
 }
