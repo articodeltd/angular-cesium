@@ -1,8 +1,8 @@
+import { isNumber } from 'util';
 import { Inject, Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { KeyboardAction } from '../../models/ac-keyboard-action.enum';
 import { CesiumService } from '../cesium/cesium.service';
-import { DOCUMENT } from '@angular/platform-browser';
-import { isNumber } from 'util';
 import { PREDEFINED_KEYBOARD_ACTIONS } from './predefined-actions';
 
 export type KeyboardControlActionFn = (camera: any, scene: any, params: any, key: string) => boolean | void;
@@ -18,6 +18,37 @@ interface KeyboardControlDefinition {
   [keyboardCharCode: string]: KeyboardControlParams;
 }
 
+/**
+ *  Service that manages keyboard keys and execute actions per request.
+ *  Inject the keyboard control service into any layer, under your `ac-map` component,
+ *  And defined you keyboard handlers using `setKeyboardControls`.
+ *
+ * @example
+ * import { Component, OnDestroy, OnInit } from '@angular/core';
+ * import { KeyboardControlService } from '../../../../src/services/keyboard-control/keyboard-control.service';
+ * import { KeyboardAction } from '../../../../src/models/ac-keyboard-action.enum';
+ *
+ * @Component({
+ *  selector: 'keyboard-control-layer',
+ *  template: '',
+ * })
+ * export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
+ *   constructor(private keyboardControlService: KeyboardControlService) {}
+ *
+ *   ngOnInit() {
+ *     this.keyboardControlService.setKeyboardControls({
+ *       W: { action: KeyboardAction.CAMERA_FORWARD },
+ *       S: { action: KeyboardAction.CAMERA_BACKWARD },
+ *       D: { action: KeyboardAction.CAMERA_RIGHT },
+ *       A: { action: KeyboardAction.CAMERA_LEFT },
+ *     });
+ *    }
+ *
+ *   ngOnDestroy() {
+ *     this.keyboardControlService.removeKeyboardControls();
+ *   }
+ * }
+ */
 @Injectable()
 export class KeyboardControlService {
   private _currentDefinitions: KeyboardControlDefinition = null;
@@ -25,11 +56,18 @@ export class KeyboardControlService {
   private _scene: any;
   private _canvas: HTMLCanvasElement;
   private _activeDefinitions: KeyboardControlParams[] = [];
-  private _eventHandler = null;
 
+  /**
+   * Creats the keyboard control service.
+   * @constructor
+   */
   constructor(private cesiumService: CesiumService, @Inject(DOCUMENT) private document: HTMLDocument) {
   }
 
+  /**
+   * Initializes the keyboard control service.
+   * @constructor
+   */
   init() {
     this._viewer = this.cesiumService.getViewer();
     this._canvas = this.cesiumService.getCanvas();
@@ -43,6 +81,15 @@ export class KeyboardControlService {
     this.handleTick = this.handleTick.bind(this);
   }
 
+  /**
+   * Sets the current map keyboard control configuration.
+   * The configuration is a key mapping between a key string and a KeyboardControlDefinition:
+   * - `action` is a predefine action from `KeyboardAction` enum, or a custom method:
+   * `(camera, scene, params, key) => boolean | void` - returning false will cancel the current keydown.
+   * - `validation` is a method that validates if the event should occur or not (`camera, scene, params, key`)
+   * - `params` is an object (or function that returns object) that will be passed into the action executor.
+   * @param {KeyboardControlDefinition} definitions
+   */
   setKeyboardControls(definitions: KeyboardControlDefinition) {
     if (!definitions) {
       return this.removeKeyboardControls();
@@ -59,12 +106,15 @@ export class KeyboardControlService {
     });
   }
 
+  /**
+   * Removes the current set of keyboard control items, and unregister from map events.
+   */
   removeKeyboardControls() {
     this.unregisterEvents();
     this._currentDefinitions = null;
   }
 
-  getAction(char: string): KeyboardControlParams {
+  private getAction(char: string): KeyboardControlParams {
     return this._currentDefinitions[char] || null;
   }
 
@@ -142,13 +192,13 @@ export class KeyboardControlService {
     }
   }
 
-  registerEvents() {
+  private registerEvents() {
     this.document.addEventListener('keydown', this.handleKeydown);
     this.document.addEventListener('keyup', this.handleKeyup);
     this._viewer.clock.onTick.addEventListener(this.handleTick);
   }
 
-  unregisterEvents() {
+  private unregisterEvents() {
     this.document.removeEventListener('keydown', this.handleKeydown);
     this.document.removeEventListener('keyup', this.handleKeyup);
     this._viewer.clock.onTick.removeEventListener(this.handleTick);
