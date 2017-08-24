@@ -14,7 +14,7 @@ export interface KeyboardControlParams {
   params?: { [paramName: string]: any };
 }
 
-interface KeyboardControlDefinition {
+export interface KeyboardControlDefinition {
   [keyboardCharCode: string]: KeyboardControlParams;
 }
 
@@ -56,6 +56,7 @@ export class KeyboardControlService {
   private _scene: any;
   private _canvas: HTMLCanvasElement;
   private _activeDefinitions: KeyboardControlParams[] = [];
+  private _keyMappingFn: Function = this.defaultKeyMappingFn;
 
   /**
    * Creats the keyboard control service.
@@ -89,8 +90,9 @@ export class KeyboardControlService {
    * - `validation` is a method that validates if the event should occur or not (`camera, scene, params, key`)
    * - `params` is an object (or function that returns object) that will be passed into the action executor.
    * @param {KeyboardControlDefinition} definitions
+   * @param {Function} keyMappingFn - Mapping function for custom keys
    */
-  setKeyboardControls(definitions: KeyboardControlDefinition) {
+  setKeyboardControls(definitions: KeyboardControlDefinition, keyMappingFn?: (keyEvent: KeyboardEvent) => string) {
     if (!definitions) {
       return this.removeKeyboardControls();
     }
@@ -100,6 +102,7 @@ export class KeyboardControlService {
     }
 
     this._currentDefinitions = definitions;
+    this._keyMappingFn = keyMappingFn || this.defaultKeyMappingFn;
 
     Object.keys(this._currentDefinitions).forEach(key => {
       this._activeDefinitions[key] = null;
@@ -118,9 +121,12 @@ export class KeyboardControlService {
     return this._currentDefinitions[char] || null;
   }
 
+  private defaultKeyMappingFn(keyEvent: KeyboardEvent): string {
+    return String.fromCharCode(keyEvent.keyCode);
+  }
+
   private handleKeydown(e: KeyboardEvent) {
-    const keyCode = e.keyCode;
-    const char = String.fromCharCode(keyCode);
+    const char = this._keyMappingFn(e);
     const action = this.getAction(char);
 
     if (action) {
@@ -129,8 +135,7 @@ export class KeyboardControlService {
   }
 
   private handleKeyup(e: KeyboardEvent) {
-    const keyCode = e.keyCode;
-    const char = String.fromCharCode(keyCode);
+    const char = this._keyMappingFn(e);
     const action = this.getAction(char);
 
     if (action) {

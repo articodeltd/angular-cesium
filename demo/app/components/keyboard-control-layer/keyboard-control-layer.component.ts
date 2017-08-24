@@ -17,6 +17,18 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
       S: { action: KeyboardAction.CAMERA_BACKWARD },
       D: { action: KeyboardAction.CAMERA_RIGHT },
       A: { action: KeyboardAction.CAMERA_LEFT },
+    }, (keyEvent: KeyboardEvent) => {
+      if (keyEvent.code === 'KeyW' || keyEvent.code === 'ArrowUp') {
+        return 'W';
+      } else if (keyEvent.code === 'KeyD' || keyEvent.code === 'ArrowRight') {
+        return 'D';
+      } else if (keyEvent.code === 'KeyA' || keyEvent.code === 'ArrowLeft') {
+        return 'A';
+      } else if (keyEvent.code === 'KeyS' || keyEvent.code === 'ArrowDown') {
+        return 'S';
+      } else {
+        return String.fromCharCode(keyEvent.keyCode);
+      }
     });
   }
 
