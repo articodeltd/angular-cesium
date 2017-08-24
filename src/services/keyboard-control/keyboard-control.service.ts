@@ -62,7 +62,7 @@ export class KeyboardControlService {
    * Creats the keyboard control service.
    * @constructor
    */
-  constructor(private cesiumService: CesiumService, @Inject(DOCUMENT) private document: HTMLDocument) {
+  constructor(private cesiumService: CesiumService, @Inject(DOCUMENT) private document: any) {
   }
 
   /**
