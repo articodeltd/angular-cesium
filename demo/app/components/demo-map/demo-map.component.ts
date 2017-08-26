@@ -11,8 +11,6 @@ import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
   styleUrls : ['./demo-map.component.css']
 })
 export class DemoMapComponent {
-  @Input() tracksRealData: boolean;
-
   @ViewChild('layer') tracksLayer: TracksLayerComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
 
