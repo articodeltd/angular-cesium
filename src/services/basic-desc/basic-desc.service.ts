@@ -25,7 +25,7 @@ export class BasicDesc implements OnInit, OnDestroy {
   @Output()
   onRemove: EventEmitter<OnDrawParams> = new EventEmitter<OnDrawParams>();
 
-  protected _cesiumObjectsMap = new Map();
+  protected _cesiumObjectsMap: Map<string, any> = new Map<string, any>();
   private _propsEvaluateFn: Function;
   private _propsAssignerFn: Function;
 
@@ -53,8 +53,13 @@ export class BasicDesc implements OnInit, OnDestroy {
     this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
   }
 
-  draw(context: any, id: string, entity: AcEntity): any {
+  public getCesiumObjectsMap(): Map<string, any> {
+    return this._cesiumObjectsMap;
+  }
+
+  draw(context: any, id: string, entity: AcEntity): void {
     const cesiumProps = this._propsEvaluator(context);
+
     if (!this._cesiumObjectsMap.has(id)) {
       const cesiumObject = this._drawer.add(cesiumProps);
       this.onDraw.emit({
