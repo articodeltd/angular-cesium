@@ -26,8 +26,11 @@ export class CesiumEventBuilder {
 	private eventsHandler: any;
 	private cesiumEventsObservables = new Map<string, ConnectableObservable<any>>();
 
-	constructor(cesiumService: CesiumService) {
-		this.eventsHandler = cesiumService.getViewer().screenSpaceEventHandler;
+	constructor(private cesiumService: CesiumService) {
+	}
+	
+	init() {
+		this.eventsHandler = this.cesiumService.getViewer().screenSpaceEventHandler;
 	}
 
 	get(event: CesiumEvent, modifier: CesiumEventModifier = undefined): ConnectableObservable<any> {

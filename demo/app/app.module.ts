@@ -27,6 +27,8 @@ import { MaxValidatorDirective } from './shared/settings-form/max-validtor.direc
 import { MinValidatorDirective } from './shared/settings-form/min-validator.directive';
 import { MapsLayerComponent } from './components/maps-layer/maps-layer.component';
 import { ModelsLayerComponent } from './components/models-layer/models-layer.component';
+import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
+import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import { ModelsLayerComponent } from './components/models-layer/models-layer.com
 		ModelsLayerComponent,
     MaxValidatorDirective,
     MinValidatorDirective,
+		PolygonPerformanceTestComponent,
+    KeyboardControlLayerComponent,
   ],
   imports: [
     BrowserModule,

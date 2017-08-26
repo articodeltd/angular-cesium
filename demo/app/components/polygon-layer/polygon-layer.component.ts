@@ -8,7 +8,6 @@ import { AcEntity } from '../../../../src/models/ac-entity';
 @Component({
   selector: 'polygon-layer',
   templateUrl: 'polygon-layer.component.html',
-  styleUrls: ['polygon-layer.component.css'],
 })
 export class PolygonLayerComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;

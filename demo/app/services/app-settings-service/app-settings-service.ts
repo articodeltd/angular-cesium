@@ -1,20 +1,34 @@
+interface AppSettings {
+  show3dtiles: boolean;
+  numberOfEntities: number;
+  entitiesUpdateRate: number;
+  showTracksLayer: boolean;
+  showMapLayer: boolean;
+  realTracksData: boolean;
+  showVelocityVectors: boolean;
+  showEllipses: boolean;
+  keyboardControl: boolean;
+}
+
 export class AppSettingsService {
-  get settings(): { numberOfEntities: number; entitiesUpdateRate: number; showTracksLayer: boolean; showMapLayer: boolean; realTracksData: boolean; showVelocityVectors: boolean; showEllipses: boolean } {
+  get settings(): AppSettings  {
     return this._settings;
   }
 
-  set settings(value: { numberOfEntities: number; entitiesUpdateRate: number; showTracksLayer: boolean; showMapLayer: boolean; realTracksData: boolean; showVelocityVectors: boolean; showEllipses: boolean }) {
+  set settings(value: AppSettings) {
     this._settings = value;
   }
 
-  private _settings = {
+  private _settings: AppSettings = {
     numberOfEntities: 0,
     entitiesUpdateRate: 0,
     showTracksLayer: true,
     showMapLayer: true,
     realTracksData: false,
     showVelocityVectors: false,
-    showEllipses: false
+    showEllipses: false,
+    show3dtiles: false,
+    keyboardControl: false,
   };
 
   setSettings(settings) {
@@ -75,5 +89,21 @@ export class AppSettingsService {
 
   set numOfEntities(value: number) {
     this._settings.numberOfEntities = value;
+  }
+
+  get show3dtiles() {
+    return this._settings.show3dtiles;
+  }
+
+  set show3dtiles(value: boolean) {
+    this._settings.show3dtiles = value;
+  }
+
+  get keyboardControl() {
+    return this._settings.keyboardControl;
+  }
+
+  set keyboardControl(value: boolean) {
+    this._settings.keyboardControl = value;
   }
 }

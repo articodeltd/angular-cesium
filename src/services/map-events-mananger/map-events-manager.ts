@@ -26,7 +26,10 @@ export interface EventResult {
 }
 
 /**
- * Manages all map events. Notice events will run outside of Angular zone
+ * Manages all map events. Notice events will run outside of Angular zone.
+ * Provided by `<ac-map/>` component there for could be injected at any component under `<ac-map/>` hierarchy
+ * or from the `<ac-map/>` component reference `acMapComponent.getMapEventManager()`
+ *
  * __usage:__
  * ```
  * MapEventsManagerService.register({event, modifier, priority, entityType, pickOption}).subscribe()
@@ -43,10 +46,14 @@ export class MapEventsManagerService {
   private scene;
   private eventRegistrations = new Map<string, Registration[]>();
   
-  constructor(cesiumService: CesiumService,
+  constructor(private cesiumService: CesiumService,
               private eventBuilder: CesiumEventBuilder,
               private plonterService: PlonterService) {
-    this.scene = cesiumService.getScene();
+  }
+  
+  init() {
+    this.eventBuilder.init();
+		this.scene = this.cesiumService.getScene();
   }
   
   /**
