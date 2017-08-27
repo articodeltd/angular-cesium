@@ -11,12 +11,12 @@ import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
   styleUrls : ['./demo-map.component.css']
 })
 export class DemoMapComponent {
-  @Input() tracksRealData: boolean;
-  
   @ViewChild('layer') tracksLayer: TracksLayerComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
-  
-  constructor(private viewerConf: ViewerConfiguration, private appSettingsService: AppSettingsService) {
+
+  constructor(
+    private viewerConf: ViewerConfiguration,
+    private appSettingsService: AppSettingsService) {
     viewerConf.viewerOptions = {
       // sceneMode: Cesium.SceneMode.COLUMBUS_VIEW,
       selectionIndicator: false,
@@ -30,7 +30,7 @@ export class DemoMapComponent {
       navigationHelpButton: false,
       navigationInstructionsInitiallyVisible: false,
     };
-    
+
     viewerConf.viewerModifier = (viewer) => {
       viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
       viewer.bottomContainer.remove();
@@ -38,10 +38,10 @@ export class DemoMapComponent {
       // screenSpaceCameraController.enableTilt = false;
       // screenSpaceCameraController.enableRotate = false;
     };
-    
+
     this.appSettingsService.showTracksLayer = true;
   }
-  
+
   removeAll() {
     this.tracksLayer.removeAll();
   }

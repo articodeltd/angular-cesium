@@ -264,6 +264,12 @@ In the example above we start listing to Click events. according to `eventRegisr
      *  PICK_ONE    - in case a few entities are picked plonter is resolved . use Cesium.scene.drillPick()
      *  PICK_ALL    - all entities are picked. use Cesium.scene.drillPick()
      
+`MapEventsManagerService` is porivided by `<ac-map/>`, therefor has 2 possibilitis to reach it:
++ In any components under `<ac-map/>` hierarchy as seen in the example above  (recomannded).
++ Using` @viewChild` and ac-map reference: `acMapComponent.getMapEventManagerService()` .  
+
+Checkout [demo/app/components/event-test-layer/event-test-layer.component.ts](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/event-test-layer.component.ts) for more examples.
+     
 ##### All cesium map  events run out side angular zone  
 Meaning that the the callback that you pass to map event manager
 will be executed outside of angular zone. That is because Cesium run outside of Angular zone

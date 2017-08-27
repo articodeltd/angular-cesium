@@ -1,9 +1,15 @@
-import { Input, OnDestroy, OnInit } from '@angular/core';
+import { EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { AcEntity } from '../../models/ac-entity';
 import { BasicDrawerService } from '../drawers/basic-drawer/basic-drawer.service';
+
+export interface OnDrawParams {
+  acEntity: AcEntity;
+  entityId: string;
+  cesiumEntity: any;
+}
 
 /**
  *  the ancestor class for creating components.
@@ -13,7 +19,13 @@ export class BasicDesc implements OnInit, OnDestroy {
   @Input()
   props: any;
 
-  protected _cesiumObjectsMap = new Map();
+  @Output()
+  onDraw: EventEmitter<OnDrawParams> = new EventEmitter<OnDrawParams>();
+
+  @Output()
+  onRemove: EventEmitter<OnDrawParams> = new EventEmitter<OnDrawParams>();
+
+  protected _cesiumObjectsMap: Map<string, any> = new Map<string, any>();
   private _propsEvaluateFn: Function;
   private _propsAssignerFn: Function;
 
@@ -35,19 +47,35 @@ export class BasicDesc implements OnInit, OnDestroy {
     if (!this.props) {
       console.error('ac-desc components error: [props] input is mandatory');
     }
+
     this._layerService.registerDescription(this);
     this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
     this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
   }
 
-  draw(context: any, id: string, entity: AcEntity): any {
+  public getCesiumObjectsMap(): Map<string, any> {
+    return this._cesiumObjectsMap;
+  }
+
+  draw(context: any, id: string, entity: AcEntity): void {
     const cesiumProps = this._propsEvaluator(context);
+
     if (!this._cesiumObjectsMap.has(id)) {
       const cesiumObject = this._drawer.add(cesiumProps);
+      this.onDraw.emit({
+        acEntity: entity,
+        cesiumEntity: cesiumObject,
+        entityId: id,
+      });
       cesiumObject.acEntity = entity; // set the entity on the cesiumObject for later usage
       this._cesiumObjectsMap.set(id, cesiumObject);
     } else {
       const cesiumObject = this._cesiumObjectsMap.get(id);
+      this.onDraw.emit({
+        acEntity: entity,
+        cesiumEntity: cesiumObject,
+        entityId: id,
+      });
       cesiumObject.acEntity = entity; // set the entity on the cesiumObject for later usage
       this._drawer.setPropsAssigner(this._getPropsAssigner());
       this._drawer.update(cesiumObject, cesiumProps);
@@ -56,6 +84,11 @@ export class BasicDesc implements OnInit, OnDestroy {
 
   remove(id) {
     const cesiumObject = this._cesiumObjectsMap.get(id);
+    this.onRemove.emit({
+      acEntity: cesiumObject.acEntity,
+      cesiumEntity: cesiumObject,
+      entityId: id,
+    });
     this._drawer.remove(cesiumObject);
     this._cesiumObjectsMap.delete(id);
   }
