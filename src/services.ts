@@ -5,6 +5,7 @@ export * from './services/map-events-mananger/consts/cesium-event-modifier.enum'
 export * from './services/map-events-mananger/consts/cesium-event.enum';
 export * from './services/map-events-mananger/consts/pickOptions.enum';
 export * from './services/cesium/cesium.service';
+export * from './services/camera/camera.service';
 export * from './services/coordinate-converter/coordinate-converter.service';
 export * from './services/geo-utils/geo-utils.service';
 export * from './services/plonter/plonter.service';

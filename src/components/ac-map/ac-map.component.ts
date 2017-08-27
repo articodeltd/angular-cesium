@@ -13,6 +13,8 @@ import { ViewersManagerService } from '../../services/viewers-service/viewers-ma
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
 import { KeyboardControlService } from '../../services/keyboard-control/keyboard-control.service';
+import { CameraService } from '../../services/camera/camera.service';
+import { SceneMode } from '../../models/scene-mode.enum';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -21,7 +23,7 @@ import { KeyboardControlService } from '../../services/keyboard-control/keyboard
  * Accessing cesium viewer:
  * 1. acMapComponent.getViewer()
  * 2. Use ViewerManagerService.getCesiumViewer(mapId).
- * 		mapId auto-generated string: 'default-map-id-[index]'
+ *    mapId auto-generated string: 'default-map-id-[index]'
  *
  * @example
  * <ac-map>
@@ -47,6 +49,7 @@ import { KeyboardControlService } from '../../services/keyboard-control/keyboard
     PointDrawerService,
     ArcDrawerService,
     PolygonDrawerService,
+    CameraService,
   ]
 })
 export class AcMapComponent implements OnChanges, OnInit {
@@ -61,26 +64,26 @@ export class AcMapComponent implements OnChanges, OnInit {
   @Input()
   disableDefaultPlonter = false;
 
-  /**
-   * in meters
-   * @type {number}
-   */
-  @Input()
-  minimumZoom: number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
-
-  /**
-   * in meters
-   * @type {number}
-   */
-  @Input()
-  maximumZoom: number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
-
-  /**
-   * Sets the enableTilt of screenSpaceCameraController
-   * @type {boolean}
-   */
-  @Input()
-  enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
+  // /**
+  //  * in meters
+  //  * @type {number}
+  //  */
+  // @Input()
+  // minimumZoom: number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
+  //
+  // /**
+  //  * in meters
+  //  * @type {number}
+  //  */
+  // @Input()
+  // maximumZoom: number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
+  //
+  // /**
+  //  * Sets the enableTilt of screenSpaceCameraController
+  //  * @type {boolean}
+  //  */
+  // @Input()
+  // enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
 
   /**
    * Set the id name of the map
@@ -96,9 +99,16 @@ export class AcMapComponent implements OnChanges, OnInit {
   @Input()
   flyTo: any;
 
+  /**
+   * Sets the map's SceneMode
+   */
+  @Input()
+  sceneMode: SceneMode;
+
   private mapContainer: HTMLElement;
 
   constructor(private _cesiumService: CesiumService,
+              private _cameraService: CameraService,
               private _elemRef: ElementRef,
               @Inject(DOCUMENT) private document: any,
               private viewersManager: ViewersManagerService,
@@ -115,12 +125,13 @@ export class AcMapComponent implements OnChanges, OnInit {
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
     this._cesiumService.init(this.mapContainer);
+    this._cameraService.init(this._cesiumService);
   }
 
   ngOnInit() {
-    this._cesiumService.setMinimumZoom(this.minimumZoom);
-    this._cesiumService.setMaximumZoom(this.maximumZoom);
-    this._cesiumService.setEnableTilt(this.enableTilt);
+    // this._cesiumService.setMinimumZoom(this.minimumZoom);
+    // this._cesiumService.setMaximumZoom(this.maximumZoom);
+    // this._cesiumService.setEnableTilt(this.enableTilt);
     this.viewersManager.setViewer(this.id, this.getCesiumViewer());
     this.mapEventManager.init();
     this.billboardDrawerService.init();
@@ -135,7 +146,10 @@ export class AcMapComponent implements OnChanges, OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['flyTo']) {
-      this._cesiumService.flyTo(changes['flyTo'].currentValue);
+      this._cameraService.flyTo(changes['flyTo'].currentValue);
+    }
+    if (changes['sceneMode']) {
+      this._cameraService.setSceneMode(changes['sceneMode'].currentValue);
     }
   }
 
@@ -144,6 +158,13 @@ export class AcMapComponent implements OnChanges, OnInit {
    */
   getCesiumViewer() {
     return this._cesiumService.getViewer();
+  }
+
+  /**
+   * @returns {Camera} map's scene's camera
+   */
+  getCamera() {
+    return this._cameraService.getCamera();
   }
 
   /**

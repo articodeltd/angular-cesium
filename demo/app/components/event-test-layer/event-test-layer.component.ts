@@ -7,8 +7,8 @@ import { AcEntity } from '../../../../src/models/ac-entity';
 import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
 import { CesiumEvent } from '../../../../src/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../src/services/map-events-mananger/consts/pickOptions.enum';
-import { CesiumService } from '../../../../src/services/cesium/cesium.service';
 import { CoordinateConverter } from '../../../../src/services/coordinate-converter/coordinate-converter.service';
+import { CameraService } from '../../../../src/services/camera/camera.service';
 
 @Component({
 	selector : 'event-test-layer',
@@ -22,7 +22,7 @@ export class EventTestLayerComponent implements OnInit {
 	@Output() mouseMove = new EventEmitter();
 	
 	constructor(private eventManager: MapEventsManagerService,
-							private cesiumService: CesiumService,
+							private cameraService: CameraService,
 							private geoConverter: CoordinateConverter) {
 		const track1: AcNotification = {
 			id : '0',
@@ -97,9 +97,9 @@ export class EventTestLayerComponent implements OnInit {
 			.do((result) => {
 				// disable camera rotation when dragging
 				if (!result.movement.drop) {
-					this.cesiumService.getScene().screenSpaceCameraController.enableRotate = false;
+					this.cameraService.enableRotate(false)
 				} else {
-					this.cesiumService.getScene().screenSpaceCameraController.enableRotate = true;
+          this.cameraService.enableRotate(true)
 				}
 			})
 			.map((result) => {

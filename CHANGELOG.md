@@ -1,9 +1,9 @@
 ## 0.0.16
 ### Features
-* Expose `onDraw` and `onRemove` for `BasicDesc` component - now it's possible to know when an Cesium object is drawn.
-* Expose `getCesiumObjectsMap` from `BasicDesc` component.
-* Add drag and drop event to `MapEventManagerService`
-* support:
+* Exposed `onDraw` and `onRemove` for `BasicDesc` component - now it's possible to know when an Cesium object is drawn.
+* Exposed `getCesiumObjectsMap` from `BasicDesc` component.
+* Added drag and drop event to `MapEventManagerService`
+* Added new drawable entities:
   * `ac-box-dec`
   * `ac-corridor-dec`
   * `ac-cylinder-dec`
@@ -11,6 +11,9 @@
   * `ac-polyline-volume-dec`
   * `ac-wall-dec`
   * `ac-rectangle-dec`
+* Added CameraService that is provided by `ac-map`. The service exposes the scene's camera and screenSpaceCameraController.
+### Breaking Changes
+*CesiumService no longer supports camera actions such as `setEnableTilt`, `setMaximumZoom`, etc... - instead use CameraService that is provided by `ac-map`.
 
 ## 0.0.15
 ### Features
