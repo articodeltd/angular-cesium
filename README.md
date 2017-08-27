@@ -207,7 +207,14 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + circle - `ac-circle-desc` / `ac-circle` *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis 
 + polygon - `ac-polygon-desc` / `ac-polygon`
 + point - `ac-point-desc` / `ac-point`
-+ model - `ac-model-desc` 
++ model - `ac-model-desc`
++ box - `ac-box-dec`
++ corridor -`ac-corridor-dec`
++ cylinder - `ac-cylinder-dec`
++ ellipsoid - `ac-ellipsoid-dec`
++ polyline volume - `ac-polyline-volume-dec`
++ wall - `ac-wall-dec`
++ rectangle -`ac-rectangle-dec` 
 
 ## `ac-entity-desc` vs `ac-entity`
 + `ac-entity-desc` component is used to describe how each entity in a stream of entities, managed inside `ac-layer`, should be drawn.
@@ -219,7 +226,8 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + `ac-polyline` & `ac-polyline-desc` are using the Polyline Primitive API with an extended Material property that accepts Cesium Color Object.
 
 ## Map Events
-`MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection and event priority management.
+`MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection, event priority management 
+and adds custom events (drag and drop, long press).
 
 Usage:  
 ```javascript
@@ -247,6 +255,7 @@ In the example above we start listing to Click events. according to `eventRegisr
 - `eventManager.register()` 
   - Returns RxJs observer  of type `DisposableObservable<EventResult>` that we can subsribe to. 
   - To remove the event registration just do: `resultObserver.dispose()`
+- **event:** according to `CesiumEvent` enum. All cesium events are supported, includes additional events like DragNDrop and LongPress
 - **entityType:** it is possible to register to events on a specific entities types, e.g raise event only when `TrackEntity` is Clicked.
    - `AcEntity` is the base class for all angular-cesium entities, it is a part of `AcNotification` and is
      required for `MapEventManager` to work properly.
@@ -261,6 +270,12 @@ In the example above we start listing to Click events. according to `eventRegisr
      *  PICK_FIRST  - first entity will be picked . use Cesium.scene.pick()
      *  PICK_ONE    - in case a few entities are picked plonter is resolved . use Cesium.scene.drillPick()
      *  PICK_ALL    - all entities are picked. use Cesium.scene.drillPick()
+     
+`MapEventsManagerService` is porivided by `<ac-map/>`, therefor has 2 possibilitis to reach it:
++ In any components under `<ac-map/>` hierarchy as seen in the example above  (recomannded).
++ Using` @viewChild` and ac-map reference: `acMapComponent.getMapEventManagerService()` .  
+
+Checkout [demo/app/components/event-test-layer/event-test-layer.component.ts](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/event-test-layer.component.ts) for more examples.
      
 ##### All cesium map  events run out side angular zone  
 Meaning that the the callback that you pass to map event manager
@@ -309,6 +324,15 @@ With angular cesium you can define your map provider in a declarative way using 
 - Support multi map layers, map ordering and map image layer configuration.
 - Check out usage example from our demo [here](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-layer.component.html)
 
+### 3d Tiles
+```html
+   <ac-3d-tile-layer
+       *ngIf="appSettingsService.show3dtiles"
+       [options]="{
+         url: 'https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s'
+       }">
+   </ac-3d-tile-layer>
+```
 
 ## Documents
 + #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   

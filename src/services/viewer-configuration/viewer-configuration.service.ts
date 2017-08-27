@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
  * set the wanted options.
  * ```typescript
  * constructor(viewerConf :ViewerConfiguration ){
-  *   viewerConfiguration.viewerOptions = { timeline: false };
+  *   viewerConf.viewerOptions = { timeline: false };
   * }
  * ```
  * notice this configuration will be for all <ac-maps> in your component.
