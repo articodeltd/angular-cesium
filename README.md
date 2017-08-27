@@ -219,7 +219,7 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + `ac-polyline` & `ac-polyline-desc` are using the Polyline Primitive API with an extended Material property that accepts Cesium Color Object.
 
 ## Map Events
-`MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection and event priority management.
+`MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection and event priority management.   
 
 Usage:  
 ```javascript
@@ -261,6 +261,12 @@ In the example above we start listing to Click events. according to `eventRegisr
      *  PICK_FIRST  - first entity will be picked . use Cesium.scene.pick()
      *  PICK_ONE    - in case a few entities are picked plonter is resolved . use Cesium.scene.drillPick()
      *  PICK_ALL    - all entities are picked. use Cesium.scene.drillPick()
+     
+`MapEventsManagerService` is porivided by `<ac-map/>`, therefor has 2 possibilitis to reach it:
++ In any components under `<ac-map/>` hierarchy as seen in the example above  (recomannded).
++ Using` @viewChild` and ac-map reference: `acMapComponent.getMapEventManagerService()` .  
+
+Checkout [demo/app/components/event-test-layer/event-test-layer.component.ts](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/event-test-layer.component.ts) for more examples.
      
 ##### All cesium map  events run out side angular zone  
 Meaning that the the callback that you pass to map event manager
