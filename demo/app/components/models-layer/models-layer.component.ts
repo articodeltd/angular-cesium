@@ -34,7 +34,7 @@ export class ModelsLayerComponent implements OnInit {
 	Cesium = Cesium;
 	show = true;
 	
-	constructor(private tracksDataProvider: TracksDataProvider, private cesium: CesiumService, webSocketSupllier: WebSocketSupplier) {
+	constructor(webSocketSupllier: WebSocketSupplier) {
 		const socket = webSocketSupllier.get();
 		this.simTracks$ = Observable.create((observer) => {
 			socket.on('birds', (data) => {

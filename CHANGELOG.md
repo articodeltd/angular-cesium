@@ -1,7 +1,7 @@
-## 0.0.15
+## 0.0.16
 ### Features
-* Expose `MapEventManagerService` from `<ac-map #map/>` component reference: `acMapComponent.getMapEventManager()`
-* add `<ac-3d-tile-layer/>` for 3d tiles
+* Expose `onDraw` and `onRemove` for `BasicDesc` component - now it's possible to know when an Cesium object is drawn.
+* Expose `getCesiumObjectsMap` from `BasicDesc` component.
 * support:
   * `ac-box-dec`
   * `ac-corridor-dec`
@@ -11,6 +11,11 @@
   * `ac-wall-dec`
   * `ac-rectangle-dec`
 
+## 0.0.15
+### Features
+* Expose `MapEventManagerService` from `<ac-map #map/>` component reference: `acMapComponent.getMapEventManager()`
+* New `KeyboardControlService` for controlling the camera using the keyboard
+* add `<ac-3d-tile-layer/>` for 3d tiles
 
 ## 0.0.14
 ### Breaking changes 

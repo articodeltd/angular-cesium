@@ -1,14 +1,25 @@
+import { Injectable } from '@angular/core';
+
 interface AppSettings {
   show3dtiles: boolean;
   numberOfEntities: number;
   entitiesUpdateRate: number;
   showTracksLayer: boolean;
   showMapLayer: boolean;
-  realTracksData: boolean;
   showVelocityVectors: boolean;
   showEllipses: boolean;
+  keyboardControl: boolean;
+  tracksDataType: TracksType;
+  
 }
 
+export enum TracksType {
+	REAL_DATA,
+	SIM_DATA,
+	MODELS_3D,
+}
+
+@Injectable()
 export class AppSettingsService {
   get settings(): AppSettings  {
     return this._settings;
@@ -23,10 +34,11 @@ export class AppSettingsService {
     entitiesUpdateRate: 0,
     showTracksLayer: true,
     showMapLayer: true,
-    realTracksData: false,
     showVelocityVectors: false,
     showEllipses: false,
     show3dtiles: false,
+    keyboardControl: false,
+		tracksDataType: TracksType.MODELS_3D,
   };
 
   setSettings(settings) {
@@ -57,12 +69,12 @@ export class AppSettingsService {
     this._settings.showMapLayer = value;
   }
 
-  get realTracksData(): boolean {
-    return this._settings.realTracksData;
+  get tracksDataType(): TracksType {
+    return this._settings.tracksDataType;
   }
 
-  set realTracksData(value: boolean) {
-    this._settings.realTracksData = value;
+  set tracksDataType(value: TracksType) {
+    this._settings.tracksDataType = value;
   }
 
   get showTracksLayer(): boolean {
@@ -95,5 +107,13 @@ export class AppSettingsService {
 
   set show3dtiles(value: boolean) {
     this._settings.show3dtiles = value;
+  }
+
+  get keyboardControl() {
+    return this._settings.keyboardControl;
+  }
+
+  set keyboardControl(value: boolean) {
+    this._settings.keyboardControl = value;
   }
 }

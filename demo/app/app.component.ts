@@ -3,7 +3,7 @@ import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocket
 import { MapLayerProviderOptions } from '../../src/models/map-layer-provider-options.enum';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdDialog, MdIconRegistry } from '@angular/material';
-import { AppSettingsService } from './services/app-settings-service/app-settings-service';
+import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
 import { ViewerFactory } from '../../src/services/viewer-factory/viewer-factory.service';
 import { ViewersManagerService } from '../../src/services/viewers-service/viewers-manager.service';
 
@@ -21,6 +21,8 @@ export class AppComponent implements AfterViewInit{
     duration: 2,
     destination: Cesium.Cartesian3.fromDegrees(-117.16, 32.71, 15000.0),
   };
+	
+	TracksType = TracksType;
 
   constructor(public appSettingsService: AppSettingsService,
               iconRegistry: MdIconRegistry,

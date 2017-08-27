@@ -28,6 +28,8 @@ import { MinValidatorDirective } from './shared/settings-form/min-validator.dire
 import { MapsLayerComponent } from './components/maps-layer/maps-layer.component';
 import { ModelsLayerComponent } from './components/models-layer/models-layer.component';
 import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodrome-layer.component';
+import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
+import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodro
 		ModelsLayerComponent,
     MaxValidatorDirective,
     MinValidatorDirective,
+		PolygonPerformanceTestComponent,
+    KeyboardControlLayerComponent,
     HippodromeLayerComponent,
   ],
   imports: [
