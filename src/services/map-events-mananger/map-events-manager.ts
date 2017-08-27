@@ -141,7 +141,7 @@ export class MapEventsManagerService {
 		return registration;
 	}
 	
-	private createDragEvent(event, modifier, entityType, pickOption, priority) {
+	private createDragEvent(event, modifier, entityType, pickOption, priority): Observable<EventResult> {
 		const {mouseDownEvent, mouseUpEvent} = CesiumDragDropHelper.getDragEventTypes(event);
 		
 		const mouseUpObservable = this.eventBuilder.get(mouseUpEvent);
@@ -149,7 +149,7 @@ export class MapEventsManagerService {
 		
 		const mouseDownRegistration = this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption, priority);
 		
-		const dropSubject = new Subject();
+		const dropSubject = new Subject<EventResult>();
 		const dragObserver = mouseDownRegistration.observable.mergeMap(e => {
 			let lastMove = null;
 			const dragStartPositionX = e.movement.startPosition.x;
@@ -178,7 +178,6 @@ export class MapEventsManagerService {
 			});
 		});
 		
-		// TODO publish?
 		return dragObserver.merge(dropSubject);
 		
 	}
