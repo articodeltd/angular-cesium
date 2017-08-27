@@ -2,12 +2,18 @@ import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { Injectable } from '@angular/core';
-import { CesiumPureEventObserver } from './cesium-pure-event-observer';
-import { CesiumLongPressObserver } from './cesium-long-press-observer';
+import { CesiumPureEventObserver } from './event-observers/cesium-pure-event-observer';
+import { CesiumLongPressObserver } from './event-observers/cesium-long-press-observer';
 import { ConnectableObservable } from 'rxjs/observable/ConnectableObservable';
 
 @Injectable()
 export class CesiumEventBuilder {
+	public static longPressEvents: Set<CesiumEvent> = new Set([
+		CesiumEvent.LONG_LEFT_PRESS,
+		CesiumEvent.LONG_RIGHT_PRESS,
+		CesiumEvent.LONG_MIDDLE_PRESS
+	]);
+	
 	public static getEventFullName(event: CesiumEvent, modifier?: CesiumEventModifier): string {
 		if (modifier) {
 			return `${event}_${modifier}`;
@@ -16,23 +22,17 @@ export class CesiumEventBuilder {
 			return event.toString();
 		}
 	}
-
-	public static longPressEvents: Set<CesiumEvent> = new Set([
-		CesiumEvent.LONG_LEFT_PRESS,
-		CesiumEvent.LONG_RIGHT_PRESS,
-		CesiumEvent.LONG_MIDDLE_PRESS
-	]);
-
+	
 	private eventsHandler: any;
 	private cesiumEventsObservables = new Map<string, ConnectableObservable<any>>();
-
+	
 	constructor(private cesiumService: CesiumService) {
 	}
 	
 	init() {
 		this.eventsHandler = this.cesiumService.getViewer().screenSpaceEventHandler;
 	}
-
+	
 	get(event: CesiumEvent, modifier: CesiumEventModifier = undefined): ConnectableObservable<any> {
 		const eventName = CesiumEventBuilder.getEventFullName(event, modifier);
 		if (this.cesiumEventsObservables.has(eventName)) {
@@ -43,7 +43,7 @@ export class CesiumEventBuilder {
 			return eventObserver;
 		}
 	}
-
+	
 	private createCesiumEventObservable(event: CesiumEvent, modifier?: CesiumEventModifier): ConnectableObservable<any> {
 		let cesiumEventObservable: ConnectableObservable<any> = undefined;
 		if (CesiumEventBuilder.longPressEvents.has(event)) {
@@ -55,7 +55,7 @@ export class CesiumEventBuilder {
 		cesiumEventObservable.connect();
 		return cesiumEventObservable;
 	}
-
+	
 	private createSpecialCesiumEventObservable(event: CesiumEvent, modifier: CesiumEventModifier): ConnectableObservable<any> {
 		// could support more events if needed
 		return new CesiumLongPressObserver(event, modifier, this).init();

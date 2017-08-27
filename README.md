@@ -219,7 +219,8 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + `ac-polyline` & `ac-polyline-desc` are using the Polyline Primitive API with an extended Material property that accepts Cesium Color Object.
 
 ## Map Events
-`MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection and event priority management.   
+`MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection, event priority management 
+and adds custom events (drag and drop, long press).
 
 Usage:  
 ```javascript
@@ -247,6 +248,7 @@ In the example above we start listing to Click events. according to `eventRegisr
 - `eventManager.register()` 
   - Returns RxJs observer  of type `DisposableObservable<EventResult>` that we can subsribe to. 
   - To remove the event registration just do: `resultObserver.dispose()`
+- **event:** according to `CesiumEvent` enum. All cesium events are supported, includes additional events like DragNDrop and LongPress
 - **entityType:** it is possible to register to events on a specific entities types, e.g raise event only when `TrackEntity` is Clicked.
    - `AcEntity` is the base class for all angular-cesium entities, it is a part of `AcNotification` and is
      required for `MapEventManager` to work properly.

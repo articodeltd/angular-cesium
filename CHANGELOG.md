@@ -1,12 +1,14 @@
-## NEXT
+## 0.0.16
 ### Features
 * Expose `onDraw` and `onRemove` for `BasicDesc` component - now it's possible to know when an Cesium object is drawn.
 * Expose `getCesiumObjectsMap` from `BasicDesc` component.
+* Add drag and drop event to `MapEventManagerService`
 
 ## 0.0.15
 ### Features
 * Expose `MapEventManagerService` from `<ac-map #map/>` component reference: `acMapComponent.getMapEventManager()`
 * New `KeyboardControlService` for controlling the camera using the keyboard
+
 
 ## 0.0.14
 ### Breaking changes 
