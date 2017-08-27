@@ -1,5 +1,5 @@
 <ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [store]="true">
-    <ac-billboard-desc props="{
+    <ac-billboard-desc *ngIf="!onlyModels()" props="{
       image: track.image,
       position: track.position,
       color: getTrackColor(track),
@@ -9,7 +9,7 @@
     }">
     </ac-billboard-desc>
 
-    <ac-label-desc props="{
+    <ac-label-desc *ngIf="!onlyModels()" props="{
         position: track.position,
         pixelOffset : [-15,20] | pixelOffset,
         text: track.callsign,
@@ -19,7 +19,7 @@
     }">
     </ac-label-desc>
 
-    <ac-label-desc *ngIf="!realData" props="{
+    <ac-label-desc *ngIf="onlySimTracks()" props="{
         position: track.position,
         pixelOffset : [-15,35] | pixelOffset,
         text: track.alt.toString(),
@@ -35,4 +35,14 @@
         material: getPolylineColor()
     }">
     </ac-polyline-desc>
+
+    <ac-model-desc *ngIf="onlyModels()" props="{
+							position: track.position,
+							minimumPixelSize: 500,
+							maximumScale : 20000,
+							uri: '/assets/CesiumAir/Cesium_Air.gltf',
+							orientation: track.orientation,
+							color: getTrackColor(track)
+						   }">
+    </ac-model-desc>
 </ac-layer>
