@@ -1,3 +1,8 @@
+## NEXT
+### Features
+* Expose `onDraw` and `onRemove` for `BasicDesc` component - now it's possible to know when an Cesium object is drawn.
+* Expose `getCesiumObjectsMap` from `BasicDesc` component.
+
 ## 0.0.15
 ### Features
 * Expose `MapEventManagerService` from `<ac-map #map/>` component reference: `acMapComponent.getMapEventManager()`
