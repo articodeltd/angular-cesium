@@ -2,6 +2,7 @@
 ### Features
 * Expose `onDraw` and `onRemove` for `BasicDesc` component - now it's possible to know when an Cesium object is drawn.
 * Expose `getCesiumObjectsMap` from `BasicDesc` component.
+* Add drag and drop event to `MapEventManagerService`
 * support:
   * `ac-box-dec`
   * `ac-corridor-dec`

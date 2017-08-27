@@ -7,5 +7,6 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/publish';
 import 'rxjs/add/operator/merge';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/merge';
