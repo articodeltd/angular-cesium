@@ -1,4 +1,4 @@
-## 0.0.16
+## 0.0.18
 ### Features
 * Exposed `onDraw` and `onRemove` for `BasicDesc` component - now it's possible to know when an Cesium object is drawn.
 * Exposed `getCesiumObjectsMap` from `BasicDesc` component.
