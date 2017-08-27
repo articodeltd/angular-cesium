@@ -39,6 +39,13 @@ import { AcDynamicCircleDescComponent } from './components/static-dynamic/ac-dyn
 import { AcStaticPolylineDescComponent } from './components/static-dynamic/ac-static-polyline-desc/ac-static-polyline-desc.component';
 import { AcModelDescComponent } from './components/ac-model-desc/ac-model-desc.component';
 import { AcTileset3dComponent } from './components/ac-3d-tileset/ac-tileset-3d.component';
+import { AcBoxDescComponent } from './components/ac-box-desc/ac-box-desc.component';
+import { AcCylinderDescComponent } from './components/ac-cylinder-desc/ac-cylinder-desc.component';
+import { AcCorridorDescComponent } from './components/ac-corridor-desc/ac-corridor-desc.component';
+import { AcEllipsoidDescComponent } from './components/ac-ellipsoid-desc/ac-ellipsoid-desc.component';
+import { AcPolylineVolumeDescComponent } from './components/ac-polyline-volume-desc/ac-polyline-volume-desc.component';
+import { AcWallDescComponent } from './components/ac-wall-desc/ac-wall-desc.component';
+import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rectangle-desc.component';
 
 @NgModule({
 	imports: [
@@ -73,6 +80,13 @@ import { AcTileset3dComponent } from './components/ac-3d-tileset/ac-tileset-3d.c
     AcDefaultPlonterComponent,
 		AcModelDescComponent,
     AcTileset3dComponent,
+		AcBoxDescComponent,
+		AcCylinderDescComponent,
+		AcCorridorDescComponent,
+		AcEllipsoidDescComponent,
+		AcPolylineVolumeDescComponent,
+		AcWallDescComponent,
+		AcRectangleDescComponent,
     
     AcStaticEllipseDescComponent,
   	AcDynamicEllipseDescComponent,
@@ -107,8 +121,15 @@ import { AcTileset3dComponent } from './components/ac-3d-tileset/ac-tileset-3d.c
     AcDefaultPlonterComponent,
 		AcModelDescComponent,
     AcTileset3dComponent,
-    
-    AcStaticEllipseDescComponent,
+		AcBoxDescComponent,
+		AcCylinderDescComponent,
+		AcCorridorDescComponent,
+		AcEllipsoidDescComponent,
+		AcPolylineVolumeDescComponent,
+		AcWallDescComponent,
+		AcRectangleDescComponent,
+		
+		AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
     AcDynamicPolylineDescComponent,
     AcStaticPolylineDescComponent,

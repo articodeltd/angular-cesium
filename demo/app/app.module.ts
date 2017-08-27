@@ -27,6 +27,7 @@ import { MaxValidatorDirective } from './shared/settings-form/max-validtor.direc
 import { MinValidatorDirective } from './shared/settings-form/min-validator.directive';
 import { MapsLayerComponent } from './components/maps-layer/maps-layer.component';
 import { ModelsLayerComponent } from './components/models-layer/models-layer.component';
+import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodrome-layer.component';
 import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 
@@ -55,6 +56,7 @@ import { KeyboardControlLayerComponent } from './components/keyboard-control-lay
     MinValidatorDirective,
 		PolygonPerformanceTestComponent,
     KeyboardControlLayerComponent,
+    HippodromeLayerComponent,
   ],
   imports: [
     BrowserModule,
