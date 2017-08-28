@@ -1,3 +1,11 @@
+## NEXT
+### Features
+* Added `done` callback to `KeyboardControlService` definitions - now it's possible to know when the event is done.
+* Added internal `IGNORED` state to `KeyboardControlService` - now when action returns `false` it will ignore it until the next event cycle (keydown then keyup)
+
+### Breaking Changes
+* Event triggered from `KeyboardControlService` is now triggered with `cesiumService: CesiumService, key: string, keyboardEvent: KeyboardEvent`.
+
 ## 0.0.18
 ### Features
 * Expose `onDraw` and `onRemove` for `BasicDesc` component - now it's possible to know when an Cesium object is drawn.
