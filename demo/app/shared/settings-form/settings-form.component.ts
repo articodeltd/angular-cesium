@@ -44,10 +44,10 @@ export class SettingsFormComponent {
   newYorkToggle(toggle) {
     if (toggle.checked) {
       if (!this.cameraService) {
-        this.cameraService = this.mapsManagerService.getMap('main-map').getCameraService();
+        this.cameraService = this.mapsManagerService.getMap().getCameraService();
       }
       this.cameraService.cameraFlyTo({
-        destination : Cesium.Cartesian3.fromDegrees(-73.980689, 40.762991, 5000.0)
+        destination: Cesium.Cartesian3.fromDegrees(-73.980689, 40.762991, 5000.0)
       });
     }
     console.log(toggle);
