@@ -2,9 +2,13 @@
 ### Features
 * Added `done` callback to `KeyboardControlService` definitions - now it's possible to know when the event is done.
 * Added internal `IGNORED` state to `KeyboardControlService` - now when action returns `false` it will ignore it until the next event cycle (keydown then keyup)
+* Added CameraService that is provided by `ac-map`. The service exposes the scene's camera and screenSpaceCameraController.
 
 ### Breaking Changes
 * Event triggered from `KeyboardControlService` is now triggered with `cesiumService: CesiumService, key: string, keyboardEvent: KeyboardEvent`.
+* CesiumService no longer supports camera actions such as `setEnableTilt`, `setMaximumZoom`, etc... - instead use CameraService that is provided by `ac-map`.
+* `ac-map` function `getMapEventManager()` renamed to `getMapEventsManager()`
+* `ViewersManagerService` renamed into `MapsManagerService`. It now manage ac-map instances. Internal functions changed accordingly to `getMap()` and `registerMap()`. The logic remained the same.
 
 ## 0.0.18
 ### Features
@@ -19,11 +23,6 @@
   * `ac-polyline-volume-dec`
   * `ac-wall-dec`
   * `ac-rectangle-dec`
-* Added CameraService that is provided by `ac-map`. The service exposes the scene's camera and screenSpaceCameraController.
-### Breaking Changes
-* CesiumService no longer supports camera actions such as `setEnableTilt`, `setMaximumZoom`, etc... - instead use CameraService that is provided by `ac-map`.
-* `ac-map` function `getMapEventManager()` renamed to `getMapEventsManager()`
-* `ViewersManagerService` renamed into `MapsManagerService`. It now manage ac-map instances. Internal functions changed accordingly to `getMap()` and `registerMap()`. The logic remained the same.
 
 ## 0.0.15
 ### Features
