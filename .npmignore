@@ -5,6 +5,7 @@ documentation/
 docs/
 demo/
 .circleci/
+dist/
 
 # ignore the .ts files
 src/*.ts
