@@ -10,6 +10,6 @@ export * from './services/coordinate-converter/coordinate-converter.service';
 export * from './services/geo-utils/geo-utils.service';
 export * from './services/plonter/plonter.service';
 export * from './services/viewer-configuration/viewer-configuration.service';
-export * from './services/viewers-service/viewers-manager.service';
+export * from './services/maps-manager/maps-manager.service';
 export * from './services/keyboard-control/keyboard-control.service';
 export * from './services/keyboard-control/predefined-actions';

@@ -14,9 +14,10 @@ export class CameraService {
   private camera;
   private screenSpaceCameraController;
   private morphListenerCancelFn;
-  private rotate = true;
-  private tilt = true;
-  private look = true;
+  private lastRotate = true;
+  private lastTilt = true;
+  private lastLook = true;
+  private isSceneModePerformance2D = false;
 
   constructor() {
   }
@@ -26,7 +27,6 @@ export class CameraService {
     this.scene = cesiumService.getScene();
     this.screenSpaceCameraController = this.scene.screenSpaceCameraController;
     this.camera = this.scene.camera;
-    this._listenToSceneModeMorph(this._revertCameraProperties.bind(this));
   }
 
   _listenToSceneModeMorph(callback: Function) {
@@ -35,9 +35,10 @@ export class CameraService {
 
 
   _revertCameraProperties() {
-    this.enableTilt(this.tilt);
-    this.enableRotate(this.rotate);
-    this.enableLook(this.look);
+    this.isSceneModePerformance2D = false;
+    this.enableTilt(this.lastTilt);
+    this.enableRotate(this.lastRotate);
+    this.enableLook(this.lastLook);
   }
 
   /**
@@ -93,7 +94,6 @@ export class CameraService {
    * @param {boolean} tilt
    */
   enableTilt(tilt: boolean): void {
-    this.tilt = tilt;
     this.screenSpaceCameraController.enableTilt = tilt;
   }
 
@@ -102,7 +102,6 @@ export class CameraService {
    * @param {boolean} rotate
    */
   enableRotate(rotate: boolean): void {
-    this.rotate = rotate;
     this.screenSpaceCameraController.enableRotate = rotate;
   }
 
@@ -111,7 +110,6 @@ export class CameraService {
    * @param {boolean} lock
    */
   enableLook(lock: boolean): void {
-    this.look = lock;
     this.screenSpaceCameraController.enableLook = lock;
   }
 
@@ -131,30 +129,46 @@ export class CameraService {
   setSceneMode(sceneMode: SceneMode, duration?: number) {
     switch (sceneMode) {
       case SceneMode.SCENE3D: {
-        this._revertCameraProperties();
+        if (this.isSceneModePerformance2D) {
+          this._revertCameraProperties();
+        }
+
         this.scene.morphTo3D(duration);
+
         break;
       }
       case SceneMode.COLUMBUS_VIEW: {
-        this._revertCameraProperties();
+        if (this.isSceneModePerformance2D) {
+          this._revertCameraProperties();
+        }
+
         this.scene.morphToColumbusView(duration);
+
         break;
       }
       case SceneMode.SCENE2D: {
-        this._revertCameraProperties();
+        if (this.isSceneModePerformance2D) {
+          this._revertCameraProperties();
+        }
         this.scene.morphTo2D(duration);
+
         break;
       }
       case SceneMode.PERFORMANCE_SCENE2D: {
+        this.isSceneModePerformance2D = true;
+        this.lastLook = this.screenSpaceCameraController.enableLook;
+        this.lastTilt = this.screenSpaceCameraController.enableTilt;
+        this.lastRotate = this.screenSpaceCameraController.enableRotate;
         this.screenSpaceCameraController.enableTilt = false;
         this.screenSpaceCameraController.enableRotate = false;
         this.screenSpaceCameraController.enableLook = false;
-        this.morphListenerCancelFn();
+        if (this.morphListenerCancelFn) {
+          this.morphListenerCancelFn();
+        }
         this.scene.morphToColumbusView(duration);
-        const morphCompleteEventListener = this.scene.morphComplete.addEventListener((a) => {
-          console.log(a);
+        const morphCompleteEventListener = this.scene.morphComplete.addEventListener(() => {
           this.camera.setView({
-            destination: Cesium.Cartesian3.fromDegrees(0, 1,
+            destination: Cesium.Cartesian3.fromDegrees(0.0, 0.0,
               Math.min(CameraService.PERFORMANCE_2D_ALTITUDE, this.getMaximumZoom())),
             orientation: {
               pitch: Cesium.Math.toRadians(-90),
@@ -163,6 +177,7 @@ export class CameraService {
           morphCompleteEventListener();
           this._listenToSceneModeMorph(this._revertCameraProperties.bind(this));
         });
+
         break;
       }
     }
@@ -213,7 +228,11 @@ export class CameraService {
    * API: https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classFilter=viewer#trackedEntity
    * @param entity
    */
-  trackEntity(entity) {
+  trackEntity(entity?) {
     this.viewer.trackedEntity = entity;
+  }
+
+  untrackEntity() {
+    this.trackEntity();
   }
 }

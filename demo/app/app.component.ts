@@ -1,11 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ViewEncapsulation } from '@angular/core';
 import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocketSupplier';
 import { MapLayerProviderOptions } from '../../src/models/map-layer-provider-options.enum';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdDialog, MdIconRegistry } from '@angular/material';
 import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
-import { ViewerFactory } from '../../src/services/viewer-factory/viewer-factory.service';
-import { ViewersManagerService } from '../../src/services/viewers-service/viewers-manager.service';
+import { MapsManagerService } from '../../src/services/maps-manager/maps-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -15,20 +14,20 @@ import { ViewersManagerService } from '../../src/services/viewers-service/viewer
   encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements AfterViewInit {
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   flyToOptions = {
     duration: 2,
     destination: Cesium.Cartesian3.fromDegrees(-117.16, 32.71, 15000.0),
   };
-	
-	TracksType = TracksType;
+
+  TracksType = TracksType;
 
   constructor(public appSettingsService: AppSettingsService,
               iconRegistry: MdIconRegistry,
               sanitizer: DomSanitizer,
               private dialog: MdDialog,
-              private viewersManager: ViewersManagerService) {
+              private viewersManager: MapsManagerService) {
     iconRegistry.addSvgIcon(
       'settings',
       sanitizer.bypassSecurityTrustResourceUrl('/assets/settings.svg'));
@@ -42,6 +41,6 @@ export class AppComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     // example for getting the viewer by Id outside of the ac-map hierarchy
-    const viewer = this.viewersManager.getViewer('main-map');
+    const viewer = this.viewersManager.getMap('main-map');
   }
 }

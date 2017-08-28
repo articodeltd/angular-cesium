@@ -23,9 +23,13 @@
     flex: 2;
 }
 
-.close-button {
+.action-button {
     align-self: flex-end;
     background-color: white;
+}
+
+.track-button {
+    margin-right: 10px;
 }
 
 .title {

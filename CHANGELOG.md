@@ -13,7 +13,9 @@
   * `ac-rectangle-dec`
 * Added CameraService that is provided by `ac-map`. The service exposes the scene's camera and screenSpaceCameraController.
 ### Breaking Changes
-*CesiumService no longer supports camera actions such as `setEnableTilt`, `setMaximumZoom`, etc... - instead use CameraService that is provided by `ac-map`.
+* CesiumService no longer supports camera actions such as `setEnableTilt`, `setMaximumZoom`, etc... - instead use CameraService that is provided by `ac-map`.
+* `ac-map` function `getMapEventManager()` renamed to `getMapEventsManager()`
+* `ViewersManagerService` renamed into `MapsManagerService`. It now manage ac-map instances. Internal functions changed accordingly to `getMap()` and `registerMap()`. The logic remained the same.
 
 ## 0.0.15
 ### Features
