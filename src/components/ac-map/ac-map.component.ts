@@ -57,7 +57,7 @@ import { MapLayersService } from '../../services/map-layers/map-layers.service';
     CameraService,
   ]
 })
-export class AcMapComponent implements OnChanges, OnInit {
+export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
 
   /**
    * Disable default plonter context menu
