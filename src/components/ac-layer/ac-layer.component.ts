@@ -263,6 +263,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	}
 	
 	ngOnDestroy(): void {
+		this.mapLayersService.removeDataSources(this.layerDrawerDataSources);
 		this.stopObservable.next(true);
 		this.removeAll();
 	}

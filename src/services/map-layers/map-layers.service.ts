@@ -38,4 +38,14 @@ export class MapLayersService {
 			this.drawAllLayers();
 		}
 	}
+	
+	removeDataSources(dataSources) {
+		dataSources.forEach(ds => {
+			const index = this.layersDataSources.indexOf(ds);
+			if (index !== -1) {
+				this.layersDataSources.splice(index, 1);
+				this.cesiumService.getViewer().dataSources.remove(ds, true);
+			}
+		});
+	}
 }
