@@ -50,7 +50,7 @@ export class RealTracksDataProvider {
 
   getFuturePosition(position, heading) {
     return Cesium.Cartesian3.fromDegrees(
-      position.long - (Math.sin(heading) * this.MAX_MOVEMENT_DISTANCE),
+      position.long + (Math.sin(heading) * this.MAX_MOVEMENT_DISTANCE),
       position.lat + (Math.cos(heading) * this.MAX_MOVEMENT_DISTANCE)
     );
   }

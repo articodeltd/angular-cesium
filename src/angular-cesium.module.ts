@@ -46,6 +46,9 @@ import { AcEllipsoidDescComponent } from './components/ac-ellipsoid-desc/ac-elli
 import { AcPolylineVolumeDescComponent } from './components/ac-polyline-volume-desc/ac-polyline-volume-desc.component';
 import { AcWallDescComponent } from './components/ac-wall-desc/ac-wall-desc.component';
 import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rectangle-desc.component';
+import { AcBillboardPrimitiveDescComponent } from './components/ac-billboard-primitive-desc/ac-billboard-primitive-desc.component';
+import { AcLabelPrimitiveDescComponent } from './components/ac-label-primitive-desc/ac-label-primitive-desc.component';
+import { AcPolylinePrimitiveDescComponent } from './components/ac-polyline-primitive-desc/ac-polyline-primitive-desc.component';
 
 @NgModule({
 	imports: [
@@ -58,9 +61,12 @@ import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rect
 		AcLayerComponent,
 		AcBillboardComponent,
 		AcBillboardDescComponent,
+		AcBillboardPrimitiveDescComponent,
 		AcLabelDescComponent,
+		AcLabelPrimitiveDescComponent,
 		AcEllipseDescComponent,
 		AcPolylineDescComponent,
+    AcPolylinePrimitiveDescComponent,
 		PixelOffsetPipe,
 		RadiansToDegreesPipe,
 		AcCircleDescComponent,
@@ -100,9 +106,12 @@ import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rect
 		AcMapComponent,
 		AcBillboardComponent,
 		AcBillboardDescComponent,
+    AcBillboardPrimitiveDescComponent,
 		AcLabelDescComponent,
+    AcLabelPrimitiveDescComponent,
 		AcEllipseDescComponent,
 		AcPolylineDescComponent,
+    AcPolylinePrimitiveDescComponent,
 		AcLayerComponent,
 		AcCircleDescComponent,
 		AcArcDescComponent,

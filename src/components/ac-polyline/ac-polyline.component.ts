@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
+import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 
 /**
@@ -24,7 +24,7 @@ import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/po
 	selector: 'ac-polyline',
 	template: '',
 })
-export class AcPolylineComponent extends BasicPrimitiveOnMap {
+export class AcPolylineComponent extends EntityOnMapComponent {
 
 	constructor(polylineDrawer: PolylineDrawerService) {
 		super(polylineDrawer);

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
+import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 
 /**
@@ -25,7 +25,7 @@ import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/elli
 	selector: 'ac-ellipse',
 	template: '',
 })
-export class AcEllipseComponent extends BasicPrimitiveOnMap {
+export class AcEllipseComponent extends EntityOnMapComponent {
 
 	constructor(ellipseDrawer: EllipseDrawerService) {
 		super(ellipseDrawer);

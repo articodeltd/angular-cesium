@@ -1,7 +1,7 @@
 import { Track } from '../models/types';
 
 const degreesToRadians = (degrees: number) => {
-	return ((360 - degrees) * Math.PI) / 180.0;
+	return (degrees * Math.PI) / 180.0;
 };
 
 export function parseToTrack(dataArray, keyId): Track {
