@@ -1,4 +1,7 @@
-import { Component, ElementRef, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+	AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnInit,
+	SimpleChanges
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
@@ -15,15 +18,16 @@ import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/poly
 import { KeyboardControlService } from '../../services/keyboard-control/keyboard-control.service';
 import { CameraService } from '../../services/camera/camera.service';
 import { SceneMode } from '../../models/scene-mode.enum';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 /**
  * This is a map implementation, creates the cesium map.
  * Every layer should be tag inside ac-map tag
  *
  * Accessing cesium viewer:
- * 1. acMapComponent.getMap()
- * 2. Use ViewerManagerService.getCesiumViewer(mapId).
- *    mapId auto-generated string: 'default-map-id-[index]'
+ * 1. acMapComponent.getCesiumViewer()
+ * 2. Use MapManagerService.getMap().getCesiumViewer() or if more then one map: MapManagerService.getMap(mapId).getCesiumViewer()
+ *
  *
  * @example
  * <ac-map>
@@ -49,10 +53,11 @@ import { SceneMode } from '../../models/scene-mode.enum';
     PointDrawerService,
     ArcDrawerService,
     PolygonDrawerService,
+    MapLayersService,
     CameraService,
   ]
 })
-export class AcMapComponent implements OnChanges, OnInit {
+export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
 
   /**
    * Disable default plonter context menu
@@ -95,7 +100,8 @@ export class AcMapComponent implements OnChanges, OnInit {
               private arcDrawerService: ArcDrawerService,
               private pointDrawerService: PointDrawerService,
               private mapEventsManager: MapEventsManagerService,
-              private keyboardControlService: KeyboardControlService) {
+              private keyboardControlService: KeyboardControlService,
+              private mapLayersService: MapLayersService) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
@@ -124,6 +130,10 @@ export class AcMapComponent implements OnChanges, OnInit {
       this._cameraService.cameraFlyTo(changes['flyTo'].currentValue);
     }
   }
+	
+	ngAfterViewInit(): void {
+    this.mapLayersService.drawAllLayers();
+	}
 
   /**
    * @returns {CesiumService} ac-map's cesium service

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AcNotification } from '../../../../src/models/ac-notification';
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
-import { CesiumService } from '../../../../src/services/cesium/cesium.service';
 import { ActionType } from '../../../../src/models/action-type.enum';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 import { AcEntity } from '../../../../src/models/ac-entity';
@@ -56,7 +55,7 @@ export class ModelsLayerComponent implements OnInit {
 	convertToCesiumObj(entity): any {
 		
 		const fixedHeading = entity.heading - (Math.PI / 2);
-		const heading =  fixedHeading;
+		const heading = fixedHeading;
 		const pitch = Cesium.Math.toRadians(0.0);
 		const roll = Cesium.Math.toRadians(0.0);
 		

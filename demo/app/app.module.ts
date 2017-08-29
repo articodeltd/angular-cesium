@@ -30,6 +30,7 @@ import { ModelsLayerComponent } from './components/models-layer/models-layer.com
 import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodrome-layer.component';
 import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
+import { LayerOrderComponent } from './components/layer-order/layer-order.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { KeyboardControlLayerComponent } from './components/keyboard-control-lay
 		PolygonPerformanceTestComponent,
     KeyboardControlLayerComponent,
     HippodromeLayerComponent,
+		LayerOrderComponent,
   ],
   imports: [
     BrowserModule,

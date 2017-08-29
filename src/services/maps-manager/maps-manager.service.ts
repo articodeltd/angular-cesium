@@ -9,7 +9,7 @@ import { AcMapComponent } from '../../components/ac-map/ac-map.component';
 export class MapsManagerService {
 
   private defaultIdCounter = 0;
-  private _Maps = new Map<string, any>();
+  private _Maps = new Map<string, AcMapComponent>();
   private firstMap;
 
   constructor() {

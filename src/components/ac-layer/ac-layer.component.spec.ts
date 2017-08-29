@@ -14,9 +14,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/takeUntil';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 
-describe('AcLayerComponent', () => {
+fdescribe('AcLayerComponent', () => {
   let component: AcLayerComponent;
   let fixture: ComponentFixture<AcLayerComponent>;
 
@@ -34,7 +35,7 @@ describe('AcLayerComponent', () => {
         mockProvider(ComputationCache), provider(BillboardDrawerService, {}),
         mockProvider(LabelDrawerService), mockProvider(EllipseDrawerService),
         mockProvider(EllipseDrawerService), mockProvider(PolylineDrawerService),
-        mockProvider(EllipseDrawerService), mockProvider(PolylineDrawerService)]
+        mockProvider(EllipseDrawerService), mockProvider(PolylineDrawerService), mockProvider(MapLayersService)]
     })
       .compileComponents();
   }));
