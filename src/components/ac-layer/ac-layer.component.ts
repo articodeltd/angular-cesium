@@ -33,20 +33,25 @@ import { RectangleDrawerService } from '../../services/drawers/rectangle-dawer/r
 import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service';
 import { LabelPrimitiveDrawerService } from '../../services/drawers/label-primitive-drawer/label-primitive-drawer.service';
 import { BillboardPrimitiveDrawerService } from '../../services/drawers/billboard-primitive-drawer/billboard-primitive-drawer.service';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 // tslint:enable
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.
- *  __param:__ {string} acfor - get the track observable and entityName (see the example).
- *  __param:__ {boolean} setShow - setShow/hide layer's entities.
- *  __param:__ {any} context - get the context layer that will use the componnet (most of the time equal to "this").
- *  __param:__ {LayerOptions} options - sets the layer options for each drawer.
+ *  + acfor `{string}` - get the track observable and entityName (see the example).
+ *  + setShow `{boolean}` - setShow/hide layer's entities.
+ *  + context `{any}` - get the context layer that will use the componnet (most of the time equal to "this").
+ *  + options `{LayerOptions}` - sets the layer options for each drawer.
+ *  + zIndex `{number}` - controls the zIndex (order) of the layer, layers with greater zIndex will be in front of layers with lower zIndex
+ *    (Exception For `Billboard` and `Label`, should use `[eyeOffset]` prop instead)</br>
+ *    zIndex won't work for pritimitve descs (like ac-primitive-polyline...)
+ *
  *
  *  __Usage :__
  *  ```
  *  <ac-map>
- *    <ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [options]="options">
+ *    <ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [options]="options" [zIndex]="1">
  *      <ac-billboard-desc props="{
  *        image: track.image,
  *        position: track.position,
@@ -100,209 +105,224 @@ import { BillboardPrimitiveDrawerService } from '../../services/drawers/billboar
   ]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
-  @Input()
-  show = true;
-  @Input()
-  acFor: string;
-  @Input()
-  context: any;
-  @Input()
-  store = false;
-  @Input()
-  options: LayerOptions;
+	@Input()
+	show = true;
+	@Input()
+	acFor: string;
+	@Input()
+	context: any;
+	@Input()
+	store = false;
+	@Input()
+	options: LayerOptions;
+	@Input()
+	zIndex = 0;
 
-  private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
-  private entityName: string;
-  private stopObservable = new Subject();
-  private observable: Observable<AcNotification>;
-  private _drawerList: Map<string, BasicDrawerService>;
-  private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
-  private entitiesStore = new Map<string, any>();
+	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
+	private entityName: string;
+	private stopObservable = new Subject();
+	private observable: Observable<AcNotification>;
+	private _drawerList: Map<string, BasicDrawerService>;
+	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
+	private entitiesStore = new Map<string, any>();
+	private layerDrawerDataSources = [];
 
-  constructor(private  layerService: LayerService,
-              private _computationCache: ComputationCache,
-              billboardDrawerService: BillboardDrawerService,
-              labelDrawerService: LabelDrawerService,
-              ellipseDrawerService: EllipseDrawerService,
-              polylineDrawerService: PolylineDrawerService,
-              polygonDrawerService: PolygonDrawerService,
-              arcDrawerService: ArcDrawerService,
-              pointDrawerService: PointDrawerService,
-              modelDrawerService: ModelDrawerService,
-              boxDrawerService: BoxDrawerService,
-              corridorDrawerService: CorridorDrawerService,
-              cylinderDrawerService: CylinderDrawerService,
-              ellipsoidDrawerSerice: EllipsoidDrawerService,
-              polylineVolumeDrawerService: PolylineVolumeDrawerService,
-              wallDrawerService: WallDrawerService,
-              rectangleDrawerService: RectangleDrawerService,
-              dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-              dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-              staticCircleDrawerService: StaticCircleDrawerService,
-              staticPolylineDrawerService: StaticPolylineDrawerService,
-              staticPolygonDrawerService: StaticPolygonDrawerService,
-              staticEllipseDrawerService: StaticEllipseDrawerService,
+	constructor(private  layerService: LayerService,
+							private _computationCache: ComputationCache,
+							private mapLayersService: MapLayersService,
+							billboardDrawerService: BillboardDrawerService,
+							labelDrawerService: LabelDrawerService,
+							ellipseDrawerService: EllipseDrawerService,
+							polylineDrawerService: PolylineDrawerService,
+							polygonDrawerService: PolygonDrawerService,
+							arcDrawerService: ArcDrawerService,
+							pointDrawerService: PointDrawerService,
+							modelDrawerService: ModelDrawerService,
+							boxDrawerService: BoxDrawerService,
+							corridorDrawerService: CorridorDrawerService,
+							cylinderDrawerService: CylinderDrawerService,
+							ellipsoidDrawerSerice: EllipsoidDrawerService,
+							polylineVolumeDrawerService: PolylineVolumeDrawerService,
+							wallDrawerService: WallDrawerService,
+							rectangleDrawerService: RectangleDrawerService,
+							dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+							dynamicPolylineDrawerService: DynamicPolylineDrawerService,
+							staticCircleDrawerService: StaticCircleDrawerService,
+							staticPolylineDrawerService: StaticPolylineDrawerService,
+							staticPolygonDrawerService: StaticPolygonDrawerService,
+							staticEllipseDrawerService: StaticEllipseDrawerService,
               polylinePrimitiveDrawerService: PolylinePrimitiveDrawerService,
               labelPrimitiveDrawerService: LabelPrimitiveDrawerService,
               billboardPrimitiveDrawerService: BillboardPrimitiveDrawerService) {
-    this._drawerList = new Map([
-      ['billboard', billboardDrawerService],
-      ['label', labelDrawerService],
-      ['ellipse', ellipseDrawerService],
-      ['polyline', polylineDrawerService],
-      ['polygon', polygonDrawerService as BasicDrawerService],
-      ['arc', arcDrawerService],
-      ['point', pointDrawerService],
-      ['model', modelDrawerService],
-      ['box', boxDrawerService],
-      ['corridor', corridorDrawerService],
-      ['cylinder', cylinderDrawerService],
-      ['ellipsoid', ellipsoidDrawerSerice],
-      ['polyineVolume', polylineVolumeDrawerService],
-      ['rectangle', rectangleDrawerService],
-      ['wall', wallDrawerService],
+		this._drawerList = new Map([
+			['billboard', billboardDrawerService],
+			['label', labelDrawerService],
+			['ellipse', ellipseDrawerService],
+			['polyline', polylineDrawerService],
+			['polygon', polygonDrawerService as BasicDrawerService],
+			['arc', arcDrawerService],
+			['point', pointDrawerService],
+			['model', modelDrawerService],
+			['box', boxDrawerService],
+			['corridor', corridorDrawerService],
+			['cylinder', cylinderDrawerService],
+			['ellipsoid', ellipsoidDrawerSerice],
+			['polylineVolume', polylineVolumeDrawerService],
+			['rectangle', rectangleDrawerService],
+			['wall', wallDrawerService],
       ['polylinePrimitive', polylinePrimitiveDrawerService],
       ['labelPrimitive', labelPrimitiveDrawerService],
       ['billboardPrimitive', billboardPrimitiveDrawerService],
 
-      ['dynamicEllipse', dynamicEllipseDrawerService],
-      ['dynamicPolyline', dynamicPolylineDrawerService],
-      ['staticCircle', staticCircleDrawerService],
-      ['staticPolyline', staticPolylineDrawerService],
-      ['staticPolygon', staticPolygonDrawerService],
-      ['staticEllipse', staticEllipseDrawerService],
-    ]);
-  }
+			['dynamicEllipse', dynamicEllipseDrawerService],
+			['dynamicPolyline', dynamicPolylineDrawerService],
+			['staticCircle', staticCircleDrawerService],
+			['staticPolyline', staticPolylineDrawerService],
+			['staticPolygon', staticPolygonDrawerService],
+			['staticEllipse', staticEllipseDrawerService],
+		]);
+	}
 
-  init() {
-    this.initValidParams();
+	init() {
+		this.initValidParams();
 
-    Observable.merge(this._updateStream, this.observable).takeUntil(this.stopObservable).subscribe((notification) => {
-      this._computationCache.clear();
+		Observable.merge(this._updateStream, this.observable).takeUntil(this.stopObservable).subscribe((notification) => {
+			this._computationCache.clear();
 
-      let contextEntity = notification.entity;
-      if (this.store) {
-        contextEntity = this.updateStore(notification);
-      }
+			let contextEntity = notification.entity;
+			if (this.store) {
+				contextEntity = this.updateStore(notification);
+			}
 
-      this.context[this.entityName] = contextEntity;
-      this.layerService.getDescriptions().forEach((descriptionComponent) => {
-        switch (notification.actionType) {
-          case ActionType.ADD_UPDATE:
-            descriptionComponent.draw(this.context, notification.id, contextEntity);
-            break;
-          case ActionType.DELETE:
-            descriptionComponent.remove(notification.id);
-            break;
-          default:
-            console.error('[ac-layer] unknown AcNotification.actionType for notification: ' + notification);
-        }
-      });
-    });
-  }
+			this.context[this.entityName] = contextEntity;
+			this.layerService.getDescriptions().forEach((descriptionComponent) => {
+				switch (notification.actionType) {
+					case ActionType.ADD_UPDATE:
+						descriptionComponent.draw(this.context, notification.id, contextEntity);
+						break;
+					case ActionType.DELETE:
+						descriptionComponent.remove(notification.id);
+						break;
+					default:
+						console.error('[ac-layer] unknown AcNotification.actionType for notification: ' + notification);
+				}
+			});
+		});
+	}
 
-  private updateStore(notification: AcNotification): any {
-    if (notification.actionType === ActionType.DELETE) {
-      this.entitiesStore.delete(notification.id);
-      return undefined;
-    }
-    else {
-      if (this.entitiesStore.has(notification.id)) {
-        const entity = this.entitiesStore.get(notification.id);
-        Object.assign(entity, notification.entity);
-        return entity;
-      }
-      else {
-        this.entitiesStore.set(notification.id, notification.entity);
-        return notification.entity;
-      }
-    }
-  }
+	private updateStore(notification: AcNotification): any {
+		if (notification.actionType === ActionType.DELETE) {
+			this.entitiesStore.delete(notification.id);
+			return undefined;
+		}
+		else {
+			if (this.entitiesStore.has(notification.id)) {
+				const entity = this.entitiesStore.get(notification.id);
+				Object.assign(entity, notification.entity);
+				return entity;
+			}
+			else {
+				this.entitiesStore.set(notification.id, notification.entity);
+				return notification.entity;
+			}
+		}
+	}
 
-  private initValidParams() {
-    if (!this.context) {
-      throw new Error('ac-layer: must initialize [context] ');
-    }
+	private initValidParams() {
+		if (!this.context) {
+			throw new Error('ac-layer: must initialize [context] ');
+		}
 
-    if (!this.acForRgx.test(this.acFor)) {
-      throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
-        + 'instead received: ' + this.acFor);
-    }
-    const acForArr = this.acFor.split(' ');
-    this.observable = this.context[acForArr[3]];
-    this.entityName = acForArr[1];
-    if (!this.observable || !(this.observable instanceof Observable)) {
-      throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
-    }
-  }
+		if (!this.acForRgx.test(this.acFor)) {
+			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
+				+ 'instead received: ' + this.acFor);
+		}
+		const acForArr = this.acFor.split(' ');
+		this.observable = this.context[acForArr[3]];
+		this.entityName = acForArr[1];
+		if (!this.observable || !(this.observable instanceof Observable)) {
+			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
+		}
+	}
 
-  ngAfterContentInit(): void {
-    this.init();
-  }
+	ngAfterContentInit(): void {
+		this.init();
+	}
 
-  ngOnInit(): void {
-    this._drawerList.forEach((drawer, drawerName) => {
-      const initOptions = this.options ? this.options[drawerName] : undefined;
-      drawer.init(initOptions);
-      drawer.setShow(this.show);
-    });
-  }
+	ngOnInit(): void {
+		this._drawerList.forEach((drawer, drawerName) => {
+			const initOptions = this.options ? this.options[drawerName] : undefined;
+			const drawerDataSources = drawer.init(initOptions);
+			// only entities drawers create data sources
+			if (drawerDataSources) {
+				this.mapLayersService.registerLayerDataSources(drawerDataSources, this.zIndex);
+				this.layerDrawerDataSources.push(...drawerDataSources);
+			}
+			drawer.setShow(this.show);
+		});
+	}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.show && !changes.show.firstChange) {
-      const showValue = changes['show'].currentValue;
-      this._drawerList.forEach((drawer) => drawer.setShow(showValue));
-    }
-  }
+	ngOnChanges(changes: SimpleChanges): void {
+		if (changes.show && !changes.show.firstChange) {
+			const showValue = changes['show'].currentValue;
+			this._drawerList.forEach((drawer) => drawer.setShow(showValue));
+		}
 
-  ngOnDestroy(): void {
-    this.stopObservable.next(true);
-    this.removeAll();
-  }
+		if (changes.zIndex && !changes.zIndex.firstChange) {
+			const zIndexValue = changes['zIndex'].currentValue;
+			this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue);
+		}
+	}
 
-  /**
-   * Returns the store.
-   */
-  getStore(): Map<string, any> {
-    return this.entitiesStore;
-  };
-
-  /**
-   * Remove all the entities from the layer.
-   */
-  removeAll(): void {
-    this.layerService.getDescriptions().forEach((description) => description.removeAll());
-    this.entitiesStore.clear();
-  }
-
-  /**
-   * remove entity from the layer
-   * @param {number} entityId
-   */
-  remove(entityId: string) {
-    this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
-    this.entitiesStore.delete(entityId);
-  }
-
-  /**
-   * add/update entity to/from the layer
-   * @param {AcNotification} notification
-   */
-  updateNotification(notification: AcNotification): void {
-    this._updateStream.next(notification);
-  }
-
-  /**
-   * add/update entity to/from the layer
-   * @param {AcEntity} entity
-   * @param {number} id
-   */
-  update(entity: AcEntity, id: string): void {
-    this._updateStream.next({ entity, id, actionType: ActionType.ADD_UPDATE });
-  }
-
-  refreshAll(collection: AcNotification[]): void {
-    // TODO make entity interface: collection of type entity not notification
-    Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
-  }
+	ngOnDestroy(): void {
+		this.mapLayersService.removeDataSources(this.layerDrawerDataSources);
+		this.stopObservable.next(true);
+		this.removeAll();
+	}
+	
+	/**
+	 * Returns the store.
+	 */
+	getStore(): Map<string, any> {
+		return this.entitiesStore;
+	};
+	
+	/**
+	 * Remove all the entities from the layer.
+	 */
+	removeAll(): void {
+		this.layerService.getDescriptions().forEach((description) => description.removeAll());
+		this.entitiesStore.clear();
+	}
+	
+	/**
+	 * remove entity from the layer
+	 * @param {number} entityId
+	 */
+	remove(entityId: string) {
+		this._updateStream.next({id : entityId, actionType : ActionType.DELETE});
+		this.entitiesStore.delete(entityId);
+	}
+	
+	/**
+	 * add/update entity to/from the layer
+	 * @param {AcNotification} notification
+	 */
+	updateNotification(notification: AcNotification): void {
+		this._updateStream.next(notification);
+	}
+	
+	/**
+	 * add/update entity to/from the layer
+	 * @param {AcEntity} entity
+	 * @param {number} id
+	 */
+	update(entity: AcEntity, id: string): void {
+		this._updateStream.next({entity, id, actionType : ActionType.ADD_UPDATE});
+	}
+	
+	refreshAll(collection: AcNotification[]): void {
+		// TODO make entity interface: collection of type entity not notification
+		Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
+	}
 }
