@@ -49,7 +49,7 @@ import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rect
 import { AcBillboardPrimitiveDescComponent } from './components/ac-billboard-primitive-desc/ac-billboard-primitive-desc.component';
 import { AcLabelPrimitiveDescComponent } from './components/ac-label-primitive-desc/ac-label-primitive-desc.component';
 import { AcPolylinePrimitiveDescComponent } from './components/ac-polyline-primitive-desc/ac-polyline-primitive-desc.component';
-import { fixCesium, fixCesiumEntitiesShadows } from './services/cesium-fixes/StaticGeometryColorBatch';
+import { fixCesiumEntitiesShadows } from './services/cesium-fixes/StaticGeometryColorBatch';
 import { ModuleOptions } from './models/module-options';
 
 @NgModule({

@@ -44,7 +44,7 @@ module.exports = {
     resolve: {
         extensions: [ '.js'],
         alias: {
-            'cesium': 'cesium/Build/CesiumUnminified/Cesium.js'
+            'cesium': 'cesium/Build/Cesium/Cesium.js'
         }
     },
 
