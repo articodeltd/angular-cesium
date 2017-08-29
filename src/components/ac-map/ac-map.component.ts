@@ -9,19 +9,21 @@ import { LabelDrawerService } from '../../services/drawers/label-drawer/label-dr
 import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
-import { ViewersManagerService } from '../../services/viewers-service/viewers-manager.service';
+import { MapsManagerService } from '../../services/maps-manager/maps-manager.service';
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
 import { KeyboardControlService } from '../../services/keyboard-control/keyboard-control.service';
+import { CameraService } from '../../services/camera/camera.service';
+import { SceneMode } from '../../models/scene-mode.enum';
 
 /**
  * This is a map implementation, creates the cesium map.
  * Every layer should be tag inside ac-map tag
  *
  * Accessing cesium viewer:
- * 1. acMapComponent.getViewer()
+ * 1. acMapComponent.getMap()
  * 2. Use ViewerManagerService.getCesiumViewer(mapId).
- * 		mapId auto-generated string: 'default-map-id-[index]'
+ *    mapId auto-generated string: 'default-map-id-[index]'
  *
  * @example
  * <ac-map>
@@ -47,40 +49,16 @@ import { KeyboardControlService } from '../../services/keyboard-control/keyboard
     PointDrawerService,
     ArcDrawerService,
     PolygonDrawerService,
+    CameraService,
   ]
 })
 export class AcMapComponent implements OnChanges, OnInit {
-  private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
-  private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
-  private static readonly DEFAULT_TILT_ENABLE = true;
-  private static defaultIdCounter = 1;
 
   /**
    * Disable default plonter context menu
    */
   @Input()
   disableDefaultPlonter = false;
-
-  /**
-   * in meters
-   * @type {number}
-   */
-  @Input()
-  minimumZoom: number = AcMapComponent.DEFAULT_MINIMUM_ZOOM;
-
-  /**
-   * in meters
-   * @type {number}
-   */
-  @Input()
-  maximumZoom: number = AcMapComponent.DEFAULT_MAXIMUM_ZOOM;
-
-  /**
-   * Sets the enableTilt of screenSpaceCameraController
-   * @type {boolean}
-   */
-  @Input()
-  enableTilt: boolean = AcMapComponent.DEFAULT_TILT_ENABLE;
 
   /**
    * Set the id name of the map
@@ -96,12 +74,19 @@ export class AcMapComponent implements OnChanges, OnInit {
   @Input()
   flyTo: any;
 
+  /**
+   * Sets the map's SceneMode
+   */
+  @Input()
+  sceneMode: SceneMode;
+
   private mapContainer: HTMLElement;
 
   constructor(private _cesiumService: CesiumService,
+              private _cameraService: CameraService,
               private _elemRef: ElementRef,
               @Inject(DOCUMENT) private document: any,
-              private viewersManager: ViewersManagerService,
+              private mapsManagerService: MapsManagerService,
               private billboardDrawerService: BillboardDrawerService,
               private labelDrawerService: LabelDrawerService,
               private ellipseDrawerService: EllipseDrawerService,
@@ -109,20 +94,18 @@ export class AcMapComponent implements OnChanges, OnInit {
               private polygonDrawerService: PolygonDrawerService,
               private arcDrawerService: ArcDrawerService,
               private pointDrawerService: PointDrawerService,
-              private mapEventManager: MapEventsManagerService,
+              private mapEventsManager: MapEventsManagerService,
               private keyboardControlService: KeyboardControlService) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
     this._cesiumService.init(this.mapContainer);
+    this._cameraService.init(this._cesiumService);
   }
 
   ngOnInit() {
-    this._cesiumService.setMinimumZoom(this.minimumZoom);
-    this._cesiumService.setMaximumZoom(this.maximumZoom);
-    this._cesiumService.setEnableTilt(this.enableTilt);
-    this.viewersManager.setViewer(this.id, this.getCesiumViewer());
-    this.mapEventManager.init();
+    this.mapsManagerService.registerMap(this.id, this);
+    this.mapEventsManager.init();
     this.billboardDrawerService.init();
     this.labelDrawerService.init();
     this.ellipseDrawerService.init();
@@ -134,16 +117,33 @@ export class AcMapComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes['sceneMode']) {
+      this._cameraService.setSceneMode(changes['sceneMode'].currentValue);
+    }
     if (changes['flyTo']) {
-      this._cesiumService.flyTo(changes['flyTo'].currentValue);
+      this._cameraService.cameraFlyTo(changes['flyTo'].currentValue);
     }
   }
 
   /**
-   * @returns {Viewer} map cesium viewer
+   * @returns {CesiumService} ac-map's cesium service
+   */
+  getCesiumSerivce() {
+    return this._cesiumService;
+  }
+
+  /**
+   * @returns {Viewer} map's cesium viewer
    */
   getCesiumViewer() {
     return this._cesiumService.getViewer();
+  }
+
+  /**
+   * @returns {CameraService} map's scene's camera
+   */
+  getCameraService(): CameraService {
+    return this._cameraService;
   }
 
   /**
@@ -156,8 +156,8 @@ export class AcMapComponent implements OnChanges, OnInit {
   /**
    * @returns {MapEventsManagerService}
    */
-  getMapEventManager() {
-    return this.mapEventManager;
+  getMapEventsManager(): MapEventsManagerService {
+    return this.mapEventsManager;
   }
 
   /**

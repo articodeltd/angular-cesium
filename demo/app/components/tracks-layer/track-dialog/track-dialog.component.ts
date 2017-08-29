@@ -37,6 +37,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   private readonly POLL_INTERVAL = 2000;
   public track$: Observable<any>;
   public track: Track;
+  public trackEntityFn;
   private stopper$ = new Subject();
   private singleTrackQuery$: ApolloQueryObservable<Track>;
 
@@ -45,6 +46,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.trackEntityFn = this.data.trackEntityFn;
     this.track = this.data.track;
     this.track$ = this.data.trackObservable;
 
@@ -68,14 +70,14 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
       this.singleTrackQuery$
         .takeUntil(this.stopper$)
         .subscribe((result: any) => {
-        const track = result.data.track;
-        Object.assign(this.track, {
-          from: track.from,
-          to: track.to,
-          type: track.type,
+          const track = result.data.track;
+          Object.assign(this.track, {
+            from: track.from,
+            to: track.to,
+            type: track.type,
+          });
+          this.cd.markForCheck();
         });
-        this.cd.markForCheck();
-      });
     }
     else {
       this.cd.detectChanges();

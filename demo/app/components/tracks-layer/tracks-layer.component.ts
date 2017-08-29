@@ -11,6 +11,7 @@ import { TracksDialogComponent } from './track-dialog/track-dialog.component';
 import { RealTracksDataProvider } from '../../../utils/services/dataProvider/real-tracks-data-provider';
 import { AppSettingsService, TracksType } from '../../services/app-settings-service/app-settings-service';
 import { SimTracksDataProvider } from '../../../utils/services/dataProvider/sim-tracks-data-provider';
+import { CameraService } from '../../../../src/services/camera/camera.service';
 
 @Component({
 	selector : 'tracks-layer',
@@ -41,7 +42,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 	
 	constructor(private mapEventsManager: MapEventsManagerService, public dialog: MdDialog,
 							private ngZone: NgZone, realDataProvider: RealTracksDataProvider, simDataProvider: SimTracksDataProvider,
-							private appSettingsService: AppSettingsService) {
+							private appSettingsService: AppSettingsService, private cameraService: CameraService, ) {
 		const realTracks$ = realDataProvider.get();
 		const simTracks$ = simDataProvider.get();
 		const simAndModelTracks$ = simTracks$.filter(e => +e.id < this.modelsCountFilter);
@@ -84,12 +85,12 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 		doubleClickObservable.subscribe((event) => {
 			const track = event.entities !== null ? event.entities[0] : null;
 			if (track) {
-				this.ngZone.run(() => this.openDialog(track));
+				this.ngZone.run(() => this.openDialog(track, event.cesiumEntities[0]));
 			}
 		});
 	}
 	
-	openDialog(track) {
+	openDialog(track, cesiumEntity) {
 		track.dialogOpen = true;
 		track.picked = false;
 		this.layer.update(track, track.id);
@@ -99,6 +100,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 			data : {
 				trackObservable : trackObservable,
 				track : Object.assign({}, track),
+				trackEntityFn: () => this.cameraService.trackEntity(cesiumEntity),
 				realData : this.tracksType === TracksType.REAL_DATA,
 			},
 			position : {
@@ -106,7 +108,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 				left : '0',
 			},
 		}).afterClosed().subscribe(() => {
-			
+      this.cameraService.untrackEntity();
 			track.dialogOpen = false;
 			if (!this.wasDialogClosedByRealDataChange) {
 				this.layer.update(track, track.id);

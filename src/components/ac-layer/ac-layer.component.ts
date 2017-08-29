@@ -158,7 +158,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
       ['corridor', corridorDrawerService],
       ['cylinder', cylinderDrawerService],
       ['ellipsoid', ellipsoidDrawerSerice],
-      ['pollineVolume', polylineVolumeDrawerService],
+      ['polyineVolume', polylineVolumeDrawerService],
       ['rectangle', rectangleDrawerService],
       ['wall', wallDrawerService],
       ['polylinePrimitive', polylinePrimitiveDrawerService],
