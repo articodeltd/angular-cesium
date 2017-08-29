@@ -4,7 +4,7 @@ import { SceneMode } from '../../models/scene-mode.enum';
 
 /**
  *  The service exposes the scene's camera and screenSpaceCameraController
- *  SceneMode.PERFORMANCE_SCENE2D -  is a 2D scene mode that acts like Cesium 2D mode,
+ *  SceneMode.PERFORMANCE_SCENE2D -  is a 3D scene mode that acts like Cesium 2D mode,
  *  but is more efficient performance wise.
  */
 @Injectable()

@@ -25,9 +25,9 @@ import { MapLayersService } from '../../services/map-layers/map-layers.service';
  * Every layer should be tag inside ac-map tag
  *
  * Accessing cesium viewer:
- * 1. acMapComponent.getMap()
- * 2. Use ViewerManagerService.getCesiumViewer(mapId).
- *    mapId auto-generated string: 'default-map-id-[index]'
+ * 1. acMapComponent.getCesiumViewer()
+ * 2. Use MapManagerService.getMap().getCesiumViewer() or if more then one map: MapManagerService.getMap(mapId).getCesiumViewer()
+ *
  *
  * @example
  * <ac-map>
