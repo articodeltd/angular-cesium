@@ -12,7 +12,7 @@ export class MapLayersService {
 	
 	registerLayerDataSources(dataSources, zIndex) {
 		dataSources.forEach(ds => {
-			// ds.zIndex = zIndex;
+			ds.zIndex = zIndex;
 			this.layersDataSources.push(ds);
 		});
 	}
@@ -23,7 +23,6 @@ export class MapLayersService {
 		this.layersDataSources.forEach((dataSource) => {
 			this.cesiumService.getViewer().dataSources.add(dataSource);
 		});
-		window["dataSources"] = this.cesiumService.getViewer().dataSources;
 	}
 	
 	updateAndRefresh(dataSources, newZIndex) {

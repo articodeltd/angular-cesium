@@ -124,7 +124,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	private _drawerList: Map<string, BasicDrawerService>;
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 	private entitiesStore = new Map<string, any>();
-	private drawerDataSources = [];
+	private layerDrawerDataSources = [];
 	
 	constructor(private  layerService: LayerService,
 							private _computationCache: ComputationCache,
@@ -248,8 +248,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			const drawerDataSources = drawer.init(initOptions);
 			// only entities drawers create data sources
 			if (drawerDataSources) {
-				this.drawerDataSources.push(...drawerDataSources);
-				this.mapLayersService.registerLayerDataSources(this.drawerDataSources, this.zIndex);
+				this.mapLayersService.registerLayerDataSources(drawerDataSources, this.zIndex);
+				this.layerDrawerDataSources.push(...drawerDataSources);
 			}
 			drawer.setShow(this.show);
 		});
@@ -263,7 +263,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		
 		if (changes.zIndex && !changes.zIndex.firstChange) {
 			const zIndexValue = changes['zIndex'].currentValue;
-			this.mapLayersService.updateAndRefresh(this.drawerDataSources, zIndexValue); // TODO
+			this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue); // TODO
 		}
 	}
 	
