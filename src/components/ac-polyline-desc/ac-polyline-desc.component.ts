@@ -8,8 +8,9 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 /**
  *  This is a polyline implementation.
  *  The ac-label element must be a child of ac-map element.
- *  The properties of props are the same as the properties of Polyline Primitive:
- *  + https://cesiumjs.org/Cesium/Build/Documentation/Polyline.html
+ *  The properties of props are the same as the properties of Entity and PolylineGraphics:
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/PolylineGraphics.html
  *
  *  __Usage:__
  *  ```

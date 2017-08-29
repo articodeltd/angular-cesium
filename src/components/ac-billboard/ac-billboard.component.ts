@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
+import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 
 /**
@@ -26,7 +26,7 @@ import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/
 	selector: 'ac-billboard',
 	template: '',
 })
-export class AcBillboardComponent extends BasicPrimitiveOnMap {
+export class AcBillboardComponent extends EntityOnMapComponent {
 
 	constructor(billboardDrawer: BillboardDrawerService) {
 		super(billboardDrawer);

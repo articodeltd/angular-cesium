@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
+import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
 
 /**
@@ -25,7 +25,7 @@ import { LabelDrawerService } from '../../services/drawers/label-drawer/label-dr
 	selector: 'ac-label',
 	template: '',
 })
-export class AcLabelComponent extends BasicPrimitiveOnMap {
+export class AcLabelComponent extends EntityOnMapComponent {
 
 	constructor(labelDrawer: LabelDrawerService) {
 		super(labelDrawer);

@@ -5,6 +5,7 @@
 * Added zIndex to `<ac-layer [zIndex]="1"/>`, ability to control the layers order. 
 * Added `CameraService` that is provided by `ac-map`. The service exposes the scene's camera and screenSpaceCameraController.
 * Added `[sceneMode]` attribute to `ac-map` .
+* Added new components: `ac-billboard-primitive-desc`, `ac-label-primitive-desc`, `ac-polyline-primitive-desc`. The components uses Cesium Primitives for performance efficient drawing of map entities.
 
 ### Breaking Changes
 * Event triggered from `KeyboardControlService` is now triggered with `cesiumService: CesiumService, key: string, keyboardEvent: KeyboardEvent`.
@@ -12,6 +13,7 @@
 * `ac-map` function `getMapEventManager()` renamed to `getMapEventsManager()`
 * `maximumZoom`, `minimumZoom` and `enableTilt` attributes in `ac-map` were removed. use `CameraService` instead.  
 * `ViewersManagerService` renamed into `MapsManagerService`. It now manage ac-map instances. Internal functions changed accordingly to `getMap()` and `registerMap()`. The logic remained the same.
+* `AngularCesiumModule` should be loaded with `.forRoot()`. Additionally, `AngularCesiumModule.forRoot()` takes options of type `ModuleOptions`. 
 
 ## 0.0.18
 ### Features

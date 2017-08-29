@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
-import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
+import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 
 /**
  *  This is a polygon implementation.
@@ -23,7 +23,7 @@ import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic
   selector: 'ac-polygon',
   template: ''
 })
-export class AcPolygonComponent extends BasicPrimitiveOnMap {
+export class AcPolygonComponent extends EntityOnMapComponent {
   constructor(polygonDrawer: PolygonDrawerService) {
     super(polygonDrawer);
   }

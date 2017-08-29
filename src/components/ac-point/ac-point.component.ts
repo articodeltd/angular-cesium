@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
+import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 
 /**
@@ -23,7 +23,7 @@ import { PointDrawerService } from '../../services/drawers/point-drawer/point-dr
 	selector: 'ac-point',
 	template: '',
 })
-export class AcPointComponent extends BasicPrimitiveOnMap {
+export class AcPointComponent extends EntityOnMapComponent {
 
 	constructor(pointDrawer: PointDrawerService) {
 		super(pointDrawer);

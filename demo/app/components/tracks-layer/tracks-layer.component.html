@@ -9,7 +9,7 @@
     }">
     </ac-billboard-desc>
 
-    <ac-label-desc *ngIf="!onlyModels()" props="{
+    <ac-label-primitive-desc *ngIf="!onlyModels()" props="{
         position: track.position,
         pixelOffset : [-15,20] | pixelOffset,
         text: track.callsign,
@@ -17,9 +17,9 @@
         scale: 0.5,
         fillColor: getTextColor(track)
     }">
-    </ac-label-desc>
+    </ac-label-primitive-desc>
 
-    <ac-label-desc *ngIf="onlySimTracks()" props="{
+    <ac-label-primitive-desc *ngIf="onlySimTracks()" props="{
         position: track.position,
         pixelOffset : [-15,35] | pixelOffset,
         text: track.alt.toString(),
@@ -27,22 +27,22 @@
         scale: 0.5,
         fillColor: getTextColor(track)
     }">
-    </ac-label-desc>
+    </ac-label-primitive-desc>
 
-    <ac-polyline-desc *ngIf="showVelocityVectors()" props="{
+    <ac-polyline-primitive-desc *ngIf="showVelocityVectors()" props="{
         positions: [track.position, track.futurePosition],
         width: 1,
         material: getPolylineColor()
     }">
-    </ac-polyline-desc>
+    </ac-polyline-primitive-desc>
 
     <ac-model-desc *ngIf="onlyModels()" props="{
-							position: track.position,
-							minimumPixelSize: 500,
-							maximumScale : 20000,
-							uri: '/assets/CesiumAir/Cesium_Air.gltf',
-							orientation: track.orientation,
-							color: getTrackColor(track)
-						   }">
+        position: track.position,
+        minimumPixelSize: 500,
+        maximumScale : 20000,
+        uri: '/assets/CesiumAir/Cesium_Air.gltf',
+        orientation: track.orientation,
+        color: getTrackColor(track)
+       }">
     </ac-model-desc>
 </ac-layer>

@@ -33,13 +33,20 @@ Check out our [Demo](http://www.angular-cesium.com) that contains small app buil
     	declarations: [],
     	imports: [
     		// ...
-    		AngularCesiumModule
+    		AngularCesiumModule.forRoot()
     	],
     	bootstrap: [AppComponent]
     })
     export class AppModule {
     }
     ```
+    
+###### AngularCesiumModule configuration
++ The main module should be loaded with `.forRoot()` in order to make the module perform enhancements to Cesium, However, the module can be loaded with out calling `forRoot()`.
++ `.forRoot()` excepts an optional option object of type `ModuleOptions` where every option can be toggled on or off. If no options object is passed, a default one will be used.
+
+###### Cesium fixes / enhancements:
+  * Fix entities shadowing bug - `fixEntitiesShadows` 
 
 ###### Cesium configuration
 > <sup>In order to use cesium you must serve some assets from cesium package. The following configuration is for angular-cli projects,
@@ -200,9 +207,9 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + Maintainable code.
 
 ## Supported Entity types
-+ billboard - [`ac-billboard-desc` / `ac-billboard`
-+ label - `ac-label-desc` / `ac-label`
-+ polyline - `ac-polyline-desc` / `ac-polyline`
++ billboard - `ac-billboard-desc` / `ac-billboard` / `ac-billboard-primitive-desc`
++ label - `ac-label-desc` / `ac-label` / `ac-label-primitive-desc`
++ polyline - `ac-polyline-desc` / `ac-polyline` / `ac-polyline-primitive-desc`
 + ellipse - `ac-ellipse-desc` / `ac-ellipse`
 + circle - `ac-circle-desc` / `ac-circle` *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis 
 + polygon - `ac-polygon-desc` / `ac-polygon`
@@ -216,14 +223,15 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + wall - `ac-wall-dec`
 + rectangle -`ac-rectangle-dec` 
 
-## `ac-entity-desc` vs `ac-entity`
+### `ac-entity-desc` vs `ac-entity`
 + `ac-entity-desc` component is used to describe how each entity in a stream of entities, managed inside `ac-layer`, should be drawn.
++ `ac-entity-primitive-desc` component is the same as `ac-entity-desc` with the difference of using Primitives to render the graphics. It is more efficient than `ac-entity-desc` when drawing an updating entity.
 + `ac-entity` component is used to draw an entity directly on the map, and so, can be used directly under `ac-map`.
 
 ## Entities API
 + All of the entity components except Polyline (`ac-polyline` & `ac-polyline-desc`) are using a flatten Cesium Entities API.
 + e.g: `ac-billboard` `props` input accepts a JSON which can have all properties found in Cesium Entity plus all properties found in Cesium BillboardGraphics.
-+ `ac-polyline` & `ac-polyline-desc` are using the Polyline Primitive API with an extended Material property that accepts Cesium Color Object.
++ In AngularCesium, entities have a default height of 0 (except of Billboards and Labels). This as in line with Cesium docs. For some reason in Cesium itself, the default height is undefined which leads Cesium to use GroundPrimitive which is less efficient. As a result of this fix, if you want your entity to be clamped to ground, set `height: null` in the props;
 
 ## Map Events
 `MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection, event priority management 

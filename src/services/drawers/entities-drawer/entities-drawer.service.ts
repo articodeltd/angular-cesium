@@ -53,12 +53,21 @@ export class EntitiesDrawerService extends BasicDrawerService {
 		return dataSources;
   }
 
+  setDefaultHeight(cesiumProps) {
+    if (this.graphicsType !== GraphicsType.billboard && this.graphicsType !== GraphicsType.label) {
+      if (cesiumProps.height === undefined) {
+        cesiumProps.height = 0;
+      }
+    }
+  }
+
   add(cesiumProps: any) {
     const optimizedEntityCollection = this.getFreeEntitiesCollection();
     if (optimizedEntityCollection === null) {
       throw new Error('No more free entity collections');
     }
 
+    this.setDefaultHeight(cesiumProps);
     const graphicsClass = this.graphicsType as any;
     const entityObject = {
       position: cesiumProps.position !== undefined ? cesiumProps.position : undefined,

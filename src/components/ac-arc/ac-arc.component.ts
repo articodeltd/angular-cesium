@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { BasicPrimitiveOnMap } from '../../services/basic-primitive-on-map/basic-primitive-on-map.service';
+import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
 
 /**
@@ -29,7 +29,7 @@ import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.s
 	selector: 'ac-arc',
 	template: '',
 })
-export class AcArcComponent extends BasicPrimitiveOnMap implements OnChanges {
+export class AcArcComponent extends EntityOnMapComponent implements OnChanges {
 
 	@Input()
 	geometryProps: any;
