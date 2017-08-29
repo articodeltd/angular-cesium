@@ -129,7 +129,7 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
   For example `ac-billborad-desc` accepts same members as [cesium Billboard](https://cesiumjs.org/refdoc.html).
 
 ## AC Layer
-ac-layer is a directive which is meant to define a whole layer.
+[ac-layer](https://tgftech.github.io/angular-cesium/components/AcLayerComponent.html) is a directive which is meant to define a whole layer.
 In case you have previous knowledge about CesiumJs, you would notice that there are lots of map objects e.g. billboard, label, etc'.
 In the real world - we would like to merge all of this map objects into a single entity e.g. an airplane consists of a billboard(icon) and a label.
 Now, let's create a simple airplanes layer and go through it's definitions:
@@ -200,7 +200,7 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + Maintainable code.
 
 ## Supported Entity types
-+ billboard - `ac-billboard-desc` / `ac-billboard`
++ billboard - [`ac-billboard-desc` / `ac-billboard`
 + label - `ac-label-desc` / `ac-label`
 + polyline - `ac-polyline-desc` / `ac-polyline`
 + ellipse - `ac-ellipse-desc` / `ac-ellipse`

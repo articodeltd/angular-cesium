@@ -44,16 +44,19 @@ import { MapLayersService } from '../../services/map-layers/map-layers.service';
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.
- *  __param:__ {string} acfor - get the track observable and entityName (see the example).
- *  __param:__ {boolean} setShow - setShow/hide layer's entities.
- *  __param:__ {any} context - get the context layer that will use the componnet (most of the time equal to "this").
- *  __param:__ {LayerOptions} options - sets the layer options for each drawer.
- *  __param:__ {zIndex} options - sets the layer options for each drawer.
+ *  + acfor `{string}` - get the track observable and entityName (see the example).
+ *  + setShow `{boolean}` - setShow/hide layer's entities.
+ *  + context `{any}` - get the context layer that will use the componnet (most of the time equal to "this").
+ *  + options `{LayerOptions}` - sets the layer options for each drawer.
+ *  + zIndex `{number}` - controls the zIndex (order) of the layer, layers with greater zIndex will be in front of layers with lower zIndex
+ *    (Exception For `Billboard` and `Label`, should use `[eyeOffset]` prop instead)</br>
+ *    zIndex won't work for pritimitve descs (like ac-primitive-polyline...)
+ *
  *
  *  __Usage :__
  *  ```
  *  <ac-map>
- *    <ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [options]="options">
+ *    <ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [options]="options" [zIndex]="1">
  *      <ac-billboard-desc props="{
  *        image: track.image,
  *        position: track.position,
@@ -115,7 +118,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	@Input()
 	options: LayerOptions;
 	@Input()
-	zIndex: number;
+	zIndex = 0;
 	
 	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 	private entityName: string;
