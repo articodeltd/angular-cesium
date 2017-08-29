@@ -3,20 +3,24 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 import { FormControl, NgForm } from '@angular/forms';
+import { MapsManagerService } from '../../../../src/services/maps-manager/maps-manager.service';
+import { CameraService } from '../../../../src/services/camera/camera.service';
 
 @Component({
-  selector : 'settings-form',
-  templateUrl : 'settings-form.component.html',
-  styleUrls : ['settings-form.component.css']
+  selector: 'settings-form',
+  templateUrl: 'settings-form.component.html',
+  styleUrls: ['settings-form.component.css']
 })
 export class SettingsFormComponent {
   @Output() cleanMap = new EventEmitter();
   @Output() showEvent = new EventEmitter();
   private socket: SocketIO.Socket;
+  private cameraService: CameraService;
 
   constructor(public settingsService: AppSettingsService,
               private snackBar: MdSnackBar,
-              webSocket: WebSocketSupplier) {
+              webSocket: WebSocketSupplier,
+              private mapsManagerService: MapsManagerService) {
 
     this.socket = webSocket.get();
     this.socket.on('connect', () => {
@@ -28,15 +32,25 @@ export class SettingsFormComponent {
   }
 
   applySettings() {
-
     this.socket.emit('change_sending', {
-      rate : this.settingsService.entitiesUpdateRate,
-      numOfEntities : this.settingsService.numOfEntities,
+      rate: this.settingsService.entitiesUpdateRate,
+      numOfEntities: this.settingsService.numOfEntities,
     }, () => {
       this.cleanMap.emit();
-      this.snackBar.open(' Changed successfully', 'ok', {duration : 2000});
+      this.snackBar.open(' Changed successfully', 'ok', { duration: 2000 });
     });
+  }
 
+  newYorkToggle(toggle) {
+    if (toggle.checked) {
+      if (!this.cameraService) {
+        this.cameraService = this.mapsManagerService.getMap().getCameraService();
+      }
+      this.cameraService.cameraFlyTo({
+        destination: Cesium.Cartesian3.fromDegrees(-73.980689, 40.762991, 5000.0)
+      });
+    }
+    console.log(toggle);
   }
 
 

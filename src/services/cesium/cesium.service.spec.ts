@@ -1,7 +1,7 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { CesiumService } from './cesium.service';
-import { when, mock, anything } from 'ts-mockito';
+import { anything, mock, when } from 'ts-mockito';
 import { ViewerFactory } from '../viewer-factory/viewer-factory.service';
 import { providerFromMock } from '../../utils/testingUtils';
 
@@ -62,41 +62,5 @@ describe('CesiumService', () => {
 
 	it('should return scene', inject([CesiumService], (service: CesiumService) => {
 		expect(service.getScene()).toBeDefined();
-	}));
-
-	it('Set minimum zoom', inject([CesiumService], (service: CesiumService) => {
-		let newMinZoom = 1000;
-		expect(service.getScene().screenSpaceCameraController.minimumZoomDistance).toBe(defaultZooms);
-		service.setMinimumZoom(newMinZoom);
-		expect(service.getScene().screenSpaceCameraController.minimumZoomDistance).toBe(newMinZoom);
-	}));
-
-	it('Set maximum zoom', inject([CesiumService], (service: CesiumService) => {
-		let newMaxZoom = 1000;
-		expect(service.getScene().screenSpaceCameraController.maximumZoomDistance).toBe(defaultZooms);
-		service.setMaximumZoom(newMaxZoom);
-		expect(service.getScene().screenSpaceCameraController.maximumZoomDistance).toBe(newMaxZoom);
-	}));
-
-	it('Set EnableTilt', inject([CesiumService], (service: CesiumService) => {
-		let newTilt = false;
-		expect(service.getScene().screenSpaceCameraController.enableTilt).toBe(defaultTilt);
-		service.setEnableTilt(newTilt);
-		expect(service.getScene().screenSpaceCameraController.enableTilt).toBe(newTilt);
-	}));
-
-	it('Set to 2D mode', inject([CesiumService], (service: CesiumService) => {
-		service.morphTo2D();
-		expect(service.getScene().mode).toBe(mode2D);
-	}));
-
-	it('Set to 3D mode', inject([CesiumService], (service:CesiumService) => {
-		service.morphTo3D();
-		expect(service.getScene().mode).toBe(mode3D);
-	}));
-
-	it('Set to Columbus mode', inject([CesiumService], (service:CesiumService) => {
-		service.morphToColumbusView();
-		expect(service.getScene().mode).toBe(modeColumbus);
 	}));
 });

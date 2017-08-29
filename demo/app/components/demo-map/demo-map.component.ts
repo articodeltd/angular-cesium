@@ -1,8 +1,9 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ViewerConfiguration } from '../../../../src/services/viewer-configuration/viewer-configuration.service';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 import { MapLayerProviderOptions } from '../../../../src/models/map-layer-provider-options.enum';
 import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
+import { SceneMode } from '../../../../src/models/scene-mode.enum';
 
 @Component({
   selector : 'demo-map',
@@ -13,12 +14,12 @@ import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
 export class DemoMapComponent {
   @ViewChild('layer') tracksLayer: TracksLayerComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
+  sceneMode = SceneMode.SCENE3D;
 
   constructor(
     private viewerConf: ViewerConfiguration,
     private appSettingsService: AppSettingsService) {
     viewerConf.viewerOptions = {
-      // sceneMode: Cesium.SceneMode.COLUMBUS_VIEW,
       selectionIndicator: false,
       timeline: false,
       infoBox: false,
@@ -34,9 +35,6 @@ export class DemoMapComponent {
     viewerConf.viewerModifier = (viewer) => {
       viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
       viewer.bottomContainer.remove();
-      const screenSpaceCameraController = viewer.scene.screenSpaceCameraController;
-      // screenSpaceCameraController.enableTilt = false;
-      // screenSpaceCameraController.enableRotate = false;
     };
 
     this.appSettingsService.showTracksLayer = true;
