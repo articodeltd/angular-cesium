@@ -258,7 +258,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		
 		if (changes.zIndex && !changes.zIndex.firstChange) {
 			const zIndexValue = changes['zIndex'].currentValue;
-			this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue); // TODO
+			this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue);
 		}
 	}
 	
