@@ -33,13 +33,17 @@ Check out our [Demo](http://www.angular-cesium.com) that contains small app buil
     	declarations: [],
     	imports: [
     		// ...
-    		AngularCesiumModule
+    		AngularCesiumModule.forRoot()
     	],
     	bootstrap: [AppComponent]
     })
     export class AppModule {
     }
     ```
+    
+###### AngularCesiumModule configuration
++ The main module should be loaded with `.forRoot()` in order to make the module perform enhancements to Cesium, However, the module can be loaded with out calling `forRoot()`.
++ `.forRoot()` excepts an optional option object of type `ModuleOptions` where every option can be toggled on or off. If no options object is passed, a default one will be used. 
 
 ###### Cesium configuration
 > <sup>In order to use cesium you must serve some assets from cesium package. The following configuration is for angular-cli projects,

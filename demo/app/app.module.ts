@@ -62,7 +62,7 @@ import { KeyboardControlLayerComponent } from './components/keyboard-control-lay
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularCesiumModule,
+    AngularCesiumModule.forRoot(),
     BrowserAnimationsModule,
     AppMaterialModule,
     ApolloModule.forRoot(getApolloClient),
