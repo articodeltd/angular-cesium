@@ -29,7 +29,7 @@ export interface EventResult {
 /**
  * Manages all map events. Notice events will run outside of Angular zone.
  * Provided by `<ac-map/>` component there for could be injected at any component under `<ac-map/>` hierarchy
- * or from the `<ac-map/>` component reference `acMapComponent.getMapEventManager()`
+ * or from the `<ac-map/>` component reference `acMapComponent.getMapEventsManager()`
  *
  * __usage:__
  * ```

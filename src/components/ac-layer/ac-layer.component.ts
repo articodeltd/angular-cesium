@@ -1,14 +1,6 @@
 // tslint:disable
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
-import {
-	AfterContentInit,
-	Component,
-	Input,
-	OnChanges,
-	OnDestroy,
-	OnInit,
-	SimpleChanges
-} from '@angular/core';
+import { AfterContentInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -157,7 +149,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			['corridor', corridorDrawerService],
 			['cylinder', cylinderDrawerService],
 			['ellipsoid', ellipsoidDrawerSerice],
-			['pollineVolume', polylineVolumeDrawerService],
+			['polylineVolume', polylineVolumeDrawerService],
 			['rectangle', rectangleDrawerService],
 			['wall', wallDrawerService],
 			

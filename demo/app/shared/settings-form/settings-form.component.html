@@ -23,7 +23,7 @@
         <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.showTracksLayer">Tracks Layer</md-slide-toggle>
         <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.showMapLayer">Map Layer</md-slide-toggle>
         <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.showVelocityVectors">Velocity Vectors</md-slide-toggle>
-        <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.show3dtiles">New York 3D Tiles</md-slide-toggle>
+        <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.show3dtiles" (change)="newYorkToggle($event)">New York 3D Tiles</md-slide-toggle>
         <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.keyboardControl">Keyboard Control (W,S,A,D)</md-slide-toggle>
     </div>
 </div>

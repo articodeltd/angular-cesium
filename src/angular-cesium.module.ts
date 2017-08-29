@@ -29,7 +29,7 @@ import { AcArcComponent } from './components/ac-arc/ac-arc.component';
 import { AcPolygonDescComponent } from './components/ac-polygon-desc/ac-polygon-desc.component';
 import { AcDefaultPlonterComponent } from './components/ac-default-plonter/ac-default-plonter.component';
 import { AcPolygonComponent } from './components/ac-polygon/ac-polygon.component';
-import { ViewersManagerService } from './services/viewers-service/viewers-manager.service';
+import { MapsManagerService } from './services/maps-manager/maps-manager.service';
 import { AcStaticEllipseDescComponent } from './components/static-dynamic/ac-static-ellipse-desc/ac-static-ellipse-desc.component';
 import { AcDynamicEllipseDescComponent } from './components/static-dynamic/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';
 import { AcDynamicPolylineDescComponent } from './components/static-dynamic/ac-dynamic-polyline-desc/ac-dynamic-polyline-desc.component';
@@ -137,7 +137,7 @@ import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rect
     AcStaticCircleDescComponent,
     AcStaticPolygonDescComponent,
 	],
-	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, ViewersManagerService],
+	providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, MapsManagerService],
 })
 export class AngularCesiumModule {
 }
