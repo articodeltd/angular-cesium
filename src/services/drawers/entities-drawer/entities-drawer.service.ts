@@ -39,15 +39,18 @@ export class EntitiesDrawerService extends BasicDrawerService {
 
   init(options?: EntitiesDrawerOptions) {
     const finalOptions = options || this.defaultOptions;
+    const dataSources = [];
     for (let i = 0; i < finalOptions.collectionsNumber; i++) {
       const dataSource = new Cesium.CustomDataSource();
-      this.cesiumService.getViewer().dataSources.add(dataSource);
+			dataSources.push(dataSource);
       this.entityCollections.set(dataSource.entities,
         new OptimizedEntityCollection(
           dataSource.entities,
           finalOptions.collectionMaxSize,
           finalOptions.collectionSuspensionTime));
     }
+    
+		return dataSources;
   }
 
   add(cesiumProps: any) {

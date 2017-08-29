@@ -1,4 +1,7 @@
-import { Component, ElementRef, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+	AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnInit,
+	SimpleChanges
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
@@ -13,6 +16,7 @@ import { ViewersManagerService } from '../../services/viewers-service/viewers-ma
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
 import { KeyboardControlService } from '../../services/keyboard-control/keyboard-control.service';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -47,9 +51,10 @@ import { KeyboardControlService } from '../../services/keyboard-control/keyboard
     PointDrawerService,
     ArcDrawerService,
     PolygonDrawerService,
+    MapLayersService,
   ]
 })
-export class AcMapComponent implements OnChanges, OnInit {
+export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
   private static readonly DEFAULT_MINIMUM_ZOOM = 1.0;
   private static readonly DEFAULT_MAXIMUM_ZOOM = Number.POSITIVE_INFINITY;
   private static readonly DEFAULT_TILT_ENABLE = true;
@@ -110,7 +115,8 @@ export class AcMapComponent implements OnChanges, OnInit {
               private arcDrawerService: ArcDrawerService,
               private pointDrawerService: PointDrawerService,
               private mapEventManager: MapEventsManagerService,
-              private keyboardControlService: KeyboardControlService) {
+              private keyboardControlService: KeyboardControlService,
+              private mapLayersService: MapLayersService) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
@@ -138,6 +144,10 @@ export class AcMapComponent implements OnChanges, OnInit {
       this._cesiumService.flyTo(changes['flyTo'].currentValue);
     }
   }
+	
+	ngAfterViewInit(): void {
+    this.mapLayersService.drawAllLayers();
+	}
 
   /**
    * @returns {Viewer} map cesium viewer

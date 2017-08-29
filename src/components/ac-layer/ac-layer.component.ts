@@ -38,6 +38,7 @@ import { EllipsoidDrawerService } from '../../services/drawers/ellipoid-drawer/e
 import { PolylineVolumeDrawerService } from '../../services/drawers/polyline-volume-dawer/polyline-volume-drawer.service';
 import { WallDrawerService } from '../../services/drawers/wall-dawer/wall-drawer.service';
 import { RectangleDrawerService } from '../../services/drawers/rectangle-dawer/rectangle-drawer.service';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 // tslint:enable
 /**
@@ -47,6 +48,7 @@ import { RectangleDrawerService } from '../../services/drawers/rectangle-dawer/r
  *  __param:__ {boolean} setShow - setShow/hide layer's entities.
  *  __param:__ {any} context - get the context layer that will use the componnet (most of the time equal to "this").
  *  __param:__ {LayerOptions} options - sets the layer options for each drawer.
+ *  __param:__ {zIndex} options - sets the layer options for each drawer.
  *
  *  __Usage :__
  *  ```
@@ -112,6 +114,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	store = false;
 	@Input()
 	options: LayerOptions;
+	@Input()
+	zIndex: number;
 	
 	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 	private entityName: string;
@@ -120,9 +124,11 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	private _drawerList: Map<string, BasicDrawerService>;
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 	private entitiesStore = new Map<string, any>();
+	private drawerDataSources = [];
 	
 	constructor(private  layerService: LayerService,
 							private _computationCache: ComputationCache,
+							private mapLayersService: MapLayersService,
 							billboardDrawerService: BillboardDrawerService,
 							labelDrawerService: LabelDrawerService,
 							ellipseDrawerService: EllipseDrawerService,
@@ -239,7 +245,12 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	ngOnInit(): void {
 		this._drawerList.forEach((drawer, drawerName) => {
 			const initOptions = this.options ? this.options[drawerName] : undefined;
-			drawer.init(initOptions);
+			const drawerDataSources = drawer.init(initOptions);
+			// only entities drawers create data sources
+			if (drawerDataSources) {
+				this.drawerDataSources.push(...drawerDataSources);
+				this.mapLayersService.registerLayerDataSources(this.drawerDataSources, this.zIndex);
+			}
 			drawer.setShow(this.show);
 		});
 	}
@@ -248,6 +259,11 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		if (changes.show && !changes.show.firstChange) {
 			const showValue = changes['show'].currentValue;
 			this._drawerList.forEach((drawer) => drawer.setShow(showValue));
+		}
+		
+		if (changes.zIndex && !changes.zIndex.firstChange) {
+			const zIndexValue = changes['zIndex'].currentValue;
+			this.mapLayersService.updateAndRefresh(this.drawerDataSources, zIndexValue); // TODO
 		}
 	}
 	
