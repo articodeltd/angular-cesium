@@ -200,9 +200,9 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + Maintainable code.
 
 ## Supported Entity types
-+ billboard - `ac-billboard-desc` / `ac-billboard`
-+ label - `ac-label-desc` / `ac-label`
-+ polyline - `ac-polyline-desc` / `ac-polyline`
++ billboard - `ac-billboard-desc` / `ac-billboard` / `ac-billboard-primitive-desc`
++ label - `ac-label-desc` / `ac-label` / `ac-label-primitive-desc`
++ polyline - `ac-polyline-desc` / `ac-polyline` / `ac-polyline-primitive-desc`
 + ellipse - `ac-ellipse-desc` / `ac-ellipse`
 + circle - `ac-circle-desc` / `ac-circle` *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis 
 + polygon - `ac-polygon-desc` / `ac-polygon`
@@ -216,8 +216,9 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + wall - `ac-wall-dec`
 + rectangle -`ac-rectangle-dec` 
 
-## `ac-entity-desc` vs `ac-entity`
+### `ac-entity-desc` vs `ac-entity`
 + `ac-entity-desc` component is used to describe how each entity in a stream of entities, managed inside `ac-layer`, should be drawn.
++ `ac-entity-primitive-desc` component is the same as `ac-entity-desc` with the difference of using Primitives to render the graphics. It is more efficient than `ac-entity-desc` when drawing an updating entity.
 + `ac-entity` component is used to draw an entity directly on the map, and so, can be used directly under `ac-map`.
 
 ## Entities API

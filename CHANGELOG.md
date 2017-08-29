@@ -2,6 +2,7 @@
 ### Features
 * Added `done` callback to `KeyboardControlService` definitions - now it's possible to know when the event is done.
 * Added internal `IGNORED` state to `KeyboardControlService` - now when action returns `false` it will ignore it until the next event cycle (keydown then keyup)
+* Added new `ac-billboard-primitive-desc`, `ac-label-primitive-desc`, `ac-polyline-primitive-desc`.These are efficient drawing components that uses Cesium Primitives.
 
 ### Breaking Changes
 * Event triggered from `KeyboardControlService` is now triggered with `cesiumService: CesiumService, key: string, keyboardEvent: KeyboardEvent`.
