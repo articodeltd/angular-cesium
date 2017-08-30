@@ -54,7 +54,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
   }
 
   setDefaultHeight(cesiumProps) {
-    if (this.graphicsType !== GraphicsType.billboard && this.graphicsType !== GraphicsType.label) {
+    if (this.graphicsType === GraphicsType.ellipse) {
       if (cesiumProps.height === undefined) {
         cesiumProps.height = 0;
       }

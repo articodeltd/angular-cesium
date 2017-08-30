@@ -1,3 +1,10 @@
+## NEXT
+### Features
+* Fixed bug that caused entities to have multiple height definitions.
+
+### Breaking Changes
+* Renamed `ModuleOptions` to `ModuleConfiguration`. 
+
 ## 0.0.19
 ### Features
 * Added `done` callback to `KeyboardControlService` definitions - now it's possible to know when the event is done.
