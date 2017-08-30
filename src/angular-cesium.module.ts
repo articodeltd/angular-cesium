@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AcMapComponent } from './components/ac-map/ac-map.component';
 import { AcLayerComponent } from './components/ac-layer/ac-layer.component';
@@ -49,8 +49,6 @@ import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rect
 import { AcBillboardPrimitiveDescComponent } from './components/ac-billboard-primitive-desc/ac-billboard-primitive-desc.component';
 import { AcLabelPrimitiveDescComponent } from './components/ac-label-primitive-desc/ac-label-primitive-desc.component';
 import { AcPolylinePrimitiveDescComponent } from './components/ac-polyline-primitive-desc/ac-polyline-primitive-desc.component';
-import { ModuleConfiguration } from './models/module-options';
-import { ConfigurationService } from './services/cesium-fixes/ConfigurationService';
 
 @NgModule({
   imports: [
@@ -150,11 +148,4 @@ import { ConfigurationService } from './services/cesium-fixes/ConfigurationServi
   ],
   providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, MapsManagerService],
 })
-export class AngularCesiumModule {
-  static forRoot(config?: ModuleConfiguration): ModuleWithProviders {
-    return {
-      ngModule: AngularCesiumModule,
-      providers: [ConfigurationService, {provide: 'config', useValue: config}]
-    };
-  }
-}
+export class AngularCesiumModule {}

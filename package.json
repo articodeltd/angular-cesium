@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -129,7 +129,7 @@
     "zone.js": "^0.8.4"
   },
   "dependencies": {
-    "angular2parse": "^1.0.5",
+    "angular2parse": "1.0.5",
     "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",
     "primitive-primitives": "0.0.6"
