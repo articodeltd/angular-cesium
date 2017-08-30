@@ -20,8 +20,17 @@ class Registration {
 	}
 }
 
+/**
+ * Returns screen position, drag boolean for drag events only
+ */
+export interface Movement {
+	startPosition: { x: number, y: number };
+	endPosition: { x: number, y: number };
+	drop?: boolean;
+}
+
 export interface EventResult {
-	movement: any;
+	movement: Movement;
 	cesiumEntities: any[];
 	entities: any[];
 }
