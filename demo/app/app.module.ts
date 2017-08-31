@@ -31,7 +31,6 @@ import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodro
 import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
-import { CesiumEnhancementsModule } from '../../src/cesium-enhancements/cesium-enhancements.module';
 
 
 @NgModule({
@@ -66,7 +65,6 @@ import { CesiumEnhancementsModule } from '../../src/cesium-enhancements/cesium-e
     FormsModule,
     HttpModule,
     AngularCesiumModule,
-    CesiumEnhancementsModule.forRoot(),
     BrowserAnimationsModule,
     AppMaterialModule,
     ApolloModule.forRoot(getApolloClient),

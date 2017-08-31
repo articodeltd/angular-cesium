@@ -317,7 +317,11 @@ Batch.prototype.destroy = function() {
   }
 };
 
+let wasFixed = false;
 export function fixCesiumEntitiesShadows() {
+  if(wasFixed){
+    return;
+  }
   Cesium.StaticGeometryColorBatch.prototype.add = function (time, updater) {
     var items;
     var translucent;
@@ -342,4 +346,5 @@ export function fixCesiumEntitiesShadows() {
     batch.add(updater, instance);
     items.push(batch);
   };
+  wasFixed = true;
 }

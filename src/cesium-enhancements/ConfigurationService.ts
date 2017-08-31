@@ -3,7 +3,6 @@ import { fixCesiumEntitiesShadows } from './StaticGeometryColorBatch';
 
 @Injectable()
 export class ConfigurationService {
-  foo: any;
   constructor(@Optional() @Inject('config') private config: any) {
     const fixEntitiesShadows = config ? config.fixEntitiesShadows : true;
     if (fixEntitiesShadows !== false) {
