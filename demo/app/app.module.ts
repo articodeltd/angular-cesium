@@ -64,7 +64,7 @@ import { LayerOrderComponent } from './components/layer-order/layer-order.compon
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularCesiumModule,
+    AngularCesiumModule.forRoot(),
     BrowserAnimationsModule,
     AppMaterialModule,
     ApolloModule.forRoot(getApolloClient),
