@@ -5,6 +5,7 @@
 ### Fixes
 * Fixed bug removed default height 0
 * Fixed AngularCesiumModule loading
+* Fixed `npm run server`
 
 ### Breaking Changes
 * Renamed `ModuleOptions` to `ModuleConfiguration`. 
