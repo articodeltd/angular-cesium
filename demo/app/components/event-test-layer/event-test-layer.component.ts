@@ -97,9 +97,9 @@ export class EventTestLayerComponent implements OnInit {
 			.do((result) => {
 				// disable camera rotation when dragging
 				if (!result.movement.drop) {
-					this.cameraService.enableRotate(false)
+					this.cameraService.enableInputs(false)
 				} else {
-          this.cameraService.enableRotate(true)
+          this.cameraService.enableInputs(true)
 				}
 			})
 			.map((result) => {

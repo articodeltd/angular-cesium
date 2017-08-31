@@ -16,9 +16,9 @@ export class CameraService {
   private camera;
   private screenSpaceCameraController;
   private morphListenerCancelFn;
-  private lastRotate = true;
-  private lastTilt = true;
-  private lastLook = true;
+  private lastRotate: boolean;
+  private lastTilt: boolean;
+  private lastLook: boolean;
   private isSceneModePerformance2D = false;
 
   constructor() {
@@ -29,6 +29,9 @@ export class CameraService {
     this.scene = cesiumService.getScene();
     this.screenSpaceCameraController = this.scene.screenSpaceCameraController;
     this.camera = this.scene.camera;
+    this.lastRotate = this.screenSpaceCameraController.enableRotate;
+    this.lastTilt = this.screenSpaceCameraController.enableTilt;
+    this.lastLook = this.screenSpaceCameraController.enableLook;
   }
 
   _listenToSceneModeMorph(callback: Function) {
@@ -121,6 +124,22 @@ export class CameraService {
    */
   enableTranslate(translate: boolean): void {
     this.screenSpaceCameraController.enableTranslate = translate;
+  }
+
+  /**
+   * Sets if the camera is able to zoom
+   * @param {boolean} zoom
+   */
+  enableZoom(zoom: boolean): void {
+    this.screenSpaceCameraController.enableZoom = zoom;
+  }
+
+  /**
+   * Sets if the camera receives inputs
+   * @param {boolean} inputs
+   */
+  enableInputs(inputs: boolean): void {
+    this.screenSpaceCameraController.enableInputs = inputs;
   }
 
   /**
