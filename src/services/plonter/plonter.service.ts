@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { AcEntity } from '../../models/ac-entity';
 import { Subject } from 'rxjs/Subject';
-import { EventResult } from '../map-events-mananger/map-events-manager';
+import { EventResult, Movement } from '../map-events-mananger/map-events-manager';
 
 /**
  * Service for solving plonter.
@@ -31,7 +31,7 @@ export class PlonterService {
 		return this._entitesToPlonter;
 	}
 	
-	get plonterClickPosition(){
+	get plonterClickPosition(): Movement{
 		return this._eventResult.movement;
 	}
 

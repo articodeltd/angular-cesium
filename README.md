@@ -228,10 +228,11 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + `ac-entity-primitive-desc` component is the same as `ac-entity-desc` with the difference of using Primitives to render the graphics. It is more efficient than `ac-entity-desc` when drawing an updating entity.
 + `ac-entity` component is used to draw an entity directly on the map, and so, can be used directly under `ac-map`.
 
-## Entities API
-+ All of the entity components except Polyline (`ac-polyline` & `ac-polyline-desc`) are using a flatten Cesium Entities API.
-+ e.g: `ac-billboard` `props` input accepts a JSON which can have all properties found in Cesium Entity plus all properties found in Cesium BillboardGraphics.
-+ In AngularCesium, entities have a default height of 0 (except of Billboards and Labels). This as in line with Cesium docs. For some reason in Cesium itself, the default height is undefined which leads Cesium to use GroundPrimitive which is less efficient. As a result of this fix, if you want your entity to be clamped to ground, set `height: null` in the props;
+### Entities API
++ All of the entity components are using a flatten Cesium Entities API.
++ e.g: `ac-billboard` `props` input accepts a JSON which can have all properties found in Cesium Entity (like `position`) plus all properties found in Cesium BillboardGraphics (like).
++ In AngularCesium, entities have a default height of 0 (except of Billboards and Labels). This as in line with Cesium docs. For some reason in Cesium itself, the default height is undefined which leads Cesium to use GroundPrimitive which is less efficient. 
+As a result, if you want your entity to be more efficient, set `height: 0` or any other value in the props.
 
 ## Map Events
 `MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection, event priority management 
