@@ -1,4 +1,7 @@
 ## 0.0.20
+### Features
+* Added `enableInput()`, `enableZoom()` to `CameraService`.
+
 ### Fixes
 * Fixed bug removed default height 0
 * Fixed AngularCesiumModule loading
