@@ -26,9 +26,10 @@
     "build-demo": "rimraf dist && webpack --config config/webpack.dev.js --progress --profile --bail",
     "test-server": "node demo/performance-server/server.js",
     "server": "nodemon --exec ts-node -- demo/server/src/main.ts",
-    "compile-docs": "rimraf docs && compodoc -p src/tsconfig.compodoc.json -d docs -n \"Angular 2 Cesium\"",
-    "compileNserve-docs": "npm run compile-docs",
     "docs": "compodoc -p src/tsconfig.compodoc.json -d docs -n \"Angular 2 Cesium\" --watch --serve",
+    "compile-docs": "rimraf docs && compodoc -p src/tsconfig.compodoc.json -d docs -n \"Angular 2 Cesium\"",
+    "gh-pages": "gh-pages -d docs -b gh-pages",
+    "docs:push": "npm run compile-docs && npm run gh-pages ",
     "heroku-postbuild": "npm run build-demo"
   },
   "peerDependencies": {
