@@ -1,6 +1,7 @@
-## NEXT
-### Features
-* Fixed bug that caused entities to have multiple height definitions.
+## 0.0.20
+### Fixes
+* Fixed bug removed default height 0
+* Fixed AngularCesiumModule loading
 
 ### Breaking Changes
 * Renamed `ModuleOptions` to `ModuleConfiguration`. 
