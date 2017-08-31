@@ -289,7 +289,7 @@ export class KeyboardControlService {
     const params = this.getParams(execution.params, keyboardEvent);
 
     if (isNumber(execution.action)) {
-      const predefinedAction = PREDEFINED_KEYBOARD_ACTIONS[execution.action];
+      const predefinedAction = PREDEFINED_KEYBOARD_ACTIONS[execution.action as number];
 
       if (predefinedAction) {
         predefinedAction(this.cesiumService, params, keyboardEvent);

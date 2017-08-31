@@ -8,6 +8,7 @@ import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/elli
 /**
  *  This is an ellipse implementation.
  *  The element must be a child of ac-layer element.
+ *  _Set `height` prop for performance enhancement_
  *  The properties of props are the same as the properties of Entity and EllipseGraphics:
  *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
  *  + https://cesiumjs.org/Cesium/Build/Documentation/EllipseGraphics.html
@@ -17,7 +18,8 @@ import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/elli
  *    <ac-ellipse-desc props="{
  *      position: data.position,
  *      semiMajorAxis:250000.0,
- *      semiMinorAxis:400000.0
+ *      semiMinorAxis:400000.0,
+ *      height: 0
  *    }">
  *    </ac-ellipse-desc>
  *  ```
