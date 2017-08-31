@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AcMapComponent } from './components/ac-map/ac-map.component';
 import { AcLayerComponent } from './components/ac-layer/ac-layer.component';
@@ -49,8 +49,8 @@ import { AcRectangleDescComponent } from './components/ac-rectangle-desc/ac-rect
 import { AcBillboardPrimitiveDescComponent } from './components/ac-billboard-primitive-desc/ac-billboard-primitive-desc.component';
 import { AcLabelPrimitiveDescComponent } from './components/ac-label-primitive-desc/ac-label-primitive-desc.component';
 import { AcPolylinePrimitiveDescComponent } from './components/ac-polyline-primitive-desc/ac-polyline-primitive-desc.component';
-import { fixCesiumEntitiesShadows } from './services/cesium-fixes/StaticGeometryColorBatch';
-import { ModuleOptions } from './models/module-options';
+import { ModuleConfiguration } from './models/module-options';
+import { ConfigurationService } from './cesium-enhancements/ConfigurationService';
 
 @NgModule({
   imports: [
@@ -148,14 +148,13 @@ import { ModuleOptions } from './models/module-options';
     AcStaticCircleDescComponent,
     AcStaticPolygonDescComponent,
   ],
-  providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, MapsManagerService],
+  providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, MapsManagerService, ConfigurationService],
 })
 export class AngularCesiumModule {
-  static forRoot(options?: ModuleOptions) {
-    const fixEntitiesShadows = options ? options.fixEntitiesShadows : true;
-    if (fixEntitiesShadows !== false) {
-      fixCesiumEntitiesShadows();
-    }
-    return { ngModule: AngularCesiumModule };
+  static forRoot(config?: ModuleConfiguration): ModuleWithProviders {
+    return {
+      ngModule: AngularCesiumModule,
+      providers: [{provide: 'config', useValue: config}]
+    };
   }
 }

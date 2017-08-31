@@ -1,7 +1,4 @@
-import {
-	AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnInit,
-	SimpleChanges
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
@@ -19,6 +16,7 @@ import { KeyboardControlService } from '../../services/keyboard-control/keyboard
 import { CameraService } from '../../services/camera/camera.service';
 import { SceneMode } from '../../models/scene-mode.enum';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
+import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -101,7 +99,8 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
               private pointDrawerService: PointDrawerService,
               private mapEventsManager: MapEventsManagerService,
               private keyboardControlService: KeyboardControlService,
-              private mapLayersService: MapLayersService) {
+              private mapLayersService: MapLayersService,
+              private configurationService: ConfigurationService) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);

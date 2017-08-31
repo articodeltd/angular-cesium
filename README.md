@@ -43,7 +43,7 @@ Check out our [Demo](http://www.angular-cesium.com) that contains small app buil
     
 ###### AngularCesiumModule configuration
 + The main module should be loaded with `.forRoot()` in order to make the module perform enhancements to Cesium, However, the module can be loaded with out calling `forRoot()`.
-+ `.forRoot()` excepts an optional option object of type `ModuleOptions` where every option can be toggled on or off. If no options object is passed, a default one will be used.
++ `.forRoot()` excepts an optional option object of type `ModuleConfiguration` where every option can be toggled on or off. If no options object is passed, a default one will be used.
 
 ###### Cesium fixes / enhancements:
   * Fix entities shadowing bug - `fixEntitiesShadows` 

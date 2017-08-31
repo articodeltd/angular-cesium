@@ -1,3 +1,11 @@
+## 0.0.20
+### Fixes
+* Fixed bug removed default height 0
+* Fixed AngularCesiumModule loading
+
+### Breaking Changes
+* Renamed `ModuleOptions` to `ModuleConfiguration`. 
+
 ## 0.0.19
 ### Features
 * Added `done` callback to `KeyboardControlService` definitions - now it's possible to know when the event is done.
