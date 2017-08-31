@@ -129,7 +129,7 @@
     "zone.js": "^0.8.4"
   },
   "dependencies": {
-    "angular2parse": "1.0.5",
+    "angular2parse": "^1.0.5",
     "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",
     "primitive-primitives": "0.0.6"
