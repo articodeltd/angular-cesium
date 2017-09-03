@@ -1,3 +1,7 @@
+## 0.0.21
+### Features
+* Allow `KeyboardControlService` to run outside of angular zone. 
+
 ## 0.0.20
 ### Features
 * Added `enableInput()`, `enableZoom()` to `CameraService`.
