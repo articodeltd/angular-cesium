@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -30,7 +30,8 @@
     "compile-docs": "rimraf docs && compodoc -p src/tsconfig.compodoc.json -d docs -n \"Angular 2 Cesium\"",
     "gh-pages": "gh-pages -d docs -b gh-pages",
     "docs:push": "npm run compile-docs && npm run gh-pages ",
-    "heroku-postbuild": "npm run build-demo"
+    "heroku-postbuild": "npm run build-demo",
+    "publish": "npm run bundle"
   },
   "peerDependencies": {
     "@angular/common": "^4.2.6",

@@ -343,6 +343,17 @@ With angular cesium you can define your map provider in a declarative way using 
    </ac-3d-tile-layer>
 ```
 
+### Camera [Keyboard Control Service](https://tgftech.github.io/angular-cesium/injectables/KeyboardControlService.html)
+```javascript
+ this.keyboardControlService.setKeyboardControls({
+      W: { action: KeyboardAction.CAMERA_FORWARD },
+      S: { action: KeyboardAction.CAMERA_BACKWARD },
+      D: { action: KeyboardAction.CAMERA_RIGHT },
+      A: { action: KeyboardAction.CAMERA_LEFT },
+    },
+
+```
+
 ## Documents
 + #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   
  
