@@ -955,7 +955,7 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { isNumber } from &#x27;util&#x27;;
-import { Inject, Injectable } from &#x27;@angular/core&#x27;;
+import { Inject, Injectable, NgZone } from &#x27;@angular/core&#x27;;
 import { DOCUMENT } from &#x27;@angular/common&#x27;;
 import { KeyboardAction } from &#x27;../../models/ac-keyboard-action.enum&#x27;;
 import { CesiumService } from &#x27;../cesium/cesium.service&#x27;;
@@ -966,26 +966,26 @@ export type KeyboardControlValidationFn &#x3D; (cesiumService: CesiumService, pa
 export type KeyboardControlDoneFn &#x3D; (cesiumService: CesiumService, event: KeyboardEvent) &#x3D;&gt; boolean;
 
 export interface KeyboardControlParams {
-  action: KeyboardAction | KeyboardControlActionFn;
-  validation?: KeyboardControlValidationFn;
-  params?: { [paramName: string]: any };
-  done?: KeyboardControlDoneFn;
+	action: KeyboardAction | KeyboardControlActionFn;
+	validation?: KeyboardControlValidationFn;
+	params?: { [paramName: string]: any };
+	done?: KeyboardControlDoneFn;
 }
 
 export interface KeyboardControlDefinition {
-  [keyboardCharCode: string]: KeyboardControlParams;
+	[keyboardCharCode: string]: KeyboardControlParams;
 }
 
 enum KeyEventState {
-  IGNORED,
-  NOT_PRESSED,
-  PRESSED,
+	IGNORED,
+	NOT_PRESSED,
+	PRESSED,
 }
 
 interface ActiveDefinition {
-  keyboardEvent: KeyboardEvent,
-  state: KeyEventState,
-  action: KeyboardControlParams
+	keyboardEvent: KeyboardEvent,
+	state: KeyEventState,
+	action: KeyboardControlParams
 }
 
 /**
@@ -1058,228 +1058,239 @@ interface ActiveDefinition {
  */
 @Injectable()
 export class KeyboardControlService {
-  private _currentDefinitions: KeyboardControlDefinition &#x3D; null;
-  private _activeDefinitions: { [definitionKey: string]: ActiveDefinition } &#x3D; {};
-  private _keyMappingFn: Function &#x3D; this.defaultKeyMappingFn;
-
-  /**
-   * Creats the keyboard control service.
-   * @constructor
-   */
-  constructor(private cesiumService: CesiumService, @Inject(DOCUMENT) private document: any) {
-  }
-
-  /**
-   * Initializes the keyboard control service.
-   * @constructor
-   */
-  init() {
-    const canvas &#x3D; this.cesiumService.getCanvas();
-    canvas.addEventListener(&#x27;click&#x27;, () &#x3D;&gt; {
-      canvas.focus();
-    });
-
-    this.handleKeydown &#x3D; this.handleKeydown.bind(this);
-    this.handleKeyup &#x3D; this.handleKeyup.bind(this);
-    this.handleTick &#x3D; this.handleTick.bind(this);
-  }
-
-  /**
-   * Sets the current map keyboard control configuration.
-   * The configuration is a key mapping between a key string and a KeyboardControlDefinition:
-   * - &#x60;action&#x60; is a predefine action from &#x60;KeyboardAction&#x60; enum, or a custom method:
-   * &#x60;(camera, scene, params, key) &#x3D;&gt; boolean | void&#x60; - returning false will cancel the current keydown.
-   * - &#x60;validation&#x60; is a method that validates if the event should occur or not (&#x60;camera, scene, params, key&#x60;)
-   * - &#x60;params&#x60; is an object (or function that returns object) that will be passed into the action executor.
-   * - &#x60;done&#x60; is a function that will be triggered when &#x60;keyup&#x60; is triggered.
-   * @param {KeyboardControlDefinition} definitions
-   * @param {Function} keyMappingFn - Mapping function for custom keys
-   */
-  setKeyboardControls(definitions: KeyboardControlDefinition, keyMappingFn?: (keyEvent: KeyboardEvent) &#x3D;&gt; string) {
-    if (!definitions) {
-      return this.removeKeyboardControls();
-    }
-
-    if (!this._currentDefinitions) {
-      this.registerEvents();
-    }
-
-    this._currentDefinitions &#x3D; definitions;
-    this._keyMappingFn &#x3D; keyMappingFn || this.defaultKeyMappingFn;
-
-    Object.keys(this._currentDefinitions).forEach(key &#x3D;&gt; {
-      this._activeDefinitions[key] &#x3D; {
-        state: KeyEventState.NOT_PRESSED,
-        action: null,
-        keyboardEvent: null,
-      };
-    });
-  }
-
-  /**
-   * Removes the current set of keyboard control items, and unregister from map events.
-   */
-  removeKeyboardControls() {
-    this.unregisterEvents();
-    this._currentDefinitions &#x3D; null;
-  }
-
-  /**
-   * Returns the current action that handles &#x60;char&#x60; key string, or &#x60;null&#x60; if not exists
-   * @param {string} char
-   */
-  private getAction(char: string): KeyboardControlParams {
-    return this._currentDefinitions[char] || null;
-  }
-
-  /**
-   * The default &#x60;defaultKeyMappingFn&#x60; that maps &#x60;KeyboardEvent&#x60; into a key string.
-   * @param {KeyboardEvent} keyEvent
-   */
-  private defaultKeyMappingFn(keyEvent: KeyboardEvent): string {
-    return String.fromCharCode(keyEvent.keyCode);
-  }
-
-  /**
-   * document&#x27;s &#x60;keydown&#x60; event handler
-   * @param {KeyboardEvent} e
-   */
-  private handleKeydown(e: KeyboardEvent) {
-    const char &#x3D; this._keyMappingFn(e);
-    const action &#x3D; this.getAction(char);
-
-    if (action) {
-      const actionState &#x3D; this._activeDefinitions[char];
-
-      if (actionState.state !&#x3D;&#x3D; KeyEventState.IGNORED) {
-        let execute &#x3D; true;
-
-        const params &#x3D; this.getParams(action.params, e);
-
-        if (action.validation) {
-          execute &#x3D; action.validation(this.cesiumService, params, e);
-        }
-
-        if (execute &#x3D;&#x3D;&#x3D; true) {
-          this._activeDefinitions[char] &#x3D; {
-            state: KeyEventState.PRESSED,
-            action,
-            keyboardEvent: e,
-          };
-        }
-      }
-    }
-  }
-
-  /**
-   * document&#x27;s &#x60;keyup&#x60; event handler
-   * @param {KeyboardEvent} e
-   */
-  private handleKeyup(e: KeyboardEvent) {
-    const char &#x3D; this._keyMappingFn(e);
-    const action &#x3D; this.getAction(char);
-
-    if (action) {
-      this._activeDefinitions[char] &#x3D; {
-        state: KeyEventState.NOT_PRESSED,
-        action: null,
-        keyboardEvent: e,
-      };
-
-      if (action.done &amp;&amp; typeof action.done &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
-        action.done(this.cesiumService, e);
-      }
-    }
-  }
-
-  /**
-   * &#x60;tick&#x60; event handler that triggered by Cesium render loop
-   */
-  private handleTick() {
-    const activeKeys &#x3D; Object.keys(this._activeDefinitions);
-
-    activeKeys.forEach(key &#x3D;&gt; {
-      const actionState &#x3D; this._activeDefinitions[key];
-
-      if (actionState !&#x3D;&#x3D; null &amp;&amp; actionState.action !&#x3D;&#x3D; null &amp;&amp; actionState.state &#x3D;&#x3D;&#x3D; KeyEventState.PRESSED) {
-        this.executeAction(actionState.action, key, actionState.keyboardEvent);
-      }
-    });
-  }
-
-  /**
-   *
-   * Params resolve function, returns object.
-   * In case of params function, executes it and returns it&#x27;s return value.
-   * @param {any} paramsDef
-   * @param {KeyboardEvent} keyboardEvent
-   *
-   * @returns {object}
-   */
-  private getParams(paramsDef: any, keyboardEvent: KeyboardEvent): { [paramName: string]: any } {
-    if (!paramsDef) {
-      return {};
-    }
-
-    if (typeof paramsDef &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
-      return paramsDef(this.cesiumService, keyboardEvent);
-    }
-
-    return paramsDef;
-  }
-
-  /**
-   *
-   * Executes a given &#x60;KeyboardControlParams&#x60; object.
-   *
-   * @param {KeyboardControlParams} execution
-   * @param {string} key
-   * @param {KeyboardEvent} keyboardEvent
-   *
-   */
-  private executeAction(execution: KeyboardControlParams, key: string, keyboardEvent: KeyboardEvent) {
-    if (!this._currentDefinitions) {
-      return;
-    }
-
-    const params &#x3D; this.getParams(execution.params, keyboardEvent);
-
-    if (isNumber(execution.action)) {
-      const predefinedAction &#x3D; PREDEFINED_KEYBOARD_ACTIONS[execution.action as number];
-
-      if (predefinedAction) {
-        predefinedAction(this.cesiumService, params, keyboardEvent);
-      }
-    } else if (typeof execution.action &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
-      const shouldCancelEvent &#x3D; execution.action(this.cesiumService, params, keyboardEvent);
-
-      if (shouldCancelEvent &#x3D;&#x3D;&#x3D; false) {
-        this._activeDefinitions[key] &#x3D; {
-          state: KeyEventState.IGNORED,
-          action: null,
-          keyboardEvent: null,
-        };
-      }
-    }
-  }
-
-  /**
-   * Registers to keydown, keyup of &#x60;document&#x60;, and &#x60;tick&#x60; of Cesium.
-   */
-  private registerEvents() {
-    this.document.addEventListener(&#x27;keydown&#x27;, this.handleKeydown);
-    this.document.addEventListener(&#x27;keyup&#x27;, this.handleKeyup);
-    this.cesiumService.getViewer().clock.onTick.addEventListener(this.handleTick);
-  }
-
-  /**
-   * Unregisters to keydown, keyup of &#x60;document&#x60;, and &#x60;tick&#x60; of Cesium.
-   */
-  private unregisterEvents() {
-    this.document.removeEventListener(&#x27;keydown&#x27;, this.handleKeydown);
-    this.document.removeEventListener(&#x27;keyup&#x27;, this.handleKeyup);
-    this.cesiumService.getViewer().clock.onTick.removeEventListener(this.handleTick);
-  }
+	private _currentDefinitions: KeyboardControlDefinition &#x3D; null;
+	private _activeDefinitions: { [definitionKey: string]: ActiveDefinition } &#x3D; {};
+	private _keyMappingFn: Function &#x3D; this.defaultKeyMappingFn;
+	
+	/**
+	 * Creats the keyboard control service.
+	 * @constructor
+	 */
+	constructor(private ngZone: NgZone, private cesiumService: CesiumService, @Inject(DOCUMENT) private document: any) {
+	}
+	
+	/**
+	 * Initializes the keyboard control service.
+	 * @constructor
+	 */
+	init() {
+		const canvas &#x3D; this.cesiumService.getCanvas();
+		canvas.addEventListener(&#x27;click&#x27;, () &#x3D;&gt; {
+			canvas.focus();
+		});
+		
+		this.handleKeydown &#x3D; this.handleKeydown.bind(this);
+		this.handleKeyup &#x3D; this.handleKeyup.bind(this);
+		this.handleTick &#x3D; this.handleTick.bind(this);
+	}
+	
+	/**
+	 * Sets the current map keyboard control definitions.
+	 * The definitions is a key mapping between a key string and a KeyboardControlDefinition:
+	 * - &#x60;action&#x60; is a predefine action from &#x60;KeyboardAction&#x60; enum, or a custom method:
+	 * &#x60;(camera, scene, params, key) &#x3D;&gt; boolean | void&#x60; - returning false will cancel the current keydown.
+	 * - &#x60;validation&#x60; is a method that validates if the event should occur or not (&#x60;camera, scene, params, key&#x60;)
+	 * - &#x60;params&#x60; is an object (or function that returns object) that will be passed into the action executor.
+	 * - &#x60;done&#x60; is a function that will be triggered when &#x60;keyup&#x60; is triggered.
+	 * @param {KeyboardControlDefinition} definitions
+	 * @param {Function} keyMappingFn - Mapping function for custom keys
+	 * @param {Boolean} outsideOfAngularZone - if key down events will run outside of angular zone.
+	 */
+	setKeyboardControls(definitions: KeyboardControlDefinition,
+											keyMappingFn?: (keyEvent: KeyboardEvent) &#x3D;&gt; string,
+											outsideOfAngularZone &#x3D; false) {
+		if (!definitions) {
+			return this.removeKeyboardControls();
+		}
+		
+		if (!this._currentDefinitions) {
+			this.registerEvents(outsideOfAngularZone);
+		}
+		
+		this._currentDefinitions &#x3D; definitions;
+		this._keyMappingFn &#x3D; keyMappingFn || this.defaultKeyMappingFn;
+		
+		Object.keys(this._currentDefinitions).forEach(key &#x3D;&gt; {
+			this._activeDefinitions[key] &#x3D; {
+				state : KeyEventState.NOT_PRESSED,
+				action : null,
+				keyboardEvent : null,
+			};
+		});
+	}
+	
+	/**
+	 * Removes the current set of keyboard control items, and unregister from map events.
+	 */
+	removeKeyboardControls() {
+		this.unregisterEvents();
+		this._currentDefinitions &#x3D; null;
+	}
+	
+	/**
+	 * Returns the current action that handles &#x60;char&#x60; key string, or &#x60;null&#x60; if not exists
+	 * @param {string} char
+	 */
+	private getAction(char: string): KeyboardControlParams {
+		return this._currentDefinitions[char] || null;
+	}
+	
+	/**
+	 * The default &#x60;defaultKeyMappingFn&#x60; that maps &#x60;KeyboardEvent&#x60; into a key string.
+	 * @param {KeyboardEvent} keyEvent
+	 */
+	private defaultKeyMappingFn(keyEvent: KeyboardEvent): string {
+		return String.fromCharCode(keyEvent.keyCode);
+	}
+	
+	/**
+	 * document&#x27;s &#x60;keydown&#x60; event handler
+	 * @param {KeyboardEvent} e
+	 */
+	private handleKeydown(e: KeyboardEvent) {
+		const char &#x3D; this._keyMappingFn(e);
+		const action &#x3D; this.getAction(char);
+		
+		if (action) {
+			const actionState &#x3D; this._activeDefinitions[char];
+			
+			if (actionState.state !&#x3D;&#x3D; KeyEventState.IGNORED) {
+				let execute &#x3D; true;
+				
+				const params &#x3D; this.getParams(action.params, e);
+				
+				if (action.validation) {
+					execute &#x3D; action.validation(this.cesiumService, params, e);
+				}
+				
+				if (execute &#x3D;&#x3D;&#x3D; true) {
+					this._activeDefinitions[char] &#x3D; {
+						state : KeyEventState.PRESSED,
+						action,
+						keyboardEvent : e,
+					};
+				}
+			}
+		}
+	}
+	
+	/**
+	 * document&#x27;s &#x60;keyup&#x60; event handler
+	 * @param {KeyboardEvent} e
+	 */
+	private handleKeyup(e: KeyboardEvent) {
+		const char &#x3D; this._keyMappingFn(e);
+		const action &#x3D; this.getAction(char);
+		
+		if (action) {
+			this._activeDefinitions[char] &#x3D; {
+				state : KeyEventState.NOT_PRESSED,
+				action : null,
+				keyboardEvent : e,
+			};
+			
+			if (action.done &amp;&amp; typeof action.done &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+				action.done(this.cesiumService, e);
+			}
+		}
+	}
+	
+	/**
+	 * &#x60;tick&#x60; event handler that triggered by Cesium render loop
+	 */
+	private handleTick() {
+		const activeKeys &#x3D; Object.keys(this._activeDefinitions);
+		
+		activeKeys.forEach(key &#x3D;&gt; {
+			const actionState &#x3D; this._activeDefinitions[key];
+			
+			if (actionState !&#x3D;&#x3D; null &amp;&amp; actionState.action !&#x3D;&#x3D; null &amp;&amp; actionState.state &#x3D;&#x3D;&#x3D; KeyEventState.PRESSED) {
+				this.executeAction(actionState.action, key, actionState.keyboardEvent);
+			}
+		});
+	}
+	
+	/**
+	 *
+	 * Params resolve function, returns object.
+	 * In case of params function, executes it and returns it&#x27;s return value.
+	 * @param {any} paramsDef
+	 * @param {KeyboardEvent} keyboardEvent
+	 *
+	 * @returns {object}
+	 */
+	private getParams(paramsDef: any, keyboardEvent: KeyboardEvent): { [paramName: string]: any } {
+		if (!paramsDef) {
+			return {};
+		}
+		
+		if (typeof paramsDef &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+			return paramsDef(this.cesiumService, keyboardEvent);
+		}
+		
+		return paramsDef;
+	}
+	
+	/**
+	 *
+	 * Executes a given &#x60;KeyboardControlParams&#x60; object.
+	 *
+	 * @param {KeyboardControlParams} execution
+	 * @param {string} key
+	 * @param {KeyboardEvent} keyboardEvent
+	 *
+	 */
+	private executeAction(execution: KeyboardControlParams, key: string, keyboardEvent: KeyboardEvent) {
+		if (!this._currentDefinitions) {
+			return;
+		}
+		
+		const params &#x3D; this.getParams(execution.params, keyboardEvent);
+		
+		if (isNumber(execution.action)) {
+			const predefinedAction &#x3D; PREDEFINED_KEYBOARD_ACTIONS[execution.action as number];
+			
+			if (predefinedAction) {
+				predefinedAction(this.cesiumService, params, keyboardEvent);
+			}
+		} else if (typeof execution.action &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+			const shouldCancelEvent &#x3D; execution.action(this.cesiumService, params, keyboardEvent);
+			
+			if (shouldCancelEvent &#x3D;&#x3D;&#x3D; false) {
+				this._activeDefinitions[key] &#x3D; {
+					state : KeyEventState.IGNORED,
+					action : null,
+					keyboardEvent : null,
+				};
+			}
+		}
+	}
+	
+	/**
+	 * Registers to keydown, keyup of &#x60;document&#x60;, and &#x60;tick&#x60; of Cesium.
+	 */
+	private registerEvents(outsideOfAngularZone: boolean) {
+		const registerToEvents &#x3D; () &#x3D;&gt; {
+			this.document.addEventListener(&#x27;keydown&#x27;, this.handleKeydown);
+			this.document.addEventListener(&#x27;keyup&#x27;, this.handleKeyup);
+			this.cesiumService.getViewer().clock.onTick.addEventListener(this.handleTick);
+		};
+		
+		if (outsideOfAngularZone) {
+			this.ngZone.runOutsideAngular(registerToEvents);
+		} else {
+			registerToEvents();
+		}
+	}
+	
+	/**
+	 * Unregisters to keydown, keyup of &#x60;document&#x60;, and &#x60;tick&#x60; of Cesium.
+	 */
+	private unregisterEvents() {
+		this.document.removeEventListener(&#x27;keydown&#x27;, this.handleKeydown);
+		this.document.removeEventListener(&#x27;keyup&#x27;, this.handleKeyup);
+		this.cesiumService.getViewer().clock.onTick.removeEventListener(this.handleTick);
+	}
 }
 </code></pre>
     </div>
