@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 /**
  *  This is a label implementation.
@@ -27,7 +28,7 @@ import { LabelDrawerService } from '../../services/drawers/label-drawer/label-dr
 })
 export class AcLabelComponent extends EntityOnMapComponent {
 
-	constructor(labelDrawer: LabelDrawerService) {
-		super(labelDrawer);
+	constructor(labelDrawer: LabelDrawerService, mapLayers: MapLayersService) {
+		super(labelDrawer, mapLayers);
 	}
 }

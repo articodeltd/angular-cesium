@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 /**
  *  This is an ellipse implementation.
@@ -27,7 +28,7 @@ import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/elli
 })
 export class AcEllipseComponent extends EntityOnMapComponent {
 
-	constructor(ellipseDrawer: EllipseDrawerService) {
-		super(ellipseDrawer);
+	constructor(ellipseDrawer: EllipseDrawerService, mapLayers: MapLayersService) {
+		super(ellipseDrawer, mapLayers);
 	}
 }
