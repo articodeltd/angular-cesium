@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EntityOnMapComponent } from '../../services/entity-on-map/entity-on-map.component';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 /**
  *  This is a point implementation.
@@ -25,7 +26,7 @@ import { PointDrawerService } from '../../services/drawers/point-drawer/point-dr
 })
 export class AcPointComponent extends EntityOnMapComponent {
 
-	constructor(pointDrawer: PointDrawerService) {
-		super(pointDrawer);
+	constructor(pointDrawer: PointDrawerService, mapLayers: MapLayersService) {
+		super(pointDrawer, mapLayers);
 	}
 }

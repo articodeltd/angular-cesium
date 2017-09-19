@@ -54,14 +54,7 @@ export class DrawOnMapComponent implements OnInit {
       this.longitude, this.latitude
     ]);
 
-    this.polylineMaterial = new Cesium.Material({
-      fabric: {
-        type: 'PolylineDash',
-        uniforms: {
-          color: Cesium.Color.RED
-        }
-      }
-    });
+    this.polylineMaterial = Cesium.Color.RED;
 
     this.aquamarine = Cesium.Color.AQUAMARINE;
 

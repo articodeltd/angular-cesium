@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -70,7 +70,7 @@
     "bower": "^1.7.9",
     "browserify": "^14.1.0",
     "casual": "^1.5.12",
-    "cesium": "^1.36.0",
+    "cesium": "^1.37.0",
     "codelyzer": "^3.1.2",
     "concurrently": "^3.1.0",
     "copy-webpack-plugin": "^4.0.1",

@@ -1,3 +1,7 @@
+## 0.0.25
+### Fixes
+* fix draw on map example
+
 ## 0.0.21
 ### Features
 * Allow `KeyboardControlService` to run outside of angular zone. 
