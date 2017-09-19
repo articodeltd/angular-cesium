@@ -992,12 +992,12 @@ The properties of props are the same as the properties of Entity and PolygonGrap
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(polygonDrawer: PolygonDrawerService)</code>
+                            <code>constructor(polygonDrawer: PolygonDrawerService, mapLayers: <a href="../injectables/MapLayersService.html">MapLayersService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/components/ac-polygon/ac-polygon.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/components/ac-polygon/ac-polygon.component.ts:28</a></div>
                                 </td>
                             </tr>
     
@@ -1015,6 +1015,7 @@ The properties of props are the same as the properties of Entity and PolygonGrap
         <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { PolygonDrawerService } from &#x27;../../services/drawers/polygon-drawer/polygon-drawer.service&#x27;;
 import { EntityOnMapComponent } from &#x27;../../services/entity-on-map/entity-on-map.component&#x27;;
+import { MapLayersService } from &#x27;../../services/map-layers/map-layers.service&#x27;;
 
 /**
  *  This is a polygon implementation.
@@ -1039,8 +1040,8 @@ import { EntityOnMapComponent } from &#x27;../../services/entity-on-map/entity-o
   template: &#x27;&#x27;
 })
 export class AcPolygonComponent extends EntityOnMapComponent {
-  constructor(polygonDrawer: PolygonDrawerService) {
-    super(polygonDrawer);
+  constructor(polygonDrawer: PolygonDrawerService, mapLayers: MapLayersService) {
+    super(polygonDrawer, mapLayers);
   }
 }
 </code></pre>

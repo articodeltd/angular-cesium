@@ -1047,12 +1047,12 @@ An arc is not natively implemented in cesium.</p>
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(arcDrawer: ArcDrawerService)</code>
+                            <code>constructor(arcDrawer: ArcDrawerService, mapLayers: <a href="../injectables/MapLayersService.html">MapLayersService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:40</a></div>
                                 </td>
                             </tr>
     
@@ -1078,7 +1078,7 @@ An arc is not natively implemented in cesium.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:36</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1099,7 +1099,7 @@ An arc is not natively implemented in cesium.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:38</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1120,7 +1120,7 @@ An arc is not natively implemented in cesium.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:40</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1150,7 +1150,7 @@ An arc is not natively implemented in cesium.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:53</a></div>
                                 </td>
                             </tr>
     
@@ -1182,7 +1182,7 @@ An arc is not natively implemented in cesium.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:58</a></div>
                                 </td>
                             </tr>
     
@@ -1214,7 +1214,7 @@ An arc is not natively implemented in cesium.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/components/ac-arc/ac-arc.component.ts:46</a></div>
                                 </td>
                             </tr>
     
@@ -1238,6 +1238,7 @@ An arc is not natively implemented in cesium.</p>
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input, OnChanges, SimpleChanges } from &#x27;@angular/core&#x27;;
 import { EntityOnMapComponent } from &#x27;../../services/entity-on-map/entity-on-map.component&#x27;;
 import { ArcDrawerService } from &#x27;../../services/drawers/arc-drawer/arc-drawer.service&#x27;;
+import { MapLayersService } from &#x27;../../services/map-layers/map-layers.service&#x27;;
 
 /**
  *  This is an implementation of an arc.
@@ -1275,8 +1276,8 @@ export class AcArcComponent extends EntityOnMapComponent implements OnChanges {
 	@Input()
 	primitiveProps: any;
 
-	constructor(arcDrawer: ArcDrawerService) {
-		super(arcDrawer);
+	constructor(arcDrawer: ArcDrawerService, mapLayers: MapLayersService) {
+		super(arcDrawer, mapLayers);
 	}
 
 	updateOnMap() {

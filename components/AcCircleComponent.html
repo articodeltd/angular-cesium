@@ -1019,12 +1019,12 @@ All other properties of props are the same as the properties of Entity and Ellip
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(ellipseDrawerService: EllipseDrawerService)</code>
+                            <code>constructor(ellipseDrawerService: EllipseDrawerService, mapLayers: <a href="../injectables/MapLayersService.html">MapLayersService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/components/ac-circle/ac-circle.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/components/ac-circle/ac-circle.component.ts:29</a></div>
                                 </td>
                             </tr>
     
@@ -1056,7 +1056,7 @@ All other properties of props are the same as the properties of Entity and Ellip
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/components/ac-circle/ac-circle.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/components/ac-circle/ac-circle.component.ts:41</a></div>
                                 </td>
                             </tr>
     
@@ -1089,7 +1089,7 @@ All other properties of props are the same as the properties of Entity and Ellip
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/components/ac-circle/ac-circle.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/components/ac-circle/ac-circle.component.ts:35</a></div>
                                 </td>
                             </tr>
     
@@ -1121,7 +1121,7 @@ All other properties of props are the same as the properties of Entity and Ellip
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/components/ac-circle/ac-circle.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/components/ac-circle/ac-circle.component.ts:46</a></div>
                                 </td>
                             </tr>
     
@@ -1145,6 +1145,7 @@ All other properties of props are the same as the properties of Entity and Ellip
         <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { EntityOnMapComponent } from &#x27;../../services/entity-on-map/entity-on-map.component&#x27;;
 import { EllipseDrawerService } from &#x27;../../services/drawers/ellipse-drawer/ellipse-drawer.service&#x27;;
+import { MapLayersService } from &#x27;../../services/map-layers/map-layers.service&#x27;;
 
 /**
  *  This is a circle implementation.
@@ -1171,8 +1172,8 @@ import { EllipseDrawerService } from &#x27;../../services/drawers/ellipse-drawer
 })
 export class AcCircleComponent extends EntityOnMapComponent {
 
-	constructor(ellipseDrawerService: EllipseDrawerService) {
-		super(ellipseDrawerService);
+	constructor(ellipseDrawerService: EllipseDrawerService, mapLayers: MapLayersService) {
+		super(ellipseDrawerService, mapLayers);
 	}
 
 	private updateEllipseProps() {

@@ -992,12 +992,12 @@ The properties of props are the same as the properties of Entity and LabelGraphi
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(labelDrawer: LabelDrawerService)</code>
+                            <code>constructor(labelDrawer: LabelDrawerService, mapLayers: <a href="../injectables/MapLayersService.html">MapLayersService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/components/ac-label/ac-label.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/components/ac-label/ac-label.component.ts:29</a></div>
                                 </td>
                             </tr>
     
@@ -1015,6 +1015,7 @@ The properties of props are the same as the properties of Entity and LabelGraphi
         <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { EntityOnMapComponent } from &#x27;../../services/entity-on-map/entity-on-map.component&#x27;;
 import { LabelDrawerService } from &#x27;../../services/drawers/label-drawer/label-drawer.service&#x27;;
+import { MapLayersService } from &#x27;../../services/map-layers/map-layers.service&#x27;;
 
 /**
  *  This is a label implementation.
@@ -1041,8 +1042,8 @@ import { LabelDrawerService } from &#x27;../../services/drawers/label-drawer/lab
 })
 export class AcLabelComponent extends EntityOnMapComponent {
 
-	constructor(labelDrawer: LabelDrawerService) {
-		super(labelDrawer);
+	constructor(labelDrawer: LabelDrawerService, mapLayers: MapLayersService) {
+		super(labelDrawer, mapLayers);
 	}
 }
 </code></pre>

@@ -991,12 +991,12 @@ The properties of props are the same as the properties of Polyline Primitive:</p
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(polylineDrawer: <a href="../injectables/PolylineDrawerService.html">PolylineDrawerService</a>)</code>
+                            <code>constructor(polylineDrawer: <a href="../injectables/PolylineDrawerService.html">PolylineDrawerService</a>, mapLayers: <a href="../injectables/MapLayersService.html">MapLayersService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/components/ac-polyline/ac-polyline.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/components/ac-polyline/ac-polyline.component.ts:28</a></div>
                                 </td>
                             </tr>
     
@@ -1014,6 +1014,7 @@ The properties of props are the same as the properties of Polyline Primitive:</p
         <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { EntityOnMapComponent } from &#x27;../../services/entity-on-map/entity-on-map.component&#x27;;
 import { PolylineDrawerService } from &#x27;../../services/drawers/polyline-drawer/polyline-drawer.service&#x27;;
+import { MapLayersService } from &#x27;../../services/map-layers/map-layers.service&#x27;;
 
 /**
  *  This is a polyline implementation.
@@ -1039,8 +1040,8 @@ import { PolylineDrawerService } from &#x27;../../services/drawers/polyline-draw
 })
 export class AcPolylineComponent extends EntityOnMapComponent {
 
-	constructor(polylineDrawer: PolylineDrawerService) {
-		super(polylineDrawer);
+	constructor(polylineDrawer: PolylineDrawerService, mapLayers: MapLayersService) {
+		super(polylineDrawer, mapLayers);
 	}
 }
 </code></pre>

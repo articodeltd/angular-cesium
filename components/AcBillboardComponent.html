@@ -993,12 +993,12 @@ The properties of props are the same as the properties of Entity and BillboardGr
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(billboardDrawer: BillboardDrawerService)</code>
+                            <code>constructor(billboardDrawer: BillboardDrawerService, mapLayers: <a href="../injectables/MapLayersService.html">MapLayersService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/components/ac-billboard/ac-billboard.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/components/ac-billboard/ac-billboard.component.ts:30</a></div>
                                 </td>
                             </tr>
     
@@ -1016,6 +1016,7 @@ The properties of props are the same as the properties of Entity and BillboardGr
         <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { EntityOnMapComponent } from &#x27;../../services/entity-on-map/entity-on-map.component&#x27;;
 import { BillboardDrawerService } from &#x27;../../services/drawers/billboard-drawer/billboard-drawer.service&#x27;;
+import { MapLayersService } from &#x27;../../services/map-layers/map-layers.service&#x27;;
 
 /**
  *  This is a billboard implementation.
@@ -1043,8 +1044,8 @@ import { BillboardDrawerService } from &#x27;../../services/drawers/billboard-dr
 })
 export class AcBillboardComponent extends EntityOnMapComponent {
 
-	constructor(billboardDrawer: BillboardDrawerService) {
-		super(billboardDrawer);
+	constructor(billboardDrawer: BillboardDrawerService, mapLayers: MapLayersService) {
+		super(billboardDrawer, mapLayers);
 	}
 }
 </code></pre>

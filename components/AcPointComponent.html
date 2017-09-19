@@ -990,12 +990,12 @@ The properties of props are the same as the properties of Entity and PointGraphi
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(pointDrawer: PointDrawerService)</code>
+                            <code>constructor(pointDrawer: PointDrawerService, mapLayers: <a href="../injectables/MapLayersService.html">MapLayersService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/components/ac-point/ac-point.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/components/ac-point/ac-point.component.ts:27</a></div>
                                 </td>
                             </tr>
     
@@ -1013,6 +1013,7 @@ The properties of props are the same as the properties of Entity and PointGraphi
         <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { EntityOnMapComponent } from &#x27;../../services/entity-on-map/entity-on-map.component&#x27;;
 import { PointDrawerService } from &#x27;../../services/drawers/point-drawer/point-drawer.service&#x27;;
+import { MapLayersService } from &#x27;../../services/map-layers/map-layers.service&#x27;;
 
 /**
  *  This is a point implementation.
@@ -1037,8 +1038,8 @@ import { PointDrawerService } from &#x27;../../services/drawers/point-drawer/poi
 })
 export class AcPointComponent extends EntityOnMapComponent {
 
-	constructor(pointDrawer: PointDrawerService) {
-		super(pointDrawer);
+	constructor(pointDrawer: PointDrawerService, mapLayers: MapLayersService) {
+		super(pointDrawer, mapLayers);
 	}
 }
 </code></pre>
