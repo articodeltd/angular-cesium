@@ -10,8 +10,8 @@ export class EntityOnMapComponent implements OnInit, OnChanges, OnDestroy {
 	props: any;
 	
 	protected selfPrimitive: any;
-	
 	protected selfPrimitiveIsDraw: boolean;
+	protected dataSources;
 	
 	constructor(protected _drawer: BasicDrawerService, private mapLayers: MapLayersService) {
 	}
@@ -20,6 +20,7 @@ export class EntityOnMapComponent implements OnInit, OnChanges, OnDestroy {
 		this.selfPrimitiveIsDraw = false;
 		const dataSources = this._drawer.init();
 		if (dataSources) {
+			this.dataSources = dataSources;
 			this.mapLayers.registerLayerDataSources(dataSources, 0);
 		}
 		this.drawOnMap();
@@ -49,7 +50,7 @@ export class EntityOnMapComponent implements OnInit, OnChanges, OnDestroy {
 	}
 	
 	ngOnDestroy(): void {
-		// this.mapLayersService.removeDataSources(this.layerDrawerDataSources);
+		this.mapLayers.removeDataSources(this.dataSources);
 		this.removeFromMap();
 	}
 }
