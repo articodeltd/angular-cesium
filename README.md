@@ -160,7 +160,7 @@ export enum ActionType {
 In case `ADD_UPDATE` is passed - the entity will be created or updated depending on if it exists or not.
 In case `DELETE` is passed - the entity will be removed from the map.
 
-Now, assuming that each entity on this stream presents a plane, lets assume that each plane consits of this schema:
+Now, assuming that each entity on this stream presents a plane, lets assume that each plane consists of this schema:
 + `position` - which presents the current plan position
 + `name` - which presents the plane name(to be presented on the map).
 + `image` - the PNG or whatever image you may like to use.
