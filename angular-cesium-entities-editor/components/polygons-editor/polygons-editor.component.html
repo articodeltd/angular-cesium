@@ -1,0 +1,25 @@
+<div>
+    <ac-layer #editPointsLayer acFor="let point of editPoints">
+        <ac-point-desc props="{
+        position: point.position,
+        pixelSize: 10,
+        color: Cesium.Color.YELLOW
+    }">
+        </ac-point-desc>
+    </ac-layer>
+
+    <ac-layer #editLinesLayer acFor="let polyline of editLines">
+        <ac-polyline-primitive-desc props="{
+       positions: polyline.positions
+    }">
+        </ac-polyline-primitive-desc>
+    </ac-layer>
+
+    <ac-layer #editPolygonsLayer acFor="let polygon of editedPolygons">
+        <ac-polygon-desc props="{
+            hierarchy: polygon.positions,
+            material : Cesium.Color.RED
+        }">
+        </ac-polygon-desc>
+    </ac-layer>
+</div>
