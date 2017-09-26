@@ -354,6 +354,18 @@ With angular cesium you can define your map provider in a declarative way using 
 
 ```
 
+### MapsManagerService
+Angular cesium extends cesium api and expose more features, but if you want to use cesium api you can use [MapsManagerService](https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
+```typescript
+class MyComp {
+constructor(mapsManagerService: MapsManagerService)
+	const viewer = mapsManagerService.getMap().getCesiumViewer();
+	const mapEventManager = mapsManagerService.getMap().getMapEventsManager();
+	const cameraService = mapsManagerService.getMap().getCameraService();
+}
+
+```
+
 ## Documents
 + #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   
  
