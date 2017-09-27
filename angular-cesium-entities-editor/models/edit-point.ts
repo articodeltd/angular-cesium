@@ -1,5 +1,6 @@
 import { AcEntity } from '../../src/models/ac-entity';
 import { EditPolyline } from './edit-polyline';
+import { Cartesian3 } from './position';
 
 export class EditPoint extends AcEntity {
   private id: string;
@@ -30,11 +31,11 @@ export class EditPoint extends AcEntity {
     return this.editedEntityId;
   }
 
-  getPosition() {
+  getPosition(): Cartesian3 {
     return this.position;
   }
 
-  setPosition(position) {
+  setPosition(position: Cartesian3) {
     this.position.x = position.x;
     this.position.y = position.y;
     this.position.z = position.z;
