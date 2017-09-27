@@ -8,8 +8,8 @@ export class EditPolygon extends AcEntity {
   private editPoints = new Map<string, EditPoint>();
   private editPolylines = new Map<string, EditPolyline>();
   private positions: EditPoint[] = [];
-  private movingPolyline: EditPolyline;
   private movingPoint: EditPoint;
+  private firstPoint = true;
 
   constructor(private id: string,
               private polygonsLayer: AcLayerComponent,
@@ -27,27 +27,28 @@ export class EditPolygon extends AcEntity {
   }
 
   addPoint(position: Cartesian3) {
-    const point = new EditPoint(this.id, position);
-    if (!this.movingPoint) {
-      this.movingPoint = new EditPoint(this.id, position);
-    }
-    this.editPoints.set(point.getId(), point);
-    if (!this.movingPolyline) {
-      this.movingPolyline = new EditPolyline(this.id, position, this.movingPoint.getPosition());
-      point.setStartingPolyline(this.movingPolyline);
+    let point: EditPoint;
+    if (this.firstPoint) {
+      point = new EditPoint(this.id, position);
+      this.positions.push(point);
     }
     else {
-      this.editPolylines.set(this.movingPolyline.getId(), this.movingPolyline);
-      point.setEndingPolyline(this.movingPolyline);
-      this.movingPolyline = new EditPolyline(this.id, position, this.movingPoint.getPosition());
-      point.setStartingPolyline(this.movingPolyline);
+      point = this.movingPoint;
+      point.setPosition(position);
     }
 
-    this.positions.push(point);
-    console.log(this.positions);
+    this.movingPoint = new EditPoint(this.id, position.clone());
+    this.positions.push(this.movingPoint);
+    const polyline = new EditPolyline(this.id, point.getPosition(), this.movingPoint.getPosition());
+    point.setStartingPolyline(polyline);
+    this.movingPoint.setEndingPolyline(polyline);
 
     this.updatePolygonsLayer();
-    this.updatePointsLayer(point);
+    if (this.firstPoint) {
+      this.updatePointsLayer(point);
+    }
+    this.updatePointsLayer(this.movingPoint);
+    this.firstPoint = false;
   }
 
   movePoint(position: Cartesian3, id?: string) {
@@ -67,7 +68,7 @@ export class EditPolygon extends AcEntity {
     point.setPosition(position);
 
     this.updatePolygonsLayer();
-    this.updatePointsLayer(point, true);
+    this.updatePointsLayer(point);
   }
 
   removePoint(id: string) {
@@ -96,11 +97,7 @@ export class EditPolygon extends AcEntity {
   }
 
   getPositions(): Cartesian3[] {
-    const result = this.positions.map(position => position.getPosition());
-    if (this.movingPoint) {
-      result.push(this.movingPoint.getPosition());
-    }
-    return result;
+    return this.positions.map(position => position.getPosition());
   }
 
   private removePosition(point: EditPoint) {
@@ -117,18 +114,14 @@ export class EditPolygon extends AcEntity {
     }
   }
 
-  private updatePointsLayer(point: EditPoint, moveOnly = false) {
-    if (!moveOnly) {
-      this.pointsLayer.update(this.movingPoint, this.movingPoint.getId());
-      this.polylinesLayer.update(this.movingPolyline, this.movingPolyline.getId());
-    }
+  private updatePointsLayer(point: EditPoint) {
     this.pointsLayer.update(point, point.getId());
     const startingPolyline = point.getStartingPolyline();
     if (startingPolyline) {
       this.polylinesLayer.update(startingPolyline, startingPolyline.getId());
     }
 
-    const endingPolyline = point.getStartingPolyline();
+    const endingPolyline = point.getEndingPolyline();
     if (endingPolyline) {
       this.polylinesLayer.update(endingPolyline, endingPolyline.getId());
     }
@@ -142,21 +135,13 @@ export class EditPolygon extends AcEntity {
       this.pointsLayer.remove(this.movingPoint.getId());
       this.movingPoint = undefined;
     }
-    if (this.movingPolyline) {
-      this.polylinesLayer.remove(this.movingPolyline.getId());
-      this.movingPolyline = undefined;
-    }
     this.positions.length = 0;
     this.editPoints.clear();
     this.editPolylines.clear();
   }
 
   getPointsCount(): number {
-    let result = this.positions.length;
-    if (this.movingPoint) {
-      result += 1;
-    }
-    return result;
+    return this.positions.length;
   }
 
   getId() {

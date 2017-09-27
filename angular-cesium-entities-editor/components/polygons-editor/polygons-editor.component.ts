@@ -17,7 +17,7 @@ import { Subject } from 'rxjs/Subject';
 })
 export class PolygonsEditorComponent implements OnInit, OnChanges, OnDestroy {
   private polygons = new Map<string, EditPolygon>();
-  public Cesium;
+  public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editPolylines$ = new Subject<AcNotification>();
   public editPolygons$ = new Subject<AcNotification>();
