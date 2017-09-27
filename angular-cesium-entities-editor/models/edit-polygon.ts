@@ -27,27 +27,24 @@ export class EditPolygon extends AcEntity {
   }
 
   addPoint(position: Cartesian3) {
-    let point: EditPoint;
-    if (this.movingPoint) {
-      point = this.movingPoint;
-      this.movingPoint = new EditPoint(this.id, position)
-    }
-    else {
-      point = new EditPoint(this.id, position);
+    const point = new EditPoint(this.id, position);
+    if (!this.movingPoint) {
+      this.movingPoint = new EditPoint(this.id, position);
     }
     this.editPoints.set(point.getId(), point);
     if (!this.movingPolyline) {
-      this.movingPolyline = new EditPolyline(this.id, position);
+      this.movingPolyline = new EditPolyline(this.id, position, this.movingPoint.getPosition());
       point.setStartingPolyline(this.movingPolyline);
     }
     else {
       this.editPolylines.set(this.movingPolyline.getId(), this.movingPolyline);
       point.setEndingPolyline(this.movingPolyline);
-      this.movingPolyline = new EditPolyline(this.id, position);
+      this.movingPolyline = new EditPolyline(this.id, position, this.movingPoint.getPosition());
       point.setStartingPolyline(this.movingPolyline);
     }
 
     this.positions.push(point);
+    console.log(this.positions);
 
     this.updatePolygonsLayer();
     this.updatePointsLayer(point);
@@ -67,11 +64,10 @@ export class EditPolygon extends AcEntity {
         return;
       }
     }
-
     point.setPosition(position);
 
     this.updatePolygonsLayer();
-    this.updatePointsLayer(point);
+    this.updatePointsLayer(point, true);
   }
 
   removePoint(id: string) {
@@ -95,8 +91,16 @@ export class EditPolygon extends AcEntity {
     this.polylinesLayer.update(lineToModify, lineToModify.getId());
   }
 
+  finish(position: Cartesian3) {
+
+  }
+
   getPositions(): Cartesian3[] {
-    return this.positions.map(position => position.getPosition());
+    const result = this.positions.map(position => position.getPosition());
+    if (this.movingPoint) {
+      result.push(this.movingPoint.getPosition());
+    }
+    return result;
   }
 
   private removePosition(point: EditPoint) {
@@ -113,7 +117,11 @@ export class EditPolygon extends AcEntity {
     }
   }
 
-  private updatePointsLayer(point: EditPoint) {
+  private updatePointsLayer(point: EditPoint, moveOnly = false) {
+    if (!moveOnly) {
+      this.pointsLayer.update(this.movingPoint, this.movingPoint.getId());
+      this.polylinesLayer.update(this.movingPolyline, this.movingPolyline.getId());
+    }
     this.pointsLayer.update(point, point.getId());
     const startingPolyline = point.getStartingPolyline();
     if (startingPolyline) {
@@ -144,7 +152,11 @@ export class EditPolygon extends AcEntity {
   }
 
   getPointsCount(): number {
-    return this.editPoints.size;
+    let result = this.positions.length;
+    if (this.movingPoint) {
+      result += 1;
+    }
+    return result;
   }
 
   getId() {

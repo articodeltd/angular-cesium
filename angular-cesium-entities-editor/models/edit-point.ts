@@ -3,12 +3,12 @@ import { EditPolyline } from './edit-polyline';
 import { Cartesian3 } from './position';
 
 export class EditPoint extends AcEntity {
+  static counter = 0;
   private id: string;
   private startingPolyline: EditPolyline;
   private endingPolyline: EditPolyline;
   private editedEntityId: string;
   private position: any;
-  private counter = 0;
   private active: boolean;
 
   constructor(entityId: string, position, isActive = true) {
@@ -62,6 +62,6 @@ export class EditPoint extends AcEntity {
   }
 
   private generateId(): string {
-    return 'editpoint-' + this.counter++;
+    return 'edit-point-' + EditPoint.counter++;
   }
 }

@@ -123,11 +123,6 @@ export class PolygonsEditorService {
 
   }
 
-  private cancelCreate(id: string) {
-
-  }
-
-
   private generteId(): string {
     return 'edit-polygon-' + this.counter++;
   }

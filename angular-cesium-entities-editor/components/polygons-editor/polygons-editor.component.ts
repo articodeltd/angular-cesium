@@ -6,24 +6,30 @@ import { AcNotification } from '../../../src/models/ac-notification';
 import { EditPolygon } from '../../models/edit-polygon';
 import { EditActions } from '../../models/edit-actions.enum';
 import { AcLayerComponent } from '../../../src/components/ac-layer/ac-layer.component';
-import { Observable } from 'rxjs/Observable';
+import { CoordinateConverter } from '../../../src/services/coordinate-converter/coordinate-converter.service';
+import { MapEventsManagerService } from '../../../src/services/map-events-mananger/map-events-manager';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'polygons-editor',
   templateUrl: 'polygons-editor.component.html',
+  providers: [CoordinateConverter]
 })
 export class PolygonsEditorComponent implements OnInit, OnChanges, OnDestroy {
-  public Cesium;
-  public editPoints = new Observable<AcNotification>();
-  public editLines = new Observable<AcNotification>();
-  public editPolygons = new Observable<AcNotification>();
   private polygons = new Map<string, EditPolygon>();
-  private counter = 0;
+  public Cesium;
+  public editPoints$ = new Subject<AcNotification>();
+  public editPolylines$ = new Subject<AcNotification>();
+  public editPolygons$ = new Subject<AcNotification>();
+
   @ViewChild('editPolygonsLayer') private editPolygonsLayer: AcLayerComponent;
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
   @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
 
-  constructor(private polygonsEditor: PolygonsEditorService) {
+  constructor(private polygonsEditor: PolygonsEditorService,
+              private coordinateConverter: CoordinateConverter,
+              private mapEventsManager: MapEventsManagerService) {
+    this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter);
   }
 
   ngOnInit(): void {
@@ -42,13 +48,17 @@ export class PolygonsEditorComponent implements OnInit, OnChanges, OnDestroy {
       }
       case EditActions.MOUSE_MOVE: {
         const polygon = this.polygons.get(update.id);
-        polygon.movePoint(update.updatedPosition);
+        if (update.updatedPosition) {
+          polygon.movePoint(update.updatedPosition);
+        }
         break;
       }
       case EditActions.ADD_POINT:
       case EditActions.DONE: {
         const polygon = this.polygons.get(update.id);
-        polygon.addPoint(update.updatedPosition);
+        if (update.updatedPosition) {
+          polygon.addPoint(update.updatedPosition);
+        }
         break;
       }
       case EditActions.DISPOSE: {

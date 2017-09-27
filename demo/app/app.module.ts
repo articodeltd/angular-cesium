@@ -31,6 +31,7 @@ import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodro
 import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
+import { AngularCesiumEntitiesEditorModule } from '../../angular-cesium-entities-editor/angular-cesium-entities-editor.module';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { LayerOrderComponent } from './components/layer-order/layer-order.compon
     FormsModule,
     HttpModule,
     AngularCesiumModule.forRoot(),
+    AngularCesiumEntitiesEditorModule,
     BrowserAnimationsModule,
     AppMaterialModule,
     ApolloModule.forRoot(getApolloClient),

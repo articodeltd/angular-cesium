@@ -1,16 +1,17 @@
 import { AcEntity } from '../../src/models/ac-entity';
+import { Cartesian3 } from './position';
 
 export class EditPolyline extends AcEntity {
+  static counter = 0;
   private editedEntityId: string;
   private id: string;
-  private counter = 0;
-  private positions = [];
+  private positions: Cartesian3[];
 
-  constructor(entityId: string, startPosition?, endPosition?) {
+  constructor(entityId: string, startPosition: Cartesian3, endPosition: Cartesian3) {
     super();
     this.editedEntityId = entityId;
     this.id = this.generateId();
-    this.positions = [startPosition, endPosition]
+    this.positions = [startPosition, endPosition];
   }
 
   getEditedEntityId(): string {
@@ -19,6 +20,10 @@ export class EditPolyline extends AcEntity {
 
   getPositions(): any[] {
     return this.positions;
+  }
+
+  validatePositions(): boolean {
+    return this.positions[0] !== undefined && this.positions[1] !== undefined;
   }
 
   getStartPosition() {
@@ -42,6 +47,6 @@ export class EditPolyline extends AcEntity {
   }
 
   private generateId(): string {
-    return 'editpoint-' + this.counter++;
+    return 'edit-polyline-' + EditPolyline.counter++;
   }
 }
