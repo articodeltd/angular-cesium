@@ -1,26 +1,40 @@
 <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
     <ac-point-desc props="{
         position: point.getPosition(),
-        pixelSize: 10,
-        color: Cesium.Color.WHITE
+        pixelSize: 15,
+        color: Cesium.Color.WHITE,
+        outlineColor: Cesium.Color.BLACK,
+        outlineWidth: 1,
+        heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND
     }">
     </ac-point-desc>
 </ac-layer>
 
 <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this">
-    <ac-polyline-desc props="{
+    <ac-polyline-primitive-desc props="{
         positions: polyline.getPositions(),
         width: 1,
-        material: Cesium.Color.GREEN,
-        followSurface: false
+        material: lineColor
     }">
-    </ac-polyline-desc>
+    </ac-polyline-primitive-desc>
 </ac-layer>
 
 <ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this">
     <ac-polygon-desc props="{
         hierarchy: polygon.getPositions(),
-        material: Cesium.Color.RED
+        material: polygonColor
     }">
     </ac-polygon-desc>
+    <!--<ac-static-polygon-desc-->
+        <!--geometryProps="{-->
+             <!--polygonHierarchy: polygon.getHierarchy(),-->
+             <!--height: 1-->
+         <!--}"-->
+        <!--instanceProps="{-->
+             <!--attributes: attributes-->
+         <!--}"-->
+        <!--primitiveProps="{-->
+             <!--appearance: appearance-->
+         <!--}">-->
+    <!--</ac-static-polygon-desc>-->
 </ac-layer>

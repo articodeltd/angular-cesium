@@ -14,10 +14,15 @@ export abstract class StaticPrimitiveDrawer extends PrimitivesDrawerService {
   add(geometryProps: any, instanceProps: any, primitiveProps: any): any {
     instanceProps.geometry = new this.geometryType(geometryProps);
     primitiveProps.geometryInstances = new Cesium.GeometryInstance(instanceProps);
-
-    return super.add(new Cesium.Primitive(primitiveProps));
+    primitiveProps.asynchronous = false;
+    const primitive = new Cesium.Primitive(primitiveProps);
+    return super.add(primitive);
   }
 
   update(primitive: any, geometryProps: any, instanceProps: any, primitiveProps: any) {
+    instanceProps.geometry = new this.geometryType(geometryProps);
+    primitiveProps.geometryInstances = new Cesium.GeometryInstance(instanceProps);
+    this._cesiumCollection.remove(primitive);
+    return super.add(new Cesium.Primitive(primitiveProps));
   }
 }

@@ -4,7 +4,7 @@ import { AppSettingsService } from '../../services/app-settings-service/app-sett
 import { MapLayerProviderOptions } from '../../../../src/models/map-layer-provider-options.enum';
 import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
 import { SceneMode } from '../../../../src/models/scene-mode.enum';
-import { PolygonsEditorService } from '../../../../angular-cesium-entities-editor/services/entity-editors/polygons-editor/polgons-editor.service';
+import { PolygonsEditorService } from '../../../../angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service';
 
 @Component({
   selector: 'demo-map',
@@ -39,7 +39,7 @@ export class DemoMapComponent {
     };
 
     this.appSettingsService.showTracksLayer = true;
-    setTimeout(() => this.polygonsEditor.create(), 5000);
+    setTimeout(() => this.polygonsEditor.create(), 1000);
   }
 
   removeAll() {

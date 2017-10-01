@@ -1,5 +1,5 @@
 import { AcEntity } from '../../src/models/ac-entity';
-import { Cartesian3 } from './position';
+import { Cartesian3 } from '../../src/models/cartesian3';
 
 export class EditPolyline extends AcEntity {
   static counter = 0;

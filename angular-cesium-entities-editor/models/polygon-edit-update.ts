@@ -7,4 +7,5 @@ export interface PolygonEditUpdate {
   editAction: EditActions,
   positions?: any[];
   updatedPosition?: any
+  updatedEntity?: any,
 }
