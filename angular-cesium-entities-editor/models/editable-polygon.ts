@@ -105,8 +105,9 @@ export class EditablePolygon extends AcEntity {
     this.done = true;
     this.movingPoint.setPosition(position);
     this.positions.push(this.movingPoint);
-    this.movingPoint.setEndingPolyline(
-      new EditPolyline(this.id, this.movingPoint.getPosition(), this.firstPoint.getPosition()));
+    const polyline = new EditPolyline(this.id, this.movingPoint.getPosition(), this.firstPoint.getPosition());
+    this.movingPoint.setStartingPolyline(polyline);
+    this.firstPoint.setEndingPolyline(polyline);
     this.updatePolygonsLayer();
     this.updatePointsLayer(this.movingPoint);
     this.movingPoint = null;

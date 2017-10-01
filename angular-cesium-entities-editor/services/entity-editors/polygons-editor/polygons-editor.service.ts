@@ -43,6 +43,7 @@ export class PolygonsEditorService {
     const positions = [];
     const id = this.generteId();
     this.polygons.set(id, positions);
+    let finishedCreate = false;
 
     this.updateSubject.next({
       id,
@@ -86,7 +87,13 @@ export class PolygonsEditorService {
     });
 
     addPointRegistration.subscribe(({ movement: { endPosition } }) => {
+      if (finishedCreate) {
+        return;
+      }
       clickTimeOut = setTimeout(() => {
+        if (finishedCreate) {
+          return;
+        }
         const position = this.coordinateConverter.screenToCartesian3(endPosition);
         positions.push(position);
         const updateValue = {
@@ -128,8 +135,8 @@ export class PolygonsEditorService {
       mouseMoveRegistration.dispose();
       addPointRegistration.dispose();
       addLastPointRegistration.dispose();
-      this.editPolygon(id, positions, priority, editSubject, editorObservable)
-
+      this.editPolygon(id, positions, priority, editSubject, editorObservable);
+      finishedCreate = true;
     });
 
     return editorObservable;
@@ -192,17 +199,20 @@ export class PolygonsEditorService {
 
     pointRemoveRegistration.subscribe(({ entities }) => {
       const point: EditPoint = entities[0];
+      if (positions.length < 4) {
+        return;
+      }
       const index = positions.findIndex(position => point.getPosition().equals(position as Cartesian3));
-      if (!index) {
+      if (index < 0) {
         return;
       }
 
-      positions.slice(index, 1);
+      positions.splice(index, 1);
       this.updateSubject.next({
         id,
         positions,
         editMode: EditModes.EDIT,
-        updatedPosition: point.getPosition(),
+        updatedEntity: point,
         editAction: EditActions.REMOVE_POINT,
       });
     });
