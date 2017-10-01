@@ -143,6 +143,9 @@ export class PolygonsEditorService {
   }
 
   edit(positions: Cartesian3[], priority = 100): EditorObservable<PolygonEditUpdate> {
+    if (positions.length < 3) {
+      throw new Error('error'); // TODO: edit
+    }
     const id = this.generteId();
     this.polygons.set(id, positions);
     this.updateSubject.next({

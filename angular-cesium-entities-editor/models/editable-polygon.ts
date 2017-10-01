@@ -64,7 +64,7 @@ export class EditablePolygon extends AcEntity {
     this.updatePointsLayer(this.movingPoint);
   }
 
-  movePoint(position?: Cartesian3, editPoint?: EditPoint) {
+  movePoint(position: Cartesian3, editPoint?: EditPoint) {
     let point: EditPoint;
     if (!editPoint) {
       if (!this.movingPoint) {
