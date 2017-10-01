@@ -17,6 +17,7 @@ import { CameraService } from '../../services/camera/camera.service';
 import { SceneMode } from '../../models/scene-mode.enum';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
 import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
+import { ScreenshotService } from '../../services/screenshot/screenshot.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -53,6 +54,7 @@ import { ConfigurationService } from '../../cesium-enhancements/ConfigurationSer
     PolygonDrawerService,
     MapLayersService,
     CameraService,
+		ScreenshotService,
   ]
 })
 export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
@@ -100,7 +102,8 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
               private mapEventsManager: MapEventsManagerService,
               private keyboardControlService: KeyboardControlService,
               private mapLayersService: MapLayersService,
-              private configurationService: ConfigurationService) {
+              private configurationService: ConfigurationService,
+              private screenshotService: ScreenshotService) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
@@ -167,6 +170,10 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
    */
   getMapEventsManager(): MapEventsManagerService {
     return this.mapEventsManager;
+  }
+  
+  getScreenshotService(){
+    return this.screenshotService;
   }
 
   /**

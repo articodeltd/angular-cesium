@@ -1,3 +1,7 @@
+## Next
+### Features
+* added screenshot service
+
 ## 0.0.25
 ### Fixes
 * fix draw on map example
