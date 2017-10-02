@@ -16,7 +16,7 @@ import { CameraService } from '../../../angular-cesium/services/camera/camera.se
   templateUrl: './polygons-editor.component.html',
   providers: [CoordinateConverter]
 })
-export class PolygonsEditorComponent implements OnInit, OnDestroy {
+export class PolygonsEditorComponent implements OnDestroy {
   private polygons = new Map<string, EditablePolygon>();
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
@@ -37,18 +37,19 @@ export class PolygonsEditorComponent implements OnInit, OnDestroy {
               private mapEventsManager: MapEventsManagerService,
               private cameraService: CameraService) {
     this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService);
+		this.startListeningToEditorUpdates();
   }
-
-  ngOnInit(): void {
-    this.polygonsEditor.onUpdate().subscribe((update: PolygonEditUpdate) => {
-      if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
-        this.handleCreateUpdates(update);
-      }
-      else if (update.editMode === EditModes.EDIT) {
-        this.handleEditUpdates(update);
-      }
-    });
-  }
+	
+	private startListeningToEditorUpdates() {
+		this.polygonsEditor.onUpdate().subscribe((update: PolygonEditUpdate) => {
+			if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
+				this.handleCreateUpdates(update);
+			}
+			else if (update.editMode === EditModes.EDIT) {
+				this.handleEditUpdates(update);
+			}
+		});
+	}
 
   handleCreateUpdates(update: PolygonEditUpdate) {
     switch (update.editAction) {

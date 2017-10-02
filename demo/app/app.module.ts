@@ -32,6 +32,7 @@ import { PolygonPerformanceTestComponent } from './components/polygon-layer/poly
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
 import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-entities-editor/angular-cesium-entities-editor.module';
+import { EditorLayerComponent } from './components/editor-layer/editor-layer.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-enti
     KeyboardControlLayerComponent,
     HippodromeLayerComponent,
 		LayerOrderComponent,
+		EditorLayerComponent,
   ],
   imports: [
     BrowserModule,
