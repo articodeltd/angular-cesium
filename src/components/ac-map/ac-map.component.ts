@@ -17,6 +17,7 @@ import { CameraService } from '../../services/camera/camera.service';
 import { SceneMode } from '../../models/scene-mode.enum';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
 import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
+import { SelectionManagerService } from '../../services/selection-manager/selection-manager.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -53,6 +54,7 @@ import { ConfigurationService } from '../../cesium-enhancements/ConfigurationSer
     PolygonDrawerService,
     MapLayersService,
     CameraService,
+		SelectionManagerService,
   ]
 })
 export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
