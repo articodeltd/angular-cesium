@@ -17,7 +17,7 @@ import { CameraService } from '../../services/camera/camera.service';
 import { SceneMode } from '../../models/scene-mode.enum';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
 import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
-import { ScreenshotService } from '../../services/screenshot/screenshot.service';
+import { ScreenshotService } from '../../../services/screenshot/screenshot.service';
 
 /**
  * This is a map implementation, creates the cesium map.
