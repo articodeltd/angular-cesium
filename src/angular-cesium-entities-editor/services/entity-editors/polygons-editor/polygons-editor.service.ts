@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { MapEventsManagerService } from '../../../../src/services/map-events-mananger/map-events-manager';
+import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { CesiumEvent } from '../../../../src/services/map-events-mananger/consts/cesium-event.enum';
-import { PickOptions } from '../../../../src/services/map-events-mananger/consts/pickOptions.enum';
+import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
+import { PickOptions } from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 import { PolygonEditUpdate } from '../../../models/polygon-edit-update';
 import { EditModes } from '../../../models/edit-mode.enum';
 import { EditActions } from '../../../models/edit-actions.enum';
-import { DisposableObservable } from '../../../../src/services/map-events-mananger/disposable-observable';
-import { CoordinateConverter } from '../../../../src/services/coordinate-converter/coordinate-converter.service';
+import { DisposableObservable } from '../../../../angular-cesium/services/map-events-mananger/disposable-observable';
+import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { EditPoint } from '../../../models/edit-point';
-import { CameraService } from '../../../../src/services/camera/camera.service';
-import { Cartesian3 } from '../../../../src/models/cartesian3';
+import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
+import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { EditorObservable } from '../../../models/editor-observable';
 
 @Injectable()

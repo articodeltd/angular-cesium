@@ -2,14 +2,14 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { PolygonEditUpdate } from '../../models/polygon-edit-update';
-import { AcNotification } from '../../../src/models/ac-notification';
+import { AcNotification } from '../../../angular-cesium/models/ac-notification';
 import { EditablePolygon } from '../../models/editable-polygon';
 import { EditActions } from '../../models/edit-actions.enum';
-import { AcLayerComponent } from '../../../src/components/ac-layer/ac-layer.component';
-import { CoordinateConverter } from '../../../src/services/coordinate-converter/coordinate-converter.service';
-import { MapEventsManagerService } from '../../../src/services/map-events-mananger/map-events-manager';
+import { AcLayerComponent } from '../../../angular-cesium/components/ac-layer/ac-layer.component';
+import { CoordinateConverter } from '../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
+import { MapEventsManagerService } from '../../../angular-cesium/services/map-events-mananger/map-events-manager';
 import { Subject } from 'rxjs/Subject';
-import { CameraService } from '../../../src/services/camera/camera.service';
+import { CameraService } from '../../../angular-cesium/services/camera/camera.service';
 
 @Component({
   selector: 'polygons-editor',

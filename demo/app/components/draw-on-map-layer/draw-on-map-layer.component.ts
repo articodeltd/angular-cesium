@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AcLabelComponent } from '../../../../src/components/ac-label/ac-label.component';
-import { AcHtmlComponent } from '../../../../src/components/ac-html/ac-html.component';
-import { AcArcComponent } from '../../../../src/components/ac-arc/ac-arc.component';
+import { AcLabelComponent } from '../../../../src/angular-cesium/components/ac-label/ac-label.component';
+import { AcHtmlComponent } from '../../../../src/angular-cesium/components/ac-html/ac-html.component';
+import { AcArcComponent } from '../../../../src/angular-cesium/components/ac-arc/ac-arc.component';
 
 @Component({
   selector: 'draw-on-map-layer',

@@ -1,4 +1,4 @@
-<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
+<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
     <ac-point-desc props="{
         position: point.getPosition(),
         pixelSize: 15,
@@ -10,16 +10,17 @@
     </ac-point-desc>
 </ac-layer>
 
-<ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this">
+<ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" [zIndex]="1">
     <ac-polyline-primitive-desc props="{
         positions: polyline.getPositions(),
         width: 1,
-        material: lineColor
+        material: lineColor,
+         followSurface: true
     }">
     </ac-polyline-primitive-desc>
 </ac-layer>
 
-<ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this">
+<ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this" [zIndex]="0">
     <ac-polygon-desc props="{
         hierarchy: polygon.getPositions(),
         material: polygonColor

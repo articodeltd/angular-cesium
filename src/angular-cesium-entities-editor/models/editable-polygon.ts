@@ -1,8 +1,8 @@
-import { AcEntity } from '../../src/models/ac-entity';
+import { AcEntity } from '../../angular-cesium/models/ac-entity';
 import { EditPoint } from './edit-point';
 import { EditPolyline } from './edit-polyline';
-import { AcLayerComponent } from '../../src/components/ac-layer/ac-layer.component';
-import { Cartesian3 } from '../../src/models/cartesian3';
+import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
+import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 
 export class EditablePolygon extends AcEntity {
   private editPoints = new Map<string, EditPoint>();

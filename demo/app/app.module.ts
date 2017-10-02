@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { AngularCesiumModule } from '../../src/angular-cesium.module';
+import { AngularCesiumModule } from '../../src/angular-cesium/angular-cesium.module';
 import { SettingsFormComponent } from './shared/settings-form/settings-form.component';
 import { TracksLayerComponent } from './components/tracks-layer/tracks-layer.component';
 import { EllipseLayerComponent } from './components/ellipse-layer/ellipse-layer.component';
@@ -31,7 +31,7 @@ import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodro
 import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
-import { AngularCesiumEntitiesEditorModule } from '../../angular-cesium-entities-editor/angular-cesium-entities-editor.module';
+import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-entities-editor/angular-cesium-entities-editor.module';
 
 
 @NgModule({

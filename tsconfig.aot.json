@@ -18,7 +18,7 @@
       "dom"
     ],
     "typeRoots" : [
-      "./src/typings",
+      "./src/angular-cesium/typings",
       "./node_modules/@types"
     ],
     "types": [

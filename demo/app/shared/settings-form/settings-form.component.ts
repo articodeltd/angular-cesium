@@ -3,8 +3,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 import { FormControl, NgForm } from '@angular/forms';
-import { MapsManagerService } from '../../../../src/services/maps-manager/maps-manager.service';
-import { CameraService } from '../../../../src/services/camera/camera.service';
+import { MapsManagerService } from '../../../../src/angular-cesium/services/maps-manager/maps-manager.service';
+import { CameraService } from '../../../../src/angular-cesium/services/camera/camera.service';
 
 @Component({
   selector: 'settings-form',

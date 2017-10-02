@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AcNotification } from '../../../../src/models/ac-notification';
-import { CesiumService } from '../../../../src/services/cesium/cesium.service';
-import { ActionType } from '../../../../src/models/action-type.enum';
+import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
+import { CesiumService } from '../../../../src/angular-cesium/services/cesium/cesium.service';
+import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 
 @Component({
 	selector : 'hippodrome-layer',

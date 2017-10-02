@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { KeyboardControlService } from '../../../../src/services/keyboard-control/keyboard-control.service';
-import { KeyboardAction } from '../../../../src/models/ac-keyboard-action.enum';
+import { KeyboardControlService } from '../../../../src/angular-cesium/services/keyboard-control/keyboard-control.service';
+import { KeyboardAction } from '../../../../src/angular-cesium/models/ac-keyboard-action.enum';
 
 @Component({
   selector: 'keyboard-control-layer',
