@@ -4,8 +4,6 @@ import { AppSettingsService } from '../../services/app-settings-service/app-sett
 import { MapLayerProviderOptions } from '../../../../src/angular-cesium/models/map-layer-provider-options.enum';
 import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
 import { SceneMode } from '../../../../src/angular-cesium/models/scene-mode.enum';
-import { PolygonsEditorService } from '../../../../src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service';
-import { EditActions } from '../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
 
 @Component({
 	selector : 'demo-map',
