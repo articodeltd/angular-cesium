@@ -7,7 +7,7 @@ import { EditorObservable } from '../../../../src/angular-cesium-entities-editor
 @Component({
 	selector : 'editor-layer',
 	templateUrl : 'editor-layer.component.html',
-	styleUrls: ['./editor-layer.component.css']
+	styleUrls : ['./editor-layer.component.css']
 })
 export class EditorLayerComponent implements OnInit {
 	
@@ -17,7 +17,7 @@ export class EditorLayerComponent implements OnInit {
 	}
 	
 	ngOnInit(): void {
-		this.startEdit();
+		// this.startEdit();
 	}
 	
 	startEdit() {
@@ -27,11 +27,19 @@ export class EditorLayerComponent implements OnInit {
 				console.log(x.positions);
 			}
 		})
-		
 	}
 	
 	stopEdit() {
 		this.editing$.dispose();
+	}
+	
+	
+	editFromExisting() {
+		const initialPos = [
+			new Cesium.Cartesian3(4440904.571196385, 1811131.602927208, 4190519.2863029838),
+			new Cesium.Cartesian3(3699985.433274284, 4736430.171250641, 2127548.480685681),
+			new Cesium.Cartesian3(5721024.065677434, 1660550.1936609931, 2271194.3507190347)];
+		this.editing$ = this.polygonsEditor.edit(initialPos);
 	}
 	
 	

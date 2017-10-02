@@ -5,8 +5,6 @@ import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-la
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 
 export class EditablePolygon extends AcEntity {
-	// private editPoints = new Map<string, EditPoint>();
-	// private editPolylines = new Map<string, EditPolyline>();
 	private positions: EditPoint[] = [];
 	private movingPoint: EditPoint;
 	private firstPoint: EditPoint;
@@ -19,21 +17,42 @@ export class EditablePolygon extends AcEntity {
 							positions?: Cartesian3[]) {
 		super();
 		if (positions && positions.length >= 3) {
-			this.create(positions);
+			this.createFromExisting(positions);
 		}
 	}
 	
-	private create(positions: Cartesian3[]) {
-		positions.forEach(position => this.addPoint(position));
+	private createFromExisting(positions: Cartesian3[]) {
+		positions.forEach((position, index) => {
+			const lastPoint: boolean = index === positions.length - 1;
+			this.addPointFromExisting(position, lastPoint)
+		});
 	}
 	
-	// getPolyline(id: string): EditPolyline {
-	//   return this.editPolylines.get(id);
-	// }
 	
-	// getPoint(id: string): EditPoint {
-	//   return this.editPoints.get(id);
-	// }
+	addPointFromExisting(position: Cartesian3, lastPoint = false) {
+		const newPoint = new EditPoint(this.id, position);
+		
+		if (!this.firstPoint) {
+			this.firstPoint = newPoint;
+		} else {
+			const previousPoint = this.positions[this.positions.length - 1];
+			const polyline = new EditPolyline(this.id, previousPoint.getPosition(), newPoint.getPosition());
+			previousPoint.setEndingPolyline(polyline);
+			newPoint.setStartingPolyline(polyline);
+			
+			if (lastPoint) {
+				const firstPoint = this.firstPoint;
+				const lastPolyline = new EditPolyline(this.id, newPoint.getPosition(), firstPoint.getPosition());
+				newPoint.setEndingPolyline(lastPolyline);
+				firstPoint.setStartingPolyline(lastPolyline);
+			}
+		}
+		
+		this.positions.push(newPoint);
+		this.updatePolygonsLayer();
+		this.updatePointsLayer(newPoint);
+	}
+	
 	
 	addPoint(position: Cartesian3) {
 		if (this.done) {
@@ -89,8 +108,6 @@ export class EditablePolygon extends AcEntity {
 		const lineToRemove = pointToRemove.getStartingPolyline();
 		const lineToModify = pointToRemove.getEndingPolyline();
 		lineToModify.setEndPosition(lineToRemove.getEndPosition());
-		// this.editPolylines.delete(lineToRemove.getId());
-		// this.editPoints.delete(pointToRemove.getId());
 		this.removePosition(pointToRemove);
 		
 		if (this.getPointsCount() >= 3) {
@@ -156,15 +173,11 @@ export class EditablePolygon extends AcEntity {
 			this.polylinesLayer.remove(editPoint.getStartingPolyline().getId());
 			this.polylinesLayer.remove(editPoint.getEndingPolyline().getId());
 		});
-		// this.editPoints.forEach(point => this.pointsLayer.remove(point.getId()));
-		// this.editPolylines.forEach(polyline => this.polylinesLayer.remove(polyline.getId()));
 		if (this.movingPoint) {
 			this.pointsLayer.remove(this.movingPoint.getId());
 			this.movingPoint = undefined;
 		}
 		this.positions.length = 0;
-		// this.editPoints.clear();
-		// this.editPolylines.clear();
 	}
 	
 	getPointsCount(): number {
