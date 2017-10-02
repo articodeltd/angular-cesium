@@ -365,6 +365,9 @@ constructor(mapsManagerService: MapsManagerService)
 }
 
 ```
+### ScreenshotService
+Take screenshot of your cesium globe. 
+
 
 ## Documents
 + #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   
