@@ -13,3 +13,4 @@ export * from './services/viewer-configuration/viewer-configuration.service';
 export * from './services/maps-manager/maps-manager.service';
 export * from './services/keyboard-control/keyboard-control.service';
 export * from './services/keyboard-control/predefined-actions';
+export * from './services/screenshot/screenshot.service';

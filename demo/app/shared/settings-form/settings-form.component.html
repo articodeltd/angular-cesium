@@ -26,4 +26,8 @@
         <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.show3dtiles" (change)="newYorkToggle($event)">New York 3D Tiles</md-slide-toggle>
         <md-slide-toggle [color]="'primary'" [(ngModel)]="settingsService.keyboardControl">Keyboard Control (W,S,A,D)</md-slide-toggle>
     </div>
+    <div class="divider setting-divider"></div>
+    <div>
+        <button md-button [color]="'secondary'" class="ok-button" (click)="downloadScreenshot()">Take Map Screenshot</button>
+    </div>
 </div>

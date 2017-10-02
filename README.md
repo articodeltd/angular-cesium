@@ -160,7 +160,7 @@ export enum ActionType {
 In case `ADD_UPDATE` is passed - the entity will be created or updated depending on if it exists or not.
 In case `DELETE` is passed - the entity will be removed from the map.
 
-Now, assuming that each entity on this stream presents a plane, lets assume that each plane consits of this schema:
+Now, assuming that each entity on this stream presents a plane, lets assume that each plane consists of this schema:
 + `position` - which presents the current plan position
 + `name` - which presents the plane name(to be presented on the map).
 + `image` - the PNG or whatever image you may like to use.
@@ -353,6 +353,21 @@ With angular cesium you can define your map provider in a declarative way using 
     },
 
 ```
+
+### MapsManagerService
+Angular cesium extends cesium api and expose more features, but if you want to use cesium api you can use [MapsManagerService](https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
+```typescript
+class MyComp {
+constructor(mapsManagerService: MapsManagerService)
+	const viewer = mapsManagerService.getMap().getCesiumViewer();
+	const mapEventManager = mapsManagerService.getMap().getMapEventsManager();
+	const cameraService = mapsManagerService.getMap().getCameraService();
+}
+
+```
+### ScreenshotService
+Take screenshot of your cesium globe. 
+
 
 ## Documents
 + #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   
