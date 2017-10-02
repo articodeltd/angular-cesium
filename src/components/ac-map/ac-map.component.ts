@@ -172,7 +172,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
     return this.mapEventsManager;
   }
   
-  getScreenshotService(){
+  getScreenshotService() {
     return this.screenshotService;
   }
 

@@ -39,6 +39,4 @@ export class ScreenshotService {
 		link.click();
 		document.body.removeChild(link);
 	}
-	
-	
 }
