@@ -24,7 +24,7 @@
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
     "typeRoots": [
-      "./src/angular-cesium/typings",
+      "./src/typings",
       "./node_modules/@types"
     ]
   },
