@@ -1,6 +1,7 @@
 ## Next
 ### Features
 * added screenshot service
+* polygon editor - alpha
 
 ## 0.0.25
 ### Fixes
