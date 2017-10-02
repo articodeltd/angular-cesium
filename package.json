@@ -111,6 +111,7 @@
     "request-promise": "^4.2.0",
     "rimraf": "^2.5.2",
     "rollup": "^0.41.6",
+    "rollup-plugin-angular": "^0.5.3",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^1.0.1",

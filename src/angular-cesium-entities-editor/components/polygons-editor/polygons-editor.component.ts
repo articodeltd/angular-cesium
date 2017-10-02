@@ -13,7 +13,7 @@ import { CameraService } from '../../../angular-cesium/services/camera/camera.se
 
 @Component({
   selector: 'polygons-editor',
-  templateUrl: 'polygons-editor.component.html',
+  templateUrl: './polygons-editor.component.html',
   providers: [CoordinateConverter]
 })
 export class PolygonsEditorComponent implements OnInit, OnDestroy {
