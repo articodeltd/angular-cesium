@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, ViewEncapsulation } from '@angular/core';
 import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocketSupplier';
-import { MapLayerProviderOptions } from '../../src/models/map-layer-provider-options.enum';
+import { MapLayerProviderOptions } from '../../src/angular-cesium/models/map-layer-provider-options.enum';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdDialog, MdIconRegistry } from '@angular/material';
 import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
-import { MapsManagerService } from '../../src/services/maps-manager/maps-manager.service';
+import { MapsManagerService } from '../../src/angular-cesium/services/maps-manager/maps-manager.service';
 
 @Component({
   selector: 'app-root',

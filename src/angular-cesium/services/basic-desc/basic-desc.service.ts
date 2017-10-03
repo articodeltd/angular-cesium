@@ -84,13 +84,15 @@ export class BasicDesc implements OnInit, OnDestroy {
 
   remove(id) {
     const cesiumObject = this._cesiumObjectsMap.get(id);
-    this.onRemove.emit({
-      acEntity: cesiumObject.acEntity,
-      cesiumEntity: cesiumObject,
-      entityId: id,
-    });
-    this._drawer.remove(cesiumObject);
-    this._cesiumObjectsMap.delete(id);
+    if (cesiumObject) {
+      this.onRemove.emit({
+        acEntity: cesiumObject.acEntity,
+        cesiumEntity: cesiumObject,
+        entityId: id,
+      });
+      this._drawer.remove(cesiumObject);
+      this._cesiumObjectsMap.delete(id);
+    }
   }
 
   removeAll() {

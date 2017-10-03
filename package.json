@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -14,7 +14,7 @@
   "main": "bundles/angular-cesium.umd.js",
   "typings": "index.d.ts",
   "scripts": {
-    "clean_src": "rimraf src/*.d.ts src/components/**/*.d.ts src/models/**/*.d.ts src/pipes/**/*.d.ts src/services/**/*.d.ts src/utils/**/*.d.ts src/**/*.metadata.json src/**/*.js src/**/*.js.map src/**/*.ngfactory.ts src/**/*.ngstyle.ts src/**/*.ngsummary.json",
+    "clean_src": "rimraf src/*.d.ts src/angular-cesium/**/*.d.ts src/angular-cesium-entities-editor/**/*.d.ts src/**/*.metadata.json src/**/*.js src/**/*.js.map src/**/*.ngfactory.ts src/**/*.ngstyle.ts src/**/*.ngsummary.json",
     "cleanup": "npm run clean_src && rimraf index.js index.js.map index.d.ts index.metadata.json build bundles",
     "start": "webpack-dev-server --inline --progress --port 8080",
     "lint": "tslint -c tslint.json --project tsconfig.aot.json",
@@ -111,6 +111,7 @@
     "request-promise": "^4.2.0",
     "rimraf": "^2.5.2",
     "rollup": "^0.41.6",
+    "rollup-plugin-angular": "^0.5.3",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^1.0.1",

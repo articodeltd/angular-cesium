@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { ViewerConfiguration } from '../../../../src/services/viewer-configuration/viewer-configuration.service';
+import { ViewerConfiguration } from '../../../../src/angular-cesium/services/viewer-configuration/viewer-configuration.service';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
-import { MapLayerProviderOptions } from '../../../../src/models/map-layer-provider-options.enum';
+import { MapLayerProviderOptions } from '../../../../src/angular-cesium/models/map-layer-provider-options.enum';
 import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
-import { SceneMode } from '../../../../src/models/scene-mode.enum';
+import { SceneMode } from '../../../../src/angular-cesium/models/scene-mode.enum';
 
 @Component({
 	selector : 'demo-map',
@@ -34,8 +34,6 @@ export class DemoMapComponent {
 		viewerConf.viewerModifier = (viewer) => {
 			viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
 			viewer.bottomContainer.remove();
-			
-			window['viewer'] = viewer;
 		};
 		
 		this.appSettingsService.showTracksLayer = true;
