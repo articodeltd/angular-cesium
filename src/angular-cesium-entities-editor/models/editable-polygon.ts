@@ -10,6 +10,7 @@ export class EditablePolygon extends AcEntity {
 	private polylines: EditPolyline[] = [];
 	private movingPoint: EditPoint;
 	private done = false;
+	private _enableEdit = true;
 	
 	constructor(private id: string,
 							private polygonsLayer: AcLayerComponent,
@@ -21,6 +22,14 @@ export class EditablePolygon extends AcEntity {
 		if (positions && positions.length >= 3) {
 			this.createFromExisting(positions);
 		}
+	}
+	
+	get enableEdit() {
+		return this._enableEdit;
+	}
+	
+	set enableEdit(value: boolean) {
+		this._enableEdit = value;
 	}
 	
 	private createFromExisting(positions: Cartesian3[]) {
@@ -52,23 +61,24 @@ export class EditablePolygon extends AcEntity {
 		midPoint.setVirtualEditPoint(true);
 		
 		const firstIndex = this.positions.indexOf(firstP);
-		this.positions.splice(firstIndex  + 1, 0, midPoint);
+		this.positions.splice(firstIndex + 1, 0, midPoint);
 		return midPoint;
 	}
 	
 	addVirtualEditPoint(point: EditPoint) {
+		point.setVirtualEditPoint(false); // actual point becomes a real point
 		const pointsCount = this.positions.length;
 		const pointIndex = this.positions.indexOf(point);
 		const nextIndex = (pointIndex + 1) % (pointsCount);
 		const preIndex = ((pointIndex - 1) + pointsCount ) % pointsCount;
-
+		
 		const nextPoint = this.positions[nextIndex];
 		const prePoint = this.positions[preIndex];
-
+		
 		const firstMidPoint = this.setMiddleVirtualPoint(prePoint, point);
-		this.updatePointsLayer(firstMidPoint);
 		const secMidPoint = this.setMiddleVirtualPoint(point, nextPoint);
-		this.updatePointsLayer(secMidPoint);
+		this.updatePointsLayer(firstMidPoint, secMidPoint, point);
+		
 	}
 	
 	private renderPolylines() {
@@ -91,6 +101,8 @@ export class EditablePolygon extends AcEntity {
 	}
 	
 	
+	
+	
 	addPoint(position: Cartesian3) {
 		if (this.done) {
 			return;
@@ -111,7 +123,6 @@ export class EditablePolygon extends AcEntity {
 	
 	movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
 		editPoint.setPosition(toPosition);
-		editPoint.setVirtualEditPoint(false); // editing a point make it a real point
 		
 		this.updatePolygonsLayer();
 		this.updatePointsLayer(editPoint);
@@ -136,11 +147,17 @@ export class EditablePolygon extends AcEntity {
 	
 	addLastPoint(position: Cartesian3) {
 		this.done = true;
-		this.positions.pop(); // remove movingPoint
+		this.removePoint(this.movingPoint); // remove movingPoint
 		this.movingPoint = null;
 		this.updatePolygonsLayer();
 		
 		this.addAllVirtualEditPoints();
+	}
+	
+	getRealPositions(): Cartesian3[] {
+		return this.positions
+			.filter(position => !position.isVirtualEditPoint() && position !== this.movingPoint)
+			.map(position => position.getPosition());
 	}
 	
 	getPositions(): Cartesian3[] {
@@ -148,7 +165,7 @@ export class EditablePolygon extends AcEntity {
 	}
 	
 	getHierarchy() {
-		return new Cesium.PolygonHierarchy(this.positions.map(position => position.getPosition()));
+		return new Cesium.PolygonHierarchy(this.getPositions());
 	}
 	
 	private removePosition(point: EditPoint) {
@@ -165,8 +182,8 @@ export class EditablePolygon extends AcEntity {
 		}
 	}
 	
-	private updatePointsLayer(point: EditPoint) {
-		this.pointsLayer.update(point, point.getId());
+	private updatePointsLayer(...point: EditPoint[]) {
+		point.forEach(p => this.pointsLayer.update(p, p.getId()));
 		this.renderPolylines();
 	}
 	

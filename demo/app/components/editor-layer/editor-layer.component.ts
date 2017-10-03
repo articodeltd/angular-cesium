@@ -11,6 +11,7 @@ import { EditorObservable } from '../../../../src/angular-cesium-entities-editor
 export class EditorLayerComponent implements OnInit {
 	
 	editing$: EditorObservable<PolygonEditUpdate>;
+	enableEditing = true;
 	
 	constructor(private polygonsEditor: PolygonsEditorService) {
 	}
@@ -37,6 +38,16 @@ export class EditorLayerComponent implements OnInit {
 			new Cesium.Cartesian3(3699985.433274284, 4736430.171250641, 2127548.480685681),
 			new Cesium.Cartesian3(5721024.065677434, 1660550.1936609931, 2271194.3507190347)];
 		this.editing$ = this.polygonsEditor.edit(initialPos);
+	}
+	
+	toggleEnableEditing() {
+		// Only effects if in edit mode (all polygon points were created)
+		this.enableEditing = !this.enableEditing;
+		if (this.enableEditing) {
+			this.editing$.enable();
+		} else {
+			this.editing$.disable();
+		}
 	}
 	
 	
