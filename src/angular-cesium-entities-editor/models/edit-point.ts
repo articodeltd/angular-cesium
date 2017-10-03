@@ -3,11 +3,8 @@ import { EditPolyline } from './edit-polyline';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 
 export class EditPoint extends AcEntity {
-
   static counter = 0;
   private id: string;
-  private startingPolyline: EditPolyline;
-  private endingPolyline: EditPolyline;
   private editedEntityId: string;
   private position: any;
   private active: boolean;
@@ -49,22 +46,6 @@ export class EditPoint extends AcEntity {
     this.position.x = position.x;
     this.position.y = position.y;
     this.position.z = position.z;
-  }
-
-  setStartingPolyline(polyline: EditPolyline) {
-    this.startingPolyline = polyline;
-  }
-
-  setEndingPolyline(polyline: EditPolyline) {
-    this.endingPolyline = polyline;
-  }
-
-  getStartingPolyline(): EditPolyline {
-    return this.startingPolyline;
-  }
-
-  getEndingPolyline(): EditPolyline {
-    return this.endingPolyline;
   }
 
   getId(): string {

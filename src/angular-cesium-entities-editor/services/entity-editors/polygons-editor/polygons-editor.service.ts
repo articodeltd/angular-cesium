@@ -20,7 +20,7 @@ import { EditorObservable } from '../../../models/editor-observable';
  * usage:
  * ```typescript
  *  // Start creating polygon
- * 	const editing$ = polygonsEditorService.create();
+ *  const editing$ = polygonsEditorService.create();
  *  this.editing$.subscribe(editResult => {
  *				console.log(editResult.positions);
  *		});
@@ -198,23 +198,21 @@ export class PolygonsEditorService {
 			priority,
 		});
 		
-		pointDragRegistration.subscribe(({movement : {endPosition, drop}, entities}) => {
-			if (!drop) {
-				this.cameraService.enableInputs(false)
-			} else {
-				setTimeout(() => this.cameraService.enableInputs(true), 0);
-			}
-			const position = this.coordinateConverter.screenToCartesian3(endPosition);
-			const point: EditPoint = entities[0];
-			this.updateSubject.next({
-				id,
-				positions,
-				editMode : EditModes.EDIT,
-				updatedPosition : position,
-				updatedEntity : point,
-				editAction : EditActions.DRAG_POINT,
+		pointDragRegistration
+			.do(({movement : {drop}}) => this.cameraService.enableInputs(drop))
+			.subscribe(({movement : {endPosition, drop}, entities}) => {
+				const position = this.coordinateConverter.screenToCartesian3(endPosition);
+				const point: EditPoint = entities[0];
+				
+				this.updateSubject.next({
+					id,
+					positions,
+					editMode : EditModes.EDIT,
+					updatedPosition : position,
+					updatedPoint : point,
+					editAction : drop ? EditActions.DRAG_POINT_FINISH : EditActions.DRAG_POINT,
+				});
 			});
-		});
 		
 		pointRemoveRegistration.subscribe(({entities}) => {
 			const point: EditPoint = entities[0];
@@ -231,7 +229,7 @@ export class PolygonsEditorService {
 				id,
 				positions,
 				editMode : EditModes.EDIT,
-				updatedEntity : point,
+				updatedPoint : point,
 				editAction : EditActions.REMOVE_POINT,
 			});
 		});

@@ -68,7 +68,7 @@ export class PolygonsEditorComponent implements OnDestroy {
 			case EditActions.MOUSE_MOVE: {
 				const polygon = this.polygons.get(update.id);
 				if (update.updatedPosition) {
-					polygon.movePoint(update.updatedPosition);
+					polygon.moveTempMovingPoint(update.updatedPosition);
 				}
 				break;
 			}
@@ -114,14 +114,21 @@ export class PolygonsEditorComponent implements OnDestroy {
 			case EditActions.DRAG_POINT: {
 				const polygon = this.polygons.get(update.id);
 				if (polygon) {
-					polygon.movePoint(update.updatedPosition, update.updatedEntity);
+					polygon.movePoint(update.updatedPosition, update.updatedPoint);
+				}
+				break;
+			}
+			case EditActions.DRAG_POINT_FINISH: {
+				const polygon = this.polygons.get(update.id);
+				if (polygon) {
+					polygon.addVirtualEditPoint(update.updatedPoint);
 				}
 				break;
 			}
 			case EditActions.REMOVE_POINT: {
 				const polygon = this.polygons.get(update.id);
 				if (polygon) {
-					polygon.removePoint(update.updatedEntity);
+					polygon.removePoint(update.updatedPoint);
 				}
 				break;
 			}
