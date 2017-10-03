@@ -128,7 +128,6 @@ export class PolygonsEditorService {
 		
 		
 		addLastPointRegistration.subscribe(({movement : {endPosition}}) => {
-			
 			const position = this.coordinateConverter.screenToCartesian3(endPosition);
 			// position already added by addPointRegistration
 			const updateValue = {

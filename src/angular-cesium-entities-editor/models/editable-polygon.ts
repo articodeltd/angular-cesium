@@ -9,7 +9,6 @@ export class EditablePolygon extends AcEntity {
 	private positions: EditPoint[] = [];
 	private polylines: EditPolyline[] = [];
 	private movingPoint: EditPoint;
-	private firstPoint: EditPoint;
 	private done = false;
 	
 	constructor(private id: string,
@@ -62,10 +61,10 @@ export class EditablePolygon extends AcEntity {
 		const pointIndex = this.positions.indexOf(point);
 		const nextIndex = (pointIndex + 1) % (pointsCount);
 		const preIndex = ((pointIndex - 1) + pointsCount ) % pointsCount;
-		
+
 		const nextPoint = this.positions[nextIndex];
 		const prePoint = this.positions[preIndex];
-		
+
 		const firstMidPoint = this.setMiddleVirtualPoint(prePoint, point);
 		this.updatePointsLayer(firstMidPoint);
 		const secMidPoint = this.setMiddleVirtualPoint(point, nextPoint);
@@ -87,9 +86,6 @@ export class EditablePolygon extends AcEntity {
 	
 	addPointFromExisting(position: Cartesian3) {
 		const newPoint = new EditPoint(this.id, position);
-		if (!this.firstPoint) {
-			this.firstPoint = newPoint;
-		}
 		this.positions.push(newPoint);
 		this.updatePointsLayer(newPoint);
 	}
@@ -99,26 +95,18 @@ export class EditablePolygon extends AcEntity {
 		if (this.done) {
 			return;
 		}
-		
-		const firstPointAdded = !this.firstPoint;
-		let point: EditPoint;
-		if (!this.firstPoint) {
-			this.firstPoint = point = new EditPoint(this.id, position);
-			this.positions.push(point);
-		}
-		else {
-			point = this.movingPoint;
-			point.setPosition(position);
+		const isFirstPoint = !this.positions.length;
+		if (isFirstPoint) {
+			const firstPoint = new EditPoint(this.id, position);
+			this.positions.push(firstPoint);
+			this.updatePointsLayer(firstPoint);
 		}
 		
 		this.movingPoint = new EditPoint(this.id, position.clone());
 		this.positions.push(this.movingPoint);
 		
-		this.updatePolygonsLayer();
-		if (firstPointAdded) {
-			this.updatePointsLayer(point);
-		}
 		this.updatePointsLayer(this.movingPoint);
+		this.updatePolygonsLayer();
 	}
 	
 	movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
@@ -148,11 +136,11 @@ export class EditablePolygon extends AcEntity {
 	
 	addLastPoint(position: Cartesian3) {
 		this.done = true;
-		this.movingPoint.setPosition(position);
-		this.positions.push(this.movingPoint);
-		this.updatePolygonsLayer();
-		this.updatePointsLayer(this.movingPoint);
+		this.positions.pop(); // remove movingPoint
 		this.movingPoint = null;
+		this.updatePolygonsLayer();
+		
+		this.addAllVirtualEditPoints();
 	}
 	
 	getPositions(): Cartesian3[] {
