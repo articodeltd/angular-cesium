@@ -1,4 +1,4 @@
-## Next
+## 0.0.26
 ### Features
 * added screenshot service
 * polygon editor - alpha

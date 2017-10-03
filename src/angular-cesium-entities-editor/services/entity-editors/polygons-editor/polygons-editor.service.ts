@@ -14,9 +14,24 @@ import { CameraService } from '../../../../angular-cesium/services/camera/camera
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { EditorObservable } from '../../../models/editor-observable';
 
+/**
+ * Service for creating editable polygons
+ *
+ * usage:
+ * ```typescript
+ *  // Start creating polygon
+ * 	const editing$ = polygonsEditorService.create();
+ *  this.editing$.subscribe(editResult => {
+ *				console.log(editResult.positions);
+ *		});
+ *
+ *  // Or edit polygon from existing polygon positions
+ *  const editing$ = this.polygonsEditor.edit(initialPos);
+ *
+ * ```
+ */
 @Injectable()
 export class PolygonsEditorService {
-	static clickDebounceTime = 150;
 	private mapEventsManager: MapEventsManagerService;
 	private updateSubject = new Subject<PolygonEditUpdate>();
 	private updatePublisher = this.updateSubject.publish();

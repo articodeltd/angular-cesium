@@ -17,7 +17,6 @@ export class EditorLayerComponent implements OnInit {
 	}
 	
 	ngOnInit(): void {
-		// this.startEdit();
 	}
 	
 	startEdit() {
