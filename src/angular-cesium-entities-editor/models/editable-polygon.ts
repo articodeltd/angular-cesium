@@ -101,8 +101,6 @@ export class EditablePolygon extends AcEntity {
 	}
 	
 	
-	
-	
 	addPoint(position: Cartesian3) {
 		if (this.done) {
 			return;
@@ -134,20 +132,22 @@ export class EditablePolygon extends AcEntity {
 		}
 	}
 	
-	removePoint(editPoint: EditPoint) {
-		const pointToRemove = editPoint;
+	removePoint(pointToRemove: EditPoint) {
 		this.removePosition(pointToRemove);
+		this.positions
+			.filter(p => p.isVirtualEditPoint())
+			.forEach(p => this.removePosition(p));
+		this.addAllVirtualEditPoints();
 		
 		if (this.getPointsCount() >= 3) {
 			this.polygonsLayer.update(this, this.id);
 		}
-		this.pointsLayer.remove(pointToRemove.getId());
 		this.renderPolylines();
 	}
 	
 	addLastPoint(position: Cartesian3) {
 		this.done = true;
-		this.removePoint(this.movingPoint); // remove movingPoint
+		this.removePosition(this.movingPoint); // remove movingPoint
 		this.movingPoint = null;
 		this.updatePolygonsLayer();
 		
@@ -174,6 +174,7 @@ export class EditablePolygon extends AcEntity {
 			return;
 		}
 		this.positions.splice(index, 1);
+		this.pointsLayer.remove(point.getId());
 	}
 	
 	private updatePolygonsLayer() {
