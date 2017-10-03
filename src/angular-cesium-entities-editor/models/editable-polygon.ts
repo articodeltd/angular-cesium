@@ -3,6 +3,7 @@ import { EditPoint } from './edit-point';
 import { EditPolyline } from './edit-polyline';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 
 export class EditablePolygon extends AcEntity {
 	private positions: EditPoint[] = [];
@@ -14,6 +15,7 @@ export class EditablePolygon extends AcEntity {
 							private polygonsLayer: AcLayerComponent,
 							private pointsLayer: AcLayerComponent,
 							private polylinesLayer: AcLayerComponent,
+							private coordinateConverter: CoordinateConverter,
 							positions?: Cartesian3[]) {
 		super();
 		if (positions && positions.length >= 3) {
@@ -26,8 +28,47 @@ export class EditablePolygon extends AcEntity {
 			const lastPoint: boolean = index === positions.length - 1;
 			this.addPointFromExisting(position, lastPoint)
 		});
+		
+		this.addVirtualEditPoints(this.positions);
 	}
 	
+	private addVirtualEditPoints(positions: EditPoint[]) {
+		const currentPoints = [...positions];
+		currentPoints.forEach((pos, index) => {
+			if (index === positions.length - 1) {
+				return;
+			}
+			const currentPoint = pos;
+			const nextIndex = (index + 1) % (currentPoints.length);
+			const nextPoint = currentPoints[nextIndex];
+			
+			const currentCart = Cesium.Cartographic.fromCartesian(currentPoint.getPosition());
+			const nextCart = Cesium.Cartographic.fromCartesian(nextPoint.getPosition());
+			const midPointCartesian3 = this.coordinateConverter.midPointToCartesian3(currentCart, nextCart);
+			
+			const midPoint = new EditPoint(this.id, midPointCartesian3);
+			this.addPolylinesToPoint(midPoint, currentPoint, nextPoint);
+			
+			midPoint.setVirtualEditPoint(true);
+			
+			const indexDiff = this.positions.length - currentPoints.length;
+			this.positions.splice(index + indexDiff + 1, 0, midPoint);
+			this.updatePointsLayer(midPoint);
+			this.updatePolygonsLayer();
+		});
+	}
+	
+	
+	private addPolylinesToPoint(point: EditPoint, prevPoint: EditPoint, nextPoint: EditPoint): EditPoint {
+		const startPolyline = new EditPolyline(this.id, prevPoint.getPosition(), point.getPosition());
+		const endPolyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition());
+		point.setStartingPolyline(startPolyline);
+		point.setStartingPolyline(endPolyline);
+		prevPoint.setEndingPolyline(startPolyline);
+		nextPoint.setStartingPolyline(endPolyline);
+		
+		return point;
+	}
 	
 	addPointFromExisting(position: Cartesian3, lastPoint = false) {
 		const newPoint = new EditPoint(this.id, position);

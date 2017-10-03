@@ -3,6 +3,7 @@ import { EditPolyline } from './edit-polyline';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 
 export class EditPoint extends AcEntity {
+
   static counter = 0;
   private id: string;
   private startingPolyline: EditPolyline;
@@ -10,15 +11,24 @@ export class EditPoint extends AcEntity {
   private editedEntityId: string;
   private position: any;
   private active: boolean;
+  private _virtualEditPoint: boolean;
 
-  constructor(entityId: string, position, isActive = true) {
+  constructor(entityId: string, position: Cartesian3, isActive = true) {
     super();
     this.editedEntityId = entityId;
     this.position = position;
     this.id = this.generateId();
     this.active = isActive;
   }
-
+	
+  isVirtualEditPoint(): boolean {
+		return this._virtualEditPoint;
+	}
+	
+	setVirtualEditPoint(value: boolean) {
+		this._virtualEditPoint = value;
+	}
+	
   setIsActive(isActive: boolean) {
     this.active = isActive;
   }

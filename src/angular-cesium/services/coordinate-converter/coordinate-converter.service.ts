@@ -1,9 +1,11 @@
 import { Injectable, Optional } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 import * as geodesy from 'geodesy';
+import { hemisphere, LatLonEllipsoidal, Utm } from 'geodesy';
 
-const UTM = geodesy.Utm;
-const LatLonEllipsoidal = geodesy.LatLonEllipsoidal;
+const LatLonVectors = geodesy['LatLonVectors']; // doesnt exists on typings
+
+window['geodesy'] = geodesy;
 
 /**
  *  Given different types of coordinates, we provide you a service converting those types to the most common other types.
@@ -32,55 +34,69 @@ const LatLonEllipsoidal = geodesy.LatLonEllipsoidal;
  */
 @Injectable()
 export class CoordinateConverter {
-  constructor(@Optional() private cesiumService?: CesiumService) {
-  }
-
-  screenToCartesian3(screenPos: {x: number, y: number}, addMapCanvansBoundsToPos?: boolean) {
-    if (!this.cesiumService) {
-      throw new Error('ANGULAR2-CESIUM - Cesium service should be provided in order to do screen position calculations');
-    }
-    else {
-      const screenPosition = {...screenPos};
-      if (addMapCanvansBoundsToPos) {
-        const mapBounds = this.cesiumService.getViewer().canvas.getBoundingClientRect();
+	constructor(@Optional() private cesiumService?: CesiumService) {
+	}
+	
+	screenToCartesian3(screenPos: { x: number, y: number }, addMapCanvansBoundsToPos?: boolean) {
+		if (!this.cesiumService) {
+			throw new Error('ANGULAR2-CESIUM - Cesium service should be provided in order to do screen position calculations');
+		}
+		else {
+			const screenPosition = {...screenPos};
+			if (addMapCanvansBoundsToPos) {
+				const mapBounds = this.cesiumService.getViewer().canvas.getBoundingClientRect();
 				screenPosition.x += mapBounds.left;
 				screenPosition.y += mapBounds.top;
-      }
-      
-      const camera = this.cesiumService.getViewer().camera;
-      return camera.pickEllipsoid(screenPosition);
-    }
-  }
-
-  screenToCartographic(screenPos: {x: number, y: number}, ellipsoid?: any) {
-    return this.cartesian3ToCartographic(this.screenToCartesian3(screenPos), ellipsoid);
-  }
-
-  cartesian3ToCartographic(cartesian, ellipsoid?: any) {
-    return Cesium.Cartographic.fromCartesian(cartesian, ellipsoid);
-  }
-
-  degreesToCartographic(longitude: number, latitude: number, height?: number) {
-    return Cesium.Cartographic.fromDegrees(longitude, latitude, height);
-  }
-
-  radiansToCartographic(longitude: number, latitude: number, height?: number) {
-    return Cesium.Cartographic.fromRadians(longitude, latitude, height);
-  }
-
-  degreesToUTM(longitude: number, latitude: number, height?: number) {
-    return new LatLonEllipsoidal(latitude, longitude, undefined, height).toUtm();
-  }
-
-  UTMToDegrees(zone: number, hemisphere: string, easting: number, northing: number) {
-    return this.geodesyToCesiumObject(new UTM(zone, hemisphere, easting, northing).toLatLonE());
-  }
-
-  private geodesyToCesiumObject(geodesyRadians) {
-    return {
-      longitude: geodesyRadians.lon,
-      latitude: geodesyRadians.lat,
-      height: geodesyRadians.height ? geodesyRadians.height : 0
-    };
-  }
+			}
+			
+			const camera = this.cesiumService.getViewer().camera;
+			return camera.pickEllipsoid(screenPosition);
+		}
+	}
+	
+	screenToCartographic(screenPos: { x: number, y: number }, ellipsoid?: any) {
+		return this.cartesian3ToCartographic(this.screenToCartesian3(screenPos), ellipsoid);
+	}
+	
+	cartesian3ToCartographic(cartesian, ellipsoid?: any) {
+		return Cesium.Cartographic.fromCartesian(cartesian, ellipsoid);
+	}
+	
+	degreesToCartographic(longitude: number, latitude: number, height?: number) {
+		return Cesium.Cartographic.fromDegrees(longitude, latitude, height);
+	}
+	
+	radiansToCartographic(longitude: number, latitude: number, height?: number) {
+		return Cesium.Cartographic.fromRadians(longitude, latitude, height);
+	}
+	
+	degreesToUTM(longitude: number, latitude: number) {
+		return new LatLonEllipsoidal(latitude, longitude).toUtm();
+	}
+	
+	UTMToDegrees(zone: number, hemisphereType: hemisphere, easting: number, northing: number) {
+		return this.geodesyToCesiumObject(new Utm(zone, hemisphereType, easting, northing).toLatLonE());
+	}
+	
+	private geodesyToCesiumObject(geodesyRadians) {
+		return {
+			longitude : geodesyRadians.lon,
+			latitude : geodesyRadians.lat,
+			height : geodesyRadians.height ? geodesyRadians.height : 0
+		};
+	}
+	
+	/**
+	 * middle point between two points
+	 * @param {{latitude; longitude}} first - in radians
+	 * @param {{latitude; longitude}} second - in radians
+	 */
+	midPointToCartesian3(first: { latitude, longitude }, second: { latitude, longitude }) {
+		const toDeg = (rad) => Cesium.Math.toDegrees(rad);
+		const firstPoint = new LatLonVectors(toDeg(first.latitude), toDeg(first.longitude));
+		const secondPoint = new LatLonVectors(toDeg(second.latitude), toDeg(second.longitude));
+		const middlePoint = firstPoint.midpointTo(secondPoint);
+		
+		return Cesium.Cartesian3.fromDegrees(middlePoint.lon, middlePoint.lat);
+	}
 }
