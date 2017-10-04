@@ -7,7 +7,8 @@ export interface PolygonEditUpdate {
   id: string,
   editMode: EditModes,
   editAction: EditActions,
-  positions?: Cartesian3[];
-  updatedPosition?: Cartesian3
+  positions?: Cartesian3[],
+  updatedPosition?: Cartesian3,
+  points?: EditPoint[],
   updatedPoint?: EditPoint,
 }

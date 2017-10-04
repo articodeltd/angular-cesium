@@ -155,9 +155,13 @@ export class EditablePolygon extends AcEntity {
 	}
 	
 	getRealPositions(): Cartesian3[] {
-		return this.positions
-			.filter(position => !position.isVirtualEditPoint() && position !== this.movingPoint)
+		return this.getRealPoints()
 			.map(position => position.getPosition());
+	}
+	
+	getRealPoints(): EditPoint[] {
+		return this.positions
+			.filter(position => !position.isVirtualEditPoint() && position !== this.movingPoint);
 	}
 	
 	getPositions(): Cartesian3[] {

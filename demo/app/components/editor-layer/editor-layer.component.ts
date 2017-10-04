@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PolygonsEditorService } from '../../../../src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service';
 import { PolygonEditUpdate } from '../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
 import { EditorObservable } from '../../../../src/angular-cesium-entities-editor/models/editor-observable';
+import { EditActions } from '../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
 
 @Component({
 	selector : 'editor-layer',
@@ -22,9 +23,14 @@ export class EditorLayerComponent implements OnInit {
 	
 	startEdit() {
 		this.editing$ = this.polygonsEditor.create();
-		this.editing$.subscribe(x => {
-			console.log(x.positions);
-		})
+		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
+			
+			if (editUpdate.editAction === EditActions.ADD_POINT) {
+				console.log(editUpdate.points); // point = position with id
+				console.log(editUpdate.positions); // or just position
+				console.log(editUpdate.updatedPosition); // added position
+			}
+		});
 	}
 	
 	stopEdit() {

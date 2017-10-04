@@ -14,6 +14,7 @@ import { CameraService } from '../../../../angular-cesium/services/camera/camera
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { EditorObservable } from '../../../models/editor-observable';
 import { PolygonsManagerService } from './polygons-manager.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 /**
  * Service for creating editable polygons
@@ -53,14 +54,14 @@ export class PolygonsEditorService {
 		
 	}
 	
-	onUpdate(): Observable<any> {
+	onUpdate(): Observable<PolygonEditUpdate> {
 		return this.updatePublisher;
 	}
 	
 	create(priority = 100): EditorObservable<PolygonEditUpdate> {
-		const editSubject = new Subject<PolygonEditUpdate>();
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
+		const clientEditSubject = new BehaviorSubject<PolygonEditUpdate>({id , editAction: null, editMode: EditModes.CREATE});
 		let finishedCreate = false;
 		
 		this.updateSubject.next({
@@ -86,7 +87,7 @@ export class PolygonsEditorService {
 			priority,
 		});
 		const editorObservable = this.createEditorObservable(
-			editSubject,
+			clientEditSubject,
 			[mouseMoveRegistration, addPointRegistration, addLastPointRegistration],
 			id);
 		
@@ -125,9 +126,10 @@ export class PolygonsEditorService {
 				editAction : EditActions.ADD_POINT,
 			};
 			this.updateSubject.next(updateValue);
-			editSubject.next({
+			clientEditSubject.next({
 				...updateValue,
-				positions : this.getPositions(id)
+				positions : this.getPositions(id),
+				points: this.getPoints(id),
 			});
 		});
 		
@@ -143,9 +145,10 @@ export class PolygonsEditorService {
 				editAction : EditActions.ADD_LAST_POINT,
 			};
 			this.updateSubject.next(updateValue);
-			editSubject.next({
+			clientEditSubject.next({
 				...updateValue,
-				positions : this.getPositions(id)
+				positions : this.getPositions(id),
+				points: this.getPoints(id),
 			});
 			
 			const changeMode = {
@@ -154,11 +157,11 @@ export class PolygonsEditorService {
 				editAction : EditActions.CHANGE_TO_EDIT,
 			};
 			this.updateSubject.next(changeMode);
-			editSubject.next(changeMode);
+			clientEditSubject.next(changeMode);
 			mouseMoveRegistration.dispose();
 			addPointRegistration.dispose();
 			addLastPointRegistration.dispose();
-			this.editPolygon(id, positions, priority, editSubject, editorObservable);
+			this.editPolygon(id, positions, priority, clientEditSubject, editorObservable);
 			finishedCreate = true;
 		});
 		
@@ -220,7 +223,8 @@ export class PolygonsEditorService {
 				this.updateSubject.next(update);
 				editSubject.next({
 					...update,
-					positions : this.getPositions(id)
+					positions : this.getPositions(id),
+					points: this.getPoints(id),
 				});
 			});
 		
@@ -245,7 +249,8 @@ export class PolygonsEditorService {
 			this.updateSubject.next(update);
 			editSubject.next({
 				...update,
-				positions : this.getPositions(id)
+				positions : this.getPositions(id),
+				points: this.getPoints(id),
 			});
 		});
 		
@@ -284,6 +289,8 @@ export class PolygonsEditorService {
 			});
 		};
 		
+		observableToExtend.polygonEditValue = () => observableToExtend.getValue();
+		
 		return observableToExtend as EditorObservable<PolygonEditUpdate>;
 	}
 	
@@ -294,5 +301,10 @@ export class PolygonsEditorService {
 	private getPositions(id) {
 		const polygon = this.polygonsManager.get(id);
 		return polygon.getRealPositions()
+	}
+	
+	private getPoints(id) {
+		const polygon = this.polygonsManager.get(id);
+		return polygon.getRealPoints();
 	}
 }
