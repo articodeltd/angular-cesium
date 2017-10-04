@@ -1,3 +1,7 @@
+## 0.0.27
+### Features
+* polygon editor(alpha) - edit mode, disable,enable, add points to the editor result.
+
 ## 0.0.26
 ### Features
 * added screenshot service
