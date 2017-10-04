@@ -12,7 +12,8 @@ export class PolygonsManagerService {
 				editPolygonsLayer,
 				editPointsLayer,
 				editPolylinesLayer,
-				coordinateConverter)
+				coordinateConverter,
+				positions)
 		);
 	}
 	
@@ -20,9 +21,8 @@ export class PolygonsManagerService {
 		return this.polygons.get(id);
 	}
 	
-	clear(){
+	clear() {
 		this.polygons.forEach(polygon => polygon.dispose());
 		this.polygons.clear();
 	}
-	
 }
