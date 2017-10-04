@@ -348,6 +348,9 @@
                                     <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
                                 </li>
                                 <li class="link">
@@ -820,6 +823,9 @@
                                            <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
                                        </li>
                                        <li class="link">
@@ -1024,6 +1030,9 @@
                                     <li>
                                          <a href="#enable">enable</a>
                                     </li>
+                                    <li>
+                                         <a href="#polygonEditValue">polygonEditValue</a>
+                                    </li>
                                 </ul>
                             </td>
                         </tr>
@@ -1061,7 +1070,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:6</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:7</a></div>
                                         </td>
                                     </tr>
             
@@ -1090,7 +1099,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:4</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:5</a></div>
                                         </td>
                                     </tr>
             
@@ -1119,7 +1128,36 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:5</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:6</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="polygonEditValue"></a>
+                                    <b> polygonEditValue</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>polygonEditValue:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:8</a></div>
                                         </td>
                                     </tr>
             
@@ -1132,11 +1170,13 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Observable } from &#x27;rxjs/Observable&#x27;;
+import { PolygonEditUpdate } from &#x27;./polygon-edit-update&#x27;;
 
 export class EditorObservable&lt;T&gt; extends Observable&lt;T&gt; {
   dispose: Function;
   enable: Function;
   disable: Function;
+	polygonEditValue: () &#x3D;&gt; PolygonEditUpdate
 }
 </code></pre>
     </div>

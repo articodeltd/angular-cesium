@@ -181,7 +181,7 @@
                                     <a href="../components/AcPolygonDescComponent.html"  data-type="entity-link" class="active" >AcPolygonDescComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AcPolygonDescComponent.html"  data-type="entity-link" class="active" >AcPolygonDescComponent</a>
+                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
@@ -346,6 +346,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
@@ -653,7 +656,7 @@
                                            <a href="../components/AcPolygonDescComponent.html"  data-type="entity-link" class="active" >AcPolygonDescComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AcPolygonDescComponent.html"  data-type="entity-link" class="active" >AcPolygonDescComponent</a>
+                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
@@ -818,6 +821,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
@@ -988,14 +994,14 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/angular-cesium/components/ac-polygon-primitive-desc/ac-polygon-primitive-desc.component.ts</code>
+    <code>src/angular-cesium/components/ac-polygon-desc/ac-polygon-desc.component.ts</code>
 </p>
 
     <p class="comment">
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>This is a primitive polygon implementation.
+        <p>This is a polygon implementation.
 The ac-label element must be a child of ac-layer element.
 The properties of props are the same as the properties of Entity and PolygonGraphics:</p>
 <ul>
@@ -1044,7 +1050,7 @@ The properties of props are the same as the properties of Entity and PolygonGrap
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>ac-polygon-primitive-desc</code></td>
+                <td class="col-md-9"><code>ac-polygon-desc</code></td>
             </tr>
 
 
@@ -1068,7 +1074,7 @@ The properties of props are the same as the properties of Entity and PolygonGrap
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/angular-cesium/components/ac-polygon-primitive-desc/ac-polygon-primitive-desc.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/angular-cesium/components/ac-polygon-desc/ac-polygon-desc.component.ts:29</a></div>
                                 </td>
                             </tr>
     
@@ -1091,7 +1097,7 @@ import { ComputationCache } from &#x27;../../services/computation-cache/computat
 import { CesiumProperties } from &#x27;../../services/cesium-properties/cesium-properties.service&#x27;;
 
 /**
- *  This is a primitive polygon implementation.
+ *  This is a polygon implementation.
  *  The ac-label element must be a child of ac-layer element.
  *  The properties of props are the same as the properties of Entity and PolygonGraphics:
  *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
@@ -1108,15 +1114,15 @@ import { CesiumProperties } from &#x27;../../services/cesium-properties/cesium-p
  *	&#x60;&#x60;&#x60;
  */
 @Component({
-  selector: &#x27;ac-polygon-primitive-desc&#x27;,
-  template: &#x27;&#x27;
+    selector: &#x27;ac-polygon-desc&#x27;,
+    template: &#x27;&#x27;
 })
 export class AcPolygonDescComponent extends BasicDesc implements OnInit {
 
-  constructor(polygonDrawer: PolygonDrawerService, layerService: LayerService,
-              computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
-    super(polygonDrawer, layerService, computationCache, cesiumProperties);
-  }
+    constructor(polygonDrawer: PolygonDrawerService, layerService: LayerService,
+                computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
+        super(polygonDrawer, layerService, computationCache, cesiumProperties);
+    }
 }
 </code></pre>
     </div>
@@ -1146,7 +1152,7 @@ export class AcPolygonDescComponent extends BasicDesc implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div></div>'
-    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-primitive-desc'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'}];
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-primitive-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AcPolygonDescComponent'};
 </script>

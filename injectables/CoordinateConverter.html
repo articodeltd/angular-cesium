@@ -348,6 +348,9 @@
                                     <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
                                 </li>
                                 <li class="link">
@@ -820,6 +823,9 @@
                                            <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
                                        </li>
                                        <li class="link">
@@ -1034,6 +1040,9 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                         <span class="modifier">Private</span> <a href="#geodesyToCesiumObject">geodesyToCesiumObject</a>
                                     </li>
                                     <li>
+                                         <a href="#midPointToCartesian3">midPointToCartesian3</a>
+                                    </li>
+                                    <li>
                                          <a href="#radiansToCartographic">radiansToCartographic</a>
                                     </li>
                                     <li>
@@ -1063,7 +1072,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:34</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:36</a></div>
                                         </td>
                                     </tr>
             
@@ -1093,7 +1102,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:59</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:61</a></div>
                                         </td>
                                     </tr>
             
@@ -1125,7 +1134,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:63</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:65</a></div>
                                         </td>
                                     </tr>
             
@@ -1150,14 +1159,14 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>degreesToUTM(longitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, latitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, height: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+            <code>degreesToUTM(longitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, latitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:71</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:73</a></div>
                                         </td>
                                     </tr>
             
@@ -1190,7 +1199,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:79</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:81</a></div>
                                         </td>
                                     </tr>
             
@@ -1201,6 +1210,77 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                             <b>Returns : </b>    <code>{ longitude: any; latitude: any; height: any; }</code>
             
                                         </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="midPointToCartesian3"></a>
+                                    <b> midPointToCartesian3</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>midPointToCartesian3(first: literal type, second: literal type)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:94</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>middle point between two points</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>first</td>
+                                                              <td>
+                                                              </td>
+                                                              <td><ul>
+            <li>in radians</li>
+            </ul>
+            </td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>second</td>
+                                                              <td>
+                                                              </td>
+                                                              <td><ul>
+            <li>in radians</li>
+            </ul>
+            </td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1222,7 +1302,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:67</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:69</a></div>
                                         </td>
                                     </tr>
             
@@ -1254,7 +1334,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:38</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:40</a></div>
                                         </td>
                                     </tr>
             
@@ -1286,7 +1366,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:55</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:57</a></div>
                                         </td>
                                     </tr>
             
@@ -1311,14 +1391,14 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>UTMToDegrees(zone: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, hemisphere: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, easting: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, northing: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+            <code>UTMToDegrees(zone: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, hemisphereType: hemisphere, easting: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, northing: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:75</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:77</a></div>
                                         </td>
                                     </tr>
             
@@ -1342,9 +1422,11 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
         <pre class="line-numbers"><code class="language-typescript">import { Injectable, Optional } from &#x27;@angular/core&#x27;;
 import { CesiumService } from &#x27;../cesium/cesium.service&#x27;;
 import * as geodesy from &#x27;geodesy&#x27;;
+import { hemisphere, LatLonEllipsoidal, Utm } from &#x27;geodesy&#x27;;
 
-const UTM &#x3D; geodesy.Utm;
-const LatLonEllipsoidal &#x3D; geodesy.LatLonEllipsoidal;
+const LatLonVectors &#x3D; geodesy[&#x27;LatLonVectors&#x27;]; // doesnt exists on typings
+
+window[&#x27;geodesy&#x27;] &#x3D; geodesy;
 
 /**
  *  Given different types of coordinates, we provide you a service converting those types to the most common other types.
@@ -1373,57 +1455,71 @@ const LatLonEllipsoidal &#x3D; geodesy.LatLonEllipsoidal;
  */
 @Injectable()
 export class CoordinateConverter {
-  constructor(@Optional() private cesiumService?: CesiumService) {
-  }
-
-  screenToCartesian3(screenPos: {x: number, y: number}, addMapCanvansBoundsToPos?: boolean) {
-    if (!this.cesiumService) {
-      throw new Error(&#x27;ANGULAR2-CESIUM - Cesium service should be provided in order to do screen position calculations&#x27;);
-    }
-    else {
-      const screenPosition &#x3D; {...screenPos};
-      if (addMapCanvansBoundsToPos) {
-        const mapBounds &#x3D; this.cesiumService.getViewer().canvas.getBoundingClientRect();
+	constructor(@Optional() private cesiumService?: CesiumService) {
+	}
+	
+	screenToCartesian3(screenPos: { x: number, y: number }, addMapCanvansBoundsToPos?: boolean) {
+		if (!this.cesiumService) {
+			throw new Error(&#x27;ANGULAR2-CESIUM - Cesium service should be provided in order to do screen position calculations&#x27;);
+		}
+		else {
+			const screenPosition &#x3D; {...screenPos};
+			if (addMapCanvansBoundsToPos) {
+				const mapBounds &#x3D; this.cesiumService.getViewer().canvas.getBoundingClientRect();
 				screenPosition.x +&#x3D; mapBounds.left;
 				screenPosition.y +&#x3D; mapBounds.top;
-      }
-      
-      const camera &#x3D; this.cesiumService.getViewer().camera;
-      return camera.pickEllipsoid(screenPosition);
-    }
-  }
-
-  screenToCartographic(screenPos: {x: number, y: number}, ellipsoid?: any) {
-    return this.cartesian3ToCartographic(this.screenToCartesian3(screenPos), ellipsoid);
-  }
-
-  cartesian3ToCartographic(cartesian, ellipsoid?: any) {
-    return Cesium.Cartographic.fromCartesian(cartesian, ellipsoid);
-  }
-
-  degreesToCartographic(longitude: number, latitude: number, height?: number) {
-    return Cesium.Cartographic.fromDegrees(longitude, latitude, height);
-  }
-
-  radiansToCartographic(longitude: number, latitude: number, height?: number) {
-    return Cesium.Cartographic.fromRadians(longitude, latitude, height);
-  }
-
-  degreesToUTM(longitude: number, latitude: number, height?: number) {
-    return new LatLonEllipsoidal(latitude, longitude, undefined, height).toUtm();
-  }
-
-  UTMToDegrees(zone: number, hemisphere: string, easting: number, northing: number) {
-    return this.geodesyToCesiumObject(new UTM(zone, hemisphere, easting, northing).toLatLonE());
-  }
-
-  private geodesyToCesiumObject(geodesyRadians) {
-    return {
-      longitude: geodesyRadians.lon,
-      latitude: geodesyRadians.lat,
-      height: geodesyRadians.height ? geodesyRadians.height : 0
-    };
-  }
+			}
+			
+			const camera &#x3D; this.cesiumService.getViewer().camera;
+			return camera.pickEllipsoid(screenPosition);
+		}
+	}
+	
+	screenToCartographic(screenPos: { x: number, y: number }, ellipsoid?: any) {
+		return this.cartesian3ToCartographic(this.screenToCartesian3(screenPos), ellipsoid);
+	}
+	
+	cartesian3ToCartographic(cartesian, ellipsoid?: any) {
+		return Cesium.Cartographic.fromCartesian(cartesian, ellipsoid);
+	}
+	
+	degreesToCartographic(longitude: number, latitude: number, height?: number) {
+		return Cesium.Cartographic.fromDegrees(longitude, latitude, height);
+	}
+	
+	radiansToCartographic(longitude: number, latitude: number, height?: number) {
+		return Cesium.Cartographic.fromRadians(longitude, latitude, height);
+	}
+	
+	degreesToUTM(longitude: number, latitude: number) {
+		return new LatLonEllipsoidal(latitude, longitude).toUtm();
+	}
+	
+	UTMToDegrees(zone: number, hemisphereType: hemisphere, easting: number, northing: number) {
+		return this.geodesyToCesiumObject(new Utm(zone, hemisphereType, easting, northing).toLatLonE());
+	}
+	
+	private geodesyToCesiumObject(geodesyRadians) {
+		return {
+			longitude : geodesyRadians.lon,
+			latitude : geodesyRadians.lat,
+			height : geodesyRadians.height ? geodesyRadians.height : 0
+		};
+	}
+	
+	/**
+	 * middle point between two points
+	 * @param {{latitude; longitude}} first - in radians
+	 * @param {{latitude; longitude}} second - in radians
+	 */
+	midPointToCartesian3(first: { latitude, longitude }, second: { latitude, longitude }) {
+		const toDeg &#x3D; (rad) &#x3D;&gt; Cesium.Math.toDegrees(rad);
+		const firstPoint &#x3D; new LatLonVectors(toDeg(first.latitude), toDeg(first.longitude));
+		const secondPoint &#x3D; new LatLonVectors(toDeg(second.latitude), toDeg(second.longitude));
+		const middlePoint &#x3D; firstPoint.midpointTo(secondPoint);
+		
+		return Cesium.Cartesian3.fromDegrees(middlePoint.lon, middlePoint.lat);
+	}
 }
 </code></pre>
     </div>

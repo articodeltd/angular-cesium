@@ -348,7 +348,7 @@
                                     <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                    <a href="../injectables/PolygonsManagerService.html"  data-type="entity-link" class="active" >PolygonsManagerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
@@ -392,7 +392,7 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
-                                    <a href="../interfaces/ActiveDefinition.html"  data-type="entity-link" class="active" >ActiveDefinition</a>
+                                    <a href="../interfaces/ActiveDefinition.html" >ActiveDefinition</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
@@ -823,7 +823,7 @@
                                            <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                           <a href="../injectables/PolygonsManagerService.html"  data-type="entity-link" class="active" >PolygonsManagerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
@@ -867,7 +867,7 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
-                                           <a href="../interfaces/ActiveDefinition.html"  data-type="entity-link" class="active" >ActiveDefinition</a>
+                                           <a href="../interfaces/ActiveDefinition.html" >ActiveDefinition</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
@@ -964,7 +964,7 @@
                    
                    </nav>
                </div>
-               <div class="content interface">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -972,12 +972,9 @@
 
 
 
-
-
-
 <ol class="breadcrumb">
-  <li>Interfaces</li>
-  <li>ActiveDefinition</li>
+  <li>Injectables</li>
+  <li>PolygonsManagerService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -997,139 +994,189 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/angular-cesium/services/keyboard-control/keyboard-control.service.ts</code>
+            <code>src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-manager.service.ts</code>
         </p>
-
-
-        <section>
-            <h3 id="index">Index</h3>
-            <table class="table table-sm table-bordered index-table">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Properties</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                        <a href="#action">action</a>
-                                </li>
-                                <li>
-                                        <a href="#keyboardEvent">keyboardEvent</a>
-                                </li>
-                                <li>
-                                        <a href="#state">state</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
 
 
 
             <section>
-                <h3 id="inputs">Properties</h3>
+                <h3 id="index">Index</h3>
+                <table class="table table-sm table-bordered index-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Properties</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#polygons">polygons</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Methods</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#clear">clear</a>
+                                    </li>
+                                    <li>
+                                         <a href="#createEditablePolygon">createEditablePolygon</a>
+                                    </li>
+                                    <li>
+                                         <a href="#get">get</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="action"></a>
-                                        <b>action</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>action:     <code><a href="../interfaces/KeyboardControlParams.html" target="_self" >KeyboardControlParams</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="clear"></a>
+                                    <b> clear</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>clear()</code>
+                                </td>
+                            </tr>
+            
+            
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="../interfaces/KeyboardControlParams.html" target="_self" >KeyboardControlParams</a></code>
-
+                                            <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-manager.service.ts:24</a></div>
                                         </td>
                                     </tr>
-
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:32</a></div>
-                                        </td>
-                                    </tr>
-
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="keyboardEvent"></a>
-                                        <b>keyboardEvent</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>keyboardEvent:     <code>KeyboardEvent</code>
-</code>
-                                    </td>
-                                </tr>
-
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="createEditablePolygon"></a>
+                                    <b> createEditablePolygon</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>createEditablePolygon(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editPolygonsLayer: , editPointsLayer: , editPolylinesLayer: , coordinateConverter: , positions: )</code>
+                                </td>
+                            </tr>
+            
+            
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>KeyboardEvent</code>
-
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-manager.service.ts:8</a></div>
                                         </td>
                                     </tr>
-
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:30</a></div>
-                                        </td>
-                                    </tr>
-
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="state"></a>
-                                        <b>state</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>state:     <code><a href="../miscellaneous/enumerations.html" target="_self" >KeyEventState</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="get"></a>
+                                    <b> get</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>get(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="../miscellaneous/enumerations.html" target="_self" >KeyEventState</a></code>
-
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-manager.service.ts:20</a></div>
                                         </td>
                                     </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../classes/EditablePolygon.html" target="_self" >EditablePolygon</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
-
-
+            <section>
+                
+                    <h3 id="inputs">
+                        Properties
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="polygons"></a>
+                                    <b> polygons</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>polygons:     <code><a href="../classes/EditablePolygon.html" target="_self" >Map&lt;stringEditablePolygon&gt;</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../classes/EditablePolygon.html" target="_self" >Map&lt;stringEditablePolygon&gt;</a></code>
+            
+                                    </td>
+                                </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:31</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-manager.service.ts:6</a></div>
                                         </td>
                                     </tr>
-
+            
+            
                         </tbody>
                     </table>
             </section>
@@ -1137,347 +1184,40 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { isNumber } from &#x27;util&#x27;;
-import { Inject, Injectable, NgZone } from &#x27;@angular/core&#x27;;
-import { DOCUMENT } from &#x27;@angular/common&#x27;;
-import { KeyboardAction } from &#x27;../../models/ac-keyboard-action.enum&#x27;;
-import { CesiumService } from &#x27;../cesium/cesium.service&#x27;;
-import { PREDEFINED_KEYBOARD_ACTIONS } from &#x27;./predefined-actions&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { EditablePolygon } from &#x27;../../../models/editable-polygon&#x27;;
 
-export type KeyboardControlActionFn &#x3D; (cesiumService: CesiumService, params: any, event: KeyboardEvent) &#x3D;&gt; boolean | void;
-export type KeyboardControlValidationFn &#x3D; (cesiumService: CesiumService, params: any, event: KeyboardEvent) &#x3D;&gt; boolean;
-export type KeyboardControlDoneFn &#x3D; (cesiumService: CesiumService, event: KeyboardEvent) &#x3D;&gt; boolean;
-
-export interface KeyboardControlParams {
-	action: KeyboardAction | KeyboardControlActionFn;
-	validation?: KeyboardControlValidationFn;
-	params?: { [paramName: string]: any };
-	done?: KeyboardControlDoneFn;
-}
-
-export interface KeyboardControlDefinition {
-	[keyboardCharCode: string]: KeyboardControlParams;
-}
-
-enum KeyEventState {
-	IGNORED,
-	NOT_PRESSED,
-	PRESSED,
-}
-
-interface ActiveDefinition {
-	keyboardEvent: KeyboardEvent,
-	state: KeyEventState,
-	action: KeyboardControlParams
-}
-
-/**
- *  Service that manages keyboard keys and execute actions per request.
- *  Inject the keyboard control service into any layer, under your &#x60;ac-map&#x60; component,
- *  And defined you keyboard handlers using &#x60;setKeyboardControls&#x60;.
- *
- * &lt;caption&gt;Simple Example&lt;/caption&gt;
- * &#x60;&#x60;&#x60;typescript
- * Component({
- *   selector: &#x27;keyboard-control-layer&#x27;,
- *   template: &#x27;&#x27;,
- * })
- * export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
- *   constructor(private keyboardControlService: KeyboardControlService) {}
- *
- *   ngOnInit() {
- *     this.keyboardControlService.setKeyboardControls({
- *       W: { action: KeyboardAction.CAMERA_FORWARD },
- *       S: { action: KeyboardAction.CAMERA_BACKWARD },
- *       D: { action: KeyboardAction.CAMERA_RIGHT },
- *       A: { action: KeyboardAction.CAMERA_LEFT },
- *     });
- *    }
- *
- *   ngOnDestroy() {
- *     this.keyboardControlService.removeKeyboardControls();
- *   }
- * }
- * &#x60;&#x60;&#x60;
- *
- * &lt;caption&gt;Advanced Example&lt;/caption&gt;
- * &#x60;&#x60;&#x60;typescript
- * Component({
- *   selector: &#x27;keyboard-control-layer&#x27;,
- *   template: &#x27;&#x27;,
- * })
- * export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
- *   constructor(private keyboardControlService: KeyboardControlService) {}
- *
- *   private myCustomValue &#x3D; 10;
- *
- *   ngOnInit() {
- *     this.keyboardControlService.setKeyboardControls({
- *       W: {
- *          action: KeyboardAction.CAMERA_FORWARD,
- *          validate: (camera, scene, params, key) &#x3D;&gt; {
- *            // Replace &#x60;checkCamera&#x60; you with your validation logic
- *            if (checkCamera(camera) || params.customParams &#x3D;&#x3D;&#x3D; true) {
- *              return true;
- *            }
- *
- *            return false;
- *          },
- *          params: () &#x3D;&gt; {
- *            return {
- *              myValue: this.myCustomValue,
- *            };
- *          },
- *        }
- *     });
- *    }
- *
- *   ngOnDestroy() {
- *     this.keyboardControlService.removeKeyboardControls();
- *   }
- * }
- * &#x60;&#x60;&#x60;
- *
- */
 @Injectable()
-export class KeyboardControlService {
-	private _currentDefinitions: KeyboardControlDefinition &#x3D; null;
-	private _activeDefinitions: { [definitionKey: string]: ActiveDefinition } &#x3D; {};
-	private _keyMappingFn: Function &#x3D; this.defaultKeyMappingFn;
+export class PolygonsManagerService {
+	polygons: Map&lt;string, EditablePolygon&gt; &#x3D; new Map&lt;string, EditablePolygon&gt;();
 	
-	/**
-	 * Creats the keyboard control service.
-	 * @constructor
-	 */
-	constructor(private ngZone: NgZone, private cesiumService: CesiumService, @Inject(DOCUMENT) private document: any) {
+	createEditablePolygon(id: string, editPolygonsLayer, editPointsLayer, editPolylinesLayer, coordinateConverter, positions?) {
+		this.polygons.set(id,
+			new EditablePolygon(
+				id,
+				editPolygonsLayer,
+				editPointsLayer,
+				editPolylinesLayer,
+				coordinateConverter,
+				positions)
+		);
 	}
 	
-	/**
-	 * Initializes the keyboard control service.
-	 * @constructor
-	 */
-	init() {
-		const canvas &#x3D; this.cesiumService.getCanvas();
-		canvas.addEventListener(&#x27;click&#x27;, () &#x3D;&gt; {
-			canvas.focus();
-		});
-		
-		this.handleKeydown &#x3D; this.handleKeydown.bind(this);
-		this.handleKeyup &#x3D; this.handleKeyup.bind(this);
-		this.handleTick &#x3D; this.handleTick.bind(this);
+	get(id: string): EditablePolygon {
+		return this.polygons.get(id);
 	}
 	
-	/**
-	 * Sets the current map keyboard control definitions.
-	 * The definitions is a key mapping between a key string and a KeyboardControlDefinition:
-	 * - &#x60;action&#x60; is a predefine action from &#x60;KeyboardAction&#x60; enum, or a custom method:
-	 * &#x60;(camera, scene, params, key) &#x3D;&gt; boolean | void&#x60; - returning false will cancel the current keydown.
-	 * - &#x60;validation&#x60; is a method that validates if the event should occur or not (&#x60;camera, scene, params, key&#x60;)
-	 * - &#x60;params&#x60; is an object (or function that returns object) that will be passed into the action executor.
-	 * - &#x60;done&#x60; is a function that will be triggered when &#x60;keyup&#x60; is triggered.
-	 * @param {KeyboardControlDefinition} definitions
-	 * @param {Function} keyMappingFn - Mapping function for custom keys
-	 * @param {Boolean} outsideOfAngularZone - if key down events will run outside of angular zone.
-	 */
-	setKeyboardControls(definitions: KeyboardControlDefinition,
-											keyMappingFn?: (keyEvent: KeyboardEvent) &#x3D;&gt; string,
-											outsideOfAngularZone &#x3D; false) {
-		if (!definitions) {
-			return this.removeKeyboardControls();
-		}
-		
-		if (!this._currentDefinitions) {
-			this.registerEvents(outsideOfAngularZone);
-		}
-		
-		this._currentDefinitions &#x3D; definitions;
-		this._keyMappingFn &#x3D; keyMappingFn || this.defaultKeyMappingFn;
-		
-		Object.keys(this._currentDefinitions).forEach(key &#x3D;&gt; {
-			this._activeDefinitions[key] &#x3D; {
-				state : KeyEventState.NOT_PRESSED,
-				action : null,
-				keyboardEvent : null,
-			};
-		});
-	}
-	
-	/**
-	 * Removes the current set of keyboard control items, and unregister from map events.
-	 */
-	removeKeyboardControls() {
-		this.unregisterEvents();
-		this._currentDefinitions &#x3D; null;
-	}
-	
-	/**
-	 * Returns the current action that handles &#x60;char&#x60; key string, or &#x60;null&#x60; if not exists
-	 * @param {string} char
-	 */
-	private getAction(char: string): KeyboardControlParams {
-		return this._currentDefinitions[char] || null;
-	}
-	
-	/**
-	 * The default &#x60;defaultKeyMappingFn&#x60; that maps &#x60;KeyboardEvent&#x60; into a key string.
-	 * @param {KeyboardEvent} keyEvent
-	 */
-	private defaultKeyMappingFn(keyEvent: KeyboardEvent): string {
-		return String.fromCharCode(keyEvent.keyCode);
-	}
-	
-	/**
-	 * document&#x27;s &#x60;keydown&#x60; event handler
-	 * @param {KeyboardEvent} e
-	 */
-	private handleKeydown(e: KeyboardEvent) {
-		const char &#x3D; this._keyMappingFn(e);
-		const action &#x3D; this.getAction(char);
-		
-		if (action) {
-			const actionState &#x3D; this._activeDefinitions[char];
-			
-			if (actionState.state !&#x3D;&#x3D; KeyEventState.IGNORED) {
-				let execute &#x3D; true;
-				
-				const params &#x3D; this.getParams(action.params, e);
-				
-				if (action.validation) {
-					execute &#x3D; action.validation(this.cesiumService, params, e);
-				}
-				
-				if (execute &#x3D;&#x3D;&#x3D; true) {
-					this._activeDefinitions[char] &#x3D; {
-						state : KeyEventState.PRESSED,
-						action,
-						keyboardEvent : e,
-					};
-				}
-			}
-		}
-	}
-	
-	/**
-	 * document&#x27;s &#x60;keyup&#x60; event handler
-	 * @param {KeyboardEvent} e
-	 */
-	private handleKeyup(e: KeyboardEvent) {
-		const char &#x3D; this._keyMappingFn(e);
-		const action &#x3D; this.getAction(char);
-		
-		if (action) {
-			this._activeDefinitions[char] &#x3D; {
-				state : KeyEventState.NOT_PRESSED,
-				action : null,
-				keyboardEvent : e,
-			};
-			
-			if (action.done &amp;&amp; typeof action.done &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
-				action.done(this.cesiumService, e);
-			}
-		}
-	}
-	
-	/**
-	 * &#x60;tick&#x60; event handler that triggered by Cesium render loop
-	 */
-	private handleTick() {
-		const activeKeys &#x3D; Object.keys(this._activeDefinitions);
-		
-		activeKeys.forEach(key &#x3D;&gt; {
-			const actionState &#x3D; this._activeDefinitions[key];
-			
-			if (actionState !&#x3D;&#x3D; null &amp;&amp; actionState.action !&#x3D;&#x3D; null &amp;&amp; actionState.state &#x3D;&#x3D;&#x3D; KeyEventState.PRESSED) {
-				this.executeAction(actionState.action, key, actionState.keyboardEvent);
-			}
-		});
-	}
-	
-	/**
-	 *
-	 * Params resolve function, returns object.
-	 * In case of params function, executes it and returns it&#x27;s return value.
-	 * @param {any} paramsDef
-	 * @param {KeyboardEvent} keyboardEvent
-	 *
-	 * @returns {object}
-	 */
-	private getParams(paramsDef: any, keyboardEvent: KeyboardEvent): { [paramName: string]: any } {
-		if (!paramsDef) {
-			return {};
-		}
-		
-		if (typeof paramsDef &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
-			return paramsDef(this.cesiumService, keyboardEvent);
-		}
-		
-		return paramsDef;
-	}
-	
-	/**
-	 *
-	 * Executes a given &#x60;KeyboardControlParams&#x60; object.
-	 *
-	 * @param {KeyboardControlParams} execution
-	 * @param {string} key
-	 * @param {KeyboardEvent} keyboardEvent
-	 *
-	 */
-	private executeAction(execution: KeyboardControlParams, key: string, keyboardEvent: KeyboardEvent) {
-		if (!this._currentDefinitions) {
-			return;
-		}
-		
-		const params &#x3D; this.getParams(execution.params, keyboardEvent);
-		
-		if (isNumber(execution.action)) {
-			const predefinedAction &#x3D; PREDEFINED_KEYBOARD_ACTIONS[execution.action as number];
-			
-			if (predefinedAction) {
-				predefinedAction(this.cesiumService, params, keyboardEvent);
-			}
-		} else if (typeof execution.action &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
-			const shouldCancelEvent &#x3D; execution.action(this.cesiumService, params, keyboardEvent);
-			
-			if (shouldCancelEvent &#x3D;&#x3D;&#x3D; false) {
-				this._activeDefinitions[key] &#x3D; {
-					state : KeyEventState.IGNORED,
-					action : null,
-					keyboardEvent : null,
-				};
-			}
-		}
-	}
-	
-	/**
-	 * Registers to keydown, keyup of &#x60;document&#x60;, and &#x60;tick&#x60; of Cesium.
-	 */
-	private registerEvents(outsideOfAngularZone: boolean) {
-		const registerToEvents &#x3D; () &#x3D;&gt; {
-			this.document.addEventListener(&#x27;keydown&#x27;, this.handleKeydown);
-			this.document.addEventListener(&#x27;keyup&#x27;, this.handleKeyup);
-			this.cesiumService.getViewer().clock.onTick.addEventListener(this.handleTick);
-		};
-		
-		if (outsideOfAngularZone) {
-			this.ngZone.runOutsideAngular(registerToEvents);
-		} else {
-			registerToEvents();
-		}
-	}
-	
-	/**
-	 * Unregisters to keydown, keyup of &#x60;document&#x60;, and &#x60;tick&#x60; of Cesium.
-	 */
-	private unregisterEvents() {
-		this.document.removeEventListener(&#x27;keydown&#x27;, this.handleKeydown);
-		this.document.removeEventListener(&#x27;keyup&#x27;, this.handleKeyup);
-		this.cesiumService.getViewer().clock.onTick.removeEventListener(this.handleTick);
+	clear() {
+		this.polygons.forEach(polygon &#x3D;&gt; polygon.dispose());
+		this.polygons.clear();
 	}
 }
 </code></pre>
     </div>
 </div>
+
+
+
 
 
 

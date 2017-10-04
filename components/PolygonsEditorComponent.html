@@ -348,6 +348,9 @@
                                     <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
                                 </li>
                                 <li class="link">
@@ -820,6 +823,9 @@
                                            <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
                                        </li>
                                        <li class="link">
@@ -1023,6 +1029,7 @@
                 <td class="col-md-9">
                     <code>
                         CoordinateConverter
+                        PolygonsManagerService
                     </code>
                 </td>
             </tr>
@@ -1091,9 +1098,6 @@
                             <li>
                                 <span class="modifier">Public</span> <a href="#polygonColor">polygonColor</a>
                             </li>
-                            <li>
-                                <span class="modifier">Private</span> <a href="#polygons">polygons</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -1105,6 +1109,9 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                 <a href="#getPointSize">getPointSize</a>
+                            </li>
                             <li>
                                  <a href="#handleCreateUpdates">handleCreateUpdates</a>
                             </li>
@@ -1130,12 +1137,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(polygonsEditor: <a href="../injectables/PolygonsEditorService.html">PolygonsEditorService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, cameraService: <a href="../injectables/CameraService.html">CameraService</a>)</code>
+                            <code>constructor(polygonsEditor: <a href="../injectables/PolygonsEditorService.html">PolygonsEditorService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, cameraService: <a href="../injectables/CameraService.html">CameraService</a>, polygonsManager: <a href="../injectables/PolygonsManagerService.html">PolygonsManagerService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:34</a></div>
                                 </td>
                             </tr>
     
@@ -1154,6 +1161,38 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="getPointSize"></a>
+                            <b> getPointSize</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>getPointSize(point: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:165</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>8 | 15</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="handleCreateUpdates"></a>
                             <b> handleCreateUpdates</b>
                         </td>
@@ -1167,7 +1206,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:56</a></div>
                                 </td>
                             </tr>
     
@@ -1199,7 +1238,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:107</a></div>
                                 </td>
                             </tr>
     
@@ -1231,7 +1270,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:129</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:161</a></div>
                                 </td>
                             </tr>
     
@@ -1264,7 +1303,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:45</a></div>
                                 </td>
                             </tr>
     
@@ -1302,7 +1341,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:27</a></div>
                                 </td>
                             </tr>
     
@@ -1325,7 +1364,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:28</a></div>
                                 </td>
                             </tr>
     
@@ -1353,7 +1392,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:22</a></div>
                                 </td>
                             </tr>
     
@@ -1376,7 +1415,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:23</a></div>
                                 </td>
                             </tr>
     
@@ -1410,7 +1449,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:33</a></div>
                                 </td>
                             </tr>
     
@@ -1433,7 +1472,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:25</a></div>
                                 </td>
                             </tr>
     
@@ -1467,7 +1506,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:32</a></div>
                                 </td>
                             </tr>
     
@@ -1490,7 +1529,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:24</a></div>
                                 </td>
                             </tr>
     
@@ -1524,7 +1563,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:34</a></div>
                                 </td>
                             </tr>
     
@@ -1547,7 +1586,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:30</a></div>
                                 </td>
                             </tr>
     
@@ -1570,30 +1609,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:28</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="polygons"></a>
-                            <b><span class="modifier">Private</span> polygons</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>polygons:     <code></code>
-    </code>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:29</a></div>
                                 </td>
                             </tr>
     
@@ -1605,47 +1621,49 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, OnDestroy, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, OnDestroy, ViewChild } from &#x27;@angular/core&#x27;;
 import { PolygonsEditorService } from &#x27;../../services/entity-editors/polygons-editor/polygons-editor.service&#x27;;
 import { EditModes } from &#x27;../../models/edit-mode.enum&#x27;;
 import { PolygonEditUpdate } from &#x27;../../models/polygon-edit-update&#x27;;
 import { AcNotification } from &#x27;../../../angular-cesium/models/ac-notification&#x27;;
-import { EditablePolygon } from &#x27;../../models/editable-polygon&#x27;;
 import { EditActions } from &#x27;../../models/edit-actions.enum&#x27;;
 import { AcLayerComponent } from &#x27;../../../angular-cesium/components/ac-layer/ac-layer.component&#x27;;
 import { CoordinateConverter } from &#x27;../../../angular-cesium/services/coordinate-converter/coordinate-converter.service&#x27;;
 import { MapEventsManagerService } from &#x27;../../../angular-cesium/services/map-events-mananger/map-events-manager&#x27;;
 import { Subject } from &#x27;rxjs/Subject&#x27;;
 import { CameraService } from &#x27;../../../angular-cesium/services/camera/camera.service&#x27;;
+import { EditPoint } from &#x27;../../models/edit-point&#x27;;
+import { PolygonsManagerService } from &#x27;../../services/entity-editors/polygons-editor/polygons-manager.service&#x27;;
 
 @Component({
-  selector: &#x27;polygons-editor&#x27;,
-  templateUrl: &#x27;./polygons-editor.component.html&#x27;,
-  providers: [CoordinateConverter]
+	selector : &#x27;polygons-editor&#x27;,
+	templateUrl : &#x27;./polygons-editor.component.html&#x27;,
+	providers : [CoordinateConverter, PolygonsManagerService]
 })
 export class PolygonsEditorComponent implements OnDestroy {
-  private polygons &#x3D; new Map&lt;string, EditablePolygon&gt;();
-  public Cesium &#x3D; Cesium;
-  public editPoints$ &#x3D; new Subject&lt;AcNotification&gt;();
-  public editPolylines$ &#x3D; new Subject&lt;AcNotification&gt;();
-  public editPolygons$ &#x3D; new Subject&lt;AcNotification&gt;();
-
-  public appearance &#x3D; new Cesium.PerInstanceColorAppearance({ flat: true });
-  public attributes &#x3D; { color: Cesium.ColorGeometryInstanceAttribute.fromColor(new Cesium.Color(0.2, 0.2, 0.5, 0.5)) };
-  public polygonColor &#x3D; new Cesium.Color(0.1, 0.5, 0.2, 0.4);
-  public lineColor &#x3D; new Cesium.Color(0, 0, 0, 0.6);
-
-  @ViewChild(&#x27;editPolygonsLayer&#x27;) private editPolygonsLayer: AcLayerComponent;
-  @ViewChild(&#x27;editPointsLayer&#x27;) private editPointsLayer: AcLayerComponent;
-  @ViewChild(&#x27;editPolylinesLayer&#x27;) private editPolylinesLayer: AcLayerComponent;
-
-  constructor(private polygonsEditor: PolygonsEditorService,
-              private coordinateConverter: CoordinateConverter,
-              private mapEventsManager: MapEventsManagerService,
-              private cameraService: CameraService) {
-    this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService);
+	
+	public Cesium &#x3D; Cesium;
+	public editPoints$ &#x3D; new Subject&lt;AcNotification&gt;();
+	public editPolylines$ &#x3D; new Subject&lt;AcNotification&gt;();
+	public editPolygons$ &#x3D; new Subject&lt;AcNotification&gt;();
+	
+	public appearance &#x3D; new Cesium.PerInstanceColorAppearance({flat : true});
+	public attributes &#x3D; {color : Cesium.ColorGeometryInstanceAttribute.fromColor(new Cesium.Color(0.2, 0.2, 0.5, 0.5))};
+	public polygonColor &#x3D; new Cesium.Color(0.1, 0.5, 0.2, 0.4);
+	public lineColor &#x3D; new Cesium.Color(0, 0, 0, 0.6);
+	
+	@ViewChild(&#x27;editPolygonsLayer&#x27;) private editPolygonsLayer: AcLayerComponent;
+	@ViewChild(&#x27;editPointsLayer&#x27;) private editPointsLayer: AcLayerComponent;
+	@ViewChild(&#x27;editPolylinesLayer&#x27;) private editPolylinesLayer: AcLayerComponent;
+	
+	constructor(private polygonsEditor: PolygonsEditorService,
+							private coordinateConverter: CoordinateConverter,
+							private mapEventsManager: MapEventsManagerService,
+							private cameraService: CameraService,
+							private polygonsManager: PolygonsManagerService) {
+		this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polygonsManager);
 		this.startListeningToEditorUpdates();
-  }
+	}
 	
 	private startListeningToEditorUpdates() {
 		this.polygonsEditor.onUpdate().subscribe((update: PolygonEditUpdate) &#x3D;&gt; {
@@ -1657,86 +1675,119 @@ export class PolygonsEditorComponent implements OnDestroy {
 			}
 		});
 	}
-
-  handleCreateUpdates(update: PolygonEditUpdate) {
-    switch (update.editAction) {
-      case EditActions.INIT: {
-        this.polygons.set(update.id,
-          new EditablePolygon(update.id,
-            this.editPolygonsLayer,
-            this.editPointsLayer,
-            this.editPolylinesLayer)
-        );
-        break;
-      }
-      case EditActions.MOUSE_MOVE: {
-        const polygon &#x3D; this.polygons.get(update.id);
-        if (update.updatedPosition) {
-          polygon.movePoint(update.updatedPosition);
-        }
-        break;
-      }
-      case EditActions.ADD_POINT: {
-        const polygon &#x3D; this.polygons.get(update.id);
-        if (update.updatedPosition) {
-          polygon.addPoint(update.updatedPosition);
-        }
-        break;
-      }
-      case EditActions.ADD_LAST_POINT: {
-        const polygon &#x3D; this.polygons.get(update.id);
-        if (update.updatedPosition) {
-          polygon.addLastPoint(update.updatedPosition);
-        }
-        break;
-      }
-      case EditActions.DISPOSE: {
-        const polygon &#x3D; this.polygons.get(update.id);
-        polygon.dispose();
-        break;
-      }
-      default: {
-        return;
-      }
-    }
-  }
-
-  handleEditUpdates(update: PolygonEditUpdate) {
-    switch (update.editAction) {
-      case EditActions.INIT: {
-        this.polygons.set(update.id,
-          new EditablePolygon(update.id,
-            this.editPolygonsLayer,
-            this.editPointsLayer,
-            this.editPolylinesLayer,
-            update.positions)
-        );
-        break;
-      }
-      case EditActions.DRAG_POINT: {
-        const polygon &#x3D; this.polygons.get(update.id);
-        if (polygon) {
-          polygon.movePoint(update.updatedPosition, update.updatedEntity);
-        }
-        break;
-      }
-      case EditActions.REMOVE_POINT: {
-        const polygon &#x3D; this.polygons.get(update.id);
-        if (polygon) {
-          polygon.removePoint(update.updatedEntity);
-        }
-        break;
-      }
-      default: {
-        return;
-      }
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.polygons.forEach(polygon &#x3D;&gt; polygon.dispose());
-    this.polygons.clear();
-  }
+	
+	handleCreateUpdates(update: PolygonEditUpdate) {
+		switch (update.editAction) {
+			case EditActions.INIT: {
+				// this.polygons.set(update.id,
+				// 	new EditablePolygon(
+				// 		update.id,
+				// 		this.editPolygonsLayer,
+				// 		this.editPointsLayer,
+				// 		this.editPolylinesLayer,
+				// 		this.coordinateConverter)
+				// );
+				this.polygonsManager.createEditablePolygon(
+					update.id,
+					this.editPolygonsLayer,
+					this.editPointsLayer,
+					this.editPolylinesLayer,
+					this.coordinateConverter);
+				break;
+			}
+			case EditActions.MOUSE_MOVE: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				if (update.updatedPosition) {
+					polygon.moveTempMovingPoint(update.updatedPosition);
+				}
+				break;
+			}
+			case EditActions.ADD_POINT: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				if (update.updatedPosition) {
+					polygon.addPoint(update.updatedPosition);
+				}
+				break;
+			}
+			case EditActions.ADD_LAST_POINT: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				if (update.updatedPosition) {
+					polygon.addLastPoint(update.updatedPosition);
+				}
+				break;
+			}
+			case EditActions.DISPOSE: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				polygon.dispose();
+				break;
+			}
+			default: {
+				return;
+			}
+		}
+	}
+	
+	handleEditUpdates(update: PolygonEditUpdate) {
+		switch (update.editAction) {
+			case EditActions.INIT: {
+				this.polygonsManager.createEditablePolygon(
+					update.id,
+					this.editPolygonsLayer,
+					this.editPointsLayer,
+					this.editPolylinesLayer,
+					this.coordinateConverter,
+					update.positions
+				);
+				break;
+			}
+			case EditActions.DRAG_POINT: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				if (polygon &amp;&amp; polygon.enableEdit) {
+					polygon.movePoint(update.updatedPosition, update.updatedPoint);
+				}
+				break;
+			}
+			case EditActions.DRAG_POINT_FINISH: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				if (polygon &amp;&amp; polygon.enableEdit &amp;&amp; update.updatedPoint.isVirtualEditPoint()) {
+					polygon.addVirtualEditPoint(update.updatedPoint);
+				}
+				break;
+			}
+			case EditActions.REMOVE_POINT: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				if (polygon &amp;&amp; polygon.enableEdit) {
+					polygon.removePoint(update.updatedPoint);
+				}
+				break;
+			}
+			case EditActions.DISABLE: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				if (polygon) {
+					polygon.enableEdit &#x3D; false;
+				}
+				break;
+			}
+			case EditActions.ENABLE: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				if (polygon) {
+					polygon.enableEdit &#x3D; true;
+				}
+				break;
+			}
+			default: {
+				return;
+			}
+		}
+	}
+	
+	ngOnDestroy(): void {
+		this.polygonsManager.clear();
+	}
+	
+	getPointSize(point: EditPoint) {
+		return point.isVirtualEditPoint() ? 8 : 15;
+	}
 }
 </code></pre>
     </div>
@@ -1745,7 +1796,7 @@ export class PolygonsEditorComponent implements OnDestroy {
         <pre class="line-numbers"><code class="language-html">&lt;ac-layer #editPointsLayer acFor&#x3D;&quot;let point of editPoints$&quot; [context]&#x3D;&quot;this&quot; [zIndex]&#x3D;&quot;2&quot;&gt;
     &lt;ac-point-desc props&#x3D;&quot;{
         position: point.getPosition(),
-        pixelSize: 15,
+        pixelSize: getPointSize(point),
         color: Cesium.Color.WHITE,
         outlineColor: Cesium.Color.BLACK,
         outlineWidth: 1,
@@ -1759,7 +1810,7 @@ export class PolygonsEditorComponent implements OnDestroy {
         positions: polyline.getPositions(),
         width: 1,
         material: lineColor,
-         followSurface: true
+        followSurface: true
     }&quot;&gt;
     &lt;/ac-polyline-primitive-desc&gt;
 &lt;/ac-layer&gt;
@@ -1771,17 +1822,17 @@ export class PolygonsEditorComponent implements OnDestroy {
     }&quot;&gt;
     &lt;/ac-polygon-desc&gt;
     &lt;!--&lt;ac-static-polygon-desc--&gt;
-        &lt;!--geometryProps&#x3D;&quot;{--&gt;
-             &lt;!--polygonHierarchy: polygon.getHierarchy(),--&gt;
-             &lt;!--height: 1--&gt;
-         &lt;!--}&quot;--&gt;
-        &lt;!--instanceProps&#x3D;&quot;{--&gt;
-             &lt;!--attributes: attributes--&gt;
-         &lt;!--}&quot;--&gt;
-        &lt;!--primitiveProps&#x3D;&quot;{--&gt;
-             &lt;!--appearance: appearance--&gt;
-         &lt;!--}&quot;&gt;--&gt;
-    &lt;!--&lt;/ac-static-polygon-desc&gt;--&gt;
+    &lt;!--geometryProps&#x3D;&quot;{--&gt;
+    &lt;!--polygonHierarchy: polygon.getHierarchy(),--&gt;
+    &lt;!--height: 1--&gt;
+    &lt;!--}&quot;--&gt;
+    &lt;!--instanceProps&#x3D;&quot;{--&gt;
+    &lt;!--attributes: attributes--&gt;
+    &lt;!--}&quot;--&gt;
+    &lt;!--primitiveProps&#x3D;&quot;{--&gt;
+    &lt;!--appearance: appearance--&gt;
+    &lt;!--}&quot;&gt;--&gt;
+    &lt;!--&lt;/ac-static-polygon-desc--&gt;&gt;--&gt;
 &lt;/ac-layer&gt;</code></pre>
     </div>
 
@@ -1808,8 +1859,8 @@ export class PolygonsEditorComponent implements OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">    <ac-point-desc props="{        position: point.getPosition(),        pixelSize: 15,        color: Cesium.Color.WHITE,        outlineColor: Cesium.Color.BLACK,        outlineWidth: 1,        heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND    }">    </ac-point-desc></ac-layer><ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" [zIndex]="1">    <ac-polyline-primitive-desc props="{        positions: polyline.getPositions(),        width: 1,        material: lineColor,         followSurface: true    }">    </ac-polyline-primitive-desc></ac-layer><ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this" [zIndex]="0">    <ac-polygon-desc props="{        hierarchy: polygon.getPositions(),        material: polygonColor    }">    </ac-polygon-desc>    <!--<ac-static-polygon-desc-->        <!--geometryProps="{-->             <!--polygonHierarchy: polygon.getHierarchy(),-->             <!--height: 1-->         <!--}"-->        <!--instanceProps="{-->             <!--attributes: attributes-->         <!--}"-->        <!--primitiveProps="{-->             <!--appearance: appearance-->         <!--}">-->    <!--</ac-static-polygon-desc>--></ac-layer></div>'
-    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-primitive-desc'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'}];
+        var COMPONENT_TEMPLATE = '<div><ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">    <ac-point-desc props="{        position: point.getPosition(),        pixelSize: getPointSize(point),        color: Cesium.Color.WHITE,        outlineColor: Cesium.Color.BLACK,        outlineWidth: 1,        heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND    }">    </ac-point-desc></ac-layer><ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" [zIndex]="1">    <ac-polyline-primitive-desc props="{        positions: polyline.getPositions(),        width: 1,        material: lineColor,        followSurface: true    }">    </ac-polyline-primitive-desc></ac-layer><ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this" [zIndex]="0">    <ac-polygon-desc props="{        hierarchy: polygon.getPositions(),        material: polygonColor    }">    </ac-polygon-desc>    <!--<ac-static-polygon-desc-->    <!--geometryProps="{-->    <!--polygonHierarchy: polygon.getHierarchy(),-->    <!--height: 1-->    <!--}"-->    <!--instanceProps="{-->    <!--attributes: attributes-->    <!--}"-->    <!--primitiveProps="{-->    <!--appearance: appearance-->    <!--}">-->    <!--</ac-static-polygon-desc-->>--></ac-layer></div>'
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-primitive-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PolygonsEditorComponent'};
 </script>
