@@ -47,7 +47,7 @@ export class AcTileset3dComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   style;
 
-  private _layerInstance: any = null;
+  public tilesetInstance: any = null;
   private _3dtilesCollection: any;
 
   constructor(private cesiumService: CesiumService) {
@@ -62,9 +62,9 @@ export class AcTileset3dComponent implements OnInit, OnChanges, OnDestroy {
     this.cesiumService.getScene().primitives.add(this._3dtilesCollection);
 
     if (this.show) {
-      this._layerInstance = this._3dtilesCollection.add(new Cesium.Cesium3DTileset(this.options), this.index);
+      this.tilesetInstance = this._3dtilesCollection.add(new Cesium.Cesium3DTileset(this.options), this.index);
       if (this.style) {
-        this._layerInstance.style = new Cesium.Cesium3DTileStyle(this.style);
+        this.tilesetInstance.style = new Cesium.Cesium3DTileStyle(this.style);
       }
     }
   }
@@ -74,30 +74,30 @@ export class AcTileset3dComponent implements OnInit, OnChanges, OnDestroy {
       const showValue = changes['show'].currentValue;
 
       if (showValue) {
-        if (this._layerInstance) {
-          this._3dtilesCollection.add(this._layerInstance, this.index);
+        if (this.tilesetInstance) {
+          this._3dtilesCollection.add(this.tilesetInstance, this.index);
         } else {
-          this._layerInstance = this._3dtilesCollection.add(new Cesium.Cesium3DTileset(this.options), this.index);
+          this.tilesetInstance = this._3dtilesCollection.add(new Cesium.Cesium3DTileset(this.options), this.index);
           if (this.style) {
-            this._layerInstance.style = new Cesium.Cesium3DTileStyle(this.style);
+            this.tilesetInstance.style = new Cesium.Cesium3DTileStyle(this.style);
           }
         }
       }
-      else if (this._layerInstance) {
-        this._3dtilesCollection.remove(this._layerInstance, false);
+      else if (this.tilesetInstance) {
+        this._3dtilesCollection.remove(this.tilesetInstance, false);
       }
     }
     if (changes['style'] && !changes['style'].isFirstChange()) {
       const styleValue = changes['style'].currentValue;
-      if (this._layerInstance) {
-        this._layerInstance.style = new Cesium.Cesium3DTileStyle(this.style);
+      if (this.tilesetInstance) {
+        this.tilesetInstance.style = new Cesium.Cesium3DTileStyle(this.style);
       }
     }
   }
 
   ngOnDestroy(): void {
-    if (this._layerInstance) {
-      this._3dtilesCollection.remove(this._layerInstance, false);
+    if (this.tilesetInstance) {
+      this._3dtilesCollection.remove(this.tilesetInstance, false);
     }
   }
 }
