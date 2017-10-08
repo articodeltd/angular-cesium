@@ -15,8 +15,8 @@ import { Checker } from '../../utils/checker';
  *  ```
  */
 @Component({
-  selector : 'ac-3d-tile-layer',
-  template : '',
+  selector: 'ac-3d-tile-layer',
+  template: '',
 })
 export class AcTileset3dComponent implements OnInit, OnChanges, OnDestroy {
   /**
@@ -40,6 +40,13 @@ export class AcTileset3dComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   show = true;
 
+  /**
+   * show (optional) - Sets 3Dtiles style.
+   * @type {Object}
+   */
+  @Input()
+  style;
+
   private _layerInstance: any = null;
   private _3dtilesCollection: any;
 
@@ -56,6 +63,9 @@ export class AcTileset3dComponent implements OnInit, OnChanges, OnDestroy {
 
     if (this.show) {
       this._layerInstance = this._3dtilesCollection.add(new Cesium.Cesium3DTileset(this.options), this.index);
+      if (this.style) {
+        this._layerInstance.style = new Cesium.Cesium3DTileStyle(this.style);
+      }
     }
   }
 
@@ -68,10 +78,19 @@ export class AcTileset3dComponent implements OnInit, OnChanges, OnDestroy {
           this._3dtilesCollection.add(this._layerInstance, this.index);
         } else {
           this._layerInstance = this._3dtilesCollection.add(new Cesium.Cesium3DTileset(this.options), this.index);
+          if (this.style) {
+            this._layerInstance.style = new Cesium.Cesium3DTileStyle(this.style);
+          }
         }
       }
       else if (this._layerInstance) {
         this._3dtilesCollection.remove(this._layerInstance, false);
+      }
+    }
+    if (changes['style'] && !changes['style'].isFirstChange()) {
+      const styleValue = changes['style'].currentValue;
+      if (this._layerInstance) {
+        this._layerInstance.style = new Cesium.Cesium3DTileStyle(this.style);
       }
     }
   }

@@ -1,3 +1,7 @@
+## 0.0.27
+### Features
+* added style input to `ac-tileset-3d` component.
+
 ## 0.0.26
 ### Features
 * added screenshot service
