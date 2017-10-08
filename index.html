@@ -1288,7 +1288,7 @@ you should use <code>ChangeDetectorRef</code> or warp your function with <code>N
       D: { action: KeyboardAction.CAMERA_RIGHT },
       A: { action: KeyboardAction.CAMERA_LEFT },
     },</code></pre><h3 id="mapsmanagerservice">MapsManagerService</h3>
-<p>Angular cesium extends cesium api and expose more features, but if you want to use cesium api you can use <a href="https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html">MapsManagerService</a> to receive cesium <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html">viewer</a> or any other util service that was created by <code>ac-map</code>.</p>
+<p>Angular cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use <a href="https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html">MapsManagerService</a> to receive cesium <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html">viewer</a> or any other util service that was created by <code>ac-map</code>.</p>
 <pre class="line-numbers"><code class="language-typescript">class MyComp {
 constructor(mapsManagerService: MapsManagerService)
     const viewer = mapsManagerService.getMap().getCesiumViewer();
