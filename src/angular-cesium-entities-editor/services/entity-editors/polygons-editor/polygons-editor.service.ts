@@ -175,7 +175,7 @@ export class PolygonsEditorService {
 		const id = this.generteId();
 		this.updateSubject.next({
 			id,
-			positions : this.getPositions(id),
+			positions : positions,
 			editMode : EditModes.EDIT,
 			editAction : EditActions.INIT,
 		});
