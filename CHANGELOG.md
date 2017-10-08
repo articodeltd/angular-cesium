@@ -1,6 +1,7 @@
 ## 0.0.27
 ### Features
 * polygon editor(alpha) - edit mode, disable,enable, add points to the editor result.
+* added style input to `ac-tileset-3d` component.
 
 ## 0.0.26
 ### Features
