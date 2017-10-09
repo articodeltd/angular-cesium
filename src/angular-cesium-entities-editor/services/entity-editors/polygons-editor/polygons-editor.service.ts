@@ -61,7 +61,11 @@ export class PolygonsEditorService {
 	create(priority = 100): EditorObservable<PolygonEditUpdate> {
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
-		const clientEditSubject = new BehaviorSubject<PolygonEditUpdate>({id , editAction: null, editMode: EditModes.CREATE});
+		const clientEditSubject = new BehaviorSubject<PolygonEditUpdate>({
+			id,
+			editAction : null,
+			editMode : EditModes.CREATE
+		});
 		let finishedCreate = false;
 		
 		this.updateSubject.next({
@@ -129,13 +133,16 @@ export class PolygonsEditorService {
 			clientEditSubject.next({
 				...updateValue,
 				positions : this.getPositions(id),
-				points: this.getPoints(id),
+				points : this.getPoints(id),
 			});
 		});
 		
 		
 		addLastPointRegistration.subscribe(({movement : {endPosition}}) => {
 			const position = this.coordinateConverter.screenToCartesian3(endPosition);
+			if (!position) {
+				return;
+			}
 			// position already added by addPointRegistration
 			const updateValue = {
 				id,
@@ -148,7 +155,7 @@ export class PolygonsEditorService {
 			clientEditSubject.next({
 				...updateValue,
 				positions : this.getPositions(id),
-				points: this.getPoints(id),
+				points : this.getPoints(id),
 			});
 			
 			const changeMode = {
@@ -210,6 +217,9 @@ export class PolygonsEditorService {
 			.do(({movement : {drop}}) => this.cameraService.enableInputs(drop))
 			.subscribe(({movement : {endPosition, drop}, entities}) => {
 				const position = this.coordinateConverter.screenToCartesian3(endPosition);
+				if (!position) {
+					return;
+				}
 				const point: EditPoint = entities[0];
 				
 				const update = {
@@ -224,7 +234,7 @@ export class PolygonsEditorService {
 				editSubject.next({
 					...update,
 					positions : this.getPositions(id),
-					points: this.getPoints(id),
+					points : this.getPoints(id),
 				});
 			});
 		
@@ -250,7 +260,7 @@ export class PolygonsEditorService {
 			editSubject.next({
 				...update,
 				positions : this.getPositions(id),
-				points: this.getPoints(id),
+				points : this.getPoints(id),
 			});
 		});
 		
