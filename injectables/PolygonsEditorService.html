@@ -1148,7 +1148,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="263" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:263</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="284" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:284</a></div>
                                         </td>
                                     </tr>
             
@@ -1180,7 +1180,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:171</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:178</a></div>
                                         </td>
                                     </tr>
             
@@ -1213,7 +1213,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:190</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:208</a></div>
                                         </td>
                                     </tr>
             
@@ -1246,7 +1246,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="297" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:297</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="335" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:335</a></div>
                                         </td>
                                     </tr>
             
@@ -1279,7 +1279,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="306" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:306</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="344" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:344</a></div>
                                         </td>
                                     </tr>
             
@@ -1312,7 +1312,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="301" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:301</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="339" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service.ts:339</a></div>
                                         </td>
                                     </tr>
             
@@ -1656,7 +1656,11 @@ export class PolygonsEditorService {
 	create(priority &#x3D; 100): EditorObservable&lt;PolygonEditUpdate&gt; {
 		const positions: Cartesian3[] &#x3D; [];
 		const id &#x3D; this.generteId();
-		const clientEditSubject &#x3D; new BehaviorSubject&lt;PolygonEditUpdate&gt;({id , editAction: null, editMode: EditModes.CREATE});
+		const clientEditSubject &#x3D; new BehaviorSubject&lt;PolygonEditUpdate&gt;({
+			id,
+			editAction : null,
+			editMode : EditModes.CREATE
+		});
 		let finishedCreate &#x3D; false;
 		
 		this.updateSubject.next({
@@ -1724,13 +1728,16 @@ export class PolygonsEditorService {
 			clientEditSubject.next({
 				...updateValue,
 				positions : this.getPositions(id),
-				points: this.getPoints(id),
+				points : this.getPoints(id),
 			});
 		});
 		
 		
 		addLastPointRegistration.subscribe(({movement : {endPosition}}) &#x3D;&gt; {
 			const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+			if (!position) {
+				return;
+			}
 			// position already added by addPointRegistration
 			const updateValue &#x3D; {
 				id,
@@ -1743,7 +1750,7 @@ export class PolygonsEditorService {
 			clientEditSubject.next({
 				...updateValue,
 				positions : this.getPositions(id),
-				points: this.getPoints(id),
+				points : this.getPoints(id),
 			});
 			
 			const changeMode &#x3D; {
@@ -1768,17 +1775,28 @@ export class PolygonsEditorService {
 			throw new Error(&#x27;Polygons editor error edit(): polygon should have at least 3 positions&#x27;);
 		}
 		const id &#x3D; this.generteId();
-		this.updateSubject.next({
+		const editSubject &#x3D; new BehaviorSubject&lt;PolygonEditUpdate&gt;({
+			id,
+			editAction : null,
+			editMode : EditModes.EDIT
+		});
+		const update &#x3D; {
 			id,
 			positions : positions,
 			editMode : EditModes.EDIT,
 			editAction : EditActions.INIT,
+		};
+		this.updateSubject.next(update);
+		editSubject.next({
+			...update,
+			positions : this.getPositions(id),
+			points : this.getPoints(id),
 		});
 		return this.editPolygon(
 			id,
 			positions,
 			priority,
-			new Subject&lt;PolygonEditUpdate&gt;(),
+			editSubject,
 		)
 	}
 	
@@ -1805,6 +1823,9 @@ export class PolygonsEditorService {
 			.do(({movement : {drop}}) &#x3D;&gt; this.cameraService.enableInputs(drop))
 			.subscribe(({movement : {endPosition, drop}, entities}) &#x3D;&gt; {
 				const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+				if (!position) {
+					return;
+				}
 				const point: EditPoint &#x3D; entities[0];
 				
 				const update &#x3D; {
@@ -1819,7 +1840,7 @@ export class PolygonsEditorService {
 				editSubject.next({
 					...update,
 					positions : this.getPositions(id),
-					points: this.getPoints(id),
+					points : this.getPoints(id),
 				});
 			});
 		
@@ -1845,7 +1866,7 @@ export class PolygonsEditorService {
 			editSubject.next({
 				...update,
 				positions : this.getPositions(id),
-				points: this.getPoints(id),
+				points : this.getPoints(id),
 			});
 		});
 		
@@ -1883,6 +1904,23 @@ export class PolygonsEditorService {
 				editAction : EditActions.DISABLE,
 			});
 		};
+		observableToExtend.setPointsManually &#x3D; (points: EditPoint[]) &#x3D;&gt; {
+			this.updateSubject.next({
+				id,
+				positions : points.map(p &#x3D;&gt; p.getPosition()),
+				points : points,
+				editMode : EditModes.EDIT,
+				editAction : EditActions.SET_MANUALLY,
+			});
+			observableToExtend.next({
+				id,
+				positions : this.getPositions(id),
+				points : this.getPoints(id),
+				editMode : EditModes.EDIT,
+				editAction : EditActions.SET_MANUALLY,
+			})
+		};
+		observableToExtend.getCurrentPoints &#x3D; () &#x3D;&gt; this.getPoints(id);
 		
 		observableToExtend.polygonEditValue &#x3D; () &#x3D;&gt; observableToExtend.getValue();
 		

@@ -1031,7 +1031,13 @@
                                          <a href="#enable">enable</a>
                                     </li>
                                     <li>
+                                         <a href="#getCurrentPoints">getCurrentPoints</a>
+                                    </li>
+                                    <li>
                                          <a href="#polygonEditValue">polygonEditValue</a>
+                                    </li>
+                                    <li>
+                                         <a href="#setPointsManually">setPointsManually</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1070,7 +1076,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:7</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:8</a></div>
                                         </td>
                                     </tr>
             
@@ -1099,7 +1105,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:5</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:6</a></div>
                                         </td>
                                     </tr>
             
@@ -1128,7 +1134,36 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:6</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:7</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getCurrentPoints"></a>
+                                    <b> getCurrentPoints</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>getCurrentPoints:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:11</a></div>
                                         </td>
                                     </tr>
             
@@ -1157,7 +1192,36 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:10</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="setPointsManually"></a>
+                                    <b> setPointsManually</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>setPointsManually:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/angular-cesium-entities-editor/models/editor-observable.ts:9</a></div>
                                         </td>
                                     </tr>
             
@@ -1171,12 +1235,15 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Observable } from &#x27;rxjs/Observable&#x27;;
 import { PolygonEditUpdate } from &#x27;./polygon-edit-update&#x27;;
+import { EditPoint } from &#x27;./edit-point&#x27;;
 
 export class EditorObservable&lt;T&gt; extends Observable&lt;T&gt; {
   dispose: Function;
   enable: Function;
   disable: Function;
-	polygonEditValue: () &#x3D;&gt; PolygonEditUpdate
+	setPointsManually: (points: EditPoint[]) &#x3D;&gt; void;
+	polygonEditValue: () &#x3D;&gt; PolygonEditUpdate;
+	getCurrentPoints: () &#x3D;&gt; EditPoint[];
 }
 </code></pre>
     </div>

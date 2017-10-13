@@ -1174,7 +1174,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:165</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:164</a></div>
                                 </td>
                             </tr>
     
@@ -1238,7 +1238,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:107</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:99</a></div>
                                 </td>
                             </tr>
     
@@ -1270,7 +1270,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:161</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/angular-cesium-entities-editor/components/polygons-editor/polygons-editor.component.ts:160</a></div>
                                 </td>
                             </tr>
     
@@ -1679,14 +1679,6 @@ export class PolygonsEditorComponent implements OnDestroy {
 	handleCreateUpdates(update: PolygonEditUpdate) {
 		switch (update.editAction) {
 			case EditActions.INIT: {
-				// this.polygons.set(update.id,
-				// 	new EditablePolygon(
-				// 		update.id,
-				// 		this.editPolygonsLayer,
-				// 		this.editPointsLayer,
-				// 		this.editPolylinesLayer,
-				// 		this.coordinateConverter)
-				// );
 				this.polygonsManager.createEditablePolygon(
 					update.id,
 					this.editPolygonsLayer,
@@ -1772,6 +1764,13 @@ export class PolygonsEditorComponent implements OnDestroy {
 				const polygon &#x3D; this.polygonsManager.get(update.id);
 				if (polygon) {
 					polygon.enableEdit &#x3D; true;
+				}
+				break;
+			}
+			case EditActions.SET_MANUALLY: {
+				const polygon &#x3D; this.polygonsManager.get(update.id);
+				if (polygon) {
+					polygon.setPointsManually(update.points);
 				}
 				break;
 			}
