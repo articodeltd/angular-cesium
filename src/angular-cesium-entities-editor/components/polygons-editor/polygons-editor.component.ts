@@ -56,14 +56,6 @@ export class PolygonsEditorComponent implements OnDestroy {
 	handleCreateUpdates(update: PolygonEditUpdate) {
 		switch (update.editAction) {
 			case EditActions.INIT: {
-				// this.polygons.set(update.id,
-				// 	new EditablePolygon(
-				// 		update.id,
-				// 		this.editPolygonsLayer,
-				// 		this.editPointsLayer,
-				// 		this.editPolylinesLayer,
-				// 		this.coordinateConverter)
-				// );
 				this.polygonsManager.createEditablePolygon(
 					update.id,
 					this.editPolygonsLayer,
@@ -149,6 +141,13 @@ export class PolygonsEditorComponent implements OnDestroy {
 				const polygon = this.polygonsManager.get(update.id);
 				if (polygon) {
 					polygon.enableEdit = true;
+				}
+				break;
+			}
+			case EditActions.SET_MANUALLY: {
+				const polygon = this.polygonsManager.get(update.id);
+				if (polygon) {
+					polygon.setPointsManually(update.points);
 				}
 				break;
 			}

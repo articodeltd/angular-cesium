@@ -180,17 +180,28 @@ export class PolygonsEditorService {
 			throw new Error('Polygons editor error edit(): polygon should have at least 3 positions');
 		}
 		const id = this.generteId();
-		this.updateSubject.next({
+		const editSubject = new BehaviorSubject<PolygonEditUpdate>({
+			id,
+			editAction : null,
+			editMode : EditModes.EDIT
+		});
+		const update = {
 			id,
 			positions : positions,
 			editMode : EditModes.EDIT,
 			editAction : EditActions.INIT,
+		};
+		this.updateSubject.next(update);
+		editSubject.next({
+			...update,
+			positions : this.getPositions(id),
+			points : this.getPoints(id),
 		});
 		return this.editPolygon(
 			id,
 			positions,
 			priority,
-			new Subject<PolygonEditUpdate>(),
+			editSubject,
 		)
 	}
 	
@@ -298,6 +309,23 @@ export class PolygonsEditorService {
 				editAction : EditActions.DISABLE,
 			});
 		};
+		observableToExtend.setPointsManually = (points: EditPoint[]) => {
+			this.updateSubject.next({
+				id,
+				positions : points.map(p => p.getPosition()),
+				points : points,
+				editMode : EditModes.EDIT,
+				editAction : EditActions.SET_MANUALLY,
+			});
+			observableToExtend.next({
+				id,
+				positions : this.getPositions(id),
+				points : this.getPoints(id),
+				editMode : EditModes.EDIT,
+				editAction : EditActions.SET_MANUALLY,
+			})
+		};
+		observableToExtend.getCurrentPoints = () => this.getPoints(id);
 		
 		observableToExtend.polygonEditValue = () => observableToExtend.getValue();
 		
