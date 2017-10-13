@@ -153,6 +153,10 @@
   dependencies:
     "@types/node" "*"
 
+"@types/geodesy@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@types/geodesy/-/geodesy-1.1.2.tgz#1bc29205df12ff8790d44cd84c34d14e2424c45a"
+
 "@types/graphql@0.10.2":
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.10.2.tgz#d7c79acbaa17453b6681c80c34b38fcb10c4c08c"

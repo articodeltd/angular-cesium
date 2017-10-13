@@ -11,5 +11,6 @@ export enum EditActions {
 	DONE,
 	DISABLE,
 	ENABLE,
-	DISPOSE
+	DISPOSE,
+	SET_MANUALLY,
 }

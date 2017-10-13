@@ -38,6 +38,19 @@ export class EditablePolygon extends AcEntity {
 		});
 		this.addAllVirtualEditPoints();
 		this.updatePolygonsLayer();
+		this.done = true;
+	}
+	
+	setPointsManually(points: EditPoint[]) {
+		if (!this.done) {
+			throw new Error('Update manually only in edit mode, after polygon is created')
+		}
+		this.positions.forEach(p => this.pointsLayer.remove(p.getId()));
+		this.positions = points;
+		
+		this.updatePointsLayer(...points);
+		this.addAllVirtualEditPoints();
+		this.updatePolygonsLayer();
 	}
 	
 	private addAllVirtualEditPoints() {

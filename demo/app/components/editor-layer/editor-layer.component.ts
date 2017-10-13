@@ -22,7 +22,7 @@ export class EditorLayerComponent implements OnInit {
 	}
 	
 	startEdit() {
-		if (this.editing$){
+		if (this.editing$) {
 			this.stopEdit();
 		}
 		this.editing$ = this.polygonsEditor.create();
@@ -42,13 +42,13 @@ export class EditorLayerComponent implements OnInit {
 	
 	
 	editFromExisting() {
-		if (this.editing$){
+		if (this.editing$) {
 			this.stopEdit();
 		}
 		const initialPos = [
-			new Cesium.Cartesian3(4440904.571196385, 1811131.602927208, 4190519.2863029838),
-			new Cesium.Cartesian3(3699985.433274284, 4736430.171250641, 2127548.480685681),
-			new Cesium.Cartesian3(5721024.065677434, 1660550.1936609931, 2271194.3507190347)];
+			Cesium.Cartesian3.fromDegrees(20, 40),
+			Cesium.Cartesian3.fromDegrees(45, 40),
+			Cesium.Cartesian3.fromDegrees(30, 20)];
 		this.editing$ = this.polygonsEditor.edit(initialPos);
 		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 			
@@ -67,6 +67,18 @@ export class EditorLayerComponent implements OnInit {
 			this.editing$.enable();
 		} else {
 			this.editing$.disable();
+		}
+	}
+	
+	updatePointManually() {
+		if (this.editing$) {
+			// Only effects if in edit mode (all polygon points were created)
+			const polygonPoints = this.editing$.getCurrentPoints();
+			
+			const firstPoint = polygonPoints[0];
+			firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
+			this.editing$.setPointsManually(polygonPoints);
+			
 		}
 	}
 	
