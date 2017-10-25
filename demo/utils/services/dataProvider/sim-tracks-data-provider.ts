@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { WebSocketSupplier } from '../webSocketSupplier/webSocketSupplier';
 import { Observable } from 'rxjs/Observable';
-import { ActionType } from '../../../../src/models/action-type.enum';
-import { AcEntity } from '../../../../src/models/ac-entity';
-import { AcNotification } from '../../../../src/models/ac-notification';
+import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
+import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
+import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 
 @Injectable()
 export class SimTracksDataProvider {

@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AcNotification } from '../../../../src/models/ac-notification';
-import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
-import { ActionType } from '../../../../src/models/action-type.enum';
-import { AcEntity } from '../../../../src/models/ac-entity';
+import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
+import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
+import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
+import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
 
 @Component({
   selector: 'polygon-layer',

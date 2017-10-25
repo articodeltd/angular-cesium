@@ -6,7 +6,7 @@ var root = require('./root-helper');
 
 module.exports = {
     entry: {
-        'main': './src/main.js'
+        'main': './src/angular-cesium/main.js'
     },
 
     output: {

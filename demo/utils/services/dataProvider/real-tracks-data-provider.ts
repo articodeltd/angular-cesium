@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
-import { ActionType } from '../../../../src/models/action-type.enum';
-import { AcNotification } from '../../../../src/models/ac-notification';
+import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
+import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AcNotification } from '../../../../../src/models/ac-notification';
-import { AcEntity } from '../../../../../src/models/ac-entity';
-import { ActionType } from '../../../../../src/models/action-type.enum';
+import { AcNotification } from '../../../../../src/angular-cesium/models/ac-notification';
+import { AcEntity } from '../../../../../src/angular-cesium/models/ac-entity';
+import { ActionType } from '../../../../../src/angular-cesium/models/action-type.enum';
 
 @Component({
 	selector : 'polygon-performance-test',

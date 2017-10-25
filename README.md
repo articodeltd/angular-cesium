@@ -190,7 +190,7 @@ Now, Let's look at this piece of code:
 + `store` - Default: false. Tells Ac-Layer if it should store the entities it receives. The entities stored in the Ac-Layer store are extends by notifications from the stream (`planes$`).The store is an <entity id, entity> map. 
 This in an optional basic data store. You can you use any kind of third party data store (e.g. ngrx/store).
 
-Now, after we have defined our layer and decided that each entity on the stream will be called `plane`, let's drill down into the definitions of how an entity should look like.
+Now, after we have defined our layer and decided that each entity on the stream will be called `plane`, let's drill down into the definitions of how an entity should look.
 + `ac-billboard-desc` - which presents billboard from CesiumJs. This directive allows you to pass props(expressions) to this billboard. You may see that although we do pass props - we actually pass expressions that are based on the `plane` that we defined earlier. Actually we say: 'Dear `angular-cesium`, please create and manage a `billboard` using those expressions for each `plane`'.
 Now, when an entity is passed through the stream - based on it's `id`, `actionType` and `entity` - `angular-cesium` will know what to do.
 When passing data with the same `id` and `actionType=ADD_UPDATE` - the entity will be updated on the map for every message.
@@ -203,7 +203,7 @@ why? because  there is no reason to, cesium entities are drawn on the canvas map
 After explaining a little bit about `ac-layer` we hope that you may see it's benefits:
 + Easily defining a layer
 + Easily add/update/remove entities - all you have to do is pass a message through the stream and `angular-cesium` will keep track of all the rest.
-+ Readable code - when reading your html which describes your layer - it is pretty easy to understand how your layer would look like.
++ Readable code - when reading your html which describes your layer - it is pretty easy to understand how your layer would look.
 + Maintainable code.
 
 ## Supported Entity types
@@ -355,7 +355,7 @@ With angular cesium you can define your map provider in a declarative way using 
 ```
 
 ### MapsManagerService
-Angular cesium extends cesium api and expose more features, but if you want to use cesium api you can use [MapsManagerService](https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
+Angular cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use [MapsManagerService](https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
 ```typescript
 class MyComp {
 constructor(mapsManagerService: MapsManagerService)
@@ -365,6 +365,9 @@ constructor(mapsManagerService: MapsManagerService)
 }
 
 ```
+### ScreenshotService
+Take screenshot of your cesium globe. 
+
 
 ## Documents
 + #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)   

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MapLayerProviderOptions } from '../../../../src/models/map-layer-provider-options.enum';
+import { MapLayerProviderOptions } from '../../../../src/angular-cesium/models/map-layer-provider-options.enum';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
-import { AcMapLayerProviderComponent } from '../../../../src/components/ac-map-layer-provider/ac-map-layer-provider.component';
+import { AcMapLayerProviderComponent } from '../../../../src/angular-cesium/components/ac-map-layer-provider/ac-map-layer-provider.component';
 
 @Component({
   selector : 'maps-layer',

@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.25",
+  "version": "0.0.29",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -14,7 +14,7 @@
   "main": "bundles/angular-cesium.umd.js",
   "typings": "index.d.ts",
   "scripts": {
-    "clean_src": "rimraf src/*.d.ts src/components/**/*.d.ts src/models/**/*.d.ts src/pipes/**/*.d.ts src/services/**/*.d.ts src/utils/**/*.d.ts src/**/*.metadata.json src/**/*.js src/**/*.js.map src/**/*.ngfactory.ts src/**/*.ngstyle.ts src/**/*.ngsummary.json",
+    "clean_src": "rimraf src/*.d.ts src/angular-cesium/**/*.d.ts src/angular-cesium-entities-editor/**/*.d.ts src/**/*.metadata.json src/**/*.js src/**/*.js.map src/**/*.ngfactory.ts src/**/*.ngstyle.ts src/**/*.ngsummary.json",
     "cleanup": "npm run clean_src && rimraf index.js index.js.map index.d.ts index.metadata.json build bundles",
     "start": "webpack-dev-server --inline --progress --port 8080",
     "lint": "tslint -c tslint.json --project tsconfig.aot.json",
@@ -70,7 +70,7 @@
     "bower": "^1.7.9",
     "browserify": "^14.1.0",
     "casual": "^1.5.12",
-    "cesium": "^1.37.0",
+    "cesium": "^1.38.0",
     "codelyzer": "^3.1.2",
     "concurrently": "^3.1.0",
     "copy-webpack-plugin": "^4.0.1",
@@ -85,6 +85,7 @@
     "express": "^4.15.2",
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "^0.10.1",
+    "gh-pages": "^1.0.0",
     "graphql": "^0.9.2",
     "graphql-server-express": "^0.6.0",
     "graphql-tag": "^2.0.0",
@@ -111,6 +112,7 @@
     "request-promise": "^4.2.0",
     "rimraf": "^2.5.2",
     "rollup": "^0.41.6",
+    "rollup-plugin-angular": "^0.5.3",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^1.0.1",
@@ -132,6 +134,7 @@
     "zone.js": "^0.8.4"
   },
   "dependencies": {
+    "@types/geodesy": "^1.1.2",
     "angular2parse": "^1.0.5",
     "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",

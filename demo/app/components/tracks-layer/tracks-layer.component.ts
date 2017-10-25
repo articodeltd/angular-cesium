@@ -1,17 +1,17 @@
 import { Component, Input, NgZone, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ConnectableObservable } from 'rxjs/observable/ConnectableObservable';
-import { AcNotification } from '../../../../src/models/ac-notification';
-import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
-import { MapEventsManagerService } from '../../../../src/services/map-events-mananger/map-events-manager';
-import { CesiumEvent } from '../../../../src/services/map-events-mananger/consts/cesium-event.enum';
-import { PickOptions } from '../../../../src/services/map-events-mananger/consts/pickOptions.enum';
+import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
+import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
+import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
+import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
+import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 import { MdDialog } from '@angular/material';
 import { TracksDialogComponent } from './track-dialog/track-dialog.component';
 import { RealTracksDataProvider } from '../../../utils/services/dataProvider/real-tracks-data-provider';
 import { AppSettingsService, TracksType } from '../../services/app-settings-service/app-settings-service';
 import { SimTracksDataProvider } from '../../../utils/services/dataProvider/sim-tracks-data-provider';
-import { CameraService } from '../../../../src/services/camera/camera.service';
+import { CameraService } from '../../../../src/angular-cesium/services/camera/camera.service';
 
 @Component({
 	selector : 'tracks-layer',

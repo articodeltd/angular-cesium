@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AcNotification } from '../../../../src/models/ac-notification';
+import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
-import { ActionType } from '../../../../src/models/action-type.enum';
+import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
-import { AcEntity } from '../../../../src/models/ac-entity';
+import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
 
 @Component({
 	selector : 'layer-order-example',

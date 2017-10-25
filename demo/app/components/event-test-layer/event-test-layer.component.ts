@@ -1,14 +1,14 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AcNotification } from '../../../../src/models/ac-notification';
-import { ActionType } from '../../../../src/models/action-type.enum';
-import { MapEventsManagerService } from '../../../../src/services/map-events-mananger/map-events-manager';
-import { AcEntity } from '../../../../src/models/ac-entity';
-import { AcLayerComponent } from '../../../../src/components/ac-layer/ac-layer.component';
-import { CesiumEvent } from '../../../../src/services/map-events-mananger/consts/cesium-event.enum';
-import { PickOptions } from '../../../../src/services/map-events-mananger/consts/pickOptions.enum';
-import { CoordinateConverter } from '../../../../src/services/coordinate-converter/coordinate-converter.service';
-import { CameraService } from '../../../../src/services/camera/camera.service';
+import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
+import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
+import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
+import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
+import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
+import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
+import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
+import { CoordinateConverter } from '../../../../src/angular-cesium/services/coordinate-converter/coordinate-converter.service';
+import { CameraService } from '../../../../src/angular-cesium/services/camera/camera.service';
 
 @Component({
 	selector : 'event-test-layer',

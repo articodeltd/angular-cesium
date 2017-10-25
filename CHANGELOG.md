@@ -1,3 +1,18 @@
+
+## 0.0.29
+### Features
+* polygon editor(alpha) - edit points manually.
+
+## 0.0.28
+### Features
+* polygon editor(alpha) - edit mode, disable,enable, add points to the editor result.
+
+
+## 0.0.26
+### Features
+* added screenshot service
+* polygon editor - alpha
+
 ## 0.0.25
 ### Fixes
 * fix draw on map example

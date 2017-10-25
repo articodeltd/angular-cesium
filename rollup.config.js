@@ -1,3 +1,5 @@
+import angular from 'rollup-plugin-angular';
+
 export default {
   entry: 'index.js',
   dest: 'bundles/angular-cesium.umd.js',
@@ -6,6 +8,9 @@ export default {
   exports: 'named',
   onwarn: function (warning) {},
   moduleName: 'angularCesium',
+  plugins: [
+    angular(),
+  ],
   globals: {
     'rxjs/Observable': 'Rx',
     'rxjs/Subject': 'Rx',
