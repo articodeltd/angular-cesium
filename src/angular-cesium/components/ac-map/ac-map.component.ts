@@ -18,6 +18,7 @@ import { SceneMode } from '../../models/scene-mode.enum';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
 import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
 import { ScreenshotService } from '../../services/screenshot/screenshot.service';
+import { ContextMenuService } from '../../services/context-menu/context-menu.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -38,6 +39,7 @@ import { ScreenshotService } from '../../services/screenshot/screenshot.service'
   selector: 'ac-map',
   template: `
       <ac-default-plonter *ngIf="!disableDefaultPlonter"></ac-default-plonter>
+      <ac-context-menu-wrapper></ac-context-menu-wrapper>
       <ng-content></ng-content>`,
   providers: [
     CesiumService,
@@ -55,6 +57,7 @@ import { ScreenshotService } from '../../services/screenshot/screenshot.service'
     MapLayersService,
     CameraService,
 		ScreenshotService,
+    ContextMenuService,
   ]
 })
 export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
@@ -103,7 +106,8 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
               private keyboardControlService: KeyboardControlService,
               private mapLayersService: MapLayersService,
               private configurationService: ConfigurationService,
-              private screenshotService: ScreenshotService) {
+              private screenshotService: ScreenshotService,
+              public contextMenuService: ContextMenuService) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
@@ -122,6 +126,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
     this.arcDrawerService.init();
     this.pointDrawerService.init();
     this.keyboardControlService.init();
+    this.contextMenuService.init(this.mapEventsManager);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -170,6 +175,13 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
    */
   getMapEventsManager(): MapEventsManagerService {
     return this.mapEventsManager;
+  }
+
+  /**
+   * @returns {ContextMenuService}
+   */
+  getContextMenuService(): ContextMenuService {
+    return this.contextMenuService;
   }
   
   getScreenshotService() {
