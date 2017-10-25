@@ -1,3 +1,6 @@
+## NEXT
+### Features
+* Added `electionManagerService` and example in selection-layer.component.ts  
 
 ## 0.0.29
 ### Features

@@ -18,7 +18,6 @@ import { SceneMode } from '../../models/scene-mode.enum';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
 import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
 import { ScreenshotService } from '../../services/screenshot/screenshot.service';
-import { SelectionManagerService } from '../../services/selection-manager/selection-manager.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -55,7 +54,6 @@ import { SelectionManagerService } from '../../services/selection-manager/select
     PolygonDrawerService,
     MapLayersService,
     CameraService,
-		SelectionManagerService,
 		ScreenshotService,
   ]
 })

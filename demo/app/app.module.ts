@@ -33,6 +33,7 @@ import { KeyboardControlLayerComponent } from './components/keyboard-control-lay
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
 import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-entities-editor/angular-cesium-entities-editor.module';
 import { EditorLayerComponent } from './components/editor-layer/editor-layer.component';
+import { SelectionLayerComponent } from './components/selection-layer/selection-layer.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { EditorLayerComponent } from './components/editor-layer/editor-layer.com
     HippodromeLayerComponent,
 		LayerOrderComponent,
 		EditorLayerComponent,
+		SelectionLayerComponent,
   ],
   imports: [
     BrowserModule,

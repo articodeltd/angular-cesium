@@ -1,47 +1,108 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { AcEntity } from '../../models/ac-entity';
 import { Observable } from 'rxjs/Observable';
-import { MapEventsManagerService } from '../map-events-mananger/map-events-manager';
-import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
-import { PickOptions } from '../map-events-mananger/consts/pickOptions.enum';
+import { AcEntity } from '../../angular-cesium/models/ac-entity';
+import { CesiumEvent } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
+import { MapEventsManagerService } from '../../angular-cesium/services/map-events-mananger/map-events-manager';
+import { PickOptions } from '../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
+import { CesiumEventModifier } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum';
+import { MapsManagerService } from '../../angular-cesium/services/maps-manager/maps-manager.service';
+import { Subject } from 'rxjs/Subject';
 
+
+export interface SelectionOptions {
+	event?: CesiumEvent;
+	modifier?: CesiumEventModifier;
+	entityType?;
+}
+
+/**
+ * Manages entity selection service for any given mouse event and modifier
+ * the service will manage the list of selected items.
+ * check out the example
+ * you must provide the service yourself
+ *
+ *  __Usage :__
+ * ```
+ * // provide the service in some component
+ * @Component({
+ * //...
+ *  providers: [SelectionManagerService]
+ * }
+ *
+ * // Usage example:
+ * // init selection
+ * const selectedIndicator = ture; // optional default true, if true a boolean "selected" property will be added to the selected entity
+ * selectionManagerService.initSelection({ event: CesiumEvent.LEFT_CLICK,
+  * 																			modifier: CesiumEventModifier.CTRL
+  * 																		},selectedIndicator);
+ * // Get selected
+ * const selected = selectionManagerService.selected();
+ *
+ * // Or as observer
+ * const selected$ = selectionManagerService.selected$();
+ *
+ * ```
+ *
+ */
 @Injectable()
 export class SelectionManagerService {
-	selectedEntities$: BehaviorSubject<AcEntity[]> = new BehaviorSubject<AcEntity[]>([]);
+	selectedEntitiesItems$: BehaviorSubject<AcEntity[]> = new BehaviorSubject<AcEntity[]>([]);
+	selectedEntitySubject$: Subject<AcEntity> = new Subject<AcEntity>();
+	private mapEventsManagerService: MapEventsManagerService;
 	
-	selected$(): Observable<AcEntity[]> {
-		return this.selectedEntities$.asObservable();
+	constructor(private mapsManager: MapsManagerService) {
 	}
 	
-	selected(): AcEntity[] {
-		return this.selectedEntities$.getValue();
+	selectedEntities$(): Observable<AcEntity[]> {
+		return this.selectedEntitiesItems$.asObservable();
 	}
 	
-	addToSelected(entity: AcEntity) {
-		const current = this.selected();
-		this.selectedEntities$.next([...current, entity]);
+	selectedEntities(): AcEntity[] {
+		return this.selectedEntitiesItems$.getValue();
 	}
 	
-	removeSelected(entity: AcEntity) {
-		const current = this.selected();
+	selectedEntity$() {
+		return this.selectedEntitySubject$;
+	}
+	
+	addToSelected(entity: AcEntity, addSelectedIndicator: boolean) {
+		if (addSelectedIndicator) {
+			entity['selected'] = true;
+		}
+		
+		const current = this.selectedEntities();
+		this.selectedEntitySubject$.next(entity);
+		this.selectedEntitiesItems$.next([...current, entity]);
+	}
+	
+	removeSelected(entity: AcEntity, addSelectedIndicator: boolean) {
+		if (addSelectedIndicator) {
+			entity['selected'] = false;
+		}
+		
+		const current = this.selectedEntities();
 		const entityIndex = current.indexOf(entity);
 		if (entityIndex !== -1) {
 			current.splice(entityIndex, 1);
-			this.selectedEntities$.next(current);
+			this.selectedEntitiesItems$.next(current);
+			this.selectedEntitySubject$.next(entity);
 		}
-		
-		this.selectedEntities$.next([...current, entity]);
 	}
 	
-	initSelected({event = CesiumEvent.LEFT_CLICK, modifier, entityType}, addSelectedIndicator = true) {
+	initSelection(selectionOptions?: SelectionOptions, addSelectedIndicator = true, eventPriority?: number, mapId?: string) {
+		this.mapEventsManagerService = this.mapsManager.getMap(mapId).getMapEventsManager();
 		
-		const mapEventMap: MapEventsManagerService = new MapEventsManagerService(null, null, null);
-		const eventSubscription = mapEventMap.register({
-			event : CesiumEvent.LEFT_CLICK,
+		if (!selectionOptions) {
+			Object.assign(selectionOptions, {event : CesiumEvent.LEFT_CLICK});
+		}
+		
+		const eventSubscription = this.mapEventsManagerService.register({
+			event : selectionOptions.event,
 			pick : PickOptions.PICK_ONE,
-			modifier,
-			entityType,
+			modifier : selectionOptions.modifier,
+			entityType : selectionOptions.entityType,
+			priority: eventPriority,
 		});
 		
 		eventSubscription
@@ -49,11 +110,11 @@ export class SelectionManagerService {
 			.filter(entities => entities && entities.length > 0)
 			.subscribe(entities => {
 				const entity = entities[0];
-				const current = this.selected();
+				const current = this.selectedEntities();
 				if (current.indexOf(entity) === -1) {
-					this.addToSelected(entity);
+					this.addToSelected(entity, addSelectedIndicator);
 				} else {
-					this.removeSelected(entity)
+					this.removeSelected(entity, addSelectedIndicator)
 				}
 			});
 	}
