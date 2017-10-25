@@ -9,11 +9,18 @@ import { BasicContextMenu } from '../../../../src/angular-cesium/models/basic-co
   `,
   styles: [`
       .container {
-          background-color: rgba(140, 140, 140, 0.3);
+          background-color: rgba(140, 140, 140, 0.8);
+      }
+      
+      .item {
+          padding: 10px;
+          color: white;
       }
 
       .item:hover {
-          background-color: rgba(255, 255, 255, 0.6);
+          cursor: pointer;
+          background-color: rgba(50, 150, 255, 0.6);
+
       }
   `],
   selector: 'context-menu',
