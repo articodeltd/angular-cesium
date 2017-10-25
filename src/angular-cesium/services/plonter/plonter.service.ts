@@ -31,7 +31,7 @@ export class PlonterService {
 		return this._entitesToPlonter;
 	}
 	
-	get plonterClickPosition(): Movement{
+	get plonterClickPosition(): Movement {
 		return this._eventResult.movement;
 	}
 
