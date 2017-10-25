@@ -51,6 +51,7 @@ import { AcLabelPrimitiveDescComponent } from './components/ac-label-primitive-d
 import { AcPolylinePrimitiveDescComponent } from './components/ac-polyline-primitive-desc/ac-polyline-primitive-desc.component';
 import { ModuleConfiguration } from './models/module-options';
 import { ConfigurationService } from './cesium-enhancements/ConfigurationService';
+import  { CesiumExtender } from '../cesium-extender/extender';
 
 @NgModule({
   imports: [
@@ -156,5 +157,9 @@ export class AngularCesiumModule {
       ngModule: AngularCesiumModule,
       providers: [{provide: 'config', useValue: config}]
     };
+  }
+
+  constructor() {
+    CesiumExtender.extend();
   }
 }
