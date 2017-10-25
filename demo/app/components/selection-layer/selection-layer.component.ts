@@ -4,7 +4,7 @@ import { AcNotification } from '../../../../src/angular-cesium/models/ac-notific
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
 import { Cartesian3 } from '../../../../src/angular-cesium/models/cartesian3';
-import { SelectionManagerService } from '../../../../src/services/selection-manager/selection-manager.service';
+import { SelectionManagerService } from '../../../../src/angular-cesium/services/selection-manager/selection-manager.service';
 import { CesiumEventModifier } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum';
 import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
