@@ -109,19 +109,20 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
     this._elemRef.nativeElement.appendChild(this.mapContainer);
     this._cesiumService.init(this.mapContainer);
     this._cameraService.init(this._cesiumService);
+	
+		this.mapsManagerService.registerMap(this.id, this);
+		this.mapEventsManager.init();
+		this.billboardDrawerService.init();
+		this.labelDrawerService.init();
+		this.ellipseDrawerService.init();
+		this.polylineDrawerService.init();
+		this.polygonDrawerService.init();
+		this.arcDrawerService.init();
+		this.pointDrawerService.init();
+		this.keyboardControlService.init();
   }
 
   ngOnInit() {
-    this.mapsManagerService.registerMap(this.id, this);
-    this.mapEventsManager.init();
-    this.billboardDrawerService.init();
-    this.labelDrawerService.init();
-    this.ellipseDrawerService.init();
-    this.polylineDrawerService.init();
-    this.polygonDrawerService.init();
-    this.arcDrawerService.init();
-    this.pointDrawerService.init();
-    this.keyboardControlService.init();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

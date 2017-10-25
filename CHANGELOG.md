@@ -1,3 +1,6 @@
+## NEXT
+### Fixes
+* Service init order  [#131](https://github.com/TGFTech/angular-cesium/issues/131)
 
 ## 0.0.29
 ### Features
