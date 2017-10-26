@@ -34,6 +34,8 @@ import { LayerOrderComponent } from './components/layer-order/layer-order.compon
 import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-entities-editor/angular-cesium-entities-editor.module';
 import { EditorLayerComponent } from './components/editor-layer/editor-layer.component';
 import { SelectionLayerComponent } from './components/selection-layer/selection-layer.component';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+import { ContextMenuLayerComponent } from './components/context-menu-layer/context-menu-layer.component';
 
 
 @NgModule({
@@ -63,6 +65,8 @@ import { SelectionLayerComponent } from './components/selection-layer/selection-
     HippodromeLayerComponent,
 		LayerOrderComponent,
 		EditorLayerComponent,
+    ContextMenuComponent,
+    ContextMenuLayerComponent,
 		SelectionLayerComponent,
   ],
   imports: [
@@ -75,7 +79,7 @@ import { SelectionLayerComponent } from './components/selection-layer/selection-
     AppMaterialModule,
     ApolloModule.forRoot(getApolloClient),
   ],
-  entryComponents: [TracksDialogComponent],
+  entryComponents: [TracksDialogComponent, ContextMenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
