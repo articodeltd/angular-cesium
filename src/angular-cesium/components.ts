@@ -30,6 +30,7 @@ export * from './components/ac-polyline-volume-desc/ac-polyline-volume-desc.comp
 export * from './components/ac-wall-desc/ac-wall-desc.component';
 export * from './components/ac-rectangle-desc/ac-rectangle-desc.component';
 export * from './components/ac-3d-tileset/ac-tileset-3d.component';
+export * from './components/ac-html-desc/ac-html-desc.component';
 
 export * from './components/static-dynamic/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
 export * from './components/static-dynamic/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';

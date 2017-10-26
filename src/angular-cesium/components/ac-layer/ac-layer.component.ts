@@ -34,6 +34,7 @@ import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-
 import { LabelPrimitiveDrawerService } from '../../services/drawers/label-primitive-drawer/label-primitive-drawer.service';
 import { BillboardPrimitiveDrawerService } from '../../services/drawers/billboard-primitive-drawer/billboard-primitive-drawer.service';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
+import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawer.service';
 
 // tslint:enable
 /**
@@ -73,7 +74,7 @@ import { MapLayersService } from '../../services/map-layers/map-layers.service';
  */
 @Component({
   selector: 'ac-layer',
-  template: '',
+  template: '<ng-content></ng-content>',
   providers: [
     LayerService,
     ComputationCache,
@@ -95,6 +96,7 @@ import { MapLayersService } from '../../services/map-layers/map-layers.service';
     PolylinePrimitiveDrawerService,
     LabelPrimitiveDrawerService,
     BillboardPrimitiveDrawerService,
+    HtmlDrawerService,
 
     DynamicEllipseDrawerService,
     DynamicPolylineDrawerService,
@@ -153,7 +155,9 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 							staticEllipseDrawerService: StaticEllipseDrawerService,
               polylinePrimitiveDrawerService: PolylinePrimitiveDrawerService,
               labelPrimitiveDrawerService: LabelPrimitiveDrawerService,
-              billboardPrimitiveDrawerService: BillboardPrimitiveDrawerService) {
+              billboardPrimitiveDrawerService: BillboardPrimitiveDrawerService,
+				htmlDrawerService: HtmlDrawerService
+	) {
 		this._drawerList = new Map([
 			['billboard', billboardDrawerService],
 			['label', labelDrawerService],
@@ -173,6 +177,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
       ['polylinePrimitive', polylinePrimitiveDrawerService],
       ['labelPrimitive', labelPrimitiveDrawerService],
       ['billboardPrimitive', billboardPrimitiveDrawerService],
+			['html', htmlDrawerService],
 
 			['dynamicEllipse', dynamicEllipseDrawerService],
 			['dynamicPolyline', dynamicPolylineDrawerService],
@@ -243,6 +248,9 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		if (!this.observable || !(this.observable instanceof Observable)) {
 			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
+
+		this.layerService.setContext(this.context);
+		this.layerService.setEntityName(this.entityName);
 	}
 
 	ngAfterContentInit(): void {

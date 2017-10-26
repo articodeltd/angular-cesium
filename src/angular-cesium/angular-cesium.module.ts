@@ -51,7 +51,10 @@ import { AcLabelPrimitiveDescComponent } from './components/ac-label-primitive-d
 import { AcPolylinePrimitiveDescComponent } from './components/ac-polyline-primitive-desc/ac-polyline-primitive-desc.component';
 import { ModuleConfiguration } from './models/module-options';
 import { ConfigurationService } from './cesium-enhancements/ConfigurationService';
-import  { CesiumExtender } from '../cesium-extender/extender';
+import { CesiumExtender } from '../cesium-extender/extender';
+import { AcHtmlDescComponent } from "./components/ac-html-desc/ac-html-desc.component";
+import { AcHtmlDirective } from "./directives/ac-html/ac-html.directive";
+import { acHtmlContainerDirective } from "./directives/ac-html-container/ac-html-container.directive";
 
 @NgModule({
   imports: [
@@ -96,6 +99,9 @@ import  { CesiumExtender } from '../cesium-extender/extender';
     AcPolylineVolumeDescComponent,
     AcWallDescComponent,
     AcRectangleDescComponent,
+    AcHtmlDescComponent,
+    AcHtmlDirective,
+    acHtmlContainerDirective,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
@@ -140,6 +146,7 @@ import  { CesiumExtender } from '../cesium-extender/extender';
     AcPolylineVolumeDescComponent,
     AcWallDescComponent,
     AcRectangleDescComponent,
+    AcHtmlDescComponent,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
