@@ -3,7 +3,7 @@
 * Service init order  [#131](https://github.com/TGFTech/angular-cesium/issues/131)
 
 ### Features
-* Added `electionManagerService` and example in selection-layer.component.ts  
+* Added `SelectionManagerService` and example in selection-layer.component.ts  
 
 ## 0.0.29
 ### Features
