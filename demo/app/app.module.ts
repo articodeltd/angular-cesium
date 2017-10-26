@@ -33,6 +33,8 @@ import { KeyboardControlLayerComponent } from './components/keyboard-control-lay
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
 import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-entities-editor/angular-cesium-entities-editor.module';
 import { EditorLayerComponent } from './components/editor-layer/editor-layer.component';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+import { ContextMenuLayerComponent } from './components/context-menu-layer/context-menu-layer.component';
 
 
 @NgModule({
@@ -62,6 +64,8 @@ import { EditorLayerComponent } from './components/editor-layer/editor-layer.com
     HippodromeLayerComponent,
 		LayerOrderComponent,
 		EditorLayerComponent,
+    ContextMenuComponent,
+    ContextMenuLayerComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,7 @@ import { EditorLayerComponent } from './components/editor-layer/editor-layer.com
     AppMaterialModule,
     ApolloModule.forRoot(getApolloClient),
   ],
-  entryComponents: [TracksDialogComponent],
+  entryComponents: [TracksDialogComponent, ContextMenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
