@@ -2,51 +2,96 @@ import { GeoUtilsService } from '../angular-cesium/services/geo-utils/geo-utils.
 import { Cartesian3 } from '../angular-cesium/models/cartesian3';
 import * as h337 from 'heatmap.js/build/heatmap.js';
 
+/**
+ *  x: lon
+ *  y: lat
+ *  value: point value
+ */
+export interface HeatPointDataPoint {
+	x: number,
+	y: number,
+	value: number,
+}
+
+/**
+ *   min:  the minimum allowed value for the data values
+ *  max:  the maximum allowed value for the data values
+ *  heatPointsData: an array of data points in WGS84 coordinates and values like { x:lon, y:lat, value)
+ */
+export interface HeatmapDataSet {
+	min?: number,
+	max?: number,
+	heatPointsData: HeatPointDataPoint[]
+}
+
+/**
+ * a heatmap.js options object (see http://www.patrick-wied.at/static/heatmapjs/docs.html#h337-create)
+ */
+export interface HeatMapOptions {
+	[propName: string]: any,
+	
+	gradient?
+	radius?
+	opacity?
+	maxOpacity?
+	minOpacity?
+	blur?
+}
+
+/**
+ * Create heatmap material (Cesium.ImageMaterialProperty with heatmap as the image)
+ *
+ * usage:
+ * ```
+ *
+		 const mCreator = new CesiumHeatMapMaterialCreator();
+		 const containingRect = CesiumHeatMapMaterialCreator.calcCircleContainingRect(this.circleCenter, this.circleRadius);
+     const userHeatmapOptions = {
+			radius : 2000,
+			minOpacity : 0,
+			maxOpacity : 0.9,
+		} as any;
+ 
+		 this.circleHeatMapMaterial = mCreator.create(containingRect, {
+			heatPointsData : [
+				{
+					x : -100.0,
+					y : 24.0,
+					value : 95
+				}
+			],
+			min : 0,
+			max : 100,
+		}, userHeatmapOptions);
+ * ```
+ */
 export class CesiumHeatMapMaterialCreator {
-	static calaculateCircleCotainingRect(center, radius) {
-		// (-100, 24),
+	private static containerCanvasCounter = 0;
+	
+	static calcCircleContainingRect(center, radius) {
+		const circleDirections = [0, Math.PI / 2, Math.PI, Math.PI * 1.5];
+		const circlePoints = circleDirections.map(direction => {
+			return GeoUtilsService.pointByLocationDistanceAndAzimuth(
+				center,
+				radius,
+				direction,
+				true
+			);
+		});
 		
-		const top = GeoUtilsService.pointByLocationDistanceAndAzimuth(
-			center,
-			radius,
-			Cesium.Math.toRadians(0),
-			true
-		);
-		
-		const right = GeoUtilsService.pointByLocationDistanceAndAzimuth(
-			center,
-			radius,
-			Cesium.Math.toRadians(90),
-			true
-		);
-		
-		const bottom = GeoUtilsService.pointByLocationDistanceAndAzimuth(
-			center,
-			radius,
-			Cesium.Math.toRadians(180),
-			true
-		);
-		
-		const left = GeoUtilsService.pointByLocationDistanceAndAzimuth(
-			center,
-			radius,
-			Cesium.Math.toRadians(270),
-			true
-		);
-		
-		return Cesium.Rectangle.fromCartesianArray([top, bottom, right, left]);
+		return Cesium.Rectangle.fromCartesianArray(circlePoints);
 	}
 	
 	static calculateContainingRectFromPoints(points: Cartesian3[]) {
 		return Cesium.Rectangle.fromCartesianArray(points);
 	}
 	
-	
 	heatmapOptionsDefaults = {
 		minCanvasSize : 700,           // minimum size (in pixels) for the heatmap canvas
 		maxCanvasSize : 2000,          // maximum size (in pixels) for the heatmap canvas
-		radiusFactor : 60,             // data point size factor used if no radius is given (the greater of height and width divided by this number yields the used radius)
-		spacingFactor : 1.5,           // extra space around the borders (point radius multiplied by this number yields the spacing)
+		radiusFactor : 60,             // data point size factor used if no radius is given
+		// (the greater of height and width divided by this number yields the used radius)
+		spacingFactor : 1,           // extra space around the borders (point radius multiplied by this number yields the spacing)
 		maxOpacity : 0.8,              // the maximum opacity used if not given in the heatmap options object
 		minOpacity : 0.1,              // the minimum opacity used if not given in the heatmap options object
 		blur : 0.85,                   // the blur used if not given in the heatmap options object
@@ -58,17 +103,15 @@ export class CesiumHeatMapMaterialCreator {
 		},
 	};
 	
-	_HeatmapOptions: any = {};
+	WMP = new Cesium.WebMercatorProjection();
 	_spacing: number;
-	width;
-	height;
+	width: number;
+	height: number;
 	_mbounds;
 	bounds;
-	WMP = new Cesium.WebMercatorProjection();
 	_factor: number;
 	_rectangle;
 	heatmap;
-	rect = Cesium.Rectangle.fromDegrees(-110.0, 20.0, -80.0, 25.0);
 	_xoffset;
 	_yoffset;
 	
@@ -100,7 +143,7 @@ export class CesiumHeatMapMaterialCreator {
 	 *  max:  the maximum allowed value for the data values
 	 *  data: an array of data points in WGS84 coordinates and values like { x:lon, y:lat, value }
 	 */
-	setWGS84Data(min, max, data) {
+	private setWGS84Data(min, max, data) {
 		if (data && data.length > 0 && min !== null && min !== false && max !== null && max !== false) {
 			const convdata = [];
 			
@@ -145,11 +188,9 @@ export class CesiumHeatMapMaterialCreator {
 	
 	
 	private createContainer(height, width) {
-		const id = 'heatmap';
+		const id = 'heatmap' + CesiumHeatMapMaterialCreator.containerCanvasCounter++;
 		const c = document.createElement('div');
-		if (id) {
-			c.setAttribute('id', id);
-		}
+		c.setAttribute('id', id);
 		c.setAttribute('style', 'width: ' + width + 'px; height: ' + height + 'px; margin: 0px; display: none;');
 		document.body.appendChild(c);
 		return c;
@@ -191,7 +232,7 @@ export class CesiumHeatMapMaterialCreator {
 	 *
 	 *  bb: the mercator bounding box like {north, east, south, west}
 	 */
-	mercatorToWgs84BB(bb) {
+	private mercatorToWgs84BB(bb) {
 		const sw = this.WMP.unproject(new Cesium.Cartesian3(bb.west, bb.south));
 		const ne = this.WMP.unproject(new Cesium.Cartesian3(bb.east, bb.north));
 		return {
@@ -242,32 +283,32 @@ export class CesiumHeatMapMaterialCreator {
 		// TODO
 	}
 	
-	// min:  the minimum allowed value for the data values
-	// max:  the maximum allowed value for the data values
-	// datapoint: {x,y,value}
-	// heatmapOptions: a heatmap.js options object (see http://www.patrick-wied.at/static/heatmapjs/docs.html#h337-create)
-	public create(containingBoundingRect, {heatPointsData, min = 0, max = 100}, heatmapOptions) {
-		const userHeatmapOptions = Object.assign({}, heatmapOptions);
+	/**
+	 * containingBoundingRect: Cesium.Rectangle like {north, east, south, west}
+	 * min:  the minimum allowed value for the data values
+	 * max:  the maximum allowed value for the data values
+	 * datapoint: {x,y,value}
+	 * heatmapOptions: a heatmap.js options object (see http://www.patrick-wied.at/static/heatmapjs/docs.html#h337-create)
+	 *
+	 */
+	public create(containingBoundingRect: Rectangle, heatmapDataSet: HeatmapDataSet, heatmapOptions: HeatMapOptions) {
 		const userBB = containingBoundingRect;
-		console.log(userBB);
-		
-		Object.assign(this._HeatmapOptions, this.heatmapOptionsDefaults);
-		
+		const {heatPointsData, min = 0, max = 100} = heatmapDataSet;
+		const finalHeatmapOptions = Object.assign({}, this.heatmapOptionsDefaults, heatmapOptions);
 		
 		this._mbounds = this.wgs84ToMercatorBB(userBB);
 		this.setWidthAndHeight(this._mbounds);
 		
-		this._HeatmapOptions.radius = Math.round((userHeatmapOptions.radius) ?
-			userHeatmapOptions.radius : ((this.width > this.height) ?
+		finalHeatmapOptions.radius = Math.round((heatmapOptions.radius) ?
+			heatmapOptions.radius : ((this.width > this.height) ?
 				this.width / this.heatmapOptionsDefaults.radiusFactor :
 				this.height / this.heatmapOptionsDefaults.radiusFactor));
-		this._spacing = this._HeatmapOptions.radius * this.heatmapOptionsDefaults.spacingFactor;
+		this._spacing = finalHeatmapOptions.radius * this.heatmapOptionsDefaults.spacingFactor;
 		this._xoffset = this._mbounds.west;
 		this._yoffset = this._mbounds.south;
 		
 		this.width = Math.round(this.width + this._spacing * 2);
 		this.height = Math.round(this.height + this._spacing * 2);
-		
 		
 		this._mbounds.west -= this._spacing * this._factor;
 		this._mbounds.east += this._spacing * this._factor;
@@ -278,11 +319,9 @@ export class CesiumHeatMapMaterialCreator {
 		this._rectangle = Cesium.Rectangle.fromDegrees(this.bounds.west, this.bounds.south, this.bounds.east, this.bounds.north);
 		
 		const container = this.createContainer(this.height, this.width);
-		Object.assign(this._HeatmapOptions, {container});
+		Object.assign(finalHeatmapOptions, {container});
 		
-		this.heatmap = h337.create(this._HeatmapOptions);
-		
-		// TODO setdata and set wgs84 data
+		this.heatmap = h337.create(finalHeatmapOptions);
 		
 		
 		this.setWGS84Data(0, 100, heatPointsData);

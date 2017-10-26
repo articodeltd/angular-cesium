@@ -1,13 +1,15 @@
-<ac-layer acFor="let circle of circles$" [show]="show" [context]="this">
-    <!--<ac-rectangle-desc props="{-->
-    <!--coordinates: circle.pos,-->
-    <!--material: circle.material-->
-    <!--}"></ac-rectangle-desc>-->
+<ac-layer acFor="let entity of entities$" [show]="show" [context]="this">
+
+    <ac-rectangle-desc props="{
+        coordinates: entity.rectangle,
+        material: entity.rectMaterial
+    }">
+    </ac-rectangle-desc>
 
     <ac-circle-desc props="{
-        position: circle.center,
-        radius:5500000,
-        material: circle.material
+        position: entity.center,
+        radius: circleRadius,
+        material: entity.circleMaterial
     }">
     </ac-circle-desc>
 </ac-layer>
