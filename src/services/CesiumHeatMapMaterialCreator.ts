@@ -1,55 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
-import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
-import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
+import { GeoUtilsService } from '../angular-cesium/services/geo-utils/geo-utils.service';
+import { Cartesian3 } from '../angular-cesium/models/cartesian3';
 import * as h337 from 'heatmap.js/build/heatmap.js';
-import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
-import { Subject } from 'rxjs/Subject';
-import { CesiumService } from '../../../../src/angular-cesium/services/cesium/cesium.service';
-import { CoordinateConverter } from '../../../../src/angular-cesium/services/coordinate-converter/coordinate-converter.service';
-import { GeoUtilsService } from '../../../../src/angular-cesium/services/geo-utils/geo-utils.service';
-import { CesiumHeatMapMaterialCreator } from '../../../../src/services/CesiumHeatMapMaterialCreator';
 
-//
-@Component({
-	selector : 'heatmap-layer',
-	templateUrl : 'heatmap-layer.component.html',
-	providers : [TracksDataProvider, CoordinateConverter]
-})
-export class HeatmapLayerComponent implements OnInit {
-	@ViewChild(AcLayerComponent) layer: AcLayerComponent;
-	
-	circles$: Subject<AcNotification> = new Subject();
-	// circles$;
-	Cesium = Cesium;
-	show = true;
-	circleRadius = 2500000;
-	circleCenter = Cesium.Cartesian3.fromDegrees(-100, 24);
-	
-	heatmapOptionsDefaults;
-	heatMapMaterial;
-	_HeatmapOptions: any = {};
-	_spacing: number;
-	width;
-	height;
-	_mbounds;
-	bounds;
-	WMP = new Cesium.WebMercatorProjection();
-	_factor: number;
-	_rectangle;
-	heatmap;
-	rect = Cesium.Rectangle.fromDegrees(-110.0, 20.0, -80.0, 25.0);
-	_xoffset;
-	_yoffset;
-	
-	cotainingRect = Cesium.Rectangle.fromDegrees(-110.0, 20.0, -80.0, 25.0);
-	
-	viewer;
-	
-	eastNorth;
-	westSout;
-	
-	calaculateCircleCotainingRect(center, radius) {
+export class CesiumHeatMapMaterialCreator {
+	static calaculateCircleCotainingRect(center, radius) {
 		// (-100, 24),
 		
 		const top = GeoUtilsService.pointByLocationDistanceAndAzimuth(
@@ -58,7 +12,6 @@ export class HeatmapLayerComponent implements OnInit {
 			Cesium.Math.toRadians(0),
 			true
 		);
-		this.eastNorth = top;
 		
 		const right = GeoUtilsService.pointByLocationDistanceAndAzimuth(
 			center,
@@ -73,7 +26,6 @@ export class HeatmapLayerComponent implements OnInit {
 			Cesium.Math.toRadians(180),
 			true
 		);
-		this.westSout = bottom;
 		
 		const left = GeoUtilsService.pointByLocationDistanceAndAzimuth(
 			center,
@@ -82,67 +34,43 @@ export class HeatmapLayerComponent implements OnInit {
 			true
 		);
 		
-		const long = -100;
-		const lat = 24;
-		
-		// w s e n
-		// (-110.0, 20.0, -80.0, 25.0);
-		
 		return Cesium.Rectangle.fromCartesianArray([top, bottom, right, left]);
 	}
 	
-	constructor(cesiumService: CesiumService) {
-		
-		this.viewer = cesiumService.getViewer();
-		// this.circles$ = Observable.of({
-		// 	id : '1',
-		// 	actionType : ActionType.ADD_UPDATE,
-		// 	entity : {
-		// 		pos: this.rect,
-		// 	},
-		// })
-		
-		setTimeout(() => {
-			this.cotainingRect = this.calaculateCircleCotainingRect(Cesium.Cartesian3.fromDegrees(-100, 24), this.circleRadius);
-			
-			
-			this.circles$.next({
-				id : '1',
-				actionType : ActionType.ADD_UPDATE,
-				entity : {
-					pos : this._rectangle,
-					containingRect : this.cotainingRect,
-					center : this.circleCenter,
-					material : this.heatMapMaterial,
-					
-					eastNorth : this.eastNorth,
-					westSout : this.westSout,
-				},
-			})
-		}, 1000);
+	static calculateContainingRectFromPoints(points: Cartesian3[]) {
+		return Cesium.Rectangle.fromCartesianArray(points);
 	}
 	
-	/**  Convert a mercator location to the corresponding heatmap location
-	 *
-	 *  p: a WGS84 location like {x: lon, y:lat}
-	 */
-	mercatorPointToHeatmapPoint(p) {
-		let pn = {};
-		
-		pn.x = Math.round((p.x - this._xoffset) / this._factor + this._spacing);
-		pn.y = Math.round((p.y - this._yoffset) / this._factor + this._spacing);
-		pn.y = this.height - pn.y;
-		
-		return pn;
+	
+	heatmapOptionsDefaults = {
+		minCanvasSize : 700,           // minimum size (in pixels) for the heatmap canvas
+		maxCanvasSize : 2000,          // maximum size (in pixels) for the heatmap canvas
+		radiusFactor : 60,             // data point size factor used if no radius is given (the greater of height and width divided by this number yields the used radius)
+		spacingFactor : 1.5,           // extra space around the borders (point radius multiplied by this number yields the spacing)
+		maxOpacity : 0.8,              // the maximum opacity used if not given in the heatmap options object
+		minOpacity : 0.1,              // the minimum opacity used if not given in the heatmap options object
+		blur : 0.85,                   // the blur used if not given in the heatmap options object
+		gradient : {                   // the gradient used if not given in the heatmap options object
+			'.3' : 'blue',
+			'.65' : 'yellow',
+			'.8' : 'orange',
+			'.95' : 'red'
+		},
 	};
 	
-	/**  Convert a WGS84 location to the corresponding heatmap location
-	 *
-	 *  p: a WGS84 location like {x:lon, y:lat}
-	 */
-	wgs84PointToHeatmapPoint = function (p) {
-		return this.mercatorPointToHeatmapPoint(this.wgs84ToMercator(p));
-	};
+	_HeatmapOptions: any = {};
+	_spacing: number;
+	width;
+	height;
+	_mbounds;
+	bounds;
+	WMP = new Cesium.WebMercatorProjection();
+	_factor: number;
+	_rectangle;
+	heatmap;
+	rect = Cesium.Rectangle.fromDegrees(-110.0, 20.0, -80.0, 25.0);
+	_xoffset;
+	_yoffset;
 	
 	
 	/**  Set an array of heatmap locations
@@ -193,7 +121,30 @@ export class HeatmapLayerComponent implements OnInit {
 		return false;
 	};
 	
-	createContainer(height, width) {
+	/**  Convert a mercator location to the corresponding heatmap location
+	 *
+	 *  p: a WGS84 location like {x: lon, y:lat}
+	 */
+	private mercatorPointToHeatmapPoint(p) {
+		const pn: any = {};
+		
+		pn.x = Math.round((p.x - this._xoffset) / this._factor + this._spacing);
+		pn.y = Math.round((p.y - this._yoffset) / this._factor + this._spacing);
+		pn.y = this.height - pn.y;
+		
+		return pn;
+	};
+	
+	/**  Convert a WGS84 location to the corresponding heatmap location
+	 *
+	 *  p: a WGS84 location like {x:lon, y:lat}
+	 */
+	private wgs84PointToHeatmapPoint = function (p) {
+		return this.mercatorPointToHeatmapPoint(this.wgs84ToMercator(p));
+	};
+	
+	
+	private createContainer(height, width) {
 		const id = 'heatmap';
 		const c = document.createElement('div');
 		if (id) {
@@ -208,7 +159,7 @@ export class HeatmapLayerComponent implements OnInit {
 	 *
 	 *  p: the WGS84 location like {x: lon, y: lat}
 	 */
-	wgs84ToMercator(p) {
+	private wgs84ToMercator(p) {
 		const mp = this.WMP.project(Cesium.Cartographic.fromDegrees(p.x, p.y));
 		return {
 			x : mp.x,
@@ -216,16 +167,15 @@ export class HeatmapLayerComponent implements OnInit {
 		};
 	};
 	
-	rad2deg = function (r) {
+	private rad2deg = function (r) {
 		const d = r / (Math.PI / 180.0);
 		return d;
 	};
 	
-	
 	/**  Convert a WGS84 bounding box into a mercator bounding box*
 	 *  bb: the WGS84 bounding box like {north, east, south, west}
 	 */
-	wgs84ToMercatorBB(bb) {
+	private wgs84ToMercatorBB(bb) {
 		// TODO validate rad or deg
 		const sw = this.WMP.project(Cesium.Cartographic.fromRadians(bb.west, bb.south));
 		const ne = this.WMP.project(Cesium.Cartographic.fromRadians(bb.east, bb.north));
@@ -237,10 +187,10 @@ export class HeatmapLayerComponent implements OnInit {
 		};
 	};
 	
-	/*  Convert a mercator bounding box into a WGS84 bounding box
-		 *
-		 *  bb: the mercator bounding box like {north, east, south, west}
-		 */
+	/**  Convert a mercator bounding box into a WGS84 bounding box
+	 *
+	 *  bb: the mercator bounding box like {north, east, south, west}
+	 */
 	mercatorToWgs84BB(bb) {
 		const sw = this.WMP.unproject(new Cesium.Cartesian3(bb.west, bb.south));
 		const ne = this.WMP.unproject(new Cesium.Cartesian3(bb.east, bb.north));
@@ -252,7 +202,7 @@ export class HeatmapLayerComponent implements OnInit {
 		};
 	};
 	
-	setWidthAndHeight(mbb) {
+	private setWidthAndHeight(mbb) {
 		this.width = ((mbb.east > 0 && mbb.west < 0) ? mbb.east + Math.abs(mbb.west) : Math.abs(mbb.east - mbb.west));
 		this.height = ((mbb.north > 0 && mbb.south < 0) ? mbb.north + Math.abs(mbb.south) : Math.abs(mbb.north - mbb.south));
 		this._factor = 1;
@@ -287,35 +237,19 @@ export class HeatmapLayerComponent implements OnInit {
 		this.height = this.height / this._factor;
 	};
 	
-	ngOnInit() {
-		
-		const userHeatmapOptions = {} as any;
-		// const userBB = {
-		// 	north : 25,
-		// 	east : -80,
-		// 	west : -110,
-		// 	south : 20,
-		// };
-		// {north, east, south, west}
-		const userBB = this.calaculateCircleCotainingRect(this.circleCenter, this.circleRadius);
+	
+	public destory() {
+		// TODO
+	}
+	
+	// min:  the minimum allowed value for the data values
+	// max:  the maximum allowed value for the data values
+	// datapoint: {x,y,value}
+	// heatmapOptions: a heatmap.js options object (see http://www.patrick-wied.at/static/heatmapjs/docs.html#h337-create)
+	public create(containingBoundingRect, {heatPointsData, min = 0, max = 100}, heatmapOptions) {
+		const userHeatmapOptions = Object.assign({}, heatmapOptions);
+		const userBB = containingBoundingRect;
 		console.log(userBB);
-		
-		
-		this.heatmapOptionsDefaults = {
-			minCanvasSize : 700,           // minimum size (in pixels) for the heatmap canvas
-			maxCanvasSize : 2000,          // maximum size (in pixels) for the heatmap canvas
-			radiusFactor : 60,             // data point size factor used if no radius is given (the greater of height and width divided by this number yields the used radius)
-			spacingFactor : 1.5,           // extra space around the borders (point radius multiplied by this number yields the spacing)
-			maxOpacity : 0.8,              // the maximum opacity used if not given in the heatmap options object
-			minOpacity : 0.1,              // the minimum opacity used if not given in the heatmap options object
-			blur : 0.85,                   // the blur used if not given in the heatmap options object
-			gradient : {                   // the gradient used if not given in the heatmap options object
-				'.3' : 'blue',
-				'.65' : 'yellow',
-				'.8' : 'orange',
-				'.95' : 'red'
-			},
-		};
 		
 		Object.assign(this._HeatmapOptions, this.heatmapOptionsDefaults);
 		
@@ -351,60 +285,14 @@ export class HeatmapLayerComponent implements OnInit {
 		// TODO setdata and set wgs84 data
 		
 		
-		// w s e n
-		// (-110.0, 20.0, -80.0, 25.0);
-		const dataPoints = [
-			// {
-			// 	x : -90.0,
-			// 	y : 22.0,
-			// 	value : 20
-			// },
-			// {
-			// 	x : -85.0,
-			// 	y : 24.0,
-			// 	value : 45
-			// },
-			// {
-			// 	x : -95.0,
-			// 	y : 24.0,
-			// 	value : 65
-			// },
-			{
-				x : -100.0,
-				y : 24.0,
-				value : 95
-			}
-		];
-		this.setWGS84Data(0, 100, dataPoints);
-		
-		// const heatMapCanvas = this.heatmap._renderer.canvas;
-		// this.heatMapMaterial = new Cesium.ImageMaterialProperty({
-		// 	image : heatMapCanvas,
-		// 	transparent : true,
-		// });
-		
-		
-		const mCreator = new CesiumHeatMapMaterialCreator();
-		const containingRect = CesiumHeatMapMaterialCreator.calaculateCircleCotainingRect(this.circleCenter,this.circleRadius);
-			this.heatMapMaterial = mCreator.create(containingRect, {
-				heatPointsData : [
-					{
-						x : -100.0,
-						y : 24.0,
-						value : 95
-					}
-				],
-				min : 0,
-				max : 100,
-			}, {});
-		
+		this.setWGS84Data(0, 100, heatPointsData);
+		const heatMapCanvas = this.heatmap._renderer.canvas;
+		const heatMapMaterial = new Cesium.ImageMaterialProperty({
+			image : heatMapCanvas,
+			transparent : true,
+		});
+		return heatMapMaterial;
 	}
 	
-	removeAll() {
-		this.layer.removeAll();
-	}
-	
-	setShow($event) {
-		this.show = $event
-	}
 }
+
