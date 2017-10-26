@@ -19,7 +19,7 @@ export class ContextMenuService {
   private _showContextMenu = false;
   private _options: ContextMenuOptions;
   private _position: Cartesian3;
-  private _content: typeof BasicContextMenu;
+  private _content: BasicContextMenu;
   private mapEventsManager: MapEventsManagerService;
   private leftClickRegistration: DisposableObservable<any>;
   private leftClickSubscription: Subscription;
@@ -47,7 +47,7 @@ export class ContextMenuService {
     return this._position;
   }
 
-  get content(): typeof BasicContextMenu {
+  get content(): BasicContextMenu {
     return this._content;
   }
 
@@ -64,7 +64,7 @@ export class ContextMenuService {
     this.mapEventsManager = mapEventsManager;
   }
 
-  open(content: typeof BasicContextMenu, position: Cartesian3, options: ContextMenuOptions = {}) {
+  open(content: BasicContextMenu, position: Cartesian3, options: ContextMenuOptions = {}) {
     this.close();
     this._content = content;
     this._position = position;
