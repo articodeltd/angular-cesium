@@ -28,7 +28,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
  *		});
  *
  *  // Or edit polygon from existing polygon positions
- *  const editing$ = this.polygonsEditor.edit(initialPos);
+ *  const editing$ = this.polygonsEditorService.edit(initialPos);
  *
  * ```
  */
