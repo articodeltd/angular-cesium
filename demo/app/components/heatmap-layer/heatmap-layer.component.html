@@ -1,0 +1,13 @@
+<ac-layer acFor="let circle of circles$" [show]="show" [context]="this">
+    <!--<ac-rectangle-desc props="{-->
+    <!--coordinates: circle.pos,-->
+    <!--material: circle.material-->
+    <!--}"></ac-rectangle-desc>-->
+
+    <ac-circle-desc props="{
+        position: circle.center,
+        radius:5500000,
+        material: circle.material
+    }">
+    </ac-circle-desc>
+</ac-layer>

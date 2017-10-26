@@ -34,6 +34,7 @@ import { LayerOrderComponent } from './components/layer-order/layer-order.compon
 import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-entities-editor/angular-cesium-entities-editor.module';
 import { EditorLayerComponent } from './components/editor-layer/editor-layer.component';
 import { SelectionLayerComponent } from './components/selection-layer/selection-layer.component';
+import { HeatmapLayerComponent } from './components/heatmap-layer/heatmap-layer.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { SelectionLayerComponent } from './components/selection-layer/selection-
 		LayerOrderComponent,
 		EditorLayerComponent,
 		SelectionLayerComponent,
+    HeatmapLayerComponent,
   ],
   imports: [
     BrowserModule,

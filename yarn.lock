@@ -1459,9 +1459,9 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-cesium@^1.37.0:
-  version "1.37.0"
-  resolved "https://registry.yarnpkg.com/cesium/-/cesium-1.37.0.tgz#afeaeca7c327338c063a431c315ea16192f801e3"
+cesium@^1.38.0:
+  version "1.38.0"
+  resolved "https://registry.yarnpkg.com/cesium/-/cesium-1.38.0.tgz#e4008e7b548b5a72e4f62bd6e300dadd9e448efa"
   dependencies:
     requirejs "^2.3.2"
 
@@ -3264,6 +3264,10 @@ hawk@~3.1.3:
 he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+
+heatmap.js@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/heatmap.js/-/heatmap.js-2.0.5.tgz#466d3b86513f5d49112a49d25700ab2730149153"
 
 hmac-drbg@^1.0.0:
   version "1.0.1"

@@ -13,8 +13,7 @@
             color: 'mix(color(\'white\'), color(\'lightgreen\'), min(${area} / 10000.0, 1.0))'
         }">
     </ac-3d-tile-layer>
-    <tracks-layer #layer [show]="appSettingsService.showTracksLayer" [tracksType]="appSettingsService.tracksDataType"></tracks-layer>
-
+    <!--<tracks-layer #layer [show]="appSettingsService.showTracksLayer" [tracksType]="appSettingsService.tracksDataType"></tracks-layer>-->
     <!--<maps-layer></maps-layer>-->
     <!--<models-layer></models-layer>-->
     <!--<dynamic-ellipse-layer #layer></dynamic-ellipse-layer>-->
@@ -31,5 +30,6 @@
     <!--<hippodrome-layer></hippodrome-layer>-->
     <!--<editor-layer></editor-layer>-->
     <!--<selection-layer></selection-layer>-->
+    <heatmap-layer></heatmap-layer>
     <keyboard-control-layer *ngIf="appSettingsService.keyboardControl"></keyboard-control-layer>
 </ac-map>
