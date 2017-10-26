@@ -4,7 +4,7 @@
 * Added context menu service that allows dynamic injection of custom components.
 
 ### Features
-* Added `electionManagerService` and example in selection-layer.component.ts
+* Added `selectionManagerService` and example in selection-layer.component.ts
 * Added context menu service that allows dynamic injection of custom components.  
 
 ## 0.0.29
