@@ -3,7 +3,8 @@
 * Service init order  [#131](https://github.com/TGFTech/angular-cesium/issues/131)
 
 ### Features
-* Added `electionManagerService` and example in selection-layer.component.ts  
+* Added `electionManagerService` and example in selection-layer.component.ts
+* Added CesiumHeatMapMaterialCreator for creating heatmap material for cesium entities.  
 
 ## 0.0.29
 ### Features

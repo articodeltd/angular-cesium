@@ -1,6 +1,7 @@
 import { GeoUtilsService } from '../angular-cesium/services/geo-utils/geo-utils.service';
 import { Cartesian3 } from '../angular-cesium/models/cartesian3';
 import * as h337 from 'heatmap.js/build/heatmap.js';
+import { Injectable } from '@angular/core';
 
 /**
  *  x: lon
@@ -44,15 +45,15 @@ export interface HeatMapOptions {
  * usage:
  * ```
  *
-		 const mCreator = new CesiumHeatMapMaterialCreator();
-		 const containingRect = CesiumHeatMapMaterialCreator.calcCircleContainingRect(this.circleCenter, this.circleRadius);
-     const userHeatmapOptions = {
+ const mCreator = new CesiumHeatMapMaterialCreator();
+ const containingRect = CesiumHeatMapMaterialCreator.calcCircleContainingRect(this.circleCenter, this.circleRadius);
+ const userHeatmapOptions = {
 			radius : 2000,
 			minOpacity : 0,
 			maxOpacity : 0.9,
 		} as any;
  
-		 this.circleHeatMapMaterial = mCreator.create(containingRect, {
+ this.circleHeatMapMaterial = mCreator.create(containingRect, {
 			heatPointsData : [
 				{
 					x : -100.0,
@@ -64,7 +65,10 @@ export interface HeatMapOptions {
 			max : 100,
 		}, userHeatmapOptions);
  * ```
+ *
+ * inspired by https://github.com/danwild/CesiumHeatmap
  */
+@Injectable()
 export class CesiumHeatMapMaterialCreator {
 	private static containerCanvasCounter = 0;
 	
@@ -189,11 +193,11 @@ export class CesiumHeatMapMaterialCreator {
 	
 	private createContainer(height, width) {
 		const id = 'heatmap' + CesiumHeatMapMaterialCreator.containerCanvasCounter++;
-		const c = document.createElement('div');
-		c.setAttribute('id', id);
-		c.setAttribute('style', 'width: ' + width + 'px; height: ' + height + 'px; margin: 0px; display: none;');
-		document.body.appendChild(c);
-		return c;
+		const container = document.createElement('div');
+		container.setAttribute('id', id);
+		container.setAttribute('style', 'width: ' + width + 'px; height: ' + height + 'px; margin: 0px; display: none;');
+		document.body.appendChild(container);
+		return {container, id};
 	}
 	
 	/**  Convert a WGS84 location into a mercator location
@@ -278,11 +282,6 @@ export class CesiumHeatMapMaterialCreator {
 		this.height = this.height / this._factor;
 	};
 	
-	
-	public destory() {
-		// TODO
-	}
-	
 	/**
 	 * containingBoundingRect: Cesium.Rectangle like {north, east, south, west}
 	 * min:  the minimum allowed value for the data values
@@ -318,7 +317,7 @@ export class CesiumHeatMapMaterialCreator {
 		this.bounds = this.mercatorToWgs84BB(this._mbounds);
 		this._rectangle = Cesium.Rectangle.fromDegrees(this.bounds.west, this.bounds.south, this.bounds.east, this.bounds.north);
 		
-		const container = this.createContainer(this.height, this.width);
+		const {container, id} = this.createContainer(this.height, this.width);
 		Object.assign(finalHeatmapOptions, {container});
 		
 		this.heatmap = h337.create(finalHeatmapOptions);
@@ -330,8 +329,16 @@ export class CesiumHeatMapMaterialCreator {
 			image : heatMapCanvas,
 			transparent : true,
 		});
+		this.setClear(heatMapMaterial, id);
+		
 		return heatMapMaterial;
 	}
 	
+	private setClear(heatMapMaterial, id: string) {
+		heatMapMaterial.clear = () => {
+			const elem = document.getElementById(id);
+			return elem.parentNode.removeChild(elem);
+		};
+	}
 }
 
