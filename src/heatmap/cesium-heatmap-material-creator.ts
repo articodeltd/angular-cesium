@@ -3,6 +3,21 @@ import { Cartesian3 } from '../angular-cesium/models/cartesian3';
 import * as h337 from 'heatmap.js/build/heatmap.js';
 import { Injectable } from '@angular/core';
 
+// Consider moving to a different package.
+
+if (!h337) {
+	throw new Error('must install heatmap.js. please do npm -i heatmap.js ')
+}
+
+
+export interface Rectangle {
+	west: number;
+	south: number;
+	east: number;
+	north: number;
+}
+
+
 /**
  *  x: lon
  *  y: lat
@@ -41,7 +56,7 @@ export interface HeatMapOptions {
 
 /**
  * Create heatmap material (Cesium.ImageMaterialProperty with heatmap as the image)
- *
+ * works with http://www.patrick-wied.at/static/heatmapjs. must do npm -i heatmap.js
  * usage:
  * ```
  *
