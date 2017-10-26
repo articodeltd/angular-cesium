@@ -12,7 +12,7 @@ export class HtmlPrimitive {
 
     constructor(options: any, collection: HtmlCollection = null) {
         if (typeof options !== 'object') {
-            throw 'HtmlPrimitive ERROR: invalid html options!';
+            throw new Error('HtmlPrimitive ERROR: invalid html options!');
         }
 
         this.scene = options.scene;

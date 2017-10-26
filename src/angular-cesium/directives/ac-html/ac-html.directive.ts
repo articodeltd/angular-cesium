@@ -1,6 +1,6 @@
 import {
     Directive, TemplateRef, ViewContainerRef, OnInit, ChangeDetectorRef
-} from "@angular/core";
+} from '@angular/core';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.service';
 
@@ -8,7 +8,7 @@ class AcHtmlContext {
     constructor(
         public id: any,
         public context: any
-    ){}
+    ) {}
 }
 
 @Directive({

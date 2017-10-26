@@ -4,7 +4,7 @@ import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.se
 @Directive({
     selector: '[acHtmlContainer]'
 })
-export class acHtmlContainerDirective implements OnInit {
+export class AcHtmlContainerDirective implements OnInit {
 
     private _id: any;
 

@@ -16,7 +16,7 @@ import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.se
                     </div>
                 </div>`
 })
-export class AcHtmlDescComponent extends BasicDesc {
+export class AcHtmlDescComponent extends BasicDesc implements OnInit {
 
     @ViewChild(AcHtmlDirective) acHtmlCreator: AcHtmlDirective;
     @ContentChild(TemplateRef) acHtmlTemplate: TemplateRef<any>;
@@ -59,7 +59,7 @@ export class AcHtmlDescComponent extends BasicDesc {
     }
 
     removeAll(): void {
-        for (let [id, primitive] of this._cesiumObjectsMap) {
+        for (const [id, primitive] of this._cesiumObjectsMap) {
             this.acHtmlCreator.remove(id, primitive);
         }
         this._cesiumObjectsMap.clear();
