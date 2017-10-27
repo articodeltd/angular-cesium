@@ -11,7 +11,6 @@ import { CoordinateConverter } from '../../../../angular-cesium/services/coordin
 import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
-import { EditorObservable } from '../../../models/editor-observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { CircleEditUpdate } from '../../../models/circle-edit-update';
 import { GeoUtilsService } from '../../../../angular-cesium/services/geo-utils/geo-utils.service';
@@ -61,7 +60,7 @@ export class CirclesEditorService {
     return this.updatePublisher;
   }
 
-  create(priority = 100): EditorObservable<CircleEditUpdate> {
+  create(priority = 100): CircleEditorObservable<CircleEditUpdate> {
     let center = undefined;
     const id = this.generteId();
     const clientEditSubject = new BehaviorSubject<CircleEditUpdate>({
@@ -160,7 +159,7 @@ export class CirclesEditorService {
     return editorObservable;
   }
 
-  edit(center: Cartesian3, radius: number, priority = 100): EditorObservable<CircleEditUpdate> {
+  edit(center: Cartesian3, radius: number, priority = 100): CircleEditorObservable<CircleEditUpdate> {
     const id = this.generteId();
     const editSubject = new BehaviorSubject<CircleEditUpdate>({
       id,
@@ -189,7 +188,7 @@ export class CirclesEditorService {
   private editCircle(id: string,
                      priority,
                      editSubject: Subject<CircleEditUpdate>,
-                     editObservable?: EditorObservable<CircleEditUpdate>): EditorObservable<CircleEditUpdate> {
+                     editObservable?: CircleEditorObservable<CircleEditUpdate>): CircleEditorObservable<CircleEditUpdate> {
 
     const pointDragRegistration = this.mapEventsManager.register({
       event: CesiumEvent.LEFT_CLICK_DRAG,
