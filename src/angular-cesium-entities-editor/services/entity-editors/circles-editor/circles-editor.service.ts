@@ -15,7 +15,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { CircleEditUpdate } from '../../../models/circle-edit-update';
 import { GeoUtilsService } from '../../../../angular-cesium/services/geo-utils/geo-utils.service';
 import { CirclesManagerService } from './circles-manager.service';
-import { EditableCircle } from '../../../models/editable-circle';
 import { CircleEditorObservable } from '../../../models/circle-editor-observable';
 
 /**
@@ -101,27 +100,33 @@ export class CirclesEditorService {
       }
 
       if (!center) {
-        const updateValue = {
+        const update = {
           id,
           center: position,
           editMode: EditModes.CREATE,
           editAction: EditActions.ADD_POINT,
         };
-        this.updateSubject.next(updateValue);
-        clientEditSubject.next(updateValue);
+        this.updateSubject.next(update);
+        clientEditSubject.next({
+          ...update,
+          ...this.getCircleProperties(id),
+        });
         center = position;
       }
 
       else {
-        const updateValue = {
+        const update = {
           id,
           center,
           radiusPoint: position,
           editMode: EditModes.CREATE,
           editAction: EditActions.ADD_LAST_POINT,
         };
-        this.updateSubject.next(updateValue);
-        clientEditSubject.next(updateValue);
+        this.updateSubject.next(update);
+        clientEditSubject.next({
+          ...update,
+          ...this.getCircleProperties(id),
+        });
 
         const changeMode = {
           id,
@@ -132,7 +137,10 @@ export class CirclesEditorService {
         };
 
         this.updateSubject.next(changeMode);
-        clientEditSubject.next(changeMode);
+        clientEditSubject.next({
+          ...update,
+          ...this.getCircleProperties(id),
+        });
         mouseMoveRegistration.dispose();
         addPointRegistration.dispose();
         this.editCircle(id, priority, clientEditSubject, editorObservable);
@@ -178,7 +186,11 @@ export class CirclesEditorService {
       editAction: EditActions.INIT,
     };
     this.updateSubject.next(update);
-    editSubject.next(update);
+    editSubject.next({
+      ...update,
+      ...this.getCircleProperties(id),
+    });
+
     return this.editCircle(
       id,
       priority,
@@ -223,7 +235,10 @@ export class CirclesEditorService {
           editAction,
         };
         this.updateSubject.next(update);
-        editSubject.next(update);
+        editSubject.next({
+          ...update,
+          ...this.getCircleProperties(id),
+        });
       });
 
     let observables = this.observablesMap.get(id);
@@ -285,7 +300,10 @@ export class CirclesEditorService {
         editAction: EditActions.SET_MANUALLY,
       };
       this.updateSubject.next(update);
-      observableToExtend.next(update)
+      observableToExtend.next({
+        ...update,
+        ...this.getCircleProperties(id),
+      });
     };
 
     observableToExtend.circleEditValue = () => observableToExtend.getValue();
@@ -305,8 +323,17 @@ export class CirclesEditorService {
     return this.circlesManager.get(id).getRadiusPoint();
   }
 
-  private getCircle(id): EditableCircle {
-    return this.circlesManager.get(id);
+  private getRadius(id): number {
+    return this.circlesManager.get(id).getRadius();
+  }
+
+  private getCircleProperties(id) {
+    const circle = this.circlesManager.get(id);
+    return {
+      center: circle.getCenter(),
+      radiusPoint: circle.getRadiusPoint(),
+      radius: circle.getRadius()
+    }
   }
 
   private generteId(): string {
