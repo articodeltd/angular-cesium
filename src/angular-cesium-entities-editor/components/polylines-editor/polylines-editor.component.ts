@@ -1,5 +1,4 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { PolygonEditUpdate } from '../../models/polygon-edit-update';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
@@ -10,40 +9,39 @@ import { MapEventsManagerService } from '../../../angular-cesium/services/map-ev
 import { Subject } from 'rxjs/Subject';
 import { CameraService } from '../../../angular-cesium/services/camera/camera.service';
 import { EditPoint } from '../../models/edit-point';
-import { PolygonsManagerService } from '../../services/entity-editors/polygons-editor/polygons-manager.service';
+import { PolylinesEditorService } from '../../services/entity-editors/polyline-editor/polylines-editor.service';
+import { PolylinesManagerService } from '../../services/entity-editors/polyline-editor/polylines-manager.service';
 
 @Component({
 	selector : 'polylines-editor',
-	templateUrl : './polygons-editor.component.html',
-	providers : [CoordinateConverter, PolygonsManagerService]
+	templateUrl : './polylines-editor.component.html',
+	providers : [CoordinateConverter, PolylinesManagerService]
 })
 export class PolylinesEditorComponent implements OnDestroy {
 	
 	public Cesium = Cesium;
 	public editPoints$ = new Subject<AcNotification>();
 	public editPolylines$ = new Subject<AcNotification>();
-	public editPolygons$ = new Subject<AcNotification>();
 	
 	public appearance = new Cesium.PerInstanceColorAppearance({flat : true});
 	public attributes = {color : Cesium.ColorGeometryInstanceAttribute.fromColor(new Cesium.Color(0.2, 0.2, 0.5, 0.5))};
 	public polygonColor = new Cesium.Color(0.1, 0.5, 0.2, 0.4);
 	public lineColor = new Cesium.Color(0, 0, 0, 0.6);
 	
-	@ViewChild('editPolygonsLayer') private editPolygonsLayer: AcLayerComponent;
 	@ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
 	@ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
 	
-	constructor(private polygonsEditor: PolygonsEditorService,
+	constructor(private polylinesEditor: PolylinesEditorService,
 							private coordinateConverter: CoordinateConverter,
 							private mapEventsManager: MapEventsManagerService,
 							private cameraService: CameraService,
-							private polygonsManager: PolygonsManagerService) {
-		this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polygonsManager);
+							private polylinesManager: PolylinesManagerService) {
+		this.polylinesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polylinesManager);
 		this.startListeningToEditorUpdates();
 	}
 	
 	private startListeningToEditorUpdates() {
-		this.polygonsEditor.onUpdate().subscribe((update: PolygonEditUpdate) => {
+		this.polylinesEditor.onUpdate().subscribe((update: PolygonEditUpdate) => {
 			if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
 				this.handleCreateUpdates(update);
 			}
@@ -56,9 +54,8 @@ export class PolylinesEditorComponent implements OnDestroy {
 	handleCreateUpdates(update: PolygonEditUpdate) {
 		switch (update.editAction) {
 			case EditActions.INIT: {
-				this.polygonsManager.createEditablePolygon(
+				this.polylinesManager.createEditablePolyline(
 					update.id,
-					this.editPolygonsLayer,
 					this.editPointsLayer,
 					this.editPolylinesLayer,
 					this.coordinateConverter,
@@ -66,28 +63,28 @@ export class PolylinesEditorComponent implements OnDestroy {
 				break;
 			}
 			case EditActions.MOUSE_MOVE: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				if (update.updatedPosition) {
 					polygon.moveTempMovingPoint(update.updatedPosition);
 				}
 				break;
 			}
 			case EditActions.ADD_POINT: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				if (update.updatedPosition) {
 					polygon.addPoint(update.updatedPosition);
 				}
 				break;
 			}
 			case EditActions.ADD_LAST_POINT: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				if (update.updatedPosition) {
 					polygon.addLastPoint(update.updatedPosition);
 				}
 				break;
 			}
 			case EditActions.DISPOSE: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				polygon.dispose();
 				break;
 			}
@@ -100,9 +97,8 @@ export class PolylinesEditorComponent implements OnDestroy {
 	handleEditUpdates(update: PolygonEditUpdate) {
 		switch (update.editAction) {
 			case EditActions.INIT: {
-				this.polygonsManager.createEditablePolygon(
+				this.polylinesManager.createEditablePolyline(
 					update.id,
-					this.editPolygonsLayer,
 					this.editPointsLayer,
 					this.editPolylinesLayer,
 					this.coordinateConverter,
@@ -112,42 +108,42 @@ export class PolylinesEditorComponent implements OnDestroy {
 				break;
 			}
 			case EditActions.DRAG_POINT: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				if (polygon && polygon.enableEdit) {
 					polygon.movePoint(update.updatedPosition, update.updatedPoint);
 				}
 				break;
 			}
 			case EditActions.DRAG_POINT_FINISH: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				if (polygon && polygon.enableEdit && update.updatedPoint.isVirtualEditPoint()) {
 					polygon.addVirtualEditPoint(update.updatedPoint);
 				}
 				break;
 			}
 			case EditActions.REMOVE_POINT: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				if (polygon && polygon.enableEdit) {
 					polygon.removePoint(update.updatedPoint);
 				}
 				break;
 			}
 			case EditActions.DISABLE: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				if (polygon) {
 					polygon.enableEdit = false;
 				}
 				break;
 			}
 			case EditActions.ENABLE: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				if (polygon) {
 					polygon.enableEdit = true;
 				}
 				break;
 			}
 			case EditActions.SET_MANUALLY: {
-				const polygon = this.polygonsManager.get(update.id);
+				const polygon = this.polylinesManager.get(update.id);
 				if (polygon) {
 					polygon.setPointsManually(update.points);
 				}
@@ -160,7 +156,7 @@ export class PolylinesEditorComponent implements OnDestroy {
 	}
 	
 	ngOnDestroy(): void {
-		this.polygonsManager.clear();
+		this.polylinesManager.clear();
 	}
 	
 	getPointSize(point: EditPoint) {

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AngularCesiumModule } from '../angular-cesium/angular-cesium.module';
 import { PolygonsEditorService } from './services/entity-editors/polygons-editor/polygons-editor.service';
 import { PolygonsEditorComponent } from './components/polygons-editor/polygons-editor.component';
+import { PolylinesEditorService } from './services/entity-editors/polyline-editor/polylines-editor.service';
+import { PolylinesEditorComponent } from './components/polylines-editor/polylines-editor.component';
 
 @NgModule({
   imports: [
@@ -11,12 +13,15 @@ import { PolygonsEditorComponent } from './components/polygons-editor/polygons-e
   ],
   declarations: [
     PolygonsEditorComponent,
+		PolylinesEditorComponent,
   ],
   exports: [
     PolygonsEditorComponent,
+    PolylinesEditorComponent,
   ],
   providers: [
     PolygonsEditorService,
+    PolylinesEditorService,
   ]
 })
 export class AngularCesiumEntitiesEditorModule {

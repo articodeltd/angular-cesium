@@ -4,7 +4,7 @@ import { EditPolyline } from './edit-polyline';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
-import { PointProps, PolygonEditOptions, PolygonProps } from './polygon-edit-options';
+import { PointProps, PolygonEditOptions } from './polygon-edit-options';
 
 export class EditablePolyline extends AcEntity {
 	private positions: EditPoint[] = [];
@@ -65,13 +65,15 @@ export class EditablePolyline extends AcEntity {
 	private addAllVirtualEditPoints() {
 		const currentPoints = [...this.positions];
 		currentPoints.forEach((pos, index) => {
-			const currentPoint = pos;
-			const nextIndex = (index + 1) % (currentPoints.length);
-			const nextPoint = currentPoints[nextIndex];
-			
-			const midPoint = this.setMiddleVirtualPoint(currentPoint, nextPoint);
-			
-			this.updatePointsLayer(midPoint);
+			if (index !== currentPoints.length -1) {
+				const currentPoint = pos;
+				const nextIndex = (index + 1) % (currentPoints.length);
+				const nextPoint = currentPoints[nextIndex];
+				
+				const midPoint = this.setMiddleVirtualPoint(currentPoint, nextPoint);
+				
+				this.updatePointsLayer(midPoint);
+			}
 		});
 	}
 	
@@ -107,12 +109,13 @@ export class EditablePolyline extends AcEntity {
 		this.polylines = [];
 		this.polylinesLayer.removeAll();
 		this.positions.forEach((point, index) => {
-			const nextIndex = (index + 1) % (this.positions.length);
-			const nextPoint = this.positions[nextIndex];
-			const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition());
-			this.polylines.push(polyline);
-			this.polylinesLayer.update(polyline, polyline.getId());
-			
+			if (index !== this.positions.length - 1) {
+				const nextIndex = (index + 1);
+				const nextPoint = this.positions[nextIndex];
+				const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition());
+				this.polylines.push(polyline);
+				this.polylinesLayer.update(polyline, polyline.getId());
+			}
 		});
 	}
 	

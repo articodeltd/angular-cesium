@@ -36,6 +36,7 @@ import { EditorLayerComponent } from './components/editor-layer/editor-layer.com
 import { SelectionLayerComponent } from './components/selection-layer/selection-layer.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { ContextMenuLayerComponent } from './components/context-menu-layer/context-menu-layer.component';
+import { PolylineEditorLayerComponent } from './components/editor-layer/polyline-example/polyline-editor-layer.component';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { ContextMenuLayerComponent } from './components/context-menu-layer/conte
     ContextMenuComponent,
     ContextMenuLayerComponent,
 		SelectionLayerComponent,
+		PolylineEditorLayerComponent,
   ],
   imports: [
     BrowserModule,

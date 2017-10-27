@@ -13,7 +13,6 @@ export class PolylinesManagerService {
 			id,
 			editPolylinesLayer,
 			editPointsLayer,
-			editPolylinesLayer,
 			coordinateConverter,
 			polylineOptions,
 			positions);
