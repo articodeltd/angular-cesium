@@ -11,10 +11,13 @@
 </ac-layer>
 
 <ac-layer #editCirclesLayer acFor="let circle of editCircles$" [context]="this" [zIndex]="0">
-    <ac-circle-desc props="{
+    <ac-ellipse-desc props="{
         position: circle.getCenter(),
-        radius: circle.getRadius(),
-        material: circleColor
+        semiMajorAxis: circle.getRadius(),
+        semiMinorAxis: circle.getRadius(),
+        material: circleColor,
+        outline: true,
+        height: 0
     }">
-    </ac-circle-desc>
+    </ac-ellipse-desc>
 </ac-layer>

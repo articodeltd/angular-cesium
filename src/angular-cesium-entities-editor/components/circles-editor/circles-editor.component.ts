@@ -79,8 +79,7 @@ export class CirclesEditorComponent implements OnDestroy {
         break;
       }
       case EditActions.DISPOSE: {
-        const circle = this.circlesManager.get(update.id);
-        circle.dispose();
+        this.circlesManager.dispose(update.id);
         break;
       }
       default: {

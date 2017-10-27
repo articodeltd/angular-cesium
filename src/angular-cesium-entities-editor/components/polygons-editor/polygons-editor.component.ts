@@ -86,8 +86,7 @@ export class PolygonsEditorComponent implements OnDestroy {
 				break;
 			}
 			case EditActions.DISPOSE: {
-				const polygon = this.polygonsManager.get(update.id);
-				polygon.dispose();
+				this.polygonsManager.dispose(update.id);
 				break;
 			}
 			default: {

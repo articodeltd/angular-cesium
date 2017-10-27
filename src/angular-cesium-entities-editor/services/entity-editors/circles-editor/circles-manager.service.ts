@@ -11,6 +11,11 @@ export class CirclesManagerService {
     return editableCircle;
   }
 
+  dispose(id) {
+    this.circles.get(id).dispose();
+    this.circles.delete(id);
+  }
+
   get(id: string): EditableCircle {
     return this.circles.get(id);
   }

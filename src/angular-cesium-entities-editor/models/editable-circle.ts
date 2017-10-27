@@ -9,11 +9,13 @@ export class EditableCircle extends AcEntity {
   private _radiusPoint: EditPoint;
   private doneCreation = false;
   private _enableEdit = true;
+
   constructor(private id: string,
               private circlesLayer: AcLayerComponent,
               private pointsLayer: AcLayerComponent) {
     super();
   }
+
   get center(): EditPoint {
     return this._center;
   }
@@ -31,8 +33,21 @@ export class EditableCircle extends AcEntity {
   }
 
   setCircleManually(center: Cartesian3, radiusPoint: Cartesian3) {
-    this._center = new EditPoint(this.id, center);
-    this._radiusPoint = new EditPoint(this.id, radiusPoint);
+    if (!this._center) {
+      this._center = new EditPoint(this.id, center);
+    }
+    else {
+      this._center.setPosition(center);
+    }
+
+    if (!this._radiusPoint) {
+      this._radiusPoint = new EditPoint(this.id, radiusPoint);
+    }
+    else {
+      this._radiusPoint.setPosition(radiusPoint);
+    }
+
+    this.doneCreation = true;
     this.updatePointsLayer();
     this.updateCirclesLayer();
   }
@@ -80,9 +95,14 @@ export class EditableCircle extends AcEntity {
       return;
     }
 
-    const delta = GeoUtilsService.getPositionsDelta(this._center.getPosition(), newCenterPos);
-    this._center.setPosition(newCenterPos);
-    GeoUtilsService.addDeltaToPosition(this._radiusPoint.getPosition(), delta, true);
+    const radius = this.getRadius();
+    this.center.setPosition(newCenterPos);
+    this.radiusPoint.setPosition(
+      GeoUtilsService.pointByLocationDistanceAndAzimuth(this.getCenter(), radius, Math.PI / 2, true));
+
+    // const delta = GeoUtilsService.getPositionsDelta(this._center.getPosition(), newCenterPos);
+    // this._center.setPosition(newCenterPos);
+    // GeoUtilsService.addDeltaToPosition(this._radiusPoint.getPosition(), delta, true);
 
     this.updatePointsLayer();
     this.updateCirclesLayer();
@@ -92,7 +112,7 @@ export class EditableCircle extends AcEntity {
     if (!this._center || !this._radiusPoint) {
       return 0;
     }
-    return GeoUtilsService.distance(this._center, this._radiusPoint);
+    return GeoUtilsService.distance(this._center.getPosition(), this._radiusPoint.getPosition());
   }
 
   getCenter(): Cartesian3 {

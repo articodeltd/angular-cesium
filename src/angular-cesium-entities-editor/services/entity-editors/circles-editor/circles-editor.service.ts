@@ -43,6 +43,7 @@ export class CirclesEditorService {
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
   private circlesManager: CirclesManagerService;
+  private observablesMap = new Map<string, DisposableObservable<any>[]>();
 
   init(mapEventsManager: MapEventsManagerService,
        coordinateConverter: CoordinateConverter,
@@ -87,10 +88,8 @@ export class CirclesEditorService {
       priority,
     });
 
-    const editorObservable = this.createEditorObservable(
-      clientEditSubject,
-      [mouseMoveRegistration, addPointRegistration],
-      id);
+    this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration]);
+    const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
     addPointRegistration.subscribe(({ movement: { endPosition } }) => {
       if (finishedCreate) {
@@ -123,20 +122,22 @@ export class CirclesEditorService {
         };
         this.updateSubject.next(updateValue);
         clientEditSubject.next(updateValue);
+
+        const changeMode = {
+          id,
+          center,
+          radiusPoint: position,
+          editMode: EditModes.CREATE,
+          editAction: EditActions.CHANGE_TO_EDIT,
+        };
+
+        this.updateSubject.next(changeMode);
+        clientEditSubject.next(changeMode);
+        mouseMoveRegistration.dispose();
+        addPointRegistration.dispose();
+        this.editCircle(id, priority, clientEditSubject, editorObservable);
+        finishedCreate = true;
       }
-
-      const changeMode = {
-        id,
-        editMode: EditModes.CREATE,
-        editAction: EditActions.CHANGE_TO_EDIT,
-      };
-
-      this.updateSubject.next(changeMode);
-      clientEditSubject.next(changeMode);
-      mouseMoveRegistration.dispose();
-      addPointRegistration.dispose();
-      this.editCircle(id, priority, clientEditSubject, editorObservable);
-      finishedCreate = true;
     });
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
@@ -225,17 +226,26 @@ export class CirclesEditorService {
         editSubject.next(update);
       });
 
-    return editObservable || this.createEditorObservable(editSubject,
-      [pointDragRegistration],
-      id);
+    let observables = this.observablesMap.get(id);
+    if (!observables) {
+      observables = [pointDragRegistration];
+    }
+    else {
+      observables.push(pointDragRegistration)
+    }
+
+    this.observablesMap.set(id, observables);
+
+    return editObservable || this.createEditorObservable(editSubject, id);
   }
 
 
-  private createEditorObservable(observableToExtend: any,
-                                 disposableObservables: DisposableObservable<any>[],
-                                 id: string): CircleEditorObservable<CircleEditUpdate> {
+  private createEditorObservable(observableToExtend: any, id: string): CircleEditorObservable<CircleEditUpdate> {
     observableToExtend.dispose = () => {
-      disposableObservables.forEach(obs => obs.dispose());
+      const observables = this.observablesMap.get(id);
+      if (observables) {
+        observables.forEach(obs => obs.dispose())
+      }
       this.updateSubject.next({
         id,
         center: this.getCenterPosition(id),
@@ -267,20 +277,15 @@ export class CirclesEditorService {
 
     observableToExtend.setCircleManually = (center: Cartesian3, radius: number) => {
       const radiusPoint = GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
-      this.updateSubject.next({
+      const update = {
         id,
-        center: this.getCenterPosition(id),
+        center: center,
         radiusPoint: radiusPoint,
         editMode: EditModes.EDIT,
         editAction: EditActions.SET_MANUALLY,
-      });
-      observableToExtend.next({
-        id,
-        center: this.getCenterPosition(id),
-        radiusPoint: radiusPoint,
-        editMode: EditModes.EDIT,
-        editAction: EditActions.SET_MANUALLY,
-      })
+      };
+      this.updateSubject.next(update);
+      observableToExtend.next(update)
     };
 
     observableToExtend.circleEditValue = () => observableToExtend.getValue();
@@ -307,5 +312,4 @@ export class CirclesEditorService {
   private generteId(): string {
     return 'edit-circle-' + this.counter++;
   }
-
 }
