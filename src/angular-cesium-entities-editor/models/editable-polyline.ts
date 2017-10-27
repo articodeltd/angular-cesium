@@ -4,8 +4,7 @@ import { EditPolyline } from './edit-polyline';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
-import { PointProps } from './polygon-edit-options';
-import { PolylineEditOptions, PolylineProps } from './polyline-edit-options';
+import { PointProps, PolylineEditOptions, PolylineProps } from './polyline-edit-options';
 
 export class EditablePolyline extends AcEntity {
 	

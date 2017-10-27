@@ -7,9 +7,6 @@ export interface PointProps {
 	outlineColor?: any;
 	outlineWidth?: number;
 }
-export interface PolygonProps {
-	material?: any;
-}
 export interface PolylineProps {
 	width?: any;
 	material: any

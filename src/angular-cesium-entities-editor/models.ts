@@ -3,6 +3,8 @@ export * from './models/edit-mode.enum';
 export * from './models/edit-point';
 export * from './models/edit-polyline';
 export * from './models/editable-polygon';
+export * from './models/editable-polyline';
 export * from './models/editor-observable';
 export * from './models/polygon-edit-update';
 export * from './models/polygon-edit-options';
+export * from './models/polyline-edit-options';

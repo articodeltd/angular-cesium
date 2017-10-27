@@ -1,3 +1,13 @@
+<ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" [zIndex]="1">
+    <ac-polyline-primitive-desc props="{
+        positions: polyline.getPositions(),
+        width: polyline.getPolylineProps().width,
+        material: polyline.getPolylineProps().material,
+        followSurface: true
+    }">
+    </ac-polyline-primitive-desc>
+</ac-layer>
+
 <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
     <ac-point-desc props="{
         position: point.getPosition(),
@@ -8,16 +18,6 @@
         heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND
     }">
     </ac-point-desc>
-</ac-layer>
-
-<ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" [zIndex]="1">
-    <ac-polyline-primitive-desc props="{
-        positions: polyline.getPositions(),
-        width: 1,
-        material: lineColor,
-        followSurface: true
-    }">
-    </ac-polyline-primitive-desc>
 </ac-layer>
 
 <ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this" [zIndex]="0">

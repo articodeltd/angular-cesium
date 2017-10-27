@@ -134,7 +134,7 @@ export class EditablePolygon extends AcEntity {
 			const nextIndex = (index + 1) % (this.positions.length);
 			const nextPoint = this.positions[nextIndex];
 			const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(),
-				this._defaultPolylineProps);
+				this.defaultPolylineProps);
 			this.polylines.push(polyline);
 			this.polylinesLayer.update(polyline, polyline.getId());
 			
@@ -159,7 +159,7 @@ export class EditablePolygon extends AcEntity {
 			this.updatePointsLayer(firstPoint);
 		}
 		
-		this.movingPoint = new EditPoint(this.id, position.clone());
+		this.movingPoint = new EditPoint(this.id, position.clone(), this.defaultPointProps);
 		this.positions.push(this.movingPoint);
 		
 		this.updatePointsLayer(this.movingPoint);
@@ -186,10 +186,10 @@ export class EditablePolygon extends AcEntity {
 			.forEach(p => this.removePosition(p));
 		this.addAllVirtualEditPoints();
 		
+		this.renderPolylines();
 		if (this.getPointsCount() >= 3) {
 			this.polygonsLayer.update(this, this.id);
 		}
-		this.renderPolylines();
 	}
 	
 	addLastPoint(position: Cartesian3) {
@@ -235,8 +235,8 @@ export class EditablePolygon extends AcEntity {
 	}
 	
 	private updatePointsLayer(...point: EditPoint[]) {
-		point.forEach(p => this.pointsLayer.update(p, p.getId()));
 		this.renderPolylines();
+		point.forEach(p => this.pointsLayer.update(p, p.getId()));
 	}
 	
 	dispose() {
