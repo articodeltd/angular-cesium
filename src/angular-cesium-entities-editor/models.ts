@@ -5,3 +5,4 @@ export * from './models/edit-polyline';
 export * from './models/editable-polygon';
 export * from './models/editor-observable';
 export * from './models/polygon-edit-update';
+export * from './models/polygon-edit-options';
