@@ -12,7 +12,7 @@
 
 <ac-layer #editCirclesLayer acFor="let circle of editCircles$" [context]="this" [zIndex]="0">
     <ac-circle-desc props="{
-        position: circle.center.getPosition(),
+        position: circle.getCenter(),
         radius: circle.getRadius(),
         material: circleColor
     }">

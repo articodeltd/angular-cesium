@@ -12,7 +12,6 @@ import { CoordinateConverter } from '../../../../angular-cesium/services/coordin
 import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
-import { EditorObservable } from '../../../models/editor-observable';
 import { PolygonsManagerService } from './polygons-manager.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PolygonEditorObservable } from '../../../models/polygon-editor-observable';
@@ -59,7 +58,7 @@ export class PolygonsEditorService {
 		return this.updatePublisher;
 	}
 	
-	create(priority = 100): EditorObservable<PolygonEditUpdate> {
+	create(priority = 100): PolygonEditorObservable<PolygonEditUpdate> {
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
 		const clientEditSubject = new BehaviorSubject<PolygonEditUpdate>({
@@ -176,7 +175,7 @@ export class PolygonsEditorService {
 		return editorObservable;
 	}
 	
-	edit(positions: Cartesian3[], priority = 100): EditorObservable<PolygonEditUpdate> {
+	edit(positions: Cartesian3[], priority = 100): PolygonEditorObservable<PolygonEditUpdate> {
 		if (positions.length < 3) {
 			throw new Error('Polygons editor error edit(): polygon should have at least 3 positions');
 		}
@@ -210,7 +209,7 @@ export class PolygonsEditorService {
 											positions: Cartesian3[],
 											priority,
 											editSubject: Subject<PolygonEditUpdate>,
-											editObservable?: EditorObservable<PolygonEditUpdate>): EditorObservable<PolygonEditUpdate> {
+											editObservable?: PolygonEditorObservable<PolygonEditUpdate>): PolygonEditorObservable<PolygonEditUpdate> {
 		
 		const pointDragRegistration = this.mapEventsManager.register({
 			event : CesiumEvent.LEFT_CLICK_DRAG,
@@ -330,7 +329,7 @@ export class PolygonsEditorService {
 		
 		observableToExtend.polygonEditValue = () => observableToExtend.getValue();
 		
-		return observableToExtend as EditorObservable<PolygonEditUpdate>;
+		return observableToExtend as PolygonEditorObservable<PolygonEditUpdate>;
 	}
 	
 	private generteId(): string {

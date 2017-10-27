@@ -1,5 +1,4 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { PolygonEditUpdate } from '../../models/polygon-edit-update';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
@@ -11,6 +10,7 @@ import { Subject } from 'rxjs/Subject';
 import { CameraService } from '../../../angular-cesium/services/camera/camera.service';
 import { EditPoint } from '../../models/edit-point';
 import { PolygonsManagerService } from '../../services/entity-editors/polygons-editor/polygons-manager.service';
+import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 
 @Component({
 	selector : 'polygons-editor',
