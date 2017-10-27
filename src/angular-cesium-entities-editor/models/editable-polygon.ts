@@ -4,6 +4,7 @@ import { EditPolyline } from './edit-polyline';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
+import { PointProps, PolygonEditOptions, PolygonProps } from './polygon-edit-options';
 
 export class EditablePolygon extends AcEntity {
 	private positions: EditPoint[] = [];
@@ -11,17 +12,36 @@ export class EditablePolygon extends AcEntity {
 	private movingPoint: EditPoint;
 	private done = false;
 	private _enableEdit = true;
+	private _polygonProps: PolygonProps;
+	private _defaultPointProps: PointProps;
 	
 	constructor(private id: string,
 							private polygonsLayer: AcLayerComponent,
 							private pointsLayer: AcLayerComponent,
 							private polylinesLayer: AcLayerComponent,
 							private coordinateConverter: CoordinateConverter,
+							polygonOptions: PolygonEditOptions,
 							positions?: Cartesian3[]) {
 		super();
+		this.polygonProps = polygonOptions.defaultPolygonOptions;
+		this.defaultPointProps = polygonOptions.defaultPointOptions;
 		if (positions && positions.length >= 3) {
 			this.createFromExisting(positions);
 		}
+	}
+	
+	get defaultPointProps(): PointProps {
+		return this._defaultPointProps;
+	}
+	
+	get polygonProps(): PolygonProps {
+		return this._polygonProps;
+	}
+	set polygonProps(value: PolygonProps) {
+		this._polygonProps = value;
+	}
+	set defaultPointProps(value: PointProps) {
+		this._defaultPointProps = value;
 	}
 	
 	get enableEdit() {
@@ -70,7 +90,7 @@ export class EditablePolygon extends AcEntity {
 		const currentCart = Cesium.Cartographic.fromCartesian(firstP.getPosition());
 		const nextCart = Cesium.Cartographic.fromCartesian(secondP.getPosition());
 		const midPointCartesian3 = this.coordinateConverter.midPointToCartesian3(currentCart, nextCart);
-		const midPoint = new EditPoint(this.id, midPointCartesian3);
+		const midPoint = new EditPoint(this.id, midPointCartesian3, this.defaultPointProps);
 		midPoint.setVirtualEditPoint(true);
 		
 		const firstIndex = this.positions.indexOf(firstP);
@@ -108,7 +128,7 @@ export class EditablePolygon extends AcEntity {
 	}
 	
 	addPointFromExisting(position: Cartesian3) {
-		const newPoint = new EditPoint(this.id, position);
+		const newPoint = new EditPoint(this.id, position, this.defaultPointProps);
 		this.positions.push(newPoint);
 		this.updatePointsLayer(newPoint);
 	}
@@ -120,12 +140,12 @@ export class EditablePolygon extends AcEntity {
 		}
 		const isFirstPoint = !this.positions.length;
 		if (isFirstPoint) {
-			const firstPoint = new EditPoint(this.id, position);
+			const firstPoint = new EditPoint(this.id, position, this.defaultPointProps);
 			this.positions.push(firstPoint);
 			this.updatePointsLayer(firstPoint);
 		}
 		
-		this.movingPoint = new EditPoint(this.id, position.clone());
+		this.movingPoint = new EditPoint(this.id, position.clone(), this.defaultPointProps);
 		this.positions.push(this.movingPoint);
 		
 		this.updatePointsLayer(this.movingPoint);
