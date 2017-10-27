@@ -16,7 +16,6 @@ export class EditPoint extends AcEntity {
 		this.position = position;
 		this.id = this.generateId();
 		this.pointProps = pointProps;
-		console.log(pointProps);
 	}
 	
 	getPointProps() {

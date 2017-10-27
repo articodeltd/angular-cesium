@@ -23,11 +23,6 @@ export class PolylinesEditorComponent implements OnDestroy {
 	public editPoints$ = new Subject<AcNotification>();
 	public editPolylines$ = new Subject<AcNotification>();
 	
-	public appearance = new Cesium.PerInstanceColorAppearance({flat : true});
-	public attributes = {color : Cesium.ColorGeometryInstanceAttribute.fromColor(new Cesium.Color(0.2, 0.2, 0.5, 0.5))};
-	public polygonColor = new Cesium.Color(0.1, 0.5, 0.2, 0.4);
-	public lineColor = new Cesium.Color(0, 0, 0, 0.6);
-	
 	@ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
 	@ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
 	

@@ -4,27 +4,39 @@ import { EditPolyline } from './edit-polyline';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
-import { PointProps, PolygonEditOptions } from './polygon-edit-options';
+import { PointProps } from './polygon-edit-options';
+import { PolylineEditOptions, PolylineProps } from './polyline-edit-options';
 
 export class EditablePolyline extends AcEntity {
+	
 	private positions: EditPoint[] = [];
 	private polylines: EditPolyline[] = [];
 	private movingPoint: EditPoint;
 	private done = false;
 	private _enableEdit = true;
 	private _defaultPointProps: PointProps;
+	private _defaultPolylineProps: PolylineProps;
 	
 	constructor(private id: string,
 							private pointsLayer: AcLayerComponent,
 							private polylinesLayer: AcLayerComponent,
 							private coordinateConverter: CoordinateConverter,
-							polygonOptions: PolygonEditOptions,
+							polygonOptions: PolylineEditOptions,
 							positions?: Cartesian3[]) {
 		super();
 		this.defaultPointProps = polygonOptions.defaultPointOptions;
+		this.defaultPolylineProps = polygonOptions.defaultPolylineOptions;
 		if (positions && positions.length >= 3) {
 			this.createFromExisting(positions);
 		}
+	}
+	
+	get defaultPolylineProps(): PolylineProps {
+		return this._defaultPolylineProps;
+	}
+	
+	set defaultPolylineProps(value: PolylineProps) {
+		this._defaultPolylineProps = value;
 	}
 	
 	get defaultPointProps(): PointProps {
@@ -65,7 +77,7 @@ export class EditablePolyline extends AcEntity {
 	private addAllVirtualEditPoints() {
 		const currentPoints = [...this.positions];
 		currentPoints.forEach((pos, index) => {
-			if (index !== currentPoints.length -1) {
+			if (index !== currentPoints.length - 1) {
 				const currentPoint = pos;
 				const nextIndex = (index + 1) % (currentPoints.length);
 				const nextPoint = currentPoints[nextIndex];
@@ -112,7 +124,7 @@ export class EditablePolyline extends AcEntity {
 			if (index !== this.positions.length - 1) {
 				const nextIndex = (index + 1);
 				const nextPoint = this.positions[nextIndex];
-				const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition());
+				const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this._defaultPolylineProps);
 				this.polylines.push(polyline);
 				this.polylinesLayer.update(polyline, polyline.getId());
 			}
@@ -197,8 +209,8 @@ export class EditablePolyline extends AcEntity {
 	}
 	
 	private updatePointsLayer(...point: EditPoint[]) {
-		point.forEach(p => this.pointsLayer.update(p, p.getId()));
 		this.renderPolylines();
+		point.forEach(p => this.pointsLayer.update(p, p.getId()));
 	}
 	
 	dispose() {

@@ -16,8 +16,9 @@ import { EditorObservable } from '../../../models/editor-observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PolygonEditOptions } from '../../../models/polygon-edit-options';
 import { PolylinesManagerService } from './polylines-manager.service';
+import { PolylineEditOptions } from '../../../models/polyline-edit-options';
 
-const DEFAULT_OPTIONS: PolygonEditOptions = {
+export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
 	addPointEvent : CesiumEvent.LEFT_CLICK,
 	addLastPointEvent : CesiumEvent.LEFT_DOUBLE_CLICK,
 	removePointEvent : CesiumEvent.RIGHT_CLICK,
@@ -27,9 +28,10 @@ const DEFAULT_OPTIONS: PolygonEditOptions = {
 		outlineColor : Cesium.Color.BLACK,
 		outlineWidth : 1,
 	},
-	defaultPolygonOptions : {
-		material : new Cesium.Color(0.1, 0.5, 0.2, 0.4),
-	}
+	defaultPolylineOptions : {
+		material : Cesium.Color.BLACK,
+		width : 1,
+	},
 };
 
 /**
@@ -74,7 +76,7 @@ export class PolylinesEditorService {
 		return this.updatePublisher;
 	}
 	
-	create(options = DEFAULT_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
+	create(options = DEFAULT_POLYLINE_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
 		const polygonOptions = this.setOptions(options);
@@ -194,15 +196,16 @@ export class PolylinesEditorService {
 		return editorObservable;
 	}
 	
-	private setOptions(options: PolygonEditOptions) {
-		const defaultClone = JSON.parse(JSON.stringify(DEFAULT_OPTIONS));
+	private setOptions(options: PolylineEditOptions) {
+		const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYLINE_OPTIONS));
 		const polygonOptions = Object.assign(defaultClone, options);
-		polygonOptions.defaultPointOptions = Object.assign({}, DEFAULT_OPTIONS.defaultPointOptions, options.defaultPointOptions);
-		polygonOptions.defaultPolygonOptions = Object.assign({}, DEFAULT_OPTIONS.defaultPolygonOptions, options.defaultPolygonOptions);
+		polygonOptions.defaultPointOptions = Object.assign({}, DEFAULT_POLYLINE_OPTIONS.defaultPointOptions, options.defaultPointOptions);
+		polygonOptions.defaultPolylineOptions = Object.assign({},
+			DEFAULT_POLYLINE_OPTIONS.defaultPolylineOptions, options.defaultPolylineOptions);
 		return polygonOptions;
 	}
 	
-	edit(positions: Cartesian3[], options = DEFAULT_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
+	edit(positions: Cartesian3[], options = DEFAULT_POLYLINE_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
 		if (positions.length < 3) {
 			throw new Error('Polygons editor error edit(): polygon should have at least 3 positions');
 		}
