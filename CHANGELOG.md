@@ -2,6 +2,7 @@
 ### Fixes
 * Service init order  [#131](https://github.com/TGFTech/angular-cesium/issues/131)
 * Added context menu service that allows dynamic injection of custom components.
+* added `ac-point-primitive-desc` 
 
 ### Features
 * Added `selectionManagerService` and example in selection-layer.component.ts

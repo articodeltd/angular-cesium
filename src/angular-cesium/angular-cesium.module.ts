@@ -52,6 +52,7 @@ import { AcPolylinePrimitiveDescComponent } from './components/ac-polyline-primi
 import { ModuleConfiguration } from './models/module-options';
 import { ConfigurationService } from './cesium-enhancements/ConfigurationService';
 import { AcContextMenuWrapperComponent } from './components/ac-context-menu-wrapper/ac-context-menu-wrapper.component';
+import { AcPointPrimitiveDescComponent } from './components/ac-point-primitive-desc/ac-point-primitive-desc.component';
 
 @NgModule({
   imports: [
@@ -97,6 +98,7 @@ import { AcContextMenuWrapperComponent } from './components/ac-context-menu-wrap
     AcWallDescComponent,
     AcRectangleDescComponent,
     AcContextMenuWrapperComponent,
+    AcPointPrimitiveDescComponent,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
@@ -142,6 +144,7 @@ import { AcContextMenuWrapperComponent } from './components/ac-context-menu-wrap
     AcWallDescComponent,
     AcRectangleDescComponent,
     AcContextMenuWrapperComponent,
+		AcPointPrimitiveDescComponent,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
