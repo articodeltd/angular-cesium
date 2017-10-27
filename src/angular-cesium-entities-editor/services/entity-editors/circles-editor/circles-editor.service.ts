@@ -4,7 +4,6 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
-import { PolygonEditUpdate } from '../../../models/polygon-edit-update';
 import { EditModes } from '../../../models/edit-mode.enum';
 import { EditActions } from '../../../models/edit-actions.enum';
 import { DisposableObservable } from '../../../../angular-cesium/services/map-events-mananger/disposable-observable';
@@ -13,23 +12,26 @@ import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { EditorObservable } from '../../../models/editor-observable';
-import { PolygonsManagerService } from './polygons-manager.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { CircleEditUpdate } from '../../../models/circle-edit-update';
+import { GeoUtilsService } from '../../../../angular-cesium/services/geo-utils/geo-utils.service';
+import { CirclesManagerService } from './circles-manager.service';
+import { EditableCircle } from '../../../models/editable-circle';
+import { CircleEditorObservable } from '../../../models/circle-editor-observable';
 
 /**
  * Service for creating editable circles
  *
  * usage:
  * ```typescript
- *  // Start creating polygon
+ *  // Start creating circle
  *  const editing$ = circlesEditorService.create();
  *  this.editing$.subscribe(editResult => {
  *				console.log(editResult.positions);
  *		});
  *
- *  // Or edit polygon from existing polygon positions
- *  const editing$ = this.circlesEditorService.edit(initialPos);
+ *  // Or edit circle from existing center point and radius
+ *  const editing$ = this.circlesEditorService.edit(center, radius);
  *
  * ```
  */
@@ -41,14 +43,17 @@ export class CirclesEditorService {
   private counter = 0;
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
+  private circlesManager: CirclesManagerService;
 
   init(mapEventsManager: MapEventsManagerService,
        coordinateConverter: CoordinateConverter,
-       cameraService: CameraService) {
+       cameraService: CameraService,
+       circlesManager: CirclesManagerService) {
     this.mapEventsManager = mapEventsManager;
     this.updatePublisher.connect();
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
+    this.circlesManager = circlesManager;
 
   }
 
@@ -57,8 +62,7 @@ export class CirclesEditorService {
   }
 
   create(priority = 100): EditorObservable<CircleEditUpdate> {
-    const center = undefined;
-    const radiusPoint = undefined;
+    let center = undefined;
     const id = this.generteId();
     const clientEditSubject = new BehaviorSubject<CircleEditUpdate>({
       id,
@@ -101,7 +105,7 @@ export class CirclesEditorService {
       if (!center) {
         const updateValue = {
           id,
-          center: poition,
+          center: position,
           editMode: EditModes.CREATE,
           editAction: EditActions.ADD_POINT,
         };
@@ -132,13 +136,12 @@ export class CirclesEditorService {
       clientEditSubject.next(changeMode);
       mouseMoveRegistration.dispose();
       addPointRegistration.dispose();
-      this.editPolygon(id, positions, priority, clientEditSubject, editorObservable);
+      this.editCircle(id, priority, clientEditSubject, editorObservable);
       finishedCreate = true;
-
     });
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
-      if (!centerPoint) {
+      if (!center) {
         return;
       }
       const position = this.coordinateConverter.screenToCartesian3(endPosition);
@@ -146,95 +149,50 @@ export class CirclesEditorService {
       if (position) {
         this.updateSubject.next({
           id,
-          positions: this.getPositions(id),
+          center,
+          radiusPoint: position,
           editMode: EditModes.CREATE,
-          updatedPosition: position,
           editAction: EditActions.MOUSE_MOVE,
         });
       }
     });
 
-
-    addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.coordinateConverter.screenToCartesian3(endPosition);
-      if (!position) {
-        return;
-      }
-      // position already added by addPointRegistration
-      const updateValue = {
-        id,
-        positions: this.getPositions(id),
-        editMode: EditModes.CREATE,
-        updatedPosition: position,
-        editAction: EditActions.ADD_LAST_POINT,
-      };
-      this.updateSubject.next(updateValue);
-      clientEditSubject.next({
-        ...updateValue,
-        positions: this.getPositions(id),
-        points: this.getPoints(id),
-      });
-
-      const changeMode = {
-        id,
-        editMode: EditModes.CREATE,
-        editAction: EditActions.CHANGE_TO_EDIT,
-      };
-      this.updateSubject.next(changeMode);
-      clientEditSubject.next(changeMode);
-      mouseMoveRegistration.dispose();
-      addPointRegistration.dispose();
-      this.editPolygon(id, positions, priority, clientEditSubject, editorObservable);
-      finishedCreate = true;
-    });
-
     return editorObservable;
   }
 
-  edit(positions: Cartesian3[], priority = 100): EditorObservable<PolygonEditUpdate> {
-    if (positions.length < 3) {
-      throw new Error('Polygons editor error edit(): polygon should have at least 3 positions');
-    }
+  edit(center: Cartesian3, radius: number, priority = 100): EditorObservable<CircleEditUpdate> {
     const id = this.generteId();
-    const editSubject = new BehaviorSubject<PolygonEditUpdate>({
+    const editSubject = new BehaviorSubject<CircleEditUpdate>({
       id,
       editAction: null,
       editMode: EditModes.EDIT
     });
+
+    const radiusPoint: Cartesian3 = GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
+
     const update = {
       id,
-      positions: positions,
+      center,
+      radiusPoint,
       editMode: EditModes.EDIT,
       editAction: EditActions.INIT,
     };
     this.updateSubject.next(update);
-    editSubject.next({
-      ...update,
-      positions: this.getPositions(id),
-      points: this.getPoints(id),
-    });
-    return this.editPolygon(
+    editSubject.next(update);
+    return this.editCircle(
       id,
-      positions,
       priority,
       editSubject,
     )
   }
 
-  private editPolygon(id: string,
-                      positions: Cartesian3[],
-                      priority,
-                      editSubject: Subject<PolygonEditUpdate>,
-                      editObservable?: EditorObservable<PolygonEditUpdate>): EditorObservable<PolygonEditUpdate> {
+  private editCircle(id: string,
+                     priority,
+                     editSubject: Subject<CircleEditUpdate>,
+                     editObservable?: EditorObservable<CircleEditUpdate>): EditorObservable<CircleEditUpdate> {
 
     const pointDragRegistration = this.mapEventsManager.register({
       event: CesiumEvent.LEFT_CLICK_DRAG,
-      entityType: EditPoint,
-      pick: PickOptions.PICK_FIRST,
-      priority,
-    });
-    const pointRemoveRegistration = this.mapEventsManager.register({
-      event: CesiumEvent.RIGHT_CLICK,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
@@ -248,111 +206,107 @@ export class CirclesEditorService {
           return;
         }
         const point: EditPoint = entities[0];
-
+        const pointIsCenter = point === this.getCenterPoint(id);
+        let editAction;
+        if (drop) {
+          editAction = pointIsCenter ? EditActions.DRAG_SHAPE_FINISH : EditActions.DRAG_POINT_FINISH;
+        }
+        else {
+          editAction = pointIsCenter ? EditActions.DRAG_SHAPE : EditActions.DRAG_POINT;
+        }
         const update = {
           id,
-          positions: this.getPositions(id),
+          center: this.getCenterPosition(id),
+          radiusPoint: this.getRadiusPosition(id),
+          dragPosition: position,
           editMode: EditModes.EDIT,
-          updatedPosition: position,
-          updatedPoint: point,
-          editAction: drop ? EditActions.DRAG_POINT_FINISH : EditActions.DRAG_POINT,
+          editAction,
         };
         this.updateSubject.next(update);
-        editSubject.next({
-          ...update,
-          positions: this.getPositions(id),
-          points: this.getPoints(id),
-        });
+        editSubject.next(update);
       });
-
-    pointRemoveRegistration.subscribe(({ entities }) => {
-      const point: EditPoint = entities[0];
-      const allPositions = [...this.getPositions(id)];
-      if (allPositions.length < 4) {
-        return;
-      }
-      const index = allPositions.findIndex(position => point.getPosition().equals(position as Cartesian3));
-      if (index < 0) {
-        return;
-      }
-
-      const update = {
-        id,
-        positions: allPositions,
-        editMode: EditModes.EDIT,
-        updatedPoint: point,
-        editAction: EditActions.REMOVE_POINT,
-      };
-      this.updateSubject.next(update);
-      editSubject.next({
-        ...update,
-        positions: this.getPositions(id),
-        points: this.getPoints(id),
-      });
-    });
 
     return editObservable || this.createEditorObservable(editSubject,
-      [pointDragRegistration, pointRemoveRegistration],
+      [pointDragRegistration],
       id);
   }
 
 
   private createEditorObservable(observableToExtend: any,
                                  disposableObservables: DisposableObservable<any>[],
-                                 id: string): EditorObservable<PolygonEditUpdate> {
+                                 id: string): CircleEditorObservable<CircleEditUpdate> {
     observableToExtend.dispose = () => {
       disposableObservables.forEach(obs => obs.dispose());
       this.updateSubject.next({
         id,
-        positions: this.getPositions(id),
+        center: this.getCenterPosition(id),
+        radiusPoint: this.getRadiusPosition(id),
         editMode: EditModes.CREATE_OR_EDIT,
         editAction: EditActions.DISPOSE,
       });
     };
+
     observableToExtend.enable = () => {
       this.updateSubject.next({
         id,
-        positions: this.getPositions(id),
+        center: this.getCenterPosition(id),
+        radiusPoint: this.getRadiusPosition(id),
         editMode: EditModes.EDIT,
         editAction: EditActions.ENABLE,
       });
     };
+
     observableToExtend.disable = () => {
       this.updateSubject.next({
         id,
-        positions: this.getPositions(id),
+        center: this.getCenterPosition(id),
+        radiusPoint: this.getRadiusPosition(id),
         editMode: EditModes.EDIT,
         editAction: EditActions.DISABLE,
       });
     };
-    observableToExtend.setPointsManually = (points: EditPoint[]) => {
+
+    observableToExtend.setCircleManually = (center: Cartesian3, radius: number) => {
+      const radiusPoint = GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
       this.updateSubject.next({
         id,
-        positions: points.map(p => p.getPosition()),
-        points: points,
+        center: this.getCenterPosition(id),
+        radiusPoint: radiusPoint,
         editMode: EditModes.EDIT,
         editAction: EditActions.SET_MANUALLY,
       });
       observableToExtend.next({
         id,
-        positions: this.getPositions(id),
-        points: this.getPoints(id),
+        center: this.getCenterPosition(id),
+        radiusPoint: radiusPoint,
         editMode: EditModes.EDIT,
         editAction: EditActions.SET_MANUALLY,
       })
     };
-    observableToExtend.getCurrentPoints = () => this.getPoints(id);
 
-    observableToExtend.polygonEditValue = () => observableToExtend.getValue();
+    observableToExtend.circleEditValue = () => observableToExtend.getValue();
 
-    return observableToExtend as EditorObservable<PolygonEditUpdate>;
+    return observableToExtend as CircleEditorObservable<CircleEditUpdate>;
+  }
+
+  private getCenterPosition(id): Cartesian3 {
+    return this.circlesManager.get(id).getCenter();
+  }
+
+  private getCenterPoint(id): EditPoint {
+    return this.circlesManager.get(id).center;
+  }
+
+  private getRadiusPosition(id): Cartesian3 {
+    return this.circlesManager.get(id).getRadiusPoint();
+  }
+
+  private getCircle(id): EditableCircle {
+    return this.circlesManager.get(id);
   }
 
   private generteId(): string {
-    return 'edit-polygon-' + this.counter++;
-  }
-
-  private getCircle(id) {
+    return 'edit-circle-' + this.counter++;
   }
 
 }

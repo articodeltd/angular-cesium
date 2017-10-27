@@ -15,6 +15,7 @@ import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { EditorObservable } from '../../../models/editor-observable';
 import { PolygonsManagerService } from './polygons-manager.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { PolygonEditorObservable } from '../../../models/polygon-editor-observable';
 
 /**
  * Service for creating editable polygons
@@ -283,7 +284,7 @@ export class PolygonsEditorService {
 	
 	private createEditorObservable(observableToExtend: any,
 																 disposableObservables: DisposableObservable<any>[],
-																 id: string): EditorObservable<PolygonEditUpdate> {
+																 id: string): PolygonEditorObservable<PolygonEditUpdate> {
 		observableToExtend.dispose = () => {
 			disposableObservables.forEach(obs => obs.dispose());
 			this.updateSubject.next({
