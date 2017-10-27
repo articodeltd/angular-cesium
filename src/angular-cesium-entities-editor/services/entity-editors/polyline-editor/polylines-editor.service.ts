@@ -206,8 +206,8 @@ export class PolylinesEditorService {
 	}
 	
 	edit(positions: Cartesian3[], options = DEFAULT_POLYLINE_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
-		if (positions.length < 3) {
-			throw new Error('Polygons editor error edit(): polygon should have at least 3 positions');
+		if (positions.length < 2) {
+			throw new Error('Polylines editor error edit(): polygon should have at least 2 positions');
 		}
 		const id = this.generteId();
 		const polygonOptions = this.setOptions(options);
@@ -286,7 +286,7 @@ export class PolylinesEditorService {
 		pointRemoveRegistration.subscribe(({entities}) => {
 			const point: EditPoint = entities[0];
 			const allPositions = [...this.getPositions(id)];
-			if (allPositions.length < 4) {
+			if (allPositions.length < 3) {
 				return;
 			}
 			const index = allPositions.findIndex(position => point.getPosition().equals(position as Cartesian3));

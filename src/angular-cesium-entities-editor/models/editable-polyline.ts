@@ -25,7 +25,7 @@ export class EditablePolyline extends AcEntity {
 		super();
 		this.defaultPointProps = polygonOptions.defaultPointOptions;
 		this.defaultPolylineProps = polygonOptions.defaultPolylineOptions;
-		if (positions && positions.length >= 3) {
+		if (positions && positions.length >= 2) {
 			this.createFromExisting(positions);
 		}
 	}
