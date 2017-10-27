@@ -17,7 +17,6 @@ export class CirclesEditorLayerComponent implements OnInit {
 	}
 	
 	ngOnInit(): void {
-		// this.startEdit();
 	}
 	
 	startEdit() {
