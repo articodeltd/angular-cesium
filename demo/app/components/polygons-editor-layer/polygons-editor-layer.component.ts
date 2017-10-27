@@ -37,7 +37,10 @@ export class PolygonsEditorLayerComponent implements OnInit {
 	}
 	
 	stopEdit() {
-		this.editing$.dispose();
+    if (this.editing$) {
+      this.editing$.dispose();
+      this.editing$ = undefined;
+    }
 	}
 	
 	
@@ -81,6 +84,4 @@ export class PolygonsEditorLayerComponent implements OnInit {
 			
 		}
 	}
-	
-	
 }

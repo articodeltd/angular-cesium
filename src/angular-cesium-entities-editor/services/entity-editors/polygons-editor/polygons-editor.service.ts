@@ -15,6 +15,7 @@ import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { PolygonsManagerService } from './polygons-manager.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PolygonEditorObservable } from '../../../models/polygon-editor-observable';
+import { EditablePolygon } from '../../../models/editable-polygon';
 
 /**
  * Service for creating editable polygons
@@ -41,6 +42,7 @@ export class PolygonsEditorService {
 	private coordinateConverter: CoordinateConverter;
 	private cameraService: CameraService;
 	private polygonsManager: PolygonsManagerService;
+  private observablesMap = new Map<string, DisposableObservable<any>[]>();
 	
 	init(mapEventsManager: MapEventsManagerService,
 			 coordinateConverter: CoordinateConverter,
@@ -90,10 +92,9 @@ export class PolygonsEditorService {
 			pick : PickOptions.NO_PICK,
 			priority,
 		});
-		const editorObservable = this.createEditorObservable(
-			clientEditSubject,
-			[mouseMoveRegistration, addPointRegistration, addLastPointRegistration],
-			id);
+
+    this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
+		const editorObservable = this.createEditorObservable(clientEditSubject, id);
 		
 		mouseMoveRegistration.subscribe(({movement : {endPosition}}) => {
 			const position = this.coordinateConverter.screenToCartesian3(endPosition);
@@ -217,6 +218,12 @@ export class PolygonsEditorService {
 			pick : PickOptions.PICK_FIRST,
 			priority,
 		});
+		const shapeDragRegistration = this.mapEventsManager.register({
+      event : CesiumEvent.LEFT_CLICK_DRAG,
+      entityType : EditablePolygon,
+      pick : PickOptions.PICK_FIRST,
+      priority,
+    });
 		const pointRemoveRegistration = this.mapEventsManager.register({
 			event : CesiumEvent.RIGHT_CLICK,
 			entityType : EditPoint,
@@ -248,6 +255,31 @@ export class PolygonsEditorService {
 					points : this.getPoints(id),
 				});
 			});
+
+    shapeDragRegistration
+			.do(({movement : {drop}}) => this.cameraService.enableInputs(drop))
+      .subscribe(({movement : {endPosition, drop}, entities}) => {
+        const position = this.coordinateConverter.screenToCartesian3(endPosition);
+        if (!position) {
+          return;
+        }
+        const point: EditPoint = entities[0];
+
+        const update = {
+          id,
+          positions : this.getPositions(id),
+          editMode : EditModes.EDIT,
+          updatedPosition : position,
+          updatedPoint : point,
+          editAction : drop ? EditActions.DRAG_POINT_FINISH : EditActions.DRAG_POINT,
+        };
+        this.updateSubject.next(update);
+        editSubject.next({
+          ...update,
+          positions : this.getPositions(id),
+          points : this.getPoints(id),
+        });
+      });
 		
 		pointRemoveRegistration.subscribe(({entities}) => {
 			const point: EditPoint = entities[0];
@@ -274,18 +306,28 @@ export class PolygonsEditorService {
 				points : this.getPoints(id),
 			});
 		});
+
+    let observables = this.observablesMap.get(id);
+    if (!observables) {
+      observables = [pointDragRegistration, pointRemoveRegistration];
+    }
+    else {
+      observables.push(pointDragRegistration, pointRemoveRegistration)
+    }
+
+    this.observablesMap.set(id, observables);
 		
-		return editObservable || this.createEditorObservable(editSubject,
-			[pointDragRegistration, pointRemoveRegistration],
-			id);
+		return editObservable || this.createEditorObservable(editSubject, id);
 	}
 	
 	
 	private createEditorObservable(observableToExtend: any,
-																 disposableObservables: DisposableObservable<any>[],
 																 id: string): PolygonEditorObservable<PolygonEditUpdate> {
 		observableToExtend.dispose = () => {
-			disposableObservables.forEach(obs => obs.dispose());
+      const observables = this.observablesMap.get(id);
+      if (observables) {
+        observables.forEach(obs => obs.dispose())
+      }
 			this.updateSubject.next({
 				id,
 				positions : this.getPositions(id),
