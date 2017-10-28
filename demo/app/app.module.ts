@@ -32,10 +32,11 @@ import { PolygonPerformanceTestComponent } from './components/polygon-layer/poly
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
 import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-entities-editor/angular-cesium-entities-editor.module';
-import { EditorLayerComponent } from './components/editor-layer/editor-layer.component';
 import { SelectionLayerComponent } from './components/selection-layer/selection-layer.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { ContextMenuLayerComponent } from './components/context-menu-layer/context-menu-layer.component';
+import { PolygonsEditorLayerComponent } from './components/polygons-editor-layer/polygons-editor-layer.component';
+import { CirclesEditorLayerComponent } from './components/circles-editor-layer/circles-editor-layer.component';
 
 
 @NgModule({
@@ -64,10 +65,11 @@ import { ContextMenuLayerComponent } from './components/context-menu-layer/conte
     KeyboardControlLayerComponent,
     HippodromeLayerComponent,
 		LayerOrderComponent,
-		EditorLayerComponent,
     ContextMenuComponent,
     ContextMenuLayerComponent,
 		SelectionLayerComponent,
+		PolygonsEditorLayerComponent,
+		CirclesEditorLayerComponent,
   ],
   imports: [
     BrowserModule,

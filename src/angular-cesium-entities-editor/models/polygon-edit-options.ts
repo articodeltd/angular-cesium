@@ -1,4 +1,3 @@
-
 import { CesiumEvent } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { CesiumEventModifier } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum';
 
@@ -18,6 +17,7 @@ export interface PolygonEditOptions {
 	removePointEvent?: CesiumEvent;
 	removePointModifier?: CesiumEventModifier;
 	dragPointEvent?: CesiumEvent;
+	dragShapeEvent?: CesiumEvent;
 	defaultPointOptions?: PointProps;
 	defaultPolygonOptions?: PolygonProps;
 }

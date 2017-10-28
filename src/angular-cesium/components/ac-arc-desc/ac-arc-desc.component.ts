@@ -3,7 +3,7 @@ import { LayerService } from '../../services/layer-service/layer-service.service
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
-import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/basic-static-primitive-desc.service';
+import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 
 /**
  *  This is an implementation of an arc.
@@ -12,18 +12,12 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
  *
  *  __Usage :__
  *  ```
- *    <ac-arc-desc geometryProps="{
+ *    <ac-arc-desc props="{
  *          center: arc.center,
  *          angle: arc.angle,
  *          delta: arc.delta,
  *          radius: arc.radius
- *       }"
- *       instanceProps="{
- *          attributes: arc.attributes
- *       }"
- *       primitiveProps="{
- *          appearance: arc.appearance
- *       }">
+ *    }">
  *    </ac-arc-desc>
  *    ```
  */
@@ -32,7 +26,7 @@ import { BasicStaticPrimitiveDesc } from '../../services/basic-primitive-desc/ba
 	selector: 'ac-arc-desc',
 	template: ''
 })
-export class AcArcDescComponent extends BasicStaticPrimitiveDesc {
+export class AcArcDescComponent extends BasicDesc {
 
 	constructor(arcDrawer: ArcDrawerService, layerService: LayerService,
 	            computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
