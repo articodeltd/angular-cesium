@@ -45,7 +45,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
  *				console.log(editResult.positions);
  *		});
  *
- *  // Or edit polygon from existing polygon positions
+ *  // Or edit polyline from existing polyline cartesian3 positions
  *  const editing$ = this.polylinesEditor.edit(initialPos);
  *
  * ```

@@ -6,7 +6,8 @@
 
 ### Features
 * Added `selectionManagerService` and example in selection-layer.component.ts
-* Added context menu service that allows dynamic injection of custom components.  
+* Added context menu service that allows dynamic injection of custom components.
+* Added polyline shape editor  
 
 ## 0.0.29
 ### Features
