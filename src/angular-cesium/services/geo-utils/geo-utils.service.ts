@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 import { Cartesian3 } from '../../models/cartesian3';
-
-interface Vec3 {
-  x: number;
-  y: number;
-  z: number;
-}
+import { Vec3 } from '../../models/vec3';
 
 @Injectable()
 export class GeoUtilsService {
