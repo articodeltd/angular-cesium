@@ -14,61 +14,54 @@ import { CameraService } from '../../../../angular-cesium/services/camera/camera
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { EditorObservable } from '../../../models/editor-observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { PolygonEditOptions } from '../../../models/polygon-edit-options';
-import { PolylinesManagerService } from './polylines-manager.service';
-import { PolylineEditOptions } from '../../../models/polyline-edit-options';
+import { HippodromeEditOptions } from '../../../models/hippodrome-edit-options';
+import { HippodromeManagerService } from './hippodrome-manager.service';
 
-export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
+export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
 	addPointEvent : CesiumEvent.LEFT_CLICK,
-	addLastPointEvent : CesiumEvent.LEFT_DOUBLE_CLICK,
-	removePointEvent : CesiumEvent.RIGHT_CLICK,
 	dragPointEvent : CesiumEvent.LEFT_CLICK_DRAG,
-	defaultPointOptions : {
-		color : Cesium.Color.WHITE,
-		outlineColor : Cesium.Color.BLACK,
-		outlineWidth : 1,
-	},
-	defaultPolylineOptions : {
-		material : Cesium.Color.BLACK,
-		width : 1,
+	hippodromeProps : {
+		material : Cesium.Color.GREEN.withAlpha(0.5),
+		width : 200000.0,
+		outline : false,
 	},
 };
 
 /**
- * Service for creating editable polylines
+ * Service for creating editable hippodromes
  *
  * usage:
  * ```typescript
- *  // Start creating polyline
- *  const editing$ = polylinesEditorService.create();
+ *  // Start creating hippodrome
+ *  const editing$ = hippodromeEditorService.create();
  *  this.editing$.subscribe(editResult => {
  *				console.log(editResult.positions);
  *		});
  *
- *  // Or edit polyline from existing polyline cartesian3 positions
- *  const editing$ = this.polylinesEditor.edit(initialPos);
+ *  // Or edit hippodromes from existing hippodromes cartesian3 positions
+ *  const editing$ = this.hippodromeEditor.edit(initialPos);
  *
  * ```
  */
 @Injectable()
-export class PolylinesEditorService {
+export class HippodromeEditorService {
 	private mapEventsManager: MapEventsManagerService;
 	private updateSubject = new Subject<PolygonEditUpdate>();
 	private updatePublisher = this.updateSubject.publish(); // TODO maybe not needed
 	private counter = 0;
 	private coordinateConverter: CoordinateConverter;
 	private cameraService: CameraService;
-	private polylinesManager: PolylinesManagerService;
+	private hippodromeManager: HippodromeManagerService;
 	
 	init(mapEventsManager: MapEventsManagerService,
 			 coordinateConverter: CoordinateConverter,
 			 cameraService: CameraService,
-			 polylinesManager: PolylinesManagerService) {
+			 managerService: HippodromeManagerService) {
 		this.mapEventsManager = mapEventsManager;
 		this.updatePublisher.connect();
 		this.coordinateConverter = coordinateConverter;
 		this.cameraService = cameraService;
-		this.polylinesManager = polylinesManager;
+		this.hippodromeManager = managerService;
 		
 	}
 	
@@ -76,10 +69,10 @@ export class PolylinesEditorService {
 		return this.updatePublisher;
 	}
 	
-	create(options = DEFAULT_POLYLINE_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
+	create(options = DEFAULT_HIPPODROME_OPTIONS, eventPriority = 100): EditorObservable<PolygonEditUpdate> {
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
-		const polygonOptions = this.setOptions(options);
+		const hippodromeOptions = this.setOptions(options);
 		
 		const clientEditSubject = new BehaviorSubject<PolygonEditUpdate>({
 			id,
@@ -93,27 +86,22 @@ export class PolylinesEditorService {
 			positions,
 			editMode : EditModes.CREATE,
 			editAction : EditActions.INIT,
-			polygonOptions : polygonOptions,
+			polygonOptions : hippodromeOptions,
 		});
 		
 		const mouseMoveRegistration = this.mapEventsManager.register({
 			event : CesiumEvent.MOUSE_MOVE,
 			pick : PickOptions.NO_PICK,
-			priority,
+			priority : eventPriority,
 		});
 		const addPointRegistration = this.mapEventsManager.register({
-			event : polygonOptions.addPointEvent,
+			event : hippodromeOptions.addPointEvent,
 			pick : PickOptions.NO_PICK,
-			priority,
-		});
-		const addLastPointRegistration = this.mapEventsManager.register({
-			event : polygonOptions.addLastPointEvent,
-			pick : PickOptions.NO_PICK,
-			priority,
+			priority : eventPriority,
 		});
 		const editorObservable = this.createEditorObservable(
 			clientEditSubject,
-			[mouseMoveRegistration, addPointRegistration, addLastPointRegistration],
+			[mouseMoveRegistration, addPointRegistration],
 			id);
 		
 		mouseMoveRegistration.subscribe(({movement : {endPosition}}) => {
@@ -156,61 +144,38 @@ export class PolylinesEditorService {
 				positions : this.getPositions(id),
 				points : this.getPoints(id),
 			});
-		});
-		
-		
-		addLastPointRegistration.subscribe(({movement : {endPosition}}) => {
-			const position = this.coordinateConverter.screenToCartesian3(endPosition);
-			if (!position) {
-				return;
-			}
-			// position already added by addPointRegistration
-			const updateValue = {
-				id,
-				positions : this.getPositions(id),
-				editMode : EditModes.CREATE,
-				updatedPosition : position,
-				editAction : EditActions.ADD_LAST_POINT,
-			};
-			this.updateSubject.next(updateValue);
-			clientEditSubject.next({
-				...updateValue,
-				positions : this.getPositions(id),
-				points : this.getPoints(id),
-			});
 			
-			const changeMode = {
-				id,
-				editMode : EditModes.CREATE,
-				editAction : EditActions.CHANGE_TO_EDIT,
-			};
-			this.updateSubject.next(changeMode);
-			clientEditSubject.next(changeMode);
-			mouseMoveRegistration.dispose();
-			addPointRegistration.dispose();
-			addLastPointRegistration.dispose();
-			this.editPolyline(id, positions, priority, clientEditSubject, polygonOptions, editorObservable);
-			finishedCreate = true;
+			if (this.getPositions(id).length === 2) {
+				const changeMode = {
+					id,
+					editMode : EditModes.CREATE,
+					editAction : EditActions.CHANGE_TO_EDIT,
+				};
+				this.updateSubject.next(changeMode);
+				clientEditSubject.next(changeMode);
+				mouseMoveRegistration.dispose();
+				addPointRegistration.dispose();
+				this.editHippdrome(id, eventPriority, clientEditSubject, hippodromeOptions, editorObservable);
+				finishedCreate = true;
+			}
 		});
 		
 		return editorObservable;
 	}
 	
-	private setOptions(options: PolylineEditOptions) {
-		const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYLINE_OPTIONS));
+	private setOptions(options: HippodromeEditOptions): HippodromeEditOptions {
+		const defaultClone = JSON.parse(JSON.stringify(DEFAULT_HIPPODROME_OPTIONS));
 		const polygonOptions = Object.assign(defaultClone, options);
-		polygonOptions.defaultPointOptions = Object.assign({}, DEFAULT_POLYLINE_OPTIONS.defaultPointOptions, options.defaultPointOptions);
-		polygonOptions.defaultPolylineOptions = Object.assign({},
-			DEFAULT_POLYLINE_OPTIONS.defaultPolylineOptions, options.defaultPolylineOptions);
+		polygonOptions.defaultPointOptions = Object.assign({}, DEFAULT_HIPPODROME_OPTIONS.hippodromeProps, options.hippodromeProps);
 		return polygonOptions;
 	}
 	
-	edit(positions: Cartesian3[], options = DEFAULT_POLYLINE_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
-		if (positions.length < 2) {
-			throw new Error('Polylines editor error edit(): polygon should have at least 2 positions');
+	edit(positions: Cartesian3[], options = DEFAULT_HIPPODROME_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
+		if (positions.length !== 2) {
+			throw new Error('Hippodrome editor error edit(): polygon should have 2 positions but received ' + positions);
 		}
 		const id = this.generteId();
-		const polygonOptions = this.setOptions(options);
+		const hippodromeEditOptions = this.setOptions(options);
 		const editSubject = new BehaviorSubject<PolygonEditUpdate>({
 			id,
 			editAction : null,
@@ -221,7 +186,7 @@ export class PolylinesEditorService {
 			positions : positions,
 			editMode : EditModes.EDIT,
 			editAction : EditActions.INIT,
-			polygonOptions : polygonOptions,
+			polygonOptions : hippodromeEditOptions,
 		};
 		this.updateSubject.next(update);
 		editSubject.next({
@@ -229,30 +194,22 @@ export class PolylinesEditorService {
 			positions : this.getPositions(id),
 			points : this.getPoints(id),
 		});
-		return this.editPolyline(
+		return this.editHippdrome(
 			id,
-			positions,
 			priority,
 			editSubject,
-			polygonOptions
+			hippodromeEditOptions
 		)
 	}
 	
-	private editPolyline(id: string,
-											 positions: Cartesian3[],
-											 priority,
-											 editSubject: Subject<PolygonEditUpdate>,
-											 options: PolygonEditOptions,
-											 editObservable?: EditorObservable<PolygonEditUpdate>) {
+	private editHippdrome(id: string,
+												priority,
+												editSubject: Subject<PolygonEditUpdate>,
+												options: HippodromeEditOptions,
+												editObservable?: EditorObservable<PolygonEditUpdate>) {
 		
 		const pointDragRegistration = this.mapEventsManager.register({
 			event : options.dragPointEvent,
-			entityType : EditPoint,
-			pick : PickOptions.PICK_FIRST,
-			priority,
-		});
-		const pointRemoveRegistration = this.mapEventsManager.register({
-			event : options.removePointEvent,
 			entityType : EditPoint,
 			pick : PickOptions.PICK_FIRST,
 			priority,
@@ -283,34 +240,9 @@ export class PolylinesEditorService {
 				});
 			});
 		
-		pointRemoveRegistration.subscribe(({entities}) => {
-			const point: EditPoint = entities[0];
-			const allPositions = [...this.getPositions(id)];
-			if (allPositions.length < 3) {
-				return;
-			}
-			const index = allPositions.findIndex(position => point.getPosition().equals(position as Cartesian3));
-			if (index < 0) {
-				return;
-			}
-			
-			const update = {
-				id,
-				positions : allPositions,
-				editMode : EditModes.EDIT,
-				updatedPoint : point,
-				editAction : EditActions.REMOVE_POINT,
-			};
-			this.updateSubject.next(update);
-			editSubject.next({
-				...update,
-				positions : this.getPositions(id),
-				points : this.getPoints(id),
-			});
-		});
 		
 		return editObservable || this.createEditorObservable(editSubject,
-			[pointDragRegistration, pointRemoveRegistration],
+			[pointDragRegistration],
 			id);
 	}
 	
@@ -367,16 +299,16 @@ export class PolylinesEditorService {
 	}
 	
 	private generteId(): string {
-		return 'edit-polyline-' + this.counter++;
+		return 'edit-hippodrome-' + this.counter++;
 	}
 	
 	private getPositions(id) {
-		const polyline = this.polylinesManager.get(id);
+		const polyline = this.hippodromeManager.get(id);
 		return polyline.getRealPositions()
 	}
 	
 	private getPoints(id) {
-		const polyline = this.polylinesManager.get(id);
+		const polyline = this.hippodromeManager.get(id);
 		return polyline.getRealPoints();
 	}
 }

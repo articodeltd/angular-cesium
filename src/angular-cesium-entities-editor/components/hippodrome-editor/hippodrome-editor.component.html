@@ -1,0 +1,22 @@
+<ac-layer #editHippodromesLayer acFor="let hippodrome of editHippodromes$" [context]="this" [zIndex]="2">
+    <ac-corridor-desc props="{
+		positions: hippodrome.positions,
+		cornerType: Cesium.CornerType.ROUNDED,
+		material: hippodrome.color,
+		width : 200000.0
+	}">
+    </ac-corridor-desc>
+</ac-layer>
+
+<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
+    <ac-point-desc props="{
+        position: point.getPosition(),
+        pixelSize: getPointSize(point),
+        color: point.getPointProps().color,
+        outlineColor: point.getPointProps().outlineColor,
+        outlineWidth: point.getPointProps().outlineWidth,
+        heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND
+    }">
+    </ac-point-desc>
+</ac-layer>
+

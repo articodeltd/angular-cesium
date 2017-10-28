@@ -37,6 +37,7 @@ import { SelectionLayerComponent } from './components/selection-layer/selection-
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { ContextMenuLayerComponent } from './components/context-menu-layer/context-menu-layer.component';
 import { PolylineEditorLayerComponent } from './components/editor-layer/polyline-example/polyline-editor-layer.component';
+import { HippodromeEditorLayerComponent } from './components/editor-layer/hippodrome-example/hippodrome-editor-layer.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { PolylineEditorLayerComponent } from './components/editor-layer/polyline
     ContextMenuLayerComponent,
 		SelectionLayerComponent,
 		PolylineEditorLayerComponent,
+		HippodromeEditorLayerComponent,
   ],
   imports: [
     BrowserModule,
