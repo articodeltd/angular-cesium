@@ -2,6 +2,7 @@ import { EditModes } from './edit-mode.enum';
 import { EditActions } from './edit-actions.enum';
 import { EditPoint } from './edit-point';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+import { PolygonEditOptions } from './polygon-edit-options';
 
 export interface PolygonEditUpdate {
   id: string,
@@ -11,4 +12,5 @@ export interface PolygonEditUpdate {
   updatedPosition?: Cartesian3,
   points?: EditPoint[],
   updatedPoint?: EditPoint,
+  polygonOptions?: PolygonEditOptions
 }

@@ -15,6 +15,22 @@ import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { EditorObservable } from '../../../models/editor-observable';
 import { PolygonsManagerService } from './polygons-manager.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { PolygonEditOptions } from '../../../models/polygon-edit-options';
+
+const DEFAULT_OPTIONS: PolygonEditOptions = {
+	addPointEvent : CesiumEvent.LEFT_CLICK,
+	addLastPointEvent : CesiumEvent.LEFT_DOUBLE_CLICK,
+	removePointEvent : CesiumEvent.RIGHT_CLICK,
+	dragPointEvent : CesiumEvent.LEFT_CLICK_DRAG,
+	defaultPointOptions : {
+		color : Cesium.Color.WHITE,
+		outlineColor : Cesium.Color.BLACK,
+		outlineWidth : 1,
+	},
+	defaultPolygonOptions : {
+		material : new Cesium.Color(0.1, 0.5, 0.2, 0.4),
+	}
+};
 
 /**
  * Service for creating editable polygons
@@ -58,9 +74,11 @@ export class PolygonsEditorService {
 		return this.updatePublisher;
 	}
 	
-	create(priority = 100): EditorObservable<PolygonEditUpdate> {
+	create(options = DEFAULT_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
+		const polygonOptions = this.setOptions(options);
+		
 		const clientEditSubject = new BehaviorSubject<PolygonEditUpdate>({
 			id,
 			editAction : null,
@@ -73,6 +91,7 @@ export class PolygonsEditorService {
 			positions,
 			editMode : EditModes.CREATE,
 			editAction : EditActions.INIT,
+			polygonOptions : polygonOptions,
 		});
 		
 		const mouseMoveRegistration = this.mapEventsManager.register({
@@ -81,12 +100,12 @@ export class PolygonsEditorService {
 			priority,
 		});
 		const addPointRegistration = this.mapEventsManager.register({
-			event : CesiumEvent.LEFT_CLICK,
+			event : polygonOptions.addPointEvent,
 			pick : PickOptions.NO_PICK,
 			priority,
 		});
 		const addLastPointRegistration = this.mapEventsManager.register({
-			event : CesiumEvent.LEFT_DOUBLE_CLICK,
+			event : polygonOptions.addLastPointEvent,
 			pick : PickOptions.NO_PICK,
 			priority,
 		});
@@ -168,18 +187,27 @@ export class PolygonsEditorService {
 			mouseMoveRegistration.dispose();
 			addPointRegistration.dispose();
 			addLastPointRegistration.dispose();
-			this.editPolygon(id, positions, priority, clientEditSubject, editorObservable);
+			this.editPolygon(id, positions, priority, clientEditSubject, polygonOptions, editorObservable);
 			finishedCreate = true;
 		});
 		
 		return editorObservable;
 	}
 	
-	edit(positions: Cartesian3[], priority = 100): EditorObservable<PolygonEditUpdate> {
+	private setOptions(options: PolygonEditOptions) {
+		const defaultClone = JSON.parse(JSON.stringify(DEFAULT_OPTIONS));
+		const polygonOptions = Object.assign(defaultClone, options);
+		polygonOptions.defaultPointOptions = Object.assign({}, DEFAULT_OPTIONS.defaultPointOptions, options.defaultPointOptions);
+		polygonOptions.defaultPolygonOptions = Object.assign({}, DEFAULT_OPTIONS.defaultPolygonOptions, options.defaultPolygonOptions);
+		return polygonOptions;
+	}
+	
+	edit(positions: Cartesian3[], options = DEFAULT_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
 		if (positions.length < 3) {
 			throw new Error('Polygons editor error edit(): polygon should have at least 3 positions');
 		}
 		const id = this.generteId();
+		const polygonOptions = this.setOptions(options);
 		const editSubject = new BehaviorSubject<PolygonEditUpdate>({
 			id,
 			editAction : null,
@@ -190,6 +218,7 @@ export class PolygonsEditorService {
 			positions : positions,
 			editMode : EditModes.EDIT,
 			editAction : EditActions.INIT,
+			polygonOptions : polygonOptions,
 		};
 		this.updateSubject.next(update);
 		editSubject.next({
@@ -202,6 +231,7 @@ export class PolygonsEditorService {
 			positions,
 			priority,
 			editSubject,
+			polygonOptions
 		)
 	}
 	
@@ -209,16 +239,17 @@ export class PolygonsEditorService {
 											positions: Cartesian3[],
 											priority,
 											editSubject: Subject<PolygonEditUpdate>,
-											editObservable?: EditorObservable<PolygonEditUpdate>): EditorObservable<PolygonEditUpdate> {
+											options: PolygonEditOptions,
+											editObservable?: EditorObservable<PolygonEditUpdate>) {
 		
 		const pointDragRegistration = this.mapEventsManager.register({
-			event : CesiumEvent.LEFT_CLICK_DRAG,
+			event : options.dragPointEvent,
 			entityType : EditPoint,
 			pick : PickOptions.PICK_FIRST,
 			priority,
 		});
 		const pointRemoveRegistration = this.mapEventsManager.register({
-			event : CesiumEvent.RIGHT_CLICK,
+			event : options.removePointEvent,
 			entityType : EditPoint,
 			pick : PickOptions.PICK_FIRST,
 			priority,

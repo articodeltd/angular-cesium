@@ -81,6 +81,4 @@ export class EditorLayerComponent implements OnInit {
 			
 		}
 	}
-	
-	
 }
