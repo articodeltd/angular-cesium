@@ -14,7 +14,7 @@ import { SceneMode } from '../../../../src/angular-cesium/models/scene-mode.enum
 export class DemoMapComponent {
 	@ViewChild('layer') tracksLayer: TracksLayerComponent;
 	arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
-	sceneMode = SceneMode.SCENE3D;
+	sceneMode = SceneMode.SCENE2D;
 	
 	constructor(private viewerConf: ViewerConfiguration,
 							private appSettingsService: AppSettingsService) {

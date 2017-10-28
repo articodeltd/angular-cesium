@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/editor-observable';
 import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
 import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
 import { PolylinesEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/polyline-editor/polylines-editor.service';
+import { PolylineEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/polyline-editor-observable';
 
 @Component({
 	selector : 'polyline-editor-layer',
@@ -11,7 +11,7 @@ import { PolylinesEditorService } from '../../../../../src/angular-cesium-entiti
 })
 export class PolylineEditorLayerComponent implements OnInit {
 	
-	editing$: EditorObservable<PolygonEditUpdate>;
+	editing$: PolylineEditorObservable;
 	enableEditing = true;
 	
 	constructor(private polylineEditor: PolylinesEditorService) {

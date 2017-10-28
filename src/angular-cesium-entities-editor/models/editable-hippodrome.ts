@@ -3,7 +3,8 @@ import { EditPoint } from './edit-point';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
-import { PointProps, PolylineEditOptions } from './polyline-edit-options';
+import { PointProps } from './polyline-edit-options';
+import { HippodromeEditOptions, HippodromeProps } from './hippodrome-edit-options';
 
 export class EditableHippodrome extends AcEntity {
 	
@@ -12,20 +13,30 @@ export class EditableHippodrome extends AcEntity {
 	private done = false;
 	private _enableEdit = true;
 	private _defaultPointProps: PointProps;
+	private _hippodromeProps: HippodromeProps;
 	
 	constructor(private id: string,
 							private pointsLayer: AcLayerComponent,
 							private hippodromeLayer: AcLayerComponent,
 							private coordinateConverter: CoordinateConverter,
-							polylineEdit: PolylineEditOptions,
+							editOptions: HippodromeEditOptions,
 							positions?: Cartesian3[]) {
 		super();
-		this.defaultPointProps = polylineEdit.defaultPointOptions;
+		this.defaultPointProps = editOptions.defaultPointOptions;
+		this.hippodromeProps = editOptions.hippodromeProps;
 		if (positions && positions.length === 2) {
 			this.createFromExisting(positions);
 		} else if (positions) {
 			throw new Error('Hippodrome consist of 2 points but provided ' + positions.length);
 		}
+	}
+	
+	get hippodromeProps(): HippodromeProps {
+		return this._hippodromeProps;
+	}
+	
+	set hippodromeProps(value: HippodromeProps) {
+		this._hippodromeProps = value;
 	}
 	
 	get defaultPointProps(): PointProps {
@@ -84,9 +95,9 @@ export class EditableHippodrome extends AcEntity {
 			
 		} else {
 			this.done = true;
-			this.movingPoint = null;
 			this.updateHippdromePointsLayer(this.movingPoint);
 			this.updateHippdromeLayer();
+			this.movingPoint = null;
 		}
 		
 		
@@ -147,7 +158,7 @@ export class EditableHippodrome extends AcEntity {
 	
 	private updateHippdromeLayer(...point: EditPoint[]) {
 		if (this.hippodromePositions.length === 2) {
-			 this.hippodromeLayer.update(this, this.id);
+			this.hippodromeLayer.update(this, this.id);
 		}
 	}
 	

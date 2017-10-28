@@ -1,5 +1,6 @@
 import { CesiumEvent } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { CesiumEventModifier } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum';
+import { PointProps } from './polyline-edit-options';
 
 export interface HippodromeProps {
 	width?: number;
@@ -14,4 +15,5 @@ export interface HippodromeEditOptions {
 	addPointModifier?: CesiumEventModifier;
 	dragPointEvent?: CesiumEvent;
 	hippodromeProps?: HippodromeProps;
+	defaultPointOptions?: PointProps;
 }

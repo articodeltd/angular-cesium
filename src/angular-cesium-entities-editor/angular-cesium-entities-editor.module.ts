@@ -8,6 +8,7 @@ import { PolygonsEditorService } from './services/entity-editors/polygons-editor
 import { PolylinesEditorService } from './services/entity-editors/polyline-editor/polylines-editor.service';
 import { PolylinesEditorComponent } from './components/polylines-editor/polylines-editor.component';
 import { HippodromeEditorComponent } from './components/hippodrome-editor/hippodrome-editor.component';
+import { HippodromeEditorService } from './services/entity-editors/hippodrome-editor/hippodrome-editor.service';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { HippodromeEditorComponent } from './components/hippodrome-editor/hippod
     PolygonsEditorService,
     CirclesEditorService,
     PolylinesEditorService,
+		HippodromeEditorService,
   ]
 })
 export class AngularCesiumEntitiesEditorModule {

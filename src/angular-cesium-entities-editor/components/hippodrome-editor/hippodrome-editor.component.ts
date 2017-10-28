@@ -1,7 +1,5 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 import { EditModes } from '../../models/edit-mode.enum';
-import { PolygonEditUpdate } from '../../models/polygon-edit-update';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
 import { EditActions } from '../../models/edit-actions.enum';
 import { AcLayerComponent } from '../../../angular-cesium/components/ac-layer/ac-layer.component';
@@ -10,13 +8,14 @@ import { MapEventsManagerService } from '../../../angular-cesium/services/map-ev
 import { Subject } from 'rxjs/Subject';
 import { CameraService } from '../../../angular-cesium/services/camera/camera.service';
 import { EditPoint } from '../../models/edit-point';
-import { PolygonsManagerService } from '../../services/entity-editors/polygons-editor/polygons-manager.service';
 import { HippodromeManagerService } from '../../services/entity-editors/hippodrome-editor/hippodrome-manager.service';
+import { HippodromeEditorService } from '../../services/entity-editors/hippodrome-editor/hippodrome-editor.service';
+import { HippodromeEditUpdate } from '../../models/hippodrome-edit-update';
 
 @Component({
 	selector : 'hippodrome-editor',
 	templateUrl : './hippodrome-editor.component.html',
-	providers : [CoordinateConverter, PolygonsManagerService]
+	providers : [CoordinateConverter, HippodromeManagerService]
 })
 export class HippodromeEditorComponent implements OnDestroy {
 	
@@ -27,17 +26,17 @@ export class HippodromeEditorComponent implements OnDestroy {
 	@ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
 	@ViewChild('editHippodromesLayer') private editHippodromes: AcLayerComponent;
 	
-	constructor(private polygonsEditor: PolygonsEditorService,
+	constructor(private hippodromesEditor: HippodromeEditorService,
 							private coordinateConverter: CoordinateConverter,
 							private mapEventsManager: MapEventsManagerService,
 							private cameraService: CameraService,
 							private hippodromesManager: HippodromeManagerService) {
-		this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, hippodromesManager);
+		this.hippodromesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, hippodromesManager);
 		this.startListeningToEditorUpdates();
 	}
 	
 	private startListeningToEditorUpdates() {
-		this.polygonsEditor.onUpdate().subscribe((update: PolygonEditUpdate) => {
+		this.hippodromesEditor.onUpdate().subscribe((update: HippodromeEditUpdate) => {
 			if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
 				this.handleCreateUpdates(update);
 			}
@@ -47,7 +46,7 @@ export class HippodromeEditorComponent implements OnDestroy {
 		});
 	}
 	
-	handleCreateUpdates(update: PolygonEditUpdate) {
+	handleCreateUpdates(update: HippodromeEditUpdate) {
 		switch (update.editAction) {
 			case EditActions.INIT: {
 				this.hippodromesManager.createEditableHippodrome(
@@ -55,7 +54,7 @@ export class HippodromeEditorComponent implements OnDestroy {
 					this.editPointsLayer,
 					this.editHippodromes,
 					this.coordinateConverter,
-					update.polygonOptions);
+					update.hippodromeOptions);
 				break;
 			}
 			case EditActions.MOUSE_MOVE: {
@@ -83,7 +82,7 @@ export class HippodromeEditorComponent implements OnDestroy {
 		}
 	}
 	
-	handleEditUpdates(update: PolygonEditUpdate) {
+	handleEditUpdates(update: HippodromeEditUpdate) {
 		switch (update.editAction) {
 			case EditActions.INIT: {
 				this.hippodromesManager.createEditableHippodrome(
@@ -91,7 +90,7 @@ export class HippodromeEditorComponent implements OnDestroy {
 					this.editPointsLayer,
 					this.editHippodromes,
 					this.coordinateConverter,
-					update.polygonOptions,
+					update.hippodromeOptions,
 					update.positions
 				);
 				break;

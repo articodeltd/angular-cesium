@@ -1,9 +1,9 @@
 <ac-layer #editHippodromesLayer acFor="let hippodrome of editHippodromes$" [context]="this" [zIndex]="2">
     <ac-corridor-desc props="{
-		positions: hippodrome.positions,
+		positions: hippodrome.getPositions(),
 		cornerType: Cesium.CornerType.ROUNDED,
-		material: hippodrome.color,
-		width : 200000.0
+		material: hippodrome.hippodromeProps.material,
+		width : hippodrome.hippodromeProps.width
 	}">
     </ac-corridor-desc>
 </ac-layer>

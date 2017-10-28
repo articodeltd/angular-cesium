@@ -75,7 +75,7 @@ export class PolylinesEditorService {
 		return this.updatePublisher;
 	}
 	
-	create(options = DEFAULT_POLYLINE_OPTIONS, priority = 100): PolylineEditorObservable {
+	create(options = DEFAULT_POLYLINE_OPTIONS, eventPriority = 100): PolylineEditorObservable {
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
 		const polylineOptions = this.setOptions(options);
@@ -98,17 +98,17 @@ export class PolylinesEditorService {
 		const mouseMoveRegistration = this.mapEventsManager.register({
 			event : CesiumEvent.MOUSE_MOVE,
 			pick : PickOptions.NO_PICK,
-			priority,
+			priority : eventPriority,
 		});
 		const addPointRegistration = this.mapEventsManager.register({
 			event : polylineOptions.addPointEvent,
 			pick : PickOptions.NO_PICK,
-			priority,
+			priority : eventPriority,
 		});
 		const addLastPointRegistration = this.mapEventsManager.register({
 			event : polylineOptions.addLastPointEvent,
 			pick : PickOptions.NO_PICK,
-			priority,
+			priority : eventPriority,
 		});
 		const editorObservable = this.createEditorObservable(
 			clientEditSubject,
@@ -188,7 +188,7 @@ export class PolylinesEditorService {
 			mouseMoveRegistration.dispose();
 			addPointRegistration.dispose();
 			addLastPointRegistration.dispose();
-			this.editPolyline(id, positions, priority, clientEditSubject, polylineOptions, editorObservable);
+			this.editPolyline(id, positions, eventPriority, clientEditSubject, polylineOptions, editorObservable);
 			finishedCreate = true;
 		});
 		

@@ -4,7 +4,6 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
-import { PolygonEditUpdate } from '../../../models/polygon-edit-update';
 import { EditModes } from '../../../models/edit-mode.enum';
 import { EditActions } from '../../../models/edit-actions.enum';
 import { DisposableObservable } from '../../../../angular-cesium/services/map-events-mananger/disposable-observable';
@@ -12,10 +11,11 @@ import { CoordinateConverter } from '../../../../angular-cesium/services/coordin
 import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
-import { EditorObservable } from '../../../models/editor-observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HippodromeEditOptions } from '../../../models/hippodrome-edit-options';
 import { HippodromeManagerService } from './hippodrome-manager.service';
+import { HippodrmoeEditorOboservable } from '../../../models/hippodrmoe-editor-oboservable';
+import { HippodromeEditUpdate } from '../../../models/hippodrome-edit-update';
 
 export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
 	addPointEvent : CesiumEvent.LEFT_CLICK,
@@ -24,6 +24,11 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
 		material : Cesium.Color.GREEN.withAlpha(0.5),
 		width : 200000.0,
 		outline : false,
+	},
+	defaultPointOptions : {
+		color : Cesium.Color.WHITE,
+		outlineColor : Cesium.Color.BLACK,
+		outlineWidth : 1,
 	},
 };
 
@@ -46,7 +51,7 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
 @Injectable()
 export class HippodromeEditorService {
 	private mapEventsManager: MapEventsManagerService;
-	private updateSubject = new Subject<PolygonEditUpdate>();
+	private updateSubject = new Subject<HippodromeEditUpdate>();
 	private updatePublisher = this.updateSubject.publish(); // TODO maybe not needed
 	private counter = 0;
 	private coordinateConverter: CoordinateConverter;
@@ -65,16 +70,16 @@ export class HippodromeEditorService {
 		
 	}
 	
-	onUpdate(): Observable<PolygonEditUpdate> {
+	onUpdate(): Observable<HippodromeEditUpdate> {
 		return this.updatePublisher;
 	}
 	
-	create(options = DEFAULT_HIPPODROME_OPTIONS, eventPriority = 100): EditorObservable<PolygonEditUpdate> {
+	create(options = DEFAULT_HIPPODROME_OPTIONS, eventPriority = 100): HippodrmoeEditorOboservable {
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
 		const hippodromeOptions = this.setOptions(options);
 		
-		const clientEditSubject = new BehaviorSubject<PolygonEditUpdate>({
+		const clientEditSubject = new BehaviorSubject<HippodromeEditUpdate>({
 			id,
 			editAction : null,
 			editMode : EditModes.CREATE
@@ -86,7 +91,7 @@ export class HippodromeEditorService {
 			positions,
 			editMode : EditModes.CREATE,
 			editAction : EditActions.INIT,
-			polygonOptions : hippodromeOptions,
+			hippodromeOptions : hippodromeOptions,
 		});
 		
 		const mouseMoveRegistration = this.mapEventsManager.register({
@@ -165,18 +170,19 @@ export class HippodromeEditorService {
 	
 	private setOptions(options: HippodromeEditOptions): HippodromeEditOptions {
 		const defaultClone = JSON.parse(JSON.stringify(DEFAULT_HIPPODROME_OPTIONS));
-		const polygonOptions = Object.assign(defaultClone, options);
-		polygonOptions.defaultPointOptions = Object.assign({}, DEFAULT_HIPPODROME_OPTIONS.hippodromeProps, options.hippodromeProps);
-		return polygonOptions;
+		const hippodromeOptions = Object.assign(defaultClone, options);
+		hippodromeOptions.hippodromeProps = Object.assign({}, DEFAULT_HIPPODROME_OPTIONS.hippodromeProps, options.hippodromeProps);
+		hippodromeOptions.defaultPointOptions = Object.assign({}, DEFAULT_HIPPODROME_OPTIONS.defaultPointOptions, options.defaultPointOptions);
+		return hippodromeOptions;
 	}
 	
-	edit(positions: Cartesian3[], options = DEFAULT_HIPPODROME_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
+	edit(positions: Cartesian3[], options = DEFAULT_HIPPODROME_OPTIONS, priority = 100): HippodrmoeEditorOboservable {
 		if (positions.length !== 2) {
 			throw new Error('Hippodrome editor error edit(): polygon should have 2 positions but received ' + positions);
 		}
 		const id = this.generteId();
 		const hippodromeEditOptions = this.setOptions(options);
-		const editSubject = new BehaviorSubject<PolygonEditUpdate>({
+		const editSubject = new BehaviorSubject<HippodromeEditUpdate>({
 			id,
 			editAction : null,
 			editMode : EditModes.EDIT
@@ -186,7 +192,7 @@ export class HippodromeEditorService {
 			positions : positions,
 			editMode : EditModes.EDIT,
 			editAction : EditActions.INIT,
-			polygonOptions : hippodromeEditOptions,
+			hippodromeOptions : hippodromeEditOptions,
 		};
 		this.updateSubject.next(update);
 		editSubject.next({
@@ -204,9 +210,9 @@ export class HippodromeEditorService {
 	
 	private editHippdrome(id: string,
 												priority,
-												editSubject: Subject<PolygonEditUpdate>,
+												editSubject: Subject<HippodromeEditUpdate>,
 												options: HippodromeEditOptions,
-												editObservable?: EditorObservable<PolygonEditUpdate>) {
+												editObservable?: HippodrmoeEditorOboservable): HippodrmoeEditorOboservable {
 		
 		const pointDragRegistration = this.mapEventsManager.register({
 			event : options.dragPointEvent,
@@ -249,7 +255,7 @@ export class HippodromeEditorService {
 	
 	private createEditorObservable(observableToExtend: any,
 																 disposableObservables: DisposableObservable<any>[],
-																 id: string): EditorObservable<PolygonEditUpdate> {
+																 id: string): HippodrmoeEditorOboservable {
 		observableToExtend.dispose = () => {
 			disposableObservables.forEach(obs => obs.dispose());
 			this.updateSubject.next({
@@ -295,7 +301,7 @@ export class HippodromeEditorService {
 		
 		observableToExtend.polygonEditValue = () => observableToExtend.getValue();
 		
-		return observableToExtend as EditorObservable<PolygonEditUpdate>;
+		return observableToExtend as HippodrmoeEditorOboservable;
 	}
 	
 	private generteId(): string {
@@ -303,12 +309,12 @@ export class HippodromeEditorService {
 	}
 	
 	private getPositions(id) {
-		const polyline = this.hippodromeManager.get(id);
-		return polyline.getRealPositions()
+		const hippodrome = this.hippodromeManager.get(id);
+		return hippodrome.getRealPositions()
 	}
 	
 	private getPoints(id) {
-		const polyline = this.hippodromeManager.get(id);
-		return polyline.getRealPoints();
+		const hippodrome = this.hippodromeManager.get(id);
+		return hippodrome.getRealPoints();
 	}
 }
