@@ -1,6 +1,5 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { EditModes } from '../../models/edit-mode.enum';
-import { PolygonEditUpdate } from '../../models/polygon-edit-update';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
 import { EditActions } from '../../models/edit-actions.enum';
 import { AcLayerComponent } from '../../../angular-cesium/components/ac-layer/ac-layer.component';
@@ -11,6 +10,7 @@ import { CameraService } from '../../../angular-cesium/services/camera/camera.se
 import { EditPoint } from '../../models/edit-point';
 import { PolylinesEditorService } from '../../services/entity-editors/polyline-editor/polylines-editor.service';
 import { PolylinesManagerService } from '../../services/entity-editors/polyline-editor/polylines-manager.service';
+import { PolylineEditUpdate } from '../../models/polyline-edit-update';
 
 @Component({
 	selector : 'polylines-editor',
@@ -36,7 +36,7 @@ export class PolylinesEditorComponent implements OnDestroy {
 	}
 	
 	private startListeningToEditorUpdates() {
-		this.polylinesEditor.onUpdate().subscribe((update: PolygonEditUpdate) => {
+		this.polylinesEditor.onUpdate().subscribe((update: PolylineEditUpdate) => {
 			if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
 				this.handleCreateUpdates(update);
 			}
@@ -46,7 +46,7 @@ export class PolylinesEditorComponent implements OnDestroy {
 		});
 	}
 	
-	handleCreateUpdates(update: PolygonEditUpdate) {
+	handleCreateUpdates(update: PolylineEditUpdate) {
 		switch (update.editAction) {
 			case EditActions.INIT: {
 				this.polylinesManager.createEditablePolyline(
@@ -54,7 +54,7 @@ export class PolylinesEditorComponent implements OnDestroy {
 					this.editPointsLayer,
 					this.editPolylinesLayer,
 					this.coordinateConverter,
-					update.polygonOptions);
+					update.polylineOptions);
 				break;
 			}
 			case EditActions.MOUSE_MOVE: {
@@ -89,7 +89,7 @@ export class PolylinesEditorComponent implements OnDestroy {
 		}
 	}
 	
-	handleEditUpdates(update: PolygonEditUpdate) {
+	handleEditUpdates(update: PolylineEditUpdate) {
 		switch (update.editAction) {
 			case EditActions.INIT: {
 				this.polylinesManager.createEditablePolyline(
@@ -97,7 +97,7 @@ export class PolylinesEditorComponent implements OnDestroy {
 					this.editPointsLayer,
 					this.editPolylinesLayer,
 					this.coordinateConverter,
-					update.polygonOptions,
+					update.polylineOptions,
 					update.positions
 				);
 				break;

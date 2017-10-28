@@ -1,0 +1,35 @@
+<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
+    <ac-point-desc props="{
+        position: point.getPosition(),
+        pixelSize: getPointSize(point),
+        color: Cesium.Color.WHITE,
+        outlineColor: Cesium.Color.BLACK,
+        outlineWidth: 1,
+        heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND
+    }">
+    </ac-point-desc>
+</ac-layer>
+
+<ac-layer #editArcsLayer acFor="let arc of editArcs$" [context]="this" [zIndex]="1">
+    <ac-arc-desc props="{
+        angle: arc.angle,
+        delta: arc.delta,
+        center: arc.center,
+        radius: arc.radius,
+        quality: 30,
+        color: Cesium.Color.BLACK
+    }">
+    </ac-arc-desc>
+</ac-layer>
+
+<ac-layer #editCirclesLayer acFor="let circle of editCircles$" [context]="this" [zIndex]="0">
+    <ac-ellipse-desc props="{
+        position: circle.getCenter(),
+        semiMajorAxis: circle.getRadius(),
+        semiMinorAxis: circle.getRadius(),
+        material: circleColor,
+        outline: true,
+        height: 0
+    }">
+    </ac-ellipse-desc>
+</ac-layer>

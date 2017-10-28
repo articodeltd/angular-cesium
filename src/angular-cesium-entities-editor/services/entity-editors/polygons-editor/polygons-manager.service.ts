@@ -20,6 +20,11 @@ export class PolygonsManagerService {
 		this.polygons.set(id, editablePolygon
 		);
 	}
+
+	dispose(id) {
+		this.polygons.get(id).dispose();
+		this.polygons.delete(id);
+	}
 	
 	get(id: string): EditablePolygon {
 		return this.polygons.get(id);

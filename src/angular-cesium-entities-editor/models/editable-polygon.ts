@@ -4,6 +4,7 @@ import { EditPolyline } from './edit-polyline';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
+import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { PolygonEditOptions, PolygonProps } from './polygon-edit-options';
 import { PointProps, PolylineProps } from './polyline-edit-options';
 
@@ -16,6 +17,7 @@ export class EditablePolygon extends AcEntity {
 	private _polygonProps: PolygonProps;
 	private _defaultPointProps: PointProps;
 	private _defaultPolylineProps: PolylineProps;
+	private lastDragedToPosition: Cartesian3;
 	
 	constructor(private id: string,
 							private polygonsLayer: AcLayerComponent,
@@ -133,8 +135,7 @@ export class EditablePolygon extends AcEntity {
 		this.positions.forEach((point, index) => {
 			const nextIndex = (index + 1) % (this.positions.length);
 			const nextPoint = this.positions[nextIndex];
-			const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(),
-				this.defaultPolylineProps);
+			const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this.defaultPolylineProps);
 			this.polylines.push(polyline);
 			this.polylinesLayer.update(polyline, polyline.getId());
 			
@@ -177,6 +178,25 @@ export class EditablePolygon extends AcEntity {
 		if (this.movingPoint) {
 			this.movePoint(toPosition, this.movingPoint);
 		}
+	}
+	
+	movePolygon(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
+		if (!this.lastDragedToPosition) {
+			this.lastDragedToPosition = startMovingPosition;
+		}
+		
+		const delta = GeoUtilsService.getPositionsDelta(this.lastDragedToPosition, draggedToPosition);
+		this.positions.forEach(point => {
+			GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+		});
+		this.updatePointsLayer();
+		this.lastDragedToPosition = draggedToPosition;
+	}
+	
+	endMovePolygon() {
+		this.lastDragedToPosition = undefined;
+		this.positions.forEach(point => this.updatePointsLayer(point));
+		this.updatePolygonsLayer();
 	}
 	
 	removePoint(pointToRemove: EditPoint) {

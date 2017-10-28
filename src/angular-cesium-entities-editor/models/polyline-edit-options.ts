@@ -21,4 +21,5 @@ export interface PolylineEditOptions {
 	dragPointEvent?: CesiumEvent;
 	defaultPointOptions?: PointProps;
 	defaultPolylineOptions?: PolylineProps;
+	dragShapeEvent?: CesiumEvent;
 }
