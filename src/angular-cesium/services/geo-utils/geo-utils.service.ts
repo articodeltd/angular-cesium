@@ -42,14 +42,24 @@ export class GeoUtilsService {
       position.x += delta.x;
       position.y += delta.y;
       position.z += delta.z;
+      const cartographic = Cesium.Cartographic.fromCartesian(position);
+      cartographic.height = 0;
+      const cartesian = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, cartographic.height);
+      position.x = cartesian.x;
+      position.y = cartesian.y;
+      position.z = cartesian.z;
       return position
     }
 
     else {
-      return new Cesium.Cartesian3(
+      const cartesian = new Cesium.Cartesian3(
         position.x + delta.x,
         position.y + delta.y,
-        position.z + delta.z)
+        position.z + delta.z
+      );
+      const cartographic = Cesium.Cartographic.fromCartesian(cartesian);
+      cartographic.height = 0;
+      return Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, cartographic.height);
     }
   }
 
