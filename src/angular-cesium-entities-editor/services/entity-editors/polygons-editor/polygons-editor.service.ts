@@ -23,6 +23,7 @@ const DEFAULT_OPTIONS: PolygonEditOptions = {
 	addLastPointEvent : CesiumEvent.LEFT_DOUBLE_CLICK,
 	removePointEvent : CesiumEvent.RIGHT_CLICK,
 	dragPointEvent : CesiumEvent.LEFT_CLICK_DRAG,
+	dragShapeEvent : CesiumEvent.LEFT_CLICK_DRAG,
 	defaultPointOptions : {
 		color : Cesium.Color.WHITE,
 		outlineColor : Cesium.Color.BLACK,
@@ -250,7 +251,7 @@ export class PolygonsEditorService {
       priority,
     });
     const shapeDragRegistration = this.mapEventsManager.register({
-      event: options.dragPointEvent,
+      event: options.dragShapeEvent,
       entityType: EditablePolygon,
       pick: PickOptions.PICK_FIRST,
       priority,
