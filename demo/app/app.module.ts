@@ -34,6 +34,12 @@ import { LayerOrderComponent } from './components/layer-order/layer-order.compon
 import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-entities-editor/angular-cesium-entities-editor.module';
 import { EditorLayerComponent } from './components/editor-layer/editor-layer.component';
 import { HtmlLayerComponent } from './components/html-layer/html-layer.component';
+import { SelectionLayerComponent } from './components/selection-layer/selection-layer.component';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+import { ContextMenuLayerComponent } from './components/context-menu-layer/context-menu-layer.component';
+import { PolygonsEditorLayerComponent } from './components/editor-layer/polygons-editor-layer/polygons-editor-layer.component';
+import { CirclesEditorLayerComponent } from './components/editor-layer/circles-editor-layer/circles-editor-layer.component';
+import { PolylineEditorLayerComponent } from './components/editor-layer/polyline-example/polyline-editor-layer.component';
 
 
 @NgModule({
@@ -62,6 +68,12 @@ import { HtmlLayerComponent } from './components/html-layer/html-layer.component
     KeyboardControlLayerComponent,
     HippodromeLayerComponent,
 		LayerOrderComponent,
+    ContextMenuComponent,
+    ContextMenuLayerComponent,
+		SelectionLayerComponent,
+		PolygonsEditorLayerComponent,
+		CirclesEditorLayerComponent,
+		PolylineEditorLayerComponent,
 		EditorLayerComponent,
     HtmlLayerComponent
   ],
@@ -75,7 +87,7 @@ import { HtmlLayerComponent } from './components/html-layer/html-layer.component
     AppMaterialModule,
     ApolloModule.forRoot(getApolloClient),
   ],
-  entryComponents: [TracksDialogComponent],
+  entryComponents: [TracksDialogComponent, ContextMenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

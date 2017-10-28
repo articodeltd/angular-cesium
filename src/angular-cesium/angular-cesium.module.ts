@@ -55,6 +55,8 @@ import { CesiumExtender } from '../cesium-extender/extender';
 import { AcHtmlDescComponent } from './components/ac-html-desc/ac-html-desc.component';
 import { AcHtmlDirective } from './directives/ac-html/ac-html.directive';
 import { AcHtmlContainerDirective } from './directives/ac-html-container/ac-html-container.directive';
+import { AcContextMenuWrapperComponent } from './components/ac-context-menu-wrapper/ac-context-menu-wrapper.component';
+import { AcPointPrimitiveDescComponent } from './components/ac-point-primitive-desc/ac-point-primitive-desc.component';
 
 @NgModule({
   imports: [
@@ -99,6 +101,8 @@ import { AcHtmlContainerDirective } from './directives/ac-html-container/ac-html
     AcPolylineVolumeDescComponent,
     AcWallDescComponent,
     AcRectangleDescComponent,
+    AcContextMenuWrapperComponent,
+    AcPointPrimitiveDescComponent,
     AcHtmlDescComponent,
     AcHtmlDirective,
     AcHtmlContainerDirective,
@@ -146,6 +150,8 @@ import { AcHtmlContainerDirective } from './directives/ac-html-container/ac-html
     AcPolylineVolumeDescComponent,
     AcWallDescComponent,
     AcRectangleDescComponent,
+    AcContextMenuWrapperComponent,
+		AcPointPrimitiveDescComponent,
     AcHtmlDescComponent,
 
     AcStaticEllipseDescComponent,

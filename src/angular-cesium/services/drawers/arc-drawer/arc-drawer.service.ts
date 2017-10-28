@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../../cesium/cesium.service';
-import { StaticPrimitiveDrawer } from '../static-dynamic/static-primitive-drawer/static-primitive-drawer.service';
+import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.service';
+import { GeoUtilsService } from '../../geo-utils/geo-utils.service';
 
 /**
  +  This drawer is responsible for drawing an arc over the Cesium map.
@@ -9,63 +10,58 @@ import { StaticPrimitiveDrawer } from '../static-dynamic/static-primitive-drawer
  */
 
 @Injectable()
-export class ArcDrawerService extends StaticPrimitiveDrawer {
-	constructor(cesiumService: CesiumService) {
-		super(Cesium.PolylineGeometry, cesiumService);
-	}
+export class ArcDrawerService extends PrimitivesDrawerService {
+  constructor(cesiumService: CesiumService) {
+    super(Cesium.PolylineCollection, cesiumService);
+  }
 
-	add(geometryProps: any, instanceProps: any, primitiveProps: any) {
-		geometryProps.positions = this.generatePositions(geometryProps);
+  _calculateArcPositions(cesiumProps) {
+    const quality = cesiumProps.quality || 18;
+    const delta = (cesiumProps.delta) / quality;
+    const pointsArray = [];
+    for (let i = 0; i < quality + 1; ++i) {
+      const point =
+        GeoUtilsService.pointByLocationDistanceAndAzimuth(cesiumProps.center, cesiumProps.radius, cesiumProps.angle + delta * i, true);
+      pointsArray.push(point);
+    }
 
-		return super.add(geometryProps, instanceProps, primitiveProps);
-	}
+    return pointsArray;
+  }
 
-	private generatePositions(cesiumProps: any): Array<any> {
-		const arcPositions = [];
-		const defaultGranularity = 0.004;
-		const numOfSamples = 1 / (cesiumProps.granularity || defaultGranularity);
+  _calculateTriangle(cesiumProps) {
+    return [
+      cesiumProps.center,
+      GeoUtilsService.pointByLocationDistanceAndAzimuth(cesiumProps.center, cesiumProps.radius, cesiumProps.angle, true)
+    ];
+  }
 
-		for (let i = 0; i < numOfSamples + 1; i++) {
-			const currentAngle = cesiumProps.angle + cesiumProps.delta * i / numOfSamples;
-			const distance = cesiumProps.radius / Cesium.Ellipsoid.WGS84.maximumRadius;
-			const curLat = Cesium.Cartographic.fromCartesian(cesiumProps.center).latitude;
-			const curLon = Cesium.Cartographic.fromCartesian(cesiumProps.center).longitude;
+  _calculateArc(cesiumProps) {
+    const arcPoints = this._calculateArcPositions(cesiumProps);
+    return cesiumProps.drawEdges ? arcPoints.concat(this._calculateTriangle(cesiumProps)) : arcPoints;
+  }
 
-			const destinationLat = Math.asin(
-				Math.sin(curLat) * Math.cos(distance) +
-				Math.cos(curLat) * Math.sin(distance) * Math.cos(currentAngle)
-			);
+  add(cesiumProps: any): any {
+    cesiumProps.positions = this._calculateArc(cesiumProps);
+    if (cesiumProps.color) {
+      const material = Cesium.Material.fromType('Color');
+      material.uniforms.color = cesiumProps.color;
+      cesiumProps.material = material;
+    }
 
-			let destinationLon = curLon + Math.atan2(Math.sin(currentAngle) * Math.sin(distance) * Math.cos(curLat),
-					Math.cos(distance) - Math.sin(curLat) * Math.sin(destinationLat)
-				);
+    return this._cesiumCollection.add(cesiumProps);
+  };
 
-			destinationLon = (destinationLon + 3 * Math.PI) % (2 * Math.PI) - Math.PI;
+  update(primitive: any, cesiumProps: any) {
+    if (!cesiumProps.constantColor && cesiumProps.color &&
+      !primitive.material.uniforms.color.equals(cesiumProps.color)) {
+      primitive.material.uniforms.color = cesiumProps.color;
+    }
+    primitive.width = cesiumProps.width !== undefined ? cesiumProps.width : primitive.width;
+    primitive.show = cesiumProps.show !== undefined ? cesiumProps.show : primitive.show;
+    primitive.distanceDisplayCondition = cesiumProps.distanceDisplayCondition !== undefined ?
+      cesiumProps.distanceDisplayCondition : primitive.distanceDisplayCondition;
+    primitive.positions = this._calculateArc(cesiumProps);
 
-			arcPositions.push(Cesium.Cartesian3.fromRadians(destinationLon, destinationLat));
-		}
-
-		return arcPositions;
-	}
-
-	update(primitive: any, geometryProps: any, instanceProps: any, primitiveProps: any) {
-		if (instanceProps && instanceProps.attributes && instanceProps.attributes.color) {
-			const color = instanceProps.attributes.color.value;
-
-			if (primitive.ready) {
-				primitive.getGeometryInstanceAttributes().color = color;
-			}
-			else {
-				Cesium.when(primitive.readyPromise).then((readyPrimitive) => {
-					readyPrimitive.getGeometryInstanceAttributes().color.value = color;
-				});
-			}
-		}
-
-		if (primitiveProps.appearance) {
-			primitive.appearance = primitiveProps.appearance;
-		}
-
-		return primitive;
-	}
+    return primitive;
+  }
 }
