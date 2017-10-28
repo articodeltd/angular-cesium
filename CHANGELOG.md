@@ -2,12 +2,14 @@
 ### Fixes
 * Service init order  [#131](https://github.com/TGFTech/angular-cesium/issues/131)
 * Added context menu service that allows dynamic injection of custom components.
-* added `ac-point-primitive-desc` 
 
 ### Features
 * Added `selectionManagerService` and example in selection-layer.component.ts
 * Added context menu service that allows dynamic injection of custom components.
 * Added polyline shape editor  
+* Added Circle editor `CirclesEditorService` - allow for creating circles and editing them from the map of from the code.
+* edited polygons are now draggable.
+* added `ac-point-primitive-desc`   
 
 ## 0.0.29
 ### Features

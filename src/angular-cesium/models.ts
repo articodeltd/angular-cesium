@@ -8,5 +8,6 @@ export { ModuleConfiguration } from './models/module-options';
 export { SceneMode } from './models/scene-mode.enum';
 export { KeyboardAction } from './models/ac-keyboard-action.enum';
 export { Cartesian3 } from './models/cartesian3';
-export { ContextMenuOptions } from './models/context-menu-options'
-export { BasicContextMenu } from './models/basic-context-menu'
+export { ContextMenuOptions } from './models/context-menu-options';
+export { BasicContextMenu } from './models/basic-context-menu';
+export { Vec3 } from './models/vec3';

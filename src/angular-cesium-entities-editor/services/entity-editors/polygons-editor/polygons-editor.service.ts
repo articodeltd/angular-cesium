@@ -12,9 +12,10 @@ import { CoordinateConverter } from '../../../../angular-cesium/services/coordin
 import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
-import { EditorObservable } from '../../../models/editor-observable';
 import { PolygonsManagerService } from './polygons-manager.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { PolygonEditorObservable } from '../../../models/polygon-editor-observable';
+import { EditablePolygon } from '../../../models/editable-polygon';
 import { PolygonEditOptions } from '../../../models/polygon-edit-options';
 
 export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
@@ -22,6 +23,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
 	addLastPointEvent : CesiumEvent.LEFT_DOUBLE_CLICK,
 	removePointEvent : CesiumEvent.RIGHT_CLICK,
 	dragPointEvent : CesiumEvent.LEFT_CLICK_DRAG,
+	dragShapeEvent : CesiumEvent.LEFT_CLICK_DRAG,
 	defaultPointOptions : {
 		color : Cesium.Color.WHITE,
 		outlineColor : Cesium.Color.BLACK,
@@ -48,7 +50,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
  *		});
  *
  *  // Or edit polygon from existing polygon positions
- *  const editing$ = this.polygonsEditor.edit(initialPos);
+ *  const editing$ = this.polygonsEditorService.edit(initialPos);
  *
  * ```
  */
@@ -61,6 +63,7 @@ export class PolygonsEditorService {
 	private coordinateConverter: CoordinateConverter;
 	private cameraService: CameraService;
 	private polygonsManager: PolygonsManagerService;
+	private observablesMap = new Map<string, DisposableObservable<any>[]>();
 	
 	init(mapEventsManager: MapEventsManagerService,
 			 coordinateConverter: CoordinateConverter,
@@ -113,10 +116,9 @@ export class PolygonsEditorService {
 			pick : PickOptions.NO_PICK,
 			priority,
 		});
-		const editorObservable = this.createEditorObservable(
-			clientEditSubject,
-			[mouseMoveRegistration, addPointRegistration, addLastPointRegistration],
-			id);
+		
+		this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
+		const editorObservable = this.createEditorObservable(clientEditSubject, id);
 		
 		mouseMoveRegistration.subscribe(({movement : {endPosition}}) => {
 			const position = this.coordinateConverter.screenToCartesian3(endPosition);
@@ -207,7 +209,7 @@ export class PolygonsEditorService {
 		return polygonOptions;
 	}
 	
-	edit(positions: Cartesian3[], options = DEFAULT_POLYGON_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
+	edit(positions: Cartesian3[], options = DEFAULT_POLYGON_OPTIONS, priority = 100): PolygonEditorObservable<PolygonEditUpdate> {
 		if (positions.length < 3) {
 			throw new Error('Polygons editor error edit(): polygon should have at least 3 positions');
 		}
@@ -245,12 +247,18 @@ export class PolygonsEditorService {
 											priority,
 											editSubject: Subject<PolygonEditUpdate>,
 											options: PolygonEditOptions,
-											editObservable?: EditorObservable<PolygonEditUpdate>) {
+											editObservable?: PolygonEditorObservable<PolygonEditUpdate>): PolygonEditorObservable<PolygonEditUpdate> {
 		
 		const pointDragRegistration = this.mapEventsManager.register({
 			event : options.dragPointEvent,
 			entityType : EditPoint,
 			pick : PickOptions.PICK_FIRST,
+			priority,
+		});
+		const shapeDragRegistration = this.mapEventsManager.register({
+			event: options.dragShapeEvent,
+			entityType: EditablePolygon,
+			pick: PickOptions.PICK_FIRST,
 			priority,
 		});
 		const pointRemoveRegistration = this.mapEventsManager.register({
@@ -285,6 +293,31 @@ export class PolygonsEditorService {
 				});
 			});
 		
+		shapeDragRegistration
+			.do(({ movement: { drop } }) => this.cameraService.enableInputs(drop))
+			.subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
+				const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
+				const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
+				if (!endDragPosition) {
+					return;
+				}
+				
+				const update = {
+					id,
+					positions: this.getPositions(id),
+					editMode: EditModes.EDIT,
+					updatedPosition: endDragPosition,
+					draggedPosition: startDragPosition,
+					editAction: drop ? EditActions.DRAG_SHAPE_FINISH : EditActions.DRAG_SHAPE,
+				};
+				this.updateSubject.next(update);
+				editSubject.next({
+					...update,
+					positions: this.getPositions(id),
+					points: this.getPoints(id),
+				});
+			});
+		
 		pointRemoveRegistration.subscribe(({entities}) => {
 			const point: EditPoint = entities[0];
 			const allPositions = [...this.getPositions(id)];
@@ -311,62 +344,73 @@ export class PolygonsEditorService {
 			});
 		});
 		
-		return editObservable || this.createEditorObservable(editSubject,
-			[pointDragRegistration, pointRemoveRegistration],
-			id);
+		let observables = this.observablesMap.get(id);
+		if (!observables) {
+			observables = [pointDragRegistration, shapeDragRegistration, pointRemoveRegistration];
+		}
+		else {
+			observables.push(pointDragRegistration, shapeDragRegistration, pointRemoveRegistration)
+		}
+		
+		this.observablesMap.set(id, observables);
+		
+		return editObservable || this.createEditorObservable(editSubject, id);
 	}
 	
 	
 	private createEditorObservable(observableToExtend: any,
-																 disposableObservables: DisposableObservable<any>[],
-																 id: string): EditorObservable<PolygonEditUpdate> {
+																 id: string): PolygonEditorObservable<PolygonEditUpdate> {
 		observableToExtend.dispose = () => {
-			disposableObservables.forEach(obs => obs.dispose());
+			const observables = this.observablesMap.get(id);
+			if (observables) {
+				observables.forEach(obs => obs.dispose())
+			}
 			this.updateSubject.next({
 				id,
-				positions : this.getPositions(id),
-				editMode : EditModes.CREATE_OR_EDIT,
-				editAction : EditActions.DISPOSE,
+				positions: this.getPositions(id),
+				editMode: EditModes.CREATE_OR_EDIT,
+				editAction: EditActions.DISPOSE,
 			});
 		};
 		observableToExtend.enable = () => {
 			this.updateSubject.next({
 				id,
-				positions : this.getPositions(id),
-				editMode : EditModes.EDIT,
-				editAction : EditActions.ENABLE,
+				positions: this.getPositions(id),
+				editMode: EditModes.EDIT,
+				editAction: EditActions.ENABLE,
 			});
 		};
 		observableToExtend.disable = () => {
 			this.updateSubject.next({
 				id,
-				positions : this.getPositions(id),
-				editMode : EditModes.EDIT,
-				editAction : EditActions.DISABLE,
+				positions: this.getPositions(id),
+				editMode: EditModes.EDIT,
+				editAction: EditActions.DISABLE,
 			});
 		};
 		observableToExtend.setPointsManually = (points: EditPoint[]) => {
 			this.updateSubject.next({
 				id,
-				positions : points.map(p => p.getPosition()),
-				points : points,
-				editMode : EditModes.EDIT,
-				editAction : EditActions.SET_MANUALLY,
+				positions: points.map(p => p.getPosition()),
+				points: points,
+				editMode: EditModes.EDIT,
+				editAction: EditActions.SET_MANUALLY,
 			});
 			observableToExtend.next({
 				id,
-				positions : this.getPositions(id),
-				points : this.getPoints(id),
-				editMode : EditModes.EDIT,
-				editAction : EditActions.SET_MANUALLY,
+				positions: this.getPositions(id),
+				points: this.getPoints(id),
+				editMode: EditModes.EDIT,
+				editAction: EditActions.SET_MANUALLY,
 			})
 		};
 		observableToExtend.getCurrentPoints = () => this.getPoints(id);
 		
 		observableToExtend.polygonEditValue = () => observableToExtend.getValue();
 		
-		return observableToExtend as EditorObservable<PolygonEditUpdate>;
+		return observableToExtend as PolygonEditorObservable<PolygonEditUpdate>;
 	}
+
 	
 	private generteId(): string {
 		return 'edit-polygon-' + this.counter++;
