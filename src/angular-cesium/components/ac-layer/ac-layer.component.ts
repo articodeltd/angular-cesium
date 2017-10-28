@@ -43,6 +43,7 @@ import { LabelPrimitiveDrawerService } from '../../services/drawers/label-primit
 import { BillboardPrimitiveDrawerService } from '../../services/drawers/billboard-primitive-drawer/billboard-primitive-drawer.service';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
 import { PointPrimitiveDrawerService } from '../../services/drawers/point-primitive-drawer/point-primitive-drawer.service';
+import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawer.service';
 
 // tslint:enable
 /**
@@ -105,6 +106,7 @@ import { PointPrimitiveDrawerService } from '../../services/drawers/point-primit
 		LabelPrimitiveDrawerService,
 		BillboardPrimitiveDrawerService,
 		PointPrimitiveDrawerService,
+		HtmlDrawerService,
 		
 		DynamicEllipseDrawerService,
 		DynamicPolylineDrawerService,
@@ -164,7 +166,9 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 							polylinePrimitiveDrawerService: PolylinePrimitiveDrawerService,
 							labelPrimitiveDrawerService: LabelPrimitiveDrawerService,
 							billboardPrimitiveDrawerService: BillboardPrimitiveDrawerService,
-							pointPrimitiveDrawerService: PointPrimitiveDrawerService) {
+							pointPrimitiveDrawerService: PointPrimitiveDrawerService,
+							htmlDrawerService: HtmlDrawerService
+							) {
 		this._drawerList = new Map([
 			['billboard', billboardDrawerService],
 			['label', labelDrawerService],
@@ -185,6 +189,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			['labelPrimitive', labelPrimitiveDrawerService],
 			['billboardPrimitive', billboardPrimitiveDrawerService],
 			['pointPrimitive', pointPrimitiveDrawerService],
+			['html', htmlDrawerService],
 			
 			['dynamicEllipse', dynamicEllipseDrawerService],
 			['dynamicPolyline', dynamicPolylineDrawerService],
@@ -194,18 +199,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			['staticEllipse', staticEllipseDrawerService],
 		]);
 	}
-	
+
 	init() {
 		this.initValidParams();
-		
+
 		Observable.merge(this._updateStream, this.observable).takeUntil(this.stopObservable).subscribe((notification) => {
 			this._computationCache.clear();
-			
+
 			let contextEntity = notification.entity;
 			if (this.store) {
 				contextEntity = this.updateStore(notification);
 			}
-			
+
 			this.context[this.entityName] = contextEntity;
 			this.layerService.getDescriptions().forEach((descriptionComponent) => {
 				switch (notification.actionType) {
@@ -221,7 +226,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			});
 		});
 	}
-	
+
 	private updateStore(notification: AcNotification): any {
 		if (notification.actionType === ActionType.DELETE) {
 			this.entitiesStore.delete(notification.id);
@@ -239,12 +244,12 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			}
 		}
 	}
-	
+
 	private initValidParams() {
 		if (!this.context) {
 			throw new Error('ac-layer: must initialize [context] ');
 		}
-		
+
 		if (!this.acForRgx.test(this.acFor)) {
 			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
 				+ 'instead received: ' + this.acFor);
@@ -255,12 +260,15 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		if (!this.observable || !(this.observable instanceof Observable)) {
 			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
+
+		this.layerService.setContext(this.context);
+		this.layerService.setEntityName(this.entityName);
 	}
-	
+
 	ngAfterContentInit(): void {
 		this.init();
 	}
-	
+
 	ngOnInit(): void {
 		this._drawerList.forEach((drawer, drawerName) => {
 			const initOptions = this.options ? this.options[drawerName] : undefined;
@@ -273,19 +281,19 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			drawer.setShow(this.show);
 		});
 	}
-	
+
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.show && !changes.show.firstChange) {
 			const showValue = changes['show'].currentValue;
 			this._drawerList.forEach((drawer) => drawer.setShow(showValue));
 		}
-		
+
 		if (changes.zIndex && !changes.zIndex.firstChange) {
 			const zIndexValue = changes['zIndex'].currentValue;
 			this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue);
 		}
 	}
-	
+
 	ngOnDestroy(): void {
 		this.mapLayersService.removeDataSources(this.layerDrawerDataSources);
 		this.stopObservable.next(true);

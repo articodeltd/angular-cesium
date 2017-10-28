@@ -9,7 +9,8 @@
 * Added Circle editor `CirclesEditorService` - allow for creating circles and editing them from the map of from the code.
 * Added CesiumHeatMapMaterialCreator for creating heatmap material for cesium entities.
 * edited polygons are now draggable.
-* added `ac-point-primitive-desc`   
+* added `ac-point-primitive-desc`
+* added `ac-html-desc` - ac-layer supports ac-html   
 
 ## 0.0.29
 ### Features

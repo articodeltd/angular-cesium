@@ -4,6 +4,7 @@ import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 import { AcPointComponent } from './ac-point.component';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 describe('AcPointComponent', () => {
 	let component: AcPointComponent;
@@ -17,7 +18,7 @@ describe('AcPointComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [AcPointComponent],
-			providers: [PointDrawerService,
+			providers: [PointDrawerService, MapLayersService,
 				providerFromMock(CesiumService, cesiumService)]
 		})
 			.compileComponents();
