@@ -22,7 +22,7 @@ export class HtmlLayerComponent implements OnInit, AfterViewInit {
                 id: '0',
                 show: true,
                 name: 'html 1',
-                position: Cesium.Cartesian3.fromRadians(1.5, 1.5),
+                position: Cesium.Cartesian3.fromDegrees(30, 30),
                 color: Cesium.Color.RED
             },
         };
@@ -34,7 +34,7 @@ export class HtmlLayerComponent implements OnInit, AfterViewInit {
                 id: '1',
                 show: true,
                 name: 'html 2',
-                position: Cesium.Cartesian3.fromRadians(1.9, 1.9),
+                position: Cesium.Cartesian3.fromDegrees(35, 35),
                 color: Cesium.Color.RED
             }
         };
@@ -47,7 +47,7 @@ export class HtmlLayerComponent implements OnInit, AfterViewInit {
             this.layer.update(html1, html1.id);
 
             html2.entity.name = 'gonen';
-            html2.entity.position = Cesium.Cartesian3.fromRadians(1.2, 1.2);
+            html2.entity.position = Cesium.Cartesian3.fromDegrees(44, 44);
             this.layer.update(html2, html2.id);
         }, 5000);
 
