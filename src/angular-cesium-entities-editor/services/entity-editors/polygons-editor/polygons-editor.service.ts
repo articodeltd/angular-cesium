@@ -81,7 +81,7 @@ export class PolygonsEditorService {
 		return this.updatePublisher;
 	}
 	
-	create(options = DEFAULT_POLYGON_OPTIONS, priority = 100): EditorObservable<PolygonEditUpdate> {
+	create(options = DEFAULT_POLYGON_OPTIONS, priority = 100): PolygonEditorObservable<PolygonEditUpdate> {
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
 		const polygonOptions = this.setOptions(options);

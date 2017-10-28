@@ -50,9 +50,11 @@ export class EditablePolygon extends AcEntity {
 	get polygonProps(): PolygonProps {
 		return this._polygonProps;
 	}
+	
 	set polygonProps(value: PolygonProps) {
 		this._polygonProps = value;
 	}
+	
 	set defaultPointProps(value: PointProps) {
 		this._defaultPointProps = value;
 	}
@@ -133,7 +135,7 @@ export class EditablePolygon extends AcEntity {
 		this.positions.forEach((point, index) => {
 			const nextIndex = (index + 1) % (this.positions.length);
 			const nextPoint = this.positions[nextIndex];
-			const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition());
+			const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this.defaultPolylineProps);
 			this.polylines.push(polyline);
 			this.polylinesLayer.update(polyline, polyline.getId());
 			
