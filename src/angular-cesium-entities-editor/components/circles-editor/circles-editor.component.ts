@@ -22,10 +22,12 @@ export class CirclesEditorComponent implements OnDestroy {
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editCircles$ = new Subject<AcNotification>();
+  public editArcs$ = new Subject<AcNotification>();
 
   public circleColor = new Cesium.Color(0.1, 0.5, 0.2, 0.4);
 
   @ViewChild('editCirclesLayer') private editCirclesLayer: AcLayerComponent;
+  @ViewChild('editArcsLayer') private editArcsLayer: AcLayerComponent;
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
 
   constructor(private circlesEditor: CirclesEditorService,
@@ -54,7 +56,8 @@ export class CirclesEditorComponent implements OnDestroy {
         this.circlesManager.createEditableCircle(
           update.id,
           this.editCirclesLayer,
-          this.editPointsLayer);
+          this.editPointsLayer,
+          this.editArcsLayer);
         break;
       }
       case EditActions.MOUSE_MOVE: {
@@ -94,7 +97,8 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.createEditableCircle(
           update.id,
           this.editCirclesLayer,
-          this.editPointsLayer
+          this.editPointsLayer,
+          this.editArcsLayer
         );
         circle.setCircleManually(update.center, update.radiusPoint);
         break;
