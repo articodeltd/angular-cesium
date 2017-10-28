@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { PolygonsEditorService } from '../../../../src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service';
-import { PolygonEditUpdate } from '../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
-import { EditorObservable } from '../../../../src/angular-cesium-entities-editor/models/editor-observable';
-import { EditActions } from '../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
+import { EditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/editor-observable';
+import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
+import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
+import { PolylinesEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/polyline-editor/polylines-editor.service';
 
 @Component({
-	selector : 'editor-layer',
-	templateUrl : 'editor-layer.component.html',
-	styleUrls : ['./editor-layer.component.css']
+	selector : 'polyline-editor-layer',
+	templateUrl : 'polyline-editor-layer.component.html',
+	styleUrls : ['./polyline-editor-layer.component.css']
 })
-export class EditorLayerComponent implements OnInit {
+export class PolylineEditorLayerComponent implements OnInit {
 	
 	editing$: EditorObservable<PolygonEditUpdate>;
 	enableEditing = true;
 	
-	constructor(private polygonsEditor: PolygonsEditorService) {
+	constructor(private polylineEditor: PolylinesEditorService) {
 	}
 	
 	ngOnInit(): void {
@@ -25,7 +25,7 @@ export class EditorLayerComponent implements OnInit {
 		if (this.editing$) {
 			this.stopEdit();
 		}
-		this.editing$ = this.polygonsEditor.create();
+		this.editing$ = this.polylineEditor.create();
 		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 			
 			if (editUpdate.editAction === EditActions.ADD_POINT) {
@@ -49,7 +49,7 @@ export class EditorLayerComponent implements OnInit {
 			Cesium.Cartesian3.fromDegrees(20, 40),
 			Cesium.Cartesian3.fromDegrees(45, 40),
 			Cesium.Cartesian3.fromDegrees(30, 20)];
-		this.editing$ = this.polygonsEditor.edit(initialPos);
+		this.editing$ = this.polylineEditor.edit(initialPos);
 		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 			
 			if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
@@ -78,9 +78,6 @@ export class EditorLayerComponent implements OnInit {
 			const firstPoint = polygonPoints[0];
 			firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
 			this.editing$.setPointsManually(polygonPoints);
-			
 		}
 	}
-	
-	
 }

@@ -15,3 +15,4 @@ export * from './services/keyboard-control/keyboard-control.service';
 export * from './services/keyboard-control/predefined-actions';
 export * from './services/screenshot/screenshot.service';
 export * from './services/selection-manager/selection-manager.service';
+export * from './services/context-menu/context-menu.service';

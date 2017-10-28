@@ -143,7 +143,7 @@ export class MapEventsManagerService {
 				.switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption))
 				.takeUntil(stopper);
 		} else {
-			observable = this.createDragEvent(event, modifier, entityType, pickOption, priority)
+			observable = this.createDragEvent(event, modifier, entityType, pickOption, priority).takeUntil(stopper);
 		}
 		
 		registration.observable = observable;

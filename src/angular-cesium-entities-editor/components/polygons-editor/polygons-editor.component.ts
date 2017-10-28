@@ -1,5 +1,4 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { PolygonEditUpdate } from '../../models/polygon-edit-update';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
@@ -11,6 +10,7 @@ import { Subject } from 'rxjs/Subject';
 import { CameraService } from '../../../angular-cesium/services/camera/camera.service';
 import { EditPoint } from '../../models/edit-point';
 import { PolygonsManagerService } from '../../services/entity-editors/polygons-editor/polygons-manager.service';
+import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 
 @Component({
 	selector : 'polygons-editor',
@@ -61,7 +61,8 @@ export class PolygonsEditorComponent implements OnDestroy {
 					this.editPolygonsLayer,
 					this.editPointsLayer,
 					this.editPolylinesLayer,
-					this.coordinateConverter);
+					this.coordinateConverter,
+					update.polygonOptions);
 				break;
 			}
 			case EditActions.MOUSE_MOVE: {
@@ -105,6 +106,7 @@ export class PolygonsEditorComponent implements OnDestroy {
 					this.editPointsLayer,
 					this.editPolylinesLayer,
 					this.coordinateConverter,
+					update.polygonOptions,
 					update.positions
 				);
 				break;
@@ -134,6 +136,21 @@ export class PolygonsEditorComponent implements OnDestroy {
 				const polygon = this.polygonsManager.get(update.id);
 				if (polygon) {
 					polygon.enableEdit = false;
+				}
+				break;
+			}
+			case EditActions.DRAG_SHAPE: {
+				const polygon = this.polygonsManager.get(update.id);
+				if (polygon && polygon.enableEdit) {
+					polygon.movePolygon(update.draggedPosition, update.updatedPosition)
+				}
+				break;
+			}
+			
+			case EditActions.DRAG_SHAPE_FINISH: {
+				const polygon = this.polygonsManager.get(update.id);
+				if (polygon && polygon.enableEdit) {
+					polygon.endMovePolygon()
 				}
 				break;
 			}

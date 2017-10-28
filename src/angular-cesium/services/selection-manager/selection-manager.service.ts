@@ -66,7 +66,16 @@ export class SelectionManagerService {
 		return this.selectedEntitySubject$;
 	}
 	
-	addToSelected(entity: AcEntity, addSelectedIndicator: boolean) {
+	toggleSelection(entity: AcEntity, addSelectedIndicator: boolean) {
+		const current = this.selectedEntities();
+		if (current.indexOf(entity) === -1) {
+			this.addToSelected(entity, addSelectedIndicator);
+		} else {
+			this.removeSelected(entity, addSelectedIndicator)
+		}
+	}
+	
+	private addToSelected(entity: AcEntity, addSelectedIndicator: boolean) {
 		if (addSelectedIndicator) {
 			entity['selected'] = true;
 		}
@@ -76,7 +85,7 @@ export class SelectionManagerService {
 		this.selectedEntitiesItems$.next([...current, entity]);
 	}
 	
-	removeSelected(entity: AcEntity, addSelectedIndicator: boolean) {
+	private removeSelected(entity: AcEntity, addSelectedIndicator: boolean) {
 		if (addSelectedIndicator) {
 			entity['selected'] = false;
 		}
@@ -102,7 +111,7 @@ export class SelectionManagerService {
 			pick : PickOptions.PICK_ONE,
 			modifier : selectionOptions.modifier,
 			entityType : selectionOptions.entityType,
-			priority: eventPriority,
+			priority : eventPriority,
 		});
 		
 		eventSubscription
@@ -110,12 +119,7 @@ export class SelectionManagerService {
 			.filter(entities => entities && entities.length > 0)
 			.subscribe(entities => {
 				const entity = entities[0];
-				const current = this.selectedEntities();
-				if (current.indexOf(entity) === -1) {
-					this.addToSelected(entity, addSelectedIndicator);
-				} else {
-					this.removeSelected(entity, addSelectedIndicator)
-				}
+				this.toggleSelection(entity, addSelectedIndicator);
 			});
 	}
 }
