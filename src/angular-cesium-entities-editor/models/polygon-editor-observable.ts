@@ -1,8 +1,9 @@
 import { EditPoint } from './edit-point';
 import { EditorObservable } from './editor-observable';
+import { PolygonEditUpdate } from './polygon-edit-update';
 
-export class PolygonEditorObservable<T> extends EditorObservable<T> {
+export class PolygonEditorObservable extends EditorObservable<PolygonEditUpdate> {
   setPointsManually: (points: EditPoint[]) => void;
-  polygonEditValue: () => T;
+  polygonEditValue: () => PolygonEditUpdate;
   getCurrentPoints: () => EditPoint[];
 }

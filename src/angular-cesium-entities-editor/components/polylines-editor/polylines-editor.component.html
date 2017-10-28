@@ -3,7 +3,6 @@
         positions: polyline.getPositions(),
         width: polyline.getPolylineProps().width,
         material: polyline.getPolylineProps().material,
-        followSurface: true
     }">
     </ac-polyline-primitive-desc>
 </ac-layer>
@@ -15,27 +14,7 @@
         color: point.getPointProps().color,
         outlineColor: point.getPointProps().outlineColor,
         outlineWidth: point.getPointProps().outlineWidth,
-        heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND
     }">
     </ac-point-desc>
 </ac-layer>
 
-<ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this" [zIndex]="0">
-    <ac-polygon-desc props="{
-        hierarchy: polygon.getPositions(),
-        material: polygon.polygonProps.material
-    }">
-    </ac-polygon-desc>
-    <!--<ac-static-polygon-desc-->
-    <!--geometryProps="{-->
-    <!--polygonHierarchy: polygon.getHierarchy(),-->
-    <!--height: 1-->
-    <!--}"-->
-    <!--instanceProps="{-->
-    <!--attributes: attributes-->
-    <!--}"-->
-    <!--primitiveProps="{-->
-    <!--appearance: appearance-->
-    <!--}">-->
-    <!--</ac-static-polygon-desc-->>-->
-</ac-layer>
