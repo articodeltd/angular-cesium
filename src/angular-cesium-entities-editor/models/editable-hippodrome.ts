@@ -137,7 +137,7 @@ export class EditableHippodrome extends AcEntity {
 	
 	movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
 		
-		if (!editPoint.isVirtualEditPoint()){
+		if (!editPoint.isVirtualEditPoint()) {
 			editPoint.setPosition(toPosition);
 			
 			this.updateHippdromePointsLayer(...this.hippodromePositions);
