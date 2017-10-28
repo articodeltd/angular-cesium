@@ -142,9 +142,15 @@ export class EditableCircle extends AcEntity {
     if (this._center) {
       this.pointsLayer.remove(this._center.getId());
     }
+
     if (this._radiusPoint) {
       this.pointsLayer.remove(this._radiusPoint.getId());
     }
+
+    if (this._outlineArc) {
+      this.arcsLayer.remove(this._outlineArc.getId());
+    }
+
     this.circlesLayer.remove(this.id);
   }
 
@@ -169,7 +175,7 @@ export class EditableCircle extends AcEntity {
     if (!this._outlineArc) {
       return;
     }
-    this.arcsLayer.update(this._outlineArc, this._arcId);
+    this.arcsLayer.update(this._outlineArc, this._outlineArc.getId());
   }
 
   private createOutlineArc() {
