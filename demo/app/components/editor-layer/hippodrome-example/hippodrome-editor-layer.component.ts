@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
 import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
-import { PolylinesEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/polyline-editor/polylines-editor.service';
-import { PolylineEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/polyline-editor-observable';
+import { HippodromeEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/hippodrome-editor/hippodrome-editor.service';
+import { HippodrmoeEditorOboservable } from '../../../../../src/angular-cesium-entities-editor/models/hippodrmoe-editor-oboservable';
 
 @Component({
-	selector : 'polyline-editor-layer',
-	templateUrl : 'polyline-editor-layer.component.html',
-	styleUrls : ['./polyline-editor-layer.component.css']
+	selector : 'hippodrome-editor-layer',
+	templateUrl : 'hippodrome-editor-layer.component.html',
+	styleUrls : ['./hippodrome-editor-layer.component.css']
 })
-export class PolylineEditorLayerComponent implements OnInit {
-	
-	editing$: PolylineEditorObservable;
+export class HippodromeEditorLayerComponent implements OnInit {
+	editing$: HippodrmoeEditorOboservable;
 	enableEditing = true;
 	
-	constructor(private polylineEditor: PolylinesEditorService) {
+	constructor(private hippodromeEditor: HippodromeEditorService) {
 	}
 	
 	ngOnInit(): void {
@@ -25,7 +24,7 @@ export class PolylineEditorLayerComponent implements OnInit {
 		if (this.editing$) {
 			this.stopEdit();
 		}
-		this.editing$ = this.polylineEditor.create();
+		this.editing$ = this.hippodromeEditor.create();
 		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 			
 			if (editUpdate.editAction === EditActions.ADD_POINT) {
@@ -47,9 +46,8 @@ export class PolylineEditorLayerComponent implements OnInit {
 		}
 		const initialPos = [
 			Cesium.Cartesian3.fromDegrees(20, 40),
-			Cesium.Cartesian3.fromDegrees(45, 40),
 			Cesium.Cartesian3.fromDegrees(30, 20)];
-		this.editing$ = this.polylineEditor.edit(initialPos);
+		this.editing$ = this.hippodromeEditor.edit(initialPos);
 		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 			
 			if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
