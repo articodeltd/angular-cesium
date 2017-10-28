@@ -35,8 +35,8 @@ import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-enti
 import { SelectionLayerComponent } from './components/selection-layer/selection-layer.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { ContextMenuLayerComponent } from './components/context-menu-layer/context-menu-layer.component';
-import { PolygonsEditorLayerComponent } from './components/polygons-editor-layer/polygons-editor-layer.component';
-import { CirclesEditorLayerComponent } from './components/circles-editor-layer/circles-editor-layer.component';
+import { PolygonsEditorLayerComponent } from './components/editor-layer/polygons-editor-layer/polygons-editor-layer.component';
+import { CirclesEditorLayerComponent } from './components/editor-layer/circles-editor-layer/circles-editor-layer.component';
 import { PolylineEditorLayerComponent } from './components/editor-layer/polyline-example/polyline-editor-layer.component';
 
 

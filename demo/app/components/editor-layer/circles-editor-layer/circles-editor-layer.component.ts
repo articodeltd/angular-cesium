@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CircleEditorObservable } from '../../../../src/angular-cesium-entities-editor/models/circle-editor-observable';
-import { CircleEditUpdate } from '../../../../src/angular-cesium-entities-editor/models/circle-edit-update';
-import { CirclesEditorService } from '../../../../src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service';
+import { CircleEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/circle-editor-observable';
+import { CircleEditUpdate } from '../../../../../src/angular-cesium-entities-editor/models/circle-edit-update';
+import { CirclesEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service';
 
 @Component({
 	selector : 'circles-editor-layer',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PolygonEditUpdate } from '../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
-import { EditActions } from '../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
-import { PolygonEditorObservable } from '../../../../src/angular-cesium-entities-editor/models/polygon-editor-observable';
-import { PolygonsEditorService } from '../../../../src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service';
+import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
+import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
+import { PolygonEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/polygon-editor-observable';
+import { PolygonsEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service';
 
 @Component({
   selector: 'polygons-editor-layer',

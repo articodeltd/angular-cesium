@@ -81,7 +81,7 @@ export class PolygonsEditorService {
 		return this.updatePublisher;
 	}
 	
-	create(options = DEFAULT_POLYGON_OPTIONS, priority = 100): PolygonEditorObservable<PolygonEditUpdate> {
+	create(options = DEFAULT_POLYGON_OPTIONS, priority = 100): PolygonEditorObservable {
 		const positions: Cartesian3[] = [];
 		const id = this.generteId();
 		const polygonOptions = this.setOptions(options);
@@ -209,7 +209,7 @@ export class PolygonsEditorService {
 		return polygonOptions;
 	}
 	
-	edit(positions: Cartesian3[], options = DEFAULT_POLYGON_OPTIONS, priority = 100): PolygonEditorObservable<PolygonEditUpdate> {
+	edit(positions: Cartesian3[], options = DEFAULT_POLYGON_OPTIONS, priority = 100): PolygonEditorObservable {
 		if (positions.length < 3) {
 			throw new Error('Polygons editor error edit(): polygon should have at least 3 positions');
 		}
@@ -247,7 +247,7 @@ export class PolygonsEditorService {
 											priority,
 											editSubject: Subject<PolygonEditUpdate>,
 											options: PolygonEditOptions,
-											editObservable?: PolygonEditorObservable<PolygonEditUpdate>): PolygonEditorObservable<PolygonEditUpdate> {
+											editObservable?: PolygonEditorObservable): PolygonEditorObservable {
 		
 		const pointDragRegistration = this.mapEventsManager.register({
 			event : options.dragPointEvent,
@@ -359,7 +359,7 @@ export class PolygonsEditorService {
 	
 	
 	private createEditorObservable(observableToExtend: any,
-																 id: string): PolygonEditorObservable<PolygonEditUpdate> {
+																 id: string): PolygonEditorObservable {
 		observableToExtend.dispose = () => {
 			const observables = this.observablesMap.get(id);
 			if (observables) {
@@ -408,7 +408,7 @@ export class PolygonsEditorService {
 		
 		observableToExtend.polygonEditValue = () => observableToExtend.getValue();
 		
-		return observableToExtend as PolygonEditorObservable<PolygonEditUpdate>;
+		return observableToExtend as PolygonEditorObservable;
 	}
 
 	
