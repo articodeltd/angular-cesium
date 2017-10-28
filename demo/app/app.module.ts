@@ -39,6 +39,7 @@ import { PolygonsEditorLayerComponent } from './components/editor-layer/polygons
 import { CirclesEditorLayerComponent } from './components/editor-layer/circles-editor-layer/circles-editor-layer.component';
 import { PolylineEditorLayerComponent } from './components/editor-layer/polyline-example/polyline-editor-layer.component';
 import { HeatmapLayerComponent } from './components/heatmap-layer/heatmap-layer.component';
+import { HippodromeEditorLayerComponent } from './components/editor-layer/hippodrome-example/hippodrome-editor-layer.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { HeatmapLayerComponent } from './components/heatmap-layer/heatmap-layer.
 		CirclesEditorLayerComponent,
 		PolylineEditorLayerComponent,
     HeatmapLayerComponent,
+		HippodromeEditorLayerComponent,
   ],
   imports: [
     BrowserModule,

@@ -99,4 +99,18 @@ export class CoordinateConverter {
 		
 		return Cesium.Cartesian3.fromDegrees(middlePoint.lon, middlePoint.lat);
 	}
+	
+	/**
+	 * initial bearing between two points
+	 * @param {{latitude; longitude}} first - in radians
+	 * @param {{latitude; longitude}} second - in radians
+	 */
+	bearingTo(first: { latitude, longitude }, second: { latitude, longitude }) {
+		const toDeg = (rad) => Cesium.Math.toDegrees(rad);
+		const firstPoint = new LatLonVectors(toDeg(first.latitude), toDeg(first.longitude));
+		const secondPoint = new LatLonVectors(toDeg(second.latitude), toDeg(second.longitude));
+		const bearing = firstPoint.bearingTo(secondPoint);
+		
+		return bearing;
+	}
 }

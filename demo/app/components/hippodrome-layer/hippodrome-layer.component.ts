@@ -22,24 +22,26 @@ import { ActionType } from '../../../../src/angular-cesium/models/action-type.en
 export class HippodromeLayerComponent implements OnInit {
 	
 	simTracks$: Observable<AcNotification> = Observable.of({
-		id : '1',
-		actionType : ActionType.ADD_UPDATE,
-		entity : {
-			color: Cesium.Color.RED.withAlpha(0.5),
-			positions : Cesium.Cartesian3.fromDegreesArray([
-				-90.0, 40.0,
-				-93.0, 40.0,
-			]),
-		}
-	}, {
-		id : '2',
-		actionType : ActionType.ADD_UPDATE,
-		entity : {
-		  color: Cesium.Color.BLUE.withAlpha(0.5),
-			positions : Cesium.Cartesian3.fromDegreesArray([
-				-92.0, 38.0,
-				-93.0, 38.0,
-			]),
+			id : '1',
+			actionType : ActionType.ADD_UPDATE,
+			entity : {
+				color : Cesium.Color.RED.withAlpha(0.5),
+				positions : Cesium.Cartesian3.fromDegreesArray([
+					-90.0, 40.0,
+					-93.0, 40.0,
+				]),
+			}
+		},
+		{
+			id : '2',
+			actionType : ActionType.ADD_UPDATE,
+			entity : {
+				color : Cesium.Color.BLUE.withAlpha(0.5),
+				positions : Cesium.Cartesian3.fromDegreesArray([
+					-92.0, 38.0,
+					-93.0, 38.0,
+				]),
+			}
 		});
 	
 	Cesium = Cesium;
