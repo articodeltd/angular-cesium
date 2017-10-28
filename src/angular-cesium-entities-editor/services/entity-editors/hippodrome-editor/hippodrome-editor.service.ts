@@ -131,10 +131,12 @@ export class HippodromeEditorService {
 			if (!position) {
 				return;
 			}
+			
+			// const hippodrome = this.hippodromeManager.get(id);
 			const allPositions = this.getPositions(id);
-			if (allPositions.find((cartesian) => cartesian.equals(position))) {
-				return;
-			}
+			// if (allPositions.find((cartesian) => cartesian.equals(position))) {
+			// 	return;
+			// }
 			
 			const isFirstPoint = this.getPositions(id).length === 0;
 			

@@ -58,7 +58,6 @@ export class HippodromeEditorComponent implements OnDestroy {
 				break;
 			}
 			case EditActions.MOUSE_MOVE: {
-				console.log('move');
 				const polygon = this.hippodromesManager.get(update.id);
 				if (update.updatedPosition) {
 					polygon.moveTempMovingPoint(update.updatedPosition);
@@ -97,33 +96,37 @@ export class HippodromeEditorComponent implements OnDestroy {
 				break;
 			}
 			case EditActions.DRAG_POINT: {
-				const polygon = this.hippodromesManager.get(update.id);
-				if (polygon && polygon.enableEdit) {
-					polygon.movePoint(update.updatedPosition, update.updatedPoint);
+				const hippodrome = this.hippodromesManager.get(update.id);
+				if (hippodrome && hippodrome.enableEdit) {
+					hippodrome.movePoint(update.updatedPosition, update.updatedPoint);
 				}
 				break;
 			}
 			case EditActions.DRAG_POINT_FINISH: {
+				const hippodrome = this.hippodromesManager.get(update.id);
+				if (hippodrome && hippodrome.enableEdit) {
+					hippodrome.endMovePoint();
+				}
 				break;
 			}
 			case EditActions.DISABLE: {
-				const polygon = this.hippodromesManager.get(update.id);
-				if (polygon) {
-					polygon.enableEdit = false;
+				const hippodrome = this.hippodromesManager.get(update.id);
+				if (hippodrome) {
+					hippodrome.enableEdit = false;
 				}
 				break;
 			}
 			case EditActions.ENABLE: {
-				const polygon = this.hippodromesManager.get(update.id);
-				if (polygon) {
-					polygon.enableEdit = true;
+				const hippodrome = this.hippodromesManager.get(update.id);
+				if (hippodrome) {
+					hippodrome.enableEdit = true;
 				}
 				break;
 			}
 			case EditActions.SET_MANUALLY: {
-				const polygon = this.hippodromesManager.get(update.id);
-				if (polygon) {
-					polygon.setPointsManually(update.points);
+				const hippodrome = this.hippodromesManager.get(update.id);
+				if (hippodrome) {
+					hippodrome.setPointsManually(update.points);
 				}
 				break;
 			}

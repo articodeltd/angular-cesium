@@ -60,6 +60,9 @@ export class EditableHippodrome extends AcEntity {
 		positions.forEach((position) => {
 			this.addPointFromExisting(position)
 		});
+		this.createHeightEditPoints();
+		this.updateHippdromeLayer();
+		this.updateHippdromePointsLayer(...this.hippodromePositions);
 		this.done = true;
 	}
 	
@@ -105,8 +108,12 @@ export class EditableHippodrome extends AcEntity {
 	}
 	
 	private createHeightEditPoints() {
-		const firstP = this.hippodromePositions[0];
-		const secP = this.hippodromePositions[1];
+		this.hippodromePositions
+			.filter(p => p.isVirtualEditPoint())
+			.forEach(p => this.removePosition(p));
+		
+		const firstP = this.getRealPoints()[0];
+		const secP = this.getRealPoints()[1];
 		
 		const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secP.getPosition(), 0.5, new Cesium.Cartesian3());
 		const currentCart = Cesium.Cartographic.fromCartesian(firstP.getPosition());
@@ -129,10 +136,18 @@ export class EditableHippodrome extends AcEntity {
 	}
 	
 	movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
-		editPoint.setPosition(toPosition);
 		
-		this.updateHippdromePointsLayer(editPoint);
-		this.updateHippdromeLayer();
+		if (!editPoint.isVirtualEditPoint()){
+			editPoint.setPosition(toPosition);
+			
+			this.updateHippdromePointsLayer(...this.hippodromePositions);
+			this.updateHippdromeLayer();
+		}
+	}
+	
+	endMovePoint() {
+		this.createHeightEditPoints();
+		this.updateHippdromePointsLayer(...this.hippodromePositions);
 	}
 	
 	moveTempMovingPoint(toPosition: Cartesian3) {
@@ -155,8 +170,6 @@ export class EditableHippodrome extends AcEntity {
 	}
 	
 	getRealPositions(): Cartesian3[] {
-		console.log(this.getRealPoints()
-			.map(position => position.getPosition()));
 		return this.getRealPoints()
 			.map(position => position.getPosition());
 	}
@@ -183,13 +196,13 @@ export class EditableHippodrome extends AcEntity {
 		point.forEach(p => this.pointsLayer.update(p, p.getId()));
 	}
 	
-	private updateHippdromeLayer(...point: EditPoint[]) {
-		if (this.hippodromePositions.length === 2) {
-			this.hippodromeLayer.update(this, this.id);
-		}
+	private updateHippdromeLayer() {
+		this.hippodromeLayer.update(this, this.id);
 	}
 	
 	dispose() {
+		this.hippodromeLayer.remove(this.id);
+		
 		this.hippodromePositions.forEach(editPoint => {
 			this.pointsLayer.remove(editPoint.getId());
 		});
