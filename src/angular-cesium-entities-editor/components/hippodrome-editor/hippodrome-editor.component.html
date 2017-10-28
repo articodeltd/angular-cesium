@@ -1,6 +1,6 @@
 <ac-layer #editHippodromesLayer acFor="let hippodrome of editHippodromes$" [context]="this" [zIndex]="2">
     <ac-corridor-desc props="{
-		positions: hippodrome.getPositions(),
+		positions: hippodrome.getRealPositions(),
 		cornerType: Cesium.CornerType.ROUNDED,
 		material: hippodrome.hippodromeProps.material,
 		width : hippodrome.hippodromeProps.width
@@ -19,4 +19,15 @@
     }">
     </ac-point-desc>
 </ac-layer>
+<!--<ac-layer #editArcsLayer acFor="let arc of editArcs$" [context]="this" [zIndex]="1">-->
+    <!--<ac-arc-desc props="{-->
+        <!--angle: arc.angle,-->
+        <!--delta: arc.delta,-->
+        <!--center: arc.center,-->
+        <!--radius: arc.radius,-->
+        <!--quality: 30,-->
+        <!--color: Cesium.Color.BLACK-->
+    <!--}">-->
+    <!--</ac-arc-desc>-->
+<!--</ac-layer>-->
 

@@ -136,6 +136,8 @@ export class HippodromeEditorService {
 				return;
 			}
 			
+			const isFirstPoint = this.getPositions(id).length === 0;
+			
 			const updateValue = {
 				id,
 				positions : allPositions,
@@ -150,7 +152,7 @@ export class HippodromeEditorService {
 				points : this.getPoints(id),
 			});
 			
-			if (this.getPositions(id).length === 2) {
+			if (!isFirstPoint) {
 				const changeMode = {
 					id,
 					editMode : EditModes.CREATE,

@@ -58,6 +58,7 @@ export class HippodromeEditorComponent implements OnDestroy {
 				break;
 			}
 			case EditActions.MOUSE_MOVE: {
+				console.log('move');
 				const polygon = this.hippodromesManager.get(update.id);
 				if (update.updatedPosition) {
 					polygon.moveTempMovingPoint(update.updatedPosition);

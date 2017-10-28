@@ -5,6 +5,7 @@ import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { PointProps } from './polyline-edit-options';
 import { HippodromeEditOptions, HippodromeProps } from './hippodrome-edit-options';
+import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 
 export class EditableHippodrome extends AcEntity {
 	
@@ -90,17 +91,41 @@ export class EditableHippodrome extends AcEntity {
 			this.hippodromePositions.push(firstPoint);
 			this.movingPoint = new EditPoint(this.id, position.clone(), this.defaultPointProps);
 			this.hippodromePositions.push(this.movingPoint);
-			
 			this.updateHippdromePointsLayer(firstPoint);
 			
 		} else {
-			this.done = true;
-			this.updateHippdromePointsLayer(this.movingPoint);
+			this.createHeightEditPoints();
+			
+			this.updateHippdromePointsLayer(...this.hippodromePositions);
 			this.updateHippdromeLayer();
+			this.done = true;
 			this.movingPoint = null;
 		}
 		
+	}
+	
+	private createHeightEditPoints() {
+		const firstP = this.hippodromePositions[0];
+		const secP = this.hippodromePositions[1];
 		
+		const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secP.getPosition(), 0.5, new Cesium.Cartesian3());
+		const currentCart = Cesium.Cartographic.fromCartesian(firstP.getPosition());
+		const nextCart = Cesium.Cartographic.fromCartesian(secP.getPosition());
+		const bearingDeg = this.coordinateConverter.bearingTo(currentCart, nextCart);
+		
+		const upAzimuth = Cesium.Math.toRadians(bearingDeg) - Math.PI / 2;
+		this.createMiddleEditablePoint(midPointCartesian3, upAzimuth);
+		const downAzimuth = Cesium.Math.toRadians(bearingDeg) + Math.PI / 2;
+		this.createMiddleEditablePoint(midPointCartesian3, downAzimuth);
+		
+	}
+	
+	private createMiddleEditablePoint(midPointCartesian3: any, azimuth: number) {
+		const upEditCartesian3 = GeoUtilsService.pointByLocationDistanceAndAzimuth(midPointCartesian3,
+			this.hippodromeProps.width / 2, azimuth, true);
+		const midPoint = new EditPoint(this.id, upEditCartesian3, this.defaultPointProps);
+		midPoint.setVirtualEditPoint(true);
+		this.hippodromePositions.push(midPoint);
 	}
 	
 	movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
@@ -130,13 +155,15 @@ export class EditableHippodrome extends AcEntity {
 	}
 	
 	getRealPositions(): Cartesian3[] {
+		console.log(this.getRealPoints()
+			.map(position => position.getPosition()));
 		return this.getRealPoints()
 			.map(position => position.getPosition());
 	}
 	
 	getRealPoints(): EditPoint[] {
 		return this.hippodromePositions
-			.filter(position => !position.isVirtualEditPoint() && position !== this.movingPoint);
+			.filter(position => !position.isVirtualEditPoint());
 	}
 	
 	getPositions(): Cartesian3[] {
