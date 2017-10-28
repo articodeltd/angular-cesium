@@ -130,6 +130,21 @@ export class HippodromeEditorComponent implements OnDestroy {
 				}
 				break;
 			}
+			case EditActions.DRAG_SHAPE: {
+				const hippodrome = this.hippodromesManager.get(update.id);
+				if (hippodrome && hippodrome.enableEdit) {
+					hippodrome.moveShape(update.draggedPosition, update.updatedPosition)
+				}
+				break;
+			}
+			
+			case EditActions.DRAG_SHAPE_FINISH: {
+				const hippodrome = this.hippodromesManager.get(update.id);
+				if (hippodrome && hippodrome.enableEdit) {
+					hippodrome.endMoveShape()
+				}
+				break;
+			}
 			default: {
 				return;
 			}

@@ -16,10 +16,12 @@ import { HippodromeEditOptions } from '../../../models/hippodrome-edit-options';
 import { HippodromeManagerService } from './hippodrome-manager.service';
 import { HippodrmoeEditorOboservable } from '../../../models/hippodrmoe-editor-oboservable';
 import { HippodromeEditUpdate } from '../../../models/hippodrome-edit-update';
+import { EditableHippodrome } from '../../../models/editable-hippodrome';
 
 export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
 	addPointEvent : CesiumEvent.LEFT_CLICK,
 	dragPointEvent : CesiumEvent.LEFT_CLICK_DRAG,
+	dragShapeEvent : CesiumEvent.LEFT_CLICK_DRAG,
 	hippodromeProps : {
 		material : Cesium.Color.GREEN.withAlpha(0.5),
 		width : 200000.0,
@@ -132,12 +134,7 @@ export class HippodromeEditorService {
 				return;
 			}
 			
-			// const hippodrome = this.hippodromeManager.get(id);
 			const allPositions = this.getPositions(id);
-			// if (allPositions.find((cartesian) => cartesian.equals(position))) {
-			// 	return;
-			// }
-			
 			const isFirstPoint = this.getPositions(id).length === 0;
 			
 			const updateValue = {
@@ -164,7 +161,7 @@ export class HippodromeEditorService {
 				clientEditSubject.next(changeMode);
 				mouseMoveRegistration.dispose();
 				addPointRegistration.dispose();
-				this.editHippdrome(id, eventPriority, clientEditSubject, hippodromeOptions, editorObservable);
+				this.editHippodrome(id, eventPriority, clientEditSubject, hippodromeOptions, editorObservable);
 				finishedCreate = true;
 			}
 		});
@@ -204,7 +201,7 @@ export class HippodromeEditorService {
 			positions : this.getPositions(id),
 			points : this.getPoints(id),
 		});
-		return this.editHippdrome(
+		return this.editHippodrome(
 			id,
 			priority,
 			editSubject,
@@ -212,12 +209,17 @@ export class HippodromeEditorService {
 		)
 	}
 	
-	private editHippdrome(id: string,
-												priority,
-												editSubject: Subject<HippodromeEditUpdate>,
-												options: HippodromeEditOptions,
-												editObservable?: HippodrmoeEditorOboservable): HippodrmoeEditorOboservable {
-		
+	private editHippodrome(id: string,
+												 priority,
+												 editSubject: Subject<HippodromeEditUpdate>,
+												 options: HippodromeEditOptions,
+												 editObservable?: HippodrmoeEditorOboservable): HippodrmoeEditorOboservable {
+		const shapeDragRegistration = this.mapEventsManager.register({
+			event : options.dragShapeEvent,
+			entityType : EditableHippodrome,
+			pick : PickOptions.PICK_FIRST,
+			priority,
+		});
 		const pointDragRegistration = this.mapEventsManager.register({
 			event : options.dragPointEvent,
 			entityType : EditPoint,
@@ -250,9 +252,34 @@ export class HippodromeEditorService {
 				});
 			});
 		
+		shapeDragRegistration
+			.do(({movement : {drop}}) => this.cameraService.enableInputs(drop))
+			.subscribe(({movement : {startPosition, endPosition, drop}, entities}) => {
+				const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
+				const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
+				if (!endDragPosition) {
+					return;
+				}
+				
+				const update = {
+					id,
+					positions : this.getPositions(id),
+					editMode : EditModes.EDIT,
+					updatedPosition : endDragPosition,
+					draggedPosition : startDragPosition,
+					editAction : drop ? EditActions.DRAG_SHAPE_FINISH : EditActions.DRAG_SHAPE,
+				};
+				this.updateSubject.next(update);
+				editSubject.next({
+					...update,
+					positions : this.getPositions(id),
+					points : this.getPoints(id),
+				});
+			});
+		
 		
 		return editObservable || this.createEditorObservable(editSubject,
-			[pointDragRegistration],
+			[pointDragRegistration, shapeDragRegistration],
 			id);
 	}
 	

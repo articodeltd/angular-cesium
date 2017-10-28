@@ -17,7 +17,7 @@ export class EditablePolygon extends AcEntity {
 	private _polygonProps: PolygonProps;
 	private _defaultPointProps: PointProps;
 	private _defaultPolylineProps: PolylineProps;
-	private lastDragedToPosition: Cartesian3;
+	private lastDraggedToPosition: Cartesian3;
 	
 	constructor(private id: string,
 							private polygonsLayer: AcLayerComponent,
@@ -181,20 +181,20 @@ export class EditablePolygon extends AcEntity {
 	}
 	
 	movePolygon(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
-		if (!this.lastDragedToPosition) {
-			this.lastDragedToPosition = startMovingPosition;
+		if (!this.lastDraggedToPosition) {
+			this.lastDraggedToPosition = startMovingPosition;
 		}
 		
-		const delta = GeoUtilsService.getPositionsDelta(this.lastDragedToPosition, draggedToPosition);
+		const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
 		this.positions.forEach(point => {
 			GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
 		});
 		this.updatePointsLayer();
-		this.lastDragedToPosition = draggedToPosition;
+		this.lastDraggedToPosition = draggedToPosition;
 	}
 	
 	endMovePolygon() {
-		this.lastDragedToPosition = undefined;
+		this.lastDraggedToPosition = undefined;
 		this.positions.forEach(point => this.updatePointsLayer(point));
 		this.updatePolygonsLayer();
 	}
