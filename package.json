@@ -91,6 +91,7 @@
     "graphql-tag": "^2.0.0",
     "graphql-tools": "^0.11.0",
     "hammerjs": "^2.0.8",
+    "heatmap.js": "^2.0.5",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.26.0",
     "jasmine": "^2.4.1",
@@ -139,5 +140,8 @@
     "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",
     "primitive-primitives": "0.0.6"
+  },
+  "optionalDependencies": {
+    "heatmap.js": "^2.0.5"
   }
 }
