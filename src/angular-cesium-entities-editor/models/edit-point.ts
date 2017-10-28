@@ -1,5 +1,6 @@
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+import { PointProps } from './polygon-edit-options';
 
 export class EditPoint extends AcEntity {
 	static counter = 0;
@@ -7,12 +8,23 @@ export class EditPoint extends AcEntity {
 	private editedEntityId: string;
 	private position: Cartesian3;
 	private _virtualEditPoint: boolean;
+	private pointProps: PointProps;
 	
-	constructor(entityId: string, position: Cartesian3) {
+	constructor(entityId: string, position: Cartesian3, pointProps?: PointProps) {
 		super();
 		this.editedEntityId = entityId;
 		this.position = position;
 		this.id = this.generateId();
+		this.pointProps = pointProps;
+		console.log(pointProps);
+	}
+	
+	getPointProps() {
+		return this.pointProps;
+	}
+	
+	setPointProps(props: PointProps) {
+		this.pointProps = props;
 	}
 	
 	isVirtualEditPoint(): boolean {

@@ -11,3 +11,4 @@ export * from './models/circle-editor-observable';
 export * from './models/polygon-edit-update';
 export * from './models/circle-edit-update';
 export * from './models/basic-edit-update';
+export * from './models/polygon-edit-options';
