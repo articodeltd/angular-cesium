@@ -15,6 +15,7 @@ export class EditableHippodrome extends AcEntity {
 	private _enableEdit = true;
 	private _defaultPointProps: PointProps;
 	private _hippodromeProps: HippodromeProps;
+	private lastDraggedToPosition: Cartesian3;
 	
 	constructor(private id: string,
 							private pointsLayer: AcLayerComponent,
@@ -143,6 +144,28 @@ export class EditableHippodrome extends AcEntity {
 			this.updateHippdromePointsLayer(...this.hippodromePositions);
 			this.updateHippdromeLayer();
 		}
+	}
+	
+	moveShape(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
+		if (!this.lastDraggedToPosition) {
+			this.lastDraggedToPosition = startMovingPosition;
+		}
+		
+		const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
+		this.getRealPoints().forEach(point => {
+			GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+		});
+		this.createHeightEditPoints();
+		this.updateHippdromePointsLayer(...this.hippodromePositions);
+		this.updateHippdromeLayer();
+		this.lastDraggedToPosition = draggedToPosition;
+	}
+	
+	endMoveShape() {
+		this.lastDraggedToPosition = undefined;
+		this.createHeightEditPoints();
+		this.hippodromePositions.forEach(point => this.updateHippdromePointsLayer(point));
+		this.updateHippdromeLayer();
 	}
 	
 	endMovePoint() {

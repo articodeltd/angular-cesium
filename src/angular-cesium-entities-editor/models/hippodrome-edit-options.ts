@@ -14,6 +14,7 @@ export interface HippodromeEditOptions {
 	addPointEvent?: CesiumEvent;
 	addPointModifier?: CesiumEventModifier;
 	dragPointEvent?: CesiumEvent;
+	dragShapeEvent?: CesiumEvent;
 	hippodromeProps?: HippodromeProps;
 	defaultPointOptions?: PointProps;
 }
