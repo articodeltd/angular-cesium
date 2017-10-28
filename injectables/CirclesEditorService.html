@@ -1,0 +1,2449 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular 2 Cesium</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Angular 2 Cesium</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">Angular 2 Cesium</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AngularCesiumEntitiesEditorModule.html" >AngularCesiumEntitiesEditorModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/AngularCesiumModule.html" >AngularCesiumModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/UtilsModule.html" >UtilsModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBillboardPrimitiveDescComponent.html" >AcBillboardPrimitiveDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBoxDescComponent.html" >AcBoxDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCircleDescComponent.html" >AcCircleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcContextMenuWrapperComponent.html" >AcContextMenuWrapperComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCorridorDescComponent.html" >AcCorridorDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDynamicEllipseDescComponent.html" >AcDynamicEllipseDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcEllipseDescComponent.html" >AcEllipseDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcEllipsoidDescComponent.html" >AcEllipsoidDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcHtmlDescComponent.html" >AcHtmlDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelDescComponent.html" >AcLabelDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelPrimitiveDescComponent.html" >AcLabelPrimitiveDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLayerComponent.html" >AcLayerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcMapComponent.html" >AcMapComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcModelDescComponent.html" >AcModelDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPointPrimitiveDescComponent.html" >AcPointPrimitiveDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineDescComponent.html" >AcPolylineDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylinePrimitiveDescComponent.html" >AcPolylinePrimitiveDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticEllipseDescComponent.html" >AcStaticEllipseDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticPolygonDescComponent.html" >AcStaticPolygonDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticPolylineDescComponent.html" >AcStaticPolylineDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcTileset3dComponent.html" >AcTileset3dComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcWallDescComponent.html" >AcWallDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CirclesEditorComponent.html" >CirclesEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/HippodromeEditorComponent.html" >HippodromeEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PolygonsEditorComponent.html" >PolygonsEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="../directives/AcHtmlContainerDirective.html" >AcHtmlContainerDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../directives/AcHtmlDirective.html" >AcHtmlDirective</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/AcEntity.html" >AcEntity</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/AcHtmlContext.html" >AcHtmlContext</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicDrawerService.html" >BasicDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumDragDropHelper.html" >CesiumDragDropHelper</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumExtender.html" >CesiumExtender</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CircleEditorObservable.html" >CircleEditorObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditArc.html" >EditArc</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditPoint.html" >EditPoint</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditPolyline.html" >EditPolyline</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditableCircle.html" >EditableCircle</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditableHippodrome.html" >EditableHippodrome</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditablePolygon.html" >EditablePolygon</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditablePolyline.html" >EditablePolyline</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditorObservable.html" >EditorObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/HtmlPrimitive.html" >HtmlPrimitive</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/OptimizedEntityCollection.html" >OptimizedEntityCollection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/PolygonEditorObservable.html" >PolygonEditorObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/PolylineEditorObservable.html" >PolylineEditorObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/PrimitivesDrawerService.html" >PrimitivesDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Registration.html" >Registration</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/AcHtmlManager.html" >AcHtmlManager</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/BillboardPrimitiveDrawerService.html" >BillboardPrimitiveDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/BoxDrawerService.html" >BoxDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CameraService.html" >CameraService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CesiumHeatMapMaterialCreator.html" >CesiumHeatMapMaterialCreator</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CesiumService.html" >CesiumService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CirclesEditorService.html"  data-type="entity-link" class="active" >CirclesEditorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CirclesManagerService.html" >CirclesManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ConfigurationService.html" >ConfigurationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ContextMenuService.html" >ContextMenuService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CorridorDrawerService.html" >CorridorDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/EllipsoidDrawerService.html" >EllipsoidDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/EntitiesDrawerService.html" >EntitiesDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HippodromeEditorService.html" >HippodromeEditorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HippodromeManagerService.html" >HippodromeManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HtmlDrawerService.html" >HtmlDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/KeyboardControlService.html" >KeyboardControlService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LabelPrimitiveDrawerService.html" >LabelPrimitiveDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/MapLayersService.html" >MapLayersService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/MapsManagerService.html" >MapsManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelDrawerService.html" >ModelDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PointPrimitiveDrawerService.html" >PointPrimitiveDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylinePrimitiveDrawerService.html" >PolylinePrimitiveDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylineVolumeDrawerService.html" >PolylineVolumeDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylinesEditorService.html" >PolylinesEditorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylinesManagerService.html" >PolylinesManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PrimitivePolygonDrawerService.html" >PrimitivePolygonDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/RectangleDrawerService.html" >RectangleDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ScreenshotService.html" >ScreenshotService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SelectionManagerService.html" >SelectionManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/WallDrawerService.html" >WallDrawerService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/ActiveDefinition.html" >ActiveDefinition</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BasicContextMenu.html" >BasicContextMenu</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EventResult.html" >EventResult</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HeatMapOptions.html" >HeatMapOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HeatPointDataPoint.html" >HeatPointDataPoint</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HeatmapDataSet.html" >HeatmapDataSet</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HippodromeEditOptions.html" >HippodromeEditOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HippodromeEditUpdate.html" >HippodromeEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ModuleConfiguration.html" >ModuleConfiguration</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Movement.html" >Movement</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PointProps.html" >PointProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolygonEditOptions.html" >PolygonEditOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolygonEditUpdate.html" >PolygonEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolygonProps.html" >PolygonProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolylineEditOptions.html" >PolylineEditOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolylineEditUpdate.html" >PolylineEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Rectangle.html" >Rectangle</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SelectionOptions.html" >SelectionOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Vec3.html" >Vec3</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">Angular 2 Cesium</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AngularCesiumEntitiesEditorModule.html" >AngularCesiumEntitiesEditorModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/AngularCesiumModule.html" >AngularCesiumModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/UtilsModule.html" >UtilsModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBillboardPrimitiveDescComponent.html" >AcBillboardPrimitiveDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBoxDescComponent.html" >AcBoxDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCircleDescComponent.html" >AcCircleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcContextMenuWrapperComponent.html" >AcContextMenuWrapperComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCorridorDescComponent.html" >AcCorridorDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDynamicEllipseDescComponent.html" >AcDynamicEllipseDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcEllipseDescComponent.html" >AcEllipseDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcEllipsoidDescComponent.html" >AcEllipsoidDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcHtmlDescComponent.html" >AcHtmlDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelDescComponent.html" >AcLabelDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelPrimitiveDescComponent.html" >AcLabelPrimitiveDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLayerComponent.html" >AcLayerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcMapComponent.html" >AcMapComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcModelDescComponent.html" >AcModelDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPointPrimitiveDescComponent.html" >AcPointPrimitiveDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineDescComponent.html" >AcPolylineDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylinePrimitiveDescComponent.html" >AcPolylinePrimitiveDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticEllipseDescComponent.html" >AcStaticEllipseDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticPolygonDescComponent.html" >AcStaticPolygonDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticPolylineDescComponent.html" >AcStaticPolylineDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcTileset3dComponent.html" >AcTileset3dComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcWallDescComponent.html" >AcWallDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CirclesEditorComponent.html" >CirclesEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/HippodromeEditorComponent.html" >HippodromeEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PolygonsEditorComponent.html" >PolygonsEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="../directives/AcHtmlContainerDirective.html" >AcHtmlContainerDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../directives/AcHtmlDirective.html" >AcHtmlDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/AcEntity.html" >AcEntity</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/AcHtmlContext.html" >AcHtmlContext</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicDrawerService.html" >BasicDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumDragDropHelper.html" >CesiumDragDropHelper</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumExtender.html" >CesiumExtender</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CircleEditorObservable.html" >CircleEditorObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditArc.html" >EditArc</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditPoint.html" >EditPoint</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditPolyline.html" >EditPolyline</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditableCircle.html" >EditableCircle</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditableHippodrome.html" >EditableHippodrome</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditablePolygon.html" >EditablePolygon</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditablePolyline.html" >EditablePolyline</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditorObservable.html" >EditorObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/HtmlPrimitive.html" >HtmlPrimitive</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/OptimizedEntityCollection.html" >OptimizedEntityCollection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/PolygonEditorObservable.html" >PolygonEditorObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/PolylineEditorObservable.html" >PolylineEditorObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/PrimitivesDrawerService.html" >PrimitivesDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Registration.html" >Registration</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/AcHtmlManager.html" >AcHtmlManager</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/BillboardPrimitiveDrawerService.html" >BillboardPrimitiveDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/BoxDrawerService.html" >BoxDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CameraService.html" >CameraService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CesiumHeatMapMaterialCreator.html" >CesiumHeatMapMaterialCreator</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CesiumService.html" >CesiumService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CirclesEditorService.html"  data-type="entity-link" class="active" >CirclesEditorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CirclesManagerService.html" >CirclesManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ConfigurationService.html" >ConfigurationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ContextMenuService.html" >ContextMenuService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CorridorDrawerService.html" >CorridorDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/EllipsoidDrawerService.html" >EllipsoidDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/EntitiesDrawerService.html" >EntitiesDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HippodromeEditorService.html" >HippodromeEditorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HippodromeManagerService.html" >HippodromeManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HtmlDrawerService.html" >HtmlDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/KeyboardControlService.html" >KeyboardControlService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LabelPrimitiveDrawerService.html" >LabelPrimitiveDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/MapLayersService.html" >MapLayersService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/MapsManagerService.html" >MapsManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelDrawerService.html" >ModelDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PointPrimitiveDrawerService.html" >PointPrimitiveDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylinePrimitiveDrawerService.html" >PolylinePrimitiveDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylineVolumeDrawerService.html" >PolylineVolumeDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylinesEditorService.html" >PolylinesEditorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylinesManagerService.html" >PolylinesManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PrimitivePolygonDrawerService.html" >PrimitivePolygonDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/RectangleDrawerService.html" >RectangleDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ScreenshotService.html" >ScreenshotService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SelectionManagerService.html" >SelectionManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/WallDrawerService.html" >WallDrawerService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/ActiveDefinition.html" >ActiveDefinition</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BasicContextMenu.html" >BasicContextMenu</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EventResult.html" >EventResult</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HeatMapOptions.html" >HeatMapOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HeatPointDataPoint.html" >HeatPointDataPoint</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HeatmapDataSet.html" >HeatmapDataSet</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HippodromeEditOptions.html" >HippodromeEditOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HippodromeEditUpdate.html" >HippodromeEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ModuleConfiguration.html" >ModuleConfiguration</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Movement.html" >Movement</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PointProps.html" >PointProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolygonEditOptions.html" >PolygonEditOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolygonEditUpdate.html" >PolygonEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolygonProps.html" >PolygonProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolylineEditOptions.html" >PolylineEditOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolylineEditUpdate.html" >PolylineEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Rectangle.html" >Rectangle</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SelectionOptions.html" >SelectionOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Vec3.html" >Vec3</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>CirclesEditorService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for creating editable circles</p>
+<p>usage:</p>
+<pre class="line-numbers"><code class="language-typescript">  // Start creating circle
+  const editing$ = circlesEditorService.create();
+  this.editing$.subscribe(editResult =&gt; {
+                console.log(editResult.positions);
+        });
+
+  // Or edit circle from existing center point and radius
+  const editing$ = this.circlesEditorService.edit(center, radius);</code></pre>
+            </p>
+
+
+            <section>
+                <h3 id="index">Index</h3>
+                <table class="table table-sm table-bordered index-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Properties</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#cameraService">cameraService</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#circlesManager">circlesManager</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#coordinateConverter">coordinateConverter</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#counter">counter</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#mapEventsManager">mapEventsManager</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#observablesMap">observablesMap</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#updatePublisher">updatePublisher</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#updateSubject">updateSubject</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Methods</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#create">create</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#createEditorObservable">createEditorObservable</a>
+                                    </li>
+                                    <li>
+                                         <a href="#edit">edit</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#editCircle">editCircle</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#generteId">generteId</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#getCenterPoint">getCenterPoint</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#getCenterPosition">getCenterPosition</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#getCircleProperties">getCircleProperties</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#getRadius">getRadius</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#getRadiusPosition">getRadiusPosition</a>
+                                    </li>
+                                    <li>
+                                         <a href="#init">init</a>
+                                    </li>
+                                    <li>
+                                         <a href="#onUpdate">onUpdate</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="create"></a>
+                                    <b> create</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>create(priority: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:63</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../classes/EditorObservable.html" target="_self" >CircleEditorObservable&lt;&gt;</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="createEditorObservable"></a>
+                                    <b><span class="modifier">Private</span> createEditorObservable</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>createEditorObservable(observableToExtend: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="258" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:258</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../classes/EditorObservable.html" target="_self" >CircleEditorObservable&lt;&gt;</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="edit"></a>
+                                    <b> edit</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>edit(center: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, radius: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, priority: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:171</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../classes/EditorObservable.html" target="_self" >CircleEditorObservable&lt;&gt;</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="editCircle"></a>
+                                    <b><span class="modifier">Private</span> editCircle</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>editCircle(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, priority: , editSubject: <a href="../interfaces/CircleEditUpdate.html">Subject<CircleEditUpdate></a>, editObservable: <a href="../interfaces/CircleEditUpdate.html">CircleEditorObservable<CircleEditUpdate></a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:201</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../classes/EditorObservable.html" target="_self" >CircleEditorObservable&lt;&gt;</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="generteId"></a>
+                                    <b><span class="modifier">Private</span> generteId</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>generteId()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="339" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:339</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getCenterPoint"></a>
+                                    <b><span class="modifier">Private</span> getCenterPoint</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>getCenterPoint(id: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="318" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:318</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getCenterPosition"></a>
+                                    <b><span class="modifier">Private</span> getCenterPosition</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>getCenterPosition(id: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="314" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:314</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getCircleProperties"></a>
+                                    <b><span class="modifier">Private</span> getCircleProperties</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>getCircleProperties(id: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="330" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:330</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>{ center: any; radiusPoint: any; radius: any; }</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getRadius"></a>
+                                    <b><span class="modifier">Private</span> getRadius</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>getRadius(id: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="326" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:326</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getRadiusPosition"></a>
+                                    <b><span class="modifier">Private</span> getRadiusPosition</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>getRadiusPosition(id: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="322" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:322</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="init"></a>
+                                    <b> init</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>init(mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, cameraService: <a href="../injectables/CameraService.html">CameraService</a>, circlesManager: <a href="../injectables/CirclesManagerService.html">CirclesManagerService</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:47</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="onUpdate"></a>
+                                    <b> onUpdate</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>onUpdate()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:59</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+
+            <section>
+                
+                    <h3 id="inputs">
+                        Properties
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="cameraService"></a>
+                                    <b><span class="modifier">Private</span> cameraService</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>cameraService:     <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:43</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="circlesManager"></a>
+                                    <b><span class="modifier">Private</span> circlesManager</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>circlesManager:     <code><a href="../injectables/CirclesManagerService.html" target="_self" >CirclesManagerService</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../injectables/CirclesManagerService.html" target="_self" >CirclesManagerService</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:44</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="coordinateConverter"></a>
+                                    <b><span class="modifier">Private</span> coordinateConverter</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>coordinateConverter:     <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:42</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="counter"></a>
+                                    <b><span class="modifier">Private</span> counter</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>counter:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value : </i><code>0</code>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:41</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="mapEventsManager"></a>
+                                    <b><span class="modifier">Private</span> mapEventsManager</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>mapEventsManager:     <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:38</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="observablesMap"></a>
+                                    <b><span class="modifier">Private</span> observablesMap</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>observablesMap:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:45</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="updatePublisher"></a>
+                                    <b><span class="modifier">Private</span> updatePublisher</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>updatePublisher:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:40</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="updateSubject"></a>
+                                    <b><span class="modifier">Private</span> updateSubject</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>updateSubject:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service.ts:39</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { MapEventsManagerService } from &#x27;../../../../angular-cesium/services/map-events-mananger/map-events-manager&#x27;;
+import { Subject } from &#x27;rxjs/Subject&#x27;;
+import { Observable } from &#x27;rxjs/Observable&#x27;;
+import { CesiumEvent } from &#x27;../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum&#x27;;
+import { PickOptions } from &#x27;../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum&#x27;;
+import { EditModes } from &#x27;../../../models/edit-mode.enum&#x27;;
+import { EditActions } from &#x27;../../../models/edit-actions.enum&#x27;;
+import { DisposableObservable } from &#x27;../../../../angular-cesium/services/map-events-mananger/disposable-observable&#x27;;
+import { CoordinateConverter } from &#x27;../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service&#x27;;
+import { EditPoint } from &#x27;../../../models/edit-point&#x27;;
+import { CameraService } from &#x27;../../../../angular-cesium/services/camera/camera.service&#x27;;
+import { Cartesian3 } from &#x27;../../../../angular-cesium/models/cartesian3&#x27;;
+import { BehaviorSubject } from &#x27;rxjs/BehaviorSubject&#x27;;
+import { CircleEditUpdate } from &#x27;../../../models/circle-edit-update&#x27;;
+import { GeoUtilsService } from &#x27;../../../../angular-cesium/services/geo-utils/geo-utils.service&#x27;;
+import { CirclesManagerService } from &#x27;./circles-manager.service&#x27;;
+import { CircleEditorObservable } from &#x27;../../../models/circle-editor-observable&#x27;;
+
+/**
+ * Service for creating editable circles
+ *
+ * usage:
+ * &#x60;&#x60;&#x60;typescript
+ *  // Start creating circle
+ *  const editing$ &#x3D; circlesEditorService.create();
+ *  this.editing$.subscribe(editResult &#x3D;&gt; {
+ *				console.log(editResult.positions);
+ *		});
+ *
+ *  // Or edit circle from existing center point and radius
+ *  const editing$ &#x3D; this.circlesEditorService.edit(center, radius);
+ *
+ * &#x60;&#x60;&#x60;
+ */
+@Injectable()
+export class CirclesEditorService {
+  private mapEventsManager: MapEventsManagerService;
+  private updateSubject &#x3D; new Subject&lt;CircleEditUpdate&gt;();
+  private updatePublisher &#x3D; this.updateSubject.publish(); // TODO maybe not needed
+  private counter &#x3D; 0;
+  private coordinateConverter: CoordinateConverter;
+  private cameraService: CameraService;
+  private circlesManager: CirclesManagerService;
+  private observablesMap &#x3D; new Map&lt;string, DisposableObservable&lt;any&gt;[]&gt;();
+
+  init(mapEventsManager: MapEventsManagerService,
+       coordinateConverter: CoordinateConverter,
+       cameraService: CameraService,
+       circlesManager: CirclesManagerService) {
+    this.mapEventsManager &#x3D; mapEventsManager;
+    this.updatePublisher.connect();
+    this.coordinateConverter &#x3D; coordinateConverter;
+    this.cameraService &#x3D; cameraService;
+    this.circlesManager &#x3D; circlesManager;
+
+  }
+
+  onUpdate(): Observable&lt;CircleEditUpdate&gt; {
+    return this.updatePublisher;
+  }
+
+  create(priority &#x3D; 100): CircleEditorObservable&lt;CircleEditUpdate&gt; {
+    let center &#x3D; undefined;
+    const id &#x3D; this.generteId();
+    const clientEditSubject &#x3D; new BehaviorSubject&lt;CircleEditUpdate&gt;({
+      id,
+      editAction: null,
+      editMode: EditModes.CREATE
+    });
+    let finishedCreate &#x3D; false;
+
+    this.updateSubject.next({
+      id,
+      editMode: EditModes.CREATE,
+      editAction: EditActions.INIT,
+    });
+
+    const mouseMoveRegistration &#x3D; this.mapEventsManager.register({
+      event: CesiumEvent.MOUSE_MOVE,
+      pick: PickOptions.NO_PICK,
+      priority,
+    });
+    const addPointRegistration &#x3D; this.mapEventsManager.register({
+      event: CesiumEvent.LEFT_CLICK,
+      pick: PickOptions.NO_PICK,
+      priority,
+    });
+
+    this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration]);
+    const editorObservable &#x3D; this.createEditorObservable(clientEditSubject, id);
+
+    addPointRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
+      if (finishedCreate) {
+        return;
+      }
+      const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+      if (!position) {
+        return;
+      }
+
+      if (!center) {
+        const update &#x3D; {
+          id,
+          center: position,
+          editMode: EditModes.CREATE,
+          editAction: EditActions.ADD_POINT,
+        };
+        this.updateSubject.next(update);
+        clientEditSubject.next({
+          ...update,
+          ...this.getCircleProperties(id),
+        });
+        center &#x3D; position;
+      }
+
+      else {
+        const update &#x3D; {
+          id,
+          center,
+          radiusPoint: position,
+          editMode: EditModes.CREATE,
+          editAction: EditActions.ADD_LAST_POINT,
+        };
+        this.updateSubject.next(update);
+        clientEditSubject.next({
+          ...update,
+          ...this.getCircleProperties(id),
+        });
+
+        const changeMode &#x3D; {
+          id,
+          center,
+          radiusPoint: position,
+          editMode: EditModes.CREATE,
+          editAction: EditActions.CHANGE_TO_EDIT,
+        };
+
+        this.updateSubject.next(changeMode);
+        clientEditSubject.next({
+          ...update,
+          ...this.getCircleProperties(id),
+        });
+        mouseMoveRegistration.dispose();
+        addPointRegistration.dispose();
+        this.editCircle(id, priority, clientEditSubject, editorObservable);
+        finishedCreate &#x3D; true;
+      }
+    });
+
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
+      if (!center) {
+        return;
+      }
+      const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+
+      if (position) {
+        this.updateSubject.next({
+          id,
+          center,
+          radiusPoint: position,
+          editMode: EditModes.CREATE,
+          editAction: EditActions.MOUSE_MOVE,
+        });
+      }
+    });
+
+    return editorObservable;
+  }
+
+  edit(center: Cartesian3, radius: number, priority &#x3D; 100): CircleEditorObservable&lt;CircleEditUpdate&gt; {
+    const id &#x3D; this.generteId();
+    const editSubject &#x3D; new BehaviorSubject&lt;CircleEditUpdate&gt;({
+      id,
+      editAction: null,
+      editMode: EditModes.EDIT
+    });
+
+    const radiusPoint: Cartesian3 &#x3D; GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
+
+    const update &#x3D; {
+      id,
+      center,
+      radiusPoint,
+      editMode: EditModes.EDIT,
+      editAction: EditActions.INIT,
+    };
+    this.updateSubject.next(update);
+    editSubject.next({
+      ...update,
+      ...this.getCircleProperties(id),
+    });
+
+    return this.editCircle(
+      id,
+      priority,
+      editSubject,
+    )
+  }
+
+  private editCircle(id: string,
+                     priority,
+                     editSubject: Subject&lt;CircleEditUpdate&gt;,
+                     editObservable?: CircleEditorObservable&lt;CircleEditUpdate&gt;): CircleEditorObservable&lt;CircleEditUpdate&gt; {
+
+    const pointDragRegistration &#x3D; this.mapEventsManager.register({
+      event: CesiumEvent.LEFT_CLICK_DRAG,
+      entityType: EditPoint,
+      pick: PickOptions.PICK_FIRST,
+      priority,
+    });
+
+    pointDragRegistration
+      .do(({ movement: { drop } }) &#x3D;&gt; this.cameraService.enableInputs(drop))
+      .subscribe(({ movement: { endPosition, drop }, entities }) &#x3D;&gt; {
+        const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+        if (!position) {
+          return;
+        }
+        const point: EditPoint &#x3D; entities[0];
+        const pointIsCenter &#x3D; point &#x3D;&#x3D;&#x3D; this.getCenterPoint(id);
+        let editAction;
+        if (drop) {
+          editAction &#x3D; pointIsCenter ? EditActions.DRAG_SHAPE_FINISH : EditActions.DRAG_POINT_FINISH;
+        }
+        else {
+          editAction &#x3D; pointIsCenter ? EditActions.DRAG_SHAPE : EditActions.DRAG_POINT;
+        }
+        const update &#x3D; {
+          id,
+          center: this.getCenterPosition(id),
+          radiusPoint: this.getRadiusPosition(id),
+          dragPosition: position,
+          editMode: EditModes.EDIT,
+          editAction,
+        };
+        this.updateSubject.next(update);
+        editSubject.next({
+          ...update,
+          ...this.getCircleProperties(id),
+        });
+      });
+
+    let observables &#x3D; this.observablesMap.get(id);
+    if (!observables) {
+      observables &#x3D; [pointDragRegistration];
+    }
+    else {
+      observables.push(pointDragRegistration)
+    }
+
+    this.observablesMap.set(id, observables);
+
+    return editObservable || this.createEditorObservable(editSubject, id);
+  }
+
+
+  private createEditorObservable(observableToExtend: any, id: string): CircleEditorObservable&lt;CircleEditUpdate&gt; {
+    observableToExtend.dispose &#x3D; () &#x3D;&gt; {
+      const observables &#x3D; this.observablesMap.get(id);
+      if (observables) {
+        observables.forEach(obs &#x3D;&gt; obs.dispose())
+      }
+      this.updateSubject.next({
+        id,
+        center: this.getCenterPosition(id),
+        radiusPoint: this.getRadiusPosition(id),
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.DISPOSE,
+      });
+    };
+
+    observableToExtend.enable &#x3D; () &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        center: this.getCenterPosition(id),
+        radiusPoint: this.getRadiusPosition(id),
+        editMode: EditModes.EDIT,
+        editAction: EditActions.ENABLE,
+      });
+    };
+
+    observableToExtend.disable &#x3D; () &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        center: this.getCenterPosition(id),
+        radiusPoint: this.getRadiusPosition(id),
+        editMode: EditModes.EDIT,
+        editAction: EditActions.DISABLE,
+      });
+    };
+
+    observableToExtend.setCircleManually &#x3D; (center: Cartesian3, radius: number) &#x3D;&gt; {
+      const radiusPoint &#x3D; GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
+      const update &#x3D; {
+        id,
+        center: center,
+        radiusPoint: radiusPoint,
+        editMode: EditModes.EDIT,
+        editAction: EditActions.SET_MANUALLY,
+      };
+      this.updateSubject.next(update);
+      observableToExtend.next({
+        ...update,
+        ...this.getCircleProperties(id),
+      });
+    };
+
+    observableToExtend.circleEditValue &#x3D; () &#x3D;&gt; observableToExtend.getValue();
+
+    return observableToExtend as CircleEditorObservable&lt;CircleEditUpdate&gt;;
+  }
+
+  private getCenterPosition(id): Cartesian3 {
+    return this.circlesManager.get(id).getCenter();
+  }
+
+  private getCenterPoint(id): EditPoint {
+    return this.circlesManager.get(id).center;
+  }
+
+  private getRadiusPosition(id): Cartesian3 {
+    return this.circlesManager.get(id).getRadiusPoint();
+  }
+
+  private getRadius(id): number {
+    return this.circlesManager.get(id).getRadius();
+  }
+
+  private getCircleProperties(id) {
+    const circle &#x3D; this.circlesManager.get(id);
+    return {
+      center: circle.getCenter(),
+      radiusPoint: circle.getRadiusPoint(),
+      radius: circle.getRadius()
+    }
+  }
+
+  private generteId(): string {
+    return &#x27;edit-circle-&#x27; + this.counter++;
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+    </body>
+</html>

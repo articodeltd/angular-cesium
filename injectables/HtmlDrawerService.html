@@ -1,0 +1,1478 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular 2 Cesium</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Angular 2 Cesium</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">Angular 2 Cesium</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AngularCesiumEntitiesEditorModule.html" >AngularCesiumEntitiesEditorModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/AngularCesiumModule.html" >AngularCesiumModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/UtilsModule.html" >UtilsModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBillboardPrimitiveDescComponent.html" >AcBillboardPrimitiveDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcBoxDescComponent.html" >AcBoxDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCircleDescComponent.html" >AcCircleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcContextMenuWrapperComponent.html" >AcContextMenuWrapperComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCorridorDescComponent.html" >AcCorridorDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDynamicEllipseDescComponent.html" >AcDynamicEllipseDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcEllipseDescComponent.html" >AcEllipseDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcEllipsoidDescComponent.html" >AcEllipsoidDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcHtmlDescComponent.html" >AcHtmlDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelDescComponent.html" >AcLabelDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLabelPrimitiveDescComponent.html" >AcLabelPrimitiveDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcLayerComponent.html" >AcLayerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcMapComponent.html" >AcMapComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcModelDescComponent.html" >AcModelDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPointPrimitiveDescComponent.html" >AcPointPrimitiveDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineDescComponent.html" >AcPolylineDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylinePrimitiveDescComponent.html" >AcPolylinePrimitiveDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticEllipseDescComponent.html" >AcStaticEllipseDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticPolygonDescComponent.html" >AcStaticPolygonDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcStaticPolylineDescComponent.html" >AcStaticPolylineDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcTileset3dComponent.html" >AcTileset3dComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcWallDescComponent.html" >AcWallDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CirclesEditorComponent.html" >CirclesEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/HippodromeEditorComponent.html" >HippodromeEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PolygonsEditorComponent.html" >PolygonsEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="../directives/AcHtmlContainerDirective.html" >AcHtmlContainerDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../directives/AcHtmlDirective.html" >AcHtmlDirective</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/AcEntity.html" >AcEntity</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/AcHtmlContext.html" >AcHtmlContext</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BasicDrawerService.html" >BasicDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumDragDropHelper.html" >CesiumDragDropHelper</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CesiumExtender.html" >CesiumExtender</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CircleEditorObservable.html" >CircleEditorObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditArc.html" >EditArc</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditPoint.html" >EditPoint</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditPolyline.html" >EditPolyline</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditableCircle.html" >EditableCircle</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditableHippodrome.html" >EditableHippodrome</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditablePolygon.html" >EditablePolygon</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditablePolyline.html" >EditablePolyline</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EditorObservable.html" >EditorObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/HtmlPrimitive.html" >HtmlPrimitive</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/OptimizedEntityCollection.html" >OptimizedEntityCollection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/PolygonEditorObservable.html" >PolygonEditorObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/PolylineEditorObservable.html" >PolylineEditorObservable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/PrimitivesDrawerService.html" >PrimitivesDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Registration.html" >Registration</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/AcHtmlManager.html" >AcHtmlManager</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/BillboardPrimitiveDrawerService.html" >BillboardPrimitiveDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/BoxDrawerService.html" >BoxDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CameraService.html" >CameraService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CesiumHeatMapMaterialCreator.html" >CesiumHeatMapMaterialCreator</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CesiumService.html" >CesiumService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CirclesEditorService.html" >CirclesEditorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CirclesManagerService.html" >CirclesManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ConfigurationService.html" >ConfigurationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ContextMenuService.html" >ContextMenuService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CorridorDrawerService.html" >CorridorDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/EllipsoidDrawerService.html" >EllipsoidDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/EntitiesDrawerService.html" >EntitiesDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HippodromeEditorService.html" >HippodromeEditorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HippodromeManagerService.html" >HippodromeManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HtmlDrawerService.html"  data-type="entity-link" class="active" >HtmlDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/KeyboardControlService.html" >KeyboardControlService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LabelPrimitiveDrawerService.html" >LabelPrimitiveDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/MapLayersService.html" >MapLayersService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/MapsManagerService.html" >MapsManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelDrawerService.html" >ModelDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PointPrimitiveDrawerService.html" >PointPrimitiveDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylinePrimitiveDrawerService.html" >PolylinePrimitiveDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylineVolumeDrawerService.html" >PolylineVolumeDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylinesEditorService.html" >PolylinesEditorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PolylinesManagerService.html" >PolylinesManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PrimitivePolygonDrawerService.html" >PrimitivePolygonDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/RectangleDrawerService.html" >RectangleDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ScreenshotService.html" >ScreenshotService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SelectionManagerService.html" >SelectionManagerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/WallDrawerService.html" >WallDrawerService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/ActiveDefinition.html" >ActiveDefinition</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BasicContextMenu.html" >BasicContextMenu</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EventResult.html" >EventResult</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HeatMapOptions.html" >HeatMapOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HeatPointDataPoint.html" >HeatPointDataPoint</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HeatmapDataSet.html" >HeatmapDataSet</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HippodromeEditOptions.html" >HippodromeEditOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HippodromeEditUpdate.html" >HippodromeEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ModuleConfiguration.html" >ModuleConfiguration</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Movement.html" >Movement</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PointProps.html" >PointProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolygonEditOptions.html" >PolygonEditOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolygonEditUpdate.html" >PolygonEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolygonProps.html" >PolygonProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolylineEditOptions.html" >PolylineEditOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolylineEditUpdate.html" >PolylineEditUpdate</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Rectangle.html" >Rectangle</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SelectionOptions.html" >SelectionOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Vec3.html" >Vec3</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">Angular 2 Cesium</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AngularCesiumEntitiesEditorModule.html" >AngularCesiumEntitiesEditorModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/AngularCesiumModule.html" >AngularCesiumModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/UtilsModule.html" >UtilsModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AcArcComponent.html" >AcArcComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBillboardDescComponent.html" >AcBillboardDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBillboardPrimitiveDescComponent.html" >AcBillboardPrimitiveDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcBoxDescComponent.html" >AcBoxDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCircleComponent.html" >AcCircleComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCircleDescComponent.html" >AcCircleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcContextMenuWrapperComponent.html" >AcContextMenuWrapperComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCorridorDescComponent.html" >AcCorridorDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDynamicCircleDescComponent.html" >AcDynamicCircleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDynamicEllipseDescComponent.html" >AcDynamicEllipseDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcDynamicPolylineDescComponent.html" >AcDynamicPolylineDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcEllipseComponent.html" >AcEllipseComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcEllipseDescComponent.html" >AcEllipseDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcEllipsoidDescComponent.html" >AcEllipsoidDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcHtmlComponent.html" >AcHtmlComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcHtmlDescComponent.html" >AcHtmlDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelComponent.html" >AcLabelComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelDescComponent.html" >AcLabelDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLabelPrimitiveDescComponent.html" >AcLabelPrimitiveDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcLayerComponent.html" >AcLayerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcMapComponent.html" >AcMapComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcMapLayerProviderComponent.html" >AcMapLayerProviderComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcModelDescComponent.html" >AcModelDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPointComponent.html" >AcPointComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPointDescComponent.html" >AcPointDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPointPrimitiveDescComponent.html" >AcPointPrimitiveDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineComponent.html" >AcPolylineComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineDescComponent.html" >AcPolylineDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylinePrimitiveDescComponent.html" >AcPolylinePrimitiveDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticCircleDescComponent.html" >AcStaticCircleDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticEllipseDescComponent.html" >AcStaticEllipseDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticPolygonDescComponent.html" >AcStaticPolygonDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcStaticPolylineDescComponent.html" >AcStaticPolylineDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcTileset3dComponent.html" >AcTileset3dComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcWallDescComponent.html" >AcWallDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CirclesEditorComponent.html" >CirclesEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/HippodromeEditorComponent.html" >HippodromeEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PolygonsEditorComponent.html" >PolygonsEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="../directives/AcHtmlContainerDirective.html" >AcHtmlContainerDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../directives/AcHtmlDirective.html" >AcHtmlDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/AcEntity.html" >AcEntity</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/AcHtmlContext.html" >AcHtmlContext</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BasicDrawerService.html" >BasicDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumDragDropHelper.html" >CesiumDragDropHelper</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CesiumExtender.html" >CesiumExtender</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CircleEditorObservable.html" >CircleEditorObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditArc.html" >EditArc</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditPoint.html" >EditPoint</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditPolyline.html" >EditPolyline</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditableCircle.html" >EditableCircle</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditableHippodrome.html" >EditableHippodrome</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditablePolygon.html" >EditablePolygon</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditablePolyline.html" >EditablePolyline</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EditorObservable.html" >EditorObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/HtmlPrimitive.html" >HtmlPrimitive</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/OptimizedEntityCollection.html" >OptimizedEntityCollection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/PolygonEditorObservable.html" >PolygonEditorObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/PolylineEditorObservable.html" >PolylineEditorObservable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/PrimitivesDrawerService.html" >PrimitivesDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Registration.html" >Registration</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SmartAssigner.html" >SmartAssigner</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/AcHtmlManager.html" >AcHtmlManager</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/BillboardPrimitiveDrawerService.html" >BillboardPrimitiveDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/BoxDrawerService.html" >BoxDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CameraService.html" >CameraService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CesiumHeatMapMaterialCreator.html" >CesiumHeatMapMaterialCreator</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CesiumProperties.html" >CesiumProperties</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CesiumService.html" >CesiumService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CirclesEditorService.html" >CirclesEditorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CirclesManagerService.html" >CirclesManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ConfigurationService.html" >ConfigurationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ContextMenuService.html" >ContextMenuService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CoordinateConverter.html" >CoordinateConverter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CorridorDrawerService.html" >CorridorDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/EllipsoidDrawerService.html" >EllipsoidDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/EntitiesDrawerService.html" >EntitiesDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/GeoUtilsService.html" >GeoUtilsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HippodromeEditorService.html" >HippodromeEditorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HippodromeManagerService.html" >HippodromeManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HtmlDrawerService.html"  data-type="entity-link" class="active" >HtmlDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/KeyboardControlService.html" >KeyboardControlService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LabelPrimitiveDrawerService.html" >LabelPrimitiveDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/MapEventsManagerService.html" >MapEventsManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/MapLayersService.html" >MapLayersService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/MapsManagerService.html" >MapsManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelDrawerService.html" >ModelDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PlonterService.html" >PlonterService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PointPrimitiveDrawerService.html" >PointPrimitiveDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolygonsManagerService.html" >PolygonsManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylineDrawerService.html" >PolylineDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylinePrimitiveDrawerService.html" >PolylinePrimitiveDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylineVolumeDrawerService.html" >PolylineVolumeDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylinesEditorService.html" >PolylinesEditorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PolylinesManagerService.html" >PolylinesManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PrimitivePolygonDrawerService.html" >PrimitivePolygonDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/RectangleDrawerService.html" >RectangleDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ScreenshotService.html" >ScreenshotService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SelectionManagerService.html" >SelectionManagerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ViewerConfiguration.html" >ViewerConfiguration</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ViewerFactory.html" >ViewerFactory</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/WallDrawerService.html" >WallDrawerService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/ActiveDefinition.html" >ActiveDefinition</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BasicContextMenu.html" >BasicContextMenu</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EventRegistrationInput.html" >EventRegistrationInput</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EventResult.html" >EventResult</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HeatMapOptions.html" >HeatMapOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HeatPointDataPoint.html" >HeatPointDataPoint</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HeatmapDataSet.html" >HeatmapDataSet</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HippodromeEditOptions.html" >HippodromeEditOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HippodromeEditUpdate.html" >HippodromeEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ModuleConfiguration.html" >ModuleConfiguration</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Movement.html" >Movement</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PointProps.html" >PointProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolygonEditOptions.html" >PolygonEditOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolygonEditUpdate.html" >PolygonEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolygonProps.html" >PolygonProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolylineEditOptions.html" >PolylineEditOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolylineEditUpdate.html" >PolylineEditUpdate</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Rectangle.html" >Rectangle</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SelectionOptions.html" >SelectionOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Vec3.html" >Vec3</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/PixelOffsetPipe.html" >PixelOffsetPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/RadiansToDegreesPipe.html" >RadiansToDegreesPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>HtmlDrawerService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/angular-cesium/services/drawers/html-drawer/html-drawer.service.ts</code>
+        </p>
+
+
+
+            <section>
+                <h3 id="index">Index</h3>
+                <table class="table table-sm table-bordered index-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Methods</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#add">add</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h3 id="constructor">Constructor</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>constructor(_cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>)</code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium/services/drawers/html-drawer/html-drawer.service.ts:6</a></div>
+                                        </td>
+                                    </tr>
+            
+                        </tbody>
+                    </table>
+            </section>
+
+            <section>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="add"></a>
+                                    <b> add</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>add(cesiumProps: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium/services/drawers/html-drawer/html-drawer.service.ts:11</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+
+    </div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { CesiumService } from &#x27;../../cesium/cesium.service&#x27;;
+import { PrimitivesDrawerService } from &#x27;../primitives-drawer/primitives-drawer.service&#x27;;
+
+@Injectable()
+export class HtmlDrawerService extends PrimitivesDrawerService {
+    constructor(private _cesiumService: CesiumService) {
+        super(Cesium.HtmlCollection, _cesiumService);
+    }
+
+    add(cesiumProps: any): any  {
+        cesiumProps.scene &#x3D; this._cesiumService.getScene();
+        return super.add(cesiumProps);
+    }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+    </body>
+</html>
