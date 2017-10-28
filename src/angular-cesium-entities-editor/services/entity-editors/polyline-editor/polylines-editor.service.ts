@@ -189,7 +189,7 @@ export class PolylinesEditorService {
 			mouseMoveRegistration.dispose();
 			addPointRegistration.dispose();
 			addLastPointRegistration.dispose();
-			this.editPolygon(id, positions, priority, clientEditSubject, polygonOptions, editorObservable);
+			this.editPolyline(id, positions, priority, clientEditSubject, polygonOptions, editorObservable);
 			finishedCreate = true;
 		});
 		
@@ -229,7 +229,7 @@ export class PolylinesEditorService {
 			positions : this.getPositions(id),
 			points : this.getPoints(id),
 		});
-		return this.editPolygon(
+		return this.editPolyline(
 			id,
 			positions,
 			priority,
@@ -238,12 +238,12 @@ export class PolylinesEditorService {
 		)
 	}
 	
-	private editPolygon(id: string,
-											positions: Cartesian3[],
-											priority,
-											editSubject: Subject<PolygonEditUpdate>,
-											options: PolygonEditOptions,
-											editObservable?: EditorObservable<PolygonEditUpdate>) {
+	private editPolyline(id: string,
+											 positions: Cartesian3[],
+											 priority,
+											 editSubject: Subject<PolygonEditUpdate>,
+											 options: PolygonEditOptions,
+											 editObservable?: EditorObservable<PolygonEditUpdate>) {
 		
 		const pointDragRegistration = this.mapEventsManager.register({
 			event : options.dragPointEvent,
@@ -371,12 +371,12 @@ export class PolylinesEditorService {
 	}
 	
 	private getPositions(id) {
-		const polygon = this.polylinesManager.get(id);
-		return polygon.getRealPositions()
+		const polyline = this.polylinesManager.get(id);
+		return polyline.getRealPositions()
 	}
 	
 	private getPoints(id) {
-		const polygon = this.polylinesManager.get(id);
-		return polygon.getRealPoints();
+		const polyline = this.polylinesManager.get(id);
+		return polyline.getRealPoints();
 	}
 }

@@ -20,11 +20,11 @@ export class EditablePolyline extends AcEntity {
 							private pointsLayer: AcLayerComponent,
 							private polylinesLayer: AcLayerComponent,
 							private coordinateConverter: CoordinateConverter,
-							polygonOptions: PolylineEditOptions,
+							polylineEdit: PolylineEditOptions,
 							positions?: Cartesian3[]) {
 		super();
-		this.defaultPointProps = polygonOptions.defaultPointOptions;
-		this.defaultPolylineProps = polygonOptions.defaultPolylineOptions;
+		this.defaultPointProps = polylineEdit.defaultPointOptions;
+		this.defaultPolylineProps = polylineEdit.defaultPolylineOptions;
 		if (positions && positions.length >= 2) {
 			this.createFromExisting(positions);
 		}
@@ -64,7 +64,7 @@ export class EditablePolyline extends AcEntity {
 	
 	setPointsManually(points: EditPoint[]) {
 		if (!this.done) {
-			throw new Error('Update manually only in edit mode, after polygon is created')
+			throw new Error('Update manually only in edit mode, after polyline is created')
 		}
 		this.positions.forEach(p => this.pointsLayer.remove(p.getId()));
 		this.positions = points;

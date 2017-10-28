@@ -58,29 +58,29 @@ export class PolylinesEditorComponent implements OnDestroy {
 				break;
 			}
 			case EditActions.MOUSE_MOVE: {
-				const polygon = this.polylinesManager.get(update.id);
+				const polyline = this.polylinesManager.get(update.id);
 				if (update.updatedPosition) {
-					polygon.moveTempMovingPoint(update.updatedPosition);
+					polyline.moveTempMovingPoint(update.updatedPosition);
 				}
 				break;
 			}
 			case EditActions.ADD_POINT: {
-				const polygon = this.polylinesManager.get(update.id);
+				const polyline = this.polylinesManager.get(update.id);
 				if (update.updatedPosition) {
-					polygon.addPoint(update.updatedPosition);
+					polyline.addPoint(update.updatedPosition);
 				}
 				break;
 			}
 			case EditActions.ADD_LAST_POINT: {
-				const polygon = this.polylinesManager.get(update.id);
+				const polyline = this.polylinesManager.get(update.id);
 				if (update.updatedPosition) {
-					polygon.addLastPoint(update.updatedPosition);
+					polyline.addLastPoint(update.updatedPosition);
 				}
 				break;
 			}
 			case EditActions.DISPOSE: {
-				const polygon = this.polylinesManager.get(update.id);
-				polygon.dispose();
+				const polyline = this.polylinesManager.get(update.id);
+				polyline.dispose();
 				break;
 			}
 			default: {
