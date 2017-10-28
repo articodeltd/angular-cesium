@@ -73,8 +73,9 @@ export class EditableHippodrome extends AcEntity {
 		}
 		this.hippodromePositions.forEach(p => this.pointsLayer.remove(p.getId()));
 		this.hippodromePositions = points;
-		
+		this.createHeightEditPoints();
 		this.updateHippdromePointsLayer(...points);
+		this.updateHippdromeLayer();
 	}
 	
 	
