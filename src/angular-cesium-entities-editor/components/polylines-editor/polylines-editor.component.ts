@@ -103,44 +103,44 @@ export class PolylinesEditorComponent implements OnDestroy {
 				break;
 			}
 			case EditActions.DRAG_POINT: {
-				const polygon = this.polylinesManager.get(update.id);
-				if (polygon && polygon.enableEdit) {
-					polygon.movePoint(update.updatedPosition, update.updatedPoint);
+				const polyline = this.polylinesManager.get(update.id);
+				if (polyline && polyline.enableEdit) {
+					polyline.movePoint(update.updatedPosition, update.updatedPoint);
 				}
 				break;
 			}
 			case EditActions.DRAG_POINT_FINISH: {
-				const polygon = this.polylinesManager.get(update.id);
-				if (polygon && polygon.enableEdit && update.updatedPoint.isVirtualEditPoint()) {
-					polygon.addVirtualEditPoint(update.updatedPoint);
+				const polyline = this.polylinesManager.get(update.id);
+				if (polyline && polyline.enableEdit && update.updatedPoint.isVirtualEditPoint()) {
+					polyline.addVirtualEditPoint(update.updatedPoint);
 				}
 				break;
 			}
 			case EditActions.REMOVE_POINT: {
-				const polygon = this.polylinesManager.get(update.id);
-				if (polygon && polygon.enableEdit) {
-					polygon.removePoint(update.updatedPoint);
+				const polyline = this.polylinesManager.get(update.id);
+				if (polyline && polyline.enableEdit) {
+					polyline.removePoint(update.updatedPoint);
 				}
 				break;
 			}
 			case EditActions.DISABLE: {
-				const polygon = this.polylinesManager.get(update.id);
-				if (polygon) {
-					polygon.enableEdit = false;
+				const polyline = this.polylinesManager.get(update.id);
+				if (polyline) {
+					polyline.enableEdit = false;
 				}
 				break;
 			}
 			case EditActions.ENABLE: {
-				const polygon = this.polylinesManager.get(update.id);
-				if (polygon) {
-					polygon.enableEdit = true;
+				const polyline = this.polylinesManager.get(update.id);
+				if (polyline) {
+					polyline.enableEdit = true;
 				}
 				break;
 			}
 			case EditActions.SET_MANUALLY: {
-				const polygon = this.polylinesManager.get(update.id);
-				if (polygon) {
-					polygon.setPointsManually(update.points);
+				const polyline = this.polylinesManager.get(update.id);
+				if (polyline) {
+					polyline.setPointsManually(update.points);
 				}
 				break;
 			}
