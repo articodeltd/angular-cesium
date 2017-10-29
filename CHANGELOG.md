@@ -10,7 +10,8 @@
 * Added CesiumHeatMapMaterialCreator for creating heatmap material for cesium entities.
 * edited polygons are now draggable.
 * added `ac-point-primitive-desc`
-* added `ac-html-desc` - ac-layer supports ac-html   
+* added `ac-html-desc` - ac-layer supports ac-html
+* added `ac-array-desc` for representing dynamic arrays - ALPHA  
 
 ## 0.0.29
 ### Features
