@@ -1,4 +1,4 @@
-## NEXT
+## 0.0.30
 ### Fixes
 * Service init order  [#131](https://github.com/TGFTech/angular-cesium/issues/131)
 
