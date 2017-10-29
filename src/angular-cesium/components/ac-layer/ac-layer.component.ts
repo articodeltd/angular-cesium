@@ -1,14 +1,6 @@
 // tslint:disable
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
-import {
-	AfterContentInit,
-	Component,
-	Input,
-	OnChanges,
-	OnDestroy,
-	OnInit,
-	SimpleChanges
-} from '@angular/core';
+import { AfterContentInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -261,7 +253,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
 
-		this.layerService.setContext(this.context);
+		this.layerService.context = this.context;
 		this.layerService.setEntityName(this.entityName);
 	}
 
@@ -270,6 +262,10 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	}
 
 	ngOnInit(): void {
+    this.layerService.context = this.context;
+		this.layerService.options = this.options;
+		this.layerService.show = this.show;
+		this.layerService.zIndex = this.zIndex;
 		this._drawerList.forEach((drawer, drawerName) => {
 			const initOptions = this.options ? this.options[drawerName] : undefined;
 			const drawerDataSources = drawer.init(initOptions);
@@ -285,11 +281,13 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.show && !changes.show.firstChange) {
 			const showValue = changes['show'].currentValue;
+      this.layerService.show = showValue;
 			this._drawerList.forEach((drawer) => drawer.setShow(showValue));
 		}
 
 		if (changes.zIndex && !changes.zIndex.firstChange) {
 			const zIndexValue = changes['zIndex'].currentValue;
+      this.layerService.zIndex = zIndexValue;
 			this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue);
 		}
 	}

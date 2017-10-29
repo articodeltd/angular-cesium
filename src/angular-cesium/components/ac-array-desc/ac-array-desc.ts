@@ -1,10 +1,11 @@
 import {
   AfterContentInit,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
-  ElementRef,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   SimpleChanges,
   ViewChild
@@ -16,29 +17,34 @@ import * as get from 'lodash.get';
 import { AcLayerComponent } from '../ac-layer/ac-layer.component';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'ac-array-desc',
   template: `
-      <ac-layer #layer [acFor]="getAcForString()" [context]="context">
+      <ac-layer #layer [acFor]="getAcForString()"
+                [context]="layerService.context"
+                [options]="layerService.options"
+                [show]="layerService.show && show"
+                [zIndex]="layerService.zIndex">
           <ng-content #content></ng-content>
       </ac-layer>
   `,
 })
-export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit, IDescription {
-  @Input() context;
-
+export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit, OnDestroy, IDescription {
   @Input() acFor: string;
+
   @Input() idGetter: Function;
+  @Input() show = true;
   @ViewChild('layer') private layer: AcLayerComponent;
   @ContentChildren(BasicDesc, { descendants: true }) private contentItems;
   private entitiesMap = new Map<string, string[]>();
-
+  private layerServiceSubscription: Subscription;
   entityName: string;
   arrayPath: string;
   arrayObservable$ = new Subject<AcNotification>();
 
-  constructor(private layerService: LayerService, private elt: ElementRef) {
+  constructor(public layerService: LayerService, private cd: ChangeDetectorRef) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -51,21 +57,27 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
         this.arrayPath = this.arrayPath.substr(index + 1);
       }
     }
-    if (changes['context'].firstChange) {
-      changes['context'].currentValue['arrayObservable$'] = this.arrayObservable$;
-    }
   }
 
   ngOnInit(): void {
     this.layerService.registerDescription(this);
+    this.layerServiceSubscription = this.layerService.layerUpdates().subscribe(() => {
+      this.cd.detectChanges();
+    })
   }
 
   ngAfterContentInit(): void {
+    this.layerService.context['arrayObservable$'] = this.arrayObservable$;
     this.contentItems._results.forEach(component => {
-      component._layerService.unregisterDescription(component);
-      component._layerService = this.layer['layerService'];
+      this.layerService.unregisterDescription(component);
       this.layer['layerService'].registerDescription(component);
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.layerServiceSubscription) {
+      this.layerServiceSubscription.unsubscribe();
+    }
   }
 
   draw(context, id: string, contextEntity) {
@@ -78,7 +90,7 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     this.entitiesMap.set(id, entitiesIdArray);
 
     entitiesArray.forEach(item => {
-      this.context[this.entityName] = item;
+      this.layerService.context[this.entityName] = item;
       const arrayItemId = this.generateCombinedId(id, this.idGetter(item));
       entitiesIdArray.push(arrayItemId);
       this.layer.update(contextEntity, arrayItemId);

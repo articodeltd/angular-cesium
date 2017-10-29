@@ -1,6 +1,4 @@
-import {
-    Directive, TemplateRef, ViewContainerRef, OnInit, ChangeDetectorRef
-} from '@angular/core';
+import { ChangeDetectorRef, Directive, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.service';
 
@@ -46,7 +44,7 @@ export class AcHtmlDirective implements OnInit {
     }
 
     addOrUpdate(id: any, primitive: any) {
-        const context = this._layerService.getContext();
+        const context = this._layerService.context;
         const entity = context[this._layerService.getEntityName()];
 
         if (this._views.has(id)) {
