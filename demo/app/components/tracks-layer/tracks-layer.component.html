@@ -45,4 +45,15 @@
         color: getTrackColor(track)
        }">
     </ac-model-desc>
+
+    <ac-array-desc acFor="let arrayItem of track.array" [context]="this" [idGetter]="trackArrayIdGetter">
+        <ac-point-desc [withCache]="false" props="{
+            position: arrayItem.pos,
+            pixelSize: 15,
+            color: Cesium.Color.WHITE,
+            outlineColor: Cesium.Color.RED,
+            outlineWidth: 1
+        }">
+        </ac-point-desc>
+    </ac-array-desc>
 </ac-layer>

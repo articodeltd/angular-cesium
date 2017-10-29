@@ -4,6 +4,7 @@ import { ComputationCache } from '../computation-cache/computation-cache.service
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { AcEntity } from '../../models/ac-entity';
 import { BasicDrawerService } from '../drawers/basic-drawer/basic-drawer.service';
+import { IDescription } from '../../models/description';
 
 export interface OnDrawParams {
   acEntity: AcEntity;
@@ -15,9 +16,12 @@ export interface OnDrawParams {
  *  the ancestor class for creating components.
  *  extend this class to create desc component.
  */
-export class BasicDesc implements OnInit, OnDestroy {
+export class BasicDesc implements OnInit, OnDestroy, IDescription {
   @Input()
   props: any;
+
+  @Input()
+  withCache = true;
 
   @Output()
   onDraw: EventEmitter<OnDrawParams> = new EventEmitter<OnDrawParams>();
@@ -49,7 +53,7 @@ export class BasicDesc implements OnInit, OnDestroy {
     }
 
     this._layerService.registerDescription(this);
-    this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
+    this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props, this.withCache);
     this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
   }
 
