@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, forwardRef, OnInit } from '@angular/core';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -7,7 +7,6 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 
 /**
  *  This is a polygon implementation.
- *  The ac-label element must be a child of ac-layer element.
  *  The properties of props are the same as the properties of Entity and PolygonGraphics:
  *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
  *  + https://cesiumjs.org/Cesium/Build/Documentation/PolygonGraphics.html
@@ -19,17 +18,18 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
  *      material: polygon.material,
  *      height: polygon.height
  *    }">
- *	  </ac-polygon-desc>
- *	```
+ *    </ac-polygon-desc>
+ *  ```
  */
 @Component({
-    selector: 'ac-polygon-desc',
-    template: ''
+  selector: 'ac-polygon-desc',
+  template: '',
+  providers: [{ provide: BasicDesc, useExisting: forwardRef(() => AcPolygonDescComponent) }],
 })
 export class AcPolygonDescComponent extends BasicDesc implements OnInit {
 
-    constructor(polygonDrawer: PolygonDrawerService, layerService: LayerService,
-                computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
-        super(polygonDrawer, layerService, computationCache, cesiumProperties);
-    }
+  constructor(polygonDrawer: PolygonDrawerService, layerService: LayerService,
+              computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
+    super(polygonDrawer, layerService, computationCache, cesiumProperties);
+  }
 }
