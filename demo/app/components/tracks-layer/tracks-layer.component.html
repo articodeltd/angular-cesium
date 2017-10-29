@@ -50,7 +50,7 @@
         <ac-point-desc [withCache]="false" props="{
             position: arrayItem.pos,
             pixelSize: 15,
-            color: Cesium.Color.WHITE,
+            color: getTrackColor(track),
             outlineColor: Cesium.Color.RED,
             outlineWidth: 1
         }">
