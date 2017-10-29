@@ -297,14 +297,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this.stopObservable.next(true);
 		this.removeAll();
 	}
-	
+
+  getLayerService(): LayerService {
+    return this.layerService;
+  }
+
 	/**
 	 * Returns the store.
 	 */
 	getStore(): Map<string, any> {
 		return this.entitiesStore;
 	};
-	
+
 	/**
 	 * Remove all the entities from the layer.
 	 */
@@ -312,7 +316,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this.layerService.getDescriptions().forEach((description) => description.removeAll());
 		this.entitiesStore.clear();
 	}
-	
+
 	/**
 	 * remove entity from the layer
 	 * @param {number} entityId
@@ -321,7 +325,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this._updateStream.next({id : entityId, actionType : ActionType.DELETE});
 		this.entitiesStore.delete(entityId);
 	}
-	
+
 	/**
 	 * add/update entity to/from the layer
 	 * @param {AcNotification} notification
@@ -329,7 +333,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	updateNotification(notification: AcNotification): void {
 		this._updateStream.next(notification);
 	}
-	
+
 	/**
 	 * add/update entity to/from the layer
 	 * @param {AcEntity} entity
@@ -338,7 +342,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	update(entity: AcEntity, id: string): void {
 		this._updateStream.next({entity, id, actionType : ActionType.ADD_UPDATE});
 	}
-	
+
 	refreshAll(collection: AcNotification[]): void {
 		// TODO make entity interface: collection of type entity not notification
 		Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));

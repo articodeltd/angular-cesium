@@ -9,8 +9,17 @@ export class LayerService {
   private _show: boolean;
   private _zIndex: number;
   private _entityName: string;
+  private _cache = true;
   private descriptions: IDescription[] = [];
   private layerUpdate = new EventEmitter();
+
+  get cache(): boolean {
+    return this._cache;
+  }
+
+  set cache(value: boolean) {
+    this._cache = value;
+  }
 
   get zIndex(): number {
     return this._zIndex;

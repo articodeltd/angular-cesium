@@ -1,4 +1,4 @@
-import { EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { AfterViewChecked, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
@@ -16,12 +16,9 @@ export interface OnDrawParams {
  *  the ancestor class for creating components.
  *  extend this class to create desc component.
  */
-export class BasicDesc implements OnInit, OnDestroy, IDescription {
+export class BasicDesc implements OnInit, AfterViewChecked, OnDestroy, IDescription {
   @Input()
   props: any;
-
-  @Input()
-  withCache = true;
 
   @Output()
   onDraw: EventEmitter<OnDrawParams> = new EventEmitter<OnDrawParams>();
@@ -30,15 +27,15 @@ export class BasicDesc implements OnInit, OnDestroy, IDescription {
   onRemove: EventEmitter<OnDrawParams> = new EventEmitter<OnDrawParams>();
 
   protected _cesiumObjectsMap: Map<string, any> = new Map<string, any>();
-  private _propsEvaluateFn: Function;
-  private _propsAssignerFn: Function;
 
+  private _propsEvaluateFn: Function;
+
+  private _propsAssignerFn: Function;
   constructor(protected _drawer: BasicDrawerService,
               protected _layerService: LayerService,
               protected _computationCache: ComputationCache,
               protected _cesiumProperties: CesiumProperties) {
   }
-
   protected _propsEvaluator(context: Object): any {
     return this._propsEvaluateFn(this._computationCache, context);
   }
@@ -51,9 +48,11 @@ export class BasicDesc implements OnInit, OnDestroy, IDescription {
     if (!this.props) {
       console.error('ac-desc components error: [props] input is mandatory');
     }
+  }
 
+  ngAfterViewChecked(): void {
     this._layerService.registerDescription(this);
-    this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props, this.withCache);
+    this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props, this._layerService.cache);
     this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
   }
 

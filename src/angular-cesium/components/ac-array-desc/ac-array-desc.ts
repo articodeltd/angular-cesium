@@ -61,6 +61,7 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
 
   ngOnInit(): void {
     this.layerService.registerDescription(this);
+    this.layer.getLayerService().cache = false;
     this.layerServiceSubscription = this.layerService.layerUpdates().subscribe(() => {
       this.cd.detectChanges();
     })
@@ -70,7 +71,8 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     this.layerService.context['arrayObservable$'] = this.arrayObservable$;
     this.contentItems._results.forEach(component => {
       this.layerService.unregisterDescription(component);
-      this.layer['layerService'].registerDescription(component);
+      this.layer.getLayerService().registerDescription(component);
+      component._layerService = this.layer.getLayerService();
     });
   }
 
