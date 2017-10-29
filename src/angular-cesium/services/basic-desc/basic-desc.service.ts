@@ -1,4 +1,4 @@
-import { AfterViewChecked, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
@@ -16,7 +16,7 @@ export interface OnDrawParams {
  *  the ancestor class for creating components.
  *  extend this class to create desc component.
  */
-export class BasicDesc implements OnInit, AfterViewChecked, OnDestroy, IDescription {
+export class BasicDesc implements OnInit, OnDestroy, IDescription {
   @Input()
   props: any;
 
@@ -44,13 +44,23 @@ export class BasicDesc implements OnInit, AfterViewChecked, OnDestroy, IDescript
     return (cesiumObject: Object, desc: Object) => this._propsAssignerFn(cesiumObject, desc);
   }
 
+  getLayerService(): LayerService {
+    return this._layerService;
+  }
+
+  setLayerService(layerService: LayerService) {
+    this._layerService.unregisterDescription(this);
+    this._layerService = layerService;
+    this._layerService.registerDescription(this);
+    this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props, this._layerService.cache, true);
+    this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
+  }
+
   ngOnInit(): void {
     if (!this.props) {
       console.error('ac-desc components error: [props] input is mandatory');
     }
-  }
 
-  ngAfterViewChecked(): void {
     this._layerService.registerDescription(this);
     this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props, this._layerService.cache);
     this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);

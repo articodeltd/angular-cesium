@@ -4,7 +4,7 @@ import { LayerOptions } from '../../models/layer-options';
 
 @Injectable()
 export class LayerService {
-	private _context: any;
+  private _context: any;
   private _options: LayerOptions;
   private _show: boolean;
   private _zIndex: number;
@@ -38,6 +38,7 @@ export class LayerService {
     this._show = value;
     this.layerUpdate.emit();
   }
+
   get options(): LayerOptions {
     return this._options;
   }
@@ -47,39 +48,41 @@ export class LayerService {
     this.layerUpdate.emit();
   }
 
-	get context(): any {
-		return this._context;
-	}
+  get context(): any {
+    return this._context;
+  }
 
-	set context(context) {
-		this._context = context;
+  set context(context) {
+    this._context = context;
     this.layerUpdate.emit();
-	}
+  }
 
-	setEntityName(name: string) {
-		this._entityName = name;
-	}
+  setEntityName(name: string) {
+    this._entityName = name;
+  }
 
-	getEntityName(): string {
-		return this._entityName;
-	}
+  getEntityName(): string {
+    return this._entityName;
+  }
 
-	registerDescription(descriptionComponent: IDescription) {
-		this.descriptions.push(descriptionComponent);
-	}
+  registerDescription(descriptionComponent: IDescription) {
+    if (this.descriptions.indexOf(descriptionComponent) < 0) {
+      this.descriptions.push(descriptionComponent);
+    }
+  }
 
-	unregisterDescription(descriptionComponent: IDescription) {
-		const index = this.descriptions.indexOf(descriptionComponent);
-		if (index > -1) {
-			this.descriptions.splice(index, 1);
-		}
-	}
+  unregisterDescription(descriptionComponent: IDescription) {
+    const index = this.descriptions.indexOf(descriptionComponent);
+    if (index > -1) {
+      this.descriptions.splice(index, 1);
+    }
+  }
 
-	getDescriptions(): IDescription[] {
-		return this.descriptions;
-	}
+  getDescriptions(): IDescription[] {
+    return this.descriptions;
+  }
 
-	layerUpdates(): EventEmitter<any> {
-  	return this.layerUpdate;
-	}
+  layerUpdates(): EventEmitter<any> {
+    return this.layerUpdate;
+  }
 }

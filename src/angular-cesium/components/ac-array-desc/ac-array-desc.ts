@@ -35,9 +35,11 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
   @Input() acFor: string;
 
   @Input() idGetter: Function;
+
   @Input() show = true;
   @ViewChild('layer') private layer: AcLayerComponent;
-  @ContentChildren(BasicDesc, { descendants: true }) private contentItems;
+  @ContentChildren(BasicDesc, { descendants: false }) private basicDescs;
+  @ContentChildren(AcArrayDescComponent, { descendants: false }) private arrayDescs;
   private entitiesMap = new Map<string, string[]>();
   private layerServiceSubscription: Subscription;
   entityName: string;
@@ -52,15 +54,10 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
       const acForArr = changes['acFor'].currentValue.split(' ');
       this.arrayPath = acForArr[3];
       this.entityName = acForArr[1];
-      const index = this.arrayPath.indexOf('.');
-      if (index >= 0) {
-        this.arrayPath = this.arrayPath.substr(index + 1);
-      }
     }
   }
 
   ngOnInit(): void {
-    this.layerService.registerDescription(this);
     this.layer.getLayerService().cache = false;
     this.layerServiceSubscription = this.layerService.layerUpdates().subscribe(() => {
       this.cd.detectChanges();
@@ -69,10 +66,16 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
 
   ngAfterContentInit(): void {
     this.layerService.context['arrayObservable$'] = this.arrayObservable$;
-    this.contentItems._results.forEach(component => {
+    this.layerService.registerDescription(this);
+    this.basicDescs._results.forEach((component: BasicDesc) => {
+      component.setLayerService(this.layer.getLayerService());
+    });
+    this.arrayDescs._results.splice(0, 1);
+    this.arrayDescs._results.forEach((component: AcArrayDescComponent) => {
       this.layerService.unregisterDescription(component);
       this.layer.getLayerService().registerDescription(component);
-      component._layerService = this.layer.getLayerService();
+      component.layerService = this.layer.getLayerService();
+      component.setLayerService(this.layer.getLayerService())
     });
   }
 
@@ -82,8 +85,12 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     }
   }
 
+  setLayerService(layerService: LayerService) {
+    this.layerService = layerService;
+  }
+
   draw(context, id: string, contextEntity) {
-    const entitiesArray: any[] = get(contextEntity, this.arrayPath);
+    const entitiesArray: any[] = get(context, this.arrayPath);
     if (!entitiesArray) {
       return;
     }
@@ -111,16 +118,17 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     if (entitiesIdArray) {
       entitiesIdArray.forEach((entityId) => this.layer.remove(entityId));
     }
+    this.entitiesMap.delete(id);
   }
 
   removeAll() {
     this.layer.removeAll();
+    this.entitiesMap.clear();
   }
 
   getAcForString() {
     return `let ${this.entityName + '___temp'} of arrayObservable$`;
   }
-
 
   private generateCombinedId(entityId: string, arrayItemId: string): string {
     return entityId + arrayItemId;

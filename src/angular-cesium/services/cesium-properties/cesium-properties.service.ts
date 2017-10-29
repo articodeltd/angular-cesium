@@ -50,8 +50,8 @@ export class CesiumProperties {
     };
   }
 
-  createEvaluator(expression: string, withCache = true): (cache: ComputationCache, context: Object) => Object {
-    if (this._evaluatorsCache.has(expression)) {
+  createEvaluator(expression: string, withCache = true, newEvaluator = false): (cache: ComputationCache, context: Object) => Object {
+    if (!newEvaluator && this._evaluatorsCache.has(expression)) {
       return this._evaluatorsCache.get(expression);
     }
 

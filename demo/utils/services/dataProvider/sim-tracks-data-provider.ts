@@ -39,29 +39,59 @@ export class SimTracksDataProvider {
 
     entity.scale = entity.id === 1 ? 0.3 : 0.15;
     entity.alt = Math.round(entity.position.altitude);
-    entity.array = [
-      {
-        pos: Cesium.Cartesian3.fromDegrees(entity.position.long + 1, entity.position.lat + 1, entity.alt),
-        id: '0'
-      },
-      {
-        pos: Cesium.Cartesian3.fromDegrees(entity.position.long + 1, entity.position.lat - 1, entity.alt),
-        id: '1'
-      },
-      {
-        pos: Cesium.Cartesian3.fromDegrees(entity.position.long - 1, entity.position.lat + 1, entity.alt),
-        id: '2'
-      },
-      {
-        pos: Cesium.Cartesian3.fromDegrees(entity.position.long - 1, entity.position.lat - 1, entity.alt),
-        id: '3'
-      },
-    ];
+    entity.array = this.getArrayBySize(entity, Math.round(Math.random() * 3));
     entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.alt);
     entity.futurePosition =
       Cesium.Cartesian3.fromDegrees(entity.futurePosition.long, entity.futurePosition.lat, entity.futurePosition.altitude);
     const hpr = new Cesium.HeadingPitchRoll(fixedHeading, pitch, roll);
     entity.orientation = Cesium.Transforms.headingPitchRollQuaternion(entity.position, hpr);
     return entity;
+  }
+
+  getArrayBySize(entity, size) {
+    const arr = [
+      {
+        pos: Cesium.Cartesian3.fromDegrees(entity.position.long + 1, entity.position.lat + 1, entity.alt),
+        innerArray: [
+          {
+            pos: Cesium.Cartesian3.fromDegrees(entity.position.long + 1.5, entity.position.lat + 1.5, entity.alt),
+            id: '0'
+          },
+        ],
+        id: '0'
+      },
+      {
+        pos: Cesium.Cartesian3.fromDegrees(entity.position.long + 1, entity.position.lat - 1, entity.alt),
+        innerArray: [
+          {
+            pos: Cesium.Cartesian3.fromDegrees(entity.position.long + 1.5, entity.position.lat - 1.5, entity.alt),
+            id: '0'
+          },
+        ],
+        id: '1'
+      },
+      {
+        pos: Cesium.Cartesian3.fromDegrees(entity.position.long - 1, entity.position.lat + 1, entity.alt),
+        innerArray: [
+          {
+            pos: Cesium.Cartesian3.fromDegrees(entity.position.long - 1.5, entity.position.lat + 1.5, entity.alt),
+            id: '0'
+          },
+        ],
+        id: '2'
+      },
+      {
+        pos: Cesium.Cartesian3.fromDegrees(entity.position.long - 1, entity.position.lat - 1, entity.alt),
+        innerArray: [
+          {
+            pos: Cesium.Cartesian3.fromDegrees(entity.position.long - 1.5, entity.position.lat - 1.5, entity.alt),
+            id: '0'
+          },
+        ],
+        id: '3'
+      },
+    ];
+
+    return arr.slice(0, size);
   }
 }
