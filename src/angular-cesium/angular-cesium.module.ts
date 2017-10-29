@@ -51,8 +51,13 @@ import { AcLabelPrimitiveDescComponent } from './components/ac-label-primitive-d
 import { AcPolylinePrimitiveDescComponent } from './components/ac-polyline-primitive-desc/ac-polyline-primitive-desc.component';
 import { ModuleConfiguration } from './models/module-options';
 import { ConfigurationService } from './cesium-enhancements/ConfigurationService';
+import { CesiumExtender } from '../cesium-extender/extender';
+import { AcHtmlDescComponent } from './components/ac-html-desc/ac-html-desc.component';
+import { AcHtmlDirective } from './directives/ac-html/ac-html.directive';
+import { AcHtmlContainerDirective } from './directives/ac-html-container/ac-html-container.directive';
 import { AcContextMenuWrapperComponent } from './components/ac-context-menu-wrapper/ac-context-menu-wrapper.component';
 import { AcArrayDescComponent } from './components/ac-array-desc/ac-array-desc';
+import { AcPointPrimitiveDescComponent } from './components/ac-point-primitive-desc/ac-point-primitive-desc.component';
 
 @NgModule({
   imports: [
@@ -98,6 +103,10 @@ import { AcArrayDescComponent } from './components/ac-array-desc/ac-array-desc';
     AcWallDescComponent,
     AcRectangleDescComponent,
     AcContextMenuWrapperComponent,
+    AcPointPrimitiveDescComponent,
+    AcHtmlDescComponent,
+    AcHtmlDirective,
+    AcHtmlContainerDirective,
     AcArrayDescComponent,
 
     AcStaticEllipseDescComponent,
@@ -144,6 +153,8 @@ import { AcArrayDescComponent } from './components/ac-array-desc/ac-array-desc';
     AcWallDescComponent,
     AcRectangleDescComponent,
     AcContextMenuWrapperComponent,
+		AcPointPrimitiveDescComponent,
+    AcHtmlDescComponent,
     AcArrayDescComponent,
 
     AcStaticEllipseDescComponent,
@@ -162,5 +173,9 @@ export class AngularCesiumModule {
       ngModule: AngularCesiumModule,
       providers: [{provide: 'config', useValue: config}]
     };
+  }
+
+  constructor() {
+    CesiumExtender.extend();
   }
 }

@@ -1,6 +1,14 @@
 // tslint:disable
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
-import { AfterContentInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import {
+	AfterContentInit,
+	Component,
+	Input,
+	OnChanges,
+	OnDestroy,
+	OnInit,
+	SimpleChanges
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -34,6 +42,8 @@ import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-
 import { LabelPrimitiveDrawerService } from '../../services/drawers/label-primitive-drawer/label-primitive-drawer.service';
 import { BillboardPrimitiveDrawerService } from '../../services/drawers/billboard-primitive-drawer/billboard-primitive-drawer.service';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
+import { PointPrimitiveDrawerService } from '../../services/drawers/point-primitive-drawer/point-primitive-drawer.service';
+import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawer.service';
 
 // tslint:enable
 /**
@@ -72,37 +82,39 @@ import { MapLayersService } from '../../services/map-layers/map-layers.service';
  *  ```
  */
 @Component({
-  selector: 'ac-layer',
-  template: '',
-  providers: [
-    LayerService,
-    ComputationCache,
-    BillboardDrawerService,
-    LabelDrawerService,
-    EllipseDrawerService,
-    PolylineDrawerService,
-    ArcDrawerService,
-    PointDrawerService,
-    PolygonDrawerService,
-    ModelDrawerService,
-    BoxDrawerService,
-    CorridorDrawerService,
-    CylinderDrawerService,
-    EllipsoidDrawerService,
-    PolylineVolumeDrawerService,
-    WallDrawerService,
-    RectangleDrawerService,
-    PolylinePrimitiveDrawerService,
-    LabelPrimitiveDrawerService,
-    BillboardPrimitiveDrawerService,
-
-    DynamicEllipseDrawerService,
-    DynamicPolylineDrawerService,
-    StaticCircleDrawerService,
-    StaticPolylineDrawerService,
-    StaticPolygonDrawerService,
-    StaticEllipseDrawerService,
-  ]
+	selector : 'ac-layer',
+	template : '',
+	providers : [
+		LayerService,
+		ComputationCache,
+		BillboardDrawerService,
+		LabelDrawerService,
+		EllipseDrawerService,
+		PolylineDrawerService,
+		ArcDrawerService,
+		PointDrawerService,
+		PolygonDrawerService,
+		ModelDrawerService,
+		BoxDrawerService,
+		CorridorDrawerService,
+		CylinderDrawerService,
+		EllipsoidDrawerService,
+		PolylineVolumeDrawerService,
+		WallDrawerService,
+		RectangleDrawerService,
+		PolylinePrimitiveDrawerService,
+		LabelPrimitiveDrawerService,
+		BillboardPrimitiveDrawerService,
+		PointPrimitiveDrawerService,
+		HtmlDrawerService,
+		
+		DynamicEllipseDrawerService,
+		DynamicPolylineDrawerService,
+		StaticCircleDrawerService,
+		StaticPolylineDrawerService,
+		StaticPolygonDrawerService,
+		StaticEllipseDrawerService,
+	]
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
 	@Input()
@@ -117,7 +129,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	options: LayerOptions;
 	@Input()
 	zIndex = 0;
-
+	
 	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 	private entityName: string;
 	private stopObservable = new Subject();
@@ -126,7 +138,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 	private entitiesStore = new Map<string, any>();
 	private layerDrawerDataSources = [];
-
+	
 	constructor(private  layerService: LayerService,
 							private _computationCache: ComputationCache,
 							private mapLayersService: MapLayersService,
@@ -151,9 +163,12 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 							staticPolylineDrawerService: StaticPolylineDrawerService,
 							staticPolygonDrawerService: StaticPolygonDrawerService,
 							staticEllipseDrawerService: StaticEllipseDrawerService,
-              polylinePrimitiveDrawerService: PolylinePrimitiveDrawerService,
-              labelPrimitiveDrawerService: LabelPrimitiveDrawerService,
-              billboardPrimitiveDrawerService: BillboardPrimitiveDrawerService) {
+							polylinePrimitiveDrawerService: PolylinePrimitiveDrawerService,
+							labelPrimitiveDrawerService: LabelPrimitiveDrawerService,
+							billboardPrimitiveDrawerService: BillboardPrimitiveDrawerService,
+							pointPrimitiveDrawerService: PointPrimitiveDrawerService,
+							htmlDrawerService: HtmlDrawerService
+							) {
 		this._drawerList = new Map([
 			['billboard', billboardDrawerService],
 			['label', labelDrawerService],
@@ -170,10 +185,12 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			['polylineVolume', polylineVolumeDrawerService],
 			['rectangle', rectangleDrawerService],
 			['wall', wallDrawerService],
-      ['polylinePrimitive', polylinePrimitiveDrawerService],
-      ['labelPrimitive', labelPrimitiveDrawerService],
-      ['billboardPrimitive', billboardPrimitiveDrawerService],
-
+			['polylinePrimitive', polylinePrimitiveDrawerService],
+			['labelPrimitive', labelPrimitiveDrawerService],
+			['billboardPrimitive', billboardPrimitiveDrawerService],
+			['pointPrimitive', pointPrimitiveDrawerService],
+			['html', htmlDrawerService],
+			
 			['dynamicEllipse', dynamicEllipseDrawerService],
 			['dynamicPolyline', dynamicPolylineDrawerService],
 			['staticCircle', staticCircleDrawerService],
@@ -243,6 +260,9 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		if (!this.observable || !(this.observable instanceof Observable)) {
 			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
+
+		this.layerService.setContext(this.context);
+		this.layerService.setEntityName(this.entityName);
 	}
 
 	ngAfterContentInit(): void {

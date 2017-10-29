@@ -1,0 +1,20 @@
+<ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" [zIndex]="1">
+    <ac-polyline-primitive-desc props="{
+        positions: polyline.getPositions(),
+        width: polyline.getPolylineProps().width,
+        material: polyline.getPolylineProps().material,
+    }">
+    </ac-polyline-primitive-desc>
+</ac-layer>
+
+<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
+    <ac-point-desc props="{
+        position: point.getPosition(),
+        pixelSize: getPointSize(point),
+        color: point.getPointProps().color,
+        outlineColor: point.getPointProps().outlineColor,
+        outlineWidth: point.getPointProps().outlineWidth,
+    }">
+    </ac-point-desc>
+</ac-layer>
+

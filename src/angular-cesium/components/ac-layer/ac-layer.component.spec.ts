@@ -15,9 +15,11 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/takeUntil';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
+import { CesiumExtender } from '../../../cesium-extender/extender';
 
 
-fdescribe('AcLayerComponent', () => {
+CesiumExtender.extend();
+describe('AcLayerComponent', () => {
   let component: AcLayerComponent;
   let fixture: ComponentFixture<AcLayerComponent>;
 

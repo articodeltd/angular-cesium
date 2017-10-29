@@ -1,6 +1,6 @@
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
-import { PointProps } from './polygon-edit-options';
+import { PointProps } from './polyline-edit-options';
 
 export class EditPoint extends AcEntity {
 	static counter = 0;
@@ -16,7 +16,6 @@ export class EditPoint extends AcEntity {
 		this.position = position;
 		this.id = this.generateId();
 		this.pointProps = pointProps;
-		console.log(pointProps);
 	}
 	
 	getPointProps() {

@@ -4,6 +4,7 @@ import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 import { AcLabelComponent } from './ac-label.component';
 import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
 
 describe('AcLabelComponent', () => {
 	let component: AcLabelComponent;
@@ -17,7 +18,7 @@ describe('AcLabelComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [AcLabelComponent],
-			providers: [LabelDrawerService,
+			providers: [LabelDrawerService, MapLayersService,
 				providerFromMock(CesiumService, cesiumService)]
 		})
 			.compileComponents();
