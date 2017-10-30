@@ -4,8 +4,10 @@ import {
   Component,
   ContentChildren,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import { AcNotification } from '../../models/ac-notification';
@@ -29,7 +31,7 @@ import { Subscription } from 'rxjs/Subscription';
       </ac-layer>
   `,
 })
-export class AcArrayDescComponent implements OnInit, AfterContentInit, OnDestroy, IDescription {
+export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit, OnDestroy, IDescription {
   @Input() acFor: string;
   @Input() idGetter: Function;
   @Input() show = true;
@@ -47,13 +49,19 @@ export class AcArrayDescComponent implements OnInit, AfterContentInit, OnDestroy
   constructor(public layerService: LayerService, private cd: ChangeDetectorRef) {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['acFor'].firstChange) {
+      const acForArr = changes['acFor'].currentValue.split(' ');
+      this.arrayPath = acForArr[3];
+      this.entityName = acForArr[1];
+    }
+  }
+
   ngOnInit(): void {
     this.layer.getLayerService().cache = false;
     this.layerServiceSubscription = this.layerService.layerUpdates().subscribe(() => {
       this.cd.detectChanges();
     });
-    this.arrayPath = this.acFor[3];
-    this.entityName = this.acFor[1];
     if (!this.acForRgx.test(this.acFor)) {
       throw new Error(`ac-layer: Invalid [acFor] syntax. Expected: [acFor]="let item of observable" .Instead received: ${this.acFor}`);
     }
