@@ -33,15 +33,14 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit, OnDestroy, IDescription {
   @Input() acFor: string;
-
   @Input() idGetter: Function;
-
   @Input() show = true;
   @ViewChild('layer') private layer: AcLayerComponent;
   @ContentChildren(BasicDesc, { descendants: false }) private basicDescs;
   @ContentChildren(AcArrayDescComponent, { descendants: false }) private arrayDescs;
   private entitiesMap = new Map<string, string[]>();
   private layerServiceSubscription: Subscription;
+  private id = 0;
   entityName: string;
   arrayPath: string;
   arrayObservable$ = new Subject<AcNotification>();
@@ -100,13 +99,15 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
 
     entitiesArray.forEach(item => {
       this.layerService.context[this.entityName] = item;
-      const arrayItemId = this.generateCombinedId(id, this.idGetter(item));
+      const arrayItemId = this.generateCombinedId(id, item);
       entitiesIdArray.push(arrayItemId);
       this.layer.update(contextEntity, arrayItemId);
     });
 
     if (previousEntitiesIdArray) {
-      const entitiesToRemove = previousEntitiesIdArray.filter((entityId) => entitiesIdArray.indexOf(entityId) < 0);
+      const entitiesToRemove = this.idGetter ?
+        previousEntitiesIdArray.filter((entityId) => entitiesIdArray.indexOf(entityId) < 0) :
+        previousEntitiesIdArray;
       if (entitiesToRemove) {
         entitiesToRemove.forEach((entityId) => this.layer.remove(entityId));
       }
@@ -130,7 +131,14 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     return `let ${this.entityName + '___temp'} of arrayObservable$`;
   }
 
-  private generateCombinedId(entityId: string, arrayItemId: string): string {
+  private generateCombinedId(entityId: string, arrayItem): string {
+    let arrayItemId;
+    if (this.idGetter) {
+      arrayItemId = this.idGetter(arrayItem);
+    }
+    else {
+      arrayItemId = (this.id++) % Number.MAX_SAFE_INTEGER;
+    }
     return entityId + arrayItemId;
   }
 }

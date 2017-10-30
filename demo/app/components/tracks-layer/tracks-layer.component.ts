@@ -177,9 +177,6 @@ export class TracksLayerComponent implements OnInit, OnChanges {
         return Cesium.Color.fromCssColorString('#616161');
       }
     }
-    else {
-      console.log('Penis');
-    }
   }
 
   getTextColor(track): any {
@@ -191,10 +188,6 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
   getPolylineColor() {
     return new Cesium.Color(0.3, 1.0, 0.3, 1.0);
-  }
-
-  trackArrayIdGetter(entity): string {
-    return entity.id;
   }
 
   showVelocityVectors(): boolean {
