@@ -99,7 +99,7 @@ import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawe
 		BillboardPrimitiveDrawerService,
 		PointPrimitiveDrawerService,
 		HtmlDrawerService,
-		
+
 		DynamicEllipseDrawerService,
 		DynamicPolylineDrawerService,
 		StaticCircleDrawerService,
@@ -121,7 +121,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	options: LayerOptions;
 	@Input()
 	zIndex = 0;
-	
+
 	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 	private entityName: string;
 	private stopObservable = new Subject();
@@ -130,7 +130,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 	private entitiesStore = new Map<string, any>();
 	private layerDrawerDataSources = [];
-	
+
 	constructor(private  layerService: LayerService,
 							private _computationCache: ComputationCache,
 							private mapLayersService: MapLayersService,
@@ -182,7 +182,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			['billboardPrimitive', billboardPrimitiveDrawerService],
 			['pointPrimitive', pointPrimitiveDrawerService],
 			['html', htmlDrawerService],
-			
+
 			['dynamicEllipse', dynamicEllipseDrawerService],
 			['dynamicPolyline', dynamicPolylineDrawerService],
 			['staticCircle', staticCircleDrawerService],
@@ -243,8 +243,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		}
 
 		if (!this.acForRgx.test(this.acFor)) {
-			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
-				+ 'instead received: ' + this.acFor);
+			throw new Error(`ac-layer: Invalid [acFor] syntax. Expected: [acFor]="let item of observable" .Instead received: ${this.acFor}`);
 		}
 		const acForArr = this.acFor.split(' ');
 		this.observable = this.context[acForArr[3]];

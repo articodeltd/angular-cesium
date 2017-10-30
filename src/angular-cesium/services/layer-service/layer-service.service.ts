@@ -26,8 +26,10 @@ export class LayerService {
   }
 
   set zIndex(value: number) {
+    if (value !== this._zIndex) {
+      this.layerUpdate.emit();
+    }
     this._zIndex = value;
-    this.layerUpdate.emit();
   }
 
   get show(): boolean {
@@ -35,8 +37,10 @@ export class LayerService {
   }
 
   set show(value: boolean) {
+    if (value !== this._show) {
+      this.layerUpdate.emit();
+    }
     this._show = value;
-    this.layerUpdate.emit();
   }
 
   get options(): LayerOptions {
