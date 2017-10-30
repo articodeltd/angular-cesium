@@ -210,10 +210,10 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + billboard - `ac-billboard-desc` / `ac-billboard` / `ac-billboard-primitive-desc`
 + label - `ac-label-desc` / `ac-label` / `ac-label-primitive-desc`
 + polyline - `ac-polyline-desc` / `ac-polyline` / `ac-polyline-primitive-desc`
++ point - `ac-point-desc` / `ac-point` / `ac-primitive-point`
 + ellipse - `ac-ellipse-desc` / `ac-ellipse`
 + circle - `ac-circle-desc` / `ac-circle` *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis 
 + polygon - `ac-polygon-desc` / `ac-polygon`
-+ point - `ac-point-desc` / `ac-point`
 + model - `ac-model-desc`
 + box - `ac-box-dec`
 + corridor -`ac-corridor-dec`
@@ -221,7 +221,8 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + ellipsoid - `ac-ellipsoid-dec`
 + polyline volume - `ac-polyline-volume-dec`
 + wall - `ac-wall-dec`
-+ rectangle -`ac-rectangle-dec` 
++ rectangle -`ac-rectangle-dec`
+* html - `ac-html-desc` / `ac-html` 
 
 ### `ac-entity-desc` vs `ac-entity`
 + `ac-entity-desc` component is used to describe how each entity in a stream of entities, managed inside `ac-layer`, should be drawn.
