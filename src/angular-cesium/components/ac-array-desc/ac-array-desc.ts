@@ -51,6 +51,10 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['acFor'].firstChange) {
+      const acForString = changes['acFor'].currentValue;
+      if (!this.acForRgx.test(acForString)) {
+        throw new Error(`ac-layer: Invalid [acFor] syntax. Expected: [acFor]="let item of observable" .Instead received: ${acForString}`);
+      }
       const acForArr = changes['acFor'].currentValue.split(' ');
       this.arrayPath = acForArr[3];
       this.entityName = acForArr[1];
@@ -62,9 +66,6 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     this.layerServiceSubscription = this.layerService.layerUpdates().subscribe(() => {
       this.cd.detectChanges();
     });
-    if (!this.acForRgx.test(this.acFor)) {
-      throw new Error(`ac-layer: Invalid [acFor] syntax. Expected: [acFor]="let item of observable" .Instead received: ${this.acFor}`);
-    }
   }
 
   ngAfterContentInit(): void {
