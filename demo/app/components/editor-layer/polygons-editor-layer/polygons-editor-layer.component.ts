@@ -11,7 +11,7 @@ import { PolygonsEditorService } from '../../../../../src/angular-cesium-entitie
 })
 export class PolygonsEditorLayerComponent implements OnInit {
 
-  editing$: PolygonEditorObservable<PolygonEditUpdate>;
+  editing$: PolygonEditorObservable;
   enableEditing = true;
 
   constructor(private polygonsEditor: PolygonsEditorService) {
