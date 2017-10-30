@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
@@ -24,7 +24,8 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
  */
 @Component({
 	selector: 'ac-polyline-desc',
-	template: ''
+	template: '',
+  providers: [{ provide: BasicDesc, useExisting: forwardRef(() => AcPolylineDescComponent) }],
 })
 export class AcPolylineDescComponent extends BasicDesc {
 

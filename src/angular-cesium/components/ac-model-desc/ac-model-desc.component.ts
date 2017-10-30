@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, forwardRef, OnInit } from '@angular/core';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
@@ -24,7 +24,8 @@ import { ModelDrawerService } from '../../services/drawers/model-drawer/model-dr
  */
 @Component({
 	selector: 'ac-model-desc',
-	template: ''
+	template: '',
+  providers: [{ provide: BasicDesc, useExisting: forwardRef(() => AcModelDescComponent) }],
 })
 export class AcModelDescComponent extends BasicDesc implements OnInit {
 	

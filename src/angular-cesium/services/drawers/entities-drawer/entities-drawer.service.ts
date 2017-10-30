@@ -86,6 +86,8 @@ export class EntitiesDrawerService extends BasicDrawerService {
     entity.orientation = cesiumProps.orientation !== undefined ? cesiumProps.orientation : entity.orientation;
     entity.viewFrom = cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : entity.viewFrom;
 
+    delete cesiumProps.show;
+
     if (this._propsAssigner) {
       this._propsAssigner(entity[this.graphicsTypeName], cesiumProps);
     }

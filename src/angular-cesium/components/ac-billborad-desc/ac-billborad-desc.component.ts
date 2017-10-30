@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
@@ -27,7 +27,8 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 
 @Component({
 	selector: 'ac-billboard-desc',
-	template: ''
+	template: '',
+  providers: [{ provide: BasicDesc, useExisting: forwardRef(() => AcBillboardDescComponent) }],
 })
 export class AcBillboardDescComponent extends BasicDesc {
 

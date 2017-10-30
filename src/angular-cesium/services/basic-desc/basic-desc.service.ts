@@ -4,6 +4,7 @@ import { ComputationCache } from '../computation-cache/computation-cache.service
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
 import { AcEntity } from '../../models/ac-entity';
 import { BasicDrawerService } from '../drawers/basic-drawer/basic-drawer.service';
+import { IDescription } from '../../models/description';
 
 export interface OnDrawParams {
   acEntity: AcEntity;
@@ -15,7 +16,7 @@ export interface OnDrawParams {
  *  the ancestor class for creating components.
  *  extend this class to create desc component.
  */
-export class BasicDesc implements OnInit, OnDestroy {
+export class BasicDesc implements OnInit, OnDestroy, IDescription {
   @Input()
   props: any;
 
@@ -26,15 +27,15 @@ export class BasicDesc implements OnInit, OnDestroy {
   onRemove: EventEmitter<OnDrawParams> = new EventEmitter<OnDrawParams>();
 
   protected _cesiumObjectsMap: Map<string, any> = new Map<string, any>();
-  private _propsEvaluateFn: Function;
-  private _propsAssignerFn: Function;
 
+  private _propsEvaluateFn: Function;
+
+  private _propsAssignerFn: Function;
   constructor(protected _drawer: BasicDrawerService,
               protected _layerService: LayerService,
               protected _computationCache: ComputationCache,
               protected _cesiumProperties: CesiumProperties) {
   }
-
   protected _propsEvaluator(context: Object): any {
     return this._propsEvaluateFn(this._computationCache, context);
   }
@@ -43,13 +44,25 @@ export class BasicDesc implements OnInit, OnDestroy {
     return (cesiumObject: Object, desc: Object) => this._propsAssignerFn(cesiumObject, desc);
   }
 
+  getLayerService(): LayerService {
+    return this._layerService;
+  }
+
+  setLayerService(layerService: LayerService) {
+    this._layerService.unregisterDescription(this);
+    this._layerService = layerService;
+    this._layerService.registerDescription(this);
+    this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props, this._layerService.cache, true);
+    this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
+  }
+
   ngOnInit(): void {
     if (!this.props) {
       console.error('ac-desc components error: [props] input is mandatory');
     }
 
     this._layerService.registerDescription(this);
-    this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props);
+    this._propsEvaluateFn = this._cesiumProperties.createEvaluator(this.props, this._layerService.cache);
     this._propsAssignerFn = this._cesiumProperties.createAssigner(this.props);
   }
 

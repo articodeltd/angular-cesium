@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
@@ -25,7 +25,8 @@ import { CylinderDrawerService } from '../../services/drawers/cylinder-dawer/cyl
  */
 @Component({
 	selector : 'ac-cylinder-desc',
-	template : ''
+	template : '',
+  providers: [{ provide: BasicDesc, useExisting: forwardRef(() => AcCylinderDescComponent) }],
 })
 export class AcCylinderDescComponent extends BasicDesc {
 	
