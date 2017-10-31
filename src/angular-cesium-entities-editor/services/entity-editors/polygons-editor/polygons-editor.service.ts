@@ -30,7 +30,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
   },
-  defaultPolygonOptions: {
+  polygonProps: {
     material: new Cesium.Color(0.1, 0.5, 0.2, 0.4),
   },
   polylineProps: {
@@ -354,7 +354,7 @@ export class PolygonsEditorService {
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYGON_OPTIONS));
     const polygonOptions = Object.assign(defaultClone, options);
     polygonOptions.pointProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.pointProps, options.pointProps);
-    polygonOptions.defaultPolygonOptions = Object.assign({}, DEFAULT_POLYGON_OPTIONS.defaultPolygonOptions, options.defaultPolygonOptions);
+    polygonOptions.polygonProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.polygonProps, options.polygonProps);
     polygonOptions.polylineProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.polylineProps, options.polylineProps);
     return polygonOptions;
   }

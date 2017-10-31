@@ -27,7 +27,7 @@ export class EditablePolygon extends AcEntity {
 							polygonOptions: PolygonEditOptions,
 							positions?: Cartesian3[]) {
 		super();
-		this.polygonProps = polygonOptions.defaultPolygonOptions;
+		this.polygonProps = polygonOptions.polygonProps;
 		this.defaultPointProps = polygonOptions.pointProps;
 		this.defaultPolylineProps = polygonOptions.polylineProps;
 		if (positions && positions.length >= 3) {

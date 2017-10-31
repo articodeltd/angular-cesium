@@ -50,7 +50,7 @@ export class PolygonsEditorLayerComponent implements OnInit {
       Cesium.Cartesian3.fromDegrees(20, 40),
       Cesium.Cartesian3.fromDegrees(45, 40),
       Cesium.Cartesian3.fromDegrees(30, 20)];
-    this.editing$ = this.polygonsEditor.edit(initialPos);
+    this.editing$ = this.polygonsEditor.edit(initialPos, {allowDrag: true});
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
       if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
         console.log(editUpdate.points); // point = position with id

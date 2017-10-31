@@ -5,5 +5,5 @@ export interface PolygonProps {
 }
 
 export interface PolygonEditOptions extends PolylineEditOptions {
-  defaultPolygonOptions?: PolygonProps;
+  polygonProps?: PolygonProps;
 }
