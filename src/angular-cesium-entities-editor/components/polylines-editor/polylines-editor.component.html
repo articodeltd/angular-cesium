@@ -1,8 +1,8 @@
 <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" [zIndex]="1">
     <ac-polyline-primitive-desc props="{
         positions: polyline.getPositions(),
-        width: polyline.getPolylineProps().width,
-        material: polyline.getPolylineProps().material,
+        width: polyine.props.width,
+        material: polyine.props.material,
     }">
     </ac-polyline-primitive-desc>
 </ac-layer>
@@ -11,9 +11,9 @@
     <ac-point-desc props="{
         position: point.getPosition(),
         pixelSize: getPointSize(point),
-        color: point.getPointProps().color,
-        outlineColor: point.getPointProps().outlineColor,
-        outlineWidth: point.getPointProps().outlineWidth,
+        color: point.props.color,
+        outlineColor: point.props.outlineColor,
+        outlineWidth: point.props.outlineWidth,
     }">
     </ac-point-desc>
 </ac-layer>

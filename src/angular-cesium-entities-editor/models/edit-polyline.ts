@@ -4,25 +4,32 @@ import { PolylineProps } from './polyline-edit-options';
 
 export class EditPolyline extends AcEntity {
 	static counter = 0;
-	private editedEntityId: string;
-	private id: string;
-	private positions: Cartesian3[];
-	private polylineProps: PolylineProps;
-	
+  private editedEntityId: string;
+  private id: string;
+  private positions: Cartesian3[];
+  private _polylineProps: PolylineProps;
 	constructor(entityId: string, startPosition: Cartesian3, endPosition: Cartesian3, polylineProps?: PolylineProps) {
 		super();
 		this.editedEntityId = entityId;
 		this.id = this.generateId();
 		this.positions = [startPosition, endPosition];
-		this.polylineProps = polylineProps;
+		this._polylineProps = polylineProps;
 	}
-	
+
+  get props(): PolylineProps {
+    return this._polylineProps;
+  }
+
+  set props(value: PolylineProps) {
+    this._polylineProps = value;
+  }
+
 	getPolylineProps() {
-		return this.polylineProps;
+		return this._polylineProps;
 	}
-	
+
 	setPolylineProps(props: PolylineProps) {
-		this.polylineProps = props;
+		this._polylineProps = props;
 	}
 	
 	getEditedEntityId(): string {

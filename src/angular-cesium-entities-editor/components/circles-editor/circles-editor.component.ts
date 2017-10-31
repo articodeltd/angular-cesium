@@ -57,7 +57,9 @@ export class CirclesEditorComponent implements OnDestroy {
           update.id,
           this.editCirclesLayer,
           this.editPointsLayer,
-          this.editArcsLayer);
+          this.editArcsLayer,
+          update.circleOptions
+        );
         break;
       }
       case EditActions.MOUSE_MOVE: {
@@ -98,7 +100,8 @@ export class CirclesEditorComponent implements OnDestroy {
           update.id,
           this.editCirclesLayer,
           this.editPointsLayer,
-          this.editArcsLayer
+          this.editArcsLayer,
+          update.circleOptions
         );
         circle.setCircleManually(update.center, update.radiusPoint);
         break;
@@ -107,15 +110,21 @@ export class CirclesEditorComponent implements OnDestroy {
       case EditActions.DRAG_POINT: {
         const circle = this.circlesManager.get(update.id);
         if (circle && circle.enableEdit) {
-          circle.movePoint(update.dragPosition);
+          circle.movePoint(update.endDragPosition);
         }
         break;
       }
-      case EditActions.DRAG_SHAPE_FINISH:
       case EditActions.DRAG_SHAPE: {
         const circle = this.circlesManager.get(update.id);
         if (circle && circle.enableEdit) {
-          circle.moveCircle(update.dragPosition);
+          circle.moveCircle(update.startDragPosition, update.endDragPosition);
+        }
+        break;
+      }
+      case EditActions.DRAG_SHAPE_FINISH: {
+        const circle = this.circlesManager.get(update.id);
+        if (circle && circle.enableEdit) {
+          circle.endMovePolygon();
         }
         break;
       }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
 import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
 import { HippodromeEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/hippodrome-editor/hippodrome-editor.service';
-import { HippodrmoeEditorOboservable } from '../../../../../src/angular-cesium-entities-editor/models/hippodrmoe-editor-oboservable';
+import { HippodromeEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/hippodrome-editor-oboservable';
 
 @Component({
 	selector : 'hippodrome-editor-layer',
@@ -10,7 +10,7 @@ import { HippodrmoeEditorOboservable } from '../../../../../src/angular-cesium-e
 	styleUrls : ['./hippodrome-editor-layer.component.css']
 })
 export class HippodromeEditorLayerComponent implements OnInit {
-	editing$: HippodrmoeEditorOboservable;
+	editing$: HippodromeEditorObservable;
 	enableEditing = true;
 	
 	constructor(private hippodromeEditor: HippodromeEditorService) {

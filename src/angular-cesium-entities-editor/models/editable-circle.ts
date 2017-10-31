@@ -4,6 +4,8 @@ import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-la
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { EditArc } from './edit-arc';
+import { CircleEditOptions, CircleProps } from './circle-edit-options';
+import { PointProps, PolylineProps } from './polyline-edit-options';
 
 export class EditableCircle extends AcEntity {
   private _center: EditPoint;
@@ -11,13 +13,41 @@ export class EditableCircle extends AcEntity {
   private _outlineArc: EditArc;
   private doneCreation = false;
   private _enableEdit = true;
-  private _arcId: string;
-
+  private lastDraggedToPosition;
+  private _circleProps: CircleProps;
+  private _pointProps: PointProps;
+  private _polylineProps: PolylineProps;
   constructor(private id: string,
               private circlesLayer: AcLayerComponent,
               private pointsLayer: AcLayerComponent,
-              private arcsLayer: AcLayerComponent) {
+              private arcsLayer: AcLayerComponent,
+              private options: CircleEditOptions) {
     super();
+    this._circleProps = options.circleOptions;
+    this._pointProps = options.defaultPointOptions;
+    this._polylineProps = options.polylineOptions;
+  }
+
+  get polylineProps(): PolylineProps {
+    return this._polylineProps;
+  }
+
+  set polylineProps(value: PolylineProps) {
+    this._polylineProps = value;
+  }
+  get pointProps(): PointProps {
+    return this._pointProps;
+  }
+
+  set pointProps(value: PointProps) {
+    this._pointProps = value;
+  }
+  get circleProps(): CircleProps {
+    return this._circleProps;
+  }
+
+  set circleProps(value: CircleProps) {
+    this._circleProps = value;
   }
 
   get center(): EditPoint {
@@ -38,14 +68,14 @@ export class EditableCircle extends AcEntity {
 
   setCircleManually(center: Cartesian3, radiusPoint: Cartesian3) {
     if (!this._center) {
-      this._center = new EditPoint(this.id, center);
+      this._center = new EditPoint(this.id, center, this.pointProps);
     }
     else {
       this._center.setPosition(center);
     }
 
     if (!this._radiusPoint) {
-      this._radiusPoint = new EditPoint(this.id, radiusPoint);
+      this._radiusPoint = new EditPoint(this.id, radiusPoint, this.pointProps);
     }
     else {
       this._radiusPoint.setPosition(radiusPoint);
@@ -70,8 +100,8 @@ export class EditableCircle extends AcEntity {
     }
 
     if (!this._center) {
-      this._center = new EditPoint(this.id, position);
-      this._radiusPoint = new EditPoint(this.id, position.clone());
+      this._center = new EditPoint(this.id, position, this.pointProps);
+      this._radiusPoint = new EditPoint(this.id, position.clone(), this.pointProps);
       if (!this._outlineArc) {
         this.createOutlineArc();
       }
@@ -108,19 +138,28 @@ export class EditableCircle extends AcEntity {
   }
 
 
-  moveCircle(newCenterPos: Cartesian3) {
+  moveCircle(dragStartPosition: Cartesian3, dragEndPosition: Cartesian3) {
     if (!this.doneCreation) {
       return;
     }
+    if (!this.lastDraggedToPosition) {
+      this.lastDraggedToPosition = dragStartPosition;
+    }
 
     const radius = this.getRadius();
-    this.center.setPosition(newCenterPos);
+    const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, dragEndPosition);
+    GeoUtilsService.addDeltaToPosition(this.getCenter(), delta, true);
     this.radiusPoint.setPosition(
       GeoUtilsService.pointByLocationDistanceAndAzimuth(this.getCenter(), radius, Math.PI / 2, true));
     this._outlineArc.radius = this.getRadius();
     this.updateArcsLayer();
     this.updatePointsLayer();
     this.updateCirclesLayer();
+    this.lastDraggedToPosition = dragEndPosition;
+  }
+
+  endMovePolygon() {
+    this.lastDraggedToPosition = undefined;
   }
 
   getRadius(): number {
@@ -182,6 +221,6 @@ export class EditableCircle extends AcEntity {
     if (!this._center || !this._radiusPoint) {
       return;
     }
-    this._outlineArc = new EditArc(this.id, this.getCenter(), this.getRadius(), Math.PI * 2, 0);
+    this._outlineArc = new EditArc(this.id, this.getCenter(), this.getRadius(), Math.PI * 2, 0, this.polylineProps);
   }
 }

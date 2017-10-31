@@ -24,7 +24,7 @@ export class EditablePolyline extends AcEntity {
 							positions?: Cartesian3[]) {
 		super();
 		this.defaultPointProps = polylineEdit.defaultPointOptions;
-		this.defaultPolylineProps = polylineEdit.defaultPolylineOptions;
+		this.defaultPolylineProps = polylineEdit.polylineOptions;
 		if (positions && positions.length >= 2) {
 			this.createFromExisting(positions);
 		}

@@ -10,7 +10,7 @@ import { CirclesEditorService } from '../../../../../src/angular-cesium-entities
 })
 export class CirclesEditorLayerComponent implements OnInit {
 	
-	editing$: CircleEditorObservable<CircleEditUpdate>;
+	editing$: CircleEditorObservable;
 	enableEditing = true;
 	
 	constructor(private circlesEditor: CirclesEditorService) {
@@ -35,13 +35,12 @@ export class CirclesEditorLayerComponent implements OnInit {
       this.editing$ = undefined;
     }
 	}
-	
-	
+
 	editFromExisting() {
 		if (this.editing$) {
 			this.stopEdit();
 		}
-		this.editing$ = this.circlesEditor.edit(Cesium.Cartesian3.fromDegrees(-70, 0), 800000);
+		this.editing$ = this.circlesEditor.edit(Cesium.Cartesian3.fromDegrees(-70, 0), 800000, {allowDrag: true});
 	}
 
 	toggleEnableEditing() {

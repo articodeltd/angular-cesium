@@ -17,7 +17,15 @@ export class EditPoint extends AcEntity {
 		this.id = this.generateId();
 		this.pointProps = pointProps;
 	}
-	
+
+  get props(): PointProps {
+    return this.pointProps;
+  }
+
+  set props(value: PointProps) {
+    this.pointProps = value;
+  }
+
 	getPointProps() {
 		return this.pointProps;
 	}
