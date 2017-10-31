@@ -8,5 +8,5 @@ export interface CircleProps {
 }
 
 export interface CircleEditOptions extends EditorEditOptions {
-  circleOptions?: CircleProps;
+  circleProps?: CircleProps;
 }

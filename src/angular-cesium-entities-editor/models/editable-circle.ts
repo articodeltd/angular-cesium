@@ -23,9 +23,9 @@ export class EditableCircle extends AcEntity {
               private arcsLayer: AcLayerComponent,
               private options: CircleEditOptions) {
     super();
-    this._circleProps = options.circleOptions;
-    this._pointProps = options.defaultPointOptions;
-    this._polylineProps = options.polylineOptions;
+    this._circleProps = options.circleProps;
+    this._pointProps = options.pointProps;
+    this._polylineProps = options.polylineProps;
   }
 
   get polylineProps(): PolylineProps {

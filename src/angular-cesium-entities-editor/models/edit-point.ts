@@ -26,14 +26,6 @@ export class EditPoint extends AcEntity {
     this.pointProps = value;
   }
 
-	getPointProps() {
-		return this.pointProps;
-	}
-	
-	setPointProps(props: PointProps) {
-		this.pointProps = props;
-	}
-	
 	isVirtualEditPoint(): boolean {
 		return this._virtualEditPoint;
 	}

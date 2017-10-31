@@ -1,8 +1,8 @@
 <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" [zIndex]="1">
     <ac-polyline-primitive-desc props="{
         positions: polyline.getPositions(),
-        width: polyine.props.width,
-        material: polyine.props.material,
+        width: polyline.props.width,
+        material: polyline.props.material,
         followSurface: true
     }">
     </ac-polyline-primitive-desc>

@@ -7,7 +7,7 @@ export interface EditorEditOptions {
   addPointModifier?: CesiumEventModifier;
   dragPointEvent?: CesiumEvent;
   dragShapeEvent?: CesiumEvent;
-  defaultPointOptions?: PointProps;
-  polylineOptions?: PolylineProps;
+  pointProps?: PointProps;
+  polylineProps?: PolylineProps;
   allowDrag: boolean;
 }

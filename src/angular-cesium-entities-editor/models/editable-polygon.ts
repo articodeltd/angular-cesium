@@ -28,8 +28,8 @@ export class EditablePolygon extends AcEntity {
 							positions?: Cartesian3[]) {
 		super();
 		this.polygonProps = polygonOptions.defaultPolygonOptions;
-		this.defaultPointProps = polygonOptions.defaultPointOptions;
-		this.defaultPolylineProps = polygonOptions.polylineOptions;
+		this.defaultPointProps = polygonOptions.pointProps;
+		this.defaultPolylineProps = polygonOptions.polylineProps;
 		if (positions && positions.length >= 3) {
 			this.createFromExisting(positions);
 		}

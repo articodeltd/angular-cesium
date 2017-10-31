@@ -45,6 +45,9 @@ export class CirclesEditorLayerComponent implements OnInit {
 
 	toggleEnableEditing() {
 		// Only effects if in edit mode (all polygon points were created)
+    if (!this.editing$) {
+      return;
+    }
 		this.enableEditing = !this.enableEditing;
 		if (this.enableEditing) {
 			this.editing$.enable();

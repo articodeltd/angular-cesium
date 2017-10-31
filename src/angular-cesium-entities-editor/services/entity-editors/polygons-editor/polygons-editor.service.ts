@@ -25,7 +25,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: false,
-  defaultPointOptions: {
+  pointProps: {
     color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
@@ -33,7 +33,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   defaultPolygonOptions: {
     material: new Cesium.Color(0.1, 0.5, 0.2, 0.4),
   },
-  polylineOptions: {
+  polylineProps: {
     material: Cesium.Color.BLACK,
     width: 1,
   },
@@ -341,7 +341,7 @@ export class PolygonsEditorService {
       });
     });
 
-    const observables = [pointDragRegistration, shapeDragRegistration, pointRemoveRegistration];
+    const observables = [pointDragRegistration, pointRemoveRegistration];
     if (shapeDragRegistration) {
       observables.push(shapeDragRegistration);
     }
@@ -353,9 +353,9 @@ export class PolygonsEditorService {
   private setOptions(options: PolygonEditOptions) {
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYGON_OPTIONS));
     const polygonOptions = Object.assign(defaultClone, options);
-    polygonOptions.defaultPointOptions = Object.assign({}, DEFAULT_POLYGON_OPTIONS.defaultPointOptions, options.defaultPointOptions);
+    polygonOptions.pointProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.pointProps, options.pointProps);
     polygonOptions.defaultPolygonOptions = Object.assign({}, DEFAULT_POLYGON_OPTIONS.defaultPolygonOptions, options.defaultPolygonOptions);
-    polygonOptions.polylineOptions = Object.assign({}, DEFAULT_POLYGON_OPTIONS.polylineOptions, options.polylineOptions);
+    polygonOptions.polylineProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.polylineProps, options.polylineProps);
     return polygonOptions;
   }
 

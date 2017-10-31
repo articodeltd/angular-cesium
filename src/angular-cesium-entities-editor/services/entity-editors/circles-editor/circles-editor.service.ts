@@ -41,18 +41,18 @@ export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: false,
-  circleOptions: {
+  circleProps: {
     material: Cesium.Color.GREEN.withAlpha(0.5),
     outline: false,
     outlineWidth: 1,
     outlineColor: Cesium.Color.BLACK,
   },
-  defaultPointOptions: {
+  pointProps: {
     color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
   },
-  polylineOptions: {
+  polylineProps: {
     width: 1,
     material: Cesium.Color.BLACK,
   }
@@ -387,9 +387,9 @@ export class CirclesEditorService {
   private setOptions(options: CircleEditOptions): CircleEditOptions {
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_CIRCLE_OPTIONS));
     const circleOptions = Object.assign(defaultClone, options);
-    circleOptions.defaultPointOptions = Object.assign({}, DEFAULT_CIRCLE_OPTIONS.defaultPointOptions, options.defaultPointOptions);
-    circleOptions.circleOptions = Object.assign({}, DEFAULT_CIRCLE_OPTIONS.circleOptions, options.circleOptions);
-    circleOptions.polylineOptions = Object.assign({}, DEFAULT_CIRCLE_OPTIONS.polylineOptions, options.polylineOptions);
+    circleOptions.pointProps = Object.assign({}, DEFAULT_CIRCLE_OPTIONS.pointProps, options.pointProps);
+    circleOptions.circleProps = Object.assign({}, DEFAULT_CIRCLE_OPTIONS.circleProps, options.circleProps);
+    circleOptions.polylineProps = Object.assign({}, DEFAULT_CIRCLE_OPTIONS.polylineProps, options.polylineProps);
     return circleOptions;
   }
 

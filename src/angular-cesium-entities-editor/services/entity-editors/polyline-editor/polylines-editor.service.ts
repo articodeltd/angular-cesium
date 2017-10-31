@@ -23,12 +23,12 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   removePointEvent: CesiumEvent.RIGHT_CLICK,
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: false,
-  defaultPointOptions: {
+  pointProps: {
     color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
   },
-  polylineOptions: {
+  polylineProps: {
     material: Cesium.Color.BLACK,
     width: 1,
   },
@@ -113,7 +113,7 @@ export class PolylinesEditorService {
       priority: eventPriority,
     });
 
-    this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration]);
+    this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
@@ -306,9 +306,9 @@ export class PolylinesEditorService {
   private setOptions(options: PolylineEditOptions) {
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYLINE_OPTIONS));
     const polylineOptions = Object.assign(defaultClone, options);
-    polylineOptions.defaultPointOptions = Object.assign({}, DEFAULT_POLYLINE_OPTIONS.defaultPointOptions, options.defaultPointOptions);
-    polylineOptions.polylineOptions = Object.assign({},
-      DEFAULT_POLYLINE_OPTIONS.polylineOptions, options.polylineOptions);
+    polylineOptions.pointProps = Object.assign({}, DEFAULT_POLYLINE_OPTIONS.pointProps, options.pointProps);
+    polylineOptions.polylineProps = Object.assign({},
+      DEFAULT_POLYLINE_OPTIONS.polylineProps, options.polylineProps);
     return polylineOptions;
   }
 

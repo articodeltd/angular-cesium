@@ -23,14 +23,6 @@ export class EditPolyline extends AcEntity {
   set props(value: PolylineProps) {
     this._polylineProps = value;
   }
-
-	getPolylineProps() {
-		return this._polylineProps;
-	}
-
-	setPolylineProps(props: PolylineProps) {
-		this._polylineProps = props;
-	}
 	
 	getEditedEntityId(): string {
 		return this.editedEntityId;

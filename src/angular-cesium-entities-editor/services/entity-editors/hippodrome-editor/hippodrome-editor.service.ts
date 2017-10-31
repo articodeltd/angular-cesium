@@ -28,7 +28,7 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
     width: 200000.0,
     outline: false,
   },
-  defaultPointOptions: {
+  pointProps: {
     color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
@@ -288,7 +288,7 @@ export class HippodromeEditorService {
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_HIPPODROME_OPTIONS));
     const hippodromeOptions = Object.assign(defaultClone, options);
     hippodromeOptions.hippodromeProps = Object.assign({}, DEFAULT_HIPPODROME_OPTIONS.hippodromeProps, options.hippodromeProps);
-    hippodromeOptions.defaultPointOptions = Object.assign({}, DEFAULT_HIPPODROME_OPTIONS.defaultPointOptions, options.defaultPointOptions);
+    hippodromeOptions.pointProps = Object.assign({}, DEFAULT_HIPPODROME_OPTIONS.pointProps, options.pointProps);
     return hippodromeOptions;
   }
 
