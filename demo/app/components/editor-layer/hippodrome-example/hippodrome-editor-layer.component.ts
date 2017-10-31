@@ -24,7 +24,12 @@ export class HippodromeEditorLayerComponent implements OnInit {
 		if (this.editing$) {
 			this.stopEdit();
 		}
-		this.editing$ = this.hippodromeEditor.create();
+		this.editing$ = this.hippodromeEditor.create({
+			hippodromeProps: {
+				outline: true,
+				outlineWidth: 2,
+			}
+		});
 		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 			
 			if (editUpdate.editAction === EditActions.ADD_POINT) {
