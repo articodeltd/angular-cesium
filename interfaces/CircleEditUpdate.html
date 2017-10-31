@@ -320,7 +320,7 @@
                                     <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                    <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -513,10 +513,19 @@
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CircleEditUpdate.html"  data-type="entity-link" class="active" >CircleEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -961,7 +970,7 @@
                                            <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                           <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -1154,10 +1163,19 @@
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CircleEditUpdate.html"  data-type="entity-link" class="active" >CircleEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -1349,13 +1367,19 @@
                                         <a href="#center">center</a>
                                 </li>
                                 <li>
-                                        <a href="#dragPosition">dragPosition</a>
+                                        <a href="#circleOptions">circleOptions</a>
+                                </li>
+                                <li>
+                                        <a href="#endDragPosition">endDragPosition</a>
                                 </li>
                                 <li>
                                         <a href="#radius">radius</a>
                                 </li>
                                 <li>
                                         <a href="#radiusPoint">radiusPoint</a>
+                                </li>
+                                <li>
+                                        <a href="#startDragPosition">startDragPosition</a>
                                 </li>
                             </ul>
                         </td>
@@ -1395,7 +1419,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:6</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:8</a></div>
                                         </td>
                                     </tr>
 
@@ -1405,13 +1429,46 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="dragPosition"></a>
-                                        <b>dragPosition</b>
+                                        <a name="circleOptions"></a>
+                                        <b>circleOptions</b>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>dragPosition:     <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                        <code>circleOptions:     <code><a href="../interfaces/CircleEditOptions.html" target="_self" >CircleEditOptions</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="../interfaces/CircleEditOptions.html" target="_self" >CircleEditOptions</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:11</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="endDragPosition"></a>
+                                        <b>endDragPosition</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>endDragPosition:     <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -1428,7 +1485,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:5</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:7</a></div>
                                         </td>
                                     </tr>
 
@@ -1461,7 +1518,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:10</a></div>
                                         </td>
                                     </tr>
 
@@ -1494,7 +1551,40 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:7</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:9</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="startDragPosition"></a>
+                                        <b>startDragPosition</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>startDragPosition:     <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-edit-update.ts:6</a></div>
                                         </td>
                                     </tr>
 
@@ -1507,12 +1597,15 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Cartesian3 } from &#x27;../../angular-cesium/models/cartesian3&#x27;;
 import { BasicEditUpdate } from &#x27;./basic-edit-update&#x27;;
+import { CircleEditOptions } from &#x27;./circle-edit-options&#x27;;
 
 export interface CircleEditUpdate extends BasicEditUpdate {
-  dragPosition?: Cartesian3;
+  startDragPosition?: Cartesian3;
+  endDragPosition?: Cartesian3;
   center?: Cartesian3;
   radiusPoint?: Cartesian3;
   radius?: number;
+  circleOptions?: CircleEditOptions;
 }
 </code></pre>
     </div>

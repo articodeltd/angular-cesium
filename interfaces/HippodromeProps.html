@@ -320,7 +320,7 @@
                                     <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                    <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -513,10 +513,19 @@
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -961,7 +970,7 @@
                                            <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                           <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -1154,10 +1163,19 @@
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -1398,7 +1416,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:7</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:5</a></div>
                                         </td>
                                     </tr>
 
@@ -1431,7 +1449,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:6</a></div>
                                         </td>
                                     </tr>
 
@@ -1464,7 +1482,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:9</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:7</a></div>
                                         </td>
                                     </tr>
 
@@ -1497,7 +1515,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:10</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:8</a></div>
                                         </td>
                                     </tr>
 
@@ -1530,7 +1548,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:6</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/angular-cesium-entities-editor/models/hippodrome-edit-options.ts:4</a></div>
                                         </td>
                                     </tr>
 
@@ -1541,25 +1559,18 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { CesiumEvent } from &#x27;../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum&#x27;;
-import { CesiumEventModifier } from &#x27;../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum&#x27;;
-import { PointProps } from &#x27;./polyline-edit-options&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { EditorEditOptions } from &#x27;./editor-edit-options&#x27;;
 
 export interface HippodromeProps {
-	width?: number;
-	material?: any;
-	outline?: boolean;
-	outlineColor?: any;
-	outlineWidth?: number;
+  width?: number;
+  material?: any;
+  outline?: boolean;
+  outlineColor?: any;
+  outlineWidth?: number;
 }
 
-export interface HippodromeEditOptions {
-	addPointEvent?: CesiumEvent;
-	addPointModifier?: CesiumEventModifier;
-	dragPointEvent?: CesiumEvent;
-	dragShapeEvent?: CesiumEvent;
-	hippodromeProps?: HippodromeProps;
-	defaultPointOptions?: PointProps;
+export interface HippodromeEditOptions extends EditorEditOptions {
+  hippodromeProps?: HippodromeProps;
 }
 </code></pre>
     </div>

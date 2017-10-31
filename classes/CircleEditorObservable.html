@@ -320,7 +320,7 @@
                                     <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                    <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -513,10 +513,19 @@
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -961,7 +970,7 @@
                                            <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                           <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -1154,10 +1163,19 @@
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -1396,7 +1414,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-editor-observable.ts:6</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-editor-observable.ts:7</a></div>
                                         </td>
                                     </tr>
             
@@ -1425,7 +1443,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-editor-observable.ts:5</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/circle-editor-observable.ts:6</a></div>
                                         </td>
                                     </tr>
             
@@ -1439,10 +1457,11 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { EditorObservable } from &#x27;./editor-observable&#x27;;
 import { Cartesian3 } from &#x27;../../angular-cesium/models/cartesian3&#x27;;
+import { CircleEditUpdate } from &#x27;./circle-edit-update&#x27;;
 
-export class CircleEditorObservable&lt;T&gt; extends EditorObservable&lt;T&gt; {
+export class CircleEditorObservable extends EditorObservable&lt;CircleEditUpdate&gt; {
   setCircleManually: (center: Cartesian3, radius: number) &#x3D;&gt; void;
-  circleEditValue: () &#x3D;&gt; T;
+  circleEditValue: () &#x3D;&gt; CircleEditUpdate;
 }
 </code></pre>
     </div>

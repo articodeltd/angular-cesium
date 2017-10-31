@@ -320,7 +320,7 @@
                                     <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                    <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -513,10 +513,19 @@
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -961,7 +970,7 @@
                                            <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                           <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -1154,10 +1163,19 @@
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -1956,7 +1974,11 @@ export class HippodromeEditorComponent implements OnDestroy {
 		positions: hippodrome.getRealPositions(),
 		cornerType: Cesium.CornerType.ROUNDED,
 		material: hippodrome.hippodromeProps.material,
-		width : hippodrome.hippodromeProps.width
+		width : hippodrome.hippodromeProps.width,
+		outline: hippodrome.hippodromeProps.outline,
+		outlineColor: hippodrome.hippodromeProps.outlineColor,
+        outlineWidth: hippodrome.hippodromeProps.outlineWidth,
+        height: 0
 	}&quot;&gt;
     &lt;/ac-corridor-desc&gt;
 &lt;/ac-layer&gt;
@@ -1965,25 +1987,13 @@ export class HippodromeEditorComponent implements OnDestroy {
     &lt;ac-point-desc props&#x3D;&quot;{
         position: point.getPosition(),
         pixelSize: getPointSize(point),
-        color: point.getPointProps().color,
-        outlineColor: point.getPointProps().outlineColor,
-        outlineWidth: point.getPointProps().outlineWidth,
+        color: point.props.color,
+        outlineColor: point.props.outlineColor,
+        outlineWidth: point.props.outlineWidth,
         heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND
     }&quot;&gt;
     &lt;/ac-point-desc&gt;
 &lt;/ac-layer&gt;
-&lt;!--&lt;ac-layer #editArcsLayer acFor&#x3D;&quot;let arc of editArcs$&quot; [context]&#x3D;&quot;this&quot; [zIndex]&#x3D;&quot;1&quot;&gt;--&gt;
-    &lt;!--&lt;ac-arc-desc props&#x3D;&quot;{--&gt;
-        &lt;!--angle: arc.angle,--&gt;
-        &lt;!--delta: arc.delta,--&gt;
-        &lt;!--center: arc.center,--&gt;
-        &lt;!--radius: arc.radius,--&gt;
-        &lt;!--quality: 30,--&gt;
-        &lt;!--color: Cesium.Color.BLACK--&gt;
-    &lt;!--}&quot;&gt;--&gt;
-    &lt;!--&lt;/ac-arc-desc&gt;--&gt;
-&lt;!--&lt;/ac-layer&gt;--&gt;
-
 </code></pre>
     </div>
 
@@ -2010,8 +2020,8 @@ export class HippodromeEditorComponent implements OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ac-layer #editHippodromesLayer acFor="let hippodrome of editHippodromes$" [context]="this" [zIndex]="2">    <ac-corridor-desc props="{		positions: hippodrome.getRealPositions(),		cornerType: Cesium.CornerType.ROUNDED,		material: hippodrome.hippodromeProps.material,		width : hippodrome.hippodromeProps.width	}">    </ac-corridor-desc></ac-layer><ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">    <ac-point-desc props="{        position: point.getPosition(),        pixelSize: getPointSize(point),        color: point.getPointProps().color,        outlineColor: point.getPointProps().outlineColor,        outlineWidth: point.getPointProps().outlineWidth,        heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND    }">    </ac-point-desc></ac-layer><!--<ac-layer #editArcsLayer acFor="let arc of editArcs$" [context]="this" [zIndex]="1">-->    <!--<ac-arc-desc props="{-->        <!--angle: arc.angle,-->        <!--delta: arc.delta,-->        <!--center: arc.center,-->        <!--radius: arc.radius,-->        <!--quality: 30,-->        <!--color: Cesium.Color.BLACK-->    <!--}">-->    <!--</ac-arc-desc>--><!--</ac-layer>--></div>'
-    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-primitive-desc'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
+        var COMPONENT_TEMPLATE = '<div><ac-layer #editHippodromesLayer acFor="let hippodrome of editHippodromes$" [context]="this" [zIndex]="2">    <ac-corridor-desc props="{		positions: hippodrome.getRealPositions(),		cornerType: Cesium.CornerType.ROUNDED,		material: hippodrome.hippodromeProps.material,		width : hippodrome.hippodromeProps.width,		outline: hippodrome.hippodromeProps.outline,		outlineColor: hippodrome.hippodromeProps.outlineColor,        outlineWidth: hippodrome.hippodromeProps.outlineWidth,        height: 0	}">    </ac-corridor-desc></ac-layer><ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">    <ac-point-desc props="{        position: point.getPosition(),        pixelSize: getPointSize(point),        color: point.props.color,        outlineColor: point.props.outlineColor,        outlineWidth: point.props.outlineWidth,        heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND    }">    </ac-point-desc></ac-layer></div>'
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-primitive-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
     var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'}];
     var ACTUAL_COMPONENT = {'name': 'HippodromeEditorComponent'};
 </script>

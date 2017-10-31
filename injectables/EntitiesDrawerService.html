@@ -320,7 +320,7 @@
                                     <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                    <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -513,10 +513,19 @@
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -961,7 +970,7 @@
                                            <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                           <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -1154,10 +1163,19 @@
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -1537,7 +1555,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:97</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:99</a></div>
                                         </td>
                                     </tr>
             
@@ -1569,7 +1587,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:102</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:104</a></div>
                                         </td>
                                     </tr>
             
@@ -1601,7 +1619,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:108</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:110</a></div>
                                         </td>
                                     </tr>
             
@@ -1634,7 +1652,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:114</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:116</a></div>
                                         </td>
                                     </tr>
             
@@ -1832,6 +1850,8 @@ export class EntitiesDrawerService extends BasicDrawerService {
     entity.description &#x3D; cesiumProps.description !&#x3D;&#x3D; undefined ? cesiumProps.description : entity.description;
     entity.orientation &#x3D; cesiumProps.orientation !&#x3D;&#x3D; undefined ? cesiumProps.orientation : entity.orientation;
     entity.viewFrom &#x3D; cesiumProps.viewFrom !&#x3D;&#x3D; undefined ? cesiumProps.viewFrom : entity.viewFrom;
+
+    delete cesiumProps.show;
 
     if (this._propsAssigner) {
       this._propsAssigner(entity[this.graphicsTypeName], cesiumProps);

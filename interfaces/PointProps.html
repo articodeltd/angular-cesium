@@ -320,7 +320,7 @@
                                     <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                    <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -513,10 +513,19 @@
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -961,7 +970,7 @@
                                            <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                           <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -1154,10 +1163,19 @@
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -1471,27 +1489,24 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { CesiumEvent } from &#x27;../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum&#x27;;
 import { CesiumEventModifier } from &#x27;../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum&#x27;;
+import { EditorEditOptions } from &#x27;./editor-edit-options&#x27;;
 
 export interface PointProps {
-	color?: any;
-	outlineColor?: any;
-	outlineWidth?: number;
+  color?: any;
+  outlineColor?: any;
+  outlineWidth?: number;
 }
+
 export interface PolylineProps {
-	width?: any;
-	material: any
+  width?: any;
+  material: any
 }
-export interface PolylineEditOptions {
-	addPointEvent?: CesiumEvent;
-	addPointModifier?: CesiumEventModifier;
-	addLastPointEvent?: CesiumEvent;
-	addLastPointModifier?: CesiumEventModifier;
-	removePointEvent?: CesiumEvent;
-	removePointModifier?: CesiumEventModifier;
-	dragPointEvent?: CesiumEvent;
-	defaultPointOptions?: PointProps;
-	defaultPolylineOptions?: PolylineProps;
-	dragShapeEvent?: CesiumEvent;
+
+export interface PolylineEditOptions extends EditorEditOptions {
+  addLastPointEvent?: CesiumEvent;
+  addLastPointModifier?: CesiumEventModifier;
+  removePointEvent?: CesiumEvent;
+  removePointModifier?: CesiumEventModifier;
 }
 </code></pre>
     </div>

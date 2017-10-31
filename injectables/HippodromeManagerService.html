@@ -320,7 +320,7 @@
                                     <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                    <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -513,10 +513,19 @@
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -961,7 +970,7 @@
                                            <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                           <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -1154,10 +1163,19 @@
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -1396,7 +1414,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:27</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:26</a></div>
                                         </td>
                                     </tr>
             
@@ -1421,7 +1439,7 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>createEditableHippodrome(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editHippodromeLayer: , editPointsLayer: , coordinateConverter: , polylineOptions: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, positions: [])</code>
+            <code>createEditableHippodrome(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editHippodromeLayer: , editPointsLayer: , coordinateConverter: , hippodromeEditOptions: <a href="../interfaces/HippodromeEditOptions.html">HippodromeEditOptions</a>, positions: [])</code>
                                 </td>
                             </tr>
             
@@ -1460,7 +1478,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:23</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/angular-cesium-entities-editor/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:22</a></div>
                                         </td>
                                     </tr>
             
@@ -1518,24 +1536,23 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Cartesian3 } from &#x27;../../../../angular-cesium/models/cartesian3&#x27;;
-import { PolygonEditOptions } from &#x27;../../../models/polygon-edit-options&#x27;;
 import { EditableHippodrome } from &#x27;../../../models/editable-hippodrome&#x27;;
+import { HippodromeEditOptions } from &#x27;../../../models/hippodrome-edit-options&#x27;;
 
 @Injectable()
 export class HippodromeManagerService {
 	hippodromes: Map&lt;string, EditableHippodrome&gt; &#x3D; new Map&lt;string, EditableHippodrome&gt;();
 	
 	createEditableHippodrome(id: string, editHippodromeLayer, editPointsLayer,
-													 coordinateConverter, polylineOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
-		const editablePolyline &#x3D; new EditableHippodrome(
+													 coordinateConverter, hippodromeEditOptions?: HippodromeEditOptions, positions?: Cartesian3[]) {
+		const editableHippodrome &#x3D; new EditableHippodrome(
 			id,
 			editHippodromeLayer,
 			editPointsLayer,
 			coordinateConverter,
-			polylineOptions,
+			hippodromeEditOptions,
 			positions);
-		this.hippodromes.set(id, editablePolyline
-		);
+		this.hippodromes.set(id, editableHippodrome);
 	}
 	
 	get(id: string): EditableHippodrome {

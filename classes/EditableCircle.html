@@ -320,7 +320,7 @@
                                     <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                    <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -513,10 +513,19 @@
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -961,7 +970,7 @@
                                            <a href="../classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                           <a href="../classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/HtmlCollection.html" >HtmlCollection</a>
@@ -1154,10 +1163,19 @@
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/CircleProps.html" >CircleProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -1354,10 +1372,10 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#_arcId">_arcId</a>
+                                        <span class="modifier">Private</span> <a href="#_center">_center</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#_center">_center</a>
+                                        <span class="modifier">Private</span> <a href="#_circleProps">_circleProps</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#_enableEdit">_enableEdit</a>
@@ -1366,16 +1384,34 @@
                                         <span class="modifier">Private</span> <a href="#_outlineArc">_outlineArc</a>
                                     </li>
                                     <li>
+                                        <span class="modifier">Private</span> <a href="#_pointProps">_pointProps</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#_polylineProps">_polylineProps</a>
+                                    </li>
+                                    <li>
                                         <span class="modifier">Private</span> <a href="#_radiusPoint">_radiusPoint</a>
                                     </li>
                                     <li>
                                          <a href="#center">center</a>
                                     </li>
                                     <li>
+                                         <a href="#circleProps">circleProps</a>
+                                    </li>
+                                    <li>
                                         <span class="modifier">Private</span> <a href="#doneCreation">doneCreation</a>
                                     </li>
                                     <li>
                                          <a href="#enableEdit">enableEdit</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#lastDraggedToPosition">lastDraggedToPosition</a>
+                                    </li>
+                                    <li>
+                                         <a href="#pointProps">pointProps</a>
+                                    </li>
+                                    <li>
+                                         <a href="#polylineProps">polylineProps</a>
                                     </li>
                                     <li>
                                          <a href="#radiusPoint">radiusPoint</a>
@@ -1402,6 +1438,9 @@
                                     </li>
                                     <li>
                                          <a href="#dispose">dispose</a>
+                                    </li>
+                                    <li>
+                                         <a href="#endMovePolygon">endMovePolygon</a>
                                     </li>
                                     <li>
                                          <a href="#getCenter">getCenter</a>
@@ -1446,12 +1485,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, circlesLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, pointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, arcsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>)</code>
+                                    <code>constructor(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, circlesLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, pointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, arcsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, options: <a href="../interfaces/CircleEditOptions.html">CircleEditOptions</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:19</a></div>
                                         </td>
                                     </tr>
             
@@ -1481,7 +1520,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:85</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:115</a></div>
                                         </td>
                                     </tr>
             
@@ -1513,7 +1552,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:67</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:97</a></div>
                                         </td>
                                     </tr>
             
@@ -1546,7 +1585,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:181</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:220</a></div>
                                         </td>
                                     </tr>
             
@@ -1578,7 +1617,39 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:141</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:180</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="endMovePolygon"></a>
+                                    <b> endMovePolygon</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>endMovePolygon()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:161</a></div>
                                         </td>
                                     </tr>
             
@@ -1610,7 +1681,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:133</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:172</a></div>
                                         </td>
                                     </tr>
             
@@ -1642,7 +1713,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:157</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:196</a></div>
                                         </td>
                                     </tr>
             
@@ -1674,7 +1745,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:126</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:165</a></div>
                                         </td>
                                     </tr>
             
@@ -1706,7 +1777,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:137</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:176</a></div>
                                         </td>
                                     </tr>
             
@@ -1731,14 +1802,14 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>moveCircle(newCenterPos: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
+            <code>moveCircle(dragStartPosition: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, dragEndPosition: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:111</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:141</a></div>
                                         </td>
                                     </tr>
             
@@ -1770,7 +1841,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:97</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:127</a></div>
                                         </td>
                                     </tr>
             
@@ -1802,7 +1873,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:39</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:69</a></div>
                                         </td>
                                     </tr>
             
@@ -1835,7 +1906,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:174</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:213</a></div>
                                         </td>
                                     </tr>
             
@@ -1868,7 +1939,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:161</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:200</a></div>
                                         </td>
                                     </tr>
             
@@ -1901,7 +1972,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:165</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:204</a></div>
                                         </td>
                                     </tr>
             
@@ -1928,35 +1999,6 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="_arcId"></a>
-                                    <b><span class="modifier">Private</span> _arcId</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_arcId:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:14</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="_center"></a>
                                     <b><span class="modifier">Private</span> _center</b>
                                 </td>
@@ -1975,7 +2017,36 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:9</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:11</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_circleProps"></a>
+                                    <b><span class="modifier">Private</span> _circleProps</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_circleProps:     <code><a href="../interfaces/CircleProps.html" target="_self" >CircleProps</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/CircleProps.html" target="_self" >CircleProps</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:17</a></div>
                                         </td>
                                     </tr>
             
@@ -2003,7 +2074,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:13</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:15</a></div>
                                         </td>
                                     </tr>
             
@@ -2032,7 +2103,65 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:11</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:13</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_pointProps"></a>
+                                    <b><span class="modifier">Private</span> _pointProps</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_pointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:18</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="_polylineProps"></a>
+                                    <b><span class="modifier">Private</span> _polylineProps</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>_polylineProps:     <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:19</a></div>
                                         </td>
                                     </tr>
             
@@ -2061,7 +2190,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:10</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -2090,7 +2219,36 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:23</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:53</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="circleProps"></a>
+                                    <b> circleProps</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>circleProps:     <code><a href="../interfaces/CircleProps.html" target="_self" >CircleProps</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/CircleProps.html" target="_self" >CircleProps</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:45</a></div>
                                         </td>
                                     </tr>
             
@@ -2118,7 +2276,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:12</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:14</a></div>
                                         </td>
                                     </tr>
             
@@ -2139,6 +2297,87 @@
             </code>
                                 </td>
                             </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:61</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="lastDraggedToPosition"></a>
+                                    <b><span class="modifier">Private</span> lastDraggedToPosition</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>lastDraggedToPosition:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:16</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="pointProps"></a>
+                                    <b> pointProps</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>pointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:38</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="polylineProps"></a>
+                                    <b> polylineProps</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>polylineProps:     <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            
+                                    </td>
+                                </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:31</a></div>
@@ -2170,7 +2409,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:27</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-circle.ts:57</a></div>
                                         </td>
                                     </tr>
             
@@ -2188,6 +2427,8 @@ import { AcLayerComponent } from &#x27;../../angular-cesium/components/ac-layer/
 import { Cartesian3 } from &#x27;../../angular-cesium/models/cartesian3&#x27;;
 import { GeoUtilsService } from &#x27;../../angular-cesium/services/geo-utils/geo-utils.service&#x27;;
 import { EditArc } from &#x27;./edit-arc&#x27;;
+import { CircleEditOptions, CircleProps } from &#x27;./circle-edit-options&#x27;;
+import { PointProps, PolylineProps } from &#x27;./polyline-edit-options&#x27;;
 
 export class EditableCircle extends AcEntity {
   private _center: EditPoint;
@@ -2195,13 +2436,41 @@ export class EditableCircle extends AcEntity {
   private _outlineArc: EditArc;
   private doneCreation &#x3D; false;
   private _enableEdit &#x3D; true;
-  private _arcId: string;
-
+  private lastDraggedToPosition;
+  private _circleProps: CircleProps;
+  private _pointProps: PointProps;
+  private _polylineProps: PolylineProps;
   constructor(private id: string,
               private circlesLayer: AcLayerComponent,
               private pointsLayer: AcLayerComponent,
-              private arcsLayer: AcLayerComponent) {
+              private arcsLayer: AcLayerComponent,
+              private options: CircleEditOptions) {
     super();
+    this._circleProps &#x3D; options.circleProps;
+    this._pointProps &#x3D; options.pointProps;
+    this._polylineProps &#x3D; options.polylineProps;
+  }
+
+  get polylineProps(): PolylineProps {
+    return this._polylineProps;
+  }
+
+  set polylineProps(value: PolylineProps) {
+    this._polylineProps &#x3D; value;
+  }
+  get pointProps(): PointProps {
+    return this._pointProps;
+  }
+
+  set pointProps(value: PointProps) {
+    this._pointProps &#x3D; value;
+  }
+  get circleProps(): CircleProps {
+    return this._circleProps;
+  }
+
+  set circleProps(value: CircleProps) {
+    this._circleProps &#x3D; value;
   }
 
   get center(): EditPoint {
@@ -2222,14 +2491,14 @@ export class EditableCircle extends AcEntity {
 
   setCircleManually(center: Cartesian3, radiusPoint: Cartesian3) {
     if (!this._center) {
-      this._center &#x3D; new EditPoint(this.id, center);
+      this._center &#x3D; new EditPoint(this.id, center, this.pointProps);
     }
     else {
       this._center.setPosition(center);
     }
 
     if (!this._radiusPoint) {
-      this._radiusPoint &#x3D; new EditPoint(this.id, radiusPoint);
+      this._radiusPoint &#x3D; new EditPoint(this.id, radiusPoint, this.pointProps);
     }
     else {
       this._radiusPoint.setPosition(radiusPoint);
@@ -2254,8 +2523,8 @@ export class EditableCircle extends AcEntity {
     }
 
     if (!this._center) {
-      this._center &#x3D; new EditPoint(this.id, position);
-      this._radiusPoint &#x3D; new EditPoint(this.id, position.clone());
+      this._center &#x3D; new EditPoint(this.id, position, this.pointProps);
+      this._radiusPoint &#x3D; new EditPoint(this.id, position.clone(), this.pointProps);
       if (!this._outlineArc) {
         this.createOutlineArc();
       }
@@ -2292,19 +2561,28 @@ export class EditableCircle extends AcEntity {
   }
 
 
-  moveCircle(newCenterPos: Cartesian3) {
+  moveCircle(dragStartPosition: Cartesian3, dragEndPosition: Cartesian3) {
     if (!this.doneCreation) {
       return;
     }
+    if (!this.lastDraggedToPosition) {
+      this.lastDraggedToPosition &#x3D; dragStartPosition;
+    }
 
     const radius &#x3D; this.getRadius();
-    this.center.setPosition(newCenterPos);
+    const delta &#x3D; GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, dragEndPosition);
+    GeoUtilsService.addDeltaToPosition(this.getCenter(), delta, true);
     this.radiusPoint.setPosition(
       GeoUtilsService.pointByLocationDistanceAndAzimuth(this.getCenter(), radius, Math.PI / 2, true));
     this._outlineArc.radius &#x3D; this.getRadius();
     this.updateArcsLayer();
     this.updatePointsLayer();
     this.updateCirclesLayer();
+    this.lastDraggedToPosition &#x3D; dragEndPosition;
+  }
+
+  endMovePolygon() {
+    this.lastDraggedToPosition &#x3D; undefined;
   }
 
   getRadius(): number {
@@ -2366,7 +2644,7 @@ export class EditableCircle extends AcEntity {
     if (!this._center || !this._radiusPoint) {
       return;
     }
-    this._outlineArc &#x3D; new EditArc(this.id, this.getCenter(), this.getRadius(), Math.PI * 2, 0);
+    this._outlineArc &#x3D; new EditArc(this.id, this.getCenter(), this.getRadius(), Math.PI * 2, 0, this.polylineProps);
   }
 }
 </code></pre>

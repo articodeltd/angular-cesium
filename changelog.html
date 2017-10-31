@@ -320,7 +320,7 @@
                                     <a href="./classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                    <a href="./classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="./classes/HtmlCollection.html" >HtmlCollection</a>
@@ -513,10 +513,19 @@
                                     <a href="./interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                </li>
+                                <li class="link">
                                     <a href="./interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./interfaces/CircleProps.html" >CircleProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="./interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="./interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -961,7 +970,7 @@
                                            <a href="./classes/EntityOnMapComponent.html" >EntityOnMapComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./classes/HippodrmoeEditorOboservable.html" >HippodrmoeEditorOboservable</a>
+                                           <a href="./classes/HippodromeEditorObservable.html" >HippodromeEditorObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="./classes/HtmlCollection.html" >HtmlCollection</a>
@@ -1154,10 +1163,19 @@
                                            <a href="./interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./interfaces/CircleEditOptions.html" >CircleEditOptions</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./interfaces/CircleEditUpdate.html" >CircleEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./interfaces/CircleProps.html" >CircleProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./interfaces/ContextMenuOptions.html" >ContextMenuOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/EditorEditOptions.html" >EditorEditOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="./interfaces/EntitiesDrawerOptions.html" >EntitiesDrawerOptions</a>
@@ -1299,7 +1317,18 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h2 id="next">NEXT</h2>
+<h2 id="0-0-31">0.0.31</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>All editors now except allowDrag option to allow or disable the ability to drag the edited shape.</li>
+<li>Added options to circle editor  - <code>CircleEditOptions</code>.</li>
+</ul>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fix hippodrome editor outline bug.</li>
+<li>Fixed bug that caused polygons hiding to throw an error if they had outline. </li>
+</ul>
+<h2 id="0-0-30">0.0.30</h2>
 <h3 id="fixes">Fixes</h3>
 <ul>
 <li>Service init order  <a href="https://github.com/TGFTech/angular-cesium/issues/131">#131</a></li>
@@ -1308,9 +1337,10 @@
 <ul>
 <li>Added <code>selectionManagerService</code> and example in selection-layer.component.ts</li>
 <li>Added context menu service that allows dynamic injection of custom components.</li>
-<li>Added polyline shape editor  </li>
+<li>Added Polyline editor <code>PolylinesEditorService</code> - allow for creating polylines and editing them from the map of from the code.  </li>
 <li>Added Circle editor <code>CirclesEditorService</code> - allow for creating circles and editing them from the map of from the code.</li>
-<li>Added CesiumHeatMapMaterialCreator for creating heatmap material for cesium entities.</li>
+<li>Added Hippodrome editor <code>HippodromeEditorService</code> - allow for creating hippodromes and editing them from the map of from the code.</li>
+<li>Added <code>CesiumHeatMapMaterialCreator</code> for creating heatmap material for cesium entities.</li>
 <li>edited polygons are now draggable.</li>
 <li>added <code>ac-point-primitive-desc</code></li>
 <li>added <code>ac-html-desc</code> - ac-layer supports ac-html   </li>
