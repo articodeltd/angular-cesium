@@ -62,7 +62,8 @@ export class PolygonsEditorComponent implements OnDestroy {
 					this.editPointsLayer,
 					this.editPolylinesLayer,
 					this.coordinateConverter,
-					update.polygonOptions);
+					update.polygonOptions
+				);
 				break;
 			}
 			case EditActions.MOUSE_MOVE: {
