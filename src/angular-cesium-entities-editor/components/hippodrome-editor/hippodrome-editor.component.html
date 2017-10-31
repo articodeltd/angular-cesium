@@ -3,7 +3,11 @@
 		positions: hippodrome.getRealPositions(),
 		cornerType: Cesium.CornerType.ROUNDED,
 		material: hippodrome.hippodromeProps.material,
-		width : hippodrome.hippodromeProps.width
+		width : hippodrome.hippodromeProps.width,
+		outline: hippodrome.hippodromeProps.outline,
+		outlineColor: hippodrome.hippodromeProps.outlineColor,
+        outlineWidth: hippodrome.hippodromeProps.outlineWidth,
+        height: 0
 	}">
     </ac-corridor-desc>
 </ac-layer>
@@ -19,15 +23,3 @@
     }">
     </ac-point-desc>
 </ac-layer>
-<!--<ac-layer #editArcsLayer acFor="let arc of editArcs$" [context]="this" [zIndex]="1">-->
-    <!--<ac-arc-desc props="{-->
-        <!--angle: arc.angle,-->
-        <!--delta: arc.delta,-->
-        <!--center: arc.center,-->
-        <!--radius: arc.radius,-->
-        <!--quality: 30,-->
-        <!--color: Cesium.Color.BLACK-->
-    <!--}">-->
-    <!--</ac-arc-desc>-->
-<!--</ac-layer>-->
-
