@@ -22,7 +22,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   addLastPointEvent: CesiumEvent.LEFT_DOUBLE_CLICK,
   removePointEvent: CesiumEvent.RIGHT_CLICK,
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
-  allowDrag: false,
+  allowDrag: true,
   pointProps: {
     color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK,

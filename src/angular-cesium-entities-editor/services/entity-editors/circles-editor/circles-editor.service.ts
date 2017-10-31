@@ -40,7 +40,7 @@ export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
-  allowDrag: false,
+  allowDrag: true,
   circleProps: {
     material: Cesium.Color.GREEN.withAlpha(0.5),
     outline: false,

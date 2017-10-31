@@ -25,7 +25,7 @@ export class PolylineEditorLayerComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.polylineEditor.create();
+    this.editing$ = this.polylineEditor.create({allowDrag: false});
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 
       if (editUpdate.editAction === EditActions.ADD_POINT) {

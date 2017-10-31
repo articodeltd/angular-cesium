@@ -24,7 +24,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   removePointEvent: CesiumEvent.RIGHT_CLICK,
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
-  allowDrag: false,
+  allowDrag: true,
   pointProps: {
     color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK,

@@ -9,5 +9,5 @@ export interface EditorEditOptions {
   dragShapeEvent?: CesiumEvent;
   pointProps?: PointProps;
   polylineProps?: PolylineProps;
-  allowDrag: boolean;
+  allowDrag?: boolean;
 }

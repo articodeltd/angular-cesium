@@ -23,7 +23,7 @@ export class CirclesEditorLayerComponent implements OnInit {
 		if (this.editing$) {
 			this.stopEdit();
 		}
-		this.editing$ = this.circlesEditor.create();
+		this.editing$ = this.circlesEditor.create({allowDrag: false});
 		this.editing$.subscribe((editUpdate: CircleEditUpdate) => {
       console.log(editUpdate);
 		});
@@ -40,7 +40,7 @@ export class CirclesEditorLayerComponent implements OnInit {
 		if (this.editing$) {
 			this.stopEdit();
 		}
-		this.editing$ = this.circlesEditor.edit(Cesium.Cartesian3.fromDegrees(-70, 0), 800000, {allowDrag: true});
+		this.editing$ = this.circlesEditor.edit(Cesium.Cartesian3.fromDegrees(-70, 0), 800000);
 	}
 
 	toggleEnableEditing() {

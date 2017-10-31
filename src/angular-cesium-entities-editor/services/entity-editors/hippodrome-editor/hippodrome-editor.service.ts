@@ -22,7 +22,7 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
-  allowDrag: false,
+  allowDrag: true,
   hippodromeProps: {
     material: Cesium.Color.GREEN.withAlpha(0.5),
     width: 200000.0,
