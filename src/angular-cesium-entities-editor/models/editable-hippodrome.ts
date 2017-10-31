@@ -118,9 +118,7 @@ export class EditableHippodrome extends AcEntity {
 		const secP = this.getRealPoints()[1];
 		
 		const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secP.getPosition(), 0.5, new Cesium.Cartesian3());
-		const currentCart = Cesium.Cartographic.fromCartesian(firstP.getPosition());
-		const nextCart = Cesium.Cartographic.fromCartesian(secP.getPosition());
-		const bearingDeg = this.coordinateConverter.bearingTo(currentCart, nextCart);
+		const bearingDeg = this.coordinateConverter.bearingToInCartesian(firstP.getPosition(), secP.getPosition());
 		
 		const upAzimuth = Cesium.Math.toRadians(bearingDeg) - Math.PI / 2;
 		this.createMiddleEditablePoint(midPointCartesian3, upAzimuth);
@@ -142,6 +140,32 @@ export class EditableHippodrome extends AcEntity {
 		if (!editPoint.isVirtualEditPoint()) {
 			editPoint.setPosition(toPosition);
 			
+			this.updateHippdromePointsLayer(...this.hippodromePositions);
+			this.updateHippdromeLayer();
+		} else {
+			
+			const firstP = this.getRealPoints()[0];
+			const secP = this.getRealPoints()[1];
+			const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secP.getPosition(), 0.5, new Cesium.Cartesian3());
+			
+			const bearingDeg = this.coordinateConverter.bearingToInCartesian(midPointCartesian3, toPosition);
+			const normalizedBearingDeb = bearingDeg > 180 ? 360 - bearingDeg : bearingDeg;
+			const bearingDegHippodromeDots = this.coordinateConverter.bearingToInCartesian(firstP.getPosition(), secP.getPosition());
+			const fixedBearingDeg = bearingDegHippodromeDots > normalizedBearingDeb ? bearingDegHippodromeDots - normalizedBearingDeb : normalizedBearingDeb - bearingDegHippodromeDots;
+			
+			
+			const distanceMeters = GeoUtilsService.distance(midPointCartesian3, toPosition);
+			const radiusWidth = Math.sin(Cesium.Math.toRadians(fixedBearingDeg)) * distanceMeters;
+			
+			console.log('mid ', bearingDeg, 'hipp', bearingDegHippodromeDots, 'fixed', fixedBearingDeg, 'normal ',normalizedBearingDeb);
+			console.log(radiusWidth);
+			
+			if (fixedBearingDeg < 0) {
+				return
+			}
+			
+			this.hippodromeProps.width = radiusWidth * 2;
+			this.createHeightEditPoints();
 			this.updateHippdromePointsLayer(...this.hippodromePositions);
 			this.updateHippdromeLayer();
 		}
