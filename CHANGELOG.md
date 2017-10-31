@@ -1,6 +1,12 @@
-## NEXT
+## 0.0.31
+### Features
+* All editors now except allowDrag option to allow or disable the ability to drag the edited shape.
+* Added options to circle editor  - `CircleEditOptions`.
+ 
+
 ### Fixes
-* fix hippodrome editor outline bug.
+* Fix hippodrome editor outline bug.
+* Fixed bug that caused polygons hiding to throw an error if they had outline. 
 
 ## 0.0.30
 ### Fixes

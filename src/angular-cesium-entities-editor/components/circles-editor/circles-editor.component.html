@@ -2,9 +2,9 @@
     <ac-point-desc props="{
         position: point.getPosition(),
         pixelSize: getPointSize(point),
-        color: Cesium.Color.WHITE,
-        outlineColor: Cesium.Color.BLACK,
-        outlineWidth: 1,
+        color: point.props.color,
+        outlineColor: point.props.outlineColor,
+        outlineWidth: point.props.outlineWidth,
         heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND
     }">
     </ac-point-desc>
@@ -17,7 +17,7 @@
         center: arc.center,
         radius: arc.radius,
         quality: 30,
-        color: Cesium.Color.BLACK
+        color: arc.props.material
     }">
     </ac-arc-desc>
 </ac-layer>
@@ -27,8 +27,8 @@
         position: circle.getCenter(),
         semiMajorAxis: circle.getRadius(),
         semiMinorAxis: circle.getRadius(),
-        material: circleColor,
-        outline: true,
+        material: circle.circleProps.material,
+        outline: circle.circleProps.outline,
         height: 0
     }">
     </ac-ellipse-desc>

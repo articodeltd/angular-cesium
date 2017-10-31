@@ -12,7 +12,7 @@ export class EditablePolygon extends AcEntity {
 	private positions: EditPoint[] = [];
 	private polylines: EditPolyline[] = [];
 	private movingPoint: EditPoint;
-	private done = false;
+	private doneCreation = false;
 	private _enableEdit = true;
 	private _polygonProps: PolygonProps;
 	private _defaultPointProps: PointProps;
@@ -27,9 +27,9 @@ export class EditablePolygon extends AcEntity {
 							polygonOptions: PolygonEditOptions,
 							positions?: Cartesian3[]) {
 		super();
-		this.polygonProps = polygonOptions.defaultPolygonOptions;
-		this.defaultPointProps = polygonOptions.defaultPointOptions;
-		this.defaultPolylineProps = polygonOptions.defaultPolylineOptions;
+		this.polygonProps = polygonOptions.polygonProps;
+		this.defaultPointProps = polygonOptions.pointProps;
+		this.defaultPolylineProps = polygonOptions.polylineProps;
 		if (positions && positions.length >= 3) {
 			this.createFromExisting(positions);
 		}
@@ -73,11 +73,11 @@ export class EditablePolygon extends AcEntity {
 		});
 		this.addAllVirtualEditPoints();
 		this.updatePolygonsLayer();
-		this.done = true;
+		this.doneCreation = true;
 	}
 	
 	setPointsManually(points: EditPoint[]) {
-		if (!this.done) {
+		if (!this.doneCreation) {
 			throw new Error('Update manually only in edit mode, after polygon is created')
 		}
 		this.positions.forEach(p => this.pointsLayer.remove(p.getId()));
@@ -150,7 +150,7 @@ export class EditablePolygon extends AcEntity {
 	
 	
 	addPoint(position: Cartesian3) {
-		if (this.done) {
+		if (this.doneCreation) {
 			return;
 		}
 		const isFirstPoint = !this.positions.length;
@@ -181,10 +181,13 @@ export class EditablePolygon extends AcEntity {
 	}
 	
 	movePolygon(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
-		if (!this.lastDraggedToPosition) {
-			this.lastDraggedToPosition = startMovingPosition;
-		}
-		
+    if (!this.doneCreation) {
+      return;
+    }
+    if (!this.lastDraggedToPosition) {
+      this.lastDraggedToPosition = startMovingPosition;
+    }
+
 		const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
 		this.positions.forEach(point => {
 			GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
@@ -213,7 +216,7 @@ export class EditablePolygon extends AcEntity {
 	}
 	
 	addLastPoint(position: Cartesian3) {
-		this.done = true;
+		this.doneCreation = true;
 		this.removePosition(this.movingPoint); // remove movingPoint
 		this.movingPoint = null;
 		this.updatePolygonsLayer();

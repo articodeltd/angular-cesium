@@ -17,15 +17,15 @@ export class EditPoint extends AcEntity {
 		this.id = this.generateId();
 		this.pointProps = pointProps;
 	}
-	
-	getPointProps() {
-		return this.pointProps;
-	}
-	
-	setPointProps(props: PointProps) {
-		this.pointProps = props;
-	}
-	
+
+  get props(): PointProps {
+    return this.pointProps;
+  }
+
+  set props(value: PointProps) {
+    this.pointProps = value;
+  }
+
 	isVirtualEditPoint(): boolean {
 		return this._virtualEditPoint;
 	}

@@ -11,7 +11,7 @@ import { PolygonsEditorService } from '../../../../../src/angular-cesium-entitie
 })
 export class PolygonsEditorLayerComponent implements OnInit {
 
-  editing$: PolygonEditorObservable<PolygonEditUpdate>;
+  editing$: PolygonEditorObservable;
   enableEditing = true;
 
   constructor(private polygonsEditor: PolygonsEditorService) {
@@ -24,7 +24,7 @@ export class PolygonsEditorLayerComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.polygonsEditor.create();
+    this.editing$ = this.polygonsEditor.create({allowDrag: false});
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
       if (editUpdate.editAction === EditActions.ADD_POINT) {
         console.log(editUpdate.points); // point = position with id
@@ -62,6 +62,9 @@ export class PolygonsEditorLayerComponent implements OnInit {
 
   toggleEnableEditing() {
     // Only effects if in edit mode (all polygon points were created)
+    if (!this.editing$) {
+      return;
+    }
     this.enableEditing = !this.enableEditing;
     if (this.enableEditing) {
       this.editing$.enable();

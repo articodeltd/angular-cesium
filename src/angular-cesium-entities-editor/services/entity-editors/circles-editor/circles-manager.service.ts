@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { EditableCircle } from '../../../models/editable-circle';
 import { AcLayerComponent } from '../../../../angular-cesium/components/ac-layer/ac-layer.component';
+import { CircleEditOptions } from '../../../models/circle-edit-options';
 
 @Injectable()
 export class CirclesManagerService {
@@ -9,8 +10,9 @@ export class CirclesManagerService {
   createEditableCircle(id: string,
                        editCirclesLayer: AcLayerComponent,
                        editPointsLayer: AcLayerComponent,
-                       editArcsLayer: AcLayerComponent): EditableCircle {
-    const editableCircle = new EditableCircle(id, editCirclesLayer, editPointsLayer, editArcsLayer);
+                       editArcsLayer: AcLayerComponent,
+                       circleOptions: CircleEditOptions): EditableCircle {
+    const editableCircle = new EditableCircle(id, editCirclesLayer, editPointsLayer, editArcsLayer, circleOptions);
     this.circles.set(id, editableCircle);
     return editableCircle;
   }
