@@ -207,22 +207,22 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + Maintainable code.
 
 ## Supported Entity types
-+ billboard - `ac-billboard-desc` / `ac-billboard` / `ac-billboard-primitive-desc`
-+ label - `ac-label-desc` / `ac-label` / `ac-label-primitive-desc`
-+ polyline - `ac-polyline-desc` / `ac-polyline` / `ac-polyline-primitive-desc`
-+ point - `ac-point-desc` / `ac-point` / `ac-primitive-point`
-+ ellipse - `ac-ellipse-desc` / `ac-ellipse`
-+ circle - `ac-circle-desc` / `ac-circle` *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis 
-+ polygon - `ac-polygon-desc` / `ac-polygon`
-+ model - `ac-model-desc`
-+ box - `ac-box-dec`
-+ corridor -`ac-corridor-dec`
-+ cylinder - `ac-cylinder-dec`
-+ ellipsoid - `ac-ellipsoid-dec`
-+ polyline volume - `ac-polyline-volume-dec`
-+ wall - `ac-wall-dec`
-+ rectangle -`ac-rectangle-dec`
-* html - `ac-html-desc` / `ac-html` 
++ billboard - [`ac-billboard-desc`](https://tgftech.github.io/angular-cesium/components/AcBillboardDescComponent.html) / [`ac-billboard`](https://tgftech.github.io/angular-cesium/components/AcBillboardComponent.html) / [`ac-billboard-primitive-desc`](https://tgftech.github.io/angular-cesium/components/AcBillboardPrimitiveDescComponent.html)
++ label - [`ac-label-desc`](https://tgftech.github.io/angular-cesium/components/AcLabelDescComponent.html) / [`ac-label`](https://tgftech.github.io/angular-cesium/components/AcLabelComponent.html) / [`ac-label-primitive-desc`](https://tgftech.github.io/angular-cesium/components/AcLabelPrimitiveDescComponent.html)
++ polyline - [`ac-polyline-desc`](https://tgftech.github.io/angular-cesium/components/AcPolylineDescComponent.html) / [`ac-polyline`](https://tgftech.github.io/angular-cesium/components/AcPolylineComponent.html) / [`ac-polyline-primitive-desc`](https://tgftech.github.io/angular-cesium/components/AcPolylinePrimitiveDescComponent.html)
++ point - [`ac-point-desc`](https://tgftech.github.io/angular-cesium/components/AcPointDescComponent.html) / [`ac-point`](https://tgftech.github.io/angular-cesium/components/AcPointComponent.html) / [`ac-primitive-point`](https://tgftech.github.io/angular-cesium/components/AcPointPrimitiveDescComponent.html)
++ ellipse - [`ac-ellipse-desc`](https://tgftech.github.io/angular-cesium/components/AcEllipseDescComponent.html) / [`ac-ellipse`](https://tgftech.github.io/angular-cesium/components/AcEllipseComponent.html)
++ circle - [`ac-circle-desc`](https://tgftech.github.io/angular-cesium/components/AcCircleDescComponent.html) / [`ac-circle`](https://tgftech.github.io/angular-cesium/components/AcCircleComponent.html) *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis 
++ polygon - [`ac-polygon-desc`](https://tgftech.github.io/angular-cesium/components/AcPolygonDescComponent.html) / [`ac-polygon`](https://tgftech.github.io/angular-cesium/components/AcPolygonComponent.html)
++ model - [`ac-model-desc`](https://tgftech.github.io/angular-cesium/components/AcModelDescComponent.html)
++ box - [`ac-box-dec`](https://tgftech.github.io/angular-cesium/components/AcBoxDescComponent.html)
++ corridor -[`ac-corridor-dec`](https://tgftech.github.io/angular-cesium/components/AcCorridorDescComponent.html)
++ cylinder - [`ac-cylinder-dec`](https://tgftech.github.io/angular-cesium/components/AcCylinderDescComponent.html)
++ ellipsoid - [`ac-ellipsoid-dec`](https://tgftech.github.io/angular-cesium/components/AcEllipsoidDescComponent.html)
++ polyline volume - [`ac-polyline-volume-dec`](https://tgftech.github.io/angular-cesium/components/AcPolylineVolumeDescComponent.html)
++ wall - [`ac-wall-dec`](https://tgftech.github.io/angular-cesium/components/AcWallDescComponent.html)
++ rectangle -[`ac-rectangle-dec`](https://tgftech.github.io/angular-cesium/components/AcRectangleDescComponent.html)
+* html - [`ac-html-desc`](https://tgftech.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://tgftech.github.io/angular-cesium/components/AcHtmlComponent.html) 
 
 ### `ac-entity-desc` vs `ac-entity`
 + `ac-entity-desc` component is used to describe how each entity in a stream of entities, managed inside `ac-layer`, should be drawn.

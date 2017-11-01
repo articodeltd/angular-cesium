@@ -7,6 +7,28 @@ import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawe
 import { AcHtmlDirective } from '../../directives/ac-html/ac-html.directive';
 import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.service';
 
+/**
+ *  This is an html implementation.
+ *  The ac-html element must be a child of ac-layer element.
+ *  <br>
+ *  [props] accepts position(Cartesian3) and show(boolean).
+ *
+ *  __Usage:__
+ *  ```
+ *  <ac-layer acFor="let html of htmls$" [context]="this">
+ 			<ac-html-desc props="{position: html.position, show: html.show}">
+ 				<ng-template let-html>
+ 					<div>
+					 <h1>This is ac-html {{html.name}}</h1>
+					 <button (click)="changeText(html, 'Test')">change text</button>
+ 					</div>
+ 				</ng-template>
+ 			</ac-html-desc>
+ *  <ac-html [props]="{position: position, show: true}">;
+ *    <p>html element</p>
+ *  </ac-html>
+ *  ```
+ */
 @Component({
 	selector : 'ac-html-desc',
 	providers : [AcHtmlManager],
