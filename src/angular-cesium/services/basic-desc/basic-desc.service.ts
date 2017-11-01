@@ -27,15 +27,14 @@ export class BasicDesc implements OnInit, OnDestroy, IDescription {
   onRemove: EventEmitter<OnDrawParams> = new EventEmitter<OnDrawParams>();
 
   protected _cesiumObjectsMap: Map<string, any> = new Map<string, any>();
-
   private _propsEvaluateFn: Function;
-
   private _propsAssignerFn: Function;
   constructor(protected _drawer: BasicDrawerService,
               protected _layerService: LayerService,
               protected _computationCache: ComputationCache,
               protected _cesiumProperties: CesiumProperties) {
   }
+
   protected _propsEvaluator(context: Object): any {
     return this._propsEvaluateFn(this._computationCache, context);
   }
