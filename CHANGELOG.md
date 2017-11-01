@@ -3,7 +3,11 @@
 * Polyline edtior supports drag shape events .
 
 ## Fixes
-* Hippodrome editor - setManually supports positions and hippodrome width  
+* Hippodrome editor - setManually supports positions and hippodrome width
+
+## Breaking changes
+* Observer Editors methods: `setPolygonManually()`, `setPolylineManually()`,`setCircleManually()`,`setHippodromeManually()` changed to: `setManually()`.  
+Each shape accepts here own specific arguments to configure the edited object, for example: `polygonEditor$.setManaually(positions, pointOptions, polygonOptions)`.    
 
 ## 0.0.31
 ### Features
