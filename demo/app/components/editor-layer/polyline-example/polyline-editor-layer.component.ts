@@ -81,11 +81,18 @@ export class PolylineEditorLayerComponent implements OnInit {
   updatePointManually() {
     if (this.editing$) {
       // Only effects if in edit mode (all polygon points were created)
-      const polygonPoints = this.editing$.getCurrentPoints();
-
-      const firstPoint = polygonPoints[0];
+      // update current point
+      const polylinePoints = this.editing$.getCurrentPoints();
+      const firstPoint = polylinePoints[0];
       firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
-      this.editing$.setPointsManually(polygonPoints);
+      this.editing$.setPolylineManually(polylinePoints);
+  
+  
+      // or add new point
+      const polylinePositions = this.editing$.getCurrentPoints().map(p => p.getPosition());
+      const newPosition = Cesium.Cartesian3.fromDegrees(30, 24);
+      polylinePositions.push(newPosition);
+      this.editing$.setPolylineManually(polylinePositions);
     }
   }
 }

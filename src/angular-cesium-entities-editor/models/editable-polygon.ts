@@ -82,7 +82,6 @@ export class EditablePolygon extends AcEntity {
     }
     
     this.positions.forEach(p => this.pointsLayer.remove(p.getId()));
-    
     const newPoints: EditPoint[] = [];
     for (let i = 0; i < points.length; i++) {
       const pointOrCartesian: any = points[i];
@@ -95,7 +94,7 @@ export class EditablePolygon extends AcEntity {
       newPoints.push(newPoint);
     }
     this.positions = newPoints;
-    
+    this.polygonProps = polygonProps ? polygonProps : this.polygonProps;
     this.updatePointsLayer(...this.positions);
     this.addAllVirtualEditPoints();
     this.updatePolygonsLayer();
