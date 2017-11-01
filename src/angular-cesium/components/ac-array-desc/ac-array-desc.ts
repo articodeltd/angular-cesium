@@ -13,7 +13,7 @@ import {
 import { AcNotification } from '../../models/ac-notification';
 import { Subject } from 'rxjs/Subject';
 import { IDescription } from '../../models/description';
-import * as get from 'lodash.get';
+import * as _get from 'lodash.get';
 import { AcLayerComponent } from '../ac-layer/ac-layer.component';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
@@ -94,6 +94,7 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
   }
 
   draw(context, id: string, contextEntity) {
+    const get = _get;
     const entitiesArray: any[] = get(context, this.arrayPath);
     if (!entitiesArray) {
       return;
