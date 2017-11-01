@@ -122,7 +122,7 @@ export class PolygonsEditorComponent implements OnDestroy {
 			case EditActions.DRAG_POINT_FINISH: {
 				const polygon = this.polygonsManager.get(update.id);
 				if (polygon && polygon.enableEdit && update.updatedPoint.isVirtualEditPoint()) {
-					polygon.addVirtualEditPoint(update.updatedPoint);
+					polygon.changeVirtualPointToRealPoint(update.updatedPoint);
 				}
 				break;
 			}

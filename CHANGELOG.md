@@ -4,7 +4,8 @@
 * Add ability to change width to Hippodrome editor
 
 ## Fixes
-* Hippodrome editor - setManually supports positions and hippodrome width  
+* Hippodrome editor - setManually supports positions and hippodrome width.
+* Fixed Polygons Editing  bug that happened when dragging a point.  
 
 ## 0.0.31
 ### Features
