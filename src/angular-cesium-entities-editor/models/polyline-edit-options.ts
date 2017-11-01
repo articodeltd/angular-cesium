@@ -10,7 +10,7 @@ export interface PointProps {
 
 export interface PolylineProps {
   width?: any;
-  material: any
+  material?: any
 }
 
 export interface PolylineEditOptions extends EditorEditOptions {
