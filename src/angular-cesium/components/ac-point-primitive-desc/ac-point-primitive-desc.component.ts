@@ -3,7 +3,6 @@ import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
-import { LabelPrimitiveDrawerService } from '../../services/drawers/label-primitive-drawer/label-primitive-drawer.service';
 import { PointPrimitiveDrawerService } from '../../services/drawers/point-primitive-drawer/point-primitive-drawer.service';
 
 /**
@@ -23,13 +22,13 @@ import { PointPrimitiveDrawerService } from '../../services/drawers/point-primit
  */
 
 @Component({
-  selector: 'ac-point-primitive-desc',
-  template: '',
+	selector : 'ac-point-primitive-desc',
+	template : '',
 })
 export class AcPointPrimitiveDescComponent extends BasicDesc {
-
-  constructor(pointPrimitiveDrawerService: PointPrimitiveDrawerService, layerService: LayerService,
-              computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
-    super(pointPrimitiveDrawerService, layerService, computationCache, cesiumProperties);
-  }
+	
+	constructor(pointPrimitiveDrawerService: PointPrimitiveDrawerService, layerService: LayerService,
+							computationCache: ComputationCache, cesiumProperties: CesiumProperties) {
+		super(pointPrimitiveDrawerService, layerService, computationCache, cesiumProperties);
+	}
 }
