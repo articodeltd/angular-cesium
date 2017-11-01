@@ -10,12 +10,13 @@ export class EditPoint extends AcEntity {
 	private _virtualEditPoint: boolean;
 	private pointProps: PointProps;
 	
-	constructor(entityId: string, position: Cartesian3, pointProps?: PointProps) {
+	constructor(entityId: string, position: Cartesian3, pointProps?: PointProps, virtualPoint = false) {
 		super();
 		this.editedEntityId = entityId;
 		this.position = position;
 		this.id = this.generateId();
 		this.pointProps = pointProps;
+		this._virtualEditPoint = virtualPoint
 	}
 
   get props(): PointProps {
