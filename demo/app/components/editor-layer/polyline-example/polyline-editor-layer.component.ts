@@ -25,7 +25,7 @@ export class PolylineEditorLayerComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.polylineEditor.create({allowDrag: false});
+    this.editing$ = this.polylineEditor.create({allowDrag: true});
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 
       if (editUpdate.editAction === EditActions.ADD_POINT) {
@@ -50,7 +50,11 @@ export class PolylineEditorLayerComponent implements OnInit {
       Cesium.Cartesian3.fromDegrees(20, 40),
       Cesium.Cartesian3.fromDegrees(45, 40),
       Cesium.Cartesian3.fromDegrees(30, 20)];
-    this.editing$ = this.polylineEditor.edit(initialPos);
+    this.editing$ = this.polylineEditor.edit(initialPos, {
+      polylineProps: {
+        width: 3,
+      },
+    });
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 
       if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {

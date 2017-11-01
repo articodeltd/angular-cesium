@@ -1,3 +1,7 @@
+## NEXT
+### Features
+* Polyline edtior supports drag shape events . 
+
 ## 0.0.31
 ### Features
 * All editors now except allowDrag option to allow or disable the ability to drag the edited shape.

@@ -5,16 +5,18 @@ import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-la
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { PointProps, PolylineEditOptions, PolylineProps } from './polyline-edit-options';
+import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 
 export class EditablePolyline extends AcEntity {
 	
 	private positions: EditPoint[] = [];
 	private polylines: EditPolyline[] = [];
 	private movingPoint: EditPoint;
-	private done = false;
+	private doneCreation = false;
 	private _enableEdit = true;
 	private _defaultPointProps: PointProps;
 	private _defaultPolylineProps: PolylineProps;
+	private lastDraggedToPosition;
 	
 	constructor(private id: string,
 							private pointsLayer: AcLayerComponent,
@@ -59,11 +61,11 @@ export class EditablePolyline extends AcEntity {
 			this.addPointFromExisting(position)
 		});
 		this.addAllVirtualEditPoints();
-		this.done = true;
+		this.doneCreation = true;
 	}
 	
 	setPointsManually(points: EditPoint[]) {
-		if (!this.done) {
+		if (!this.doneCreation) {
 			throw new Error('Update manually only in edit mode, after polyline is created')
 		}
 		this.positions.forEach(p => this.pointsLayer.remove(p.getId()));
@@ -138,7 +140,7 @@ export class EditablePolyline extends AcEntity {
 	
 	
 	addPoint(position: Cartesian3) {
-		if (this.done) {
+		if (this.doneCreation) {
 			return;
 		}
 		const isFirstPoint = !this.positions.length;
@@ -166,6 +168,27 @@ export class EditablePolyline extends AcEntity {
 		}
 	}
 	
+	moveShape(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
+		if (!this.doneCreation) {
+			return;
+		}
+		if (!this.lastDraggedToPosition) {
+			this.lastDraggedToPosition = startMovingPosition;
+		}
+		
+		const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
+		this.positions.forEach(point => {
+			GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+		});
+		this.updatePointsLayer(...this.positions);
+		this.lastDraggedToPosition = draggedToPosition;
+	}
+	
+	endMoveShape() {
+		this.lastDraggedToPosition = undefined;
+		this.updatePointsLayer(...this.positions);
+	}
+	
 	removePoint(pointToRemove: EditPoint) {
 		this.removePosition(pointToRemove);
 		this.positions
@@ -177,7 +200,7 @@ export class EditablePolyline extends AcEntity {
 	}
 	
 	addLastPoint(position: Cartesian3) {
-		this.done = true;
+		this.doneCreation = true;
 		this.removePosition(this.movingPoint); // remove movingPoint
 		this.movingPoint = null;
 		
