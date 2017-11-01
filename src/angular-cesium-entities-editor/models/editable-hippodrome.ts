@@ -67,10 +67,11 @@ export class EditableHippodrome extends AcEntity {
 		this.done = true;
 	}
 	
-	setPointsManually(points: EditPoint[]) {
+	setPointsManually(points: EditPoint[], widthMeters?: number) {
 		if (!this.done) {
 			throw new Error('Update manually only in edit mode, after polyline is created')
 		}
+		this.hippodromeProps.width = widthMeters ? widthMeters : this.hippodromeProps.width;
 		this.hippodromePositions.forEach(p => this.pointsLayer.remove(p.getId()));
 		this.hippodromePositions = points;
 		this.createHeightEditPoints();

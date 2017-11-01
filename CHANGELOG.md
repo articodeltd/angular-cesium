@@ -2,8 +2,9 @@
 ### Features
 * Polyline edtior supports drag shape events .
 
-### Fixes
-* Fixed Polygons Editing  bug that happened when dragging a point. 
+## Fixes
+* Hippodrome editor - setManually supports positions and hippodrome width.
+* Fixed Polygons Editing  bug that happened when dragging a point.  
 
 ## 0.0.31
 ### Features
