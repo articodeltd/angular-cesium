@@ -1,6 +1,9 @@
 ## NEXT
 ### Features
-* Polyline edtior supports drag shape events . 
+* Polyline edtior supports drag shape events .
+
+## Fixes
+* Hippodrome editor - setManually supports positions and hippodrome width  
 
 ## 0.0.31
 ### Features
