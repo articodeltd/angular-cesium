@@ -1,6 +1,9 @@
 ## NEXT
 ### Features
-* Polyline edtior supports drag shape events . 
+* Polyline edtior supports drag shape events .
+
+### Fixes
+* Fixed Polygons Editing  bug that happened when dragging a point. 
 
 ## 0.0.31
 ### Features
