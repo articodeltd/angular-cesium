@@ -58,7 +58,7 @@ export class CirclesEditorLayerComponent implements OnInit {
 	
 	updateCircleManually() {
 		if (this.editing$) {
-			this.editing$.setCircleManually(Cesium.Cartesian3.fromDegrees(-80, 0), 500000);
+			this.editing$.setManually(Cesium.Cartesian3.fromDegrees(-80, 0), 500000);
 		}
 	}
 }

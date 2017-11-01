@@ -5,7 +5,7 @@ import { PointProps } from './polyline-edit-options';
 import { CircleProps } from './circle-edit-options';
 
 export class CircleEditorObservable extends EditorObservable<CircleEditUpdate> {
-  setCircleManually:  (center: Cartesian3, radius: number, centerPointProp?: PointProps,
-											 radiusPointProp?: PointProps, circleProp?: CircleProps) => void;
+  setManually:  (center: Cartesian3, radius: number, centerPointProp?: PointProps,
+                 radiusPointProp?: PointProps, circleProp?: CircleProps) => void;
   circleEditValue: () => CircleEditUpdate;
 }

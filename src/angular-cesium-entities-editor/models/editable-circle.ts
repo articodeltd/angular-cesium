@@ -69,7 +69,7 @@ export class EditableCircle extends AcEntity {
 		this._enableEdit = value;
 	}
 	
-	setCircleManually(center: Cartesian3, radiusPoint: Cartesian3, centerPointProp = this.pointProps,
+	setManually(center: Cartesian3, radiusPoint: Cartesian3, centerPointProp = this.pointProps,
 										radiusPointProp = this.pointProps, circleProp = this.circleProps) {
 		if (!this._center) {
 			this._center = new EditPoint(this.id, center, centerPointProp);

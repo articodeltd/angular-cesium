@@ -364,11 +364,11 @@ export class CirclesEditorService {
 			});
 		};
 		
-		observableToExtend.setCircleManually = (center: Cartesian3, radius: number, centerPointProp?: PointProps,
-																						radiusPointProp?: PointProps, circleProp?: CircleProps) => {
+		observableToExtend.setManually = (center: Cartesian3, radius: number, centerPointProp?: PointProps,
+                                      radiusPointProp?: PointProps, circleProp?: CircleProps) => {
 			const radiusPoint = GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
 			const circle = this.circlesManager.get(id);
-			circle.setCircleManually(center, radiusPoint, centerPointProp, radiusPointProp, circleProp);
+			circle.setManually(center, radiusPoint, centerPointProp, radiusPointProp, circleProp);
 		};
 		
 		observableToExtend.circleEditValue = () => observableToExtend.getValue();

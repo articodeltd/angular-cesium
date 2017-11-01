@@ -389,7 +389,7 @@ export class PolylinesEditorService {
         editAction : EditActions.DISABLE,
       });
     };
-    observableToExtend.setPolylineManually = (points: {
+    observableToExtend.setManually = (points: {
       position: Cartesian3,
       pointProp?: PointProps
     }[] | Cartesian3[], polylineProps?: PolylineProps) => {

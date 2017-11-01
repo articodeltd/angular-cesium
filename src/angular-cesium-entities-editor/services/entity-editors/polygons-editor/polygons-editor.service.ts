@@ -391,7 +391,7 @@ export class PolygonsEditorService {
         editAction : EditActions.DISABLE,
       });
     };
-    observableToExtend.setPolygonManually = (points: { position: Cartesian3, pointProps?: PointProps }[] | Cartesian3[], polygonProps?: PolygonProps) => {
+    observableToExtend.setManually = (points: { position: Cartesian3, pointProps?: PointProps }[] | Cartesian3[], polygonProps?: PolygonProps) => {
       const polygon = this.polygonsManager.get(id);
       polygon.setPointsManually(points, polygonProps);
     };

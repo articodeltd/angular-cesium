@@ -85,14 +85,14 @@ export class PolylineEditorLayerComponent implements OnInit {
       const polylinePoints = this.editing$.getCurrentPoints();
       const firstPoint = polylinePoints[0];
       firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
-      this.editing$.setPolylineManually(polylinePoints);
+      this.editing$.setManually(polylinePoints);
   
   
       // or add new point
       const polylinePositions = this.editing$.getCurrentPoints().map(p => p.getPosition());
       const newPosition = Cesium.Cartesian3.fromDegrees(30, 24);
       polylinePositions.push(newPosition);
-      this.editing$.setPolylineManually(polylinePositions);
+      this.editing$.setManually(polylinePositions);
     }
   }
 }

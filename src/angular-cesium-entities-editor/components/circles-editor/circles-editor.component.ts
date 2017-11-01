@@ -101,7 +101,7 @@ export class CirclesEditorComponent implements OnDestroy {
           this.editArcsLayer,
           update.circleOptions
         );
-        circle.setCircleManually(update.center, update.radiusPoint);
+        circle.setManually(update.center, update.radiusPoint);
         break;
       }
       case EditActions.DRAG_POINT_FINISH:
@@ -137,13 +137,6 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.get(update.id);
         if (circle) {
           circle.enableEdit = true;
-        }
-        break;
-      }
-      case EditActions.SET_MANUALLY: {
-        const circle = this.circlesManager.get(update.id);
-        if (circle) {
-          circle.setCircleManually(update.center, update.radiusPoint);
         }
         break;
       }

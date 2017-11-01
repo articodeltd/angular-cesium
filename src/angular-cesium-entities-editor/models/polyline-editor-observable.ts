@@ -4,7 +4,7 @@ import { PolylineEditUpdate } from './polyline-edit-update';
 import { PointProps, PolylineProps } from './polyline-edit-options';
 
 export class PolylineEditorObservable extends EditorObservable<PolylineEditUpdate> {
-  setPolylineManually: (points: {position: Cartesian3, pointProp?: PointProps}[] | Cartesian3[], polylineProps?: PolylineProps) => void;
+  setManually: (points: {position: Cartesian3, pointProp?: PointProps}[] | Cartesian3[], polylineProps?: PolylineProps) => void;
 	polylineEditValue: () => PolylineEditUpdate;
 	getCurrentPoints: () => EditPoint[];
 }
