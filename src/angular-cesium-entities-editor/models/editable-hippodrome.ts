@@ -118,7 +118,7 @@ export class EditableHippodrome extends AcEntity {
 		const secP = this.getRealPoints()[1];
 		
 		const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secP.getPosition(), 0.5, new Cesium.Cartesian3());
-		const bearingDeg = this.coordinateConverter.bearingToInCartesian(firstP.getPosition(), secP.getPosition());
+		const bearingDeg = this.coordinateConverter.bearingToCartesian(firstP.getPosition(), secP.getPosition());
 		
 		const upAzimuth = Cesium.Math.toRadians(bearingDeg) - Math.PI / 2;
 		this.createMiddleEditablePoint(midPointCartesian3, upAzimuth);
@@ -152,16 +152,16 @@ export class EditableHippodrome extends AcEntity {
 		const secP = this.getRealPoints()[1];
 		const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secP.getPosition(), 0.5, new Cesium.Cartesian3());
 		
-		const bearingDeg = this.coordinateConverter.bearingToInCartesian(midPointCartesian3, toPosition);
+		const bearingDeg = this.coordinateConverter.bearingToCartesian(midPointCartesian3, toPosition);
 		let normalizedBearingDeb = bearingDeg;
 		if (bearingDeg > 270) {
 			normalizedBearingDeb = bearingDeg - 270;
 		} else if (bearingDeg > 180) {
 			normalizedBearingDeb = bearingDeg - 180;
 		}
-		let bearingDegHippodromeDots = this.coordinateConverter.bearingToInCartesian(firstP.getPosition(), secP.getPosition());
+		let bearingDegHippodromeDots = this.coordinateConverter.bearingToCartesian(firstP.getPosition(), secP.getPosition());
 		if (bearingDegHippodromeDots > 180) {
-			bearingDegHippodromeDots = this.coordinateConverter.bearingToInCartesian(secP.getPosition(), firstP.getPosition());
+			bearingDegHippodromeDots = this.coordinateConverter.bearingToCartesian(secP.getPosition(), firstP.getPosition());
 		}
 		let fixedBearingDeg = bearingDegHippodromeDots > normalizedBearingDeb ?
 			bearingDegHippodromeDots - normalizedBearingDeb :

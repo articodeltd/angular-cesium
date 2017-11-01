@@ -123,7 +123,7 @@ export class CoordinateConverter {
 	 *
 	 * @return bearing in degrees
 	 */
-	bearingToInCartesian(firstCartesian3, secondCartesian3) {
+	bearingToCartesian(firstCartesian3, secondCartesian3) {
 		const firstCart = Cesium.Cartographic.fromCartesian(firstCartesian3);
 		const secondCart = Cesium.Cartographic.fromCartesian(secondCartesian3);
 		
