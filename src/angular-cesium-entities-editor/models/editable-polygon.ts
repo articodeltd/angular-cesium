@@ -95,7 +95,7 @@ export class EditablePolygon extends AcEntity {
     }
     this.positions = newPoints;
     this.polygonProps = polygonProps ? polygonProps : this.polygonProps;
-    this.updatePointsLayer(...this.positions);
+    this.updatePointsLayer(true, ...this.positions);
     this.addAllVirtualEditPoints();
     this.updatePolygonsLayer();
   }
