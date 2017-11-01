@@ -34,9 +34,9 @@ export class HippodromeEditorLayerComponent implements OnInit {
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 
       if (editUpdate.editAction === EditActions.ADD_POINT) {
-        // console.log(editUpdate.points); // point = position with id
-        // console.log(editUpdate.positions); // or just position
-        // console.log(editUpdate.updatedPosition); // added position
+        console.log(editUpdate.points); // point = position with id
+        console.log(editUpdate.positions); // or just position
+        console.log(editUpdate.updatedPosition); // added position
       }
     });
   }
@@ -57,9 +57,9 @@ export class HippodromeEditorLayerComponent implements OnInit {
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 
       if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
-        // console.log(editUpdate.points); // point = position with id
-        // console.log(editUpdate.positions); // or just position
-        // console.log(editUpdate.updatedPosition); // added position
+        console.log(editUpdate.points); // point = position with id
+        console.log(editUpdate.positions); // or just position
+        console.log(editUpdate.updatedPosition); // added position
       }
     });
   }
