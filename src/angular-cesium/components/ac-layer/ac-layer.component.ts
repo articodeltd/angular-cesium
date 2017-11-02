@@ -1,14 +1,6 @@
 // tslint:disable
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
-import {
-	AfterContentInit,
-	Component,
-	Input,
-	OnChanges,
-	OnDestroy,
-	OnInit,
-	SimpleChanges
-} from '@angular/core';
+import { AfterContentInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -49,8 +41,8 @@ import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawe
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.
- *  + acfor `{string}` - get the track observable and entityName (see the example).
- *  + setShow `{boolean}` - setShow/hide layer's entities.
+ *  + acFor `{string}` - get the tracked observable and entityName (see the example).
+ *  + show `{boolean}` - show/hide layer's entities.
  *  + context `{any}` - get the context layer that will use the componnet (most of the time equal to "this").
  *  + options `{LayerOptions}` - sets the layer options for each drawer.
  *  + zIndex `{number}` - controls the zIndex (order) of the layer, layers with greater zIndex will be in front of layers with lower zIndex
@@ -107,7 +99,7 @@ import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawe
 		BillboardPrimitiveDrawerService,
 		PointPrimitiveDrawerService,
 		HtmlDrawerService,
-		
+
 		DynamicEllipseDrawerService,
 		DynamicPolylineDrawerService,
 		StaticCircleDrawerService,
@@ -129,7 +121,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	options: LayerOptions;
 	@Input()
 	zIndex = 0;
-	
+
 	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 	private entityName: string;
 	private stopObservable = new Subject();
@@ -138,7 +130,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 	private entitiesStore = new Map<string, any>();
 	private layerDrawerDataSources = [];
-	
+
 	constructor(private  layerService: LayerService,
 							private _computationCache: ComputationCache,
 							private mapLayersService: MapLayersService,
@@ -190,7 +182,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			['billboardPrimitive', billboardPrimitiveDrawerService],
 			['pointPrimitive', pointPrimitiveDrawerService],
 			['html', htmlDrawerService],
-			
+
 			['dynamicEllipse', dynamicEllipseDrawerService],
 			['dynamicPolyline', dynamicPolylineDrawerService],
 			['staticCircle', staticCircleDrawerService],
@@ -251,8 +243,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		}
 
 		if (!this.acForRgx.test(this.acFor)) {
-			throw new Error('ac-layer: must initialize [acFor] with a valid syntax \' [acFor]=\"let item of observer$\" \' '
-				+ 'instead received: ' + this.acFor);
+			throw new Error(`ac-layer: Invalid [acFor] syntax. Expected: [acFor]="let item of observable" .Instead received: ${this.acFor}`);
 		}
 		const acForArr = this.acFor.split(' ');
 		this.observable = this.context[acForArr[3]];
@@ -261,7 +252,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
 
-		this.layerService.setContext(this.context);
+		this.layerService.context = this.context;
 		this.layerService.setEntityName(this.entityName);
 	}
 
@@ -270,6 +261,10 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	}
 
 	ngOnInit(): void {
+    this.layerService.context = this.context;
+		this.layerService.options = this.options;
+		this.layerService.show = this.show;
+		this.layerService.zIndex = this.zIndex;
 		this._drawerList.forEach((drawer, drawerName) => {
 			const initOptions = this.options ? this.options[drawerName] : undefined;
 			const drawerDataSources = drawer.init(initOptions);
@@ -285,11 +280,13 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.show && !changes.show.firstChange) {
 			const showValue = changes['show'].currentValue;
+      this.layerService.show = showValue;
 			this._drawerList.forEach((drawer) => drawer.setShow(showValue));
 		}
 
 		if (changes.zIndex && !changes.zIndex.firstChange) {
 			const zIndexValue = changes['zIndex'].currentValue;
+      this.layerService.zIndex = zIndexValue;
 			this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue);
 		}
 	}
@@ -299,14 +296,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this.stopObservable.next(true);
 		this.removeAll();
 	}
-	
+
+  getLayerService(): LayerService {
+    return this.layerService;
+  }
+
 	/**
 	 * Returns the store.
 	 */
 	getStore(): Map<string, any> {
 		return this.entitiesStore;
 	};
-	
+
 	/**
 	 * Remove all the entities from the layer.
 	 */
@@ -314,7 +315,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this.layerService.getDescriptions().forEach((description) => description.removeAll());
 		this.entitiesStore.clear();
 	}
-	
+
 	/**
 	 * remove entity from the layer
 	 * @param {number} entityId
@@ -323,7 +324,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this._updateStream.next({id : entityId, actionType : ActionType.DELETE});
 		this.entitiesStore.delete(entityId);
 	}
-	
+
 	/**
 	 * add/update entity to/from the layer
 	 * @param {AcNotification} notification
@@ -331,7 +332,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	updateNotification(notification: AcNotification): void {
 		this._updateStream.next(notification);
 	}
-	
+
 	/**
 	 * add/update entity to/from the layer
 	 * @param {AcEntity} entity
@@ -340,7 +341,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	update(entity: AcEntity, id: string): void {
 		this._updateStream.next({entity, id, actionType : ActionType.ADD_UPDATE});
 	}
-	
+
 	refreshAll(collection: AcNotification[]): void {
 		// TODO make entity interface: collection of type entity not notification
 		Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));

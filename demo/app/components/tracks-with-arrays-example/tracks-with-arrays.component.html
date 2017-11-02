@@ -1,0 +1,32 @@
+<ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [store]="true">
+    <ac-billboard-desc props="{
+      image: track.image,
+      position: track.position,
+      color: getTrackColor(track),
+      scale: 0.1,
+      name: track.callsign,
+      rotation: -track.heading
+    }">
+    </ac-billboard-desc>
+
+    <ac-array-desc acFor="let arrayItem of track.array" [idGetter]="trackArrayIdGetter">
+        <ac-point-desc props="{
+            position: arrayItem.pos,
+            pixelSize: 10,
+            color: getTrackColor(track),
+            outlineColor: Cesium.Color.RED,
+            outlineWidth: 1
+        }">
+        </ac-point-desc>
+        <ac-array-desc acFor="let innerArrayItem of arrayItem.innerArray" [idGetter]="trackArrayIdGetter">
+            <ac-point-desc props="{
+                position: innerArrayItem.pos,
+                pixelSize: 10,
+                color: getTrackColor(track),
+                outlineColor: Cesium.Color.BLUE,
+                outlineWidth: 1
+            }">
+            </ac-point-desc>
+        </ac-array-desc>
+    </ac-array-desc>
+</ac-layer>

@@ -1,5 +1,5 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { mock, when, instance } from 'ts-mockito';
+import { inject, TestBed } from '@angular/core/testing';
+import { instance, mock, when } from 'ts-mockito';
 import { providerFromMock } from '../../utils/testingUtils';
 import { CoordinateConverter } from './coordinate-converter.service';
 import { CesiumService } from '../cesium/cesium.service';
@@ -145,13 +145,13 @@ describe('CoordinateConverter', () => {
 
 		describe('Degrees -> UTM', ()=> {
 			it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-				let utmData = service.degreesToUTM(10, 20, 30);
+				let utmData = service.degreesToUTM(10, 20);
 
 				expect(utmData).toBeDefined();
 			}));
 
 			it('should consist of UTM interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-				let utmData = service.degreesToUTM(10, 20, 30);
+				let utmData = service.degreesToUTM(10, 20);
 
 				expect(utmData.zone).toBeDefined();
 				expect(utmData.hemisphere).toBeDefined();

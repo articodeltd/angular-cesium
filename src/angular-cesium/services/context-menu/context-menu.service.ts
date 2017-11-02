@@ -64,7 +64,7 @@ export class ContextMenuService {
     this.mapEventsManager = mapEventsManager;
   }
 
-  open(content: BasicContextMenu, position: Cartesian3, options: ContextMenuOptions = {}) {
+  open(content, position: Cartesian3, options: ContextMenuOptions = {}) {
     this.close();
     this._content = content;
     this._position = position;

@@ -56,6 +56,7 @@ import { AcHtmlDescComponent } from './components/ac-html-desc/ac-html-desc.comp
 import { AcHtmlDirective } from './directives/ac-html/ac-html.directive';
 import { AcHtmlContainerDirective } from './directives/ac-html-container/ac-html-container.directive';
 import { AcContextMenuWrapperComponent } from './components/ac-context-menu-wrapper/ac-context-menu-wrapper.component';
+import { AcArrayDescComponent } from './components/ac-array-desc/ac-array-desc.component';
 import { AcPointPrimitiveDescComponent } from './components/ac-point-primitive-desc/ac-point-primitive-desc.component';
 
 @NgModule({
@@ -106,6 +107,7 @@ import { AcPointPrimitiveDescComponent } from './components/ac-point-primitive-d
     AcHtmlDescComponent,
     AcHtmlDirective,
     AcHtmlContainerDirective,
+    AcArrayDescComponent,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
@@ -153,6 +155,7 @@ import { AcPointPrimitiveDescComponent } from './components/ac-point-primitive-d
     AcContextMenuWrapperComponent,
 		AcPointPrimitiveDescComponent,
     AcHtmlDescComponent,
+    AcArrayDescComponent,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,

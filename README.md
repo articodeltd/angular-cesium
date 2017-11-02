@@ -223,9 +223,10 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + wall - [`ac-wall-dec`](https://tgftech.github.io/angular-cesium/components/AcWallDescComponent.html)
 + rectangle -[`ac-rectangle-dec`](https://tgftech.github.io/angular-cesium/components/AcRectangleDescComponent.html)
 * html - [`ac-html-desc`](https://tgftech.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://tgftech.github.io/angular-cesium/components/AcHtmlComponent.html) 
+* array - [`ac-array-desc`](https://tgftech.github.io/angular-cesium/components/AcArrayDescComponent.html) 
 
 ### `ac-entity-desc` vs `ac-entity`
-+ `ac-entity-desc` component is used to describe how each entity in a stream of entities, managed inside `ac-layer`, should be drawn.
++ `ac-entity-desc` component is used to describe how each entity / array of entities in a stream of entities, managed inside `ac-layer`, should be drawn.
 + `ac-entity-primitive-desc` component is the same as `ac-entity-desc` with the difference of using Primitives to render the graphics. It is more efficient than `ac-entity-desc` when drawing an updating entity.
 + `ac-entity` component is used to draw an entity directly on the map, and so, can be used directly under `ac-map`.
 

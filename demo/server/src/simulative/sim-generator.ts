@@ -1,4 +1,3 @@
-import Timer = NodeJS.Timer;
 import { SimClient } from './sim-client';
 
 const INTERVAL_DIVIDER = 10;
@@ -61,10 +60,10 @@ export class SimGenerator {
   }
 
 
-  startSendingSimData(): Timer {
+  startSendingSimData() {
     const simData = this.client.simData;
     let counter = 0;
-    const id: Timer = setInterval(() => {
+    const id = setInterval(() => {
       let dataChunk = simData;
       if (counter % INTERVAL_DIVIDER === 0) {
         counter = 0;

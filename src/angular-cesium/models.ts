@@ -12,3 +12,4 @@ export { Cartesian2 } from './models/cartesian2';
 export { ContextMenuOptions } from './models/context-menu-options';
 export { BasicContextMenu } from './models/basic-context-menu';
 export { Vec3 } from './models/vec3';
+export { IDescription } from './models/description';

@@ -10,16 +10,15 @@ import { PolygonsEditorService } from '../../../../../src/angular-cesium-entitie
   styleUrls : ['./polygons-editor-layer.component.css']
 })
 export class PolygonsEditorLayerComponent implements OnInit {
-  
   editing$: PolygonEditorObservable;
   enableEditing = true;
-  
+
   constructor(private polygonsEditor: PolygonsEditorService) {
   }
-  
+
   ngOnInit(): void {
   }
-  
+
   startEdit() {
     if (this.editing$) {
       this.stopEdit();
@@ -33,15 +32,15 @@ export class PolygonsEditorLayerComponent implements OnInit {
       }
     });
   }
-  
+
   stopEdit() {
     if (this.editing$) {
       this.editing$.dispose();
       this.editing$ = undefined;
     }
   }
-  
-  
+
+
   editFromExisting() {
     if (this.editing$) {
       this.stopEdit();
@@ -59,7 +58,7 @@ export class PolygonsEditorLayerComponent implements OnInit {
       }
     });
   }
-  
+
   toggleEnableEditing() {
     // Only effects if in edit mode (all polygon points were created)
     if (!this.editing$) {
@@ -72,7 +71,7 @@ export class PolygonsEditorLayerComponent implements OnInit {
       this.editing$.disable();
     }
   }
-  
+
   updatePointManually() {
     if (this.editing$) {
       // Only effects if in edit mode (all polygon points were created)
@@ -81,8 +80,8 @@ export class PolygonsEditorLayerComponent implements OnInit {
       const firstPoint = polygonPoints[0];
       firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
       this.editing$.setManually(polygonPoints);
-      
-      
+
+
       // or add new point
       const polygonPositions = this.editing$.getCurrentPoints().map(p => p.getPosition());
       const newPosition = Cesium.Cartesian3.fromDegrees(30, 24);
