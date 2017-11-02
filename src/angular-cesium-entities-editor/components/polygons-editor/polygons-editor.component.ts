@@ -62,7 +62,8 @@ export class PolygonsEditorComponent implements OnDestroy {
 					this.editPointsLayer,
 					this.editPolylinesLayer,
 					this.coordinateConverter,
-					update.polygonOptions);
+					update.polygonOptions
+				);
 				break;
 			}
 			case EditActions.MOUSE_MOVE: {
@@ -121,7 +122,7 @@ export class PolygonsEditorComponent implements OnDestroy {
 			case EditActions.DRAG_POINT_FINISH: {
 				const polygon = this.polygonsManager.get(update.id);
 				if (polygon && polygon.enableEdit && update.updatedPoint.isVirtualEditPoint()) {
-					polygon.addVirtualEditPoint(update.updatedPoint);
+					polygon.changeVirtualPointToRealPoint(update.updatedPoint);
 				}
 				break;
 			}
@@ -158,13 +159,6 @@ export class PolygonsEditorComponent implements OnDestroy {
 				const polygon = this.polygonsManager.get(update.id);
 				if (polygon) {
 					polygon.enableEdit = true;
-				}
-				break;
-			}
-			case EditActions.SET_MANUALLY: {
-				const polygon = this.polygonsManager.get(update.id);
-				if (polygon) {
-					polygon.setPointsManually(update.points);
 				}
 				break;
 			}

@@ -24,7 +24,7 @@ export class EditableHippodrome extends AcEntity {
 							editOptions: HippodromeEditOptions,
 							positions?: Cartesian3[]) {
 		super();
-		this.defaultPointProps = editOptions.defaultPointOptions;
+		this.defaultPointProps = editOptions.pointProps;
 		this.hippodromeProps = editOptions.hippodromeProps;
 		if (positions && positions.length === 2) {
 			this.createFromExisting(positions);
@@ -67,10 +67,11 @@ export class EditableHippodrome extends AcEntity {
 		this.done = true;
 	}
 	
-	setPointsManually(points: EditPoint[]) {
+	setPointsManually(points: EditPoint[], widthMeters?: number) {
 		if (!this.done) {
 			throw new Error('Update manually only in edit mode, after polyline is created')
 		}
+		this.hippodromeProps.width = widthMeters ? widthMeters : this.hippodromeProps.width;
 		this.hippodromePositions.forEach(p => this.pointsLayer.remove(p.getId()));
 		this.hippodromePositions = points;
 		this.createHeightEditPoints();
@@ -118,9 +119,7 @@ export class EditableHippodrome extends AcEntity {
 		const secP = this.getRealPoints()[1];
 		
 		const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secP.getPosition(), 0.5, new Cesium.Cartesian3());
-		const currentCart = Cesium.Cartographic.fromCartesian(firstP.getPosition());
-		const nextCart = Cesium.Cartographic.fromCartesian(secP.getPosition());
-		const bearingDeg = this.coordinateConverter.bearingTo(currentCart, nextCart);
+		const bearingDeg = this.coordinateConverter.bearingToCartesian(firstP.getPosition(), secP.getPosition());
 		
 		const upAzimuth = Cesium.Math.toRadians(bearingDeg) - Math.PI / 2;
 		this.createMiddleEditablePoint(midPointCartesian3, upAzimuth);
@@ -144,7 +143,42 @@ export class EditableHippodrome extends AcEntity {
 			
 			this.updateHippdromePointsLayer(...this.hippodromePositions);
 			this.updateHippdromeLayer();
+		} else {
+			this.changeWidthByNewPoint(toPosition);
 		}
+	}
+	
+	private changeWidthByNewPoint(toPosition: Cartesian3) {
+		const firstP = this.getRealPoints()[0];
+		const secP = this.getRealPoints()[1];
+		const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secP.getPosition(), 0.5, new Cesium.Cartesian3());
+		
+		const bearingDeg = this.coordinateConverter.bearingToCartesian(midPointCartesian3, toPosition);
+		let normalizedBearingDeb = bearingDeg;
+		if (bearingDeg > 270) {
+			normalizedBearingDeb = bearingDeg - 270;
+		} else if (bearingDeg > 180) {
+			normalizedBearingDeb = bearingDeg - 180;
+		}
+		let bearingDegHippodromeDots = this.coordinateConverter.bearingToCartesian(firstP.getPosition(), secP.getPosition());
+		if (bearingDegHippodromeDots > 180) {
+			bearingDegHippodromeDots = this.coordinateConverter.bearingToCartesian(secP.getPosition(), firstP.getPosition());
+		}
+		let fixedBearingDeg = bearingDegHippodromeDots > normalizedBearingDeb ?
+			bearingDegHippodromeDots - normalizedBearingDeb :
+			normalizedBearingDeb - bearingDegHippodromeDots;
+		
+		if (bearingDeg > 270) {
+			fixedBearingDeg = bearingDeg - bearingDegHippodromeDots;
+		}
+		
+		const distanceMeters = Math.abs(GeoUtilsService.distance(midPointCartesian3, toPosition));
+		const radiusWidth = Math.sin(Cesium.Math.toRadians(fixedBearingDeg)) * distanceMeters;
+		
+		this.hippodromeProps.width = Math.abs(radiusWidth) * 2;
+		this.createHeightEditPoints();
+		this.updateHippdromePointsLayer(...this.hippodromePositions);
+		this.updateHippdromeLayer();
 	}
 	
 	moveShape(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {

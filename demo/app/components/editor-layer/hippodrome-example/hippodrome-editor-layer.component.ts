@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
 import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
 import { HippodromeEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/hippodrome-editor/hippodrome-editor.service';
-import { HippodrmoeEditorOboservable } from '../../../../../src/angular-cesium-entities-editor/models/hippodrmoe-editor-oboservable';
+import { HippodromeEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/hippodrome-editor-oboservable';
 
 @Component({
 	selector : 'hippodrome-editor-layer',
@@ -10,7 +10,7 @@ import { HippodrmoeEditorOboservable } from '../../../../../src/angular-cesium-e
 	styleUrls : ['./hippodrome-editor-layer.component.css']
 })
 export class HippodromeEditorLayerComponent implements OnInit {
-	editing$: HippodrmoeEditorOboservable;
+	editing$: HippodromeEditorObservable;
 	enableEditing = true;
 	
 	constructor(private hippodromeEditor: HippodromeEditorService) {
@@ -24,7 +24,13 @@ export class HippodromeEditorLayerComponent implements OnInit {
 		if (this.editing$) {
 			this.stopEdit();
 		}
-		this.editing$ = this.hippodromeEditor.create();
+		this.editing$ = this.hippodromeEditor.create({
+			hippodromeProps : {
+				outline : true,
+				outlineWidth : 2,
+			},
+			allowDrag : false
+		});
 		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 			
 			if (editUpdate.editAction === EditActions.ADD_POINT) {
@@ -60,6 +66,9 @@ export class HippodromeEditorLayerComponent implements OnInit {
 	
 	toggleEnableEditing() {
 		// Only effects if in edit mode (all polygon points were created)
+		if (!this.editing$) {
+			return;
+		}
 		this.enableEditing = !this.enableEditing;
 		if (this.enableEditing) {
 			this.editing$.enable();
@@ -70,12 +79,13 @@ export class HippodromeEditorLayerComponent implements OnInit {
 	
 	updatePointManually() {
 		if (this.editing$) {
-			// Only effects if in edit mode (all polygon points were created)
-			const polygonPoints = this.editing$.getCurrentPoints();
+			// Only effects if in edit mode (after initial shape was created)
+			const hippodromePoints = this.editing$.getCurrentPoints();
 			
-			const firstPoint = polygonPoints[0];
-			firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
-			this.editing$.setPointsManually(polygonPoints);
+			const firstPointPos = hippodromePoints[0].getPosition();
+			const newSecondPos = Cesium.Cartesian3.fromDegrees(20, 20);
+			const newWidth = 250000.0;
+			this.editing$.setManually(firstPointPos, newSecondPos, newWidth);
 		}
 	}
 }

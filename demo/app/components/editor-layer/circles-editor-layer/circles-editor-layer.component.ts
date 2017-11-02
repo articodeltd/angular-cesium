@@ -10,7 +10,7 @@ import { CirclesEditorService } from '../../../../../src/angular-cesium-entities
 })
 export class CirclesEditorLayerComponent implements OnInit {
 	
-	editing$: CircleEditorObservable<CircleEditUpdate>;
+	editing$: CircleEditorObservable;
 	enableEditing = true;
 	
 	constructor(private circlesEditor: CirclesEditorService) {
@@ -23,7 +23,7 @@ export class CirclesEditorLayerComponent implements OnInit {
 		if (this.editing$) {
 			this.stopEdit();
 		}
-		this.editing$ = this.circlesEditor.create();
+		this.editing$ = this.circlesEditor.create({allowDrag: true});
 		this.editing$.subscribe((editUpdate: CircleEditUpdate) => {
       console.log(editUpdate);
 		});
@@ -35,8 +35,7 @@ export class CirclesEditorLayerComponent implements OnInit {
       this.editing$ = undefined;
     }
 	}
-	
-	
+
 	editFromExisting() {
 		if (this.editing$) {
 			this.stopEdit();
@@ -46,6 +45,9 @@ export class CirclesEditorLayerComponent implements OnInit {
 
 	toggleEnableEditing() {
 		// Only effects if in edit mode (all polygon points were created)
+    if (!this.editing$) {
+      return;
+    }
 		this.enableEditing = !this.enableEditing;
 		if (this.enableEditing) {
 			this.editing$.enable();
@@ -56,8 +58,7 @@ export class CirclesEditorLayerComponent implements OnInit {
 	
 	updateCircleManually() {
 		if (this.editing$) {
-			this.editing$.setCircleManually(Cesium.Cartesian3.fromDegrees(-80, 0), 500000);
-
+			this.editing$.setManually(Cesium.Cartesian3.fromDegrees(-80, 0), 500000);
 		}
 	}
 }

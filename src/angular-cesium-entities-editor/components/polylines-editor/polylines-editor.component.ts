@@ -137,10 +137,18 @@ export class PolylinesEditorComponent implements OnDestroy {
 				}
 				break;
 			}
-			case EditActions.SET_MANUALLY: {
+			case EditActions.DRAG_SHAPE: {
 				const polyline = this.polylinesManager.get(update.id);
-				if (polyline) {
-					polyline.setPointsManually(update.points);
+				if (polyline && polyline.enableEdit) {
+					polyline.moveShape(update.draggedPosition, update.updatedPosition)
+				}
+				break;
+			}
+			
+			case EditActions.DRAG_SHAPE_FINISH: {
+				const polyline = this.polylinesManager.get(update.id);
+				if (polyline && polyline.enableEdit) {
+					polyline.endMoveShape();
 				}
 				break;
 			}

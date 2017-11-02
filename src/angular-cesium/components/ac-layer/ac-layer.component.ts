@@ -75,7 +75,7 @@ import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawe
  */
 @Component({
 	selector : 'ac-layer',
-	template : '',
+	template : '<ng-content></ng-content>',
 	providers : [
 		LayerService,
 		ComputationCache,

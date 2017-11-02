@@ -1,13 +1,39 @@
 ## NEXT
+### Features
+* Polyline edtior supports drag shape events.
+* Add ability to change width to Hippodrome editor
+
+## Fixes
+* Hippodrome editor - setManually supports positions and hippodrome width.
+* Fixed Polygons Editing  bug that happened when dragging a point.  
+* Hippodrome editor - setManually supports positions and hippodrome width
+* Fixed `EntitesDrawerService` show prop bug.
+
+## Breaking changes
+* Observer Editors methods: `setPolygonManually()`, `setPolylineManually()`,`setCircleManually()`,`setHippodromeManually()` changed to: `setManually()`.  
+Each shape accepts here own specific arguments to configure the edited object, for example: `polygonEditor$.setManaually(positions, pointOptions, polygonOptions)`.    
+
+## 0.0.31
+### Features
+* All editors now except allowDrag option to allow or disable the ability to drag the edited shape.
+* Added options to circle editor  - `CircleEditOptions`.
+ 
+
+### Fixes
+* Fix hippodrome editor outline bug.
+* Fixed bug that caused polygons hiding to throw an error if they had outline. 
+
+## 0.0.30
 ### Fixes
 * Service init order  [#131](https://github.com/TGFTech/angular-cesium/issues/131)
 
 ### Features
 * Added `selectionManagerService` and example in selection-layer.component.ts
 * Added context menu service that allows dynamic injection of custom components.
-* Added polyline shape editor  
+* Added Polyline editor `PolylinesEditorService` - allow for creating polylines and editing them from the map of from the code.  
 * Added Circle editor `CirclesEditorService` - allow for creating circles and editing them from the map of from the code.
-* Added CesiumHeatMapMaterialCreator for creating heatmap material for cesium entities.
+* Added Hippodrome editor `HippodromeEditorService` - allow for creating hippodromes and editing them from the map of from the code.
+* Added `CesiumHeatMapMaterialCreator` for creating heatmap material for cesium entities.
 * edited polygons are now draggable.
 * added `ac-point-primitive-desc`
 * added `ac-html-desc` - ac-layer supports ac-html

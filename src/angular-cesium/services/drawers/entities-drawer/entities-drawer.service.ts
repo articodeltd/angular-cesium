@@ -62,11 +62,10 @@ export class EntitiesDrawerService extends BasicDrawerService {
     const graphicsClass = this.graphicsType as any;
     const entityObject = {
       position: cesiumProps.position !== undefined ? cesiumProps.position : undefined,
-      show: cesiumProps.show !== undefined ? cesiumProps.show : true,
       description: cesiumProps.description !== undefined ? cesiumProps.description : undefined,
       orientation: cesiumProps.orientation !== undefined ? cesiumProps.orientation : undefined,
       viewFrom: cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : undefined,
-      [this.graphicsTypeName]: new graphicsClass(cesiumProps)
+      [this.graphicsTypeName]: cesiumProps,
     };
 
     if (cesiumProps.name !== undefined) {
@@ -80,7 +79,6 @@ export class EntitiesDrawerService extends BasicDrawerService {
     this.suspendEntityCollection(entity);
 
     entity.position = cesiumProps.position !== undefined ? cesiumProps.position : undefined;
-    entity.show = cesiumProps.show !== undefined ? cesiumProps.show : entity.show;
     entity.name = cesiumProps.name !== undefined ? cesiumProps.name : entity.name;
     entity.description = cesiumProps.description !== undefined ? cesiumProps.description : entity.description;
     entity.orientation = cesiumProps.orientation !== undefined ? cesiumProps.orientation : entity.orientation;

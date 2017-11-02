@@ -14,3 +14,5 @@ export * from './models/circle-edit-update';
 export * from './models/basic-edit-update';
 export * from './models/polygon-edit-options';
 export * from './models/polyline-edit-options';
+export * from './models/editor-edit-options';
+export * from './models/circle-edit-options';

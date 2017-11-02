@@ -104,6 +104,8 @@ export class CoordinateConverter {
 	 * initial bearing between two points
 	 * @param {{latitude; longitude}} first - in radians
 	 * @param {{latitude; longitude}} second - in radians
+	 *
+	 * * @return bearing in degrees
 	 */
 	bearingTo(first: { latitude, longitude }, second: { latitude, longitude }) {
 		const toDeg = (rad) => Cesium.Math.toDegrees(rad);
@@ -112,5 +114,19 @@ export class CoordinateConverter {
 		const bearing = firstPoint.bearingTo(secondPoint);
 		
 		return bearing;
+	}
+	
+	/**
+	 * initial bearing between two points
+	 * @param {{latitude; longitude}} firstCartesian3 - in Cartesian3
+	 * @param {{latitude; longitude}} secondCartesian3 - in Cartesian3
+	 *
+	 * @return bearing in degrees
+	 */
+	bearingToCartesian(firstCartesian3, secondCartesian3) {
+		const firstCart = Cesium.Cartographic.fromCartesian(firstCartesian3);
+		const secondCart = Cesium.Cartographic.fromCartesian(secondCartesian3);
+		
+		return this.bearingTo(firstCart, secondCart);
 	}
 }
