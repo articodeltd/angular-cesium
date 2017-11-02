@@ -6,8 +6,8 @@
 ## Fixes
 * Hippodrome editor - setManually supports positions and hippodrome width.
 * Fixed Polygons Editing  bug that happened when dragging a point.  
-* Hippodrome editor - setManually supports positions and hippodrome width.
 * Fixed Polyline Editing bug that happened when dragging a point.
+* Fixed `EntitesDrawerService` show prop bug.
 
 ## Breaking changes
 * Observer Editors methods: `setPolygonManually()`, `setPolylineManually()`,`setCircleManually()`,`setHippodromeManually()` changed to: `setManually()`.  
