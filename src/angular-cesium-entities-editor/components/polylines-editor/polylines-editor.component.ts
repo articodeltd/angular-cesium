@@ -112,7 +112,7 @@ export class PolylinesEditorComponent implements OnDestroy {
 			case EditActions.DRAG_POINT_FINISH: {
 				const polyline = this.polylinesManager.get(update.id);
 				if (polyline && polyline.enableEdit && update.updatedPoint.isVirtualEditPoint()) {
-					polyline.addVirtualEditPoint(update.updatedPoint);
+					polyline.changeVirtualPointToRealPoint(update.updatedPoint);
 				}
 				break;
 			}
