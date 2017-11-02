@@ -100,6 +100,9 @@
                                     <a href="./components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                 </li>
                                 <li class="link">
@@ -185,9 +188,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="./components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="./components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -510,6 +510,9 @@
                                     <a href="./interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./interfaces/Cartesian2.html" >Cartesian2</a>
+                                </li>
+                                <li class="link">
                                     <a href="./interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +556,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/IDescription.html" >IDescription</a>
                                 </li>
                                 <li class="link">
                                     <a href="./interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -750,6 +756,9 @@
                                            <a href="./components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                        </li>
                                        <li class="link">
@@ -835,9 +844,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="./components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="./components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -1160,6 +1166,9 @@
                                            <a href="./interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./interfaces/Cartesian2.html" >Cartesian2</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
@@ -1203,6 +1212,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/IDescription.html" >IDescription</a>
                                        </li>
                                        <li class="link">
                                            <a href="./interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -1317,6 +1329,24 @@
                <div class="content getting-started">
                    <div class="content-data">
 
+<h2 id="0-0-32">0.0.32</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>Polyline edtior supports drag shape events.</li>
+<li>Add ability to change width to Hippodrome editor</li>
+<li>Added <code>ac-array-desc</code> for representing dynamic arrays in entity - ALPHA</li>
+</ul>
+<h2 id="fixes">Fixes</h2>
+<ul>
+<li>Hippodrome editor - setManually supports positions and hippodrome width.</li>
+<li>Fixed Polygons Editing  bug that happened when dragging a point.  </li>
+<li>Fixed Polyline Editing bug that happened when dragging a point.</li>
+<li>Fixed <code>EntitesDrawerService</code> show prop bug.</li>
+</ul>
+<h2 id="breaking-changes">Breaking changes</h2>
+<ul>
+<li>Observer Editors methods: <code>setPolygonManually()</code>, <code>setPolylineManually()</code>,<code>setCircleManually()</code>,<code>setHippodromeManually()</code> changed to: <code>setManually()</code>.<br>Each shape accepts here own specific arguments to configure the edited object, for example: <code>polygonEditor$.setManaually(positions, pointOptions, polygonOptions)</code>.    </li>
+</ul>
 <h2 id="0-0-31">0.0.31</h2>
 <h3 id="features">Features</h3>
 <ul>
@@ -1343,7 +1373,7 @@
 <li>Added <code>CesiumHeatMapMaterialCreator</code> for creating heatmap material for cesium entities.</li>
 <li>edited polygons are now draggable.</li>
 <li>added <code>ac-point-primitive-desc</code></li>
-<li>added <code>ac-html-desc</code> - ac-layer supports ac-html   </li>
+<li>added <code>ac-html-desc</code> - ac-layer supports ac-html  </li>
 </ul>
 <h2 id="0-0-29">0.0.29</h2>
 <h3 id="features">Features</h3>

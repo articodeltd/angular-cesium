@@ -100,6 +100,9 @@
                                     <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                 </li>
                                 <li class="link">
@@ -185,9 +188,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -510,6 +510,9 @@
                                     <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +556,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IDescription.html" >IDescription</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -750,6 +756,9 @@
                                            <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                        </li>
                                        <li class="link">
@@ -835,9 +844,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -1160,6 +1166,9 @@
                                            <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
@@ -1203,6 +1212,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IDescription.html" >IDescription</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -1347,6 +1359,28 @@
     <code>src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This is an html implementation.
+The ac-html element must be a child of ac-layer element.
+<br>
+[props] accepts position(Cartesian3) and show(boolean).</p>
+<p><strong>Usage:</strong></p>
+<pre class="line-numbers"><code class="language-none">&lt;ac-layer acFor=&quot;let html of htmls$&quot; [context]=&quot;this&quot;&gt;
+&lt;ac-html-desc props=&quot;{position: html.position, show: html.show}&quot;&gt;
+        &lt;ng-template let-html&gt;
+            &lt;div&gt;
+         &lt;h1&gt;This is ac-html {{html.name}}&lt;/h1&gt;
+         &lt;button (click)=&quot;changeText(html, &#39;Test&#39;)&quot;&gt;change text&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/ng-template&gt;
+&lt;/ac-html-desc&gt;
+&lt;ac-html [props]=&quot;{position: position, show: true}&quot;&gt;;
+   &lt;p&gt;html element&lt;/p&gt;
+&lt;/ac-html&gt;</code></pre>
+    </p>
 
     <p class="comment">
         <h3>Extends</h3>
@@ -1469,7 +1503,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:46</a></div>
                                 </td>
                             </tr>
     
@@ -1501,7 +1535,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:65</a></div>
                                 </td>
                             </tr>
     
@@ -1533,7 +1567,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:53</a></div>
                                 </td>
                             </tr>
     
@@ -1565,7 +1599,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:78</a></div>
                                 </td>
                             </tr>
     
@@ -1597,7 +1631,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:63</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:85</a></div>
                                 </td>
                             </tr>
     
@@ -1646,7 +1680,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:45</a></div>
                                 </td>
                             </tr>
     
@@ -1680,7 +1714,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/angular-cesium/components/ac-html-desc/ac-html-desc.component.ts:46</a></div>
                                 </td>
                             </tr>
     
@@ -1701,6 +1735,28 @@ import { HtmlDrawerService } from &#x27;../../services/drawers/html-drawer/html-
 import { AcHtmlDirective } from &#x27;../../directives/ac-html/ac-html.directive&#x27;;
 import { AcHtmlManager } from &#x27;../../services/ac-html-manager/ac-html-manager.service&#x27;;
 
+/**
+ *  This is an html implementation.
+ *  The ac-html element must be a child of ac-layer element.
+ *  &lt;br&gt;
+ *  [props] accepts position(Cartesian3) and show(boolean).
+ *
+ *  __Usage:__
+ *  &#x60;&#x60;&#x60;
+ *  &lt;ac-layer acFor&#x3D;&quot;let html of htmls$&quot; [context]&#x3D;&quot;this&quot;&gt;
+ 			&lt;ac-html-desc props&#x3D;&quot;{position: html.position, show: html.show}&quot;&gt;
+ 				&lt;ng-template let-html&gt;
+ 					&lt;div&gt;
+					 &lt;h1&gt;This is ac-html {{html.name}}&lt;/h1&gt;
+					 &lt;button (click)&#x3D;&quot;changeText(html, &#x27;Test&#x27;)&quot;&gt;change text&lt;/button&gt;
+ 					&lt;/div&gt;
+ 				&lt;/ng-template&gt;
+ 			&lt;/ac-html-desc&gt;
+ *  &lt;ac-html [props]&#x3D;&quot;{position: position, show: true}&quot;&gt;;
+ *    &lt;p&gt;html element&lt;/p&gt;
+ *  &lt;/ac-html&gt;
+ *  &#x60;&#x60;&#x60;
+ */
 @Component({
 	selector : &#x27;ac-html-desc&#x27;,
 	providers : [AcHtmlManager],
@@ -1790,7 +1846,7 @@ export class AcHtmlDescComponent extends BasicDesc implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div *acHtml="let acHtmlEntityId = id; let acHtmlContext = context">    <div [acHtmlContainer]="acHtmlEntityId">        <ng-template [ngTemplateOutlet]="acHtmlTemplate"                     [ngOutletContext]="acHtmlContext"></ng-template>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-primitive-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
     var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'}];
     var ACTUAL_COMPONENT = {'name': 'AcHtmlDescComponent'};
 </script>

@@ -100,7 +100,7 @@
                                     <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                    <a href="../components/AcArrayDescComponent.html"  data-type="entity-link" class="active" >AcArrayDescComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
@@ -296,7 +296,7 @@
                                     <a href="../classes/EditArc.html" >EditArc</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/EditPoint.html"  data-type="entity-link" class="active" >EditPoint</a>
+                                    <a href="../classes/EditPoint.html" >EditPoint</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EditPolyline.html" >EditPolyline</a>
@@ -756,7 +756,7 @@
                                            <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                           <a href="../components/AcArrayDescComponent.html"  data-type="entity-link" class="active" >AcArrayDescComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
@@ -952,7 +952,7 @@
                                            <a href="../classes/EditArc.html" >EditArc</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/EditPoint.html"  data-type="entity-link" class="active" >EditPoint</a>
+                                           <a href="../classes/EditPoint.html" >EditPoint</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EditPolyline.html" >EditPolyline</a>
@@ -1326,19 +1326,15 @@
                    
                    </nav>
                </div>
-               <div class="content class">
+               <div class="content component">
                    <div class="content-data">
 
 
 
 
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>EditPoint</li>
+  <li>Components</li>
+  <li>AcArrayDescComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -1346,629 +1342,1166 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-
     <li>
         <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
-        <p class="comment">
-            <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/angular-cesium-entities-editor/models/edit-point.ts</code>
-        </p>
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This is component represents an array under <code>ac-layer</code>.
+The element must be a child of ac-layer element.</p>
+<ul>
+<li>acFor <code>{string}</code> - get the tracked array and entityName (see the example).</li>
+<li>idGetter <code>{Function}</code> - a function that gets the id for a given element in the array -should be defined for maximum performance.</li>
+<li>show <code>{boolean}</code> - show/hide array&#39;s entities.</li>
+</ul>
+<p><strong>Usage :</strong></p>
+<pre class="line-numbers"><code class="language-none">&lt;ac-layer acFor=&quot;let track of tracks$&quot; [show]=&quot;show&quot; [context]=&quot;this&quot; [store]=&quot;true&quot;&gt;
+&lt;ac-array-desc acFor=&quot;let arrayItem of track.array&quot; [idGetter]=&quot;trackArrayIdGetter&quot;&gt;
+   &lt;ac-array-desc acFor=&quot;let innerArrayItem of arrayItem.innerArray&quot; [idGetter]=&quot;trackArrayIdGetter&quot;&gt;
+     &lt;ac-point-desc props=&quot;{
+       position: innerArrayItem.pos,
+       pixelSize: 10,
+       color: getTrackColor(track),
+       outlineColor: Cesium.Color.BLUE,
+       outlineWidth: 1
+     }&quot;&gt;
+     &lt;/ac-point-desc&gt;
+   &lt;/ac-array-desc&gt;
+&lt;/ac-array-desc&gt;
+&lt;/ac-layer&gt;</code></pre>
+    </p>
 
 
-            <p class="comment">
-                <h3>Extends</h3>
-            </p>
-            <p class="comment">
-                    <code><a href="../classes/AcEntity.html" target="_self" >AcEntity</a></code>
-            </p>
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/AfterContentInit-interface.html" target="_blank" >AfterContentInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-interface.html" target="_blank" >OnDestroy</a></code>
+                <code><a href="../interfaces/IDescription.html" target="_self" >IDescription</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
 
 
 
-            <section>
-                <h3 id="index">Index</h3>
-                <table class="table table-sm table-bordered index-table">
-                    <tbody>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ac-array-desc</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ac-layer #layer [acFor]&#x3D;&quot;getAcForString()&quot;
+          [context]&#x3D;&quot;layerService.context&quot;
+          [options]&#x3D;&quot;layerService.options&quot;
+          [show]&#x3D;&quot;layerService.show &amp;&amp; show&quot;
+          [zIndex]&#x3D;&quot;layerService.zIndex&quot;&gt;
+    &lt;ng-content #content&gt;&lt;/ng-content&gt;
+&lt;/ac-layer&gt;
+</code></pre></td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <span class="modifier">Private</span> <a href="#acForRgx">acForRgx</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Private</span> <a href="#arrayDescs">arrayDescs</a>
+                            </li>
+                            <li>
+                                 <a href="#arrayObservable$">arrayObservable$</a>
+                            </li>
+                            <li>
+                                 <a href="#arrayPath">arrayPath</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Private</span> <a href="#basicDescs">basicDescs</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Private</span> <a href="#entitiesMap">entitiesMap</a>
+                            </li>
+                            <li>
+                                 <a href="#entityName">entityName</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Private</span> <a href="#id">id</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Private</span> <a href="#layer">layer</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#layerService">layerService</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Private</span> <a href="#layerServiceSubscription">layerServiceSubscription</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                 <a href="#draw">draw</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Private</span> <a href="#generateCombinedId">generateCombinedId</a>
+                            </li>
+                            <li>
+                                 <a href="#getAcForString">getAcForString</a>
+                            </li>
+                            <li>
+                                 <a href="#ngAfterContentInit">ngAfterContentInit</a>
+                            </li>
+                            <li>
+                                 <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                 <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                 <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                 <a href="#remove">remove</a>
+                            </li>
+                            <li>
+                                 <a href="#removeAll">removeAll</a>
+                            </li>
+                            <li>
+                                 <a href="#setLayerService">setLayerService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#acFor">acFor</a>
+                            </li>
+                            <li>
+                                <a href="#idGetter">idGetter</a>
+                            </li>
+                            <li>
+                                <a href="#show">show</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(layerService: LayerService, cd: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank">ChangeDetectorRef</a>)</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:76</a></div>
+                                </td>
+                            </tr>
+    
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="acFor"></a>
+                            <code>acFor</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:62</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="idGetter"></a>
+                            <code>idGetter</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:64</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="show"></a>
+                            <code>show</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>true</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:66</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
+
+
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="draw"></a>
+                            <b> draw</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>draw(context: , id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, contextEntity: )</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:125</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="generateCombinedId"></a>
+                            <b><span class="modifier">Private</span> generateCombinedId</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock"></span>
+                            <code>generateCombinedId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, arrayItem: )</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:169</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="getAcForString"></a>
+                            <b> getAcForString</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>getAcForString()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:165</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="ngAfterContentInit"></a>
+                            <b> ngAfterContentInit</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngAfterContentInit()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:100</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="ngOnChanges"></a>
+                            <b> ngOnChanges</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnChanges(changes: <a href="https://angular.io/docs/ts/latest/api/core/index/SimpleChanges-interface.html" target="_blank">SimpleChanges</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:81</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="ngOnDestroy"></a>
+                            <b> ngOnDestroy</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnDestroy()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:115</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="ngOnInit"></a>
+                            <b> ngOnInit</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnInit()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:93</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="remove"></a>
+                            <b> remove</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:152</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="removeAll"></a>
+                            <b> removeAll</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>removeAll()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:160</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="setLayerService"></a>
+                            <b> setLayerService</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>setLayerService(layerService: LayerService)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:121</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="acForRgx"></a>
+                            <b><span class="modifier">Private</span> acForRgx</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>acForRgx:     <code></code>
+    </code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                <h6><b>Properties</b></h6>
+                                <i>Default value : </i><code>/^let\s+.+\s+of\s+.+$/</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:73</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="arrayDescs"></a>
+                            <b><span class="modifier">Private</span> arrayDescs</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>arrayDescs:     <code></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ContentChildren</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:69</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="arrayObservable$"></a>
+                            <b> arrayObservable$</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>arrayObservable$:     <code></code>
+    </code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:76</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="arrayPath"></a>
+                            <b> arrayPath</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>arrayPath:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:75</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="basicDescs"></a>
+                            <b><span class="modifier">Private</span> basicDescs</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>basicDescs:     <code></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ContentChildren</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:68</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="entitiesMap"></a>
+                            <b><span class="modifier">Private</span> entitiesMap</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>entitiesMap:     <code></code>
+    </code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:70</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="entityName"></a>
+                            <b> entityName</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>entityName:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:74</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="id"></a>
+                            <b><span class="modifier">Private</span> id</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>id:     <code></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>0</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:72</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="layer"></a>
+                            <b><span class="modifier">Private</span> layer</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>layer:     <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+    
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#_virtualEditPoint">_virtualEditPoint</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Static</span> <a href="#counter">counter</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#editedEntityId">editedEntityId</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#id">id</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#pointProps">pointProps</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#position">position</a>
-                                    </li>
-                                    <li>
-                                         <a href="#props">props</a>
-                                    </li>
-                                </ul>
+                                <i>Decorators : </i><code>ViewChild</code>
                             </td>
                         </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:67</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="layerService"></a>
+                            <b><span class="modifier">Public</span> layerService</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-"></span><code>layerService:     <code>LayerService</code>
+    </code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                <h6><b>Methods</b></h6>
+                                <i>Type : </i>    <code>LayerService</code>
+    
                             </td>
                         </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:78</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="layerServiceSubscription"></a>
+                            <b><span class="modifier">Private</span> layerServiceSubscription</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>layerServiceSubscription:     <code>Subscription</code>
+    </code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#generateId">generateId</a>
-                                    </li>
-                                    <li>
-                                         <a href="#getEditedEntityId">getEditedEntityId</a>
-                                    </li>
-                                    <li>
-                                         <a href="#getId">getId</a>
-                                    </li>
-                                    <li>
-                                         <a href="#getPosition">getPosition</a>
-                                    </li>
-                                    <li>
-                                         <a href="#isVirtualEditPoint">isVirtualEditPoint</a>
-                                    </li>
-                                    <li>
-                                         <a href="#setPosition">setPosition</a>
-                                    </li>
-                                    <li>
-                                         <a href="#setVirtualEditPoint">setVirtualEditPoint</a>
-                                    </li>
-                                </ul>
+                                <i>Type : </i>    <code>Subscription</code>
+    
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section>
-                <h3 id="constructor">Constructor</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, pointProps: <a href="../interfaces/PointProps.html">PointProps</a>, virtualPoint: )</code>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:71</a></div>
                                 </td>
                             </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:11</a></div>
-                                        </td>
-                                    </tr>
-            
-                        </tbody>
-                    </table>
-            </section>
-
-            <section>
-                
-                    <h3 id="methods">
-                        Methods
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="generateId"></a>
-                                    <b><span class="modifier">Private</span> generateId</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>generateId()</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:56</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="getEditedEntityId"></a>
-                                    <b> getEditedEntityId</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getEditedEntityId()</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:38</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="getId"></a>
-                                    <b> getId</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getId()</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:52</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="getPosition"></a>
-                                    <b> getPosition</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getPosition()</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:42</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="isVirtualEditPoint"></a>
-                                    <b> isVirtualEditPoint</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>isVirtualEditPoint()</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:30</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="setPosition"></a>
-                                    <b> setPosition</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>setPosition(position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:46</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="setVirtualEditPoint"></a>
-                                    <b> setVirtualEditPoint</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>setVirtualEditPoint(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:34</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
-
-
-            <section>
-                
-                    <h3 id="inputs">
-                        Properties
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="_virtualEditPoint"></a>
-                                    <b><span class="modifier">Private</span> _virtualEditPoint</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_virtualEditPoint:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:10</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="counter"></a>
-                                    <b><span class="modifier">Static</span> counter</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-export"></span><code>counter:     <code></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Default value : </i><code>0</code>
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:6</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="editedEntityId"></a>
-                                    <b><span class="modifier">Private</span> editedEntityId</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>editedEntityId:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:8</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="id"></a>
-                                    <b><span class="modifier">Private</span> id</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>id:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:7</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="pointProps"></a>
-                                    <b><span class="modifier">Private</span> pointProps</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>pointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:11</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="position"></a>
-                                    <b><span class="modifier">Private</span> position</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>position:     <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:9</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="props"></a>
-                                    <b> props</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>props:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/angular-cesium-entities-editor/models/edit-point.ts:22</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-            </section>
-    </div>
+    
+    
+                </tbody>
+            </table>
+    </section>
+</div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { AcEntity } from &#x27;../../angular-cesium/models/ac-entity&#x27;;
-import { Cartesian3 } from &#x27;../../angular-cesium/models/cartesian3&#x27;;
-import { PointProps } from &#x27;./polyline-edit-options&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import {
+  AfterContentInit,
+  ChangeDetectorRef,
+  Component,
+  ContentChildren,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+  ViewChild
+} from &#x27;@angular/core&#x27;;
+import { AcNotification } from &#x27;../../models/ac-notification&#x27;;
+import { Subject } from &#x27;rxjs/Subject&#x27;;
+import { IDescription } from &#x27;../../models/description&#x27;;
+import * as _get from &#x27;lodash.get&#x27;;
+import { AcLayerComponent } from &#x27;../ac-layer/ac-layer.component&#x27;;
+import { LayerService } from &#x27;../../services/layer-service/layer-service.service&#x27;;
+import { BasicDesc } from &#x27;../../services/basic-desc/basic-desc.service&#x27;;
+import { Subscription } from &#x27;rxjs/Subscription&#x27;;
 
-export class EditPoint extends AcEntity {
-	static counter &#x3D; 0;
-	private id: string;
-	private editedEntityId: string;
-	private position: Cartesian3;
-	private _virtualEditPoint: boolean;
-	private pointProps: PointProps;
-	
-	constructor(entityId: string, position: Cartesian3, pointProps?: PointProps, virtualPoint &#x3D; false) {
-		super();
-		this.editedEntityId &#x3D; entityId;
-		this.position &#x3D; position;
-		this.id &#x3D; this.generateId();
-		this.pointProps &#x3D; pointProps;
-		this._virtualEditPoint &#x3D; virtualPoint
-	}
+/**
+ *  This is component represents an array under &#x60;ac-layer&#x60;.
+ *  The element must be a child of ac-layer element.
+ *  + acFor &#x60;{string}&#x60; - get the tracked array and entityName (see the example).
+ *  + idGetter &#x60;{Function}&#x60; - a function that gets the id for a given element in the array -should be defined for maximum performance.
+ *  + show &#x60;{boolean}&#x60; - show/hide array&#x27;s entities.
+ *
+ *  __Usage :__
+ *  &#x60;&#x60;&#x60;
+ *&lt;ac-layer acFor&#x3D;&quot;let track of tracks$&quot; [show]&#x3D;&quot;show&quot; [context]&#x3D;&quot;this&quot; [store]&#x3D;&quot;true&quot;&gt;
+ *  &lt;ac-array-desc acFor&#x3D;&quot;let arrayItem of track.array&quot; [idGetter]&#x3D;&quot;trackArrayIdGetter&quot;&gt;
+ *    &lt;ac-array-desc acFor&#x3D;&quot;let innerArrayItem of arrayItem.innerArray&quot; [idGetter]&#x3D;&quot;trackArrayIdGetter&quot;&gt;
+ *      &lt;ac-point-desc props&#x3D;&quot;{
+ *        position: innerArrayItem.pos,
+ *        pixelSize: 10,
+ *        color: getTrackColor(track),
+ *        outlineColor: Cesium.Color.BLUE,
+ *        outlineWidth: 1
+ *      }&quot;&gt;
+ *      &lt;/ac-point-desc&gt;
+ *    &lt;/ac-array-desc&gt;
+ *  &lt;/ac-array-desc&gt;
+ *&lt;/ac-layer&gt;
+ *  &#x60;&#x60;&#x60;
+ */
 
-  get props(): PointProps {
-    return this.pointProps;
+@Component({
+  selector: &#x27;ac-array-desc&#x27;,
+  template: &#x60;
+      &lt;ac-layer #layer [acFor]&#x3D;&quot;getAcForString()&quot;
+                [context]&#x3D;&quot;layerService.context&quot;
+                [options]&#x3D;&quot;layerService.options&quot;
+                [show]&#x3D;&quot;layerService.show &amp;&amp; show&quot;
+                [zIndex]&#x3D;&quot;layerService.zIndex&quot;&gt;
+          &lt;ng-content #content&gt;&lt;/ng-content&gt;
+      &lt;/ac-layer&gt;
+  &#x60;,
+})
+export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit, OnDestroy, IDescription {
+
+  @Input() acFor: string;
+
+  @Input() idGetter: Function;
+
+  @Input() show &#x3D; true;
+  @ViewChild(&#x27;layer&#x27;) private layer: AcLayerComponent;
+  @ContentChildren(BasicDesc, { descendants: false }) private basicDescs;
+  @ContentChildren(AcArrayDescComponent, { descendants: false }) private arrayDescs;
+  private entitiesMap &#x3D; new Map&lt;string, string[]&gt;();
+  private layerServiceSubscription: Subscription;
+  private id &#x3D; 0;
+  private readonly acForRgx &#x3D; /^let\s+.+\s+of\s+.+$/;
+  entityName: string;
+  arrayPath: string;
+  arrayObservable$ &#x3D; new Subject&lt;AcNotification&gt;();
+
+  constructor(public layerService: LayerService, private cd: ChangeDetectorRef) {
   }
 
-  set props(value: PointProps) {
-    this.pointProps &#x3D; value;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes[&#x27;acFor&#x27;].firstChange) {
+      const acForString &#x3D; changes[&#x27;acFor&#x27;].currentValue;
+      if (!this.acForRgx.test(acForString)) {
+        throw new Error(&#x60;ac-layer: Invalid [acFor] syntax. Expected: [acFor]&#x3D;&quot;let item of observable&quot; .Instead received: ${acForString}&#x60;);
+      }
+      const acForArr &#x3D; changes[&#x27;acFor&#x27;].currentValue.split(&#x27; &#x27;);
+      this.arrayPath &#x3D; acForArr[3];
+      this.entityName &#x3D; acForArr[1];
+    }
   }
 
-	isVirtualEditPoint(): boolean {
-		return this._virtualEditPoint;
-	}
-	
-	setVirtualEditPoint(value: boolean) {
-		this._virtualEditPoint &#x3D; value;
-	}
-	
-	getEditedEntityId(): string {
-		return this.editedEntityId;
-	}
-	
-	getPosition(): Cartesian3 {
-		return this.position;
-	}
-	
-	setPosition(position: Cartesian3) {
-		this.position.x &#x3D; position.x;
-		this.position.y &#x3D; position.y;
-		this.position.z &#x3D; position.z;
-	}
-	
-	getId(): string {
-		return this.id;
-	}
-	
-	private generateId(): string {
-		return &#x27;edit-point-&#x27; + EditPoint.counter++;
-	}
+  ngOnInit(): void {
+    this.layer.getLayerService().cache &#x3D; false;
+    this.layerServiceSubscription &#x3D; this.layerService.layerUpdates().subscribe(() &#x3D;&gt; {
+      this.cd.detectChanges();
+    });
+  }
+
+  ngAfterContentInit(): void {
+    this.layerService.context[&#x27;arrayObservable$&#x27;] &#x3D; this.arrayObservable$;
+    this.layerService.registerDescription(this);
+    this.basicDescs._results.forEach((component: BasicDesc) &#x3D;&gt; {
+      component.setLayerService(this.layer.getLayerService());
+    });
+    this.arrayDescs._results.splice(0, 1);
+    this.arrayDescs._results.forEach((component: AcArrayDescComponent) &#x3D;&gt; {
+      this.layerService.unregisterDescription(component);
+      this.layer.getLayerService().registerDescription(component);
+      component.layerService &#x3D; this.layer.getLayerService();
+      component.setLayerService(this.layer.getLayerService())
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.layerServiceSubscription) {
+      this.layerServiceSubscription.unsubscribe();
+    }
+  }
+
+  setLayerService(layerService: LayerService) {
+    this.layerService &#x3D; layerService;
+  }
+
+  draw(context, id: string, contextEntity) {
+    const get &#x3D; _get;
+    const entitiesArray: any[] &#x3D; get(context, this.arrayPath);
+    if (!entitiesArray) {
+      return;
+    }
+    const previousEntitiesIdArray &#x3D; this.entitiesMap.get(id);
+    const entitiesIdArray &#x3D; [];
+    this.entitiesMap.set(id, entitiesIdArray);
+
+    entitiesArray.forEach(item &#x3D;&gt; {
+      this.layerService.context[this.entityName] &#x3D; item;
+      const arrayItemId &#x3D; this.generateCombinedId(id, item);
+      entitiesIdArray.push(arrayItemId);
+      this.layer.update(contextEntity, arrayItemId);
+    });
+
+    if (previousEntitiesIdArray) {
+      const entitiesToRemove &#x3D; this.idGetter ?
+        previousEntitiesIdArray.filter((entityId) &#x3D;&gt; entitiesIdArray.indexOf(entityId) &lt; 0) :
+        previousEntitiesIdArray;
+      if (entitiesToRemove) {
+        entitiesToRemove.forEach((entityId) &#x3D;&gt; this.layer.remove(entityId));
+      }
+    }
+  }
+
+  remove(id: string) {
+    const entitiesIdArray &#x3D; this.entitiesMap.get(id);
+    if (entitiesIdArray) {
+      entitiesIdArray.forEach((entityId) &#x3D;&gt; this.layer.remove(entityId));
+    }
+    this.entitiesMap.delete(id);
+  }
+
+  removeAll() {
+    this.layer.removeAll();
+    this.entitiesMap.clear();
+  }
+
+  getAcForString() {
+    return &#x60;let ${this.entityName + &#x27;___temp&#x27;} of arrayObservable$&#x60;;
+  }
+
+  private generateCombinedId(entityId: string, arrayItem): string {
+    let arrayItemId;
+    if (this.idGetter) {
+      arrayItemId &#x3D; this.idGetter(arrayItem);
+    }
+    else {
+      arrayItemId &#x3D; (this.id++) % Number.MAX_SAFE_INTEGER;
+    }
+    return entityId + arrayItemId;
+  }
 }
 </code></pre>
     </div>
+
+
+    <div class="tab-pane fade" id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ac-layer #layer [acFor]="getAcForString()"          [context]="layerService.context"          [options]="layerService.options"          [show]="layerService.show && show"          [zIndex]="layerService.zIndex">    <ng-content #content></ng-content></ac-layer></div>'
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
+    var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'}];
+    var ACTUAL_COMPONENT = {'name': 'AcArrayDescComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
 
 
 

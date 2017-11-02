@@ -100,6 +100,9 @@
                                     <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                 </li>
                                 <li class="link">
@@ -185,9 +188,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -510,6 +510,9 @@
                                     <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +556,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IDescription.html" >IDescription</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -750,6 +756,9 @@
                                            <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                        </li>
                                        <li class="link">
@@ -835,9 +844,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -1160,6 +1166,9 @@
                                            <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
@@ -1203,6 +1212,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IDescription.html" >IDescription</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -1354,8 +1366,8 @@
         <p>This is a ac-layer implementation.
 The ac-layer element must be a child of ac-map element.</p>
 <ul>
-<li>acfor <code>{string}</code> - get the track observable and entityName (see the example).</li>
-<li>setShow <code>{boolean}</code> - setShow/hide layer&#39;s entities.</li>
+<li>acFor <code>{string}</code> - get the tracked observable and entityName (see the example).</li>
+<li>show <code>{boolean}</code> - show/hide layer&#39;s entities.</li>
 <li>context <code>{any}</code> - get the context layer that will use the componnet (most of the time equal to &quot;this&quot;).</li>
 <li>options <code>{LayerOptions}</code> - sets the layer options for each drawer.</li>
 <li>zIndex <code>{number}</code> - controls the zIndex (order) of the layer, layers with greater zIndex will be in front of layers with lower zIndex
@@ -1513,6 +1525,9 @@ The ac-layer element must be a child of ac-map element.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                 <a href="#getLayerService">getLayerService</a>
+                            </li>
+                            <li>
                                  <a href="#getStore">getStore</a>
                             </li>
                             <li>
@@ -1598,7 +1613,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:132</a></div>
                                 </td>
                             </tr>
     
@@ -1624,7 +1639,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:115</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1645,7 +1660,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:125</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:117</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1666,7 +1681,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:129</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:121</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1686,7 +1701,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:121</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:113</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1706,7 +1721,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:119</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1726,7 +1741,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:131</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:123</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1739,6 +1754,38 @@ The ac-layer element must be a child of ac-map element.</p>
             <h3 id="methods">
                 Methods
             </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="getLayerService"></a>
+                            <b> getLayerService</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>getLayerService()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="300" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:300</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>LayerService</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -1756,7 +1803,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="306" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:306</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="307" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:307</a></div>
                                 </td>
                             </tr>
     
@@ -1790,7 +1837,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:203</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:195</a></div>
                                 </td>
                             </tr>
     
@@ -1823,7 +1870,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:248</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:240</a></div>
                                 </td>
                             </tr>
     
@@ -1855,7 +1902,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="268" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:268</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="259" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:259</a></div>
                                 </td>
                             </tr>
     
@@ -1887,7 +1934,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="285" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:285</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="280" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:280</a></div>
                                 </td>
                             </tr>
     
@@ -1919,7 +1966,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="297" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:297</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="294" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:294</a></div>
                                 </td>
                             </tr>
     
@@ -1951,7 +1998,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="272" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:272</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="263" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:263</a></div>
                                 </td>
                             </tr>
     
@@ -1983,7 +2030,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="344" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:344</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="345" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:345</a></div>
                                 </td>
                             </tr>
     
@@ -2015,7 +2062,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="322" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:322</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="323" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:323</a></div>
                                 </td>
                             </tr>
     
@@ -2075,7 +2122,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="313" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:313</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="314" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:314</a></div>
                                 </td>
                             </tr>
     
@@ -2109,7 +2156,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="340" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:340</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="341" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:341</a></div>
                                 </td>
                             </tr>
     
@@ -2176,7 +2223,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="331" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:331</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="332" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:332</a></div>
                                 </td>
                             </tr>
     
@@ -2237,7 +2284,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="230" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:230</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:222</a></div>
                                 </td>
                             </tr>
     
@@ -2281,7 +2328,7 @@ The ac-layer element must be a child of ac-map element.</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:137</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:129</a></div>
                                 </td>
                             </tr>
     
@@ -2310,7 +2357,7 @@ The ac-layer element must be a child of ac-map element.</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:138</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:130</a></div>
                                 </td>
                             </tr>
     
@@ -2338,7 +2385,7 @@ The ac-layer element must be a child of ac-map element.</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:133</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:125</a></div>
                                 </td>
                             </tr>
     
@@ -2361,7 +2408,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:139</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:131</a></div>
                                 </td>
                             </tr>
     
@@ -2390,7 +2437,7 @@ The ac-layer element must be a child of ac-map element.</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:126</a></div>
                                 </td>
                             </tr>
     
@@ -2413,7 +2460,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:132</a></div>
                                 </td>
                             </tr>
     
@@ -2442,7 +2489,7 @@ The ac-layer element must be a child of ac-map element.</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:136</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:128</a></div>
                                 </td>
                             </tr>
     
@@ -2465,7 +2512,7 @@ The ac-layer element must be a child of ac-map element.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:127</a></div>
                                 </td>
                             </tr>
     
@@ -2478,15 +2525,7 @@ The ac-layer element must be a child of ac-map element.</p>
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { BillboardDrawerService } from &#x27;../../services/drawers/billboard-drawer/billboard-drawer.service&#x27;;
-import {
-	AfterContentInit,
-	Component,
-	Input,
-	OnChanges,
-	OnDestroy,
-	OnInit,
-	SimpleChanges
-} from &#x27;@angular/core&#x27;;
+import { AfterContentInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs/Observable&#x27;;
 import { Subject } from &#x27;rxjs/Subject&#x27;;
 import { LayerService } from &#x27;../../services/layer-service/layer-service.service&#x27;;
@@ -2527,8 +2566,8 @@ import { HtmlDrawerService } from &#x27;../../services/drawers/html-drawer/html-
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.
- *  + acfor &#x60;{string}&#x60; - get the track observable and entityName (see the example).
- *  + setShow &#x60;{boolean}&#x60; - setShow/hide layer&#x27;s entities.
+ *  + acFor &#x60;{string}&#x60; - get the tracked observable and entityName (see the example).
+ *  + show &#x60;{boolean}&#x60; - show/hide layer&#x27;s entities.
  *  + context &#x60;{any}&#x60; - get the context layer that will use the componnet (most of the time equal to &quot;this&quot;).
  *  + options &#x60;{LayerOptions}&#x60; - sets the layer options for each drawer.
  *  + zIndex &#x60;{number}&#x60; - controls the zIndex (order) of the layer, layers with greater zIndex will be in front of layers with lower zIndex
@@ -2585,7 +2624,7 @@ import { HtmlDrawerService } from &#x27;../../services/drawers/html-drawer/html-
 		BillboardPrimitiveDrawerService,
 		PointPrimitiveDrawerService,
 		HtmlDrawerService,
-		
+
 		DynamicEllipseDrawerService,
 		DynamicPolylineDrawerService,
 		StaticCircleDrawerService,
@@ -2607,7 +2646,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	options: LayerOptions;
 	@Input()
 	zIndex &#x3D; 0;
-	
+
 	private readonly acForRgx &#x3D; /^let\s+.+\s+of\s+.+$/;
 	private entityName: string;
 	private stopObservable &#x3D; new Subject();
@@ -2616,7 +2655,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	private _updateStream: Subject&lt;AcNotification&gt; &#x3D; new Subject&lt;AcNotification&gt;();
 	private entitiesStore &#x3D; new Map&lt;string, any&gt;();
 	private layerDrawerDataSources &#x3D; [];
-	
+
 	constructor(private  layerService: LayerService,
 							private _computationCache: ComputationCache,
 							private mapLayersService: MapLayersService,
@@ -2668,7 +2707,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			[&#x27;billboardPrimitive&#x27;, billboardPrimitiveDrawerService],
 			[&#x27;pointPrimitive&#x27;, pointPrimitiveDrawerService],
 			[&#x27;html&#x27;, htmlDrawerService],
-			
+
 			[&#x27;dynamicEllipse&#x27;, dynamicEllipseDrawerService],
 			[&#x27;dynamicPolyline&#x27;, dynamicPolylineDrawerService],
 			[&#x27;staticCircle&#x27;, staticCircleDrawerService],
@@ -2729,8 +2768,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		}
 
 		if (!this.acForRgx.test(this.acFor)) {
-			throw new Error(&#x27;ac-layer: must initialize [acFor] with a valid syntax \&#x27; [acFor]&#x3D;\&quot;let item of observer$\&quot; \&#x27; &#x27;
-				+ &#x27;instead received: &#x27; + this.acFor);
+			throw new Error(&#x60;ac-layer: Invalid [acFor] syntax. Expected: [acFor]&#x3D;&quot;let item of observable&quot; .Instead received: ${this.acFor}&#x60;);
 		}
 		const acForArr &#x3D; this.acFor.split(&#x27; &#x27;);
 		this.observable &#x3D; this.context[acForArr[3]];
@@ -2739,7 +2777,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			throw  new Error(&#x27;ac-layer: must initailize [acFor] with rx observable, instead received: &#x27; + this.observable);
 		}
 
-		this.layerService.setContext(this.context);
+		this.layerService.context &#x3D; this.context;
 		this.layerService.setEntityName(this.entityName);
 	}
 
@@ -2748,6 +2786,10 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	}
 
 	ngOnInit(): void {
+    this.layerService.context &#x3D; this.context;
+		this.layerService.options &#x3D; this.options;
+		this.layerService.show &#x3D; this.show;
+		this.layerService.zIndex &#x3D; this.zIndex;
 		this._drawerList.forEach((drawer, drawerName) &#x3D;&gt; {
 			const initOptions &#x3D; this.options ? this.options[drawerName] : undefined;
 			const drawerDataSources &#x3D; drawer.init(initOptions);
@@ -2763,11 +2805,13 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.show &amp;&amp; !changes.show.firstChange) {
 			const showValue &#x3D; changes[&#x27;show&#x27;].currentValue;
+      this.layerService.show &#x3D; showValue;
 			this._drawerList.forEach((drawer) &#x3D;&gt; drawer.setShow(showValue));
 		}
 
 		if (changes.zIndex &amp;&amp; !changes.zIndex.firstChange) {
 			const zIndexValue &#x3D; changes[&#x27;zIndex&#x27;].currentValue;
+      this.layerService.zIndex &#x3D; zIndexValue;
 			this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue);
 		}
 	}
@@ -2777,14 +2821,18 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this.stopObservable.next(true);
 		this.removeAll();
 	}
-	
+
+  getLayerService(): LayerService {
+    return this.layerService;
+  }
+
 	/**
 	 * Returns the store.
 	 */
 	getStore(): Map&lt;string, any&gt; {
 		return this.entitiesStore;
 	};
-	
+
 	/**
 	 * Remove all the entities from the layer.
 	 */
@@ -2792,7 +2840,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this.layerService.getDescriptions().forEach((description) &#x3D;&gt; description.removeAll());
 		this.entitiesStore.clear();
 	}
-	
+
 	/**
 	 * remove entity from the layer
 	 * @param {number} entityId
@@ -2801,7 +2849,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this._updateStream.next({id : entityId, actionType : ActionType.DELETE});
 		this.entitiesStore.delete(entityId);
 	}
-	
+
 	/**
 	 * add/update entity to/from the layer
 	 * @param {AcNotification} notification
@@ -2809,7 +2857,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	updateNotification(notification: AcNotification): void {
 		this._updateStream.next(notification);
 	}
-	
+
 	/**
 	 * add/update entity to/from the layer
 	 * @param {AcEntity} entity
@@ -2818,7 +2866,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	update(entity: AcEntity, id: string): void {
 		this._updateStream.next({entity, id, actionType : ActionType.ADD_UPDATE});
 	}
-	
+
 	refreshAll(collection: AcNotification[]): void {
 		// TODO make entity interface: collection of type entity not notification
 		Observable.from(collection).subscribe((entity) &#x3D;&gt; this._updateStream.next(entity));
@@ -2852,7 +2900,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ng-content></ng-content></div>'
-    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-primitive-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
     var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'}];
     var ACTUAL_COMPONENT = {'name': 'AcLayerComponent'};
 </script>

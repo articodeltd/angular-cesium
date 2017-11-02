@@ -100,6 +100,9 @@
                                     <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                 </li>
                                 <li class="link">
@@ -185,9 +188,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -510,6 +510,9 @@
                                     <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +556,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IDescription.html" >IDescription</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -750,6 +756,9 @@
                                            <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                        </li>
                                        <li class="link">
@@ -835,9 +844,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -1160,6 +1166,9 @@
                                            <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
@@ -1203,6 +1212,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IDescription.html" >IDescription</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -1381,6 +1393,9 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                          <a href="#bearingTo">bearingTo</a>
                                     </li>
                                     <li>
+                                         <a href="#bearingToCartesian">bearingToCartesian</a>
+                                    </li>
+                                    <li>
                                          <a href="#cartesian3ToCartographic">cartesian3ToCartographic</a>
                                     </li>
                                     <li>
@@ -1391,6 +1406,9 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#geodesyToCesiumObject">geodesyToCesiumObject</a>
+                                    </li>
+                                    <li>
+                                         <a href="#middlePointByScreen">middlePointByScreen</a>
                                     </li>
                                     <li>
                                          <a href="#midPointToCartesian3">midPointToCartesian3</a>
@@ -1425,7 +1443,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:36</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:37</a></div>
                                         </td>
                                     </tr>
             
@@ -1455,7 +1473,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:108</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:120</a></div>
                                         </td>
                                     </tr>
             
@@ -1489,7 +1507,80 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                                               <td>
                                                               </td>
                                                               <td><ul>
-            <li>in radians</li>
+            <li><p>in radians</p>
+            </li>
+            <li></li>
+            </ul>
+            </td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="bearingToCartesian"></a>
+                                    <b> bearingToCartesian</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>bearingToCartesian(firstCartesian3: , secondCartesian3: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:136</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>initial bearing between two points</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>firstCartesian3</td>
+                                                              <td>
+                                                              </td>
+                                                              <td><ul>
+            <li>in Cartesian3</li>
+            </ul>
+            </td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>secondCartesian3</td>
+                                                              <td>
+                                                              </td>
+                                                              <td><ul>
+            <li>in Cartesian3</li>
             </ul>
             </td>
                                                             </tr>
@@ -1526,7 +1617,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:61</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:62</a></div>
                                         </td>
                                     </tr>
             
@@ -1558,7 +1649,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:65</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:66</a></div>
                                         </td>
                                     </tr>
             
@@ -1590,7 +1681,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:73</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:74</a></div>
                                         </td>
                                     </tr>
             
@@ -1623,7 +1714,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:81</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:82</a></div>
                                         </td>
                                     </tr>
             
@@ -1632,6 +1723,38 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>{ longitude: any; latitude: any; height: any; }</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="middlePointByScreen"></a>
+                                    <b> middlePointByScreen</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>middlePointByScreen(position0: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, position1: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:104</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
             
                                         </div>
                                 </td>
@@ -1655,7 +1778,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:94</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:95</a></div>
                                         </td>
                                     </tr>
             
@@ -1726,7 +1849,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:69</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:70</a></div>
                                         </td>
                                     </tr>
             
@@ -1758,7 +1881,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:40</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:41</a></div>
                                         </td>
                                     </tr>
             
@@ -1790,7 +1913,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:57</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:58</a></div>
                                         </td>
                                     </tr>
             
@@ -1822,7 +1945,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:77</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/angular-cesium/services/coordinate-converter/coordinate-converter.service.ts:78</a></div>
                                         </td>
                                     </tr>
             
@@ -1847,6 +1970,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
 import { CesiumService } from &#x27;../cesium/cesium.service&#x27;;
 import * as geodesy from &#x27;geodesy&#x27;;
 import { hemisphere, LatLonEllipsoidal, Utm } from &#x27;geodesy&#x27;;
+import { Cartesian3 } from &#x27;../../models/cartesian3&#x27;;
 
 const LatLonVectors &#x3D; geodesy[&#x27;LatLonVectors&#x27;]; // doesnt exists on typings
 
@@ -1944,11 +2068,22 @@ export class CoordinateConverter {
 		
 		return Cesium.Cartesian3.fromDegrees(middlePoint.lon, middlePoint.lat);
 	}
+
+  middlePointByScreen(position0: Cartesian3, position1: Cartesian3): Cartesian3 {
+		const scene &#x3D; this.cesiumService.getScene();
+    const screenPosition1 &#x3D; Cesium.SceneTransforms.wgs84ToWindowCoordinates(scene, position0);
+    const screenPosition2 &#x3D; Cesium.SceneTransforms.wgs84ToWindowCoordinates(scene, position1);
+    const middleScreenPoint &#x3D;
+      new Cesium.Cartesian2((screenPosition2.x + screenPosition1.x) / 2.0, (screenPosition2.y + screenPosition1.y) / 2.0);
+    return scene.pickPosition(middleScreenPoint);
+  }
 	
 	/**
 	 * initial bearing between two points
 	 * @param {{latitude; longitude}} first - in radians
 	 * @param {{latitude; longitude}} second - in radians
+	 *
+	 * * @return bearing in degrees
 	 */
 	bearingTo(first: { latitude, longitude }, second: { latitude, longitude }) {
 		const toDeg &#x3D; (rad) &#x3D;&gt; Cesium.Math.toDegrees(rad);
@@ -1957,6 +2092,20 @@ export class CoordinateConverter {
 		const bearing &#x3D; firstPoint.bearingTo(secondPoint);
 		
 		return bearing;
+	}
+	
+	/**
+	 * initial bearing between two points
+	 * @param {{latitude; longitude}} firstCartesian3 - in Cartesian3
+	 * @param {{latitude; longitude}} secondCartesian3 - in Cartesian3
+	 *
+	 * @return bearing in degrees
+	 */
+	bearingToCartesian(firstCartesian3, secondCartesian3) {
+		const firstCart &#x3D; Cesium.Cartographic.fromCartesian(firstCartesian3);
+		const secondCart &#x3D; Cesium.Cartographic.fromCartesian(secondCartesian3);
+		
+		return this.bearingTo(firstCart, secondCart);
 	}
 }
 </code></pre>

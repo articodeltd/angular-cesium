@@ -100,6 +100,9 @@
                                     <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                 </li>
                                 <li class="link">
@@ -185,9 +188,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -510,6 +510,9 @@
                                     <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +556,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IDescription.html" >IDescription</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -750,6 +756,9 @@
                                            <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                        </li>
                                        <li class="link">
@@ -835,9 +844,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -1160,6 +1166,9 @@
                                            <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
@@ -1203,6 +1212,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IDescription.html" >IDescription</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -1530,7 +1542,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>open(content: <a href="../interfaces/BasicContextMenu.html">BasicContextMenu</a>, position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, options: <a href="../interfaces/ContextMenuOptions.html">ContextMenuOptions</a>)</code>
+            <code>open(content: , position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, options: <a href="../interfaces/ContextMenuOptions.html">ContextMenuOptions</a>)</code>
                                 </td>
                             </tr>
             
@@ -2133,7 +2145,7 @@ export class ContextMenuService {
     this.mapEventsManager &#x3D; mapEventsManager;
   }
 
-  open(content: BasicContextMenu, position: Cartesian3, options: ContextMenuOptions &#x3D; {}) {
+  open(content, position: Cartesian3, options: ContextMenuOptions &#x3D; {}) {
     this.close();
     this._content &#x3D; content;
     this._position &#x3D; position;

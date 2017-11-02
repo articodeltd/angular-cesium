@@ -100,6 +100,9 @@
                                     <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                 </li>
                                 <li class="link">
@@ -185,9 +188,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -510,6 +510,9 @@
                                     <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +556,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IDescription.html" >IDescription</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -750,6 +756,9 @@
                                            <a href="../components/AcArcDescComponent.html" >AcArcDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcArrayDescComponent.html" >AcArrayDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcBillboardComponent.html" >AcBillboardComponent</a>
                                        </li>
                                        <li class="link">
@@ -835,9 +844,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonComponent.html" >AcPolygonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolygonDescComponent.html" >AcPolygonDescComponent</a>
@@ -1160,6 +1166,9 @@
                                            <a href="../interfaces/BasicEditUpdate.html" >BasicEditUpdate</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/Cartesian2.html" >Cartesian2</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/Cartesian3.html" >Cartesian3</a>
                                        </li>
                                        <li class="link">
@@ -1203,6 +1212,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/HippodromeProps.html" >HippodromeProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IDescription.html" >IDescription</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/KeyboardControlDefinition.html" >KeyboardControlDefinition</a>
@@ -1372,34 +1384,37 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#_defaultPointProps">_defaultPointProps</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#_defaultPolylineProps">_defaultPolylineProps</a>
-                                    </li>
-                                    <li>
                                         <span class="modifier">Private</span> <a href="#_enableEdit">_enableEdit</a>
                                     </li>
                                     <li>
-                                         <a href="#defaultPointProps">defaultPointProps</a>
+                                        <span class="modifier">Private</span> <a href="#_pointProps">_pointProps</a>
                                     </li>
                                     <li>
-                                         <a href="#defaultPolylineProps">defaultPolylineProps</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#done">done</a>
+                                        <span class="modifier">Private</span> <a href="#doneCreation">doneCreation</a>
                                     </li>
                                     <li>
                                          <a href="#enableEdit">enableEdit</a>
                                     </li>
                                     <li>
+                                        <span class="modifier">Private</span> <a href="#lastDraggedToPosition">lastDraggedToPosition</a>
+                                    </li>
+                                    <li>
                                         <span class="modifier">Private</span> <a href="#movingPoint">movingPoint</a>
+                                    </li>
+                                    <li>
+                                         <a href="#pointProps">pointProps</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Private</span> <a href="#polylineProps">polylineProps</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#polylines">polylines</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#positions">positions</a>
+                                    </li>
+                                    <li>
+                                         <a href="#props">props</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1425,13 +1440,16 @@
                                          <a href="#addPointFromExisting">addPointFromExisting</a>
                                     </li>
                                     <li>
-                                         <a href="#addVirtualEditPoint">addVirtualEditPoint</a>
+                                         <a href="#changeVirtualPointToRealPoint">changeVirtualPointToRealPoint</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#createFromExisting">createFromExisting</a>
                                     </li>
                                     <li>
                                          <a href="#dispose">dispose</a>
+                                    </li>
+                                    <li>
+                                         <a href="#endMoveShape">endMoveShape</a>
                                     </li>
                                     <li>
                                          <a href="#getId">getId</a>
@@ -1452,6 +1470,9 @@
                                          <a href="#movePoint">movePoint</a>
                                     </li>
                                     <li>
+                                         <a href="#moveShape">moveShape</a>
+                                    </li>
+                                    <li>
                                          <a href="#moveTempMovingPoint">moveTempMovingPoint</a>
                                     </li>
                                     <li>
@@ -1464,10 +1485,13 @@
                                         <span class="modifier">Private</span> <a href="#renderPolylines">renderPolylines</a>
                                     </li>
                                     <li>
+                                         <a href="#setManually">setManually</a>
+                                    </li>
+                                    <li>
                                         <span class="modifier">Private</span> <a href="#setMiddleVirtualPoint">setMiddleVirtualPoint</a>
                                     </li>
                                     <li>
-                                         <a href="#setPointsManually">setPointsManually</a>
+                                        <span class="modifier">Private</span> <a href="#updateMiddleVirtualPoint">updateMiddleVirtualPoint</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#updatePointsLayer">updatePointsLayer</a>
@@ -1490,7 +1514,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:17</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:19</a></div>
                                         </td>
                                     </tr>
             
@@ -1521,7 +1545,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:76</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:94</a></div>
                                         </td>
                                     </tr>
             
@@ -1553,7 +1577,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:179</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="244" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:244</a></div>
                                         </td>
                                     </tr>
             
@@ -1585,7 +1609,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:140</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:165</a></div>
                                         </td>
                                     </tr>
             
@@ -1617,7 +1641,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:133</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:158</a></div>
                                         </td>
                                     </tr>
             
@@ -1636,20 +1660,20 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="addVirtualEditPoint"></a>
-                                    <b> addVirtualEditPoint</b>
+                                    <a name="changeVirtualPointToRealPoint"></a>
+                                    <b> changeVirtualPointToRealPoint</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>addVirtualEditPoint(point: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
+            <code>changeVirtualPointToRealPoint(point: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:103</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:127</a></div>
                                         </td>
                                     </tr>
             
@@ -1682,7 +1706,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:57</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:59</a></div>
                                         </td>
                                     </tr>
             
@@ -1714,7 +1738,39 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:215</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="282" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:282</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="endMoveShape"></a>
+                                    <b> endMoveShape</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>endMoveShape()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:229</a></div>
                                         </td>
                                     </tr>
             
@@ -1746,7 +1802,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="231" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:231</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="298" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:298</a></div>
                                         </td>
                                     </tr>
             
@@ -1778,7 +1834,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="227" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:227</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="294" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:294</a></div>
                                         </td>
                                     </tr>
             
@@ -1810,7 +1866,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:197</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="262" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:262</a></div>
                                         </td>
                                     </tr>
             
@@ -1842,7 +1898,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:192</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="257" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:257</a></div>
                                         </td>
                                     </tr>
             
@@ -1874,7 +1930,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:187</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="252" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:252</a></div>
                                         </td>
                                     </tr>
             
@@ -1906,7 +1962,39 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:157</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:182</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="moveShape"></a>
+                                    <b> moveShape</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>moveShape(startMovingPosition: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, draggedToPosition: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:213</a></div>
                                         </td>
                                     </tr>
             
@@ -1938,7 +2026,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:163</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="207" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:207</a></div>
                                         </td>
                                     </tr>
             
@@ -1970,7 +2058,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:169</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="234" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:234</a></div>
                                         </td>
                                     </tr>
             
@@ -2003,7 +2091,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:201</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:266</a></div>
                                         </td>
                                     </tr>
             
@@ -2036,7 +2124,39 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:119</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:143</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="setManually"></a>
+                                    <b> setManually</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>setManually(points: []|[], polylineProps: <a href="../interfaces/PolylineProps.html">PolylineProps</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:67</a></div>
                                         </td>
                                     </tr>
             
@@ -2069,7 +2189,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:91</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:109</a></div>
                                         </td>
                                     </tr>
             
@@ -2088,20 +2208,21 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="setPointsManually"></a>
-                                    <b> setPointsManually</b>
+                                    <a name="updateMiddleVirtualPoint"></a>
+                                    <b><span class="modifier">Private</span> updateMiddleVirtualPoint</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>setPointsManually(points: [])</code>
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>updateMiddleVirtualPoint(virtualEditPoint: <a href="../classes/EditPoint.html">EditPoint</a>, prevPoint: <a href="../classes/EditPoint.html">EditPoint</a>, nextPoint: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:65</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:121</a></div>
                                         </td>
                                     </tr>
             
@@ -2127,14 +2248,14 @@
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>updatePointsLayer(...point: [])</code>
+                                    <code>updatePointsLayer(renderPolylines: , ...point: [])</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:210</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:275</a></div>
                                         </td>
                                     </tr>
             
@@ -2161,64 +2282,6 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="_defaultPointProps"></a>
-                                    <b><span class="modifier">Private</span> _defaultPointProps</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_defaultPointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:16</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="_defaultPolylineProps"></a>
-                                    <b><span class="modifier">Private</span> _defaultPolylineProps</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_defaultPolylineProps:     <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:17</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="_enableEdit"></a>
                                     <b><span class="modifier">Private</span> _enableEdit</b>
                                 </td>
@@ -2236,7 +2299,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:15</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:16</a></div>
                                         </td>
                                     </tr>
             
@@ -2247,13 +2310,13 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="defaultPointProps"></a>
-                                    <b> defaultPointProps</b>
+                                    <a name="_pointProps"></a>
+                                    <b><span class="modifier">Private</span> _pointProps</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>defaultPointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>_pointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
             </code>
                                 </td>
                             </tr>
@@ -2265,7 +2328,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:41</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:17</a></div>
                                         </td>
                                     </tr>
             
@@ -2276,42 +2339,13 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="defaultPolylineProps"></a>
-                                    <b> defaultPolylineProps</b>
+                                    <a name="doneCreation"></a>
+                                    <b><span class="modifier">Private</span> doneCreation</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>defaultPolylineProps:     <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:33</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="done"></a>
-                                    <b><span class="modifier">Private</span> done</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>done:     <code></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>doneCreation:     <code></code>
             </code>
                                 </td>
                             </tr>
@@ -2322,7 +2356,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:15</a></div>
                                         </td>
                                     </tr>
             
@@ -2345,7 +2379,30 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:49</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:51</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="lastDraggedToPosition"></a>
+                                    <b><span class="modifier">Private</span> lastDraggedToPosition</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>lastDraggedToPosition:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:19</a></div>
                                         </td>
                                     </tr>
             
@@ -2374,7 +2431,65 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:13</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:14</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="pointProps"></a>
+                                    <b> pointProps</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>pointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:43</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="polylineProps"></a>
+                                    <b><span class="modifier">Private</span> polylineProps</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>polylineProps:     <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:18</a></div>
                                         </td>
                                     </tr>
             
@@ -2403,7 +2518,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:12</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:13</a></div>
                                         </td>
                                     </tr>
             
@@ -2432,7 +2547,36 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:11</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:12</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="props"></a>
+                                    <b> props</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>props:     <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/angular-cesium-entities-editor/models/editable-polyline.ts:35</a></div>
                                         </td>
                                     </tr>
             
@@ -2451,232 +2595,299 @@ import { AcLayerComponent } from &#x27;../../angular-cesium/components/ac-layer/
 import { Cartesian3 } from &#x27;../../angular-cesium/models/cartesian3&#x27;;
 import { CoordinateConverter } from &#x27;../../angular-cesium/services/coordinate-converter/coordinate-converter.service&#x27;;
 import { PointProps, PolylineEditOptions, PolylineProps } from &#x27;./polyline-edit-options&#x27;;
+import { GeoUtilsService } from &#x27;../../angular-cesium/services/geo-utils/geo-utils.service&#x27;;
 
 export class EditablePolyline extends AcEntity {
-	
-	private positions: EditPoint[] &#x3D; [];
-	private polylines: EditPolyline[] &#x3D; [];
-	private movingPoint: EditPoint;
-	private done &#x3D; false;
-	private _enableEdit &#x3D; true;
-	private _defaultPointProps: PointProps;
-	private _defaultPolylineProps: PolylineProps;
-	
-	constructor(private id: string,
-							private pointsLayer: AcLayerComponent,
-							private polylinesLayer: AcLayerComponent,
-							private coordinateConverter: CoordinateConverter,
-							polylineEdit: PolylineEditOptions,
-							positions?: Cartesian3[]) {
-		super();
-		this.defaultPointProps &#x3D; polylineEdit.pointProps;
-		this.defaultPolylineProps &#x3D; polylineEdit.polylineProps;
-		if (positions &amp;&amp; positions.length &gt;&#x3D; 2) {
-			this.createFromExisting(positions);
-		}
-	}
-	
-	get defaultPolylineProps(): PolylineProps {
-		return this._defaultPolylineProps;
-	}
-	
-	set defaultPolylineProps(value: PolylineProps) {
-		this._defaultPolylineProps &#x3D; value;
-	}
-	
-	get defaultPointProps(): PointProps {
-		return this._defaultPointProps;
-	}
-	
-	set defaultPointProps(value: PointProps) {
-		this._defaultPointProps &#x3D; value;
-	}
-	
-	get enableEdit() {
-		return this._enableEdit;
-	}
-	
-	set enableEdit(value: boolean) {
-		this._enableEdit &#x3D; value;
-	}
-	
-	private createFromExisting(positions: Cartesian3[]) {
-		positions.forEach((position) &#x3D;&gt; {
-			this.addPointFromExisting(position)
-		});
-		this.addAllVirtualEditPoints();
-		this.done &#x3D; true;
-	}
-	
-	setPointsManually(points: EditPoint[]) {
-		if (!this.done) {
-			throw new Error(&#x27;Update manually only in edit mode, after polyline is created&#x27;)
-		}
-		this.positions.forEach(p &#x3D;&gt; this.pointsLayer.remove(p.getId()));
-		this.positions &#x3D; points;
-		
-		this.updatePointsLayer(...points);
-		this.addAllVirtualEditPoints();
-	}
-	
-	private addAllVirtualEditPoints() {
-		const currentPoints &#x3D; [...this.positions];
-		currentPoints.forEach((pos, index) &#x3D;&gt; {
-			if (index !&#x3D;&#x3D; currentPoints.length - 1) {
-				const currentPoint &#x3D; pos;
-				const nextIndex &#x3D; (index + 1) % (currentPoints.length);
-				const nextPoint &#x3D; currentPoints[nextIndex];
-				
-				const midPoint &#x3D; this.setMiddleVirtualPoint(currentPoint, nextPoint);
-				
-				this.updatePointsLayer(midPoint);
-			}
-		});
-	}
-	
-	private setMiddleVirtualPoint(firstP: EditPoint, secondP: EditPoint): EditPoint {
-		const currentCart &#x3D; Cesium.Cartographic.fromCartesian(firstP.getPosition());
-		const nextCart &#x3D; Cesium.Cartographic.fromCartesian(secondP.getPosition());
-		const midPointCartesian3 &#x3D; this.coordinateConverter.midPointToCartesian3(currentCart, nextCart);
-		const midPoint &#x3D; new EditPoint(this.id, midPointCartesian3, this.defaultPointProps);
-		midPoint.setVirtualEditPoint(true);
-		
-		const firstIndex &#x3D; this.positions.indexOf(firstP);
-		this.positions.splice(firstIndex + 1, 0, midPoint);
-		return midPoint;
-	}
-	
-	addVirtualEditPoint(point: EditPoint) {
-		point.setVirtualEditPoint(false); // actual point becomes a real point
-		const pointsCount &#x3D; this.positions.length;
-		const pointIndex &#x3D; this.positions.indexOf(point);
-		const nextIndex &#x3D; (pointIndex + 1) % (pointsCount);
-		const preIndex &#x3D; ((pointIndex - 1) + pointsCount ) % pointsCount;
-		
-		const nextPoint &#x3D; this.positions[nextIndex];
-		const prePoint &#x3D; this.positions[preIndex];
-		
-		const firstMidPoint &#x3D; this.setMiddleVirtualPoint(prePoint, point);
-		const secMidPoint &#x3D; this.setMiddleVirtualPoint(point, nextPoint);
-		this.updatePointsLayer(firstMidPoint, secMidPoint, point);
-		
-	}
-	
-	private renderPolylines() {
-		this.polylines &#x3D; [];
-		this.polylinesLayer.removeAll();
-		this.positions.forEach((point, index) &#x3D;&gt; {
-			if (index !&#x3D;&#x3D; this.positions.length - 1) {
-				const nextIndex &#x3D; (index + 1);
-				const nextPoint &#x3D; this.positions[nextIndex];
-				const polyline &#x3D; new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this._defaultPolylineProps);
-				this.polylines.push(polyline);
-				this.polylinesLayer.update(polyline, polyline.getId());
-			}
-		});
-	}
-	
-	addPointFromExisting(position: Cartesian3) {
-		const newPoint &#x3D; new EditPoint(this.id, position, this.defaultPointProps);
-		this.positions.push(newPoint);
-		this.updatePointsLayer(newPoint);
-	}
-	
-	
-	addPoint(position: Cartesian3) {
-		if (this.done) {
-			return;
-		}
-		const isFirstPoint &#x3D; !this.positions.length;
-		if (isFirstPoint) {
-			const firstPoint &#x3D; new EditPoint(this.id, position, this.defaultPointProps);
-			this.positions.push(firstPoint);
-			this.updatePointsLayer(firstPoint);
-		}
-		
-		this.movingPoint &#x3D; new EditPoint(this.id, position.clone(), this.defaultPointProps);
-		this.positions.push(this.movingPoint);
-		
-		this.updatePointsLayer(this.movingPoint);
-	}
-	
-	movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
-		editPoint.setPosition(toPosition);
-		
-		this.updatePointsLayer(editPoint);
-	}
-	
-	moveTempMovingPoint(toPosition: Cartesian3) {
-		if (this.movingPoint) {
-			this.movePoint(toPosition, this.movingPoint);
-		}
-	}
-	
-	removePoint(pointToRemove: EditPoint) {
-		this.removePosition(pointToRemove);
-		this.positions
-			.filter(p &#x3D;&gt; p.isVirtualEditPoint())
-			.forEach(p &#x3D;&gt; this.removePosition(p));
-		this.addAllVirtualEditPoints();
-		
-		this.renderPolylines();
-	}
-	
-	addLastPoint(position: Cartesian3) {
-		this.done &#x3D; true;
-		this.removePosition(this.movingPoint); // remove movingPoint
-		this.movingPoint &#x3D; null;
-		
-		this.addAllVirtualEditPoints();
-	}
-	
-	getRealPositions(): Cartesian3[] {
-		return this.getRealPoints()
-			.map(position &#x3D;&gt; position.getPosition());
-	}
-	
-	getRealPoints(): EditPoint[] {
-		return this.positions
-			.filter(position &#x3D;&gt; !position.isVirtualEditPoint() &amp;&amp; position !&#x3D;&#x3D; this.movingPoint);
-	}
-	
-	getPositions(): Cartesian3[] {
-		return this.positions.map(position &#x3D;&gt; position.getPosition());
-	}
-	
-	private removePosition(point: EditPoint) {
-		const index &#x3D; this.positions.findIndex((p) &#x3D;&gt; p &#x3D;&#x3D;&#x3D; point);
-		if (index &lt; 0) {
-			return;
-		}
-		this.positions.splice(index, 1);
-		this.pointsLayer.remove(point.getId());
-	}
-	
-	private updatePointsLayer(...point: EditPoint[]) {
-		this.renderPolylines();
-		point.forEach(p &#x3D;&gt; this.pointsLayer.update(p, p.getId()));
-	}
-	
-	dispose() {
-		this.positions.forEach(editPoint &#x3D;&gt; {
-			this.pointsLayer.remove(editPoint.getId());
-		});
-		this.polylines.forEach(line &#x3D;&gt; this.polylinesLayer.remove(line.getId()));
-		if (this.movingPoint) {
-			this.pointsLayer.remove(this.movingPoint.getId());
-			this.movingPoint &#x3D; undefined;
-		}
-		this.positions.length &#x3D; 0;
-	}
-	
-	getPointsCount(): number {
-		return this.positions.length;
-	}
-	
-	getId() {
-		return this.id;
-	}
+
+  private positions: EditPoint[] &#x3D; [];
+  private polylines: EditPolyline[] &#x3D; [];
+  private movingPoint: EditPoint;
+  private doneCreation &#x3D; false;
+  private _enableEdit &#x3D; true;
+  private _pointProps: PointProps;
+  private polylineProps: PolylineProps;
+  private lastDraggedToPosition;
+
+  constructor(private id: string,
+              private pointsLayer: AcLayerComponent,
+              private polylinesLayer: AcLayerComponent,
+              private coordinateConverter: CoordinateConverter,
+              polylineEdit: PolylineEditOptions,
+              positions?: Cartesian3[]) {
+    super();
+    this._pointProps &#x3D; polylineEdit.pointProps;
+    this.props &#x3D; polylineEdit.polylineProps;
+    if (positions &amp;&amp; positions.length &gt;&#x3D; 2) {
+      this.createFromExisting(positions);
+    }
+  }
+
+  get props(): PolylineProps {
+    return this.polylineProps;
+  }
+
+  set props(value: PolylineProps) {
+    this.polylineProps &#x3D; value;
+  }
+
+  get pointProps(): PointProps {
+    return this._pointProps;
+  }
+
+  set pointProps(value: PointProps) {
+    this._pointProps &#x3D; value;
+  }
+
+  get enableEdit() {
+    return this._enableEdit;
+  }
+
+  set enableEdit(value: boolean) {
+    this._enableEdit &#x3D; value;
+  }
+
+  private createFromExisting(positions: Cartesian3[]) {
+    positions.forEach((position) &#x3D;&gt; {
+      this.addPointFromExisting(position)
+    });
+    this.addAllVirtualEditPoints();
+    this.doneCreation &#x3D; true;
+  }
+
+  setManually(points: {
+    position: Cartesian3,
+    pointProp?: PointProps
+  }[] | Cartesian3[], polylineProps?: PolylineProps) {
+    if (!this.doneCreation) {
+      throw new Error(&#x27;Update manually only in edit mode, after polyline is created&#x27;)
+    }
+    this.positions.forEach(p &#x3D;&gt; this.pointsLayer.remove(p.getId()));
+
+    const newPoints: EditPoint[] &#x3D; [];
+    for (let i &#x3D; 0; i &lt; points.length; i++) {
+      const pointOrCartesian: any &#x3D; points[i];
+      let newPoint &#x3D; null;
+      if (pointOrCartesian.pointProps) {
+        newPoint &#x3D; new EditPoint(this.id, pointOrCartesian.position, pointOrCartesian.pointProps);
+      } else {
+        newPoint &#x3D; new EditPoint(this.id, pointOrCartesian, this._pointProps);
+      }
+      newPoints.push(newPoint);
+    }
+    this.positions &#x3D; newPoints;
+    this.polylineProps &#x3D; polylineProps ? polylineProps : this.polylineProps;
+
+    this.updatePointsLayer(true, ...this.positions);
+    this.addAllVirtualEditPoints();
+  }
+
+  private addAllVirtualEditPoints() {
+    const currentPoints &#x3D; [...this.positions];
+    currentPoints.forEach((pos, index) &#x3D;&gt; {
+      if (index !&#x3D;&#x3D; currentPoints.length - 1) {
+        const currentPoint &#x3D; pos;
+        const nextIndex &#x3D; (index + 1) % (currentPoints.length);
+        const nextPoint &#x3D; currentPoints[nextIndex];
+
+        const midPoint &#x3D; this.setMiddleVirtualPoint(currentPoint, nextPoint);
+
+        this.updatePointsLayer(false, midPoint);
+      }
+    });
+  }
+
+  private setMiddleVirtualPoint(firstP: EditPoint, secondP: EditPoint): EditPoint {
+    const currentCart &#x3D; Cesium.Cartographic.fromCartesian(firstP.getPosition());
+    const nextCart &#x3D; Cesium.Cartographic.fromCartesian(secondP.getPosition());
+    const midPointCartesian3 &#x3D; this.coordinateConverter.midPointToCartesian3(currentCart, nextCart);
+    const midPoint &#x3D; new EditPoint(this.id, midPointCartesian3, this._pointProps);
+    midPoint.setVirtualEditPoint(true);
+
+    const firstIndex &#x3D; this.positions.indexOf(firstP);
+    this.positions.splice(firstIndex + 1, 0, midPoint);
+    return midPoint;
+  }
+
+  private updateMiddleVirtualPoint(virtualEditPoint: EditPoint, prevPoint: EditPoint, nextPoint: EditPoint) {
+    const prevPointCart &#x3D; Cesium.Cartographic.fromCartesian(prevPoint.getPosition());
+    const nextPointCart &#x3D; Cesium.Cartographic.fromCartesian(nextPoint.getPosition());
+    virtualEditPoint.setPosition(this.coordinateConverter.midPointToCartesian3(prevPointCart, nextPointCart));
+  }
+
+  changeVirtualPointToRealPoint(point: EditPoint) {
+    point.setVirtualEditPoint(false); // actual point becomes a real point
+    const pointsCount &#x3D; this.positions.length;
+    const pointIndex &#x3D; this.positions.indexOf(point);
+    const nextIndex &#x3D; (pointIndex + 1) % (pointsCount);
+    const preIndex &#x3D; ((pointIndex - 1) + pointsCount ) % pointsCount;
+
+    const nextPoint &#x3D; this.positions[nextIndex];
+    const prePoint &#x3D; this.positions[preIndex];
+
+    const firstMidPoint &#x3D; this.setMiddleVirtualPoint(prePoint, point);
+    const secMidPoint &#x3D; this.setMiddleVirtualPoint(point, nextPoint);
+    this.updatePointsLayer(false, firstMidPoint, secMidPoint, point);
+
+  }
+
+  private renderPolylines() {
+    this.polylines &#x3D; [];
+    this.polylinesLayer.removeAll();
+    const realPoints &#x3D; this.positions.filter(point &#x3D;&gt; !point.isVirtualEditPoint());
+    realPoints.forEach((point, index) &#x3D;&gt; {
+      if (index !&#x3D;&#x3D; realPoints.length - 1) {
+        const nextIndex &#x3D; (index + 1);
+        const nextPoint &#x3D; realPoints[nextIndex];
+        const polyline &#x3D; new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this.polylineProps);
+        this.polylines.push(polyline);
+        this.polylinesLayer.update(polyline, polyline.getId());
+      }
+    });
+  }
+
+  addPointFromExisting(position: Cartesian3) {
+    const newPoint &#x3D; new EditPoint(this.id, position, this._pointProps);
+    this.positions.push(newPoint);
+    this.updatePointsLayer(true, newPoint);
+  }
+
+
+  addPoint(position: Cartesian3) {
+    if (this.doneCreation) {
+      return;
+    }
+    const isFirstPoint &#x3D; !this.positions.length;
+    if (isFirstPoint) {
+      const firstPoint &#x3D; new EditPoint(this.id, position, this._pointProps);
+      this.positions.push(firstPoint);
+      this.updatePointsLayer(true, firstPoint);
+    }
+
+    this.movingPoint &#x3D; new EditPoint(this.id, position.clone(), this._pointProps);
+    this.positions.push(this.movingPoint);
+
+    this.updatePointsLayer(true, this.movingPoint);
+  }
+
+  movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
+    editPoint.setPosition(toPosition);
+    if (this.doneCreation) {
+      if (editPoint.isVirtualEditPoint()) {
+        this.changeVirtualPointToRealPoint(editPoint);
+      }
+      const pointsCount &#x3D; this.positions.length;
+      const pointIndex &#x3D; this.positions.indexOf(editPoint);
+
+      if (pointIndex &lt; this.positions.length - 1) {
+        const nextVirtualPoint &#x3D; this.positions[(pointIndex + 1) % (pointsCount)];
+        const nextRealPoint &#x3D; this.positions[(pointIndex + 2) % (pointsCount)];
+        this.updateMiddleVirtualPoint(nextVirtualPoint, editPoint, nextRealPoint);
+        this.updatePointsLayer(false, nextVirtualPoint);
+      }
+      if (pointIndex &gt; 0) {
+        const prevVirtualPoint &#x3D; this.positions[((pointIndex - 1) + pointsCount ) % pointsCount];
+        const prevRealPoint &#x3D; this.positions[((pointIndex - 2) + pointsCount ) % pointsCount];
+        this.updateMiddleVirtualPoint(prevVirtualPoint, editPoint, prevRealPoint);
+        this.updatePointsLayer(false, prevVirtualPoint);
+      }
+    }
+    this.updatePointsLayer(true, editPoint);
+  }
+
+  moveTempMovingPoint(toPosition: Cartesian3) {
+    if (this.movingPoint) {
+      this.movePoint(toPosition, this.movingPoint);
+    }
+  }
+
+  moveShape(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
+    if (!this.doneCreation) {
+      return;
+    }
+    if (!this.lastDraggedToPosition) {
+      this.lastDraggedToPosition &#x3D; startMovingPosition;
+    }
+
+    const delta &#x3D; GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
+    this.positions.forEach(point &#x3D;&gt; {
+      GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+    });
+    this.updatePointsLayer(true, ...this.positions);
+    this.lastDraggedToPosition &#x3D; draggedToPosition;
+  }
+
+  endMoveShape() {
+    this.lastDraggedToPosition &#x3D; undefined;
+    this.updatePointsLayer(true, ...this.positions);
+  }
+
+  removePoint(pointToRemove: EditPoint) {
+    this.removePosition(pointToRemove);
+    this.positions
+      .filter(p &#x3D;&gt; p.isVirtualEditPoint())
+      .forEach(p &#x3D;&gt; this.removePosition(p));
+    this.addAllVirtualEditPoints();
+
+    this.renderPolylines();
+  }
+
+  addLastPoint(position: Cartesian3) {
+    this.doneCreation &#x3D; true;
+    this.removePosition(this.movingPoint); // remove movingPoint
+    this.movingPoint &#x3D; null;
+
+    this.addAllVirtualEditPoints();
+  }
+
+  getRealPositions(): Cartesian3[] {
+    return this.getRealPoints()
+      .map(position &#x3D;&gt; position.getPosition());
+  }
+
+  getRealPoints(): EditPoint[] {
+    return this.positions
+      .filter(position &#x3D;&gt; !position.isVirtualEditPoint() &amp;&amp; position !&#x3D;&#x3D; this.movingPoint);
+  }
+
+  getPositions(): Cartesian3[] {
+    return this.positions.map(position &#x3D;&gt; position.getPosition());
+  }
+
+  private removePosition(point: EditPoint) {
+    const index &#x3D; this.positions.findIndex((p) &#x3D;&gt; p &#x3D;&#x3D;&#x3D; point);
+    if (index &lt; 0) {
+      return;
+    }
+    this.positions.splice(index, 1);
+    this.pointsLayer.remove(point.getId());
+  }
+
+  private updatePointsLayer(renderPolylines &#x3D; true, ...point: EditPoint[]) {
+    if (renderPolylines) {
+      this.renderPolylines();
+    }
+    point.forEach(p &#x3D;&gt; this.pointsLayer.update(p, p.getId()));
+  }
+
+  dispose() {
+    this.positions.forEach(editPoint &#x3D;&gt; {
+      this.pointsLayer.remove(editPoint.getId());
+    });
+    this.polylines.forEach(line &#x3D;&gt; this.polylinesLayer.remove(line.getId()));
+    if (this.movingPoint) {
+      this.pointsLayer.remove(this.movingPoint.getId());
+      this.movingPoint &#x3D; undefined;
+    }
+    this.positions.length &#x3D; 0;
+  }
+
+  getPointsCount(): number {
+    return this.positions.length;
+  }
+
+  getId() {
+    return this.id;
+  }
 }
 </code></pre>
     </div>
