@@ -8,16 +8,16 @@ import { PointProps, PolylineEditOptions, PolylineProps } from './polyline-edit-
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 
 export class EditablePolyline extends AcEntity {
-  
+
   private positions: EditPoint[] = [];
   private polylines: EditPolyline[] = [];
   private movingPoint: EditPoint;
   private doneCreation = false;
   private _enableEdit = true;
-  private _defaultPointProps: PointProps;
-  private _defaultPolylineProps: PolylineProps;
+  private _pointProps: PointProps;
+  private polylineProps: PolylineProps;
   private lastDraggedToPosition;
-  
+
   constructor(private id: string,
               private pointsLayer: AcLayerComponent,
               private polylinesLayer: AcLayerComponent,
@@ -25,37 +25,37 @@ export class EditablePolyline extends AcEntity {
               polylineEdit: PolylineEditOptions,
               positions?: Cartesian3[]) {
     super();
-    this.defaultPointProps = polylineEdit.pointProps;
-    this.defaultPolylineProps = polylineEdit.polylineProps;
+    this._pointProps = polylineEdit.pointProps;
+    this.props = polylineEdit.polylineProps;
     if (positions && positions.length >= 2) {
       this.createFromExisting(positions);
     }
   }
-  
-  get defaultPolylineProps(): PolylineProps {
-    return this._defaultPolylineProps;
+
+  get props(): PolylineProps {
+    return this.polylineProps;
   }
-  
-  set defaultPolylineProps(value: PolylineProps) {
-    this._defaultPolylineProps = value;
+
+  set props(value: PolylineProps) {
+    this.polylineProps = value;
   }
-  
-  get defaultPointProps(): PointProps {
-    return this._defaultPointProps;
+
+  get pointProps(): PointProps {
+    return this._pointProps;
   }
-  
-  set defaultPointProps(value: PointProps) {
-    this._defaultPointProps = value;
+
+  set pointProps(value: PointProps) {
+    this._pointProps = value;
   }
-  
+
   get enableEdit() {
     return this._enableEdit;
   }
-  
+
   set enableEdit(value: boolean) {
     this._enableEdit = value;
   }
-  
+
   private createFromExisting(positions: Cartesian3[]) {
     positions.forEach((position) => {
       this.addPointFromExisting(position)
@@ -63,7 +63,7 @@ export class EditablePolyline extends AcEntity {
     this.addAllVirtualEditPoints();
     this.doneCreation = true;
   }
-  
+
   setManually(points: {
     position: Cartesian3,
     pointProp?: PointProps
@@ -72,7 +72,7 @@ export class EditablePolyline extends AcEntity {
       throw new Error('Update manually only in edit mode, after polyline is created')
     }
     this.positions.forEach(p => this.pointsLayer.remove(p.getId()));
-    
+
     const newPoints: EditPoint[] = [];
     for (let i = 0; i < points.length; i++) {
       const pointOrCartesian: any = points[i];
@@ -80,17 +80,17 @@ export class EditablePolyline extends AcEntity {
       if (pointOrCartesian.pointProps) {
         newPoint = new EditPoint(this.id, pointOrCartesian.position, pointOrCartesian.pointProps);
       } else {
-        newPoint = new EditPoint(this.id, pointOrCartesian, this.defaultPointProps);
+        newPoint = new EditPoint(this.id, pointOrCartesian, this._pointProps);
       }
       newPoints.push(newPoint);
     }
     this.positions = newPoints;
-    this.defaultPolylineProps = polylineProps ? polylineProps : this.defaultPolylineProps;
-    
-    this.updatePointsLayer(...this.positions);
+    this.polylineProps = polylineProps ? polylineProps : this.polylineProps;
+
+    this.updatePointsLayer(true, ...this.positions);
     this.addAllVirtualEditPoints();
   }
-  
+
   private addAllVirtualEditPoints() {
     const currentPoints = [...this.positions];
     currentPoints.forEach((pos, index) => {
@@ -98,92 +98,118 @@ export class EditablePolyline extends AcEntity {
         const currentPoint = pos;
         const nextIndex = (index + 1) % (currentPoints.length);
         const nextPoint = currentPoints[nextIndex];
-        
+
         const midPoint = this.setMiddleVirtualPoint(currentPoint, nextPoint);
-        
-        this.updatePointsLayer(midPoint);
+
+        this.updatePointsLayer(false, midPoint);
       }
     });
   }
-  
+
   private setMiddleVirtualPoint(firstP: EditPoint, secondP: EditPoint): EditPoint {
     const currentCart = Cesium.Cartographic.fromCartesian(firstP.getPosition());
     const nextCart = Cesium.Cartographic.fromCartesian(secondP.getPosition());
     const midPointCartesian3 = this.coordinateConverter.midPointToCartesian3(currentCart, nextCart);
-    const midPoint = new EditPoint(this.id, midPointCartesian3, this.defaultPointProps);
+    const midPoint = new EditPoint(this.id, midPointCartesian3, this._pointProps);
     midPoint.setVirtualEditPoint(true);
-    
+
     const firstIndex = this.positions.indexOf(firstP);
     this.positions.splice(firstIndex + 1, 0, midPoint);
     return midPoint;
   }
-  
-  addVirtualEditPoint(point: EditPoint) {
+
+  private updateMiddleVirtualPoint(virtualEditPoint: EditPoint, prevPoint: EditPoint, nextPoint: EditPoint) {
+    const prevPointCart = Cesium.Cartographic.fromCartesian(prevPoint.getPosition());
+    const nextPointCart = Cesium.Cartographic.fromCartesian(nextPoint.getPosition());
+    virtualEditPoint.setPosition(this.coordinateConverter.midPointToCartesian3(prevPointCart, nextPointCart));
+  }
+
+  changeVirtualPointToRealPoint(point: EditPoint) {
     point.setVirtualEditPoint(false); // actual point becomes a real point
     const pointsCount = this.positions.length;
     const pointIndex = this.positions.indexOf(point);
     const nextIndex = (pointIndex + 1) % (pointsCount);
     const preIndex = ((pointIndex - 1) + pointsCount ) % pointsCount;
-    
+
     const nextPoint = this.positions[nextIndex];
     const prePoint = this.positions[preIndex];
-    
+
     const firstMidPoint = this.setMiddleVirtualPoint(prePoint, point);
     const secMidPoint = this.setMiddleVirtualPoint(point, nextPoint);
-    this.updatePointsLayer(firstMidPoint, secMidPoint, point);
-    
+    this.updatePointsLayer(false, firstMidPoint, secMidPoint, point);
+
   }
-  
+
   private renderPolylines() {
     this.polylines = [];
     this.polylinesLayer.removeAll();
-    this.positions.forEach((point, index) => {
-      if (index !== this.positions.length - 1) {
+    const realPoints = this.positions.filter(point => !point.isVirtualEditPoint());
+    realPoints.forEach((point, index) => {
+      if (index !== realPoints.length - 1) {
         const nextIndex = (index + 1);
-        const nextPoint = this.positions[nextIndex];
-        const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this._defaultPolylineProps);
+        const nextPoint = realPoints[nextIndex];
+        const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this.polylineProps);
         this.polylines.push(polyline);
         this.polylinesLayer.update(polyline, polyline.getId());
       }
     });
   }
-  
+
   addPointFromExisting(position: Cartesian3) {
-    const newPoint = new EditPoint(this.id, position, this.defaultPointProps);
+    const newPoint = new EditPoint(this.id, position, this._pointProps);
     this.positions.push(newPoint);
-    this.updatePointsLayer(newPoint);
+    this.updatePointsLayer(true, newPoint);
   }
-  
-  
+
+
   addPoint(position: Cartesian3) {
     if (this.doneCreation) {
       return;
     }
     const isFirstPoint = !this.positions.length;
     if (isFirstPoint) {
-      const firstPoint = new EditPoint(this.id, position, this.defaultPointProps);
+      const firstPoint = new EditPoint(this.id, position, this._pointProps);
       this.positions.push(firstPoint);
-      this.updatePointsLayer(firstPoint);
+      this.updatePointsLayer(true, firstPoint);
     }
-    
-    this.movingPoint = new EditPoint(this.id, position.clone(), this.defaultPointProps);
+
+    this.movingPoint = new EditPoint(this.id, position.clone(), this._pointProps);
     this.positions.push(this.movingPoint);
-    
-    this.updatePointsLayer(this.movingPoint);
+
+    this.updatePointsLayer(true, this.movingPoint);
   }
-  
+
   movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
     editPoint.setPosition(toPosition);
-    
-    this.updatePointsLayer(editPoint);
+    if (this.doneCreation) {
+      if (editPoint.isVirtualEditPoint()) {
+        this.changeVirtualPointToRealPoint(editPoint);
+      }
+      const pointsCount = this.positions.length;
+      const pointIndex = this.positions.indexOf(editPoint);
+
+      if (pointIndex < this.positions.length - 1) {
+        const nextVirtualPoint = this.positions[(pointIndex + 1) % (pointsCount)];
+        const nextRealPoint = this.positions[(pointIndex + 2) % (pointsCount)];
+        this.updateMiddleVirtualPoint(nextVirtualPoint, editPoint, nextRealPoint);
+        this.updatePointsLayer(false, nextVirtualPoint);
+      }
+      if (pointIndex > 0) {
+        const prevVirtualPoint = this.positions[((pointIndex - 1) + pointsCount ) % pointsCount];
+        const prevRealPoint = this.positions[((pointIndex - 2) + pointsCount ) % pointsCount];
+        this.updateMiddleVirtualPoint(prevVirtualPoint, editPoint, prevRealPoint);
+        this.updatePointsLayer(false, prevVirtualPoint);
+      }
+    }
+    this.updatePointsLayer(true, editPoint);
   }
-  
+
   moveTempMovingPoint(toPosition: Cartesian3) {
     if (this.movingPoint) {
       this.movePoint(toPosition, this.movingPoint);
     }
   }
-  
+
   moveShape(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
     if (!this.doneCreation) {
       return;
@@ -191,52 +217,52 @@ export class EditablePolyline extends AcEntity {
     if (!this.lastDraggedToPosition) {
       this.lastDraggedToPosition = startMovingPosition;
     }
-    
+
     const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
     this.positions.forEach(point => {
       GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
     });
-    this.updatePointsLayer(...this.positions);
+    this.updatePointsLayer(true, ...this.positions);
     this.lastDraggedToPosition = draggedToPosition;
   }
-  
+
   endMoveShape() {
     this.lastDraggedToPosition = undefined;
-    this.updatePointsLayer(...this.positions);
+    this.updatePointsLayer(true, ...this.positions);
   }
-  
+
   removePoint(pointToRemove: EditPoint) {
     this.removePosition(pointToRemove);
     this.positions
       .filter(p => p.isVirtualEditPoint())
       .forEach(p => this.removePosition(p));
     this.addAllVirtualEditPoints();
-    
+
     this.renderPolylines();
   }
-  
+
   addLastPoint(position: Cartesian3) {
     this.doneCreation = true;
     this.removePosition(this.movingPoint); // remove movingPoint
     this.movingPoint = null;
-    
+
     this.addAllVirtualEditPoints();
   }
-  
+
   getRealPositions(): Cartesian3[] {
     return this.getRealPoints()
       .map(position => position.getPosition());
   }
-  
+
   getRealPoints(): EditPoint[] {
     return this.positions
       .filter(position => !position.isVirtualEditPoint() && position !== this.movingPoint);
   }
-  
+
   getPositions(): Cartesian3[] {
     return this.positions.map(position => position.getPosition());
   }
-  
+
   private removePosition(point: EditPoint) {
     const index = this.positions.findIndex((p) => p === point);
     if (index < 0) {
@@ -245,12 +271,14 @@ export class EditablePolyline extends AcEntity {
     this.positions.splice(index, 1);
     this.pointsLayer.remove(point.getId());
   }
-  
-  private updatePointsLayer(...point: EditPoint[]) {
-    this.renderPolylines();
+
+  private updatePointsLayer(renderPolylines = true, ...point: EditPoint[]) {
+    if (renderPolylines) {
+      this.renderPolylines();
+    }
     point.forEach(p => this.pointsLayer.update(p, p.getId()));
   }
-  
+
   dispose() {
     this.positions.forEach(editPoint => {
       this.pointsLayer.remove(editPoint.getId());
@@ -262,11 +290,11 @@ export class EditablePolyline extends AcEntity {
     }
     this.positions.length = 0;
   }
-  
+
   getPointsCount(): number {
     return this.positions.length;
   }
-  
+
   getId() {
     return this.id;
   }

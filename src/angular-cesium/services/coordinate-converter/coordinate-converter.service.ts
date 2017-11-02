@@ -2,6 +2,7 @@ import { Injectable, Optional } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 import * as geodesy from 'geodesy';
 import { hemisphere, LatLonEllipsoidal, Utm } from 'geodesy';
+import { Cartesian3 } from '../../models/cartesian3';
 
 const LatLonVectors = geodesy['LatLonVectors']; // doesnt exists on typings
 
@@ -99,6 +100,15 @@ export class CoordinateConverter {
 		
 		return Cesium.Cartesian3.fromDegrees(middlePoint.lon, middlePoint.lat);
 	}
+
+  middlePointByScreen(position0: Cartesian3, position1: Cartesian3): Cartesian3 {
+		const scene = this.cesiumService.getScene();
+    const screenPosition1 = Cesium.SceneTransforms.wgs84ToWindowCoordinates(scene, position0);
+    const screenPosition2 = Cesium.SceneTransforms.wgs84ToWindowCoordinates(scene, position1);
+    const middleScreenPoint =
+      new Cesium.Cartesian2((screenPosition2.x + screenPosition1.x) / 2.0, (screenPosition2.y + screenPosition1.y) / 2.0);
+    return scene.pickPosition(middleScreenPoint);
+  }
 	
 	/**
 	 * initial bearing between two points
