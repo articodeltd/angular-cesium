@@ -2,6 +2,7 @@
 ### Features
 * Polyline edtior supports drag shape events.
 * Add ability to change width to Hippodrome editor
+* Added `ac-array-desc` for representing dynamic arrays in entity - ALPHA
 
 ## Fixes
 * Hippodrome editor - setManually supports positions and hippodrome width.
@@ -36,8 +37,7 @@ Each shape accepts here own specific arguments to configure the edited object, f
 * Added `CesiumHeatMapMaterialCreator` for creating heatmap material for cesium entities.
 * edited polygons are now draggable.
 * added `ac-point-primitive-desc`
-* added `ac-html-desc` - ac-layer supports ac-html
-* added `ac-array-desc` for representing dynamic arrays - ALPHA  
+* added `ac-html-desc` - ac-layer supports ac-html  
 
 ## 0.0.29
 ### Features

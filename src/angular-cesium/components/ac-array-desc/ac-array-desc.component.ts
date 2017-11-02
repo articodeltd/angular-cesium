@@ -19,6 +19,32 @@ import { LayerService } from '../../services/layer-service/layer-service.service
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
 import { Subscription } from 'rxjs/Subscription';
 
+/**
+ *  This is component represents an array under `ac-layer`.
+ *  The element must be a child of ac-layer element.
+ *  + acFor `{string}` - get the tracked array and entityName (see the example).
+ *  + idGetter `{Function}` - a function that gets the id for a given element in the array -should be defined for maximum performance.
+ *  + show `{boolean}` - show/hide array's entities.
+ *
+ *  __Usage :__
+ *  ```
+ *<ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [store]="true">
+ *  <ac-array-desc acFor="let arrayItem of track.array" [idGetter]="trackArrayIdGetter">
+ *    <ac-array-desc acFor="let innerArrayItem of arrayItem.innerArray" [idGetter]="trackArrayIdGetter">
+ *      <ac-point-desc props="{
+ *        position: innerArrayItem.pos,
+ *        pixelSize: 10,
+ *        color: getTrackColor(track),
+ *        outlineColor: Cesium.Color.BLUE,
+ *        outlineWidth: 1
+ *      }">
+ *      </ac-point-desc>
+ *    </ac-array-desc>
+ *  </ac-array-desc>
+ *</ac-layer>
+ *  ```
+ */
+
 @Component({
   selector: 'ac-array-desc',
   template: `
@@ -32,8 +58,11 @@ import { Subscription } from 'rxjs/Subscription';
   `,
 })
 export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit, OnDestroy, IDescription {
+
   @Input() acFor: string;
+
   @Input() idGetter: Function;
+
   @Input() show = true;
   @ViewChild('layer') private layer: AcLayerComponent;
   @ContentChildren(BasicDesc, { descendants: false }) private basicDescs;

@@ -41,8 +41,8 @@ import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawe
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.
- *  + acfor `{string}` - get the track observable and entityName (see the example).
- *  + setShow `{boolean}` - setShow/hide layer's entities.
+ *  + acFor `{string}` - get the tracked observable and entityName (see the example).
+ *  + show `{boolean}` - show/hide layer's entities.
  *  + context `{any}` - get the context layer that will use the componnet (most of the time equal to "this").
  *  + options `{LayerOptions}` - sets the layer options for each drawer.
  *  + zIndex `{number}` - controls the zIndex (order) of the layer, layers with greater zIndex will be in front of layers with lower zIndex
