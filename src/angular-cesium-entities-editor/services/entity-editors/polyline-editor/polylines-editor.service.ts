@@ -279,7 +279,7 @@ export class PolylinesEditorService {
             editMode : EditModes.EDIT,
             updatedPosition : endDragPosition,
             draggedPosition : startDragPosition,
-            editAction : drop ? EditActions.DRAG_SHAPE_FINISH: EditActions.DRAG_SHAPE,
+            editAction : drop ? EditActions.DRAG_SHAPE_FINISH : EditActions.DRAG_SHAPE,
           };
           this.updateSubject.next(update);
           editSubject.next({
@@ -305,7 +305,7 @@ export class PolylinesEditorService {
           editMode : EditModes.EDIT,
           updatedPosition : position,
           updatedPoint : point,
-          editAction : drop ? EditActions.DRAG_POINT_FINISH: EditActions.DRAG_POINT,
+          editAction : drop ? EditActions.DRAG_POINT_FINISH : EditActions.DRAG_POINT,
         };
         this.updateSubject.next(update);
         editSubject.next({
