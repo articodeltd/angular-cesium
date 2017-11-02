@@ -1,4 +1,4 @@
-## NEXT
+## 0.0.32
 ### Features
 * Polyline edtior supports drag shape events.
 * Add ability to change width to Hippodrome editor
