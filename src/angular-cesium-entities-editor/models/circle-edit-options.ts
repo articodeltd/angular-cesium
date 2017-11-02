@@ -1,10 +1,10 @@
 import { EditorEditOptions } from './editor-edit-options';
 
 export interface CircleProps {
-  material: any;
+  material?: any;
   outline: boolean;
-  outlineWidth: number;
-  outlineColor: any
+  outlineWidth?: number;
+  outlineColor?: any
 }
 
 export interface CircleEditOptions extends EditorEditOptions {

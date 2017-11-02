@@ -64,14 +64,30 @@ export class EditablePolyline extends AcEntity {
     this.doneCreation = true;
   }
 
-  setPointsManually(points: EditPoint[]) {
+  setManually(points: {
+    position: Cartesian3,
+    pointProp?: PointProps
+  }[] | Cartesian3[], polylineProps?: PolylineProps) {
     if (!this.doneCreation) {
       throw new Error('Update manually only in edit mode, after polyline is created')
     }
     this.positions.forEach(p => this.pointsLayer.remove(p.getId()));
-    this.positions = points;
 
-    this.updatePointsLayer(true, ...points);
+    const newPoints: EditPoint[] = [];
+    for (let i = 0; i < points.length; i++) {
+      const pointOrCartesian: any = points[i];
+      let newPoint = null;
+      if (pointOrCartesian.pointProps) {
+        newPoint = new EditPoint(this.id, pointOrCartesian.position, pointOrCartesian.pointProps);
+      } else {
+        newPoint = new EditPoint(this.id, pointOrCartesian, this._pointProps);
+      }
+      newPoints.push(newPoint);
+    }
+    this.positions = newPoints;
+    this.polylineProps = polylineProps ? polylineProps : this.polylineProps;
+
+    this.updatePointsLayer(true, ...this.positions);
     this.addAllVirtualEditPoints();
   }
 
