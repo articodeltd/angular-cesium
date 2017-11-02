@@ -123,13 +123,6 @@ export class HippodromeEditorComponent implements OnDestroy {
 				}
 				break;
 			}
-			case EditActions.SET_MANUALLY: {
-				const hippodrome = this.hippodromesManager.get(update.id);
-				if (hippodrome) {
-					hippodrome.setPointsManually(update.points);
-				}
-				break;
-			}
 			case EditActions.DRAG_SHAPE: {
 				const hippodrome = this.hippodromesManager.get(update.id);
 				if (hippodrome && hippodrome.enableEdit) {

@@ -85,7 +85,7 @@ export class HippodromeEditorLayerComponent implements OnInit {
 			const firstPointPos = hippodromePoints[0].getPosition();
 			const newSecondPos = Cesium.Cartesian3.fromDegrees(20, 20);
 			const newWidth = 250000.0;
-			this.editing$.setHippodromeManually(firstPointPos, newSecondPos, newWidth);
+			this.editing$.setManually(firstPointPos, newSecondPos, newWidth);
 		}
 	}
 }

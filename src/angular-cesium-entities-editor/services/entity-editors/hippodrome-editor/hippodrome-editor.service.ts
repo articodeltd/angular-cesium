@@ -324,11 +324,11 @@ export class HippodromeEditorService {
 				editAction : EditActions.DISABLE,
 			});
 		};
-		observableToExtend.setHippodromeManually = (firstPosition: Cartesian3,
-																								secondPosition: Cartesian3,
-																								widthMeters: number,
-																								firstPointProp?: PointProps,
-																								secondPointProp?: PointProps) => {
+		observableToExtend.setManually = (firstPosition: Cartesian3,
+                                      secondPosition: Cartesian3,
+                                      widthMeters: number,
+                                      firstPointProp?: PointProps,
+                                      secondPointProp?: PointProps) => {
 			const firstP = new EditPoint(id, firstPosition, firstPointProp ? firstPointProp : DEFAULT_HIPPODROME_OPTIONS.pointProps);
 			const secP = new EditPoint(id, secondPosition, secondPointProp ? secondPointProp : DEFAULT_HIPPODROME_OPTIONS.pointProps);
 			

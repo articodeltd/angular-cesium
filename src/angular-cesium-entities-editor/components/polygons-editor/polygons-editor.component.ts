@@ -162,13 +162,6 @@ export class PolygonsEditorComponent implements OnDestroy {
 				}
 				break;
 			}
-			case EditActions.SET_MANUALLY: {
-				const polygon = this.polygonsManager.get(update.id);
-				if (polygon) {
-					polygon.setPointsManually(update.points);
-				}
-				break;
-			}
 			default: {
 				return;
 			}
