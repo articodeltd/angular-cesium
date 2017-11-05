@@ -1,3 +1,7 @@
+## 0.0.33
+## Fixes
+* fix missing Cartesian3 typings  
+
 ## 0.0.32
 ### Features
 * Polyline edtior supports drag shape events.

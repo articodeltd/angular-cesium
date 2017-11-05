@@ -3,6 +3,7 @@ import { EditorObservable } from './editor-observable';
 import { PolygonEditUpdate } from './polygon-edit-update';
 import { PointProps } from './polyline-edit-options';
 import { PolygonProps } from './polygon-edit-options';
+import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 
 
 export class PolygonEditorObservable extends EditorObservable<PolygonEditUpdate> {

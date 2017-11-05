@@ -51,7 +51,6 @@ export class LayerOrderComponent implements OnInit {
 		})
 	});
 	
-	Cesium = Cesium;
 	show = true;
 	firstZIndex = 0;
 	secondZIndex = 1;
