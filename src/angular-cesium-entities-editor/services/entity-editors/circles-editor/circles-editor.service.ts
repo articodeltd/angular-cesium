@@ -168,7 +168,9 @@ export class CirclesEditorService {
           ...update,
           ...this.getCircleProperties(id),
         });
-        this.observablesMap.get(id).forEach(registration => registration.dispose());
+        if (this.observablesMap.has(id)) {
+          this.observablesMap.get(id).forEach(registration => registration.dispose());
+        }
         this.observablesMap.delete(id);
         this.editCircle(id, priority, clientEditSubject, circleOptions, editorObservable);
         finishedCreate = true;

@@ -9,5 +9,5 @@ export interface PolygonEditUpdate extends BasicEditUpdate {
   draggedPosition?: Cartesian3;
   points?: EditPoint[];
   updatedPoint?: EditPoint;
-  polygonOptions?: PolygonEditOptions
+  polygonOptions?: PolygonEditOptions;
 }

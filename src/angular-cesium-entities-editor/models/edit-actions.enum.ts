@@ -13,4 +13,5 @@ export enum EditActions {
 	DISABLE,
 	ENABLE,
 	DISPOSE,
+	SET_EDIT_LABELS_RENDER_CALLBACK,
 }

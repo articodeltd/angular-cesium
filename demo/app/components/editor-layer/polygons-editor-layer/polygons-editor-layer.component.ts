@@ -5,9 +5,9 @@ import { PolygonEditorObservable } from '../../../../../src/angular-cesium-entit
 import { PolygonsEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service';
 
 @Component({
-  selector : 'polygons-editor-layer',
-  templateUrl : 'polygons-editor-layer.component.html',
-  styleUrls : ['./polygons-editor-layer.component.css']
+  selector: 'polygons-editor-layer',
+  templateUrl: 'polygons-editor-layer.component.html',
+  styleUrls: ['./polygons-editor-layer.component.css']
 })
 export class PolygonsEditorLayerComponent implements OnInit {
   editing$: PolygonEditorObservable;
@@ -23,7 +23,7 @@ export class PolygonsEditorLayerComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.polygonsEditor.create({allowDrag : false});
+    this.editing$ = this.polygonsEditor.create({ allowDrag: false });
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
       if (editUpdate.editAction === EditActions.ADD_POINT) {
         console.log(editUpdate.points); // point = position with id
@@ -50,6 +50,15 @@ export class PolygonsEditorLayerComponent implements OnInit {
       Cesium.Cartesian3.fromDegrees(45, 40),
       Cesium.Cartesian3.fromDegrees(30, 20)];
     this.editing$ = this.polygonsEditor.edit(initialPos);
+    this.editing$.setLabelsRenderFn((update: PolygonEditUpdate) => {
+      let counter = 0;
+      return update.positions.map(position => ({
+        text: `Point ${counter++}`,
+        scale: 0.6,
+        eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
+        fillColor: Cesium.Color.BLUE,
+      }))
+    });
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
       if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
         console.log(editUpdate.points); // point = position with id

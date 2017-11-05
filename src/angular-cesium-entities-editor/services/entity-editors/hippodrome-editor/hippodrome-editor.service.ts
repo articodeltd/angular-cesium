@@ -161,7 +161,9 @@ export class HippodromeEditorService {
 				};
 				this.updateSubject.next(changeMode);
 				clientEditSubject.next(changeMode);
-				this.observablesMap.get(id).forEach(registration => registration.dispose());
+        if (this.observablesMap.has(id)) {
+          this.observablesMap.get(id).forEach(registration => registration.dispose());
+        }
 				this.observablesMap.delete(id);
 				this.editHippodrome(id, eventPriority, clientEditSubject, hippodromeOptions, editorObservable);
 				finishedCreate = true;

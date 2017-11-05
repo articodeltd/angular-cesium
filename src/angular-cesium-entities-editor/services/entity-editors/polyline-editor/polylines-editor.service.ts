@@ -19,20 +19,20 @@ import { PolylineEditorObservable } from '../../../models/polyline-editor-observ
 import { EditPolyline } from '../../../models';
 
 export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
-  addPointEvent : CesiumEvent.LEFT_CLICK,
-  addLastPointEvent : CesiumEvent.LEFT_DOUBLE_CLICK,
-  removePointEvent : CesiumEvent.RIGHT_CLICK,
-  dragPointEvent : CesiumEvent.LEFT_CLICK_DRAG,
-  dragShapeEvent : CesiumEvent.LEFT_CLICK_DRAG,
-  allowDrag : true,
-  pointProps : {
-    color : Cesium.Color.WHITE,
-    outlineColor : Cesium.Color.BLACK,
-    outlineWidth : 1,
+  addPointEvent: CesiumEvent.LEFT_CLICK,
+  addLastPointEvent: CesiumEvent.LEFT_DOUBLE_CLICK,
+  removePointEvent: CesiumEvent.RIGHT_CLICK,
+  dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
+  dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
+  allowDrag: true,
+  pointProps: {
+    color: Cesium.Color.WHITE,
+    outlineColor: Cesium.Color.BLACK,
+    outlineWidth: 1,
   },
-  polylineProps : {
-    material : Cesium.Color.BLACK,
-    width : 4,
+  polylineProps: {
+    material: Cesium.Color.BLACK,
+    width: 4,
   },
 };
 
@@ -62,7 +62,7 @@ export class PolylinesEditorService {
   private cameraService: CameraService;
   private polylinesManager: PolylinesManagerService;
   private observablesMap = new Map<string, DisposableObservable<any>[]>();
-  
+
   init(mapEventsManager: MapEventsManagerService,
        coordinateConverter: CoordinateConverter,
        cameraService: CameraService,
@@ -72,66 +72,66 @@ export class PolylinesEditorService {
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
     this.polylinesManager = polylinesManager;
-    
+
   }
-  
+
   onUpdate(): Observable<PolylineEditUpdate> {
     return this.updatePublisher;
   }
-  
+
   create(options = DEFAULT_POLYLINE_OPTIONS, eventPriority = 100): PolylineEditorObservable {
     const positions: Cartesian3[] = [];
     const id = this.generteId();
     const polylineOptions = this.setOptions(options);
-    
+
     const clientEditSubject = new BehaviorSubject<PolylineEditUpdate>({
       id,
-      editAction : null,
-      editMode : EditModes.CREATE
+      editAction: null,
+      editMode: EditModes.CREATE
     });
     let finishedCreate = false;
-    
+
     this.updateSubject.next({
       id,
       positions,
-      editMode : EditModes.CREATE,
-      editAction : EditActions.INIT,
-      polylineOptions : polylineOptions,
+      editMode: EditModes.CREATE,
+      editAction: EditActions.INIT,
+      polylineOptions: polylineOptions,
     });
-    
+
     const mouseMoveRegistration = this.mapEventsManager.register({
-      event : CesiumEvent.MOUSE_MOVE,
-      pick : PickOptions.NO_PICK,
-      priority : eventPriority,
+      event: CesiumEvent.MOUSE_MOVE,
+      pick: PickOptions.NO_PICK,
+      priority: eventPriority,
     });
     const addPointRegistration = this.mapEventsManager.register({
-      event : polylineOptions.addPointEvent,
-      pick : PickOptions.NO_PICK,
-      priority : eventPriority,
+      event: polylineOptions.addPointEvent,
+      pick: PickOptions.NO_PICK,
+      priority: eventPriority,
     });
     const addLastPointRegistration = this.mapEventsManager.register({
-      event : polylineOptions.addLastPointEvent,
-      pick : PickOptions.NO_PICK,
-      priority : eventPriority,
+      event: polylineOptions.addLastPointEvent,
+      pick: PickOptions.NO_PICK,
+      priority: eventPriority,
     });
-    
+
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
-    
-    mouseMoveRegistration.subscribe(({movement : {endPosition}}) => {
+
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.coordinateConverter.screenToCartesian3(endPosition);
       if (position) {
         this.updateSubject.next({
           id,
-          positions : this.getPositions(id),
-          editMode : EditModes.CREATE,
-          updatedPosition : position,
-          editAction : EditActions.MOUSE_MOVE,
+          positions: this.getPositions(id),
+          editMode: EditModes.CREATE,
+          updatedPosition: position,
+          editAction: EditActions.MOUSE_MOVE,
         });
       }
     });
-    
-    addPointRegistration.subscribe(({movement : {endPosition}}) => {
+
+    addPointRegistration.subscribe(({ movement: { endPosition } }) => {
       if (finishedCreate) {
         return;
       }
@@ -143,24 +143,24 @@ export class PolylinesEditorService {
       if (allPositions.find((cartesian) => cartesian.equals(position))) {
         return;
       }
-      
+
       const updateValue = {
         id,
-        positions : allPositions,
-        editMode : EditModes.CREATE,
-        updatedPosition : position,
-        editAction : EditActions.ADD_POINT,
+        positions: allPositions,
+        editMode: EditModes.CREATE,
+        updatedPosition: position,
+        editAction: EditActions.ADD_POINT,
       };
       this.updateSubject.next(updateValue);
       clientEditSubject.next({
         ...updateValue,
-        positions : this.getPositions(id),
-        points : this.getPoints(id),
+        positions: this.getPositions(id),
+        points: this.getPoints(id),
       });
     });
-    
-    
-    addLastPointRegistration.subscribe(({movement : {endPosition}}) => {
+
+
+    addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.coordinateConverter.screenToCartesian3(endPosition);
       if (!position) {
         return;
@@ -168,34 +168,36 @@ export class PolylinesEditorService {
       // position already added by addPointRegistration
       const updateValue = {
         id,
-        positions : this.getPositions(id),
-        editMode : EditModes.CREATE,
-        updatedPosition : position,
-        editAction : EditActions.ADD_LAST_POINT,
+        positions: this.getPositions(id),
+        editMode: EditModes.CREATE,
+        updatedPosition: position,
+        editAction: EditActions.ADD_LAST_POINT,
       };
       this.updateSubject.next(updateValue);
       clientEditSubject.next({
         ...updateValue,
-        positions : this.getPositions(id),
-        points : this.getPoints(id),
+        positions: this.getPositions(id),
+        points: this.getPoints(id),
       });
-      
+
       const changeMode = {
         id,
-        editMode : EditModes.CREATE,
-        editAction : EditActions.CHANGE_TO_EDIT,
+        editMode: EditModes.CREATE,
+        editAction: EditActions.CHANGE_TO_EDIT,
       };
       this.updateSubject.next(changeMode);
       clientEditSubject.next(changeMode);
-      this.observablesMap.get(id).forEach(registration => registration.dispose());
+      if (this.observablesMap.has(id)) {
+        this.observablesMap.get(id).forEach(registration => registration.dispose());
+      }
       this.observablesMap.delete(id);
       this.editPolyline(id, positions, eventPriority, clientEditSubject, polylineOptions, editorObservable);
       finishedCreate = true;
     });
-    
+
     return editorObservable;
   }
-  
+
   edit(positions: Cartesian3[], options = DEFAULT_POLYLINE_OPTIONS, priority = 100): PolylineEditorObservable {
     if (positions.length < 2) {
       throw new Error('Polylines editor error edit(): polyline should have at least 2 positions');
@@ -204,21 +206,21 @@ export class PolylinesEditorService {
     const polylineOptions = this.setOptions(options);
     const editSubject = new BehaviorSubject<PolylineEditUpdate>({
       id,
-      editAction : null,
-      editMode : EditModes.EDIT
+      editAction: null,
+      editMode: EditModes.EDIT
     });
     const update = {
       id,
-      positions : positions,
-      editMode : EditModes.EDIT,
-      editAction : EditActions.INIT,
-      polylineOptions : polylineOptions,
+      positions: positions,
+      editMode: EditModes.EDIT,
+      editAction: EditActions.INIT,
+      polylineOptions: polylineOptions,
     };
     this.updateSubject.next(update);
     editSubject.next({
       ...update,
-      positions : this.getPositions(id),
-      points : this.getPoints(id),
+      positions: this.getPositions(id),
+      points: this.getPoints(id),
     });
     return this.editPolyline(
       id,
@@ -228,94 +230,94 @@ export class PolylinesEditorService {
       polylineOptions
     )
   }
-  
+
   private editPolyline(id: string,
                        positions: Cartesian3[],
                        priority,
                        editSubject: Subject<PolylineEditUpdate>,
                        options: PolylineEditOptions,
                        editObservable?: PolylineEditorObservable) {
-    
+
     const pointDragRegistration = this.mapEventsManager.register({
-      event : options.dragPointEvent,
-      entityType : EditPoint,
-      pick : PickOptions.PICK_FIRST,
+      event: options.dragPointEvent,
+      entityType: EditPoint,
+      pick: PickOptions.PICK_FIRST,
       priority,
     });
-    
+
     const pointRemoveRegistration = this.mapEventsManager.register({
-      event : options.removePointEvent,
-      entityType : EditPoint,
-      pick : PickOptions.PICK_FIRST,
+      event: options.removePointEvent,
+      entityType: EditPoint,
+      pick: PickOptions.PICK_FIRST,
       priority,
     });
-    
-    
+
+
     let shapeDragRegistration;
     if (options.allowDrag) {
       shapeDragRegistration = this.mapEventsManager.register({
-        event : options.dragShapeEvent,
-        entityType : EditPolyline,
-        pick : PickOptions.PICK_FIRST,
+        event: options.dragShapeEvent,
+        entityType: EditPolyline,
+        pick: PickOptions.PICK_FIRST,
         priority,
       });
     }
-    
-    
+
+
     if (shapeDragRegistration) {
       shapeDragRegistration
         .do(x => console.log(x))
-        .do(({movement : {drop}}) => this.cameraService.enableInputs(drop))
-        .subscribe(({movement : {startPosition, endPosition, drop}, entities}) => {
+        .do(({ movement: { drop } }) => this.cameraService.enableInputs(drop))
+        .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
           if (!endDragPosition) {
             return;
           }
-          
+
           const update = {
             id,
-            positions : this.getPositions(id),
-            editMode : EditModes.EDIT,
-            updatedPosition : endDragPosition,
-            draggedPosition : startDragPosition,
-            editAction : drop ? EditActions.DRAG_SHAPE_FINISH : EditActions.DRAG_SHAPE,
+            positions: this.getPositions(id),
+            editMode: EditModes.EDIT,
+            updatedPosition: endDragPosition,
+            draggedPosition: startDragPosition,
+            editAction: drop ? EditActions.DRAG_SHAPE_FINISH : EditActions.DRAG_SHAPE,
           };
           this.updateSubject.next(update);
           editSubject.next({
             ...update,
-            positions : this.getPositions(id),
-            points : this.getPoints(id),
+            positions: this.getPositions(id),
+            points: this.getPoints(id),
           });
         });
     }
-    
+
     pointDragRegistration
-      .do(({movement : {drop}}) => this.cameraService.enableInputs(drop))
-      .subscribe(({movement : {endPosition, drop}, entities}) => {
+      .do(({ movement: { drop } }) => this.cameraService.enableInputs(drop))
+      .subscribe(({ movement: { endPosition, drop }, entities }) => {
         const position = this.coordinateConverter.screenToCartesian3(endPosition);
         if (!position) {
           return;
         }
         const point: EditPoint = entities[0];
-        
+
         const update = {
           id,
-          positions : this.getPositions(id),
-          editMode : EditModes.EDIT,
-          updatedPosition : position,
-          updatedPoint : point,
-          editAction : drop ? EditActions.DRAG_POINT_FINISH : EditActions.DRAG_POINT,
+          positions: this.getPositions(id),
+          editMode: EditModes.EDIT,
+          updatedPosition: position,
+          updatedPoint: point,
+          editAction: drop ? EditActions.DRAG_POINT_FINISH : EditActions.DRAG_POINT,
         };
         this.updateSubject.next(update);
         editSubject.next({
           ...update,
-          positions : this.getPositions(id),
-          points : this.getPoints(id),
+          positions: this.getPositions(id),
+          points: this.getPoints(id),
         });
       });
-    
-    pointRemoveRegistration.subscribe(({entities}) => {
+
+    pointRemoveRegistration.subscribe(({ entities }) => {
       const point: EditPoint = entities[0];
       const allPositions = [...this.getPositions(id)];
       if (allPositions.length < 3) {
@@ -325,22 +327,22 @@ export class PolylinesEditorService {
       if (index < 0) {
         return;
       }
-      
+
       const update = {
         id,
-        positions : allPositions,
-        editMode : EditModes.EDIT,
-        updatedPoint : point,
-        editAction : EditActions.REMOVE_POINT,
+        positions: allPositions,
+        editMode: EditModes.EDIT,
+        updatedPoint: point,
+        editAction: EditActions.REMOVE_POINT,
       };
       this.updateSubject.next(update);
       editSubject.next({
         ...update,
-        positions : this.getPositions(id),
-        points : this.getPoints(id),
+        positions: this.getPositions(id),
+        points: this.getPoints(id),
       });
     });
-    
+
     const observables = [pointDragRegistration, pointRemoveRegistration];
     if (shapeDragRegistration) {
       observables.push(shapeDragRegistration);
@@ -348,7 +350,7 @@ export class PolylinesEditorService {
     this.observablesMap.set(id, observables);
     return this.createEditorObservable(editSubject, id);
   }
-  
+
   private setOptions(options: PolylineEditOptions) {
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYLINE_OPTIONS));
     const polylineOptions = Object.assign(defaultClone, options);
@@ -357,8 +359,8 @@ export class PolylinesEditorService {
       DEFAULT_POLYLINE_OPTIONS.polylineProps, options.polylineProps);
     return polylineOptions;
   }
-  
-  
+
+
   private createEditorObservable(observableToExtend: any, id: string): PolylineEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
@@ -368,25 +370,25 @@ export class PolylinesEditorService {
       this.observablesMap.delete(id);
       this.updateSubject.next({
         id,
-        positions : this.getPositions(id),
-        editMode : EditModes.CREATE_OR_EDIT,
-        editAction : EditActions.DISPOSE,
+        positions: this.getPositions(id),
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.DISPOSE,
       });
     };
     observableToExtend.enable = () => {
       this.updateSubject.next({
         id,
-        positions : this.getPositions(id),
-        editMode : EditModes.EDIT,
-        editAction : EditActions.ENABLE,
+        positions: this.getPositions(id),
+        editMode: EditModes.EDIT,
+        editAction: EditActions.ENABLE,
       });
     };
     observableToExtend.disable = () => {
       this.updateSubject.next({
         id,
-        positions : this.getPositions(id),
-        editMode : EditModes.EDIT,
-        editAction : EditActions.DISABLE,
+        positions: this.getPositions(id),
+        editMode: EditModes.EDIT,
+        editAction: EditActions.DISABLE,
       });
     };
     observableToExtend.setManually = (points: {
@@ -397,21 +399,21 @@ export class PolylinesEditorService {
       polyline.setManually(points, polylineProps);
     };
     observableToExtend.getCurrentPoints = () => this.getPoints(id);
-    
+
     observableToExtend.polylineEditValue = () => observableToExtend.getValue();
-    
+
     return observableToExtend as PolylineEditorObservable;
   }
-  
+
   private generteId(): string {
     return 'edit-polyline-' + this.counter++;
   }
-  
+
   private getPositions(id) {
     const polyline = this.polylinesManager.get(id);
     return polyline.getRealPositions()
   }
-  
+
   private getPoints(id) {
     const polyline = this.polylinesManager.get(id);
     return polyline.getRealPoints();
