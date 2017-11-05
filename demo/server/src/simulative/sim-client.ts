@@ -1,7 +1,6 @@
-import Timer = NodeJS.Timer;
 
 export class SimClient {
-  public intervalId: Timer;
+  public intervalId: number;
   public simData: any;
   
   

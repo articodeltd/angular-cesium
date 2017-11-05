@@ -79,7 +79,11 @@ export class PolygonsEditorLayerComponent implements OnInit {
       const polygonPoints = this.editing$.getCurrentPoints();
       const firstPoint = polygonPoints[0];
       firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
-      this.editing$.setManually(polygonPoints);
+      const newUpdatedPoints = polygonPoints.map(p => ({
+        position : p.getPosition(),
+        pointProps : p.props,
+      }));
+      this.editing$.setManually(newUpdatedPoints);
 
 
       // or add new point
