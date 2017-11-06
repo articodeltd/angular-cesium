@@ -1,3 +1,6 @@
+import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+import { Cartesian2 } from '../../angular-cesium/models/cartesian2';
+
 export interface LabelProps {
   text: string;
   show?: boolean;
