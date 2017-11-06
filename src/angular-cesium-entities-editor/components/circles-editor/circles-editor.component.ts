@@ -11,6 +11,8 @@ import { EditPoint } from '../../models/edit-point';
 import { CirclesManagerService } from '../../services/entity-editors/circles-editor/circles-manager.service';
 import { CirclesEditorService } from '../../services/entity-editors/circles-editor/circles-editor.service';
 import { CircleEditUpdate } from '../../models/circle-edit-update';
+import { LabelProps } from '../../models/label-props';
+import { EditableCircle } from '../../models/editable-circle';
 
 @Component({
   selector : 'circles-editor',
@@ -19,6 +21,7 @@ import { CircleEditUpdate } from '../../models/circle-edit-update';
 })
 export class CirclesEditorComponent implements OnDestroy {
 
+  private editLabelsRenderFn: (update: CircleEditUpdate, labels: LabelProps[]) => LabelProps[];
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editCircles$ = new Subject<AcNotification>();
@@ -48,6 +51,35 @@ export class CirclesEditorComponent implements OnDestroy {
     });
   }
 
+  getLabelId(element, index: number): string {
+    return index.toString();
+  }
+
+  renderEditLabels(circle: EditableCircle, update: CircleEditUpdate, setLabels?: Function) {
+    update.center = circle.getCenter();
+    update.radiusPoint = circle.getRadiusPoint();
+    update.radius = circle.getRadius();
+
+    if (setLabels) {
+      setLabels(update, circle.labels);
+      this.editCirclesLayer.update(circle, circle.getId());
+      return;
+    }
+
+    if (!this.editLabelsRenderFn) {
+      return;
+    }
+
+    circle.labels = this.editLabelsRenderFn(update, circle.labels);
+    this.editCirclesLayer.update(circle, circle.getId());
+
+  }
+
+  removeEditLabels(circle: EditableCircle) {
+    circle.labels = [];
+    this.editCirclesLayer.update(circle, circle.getId());
+  }
+
   handleCreateUpdates(update: CircleEditUpdate) {
     switch (update.editAction) {
       case EditActions.INIT: {
@@ -64,6 +96,7 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.get(update.id);
         if (update.radiusPoint) {
           circle.movePoint(update.radiusPoint);
+          this.renderEditLabels(circle, update);
         }
         break;
       }
@@ -71,6 +104,7 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.get(update.id);
         if (update.center) {
           circle.addPoint(update.center);
+          this.renderEditLabels(circle, update);
         }
         break;
       }
@@ -78,11 +112,25 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.get(update.id);
         if (update.radiusPoint) {
           circle.addLastPoint(update.radiusPoint);
+          this.renderEditLabels(circle, update);
         }
         break;
       }
       case EditActions.DISPOSE: {
+        const circle = this.circlesManager.get(update.id);
+        this.removeEditLabels(circle);
         this.circlesManager.dispose(update.id);
+        break;
+      }
+      case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {
+        const circle = this.circlesManager.get(update.id);
+        this.editLabelsRenderFn = update.labelsRenderFn;
+        this.renderEditLabels(circle, update);
+        break;
+      }
+      case EditActions.UPDATE_EDIT_LABELS: {
+        const circle = this.circlesManager.get(update.id);
+        this.renderEditLabels(circle, update, update.updateLabelsFn);
         break;
       }
       default: {
@@ -109,6 +157,7 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.get(update.id);
         if (circle && circle.enableEdit) {
           circle.movePoint(update.endDragPosition);
+          this.renderEditLabels(circle, update);
         }
         break;
       }
@@ -123,6 +172,7 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.get(update.id);
         if (circle && circle.enableEdit) {
           circle.endMovePolygon();
+          this.renderEditLabels(circle, update);
         }
         break;
       }
@@ -130,6 +180,7 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.get(update.id);
         if (circle) {
           circle.enableEdit = false;
+          this.renderEditLabels(circle, update);
         }
         break;
       }
@@ -137,6 +188,7 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.get(update.id);
         if (circle) {
           circle.enableEdit = true;
+          this.renderEditLabels(circle, update);
         }
         break;
       }

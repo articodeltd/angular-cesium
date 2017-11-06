@@ -25,9 +25,11 @@ export class PolylinesEditorComponent implements OnDestroy {
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editPolylines$ = new Subject<AcNotification>();
+  public polylineLabels$ = new Subject<AcNotification>();
 
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
   @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
+  @ViewChild('polylineLabelsLayer') private polylineLabelsLayer: AcLayerComponent;
 
   constructor(private polylinesEditor: PolylinesEditorService,
               private coordinateConverter: CoordinateConverter,
@@ -59,7 +61,7 @@ export class PolylinesEditorComponent implements OnDestroy {
 
     if (setLabels) {
       setLabels(update, polyline.labels);
-      this.editPolylinesLayer.update(polyline, polyline.getId());
+      this.polylineLabelsLayer.update(polyline, polyline.getId());
       return;
     }
 
@@ -68,13 +70,13 @@ export class PolylinesEditorComponent implements OnDestroy {
     }
 
     polyline.labels = this.editLabelsRenderFn(update, polyline.labels);
-    this.editPolylinesLayer.update(polyline, polyline.getId());
+    this.polylineLabelsLayer.update(polyline, polyline.getId());
 
   }
 
   removeEditLabels(polyline: EditablePolyline) {
     polyline.labels = [];
-    this.editPolylinesLayer.update(polyline, polyline.getId());
+    this.polylineLabelsLayer.remove(polyline.getId());
   }
 
   handleCreateUpdates(update: PolylineEditUpdate) {
@@ -116,17 +118,18 @@ export class PolylinesEditorComponent implements OnDestroy {
         const polyline = this.polylinesManager.get(update.id);
         polyline.dispose();
         this.removeEditLabels(polyline);
+        this.editLabelsRenderFn = undefined;
         break;
       }
       case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {
-        const polygon = this.polylinesManager.get(update.id);
+        const polyline = this.polylinesManager.get(update.id);
         this.editLabelsRenderFn = update.labelsRenderFn;
-        this.renderEditLabels(polygon, update);
+        this.renderEditLabels(polyline, update);
         break;
       }
       case EditActions.UPDATE_EDIT_LABELS: {
-        const polygon = this.polylinesManager.get(update.id);
-        this.renderEditLabels(polygon, update, update.updateLabelsFn);
+        const polyline = this.polylinesManager.get(update.id);
+        this.renderEditLabels(polyline, update, update.updateLabelsFn);
         break;
       }
       default: {

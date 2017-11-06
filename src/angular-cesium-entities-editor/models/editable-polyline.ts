@@ -299,6 +299,10 @@ export class EditablePolyline extends AcEntity {
     point.forEach(p => this.pointsLayer.update(p, p.getId()));
   }
 
+  update() {
+    this.updatePointsLayer();
+  }
+
   dispose() {
     this.positions.forEach(editPoint => {
       this.pointsLayer.remove(editPoint.getId());

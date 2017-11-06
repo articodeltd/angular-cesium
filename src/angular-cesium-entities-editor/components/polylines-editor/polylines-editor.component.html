@@ -5,8 +5,21 @@
         material: polyline.props.material,
     }">
     </ac-polyline-primitive-desc>
+</ac-layer>
 
-    <ac-array-desc acFor="let label of polyline.labels" [idGetter]="getLabelId">
+<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
+    <ac-point-desc props="{
+        position: point.getPosition(),
+        pixelSize: getPointSize(point),
+        color: point.props.color,
+        outlineColor: point.props.outlineColor,
+        outlineWidth: point.props.outlineWidth,
+    }">
+    </ac-point-desc>
+</ac-layer>
+
+<ac-layer #polylineLabelsLayer acFor="let polylineLabels of polylineLabels$" [context]="this" [zIndex]="3">
+    <ac-array-desc acFor="let label of polylineLabels.labels" [idGetter]="getLabelId">
         <ac-label-primitive-desc props="{
             position: label.position,
             backgroundColor: label.backgroundColor,
@@ -34,14 +47,5 @@
     </ac-array-desc>
 </ac-layer>
 
-<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
-    <ac-point-desc props="{
-        position: point.getPosition(),
-        pixelSize: getPointSize(point),
-        color: point.props.color,
-        outlineColor: point.props.outlineColor,
-        outlineWidth: point.props.outlineWidth,
-    }">
-    </ac-point-desc>
-</ac-layer>
+
 

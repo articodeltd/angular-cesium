@@ -125,6 +125,7 @@ export class PolygonsEditorComponent implements OnDestroy {
         const polygon = this.polygonsManager.get(update.id);
         polygon.dispose();
         this.removeEditLabels(polygon);
+        this.editLabelsRenderFn = undefined;
         break;
       }
       case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {

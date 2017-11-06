@@ -3,6 +3,7 @@ import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-ed
 import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
 import { PolylinesEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/polyline-editor/polylines-editor.service';
 import { PolylineEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/polyline-editor-observable';
+import { LabelProps } from '../../../../../src/angular-cesium-entities-editor/models/label-props';
 
 @Component({
   selector: 'polyline-editor-layer',
@@ -54,6 +55,33 @@ export class PolylineEditorLayerComponent implements OnInit {
       polylineProps: {
         width: 3,
       },
+    });
+    this.editing$.setLabelsRenderFn((update: PolygonEditUpdate) => {
+      let counter = 0;
+      const newLabels: LabelProps[] = [];
+      update.positions.forEach(position => newLabels.push({
+        text: `Point ${counter++}`,
+        scale: 0.6,
+        eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
+        fillColor: Cesium.Color.BLUE,
+      }));
+      return newLabels;
+    });
+    setTimeout(() =>
+      this.editing$.updateLabels((update: PolygonEditUpdate, labels) => {
+        return labels.map(label => {
+          label.text += '*';
+          label.fillColor = Cesium.Color.RED;
+          label.showBackground = true;
+          return label;
+        });
+      }), 2000);
+    this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
+      if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
+        console.log(editUpdate.points); // point = position with id
+        console.log(editUpdate.positions); // or just position
+        console.log(editUpdate.updatedPosition); // added position
+      }
     });
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 

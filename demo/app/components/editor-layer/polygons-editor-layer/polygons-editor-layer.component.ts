@@ -3,6 +3,7 @@ import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-ed
 import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
 import { PolygonEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/polygon-editor-observable';
 import { PolygonsEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service';
+import { LabelProps } from '../../../../../src/angular-cesium-entities-editor/models/label-props';
 
 @Component({
   selector: 'polygons-editor-layer',
@@ -52,12 +53,14 @@ export class PolygonsEditorLayerComponent implements OnInit {
     this.editing$ = this.polygonsEditor.edit(initialPos);
     this.editing$.setLabelsRenderFn((update: PolygonEditUpdate) => {
       let counter = 0;
-      return update.positions.map(position => ({
+      const newLabels: LabelProps[] = [];
+      update.positions.forEach(position => newLabels.push({
         text: `Point ${counter++}`,
         scale: 0.6,
         eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
         fillColor: Cesium.Color.BLUE,
-      }))
+      }));
+      return newLabels;
     });
     setTimeout(() =>
     this.editing$.updateLabels((update: PolygonEditUpdate, labels) => {
