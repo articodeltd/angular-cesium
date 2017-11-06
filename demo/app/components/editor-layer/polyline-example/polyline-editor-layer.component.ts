@@ -6,29 +6,29 @@ import { PolylineEditorObservable } from '../../../../../src/angular-cesium-enti
 import { LabelProps } from '../../../../../src/angular-cesium-entities-editor/models/label-props';
 
 @Component({
-  selector: 'polyline-editor-layer',
-  templateUrl: 'polyline-editor-layer.component.html',
-  styleUrls: ['./polyline-editor-layer.component.css']
+  selector : 'polyline-editor-layer',
+  templateUrl : 'polyline-editor-layer.component.html',
+  styleUrls : ['./polyline-editor-layer.component.css']
 })
 export class PolylineEditorLayerComponent implements OnInit {
-
+  
   editing$: PolylineEditorObservable;
   enableEditing = true;
-
+  
   constructor(private polylineEditor: PolylinesEditorService) {
   }
-
+  
   ngOnInit(): void {
     // this.startEdit();
   }
-
+  
   startEdit() {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.polylineEditor.create({allowDrag: true});
+    this.editing$ = this.polylineEditor.create({allowDrag : true});
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
-
+      
       if (editUpdate.editAction === EditActions.ADD_POINT) {
         console.log(editUpdate.points); // point = position with id
         console.log(editUpdate.positions); // or just position
@@ -36,13 +36,13 @@ export class PolylineEditorLayerComponent implements OnInit {
       }
     });
   }
-
+  
   stopEdit() {
     this.editing$.dispose();
     this.editing$ = undefined;
   }
-
-
+  
+  
   editFromExisting() {
     if (this.editing$) {
       this.stopEdit();
@@ -52,8 +52,8 @@ export class PolylineEditorLayerComponent implements OnInit {
       Cesium.Cartesian3.fromDegrees(45, 40),
       Cesium.Cartesian3.fromDegrees(30, 20)];
     this.editing$ = this.polylineEditor.edit(initialPos, {
-      polylineProps: {
-        width: 3,
+      polylineProps : {
+        width : 3,
       },
     });
     this.editing$.setLabelsRenderFn((update: PolygonEditUpdate) => {
@@ -84,7 +84,7 @@ export class PolylineEditorLayerComponent implements OnInit {
       }
     });
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
-
+      
       if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
         console.log(editUpdate.points); // point = position with id
         console.log(editUpdate.positions); // or just position
@@ -92,7 +92,7 @@ export class PolylineEditorLayerComponent implements OnInit {
       }
     });
   }
-
+  
   toggleEnableEditing() {
     // Only effects if in edit mode (all polygon points were created)
     if (!this.editing$) {
@@ -105,7 +105,7 @@ export class PolylineEditorLayerComponent implements OnInit {
       this.editing$.disable();
     }
   }
-
+  
   updatePointManually() {
     if (this.editing$) {
       // Only effects if in edit mode (all polygon points were created)
@@ -113,9 +113,12 @@ export class PolylineEditorLayerComponent implements OnInit {
       const polylinePoints = this.editing$.getCurrentPoints();
       const firstPoint = polylinePoints[0];
       firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
-      this.editing$.setManually(polylinePoints);
-  
-  
+      const newUpdatedPoints = polylinePoints.map(p => ({
+        position : p.getPosition(),
+        pointProps : p.props,
+      }));
+      this.editing$.setManually(newUpdatedPoints);
+      
       // or add new point
       const polylinePositions = this.editing$.getCurrentPoints().map(p => p.getPosition());
       const newPosition = Cesium.Cartesian3.fromDegrees(30, 24);
