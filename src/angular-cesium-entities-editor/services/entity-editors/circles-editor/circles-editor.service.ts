@@ -372,6 +372,24 @@ export class CirclesEditorService {
       const circle = this.circlesManager.get(id);
       circle.setManually(center, radiusPoint, centerPointProp, radiusPointProp, circleProp);
     };
+
+    observableToExtend.setLabelsRenderFn = (callback) => {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_EDIT_LABELS_RENDER_CALLBACK,
+        labelsRenderFn: callback,
+      })
+    };
+
+    observableToExtend.updateLabels = (callback) => {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.UPDATE_EDIT_LABELS,
+        updateLabelsFn: callback,
+      })
+    };
     
     observableToExtend.circleEditValue = () => observableToExtend.getValue();
     

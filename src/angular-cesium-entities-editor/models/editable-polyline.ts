@@ -6,6 +6,7 @@ import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { PointProps, PolylineEditOptions, PolylineProps } from './polyline-edit-options';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
+import { defaultLabelProps, LabelProps } from './label-props';
 
 export class EditablePolyline extends AcEntity {
 
@@ -17,6 +18,7 @@ export class EditablePolyline extends AcEntity {
   private _pointProps: PointProps;
   private polylineProps: PolylineProps;
   private lastDraggedToPosition;
+  private _labels: LabelProps[] = [];
 
   constructor(private id: string,
               private pointsLayer: AcLayerComponent,
@@ -30,6 +32,24 @@ export class EditablePolyline extends AcEntity {
     if (positions && positions.length >= 2) {
       this.createFromExisting(positions);
     }
+  }
+
+  get labels(): LabelProps[] {
+    return this._labels;
+  }
+
+  set labels(labels: LabelProps[]) {
+    if (!labels) {
+      return;
+    }
+    const positions = this.getRealPositions();
+    this._labels = labels.map((label, index) => {
+      if (!label.position) {
+        label.position = positions[index];
+      }
+
+      return Object.assign({}, defaultLabelProps, label);
+    });
   }
 
   get props(): PolylineProps {

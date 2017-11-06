@@ -21,12 +21,11 @@ import { EditablePolygon } from '../../models/editable-polygon';
 })
 export class PolygonsEditorComponent implements OnDestroy {
 
-  private editLabelsRenderFn: (PolygonEditUpdate, labels: LabelProps[]) => LabelProps[];
+  private editLabelsRenderFn: (update: PolygonEditUpdate, labels: LabelProps[]) => LabelProps[];
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editPolylines$ = new Subject<AcNotification>();
   public editPolygons$ = new Subject<AcNotification>();
-  public editLabels$ = new Subject<AcNotification>();
 
   public appearance = new Cesium.PerInstanceColorAppearance({ flat: true });
   public attributes = { color: Cesium.ColorGeometryInstanceAttribute.fromColor(new Cesium.Color(0.2, 0.2, 0.5, 0.5)) };
@@ -187,6 +186,7 @@ export class PolygonsEditorComponent implements OnDestroy {
         const polygon = this.polygonsManager.get(update.id);
         if (polygon) {
           polygon.enableEdit = false;
+          this.renderEditLabels(polygon, update);
         }
         break;
       }
@@ -210,6 +210,7 @@ export class PolygonsEditorComponent implements OnDestroy {
         const polygon = this.polygonsManager.get(update.id);
         if (polygon) {
           polygon.enableEdit = true;
+          this.renderEditLabels(polygon, update);
         }
         break;
       }

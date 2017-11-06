@@ -375,6 +375,7 @@ export class PolylinesEditorService {
         editAction: EditActions.DISPOSE,
       });
     };
+
     observableToExtend.enable = () => {
       this.updateSubject.next({
         id,
@@ -383,6 +384,7 @@ export class PolylinesEditorService {
         editAction: EditActions.ENABLE,
       });
     };
+
     observableToExtend.disable = () => {
       this.updateSubject.next({
         id,
@@ -391,12 +393,31 @@ export class PolylinesEditorService {
         editAction: EditActions.DISABLE,
       });
     };
+
     observableToExtend.setManually = (points: {
       position: Cartesian3,
       pointProp?: PointProps
     }[] | Cartesian3[], polylineProps?: PolylineProps) => {
       const polyline = this.polylinesManager.get(id);
       polyline.setManually(points, polylineProps);
+    };
+
+    observableToExtend.setLabelsRenderFn = (callback) => {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_EDIT_LABELS_RENDER_CALLBACK,
+        labelsRenderFn: callback,
+      })
+    };
+
+    observableToExtend.updateLabels = (callback) => {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.UPDATE_EDIT_LABELS,
+        updateLabelsFn: callback,
+      })
     };
     observableToExtend.getCurrentPoints = () => this.getPoints(id);
 
