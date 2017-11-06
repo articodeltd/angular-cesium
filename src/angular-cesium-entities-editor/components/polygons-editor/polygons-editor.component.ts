@@ -21,7 +21,7 @@ import { EditablePolygon } from '../../models/editable-polygon';
 })
 export class PolygonsEditorComponent implements OnDestroy {
 
-  private editLabelsRenderFn: (PolygonEditUpdate) => LabelProps[];
+  private editLabelsRenderFn: (PolygonEditUpdate, labels: LabelProps[]) => LabelProps[];
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editPolylines$ = new Subject<AcNotification>();
@@ -61,13 +61,21 @@ export class PolygonsEditorComponent implements OnDestroy {
     return index.toString();
   }
 
-  renderEditLabels(polygon: EditablePolygon, update: PolygonEditUpdate) {
+  renderEditLabels(polygon: EditablePolygon, update: PolygonEditUpdate, setLabels?: Function) {
+    update.positions = polygon.getRealPositions();
+    update.points = polygon.getRealPoints();
+
+    if (setLabels) {
+      setLabels(update, polygon.labels);
+      this.editPolygonsLayer.update(polygon, polygon.getId());
+      return;
+    }
+
     if (!this.editLabelsRenderFn) {
       return;
     }
-    update.positions = polygon.getRealPositions();
-    update.points = polygon.getRealPoints();
-    polygon.labels = this.editLabelsRenderFn(update);
+
+    polygon.labels = this.editLabelsRenderFn(update, polygon.labels);
     this.editPolygonsLayer.update(polygon, polygon.getId());
 
   }
@@ -126,6 +134,11 @@ export class PolygonsEditorComponent implements OnDestroy {
         this.renderEditLabels(polygon, update);
         break;
       }
+      case EditActions.UPDATE_EDIT_LABELS: {
+        const polygon = this.polygonsManager.get(update.id);
+        this.renderEditLabels(polygon, update, update.updateLabelsFn);
+        break;
+      }
       default: {
         return;
       }
@@ -181,7 +194,6 @@ export class PolygonsEditorComponent implements OnDestroy {
         const polygon = this.polygonsManager.get(update.id);
         if (polygon && polygon.enableEdit) {
           polygon.movePolygon(update.draggedPosition, update.updatedPosition);
-          this.renderEditLabels(polygon, update);
         }
         break;
       }

@@ -7,4 +7,5 @@ export interface BasicEditUpdate {
   editMode: EditModes;
   editAction: EditActions;
   labelsRenderFn?: (PolygonEditUpdate) => LabelProps[];
+  updateLabelsFn?: (PolygonEditUpdate, Array) => LabelProps[];
 }

@@ -59,6 +59,15 @@ export class PolygonsEditorLayerComponent implements OnInit {
         fillColor: Cesium.Color.BLUE,
       }))
     });
+    setTimeout(() =>
+    this.editing$.updateLabels((update: PolygonEditUpdate, labels) => {
+      return labels.map(label => {
+        label.text += '*';
+        label.fillColor = Cesium.Color.RED;
+        label.showBackground = true;
+        return label;
+      });
+    }), 2000);
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
       if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
         console.log(editUpdate.points); // point = position with id

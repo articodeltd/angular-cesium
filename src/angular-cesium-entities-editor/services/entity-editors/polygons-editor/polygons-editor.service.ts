@@ -18,7 +18,6 @@ import { PolygonEditorObservable } from '../../../models/polygon-editor-observab
 import { EditablePolygon } from '../../../models/editable-polygon';
 import { PolygonEditOptions, PolygonProps } from '../../../models/polygon-edit-options';
 import { PointProps } from '../../../models/polyline-edit-options';
-import { LabelProps } from '../../../models/label-props';
 
 export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -401,12 +400,21 @@ export class PolygonsEditorService {
       polygon.setPointsManually(points, polygonProps);
     };
 
-    observableToExtend.setLabelsRenderFn = (fn: (PolygonEditUpdate) => LabelProps[]) => {
+    observableToExtend.setLabelsRenderFn = (callback) => {
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
         editAction: EditActions.SET_EDIT_LABELS_RENDER_CALLBACK,
-        labelsRenderFn: fn,
+        labelsRenderFn: callback,
+      })
+    };
+
+    observableToExtend.updateLabels = (callback) => {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.UPDATE_EDIT_LABELS,
+        updateLabelsFn: callback,
       })
     };
 
