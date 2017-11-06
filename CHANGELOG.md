@@ -1,3 +1,10 @@
+## NEXT
+### Fixes
+* Fixed a bug in editors.
+
+### Features
+* Added customizable labels to shape editors.
+
 ## 0.0.33
 ## Fixes
 * fix missing Cartesian3 typings  

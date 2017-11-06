@@ -19,6 +19,7 @@ import { CircleEditorObservable } from '../../../models/circle-editor-observable
 import { CircleEditOptions, CircleProps } from '../../../models/circle-edit-options';
 import { EditableCircle } from '../../../models/editable-circle';
 import { PointProps } from '../../../models/polyline-edit-options';
+import { LabelProps } from '../../../models/label-props';
 
 /**
  * Service for creating editable circles
@@ -168,7 +169,9 @@ export class CirclesEditorService {
           ...update,
           ...this.getCircleProperties(id),
         });
-        this.observablesMap.get(id).forEach(registration => registration.dispose());
+        if (this.observablesMap.has(id)) {
+          this.observablesMap.get(id).forEach(registration => registration.dispose());
+        }
         this.observablesMap.delete(id);
         this.editCircle(id, priority, clientEditSubject, circleOptions, editorObservable);
         finishedCreate = true;
@@ -369,9 +372,34 @@ export class CirclesEditorService {
       const radiusPoint = GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
       const circle = this.circlesManager.get(id);
       circle.setManually(center, radiusPoint, centerPointProp, radiusPointProp, circleProp);
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_MANUALLY,
+      });
+    };
+
+    observableToExtend.setLabelsRenderFn = (callback) => {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_EDIT_LABELS_RENDER_CALLBACK,
+        labelsRenderFn: callback,
+      })
+    };
+
+    observableToExtend.updateLabels = (labels: LabelProps[]) => {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.UPDATE_EDIT_LABELS,
+        updateLabels: labels,
+      })
     };
     
-    observableToExtend.circleEditValue = () => observableToExtend.getValue();
+    observableToExtend.getEditValue = () => observableToExtend.getValue();
+
+    observableToExtend.getLabels = (): LabelProps[] => this.circlesManager.get(id).labels;
     
     return observableToExtend as CircleEditorObservable;
   }

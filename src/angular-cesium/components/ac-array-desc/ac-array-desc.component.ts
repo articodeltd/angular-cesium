@@ -61,7 +61,7 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
 
   @Input() acFor: string;
 
-  @Input() idGetter: Function;
+  @Input() idGetter: (item, index) => string;
 
   @Input() show = true;
   @ViewChild('layer') private layer: AcLayerComponent;
@@ -132,9 +132,9 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     const entitiesIdArray = [];
     this.entitiesMap.set(id, entitiesIdArray);
 
-    entitiesArray.forEach(item => {
+    entitiesArray.forEach((item, index) => {
       this.layerService.context[this.entityName] = item;
-      const arrayItemId = this.generateCombinedId(id, item);
+      const arrayItemId = this.generateCombinedId(id, item, index);
       entitiesIdArray.push(arrayItemId);
       this.layer.update(contextEntity, arrayItemId);
     });
@@ -166,10 +166,10 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     return `let ${this.entityName + '___temp'} of arrayObservable$`;
   }
 
-  private generateCombinedId(entityId: string, arrayItem): string {
+  private generateCombinedId(entityId: string, arrayItem, index: number): string {
     let arrayItemId;
     if (this.idGetter) {
-      arrayItemId = this.idGetter(arrayItem);
+      arrayItemId = this.idGetter(arrayItem, index);
     }
     else {
       arrayItemId = (this.id++) % Number.MAX_SAFE_INTEGER;

@@ -16,3 +16,4 @@ export * from './models/polygon-edit-options';
 export * from './models/polyline-edit-options';
 export * from './models/editor-edit-options';
 export * from './models/circle-edit-options';
+export * from './models/label-props';

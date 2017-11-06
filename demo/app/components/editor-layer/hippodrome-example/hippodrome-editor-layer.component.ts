@@ -3,6 +3,7 @@ import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-ed
 import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
 import { HippodromeEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/hippodrome-editor/hippodrome-editor.service';
 import { HippodromeEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/hippodrome-editor-oboservable';
+import { LabelProps } from '../../../../../src/angular-cesium-entities-editor/models/label-props';
 
 @Component({
 	selector : 'hippodrome-editor-layer',
@@ -54,6 +55,26 @@ export class HippodromeEditorLayerComponent implements OnInit {
 			Cesium.Cartesian3.fromDegrees(20, 40),
 			Cesium.Cartesian3.fromDegrees(30, 20)];
 		this.editing$ = this.hippodromeEditor.edit(initialPos);
+    this.editing$.setLabelsRenderFn((update: PolygonEditUpdate) => {
+      let counter = 0;
+      const newLabels: LabelProps[] = [];
+      update.positions.forEach(position => newLabels.push({
+        text: `Point ${counter++}`,
+        scale: 0.6,
+        eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
+        fillColor: Cesium.Color.BLUE,
+      }));
+      return newLabels;
+    });
+    setTimeout(() =>
+      this.editing$.updateLabels(
+        this.editing$.getLabels().map(label => {
+          label.text += '*';
+          label.fillColor = Cesium.Color.RED;
+          label.showBackground = true;
+          return label;
+        })
+      ), 2000);
 		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
 			
 			if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {

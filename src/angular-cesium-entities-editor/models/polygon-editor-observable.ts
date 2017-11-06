@@ -9,6 +9,5 @@ import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 export class PolygonEditorObservable extends EditorObservable<PolygonEditUpdate> {
   setManually: (points: { position: Cartesian3, pointProp?: PointProps }[] | Cartesian3[],
                 polygonProps?: PolygonProps) => void;
-  polygonEditValue: () => PolygonEditUpdate;
   getCurrentPoints: () => EditPoint[];
 }

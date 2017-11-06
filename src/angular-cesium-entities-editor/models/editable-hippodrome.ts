@@ -6,6 +6,7 @@ import { CoordinateConverter } from '../../angular-cesium/services/coordinate-co
 import { PointProps } from './polyline-edit-options';
 import { HippodromeEditOptions, HippodromeProps } from './hippodrome-edit-options';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
+import { defaultLabelProps, LabelProps } from './label-props';
 
 export class EditableHippodrome extends AcEntity {
 	
@@ -16,6 +17,7 @@ export class EditableHippodrome extends AcEntity {
 	private _defaultPointProps: PointProps;
 	private _hippodromeProps: HippodromeProps;
 	private lastDraggedToPosition: Cartesian3;
+  private _labels: LabelProps[] = [];
 	
 	constructor(private id: string,
 							private pointsLayer: AcLayerComponent,
@@ -32,6 +34,24 @@ export class EditableHippodrome extends AcEntity {
 			throw new Error('Hippodrome consist of 2 points but provided ' + positions.length);
 		}
 	}
+
+  get labels(): LabelProps[] {
+    return this._labels;
+  }
+
+  set labels(labels: LabelProps[]) {
+    if (!labels) {
+      return;
+    }
+    const positions = this.getRealPositions();
+    this._labels = labels.map((label, index) => {
+      if (!label.position) {
+        label.position = positions[index];
+      }
+
+      return Object.assign({}, defaultLabelProps, label);
+    });
+  }
 	
 	get hippodromeProps(): HippodromeProps {
 		return this._hippodromeProps;
