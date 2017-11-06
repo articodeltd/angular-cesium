@@ -55,13 +55,13 @@ export class CirclesEditorComponent implements OnDestroy {
     return index.toString();
   }
 
-  renderEditLabels(circle: EditableCircle, update: CircleEditUpdate, setLabels?: Function) {
+  renderEditLabels(circle: EditableCircle, update: CircleEditUpdate, labels?: LabelProps[]) {
     update.center = circle.getCenter();
     update.radiusPoint = circle.getRadiusPoint();
     update.radius = circle.getRadius();
 
-    if (setLabels) {
-      setLabels(update, circle.labels);
+    if (labels) {
+      circle.labels = labels;
       this.editCirclesLayer.update(circle, circle.getId());
       return;
     }
@@ -130,7 +130,7 @@ export class CirclesEditorComponent implements OnDestroy {
       }
       case EditActions.UPDATE_EDIT_LABELS: {
         const circle = this.circlesManager.get(update.id);
-        this.renderEditLabels(circle, update, update.updateLabelsFn);
+        this.renderEditLabels(circle, update, update.updateLabels);
         break;
       }
       default: {

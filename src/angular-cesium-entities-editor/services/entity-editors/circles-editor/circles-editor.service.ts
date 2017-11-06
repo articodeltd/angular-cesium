@@ -19,6 +19,7 @@ import { CircleEditorObservable } from '../../../models/circle-editor-observable
 import { CircleEditOptions, CircleProps } from '../../../models/circle-edit-options';
 import { EditableCircle } from '../../../models/editable-circle';
 import { PointProps } from '../../../models/polyline-edit-options';
+import { LabelProps } from '../../../models/label-props';
 
 /**
  * Service for creating editable circles
@@ -382,16 +383,18 @@ export class CirclesEditorService {
       })
     };
 
-    observableToExtend.updateLabels = (callback) => {
+    observableToExtend.updateLabels = (labels: LabelProps[]) => {
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
         editAction: EditActions.UPDATE_EDIT_LABELS,
-        updateLabelsFn: callback,
+        updateLabels: labels,
       })
     };
     
-    observableToExtend.circleEditValue = () => observableToExtend.getValue();
+    observableToExtend.getEditValue = () => observableToExtend.getValue();
+
+    observableToExtend.getLabels = (): LabelProps[] => this.circlesManager.get(id).labels;
     
     return observableToExtend as CircleEditorObservable;
   }

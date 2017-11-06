@@ -7,5 +7,5 @@ export interface BasicEditUpdate<T> {
   editMode: EditModes;
   editAction: EditActions;
   labelsRenderFn?: (update: T, labels: LabelProps[]) => LabelProps[];
-  updateLabelsFn?: (update: T, labels: LabelProps[]) => LabelProps[];
+  updateLabels?: LabelProps[];
 }

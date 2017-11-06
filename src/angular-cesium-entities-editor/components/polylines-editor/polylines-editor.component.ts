@@ -55,12 +55,12 @@ export class PolylinesEditorComponent implements OnDestroy {
     return index.toString();
   }
 
-  renderEditLabels(polyline: EditablePolyline, update: PolylineEditUpdate, setLabels?: Function) {
+  renderEditLabels(polyline: EditablePolyline, update: PolylineEditUpdate, labels?: LabelProps[]) {
     update.positions = polyline.getRealPositions();
     update.points = polyline.getRealPoints();
 
-    if (setLabels) {
-      setLabels(update, polyline.labels);
+    if (labels) {
+      polyline.labels = labels;
       this.polylineLabelsLayer.update(polyline, polyline.getId());
       return;
     }
@@ -129,7 +129,7 @@ export class PolylinesEditorComponent implements OnDestroy {
       }
       case EditActions.UPDATE_EDIT_LABELS: {
         const polyline = this.polylinesManager.get(update.id);
-        this.renderEditLabels(polyline, update, update.updateLabelsFn);
+        this.renderEditLabels(polyline, update, update.updateLabels);
         break;
       }
       default: {

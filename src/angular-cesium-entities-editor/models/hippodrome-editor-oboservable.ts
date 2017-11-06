@@ -10,6 +10,5 @@ export class HippodromeEditorObservable extends EditorObservable<PolygonEditUpda
                 widthMeters?: number,
                 firstPointProp?: PointProps,
                 secondPointProp?: PointProps) => void;
-	polygonEditValue: () => PolygonEditUpdate;
 	getCurrentPoints: () => EditPoint[];
 }

@@ -357,7 +357,7 @@ With angular cesium you can define your map provider in a declarative way using 
 ```
 
 ### MapsManagerService
-Angular cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use [MapsManagerService](https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
+Angular Cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use [MapsManagerService](https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
 ```typescript
 class MyComp {
 constructor(mapsManagerService: MapsManagerService)
@@ -367,6 +367,26 @@ constructor(mapsManagerService: MapsManagerService)
 }
 
 ```
+
+### Editors
+Angular Cesium have some useful geometry editors tool:
++ `CirlcesEditorService` - for drawing circles
++ `PolylinesEditorService` - for drawing polylines
++ `PolygonEditorService` - for drawing polygons
++ `HippodromeEditorService` - for drawing hippodromes (path in cesium)
+All of these editors uses a simple API -
+  + `create` for starting a creation of the shape over the map. Returns a extension of `EditorObservable`.
+  + `edit` for editing shape over the map starting from a given positions. Returns an extension of `EditorObservable`.
+  + To stop editing call `dsipose()` from the `EditorObservable` you get back from `create()` \ `edit()`. 
+  
+#### Labels over editted shapes
+Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.\
+To add label drawing logic to your editor use the function `setLabelsRenderFn()` that is defined on the `EditorObservable` that is returned from calling `create()` \ `edit()` of one of the editor services.\
+`setLabelsRenderFn()` - receives a callback that is called every time the shape is redrawn (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.\
+The callback should return type `LabelProps[]`.\
+You can also use `updateLabels()` to pass an array of labels of type `LabelProps[]` to be drawn. 
+
+
 ### ScreenshotService
 Take screenshot of your cesium globe. 
 

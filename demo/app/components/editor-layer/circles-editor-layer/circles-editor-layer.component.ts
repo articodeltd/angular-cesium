@@ -61,13 +61,13 @@ export class CirclesEditorLayerComponent implements OnInit {
       return newLabels;
     });
     setTimeout(() =>
-      this.editing$.updateLabels((update: CircleEditUpdate, labels) => {
-        return labels.map(label => {
+      this.editing$.updateLabels(
+        this.editing$.getLabels().map(label => {
           label.text += '*';
           label.fillColor = Cesium.Color.YELLOW;
           return label;
-        });
-      }), 2000);
+        })
+      ), 2000);
   }
 
   toggleEnableEditing() {

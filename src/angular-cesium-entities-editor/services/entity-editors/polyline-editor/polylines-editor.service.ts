@@ -17,6 +17,7 @@ import { PointProps, PolylineEditOptions, PolylineProps } from '../../../models/
 import { PolylineEditUpdate } from '../../../models/polyline-edit-update';
 import { PolylineEditorObservable } from '../../../models/polyline-editor-observable';
 import { EditPolyline } from '../../../models';
+import { LabelProps } from '../../../models/label-props';
 
 export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -411,17 +412,19 @@ export class PolylinesEditorService {
       })
     };
 
-    observableToExtend.updateLabels = (callback) => {
+    observableToExtend.updateLabels = (labels: LabelProps[]) => {
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
         editAction: EditActions.UPDATE_EDIT_LABELS,
-        updateLabelsFn: callback,
+        updateLabels: labels,
       })
     };
     observableToExtend.getCurrentPoints = () => this.getPoints(id);
 
-    observableToExtend.polylineEditValue = () => observableToExtend.getValue();
+    observableToExtend.getEditValue = () => observableToExtend.getValue();
+
+    observableToExtend.getLabels = (): LabelProps[] => this.polylinesManager.get(id).labels;
 
     return observableToExtend as PolylineEditorObservable;
   }

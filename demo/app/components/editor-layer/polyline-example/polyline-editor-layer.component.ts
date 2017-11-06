@@ -68,14 +68,14 @@ export class PolylineEditorLayerComponent implements OnInit {
       return newLabels;
     });
     setTimeout(() =>
-      this.editing$.updateLabels((update: PolygonEditUpdate, labels) => {
-        return labels.map(label => {
+      this.editing$.updateLabels(
+        this.editing$.getLabels().map(label => {
           label.text += '*';
           label.fillColor = Cesium.Color.RED;
           label.showBackground = true;
           return label;
-        });
-      }), 2000);
+        })
+      ), 2000);
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
       if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
         console.log(editUpdate.points); // point = position with id

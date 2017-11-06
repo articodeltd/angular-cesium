@@ -60,12 +60,12 @@ export class PolygonsEditorComponent implements OnDestroy {
     return index.toString();
   }
 
-  renderEditLabels(polygon: EditablePolygon, update: PolygonEditUpdate, setLabels?: Function) {
+  renderEditLabels(polygon: EditablePolygon, update: PolygonEditUpdate, labels?: LabelProps[]) {
     update.positions = polygon.getRealPositions();
     update.points = polygon.getRealPoints();
 
-    if (setLabels) {
-      setLabels(update, polygon.labels);
+    if (labels) {
+      polygon.labels = labels;
       this.editPolygonsLayer.update(polygon, polygon.getId());
       return;
     }
@@ -136,7 +136,7 @@ export class PolygonsEditorComponent implements OnDestroy {
       }
       case EditActions.UPDATE_EDIT_LABELS: {
         const polygon = this.polygonsManager.get(update.id);
-        this.renderEditLabels(polygon, update, update.updateLabelsFn);
+        this.renderEditLabels(polygon, update, update.updateLabels);
         break;
       }
       default: {

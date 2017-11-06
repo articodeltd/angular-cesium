@@ -53,12 +53,12 @@ export class HippodromeEditorComponent implements OnDestroy {
     return index.toString();
   }
 
-  renderEditLabels(hippodrome: EditableHippodrome, update: HippodromeEditUpdate, setLabels?: Function) {
+  renderEditLabels(hippodrome: EditableHippodrome, update: HippodromeEditUpdate, labels?: LabelProps[]) {
     update.positions = hippodrome.getRealPositions();
     update.points = hippodrome.getRealPoints();
 
-    if (setLabels) {
-      setLabels(update, hippodrome.labels);
+    if (labels) {
+      hippodrome.labels = labels;
       this.editHippodromesLayer.update(hippodrome, hippodrome.getId());
       return;
     }
@@ -118,7 +118,7 @@ export class HippodromeEditorComponent implements OnDestroy {
       }
       case EditActions.UPDATE_EDIT_LABELS: {
         const hippodrome = this.hippodromesManager.get(update.id);
-        this.renderEditLabels(hippodrome, update, update.updateLabelsFn);
+        this.renderEditLabels(hippodrome, update, update.updateLabels);
         break;
       }
       default: {

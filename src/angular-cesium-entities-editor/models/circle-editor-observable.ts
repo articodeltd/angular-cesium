@@ -7,5 +7,4 @@ import { CircleProps } from './circle-edit-options';
 export class CircleEditorObservable extends EditorObservable<CircleEditUpdate> {
   setManually:  (center: Cartesian3, radius: number, centerPointProp?: PointProps,
                  radiusPointProp?: PointProps, circleProp?: CircleProps) => void;
-  circleEditValue: () => CircleEditUpdate;
 }
