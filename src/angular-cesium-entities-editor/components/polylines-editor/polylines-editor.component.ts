@@ -132,6 +132,11 @@ export class PolylinesEditorComponent implements OnDestroy {
         this.renderEditLabels(polyline, update, update.updateLabels);
         break;
       }
+      case EditActions.SET_MANUALLY: {
+        const polyline = this.polylinesManager.get(update.id);
+        this.renderEditLabels(polyline, update, update.updateLabels);
+        break;
+      }
       default: {
         return;
       }

@@ -401,6 +401,11 @@ export class PolylinesEditorService {
     }[] | Cartesian3[], polylineProps?: PolylineProps) => {
       const polyline = this.polylinesManager.get(id);
       polyline.setManually(points, polylineProps);
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_MANUALLY,
+      });
     };
 
     observableToExtend.setLabelsRenderFn = (callback) => {

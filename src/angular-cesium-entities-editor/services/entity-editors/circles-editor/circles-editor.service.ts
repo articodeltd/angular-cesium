@@ -372,6 +372,11 @@ export class CirclesEditorService {
       const radiusPoint = GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
       const circle = this.circlesManager.get(id);
       circle.setManually(center, radiusPoint, centerPointProp, radiusPointProp, circleProp);
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_MANUALLY,
+      });
     };
 
     observableToExtend.setLabelsRenderFn = (callback) => {

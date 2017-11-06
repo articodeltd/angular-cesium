@@ -15,9 +15,9 @@ import { LabelProps } from '../../models/label-props';
 import { EditableCircle } from '../../models/editable-circle';
 
 @Component({
-  selector : 'circles-editor',
-  templateUrl : './circles-editor.component.html',
-  providers : [CoordinateConverter, CirclesManagerService]
+  selector: 'circles-editor',
+  templateUrl: './circles-editor.component.html',
+  providers: [CoordinateConverter, CirclesManagerService]
 })
 export class CirclesEditorComponent implements OnDestroy {
 
@@ -129,6 +129,11 @@ export class CirclesEditorComponent implements OnDestroy {
         break;
       }
       case EditActions.UPDATE_EDIT_LABELS: {
+        const circle = this.circlesManager.get(update.id);
+        this.renderEditLabels(circle, update, update.updateLabels);
+        break;
+      }
+      case EditActions.SET_MANUALLY: {
         const circle = this.circlesManager.get(update.id);
         this.renderEditLabels(circle, update, update.updateLabels);
         break;

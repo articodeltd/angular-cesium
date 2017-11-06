@@ -340,6 +340,11 @@ export class HippodromeEditorService {
 
       const hippodrome = this.hippodromeManager.get(id);
       hippodrome.setPointsManually([firstP, secP], widthMeters);
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_MANUALLY,
+      });
     };
 
     observableToExtend.setLabelsRenderFn = (callback) => {

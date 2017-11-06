@@ -121,6 +121,11 @@ export class HippodromeEditorComponent implements OnDestroy {
         this.renderEditLabels(hippodrome, update, update.updateLabels);
         break;
       }
+      case EditActions.SET_MANUALLY: {
+        const hippodrome = this.hippodromesManager.get(update.id);
+        this.renderEditLabels(hippodrome, update, update.updateLabels);
+        break;
+      }
       default: {
         return;
       }
