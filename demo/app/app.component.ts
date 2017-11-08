@@ -45,9 +45,7 @@ export class AppComponent implements AfterViewInit {
     // example for getting the viewer by Id outside of the ac-map hierarchy
     const map = this.mapsManagerService.getMap('main-map');
     const viewer = map.getCesiumViewer();
-
-    const coordinateConverter = map.getCoordinateConverter();
-    this.draggableToMapService.init(coordinateConverter);
-    this.draggableToMapService.observable().subscribe(e => console.log(e));
+    this.draggableToMapService.init();
+    this.draggableToMapService.dragUpdates().subscribe(e => console.log(e));
   }
 }

@@ -5,6 +5,7 @@ import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
+import { MapsManagerService } from '../../angular-cesium/services/maps-manager/maps-manager.service';
 
 export interface IconDragEvent {
   initialScreenPosition: Vec2;
@@ -26,14 +27,22 @@ export class DraggableToMapService {
   private stopper: Subject<any>;
   private mainSubject = new Subject<IconDragEvent>();
 
-  constructor(@Inject(DOCUMENT) private document: any) {
+  constructor(@Inject(DOCUMENT) private document: any, private mapsManager: MapsManagerService) {
   }
 
-  init(coordinateConverter: CoordinateConverter) {
-    this.coordinateConverter = coordinateConverter;
+  init(coordinateConverter?: CoordinateConverter) {
+    if (!this.coordinateConverter) {
+      this.coordinateConverter = this.mapsManager.getMap().getCoordinateConverter();
+    }
+    else {
+      this.coordinateConverter = coordinateConverter;
+    }
   }
 
   drag(imageSrc: string, style?) {
+    if (!this.coordinateConverter) {
+      throw new Error(`DraggableToMapService: service was not initialized. init() wasn't called`);
+    }
     this.cancel();
     const imgElement = document.createElement('img');
     imgElement.src = imageSrc;
@@ -70,7 +79,7 @@ export class DraggableToMapService {
     );
   }
 
-  observable(): Observable<IconDragEvent> {
+  dragUpdates(): Observable<IconDragEvent> {
     return this.mainSubject;
   }
 

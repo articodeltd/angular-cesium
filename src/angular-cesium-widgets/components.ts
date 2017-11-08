@@ -1,1 +1,1 @@
-export * from './directives/draggable-to-map';
+export * from './directives/draggable-to-map.directive';

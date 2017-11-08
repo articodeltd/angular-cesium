@@ -15,9 +15,9 @@ import { DraggableToMapService } from '../services/draggable-to-map.service';
  * </a>
  * ```
  *
- * In order the get notified of the dragging location  and drop state subscribe to `DraggableToMapService.observable()`
+ * In order the get notified of the dragging location  and drop state subscribe to `DraggableToMapService.dragUpdates()`
  * ```
- *  this.iconDragService.observable().subscribe(e => console.log(e));
+ *  this.iconDragService.dragUpdates().subscribe(e => console.log(e));
  * ```
  *
  * In order the cancel dragging use `DraggableToMapService.cancel()`
