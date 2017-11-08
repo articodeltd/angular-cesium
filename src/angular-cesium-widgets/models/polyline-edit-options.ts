@@ -18,4 +18,6 @@ export interface PolylineEditOptions extends EditorEditOptions {
   addLastPointModifier?: CesiumEventModifier;
   removePointEvent?: CesiumEvent;
   removePointModifier?: CesiumEventModifier;
+  showMiddlePoints?: boolean;
+  maximumNumberOfPoints?: number
 }

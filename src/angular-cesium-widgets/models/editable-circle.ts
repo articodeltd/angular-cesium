@@ -92,6 +92,9 @@ export class EditableCircle extends AcEntity {
 
   set enableEdit(value: boolean) {
     this._enableEdit = value;
+    this._center.show = value;
+    this._radiusPoint.show = value;
+    this.updatePointsLayer();
   }
 
   setManually(center: Cartesian3, radiusPoint: Cartesian3, centerPointProp = this.pointProps,

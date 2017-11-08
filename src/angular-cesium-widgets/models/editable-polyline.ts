@@ -9,8 +9,8 @@ import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-uti
 import { defaultLabelProps, LabelProps } from './label-props';
 
 export class EditablePolyline extends AcEntity {
-
   private positions: EditPoint[] = [];
+
   private polylines: EditPolyline[] = [];
   private movingPoint: EditPoint;
   private doneCreation = false;
@@ -24,11 +24,11 @@ export class EditablePolyline extends AcEntity {
               private pointsLayer: AcLayerComponent,
               private polylinesLayer: AcLayerComponent,
               private coordinateConverter: CoordinateConverter,
-              polylineEdit: PolylineEditOptions,
+              private editOptions: PolylineEditOptions,
               positions?: Cartesian3[]) {
     super();
-    this._pointProps = polylineEdit.pointProps;
-    this.props = polylineEdit.polylineProps;
+    this._pointProps = editOptions.pointProps;
+    this.props = editOptions.polylineProps;
     if (positions && positions.length >= 2) {
       this.createFromExisting(positions);
     }
@@ -74,6 +74,10 @@ export class EditablePolyline extends AcEntity {
 
   set enableEdit(value: boolean) {
     this._enableEdit = value;
+    this.positions.forEach(point => {
+      point.show = value;
+      this.updatePointsLayer(false, point);
+    });
   }
 
   private createFromExisting(positions: Cartesian3[]) {
@@ -112,6 +116,9 @@ export class EditablePolyline extends AcEntity {
   }
 
   private addAllVirtualEditPoints() {
+    if (!this.editOptions.showMiddlePoints) {
+      return;
+    }
     const currentPoints = [...this.positions];
     currentPoints.forEach((pos, index) => {
       if (index !== currentPoints.length - 1) {
@@ -201,7 +208,7 @@ export class EditablePolyline extends AcEntity {
 
   movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
     editPoint.setPosition(toPosition);
-    if (this.doneCreation) {
+    if (this.doneCreation && this.editOptions.showMiddlePoints) {
       if (editPoint.isVirtualEditPoint()) {
         this.changeVirtualPointToRealPoint(editPoint);
       }

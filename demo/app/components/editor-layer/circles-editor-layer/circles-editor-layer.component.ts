@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CircleEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/circle-editor-observable';
-import { CircleEditUpdate } from '../../../../../src/angular-cesium-entities-editor/models/circle-edit-update';
-import { CirclesEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/circles-editor/circles-editor.service';
-import { LabelProps } from '../../../../../src/angular-cesium-entities-editor/models/label-props';
+import { CircleEditorObservable } from '../../../../../src/angular-cesium-widgets/models/circle-editor-observable';
+import { CircleEditUpdate } from '../../../../../src/angular-cesium-widgets/models/circle-edit-update';
+import { CirclesEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service';
+import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/label-props';
 
 @Component({
   selector: 'circles-editor-layer',

@@ -85,6 +85,10 @@ export class EditablePolygon extends AcEntity {
 
   set enableEdit(value: boolean) {
     this._enableEdit = value;
+    this.positions.forEach(point => {
+      point.show = value;
+      this.updatePointsLayer(false, point);
+    });
   }
 
   private createFromExisting(positions: Cartesian3[]) {
