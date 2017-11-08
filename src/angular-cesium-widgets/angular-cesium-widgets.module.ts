@@ -3,6 +3,7 @@ import { DraggableToMapService } from './services/draggable-to-map.service';
 import { CommonModule } from '@angular/common';
 import { AngularCesiumModule } from '../angular-cesium/angular-cesium.module';
 import { DraggableToMapDirective } from './directives/draggable-to-map.directive';
+import { AcToolbarComponent } from './components/ac-toolbar/ac-toolbar.component';
 
 
 @NgModule({
@@ -10,8 +11,14 @@ import { DraggableToMapDirective } from './directives/draggable-to-map.directive
     CommonModule,
     AngularCesiumModule,
   ],
-  exports: [DraggableToMapDirective],
-  declarations: [DraggableToMapDirective],
+  declarations: [
+    DraggableToMapDirective,
+    AcToolbarComponent,
+  ],
+  exports: [
+    DraggableToMapDirective,
+    AcToolbarComponent
+  ],
   providers: [DraggableToMapService],
 })
 export class AngularCesiumWidgetsModule {
