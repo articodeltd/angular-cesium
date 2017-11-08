@@ -19,6 +19,7 @@ import { MapLayersService } from '../../services/map-layers/map-layers.service';
 import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
 import { ScreenshotService } from '../../services/screenshot/screenshot.service';
 import { ContextMenuService } from '../../services/context-menu/context-menu.service';
+import { CoordinateConverter } from '../../services/coordinate-converter/coordinate-converter.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -58,6 +59,7 @@ import { ContextMenuService } from '../../services/context-menu/context-menu.ser
     CameraService,
 		ScreenshotService,
     ContextMenuService,
+    CoordinateConverter,
   ]
 })
 export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
@@ -107,14 +109,13 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
               private mapLayersService: MapLayersService,
               private configurationService: ConfigurationService,
               private screenshotService: ScreenshotService,
-              public contextMenuService: ContextMenuService) {
+              public contextMenuService: ContextMenuService,
+              private coordinateConverter: CoordinateConverter) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.className = 'map-container';
     this._elemRef.nativeElement.appendChild(this.mapContainer);
     this._cesiumService.init(this.mapContainer);
     this._cameraService.init(this._cesiumService);
-
-		this.mapsManagerService.registerMap(this.id, this);
 		this.mapEventsManager.init();
 		this.billboardDrawerService.init();
 		this.labelDrawerService.init();
@@ -128,6 +129,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.mapsManagerService.registerMap(this.id, this);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -194,5 +196,12 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
    */
   getKeyboardControlService() {
     return this.keyboardControlService;
+  }
+
+  /**
+   * @returns {CoordinateConverter}
+   */
+  getCoordinateConverter() {
+    return this.coordinateConverter
   }
 }

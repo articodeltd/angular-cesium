@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MdDialog, MdIconRegistry } from '@angular/material';
 import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
 import { MapsManagerService } from '../../src/angular-cesium/services/maps-manager/maps-manager.service';
+import { IconDragService } from '../../src/angular-cesium-widgets/services/icon-drag.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ export class AppComponent implements AfterViewInit {
               iconRegistry: MdIconRegistry,
               sanitizer: DomSanitizer,
               private dialog: MdDialog,
-              private viewersManager: MapsManagerService) {
+              private mapsManagerService: MapsManagerService,
+              private iconDragService: IconDragService) {
     iconRegistry.addSvgIcon(
       'settings',
       sanitizer.bypassSecurityTrustResourceUrl('/assets/settings.svg'));
@@ -41,6 +43,11 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     // example for getting the viewer by Id outside of the ac-map hierarchy
-    const viewer = this.viewersManager.getMap('main-map');
+    const map = this.mapsManagerService.getMap('main-map');
+    const viewer = map.getCesiumViewer();
+
+    const coordinateConverter = map.getCoordinateConverter();
+    this.iconDragService.init(coordinateConverter);
+    this.iconDragService.observable().subscribe(e => console.log(e));
   }
 }
