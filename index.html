@@ -567,6 +567,9 @@
                                     <a href="./interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./interfaces/LabelProps.html" >LabelProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="./interfaces/LayerOptions.html" >LayerOptions</a>
                                 </li>
                                 <li class="link">
@@ -1223,6 +1226,9 @@
                                            <a href="./interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./interfaces/LabelProps.html" >LabelProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./interfaces/LayerOptions.html" >LayerOptions</a>
                                        </li>
                                        <li class="link">
@@ -1652,13 +1658,33 @@ you should use <code>ChangeDetectorRef</code> or warp your function with <code>N
       D: { action: KeyboardAction.CAMERA_RIGHT },
       A: { action: KeyboardAction.CAMERA_LEFT },
     },</code></pre><h3 id="mapsmanagerservice">MapsManagerService</h3>
-<p>Angular cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use <a href="https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html">MapsManagerService</a> to receive cesium <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html">viewer</a> or any other util service that was created by <code>ac-map</code>.</p>
+<p>Angular Cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use <a href="https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html">MapsManagerService</a> to receive cesium <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html">viewer</a> or any other util service that was created by <code>ac-map</code>.</p>
 <pre class="line-numbers"><code class="language-typescript">class MyComp {
 constructor(mapsManagerService: MapsManagerService)
     const viewer = mapsManagerService.getMap().getCesiumViewer();
     const mapEventManager = mapsManagerService.getMap().getMapEventsManager();
     const cameraService = mapsManagerService.getMap().getCameraService();
-}</code></pre><h3 id="screenshotservice">ScreenshotService</h3>
+}</code></pre><h3 id="editors">Editors</h3>
+<p>Angular Cesium have some useful geometry editors tool:</p>
+<ul>
+<li><code>CirlcesEditorService</code> - for drawing circles</li>
+<li><code>PolylinesEditorService</code> - for drawing polylines</li>
+<li><code>PolygonEditorService</code> - for drawing polygons</li>
+<li><code>HippodromeEditorService</code> - for drawing hippodromes (path in cesium)
+All of these editors uses a simple API -<ul>
+<li><code>create</code> for starting a creation of the shape over the map. Returns a extension of <code>EditorObservable</code>.</li>
+<li><code>edit</code> for editing shape over the map starting from a given positions. Returns an extension of <code>EditorObservable</code>.</li>
+<li>To stop editing call <code>dsipose()</code> from the <code>EditorObservable</code> you get back from <code>create()</code> \ <code>edit()</code>. </li>
+</ul>
+</li>
+</ul>
+<h4 id="labels-over-editted-shapes">Labels over editted shapes</h4>
+<p>Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.\
+To add label drawing logic to your editor use the function <code>setLabelsRenderFn()</code> that is defined on the <code>EditorObservable</code> that is returned from calling <code>create()</code> \ <code>edit()</code> of one of the editor services.\
+<code>setLabelsRenderFn()</code> - receives a callback that is called every time the shape is redrawn (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.\
+The callback should return type <code>LabelProps[]</code>.\
+You can also use <code>updateLabels()</code> to pass an array of labels of type <code>LabelProps[]</code> to be drawn. </p>
+<h3 id="screenshotservice">ScreenshotService</h3>
 <p>Take screenshot of your cesium globe. </p>
 <h2 id="documents">Documents</h2>
 <ul>

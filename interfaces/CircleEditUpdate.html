@@ -567,6 +567,9 @@
                                     <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/LabelProps.html" >LabelProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                 </li>
                                 <li class="link">
@@ -1223,6 +1226,9 @@
                                            <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/LabelProps.html" >LabelProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                        </li>
                                        <li class="link">
@@ -1611,7 +1617,7 @@
 import { BasicEditUpdate } from &#x27;./basic-edit-update&#x27;;
 import { CircleEditOptions } from &#x27;./circle-edit-options&#x27;;
 
-export interface CircleEditUpdate extends BasicEditUpdate {
+export interface CircleEditUpdate extends BasicEditUpdate&lt;CircleEditUpdate&gt; {
   startDragPosition?: Cartesian3;
   endDragPosition?: Cartesian3;
   center?: Cartesian3;

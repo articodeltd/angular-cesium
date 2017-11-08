@@ -567,6 +567,9 @@
                                     <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/LabelProps.html" >LabelProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                 </li>
                                 <li class="link">
@@ -1223,6 +1226,9 @@
                                            <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/LabelProps.html" >LabelProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                        </li>
                                        <li class="link">
@@ -1605,7 +1611,7 @@ The element must be a child of ac-layer element.</p>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
 
                               </p>
                         </td>
@@ -1688,7 +1694,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                                 <span class="modifier-icon method fa fa-play lock"></span>
-                            <code>generateCombinedId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, arrayItem: )</code>
+                            <code>generateCombinedId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, arrayItem: , index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                         </td>
                     </tr>
     
@@ -2349,7 +2355,7 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
 
   @Input() acFor: string;
 
-  @Input() idGetter: Function;
+  @Input() idGetter: (item, index) &#x3D;&gt; string;
 
   @Input() show &#x3D; true;
   @ViewChild(&#x27;layer&#x27;) private layer: AcLayerComponent;
@@ -2420,9 +2426,9 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     const entitiesIdArray &#x3D; [];
     this.entitiesMap.set(id, entitiesIdArray);
 
-    entitiesArray.forEach(item &#x3D;&gt; {
+    entitiesArray.forEach((item, index) &#x3D;&gt; {
       this.layerService.context[this.entityName] &#x3D; item;
-      const arrayItemId &#x3D; this.generateCombinedId(id, item);
+      const arrayItemId &#x3D; this.generateCombinedId(id, item, index);
       entitiesIdArray.push(arrayItemId);
       this.layer.update(contextEntity, arrayItemId);
     });
@@ -2454,10 +2460,10 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     return &#x60;let ${this.entityName + &#x27;___temp&#x27;} of arrayObservable$&#x60;;
   }
 
-  private generateCombinedId(entityId: string, arrayItem): string {
+  private generateCombinedId(entityId: string, arrayItem, index: number): string {
     let arrayItemId;
     if (this.idGetter) {
-      arrayItemId &#x3D; this.idGetter(arrayItem);
+      arrayItemId &#x3D; this.idGetter(arrayItem, index);
     }
     else {
       arrayItemId &#x3D; (this.id++) % Number.MAX_SAFE_INTEGER;

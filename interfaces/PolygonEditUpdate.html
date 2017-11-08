@@ -567,6 +567,9 @@
                                     <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/LabelProps.html" >LabelProps</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                 </li>
                                 <li class="link">
@@ -1223,6 +1226,9 @@
                                            <a href="../interfaces/KeyboardControlParams.html" >KeyboardControlParams</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/LabelProps.html" >LabelProps</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                        </li>
                                        <li class="link">
@@ -1612,13 +1618,13 @@ import { Cartesian3 } from &#x27;../../angular-cesium/models/cartesian3&#x27;;
 import { BasicEditUpdate } from &#x27;./basic-edit-update&#x27;;
 import { PolygonEditOptions } from &#x27;./polygon-edit-options&#x27;;
 
-export interface PolygonEditUpdate extends BasicEditUpdate {
+export interface PolygonEditUpdate extends BasicEditUpdate&lt;PolygonEditUpdate&gt; {
   positions?: Cartesian3[];
   updatedPosition?: Cartesian3;
   draggedPosition?: Cartesian3;
   points?: EditPoint[];
   updatedPoint?: EditPoint;
-  polygonOptions?: PolygonEditOptions
+  polygonOptions?: PolygonEditOptions;
 }
 </code></pre>
     </div>
