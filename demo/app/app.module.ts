@@ -42,6 +42,7 @@ import { PolylineEditorLayerComponent } from './components/editor-layer/polyline
 import { HeatmapLayerComponent } from './components/heatmap-layer/heatmap-layer.component';
 import { HippodromeEditorLayerComponent } from './components/editor-layer/hippodrome-example/hippodrome-editor-layer.component';
 import { TracksWithArraysComponent } from './components/tracks-with-arrays-example/tracks-with-arrays.component';
+import { AngularCesiumWidgetsModule } from '../../src/angular-cesium-widgets/angular-cesium-widgets.module';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { TracksWithArraysComponent } from './components/tracks-with-arrays-examp
     HttpModule,
     AngularCesiumModule.forRoot(),
     AngularCesiumEntitiesEditorModule,
+    AngularCesiumWidgetsModule,
     BrowserAnimationsModule,
     AppMaterialModule,
     ApolloModule.forRoot(getApolloClient),
