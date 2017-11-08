@@ -1,3 +1,7 @@
+## Next
+## Feat
+* Added `calcEllipseContainingRect` static function to `CesiumHeatMapMaterialCreator`
+
 ## 0.0.34
 ### Fixes
 * Fixed a bug in editors.
