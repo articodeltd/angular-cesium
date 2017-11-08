@@ -19,7 +19,7 @@ export interface IconDragEvent {
  */
 
 @Injectable()
-export class IconDragService {
+export class DraggableToMapService {
 
   private coordinateConverter: CoordinateConverter;
   private dragObservable: Observable<IconDragEvent>;

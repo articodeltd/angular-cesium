@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MdDialog, MdIconRegistry } from '@angular/material';
 import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
 import { MapsManagerService } from '../../src/angular-cesium/services/maps-manager/maps-manager.service';
-import { IconDragService } from '../../src/angular-cesium-widgets/services/icon-drag.service';
+import { DraggableToMapService } from '../../src/angular-cesium-widgets/services/draggable-to-map.service';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,7 @@ export class AppComponent implements AfterViewInit {
               sanitizer: DomSanitizer,
               private dialog: MdDialog,
               private mapsManagerService: MapsManagerService,
-              private iconDragService: IconDragService) {
+              private draggableToMapService: DraggableToMapService) {
     iconRegistry.addSvgIcon(
       'settings',
       sanitizer.bypassSecurityTrustResourceUrl('/assets/settings.svg'));
@@ -47,7 +47,7 @@ export class AppComponent implements AfterViewInit {
     const viewer = map.getCesiumViewer();
 
     const coordinateConverter = map.getCoordinateConverter();
-    this.iconDragService.init(coordinateConverter);
-    this.iconDragService.observable().subscribe(e => console.log(e));
+    this.draggableToMapService.init(coordinateConverter);
+    this.draggableToMapService.observable().subscribe(e => console.log(e));
   }
 }

@@ -1,1 +1,1 @@
-export * from './services/icon-drag.service';
+export * from './services/draggable-to-map.service';

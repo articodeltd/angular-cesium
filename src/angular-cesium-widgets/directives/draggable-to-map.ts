@@ -1,9 +1,9 @@
 import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
-import { IconDragService } from '../services/icon-drag.service';
+import { DraggableToMapService } from '../services/draggable-to-map.service';
 
 /**
  * This directive is used to allow dragging of icons from outside the map over the map
- * while being notified of the dragging position and drop position with an observable exposed from `IconDragService`.
+ * while being notified of the dragging position and drop position with an observable exposed from `DraggableToMapService`.
  * @Input {src: string, style?: any} | string -
  * the [src: string | string] should be the image src of the dragged image.
  * The style is an optional style object for the image.
@@ -15,12 +15,12 @@ import { IconDragService } from '../services/icon-drag.service';
  * </a>
  * ```
  *
- * In order the get notified of the dragging location  and drop state subscribe to `IconDragService.observable()`
+ * In order the get notified of the dragging location  and drop state subscribe to `DraggableToMapService.observable()`
  * ```
  *  this.iconDragService.observable().subscribe(e => console.log(e));
  * ```
  *
- * In order the cancel dragging use `IconDragService.cancel()`
+ * In order the cancel dragging use `DraggableToMapService.cancel()`
  * ```
  *  this.iconDragService.cancel();
  * ```
@@ -32,7 +32,7 @@ export class DraggableToMapDirective implements OnInit {
   private src: string;
   private style;
 
-  constructor(el: ElementRef, private iconDragService: IconDragService) {
+  constructor(el: ElementRef, private iconDragService: DraggableToMapService) {
     el.nativeElement.style['user-drag'] = 'none';
     el.nativeElement.style['user-select'] = 'none';
     el.nativeElement.style['-moz-user-select'] = 'none';

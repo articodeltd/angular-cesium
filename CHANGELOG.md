@@ -4,7 +4,8 @@
 
 ### Features
 * Added customizable labels to shape editors.
-* Added the a directive for dragging icons from outside the map over the map while exposing an observables that listen to dragging position.
+* Added `DraggableToMapDirective` directive for dragging icons from outside the map over the map.
+* Added `IconDragService` service that exposes an observable that listens to dragging with `DraggableToMapDirective`.
 
 ## 0.0.33
 ## Fixes
