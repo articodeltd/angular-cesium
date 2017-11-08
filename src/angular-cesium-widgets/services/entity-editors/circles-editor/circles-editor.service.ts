@@ -185,12 +185,17 @@ export class CirclesEditorService {
       const position = this.coordinateConverter.screenToCartesian3(endPosition);
       
       if (position) {
-        this.updateSubject.next({
+        const update = {
           id,
           center,
           radiusPoint : position,
           editMode : EditModes.CREATE,
           editAction : EditActions.MOUSE_MOVE,
+        };
+        this.updateSubject.next(update);
+        clientEditSubject.next({
+          ...update,
+          ...this.getCircleProperties(id),
         });
       }
     });

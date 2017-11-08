@@ -31,7 +31,6 @@ import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodro
 import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
-import { AngularCesiumEntitiesEditorModule } from '../../src/angular-cesium-entities-editor/angular-cesium-entities-editor.module';
 import { HtmlLayerComponent } from './components/html-layer/html-layer.component';
 import { SelectionLayerComponent } from './components/selection-layer/selection-layer.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
@@ -89,7 +88,6 @@ import { ToolbarExampleComponent } from './components/toolbar-example/toolbar-ex
     FormsModule,
     HttpModule,
     AngularCesiumModule.forRoot(),
-    AngularCesiumEntitiesEditorModule,
     AngularCesiumWidgetsModule,
     BrowserAnimationsModule,
     AppMaterialModule,

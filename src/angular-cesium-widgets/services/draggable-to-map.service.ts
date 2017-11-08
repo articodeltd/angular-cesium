@@ -30,18 +30,16 @@ export class DraggableToMapService {
   constructor(@Inject(DOCUMENT) private document: any, private mapsManager: MapsManagerService) {
   }
 
-  init(coordinateConverter?: CoordinateConverter) {
-    if (!this.coordinateConverter) {
-      this.coordinateConverter = this.mapsManager.getMap().getCoordinateConverter();
-    }
-    else {
-      this.coordinateConverter = coordinateConverter;
-    }
+  setCoordinateConverter(coordinateConverter: CoordinateConverter) {
+    this.coordinateConverter = coordinateConverter;
   }
 
   drag(imageSrc: string, style?) {
     if (!this.coordinateConverter) {
-      throw new Error(`DraggableToMapService: service was not initialized. init() wasn't called`);
+      const map = this.mapsManager.getMap();
+      if (map) {
+        this.coordinateConverter = map.getCoordinateConverter();
+      }
     }
     this.cancel();
     const imgElement = document.createElement('img');
@@ -113,7 +111,8 @@ export class DraggableToMapService {
           x: e.x,
           y: e.y,
         },
-        mapPosition: this.coordinateConverter.screenToCartesian3({ x: e.x, y: e.y }),
+        mapPosition: this.coordinateConverter ?
+          this.coordinateConverter.screenToCartesian3({ x: e.x, y: e.y }) : undefined,
       };
       return lastMove;
     })

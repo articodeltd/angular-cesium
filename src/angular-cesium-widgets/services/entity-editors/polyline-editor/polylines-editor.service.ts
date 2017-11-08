@@ -35,6 +35,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
     material: Cesium.Color.BLACK,
     width: 4,
   },
+  showMiddlePoints: true,
 };
 
 /**
@@ -73,7 +74,6 @@ export class PolylinesEditorService {
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
     this.polylinesManager = polylinesManager;
-
   }
 
   onUpdate(): Observable<PolylineEditUpdate> {
@@ -144,7 +144,6 @@ export class PolylinesEditorService {
       if (allPositions.find((cartesian) => cartesian.equals(position))) {
         return;
       }
-
       const updateValue = {
         id,
         positions: allPositions,
@@ -158,8 +157,36 @@ export class PolylinesEditorService {
         positions: this.getPositions(id),
         points: this.getPoints(id),
       });
-    });
+      if (polylineOptions.maximumNumberOfPoints && allPositions.length + 1 === polylineOptions.maximumNumberOfPoints) {
+        const update = {
+          id,
+          positions: this.getPositions(id),
+          editMode: EditModes.CREATE,
+          updatedPosition: position,
+          editAction: EditActions.ADD_LAST_POINT,
+        };
+        this.updateSubject.next(update);
+        clientEditSubject.next({
+          ...update,
+          positions: this.getPositions(id),
+          points: this.getPoints(id),
+        });
 
+        const changeMode = {
+          id,
+          editMode: EditModes.CREATE,
+          editAction: EditActions.CHANGE_TO_EDIT,
+        };
+        this.updateSubject.next(changeMode);
+        clientEditSubject.next(changeMode);
+        if (this.observablesMap.has(id)) {
+          this.observablesMap.get(id).forEach(registration => registration.dispose());
+        }
+        this.observablesMap.delete(id);
+        this.editPolyline(id, positions, eventPriority, clientEditSubject, polylineOptions, editorObservable);
+        finishedCreate = true;
+      }
+    });
 
     addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.coordinateConverter.screenToCartesian3(endPosition);
@@ -263,7 +290,6 @@ export class PolylinesEditorService {
         priority,
       });
     }
-
 
     if (shapeDragRegistration) {
       shapeDragRegistration

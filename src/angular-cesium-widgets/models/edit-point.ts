@@ -4,12 +4,12 @@ import { PointProps } from './polyline-edit-options';
 
 export class EditPoint extends AcEntity {
 	static counter = 0;
-	private id: string;
-	private editedEntityId: string;
-	private position: Cartesian3;
-	private _virtualEditPoint: boolean;
-	private pointProps: PointProps;
-	
+  private id: string;
+  private editedEntityId: string;
+  private position: Cartesian3;
+  private _virtualEditPoint: boolean;
+  private pointProps: PointProps;
+  private _show = true;
 	constructor(entityId: string, position: Cartesian3, pointProps?: PointProps, virtualPoint = false) {
 		super();
 		this.editedEntityId = entityId;
@@ -18,6 +18,14 @@ export class EditPoint extends AcEntity {
 		this.pointProps = pointProps;
 		this._virtualEditPoint = virtualPoint
 	}
+
+  get show() {
+    return this._show;
+  }
+
+  set show(value) {
+    this._show = value;
+  }
 
   get props(): PointProps {
     return this.pointProps;

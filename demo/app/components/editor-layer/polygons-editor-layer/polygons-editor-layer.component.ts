@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PolygonEditUpdate } from '../../../../../src/angular-cesium-entities-editor/models/polygon-edit-update';
-import { EditActions } from '../../../../../src/angular-cesium-entities-editor/models/edit-actions.enum';
-import { PolygonEditorObservable } from '../../../../../src/angular-cesium-entities-editor/models/polygon-editor-observable';
-import { PolygonsEditorService } from '../../../../../src/angular-cesium-entities-editor/services/entity-editors/polygons-editor/polygons-editor.service';
-import { LabelProps } from '../../../../../src/angular-cesium-entities-editor/models/label-props';
+import { PolygonEditUpdate } from '../../../../../src/angular-cesium-widgets/models/polygon-edit-update';
+import { EditActions } from '../../../../../src/angular-cesium-widgets/models/edit-actions.enum';
+import { PolygonEditorObservable } from '../../../../../src/angular-cesium-widgets/models/polygon-editor-observable';
+import { PolygonsEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service';
+import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/label-props';
 
 @Component({
   selector: 'polygons-editor-layer',
