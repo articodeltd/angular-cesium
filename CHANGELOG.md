@@ -1,4 +1,4 @@
-## NEXT
+## 0.0.34
 ### Fixes
 * Fixed a bug in editors.
 
