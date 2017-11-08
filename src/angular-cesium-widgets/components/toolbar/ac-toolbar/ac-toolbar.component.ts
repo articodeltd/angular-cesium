@@ -1,6 +1,21 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+/**
+ * Toolbar widget, act as a container for ac-toolbar-button components
+ * allowing drag configuration and passing `toolbarClass` as attributes
+ *
+ * Usage:
+ * ```
+ * <ac-toolbar [allowDrag]="true">
+     <ac-toolbar-button [iconUrl]="'assets/home-icon.svg'" (onClick)="goHome()">
+     </ac-toolbar-button>
+     <ac-toolbar-button [iconUrl]="'assets/explore-icon.svg'" (onClick)="rangeAndBearing()">
+     </ac-toolbar-button>
+ </ac-toolbar>
+ * ```
+ *
+ */
 @Component(
   {
     selector : 'ac-toolbar',

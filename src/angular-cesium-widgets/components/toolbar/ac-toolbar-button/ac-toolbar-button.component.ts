@@ -8,6 +8,22 @@ import {
   Output
 } from '@angular/core';
 
+/**
+ * Toolbar button widget, act as a single button inside ac-toolbar component
+ * Can accepts content components or passing [iconUrl]
+ * configure with: `[iconUrl]`,`[buttonClass]`,`[iconClass]`,`(onClick)`
+ *
+ * Usage:
+ * ```
+ * <ac-toolbar [allowDrag]="true">
+ <ac-toolbar-button [iconUrl]="'assets/home-icon.svg'" (onClick)="goHome()">
+ </ac-toolbar-button>
+ <ac-toolbar-button [iconUrl]="'assets/explore-icon.svg'" (onClick)="rangeAndBearing()">
+ </ac-toolbar-button>
+ </ac-toolbar>
+ * ```
+ *
+ */
 @Component(
   {
     selector : 'ac-toolbar-button',
@@ -51,7 +67,6 @@ export class AcToolbarButtonComponent implements OnInit, OnDestroy {
   
   @Input()
   buttonClass: string;
-  
   
   @Input()
   iconClass: string;
