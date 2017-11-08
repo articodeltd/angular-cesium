@@ -171,8 +171,8 @@ export class EditablePolygon extends AcEntity {
   }
 
   private renderPolylines() {
+    this.polylines.forEach(polyline => this.polylinesLayer.remove(polyline.getId()));
     this.polylines = [];
-    this.polylinesLayer.removeAll();
     const realPoints = this.positions.filter(pos => !pos.isVirtualEditPoint());
     realPoints.forEach((point, index) => {
       const nextIndex = (index + 1) % (realPoints.length);

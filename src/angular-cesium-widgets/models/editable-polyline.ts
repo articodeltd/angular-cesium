@@ -168,8 +168,8 @@ export class EditablePolyline extends AcEntity {
   }
 
   private renderPolylines() {
+    this.polylines.forEach(polyline => this.polylinesLayer.remove(polyline.getId()));
     this.polylines = [];
-    this.polylinesLayer.removeAll();
     const realPoints = this.positions.filter(point => !point.isVirtualEditPoint());
     realPoints.forEach((point, index) => {
       if (index !== realPoints.length - 1) {

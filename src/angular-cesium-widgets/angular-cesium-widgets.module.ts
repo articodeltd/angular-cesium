@@ -36,6 +36,8 @@ import { AcToolbarButtonComponent } from './components/toolbar/ac-toolbar-button
     CirclesEditorComponent,
     PolylinesEditorComponent,
     DraggableToMapDirective,
+    AcToolbarComponent,
+    AcToolbarButtonComponent,
   ],
   providers: [
     PolygonsEditorService,
@@ -43,8 +45,6 @@ import { AcToolbarButtonComponent } from './components/toolbar/ac-toolbar-button
     PolylinesEditorService,
 		HippodromeEditorService,
     DraggableToMapService,
-    AcToolbarComponent,
-    AcToolbarButtonComponent,
   ]
 })
 export class AngularCesiumWidgetsModule {
