@@ -42,6 +42,7 @@ import { HeatmapLayerComponent } from './components/heatmap-layer/heatmap-layer.
 import { HippodromeEditorLayerComponent } from './components/editor-layer/hippodrome-example/hippodrome-editor-layer.component';
 import { TracksWithArraysComponent } from './components/tracks-with-arrays-example/tracks-with-arrays.component';
 import { AngularCesiumWidgetsModule } from '../../src/angular-cesium-widgets/angular-cesium-widgets.module';
+import { ToolbarExampleComponent } from './components/toolbar-example/toolbar-example.component';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { AngularCesiumWidgetsModule } from '../../src/angular-cesium-widgets/ang
 		HippodromeEditorLayerComponent,
     HtmlLayerComponent,
     TracksWithArraysComponent,
+    ToolbarExampleComponent,
   ],
   imports: [
     BrowserModule,

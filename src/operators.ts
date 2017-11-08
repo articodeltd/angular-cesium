@@ -10,3 +10,4 @@ import 'rxjs/add/operator/merge';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/fromEvent';

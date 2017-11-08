@@ -11,6 +11,9 @@ import { HippodromeEditorComponent } from './components/hippodrome-editor/hippod
 import { HippodromeEditorService } from './services/entity-editors/hippodrome-editor/hippodrome-editor.service';
 import { DraggableToMapDirective } from './directives/draggable-to-map.directive';
 import { DraggableToMapService } from './services/draggable-to-map.service';
+import { AcToolbarComponent } from './components/toolbar/ac-toolbar/ac-toolbar.component';
+import { DragIconComponent } from './components/toolbar/ac-toolbar/drag-icon.component';
+import { AcToolbarButtonComponent } from './components/toolbar/ac-toolbar-button/ac-toolbar-button.component';
 
 @NgModule({
   imports: [
@@ -23,6 +26,9 @@ import { DraggableToMapService } from './services/draggable-to-map.service';
     CirclesEditorComponent,
 		PolylinesEditorComponent,
     DraggableToMapDirective,
+    DragIconComponent,
+    AcToolbarComponent,
+    AcToolbarButtonComponent,
   ],
   exports: [
 		HippodromeEditorComponent,
@@ -37,6 +43,8 @@ import { DraggableToMapService } from './services/draggable-to-map.service';
     PolylinesEditorService,
 		HippodromeEditorService,
     DraggableToMapService,
+    AcToolbarComponent,
+    AcToolbarButtonComponent,
   ]
 })
 export class AngularCesiumWidgetsModule {

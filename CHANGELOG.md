@@ -1,3 +1,10 @@
+## Next
+## Feat
+* Added `calcEllipseContainingRect` static function to `CesiumHeatMapMaterialCreator`
+* Added `ac-toolbar` and `ac-toolbar-button` components
+* Added toolbar example and flyTo home toolbar option
+
+
 ## 0.0.34
 ### Fixes
 * Fixed a bug in editors.

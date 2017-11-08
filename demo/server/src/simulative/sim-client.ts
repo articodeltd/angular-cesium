@@ -1,6 +1,6 @@
 
 export class SimClient {
-  public intervalId: number;
+  public intervalId: any;
   public simData: any;
   
   
