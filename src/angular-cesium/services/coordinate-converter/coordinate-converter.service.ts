@@ -96,7 +96,7 @@ export class CoordinateConverter {
 		const toDeg = (rad) => Cesium.Math.toDegrees(rad);
 		const firstPoint = new LatLonVectors(toDeg(first.latitude), toDeg(first.longitude));
 		const secondPoint = new LatLonVectors(toDeg(second.latitude), toDeg(second.longitude));
-		const middlePoint = firstPoint.midpointTo(secondPoint);
+		const middlePoint: any = firstPoint.midpointTo(secondPoint);
 		
 		return Cesium.Cartesian3.fromDegrees(middlePoint.lon, middlePoint.lat);
 	}
