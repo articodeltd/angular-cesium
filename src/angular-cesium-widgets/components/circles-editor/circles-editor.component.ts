@@ -208,6 +208,10 @@ export class CirclesEditorComponent implements OnDestroy {
   }
 
   getPointSize(point: EditPoint) {
-    return point.isVirtualEditPoint() ? 8 : 15;
+    return point.isVirtualEditPoint() ? point.props.virtualPointPixelSize : point.props.pixelSize;
+  }
+
+  getPointShow(point: EditPoint) {
+    return point.show && (point.isVirtualEditPoint() ? point.props.showVirtual : point.props.show);
   }
 }

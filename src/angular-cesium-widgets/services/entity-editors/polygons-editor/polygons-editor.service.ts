@@ -31,12 +31,16 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
     color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
+    pixelSize: 15,
+    virtualPointPixelSize: 8,
+    show: true,
+    showVirtual: true,
   },
   polygonProps: {
     material: new Cesium.Color(0.1, 0.5, 0.2, 0.4),
   },
   polylineProps: {
-    material: Cesium.Color.BLACK,
+    material: () => Cesium.Color.BLACK,
     width: 1,
   },
 };

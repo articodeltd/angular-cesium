@@ -53,10 +53,14 @@ export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
     color : Cesium.Color.WHITE,
     outlineColor : Cesium.Color.BLACK,
     outlineWidth : 1,
+    pixelSize: 15,
+    virtualPointPixelSize: 8,
+    show: true,
+    showVirtual: true,
   },
   polylineProps : {
     width : 1,
-    material : Cesium.Color.BLACK,
+    material : () => Cesium.Color.BLACK,
   }
 };
 

@@ -5,7 +5,7 @@
         center: arc.center,
         radius: arc.radius,
         quality: 30,
-        color: arc.props.material
+        color: arc.props.material()
     }">
     </ac-arc-desc>
 </ac-layer>
@@ -18,7 +18,7 @@
         outlineColor: point.props.outlineColor,
         outlineWidth: point.props.outlineWidth,
         heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-        show: point.show
+        show: getPointShow(point)
     }">
     </ac-point-desc>
 </ac-layer>

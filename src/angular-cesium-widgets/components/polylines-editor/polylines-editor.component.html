@@ -2,7 +2,7 @@
     <ac-polyline-primitive-desc props="{
         positions: polyline.getPositions(),
         width: polyline.props.width,
-        material: polyline.props.material
+        material: polyline.props.material()
     }">
     </ac-polyline-primitive-desc>
 </ac-layer>
@@ -14,7 +14,7 @@
         color: point.props.color,
         outlineColor: point.props.outlineColor,
         outlineWidth: point.props.outlineWidth,
-        show: point.show
+        show: getPointShow(point)
     }">
     </ac-point-desc>
 </ac-layer>

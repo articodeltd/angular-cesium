@@ -34,6 +34,10 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
     color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
+    pixelSize: 15,
+    virtualPointPixelSize: 8,
+    show: true,
+    showVirtual: true,
   },
 };
 

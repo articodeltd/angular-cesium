@@ -116,9 +116,6 @@ export class EditablePolyline extends AcEntity {
   }
 
   private addAllVirtualEditPoints() {
-    if (!this.editOptions.showMiddlePoints) {
-      return;
-    }
     const currentPoints = [...this.positions];
     currentPoints.forEach((pos, index) => {
       if (index !== currentPoints.length - 1) {
@@ -208,7 +205,7 @@ export class EditablePolyline extends AcEntity {
 
   movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
     editPoint.setPosition(toPosition);
-    if (this.doneCreation && this.editOptions.showMiddlePoints) {
+    if (this.doneCreation) {
       if (editPoint.isVirtualEditPoint()) {
         this.changeVirtualPointToRealPoint(editPoint);
       }
