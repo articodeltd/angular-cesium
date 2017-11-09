@@ -6,11 +6,15 @@ export interface PointProps {
   color?: any;
   outlineColor?: any;
   outlineWidth?: number;
+  virtualPointPixelSize?: number;
+  pixelSize?: number;
+  showVirtual?: boolean;
+  show?: boolean;
 }
 
 export interface PolylineProps {
   width?: any;
-  material?: any
+  material?: Function
 }
 
 export interface PolylineEditOptions extends EditorEditOptions {
@@ -18,6 +22,5 @@ export interface PolylineEditOptions extends EditorEditOptions {
   addLastPointModifier?: CesiumEventModifier;
   removePointEvent?: CesiumEvent;
   removePointModifier?: CesiumEventModifier;
-  showMiddlePoints?: boolean;
   maximumNumberOfPoints?: number
 }

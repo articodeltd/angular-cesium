@@ -30,12 +30,15 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
     color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
+    pixelSize: 15,
+    virtualPointPixelSize: 8,
+    show: true,
+    showVirtual: true,
   },
   polylineProps: {
-    material: Cesium.Color.BLACK,
+    material: () => Cesium.Color.BLACK,
     width: 4,
   },
-  showMiddlePoints: true,
 };
 
 /**

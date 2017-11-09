@@ -18,7 +18,7 @@
         outlineColor: point.props.outlineColor,
         outlineWidth: point.props.outlineWidth,
         heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-        show: point.show
+        show: getPointShow(point)
     }">
     </ac-point-desc>
 </ac-layer>

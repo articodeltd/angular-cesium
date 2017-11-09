@@ -2,7 +2,7 @@
     <ac-polyline-primitive-desc props="{
         positions: polyline.getPositions(),
         width: polyline.props.width,
-        material: polyline.props.material,
+        material: polyline.props.material(),
         followSurface: true
     }">
     </ac-polyline-primitive-desc>
@@ -16,7 +16,7 @@
         outlineColor: point.props.outlineColor,
         outlineWidth: point.props.outlineWidth,
         heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-        show: point.show
+        show: getPointShow(point)
     }">
     </ac-point-desc>
 </ac-layer>
