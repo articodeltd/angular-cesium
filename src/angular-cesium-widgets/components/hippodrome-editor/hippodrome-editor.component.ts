@@ -208,6 +208,6 @@ export class HippodromeEditorComponent implements OnDestroy {
   }
 
   getPointShow(point: EditPoint) {
-    return point.isVirtualEditPoint() ? point.props.showVirtual : point.props.show;
+    return point.show && (point.isVirtualEditPoint() ? point.props.showVirtual : point.props.show);
   }
 }
