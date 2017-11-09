@@ -1,9 +1,12 @@
-## Next
-## Feat
+## 0.0.35
+## Features
 * Added `calcEllipseContainingRect` static function to `CesiumHeatMapMaterialCreator`
 * Added `ac-toolbar` and `ac-toolbar-button` components
 * Added toolbar example and flyTo home toolbar option
+* Added Range and bearing example
 
+## Breaking changes
+* `AngularCesiumEntitiesDrawerModule` refactored to `AngularCesiumWigetsModule`
 
 ## 0.0.34
 ### Fixes

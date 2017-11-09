@@ -1,1 +1,1 @@
-declare const Cesium: any;
+declare var Cesium: any;
