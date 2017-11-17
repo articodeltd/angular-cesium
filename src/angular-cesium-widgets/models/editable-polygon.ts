@@ -292,7 +292,7 @@ export class EditablePolygon extends AcEntity {
   }
 
   getHierarchy() {
-    return new Cesium.PolygonHierarchy(this.getPositions());
+    return new Cesium.PolygonHierarchy(this.getRealPositions());
   }
 
   private removePosition(point: EditPoint) {

@@ -22,23 +22,25 @@
 </ac-layer>
 
 <ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this" [zIndex]="0">
-    <ac-polygon-desc props="{
-        hierarchy: polygon.getRealPositions(),
-        material: polygon.polygonProps.material
-    }">
-    </ac-polygon-desc>
-    <!--<ac-static-polygon-desc-->
-    <!--geometryProps="{-->
-    <!--polygonHierarchy: polygon.getHierarchy(),-->
-    <!--height: 1-->
-    <!--}"-->
-    <!--instanceProps="{-->
-    <!--attributes: attributes-->
-    <!--}"-->
-    <!--primitiveProps="{-->
-    <!--appearance: appearance-->
+    <!--<ac-polygon-desc props="{-->
+        <!--hierarchy: polygon.getRealPositions(),-->
+        <!--material: polygon.polygonProps.material-->
     <!--}">-->
-    <!--</ac-static-polygon-desc-->
+    <!--</ac-polygon-desc>-->
+    <ac-static-polygon-desc
+        geometryProps="{
+            polygonHierarchy: polygon.getHierarchy(),
+            height: 1
+        }"
+        instanceProps="{
+            attributes: attributes
+        }"
+        primitiveProps="{
+            appearance: appearance
+        }"
+    >
+    </ac-static-polygon-desc>
+
     <ac-array-desc acFor="let label of polygon.labels" [idGetter]="getLabelId">
         <ac-label-primitive-desc props="{
             position: label.position,

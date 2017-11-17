@@ -24,7 +24,7 @@ export class PolygonsEditorLayerComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.polygonsEditor.create({ allowDrag: false });
+    this.editing$ = this.polygonsEditor.create({ allowDrag: true });
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
       if (editUpdate.editAction === EditActions.ADD_POINT) {
         console.log(editUpdate.points); // point = position with id
