@@ -350,19 +350,19 @@ apache-md5@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/apache-md5/-/apache-md5-1.0.6.tgz#470239d40c54e7c32dd9d6eb11bc3578ecc903c2"
 
-apollo-angular@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/apollo-angular/-/apollo-angular-0.13.0.tgz#a274a177c8dcc98180cda4026a2515889f5246be"
+apollo-angular@0.13.3:
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/apollo-angular/-/apollo-angular-0.13.3.tgz#a94464990132eb70eb77e3b890c50e1cecc2ec7c"
   dependencies:
-    apollo-client-rxjs "~0.5.2"
+    apollo-client-rxjs "^0.6.0-rc.1"
 
-apollo-client-rxjs@~0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/apollo-client-rxjs/-/apollo-client-rxjs-0.5.2.tgz#396604b5cd6e9ce0ba4e91ca2af59df35fe92856"
+apollo-client-rxjs@^0.6.0-rc.1:
+  version "0.6.0-rc.2"
+  resolved "https://registry.yarnpkg.com/apollo-client-rxjs/-/apollo-client-rxjs-0.6.0-rc.2.tgz#f391ee69381ae5ec8f74f476fbb6b0490b6f5923"
 
-apollo-client@^1.0.2:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-1.9.1.tgz#9e6a383605572c755038cf5d7fdac9382bcdc040"
+apollo-client@^1.9.1:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-1.9.3.tgz#37000b3c801f4571b7b089739e696a158896aeab"
   dependencies:
     apollo-link-core "^0.5.0"
     graphql "^0.10.0"
