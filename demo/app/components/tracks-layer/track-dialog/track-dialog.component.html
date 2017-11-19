@@ -1,7 +1,7 @@
-<h1 class="title" md-dialog-title>Track {{track?.id}}</h1>
+<h1 class="title" matDialogTitle>Track {{track?.id}}</h1>
 <div class="divider modal-divider"></div>
 
-<md-dialog-content md-dialog-content class="track-dialog">
+<mat-dialog-content mat-dialog-content class="track-dialog">
     <div class="dialog-line">
         <label>Callsign:</label>
         <span>{{track?.callsign}}</span>
@@ -25,20 +25,20 @@
     <div *ngIf="data.realData">
         <div class="dialog-line" >
             <label>From:</label>
-            <span [mdTooltip]="track?.from">{{fixTextSize(track?.from)}}</span>
+            <span [matTooltip]="track?.from">{{fixTextSize(track?.from)}}</span>
         </div>
         <div class="dialog-line">
             <label>To:</label>
-            <span [mdTooltip]="track?.to">{{fixTextSize(track?.to)}}</span>
+            <span [matTooltip]="track?.to">{{fixTextSize(track?.to)}}</span>
         </div>
         <div class="dialog-line">
             <label>Type: </label>
             <span >{{track?.type}}</span>
         </div>
     </div>
-</md-dialog-content>
+</mat-dialog-content>
 
-<md-dialog-actions class="dialog-actions">
-    <button class="action-button track-button" md-raised-button (click)="trackEntityFn()">Follow Entity</button>
-    <button class="action-button" md-dialog-close md-raised-button>Close</button>
-</md-dialog-actions>
+<mat-dialog-actions class="dialog-actions">
+    <button class="action-button track-button" mat-raised-button (click)="trackEntityFn()">Follow Entity</button>
+    <button class="action-button" matDialogClose mat-raised-button>Close</button>
+</mat-dialog-actions>

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ViewEncapsulation } from '@angular/core';
 import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocketSupplier';
 import { MapLayerProviderOptions } from '../../src/angular-cesium/models/map-layer-provider-options.enum';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MdDialog, MdIconRegistry } from '@angular/material';
+import { MatDialog, MatIconRegistry } from '@angular/material';
 import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
 import { MapsManagerService } from '../../src/angular-cesium/services/maps-manager/maps-manager.service';
 import { DraggableToMapService } from '../../src/angular-cesium-widgets/services/draggable-to-map.service';
@@ -25,9 +25,9 @@ export class AppComponent implements AfterViewInit {
   TracksType = TracksType;
 
   constructor(public appSettingsService: AppSettingsService,
-              iconRegistry: MdIconRegistry,
+              iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer,
-              private dialog: MdDialog,
+              private dialog: MatDialog,
               private mapsManagerService: MapsManagerService,
               private draggableToMapService: DraggableToMapService) {
     iconRegistry.addSvgIcon(
