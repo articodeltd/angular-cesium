@@ -21,7 +21,7 @@ export class TracksWithArraysComponent implements OnInit, OnChanges {
 
   private tracks$: ConnectableObservable<AcNotification>;
   private Cesium = Cesium;
-  private lastPickTrack;
+  private lastPickTrack: any;
 
   constructor(private mapEventsManager: MapEventsManagerService,
               simDataProvider: SimTracksDataProvider,
@@ -52,7 +52,7 @@ export class TracksWithArraysComponent implements OnInit, OnChanges {
     });
   }
 
-  getSingleTrackObservable(trackId) {
+  getSingleTrackObservable(trackId: string) {
     return this.tracks$
       .filter((notification) => notification.id === trackId).map((notification) => notification.entity);
   }
@@ -64,7 +64,7 @@ export class TracksWithArraysComponent implements OnInit, OnChanges {
     }
   }
 
-  getTrackColor(track): any {
+  getTrackColor(track: any): any {
     if (track.dialogOpen) {
       return Cesium.Color.GREENYELLOW;
     }
@@ -74,7 +74,7 @@ export class TracksWithArraysComponent implements OnInit, OnChanges {
     return track.isTarget ? Cesium.Color.BLACK : Cesium.Color.fromCssColorString('#673ab7');
   }
 
-  getTextColor(track): any {
+  getTextColor(): any {
     return Cesium.Color.BLACK;
   }
 
@@ -82,7 +82,7 @@ export class TracksWithArraysComponent implements OnInit, OnChanges {
     return new Cesium.Color(0.3, 1.0, 0.3, 1.0);
   }
 
-  trackArrayIdGetter(entity): string {
+  trackArrayIdGetter(entity: any): string {
     return entity.id;
   }
 
@@ -98,7 +98,7 @@ export class TracksWithArraysComponent implements OnInit, OnChanges {
     this.layer.removeAll();
   }
 
-  setShow($event) {
+  setShow($event: boolean) {
     this.show = $event;
   }
 }

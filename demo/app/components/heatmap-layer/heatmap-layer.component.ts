@@ -22,9 +22,9 @@ export class HeatmapLayerComponent implements OnInit {
 	circleRadius = 500000;
 	circleCenter = Cesium.Cartesian3.fromDegrees(-100, 24);
 	
-	circleHeatMapMaterial;
-	rectHeatMapMaterial;
-	viewer;
+	circleHeatMapMaterial: any;
+	rectHeatMapMaterial: any;
+	viewer: any;
 	
 	constructor(cesiumService: CesiumService) {
 		this.viewer = cesiumService.getViewer();
@@ -88,7 +88,7 @@ export class HeatmapLayerComponent implements OnInit {
 		this.layer.removeAll();
 	}
 	
-	setShow($event) {
+	setShow($event: boolean) {
 		this.show = $event
 	}
 }

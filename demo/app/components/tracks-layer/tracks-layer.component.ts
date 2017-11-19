@@ -214,7 +214,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     this.layer.removeAll();
   }
 
-  setShow($event) {
+  setShow($event: boolean) {
     this.show = $event;
   }
 }

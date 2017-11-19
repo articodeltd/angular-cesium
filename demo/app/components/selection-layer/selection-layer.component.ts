@@ -63,7 +63,7 @@ export class SelectionLayerComponent implements OnInit {
 		});
 	}
 	
-	setShow($event) {
+	setShow($event: boolean) {
 		this.show = $event
 	}
 	

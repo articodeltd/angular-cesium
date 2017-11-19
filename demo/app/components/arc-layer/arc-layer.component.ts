@@ -76,7 +76,7 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 	removeAll() {
 	}
 
-	setShow($event) {
+	setShow($event: boolean) {
 		this.show = $event;
 	}
 }
