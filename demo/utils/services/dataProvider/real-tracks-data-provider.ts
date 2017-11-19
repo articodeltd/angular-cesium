@@ -144,8 +144,9 @@ export class RealTracksDataProvider {
     });
 
     const fromServerTracks$ = watchQuery$
-      .map((reuslt) => reuslt.data.tracks)
-      .catch(err => this.tryReconnect(err));
+    .catch(err => this.tryReconnect(err))
+      .map((reuslt: any) => reuslt.data.tracks);
+    
 
     return this.createInterpolatedTracksObservable(fromServerTracks$);
   }

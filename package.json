@@ -15,7 +15,7 @@
   "typings": "index.d.ts",
   "scripts": {
     "clean_src": "rimraf src/**/*.metadata.json src/**/*.js src/**/*.js.map src/**/*.ngfactory.ts src/**/*.ngstyle.ts src/**/*.ngsummary.json",
-    "clean_typings": "rimraf src/*.d.ts src/angular-cesium/**/*.d.ts src/angular-cesium-entities-editor/**/*.d.ts src/heatmap/**/*.d.ts src/cesium-extender/**/*.d.ts src/cesium-wigets/**/*.d.ts",
+    "clean_typings": "rimraf src/*.d.ts src/angular-cesium/**/*.d.ts src/angular-cesium-entities-editor/**/*.d.ts src/heatmap/**/*.d.ts src/cesium-extender/**/*.d.ts src/angular-cesium-widgets/**/*.d.ts",
     "cleanup": "npm run clean_src && npm run clean_typings && rimraf index.js index.js.map index.d.ts index.metadata.json build bundles",
     "start": "webpack-dev-server --inline --progress --port 8080",
     "lint": "tslint -c tslint.json --project tsconfig.aot.json",
@@ -32,7 +32,7 @@
     "gh-pages": "gh-pages -d docs -b gh-pages",
     "docs:push": "npm run compile-docs && npm run gh-pages && rimraf docs",
     "heroku-postbuild": "npm run build-demo",
-    "prepare": "npm run bundle",
+    "prepublish": "npm run bundle",
     "postpublish": "npm run docs:push"
   },
   "peerDependencies": {
@@ -48,7 +48,7 @@
     "@angular/core": "^4.3.2",
     "@angular/forms": "^4.3.2",
     "@angular/http": "^4.3.2",
-    "@angular/material": "^2.0.0-beta.8",
+    "@angular/material": "2.0.0-beta.12",
     "@angular/platform-browser": "^4.3.2",
     "@angular/platform-browser-dynamic": "^4.3.2",
     "@compodoc/compodoc": "^1.0.0-beta.14",

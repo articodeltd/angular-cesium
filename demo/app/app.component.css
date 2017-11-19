@@ -22,7 +22,7 @@
     height: 56px;
 }
 @media (max-width:450px) {
-    md-toolbar-row{
+    mat-toolbar-row{
         flex-direction: column !important;
     }
     .github {

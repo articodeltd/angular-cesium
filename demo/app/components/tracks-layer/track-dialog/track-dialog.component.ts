@@ -7,7 +7,7 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { MD_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { Apollo, ApolloQueryObservable } from 'apollo-angular';
 import gql from 'graphql-tag';
@@ -41,7 +41,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   private stopper$ = new Subject();
   private singleTrackQuery$: ApolloQueryObservable<Track>;
 
-  constructor(@Inject(MD_DIALOG_DATA) private data: any,
+  constructor(@Inject(MAT_DIALOG_DATA) private data: any,
               private cd: ChangeDetectorRef, private apollo: Apollo) {
   }
 

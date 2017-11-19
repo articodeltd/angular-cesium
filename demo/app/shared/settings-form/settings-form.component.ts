@@ -1,4 +1,4 @@
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
@@ -18,7 +18,7 @@ export class SettingsFormComponent {
 	private cameraService: CameraService;
 	
 	constructor(public settingsService: AppSettingsService,
-							private snackBar: MdSnackBar,
+							private snackBar: MatSnackBar,
 							webSocket: WebSocketSupplier,
 							private mapsManagerService: MapsManagerService) {
 		

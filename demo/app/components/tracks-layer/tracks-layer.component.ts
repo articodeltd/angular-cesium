@@ -6,7 +6,7 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
 import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
 import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { TracksDialogComponent } from './track-dialog/track-dialog.component';
 import { RealTracksDataProvider } from '../../../utils/services/dataProvider/real-tracks-data-provider';
 import { AppSettingsService, TracksType } from '../../services/app-settings-service/app-settings-service';
@@ -40,7 +40,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
   private wasDialogClosedByRealDataChange = false;
   private modelsCountFilter = this.MAX_MODELS;
 
-  constructor(private mapEventsManager: MapEventsManagerService, public dialog: MdDialog,
+  constructor(private mapEventsManager: MapEventsManagerService, public dialog: MatDialog,
               private ngZone: NgZone, realDataProvider: RealTracksDataProvider, simDataProvider: SimTracksDataProvider,
               private appSettingsService: AppSettingsService, private cameraService: CameraService) {
     const realTracks$ = realDataProvider.get();
