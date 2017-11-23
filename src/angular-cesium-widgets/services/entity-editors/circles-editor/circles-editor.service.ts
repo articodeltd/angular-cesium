@@ -20,6 +20,7 @@ import { CircleEditOptions, CircleProps } from '../../../models/circle-edit-opti
 import { EditableCircle } from '../../../models/editable-circle';
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
+import {BasicEditUpdate} from "../../../models/basic-edit-update";
 
 /**
  * Service for creating editable circles
@@ -91,7 +92,7 @@ export class CirclesEditorService {
   }
   
   create(options = DEFAULT_CIRCLE_OPTIONS, priority = 100): CircleEditorObservable {
-    let center = undefined;
+    let center: any = undefined;
     const id = this.generteId();
     const circleOptions = this.setOptions(options);
     const clientEditSubject = new BehaviorSubject<CircleEditUpdate>({
@@ -241,7 +242,7 @@ export class CirclesEditorService {
   }
   
   private editCircle(id: string,
-                     priority,
+                     priority: number,
                      editSubject: Subject<CircleEditUpdate>,
                      options: CircleEditOptions,
                      editObservable?: CircleEditorObservable): CircleEditorObservable {
@@ -388,7 +389,7 @@ export class CirclesEditorService {
       });
     };
 
-    observableToExtend.setLabelsRenderFn = (callback) => {
+    observableToExtend.setLabelsRenderFn = (callback: (update: BasicEditUpdate<any>, labels: LabelProps[]) => LabelProps[]) => {
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
@@ -422,23 +423,23 @@ export class CirclesEditorService {
     return circleOptions;
   }
   
-  private getCenterPosition(id): Cartesian3 {
+  private getCenterPosition(id: string): Cartesian3 {
     return this.circlesManager.get(id).getCenter();
   }
   
-  private getCenterPoint(id): EditPoint {
+  private getCenterPoint(id: string): EditPoint {
     return this.circlesManager.get(id).center;
   }
   
-  private getRadiusPosition(id): Cartesian3 {
+  private getRadiusPosition(id: string): Cartesian3 {
     return this.circlesManager.get(id).getRadiusPoint();
   }
   
-  private getRadius(id): number {
+  private getRadius(id: string): number {
     return this.circlesManager.get(id).getRadius();
   }
   
-  private getCircleProperties(id) {
+  private getCircleProperties(id: string) {
     const circle = this.circlesManager.get(id);
     return {
       center : circle.getCenter(),

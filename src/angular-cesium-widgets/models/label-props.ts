@@ -5,24 +5,24 @@ export interface LabelProps {
   text: string;
   show?: boolean;
   font?: string;
-  style?;
-  fillColor?;
-  outlineColor?;
-  backgroundColor?;
-  backgroundPadding?;
+  style?: any;
+  fillColor?: any;
+  outlineColor?: any;
+  backgroundColor?: any;
+  backgroundPadding?: any;
   showBackground?: boolean;
   scale?: number;
-  distanceDisplayCondition?;
-  heightReference?;
-  horizontalOrigin?;
+  distanceDisplayCondition?: any;
+  heightReference?: any;
+  horizontalOrigin?: any;
   eyeOffset?: Cartesian3;
   position?: Cartesian3;
   pixelOffset?: Cartesian2;
-  pixelOffsetScaleByDistance?;
-  outlineWidth?;
-  scaleByDistance?;
-  translucencyByDistance?;
-  verticalOrigin?;
+  pixelOffsetScaleByDistance?: any;
+  outlineWidth?: any;
+  scaleByDistance?: any;
+  translucencyByDistance?: any;
+  verticalOrigin?: any;
 }
 
 export const defaultLabelProps: LabelProps = {

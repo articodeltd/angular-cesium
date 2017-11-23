@@ -4,7 +4,7 @@ const degreesToRadians = (degrees: number) => {
 	return (degrees * Math.PI) / 180.0;
 };
 
-export function parseToTrack(dataArray, keyId): Track {
+export function parseToTrack(dataArray: any[], keyId: string): Track {
 	const modeScode = dataArray[0];
 	const lat = dataArray[1];
 	const long = dataArray[2];

@@ -17,7 +17,7 @@ export class EditablePolyline extends AcEntity {
   private _enableEdit = true;
   private _pointProps: PointProps;
   private polylineProps: PolylineProps;
-  private lastDraggedToPosition;
+  private lastDraggedToPosition: any;
   private _labels: LabelProps[] = [];
 
   constructor(private id: string,

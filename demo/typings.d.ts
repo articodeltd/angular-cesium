@@ -1,2 +1,2 @@
-declare var Cesium;
-declare var io;
+declare var Cesium: any;
+declare var io: any;

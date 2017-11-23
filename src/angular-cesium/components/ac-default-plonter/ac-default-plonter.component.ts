@@ -11,7 +11,7 @@ import { CoordinateConverter } from '../../services/coordinate-converter/coordin
       }">
             <div class="plonter-context-menu">
                 <div *ngFor="let entity of plonterService.entitesToPlonter">
-                    <div class="plonter-item" (click)="chooseEntity(entity)">{{entity?.name || entity?.id}}
+                    <div class="plonter-item" (click)="chooseEntity(entity)">{{ entity?.name || entity?.id }}
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@ export class AcDefaultPlonterComponent implements OnInit {
     }
   }
   
-  chooseEntity(entity) {
+  chooseEntity(entity: any) {
     this.plonterService.resolvePlonter(entity);
   }
 }

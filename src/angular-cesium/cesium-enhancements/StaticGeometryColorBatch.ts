@@ -20,7 +20,7 @@ const Property = Cesium.Property;
 const colorScratch = new Color();
 const  distanceDisplayConditionScratch = new DistanceDisplayCondition();
 
-function Batch(primitives, translucent, appearanceType, depthFailAppearanceType, depthFailMaterialProperty, closed, shadows) {
+function Batch(primitives: any, translucent: any, appearanceType: any, depthFailAppearanceType: any, depthFailMaterialProperty: any, closed: any, shadows: any) {
   this.translucent = translucent;
   this.appearanceType = appearanceType;
   this.depthFailAppearanceType = depthFailAppearanceType;
@@ -53,7 +53,7 @@ Batch.prototype.onMaterialChanged = function() {
   this.invalidated = true;
 };
 
-Batch.prototype.isMaterial = function(updater) {
+Batch.prototype.isMaterial = function(updater: any) {
   var material = this.depthFailMaterialProperty;
   var updaterMaterial = updater.depthFailMaterialProperty;
   if (updaterMaterial === material) {
@@ -65,7 +65,7 @@ Batch.prototype.isMaterial = function(updater) {
   return false;
 };
 
-Batch.prototype.add = function(updater, instance) {
+Batch.prototype.add = function(updater: any, instance: any) {
   var id = updater.entity.id;
   this.createPrimitive = true;
   this.geometry.set(id, instance);
@@ -82,7 +82,7 @@ Batch.prototype.add = function(updater, instance) {
   }
 };
 
-Batch.prototype.remove = function(updater) {
+Batch.prototype.remove = function(updater: any) {
   var id = updater.entity.id;
   this.createPrimitive = this.geometry.remove(id) || this.createPrimitive;
   if (this.updaters.remove(id)) {
@@ -95,7 +95,7 @@ Batch.prototype.remove = function(updater) {
   }
 };
 
-Batch.prototype.update = function(time) {
+Batch.prototype.update = function(time: any) {
   var isUpdated = true;
   var removedCount = 0;
   var primitive = this.primitive;
@@ -244,7 +244,7 @@ Batch.prototype.update = function(time) {
   return isUpdated;
 };
 
-Batch.prototype.updateShows = function(primitive) {
+Batch.prototype.updateShows = function(primitive: any) {
   var showsUpdated = this.showsUpdated.values;
   var length = showsUpdated.length;
   for (var i = 0; i < length; i++) {
@@ -266,11 +266,11 @@ Batch.prototype.updateShows = function(primitive) {
   this.showsUpdated.removeAll();
 };
 
-Batch.prototype.contains = function(entity) {
+Batch.prototype.contains = function(entity: any) {
   return this.updaters.contains(entity.id);
 };
 
-Batch.prototype.getBoundingSphere = function(entity, result) {
+Batch.prototype.getBoundingSphere = function(entity: any, result: any) {
   var primitive = this.primitive;
   if (!primitive.ready) {
     return BoundingSphereState.PENDING;
@@ -322,7 +322,7 @@ export function fixCesiumEntitiesShadows() {
   if(wasFixed){
     return;
   }
-  Cesium.StaticGeometryColorBatch.prototype.add = function (time, updater) {
+  Cesium.StaticGeometryColorBatch.prototype.add = function (time: any, updater: any) {
     var items;
     var translucent;
     var instance = updater.createFillGeometryInstance(time);
@@ -341,8 +341,10 @@ export function fixCesiumEntitiesShadows() {
         item.add(updater, instance);
         return;
       }
+
     }
-    var batch = new Batch(this._primitives, translucent, this._appearanceType, this._depthFailAppearanceType, updater.depthFailMaterialProperty, this._closed, this._shadows);
+
+    var batch: any = new Batch(this._primitives, translucent, this._appearanceType, this._depthFailAppearanceType, updater.depthFailMaterialProperty, this._closed, this._shadows);
     batch.add(updater, instance);
     items.push(batch);
   };

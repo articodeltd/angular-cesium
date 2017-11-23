@@ -34,7 +34,7 @@ export class RealTracksDataProvider {
   constructor(private apollo: Apollo) {
   }
 
-  private convertToCesiumEntity(trackData): AcNotification {
+  private convertToCesiumEntity(trackData: any): AcNotification {
     const track = Object.assign({}, trackData);
     track.scale = 0.2;
     track.image = '/assets/fighter-jet.png';
@@ -48,14 +48,14 @@ export class RealTracksDataProvider {
     this.tracksCache.set(track.id, track);
   }
 
-  getFuturePosition(position, heading) {
+  getFuturePosition(position: any, heading: number) {
     return Cesium.Cartesian3.fromDegrees(
       position.long + (Math.sin(heading) * this.MAX_MOVEMENT_DISTANCE),
       position.lat + (Math.cos(heading) * this.MAX_MOVEMENT_DISTANCE)
     );
   }
 
-  getPositionDelta(startingPosition, finalPosition, legs: number) {
+  getPositionDelta(startingPosition: any, finalPosition: any, legs: number) {
     return {
       x: (finalPosition.x - startingPosition.x) / legs,
       y: (finalPosition.y - startingPosition.y) / legs,
@@ -63,7 +63,7 @@ export class RealTracksDataProvider {
     };
   }
 
-  addPositionDelta(position, delta) {
+  addPositionDelta(position: any, delta: any) {
     position.x += delta.x;
     position.y += delta.y;
     position.z += delta.z;
@@ -76,7 +76,7 @@ export class RealTracksDataProvider {
       if (this.lastIntervalStopper) {
         this.lastIntervalStopper.next(0);
       }
-      const serverTrackNotifications = serverTracks.map(track => {
+      const serverTrackNotifications = serverTracks.map((track: any) => {
         const trackNotification = this.convertToCesiumEntity(track);
         if (!this.tracksCache.has(track.id)) {
           this.saveInCache(trackNotification);
@@ -91,7 +91,7 @@ export class RealTracksDataProvider {
         .take(interpolationLegs - 1)
         .takeUntil(stopper$)
         .subscribe(() => {
-            serverTrackNotifications.forEach(notification => {
+            serverTrackNotifications.forEach((notification: any) => {
               const serverTrack = notification.entity;
               const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
               const cachedTrack = <any>cachedTrackNotification.entity;
@@ -108,7 +108,7 @@ export class RealTracksDataProvider {
           () => {
           },
           () => {
-            serverTrackNotifications.forEach(notification => {
+            serverTrackNotifications.forEach((notification: any) => {
               const serverTrack = notification.entity;
               const cachedTrackNotification = this.tracksCache.get(serverTrack.id);
               serverTrack.positionDelta = undefined;
@@ -125,7 +125,7 @@ export class RealTracksDataProvider {
     return interpolationSubject;
   }
 
-  tryReconnect(err) {
+  tryReconnect(err: any): any {
     console.log(`Error connecting to Graphql: ${err}. Try to reconnect in ${this.RECONNECT_MS} ...`);
     return Observable.timer(this.RECONNECT_MS)
       .flatMap(() =>

@@ -5,7 +5,7 @@ import { parseAirplaneTypeCode, parseAirportCode, parseAirportCodeFromJson } fro
 
 export const resolverMap = {
   Query : {
-    async tracks(obj, args: TracksQueryArgs) {
+    async tracks(obj: any, args: TracksQueryArgs) {
       const bounds = args.bounds;
       const boundsStr = bounds ? `bounds=${bounds.start.lat},${bounds.start.long},${bounds.end.lat},${bounds.end.long}` : '';
 
@@ -17,7 +17,7 @@ export const resolverMap = {
 
       return Object.keys(data).slice(2, -1).map((key) => parseToTrack(data[key], key));
     },
-    async track(obj, args: {id: string}) {
+    async track(obj: any, args: {id: string}) {
       const id = args.id;
       const data = await rp({
         uri : `https://data-live.flightradar24.com/zones/fcgi/feed.js?bounds=10,10,10,10

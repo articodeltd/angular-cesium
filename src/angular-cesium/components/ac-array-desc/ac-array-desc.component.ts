@@ -61,12 +61,12 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
 
   @Input() acFor: string;
 
-  @Input() idGetter: (item, index) => string;
+  @Input() idGetter: (item: any, index: number) => string;
 
   @Input() show = true;
   @ViewChild('layer') private layer: AcLayerComponent;
-  @ContentChildren(BasicDesc, { descendants: false }) private basicDescs;
-  @ContentChildren(AcArrayDescComponent, { descendants: false }) private arrayDescs;
+  @ContentChildren(BasicDesc, { descendants: false }) private basicDescs: any;
+  @ContentChildren(AcArrayDescComponent, { descendants: false }) private arrayDescs: any;
   private entitiesMap = new Map<string, string[]>();
   private layerServiceSubscription: Subscription;
   private id = 0;
@@ -122,14 +122,14 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     this.layerService = layerService;
   }
 
-  draw(context, id: string, contextEntity) {
+  draw(context: any, id: string, contextEntity: any) {
     const get = _get;
     const entitiesArray: any[] = get(context, this.arrayPath);
     if (!entitiesArray) {
       return;
     }
     const previousEntitiesIdArray = this.entitiesMap.get(id);
-    const entitiesIdArray = [];
+    const entitiesIdArray: any[] = [];
     this.entitiesMap.set(id, entitiesIdArray);
 
     entitiesArray.forEach((item, index) => {
@@ -166,7 +166,7 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     return `let ${this.entityName + '___temp'} of arrayObservable$`;
   }
 
-  private generateCombinedId(entityId: string, arrayItem, index: number): string {
+  private generateCombinedId(entityId: string, arrayItem: any, index: number): string {
     let arrayItemId;
     if (this.idGetter) {
       arrayItemId = this.idGetter(arrayItem, index);

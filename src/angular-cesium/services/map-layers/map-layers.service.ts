@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MapLayersService {
 	
-	private layersDataSources = [];
+	private layersDataSources: any[] = [];
 	
 	constructor(private cesiumService: CesiumService) {
 	
 	}
 	
-	registerLayerDataSources(dataSources, zIndex) {
+	registerLayerDataSources(dataSources: any[], zIndex: number) {
 		dataSources.forEach(ds => {
 			ds.zIndex = zIndex;
 			this.layersDataSources.push(ds);
@@ -25,7 +25,7 @@ export class MapLayersService {
 		});
 	}
 	
-	updateAndRefresh(dataSources, newZIndex) {
+	updateAndRefresh(dataSources: any[], newZIndex: number) {
 		if (dataSources && dataSources.length) {
 			dataSources.forEach((ds) => {
 				const index = this.layersDataSources.indexOf(ds);
@@ -39,7 +39,7 @@ export class MapLayersService {
 		}
 	}
 	
-	removeDataSources(dataSources) {
+	removeDataSources(dataSources: any[]) {
 		dataSources.forEach(ds => {
 			const index = this.layersDataSources.indexOf(ds);
 			if (index !== -1) {

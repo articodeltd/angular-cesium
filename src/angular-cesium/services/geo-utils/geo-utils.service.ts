@@ -6,7 +6,7 @@ import { Vec3 } from '../../models/vec3';
 @Injectable()
 export class GeoUtilsService {
 
-  static pointByLocationDistanceAndAzimuth(currentLocation, meterDistance, radianAzimuth, isInputCartesian = false) {
+  static pointByLocationDistanceAndAzimuth(currentLocation: any, meterDistance: number, radianAzimuth: number, isInputCartesian = false) {
     const distance = meterDistance / Cesium.Ellipsoid.WGS84.maximumRadius;
     const curLat = isInputCartesian ? Cesium.Cartographic.fromCartesian(currentLocation).latitude : currentLocation.latitude;
     const curLon = isInputCartesian ? Cesium.Cartographic.fromCartesian(currentLocation).longitude : currentLocation.longitude;
@@ -25,7 +25,7 @@ export class GeoUtilsService {
     return Cesium.Cartesian3.fromRadians(destinationLon, destinationLat);
   }
 
-  static distance(pos0, pos1): number {
+  static distance(pos0: Cartesian3, pos1: Cartesian3): number {
     return Cesium.Cartesian3.distance(pos0, pos1);
   }
 

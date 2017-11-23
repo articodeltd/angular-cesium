@@ -37,7 +37,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   private readonly POLL_INTERVAL = 2000;
   public track$: Observable<any>;
   public track: Track;
-  public trackEntityFn;
+  public trackEntityFn: any;
   private stopper$ = new Subject();
   private singleTrackQuery$: ApolloQueryObservable<Track>;
 
@@ -92,7 +92,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
     this.cd.markForCheck();
   }
 
-  private changeTrackPosToDeg(track) {
+  private changeTrackPosToDeg(track: any) {
     const pos = Cesium.Cartographic.fromCartesian(track.position);
     this.track.position = {
       lat: this.toDegrees(pos.latitude),
@@ -108,14 +108,15 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
     this.stopper$.next(true);
   }
 
-  toDegrees(value) {
+  toDegrees(value: number) {
     const result = Math.round((360 - (180 * value / Math.PI) % 360.0) * 100) / 100;
     return result < 0 ? result + 360 : result;
   }
 
-  fixTextSize(text) {
+  fixTextSize(text: string) {
     if (text && text.length > 25) {
       return text.slice(0, 25).concat('...');
     }
+    return text;
   }
 }

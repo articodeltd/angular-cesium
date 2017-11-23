@@ -34,7 +34,7 @@ export class DraggableToMapService {
     this.coordinateConverter = coordinateConverter;
   }
 
-  drag(imageSrc: string, style?) {
+  drag(imageSrc: string, style?: any) {
     if (!this.coordinateConverter) {
       const map = this.mapsManager.getMap();
       if (map) {
@@ -97,7 +97,7 @@ export class DraggableToMapService {
 
     let dragStartPositionX: number;
     let dragStartPositionY: number;
-    let lastMove;
+    let lastMove: any;
     const moveObservable = pointerMove.map((e: any) => {
       dragStartPositionX = dragStartPositionX ? dragStartPositionX : e.x;
       dragStartPositionY = dragStartPositionY ? dragStartPositionY : e.y;

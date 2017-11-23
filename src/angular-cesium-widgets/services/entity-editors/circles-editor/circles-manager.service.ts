@@ -17,7 +17,7 @@ export class CirclesManagerService {
     return editableCircle;
   }
 
-  dispose(id) {
+  dispose(id: string) {
     this.circles.get(id).dispose();
     this.circles.delete(id);
   }

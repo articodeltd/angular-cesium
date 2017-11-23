@@ -33,7 +33,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
   private tracks$: ConnectableObservable<AcNotification>;
   private Cesium = Cesium;
-  private lastPickTrack;
+  private lastPickTrack: any;
   private realTracksPauser: PauseableObserver;
   private simAndModelTracksPauser: PauseableObserver;
   private isDialogOpen = false;
@@ -90,7 +90,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     });
   }
 
-  openDialog(track, cesiumEntity) {
+  openDialog(track: any, cesiumEntity: any) {
     track.dialogOpen = true;
     track.picked = false;
     this.layer.update(track, track.id);
@@ -120,7 +120,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     this.wasDialogClosedByRealDataChange = false;
   }
 
-  getSingleTrackObservable(trackId) {
+  getSingleTrackObservable(trackId: string) {
     return this.tracks$
       .filter((notification) => notification.id === trackId).map((notification) => notification.entity);
   }
@@ -153,7 +153,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     }
   }
 
-  getTrackColor(track): any {
+  getTrackColor(track: any): any {
     if (track.dialogOpen) {
       return Cesium.Color.GREENYELLOW;
     }
@@ -179,7 +179,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     }
   }
 
-  getTextColor(track): any {
+  getTextColor(track: any): any {
     if (this.tracksType === TracksType.REAL_DATA) {
       return this.getTrackColor(track);
     }

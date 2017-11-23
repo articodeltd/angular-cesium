@@ -31,7 +31,7 @@ export class ScreenshotService {
 		this.downloadURI(dataUrl, filename);
 	}
 	
-	private downloadURI(uri, name) {
+	private downloadURI(uri: string, name: string) {
 		const link = document.createElement('a');
 		link.download = name;
 		link.href = uri;

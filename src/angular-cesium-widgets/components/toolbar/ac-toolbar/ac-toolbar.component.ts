@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import {Subscription} from "rxjs/Subscription";
 
 /**
  * Toolbar widget, act as a container for ac-toolbar-button components
@@ -54,7 +55,7 @@ export class AcToolbarComponent implements OnInit, OnDestroy {
     'width.px' : 20,
   };
   
-  private subscription;
+  private subscription: Subscription;
   
   constructor(private element: ElementRef) {
   }

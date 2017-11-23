@@ -24,7 +24,7 @@ export class SettingsFormComponent {
 		
 		this.socket = webSocket.get();
 		this.socket.on('connect', () => {
-			this.socket.emit('get_sending_params', '', (data) => {
+			this.socket.emit('get_sending_params', '', (data: any) => {
 				this.settingsService.numOfEntities = data && data.numOfEntities;
 				this.settingsService.entitiesUpdateRate = data && data.interval;
 			});
@@ -41,7 +41,7 @@ export class SettingsFormComponent {
 		});
 	}
 	
-	newYorkToggle(toggle) {
+	newYorkToggle(toggle: any) {
 		if (toggle.checked) {
 			if (!this.cameraService) {
 				this.cameraService = this.mapsManagerService.getMap().getCameraService();

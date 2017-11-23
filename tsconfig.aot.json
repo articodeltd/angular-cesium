@@ -7,7 +7,7 @@
     "emitDecoratorMetadata": true,
     "removeComments": true,
     "experimentalDecorators": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,

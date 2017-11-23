@@ -53,7 +53,7 @@ export interface EventResult {
 @Injectable()
 export class MapEventsManagerService {
 	
-	private scene;
+	private scene: any;
 	private eventRegistrations = new Map<string, Registration[]>();
 	
 	constructor(private cesiumService: CesiumService,
@@ -100,7 +100,7 @@ export class MapEventsManagerService {
 		return <DisposableObservable<EventResult>> registrationObservable;
 	}
 	
-	private disposeObservable(eventRegistration, eventName) {
+	private disposeObservable(eventRegistration: Registration, eventName: string) {
 		eventRegistration.stopper.next(1);
 		const registrations = this.eventRegistrations.get(eventName);
 		const index = registrations.indexOf(eventRegistration);
@@ -126,7 +126,7 @@ export class MapEventsManagerService {
 	}
 	
 	private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier,
-																	entityType, pickOption: PickOptions, priority: number): Registration {
+																	entityType: any, pickOption: PickOptions, priority: number): Registration {
 		const cesiumEventObservable = this.eventBuilder.get(event, modifier);
 		const stopper = new Subject<any>();
 		
@@ -150,17 +150,19 @@ export class MapEventsManagerService {
 		return registration;
 	}
 	
-	private createDragEvent(event, modifier, entityType, pickOption, priority): Observable<EventResult> {
+	private createDragEvent(event: CesiumEvent, modifier: CesiumEventModifier, entityType: any, pickOption: PickOptions,
+							priority: number): Observable<EventResult> {
 		const {mouseDownEvent, mouseUpEvent} = CesiumDragDropHelper.getDragEventTypes(event);
 		
 		const mouseUpObservable = this.eventBuilder.get(mouseUpEvent);
 		const mouseMoveObservable = this.eventBuilder.get(CesiumEvent.MOUSE_MOVE);
 		
-		const mouseDownRegistration = this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption, priority);
+		const mouseDownRegistration = this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption,
+			priority);
 		
 		const dropSubject = new Subject<EventResult>();
 		const dragObserver = mouseDownRegistration.observable.mergeMap(e => {
-			let lastMove = null;
+			let lastMove: any = null;
 			const dragStartPositionX = e.movement.startPosition.x;
 			const dragStartPositionY = e.movement.startPosition.y;
 			return mouseMoveObservable.map((movement) => {
@@ -211,13 +213,13 @@ export class MapEventsManagerService {
 		
 		// Picks can be cesium entity or cesium primitive
 		if (picks) {
-			picks = picks.map((pick) => pick.id && pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
+			picks = picks.map((pick: any) => pick.id && pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
 		}
 		
 		return {movement : movement, cesiumEntities : picks};
 	}
 	
-	private addEntities(picksAndMovement, entityType, pickOption: PickOptions): EventResult {
+	private addEntities(picksAndMovement: any, entityType: any, pickOption: PickOptions): EventResult {
 		
 		if (picksAndMovement.cesiumEntities === null) {
 			picksAndMovement.entities = null;
@@ -226,11 +228,11 @@ export class MapEventsManagerService {
 		let entities = [];
 		if (pickOption !== PickOptions.NO_PICK) {
 			if (entityType) {
-				entities = picksAndMovement.cesiumEntities.map((pick) => pick.acEntity).filter((acEntity) => {
+				entities = picksAndMovement.cesiumEntities.map((pick: any) => pick.acEntity).filter((acEntity: any) => {
 					return acEntity && acEntity instanceof entityType;
 				});
 			} else {
-				entities = picksAndMovement.cesiumEntities.map((pick) => pick.acEntity);
+				entities = picksAndMovement.cesiumEntities.map((pick: any) => pick.acEntity);
 			}
 			
 			entities = UtilsService.unique(entities);

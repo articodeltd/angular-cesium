@@ -4,6 +4,7 @@ import { EditActions } from '../../../../../src/angular-cesium-widgets/models/ed
 import { HippodromeEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service';
 import { HippodromeEditorObservable } from '../../../../../src/angular-cesium-widgets/models/hippodrome-editor-oboservable';
 import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/label-props';
+import {HippodromeEditUpdate} from '../../../../../src/angular-cesium-widgets/models/hippodrome-edit-update';
 
 @Component({
 	selector : 'hippodrome-editor-layer',
@@ -32,12 +33,12 @@ export class HippodromeEditorLayerComponent implements OnInit {
 			},
 			allowDrag : false
 		});
-		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
-			
+		this.editing$.subscribe((editUpdate: HippodromeEditUpdate) => {
 			if (editUpdate.editAction === EditActions.ADD_POINT) {
 				console.log(editUpdate.points); // point = position with id
 				console.log(editUpdate.positions); // or just position
 				console.log(editUpdate.updatedPosition); // added position
+        editUpdate.
 			}
 		});
 	}

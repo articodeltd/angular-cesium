@@ -31,7 +31,7 @@ export class DemoMapComponent {
 			navigationInstructionsInitiallyVisible : false,
 		};
 		
-		viewerConf.viewerModifier = (viewer) => {
+		viewerConf.viewerModifier = (viewer: any) => {
 			viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
 			viewer.bottomContainer.remove();
 		};

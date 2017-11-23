@@ -41,7 +41,7 @@ export class AppSettingsService {
 		tracksDataType: TracksType.MODELS_3D,
   };
 
-  setSettings(settings) {
+  setSettings(settings: AppSettings) {
     Object.assign(this._settings, settings);
   }
 

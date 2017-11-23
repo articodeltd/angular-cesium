@@ -49,7 +49,7 @@ export class HippodromeEditorComponent implements OnDestroy {
     });
   }
 
-  getLabelId(element, index: number): string {
+  getLabelId(element: any, index: number): string {
     return index.toString();
   }
 
