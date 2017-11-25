@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PolygonEditUpdate } from '../../../../../src/angular-cesium-widgets/models/polygon-edit-update';
 import { EditActions } from '../../../../../src/angular-cesium-widgets/models/edit-actions.enum';
 import { HippodromeEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service';
 import { HippodromeEditorObservable } from '../../../../../src/angular-cesium-widgets/models/hippodrome-editor-oboservable';
 import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/label-props';
+import {HippodromeEditUpdate} from '../../../../../src/angular-cesium-widgets/models/hippodrome-edit-update';
 
 @Component({
 	selector : 'hippodrome-editor-layer',
@@ -13,14 +13,14 @@ import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/lab
 export class HippodromeEditorLayerComponent implements OnInit {
 	editing$: HippodromeEditorObservable;
 	enableEditing = true;
-	
+
 	constructor(private hippodromeEditor: HippodromeEditorService) {
 	}
-	
+
 	ngOnInit(): void {
 		// this.startEdit();
 	}
-	
+
 	startEdit() {
 		if (this.editing$) {
 			this.stopEdit();
@@ -32,21 +32,24 @@ export class HippodromeEditorLayerComponent implements OnInit {
 			},
 			allowDrag : false
 		});
-		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
-			
-			if (editUpdate.editAction === EditActions.ADD_POINT) {
-				console.log(editUpdate.points); // point = position with id
-				console.log(editUpdate.positions); // or just position
-				console.log(editUpdate.updatedPosition); // added position
-			}
+		this.editing$.subscribe((editUpdate: HippodromeEditUpdate) => {
+
+      if (editUpdate.editAction === EditActions.DRAG_POINT  || editUpdate.editAction === EditActions.ADD_POINT ) {
+        console.log('width', this.editing$.getCurrentWidth());
+        console.log('positions', this.editing$.getCurrentPoints());
+
+        // or
+        console.log('width', editUpdate.width);
+        console.log('positions', editUpdate.points); // cartesian3
+      }
 		});
 	}
-	
+
 	stopEdit() {
 		this.editing$.dispose();
 	}
-	
-	
+
+
 	editFromExisting() {
 		if (this.editing$) {
 			this.stopEdit();
@@ -55,7 +58,7 @@ export class HippodromeEditorLayerComponent implements OnInit {
 			Cesium.Cartesian3.fromDegrees(20, 40),
 			Cesium.Cartesian3.fromDegrees(30, 20)];
 		this.editing$ = this.hippodromeEditor.edit(initialPos);
-    this.editing$.setLabelsRenderFn((update: PolygonEditUpdate) => {
+    this.editing$.setLabelsRenderFn((update: HippodromeEditUpdate) => {
       let counter = 0;
       const newLabels: LabelProps[] = [];
       update.positions.forEach(position => newLabels.push({
@@ -75,8 +78,7 @@ export class HippodromeEditorLayerComponent implements OnInit {
           return label;
         })
       ), 2000);
-		this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
-			
+		this.editing$.subscribe((editUpdate: HippodromeEditUpdate) => {
 			if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
 				console.log(editUpdate.points); // point = position with id
 				console.log(editUpdate.positions); // or just position
@@ -84,7 +86,7 @@ export class HippodromeEditorLayerComponent implements OnInit {
 			}
 		});
 	}
-	
+
 	toggleEnableEditing() {
 		// Only effects if in edit mode (all polygon points were created)
 		if (!this.editing$) {
@@ -97,12 +99,12 @@ export class HippodromeEditorLayerComponent implements OnInit {
 			this.editing$.disable();
 		}
 	}
-	
+
 	updatePointManually() {
 		if (this.editing$) {
 			// Only effects if in edit mode (after initial shape was created)
 			const hippodromePoints = this.editing$.getCurrentPoints();
-			
+
 			const firstPointPos = hippodromePoints[0].getPosition();
 			const newSecondPos = Cesium.Cartesian3.fromDegrees(20, 20);
 			const newWidth = 250000.0;

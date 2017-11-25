@@ -1,3 +1,7 @@
+## NEXT
+## Fixes
+* Hippodrome Editor - Expose hippodrome width
+
 ## 0.0.35
 ## Features
 * Added `calcEllipseContainingRect` static function to `CesiumHeatMapMaterialCreator`

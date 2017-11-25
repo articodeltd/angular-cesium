@@ -156,6 +156,7 @@ export class HippodromeEditorService {
         ...updateValue,
         positions: this.getPositions(id),
         points: this.getPoints(id),
+        width: this.getWidth(id),
       });
 
       if (!isFirstPoint) {
@@ -201,6 +202,7 @@ export class HippodromeEditorService {
       ...update,
       positions: this.getPositions(id),
       points: this.getPoints(id),
+      width: this.getWidth(id),
     });
     return this.editHippodrome(
       id,
@@ -253,6 +255,7 @@ export class HippodromeEditorService {
           ...update,
           positions: this.getPositions(id),
           points: this.getPoints(id),
+          width: this.getWidth(id),
         });
       });
 
@@ -279,6 +282,7 @@ export class HippodromeEditorService {
             ...update,
             positions: this.getPositions(id),
             points: this.getPoints(id),
+            width: this.getWidth(id),
           });
         });
     }
@@ -368,11 +372,11 @@ export class HippodromeEditorService {
         updateLabels: labels,
       })
     };
+
     observableToExtend.getCurrentPoints = () => this.getPoints(id);
-
     observableToExtend.getEditValue = () => observableToExtend.getValue();
-
     observableToExtend.getLabels = (): LabelProps[] => this.hippodromeManager.get(id).labels;
+    observableToExtend.getCurrentWidth = (): number => this.getWidth(id);
 
     return observableToExtend as HippodromeEditorObservable;
   }
@@ -389,5 +393,10 @@ export class HippodromeEditorService {
   private getPoints(id) {
     const hippodrome = this.hippodromeManager.get(id);
     return hippodrome.getRealPoints();
+  }
+
+  private getWidth(id) {
+    const hippodrome = this.hippodromeManager.get(id);
+    return hippodrome.getWidth();
   }
 }

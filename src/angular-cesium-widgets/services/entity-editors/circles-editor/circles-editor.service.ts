@@ -409,7 +409,9 @@ export class CirclesEditorService {
     observableToExtend.getEditValue = () => observableToExtend.getValue();
 
     observableToExtend.getLabels = (): LabelProps[] => this.circlesManager.get(id).labels;
-    
+    observableToExtend.getCenter = (): Cartesian3 => this.getCenterPosition(id);
+    observableToExtend.getRadius =  (): number => this.getRadius(id);
+
     return observableToExtend as CircleEditorObservable;
   }
   
