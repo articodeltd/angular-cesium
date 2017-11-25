@@ -261,6 +261,10 @@ export class EditableHippodrome extends AcEntity {
       .filter(position => !position.isVirtualEditPoint());
   }
 
+  getWidth(): number {
+    return this.hippodromeProps.width;
+  }
+
   getPositions(): Cartesian3[] {
     return this.positions.map(position => position.getPosition());
   }
