@@ -60,7 +60,6 @@ export class HippodromeEditorLayerComponent implements OnInit {
 		this.editing$ = this.hippodromeEditor.edit(initialPos);
     this.editing$.setLabelsRenderFn((update: HippodromeEditUpdate) => {
       let counter = 0;
-      this.editing$.getCurrentPoints();
       const newLabels: LabelProps[] = [];
       update.positions.forEach(position => newLabels.push({
         text: `Point ${counter++}`,
