@@ -375,7 +375,7 @@ Part of [`AngularCesiumWidgetsModule`](https://tgftech.github.io/angular-cesium/
 + [`PolygonsEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolygonsEditorService.html) - for drawing polygons
 + [`HippodromeEditorService`](https://tgftech.github.io/angular-cesium/injectables/HippodromeEditorService.html) - for drawing hippodromes (path in cesium)
 
-Try running our demo for examples (uncomment the relevant components is `demo-map.component.html`).
+Try running our demo for examples (uncomment the relevant components in `demo-map.component.html`).
 
 ### ScreenshotService
 Take screenshot of your cesium globe.
