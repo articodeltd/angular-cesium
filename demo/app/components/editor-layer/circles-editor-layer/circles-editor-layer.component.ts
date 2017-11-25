@@ -7,7 +7,8 @@ import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/lab
 @Component({
   selector: 'circles-editor-layer',
   templateUrl: 'circles-editor-layer.component.html',
-  styleUrls: ['./circles-editor-layer.component.css']
+  styleUrls: ['./circles-editor-layer.component.css'],
+  providers: [CirclesEditorService],
 })
 export class CirclesEditorLayerComponent implements OnInit {
 

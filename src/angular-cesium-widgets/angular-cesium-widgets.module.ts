@@ -40,10 +40,6 @@ import { AcToolbarButtonComponent } from './components/toolbar/ac-toolbar-button
     AcToolbarButtonComponent,
   ],
   providers: [
-    PolygonsEditorService,
-    CirclesEditorService,
-    PolylinesEditorService,
-		HippodromeEditorService,
     DraggableToMapService,
   ]
 })

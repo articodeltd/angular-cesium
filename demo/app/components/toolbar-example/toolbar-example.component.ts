@@ -8,6 +8,7 @@ import { PolylineEditorObservable } from '../../../../src/angular-cesium-widgets
 @Component({
   selector: 'toolbar-example',
   templateUrl: 'toolbar-example.component.html',
+  providers: [PolylinesEditorService]
 })
 export class ToolbarExampleComponent implements OnInit {
 

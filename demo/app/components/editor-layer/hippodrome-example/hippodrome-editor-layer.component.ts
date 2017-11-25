@@ -8,7 +8,8 @@ import {HippodromeEditUpdate} from '../../../../../src/angular-cesium-widgets/mo
 @Component({
 	selector : 'hippodrome-editor-layer',
 	templateUrl : 'hippodrome-editor-layer.component.html',
-	styleUrls : ['./hippodrome-editor-layer.component.css']
+	styleUrls : ['./hippodrome-editor-layer.component.css'],
+	providers: [HippodromeEditorService],
 })
 export class HippodromeEditorLayerComponent implements OnInit {
 	editing$: HippodromeEditorObservable;
