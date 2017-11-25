@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.35",
+  "version": "0.0.36",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -32,7 +32,7 @@
     "gh-pages": "gh-pages -d docs -b gh-pages",
     "docs:push": "npm run compile-docs && npm run gh-pages && rimraf docs",
     "heroku-postbuild": "npm run build-demo",
-    "prepare": "npm run bundle",
+    "prepublishOnly": "npm run bundle",
     "postpublish": "npm run docs:push"
   },
   "peerDependencies": {
