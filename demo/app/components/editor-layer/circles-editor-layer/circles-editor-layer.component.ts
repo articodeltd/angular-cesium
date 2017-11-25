@@ -26,7 +26,11 @@ export class CirclesEditorLayerComponent implements OnInit {
     }
     this.editing$ = this.circlesEditor.create({ allowDrag: false });
     this.editing$.subscribe((editUpdate: CircleEditUpdate) => {
+      // current edit value
       console.log(editUpdate);
+      // or
+      console.log('center', this.editing$.getCenter());
+      console.log('radius', this.editing$.getRadius());
     });
   }
 
