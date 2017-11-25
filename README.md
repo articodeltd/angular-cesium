@@ -368,27 +368,17 @@ constructor(mapsManagerService: MapsManagerService)
 
 ```
 
-### Editors
-Angular Cesium have some useful geometry editors tool:
-+ `CirlcesEditorService` - for drawing circles
-+ `PolylinesEditorService` - for drawing polylines
-+ `PolygonEditorService` - for drawing polygons
-+ `HippodromeEditorService` - for drawing hippodromes (path in cesium)
-All of these editors uses a simple API -
-  + `create` for starting a creation of the shape over the map. Returns a extension of `EditorObservable`.
-  + `edit` for editing shape over the map starting from a given positions. Returns an extension of `EditorObservable`.
-  + To stop editing call `dsipose()` from the `EditorObservable` you get back from `create()` \ `edit()`. 
-  
-#### Labels over editted shapes
-Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.\
-To add label drawing logic to your editor use the function `setLabelsRenderFn()` that is defined on the `EditorObservable` that is returned from calling `create()` \ `edit()` of one of the editor services.\
-`setLabelsRenderFn()` - receives a callback that is called every time the shape is redrawn (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.\
-The callback should return type `LabelProps[]`.\
-You can also use `updateLabels()` to pass an array of labels of type `LabelProps[]` to be drawn. 
+### Geometry Editors
+Part of [`AngularCesiumWidgetsModule`](https://tgftech.github.io/angular-cesium/modules/AngularCesiumWidgetsModule.html) are useful geometry editors tool:
++ [`CirlcesEditorService`](https://tgftech.github.io/angular-cesium/injectables/CirclesEditorService.html) - for drawing circles
++ [`PolylinesEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolylinesEditorService.html) - for drawing polylines
++ [`PolygonsEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolygonsEditorService.html) - for drawing polygons
++ [`HippodromeEditorService`](https://tgftech.github.io/angular-cesium/injectables/HippodromeEditorService.html) - for drawing hippodromes (path in cesium)
 
+Try running our demo for examples (uncomment the relevant components is `demo-map.component.html`).
 
 ### ScreenshotService
-Take screenshot of your cesium globe. 
+Take screenshot of your cesium globe.
 
 
 ## Documents
