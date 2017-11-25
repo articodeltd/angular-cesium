@@ -1706,28 +1706,17 @@ constructor(mapsManagerService: MapsManagerService)
     const viewer = mapsManagerService.getMap().getCesiumViewer();
     const mapEventManager = mapsManagerService.getMap().getMapEventsManager();
     const cameraService = mapsManagerService.getMap().getCameraService();
-}</code></pre><h3 id="editors">Editors</h3>
-<p>Angular Cesium have some useful geometry editors tool:</p>
+}</code></pre><h3 id="geometry-editors">Geometry Editors</h3>
+<p>Part of <a href="https://tgftech.github.io/angular-cesium/modules/AngularCesiumWidgetsModule.html"><code>AngularCesiumWidgetsModule</code></a> are useful geometry editors tool:</p>
 <ul>
-<li><code>CirlcesEditorService</code> - for drawing circles</li>
-<li><code>PolylinesEditorService</code> - for drawing polylines</li>
-<li><code>PolygonEditorService</code> - for drawing polygons</li>
-<li><code>HippodromeEditorService</code> - for drawing hippodromes (path in cesium)
-All of these editors uses a simple API -<ul>
-<li><code>create</code> for starting a creation of the shape over the map. Returns a extension of <code>EditorObservable</code>.</li>
-<li><code>edit</code> for editing shape over the map starting from a given positions. Returns an extension of <code>EditorObservable</code>.</li>
-<li>To stop editing call <code>dsipose()</code> from the <code>EditorObservable</code> you get back from <code>create()</code> \ <code>edit()</code>. </li>
+<li><a href="https://tgftech.github.io/angular-cesium/injectables/CirclesEditorService.html"><code>CirlcesEditorService</code></a> - for drawing circles</li>
+<li><a href="https://tgftech.github.io/angular-cesium/injectables/PolylinesEditorService.html"><code>PolylinesEditorService</code></a> - for drawing polylines</li>
+<li><a href="https://tgftech.github.io/angular-cesium/injectables/PolygonsEditorService.html"><code>PolygonsEditorService</code></a> - for drawing polygons</li>
+<li><a href="https://tgftech.github.io/angular-cesium/injectables/HippodromeEditorService.html"><code>HippodromeEditorService</code></a> - for drawing hippodromes (path in cesium)</li>
 </ul>
-</li>
-</ul>
-<h4 id="labels-over-editted-shapes">Labels over editted shapes</h4>
-<p>Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.\
-To add label drawing logic to your editor use the function <code>setLabelsRenderFn()</code> that is defined on the <code>EditorObservable</code> that is returned from calling <code>create()</code> \ <code>edit()</code> of one of the editor services.\
-<code>setLabelsRenderFn()</code> - receives a callback that is called every time the shape is redrawn (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.\
-The callback should return type <code>LabelProps[]</code>.\
-You can also use <code>updateLabels()</code> to pass an array of labels of type <code>LabelProps[]</code> to be drawn. </p>
+<p>Try running our demo for examples (uncomment the relevant components in <code>demo-map.component.html</code>).</p>
 <h3 id="screenshotservice">ScreenshotService</h3>
-<p>Take screenshot of your cesium globe. </p>
+<p>Take screenshot of your cesium globe.</p>
 <h2 id="documents">Documents</h2>
 <ul>
 <li><h4 id="check-out-our-api-docs-https-tgftech-github-io-angular-cesium-">Check out our api <a href="https://tgftech.github.io/angular-cesium/">Docs</a></h4>

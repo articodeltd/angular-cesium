@@ -1407,6 +1407,37 @@
             <code>src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for creating editable circles</p>
+<p>You must provide <code>CircleEditorService</code> yourself.
+PolygonsEditorService works together with <code>&lt;circle-editor&gt;</code> component. Therefor you need to create <code>&lt;circle-editor&gt;</code>
+for each <code>CircleEditorService</code>, And of course somewhere under <code>&lt;ac-map&gt;</code>/</p>
+<ul>
+<li><code>create</code> for starting a creation of the shape over the map. Returns a extension of <code>CircleEditorObservable</code>.</li>
+<li><code>edit</code> for editing shape over the map starting from a given positions. Returns an extension of <code>CircleEditorObservable</code>.</li>
+<li>To stop editing call <code>dsipose()</code> from the <code>CircleEditorObservable</code> you get back from <code>create()</code> \ <code>edit()</code>.</li>
+</ul>
+<p><strong>Labels over editted shapes</strong>
+Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+To add label drawing logic to your editor use the function <code>setLabelsRenderFn()</code> that is defined on the
+<code>CircleEditorObservable</code> that is returned from calling <code>create()</code> \ <code>edit()</code> of one of the editor services.
+<code>setLabelsRenderFn()</code> - receives a callback that is called every time the shape is redrawn
+(except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+The callback should return type <code>LabelProps[]</code>.
+You can also use <code>updateLabels()</code> to pass an array of labels of type <code>LabelProps[]</code> to be drawn.</p>
+<p>usage:</p>
+<pre class="line-numbers"><code class="language-typescript">  // Start creating circle
+  const editing$ = circlesEditorService.create();
+  this.editing$.subscribe(editResult =&gt; {
+                console.log(editResult.positions);
+        });
+
+  // Or edit circle from existing center point and radius
+  const editing$ = this.circlesEditorService.edit(center, radius);</code></pre>
+            </p>
 
 
             <section>
@@ -1525,7 +1556,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:93</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:111</a></div>
                                         </td>
                                     </tr>
             
@@ -1558,7 +1589,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="343" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:343</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="361" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:361</a></div>
                                         </td>
                                     </tr>
             
@@ -1590,7 +1621,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:210</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:228</a></div>
                                         </td>
                                     </tr>
             
@@ -1623,7 +1654,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:243</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:261</a></div>
                                         </td>
                                     </tr>
             
@@ -1656,7 +1687,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="450" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:450</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="470" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:470</a></div>
                                         </td>
                                     </tr>
             
@@ -1689,7 +1720,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="429" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:429</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="449" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:449</a></div>
                                         </td>
                                     </tr>
             
@@ -1722,7 +1753,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="425" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:425</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="445" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:445</a></div>
                                         </td>
                                     </tr>
             
@@ -1755,7 +1786,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="441" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:441</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="461" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:461</a></div>
                                         </td>
                                     </tr>
             
@@ -1788,7 +1819,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="437" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:437</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="457" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:457</a></div>
                                         </td>
                                     </tr>
             
@@ -1821,7 +1852,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="433" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:433</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="453" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:453</a></div>
                                         </td>
                                     </tr>
             
@@ -1853,7 +1884,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:78</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:96</a></div>
                                         </td>
                                     </tr>
             
@@ -1885,7 +1916,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:89</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:107</a></div>
                                         </td>
                                     </tr>
             
@@ -1918,7 +1949,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="416" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:416</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="436" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:436</a></div>
                                         </td>
                                     </tr>
             
@@ -1962,7 +1993,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:74</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:92</a></div>
                                         </td>
                                     </tr>
             
@@ -1991,7 +2022,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:75</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:93</a></div>
                                         </td>
                                     </tr>
             
@@ -2020,7 +2051,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:73</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:91</a></div>
                                         </td>
                                     </tr>
             
@@ -2048,7 +2079,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:72</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:90</a></div>
                                         </td>
                                     </tr>
             
@@ -2077,7 +2108,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:69</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:87</a></div>
                                         </td>
                                     </tr>
             
@@ -2100,7 +2131,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:76</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:94</a></div>
                                         </td>
                                     </tr>
             
@@ -2123,7 +2154,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:71</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:89</a></div>
                                         </td>
                                     </tr>
             
@@ -2146,7 +2177,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:70</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:88</a></div>
                                         </td>
                                     </tr>
             
@@ -2181,22 +2212,7 @@ import { EditableCircle } from &#x27;../../../models/editable-circle&#x27;;
 import { PointProps } from &#x27;../../../models/polyline-edit-options&#x27;;
 import { LabelProps } from &#x27;../../../models/label-props&#x27;;
 
-/**
- * Service for creating editable circles
- *
- * usage:
- * &#x60;&#x60;&#x60;typescript
- *  // Start creating circle
- *  const editing$ &#x3D; circlesEditorService.create();
- *  this.editing$.subscribe(editResult &#x3D;&gt; {
- *				console.log(editResult.positions);
- *		});
- *
- *  // Or edit circle from existing center point and radius
- *  const editing$ &#x3D; this.circlesEditorService.edit(center, radius);
- *
- * &#x60;&#x60;&#x60;
- */
+
 
 export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions &#x3D; {
   addPointEvent : CesiumEvent.LEFT_CLICK,
@@ -2224,6 +2240,39 @@ export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions &#x3D; {
   }
 };
 
+/**
+ * Service for creating editable circles
+ *
+ * You must provide &#x60;CircleEditorService&#x60; yourself.
+ * PolygonsEditorService works together with &#x60;&lt;circle-editor&gt;&#x60; component. Therefor you need to create &#x60;&lt;circle-editor&gt;&#x60;
+ * for each &#x60;CircleEditorService&#x60;, And of course somewhere under &#x60;&lt;ac-map&gt;&#x60;/
+ *
+ * + &#x60;create&#x60; for starting a creation of the shape over the map. Returns a extension of &#x60;CircleEditorObservable&#x60;.
+ * + &#x60;edit&#x60; for editing shape over the map starting from a given positions. Returns an extension of &#x60;CircleEditorObservable&#x60;.
+ * + To stop editing call &#x60;dsipose()&#x60; from the &#x60;CircleEditorObservable&#x60; you get back from &#x60;create()&#x60; \ &#x60;edit()&#x60;.
+ *
+ * **Labels over editted shapes**
+ * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+ * To add label drawing logic to your editor use the function &#x60;setLabelsRenderFn()&#x60; that is defined on the
+ * &#x60;CircleEditorObservable&#x60; that is returned from calling &#x60;create()&#x60; \ &#x60;edit()&#x60; of one of the editor services.
+ * &#x60;setLabelsRenderFn()&#x60; - receives a callback that is called every time the shape is redrawn
+ * (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+ * The callback should return type &#x60;LabelProps[]&#x60;.
+ * You can also use &#x60;updateLabels()&#x60; to pass an array of labels of type &#x60;LabelProps[]&#x60; to be drawn.
+ *
+ * usage:
+ * &#x60;&#x60;&#x60;typescript
+ *  // Start creating circle
+ *  const editing$ &#x3D; circlesEditorService.create();
+ *  this.editing$.subscribe(editResult &#x3D;&gt; {
+ *				console.log(editResult.positions);
+ *		});
+ *
+ *  // Or edit circle from existing center point and radius
+ *  const editing$ &#x3D; this.circlesEditorService.edit(center, radius);
+ *
+ * &#x60;&#x60;&#x60;
+ */
 @Injectable()
 export class CirclesEditorService {
   private mapEventsManager: MapEventsManagerService;
@@ -2569,7 +2618,9 @@ export class CirclesEditorService {
     observableToExtend.getEditValue &#x3D; () &#x3D;&gt; observableToExtend.getValue();
 
     observableToExtend.getLabels &#x3D; (): LabelProps[] &#x3D;&gt; this.circlesManager.get(id).labels;
-    
+    observableToExtend.getCenter &#x3D; (): Cartesian3 &#x3D;&gt; this.getCenterPosition(id);
+    observableToExtend.getRadius &#x3D;  (): number &#x3D;&gt; this.getRadius(id);
+
     return observableToExtend as CircleEditorObservable;
   }
   

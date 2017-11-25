@@ -1412,6 +1412,22 @@
             </p>
             <p class="comment">
                 <p>Service for creating editable hippodromes</p>
+<p>You must provide <code>HippodromeEditorService</code> yourself.
+HippodromeEditorService works together with <code>&lt;hippodromes-editor&gt;</code> component. Therefor you need to create <code>&lt;hippodromes-editor&gt;</code>
+for each <code>PolylineEditorService</code>, And of course somewhere under <code>&lt;ac-map&gt;</code>/</p>
+<ul>
+<li><code>create</code> for starting a creation of the shape over the map. Returns a extension of <code>HippodromeEditorObservable</code>.</li>
+<li><code>edit</code> for editing shape over the map starting from a given positions. Returns an extension of <code>HippodromeEditorObservable</code>.</li>
+<li>To stop editing call <code>dsipose()</code> from the <code>HippodromeEditorObservable</code> you get back from <code>create()</code> \ <code>edit()</code>.</li>
+</ul>
+<p><strong>Labels over editted shapes</strong>
+Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+To add label drawing logic to your editor use the function <code>setLabelsRenderFn()</code> that is defined on the
+<code>HippodromeEditorObservable</code> that is returned from calling <code>create()</code> \ <code>edit()</code> of one of the editor services.
+<code>setLabelsRenderFn()</code> - receives a callback that is called every time the shape is redrawn
+(except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+The callback should return type <code>LabelProps[]</code>.
+You can also use <code>updateLabels()</code> to pass an array of labels of type <code>LabelProps[]</code> to be drawn.</p>
 <p>usage:</p>
 <pre class="line-numbers"><code class="language-typescript">  // Start creating hippodrome
   const editing$ = hippodromeEditorService.create();
@@ -1493,6 +1509,9 @@
                                         <span class="modifier">Private</span> <a href="#getPositions">getPositions</a>
                                     </li>
                                     <li>
+                                        <span class="modifier">Private</span> <a href="#getWidth">getWidth</a>
+                                    </li>
+                                    <li>
                                          <a href="#init">init</a>
                                     </li>
                                     <li>
@@ -1531,7 +1550,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:87</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:105</a></div>
                                         </td>
                                     </tr>
             
@@ -1564,7 +1583,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="304" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:304</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="326" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:326</a></div>
                                         </td>
                                     </tr>
             
@@ -1596,7 +1615,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:181</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:200</a></div>
                                         </td>
                                     </tr>
             
@@ -1629,7 +1648,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:213</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="233" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:233</a></div>
                                         </td>
                                     </tr>
             
@@ -1662,7 +1681,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="380" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:380</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="402" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:402</a></div>
                                         </td>
                                     </tr>
             
@@ -1695,7 +1714,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="389" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:389</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="411" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:411</a></div>
                                         </td>
                                     </tr>
             
@@ -1728,7 +1747,40 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="384" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:384</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="406" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:406</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getWidth"></a>
+                                    <b><span class="modifier">Private</span> getWidth</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>getWidth(id: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="416" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:416</a></div>
                                         </td>
                                     </tr>
             
@@ -1760,7 +1812,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:71</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:89</a></div>
                                         </td>
                                     </tr>
             
@@ -1792,7 +1844,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:83</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:101</a></div>
                                         </td>
                                     </tr>
             
@@ -1825,7 +1877,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="295" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:295</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="317" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:317</a></div>
                                         </td>
                                     </tr>
             
@@ -1869,7 +1921,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:67</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:85</a></div>
                                         </td>
                                     </tr>
             
@@ -1898,7 +1950,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:66</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:84</a></div>
                                         </td>
                                     </tr>
             
@@ -1926,7 +1978,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:65</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:83</a></div>
                                         </td>
                                     </tr>
             
@@ -1955,7 +2007,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:68</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:86</a></div>
                                         </td>
                                     </tr>
             
@@ -1984,7 +2036,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:62</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:80</a></div>
                                         </td>
                                     </tr>
             
@@ -2007,7 +2059,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:69</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:87</a></div>
                                         </td>
                                     </tr>
             
@@ -2030,7 +2082,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:64</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:82</a></div>
                                         </td>
                                     </tr>
             
@@ -2053,7 +2105,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:63</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:81</a></div>
                                         </td>
                                     </tr>
             
@@ -2110,6 +2162,24 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions &#x3D; {
 
 /**
  * Service for creating editable hippodromes
+ *
+ * You must provide &#x60;HippodromeEditorService&#x60; yourself.
+ * HippodromeEditorService works together with &#x60;&lt;hippodromes-editor&gt;&#x60; component. Therefor you need to create &#x60;&lt;hippodromes-editor&gt;&#x60;
+ * for each &#x60;PolylineEditorService&#x60;, And of course somewhere under &#x60;&lt;ac-map&gt;&#x60;/
+ *
+ * + &#x60;create&#x60; for starting a creation of the shape over the map. Returns a extension of &#x60;HippodromeEditorObservable&#x60;.
+ * + &#x60;edit&#x60; for editing shape over the map starting from a given positions. Returns an extension of &#x60;HippodromeEditorObservable&#x60;.
+ * + To stop editing call &#x60;dsipose()&#x60; from the &#x60;HippodromeEditorObservable&#x60; you get back from &#x60;create()&#x60; \ &#x60;edit()&#x60;.
+ *
+ * **Labels over editted shapes**
+ * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+ * To add label drawing logic to your editor use the function &#x60;setLabelsRenderFn()&#x60; that is defined on the
+ * &#x60;HippodromeEditorObservable&#x60; that is returned from calling &#x60;create()&#x60; \ &#x60;edit()&#x60; of one of the editor services.
+ * &#x60;setLabelsRenderFn()&#x60; - receives a callback that is called every time the shape is redrawn
+ * (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+ * The callback should return type &#x60;LabelProps[]&#x60;.
+ * You can also use &#x60;updateLabels()&#x60; to pass an array of labels of type &#x60;LabelProps[]&#x60; to be drawn.
+ *
  *
  * usage:
  * &#x60;&#x60;&#x60;typescript
@@ -2223,6 +2293,7 @@ export class HippodromeEditorService {
         ...updateValue,
         positions: this.getPositions(id),
         points: this.getPoints(id),
+        width: this.getWidth(id),
       });
 
       if (!isFirstPoint) {
@@ -2268,6 +2339,7 @@ export class HippodromeEditorService {
       ...update,
       positions: this.getPositions(id),
       points: this.getPoints(id),
+      width: this.getWidth(id),
     });
     return this.editHippodrome(
       id,
@@ -2320,6 +2392,7 @@ export class HippodromeEditorService {
           ...update,
           positions: this.getPositions(id),
           points: this.getPoints(id),
+          width: this.getWidth(id),
         });
       });
 
@@ -2346,6 +2419,7 @@ export class HippodromeEditorService {
             ...update,
             positions: this.getPositions(id),
             points: this.getPoints(id),
+            width: this.getWidth(id),
           });
         });
     }
@@ -2435,11 +2509,11 @@ export class HippodromeEditorService {
         updateLabels: labels,
       })
     };
+
     observableToExtend.getCurrentPoints &#x3D; () &#x3D;&gt; this.getPoints(id);
-
     observableToExtend.getEditValue &#x3D; () &#x3D;&gt; observableToExtend.getValue();
-
     observableToExtend.getLabels &#x3D; (): LabelProps[] &#x3D;&gt; this.hippodromeManager.get(id).labels;
+    observableToExtend.getCurrentWidth &#x3D; (): number &#x3D;&gt; this.getWidth(id);
 
     return observableToExtend as HippodromeEditorObservable;
   }
@@ -2456,6 +2530,11 @@ export class HippodromeEditorService {
   private getPoints(id) {
     const hippodrome &#x3D; this.hippodromeManager.get(id);
     return hippodrome.getRealPoints();
+  }
+
+  private getWidth(id) {
+    const hippodrome &#x3D; this.hippodromeManager.get(id);
+    return hippodrome.getWidth();
   }
 }
 </code></pre>

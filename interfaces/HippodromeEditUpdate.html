@@ -1441,6 +1441,9 @@
                                 <li>
                                         <a href="#updatedPosition">updatedPosition</a>
                                 </li>
+                                <li>
+                                        <a href="#width">width</a>
+                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -1512,7 +1515,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/angular-cesium-widgets/models/hippodrome-edit-update.ts:12</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/angular-cesium-widgets/models/hippodrome-edit-update.ts:13</a></div>
                                         </td>
                                     </tr>
 
@@ -1611,7 +1614,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium-widgets/models/hippodrome-edit-update.ts:11</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/angular-cesium-widgets/models/hippodrome-edit-update.ts:12</a></div>
                                         </td>
                                     </tr>
 
@@ -1650,6 +1653,39 @@
 
                         </tbody>
                     </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="width"></a>
+                                        <b>width</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>width:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/angular-cesium-widgets/models/hippodrome-edit-update.ts:11</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
             </section>
     </div>
 
@@ -1665,7 +1701,8 @@ export interface HippodromeEditUpdate extends BasicEditUpdate&lt;HippodromeEditU
 	updatedPosition?: Cartesian3;
 	draggedPosition?: Cartesian3;
 	points?: EditPoint[];
-	updatedPoint?: EditPoint;
+  width?: number // meters
+  updatedPoint?: EditPoint;
 	hippodromeOptions?: HippodromeEditOptions
 }
 </code></pre>

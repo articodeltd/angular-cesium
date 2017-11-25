@@ -1524,6 +1524,9 @@
                                          <a href="#getRealPositions">getRealPositions</a>
                                     </li>
                                     <li>
+                                         <a href="#getWidth">getWidth</a>
+                                    </li>
+                                    <li>
                                          <a href="#movePoint">movePoint</a>
                                     </li>
                                     <li>
@@ -1823,7 +1826,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="285" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:285</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="289" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:289</a></div>
                                         </td>
                                     </tr>
             
@@ -1919,7 +1922,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="302" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:302</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="306" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:306</a></div>
                                         </td>
                                     </tr>
             
@@ -1951,7 +1954,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="298" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:298</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="302" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:302</a></div>
                                         </td>
                                     </tr>
             
@@ -1983,7 +1986,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="264" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:264</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="268" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:268</a></div>
                                         </td>
                                     </tr>
             
@@ -2056,6 +2059,38 @@
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>[]</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getWidth"></a>
+                                    <b> getWidth</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>getWidth()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="264" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:264</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
             
                                         </div>
                                 </td>
@@ -2208,7 +2243,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="268" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:268</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="272" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:272</a></div>
                                         </td>
                                     </tr>
             
@@ -2273,7 +2308,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="281" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:281</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="285" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:285</a></div>
                                         </td>
                                     </tr>
             
@@ -2306,7 +2341,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="277" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:277</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="281" class="link-to-prism">src/angular-cesium-widgets/models/editable-hippodrome.ts:281</a></div>
                                         </td>
                                     </tr>
             
@@ -2935,6 +2970,10 @@ export class EditableHippodrome extends AcEntity {
   getRealPoints(): EditPoint[] {
     return this.positions
       .filter(position &#x3D;&gt; !position.isVirtualEditPoint());
+  }
+
+  getWidth(): number {
+    return this.hippodromeProps.width;
   }
 
   getPositions(): Cartesian3[] {

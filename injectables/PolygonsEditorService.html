@@ -1412,6 +1412,22 @@
             </p>
             <p class="comment">
                 <p>Service for creating editable polygons</p>
+<p>You must provide <code>PolygonsEditorService</code> yourself.
+PolygonsEditorService works together with <code>&lt;polygons-editor&gt;</code> component. Therefor you need to create <code>&lt;polygons-editor&gt;</code>
+for each <code>PolygonsEditorService</code>, And of course somewhere under <code>&lt;ac-map&gt;</code>/</p>
+<ul>
+<li><code>create</code> for starting a creation of the shape over the map. Returns a extension of <code>PolygonEditorObservable</code>.</li>
+<li><code>edit</code> for editing shape over the map starting from a given positions. Returns an extension of <code>PolygonEditorObservable</code>.</li>
+<li>To stop editing call <code>dsipose()</code> from the <code>PolygonEditorObservable</code> you get back from <code>create()</code> \ <code>edit()</code>.</li>
+</ul>
+<p><strong>Labels over editted shapes</strong>
+Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+To add label drawing logic to your editor use the function <code>setLabelsRenderFn()</code> that is defined on the
+<code>PolygonEditorObservable</code> that is returned from calling <code>create()</code> \ <code>edit()</code> of one of the editor services.
+<code>setLabelsRenderFn()</code> - receives a callback that is called every time the shape is redrawn
+(except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+The callback should return type <code>LabelProps[]</code>.
+You can also use <code>updateLabels()</code> to pass an array of labels of type <code>LabelProps[]</code> to be drawn.</p>
 <p>usage:</p>
 <pre class="line-numbers"><code class="language-typescript">  // Start creating polygon
   const editing$ = polygonsEditorService.create();
@@ -1531,7 +1547,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:91</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:108</a></div>
                                         </td>
                                     </tr>
             
@@ -1564,7 +1580,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="371" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:371</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="388" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:388</a></div>
                                         </td>
                                     </tr>
             
@@ -1596,7 +1612,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="211" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:211</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:228</a></div>
                                         </td>
                                     </tr>
             
@@ -1629,7 +1645,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="244" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:244</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:261</a></div>
                                         </td>
                                     </tr>
             
@@ -1662,7 +1678,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="441" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:441</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="458" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:458</a></div>
                                         </td>
                                     </tr>
             
@@ -1695,7 +1711,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="450" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:450</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="467" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:467</a></div>
                                         </td>
                                     </tr>
             
@@ -1728,7 +1744,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="445" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:445</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="462" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:462</a></div>
                                         </td>
                                     </tr>
             
@@ -1760,7 +1776,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:75</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:92</a></div>
                                         </td>
                                     </tr>
             
@@ -1792,7 +1808,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:87</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:104</a></div>
                                         </td>
                                     </tr>
             
@@ -1825,7 +1841,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="361" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:361</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="378" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:378</a></div>
                                         </td>
                                     </tr>
             
@@ -1869,7 +1885,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:71</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:88</a></div>
                                         </td>
                                     </tr>
             
@@ -1898,7 +1914,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:70</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:87</a></div>
                                         </td>
                                     </tr>
             
@@ -1926,7 +1942,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:69</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:86</a></div>
                                         </td>
                                     </tr>
             
@@ -1955,7 +1971,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:66</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:83</a></div>
                                         </td>
                                     </tr>
             
@@ -1978,7 +1994,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:73</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:90</a></div>
                                         </td>
                                     </tr>
             
@@ -2007,7 +2023,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:72</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:89</a></div>
                                         </td>
                                     </tr>
             
@@ -2030,7 +2046,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:68</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:85</a></div>
                                         </td>
                                     </tr>
             
@@ -2053,7 +2069,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:67</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:84</a></div>
                                         </td>
                                     </tr>
             
@@ -2114,6 +2130,23 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions &#x3D; {
 
 /**
  * Service for creating editable polygons
+ *
+ * You must provide &#x60;PolygonsEditorService&#x60; yourself.
+ * PolygonsEditorService works together with &#x60;&lt;polygons-editor&gt;&#x60; component. Therefor you need to create &#x60;&lt;polygons-editor&gt;&#x60;
+ * for each &#x60;PolygonsEditorService&#x60;, And of course somewhere under &#x60;&lt;ac-map&gt;&#x60;/
+ *
+ * + &#x60;create&#x60; for starting a creation of the shape over the map. Returns a extension of &#x60;PolygonEditorObservable&#x60;.
+ * + &#x60;edit&#x60; for editing shape over the map starting from a given positions. Returns an extension of &#x60;PolygonEditorObservable&#x60;.
+ * + To stop editing call &#x60;dsipose()&#x60; from the &#x60;PolygonEditorObservable&#x60; you get back from &#x60;create()&#x60; \ &#x60;edit()&#x60;.
+ *
+ * **Labels over editted shapes**
+ * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+ * To add label drawing logic to your editor use the function &#x60;setLabelsRenderFn()&#x60; that is defined on the
+ * &#x60;PolygonEditorObservable&#x60; that is returned from calling &#x60;create()&#x60; \ &#x60;edit()&#x60; of one of the editor services.
+ * &#x60;setLabelsRenderFn()&#x60; - receives a callback that is called every time the shape is redrawn
+ * (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+ * The callback should return type &#x60;LabelProps[]&#x60;.
+ * You can also use &#x60;updateLabels()&#x60; to pass an array of labels of type &#x60;LabelProps[]&#x60; to be drawn.
  *
  * usage:
  * &#x60;&#x60;&#x60;typescript
