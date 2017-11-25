@@ -37,7 +37,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   },
   polylineProps: {
     material: () => Cesium.Color.BLACK,
-    width: 4,
+    width: 3,
   },
 };
 

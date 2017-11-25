@@ -13,7 +13,7 @@ export interface PointProps {
 }
 
 export interface PolylineProps {
-  width?: any;
+  width?: number;
   material?: Function
 }
 
