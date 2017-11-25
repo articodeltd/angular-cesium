@@ -2,6 +2,12 @@
 ## Fixes
 * Hippodrome Editor - Expose hippodrome width
 
+## Breaking Changes
+* `HippodromeEditorService` is no longer provided by `AngularCesiumWidgetsModule`, user should provide it himself
+* `CircleEditorService` is no longer provided by `AngularCesiumWidgetsModule`, user should provide it himself
+* `PolylineEditorService` is no longer provided by `AngularCesiumWidgetsModule`, user should provide it himself
+* `PolygonEditorService` is no longer provided by `AngularCesiumWidgetsModule`, user should provide it himself
+
 ## 0.0.35
 ## Features
 * Added `calcEllipseContainingRect` static function to `CesiumHeatMapMaterialCreator`

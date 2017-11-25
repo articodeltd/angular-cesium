@@ -21,22 +21,7 @@ import { EditableCircle } from '../../../models/editable-circle';
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
 
-/**
- * Service for creating editable circles
- *
- * usage:
- * ```typescript
- *  // Start creating circle
- *  const editing$ = circlesEditorService.create();
- *  this.editing$.subscribe(editResult => {
- *				console.log(editResult.positions);
- *		});
- *
- *  // Or edit circle from existing center point and radius
- *  const editing$ = this.circlesEditorService.edit(center, radius);
- *
- * ```
- */
+
 
 export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
   addPointEvent : CesiumEvent.LEFT_CLICK,
@@ -64,6 +49,39 @@ export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
   }
 };
 
+/**
+ * Service for creating editable circles
+ *
+ * You must provide `CircleEditorService` yourself.
+ * PolygonsEditorService works together with `<circle-editor>` component. Therefor you need to create `<circle-editor>`
+ * for each `CircleEditorService`, And of course somewhere under `<ac-map>`/
+ *
+ * + `create` for starting a creation of the shape over the map. Returns a extension of `CircleEditorObservable`.
+ * + `edit` for editing shape over the map starting from a given positions. Returns an extension of `CircleEditorObservable`.
+ * + To stop editing call `dsipose()` from the `CircleEditorObservable` you get back from `create()` \ `edit()`.
+ *
+ * **Labels over editted shapes**
+ * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+ * To add label drawing logic to your editor use the function `setLabelsRenderFn()` that is defined on the
+ * `CircleEditorObservable` that is returned from calling `create()` \ `edit()` of one of the editor services.
+ * `setLabelsRenderFn()` - receives a callback that is called every time the shape is redrawn
+ * (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+ * The callback should return type `LabelProps[]`.
+ * You can also use `updateLabels()` to pass an array of labels of type `LabelProps[]` to be drawn.
+ *
+ * usage:
+ * ```typescript
+ *  // Start creating circle
+ *  const editing$ = circlesEditorService.create();
+ *  this.editing$.subscribe(editResult => {
+ *				console.log(editResult.positions);
+ *		});
+ *
+ *  // Or edit circle from existing center point and radius
+ *  const editing$ = this.circlesEditorService.edit(center, radius);
+ *
+ * ```
+ */
 @Injectable()
 export class CirclesEditorService {
   private mapEventsManager: MapEventsManagerService;

@@ -8,7 +8,8 @@ import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/lab
 @Component({
   selector: 'polyline-editor-layer',
   templateUrl: 'polyline-editor-layer.component.html',
-  styleUrls: ['./polyline-editor-layer.component.css']
+  styleUrls: ['./polyline-editor-layer.component.css'],
+  providers: [PolylinesEditorService],
 })
 export class PolylineEditorLayerComponent implements OnInit {
 
