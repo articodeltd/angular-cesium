@@ -1,5 +1,5 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
@@ -9,7 +9,7 @@ import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-l
     templateUrl: './html-layer.component.html',
     styleUrls: ['./html-layer.component.css']
 })
-export class HtmlLayerComponent implements OnInit, AfterViewInit {
+export class HtmlLayerComponent {
     @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
     htmls$: Observable<AcNotification>;
@@ -43,10 +43,10 @@ export class HtmlLayerComponent implements OnInit, AfterViewInit {
         this.htmls$ = Observable.from(htmlArray);
 
         setTimeout(() => {
-            html1.entity.name = 'tsahi';
+            html1.entity.name = 'html 3';
             this.layer.update(html1, html1.id);
 
-            html2.entity.name = 'gonen';
+            html2.entity.name = 'html 4';
             html2.entity.position = Cesium.Cartesian3.fromRadians(1.2, 1.2);
             this.layer.update(html2, html2.id);
         }, 5000);
@@ -54,13 +54,6 @@ export class HtmlLayerComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
             this.layer.refreshAll(htmlArray);
         }, 10000);
-    }
-
-    ngOnInit() {
-    }
-
-    ngAfterViewInit() {
-
     }
 
     changeText(html, text) {
