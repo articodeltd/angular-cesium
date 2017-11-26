@@ -1,3 +1,7 @@
+## NEXT
+### Fixes
+* Html Primitive - change primitive screen position to Cesium.Cartesian2
+
 ## 0.0.36
 ### Fixes
 * Hippodrome Editor - Expose hippodrome width
