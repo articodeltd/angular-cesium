@@ -3,7 +3,7 @@ import * as DataLoader from 'dataloader';
 
 const API_KEY = '1cc7eb2c-713a-4040-9a7c-da046d68cc29';
 export class IataLoader {
-  private loader;
+  private loader: DataLoader<any,any>;
 
   constructor(private type: string) {
     this.loader = new DataLoader((codes) => {
@@ -11,7 +11,7 @@ export class IataLoader {
     });
   }
 
-  load(code: string): string {
+  load(code: string): Promise<string> {
     return this.loader.load(code);
   }
 

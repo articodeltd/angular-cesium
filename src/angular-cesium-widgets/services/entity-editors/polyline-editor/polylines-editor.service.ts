@@ -281,7 +281,7 @@ export class PolylinesEditorService {
 
   private editPolyline(id: string,
                        positions: Cartesian3[],
-                       priority,
+                       priority: number,
                        editSubject: Subject<PolylineEditUpdate>,
                        options: PolylineEditOptions,
                        editObservable?: PolylineEditorObservable) {
@@ -454,7 +454,7 @@ export class PolylinesEditorService {
       });
     };
 
-    observableToExtend.setLabelsRenderFn = (callback) => {
+    observableToExtend.setLabelsRenderFn = (callback: any) => {
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
@@ -484,12 +484,12 @@ export class PolylinesEditorService {
     return 'edit-polyline-' + this.counter++;
   }
 
-  private getPositions(id) {
+  private getPositions(id: string) {
     const polyline = this.polylinesManager.get(id);
     return polyline.getRealPositions()
   }
 
-  private getPoints(id) {
+  private getPoints(id: string) {
     const polyline = this.polylinesManager.get(id);
     return polyline.getRealPoints();
   }

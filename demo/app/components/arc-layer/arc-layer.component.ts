@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
+import {Subscriber} from "rxjs/Subscriber";
 
 @Component({
 	selector: 'arc-layer',
@@ -18,7 +19,7 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 		const colorMaterial = Cesium.Material.fromType('Color');
 		colorMaterial.uniforms.color = Cesium.Color.YELLOW;
 
-		const arcArray = [];
+		const arcArray: any[] = [];
 		for (let i = 0; i < 1000; i++) {
 			const randCenter = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
 			const randomDelta = Math.PI;
@@ -43,7 +44,7 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 			});
 		}
 
-		this.arcs$ = Observable.create(function (observable) {
+		this.arcs$ = Observable.create(function (observable: Subscriber<any>) {
 			arcArray.forEach(function (arc) {
 				observable.next(arc);
 			});
@@ -76,7 +77,7 @@ export class ArcLayerComponent implements OnInit, AfterViewInit {
 	removeAll() {
 	}
 
-	setShow($event) {
+	setShow($event: boolean) {
 		this.show = $event;
 	}
 }

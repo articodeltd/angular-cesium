@@ -1,3 +1,4 @@
+import { Subscriber } from 'rxjs/Subscriber';
 import { Observable } from 'rxjs/Observable';
 import { CesiumEvent } from '../consts/cesium-event.enum';
 import { CesiumEventModifier } from '../consts/cesium-event-modifier.enum';
@@ -8,8 +9,8 @@ export class CesiumPureEventObserver {
 	}
 
 	init(eventsHandler: any): Observable<any> {
-		this.observer = Observable.create((observer) => {
-				eventsHandler.setInputAction((movement) => {
+		this.observer = Observable.create((observer: Subscriber<any>) => {
+				eventsHandler.setInputAction((movement: any) => {
 					if (movement.position) {
 						movement.startPosition = movement.position;
 						movement.endPosition = movement.position;

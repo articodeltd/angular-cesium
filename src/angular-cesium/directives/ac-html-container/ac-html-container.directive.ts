@@ -14,7 +14,7 @@ export class AcHtmlContainerDirective implements OnInit {
     ) {}
 
     @Input()
-    set acHtmlContainer(id) {
+    set acHtmlContainer(id: string) {
         this._id = id;
     }
 

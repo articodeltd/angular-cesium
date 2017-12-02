@@ -1,4 +1,4 @@
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
@@ -18,13 +18,13 @@ export class SettingsFormComponent {
 	private cameraService: CameraService;
 	
 	constructor(public settingsService: AppSettingsService,
-							private snackBar: MdSnackBar,
+							private snackBar: MatSnackBar,
 							webSocket: WebSocketSupplier,
 							private mapsManagerService: MapsManagerService) {
 		
 		this.socket = webSocket.get();
 		this.socket.on('connect', () => {
-			this.socket.emit('get_sending_params', '', (data) => {
+			this.socket.emit('get_sending_params', '', (data: any) => {
 				this.settingsService.numOfEntities = data && data.numOfEntities;
 				this.settingsService.entitiesUpdateRate = data && data.interval;
 			});
@@ -41,7 +41,7 @@ export class SettingsFormComponent {
 		});
 	}
 	
-	newYorkToggle(toggle) {
+	newYorkToggle(toggle: any) {
 		if (toggle.checked) {
 			if (!this.cameraService) {
 				this.cameraService = this.mapsManagerService.getMap().getCameraService();

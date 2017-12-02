@@ -8,23 +8,23 @@ export class AcHtmlManager {
         this._entities = new Map<any, any>();
     }
 
-    has(id): boolean {
+    has(id: string): boolean {
         return this._entities.has(id);
     }
 
-    get(id): {entity, primitive} {
+    get(id: string): {entity: any, primitive: any} {
         return this._entities.get(id);
     }
 
-    addOrUpdate(id: any, info: {entity, primitive}) {
+    addOrUpdate(id: any, info: {entity: any, primitive: any}) {
         this._entities.set(id, info);
     }
 
-    remove(id) {
+    remove(id: string) {
         this._entities.delete(id);
     }
 
-    forEach(callback) {
+    forEach(callback: any) {
         this._entities.forEach(callback);
     }
 }

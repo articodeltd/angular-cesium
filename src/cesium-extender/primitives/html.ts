@@ -25,7 +25,7 @@ export class HtmlPrimitive {
         this.collection = collection;
     }
 
-    set scene(scene) {
+    set scene(scene: any) {
         this._scene = scene;
     }
 

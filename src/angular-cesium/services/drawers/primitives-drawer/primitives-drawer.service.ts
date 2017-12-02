@@ -7,7 +7,7 @@ import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
  */
 export abstract class PrimitivesDrawerService extends BasicDrawerService {
   private _show = true;
-  private _primitiveCollectionWrap;
+  private _primitiveCollectionWrap: any;
   protected _cesiumCollection: any;
   protected _propsAssigner: Function;
 
@@ -22,11 +22,11 @@ export abstract class PrimitivesDrawerService extends BasicDrawerService {
     this.cesiumService.getScene().primitives.add(this._primitiveCollectionWrap);
   }
 
-  add(cesiumProps: any, ...args): any {
+  add(cesiumProps: any, ...args: any[]): any {
     return this._cesiumCollection.add(cesiumProps);
   }
 
-  update(entity: any, cesiumProps: any, ...args) {
+  update(entity: any, cesiumProps: any, ...args: any[]) {
     if (this._propsAssigner) {
       this._propsAssigner(entity, cesiumProps);
     }

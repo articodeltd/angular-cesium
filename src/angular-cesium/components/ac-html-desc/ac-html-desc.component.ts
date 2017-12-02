@@ -36,7 +36,7 @@ import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.se
       <div *acHtml="let acHtmlEntityId = id; let acHtmlContext = context">
           <div [acHtmlContainer]="acHtmlEntityId">
               <ng-template [ngTemplateOutlet]="acHtmlTemplate"
-                           [ngOutletContext]="acHtmlContext"></ng-template>
+                           [ngTemplateOutletContext]="acHtmlContext"></ng-template>
           </div>
       </div>`
 })
@@ -62,7 +62,7 @@ export class AcHtmlDescComponent extends BasicDesc implements OnInit {
 		}
 	}
 	
-	draw(context, id): any {
+	draw(context: any, id: any): any {
 		const cesiumProps = this._propsEvaluator(context);
 		if (!this._cesiumObjectsMap.has(id)) {
 			const primitive = this._drawer.add(cesiumProps);
@@ -75,7 +75,7 @@ export class AcHtmlDescComponent extends BasicDesc implements OnInit {
 		}
 	}
 	
-	remove(id): void {
+	remove(id: string): void {
 		const primitive = this._cesiumObjectsMap.get(id);
 		this._drawer.remove(primitive);
 		this._cesiumObjectsMap.delete(id);

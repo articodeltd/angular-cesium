@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 import * as geodesy from 'geodesy';
-import { hemisphere, LatLonEllipsoidal, Utm } from 'geodesy';
+import {hemisphere, LatLon, LatLonEllipsoidal, Utm} from 'geodesy';
 import { Cartesian3 } from '../../models/cartesian3';
 
 const LatLonVectors = geodesy['LatLonVectors']; // doesnt exists on typings
@@ -59,7 +59,7 @@ export class CoordinateConverter {
 		return this.cartesian3ToCartographic(this.screenToCartesian3(screenPos), ellipsoid);
 	}
 	
-	cartesian3ToCartographic(cartesian, ellipsoid?: any) {
+	cartesian3ToCartographic(cartesian: Cartesian3, ellipsoid?: any) {
 		return Cesium.Cartographic.fromCartesian(cartesian, ellipsoid);
 	}
 	
@@ -79,21 +79,21 @@ export class CoordinateConverter {
 		return this.geodesyToCesiumObject(new Utm(zone, hemisphereType, easting, northing).toLatLonE());
 	}
 	
-	private geodesyToCesiumObject(geodesyRadians) {
+	private geodesyToCesiumObject(geodesyRadians: LatLon) {
 		return {
 			longitude : geodesyRadians.lon,
 			latitude : geodesyRadians.lat,
-			height : geodesyRadians.height ? geodesyRadians.height : 0
+			height : geodesyRadians['height'] ? geodesyRadians['height'] : 0
 		};
 	}
-	
-	/**
-	 * middle point between two points
-	 * @param {{latitude; longitude}} first - in radians
-	 * @param {{latitude; longitude}} second - in radians
-	 */
-	midPointToCartesian3(first: { latitude, longitude }, second: { latitude, longitude }) {
-		const toDeg = (rad) => Cesium.Math.toDegrees(rad);
+
+    /**
+     * middle point between two points
+     * @param first  {latitude,longitude} in radians
+     * @param second {latitude,longitude} in radians
+     */
+	midPointToCartesian3(first: { latitude: number, longitude: number }, second: { latitude: number, longitude: number }) {
+		const toDeg = (rad: number) => Cesium.Math.toDegrees(rad);
 		const firstPoint = new LatLonVectors(toDeg(first.latitude), toDeg(first.longitude));
 		const secondPoint = new LatLonVectors(toDeg(second.latitude), toDeg(second.longitude));
 		const middlePoint: any = firstPoint.midpointTo(secondPoint);
@@ -109,31 +109,31 @@ export class CoordinateConverter {
       new Cesium.Cartesian2((screenPosition2.x + screenPosition1.x) / 2.0, (screenPosition2.y + screenPosition1.y) / 2.0);
     return scene.pickPosition(middleScreenPoint);
   }
-	
-	/**
-	 * initial bearing between two points
-	 * @param {{latitude; longitude}} first - in radians
-	 * @param {{latitude; longitude}} second - in radians
-	 *
-	 * * @return bearing in degrees
-	 */
-	bearingTo(first: { latitude, longitude }, second: { latitude, longitude }) {
-		const toDeg = (rad) => Cesium.Math.toDegrees(rad);
+
+    /**
+     * initial bearing between two points
+     *
+     * * @return bearing in degrees
+     * @param first - {latitude,longitude} in radians
+     * @param second - {latitude,longitude} in radians
+     */
+	bearingTo(first: { latitude: number, longitude: number }, second: { latitude: number, longitude: number }) {
+		const toDeg = (rad: number) => Cesium.Math.toDegrees(rad);
 		const firstPoint = new LatLonVectors(toDeg(first.latitude), toDeg(first.longitude));
 		const secondPoint = new LatLonVectors(toDeg(second.latitude), toDeg(second.longitude));
 		const bearing = firstPoint.bearingTo(secondPoint);
 		
 		return bearing;
 	}
-	
-	/**
-	 * initial bearing between two points
-	 * @param {{latitude; longitude}} firstCartesian3 - in Cartesian3
-	 * @param {{latitude; longitude}} secondCartesian3 - in Cartesian3
-	 *
-	 * @return bearing in degrees
-	 */
-	bearingToCartesian(firstCartesian3, secondCartesian3) {
+
+    /**
+     * initial bearing between two points
+     *
+     * @return bearing in degrees
+     * @param firstCartesian3
+     * @param secondCartesian3
+     */
+	bearingToCartesian(firstCartesian3: Cartesian3, secondCartesian3: Cartesian3) {
 		const firstCart = Cesium.Cartographic.fromCartesian(firstCartesian3);
 		const secondCart = Cesium.Cartographic.fromCartesian(secondCartesian3);
 		

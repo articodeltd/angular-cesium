@@ -8,17 +8,17 @@ export abstract class BasicDrawerService {
   constructor() {
   }
 
-  abstract add(cesiumProps: any, ...args)
+  abstract add(cesiumProps: any, ...args: any[]): any
 
-  abstract update(primitive: any, cesiumProps: any, ...args)
+  abstract update(primitive: any, cesiumProps: any, ...args: any[]): void
 
-  abstract remove(primitive: any)
+  abstract remove(primitive: any): void
 
-  abstract removeAll()
+  abstract removeAll(): void
 
-  abstract setShow(showValue: boolean)
+  abstract setShow(showValue: boolean): void
 
-  abstract init(options?: any)
+  abstract init(options?: any): any
 
   setPropsAssigner(assigner: Function) {
     this._propsAssigner = assigner;

@@ -10,7 +10,7 @@ export class MapsManagerService {
 
   private defaultIdCounter = 0;
   private _Maps = new Map<string, AcMapComponent>();
-  private firstMap;
+  private firstMap: any;
 
   constructor() {
   }

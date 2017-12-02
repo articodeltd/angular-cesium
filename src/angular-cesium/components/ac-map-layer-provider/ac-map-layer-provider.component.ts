@@ -78,9 +78,9 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
   @Input()
   contrast = 1.0;
 
-  public imageryLayer;
-  public imageryLayersCollection;
-  public layerProvider;
+  public imageryLayer: any;
+  public imageryLayersCollection: any;
+  public layerProvider: any;
 
   constructor(private cesiumService: CesiumService) {
     this.imageryLayersCollection = this.cesiumService.getScene().imageryLayers;

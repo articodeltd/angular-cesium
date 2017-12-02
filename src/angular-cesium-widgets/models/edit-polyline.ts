@@ -44,11 +44,11 @@ export class EditPolyline extends AcEntity {
 		return this.positions[1];
 	}
 	
-	setStartPosition(position) {
+	setStartPosition(position: Cartesian3) {
 		this.positions[0] = position;
 	}
 	
-	setEndPosition(position) {
+	setEndPosition(position: Cartesian3) {
 		this.positions[1] = position;
 	}
 	

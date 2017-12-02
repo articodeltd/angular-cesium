@@ -14,7 +14,7 @@ export class EditableCircle extends AcEntity {
   private _outlineArc: EditArc;
   private doneCreation = false;
   private _enableEdit = true;
-  private lastDraggedToPosition;
+  private lastDraggedToPosition: any;
   private _circleProps: CircleProps;
   private _pointProps: PointProps;
   private _polylineProps: PolylineProps;

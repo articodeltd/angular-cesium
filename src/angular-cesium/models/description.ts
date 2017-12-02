@@ -1,5 +1,5 @@
 export interface IDescription {
-  draw(context, id: string, contextEntity);
-  remove(id: string);
-  removeAll();
+  draw(context: any, id: string, contextEntity: any): void;
+  remove(id: string): void;
+  removeAll(): void;
 }

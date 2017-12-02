@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
+import {Subscriber} from "rxjs/Subscriber";
 
 @Injectable()
 export class SimTracksDataProvider {
@@ -13,10 +14,10 @@ export class SimTracksDataProvider {
 
   get(): Observable<AcNotification> {
     const socket = this.webSocketSupplier.get();
-    const simTracks$ = Observable.create((observer) => {
-      socket.on('birds', (data) => {
+    const simTracks$ = Observable.create((observer: Subscriber<any>) => {
+      socket.on('birds', (data: any) => {
         data.forEach(
-          (acNotification) => {
+          (acNotification: any) => {
             if (acNotification.action === 'ADD_OR_UPDATE') {
               acNotification.actionType = ActionType.ADD_UPDATE;
               acNotification.entity = new AcEntity(this.convertToCesiumObj(acNotification.entity));
@@ -32,7 +33,7 @@ export class SimTracksDataProvider {
     return simTracks$;
   }
 
-  convertToCesiumObj(entity): any {
+  convertToCesiumObj(entity: any): any {
     const fixedHeading = entity.heading - (Math.PI / 2);
     const pitch = Cesium.Math.toRadians(0.0);
     const roll = Cesium.Math.toRadians(0.0);
@@ -48,7 +49,7 @@ export class SimTracksDataProvider {
     return entity;
   }
 
-  getArrayBySize(entity, size) {
+  getArrayBySize(entity: any, size: number) {
     const arr = [
       {
         pos: Cesium.Cartesian3.fromDegrees(entity.position.long + 1, entity.position.lat + 1, entity.alt),

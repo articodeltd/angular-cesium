@@ -5,6 +5,7 @@ import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksD
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
+import {Subscriber} from 'rxjs/Subscriber';
 
 @Component({
 	selector : 'models-layer',
@@ -35,10 +36,10 @@ export class ModelsLayerComponent implements OnInit {
 	
 	constructor(webSocketSupllier: WebSocketSupplier) {
 		const socket = webSocketSupllier.get();
-		this.simTracks$ = Observable.create((observer) => {
-			socket.on('birds', (data) => {
+		this.simTracks$ = Observable.create((observer: Subscriber<any>) => {
+			socket.on('birds', (data: any) => {
 				data.forEach(
-					(acNotification) => {
+					(acNotification: any) => {
 						if (acNotification.action === 'ADD_OR_UPDATE') {
 							acNotification.actionType = ActionType.ADD_UPDATE;
 							acNotification.entity = new AcEntity(this.convertToCesiumObj(acNotification.entity));
@@ -52,7 +53,7 @@ export class ModelsLayerComponent implements OnInit {
 		})
 	}
 	
-	convertToCesiumObj(entity): any {
+	convertToCesiumObj(entity: any): any {
 		
 		const fixedHeading = entity.heading - (Math.PI / 2);
 		const heading = fixedHeading;

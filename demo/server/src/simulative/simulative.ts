@@ -24,15 +24,15 @@ export class Simulative {
       simSender.startSendingSimData();
 
       // on disconnects stop sending data
-      socket.on('disconnect', (r) => this.removeClient(client, r));
-      socket.on('error', (r) => this.removeClient(client, r));
+      socket.on('disconnect', (r: any) => this.removeClient(client, r));
+      socket.on('error', (r: any) => this.removeClient(client, r));
 
       // change sending
       socket.on('change_sending',
-        (params: SendingParams, ackFn) => this.changeSendingParams(params, client, simSender, ackFn));
+        (params: SendingParams, ackFn: any) => this.changeSendingParams(params, client, simSender, ackFn));
 
       socket.on('get_sending_params',
-        (params: SendingParams, acknowledgement) => acknowledgement(client.getSimSendingParams()));
+        (params: SendingParams, acknowledgement: any) => acknowledgement(client.getSimSendingParams()));
     });
   }
 

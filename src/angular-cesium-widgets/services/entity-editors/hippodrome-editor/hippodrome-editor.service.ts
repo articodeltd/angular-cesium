@@ -231,7 +231,7 @@ export class HippodromeEditorService {
   }
 
   private editHippodrome(id: string,
-                         priority,
+                         priority: number,
                          editSubject: Subject<HippodromeEditUpdate>,
                          options: HippodromeEditOptions,
                          editObservable?: HippodromeEditorObservable): HippodromeEditorObservable {
@@ -373,7 +373,7 @@ export class HippodromeEditorService {
       });
     };
 
-    observableToExtend.setLabelsRenderFn = (callback) => {
+    observableToExtend.setLabelsRenderFn = (callback: any) => {
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
@@ -403,17 +403,17 @@ export class HippodromeEditorService {
     return 'edit-hippodrome-' + this.counter++;
   }
 
-  private getPositions(id) {
+  private getPositions(id: any) {
     const hippodrome = this.hippodromeManager.get(id);
     return hippodrome.getRealPositions()
   }
 
-  private getPoints(id) {
+  private getPoints(id: any) {
     const hippodrome = this.hippodromeManager.get(id);
     return hippodrome.getRealPoints();
   }
 
-  private getWidth(id) {
+  private getWidth(id: string) {
     const hippodrome = this.hippodromeManager.get(id);
     return hippodrome.getWidth();
   }

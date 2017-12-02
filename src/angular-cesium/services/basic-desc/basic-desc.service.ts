@@ -94,7 +94,7 @@ export class BasicDesc implements OnInit, OnDestroy, IDescription {
     }
   }
 
-  remove(id) {
+  remove(id: string) {
     const cesiumObject = this._cesiumObjectsMap.get(id);
     if (cesiumObject) {
       this.onRemove.emit({

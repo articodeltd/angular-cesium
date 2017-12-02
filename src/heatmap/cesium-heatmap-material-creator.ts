@@ -1,5 +1,7 @@
+import { Rectangle } from './cesium-heatmap-material-creator';
+import { Cartesian2 } from './../angular-cesium/models/cartesian2';
+import { Cartesian3 } from './../angular-cesium/models/cartesian3';
 import { GeoUtilsService } from '../angular-cesium/services/geo-utils/geo-utils.service';
-import { Cartesian3 } from '../angular-cesium/models/cartesian3';
 import * as h337 from 'heatmap.js/build/heatmap.js';
 import { Injectable } from '@angular/core';
 
@@ -46,12 +48,12 @@ export interface HeatmapDataSet {
 export interface HeatMapOptions {
   [propName: string]: any,
   
-  gradient?
-  radius?
-  opacity?
-  maxOpacity?
-  minOpacity?
-  blur?
+  gradient?: any
+  radius?: number
+  opacity?: number
+  maxOpacity?: number
+  minOpacity?: number
+  blur?: any
 }
 
 /**
@@ -92,7 +94,7 @@ export class CesiumHeatMapMaterialCreator {
    * @param center - Cartesian3
    * @param radius - Meters
    */
-  static calcCircleContainingRect(center, radius) {
+  static calcCircleContainingRect(center: Cartesian3, radius: number) {
     return CesiumHeatMapMaterialCreator.calcEllipseContainingRect(center, radius, radius);
   }
   
@@ -102,7 +104,7 @@ export class CesiumHeatMapMaterialCreator {
    * @param semiMinorAxis - meters
    * @param semiMajorAxis - meters
    */
-  static calcEllipseContainingRect(center, semiMajorAxis, semiMinorAxis) {
+  static calcEllipseContainingRect(center: Cartesian3, semiMajorAxis: number, semiMinorAxis: number) {
     const top = GeoUtilsService.pointByLocationDistanceAndAzimuth(
       center,
       semiMinorAxis,
@@ -161,13 +163,13 @@ export class CesiumHeatMapMaterialCreator {
   _spacing: number;
   width: number;
   height: number;
-  _mbounds;
-  bounds;
+  _mbounds: any;
+  bounds: any;
   _factor: number;
-  _rectangle;
-  heatmap;
-  _xoffset;
-  _yoffset;
+  _rectangle: Rectangle;
+  heatmap: any;
+  _xoffset: any;
+  _yoffset: any;
   
   
   /**  Set an array of heatmap locations
@@ -176,7 +178,7 @@ export class CesiumHeatMapMaterialCreator {
    *  max:  the maximum allowed value for the data values
    *  data: an array of data points in heatmap coordinates and values like {x, y, value}
    */
-  setData(min, max, data) {
+  setData(min: any, max: any, data: any) {
     if (data && data.length > 0 && min !== null && min !== false && max !== null && max !== false) {
       this.heatmap.setData({
         min : min,
@@ -197,7 +199,7 @@ export class CesiumHeatMapMaterialCreator {
    *  max:  the maximum allowed value for the data values
    *  data: an array of data points in WGS84 coordinates and values like { x:lon, y:lat, value }
    */
-  private setWGS84Data(min, max, data) {
+  private setWGS84Data(min: any, max: any, data: any) {
     if (data && data.length > 0 && min !== null && min !== false && max !== null && max !== false) {
       const convdata = [];
       
@@ -222,7 +224,7 @@ export class CesiumHeatMapMaterialCreator {
    *
    *  p: a WGS84 location like {x: lon, y:lat}
    */
-  private mercatorPointToHeatmapPoint(p) {
+  private mercatorPointToHeatmapPoint(p: Cartesian2) {
     const pn: any = {};
     
     pn.x = Math.round((p.x - this._xoffset) / this._factor + this._spacing);
@@ -236,12 +238,12 @@ export class CesiumHeatMapMaterialCreator {
    *
    *  p: a WGS84 location like {x:lon, y:lat}
    */
-  private wgs84PointToHeatmapPoint = function (p) {
+  private wgs84PointToHeatmapPoint = function (p: Cartesian2) {
     return this.mercatorPointToHeatmapPoint(this.wgs84ToMercator(p));
   };
   
   
-  private createContainer(height, width) {
+  private createContainer(height: number, width: number) {
     const id = 'heatmap' + CesiumHeatMapMaterialCreator.containerCanvasCounter++;
     const container = document.createElement('div');
     container.setAttribute('id', id);
@@ -254,7 +256,7 @@ export class CesiumHeatMapMaterialCreator {
    *
    *  p: the WGS84 location like {x: lon, y: lat}
    */
-  private wgs84ToMercator(p) {
+  private wgs84ToMercator(p: Cartesian2) {
     const mp = this.WMP.project(Cesium.Cartographic.fromDegrees(p.x, p.y));
     return {
       x : mp.x,
@@ -262,7 +264,7 @@ export class CesiumHeatMapMaterialCreator {
     };
   };
   
-  private rad2deg = function (r) {
+  private rad2deg = function (r: number) {
     const d = r / (Math.PI / 180.0);
     return d;
   };
@@ -270,7 +272,7 @@ export class CesiumHeatMapMaterialCreator {
   /**  Convert a WGS84 bounding box into a mercator bounding box*
    *  bb: the WGS84 bounding box like {north, east, south, west}
    */
-  private wgs84ToMercatorBB(bb) {
+  private wgs84ToMercatorBB(bb: any) {
     // TODO validate rad or deg
     const sw = this.WMP.project(Cesium.Cartographic.fromRadians(bb.west, bb.south));
     const ne = this.WMP.project(Cesium.Cartographic.fromRadians(bb.east, bb.north));
@@ -286,7 +288,7 @@ export class CesiumHeatMapMaterialCreator {
    *
    *  bb: the mercator bounding box like {north, east, south, west}
    */
-  private mercatorToWgs84BB(bb) {
+  private mercatorToWgs84BB(bb: any) {
     const sw = this.WMP.unproject(new Cesium.Cartesian3(bb.west, bb.south));
     const ne = this.WMP.unproject(new Cesium.Cartesian3(bb.east, bb.north));
     return {
@@ -297,7 +299,7 @@ export class CesiumHeatMapMaterialCreator {
     };
   };
   
-  private setWidthAndHeight(mbb) {
+  private setWidthAndHeight(mbb: any) {
     this.width = ((mbb.east > 0 && mbb.west < 0) ? mbb.east + Math.abs(mbb.west) : Math.abs(mbb.east - mbb.west));
     this.height = ((mbb.north > 0 && mbb.south < 0) ? mbb.north + Math.abs(mbb.south) : Math.abs(mbb.north - mbb.south));
     this._factor = 1;
@@ -384,7 +386,7 @@ export class CesiumHeatMapMaterialCreator {
     return heatMapMaterial;
   }
   
-  private setClear(heatMapMaterial, id: string) {
+  private setClear(heatMapMaterial: any, id: string) {
     heatMapMaterial.clear = () => {
       const elem = document.getElementById(id);
       return elem.parentNode.removeChild(elem);

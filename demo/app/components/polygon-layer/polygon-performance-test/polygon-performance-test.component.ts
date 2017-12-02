@@ -43,7 +43,7 @@ export class PolygonPerformanceTestComponent implements OnInit {
 		});
 	}
 	
-	createPosition(index) {
+	createPosition(index: number) {
 		const degArray = [];
 		
 		const initialLat = (index  / 1000) * 10;

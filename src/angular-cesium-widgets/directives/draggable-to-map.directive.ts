@@ -28,9 +28,9 @@ import { DraggableToMapService } from '../services/draggable-to-map.service';
 
 @Directive({ selector: '[draggableToMap]' })
 export class DraggableToMapDirective implements OnInit {
-  @Input() draggableToMap: { src: string, style? } | string;
+  @Input() draggableToMap: { src: string, style?: any } | string;
   private src: string;
-  private style;
+  private style: any;
 
   constructor(el: ElementRef, private iconDragService: DraggableToMapService) {
     el.nativeElement.style['user-drag'] = 'none';

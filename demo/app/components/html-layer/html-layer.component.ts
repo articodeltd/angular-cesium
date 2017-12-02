@@ -63,7 +63,7 @@ export class HtmlLayerComponent implements OnInit, AfterViewInit {
 
     }
 
-    changeText(html, text) {
+    changeText(html: any, text: any) {
         html.name = text;
         this.layer.update(html, html.id);
     }

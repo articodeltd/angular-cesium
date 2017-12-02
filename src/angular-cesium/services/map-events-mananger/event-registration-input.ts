@@ -11,7 +11,7 @@ import { PickOptions } from './consts/pickOptions.enum';
 export interface EventRegistrationInput {
 	event: CesiumEvent;
 	modifier?: CesiumEventModifier;
-	entityType?;
+	entityType?: any;
 	priority?: number ;
 	pick?: PickOptions;
 }

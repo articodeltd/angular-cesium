@@ -260,7 +260,7 @@ export class PolygonsEditorService {
 
   private editPolygon(id: string,
                       positions: Cartesian3[],
-                      priority,
+                      priority: number,
                       editSubject: Subject<PolygonEditUpdate>,
                       options: PolygonEditOptions,
                       editObservable?: PolygonEditorObservable): PolygonEditorObservable {
@@ -427,7 +427,7 @@ export class PolygonsEditorService {
       });
     };
 
-    observableToExtend.setLabelsRenderFn = (callback) => {
+    observableToExtend.setLabelsRenderFn = (callback: any) => {
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
@@ -459,12 +459,12 @@ export class PolygonsEditorService {
     return 'edit-polygon-' + this.counter++;
   }
 
-  private getPositions(id) {
+  private getPositions(id: string) {
     const polygon = this.polygonsManager.get(id);
     return polygon.getRealPositions()
   }
 
-  private getPoints(id) {
+  private getPoints(id: string) {
     const polygon = this.polygonsManager.get(id);
     return polygon.getRealPoints();
   }

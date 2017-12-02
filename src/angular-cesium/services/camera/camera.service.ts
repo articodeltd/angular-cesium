@@ -11,11 +11,11 @@ import { SceneMode } from '../../models/scene-mode.enum';
 export class CameraService {
   static PERFORMANCE_2D_ALTITUDE = 25000000;
 
-  private viewer;
-  private scene;
-  private camera;
-  private screenSpaceCameraController;
-  private morphListenerCancelFn;
+  private viewer: any;
+  private scene: any;
+  private camera: any;
+  private screenSpaceCameraController: any;
+  private morphListenerCancelFn: any;
   private lastRotate: boolean;
   private lastTilt: boolean;
   private lastLook: boolean;
@@ -220,7 +220,7 @@ export class CameraService {
    * @param options
    * @returns {Promise<boolean>}
    */
-  flyTo(target, options?) {
+  flyTo(target: any, options?: any) {
     return this.viewer.flyTo(target, options);
   }
 
@@ -231,7 +231,7 @@ export class CameraService {
    * @param offset
    * @returns {Promise<boolean>}
    */
-  zoomTo(target, offset?) {
+  zoomTo(target: any, offset?: any) {
     return this.viewer.zoomTo(target, offset);
   }
 
@@ -240,7 +240,7 @@ export class CameraService {
    * API: https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=camera#setView
    * @param options
    */
-  setView(options) {
+  setView(options: any) {
     this.camera.setView(options);
   }
 
@@ -249,7 +249,7 @@ export class CameraService {
    * API: https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classFilter=viewer#trackedEntity
    * @param entity
    */
-  trackEntity(entity?) {
+  trackEntity(entity?: any) {
     this.viewer.trackedEntity = entity;
   }
 

@@ -7,7 +7,7 @@ export class HtmlCollection {
         return this._collection.length;
     }
 
-    get(index) {
+    get(index: number) {
         return this._collection[index];
     }
 

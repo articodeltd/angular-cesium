@@ -27,7 +27,7 @@ import { Observable } from 'rxjs/Observable';
 														material: Cesium.Color.RED
 					}"></ac-ellipse-desc>
       </ac-layer>
-      <button md-raised-button style="position: fixed; top: 200px;left: 200px" (click)="changeZIndex()">
+      <button mat-raised-button style="position: fixed; top: 200px;left: 200px" (click)="changeZIndex()">
           change order
       </button>
 	`,

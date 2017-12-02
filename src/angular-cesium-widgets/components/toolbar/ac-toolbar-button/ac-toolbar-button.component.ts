@@ -60,7 +60,7 @@ import {
     changeDetection : ChangeDetectionStrategy.OnPush,
   }
 )
-export class AcToolbarButtonComponent implements OnInit, OnDestroy {
+export class AcToolbarButtonComponent implements OnInit {
   
   @Input()
   iconUrl: string;
@@ -74,18 +74,10 @@ export class AcToolbarButtonComponent implements OnInit, OnDestroy {
   @Output()
   onClick = new EventEmitter();
   
-  private subscription;
-  
   constructor() {
   }
   
   ngOnInit() {
   
   }
-  
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
-  }
-  
-  
 }

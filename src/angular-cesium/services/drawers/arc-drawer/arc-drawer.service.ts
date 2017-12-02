@@ -15,7 +15,7 @@ export class ArcDrawerService extends PrimitivesDrawerService {
     super(Cesium.PolylineCollection, cesiumService);
   }
 
-  _calculateArcPositions(cesiumProps) {
+  _calculateArcPositions(cesiumProps: any) {
     const quality = cesiumProps.quality || 18;
     const delta = (cesiumProps.delta) / quality;
     const pointsArray = [];
@@ -28,14 +28,14 @@ export class ArcDrawerService extends PrimitivesDrawerService {
     return pointsArray;
   }
 
-  _calculateTriangle(cesiumProps) {
+  _calculateTriangle(cesiumProps: any) {
     return [
       cesiumProps.center,
       GeoUtilsService.pointByLocationDistanceAndAzimuth(cesiumProps.center, cesiumProps.radius, cesiumProps.angle, true)
     ];
   }
 
-  _calculateArc(cesiumProps) {
+  _calculateArc(cesiumProps: any) {
     const arcPoints = this._calculateArcPositions(cesiumProps);
     return cesiumProps.drawEdges ? arcPoints.concat(this._calculateTriangle(cesiumProps)) : arcPoints;
   }

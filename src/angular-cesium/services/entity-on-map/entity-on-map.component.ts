@@ -11,7 +11,7 @@ export class EntityOnMapComponent implements OnInit, OnChanges, OnDestroy {
 	
 	protected selfPrimitive: any;
 	protected selfPrimitiveIsDraw: boolean;
-	protected dataSources;
+	protected dataSources: any;
 	
 	constructor(protected _drawer: BasicDrawerService, private mapLayers: MapLayersService) {
 	}

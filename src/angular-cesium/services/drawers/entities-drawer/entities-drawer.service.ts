@@ -53,7 +53,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
 		return dataSources;
   }
 
-  add(cesiumProps: any) {
+  add(cesiumProps: any): any {
     const optimizedEntityCollection = this.getFreeEntitiesCollection();
     if (optimizedEntityCollection === null) {
       throw new Error('No more free entity collections');
@@ -109,7 +109,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     });
   }
 
-  private suspendEntityCollection(entity) {
+  private suspendEntityCollection(entity: any) {
     const id = entity.entityCollection;
     if (!this.entityCollections.has(id)) {
       throw new Error('No EntityCollection for entity.entityCollection');

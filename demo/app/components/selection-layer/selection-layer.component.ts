@@ -8,7 +8,7 @@ import { SelectionManagerService } from '../../../../src/angular-cesium/services
 import { CesiumEventModifier } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum';
 import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 class MyEntity extends AcEntity {
 	selected = false;
@@ -35,7 +35,7 @@ export class SelectionLayerComponent implements OnInit {
 	Cesium = Cesium;
 	show = true;
 	
-	constructor(private selectionManager: SelectionManagerService, private snakBar: MdSnackBar) {
+	constructor(private selectionManager: SelectionManagerService, private snakBar: MatSnackBar) {
 		const entities = [
 			new MyEntity(Cesium.Cartesian3.fromDegrees(10.0, 30.0), '1'),
 			new MyEntity(Cesium.Cartesian3.fromDegrees(33.0, 33.0), '2')
@@ -63,7 +63,7 @@ export class SelectionLayerComponent implements OnInit {
 		});
 	}
 	
-	setShow($event) {
+	setShow($event: boolean) {
 		this.show = $event
 	}
 	

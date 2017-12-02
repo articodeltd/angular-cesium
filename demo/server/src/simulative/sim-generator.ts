@@ -79,7 +79,7 @@ export class SimGenerator {
     return id;
   }
 
-  private getChunkPart(part) {
+  private getChunkPart(part: any) {
     const simData = this.client.simData;
     const numOfEntities = this.client.numOfEntities;
     const result = [];
@@ -90,7 +90,7 @@ export class SimGenerator {
     return result;
   }
 
-  private getFuturePosition(position, heading) {
+  private getFuturePosition(position: any, heading: number) {
     return {
       lat : position.lat + Math.cos(heading) * this.maxMovementDistance * 30,
       long : position.long + Math.sin(heading) * this.maxMovementDistance * 30,
@@ -98,7 +98,7 @@ export class SimGenerator {
     };
   }
 
-  private updateChunk(dataArr) {
+  private updateChunk(dataArr: any) {
     for (let i = 0; i < dataArr.length; i++) {
       const entity = dataArr[i].entity;
       if (Math.random() <= this.chanceToChangeDirection) {

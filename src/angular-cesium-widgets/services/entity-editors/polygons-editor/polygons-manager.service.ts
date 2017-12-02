@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { EditablePolygon } from '../../../models/editable-polygon';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { PolygonEditOptions } from '../../../models/polygon-edit-options';
+import {AcLayerComponent} from '../../../../angular-cesium/components/ac-layer/ac-layer.component';
+import {CoordinateConverter} from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 
 @Injectable()
 export class PolygonsManagerService {
 	polygons: Map<string, EditablePolygon> = new Map<string, EditablePolygon>();
 	
-	createEditablePolygon(id: string, editPolygonsLayer, editPointsLayer, editPolylinesLayer,
-												coordinateConverter, polygonOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
+	createEditablePolygon(id: string, editPolygonsLayer: AcLayerComponent, editPointsLayer: AcLayerComponent,
+						  editPolylinesLayer: AcLayerComponent, coordinateConverter: CoordinateConverter,
+						  polygonOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
 		const editablePolygon = new EditablePolygon(
 			id,
 			editPolygonsLayer,
@@ -21,7 +24,7 @@ export class PolygonsManagerService {
 		);
 	}
 
-	dispose(id) {
+	dispose(id: string) {
 		this.polygons.get(id).dispose();
 		this.polygons.delete(id);
 	}

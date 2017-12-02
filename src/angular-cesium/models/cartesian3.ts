@@ -5,5 +5,5 @@ export interface Cartesian3 extends Cartesian2 {
 
   clone(): Cartesian3;
 
-  equals(Cartesian3): boolean;
+  equals(other: Cartesian3): boolean;
 }

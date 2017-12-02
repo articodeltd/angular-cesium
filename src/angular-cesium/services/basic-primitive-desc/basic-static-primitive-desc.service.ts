@@ -31,7 +31,7 @@ export class BasicStaticPrimitiveDesc extends BasicDesc implements OnInit {
 		this._primitivePropsEvaluator = this._cesiumProperties.createEvaluator(this.primitiveProps);
 	}
 
-	draw(context, id, entity: AcEntity): any {
+	draw(context: any, id: string, entity: AcEntity): any {
 		const geometryProps = this._geometryPropsEvaluator(this._computationCache, context);
 		const instanceProps = this._instancePropsEvaluator(this._computationCache, context);
 		const primitiveProps = this._primitivePropsEvaluator(this._computationCache, context);
