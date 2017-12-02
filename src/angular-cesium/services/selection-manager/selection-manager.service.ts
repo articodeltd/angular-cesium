@@ -13,7 +13,7 @@ import { Subject } from 'rxjs/Subject';
 export interface SelectionOptions {
 	event?: CesiumEvent;
 	modifier?: CesiumEventModifier;
-	entityType?;
+	entityType?: any;
 }
 
 /**

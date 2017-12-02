@@ -129,7 +129,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	private _drawerList: Map<string, BasicDrawerService>;
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
 	private entitiesStore = new Map<string, any>();
-	private layerDrawerDataSources = [];
+	private layerDrawerDataSources: any[] = [];
 
 	constructor(private  layerService: LayerService,
 							private _computationCache: ComputationCache,

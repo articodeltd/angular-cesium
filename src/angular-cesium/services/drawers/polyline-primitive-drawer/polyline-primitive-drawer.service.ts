@@ -29,7 +29,7 @@ export class PolylinePrimitiveDrawerService extends PrimitivesDrawerService {
     super.update(cesiumObject, cesiumProps);
   }
 
-  withColorMaterial(cesiumProps) {
+  withColorMaterial(cesiumProps: any) {
     if (cesiumProps.material instanceof Cesium.Color) {
       const material = Cesium.Material.fromType('Color');
       material.uniforms.color = cesiumProps.material;

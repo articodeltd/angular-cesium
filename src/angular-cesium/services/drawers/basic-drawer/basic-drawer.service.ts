@@ -18,7 +18,7 @@ export abstract class BasicDrawerService {
 
   abstract setShow(showValue: boolean): void
 
-  abstract init(options?: any): void
+  abstract init(options?: any): any
 
   setPropsAssigner(assigner: Function) {
     this._propsAssigner = assigner;

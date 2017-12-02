@@ -22,11 +22,11 @@ export abstract class PrimitivesDrawerService extends BasicDrawerService {
     this.cesiumService.getScene().primitives.add(this._primitiveCollectionWrap);
   }
 
-  add(cesiumProps: any, ...args): any {
+  add(cesiumProps: any, ...args: any[]): any {
     return this._cesiumCollection.add(cesiumProps);
   }
 
-  update(entity: any, cesiumProps: any, ...args) {
+  update(entity: any, cesiumProps: any, ...args: any[]) {
     if (this._propsAssigner) {
       this._propsAssigner(entity, cesiumProps);
     }

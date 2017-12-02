@@ -38,7 +38,6 @@ export class HippodromeEditorLayerComponent implements OnInit {
 				console.log(editUpdate.points); // point = position with id
 				console.log(editUpdate.positions); // or just position
 				console.log(editUpdate.updatedPosition); // added position
-        editUpdate.
 			}
 		});
 	}

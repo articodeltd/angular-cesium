@@ -109,7 +109,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     });
   }
 
-  private suspendEntityCollection(entity) {
+  private suspendEntityCollection(entity: any) {
     const id = entity.entityCollection;
     if (!this.entityCollections.has(id)) {
       throw new Error('No EntityCollection for entity.entityCollection');

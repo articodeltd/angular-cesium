@@ -45,7 +45,7 @@ export class AcTileset3dComponent implements OnInit, OnChanges, OnDestroy {
    * @type {Object}
    */
   @Input()
-  style;
+  style: any;
 
   public tilesetInstance: any = null;
   private _3dtilesCollection: any;

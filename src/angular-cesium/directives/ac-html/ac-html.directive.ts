@@ -14,7 +14,7 @@ export class AcHtmlContext {
 })
 export class AcHtmlDirective implements OnInit {
 
-    private _views = new Map<any, {viewRef, context}>();
+    private _views = new Map<any, {viewRef: any, context: any}>();
 
     constructor(
         private _templateRef: TemplateRef<AcHtmlContext>,

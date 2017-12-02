@@ -3,7 +3,7 @@ export class OptimizedEntityCollection {
   private _collectionSize: number;
   private _isSuspended = false;
   private _isHardSuspend = false;
-  private _suspensionTimeout;
+  private _suspensionTimeout: any;
   private _onEventSuspensionCallback: { once: boolean, callback: Function };
   private _onEventResumeCallback: { once: boolean, callback: Function };
   
@@ -45,17 +45,17 @@ export class OptimizedEntityCollection {
     return this._collectionSize < 1 || this.entityCollection.values.length < this._collectionSize;
   }
   
-  add(entity) {
+  add(entity: any) {
     this.suspend();
     return this.entityCollection.add(entity);
   }
   
-  remove(entity) {
+  remove(entity: any) {
     this.suspend();
     return this.entityCollection.remove(entity);
   }
   
-  removeNoSuspend(entity) {
+  removeNoSuspend(entity: any) {
     this.entityCollection.remove(entity);
   }
   
