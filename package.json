@@ -60,6 +60,7 @@
     "@types/request-promise": "^4.1.33",
     "@types/selenium-webdriver": "^3.0.0",
     "@types/socket.io": "^1.4.29",
+    "@types/lodash.get": "^4.4.3",
     "angular2-template-loader": "^0.6.0",
     "apollo-angular": "0.13.3",
     "apollo-client": "^1.9.1",

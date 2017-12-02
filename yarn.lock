@@ -139,6 +139,12 @@
     "@types/express" "*"
     "@types/node" "*"
 
+"@types/cors@^2.8.3":
+  version "2.8.3"
+  resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.3.tgz#eaf6e476da0d36bee6b061a24d57e343ddce86d6"
+  dependencies:
+    "@types/express" "*"
+
 "@types/express-serve-static-core@*":
   version "4.0.56"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.0.56.tgz#4ed556dcff9012cce6b016e214fdc5ef6e99db7d"
@@ -178,6 +184,16 @@
 "@types/jasmine@2.5.46":
   version "2.5.46"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.46.tgz#bb3047a3f40f60dee03f52c3e2d955cd3d5066c8"
+
+"@types/lodash.get@^4.4.3":
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/@types/lodash.get/-/lodash.get-4.4.3.tgz#ac823d175a9593c10555b5097b72281effd544b5"
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.86"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.86.tgz#6788d3d75032c46322ff1c144c948cf8117c405b"
 
 "@types/mime@*":
   version "2.0.0"
@@ -1649,9 +1665,9 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-codelyzer@^3.1.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/codelyzer/-/codelyzer-3.2.2.tgz#abbd4e5956c435677740846e5858c915f89679c3"
+codelyzer@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/codelyzer/-/codelyzer-4.0.1.tgz#0bb4cf52a325b257790f4980bb3c63833db10789"
   dependencies:
     app-root-path "^2.0.1"
     css-selector-tokenizer "^0.7.0"
