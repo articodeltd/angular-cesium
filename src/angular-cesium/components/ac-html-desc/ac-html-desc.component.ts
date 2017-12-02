@@ -36,7 +36,7 @@ import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.se
       <div *acHtml="let acHtmlEntityId = id; let acHtmlContext = context">
           <div [acHtmlContainer]="acHtmlEntityId">
               <ng-template [ngTemplateOutlet]="acHtmlTemplate"
-                           [ngOutletContext]="acHtmlContext"></ng-template>
+                           [ngTemplateOutletContext]="acHtmlContext"></ng-template>
           </div>
       </div>`
 })
