@@ -413,7 +413,7 @@ export class HippodromeEditorService {
     return hippodrome.getRealPoints();
   }
 
-  private getWidth(id) {
+  private getWidth(id: string) {
     const hippodrome = this.hippodromeManager.get(id);
     return hippodrome.getWidth();
   }
