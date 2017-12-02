@@ -10,7 +10,7 @@ export abstract class BasicDrawerService {
 
   abstract add(cesiumProps: any, ...args: any[]): any
 
-  abstract update(primitive: any, cesiumProps: any, ...args: any[]) : void
+  abstract update(primitive: any, cesiumProps: any, ...args: any[]): void
 
   abstract remove(primitive: any): void
 

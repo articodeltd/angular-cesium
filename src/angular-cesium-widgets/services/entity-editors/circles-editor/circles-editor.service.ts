@@ -20,7 +20,7 @@ import { CircleEditOptions, CircleProps } from '../../../models/circle-edit-opti
 import { EditableCircle } from '../../../models/editable-circle';
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
-import {BasicEditUpdate} from "../../../models/basic-edit-update";
+import {BasicEditUpdate} from '../../../models/basic-edit-update';
 
 
 
