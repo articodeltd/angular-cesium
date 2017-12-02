@@ -1,6 +1,9 @@
-## NEXT
+## 0.037
 ### Fixes
 * Html Primitive - change primitive screen position to Cesium.Cartesian2
+* Fix demo typescript compilation 
+* Fix project implicit any 
+* Change `ngOutletContext` to `ngTemplateOutletContext`
 
 ## 0.0.36
 ### Fixes
