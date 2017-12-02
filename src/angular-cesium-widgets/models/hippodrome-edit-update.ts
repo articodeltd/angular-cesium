@@ -8,6 +8,7 @@ export interface HippodromeEditUpdate extends BasicEditUpdate<HippodromeEditUpda
 	updatedPosition?: Cartesian3;
 	draggedPosition?: Cartesian3;
 	points?: EditPoint[];
-	updatedPoint?: EditPoint;
+  width?: number // meters
+  updatedPoint?: EditPoint;
 	hippodromeOptions?: HippodromeEditOptions
 }

@@ -5,10 +5,11 @@ import { PointProps } from './polyline-edit-options';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 
 export class HippodromeEditorObservable extends EditorObservable<PolygonEditUpdate> {
-	setManually: (firstPosition: Cartesian3,
+  setManually: (firstPosition: Cartesian3,
                 secondPosition: Cartesian3,
                 widthMeters?: number,
                 firstPointProp?: PointProps,
                 secondPointProp?: PointProps) => void;
-	getCurrentPoints: () => EditPoint[];
+  getCurrentPoints: () => EditPoint[];
+  getCurrentWidth: () => number; // meters
 }

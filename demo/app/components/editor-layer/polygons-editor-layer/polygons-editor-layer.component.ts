@@ -8,7 +8,8 @@ import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/lab
 @Component({
   selector: 'polygons-editor-layer',
   templateUrl: 'polygons-editor-layer.component.html',
-  styleUrls: ['./polygons-editor-layer.component.css']
+  styleUrls: ['./polygons-editor-layer.component.css'],
+  providers: [PolygonsEditorService],
 })
 export class PolygonsEditorLayerComponent implements OnInit {
   editing$: PolygonEditorObservable;

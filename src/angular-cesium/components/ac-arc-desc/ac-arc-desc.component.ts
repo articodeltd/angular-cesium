@@ -16,10 +16,23 @@ import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
  *          center: arc.center,
  *          angle: arc.angle,
  *          delta: arc.delta,
- *          radius: arc.radius
+ *          radius: arc.radius,
+ *          color : arc.color - The color should be Cesium.Color type
  *    }">
  *    </ac-arc-desc>
  *    ```
+ *
+ *    description of the props :
+ *    center - The arc is a section of an outline of a circle, This is the center of the circle
+ *    angle - the initial angle of the arc in radians
+ *    delta - the spreading of the arc,
+ *    radius - the distance from the center to the arc
+ *
+ *    for example :
+ *    angle - 0
+ *    delta - π
+ *
+ *    will draw an half circle
  */
 
 @Component({

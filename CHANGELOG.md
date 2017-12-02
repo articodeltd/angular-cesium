@@ -1,11 +1,25 @@
+## NEXT
+### Fixes
+* Html Primitive - change primitive screen position to Cesium.Cartesian2
+
+## 0.0.36
+### Fixes
+* Hippodrome Editor - Expose hippodrome width
+
+### Breaking Changes
+* `HippodromeEditorService` is no longer provided by `AngularCesiumWidgetsModule`, user should provide it himself
+* `CircleEditorService` is no longer provided by `AngularCesiumWidgetsModule`, user should provide it himself
+* `PolylineEditorService` is no longer provided by `AngularCesiumWidgetsModule`, user should provide it himself
+* `PolygonEditorService` is no longer provided by `AngularCesiumWidgetsModule`, user should provide it himself
+
 ## 0.0.35
-## Features
+### Features
 * Added `calcEllipseContainingRect` static function to `CesiumHeatMapMaterialCreator`
 * Added `ac-toolbar` and `ac-toolbar-button` components
 * Added toolbar example and flyTo home toolbar option
 * Added Range and bearing example
 
-## Breaking changes
+### Breaking changes
 * `AngularCesiumEntitiesDrawerModule` refactored to `AngularCesiumWigetsModule`
 
 ## 0.0.34

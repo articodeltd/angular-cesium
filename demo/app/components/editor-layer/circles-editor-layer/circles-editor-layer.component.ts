@@ -7,7 +7,8 @@ import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/lab
 @Component({
   selector: 'circles-editor-layer',
   templateUrl: 'circles-editor-layer.component.html',
-  styleUrls: ['./circles-editor-layer.component.css']
+  styleUrls: ['./circles-editor-layer.component.css'],
+  providers: [CirclesEditorService],
 })
 export class CirclesEditorLayerComponent implements OnInit {
 
@@ -26,7 +27,11 @@ export class CirclesEditorLayerComponent implements OnInit {
     }
     this.editing$ = this.circlesEditor.create({ allowDrag: false });
     this.editing$.subscribe((editUpdate: CircleEditUpdate) => {
+      // current edit value
       console.log(editUpdate);
+      // or
+      console.log('center', this.editing$.getCenter());
+      console.log('radius', this.editing$.getRadius());
     });
   }
 

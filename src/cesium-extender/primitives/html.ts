@@ -7,7 +7,7 @@ export class HtmlPrimitive {
     private _scene: any;
     private _show: boolean;
     private _position: Cartesian3;
-    private _lastPosition: Cartesian3;
+    private _lastPosition: Cartesian2;
     private _pixelOffset: Cartesian2;
     private _element: HTMLElement;
     private _collection: HtmlCollection;
@@ -91,7 +91,7 @@ export class HtmlPrimitive {
         let screenPosition = Cesium.SceneTransforms.wgs84ToWindowCoordinates(this._scene, this._position);
 
         if (!Cesium.defined(screenPosition)) {
-            screenPosition = {x: (-1000), y: (-1000)};
+            screenPosition = new Cesium.Cartesian2((-1000), (-1000));
         }
         else if (Cesium.defined(this._pixelOffset) && Cesium.defined(this._pixelOffset.x) && Cesium.defined(this._pixelOffset.y)) {
             screenPosition.y += this._pixelOffset.y;
