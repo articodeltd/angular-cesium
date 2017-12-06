@@ -4,6 +4,7 @@
 * Fix demo typescript compilation 
 * Fix project implicit any 
 * Change `ngOutletContext` to `ngTemplateOutletContext`
+* Fix polyline not using primitive drawer
 
 ## 0.0.36
 ### Fixes
