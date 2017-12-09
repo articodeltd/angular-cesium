@@ -5,6 +5,7 @@ import { providerFromMock } from '../../utils/testingUtils';
 import { AcPrimitivePolylineComponent } from './ac-primitive-polyline.component';
 import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
+import {PolylinePrimitiveDrawerService} from "../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service";
 
 describe('AcPrimitivePolylineComponent', () => {
 	let component: AcPrimitivePolylineComponent;
@@ -18,7 +19,7 @@ describe('AcPrimitivePolylineComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [AcPrimitivePolylineComponent],
-			providers: [PolylineDrawerService, MapLayersService,
+			providers: [PolylinePrimitiveDrawerService, MapLayersService,
 				providerFromMock(CesiumService, cesiumService)]
 		})
 			.compileComponents();
