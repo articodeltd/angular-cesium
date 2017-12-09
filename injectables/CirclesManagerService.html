@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1465,7 +1473,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="clear"></a>
-                                    <b> clear</b>
+                                    <span class="name"><b> clear</b><a href="#clear"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1497,7 +1505,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createEditableCircle"></a>
-                                    <b> createEditableCircle</b>
+                                    <span class="name"><b> createEditableCircle</b><a href="#createEditableCircle"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1517,9 +1525,74 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editCirclesLayer</td>
+                                                              <td>
+                                                                      <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editPointsLayer</td>
+                                                              <td>
+                                                                      <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editArcsLayer</td>
+                                                              <td>
+                                                                      <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>circleOptions</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/CircleEditOptions.html" target="_self" >CircleEditOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditableCircle.html" target="_self" >EditableCircle</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1529,12 +1602,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="dispose"></a>
-                                    <b> dispose</b>
+                                    <span class="name"><b> dispose</b><a href="#dispose"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>dispose(id: )</code>
+            <code>dispose(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
@@ -1549,9 +1622,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1561,7 +1663,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="get"></a>
-                                    <b> get</b>
+                                    <span class="name"><b> get</b><a href="#get"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1581,9 +1683,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditableCircle.html" target="_self" >EditableCircle</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1600,7 +1731,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="circles"></a>
-                                    <b><span class="modifier">Private</span> circles</b>
+                                    <span class="name"><b><span class="modifier">Private</span> circles</b><a href="#circles"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1619,6 +1750,7 @@
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1642,7 +1774,7 @@ export class CirclesManagerService {
     return editableCircle;
   }
 
-  dispose(id) {
+  dispose(id: string) {
     this.circles.get(id).dispose();
     this.circles.delete(id);
   }
@@ -1659,6 +1791,7 @@ export class CirclesManagerService {
 </code></pre>
     </div>
 </div>
+
 
 
 

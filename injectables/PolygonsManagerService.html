@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1465,7 +1473,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="clear"></a>
-                                    <b> clear</b>
+                                    <span class="name"><b> clear</b><a href="#clear"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1477,7 +1485,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:33</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:36</a></div>
                                         </td>
                                     </tr>
             
@@ -1497,19 +1505,19 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createEditablePolygon"></a>
-                                    <b> createEditablePolygon</b>
+                                    <span class="name"><b> createEditablePolygon</b><a href="#createEditablePolygon"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>createEditablePolygon(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editPolygonsLayer: , editPointsLayer: , editPolylinesLayer: , coordinateConverter: , polygonOptions: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, positions: [])</code>
+            <code>createEditablePolygon(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editPolygonsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, editPointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, editPolylinesLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, polygonOptions?: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, positions?: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:10</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1517,9 +1525,94 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editPolygonsLayer</td>
+                                                              <td>
+                                                                      <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editPointsLayer</td>
+                                                              <td>
+                                                                      <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editPolylinesLayer</td>
+                                                              <td>
+                                                                      <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>coordinateConverter</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>polygonOptions</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/PolygonEditOptions.html" target="_self" >PolygonEditOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>positions</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1529,19 +1622,19 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="dispose"></a>
-                                    <b> dispose</b>
+                                    <span class="name"><b> dispose</b><a href="#dispose"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>dispose(id: )</code>
+            <code>dispose(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:24</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:27</a></div>
                                         </td>
                                     </tr>
             
@@ -1549,9 +1642,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1561,7 +1683,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="get"></a>
-                                    <b> get</b>
+                                    <span class="name"><b> get</b><a href="#get"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1573,7 +1695,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:29</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:32</a></div>
                                         </td>
                                     </tr>
             
@@ -1581,9 +1703,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditablePolygon.html" target="_self" >EditablePolygon</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1600,24 +1751,24 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="polygons"></a>
-                                    <b> polygons</b>
+                                    <span class="name"><b> polygons</b><a href="#polygons"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>polygons:     <code><a href="../classes/EditablePolygon.html" target="_self" >Map&lt;stringEditablePolygon&gt;</a></code>
+                                    <code>polygons:     <code><a href="../classes/EditablePolygon.html" target="_self" >Map&lt;string | EditablePolygon&gt;</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../classes/EditablePolygon.html" target="_self" >Map&lt;stringEditablePolygon&gt;</a></code>
+                                        <i>Type : </i>    <code><a href="../classes/EditablePolygon.html" target="_self" >Map&lt;string | EditablePolygon&gt;</a></code>
             
                                     </td>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:10</a></div>
                                         </td>
                                     </tr>
             
@@ -1625,6 +1776,7 @@
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1633,13 +1785,16 @@
 import { EditablePolygon } from &#x27;../../../models/editable-polygon&#x27;;
 import { Cartesian3 } from &#x27;../../../../angular-cesium/models/cartesian3&#x27;;
 import { PolygonEditOptions } from &#x27;../../../models/polygon-edit-options&#x27;;
+import {AcLayerComponent} from &#x27;../../../../angular-cesium/components/ac-layer/ac-layer.component&#x27;;
+import {CoordinateConverter} from &#x27;../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service&#x27;;
 
 @Injectable()
 export class PolygonsManagerService {
 	polygons: Map&lt;string, EditablePolygon&gt; &#x3D; new Map&lt;string, EditablePolygon&gt;();
 	
-	createEditablePolygon(id: string, editPolygonsLayer, editPointsLayer, editPolylinesLayer,
-												coordinateConverter, polygonOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
+	createEditablePolygon(id: string, editPolygonsLayer: AcLayerComponent, editPointsLayer: AcLayerComponent,
+						  editPolylinesLayer: AcLayerComponent, coordinateConverter: CoordinateConverter,
+						  polygonOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
 		const editablePolygon &#x3D; new EditablePolygon(
 			id,
 			editPolygonsLayer,
@@ -1652,7 +1807,7 @@ export class PolygonsManagerService {
 		);
 	}
 
-	dispose(id) {
+	dispose(id: string) {
 		this.polygons.get(id).dispose();
 		this.polygons.delete(id);
 	}
@@ -1669,6 +1824,7 @@ export class PolygonsManagerService {
 </code></pre>
     </div>
 </div>
+
 
 
 

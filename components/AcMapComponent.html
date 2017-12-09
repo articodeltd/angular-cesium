@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1426,9 +1434,9 @@ Every layer should be tag inside ac-map tag</p>
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-interface.html" target="_blank" >AfterViewInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
     </p>
 
     <p class="comment">
@@ -1466,6 +1474,7 @@ Every layer should be tag inside ac-map tag</p>
                         PlonterService
                         LabelDrawerService
                         PolylineDrawerService
+                        PolylinePrimitiveDrawerService
                         EllipseDrawerService
                         PointDrawerService
                         ArcDrawerService
@@ -1487,12 +1496,6 @@ Every layer should be tag inside ac-map tag</p>
 
 
 
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ac-default-plonter *ngIf&#x3D;&quot;!disableDefaultPlonter&quot;&gt;&lt;/ac-default-plonter&gt;
-&lt;ac-context-menu-wrapper&gt;&lt;/ac-context-menu-wrapper&gt;
-&lt;ng-content&gt;&lt;/ng-content&gt;</code></pre></td>
-            </tr>
 
 
 
@@ -1601,15 +1604,205 @@ Every layer should be tag inside ac-map tag</p>
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(_cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>, _cameraService: <a href="../injectables/CameraService.html">CameraService</a>, _elemRef: <a href="https://angular.io/docs/ts/latest/api/core/index/ElementRef-class.html" target="_blank">ElementRef</a>, document: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, mapsManagerService: <a href="../injectables/MapsManagerService.html">MapsManagerService</a>, billboardDrawerService: BillboardDrawerService, labelDrawerService: LabelDrawerService, ellipseDrawerService: EllipseDrawerService, polylineDrawerService: <a href="../injectables/PolylineDrawerService.html">PolylineDrawerService</a>, polygonDrawerService: PolygonDrawerService, arcDrawerService: ArcDrawerService, pointDrawerService: PointDrawerService, mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, keyboardControlService: <a href="../injectables/KeyboardControlService.html">KeyboardControlService</a>, mapLayersService: <a href="../injectables/MapLayersService.html">MapLayersService</a>, configurationService: <a href="../injectables/ConfigurationService.html">ConfigurationService</a>, screenshotService: <a href="../injectables/ScreenshotService.html">ScreenshotService</a>, contextMenuService: <a href="../injectables/ContextMenuService.html">ContextMenuService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>)</code>
+                            <code>constructor(_cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>, _cameraService: <a href="../injectables/CameraService.html">CameraService</a>, _elemRef: <a href="https://angular.io/docs/ts/latest/api/api/core/ElementRef" target="_blank">ElementRef</a>, document: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, mapsManagerService: <a href="../injectables/MapsManagerService.html">MapsManagerService</a>, billboardDrawerService: BillboardDrawerService, labelDrawerService: LabelDrawerService, ellipseDrawerService: EllipseDrawerService, polylineDrawerService: <a href="../injectables/PolylineDrawerService.html">PolylineDrawerService</a>, polygonDrawerService: PolygonDrawerService, arcDrawerService: ArcDrawerService, pointDrawerService: PointDrawerService, mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, keyboardControlService: <a href="../injectables/KeyboardControlService.html">KeyboardControlService</a>, mapLayersService: <a href="../injectables/MapLayersService.html">MapLayersService</a>, configurationService: <a href="../injectables/ConfigurationService.html">ConfigurationService</a>, screenshotService: <a href="../injectables/ScreenshotService.html">ScreenshotService</a>, contextMenuService: <a href="../injectables/ContextMenuService.html">ContextMenuService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:95</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>_cesiumService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>_cameraService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>_elemRef</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>document</td>
+                                                      <td>
+                                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>mapsManagerService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/MapsManagerService.html" target="_self" >MapsManagerService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>billboardDrawerService</td>
+                                                      <td>
+                                                                <code>BillboardDrawerService</code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>labelDrawerService</td>
+                                                      <td>
+                                                                <code>LabelDrawerService</code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>ellipseDrawerService</td>
+                                                      <td>
+                                                                <code>EllipseDrawerService</code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>polylineDrawerService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/PolylineDrawerService.html" target="_self" >PolylineDrawerService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>polygonDrawerService</td>
+                                                      <td>
+                                                                <code>PolygonDrawerService</code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>arcDrawerService</td>
+                                                      <td>
+                                                                <code>ArcDrawerService</code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>pointDrawerService</td>
+                                                      <td>
+                                                                <code>PointDrawerService</code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>mapEventsManager</td>
+                                                      <td>
+                                                                <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>keyboardControlService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/KeyboardControlService.html" target="_self" >KeyboardControlService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>mapLayersService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/MapLayersService.html" target="_self" >MapLayersService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>configurationService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/ConfigurationService.html" target="_self" >ConfigurationService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>screenshotService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/ScreenshotService.html" target="_self" >ScreenshotService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>contextMenuService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/ContextMenuService.html" target="_self" >ContextMenuService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>coordinateConverter</td>
+                                                      <td>
+                                                                <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -1633,7 +1826,7 @@ Every layer should be tag inside ac-map tag</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:73</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1656,7 +1849,7 @@ Every layer should be tag inside ac-map tag</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:87</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1680,7 +1873,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:81</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1696,19 +1889,21 @@ default: &#39;default-map-id-[index]&#39;</p>
                             <div><p>Sets the map&#39;s SceneMode</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code><a href="../miscellaneous/enumerations.html" target="_self" >SceneMode</a></code>
+                                <em>Type:</em>    <code><a href="../miscellaneous/enumerations.html#SceneMode" target="_self" >SceneMode</a></code>
 
                               </p>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:93</a></div>
                                 </td>
                             </tr>
                 </tbody>
             </table>
     </section>
+
+
 
 
     <section>
@@ -1721,7 +1916,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getCameraService"></a>
-                            <b> getCameraService</b>
+                            <span class="name"><b> getCameraService</b><a href="#getCameraService"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1733,7 +1928,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:165</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:167</a></div>
                                 </td>
                             </tr>
     
@@ -1759,7 +1954,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getCesiumSerivce"></a>
-                            <b> getCesiumSerivce</b>
+                            <span class="name"><b> getCesiumSerivce</b><a href="#getCesiumSerivce"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1771,7 +1966,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:151</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:153</a></div>
                                 </td>
                             </tr>
     
@@ -1797,7 +1992,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getCesiumViewer"></a>
-                            <b> getCesiumViewer</b>
+                            <span class="name"><b> getCesiumViewer</b><a href="#getCesiumViewer"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1809,7 +2004,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:160</a></div>
                                 </td>
                             </tr>
     
@@ -1835,7 +2030,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getContextMenuService"></a>
-                            <b> getContextMenuService</b>
+                            <span class="name"><b> getContextMenuService</b><a href="#getContextMenuService"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1847,7 +2042,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:186</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:188</a></div>
                                 </td>
                             </tr>
     
@@ -1872,7 +2067,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getCoordinateConverter"></a>
-                            <b> getCoordinateConverter</b>
+                            <span class="name"><b> getCoordinateConverter</b><a href="#getCoordinateConverter"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1884,7 +2079,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:204</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="206" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:206</a></div>
                                 </td>
                             </tr>
     
@@ -1909,7 +2104,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getId"></a>
-                            <b> getId</b>
+                            <span class="name"><b> getId</b><a href="#getId"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1921,7 +2116,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:172</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:174</a></div>
                                 </td>
                             </tr>
     
@@ -1947,7 +2142,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getKeyboardControlService"></a>
-                            <b> getKeyboardControlService</b>
+                            <span class="name"><b> getKeyboardControlService</b><a href="#getKeyboardControlService"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1959,7 +2154,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:197</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:199</a></div>
                                 </td>
                             </tr>
     
@@ -1984,7 +2179,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getMapEventsManager"></a>
-                            <b> getMapEventsManager</b>
+                            <span class="name"><b> getMapEventsManager</b><a href="#getMapEventsManager"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1996,7 +2191,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:179</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:181</a></div>
                                 </td>
                             </tr>
     
@@ -2021,7 +2216,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getScreenshotService"></a>
-                            <b> getScreenshotService</b>
+                            <span class="name"><b> getScreenshotService</b><a href="#getScreenshotService"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2033,7 +2228,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:190</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:192</a></div>
                                 </td>
                             </tr>
     
@@ -2053,7 +2248,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="ngAfterViewInit"></a>
-                            <b> ngAfterViewInit</b>
+                            <span class="name"><b> ngAfterViewInit</b><a href="#ngAfterViewInit"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2065,7 +2260,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:144</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:146</a></div>
                                 </td>
                             </tr>
     
@@ -2085,19 +2280,19 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="ngOnChanges"></a>
-                            <b> ngOnChanges</b>
+                            <span class="name"><b> ngOnChanges</b><a href="#ngOnChanges"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>ngOnChanges(changes: <a href="https://angular.io/docs/ts/latest/api/core/index/SimpleChanges-interface.html" target="_blank">SimpleChanges</a>)</code>
+    <code>ngOnChanges(changes: <a href="https://angular.io/docs/ts/latest/api/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:137</a></div>
                                 </td>
                             </tr>
     
@@ -2105,9 +2300,38 @@ default: &#39;default-map-id-[index]&#39;</p>
                         <td class="col-md-4">
     
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>changes</td>
+                                                      <td>
+                                                              <code><a href="https://angular.io/docs/ts/latest/api/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -2117,7 +2341,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="ngOnInit"></a>
-                            <b> ngOnInit</b>
+                            <span class="name"><b> ngOnInit</b><a href="#ngOnInit"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2129,7 +2353,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:131</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:133</a></div>
                                 </td>
                             </tr>
     
@@ -2156,12 +2380,12 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="contextMenuService"></a>
-                            <b><span class="modifier">Public</span> contextMenuService</b>
+                            <span class="name"><b><span class="modifier">Public</span> contextMenuService</b><a href="#contextMenuService"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>contextMenuService:     <code><a href="../injectables/ContextMenuService.html" target="_self" >ContextMenuService</a></code>
+                            <span class="modifier-icon fa fa-reset"></span><code>contextMenuService:     <code><a href="../injectables/ContextMenuService.html" target="_self" >ContextMenuService</a></code>
     </code>
                         </td>
                     </tr>
@@ -2173,7 +2397,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:112</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:114</a></div>
                                 </td>
                             </tr>
     
@@ -2185,7 +2409,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="mapContainer"></a>
-                            <b><span class="modifier">Private</span> mapContainer</b>
+                            <span class="name"><b><span class="modifier">Private</span> mapContainer</b><a href="#mapContainer"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2202,7 +2426,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:95</a></div>
                                 </td>
                             </tr>
     
@@ -2210,6 +2434,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                 </tbody>
             </table>
     </section>
+
 </div>
 
 
@@ -2236,6 +2461,7 @@ import { ConfigurationService } from &#x27;../../cesium-enhancements/Configurati
 import { ScreenshotService } from &#x27;../../services/screenshot/screenshot.service&#x27;;
 import { ContextMenuService } from &#x27;../../services/context-menu/context-menu.service&#x27;;
 import { CoordinateConverter } from &#x27;../../services/coordinate-converter/coordinate-converter.service&#x27;;
+import {PolylinePrimitiveDrawerService} from &#x27;../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service&#x27;
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -2267,6 +2493,7 @@ import { CoordinateConverter } from &#x27;../../services/coordinate-converter/co
     PlonterService,
     LabelDrawerService,
     PolylineDrawerService,
+    PolylinePrimitiveDrawerService,
     EllipseDrawerService,
     PointDrawerService,
     ArcDrawerService,
@@ -2448,12 +2675,13 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ac-default-plonter *ngIf="!disableDefaultPlonter"></ac-default-plonter><ac-context-menu-wrapper></ac-context-menu-wrapper><ng-content></ng-content></div>'
-    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
+        var COMPONENT_TEMPLATE = '<div></div>'
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcPrimitivePolylineComponent', 'selector': 'ac-primitive-polyline'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
     var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'},{'name': 'DraggableToMapDirective', 'selector': '[draggableToMap]'}];
     var ACTUAL_COMPONENT = {'name': 'AcMapComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

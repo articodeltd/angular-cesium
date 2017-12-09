@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1462,7 +1470,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="clear"></a>
-                                    <b> clear</b>
+                                    <span class="name"><b> clear</b><a href="#clear"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1474,7 +1482,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:26</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:29</a></div>
                                         </td>
                                     </tr>
             
@@ -1494,19 +1502,19 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createEditableHippodrome"></a>
-                                    <b> createEditableHippodrome</b>
+                                    <span class="name"><b> createEditableHippodrome</b><a href="#createEditableHippodrome"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>createEditableHippodrome(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editHippodromeLayer: , editPointsLayer: , coordinateConverter: , hippodromeEditOptions: <a href="../interfaces/HippodromeEditOptions.html">HippodromeEditOptions</a>, positions: [])</code>
+            <code>createEditableHippodrome(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editHippodromeLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, editPointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, hippodromeEditOptions?: <a href="../interfaces/HippodromeEditOptions.html">HippodromeEditOptions</a>, positions?: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:10</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1514,9 +1522,85 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editHippodromeLayer</td>
+                                                              <td>
+                                                                      <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editPointsLayer</td>
+                                                              <td>
+                                                                      <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>coordinateConverter</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>hippodromeEditOptions</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/HippodromeEditOptions.html" target="_self" >HippodromeEditOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>positions</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1526,7 +1610,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="get"></a>
-                                    <b> get</b>
+                                    <span class="name"><b> get</b><a href="#get"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1538,7 +1622,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:22</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:25</a></div>
                                         </td>
                                     </tr>
             
@@ -1546,9 +1630,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditableHippodrome.html" target="_self" >EditableHippodrome</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1565,24 +1678,24 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="hippodromes"></a>
-                                    <b> hippodromes</b>
+                                    <span class="name"><b> hippodromes</b><a href="#hippodromes"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>hippodromes:     <code><a href="../classes/EditableHippodrome.html" target="_self" >Map&lt;stringEditableHippodrome&gt;</a></code>
+                                    <code>hippodromes:     <code><a href="../classes/EditableHippodrome.html" target="_self" >Map&lt;string | EditableHippodrome&gt;</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../classes/EditableHippodrome.html" target="_self" >Map&lt;stringEditableHippodrome&gt;</a></code>
+                                        <i>Type : </i>    <code><a href="../classes/EditableHippodrome.html" target="_self" >Map&lt;string | EditableHippodrome&gt;</a></code>
             
                                     </td>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-manager.service.ts:10</a></div>
                                         </td>
                                     </tr>
             
@@ -1590,6 +1703,7 @@
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1598,13 +1712,16 @@
 import { Cartesian3 } from &#x27;../../../../angular-cesium/models/cartesian3&#x27;;
 import { EditableHippodrome } from &#x27;../../../models/editable-hippodrome&#x27;;
 import { HippodromeEditOptions } from &#x27;../../../models/hippodrome-edit-options&#x27;;
+import {AcLayerComponent} from &#x27;../../../../angular-cesium/components/ac-layer/ac-layer.component&#x27;;
+import {CoordinateConverter} from &#x27;../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service&#x27;;
 
 @Injectable()
 export class HippodromeManagerService {
 	hippodromes: Map&lt;string, EditableHippodrome&gt; &#x3D; new Map&lt;string, EditableHippodrome&gt;();
 	
-	createEditableHippodrome(id: string, editHippodromeLayer, editPointsLayer,
-													 coordinateConverter, hippodromeEditOptions?: HippodromeEditOptions, positions?: Cartesian3[]) {
+	createEditableHippodrome(id: string, editHippodromeLayer: AcLayerComponent, editPointsLayer: AcLayerComponent,
+							 coordinateConverter: CoordinateConverter, hippodromeEditOptions?: HippodromeEditOptions,
+							 positions?: Cartesian3[]) {
 		const editableHippodrome &#x3D; new EditableHippodrome(
 			id,
 			editHippodromeLayer,
@@ -1627,6 +1744,7 @@ export class HippodromeManagerService {
 </code></pre>
     </div>
 </div>
+
 
 
 

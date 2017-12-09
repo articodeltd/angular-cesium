@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1412,7 +1420,7 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+                        <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnInit" target="_blank" >OnInit</a></code>
             </p>
 
 
@@ -1481,7 +1489,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(_templateRef: <a href="../classes/AcHtmlContext.html">TemplateRef<AcHtmlContext></a>, _viewContainerRef: <a href="https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html" target="_blank">ViewContainerRef</a>, _changeDetector: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank">ChangeDetectorRef</a>, _layerService: LayerService, _acHtmlManager: <a href="../injectables/AcHtmlManager.html">AcHtmlManager</a>)</code>
+                                    <code>constructor(_templateRef: <a href="../classes/AcHtmlContext.html">TemplateRef<AcHtmlContext></a>, _viewContainerRef: <a href="https://angular.io/docs/ts/latest/api/api/core/ViewContainerRef" target="_blank">ViewContainerRef</a>, _changeDetector: <a href="https://angular.io/docs/ts/latest/api/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, _layerService: LayerService, _acHtmlManager: <a href="../injectables/AcHtmlManager.html">AcHtmlManager</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -1490,9 +1498,75 @@
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>_templateRef</td>
+                                                              <td>
+                                                                        <code><a href="../classes/AcHtmlContext.html" target="_self" >TemplateRef&lt;AcHtmlContext&gt;</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>_viewContainerRef</td>
+                                                              <td>
+                                                                        <code><a href="https://angular.io/docs/ts/latest/api/api/core/ViewContainerRef" target="_blank" >ViewContainerRef</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>_changeDetector</td>
+                                                              <td>
+                                                                        <code><a href="https://angular.io/docs/ts/latest/api/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>_layerService</td>
+                                                              <td>
+                                                                        <code>LayerService</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>_acHtmlManager</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/AcHtmlManager.html" target="_self" >AcHtmlManager</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
+
+
 
 
 
@@ -1506,12 +1580,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_handleView"></a>
-                                    <b><span class="modifier">Private</span> _handleView</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _handleView</b><a href="#_handleView"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>_handleView(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, primitive: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, entity: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
@@ -1527,9 +1601,56 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>primitive</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1539,7 +1660,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="addOrUpdate"></a>
-                                    <b> addOrUpdate</b>
+                                    <span class="name"><b> addOrUpdate</b><a href="#addOrUpdate"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1559,9 +1680,47 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>primitive</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1571,7 +1730,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="ngOnInit"></a>
-                                    <b> ngOnInit</b>
+                                    <span class="name"><b> ngOnInit</b><a href="#ngOnInit"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1603,7 +1762,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="remove"></a>
-                                    <b> remove</b>
+                                    <span class="name"><b> remove</b><a href="#remove"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1623,9 +1782,47 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>primitive</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1642,7 +1839,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_views"></a>
-                                    <b><span class="modifier">Private</span> _views</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _views</b><a href="#_views"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1661,6 +1858,7 @@
                         </tbody>
                     </table>
             </section>
+
 
     </div>
 
@@ -1682,7 +1880,7 @@ export class AcHtmlContext {
 })
 export class AcHtmlDirective implements OnInit {
 
-    private _views &#x3D; new Map&lt;any, {viewRef, context}&gt;();
+    private _views &#x3D; new Map&lt;any, {viewRef: any, context: any}&gt;();
 
     constructor(
         private _templateRef: TemplateRef&lt;AcHtmlContext&gt;,
@@ -1739,6 +1937,7 @@ export class AcHtmlDirective implements OnInit {
     </div>
 
 </div>
+
 
 
 

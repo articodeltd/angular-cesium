@@ -48,8 +48,8 @@
                                   <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="./changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="./changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1388,19 +1396,20 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Documentation coverage</li>
 </ol>
 
 <img src="./images/coverage-badge.svg">
 
-<table class="table table-bordered coverage">
+<table class="table table-bordered coverage" id="coverage-table">
     <thead class="coverage-header">
         <tr>
             <th>File</th>
             <th>Type</th>
             <th>Identifier</th>
-            <th style="text-align:right">Statements</th>
+            <th style="text-align:right" class="statements" data-sort-default>Statements</th>
         </tr>
     </thead>
     <tbody>
@@ -1414,9 +1423,9 @@
             <td>
                 CirclesEditorComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/19)</span>
+                <span class="coverage-count">(0/14)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1429,9 +1438,9 @@
             <td>
                 HippodromeEditorComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/17)</span>
+                <span class="coverage-count">(0/13)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1444,9 +1453,9 @@
             <td>
                 PolygonsEditorComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/23)</span>
+                <span class="coverage-count">(0/18)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1459,9 +1468,9 @@
             <td>
                 PolylinesEditorComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/19)</span>
+                <span class="coverage-count">(0/14)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1474,9 +1483,9 @@
             <td>
                 AcToolbarButtonComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">11 %</span>
-                <span class="coverage-count">(1/9)</span>
+            <td align="right" data-sort="14">
+                <span class="coverage-percent">14 %</span>
+                <span class="coverage-count">(1/7)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1489,9 +1498,9 @@
             <td>
                 AcToolbarComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">12 %</span>
-                <span class="coverage-count">(1/8)</span>
+            <td align="right" data-sort="14">
+                <span class="coverage-percent">14 %</span>
+                <span class="coverage-count">(1/7)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1504,7 +1513,7 @@
             <td>
                 DragIconComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -1519,9 +1528,9 @@
             <td>
                 DraggableToMapDirective
             </td>
-            <td align="right">
-                <span class="coverage-percent">14 %</span>
-                <span class="coverage-count">(1/7)</span>
+            <td align="right" data-sort="20">
+                <span class="coverage-percent">20 %</span>
+                <span class="coverage-count">(1/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1534,7 +1543,7 @@
             <td>
                 BasicEditUpdate
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/6)</span>
             </td>
@@ -1549,7 +1558,7 @@
             <td>
                 CircleEditOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -1564,7 +1573,7 @@
             <td>
                 CircleProps
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/5)</span>
             </td>
@@ -1579,7 +1588,7 @@
             <td>
                 CircleEditUpdate
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/7)</span>
             </td>
@@ -1594,7 +1603,7 @@
             <td>
                 CircleEditorObservable
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
@@ -1609,9 +1618,9 @@
             <td>
                 EditArc
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/17)</span>
+                <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1624,9 +1633,9 @@
             <td>
                 EditPoint
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/18)</span>
+                <span class="coverage-count">(0/9)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1639,9 +1648,9 @@
             <td>
                 EditPolyline
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/17)</span>
+                <span class="coverage-count">(0/11)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1654,9 +1663,9 @@
             <td>
                 EditableCircle
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/34)</span>
+                <span class="coverage-count">(0/13)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1669,9 +1678,9 @@
             <td>
                 EditableHippodrome
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/38)</span>
+                <span class="coverage-count">(0/19)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1684,9 +1693,9 @@
             <td>
                 EditablePolygon
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/42)</span>
+                <span class="coverage-count">(0/19)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1699,9 +1708,9 @@
             <td>
                 EditablePolyline
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/39)</span>
+                <span class="coverage-count">(0/19)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1714,7 +1723,7 @@
             <td>
                 EditorEditOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/8)</span>
             </td>
@@ -1729,7 +1738,7 @@
             <td>
                 EditorObservable
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/8)</span>
             </td>
@@ -1744,7 +1753,7 @@
             <td>
                 HippodromeEditOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -1759,7 +1768,7 @@
             <td>
                 HippodromeProps
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/6)</span>
             </td>
@@ -1774,7 +1783,7 @@
             <td>
                 HippodromeEditUpdate
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/8)</span>
             </td>
@@ -1789,7 +1798,7 @@
             <td>
                 HippodromeEditorObservable
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
@@ -1804,7 +1813,7 @@
             <td>
                 LabelProps
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/22)</span>
             </td>
@@ -1819,7 +1828,7 @@
             <td>
                 PolygonEditOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -1834,7 +1843,7 @@
             <td>
                 PolygonProps
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -1849,7 +1858,7 @@
             <td>
                 PolygonEditUpdate
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/7)</span>
             </td>
@@ -1864,7 +1873,7 @@
             <td>
                 PolygonEditorObservable
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/3)</span>
             </td>
@@ -1879,7 +1888,7 @@
             <td>
                 PointProps
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/8)</span>
             </td>
@@ -1894,7 +1903,7 @@
             <td>
                 PolylineEditOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/6)</span>
             </td>
@@ -1909,7 +1918,7 @@
             <td>
                 PolylineProps
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/3)</span>
             </td>
@@ -1924,7 +1933,7 @@
             <td>
                 PolylineEditUpdate
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/7)</span>
             </td>
@@ -1939,7 +1948,7 @@
             <td>
                 PolylineEditorObservable
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/3)</span>
             </td>
@@ -1954,9 +1963,9 @@
             <td>
                 DraggableToMapService
             </td>
-            <td align="right">
-                <span class="coverage-percent">9 %</span>
-                <span class="coverage-count">(1/11)</span>
+            <td align="right" data-sort="16">
+                <span class="coverage-percent">16 %</span>
+                <span class="coverage-count">(1/6)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1969,7 +1978,7 @@
             <td>
                 IconDragEvent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/5)</span>
             </td>
@@ -1984,9 +1993,9 @@
             <td>
                 CirclesEditorService
             </td>
-            <td align="right">
-                <span class="coverage-percent">4 %</span>
-                <span class="coverage-count">(1/22)</span>
+            <td align="right" data-sort="20">
+                <span class="coverage-percent">20 %</span>
+                <span class="coverage-count">(1/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -1999,9 +2008,9 @@
             <td>
                 CirclesManagerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/6)</span>
+                <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2014,9 +2023,9 @@
             <td>
                 HippodromeEditorService
             </td>
-            <td align="right">
-                <span class="coverage-percent">5 %</span>
-                <span class="coverage-count">(1/20)</span>
+            <td align="right" data-sort="20">
+                <span class="coverage-percent">20 %</span>
+                <span class="coverage-count">(1/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2029,7 +2038,7 @@
             <td>
                 HippodromeManagerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/5)</span>
             </td>
@@ -2044,9 +2053,9 @@
             <td>
                 PolygonsEditorService
             </td>
-            <td align="right">
-                <span class="coverage-percent">5 %</span>
-                <span class="coverage-count">(1/19)</span>
+            <td align="right" data-sort="20">
+                <span class="coverage-percent">20 %</span>
+                <span class="coverage-count">(1/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2059,7 +2068,7 @@
             <td>
                 PolygonsManagerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/6)</span>
             </td>
@@ -2074,9 +2083,9 @@
             <td>
                 PolylinesEditorService
             </td>
-            <td align="right">
-                <span class="coverage-percent">5 %</span>
-                <span class="coverage-count">(1/19)</span>
+            <td align="right" data-sort="20">
+                <span class="coverage-percent">20 %</span>
+                <span class="coverage-count">(1/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2089,7 +2098,7 @@
             <td>
                 PolylinesManagerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/5)</span>
             </td>
@@ -2104,7 +2113,7 @@
             <td>
                 ConfigurationService
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -2119,9 +2128,9 @@
             <td>
                 AcTileset3dComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">45 %</span>
-                <span class="coverage-count">(5/11)</span>
+            <td align="right" data-sort="50">
+                <span class="coverage-percent">50 %</span>
+                <span class="coverage-count">(5/10)</span>
             </td>
         </tr>
         <tr class="medium">
@@ -2134,7 +2143,7 @@
             <td>
                 AcArcDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2149,7 +2158,7 @@
             <td>
                 AcArcComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="12">
                 <span class="coverage-percent">12 %</span>
                 <span class="coverage-count">(1/8)</span>
             </td>
@@ -2164,9 +2173,9 @@
             <td>
                 AcArrayDescComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">3 %</span>
-                <span class="coverage-count">(1/26)</span>
+            <td align="right" data-sort="5">
+                <span class="coverage-percent">5 %</span>
+                <span class="coverage-count">(1/18)</span>
             </td>
         </tr>
         <tr class="medium">
@@ -2179,7 +2188,7 @@
             <td>
                 AcBillboardPrimitiveDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2194,7 +2203,7 @@
             <td>
                 AcBillboardComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2209,7 +2218,7 @@
             <td>
                 AcBillboardDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2224,7 +2233,7 @@
             <td>
                 AcBoxDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2239,7 +2248,7 @@
             <td>
                 AcCircleDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="33">
                 <span class="coverage-percent">33 %</span>
                 <span class="coverage-count">(1/3)</span>
             </td>
@@ -2254,9 +2263,9 @@
             <td>
                 AcCircleComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">20 %</span>
-                <span class="coverage-count">(1/5)</span>
+            <td align="right" data-sort="25">
+                <span class="coverage-percent">25 %</span>
+                <span class="coverage-count">(1/4)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2269,9 +2278,9 @@
             <td>
                 AcContextMenuWrapperComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">12 %</span>
-                <span class="coverage-count">(1/8)</span>
+            <td align="right" data-sort="16">
+                <span class="coverage-percent">16 %</span>
+                <span class="coverage-count">(1/6)</span>
             </td>
         </tr>
         <tr class="medium">
@@ -2284,7 +2293,7 @@
             <td>
                 AcCorridorDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2299,7 +2308,7 @@
             <td>
                 AcCylinderDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2314,9 +2323,9 @@
             <td>
                 AcDefaultPlonterComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/6)</span>
+                <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
         <tr class="medium">
@@ -2329,7 +2338,7 @@
             <td>
                 AcEllipseDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2344,7 +2353,7 @@
             <td>
                 AcEllipseComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2359,7 +2368,7 @@
             <td>
                 AcEllipsoidDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2374,7 +2383,7 @@
             <td>
                 AcHtmlDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="12">
                 <span class="coverage-percent">12 %</span>
                 <span class="coverage-count">(1/8)</span>
             </td>
@@ -2389,9 +2398,9 @@
             <td>
                 AcHtmlComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">10 %</span>
-                <span class="coverage-count">(1/10)</span>
+            <td align="right" data-sort="11">
+                <span class="coverage-percent">11 %</span>
+                <span class="coverage-count">(1/9)</span>
             </td>
         </tr>
         <tr class="medium">
@@ -2404,7 +2413,7 @@
             <td>
                 AcLabelDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2419,7 +2428,7 @@
             <td>
                 AcLabelPrimitiveDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2434,12 +2443,12 @@
             <td>
                 AcLabelComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
         </tr>
-        <tr class="low">
+        <tr class="medium">
             <td>
                 <a href="./components/AcLayerComponent.html">src/angular-cesium/components/ac-layer/ac-layer.component.ts</a>
             </td>
@@ -2449,12 +2458,12 @@
             <td>
                 AcLayerComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">20 %</span>
-                <span class="coverage-count">(6/30)</span>
+            <td align="right" data-sort="30">
+                <span class="coverage-percent">30 %</span>
+                <span class="coverage-count">(6/20)</span>
             </td>
         </tr>
-        <tr class="medium">
+        <tr class="good">
             <td>
                 <a href="./components/AcMapLayerProviderComponent.html">src/angular-cesium/components/ac-map-layer-provider/ac-map-layer-provider.component.ts</a>
             </td>
@@ -2464,12 +2473,12 @@
             <td>
                 AcMapLayerProviderComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">50 %</span>
-                <span class="coverage-count">(8/16)</span>
+            <td align="right" data-sort="53">
+                <span class="coverage-percent">53 %</span>
+                <span class="coverage-count">(8/15)</span>
             </td>
         </tr>
-        <tr class="low">
+        <tr class="medium">
             <td>
                 <a href="./components/AcMapComponent.html">src/angular-cesium/components/ac-map/ac-map.component.ts</a>
             </td>
@@ -2479,9 +2488,9 @@
             <td>
                 AcMapComponent
             </td>
-            <td align="right">
-                <span class="coverage-percent">25 %</span>
-                <span class="coverage-count">(5/20)</span>
+            <td align="right" data-sort="26">
+                <span class="coverage-percent">26 %</span>
+                <span class="coverage-count">(5/19)</span>
             </td>
         </tr>
         <tr class="medium">
@@ -2494,7 +2503,7 @@
             <td>
                 AcModelDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2509,7 +2518,7 @@
             <td>
                 AcPointDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2524,7 +2533,7 @@
             <td>
                 AcPointPrimitiveDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2539,7 +2548,7 @@
             <td>
                 AcPointComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2554,7 +2563,7 @@
             <td>
                 AcPolygonDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2569,7 +2578,7 @@
             <td>
                 AcPolygonComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2584,7 +2593,7 @@
             <td>
                 AcPolylineDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2599,7 +2608,7 @@
             <td>
                 AcPolylinePrimitiveDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2614,7 +2623,7 @@
             <td>
                 AcPolylineVolumeDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2629,7 +2638,22 @@
             <td>
                 AcPolylineComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
+                <span class="coverage-percent">50 %</span>
+                <span class="coverage-count">(1/2)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <a href="./components/AcPrimitivePolylineComponent.html">src/angular-cesium/components/ac-primitive-polyline/ac-primitive-polyline.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                AcPrimitivePolylineComponent
+            </td>
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2644,7 +2668,7 @@
             <td>
                 AcRectangleDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2659,7 +2683,7 @@
             <td>
                 AcWallDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2674,7 +2698,7 @@
             <td>
                 AcDynamicCircleDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/3)</span>
             </td>
@@ -2689,7 +2713,7 @@
             <td>
                 AcDynamicEllipseDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2704,7 +2728,7 @@
             <td>
                 AcDynamicPolylineDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -2719,7 +2743,7 @@
             <td>
                 AcStaticCircleDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -2734,7 +2758,7 @@
             <td>
                 AcStaticEllipseDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -2749,7 +2773,7 @@
             <td>
                 AcStaticPolygonDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -2764,7 +2788,7 @@
             <td>
                 AcStaticPolylineDescComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -2779,9 +2803,9 @@
             <td>
                 AcHtmlContainerDirective
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/5)</span>
+                <span class="coverage-count">(0/4)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2794,9 +2818,9 @@
             <td>
                 AcHtmlDirective
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/7)</span>
+                <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2809,12 +2833,12 @@
             <td>
                 AcHtmlContext
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
         </tr>
-        <tr class="good">
+        <tr class="very-good">
             <td>
                 <a href="./classes/AcEntity.html">src/angular-cesium/models/ac-entity.ts</a>
             </td>
@@ -2824,7 +2848,7 @@
             <td>
                 AcEntity
             </td>
-            <td align="right">
+            <td align="right" data-sort="100">
                 <span class="coverage-percent">100 %</span>
                 <span class="coverage-count">(3/3)</span>
             </td>
@@ -2839,7 +2863,7 @@
             <td>
                 BasicContextMenu
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2854,7 +2878,7 @@
             <td>
                 Cartesian2
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/5)</span>
             </td>
@@ -2869,7 +2893,7 @@
             <td>
                 Cartesian3
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
@@ -2884,7 +2908,7 @@
             <td>
                 ContextMenuOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="25">
                 <span class="coverage-percent">25 %</span>
                 <span class="coverage-count">(1/4)</span>
             </td>
@@ -2899,7 +2923,7 @@
             <td>
                 IDescription
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
@@ -2914,7 +2938,7 @@
             <td>
                 EntitiesDrawerOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
@@ -2929,7 +2953,7 @@
             <td>
                 LayerOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/12)</span>
             </td>
@@ -2944,7 +2968,7 @@
             <td>
                 ModuleConfiguration
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -2959,7 +2983,7 @@
             <td>
                 Vec2
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/3)</span>
             </td>
@@ -2974,7 +2998,7 @@
             <td>
                 Vec3
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
@@ -2989,7 +3013,7 @@
             <td>
                 PixelOffsetPipe
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/1)</span>
             </td>
@@ -3004,7 +3028,7 @@
             <td>
                 RadiansToDegreesPipe
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/1)</span>
             </td>
@@ -3019,12 +3043,12 @@
             <td>
                 AcHtmlManager
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/8)</span>
+                <span class="coverage-count">(0/7)</span>
             </td>
         </tr>
-        <tr class="good">
+        <tr class="very-good">
             <td>
                 <a href="./injectables/CameraService.html">src/angular-cesium/services/camera/camera.service.ts</a>
             </td>
@@ -3034,9 +3058,9 @@
             <td>
                 CameraService
             </td>
-            <td align="right">
-                <span class="coverage-percent">55 %</span>
-                <span class="coverage-count">(19/34)</span>
+            <td align="right" data-sort="76">
+                <span class="coverage-percent">76 %</span>
+                <span class="coverage-count">(19/25)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3049,9 +3073,9 @@
             <td>
                 CesiumProperties
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/8)</span>
+                <span class="coverage-count">(0/6)</span>
             </td>
         </tr>
         <tr class="good">
@@ -3064,9 +3088,9 @@
             <td>
                 CesiumService
             </td>
-            <td align="right">
-                <span class="coverage-percent">57 %</span>
-                <span class="coverage-count">(4/7)</span>
+            <td align="right" data-sort="66">
+                <span class="coverage-percent">66 %</span>
+                <span class="coverage-count">(4/6)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3079,9 +3103,9 @@
             <td>
                 ContextMenuService
             </td>
-            <td align="right">
-                <span class="coverage-percent">4 %</span>
-                <span class="coverage-count">(1/22)</span>
+            <td align="right" data-sort="25">
+                <span class="coverage-percent">25 %</span>
+                <span class="coverage-count">(1/4)</span>
             </td>
         </tr>
         <tr class="medium">
@@ -3094,9 +3118,9 @@
             <td>
                 CoordinateConverter
             </td>
-            <td align="right">
-                <span class="coverage-percent">28 %</span>
-                <span class="coverage-count">(4/14)</span>
+            <td align="right" data-sort="30">
+                <span class="coverage-percent">30 %</span>
+                <span class="coverage-count">(4/13)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3109,7 +3133,7 @@
             <td>
                 BasicDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="10">
                 <span class="coverage-percent">10 %</span>
                 <span class="coverage-count">(1/10)</span>
             </td>
@@ -3124,7 +3148,7 @@
             <td>
                 BillboardPrimitiveDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3139,7 +3163,7 @@
             <td>
                 BoxDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3154,7 +3178,7 @@
             <td>
                 CorridorDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3169,7 +3193,7 @@
             <td>
                 CylinderDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3184,7 +3208,7 @@
             <td>
                 EllipsoidDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3199,9 +3223,9 @@
             <td>
                 EntitiesDrawerService
             </td>
-            <td align="right">
-                <span class="coverage-percent">8 %</span>
-                <span class="coverage-count">(1/12)</span>
+            <td align="right" data-sort="12">
+                <span class="coverage-percent">12 %</span>
+                <span class="coverage-count">(1/8)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3214,9 +3238,9 @@
             <td>
                 OptimizedEntityCollection
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/26)</span>
+                <span class="coverage-count">(0/16)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3229,7 +3253,7 @@
             <td>
                 HtmlDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/3)</span>
             </td>
@@ -3244,7 +3268,7 @@
             <td>
                 LabelPrimitiveDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3259,7 +3283,7 @@
             <td>
                 ModelDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3274,7 +3298,7 @@
             <td>
                 PointPrimitiveDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3289,7 +3313,7 @@
             <td>
                 PolylineDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3304,7 +3328,7 @@
             <td>
                 PolylinePrimitiveDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="20">
                 <span class="coverage-percent">20 %</span>
                 <span class="coverage-count">(1/5)</span>
             </td>
@@ -3319,7 +3343,7 @@
             <td>
                 PolylineVolumeDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3334,7 +3358,7 @@
             <td>
                 PrimitivePolygonDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -3349,9 +3373,9 @@
             <td>
                 PrimitivesDrawerService
             </td>
-            <td align="right">
-                <span class="coverage-percent">7 %</span>
-                <span class="coverage-count">(1/13)</span>
+            <td align="right" data-sort="9">
+                <span class="coverage-percent">9 %</span>
+                <span class="coverage-count">(1/11)</span>
             </td>
         </tr>
         <tr class="medium">
@@ -3364,7 +3388,7 @@
             <td>
                 RectangleDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3379,7 +3403,7 @@
             <td>
                 WallDrawerService
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
@@ -3394,7 +3418,7 @@
             <td>
                 EntityOnMapComponent
             </td>
-            <td align="right">
+            <td align="right" data-sort="9">
                 <span class="coverage-percent">9 %</span>
                 <span class="coverage-count">(1/11)</span>
             </td>
@@ -3409,12 +3433,12 @@
             <td>
                 GeoUtilsService
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/8)</span>
             </td>
         </tr>
-        <tr class="good">
+        <tr class="very-good">
             <td>
                 <a href="./injectables/KeyboardControlService.html">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts</a>
             </td>
@@ -3424,9 +3448,9 @@
             <td>
                 KeyboardControlService
             </td>
-            <td align="right">
-                <span class="coverage-percent">82 %</span>
-                <span class="coverage-count">(14/17)</span>
+            <td align="right" data-sort="100">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(5/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3439,7 +3463,7 @@
             <td>
                 ActiveDefinition
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
@@ -3454,7 +3478,7 @@
             <td>
                 KeyboardControlDefinition
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/1)</span>
             </td>
@@ -3469,7 +3493,7 @@
             <td>
                 KeyboardControlParams
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/5)</span>
             </td>
@@ -3484,7 +3508,7 @@
             <td>
                 DisposableObservable
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -3499,7 +3523,7 @@
             <td>
                 CesiumDragDropHelper
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/3)</span>
             </td>
@@ -3514,7 +3538,7 @@
             <td>
                 EventRegistrationInput
             </td>
-            <td align="right">
+            <td align="right" data-sort="16">
                 <span class="coverage-percent">16 %</span>
                 <span class="coverage-count">(1/6)</span>
             </td>
@@ -3529,12 +3553,12 @@
             <td>
                 Registration
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/6)</span>
             </td>
         </tr>
-        <tr class="low">
+        <tr class="medium">
             <td>
                 <a href="./injectables/MapEventsManagerService.html">src/angular-cesium/services/map-events-mananger/map-events-manager.ts</a>
             </td>
@@ -3544,9 +3568,9 @@
             <td>
                 MapEventsManagerService
             </td>
-            <td align="right">
-                <span class="coverage-percent">15 %</span>
-                <span class="coverage-count">(2/13)</span>
+            <td align="right" data-sort="50">
+                <span class="coverage-percent">50 %</span>
+                <span class="coverage-count">(2/4)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3559,7 +3583,7 @@
             <td>
                 EventResult
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
@@ -3574,7 +3598,7 @@
             <td>
                 Movement
             </td>
-            <td align="right">
+            <td align="right" data-sort="25">
                 <span class="coverage-percent">25 %</span>
                 <span class="coverage-count">(1/4)</span>
             </td>
@@ -3589,9 +3613,9 @@
             <td>
                 MapLayersService
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/7)</span>
+                <span class="coverage-count">(0/6)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3604,9 +3628,9 @@
             <td>
                 MapsManagerService
             </td>
-            <td align="right">
-                <span class="coverage-percent">12 %</span>
-                <span class="coverage-count">(1/8)</span>
+            <td align="right" data-sort="25">
+                <span class="coverage-percent">25 %</span>
+                <span class="coverage-count">(1/4)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3619,9 +3643,9 @@
             <td>
                 PlonterService
             </td>
-            <td align="right">
-                <span class="coverage-percent">7 %</span>
-                <span class="coverage-count">(1/13)</span>
+            <td align="right" data-sort="25">
+                <span class="coverage-percent">25 %</span>
+                <span class="coverage-count">(1/4)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3634,9 +3658,9 @@
             <td>
                 ScreenshotService
             </td>
-            <td align="right">
-                <span class="coverage-percent">20 %</span>
-                <span class="coverage-count">(1/5)</span>
+            <td align="right" data-sort="25">
+                <span class="coverage-percent">25 %</span>
+                <span class="coverage-count">(1/4)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3649,9 +3673,9 @@
             <td>
                 SelectionManagerService
             </td>
-            <td align="right">
-                <span class="coverage-percent">8 %</span>
-                <span class="coverage-count">(1/12)</span>
+            <td align="right" data-sort="11">
+                <span class="coverage-percent">11 %</span>
+                <span class="coverage-count">(1/9)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3664,7 +3688,7 @@
             <td>
                 SelectionOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
@@ -3679,12 +3703,12 @@
             <td>
                 SmartAssigner
             </td>
-            <td align="right">
+            <td align="right" data-sort="50">
                 <span class="coverage-percent">50 %</span>
                 <span class="coverage-count">(1/2)</span>
             </td>
         </tr>
-        <tr class="medium">
+        <tr class="very-good">
             <td>
                 <a href="./injectables/ViewerConfiguration.html">src/angular-cesium/services/viewer-configuration/viewer-configuration.service.ts</a>
             </td>
@@ -3694,9 +3718,9 @@
             <td>
                 ViewerConfiguration
             </td>
-            <td align="right">
-                <span class="coverage-percent">40 %</span>
-                <span class="coverage-count">(2/5)</span>
+            <td align="right" data-sort="100">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(1/1)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3709,7 +3733,7 @@
             <td>
                 ViewerFactory
             </td>
-            <td align="right">
+            <td align="right" data-sort="25">
                 <span class="coverage-percent">25 %</span>
                 <span class="coverage-count">(1/4)</span>
             </td>
@@ -3724,9 +3748,9 @@
             <td>
                 HtmlCollection
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/9)</span>
+                <span class="coverage-count">(0/7)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3739,7 +3763,7 @@
             <td>
                 CesiumExtender
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/2)</span>
             </td>
@@ -3754,12 +3778,12 @@
             <td>
                 HtmlPrimitive
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/15)</span>
+                <span class="coverage-count">(0/3)</span>
             </td>
         </tr>
-        <tr class="medium">
+        <tr class="low">
             <td>
                 <a href="./injectables/CesiumHeatMapMaterialCreator.html">src/heatmap/cesium-heatmap-material-creator.ts</a>
             </td>
@@ -3769,9 +3793,9 @@
             <td>
                 CesiumHeatMapMaterialCreator
             </td>
-            <td align="right">
-                <span class="coverage-percent">31 %</span>
-                <span class="coverage-count">(9/29)</span>
+            <td align="right" data-sort="16">
+                <span class="coverage-percent">16 %</span>
+                <span class="coverage-count">(3/18)</span>
             </td>
         </tr>
         <tr class="low">
@@ -3784,7 +3808,7 @@
             <td>
                 HeatMapOptions
             </td>
-            <td align="right">
+            <td align="right" data-sort="14">
                 <span class="coverage-percent">14 %</span>
                 <span class="coverage-count">(1/7)</span>
             </td>
@@ -3799,7 +3823,7 @@
             <td>
                 HeatPointDataPoint
             </td>
-            <td align="right">
+            <td align="right" data-sort="25">
                 <span class="coverage-percent">25 %</span>
                 <span class="coverage-count">(1/4)</span>
             </td>
@@ -3814,7 +3838,7 @@
             <td>
                 HeatmapDataSet
             </td>
-            <td align="right">
+            <td align="right" data-sort="25">
                 <span class="coverage-percent">25 %</span>
                 <span class="coverage-count">(1/4)</span>
             </td>
@@ -3829,13 +3853,19 @@
             <td>
                 Rectangle
             </td>
-            <td align="right">
+            <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
     </tbody>
 </table>
+
+<script src="js/libs/tablesort.min.js"></script>
+<script src="js/libs/tablesort.number.min.js"></script>
+<script>
+    new Tablesort(document.getElementById('coverage-table'));
+</script>
 
                    </div><div class="search-results">
     <div class="has-results">

@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1183,6 +1190,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
@@ -1544,7 +1552,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="create"></a>
-                                    <b> create</b>
+                                    <span class="name"><b> create</b><a href="#create"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1556,7 +1564,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:111</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:112</a></div>
                                         </td>
                                     </tr>
             
@@ -1564,9 +1572,45 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>priority</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditorObservable.html" target="_self" >CircleEditorObservable</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1576,12 +1620,12 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createEditorObservable"></a>
-                                    <b><span class="modifier">Private</span> createEditorObservable</b>
+                                    <span class="name"><b><span class="modifier">Private</span> createEditorObservable</b><a href="#createEditorObservable"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>createEditorObservable(observableToExtend: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
@@ -1589,7 +1633,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="361" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:361</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="362" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:362</a></div>
                                         </td>
                                     </tr>
             
@@ -1597,9 +1641,47 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>observableToExtend</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditorObservable.html" target="_self" >CircleEditorObservable</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1609,7 +1691,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="edit"></a>
-                                    <b> edit</b>
+                                    <span class="name"><b> edit</b><a href="#edit"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1621,7 +1703,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:228</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:229</a></div>
                                         </td>
                                     </tr>
             
@@ -1629,9 +1711,63 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>center</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>radius</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>priority</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditorObservable.html" target="_self" >CircleEditorObservable</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1641,20 +1777,20 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="editCircle"></a>
-                                    <b><span class="modifier">Private</span> editCircle</b>
+                                    <span class="name"><b><span class="modifier">Private</span> editCircle</b><a href="#editCircle"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>editCircle(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, priority: , editSubject: <a href="../interfaces/CircleEditUpdate.html">Subject<CircleEditUpdate></a>, options: <a href="../interfaces/CircleEditOptions.html">CircleEditOptions</a>, editObservable: <a href="../classes/EditorObservable.html">CircleEditorObservable</a>)</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>editCircle(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, editSubject: <a href="../interfaces/CircleEditUpdate.html">Subject<CircleEditUpdate></a>, options: <a href="../interfaces/CircleEditOptions.html">CircleEditOptions</a>, editObservable?: <a href="../classes/EditorObservable.html">CircleEditorObservable</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:261</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="262" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:262</a></div>
                                         </td>
                                     </tr>
             
@@ -1662,9 +1798,75 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>priority</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editSubject</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/CircleEditUpdate.html" target="_self" >Subject&lt;CircleEditUpdate&gt;</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/CircleEditOptions.html" target="_self" >CircleEditOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editObservable</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditorObservable.html" target="_self" >CircleEditorObservable</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditorObservable.html" target="_self" >CircleEditorObservable</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1674,12 +1876,12 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="generteId"></a>
-                                    <b><span class="modifier">Private</span> generteId</b>
+                                    <span class="name"><b><span class="modifier">Private</span> generteId</b><a href="#generteId"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>generteId()</code>
                                 </td>
                             </tr>
@@ -1687,7 +1889,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="470" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:470</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="471" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:471</a></div>
                                         </td>
                                     </tr>
             
@@ -1707,20 +1909,20 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getCenterPoint"></a>
-                                    <b><span class="modifier">Private</span> getCenterPoint</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getCenterPoint</b><a href="#getCenterPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>getCenterPoint(id: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>getCenterPoint(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="449" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:449</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="450" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:450</a></div>
                                         </td>
                                     </tr>
             
@@ -1728,9 +1930,38 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1740,20 +1971,20 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getCenterPosition"></a>
-                                    <b><span class="modifier">Private</span> getCenterPosition</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getCenterPosition</b><a href="#getCenterPosition"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>getCenterPosition(id: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>getCenterPosition(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="445" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:445</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="446" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:446</a></div>
                                         </td>
                                     </tr>
             
@@ -1761,9 +1992,38 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1773,20 +2033,20 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getCircleProperties"></a>
-                                    <b><span class="modifier">Private</span> getCircleProperties</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getCircleProperties</b><a href="#getCircleProperties"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>getCircleProperties(id: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>getCircleProperties(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="461" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:461</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="462" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:462</a></div>
                                         </td>
                                     </tr>
             
@@ -1794,9 +2054,38 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code>{ center: any; radiusPoint: any; radius: any; }</code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1806,20 +2095,20 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getRadius"></a>
-                                    <b><span class="modifier">Private</span> getRadius</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getRadius</b><a href="#getRadius"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>getRadius(id: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>getRadius(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="457" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:457</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="458" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:458</a></div>
                                         </td>
                                     </tr>
             
@@ -1827,9 +2116,38 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1839,20 +2157,20 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getRadiusPosition"></a>
-                                    <b><span class="modifier">Private</span> getRadiusPosition</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getRadiusPosition</b><a href="#getRadiusPosition"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>getRadiusPosition(id: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>getRadiusPosition(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="453" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:453</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="454" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:454</a></div>
                                         </td>
                                     </tr>
             
@@ -1860,9 +2178,38 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1872,7 +2219,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="init"></a>
-                                    <b> init</b>
+                                    <span class="name"><b> init</b><a href="#init"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1884,7 +2231,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:96</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:97</a></div>
                                         </td>
                                     </tr>
             
@@ -1892,9 +2239,65 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>mapEventsManager</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>coordinateConverter</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>cameraService</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>circlesManager</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/CirclesManagerService.html" target="_self" >CirclesManagerService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1904,7 +2307,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="onUpdate"></a>
-                                    <b> onUpdate</b>
+                                    <span class="name"><b> onUpdate</b><a href="#onUpdate"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1916,7 +2319,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:107</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:108</a></div>
                                         </td>
                                     </tr>
             
@@ -1924,7 +2327,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/CircleEditUpdate.html" target="_self" >Observable&lt;CircleEditUpdate&gt;</a></code>
             
                                         </div>
                                 </td>
@@ -1936,12 +2339,12 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="setOptions"></a>
-                                    <b><span class="modifier">Private</span> setOptions</b>
+                                    <span class="name"><b><span class="modifier">Private</span> setOptions</b><a href="#setOptions"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>setOptions(options: <a href="../interfaces/CircleEditOptions.html">CircleEditOptions</a>)</code>
                                 </td>
                             </tr>
@@ -1949,7 +2352,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="436" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:436</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="437" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:437</a></div>
                                         </td>
                                     </tr>
             
@@ -1957,9 +2360,38 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/CircleEditOptions.html" target="_self" >CircleEditOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../interfaces/CircleEditOptions.html" target="_self" >CircleEditOptions</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1976,7 +2408,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="cameraService"></a>
-                                    <b><span class="modifier">Private</span> cameraService</b>
+                                    <span class="name"><b><span class="modifier">Private</span> cameraService</b><a href="#cameraService"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1993,7 +2425,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:92</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:93</a></div>
                                         </td>
                                     </tr>
             
@@ -2005,7 +2437,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="circlesManager"></a>
-                                    <b><span class="modifier">Private</span> circlesManager</b>
+                                    <span class="name"><b><span class="modifier">Private</span> circlesManager</b><a href="#circlesManager"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2022,7 +2454,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:93</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:94</a></div>
                                         </td>
                                     </tr>
             
@@ -2034,7 +2466,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="coordinateConverter"></a>
-                                    <b><span class="modifier">Private</span> coordinateConverter</b>
+                                    <span class="name"><b><span class="modifier">Private</span> coordinateConverter</b><a href="#coordinateConverter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2051,7 +2483,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:91</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:92</a></div>
                                         </td>
                                     </tr>
             
@@ -2063,7 +2495,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="counter"></a>
-                                    <b><span class="modifier">Private</span> counter</b>
+                                    <span class="name"><b><span class="modifier">Private</span> counter</b><a href="#counter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2079,7 +2511,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:90</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:91</a></div>
                                         </td>
                                     </tr>
             
@@ -2091,7 +2523,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="mapEventsManager"></a>
-                                    <b><span class="modifier">Private</span> mapEventsManager</b>
+                                    <span class="name"><b><span class="modifier">Private</span> mapEventsManager</b><a href="#mapEventsManager"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2108,7 +2540,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:87</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:88</a></div>
                                         </td>
                                     </tr>
             
@@ -2120,7 +2552,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="observablesMap"></a>
-                                    <b><span class="modifier">Private</span> observablesMap</b>
+                                    <span class="name"><b><span class="modifier">Private</span> observablesMap</b><a href="#observablesMap"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2131,7 +2563,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:94</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:95</a></div>
                                         </td>
                                     </tr>
             
@@ -2143,12 +2575,35 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updatePublisher"></a>
-                                    <b><span class="modifier">Private</span> updatePublisher</b>
+                                    <span class="name"><b><span class="modifier">Private</span> updatePublisher</b><a href="#updatePublisher"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
                                     <span class="modifier-icon fa fa-lock"></span><code>updatePublisher:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:90</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="updateSubject"></a>
+                                    <span class="name"><b><span class="modifier">Private</span> updateSubject</b><a href="#updateSubject"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>updateSubject:     <code></code>
             </code>
                                 </td>
                             </tr>
@@ -2161,30 +2616,8 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                         </tbody>
                     </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="updateSubject"></a>
-                                    <b><span class="modifier">Private</span> updateSubject</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>updateSubject:     <code></code>
-            </code>
-                                </td>
-                            </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service.ts:88</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
             </section>
+
     </div>
 
 
@@ -2211,6 +2644,7 @@ import { CircleEditOptions, CircleProps } from &#x27;../../../models/circle-edit
 import { EditableCircle } from &#x27;../../../models/editable-circle&#x27;;
 import { PointProps } from &#x27;../../../models/polyline-edit-options&#x27;;
 import { LabelProps } from &#x27;../../../models/label-props&#x27;;
+import {BasicEditUpdate} from &#x27;../../../models/basic-edit-update&#x27;;
 
 
 
@@ -2300,7 +2734,7 @@ export class CirclesEditorService {
   }
   
   create(options &#x3D; DEFAULT_CIRCLE_OPTIONS, priority &#x3D; 100): CircleEditorObservable {
-    let center &#x3D; undefined;
+    let center: any &#x3D; undefined;
     const id &#x3D; this.generteId();
     const circleOptions &#x3D; this.setOptions(options);
     const clientEditSubject &#x3D; new BehaviorSubject&lt;CircleEditUpdate&gt;({
@@ -2450,7 +2884,7 @@ export class CirclesEditorService {
   }
   
   private editCircle(id: string,
-                     priority,
+                     priority: number,
                      editSubject: Subject&lt;CircleEditUpdate&gt;,
                      options: CircleEditOptions,
                      editObservable?: CircleEditorObservable): CircleEditorObservable {
@@ -2597,7 +3031,7 @@ export class CirclesEditorService {
       });
     };
 
-    observableToExtend.setLabelsRenderFn &#x3D; (callback) &#x3D;&gt; {
+    observableToExtend.setLabelsRenderFn &#x3D; (callback: (update: BasicEditUpdate&lt;any&gt;, labels: LabelProps[]) &#x3D;&gt; LabelProps[]) &#x3D;&gt; {
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
@@ -2633,23 +3067,23 @@ export class CirclesEditorService {
     return circleOptions;
   }
   
-  private getCenterPosition(id): Cartesian3 {
+  private getCenterPosition(id: string): Cartesian3 {
     return this.circlesManager.get(id).getCenter();
   }
   
-  private getCenterPoint(id): EditPoint {
+  private getCenterPoint(id: string): EditPoint {
     return this.circlesManager.get(id).center;
   }
   
-  private getRadiusPosition(id): Cartesian3 {
+  private getRadiusPosition(id: string): Cartesian3 {
     return this.circlesManager.get(id).getRadiusPoint();
   }
   
-  private getRadius(id): number {
+  private getRadius(id: string): number {
     return this.circlesManager.get(id).getRadius();
   }
   
-  private getCircleProperties(id) {
+  private getCircleProperties(id: string) {
     const circle &#x3D; this.circlesManager.get(id);
     return {
       center : circle.getCenter(),
@@ -2665,6 +3099,7 @@ export class CirclesEditorService {
 </code></pre>
     </div>
 </div>
+
 
 
 

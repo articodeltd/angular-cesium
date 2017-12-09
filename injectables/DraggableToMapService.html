@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1183,6 +1190,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
@@ -1489,6 +1497,43 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>document</td>
+                                                              <td>
+                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>mapsManager</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/MapsManagerService.html" target="_self" >MapsManagerService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1503,7 +1548,7 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="cancel"></a>
-                                    <b> cancel</b>
+                                    <span class="name"><b> cancel</b><a href="#cancel"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1535,12 +1580,12 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createDragObservable"></a>
-                                    <b><span class="modifier">Private</span> createDragObservable</b>
+                                    <span class="name"><b><span class="modifier">Private</span> createDragObservable</b><a href="#createDragObservable"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>createDragObservable()</code>
                                 </td>
                             </tr>
@@ -1568,12 +1613,12 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="drag"></a>
-                                    <b> drag</b>
+                                    <span class="name"><b> drag</b><a href="#drag"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>drag(imageSrc: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, style: )</code>
+            <code>drag(imageSrc: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, style?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
@@ -1588,9 +1633,48 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>imageSrc</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>style</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1600,7 +1684,7 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="dragUpdates"></a>
-                                    <b> dragUpdates</b>
+                                    <span class="name"><b> dragUpdates</b><a href="#dragUpdates"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1620,7 +1704,7 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/IconDragEvent.html" target="_self" >Observable&lt;IconDragEvent&gt;</a></code>
             
                                         </div>
                                 </td>
@@ -1632,7 +1716,7 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="setCoordinateConverter"></a>
-                                    <b> setCoordinateConverter</b>
+                                    <span class="name"><b> setCoordinateConverter</b><a href="#setCoordinateConverter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1652,9 +1736,38 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>coordinateConverter</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1671,7 +1784,7 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="coordinateConverter"></a>
-                                    <b><span class="modifier">Private</span> coordinateConverter</b>
+                                    <span class="name"><b><span class="modifier">Private</span> coordinateConverter</b><a href="#coordinateConverter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1700,7 +1813,7 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="dragObservable"></a>
-                                    <b><span class="modifier">Private</span> dragObservable</b>
+                                    <span class="name"><b><span class="modifier">Private</span> dragObservable</b><a href="#dragObservable"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1729,7 +1842,7 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="mainSubject"></a>
-                                    <b><span class="modifier">Private</span> mainSubject</b>
+                                    <span class="name"><b><span class="modifier">Private</span> mainSubject</b><a href="#mainSubject"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1752,7 +1865,7 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="stopper"></a>
-                                    <b><span class="modifier">Private</span> stopper</b>
+                                    <span class="name"><b><span class="modifier">Private</span> stopper</b><a href="#stopper"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1777,6 +1890,7 @@ For more info check <code>DraggableToMapDirective</code> docs.</p>
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1817,7 +1931,7 @@ export class DraggableToMapService {
     this.coordinateConverter &#x3D; coordinateConverter;
   }
 
-  drag(imageSrc: string, style?) {
+  drag(imageSrc: string, style?: any) {
     if (!this.coordinateConverter) {
       const map &#x3D; this.mapsManager.getMap();
       if (map) {
@@ -1880,7 +1994,7 @@ export class DraggableToMapService {
 
     let dragStartPositionX: number;
     let dragStartPositionY: number;
-    let lastMove;
+    let lastMove: any;
     const moveObservable &#x3D; pointerMove.map((e: any) &#x3D;&gt; {
       dragStartPositionX &#x3D; dragStartPositionX ? dragStartPositionX : e.x;
       dragStartPositionY &#x3D; dragStartPositionY ? dragStartPositionY : e.y;
@@ -1915,6 +2029,7 @@ export class DraggableToMapService {
 </code></pre>
     </div>
 </div>
+
 
 
 

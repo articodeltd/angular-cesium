@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1183,6 +1190,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
@@ -1502,6 +1510,52 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>cesiumService</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>eventBuilder</td>
+                                                              <td>
+                                                                        <code><a href="../miscellaneous/enumerations.html#CesiumEvent" target="_self" >CesiumEventBuilder</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>plonterService</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/PlonterService.html" target="_self" >PlonterService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1516,20 +1570,20 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="addEntities"></a>
-                                    <b><span class="modifier">Private</span> addEntities</b>
+                                    <span class="name"><b><span class="modifier">Private</span> addEntities</b><a href="#addEntities"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>addEntities(picksAndMovement: , entityType: , pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>)</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>addEntities(picksAndMovement: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, entityType: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:220</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:222</a></div>
                                         </td>
                                     </tr>
             
@@ -1537,9 +1591,56 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>picksAndMovement</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>entityType</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>pickOption</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/enumerations.html#PickOptions" target="_self" >PickOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../interfaces/EventResult.html" target="_self" >EventResult</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1549,13 +1650,13 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createDragEvent"></a>
-                                    <b><span class="modifier">Private</span> createDragEvent</b>
+                                    <span class="name"><b><span class="modifier">Private</span> createDragEvent</b><a href="#createDragEvent"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>createDragEvent(event: , modifier: , entityType: , pickOption: , priority: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>createDragEvent(event: <a href="../miscellaneouss/CesiumEvent.html">CesiumEvent</a>, modifier: <a href="../miscellaneouss/CesiumEventModifier.html">CesiumEventModifier</a>, entityType: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                                 </td>
                             </tr>
             
@@ -1570,9 +1671,74 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>event</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/enumerations.html#CesiumEvent" target="_self" >CesiumEvent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>modifier</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/enumerations.html#CesiumEventModifier" target="_self" >CesiumEventModifier</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>entityType</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>pickOption</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/enumerations.html#PickOptions" target="_self" >PickOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>priority</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../interfaces/EventResult.html" target="_self" >Observable&lt;EventResult&gt;</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1582,13 +1748,13 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createEventRegistration"></a>
-                                    <b><span class="modifier">Private</span> createEventRegistration</b>
+                                    <span class="name"><b><span class="modifier">Private</span> createEventRegistration</b><a href="#createEventRegistration"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>createEventRegistration(event: <a href="../miscellaneouss/CesiumEvent.html">CesiumEvent</a>, modifier: <a href="../miscellaneouss/CesiumEvent.html">CesiumEventModifier</a>, entityType: , pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>createEventRegistration(event: <a href="../miscellaneouss/CesiumEvent.html">CesiumEvent</a>, modifier: <a href="../miscellaneouss/CesiumEventModifier.html">CesiumEventModifier</a>, entityType: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                                 </td>
                             </tr>
             
@@ -1603,9 +1769,74 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>event</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/enumerations.html#CesiumEvent" target="_self" >CesiumEvent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>modifier</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/enumerations.html#CesiumEventModifier" target="_self" >CesiumEventModifier</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>entityType</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>pickOption</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/enumerations.html#PickOptions" target="_self" >PickOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>priority</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/Registration.html" target="_self" >Registration</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1615,13 +1846,13 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="disposeObservable"></a>
-                                    <b><span class="modifier">Private</span> disposeObservable</b>
+                                    <span class="name"><b><span class="modifier">Private</span> disposeObservable</b><a href="#disposeObservable"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>disposeObservable(eventRegistration: , eventName: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>disposeObservable(eventRegistration: <a href="../classes/Registration.html">Registration</a>, eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
@@ -1636,9 +1867,47 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>eventRegistration</td>
+                                                              <td>
+                                                                      <code><a href="../classes/Registration.html" target="_self" >Registration</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>eventName</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1648,7 +1917,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="init"></a>
-                                    <b> init</b>
+                                    <span class="name"><b> init</b><a href="#init"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1680,12 +1949,12 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="plonter"></a>
-                                    <b><span class="modifier">Private</span> plonter</b>
+                                    <span class="name"><b><span class="modifier">Private</span> plonter</b><a href="#plonter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>plonter(entitiesAndMovement: <a href="../interfaces/EventResult.html">EventResult</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>)</code>
                                 </td>
                             </tr>
@@ -1693,7 +1962,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:246</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:248</a></div>
                                         </td>
                                     </tr>
             
@@ -1701,9 +1970,47 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entitiesAndMovement</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/EventResult.html" target="_self" >EventResult</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>pickOption</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/enumerations.html#PickOptions" target="_self" >PickOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../interfaces/EventResult.html" target="_self" >Observable&lt;EventResult&gt;</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1713,7 +2020,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="register"></a>
-                                    <b> register</b>
+                                    <span class="name"><b> register</b><a href="#register"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1741,6 +2048,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1750,6 +2058,8 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                                               <td>
                                                                       <code><a href="../interfaces/EventRegistrationInput.html" target="_self" >EventRegistrationInput</a></code>
                                                               </td>
+                                                              <td>
+                                                              </td>
                                                               <td></td>
                                                             </tr>
                                                     </tbody>
@@ -1758,7 +2068,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="../classes/DisposableObservable.html" target="_self" >DisposableObservable&lt;&gt;</a></code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/EventResult.html" target="_self" >DisposableObservable&lt;EventResult&gt;</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1773,12 +2083,12 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="sortRegistrationsByPriority"></a>
-                                    <b><span class="modifier">Private</span> sortRegistrationsByPriority</b>
+                                    <span class="name"><b><span class="modifier">Private</span> sortRegistrationsByPriority</b><a href="#sortRegistrationsByPriority"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>sortRegistrationsByPriority(eventName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
@@ -1794,9 +2104,38 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>eventName</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1806,12 +2145,12 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="triggerPick"></a>
-                                    <b><span class="modifier">Private</span> triggerPick</b>
+                                    <span class="name"><b><span class="modifier">Private</span> triggerPick</b><a href="#triggerPick"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>triggerPick(movement: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOptions: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>)</code>
                                 </td>
                             </tr>
@@ -1819,7 +2158,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="194" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:194</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:196</a></div>
                                         </td>
                                     </tr>
             
@@ -1827,9 +2166,47 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>movement</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>pickOptions</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/enumerations.html#PickOptions" target="_self" >PickOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code>{ movement: any; cesiumEntities: any; }</code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1846,7 +2223,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="eventRegistrations"></a>
-                                    <b><span class="modifier">Private</span> eventRegistrations</b>
+                                    <span class="name"><b><span class="modifier">Private</span> eventRegistrations</b><a href="#eventRegistrations"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1869,15 +2246,21 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                     <a name="scene"></a>
-                                    <b><span class="modifier">Private</span> scene</b>
+                                    <span class="name"><b><span class="modifier">Private</span> scene</b><a href="#scene"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>scene:     <code></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>scene:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             </code>
                                 </td>
                             </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                    </td>
+                                </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:56</a></div>
@@ -1888,6 +2271,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1947,7 +2331,7 @@ export interface EventResult {
 @Injectable()
 export class MapEventsManagerService {
 	
-	private scene;
+	private scene: any;
 	private eventRegistrations &#x3D; new Map&lt;string, Registration[]&gt;();
 	
 	constructor(private cesiumService: CesiumService,
@@ -1994,7 +2378,7 @@ export class MapEventsManagerService {
 		return &lt;DisposableObservable&lt;EventResult&gt;&gt; registrationObservable;
 	}
 	
-	private disposeObservable(eventRegistration, eventName) {
+	private disposeObservable(eventRegistration: Registration, eventName: string) {
 		eventRegistration.stopper.next(1);
 		const registrations &#x3D; this.eventRegistrations.get(eventName);
 		const index &#x3D; registrations.indexOf(eventRegistration);
@@ -2020,7 +2404,7 @@ export class MapEventsManagerService {
 	}
 	
 	private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier,
-																	entityType, pickOption: PickOptions, priority: number): Registration {
+																	entityType: any, pickOption: PickOptions, priority: number): Registration {
 		const cesiumEventObservable &#x3D; this.eventBuilder.get(event, modifier);
 		const stopper &#x3D; new Subject&lt;any&gt;();
 		
@@ -2044,17 +2428,19 @@ export class MapEventsManagerService {
 		return registration;
 	}
 	
-	private createDragEvent(event, modifier, entityType, pickOption, priority): Observable&lt;EventResult&gt; {
+	private createDragEvent(event: CesiumEvent, modifier: CesiumEventModifier, entityType: any, pickOption: PickOptions,
+							priority: number): Observable&lt;EventResult&gt; {
 		const {mouseDownEvent, mouseUpEvent} &#x3D; CesiumDragDropHelper.getDragEventTypes(event);
 		
 		const mouseUpObservable &#x3D; this.eventBuilder.get(mouseUpEvent);
 		const mouseMoveObservable &#x3D; this.eventBuilder.get(CesiumEvent.MOUSE_MOVE);
 		
-		const mouseDownRegistration &#x3D; this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption, priority);
+		const mouseDownRegistration &#x3D; this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption,
+			priority);
 		
 		const dropSubject &#x3D; new Subject&lt;EventResult&gt;();
 		const dragObserver &#x3D; mouseDownRegistration.observable.mergeMap(e &#x3D;&gt; {
-			let lastMove &#x3D; null;
+			let lastMove: any &#x3D; null;
 			const dragStartPositionX &#x3D; e.movement.startPosition.x;
 			const dragStartPositionY &#x3D; e.movement.startPosition.y;
 			return mouseMoveObservable.map((movement) &#x3D;&gt; {
@@ -2105,13 +2491,13 @@ export class MapEventsManagerService {
 		
 		// Picks can be cesium entity or cesium primitive
 		if (picks) {
-			picks &#x3D; picks.map((pick) &#x3D;&gt; pick.id &amp;&amp; pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
+			picks &#x3D; picks.map((pick: any) &#x3D;&gt; pick.id &amp;&amp; pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
 		}
 		
 		return {movement : movement, cesiumEntities : picks};
 	}
 	
-	private addEntities(picksAndMovement, entityType, pickOption: PickOptions): EventResult {
+	private addEntities(picksAndMovement: any, entityType: any, pickOption: PickOptions): EventResult {
 		
 		if (picksAndMovement.cesiumEntities &#x3D;&#x3D;&#x3D; null) {
 			picksAndMovement.entities &#x3D; null;
@@ -2120,11 +2506,11 @@ export class MapEventsManagerService {
 		let entities &#x3D; [];
 		if (pickOption !&#x3D;&#x3D; PickOptions.NO_PICK) {
 			if (entityType) {
-				entities &#x3D; picksAndMovement.cesiumEntities.map((pick) &#x3D;&gt; pick.acEntity).filter((acEntity) &#x3D;&gt; {
+				entities &#x3D; picksAndMovement.cesiumEntities.map((pick: any) &#x3D;&gt; pick.acEntity).filter((acEntity: any) &#x3D;&gt; {
 					return acEntity &amp;&amp; acEntity instanceof entityType;
 				});
 			} else {
-				entities &#x3D; picksAndMovement.cesiumEntities.map((pick) &#x3D;&gt; pick.acEntity);
+				entities &#x3D; picksAndMovement.cesiumEntities.map((pick: any) &#x3D;&gt; pick.acEntity);
 			}
 			
 			entities &#x3D; UtilsService.unique(entities);
@@ -2148,6 +2534,7 @@ export class MapEventsManagerService {
 </code></pre>
     </div>
 </div>
+
 
 
 

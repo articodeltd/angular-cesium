@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1440,10 +1448,10 @@ The element must be a child of ac-layer element.</p>
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/AfterContentInit-interface.html" target="_blank" >AfterContentInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-interface.html" target="_blank" >OnDestroy</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/AfterContentInit" target="_blank" >AfterContentInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
                 <code><a href="../interfaces/IDescription.html" target="_self" >IDescription</a></code>
     </p>
 
@@ -1471,17 +1479,6 @@ The element must be a child of ac-layer element.</p>
 
 
 
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ac-layer #layer [acFor]&#x3D;&quot;getAcForString()&quot;
-          [context]&#x3D;&quot;layerService.context&quot;
-          [options]&#x3D;&quot;layerService.options&quot;
-          [show]&#x3D;&quot;layerService.show &amp;&amp; show&quot;
-          [zIndex]&#x3D;&quot;layerService.zIndex&quot;&gt;
-    &lt;ng-content #content&gt;&lt;/ng-content&gt;
-&lt;/ac-layer&gt;
-</code></pre></td>
-            </tr>
 
 
 
@@ -1608,7 +1605,7 @@ The element must be a child of ac-layer element.</p>
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(layerService: LayerService, cd: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank">ChangeDetectorRef</a>)</code>
+                            <code>constructor(layerService: LayerService, cd: <a href="https://angular.io/docs/ts/latest/api/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -1617,6 +1614,43 @@ The element must be a child of ac-layer element.</p>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>layerService</td>
+                                                      <td>
+                                                                <code>LayerService</code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>cd</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -1688,6 +1722,8 @@ The element must be a child of ac-layer element.</p>
     </section>
 
 
+
+
     <section>
         
             <h3 id="methods">
@@ -1698,12 +1734,12 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="draw"></a>
-                            <b> draw</b>
+                            <span class="name"><b> draw</b><a href="#draw"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>draw(context: , id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, contextEntity: )</code>
+    <code>draw(context: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, contextEntity: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                         </td>
                     </tr>
     
@@ -1718,9 +1754,56 @@ The element must be a child of ac-layer element.</p>
                         <td class="col-md-4">
     
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>context</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>id</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>contextEntity</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1730,13 +1813,13 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="generateCombinedId"></a>
-                            <b><span class="modifier">Private</span> generateCombinedId</b>
+                            <span class="name"><b><span class="modifier">Private</span> generateCombinedId</b><a href="#generateCombinedId"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play lock"></span>
-                            <code>generateCombinedId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, arrayItem: , index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                <span class="modifier-icon fa fa-lock"></span>
+                            <code>generateCombinedId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, arrayItem: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                         </td>
                     </tr>
     
@@ -1751,9 +1834,56 @@ The element must be a child of ac-layer element.</p>
                         <td class="col-md-4">
     
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>entityId</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>arrayItem</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>index</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1763,7 +1893,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="getAcForString"></a>
-                            <b> getAcForString</b>
+                            <span class="name"><b> getAcForString</b><a href="#getAcForString"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1795,7 +1925,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="ngAfterContentInit"></a>
-                            <b> ngAfterContentInit</b>
+                            <span class="name"><b> ngAfterContentInit</b><a href="#ngAfterContentInit"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1827,12 +1957,12 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="ngOnChanges"></a>
-                            <b> ngOnChanges</b>
+                            <span class="name"><b> ngOnChanges</b><a href="#ngOnChanges"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>ngOnChanges(changes: <a href="https://angular.io/docs/ts/latest/api/core/index/SimpleChanges-interface.html" target="_blank">SimpleChanges</a>)</code>
+    <code>ngOnChanges(changes: <a href="https://angular.io/docs/ts/latest/api/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
                         </td>
                     </tr>
     
@@ -1847,9 +1977,38 @@ The element must be a child of ac-layer element.</p>
                         <td class="col-md-4">
     
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>changes</td>
+                                                      <td>
+                                                              <code><a href="https://angular.io/docs/ts/latest/api/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1859,7 +2018,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="ngOnDestroy"></a>
-                            <b> ngOnDestroy</b>
+                            <span class="name"><b> ngOnDestroy</b><a href="#ngOnDestroy"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1891,7 +2050,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="ngOnInit"></a>
-                            <b> ngOnInit</b>
+                            <span class="name"><b> ngOnInit</b><a href="#ngOnInit"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1923,7 +2082,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="remove"></a>
-                            <b> remove</b>
+                            <span class="name"><b> remove</b><a href="#remove"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1943,9 +2102,38 @@ The element must be a child of ac-layer element.</p>
                         <td class="col-md-4">
     
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>id</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1955,7 +2143,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="removeAll"></a>
-                            <b> removeAll</b>
+                            <span class="name"><b> removeAll</b><a href="#removeAll"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -1987,7 +2175,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="setLayerService"></a>
-                            <b> setLayerService</b>
+                            <span class="name"><b> setLayerService</b><a href="#setLayerService"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2007,9 +2195,38 @@ The element must be a child of ac-layer element.</p>
                         <td class="col-md-4">
     
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>layerService</td>
+                                                      <td>
+                                                              <code>LayerService</code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -2026,7 +2243,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="acForRgx"></a>
-                            <b><span class="modifier">Private</span> acForRgx</b>
+                            <span class="name"><b><span class="modifier">Private</span> acForRgx</b><a href="#acForRgx"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2054,15 +2271,21 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="arrayDescs"></a>
-                            <b><span class="modifier">Private</span> arrayDescs</b>
+                            <span class="name"><b><span class="modifier">Private</span> arrayDescs</b><a href="#arrayDescs"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>arrayDescs:     <code></code>
+                            <span class="modifier-icon fa fa-lock"></span><code>arrayDescs:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
     </code>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+    
+                            </td>
+                        </tr>
                         <tr>
                             <td class="col-md-4">
                                 <i>Decorators : </i><code>ContentChildren</code>
@@ -2082,7 +2305,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="arrayObservable$"></a>
-                            <b> arrayObservable$</b>
+                            <span class="name"><b> arrayObservable$</b><a href="#arrayObservable$"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2105,7 +2328,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="arrayPath"></a>
-                            <b> arrayPath</b>
+                            <span class="name"><b> arrayPath</b><a href="#arrayPath"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2134,15 +2357,21 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="basicDescs"></a>
-                            <b><span class="modifier">Private</span> basicDescs</b>
+                            <span class="name"><b><span class="modifier">Private</span> basicDescs</b><a href="#basicDescs"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>basicDescs:     <code></code>
+                            <span class="modifier-icon fa fa-lock"></span><code>basicDescs:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
     </code>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+    
+                            </td>
+                        </tr>
                         <tr>
                             <td class="col-md-4">
                                 <i>Decorators : </i><code>ContentChildren</code>
@@ -2162,7 +2391,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="entitiesMap"></a>
-                            <b><span class="modifier">Private</span> entitiesMap</b>
+                            <span class="name"><b><span class="modifier">Private</span> entitiesMap</b><a href="#entitiesMap"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2185,7 +2414,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="entityName"></a>
-                            <b> entityName</b>
+                            <span class="name"><b> entityName</b><a href="#entityName"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2214,7 +2443,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="id"></a>
-                            <b><span class="modifier">Private</span> id</b>
+                            <span class="name"><b><span class="modifier">Private</span> id</b><a href="#id"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2242,7 +2471,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="layer"></a>
-                            <b><span class="modifier">Private</span> layer</b>
+                            <span class="name"><b><span class="modifier">Private</span> layer</b><a href="#layer"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2276,12 +2505,12 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="layerService"></a>
-                            <b><span class="modifier">Public</span> layerService</b>
+                            <span class="name"><b><span class="modifier">Public</span> layerService</b><a href="#layerService"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>layerService:     <code>LayerService</code>
+                            <span class="modifier-icon fa fa-reset"></span><code>layerService:     <code>LayerService</code>
     </code>
                         </td>
                     </tr>
@@ -2305,7 +2534,7 @@ The element must be a child of ac-layer element.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="layerServiceSubscription"></a>
-                            <b><span class="modifier">Private</span> layerServiceSubscription</b>
+                            <span class="name"><b><span class="modifier">Private</span> layerServiceSubscription</b><a href="#layerServiceSubscription"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -2330,6 +2559,7 @@ The element must be a child of ac-layer element.</p>
                 </tbody>
             </table>
     </section>
+
 </div>
 
 
@@ -2397,12 +2627,12 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
 
   @Input() acFor: string;
 
-  @Input() idGetter: (item, index) &#x3D;&gt; string;
+  @Input() idGetter: (item: any, index: number) &#x3D;&gt; string;
 
   @Input() show &#x3D; true;
   @ViewChild(&#x27;layer&#x27;) private layer: AcLayerComponent;
-  @ContentChildren(BasicDesc, { descendants: false }) private basicDescs;
-  @ContentChildren(AcArrayDescComponent, { descendants: false }) private arrayDescs;
+  @ContentChildren(BasicDesc, { descendants: false }) private basicDescs: any;
+  @ContentChildren(AcArrayDescComponent, { descendants: false }) private arrayDescs: any;
   private entitiesMap &#x3D; new Map&lt;string, string[]&gt;();
   private layerServiceSubscription: Subscription;
   private id &#x3D; 0;
@@ -2458,14 +2688,14 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     this.layerService &#x3D; layerService;
   }
 
-  draw(context, id: string, contextEntity) {
+  draw(context: any, id: string, contextEntity: any) {
     const get &#x3D; _get;
     const entitiesArray: any[] &#x3D; get(context, this.arrayPath);
     if (!entitiesArray) {
       return;
     }
     const previousEntitiesIdArray &#x3D; this.entitiesMap.get(id);
-    const entitiesIdArray &#x3D; [];
+    const entitiesIdArray: any[] &#x3D; [];
     this.entitiesMap.set(id, entitiesIdArray);
 
     entitiesArray.forEach((item, index) &#x3D;&gt; {
@@ -2502,7 +2732,7 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
     return &#x60;let ${this.entityName + &#x27;___temp&#x27;} of arrayObservable$&#x60;;
   }
 
-  private generateCombinedId(entityId: string, arrayItem, index: number): string {
+  private generateCombinedId(entityId: string, arrayItem: any, index: number): string {
     let arrayItemId;
     if (this.idGetter) {
       arrayItemId &#x3D; this.idGetter(arrayItem, index);
@@ -2540,12 +2770,13 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ac-layer #layer [acFor]="getAcForString()"          [context]="layerService.context"          [options]="layerService.options"          [show]="layerService.show && show"          [zIndex]="layerService.zIndex">    <ng-content #content></ng-content></ac-layer></div>'
-    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
+        var COMPONENT_TEMPLATE = '<div></div>'
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcPrimitivePolylineComponent', 'selector': 'ac-primitive-polyline'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'}];
     var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'},{'name': 'DraggableToMapDirective', 'selector': '[draggableToMap]'}];
     var ACTUAL_COMPONENT = {'name': 'AcArrayDescComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

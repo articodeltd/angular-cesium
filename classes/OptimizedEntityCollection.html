@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1384,6 +1392,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Classes</li>
   <li>OptimizedEntityCollection</li>
@@ -1446,15 +1455,6 @@
                                     <li>
                                         <span class="modifier">Private</span> <a href="#_updateRate">_updateRate</a>
                                     </li>
-                                    <li>
-                                         <a href="#collectionSize">collectionSize</a>
-                                    </li>
-                                    <li>
-                                         <a href="#isSuspended">isSuspended</a>
-                                    </li>
-                                    <li>
-                                         <a href="#updateRate">updateRate</a>
-                                    </li>
                                 </ul>
                             </td>
                         </tr>
@@ -1511,6 +1511,26 @@
                                 </ul>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Accessors</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#isSuspended">isSuspended</a>
+                                    </li>
+                                    <li>
+                                         <a href="#updateRate">updateRate</a>
+                                    </li>
+                                    <li>
+                                         <a href="#collectionSize">collectionSize</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -1530,6 +1550,50 @@
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entityCollection</td>
+                                                              <td>
+                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>collectionSize</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>updateRate</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1544,12 +1608,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="add"></a>
-                                    <b> add</b>
+                                    <span class="name"><b> add</b><a href="#add"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>add(entity: )</code>
+            <code>add(entity: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
@@ -1564,9 +1628,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1576,7 +1669,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="collection"></a>
-                                    <b> collection</b>
+                                    <span class="name"><b> collection</b><a href="#collection"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1608,12 +1701,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="hardResume"></a>
-                                    <b><span class="modifier">Public</span> hardResume</b>
+                                    <span class="name"><b><span class="modifier">Public</span> hardResume</b><a href="#hardResume"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
+                                        <span class="modifier-icon fa fa-reset"></span>
                                     <code>hardResume()</code>
                                 </td>
                             </tr>
@@ -1641,12 +1734,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="hardSuspend"></a>
-                                    <b><span class="modifier">Public</span> hardSuspend</b>
+                                    <span class="name"><b><span class="modifier">Public</span> hardSuspend</b><a href="#hardSuspend"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
+                                        <span class="modifier-icon fa fa-reset"></span>
                                     <code>hardSuspend()</code>
                                 </td>
                             </tr>
@@ -1674,7 +1767,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="isFree"></a>
-                                    <b> isFree</b>
+                                    <span class="name"><b> isFree</b><a href="#isFree"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1706,7 +1799,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="onEventResume"></a>
-                                    <b> onEventResume</b>
+                                    <span class="name"><b> onEventResume</b><a href="#onEventResume"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1726,9 +1819,46 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>callback</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>once</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1738,7 +1868,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="onEventSuspension"></a>
-                                    <b> onEventSuspension</b>
+                                    <span class="name"><b> onEventSuspension</b><a href="#onEventSuspension"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1758,9 +1888,46 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>callback</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>once</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1770,12 +1937,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="remove"></a>
-                                    <b> remove</b>
+                                    <span class="name"><b> remove</b><a href="#remove"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>remove(entity: )</code>
+            <code>remove(entity: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
@@ -1790,9 +1957,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1802,7 +1998,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="removeAll"></a>
-                                    <b> removeAll</b>
+                                    <span class="name"><b> removeAll</b><a href="#removeAll"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1834,12 +2030,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="removeNoSuspend"></a>
-                                    <b> removeNoSuspend</b>
+                                    <span class="name"><b> removeNoSuspend</b><a href="#removeNoSuspend"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>removeNoSuspend(entity: )</code>
+            <code>removeNoSuspend(entity: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
@@ -1854,9 +2050,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1866,7 +2091,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="setShow"></a>
-                                    <b> setShow</b>
+                                    <span class="name"><b> setShow</b><a href="#setShow"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1886,9 +2111,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>show</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1898,12 +2152,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="suspend"></a>
-                                    <b><span class="modifier">Public</span> suspend</b>
+                                    <span class="name"><b><span class="modifier">Public</span> suspend</b><a href="#suspend"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
+                                        <span class="modifier-icon fa fa-reset"></span>
                                     <code>suspend()</code>
                                 </td>
                             </tr>
@@ -1931,7 +2185,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="triggerEventResume"></a>
-                                    <b> triggerEventResume</b>
+                                    <span class="name"><b> triggerEventResume</b><a href="#triggerEventResume"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1963,7 +2217,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="triggerEventSuspension"></a>
-                                    <b> triggerEventSuspension</b>
+                                    <span class="name"><b> triggerEventSuspension</b><a href="#triggerEventSuspension"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2003,7 +2257,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_collectionSize"></a>
-                                    <b><span class="modifier">Private</span> _collectionSize</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _collectionSize</b><a href="#_collectionSize"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2032,7 +2286,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_isHardSuspend"></a>
-                                    <b><span class="modifier">Private</span> _isHardSuspend</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _isHardSuspend</b><a href="#_isHardSuspend"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2060,7 +2314,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_isSuspended"></a>
-                                    <b><span class="modifier">Private</span> _isSuspended</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _isSuspended</b><a href="#_isSuspended"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2088,7 +2342,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_onEventResumeCallback"></a>
-                                    <b><span class="modifier">Private</span> _onEventResumeCallback</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _onEventResumeCallback</b><a href="#_onEventResumeCallback"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2117,7 +2371,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_onEventSuspensionCallback"></a>
-                                    <b><span class="modifier">Private</span> _onEventSuspensionCallback</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _onEventSuspensionCallback</b><a href="#_onEventSuspensionCallback"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2146,15 +2400,21 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_suspensionTimeout"></a>
-                                    <b><span class="modifier">Private</span> _suspensionTimeout</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _suspensionTimeout</b><a href="#_suspensionTimeout"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_suspensionTimeout:     <code></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>_suspensionTimeout:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             </code>
                                 </td>
                             </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                    </td>
+                                </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/optimized-entity-collection.ts:6</a></div>
@@ -2169,7 +2429,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_updateRate"></a>
-                                    <b><span class="modifier">Private</span> _updateRate</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _updateRate</b><a href="#_updateRate"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2193,61 +2453,40 @@
             
                         </tbody>
                     </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="collectionSize"></a>
-                                    <b> collectionSize</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>collectionSize:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/optimized-entity-collection.ts:32</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
+            </section>
+
+            <section>
+                <h3 id="accessors">
+                    Accessors
+                </h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="isSuspended"></a>
-                                    <b> isSuspended</b>
+                                    <span class="name"><b>isSuspended</b><a href="#isSuspended"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
+            
                             <tr>
                                 <td class="col-md-4">
-                                    <code>isSuspended:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-            </code>
+                                    <span class="accessor"><b>get</b><code>isSuspended()</code></span>
                                 </td>
                             </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/optimized-entity-collection.ts:20</a></div>
+                                            </td>
+                                        </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
             
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            
+                                            </div>
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/optimized-entity-collection.ts:20</a></div>
-                                        </td>
-                                    </tr>
-            
             
                         </tbody>
                     </table>
@@ -2256,28 +2495,151 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updateRate"></a>
-                                    <b> updateRate</b>
+                                    <span class="name"><b>updateRate</b><a href="#updateRate"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
+            
                             <tr>
                                 <td class="col-md-4">
-                                    <code>updateRate:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            </code>
+                                    <span class="accessor"><b>get</b><code>updateRate()</code></span>
                                 </td>
                             </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/optimized-entity-collection.ts:24</a></div>
+                                            </td>
+                                        </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
             
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                            </div>
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/optimized-entity-collection.ts:24</a></div>
-                                        </td>
-                                    </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>updateRate(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/optimized-entity-collection.ts:28</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
             
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="collectionSize"></a>
+                                    <span class="name"><b>collectionSize</b><a href="#collectionSize"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>collectionSize()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/optimized-entity-collection.ts:32</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>collectionSize(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/optimized-entity-collection.ts:36</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
             </section>
@@ -2290,7 +2652,7 @@
   private _collectionSize: number;
   private _isSuspended &#x3D; false;
   private _isHardSuspend &#x3D; false;
-  private _suspensionTimeout;
+  private _suspensionTimeout: any;
   private _onEventSuspensionCallback: { once: boolean, callback: Function };
   private _onEventResumeCallback: { once: boolean, callback: Function };
   
@@ -2332,17 +2694,17 @@
     return this._collectionSize &lt; 1 || this.entityCollection.values.length &lt; this._collectionSize;
   }
   
-  add(entity) {
+  add(entity: any) {
     this.suspend();
     return this.entityCollection.add(entity);
   }
   
-  remove(entity) {
+  remove(entity: any) {
     this.suspend();
     return this.entityCollection.remove(entity);
   }
   
-  removeNoSuspend(entity) {
+  removeNoSuspend(entity: any) {
     this.entityCollection.remove(entity);
   }
   

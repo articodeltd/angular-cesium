@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1183,6 +1190,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
@@ -1502,6 +1510,34 @@ you must provide the service yourself</p>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>mapsManager</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/MapsManagerService.html" target="_self" >MapsManagerService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1516,12 +1552,12 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="addToSelected"></a>
-                                    <b><span class="modifier">Private</span> addToSelected</b>
+                                    <span class="name"><b><span class="modifier">Private</span> addToSelected</b><a href="#addToSelected"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>addToSelected(entity: <a href="../classes/AcEntity.html">AcEntity</a>, addSelectedIndicator: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                                 </td>
                             </tr>
@@ -1537,9 +1573,47 @@ you must provide the service yourself</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="../classes/AcEntity.html" target="_self" >AcEntity</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>addSelectedIndicator</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1549,12 +1623,12 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="initSelection"></a>
-                                    <b> initSelection</b>
+                                    <span class="name"><b> initSelection</b><a href="#initSelection"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>initSelection(selectionOptions: <a href="../interfaces/SelectionOptions.html">SelectionOptions</a>, addSelectedIndicator: , eventPriority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, mapId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+            <code>initSelection(selectionOptions?: <a href="../interfaces/SelectionOptions.html">SelectionOptions</a>, addSelectedIndicator: , eventPriority?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, mapId?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
@@ -1569,9 +1643,67 @@ you must provide the service yourself</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>selectionOptions</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/SelectionOptions.html" target="_self" >SelectionOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>addSelectedIndicator</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>eventPriority</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>mapId</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1581,12 +1713,12 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="removeSelected"></a>
-                                    <b><span class="modifier">Private</span> removeSelected</b>
+                                    <span class="name"><b><span class="modifier">Private</span> removeSelected</b><a href="#removeSelected"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>removeSelected(entity: <a href="../classes/AcEntity.html">AcEntity</a>, addSelectedIndicator: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                                 </td>
                             </tr>
@@ -1602,9 +1734,47 @@ you must provide the service yourself</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="../classes/AcEntity.html" target="_self" >AcEntity</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>addSelectedIndicator</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1614,7 +1784,7 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="selectedEntities"></a>
-                                    <b> selectedEntities</b>
+                                    <span class="name"><b> selectedEntities</b><a href="#selectedEntities"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1646,7 +1816,7 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="selectedEntities$"></a>
-                                    <b> selectedEntities$</b>
+                                    <span class="name"><b> selectedEntities$</b><a href="#selectedEntities$"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1678,7 +1848,7 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="selectedEntity$"></a>
-                                    <b> selectedEntity$</b>
+                                    <span class="name"><b> selectedEntity$</b><a href="#selectedEntity$"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1710,7 +1880,7 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="toggleSelection"></a>
-                                    <b> toggleSelection</b>
+                                    <span class="name"><b> toggleSelection</b><a href="#toggleSelection"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1730,9 +1900,47 @@ you must provide the service yourself</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="../classes/AcEntity.html" target="_self" >AcEntity</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>addSelectedIndicator</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1749,7 +1957,7 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="mapEventsManagerService"></a>
-                                    <b><span class="modifier">Private</span> mapEventsManagerService</b>
+                                    <span class="name"><b><span class="modifier">Private</span> mapEventsManagerService</b><a href="#mapEventsManagerService"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1778,7 +1986,7 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="selectedEntitiesItems$"></a>
-                                    <b> selectedEntitiesItems$</b>
+                                    <span class="name"><b> selectedEntitiesItems$</b><a href="#selectedEntitiesItems$"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1807,7 +2015,7 @@ you must provide the service yourself</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="selectedEntitySubject$"></a>
-                                    <b> selectedEntitySubject$</b>
+                                    <span class="name"><b> selectedEntitySubject$</b><a href="#selectedEntitySubject$"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1832,6 +2040,7 @@ you must provide the service yourself</p>
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1851,7 +2060,7 @@ import { Subject } from &#x27;rxjs/Subject&#x27;;
 export interface SelectionOptions {
 	event?: CesiumEvent;
 	modifier?: CesiumEventModifier;
-	entityType?;
+	entityType?: any;
 }
 
 /**
@@ -1964,6 +2173,7 @@ export class SelectionManagerService {
 </code></pre>
     </div>
 </div>
+
 
 
 

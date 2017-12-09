@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1183,6 +1190,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
@@ -1535,7 +1543,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="create"></a>
-                                    <b> create</b>
+                                    <span class="name"><b> create</b><a href="#create"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1555,9 +1563,45 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>priority</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/PolygonEditorObservable.html" target="_self" >PolygonEditorObservable</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1567,12 +1611,12 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createEditorObservable"></a>
-                                    <b><span class="modifier">Private</span> createEditorObservable</b>
+                                    <span class="name"><b><span class="modifier">Private</span> createEditorObservable</b><a href="#createEditorObservable"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>createEditorObservable(observableToExtend: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
@@ -1588,9 +1632,47 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>observableToExtend</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/PolygonEditorObservable.html" target="_self" >PolygonEditorObservable</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1600,12 +1682,12 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="edit"></a>
-                                    <b> edit</b>
+                                    <span class="name"><b> edit</b><a href="#edit"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>edit(positions: [], options: , priority: )</code>
+            <code>edit(positions: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>, options: , priority: )</code>
                                 </td>
                             </tr>
             
@@ -1620,9 +1702,54 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>positions</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>priority</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/PolygonEditorObservable.html" target="_self" >PolygonEditorObservable</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1632,13 +1759,13 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="editPolygon"></a>
-                                    <b><span class="modifier">Private</span> editPolygon</b>
+                                    <span class="name"><b><span class="modifier">Private</span> editPolygon</b><a href="#editPolygon"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>editPolygon(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, positions: [], priority: , editSubject: <a href="../interfaces/PolygonEditUpdate.html">Subject<PolygonEditUpdate></a>, options: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, editObservable: <a href="../classes/PolygonEditorObservable.html">PolygonEditorObservable</a>)</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>editPolygon(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, positions: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, editSubject: <a href="../interfaces/PolygonEditUpdate.html">Subject<PolygonEditUpdate></a>, options: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, editObservable?: <a href="../classes/PolygonEditorObservable.html">PolygonEditorObservable</a>)</code>
                                 </td>
                             </tr>
             
@@ -1653,9 +1780,84 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>positions</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>priority</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editSubject</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/PolygonEditUpdate.html" target="_self" >Subject&lt;PolygonEditUpdate&gt;</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/PolygonEditOptions.html" target="_self" >PolygonEditOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editObservable</td>
+                                                              <td>
+                                                                      <code><a href="../classes/PolygonEditorObservable.html" target="_self" >PolygonEditorObservable</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/PolygonEditorObservable.html" target="_self" >PolygonEditorObservable</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1665,12 +1867,12 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="generteId"></a>
-                                    <b><span class="modifier">Private</span> generteId</b>
+                                    <span class="name"><b><span class="modifier">Private</span> generteId</b><a href="#generteId"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>generteId()</code>
                                 </td>
                             </tr>
@@ -1698,13 +1900,13 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getPoints"></a>
-                                    <b><span class="modifier">Private</span> getPoints</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getPoints</b><a href="#getPoints"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>getPoints(id: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>getPoints(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
@@ -1719,9 +1921,38 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1731,13 +1962,13 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getPositions"></a>
-                                    <b><span class="modifier">Private</span> getPositions</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getPositions</b><a href="#getPositions"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>getPositions(id: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>getPositions(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
@@ -1752,9 +1983,38 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1764,7 +2024,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="init"></a>
-                                    <b> init</b>
+                                    <span class="name"><b> init</b><a href="#init"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1784,9 +2044,65 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>mapEventsManager</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>coordinateConverter</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>cameraService</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>polygonsManager</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/PolygonsManagerService.html" target="_self" >PolygonsManagerService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1796,7 +2112,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="onUpdate"></a>
-                                    <b> onUpdate</b>
+                                    <span class="name"><b> onUpdate</b><a href="#onUpdate"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1816,7 +2132,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/PolygonEditUpdate.html" target="_self" >Observable&lt;PolygonEditUpdate&gt;</a></code>
             
                                         </div>
                                 </td>
@@ -1828,12 +2144,12 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="setOptions"></a>
-                                    <b><span class="modifier">Private</span> setOptions</b>
+                                    <span class="name"><b><span class="modifier">Private</span> setOptions</b><a href="#setOptions"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>setOptions(options: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>)</code>
                                 </td>
                             </tr>
@@ -1849,9 +2165,38 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/PolygonEditOptions.html" target="_self" >PolygonEditOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1868,7 +2213,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="cameraService"></a>
-                                    <b><span class="modifier">Private</span> cameraService</b>
+                                    <span class="name"><b><span class="modifier">Private</span> cameraService</b><a href="#cameraService"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1897,7 +2242,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="coordinateConverter"></a>
-                                    <b><span class="modifier">Private</span> coordinateConverter</b>
+                                    <span class="name"><b><span class="modifier">Private</span> coordinateConverter</b><a href="#coordinateConverter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1926,7 +2271,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="counter"></a>
-                                    <b><span class="modifier">Private</span> counter</b>
+                                    <span class="name"><b><span class="modifier">Private</span> counter</b><a href="#counter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1954,7 +2299,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="mapEventsManager"></a>
-                                    <b><span class="modifier">Private</span> mapEventsManager</b>
+                                    <span class="name"><b><span class="modifier">Private</span> mapEventsManager</b><a href="#mapEventsManager"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1983,7 +2328,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="observablesMap"></a>
-                                    <b><span class="modifier">Private</span> observablesMap</b>
+                                    <span class="name"><b><span class="modifier">Private</span> observablesMap</b><a href="#observablesMap"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2006,7 +2351,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="polygonsManager"></a>
-                                    <b><span class="modifier">Private</span> polygonsManager</b>
+                                    <span class="name"><b><span class="modifier">Private</span> polygonsManager</b><a href="#polygonsManager"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2035,7 +2380,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updatePublisher"></a>
-                                    <b><span class="modifier">Private</span> updatePublisher</b>
+                                    <span class="name"><b><span class="modifier">Private</span> updatePublisher</b><a href="#updatePublisher"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2058,7 +2403,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updateSubject"></a>
-                                    <b><span class="modifier">Private</span> updateSubject</b>
+                                    <span class="name"><b><span class="modifier">Private</span> updateSubject</b><a href="#updateSubject"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2077,6 +2422,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -2343,7 +2689,7 @@ export class PolygonsEditorService {
 
   private editPolygon(id: string,
                       positions: Cartesian3[],
-                      priority,
+                      priority: number,
                       editSubject: Subject&lt;PolygonEditUpdate&gt;,
                       options: PolygonEditOptions,
                       editObservable?: PolygonEditorObservable): PolygonEditorObservable {
@@ -2510,7 +2856,7 @@ export class PolygonsEditorService {
       });
     };
 
-    observableToExtend.setLabelsRenderFn &#x3D; (callback) &#x3D;&gt; {
+    observableToExtend.setLabelsRenderFn &#x3D; (callback: any) &#x3D;&gt; {
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
@@ -2542,12 +2888,12 @@ export class PolygonsEditorService {
     return &#x27;edit-polygon-&#x27; + this.counter++;
   }
 
-  private getPositions(id) {
+  private getPositions(id: string) {
     const polygon &#x3D; this.polygonsManager.get(id);
     return polygon.getRealPositions()
   }
 
-  private getPoints(id) {
+  private getPoints(id: string) {
     const polygon &#x3D; this.polygonsManager.get(id);
     return polygon.getRealPoints();
   }
@@ -2555,6 +2901,7 @@ export class PolygonsEditorService {
 </code></pre>
     </div>
 </div>
+
 
 
 

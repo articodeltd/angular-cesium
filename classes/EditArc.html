@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1384,6 +1392,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Classes</li>
   <li>EditArc</li>
@@ -1444,28 +1453,13 @@
                                         <span class="modifier">Private</span> <a href="#_radius">_radius</a>
                                     </li>
                                     <li>
-                                         <a href="#angle">angle</a>
-                                    </li>
-                                    <li>
-                                         <a href="#center">center</a>
-                                    </li>
-                                    <li>
                                         <span class="modifier">Static</span> <a href="#counter">counter</a>
-                                    </li>
-                                    <li>
-                                         <a href="#delta">delta</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#editedEntityId">editedEntityId</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#id">id</a>
-                                    </li>
-                                    <li>
-                                         <a href="#props">props</a>
-                                    </li>
-                                    <li>
-                                         <a href="#radius">radius</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1490,6 +1484,32 @@
                                 </ul>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Accessors</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#props">props</a>
+                                    </li>
+                                    <li>
+                                         <a href="#angle">angle</a>
+                                    </li>
+                                    <li>
+                                         <a href="#delta">delta</a>
+                                    </li>
+                                    <li>
+                                         <a href="#radius">radius</a>
+                                    </li>
+                                    <li>
+                                         <a href="#center">center</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -1509,6 +1529,79 @@
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entityId</td>
+                                                              <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>center</td>
+                                                              <td>
+                                                                        <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>radius</td>
+                                                              <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>delta</td>
+                                                              <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>angle</td>
+                                                              <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>_arcProps</td>
+                                                              <td>
+                                                                        <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1523,12 +1616,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="generateId"></a>
-                                    <b><span class="modifier">Private</span> generateId</b>
+                                    <span class="name"><b><span class="modifier">Private</span> generateId</b><a href="#generateId"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>generateId()</code>
                                 </td>
                             </tr>
@@ -1556,7 +1649,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getId"></a>
-                                    <b> getId</b>
+                                    <span class="name"><b> getId</b><a href="#getId"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1588,7 +1681,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updateCenter"></a>
-                                    <b> updateCenter</b>
+                                    <span class="name"><b> updateCenter</b><a href="#updateCenter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1608,9 +1701,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>center</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1628,7 +1750,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_angle"></a>
-                                    <b><span class="modifier">Private</span> _angle</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _angle</b><a href="#_angle"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1657,7 +1779,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_center"></a>
-                                    <b><span class="modifier">Private</span> _center</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _center</b><a href="#_center"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1686,7 +1808,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_delta"></a>
-                                    <b><span class="modifier">Private</span> _delta</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _delta</b><a href="#_delta"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1715,7 +1837,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_radius"></a>
-                                    <b><span class="modifier">Private</span> _radius</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _radius</b><a href="#_radius"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1743,71 +1865,13 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="angle"></a>
-                                    <b> angle</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>angle:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:32</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="center"></a>
-                                    <b> center</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>center:     <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:53</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="counter"></a>
-                                    <b><span class="modifier">Static</span> counter</b>
+                                    <span class="name"><b><span class="modifier">Static</span> counter</b><a href="#counter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-export"></span><code>counter:     <code></code>
+                                    <span class="modifier-icon fa fa-reset"></span><code>counter:     <code></code>
             </code>
                                 </td>
                             </tr>
@@ -1829,37 +1893,8 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="delta"></a>
-                                    <b> delta</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>delta:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:39</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="editedEntityId"></a>
-                                    <b><span class="modifier">Private</span> editedEntityId</b>
+                                    <span class="name"><b><span class="modifier">Private</span> editedEntityId</b><a href="#editedEntityId"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1888,7 +1923,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="id"></a>
-                                    <b><span class="modifier">Private</span> id</b>
+                                    <span class="name"><b><span class="modifier">Private</span> id</b><a href="#id"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1912,27 +1947,228 @@
             
                         </tbody>
                     </table>
+            </section>
+
+            <section>
+                <h3 id="accessors">
+                    Accessors
+                </h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="props"></a>
-                                    <b> props</b>
+                                    <span class="name"><b>props</b><a href="#props"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
+            
                             <tr>
                                 <td class="col-md-4">
-                                    <code>props:     <code></code>
-            </code>
+                                    <span class="accessor"><b>get</b><code>props()</code></span>
                                 </td>
                             </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:24</a></div>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:24</a></div>
+                                            </td>
+                                        </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>props(props: )</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:28</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
             
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>props</td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="angle"></a>
+                                    <span class="name"><b>angle</b><a href="#angle"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>angle()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:32</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>angle(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:36</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="delta"></a>
+                                    <span class="name"><b>delta</b><a href="#delta"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>delta()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:39</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>delta(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:43</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1940,28 +2176,150 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="radius"></a>
-                                    <b> radius</b>
+                                    <span class="name"><b>radius</b><a href="#radius"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
+            
                             <tr>
                                 <td class="col-md-4">
-                                    <code>radius:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            </code>
+                                    <span class="accessor"><b>get</b><code>radius()</code></span>
                                 </td>
                             </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:46</a></div>
+                                            </td>
+                                        </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
             
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                            </div>
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:46</a></div>
-                                        </td>
-                                    </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>radius(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:50</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
             
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="center"></a>
+                                    <span class="name"><b>center</b><a href="#center"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>center()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:53</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>center(value: )</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/angular-cesium-widgets/models/edit-arc.ts:57</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
             </section>

@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1385,6 +1393,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Interfaces</li>
   <li>Cartesian3</li>
@@ -1410,6 +1419,13 @@
             <code>src/angular-cesium/models/cartesian3.ts</code>
         </p>
 
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code><a href="../interfaces/Cartesian2.html" target="_self" >Cartesian2</a></code>
+            </p>
 
         <section>
             <h3 id="index">Index</h3>
@@ -1460,7 +1476,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="clone"></a>
-                                    <b> clone</b>
+                                    <span class="name"><b> clone</b><a href="#clone"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1492,12 +1508,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="equals"></a>
-                                    <b> equals</b>
+                                    <span class="name"><b> equals</b><a href="#equals"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>equals(Cartesian3: )</code>
+            <code>equals(other: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
                                 </td>
                             </tr>
             
@@ -1512,9 +1528,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>other</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1529,7 +1574,7 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="z"></a>
-                                        <b>z</b>
+                                        <span class="name"><b>z</b><a href="#z"><span class="fa fa-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -1569,7 +1614,7 @@ export interface Cartesian3 extends Cartesian2 {
 
   clone(): Cartesian3;
 
-  equals(Cartesian3): boolean;
+  equals(other: Cartesian3): boolean;
 }
 </code></pre>
     </div>

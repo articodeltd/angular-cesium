@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1384,6 +1392,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Classes</li>
   <li>EditableCircle</li>
@@ -1456,31 +1465,10 @@
                                         <span class="modifier">Private</span> <a href="#_radiusPoint">_radiusPoint</a>
                                     </li>
                                     <li>
-                                         <a href="#center">center</a>
-                                    </li>
-                                    <li>
-                                         <a href="#circleProps">circleProps</a>
-                                    </li>
-                                    <li>
                                         <span class="modifier">Private</span> <a href="#doneCreation">doneCreation</a>
                                     </li>
                                     <li>
-                                         <a href="#enableEdit">enableEdit</a>
-                                    </li>
-                                    <li>
-                                         <a href="#labels">labels</a>
-                                    </li>
-                                    <li>
                                         <span class="modifier">Private</span> <a href="#lastDraggedToPosition">lastDraggedToPosition</a>
-                                    </li>
-                                    <li>
-                                         <a href="#pointProps">pointProps</a>
-                                    </li>
-                                    <li>
-                                         <a href="#polylineProps">polylineProps</a>
-                                    </li>
-                                    <li>
-                                         <a href="#radiusPoint">radiusPoint</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1541,6 +1529,38 @@
                                 </ul>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Accessors</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#labels">labels</a>
+                                    </li>
+                                    <li>
+                                         <a href="#polylineProps">polylineProps</a>
+                                    </li>
+                                    <li>
+                                         <a href="#pointProps">pointProps</a>
+                                    </li>
+                                    <li>
+                                         <a href="#circleProps">circleProps</a>
+                                    </li>
+                                    <li>
+                                         <a href="#center">center</a>
+                                    </li>
+                                    <li>
+                                         <a href="#radiusPoint">radiusPoint</a>
+                                    </li>
+                                    <li>
+                                         <a href="#enableEdit">enableEdit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -1560,6 +1580,70 @@
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>circlesLayer</td>
+                                                              <td>
+                                                                        <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>pointsLayer</td>
+                                                              <td>
+                                                                        <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>arcsLayer</td>
+                                                              <td>
+                                                                        <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                                        <code><a href="../interfaces/CircleEditOptions.html" target="_self" >CircleEditOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1574,7 +1658,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="addLastPoint"></a>
-                                    <b> addLastPoint</b>
+                                    <span class="name"><b> addLastPoint</b><a href="#addLastPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1594,9 +1678,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>position</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1606,7 +1719,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="addPoint"></a>
-                                    <b> addPoint</b>
+                                    <span class="name"><b> addPoint</b><a href="#addPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1626,9 +1739,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>position</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1638,12 +1780,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createOutlineArc"></a>
-                                    <b><span class="modifier">Private</span> createOutlineArc</b>
+                                    <span class="name"><b><span class="modifier">Private</span> createOutlineArc</b><a href="#createOutlineArc"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>createOutlineArc()</code>
                                 </td>
                             </tr>
@@ -1671,7 +1813,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="dispose"></a>
-                                    <b> dispose</b>
+                                    <span class="name"><b> dispose</b><a href="#dispose"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1703,7 +1845,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="endMovePolygon"></a>
-                                    <b> endMovePolygon</b>
+                                    <span class="name"><b> endMovePolygon</b><a href="#endMovePolygon"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1735,7 +1877,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getCenter"></a>
-                                    <b> getCenter</b>
+                                    <span class="name"><b> getCenter</b><a href="#getCenter"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1767,7 +1909,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getId"></a>
-                                    <b> getId</b>
+                                    <span class="name"><b> getId</b><a href="#getId"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1799,7 +1941,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getRadius"></a>
-                                    <b> getRadius</b>
+                                    <span class="name"><b> getRadius</b><a href="#getRadius"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1831,7 +1973,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getRadiusPoint"></a>
-                                    <b> getRadiusPoint</b>
+                                    <span class="name"><b> getRadiusPoint</b><a href="#getRadiusPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1863,7 +2005,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="moveCircle"></a>
-                                    <b> moveCircle</b>
+                                    <span class="name"><b> moveCircle</b><a href="#moveCircle"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1883,9 +2025,47 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>dragStartPosition</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>dragEndPosition</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1895,7 +2075,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="movePoint"></a>
-                                    <b> movePoint</b>
+                                    <span class="name"><b> movePoint</b><a href="#movePoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1915,9 +2095,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>toPosition</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1927,7 +2136,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="setManually"></a>
-                                    <b> setManually</b>
+                                    <span class="name"><b> setManually</b><a href="#setManually"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1947,9 +2156,71 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>center</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>radiusPoint</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>centerPointProp</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>radiusPointProp</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>circleProp</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1959,12 +2230,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updateArcsLayer"></a>
-                                    <b><span class="modifier">Private</span> updateArcsLayer</b>
+                                    <span class="name"><b><span class="modifier">Private</span> updateArcsLayer</b><a href="#updateArcsLayer"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>updateArcsLayer()</code>
                                 </td>
                             </tr>
@@ -1992,12 +2263,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updateCirclesLayer"></a>
-                                    <b><span class="modifier">Private</span> updateCirclesLayer</b>
+                                    <span class="name"><b><span class="modifier">Private</span> updateCirclesLayer</b><a href="#updateCirclesLayer"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>updateCirclesLayer()</code>
                                 </td>
                             </tr>
@@ -2025,12 +2296,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updatePointsLayer"></a>
-                                    <b><span class="modifier">Private</span> updatePointsLayer</b>
+                                    <span class="name"><b><span class="modifier">Private</span> updatePointsLayer</b><a href="#updatePointsLayer"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>updatePointsLayer()</code>
                                 </td>
                             </tr>
@@ -2066,7 +2337,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_center"></a>
-                                    <b><span class="modifier">Private</span> _center</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _center</b><a href="#_center"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2095,7 +2366,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_circleProps"></a>
-                                    <b><span class="modifier">Private</span> _circleProps</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _circleProps</b><a href="#_circleProps"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2124,7 +2395,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_enableEdit"></a>
-                                    <b><span class="modifier">Private</span> _enableEdit</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _enableEdit</b><a href="#_enableEdit"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2152,18 +2423,18 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_labels"></a>
-                                    <b><span class="modifier">Private</span> _labels</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _labels</b><a href="#_labels"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_labels:     <code>[]</code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>_labels:     <code><a href="../interfaces/LabelProps.html" target="_self" >LabelProps[]</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code>[]</code>
+                                        <i>Type : </i>    <code><a href="../interfaces/LabelProps.html" target="_self" >LabelProps[]</a></code>
             
                                     </td>
                                 </tr>
@@ -2181,7 +2452,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_outlineArc"></a>
-                                    <b><span class="modifier">Private</span> _outlineArc</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _outlineArc</b><a href="#_outlineArc"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2210,7 +2481,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_pointProps"></a>
-                                    <b><span class="modifier">Private</span> _pointProps</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _pointProps</b><a href="#_pointProps"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2239,7 +2510,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_polylineProps"></a>
-                                    <b><span class="modifier">Private</span> _polylineProps</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _polylineProps</b><a href="#_polylineProps"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2268,7 +2539,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_radiusPoint"></a>
-                                    <b><span class="modifier">Private</span> _radiusPoint</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _radiusPoint</b><a href="#_radiusPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2296,66 +2567,8 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="center"></a>
-                                    <b> center</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>center:     <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:81</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="circleProps"></a>
-                                    <b> circleProps</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>circleProps:     <code><a href="../interfaces/CircleProps.html" target="_self" >CircleProps</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/CircleProps.html" target="_self" >CircleProps</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:73</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="doneCreation"></a>
-                                    <b><span class="modifier">Private</span> doneCreation</b>
+                                    <span class="name"><b><span class="modifier">Private</span> doneCreation</b><a href="#doneCreation"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2382,68 +2595,22 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="enableEdit"></a>
-                                    <b> enableEdit</b>
+                                    <a name="lastDraggedToPosition"></a>
+                                    <span class="name"><b><span class="modifier">Private</span> lastDraggedToPosition</b><a href="#lastDraggedToPosition"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>enableEdit:     <code></code>
-            </code>
-                                </td>
-                            </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:89</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="labels"></a>
-                                    <b> labels</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>labels:     <code>[]</code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>lastDraggedToPosition:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code>[]</code>
+                                        <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:34</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="lastDraggedToPosition"></a>
-                                    <b><span class="modifier">Private</span> lastDraggedToPosition</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>lastDraggedToPosition:     <code></code>
-            </code>
-                                </td>
-                            </tr>
                                     <tr>
                                         <td class="col-md-4">
                                             <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:17</a></div>
@@ -2453,33 +2620,86 @@
             
                         </tbody>
                     </table>
+            </section>
+
+            <section>
+                <h3 id="accessors">
+                    Accessors
+                </h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="pointProps"></a>
-                                    <b> pointProps</b>
+                                    <a name="labels"></a>
+                                    <span class="name"><b>labels</b><a href="#labels"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
+            
                             <tr>
                                 <td class="col-md-4">
-                                    <code>pointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
-            </code>
+                                    <span class="accessor"><b>get</b><code>labels()</code></span>
                                 </td>
                             </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:34</a></div>
+                                            </td>
+                                        </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
             
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code>[]</code>
+            
+                                            </div>
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:65</a></div>
-                                        </td>
-                                    </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>labels(labels: [])</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:38</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
             
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>labels</td>
+                                                                  <td>
+                                                                          <code>[]</code>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -2487,27 +2707,254 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="polylineProps"></a>
-                                    <b> polylineProps</b>
+                                    <span class="name"><b>polylineProps</b><a href="#polylineProps"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
+            
                             <tr>
                                 <td class="col-md-4">
-                                    <code>polylineProps:     <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
-            </code>
+                                    <span class="accessor"><b>get</b><code>polylineProps()</code></span>
                                 </td>
                             </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:57</a></div>
+                                            </td>
+                                        </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
             
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            
+                                            </div>
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:57</a></div>
-                                        </td>
-                                    </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>polylineProps(value: )</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:61</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="pointProps"></a>
+                                    <span class="name"><b>pointProps</b><a href="#pointProps"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>pointProps()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:65</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>pointProps(value: )</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:69</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="circleProps"></a>
+                                    <span class="name"><b>circleProps</b><a href="#circleProps"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>circleProps()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:73</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/CircleProps.html" target="_self" >CircleProps</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>circleProps(value: )</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:77</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="center"></a>
+                                    <span class="name"><b>center</b><a href="#center"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>center()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:81</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
             
                         </tbody>
                     </table>
@@ -2516,28 +2963,97 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="radiusPoint"></a>
-                                    <b> radiusPoint</b>
+                                    <span class="name"><b>radiusPoint</b><a href="#radiusPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
+            
                             <tr>
                                 <td class="col-md-4">
-                                    <code>radiusPoint:     <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
-            </code>
+                                    <span class="accessor"><b>get</b><code>radiusPoint()</code></span>
                                 </td>
                             </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:85</a></div>
+                                            </td>
+                                        </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
             
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+            
+                                            </div>
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:85</a></div>
-                                        </td>
-                                    </tr>
             
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="enableEdit"></a>
+                                    <span class="name"><b>enableEdit</b><a href="#enableEdit"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>enableEdit()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:89</a></div>
+                                            </td>
+                                        </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>enableEdit(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium-widgets/models/editable-circle.ts:93</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
             </section>
@@ -2561,7 +3077,7 @@ export class EditableCircle extends AcEntity {
   private _outlineArc: EditArc;
   private doneCreation &#x3D; false;
   private _enableEdit &#x3D; true;
-  private lastDraggedToPosition;
+  private lastDraggedToPosition: any;
   private _circleProps: CircleProps;
   private _pointProps: PointProps;
   private _polylineProps: PolylineProps;

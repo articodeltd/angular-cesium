@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1384,6 +1392,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Classes</li>
   <li>EditablePolygon</li>
@@ -1447,28 +1456,13 @@
                                         <span class="modifier">Private</span> <a href="#_polygonProps">_polygonProps</a>
                                     </li>
                                     <li>
-                                         <a href="#defaultPointProps">defaultPointProps</a>
-                                    </li>
-                                    <li>
-                                         <a href="#defaultPolylineProps">defaultPolylineProps</a>
-                                    </li>
-                                    <li>
                                         <span class="modifier">Private</span> <a href="#doneCreation">doneCreation</a>
-                                    </li>
-                                    <li>
-                                         <a href="#enableEdit">enableEdit</a>
-                                    </li>
-                                    <li>
-                                         <a href="#labels">labels</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#lastDraggedToPosition">lastDraggedToPosition</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#movingPoint">movingPoint</a>
-                                    </li>
-                                    <li>
-                                         <a href="#polygonProps">polygonProps</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#polylines">polylines</a>
@@ -1565,6 +1559,32 @@
                                 </ul>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Accessors</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#labels">labels</a>
+                                    </li>
+                                    <li>
+                                         <a href="#defaultPolylineProps">defaultPolylineProps</a>
+                                    </li>
+                                    <li>
+                                         <a href="#defaultPointProps">defaultPointProps</a>
+                                    </li>
+                                    <li>
+                                         <a href="#polygonProps">polygonProps</a>
+                                    </li>
+                                    <li>
+                                         <a href="#enableEdit">enableEdit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -1575,7 +1595,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, polygonsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, pointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, polylinesLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, polygonOptions: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, positions: [])</code>
+                                    <code>constructor(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, polygonsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, pointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, polylinesLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, polygonOptions: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, positions?: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -1584,6 +1604,89 @@
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>id</td>
+                                                              <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>polygonsLayer</td>
+                                                              <td>
+                                                                        <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>pointsLayer</td>
+                                                              <td>
+                                                                        <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>polylinesLayer</td>
+                                                              <td>
+                                                                        <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>coordinateConverter</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>polygonOptions</td>
+                                                              <td>
+                                                                        <code><a href="../interfaces/PolygonEditOptions.html" target="_self" >PolygonEditOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>positions</td>
+                                                              <td>
+                                                                        <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                              </td>
+                                                              <td>
+                                                                      true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1598,12 +1701,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="addAllVirtualEditPoints"></a>
-                                    <b><span class="modifier">Private</span> addAllVirtualEditPoints</b>
+                                    <span class="name"><b><span class="modifier">Private</span> addAllVirtualEditPoints</b><a href="#addAllVirtualEditPoints"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>addAllVirtualEditPoints()</code>
                                 </td>
                             </tr>
@@ -1631,7 +1734,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="addLastPoint"></a>
-                                    <b> addLastPoint</b>
+                                    <span class="name"><b> addLastPoint</b><a href="#addLastPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1651,9 +1754,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>position</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1663,7 +1795,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="addPoint"></a>
-                                    <b> addPoint</b>
+                                    <span class="name"><b> addPoint</b><a href="#addPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1683,9 +1815,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>position</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1695,7 +1856,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="addPointFromExisting"></a>
-                                    <b> addPointFromExisting</b>
+                                    <span class="name"><b> addPointFromExisting</b><a href="#addPointFromExisting"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1715,9 +1876,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>position</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1727,7 +1917,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="changeVirtualPointToRealPoint"></a>
-                                    <b> changeVirtualPointToRealPoint</b>
+                                    <span class="name"><b> changeVirtualPointToRealPoint</b><a href="#changeVirtualPointToRealPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1747,9 +1937,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>point</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1759,13 +1978,13 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createFromExisting"></a>
-                                    <b><span class="modifier">Private</span> createFromExisting</b>
+                                    <span class="name"><b><span class="modifier">Private</span> createFromExisting</b><a href="#createFromExisting"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>createFromExisting(positions: [])</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>createFromExisting(positions: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
                                 </td>
                             </tr>
             
@@ -1780,9 +1999,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>positions</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1792,7 +2040,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="dispose"></a>
-                                    <b> dispose</b>
+                                    <span class="name"><b> dispose</b><a href="#dispose"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1824,7 +2072,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="endMovePolygon"></a>
-                                    <b> endMovePolygon</b>
+                                    <span class="name"><b> endMovePolygon</b><a href="#endMovePolygon"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1856,7 +2104,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getHierarchy"></a>
-                                    <b> getHierarchy</b>
+                                    <span class="name"><b> getHierarchy</b><a href="#getHierarchy"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1888,7 +2136,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getId"></a>
-                                    <b> getId</b>
+                                    <span class="name"><b> getId</b><a href="#getId"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1920,7 +2168,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getPointsCount"></a>
-                                    <b> getPointsCount</b>
+                                    <span class="name"><b> getPointsCount</b><a href="#getPointsCount"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1952,7 +2200,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getPositions"></a>
-                                    <b> getPositions</b>
+                                    <span class="name"><b> getPositions</b><a href="#getPositions"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1984,7 +2232,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getRealPoints"></a>
-                                    <b> getRealPoints</b>
+                                    <span class="name"><b> getRealPoints</b><a href="#getRealPoints"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2016,7 +2264,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getRealPositions"></a>
-                                    <b> getRealPositions</b>
+                                    <span class="name"><b> getRealPositions</b><a href="#getRealPositions"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2048,7 +2296,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="movePoint"></a>
-                                    <b> movePoint</b>
+                                    <span class="name"><b> movePoint</b><a href="#movePoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2068,9 +2316,47 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>toPosition</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>editPoint</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2080,7 +2366,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="movePolygon"></a>
-                                    <b> movePolygon</b>
+                                    <span class="name"><b> movePolygon</b><a href="#movePolygon"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2100,9 +2386,47 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>startMovingPosition</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>draggedToPosition</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2112,7 +2436,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="moveTempMovingPoint"></a>
-                                    <b> moveTempMovingPoint</b>
+                                    <span class="name"><b> moveTempMovingPoint</b><a href="#moveTempMovingPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2132,9 +2456,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>toPosition</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2144,7 +2497,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="removePoint"></a>
-                                    <b> removePoint</b>
+                                    <span class="name"><b> removePoint</b><a href="#removePoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2164,9 +2517,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>pointToRemove</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2176,12 +2558,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="removePosition"></a>
-                                    <b><span class="modifier">Private</span> removePosition</b>
+                                    <span class="name"><b><span class="modifier">Private</span> removePosition</b><a href="#removePosition"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>removePosition(point: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
                                 </td>
                             </tr>
@@ -2197,9 +2579,38 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>point</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2209,12 +2620,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="renderPolylines"></a>
-                                    <b><span class="modifier">Private</span> renderPolylines</b>
+                                    <span class="name"><b><span class="modifier">Private</span> renderPolylines</b><a href="#renderPolylines"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>renderPolylines()</code>
                                 </td>
                             </tr>
@@ -2242,12 +2653,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="setMiddleVirtualPoint"></a>
-                                    <b><span class="modifier">Private</span> setMiddleVirtualPoint</b>
+                                    <span class="name"><b><span class="modifier">Private</span> setMiddleVirtualPoint</b><a href="#setMiddleVirtualPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>setMiddleVirtualPoint(firstP: <a href="../classes/EditPoint.html">EditPoint</a>, secondP: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
                                 </td>
                             </tr>
@@ -2263,9 +2674,47 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>firstP</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>secondP</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2275,12 +2724,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="setPointsManually"></a>
-                                    <b> setPointsManually</b>
+                                    <span class="name"><b> setPointsManually</b><a href="#setPointsManually"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>setPointsManually(points: []|[], polygonProps: <a href="../interfaces/PolygonProps.html">PolygonProps</a>)</code>
+            <code>setPointsManually(points: [] | [], polygonProps?: <a href="../interfaces/PolygonProps.html">PolygonProps</a>)</code>
                                 </td>
                             </tr>
             
@@ -2295,9 +2744,48 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>points</td>
+                                                              <td>
+                                                                      <code>[] | []</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>polygonProps</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/PolygonProps.html" target="_self" >PolygonProps</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2307,12 +2795,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updateMiddleVirtualPoint"></a>
-                                    <b><span class="modifier">Private</span> updateMiddleVirtualPoint</b>
+                                    <span class="name"><b><span class="modifier">Private</span> updateMiddleVirtualPoint</b><a href="#updateMiddleVirtualPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>updateMiddleVirtualPoint(virtualEditPoint: <a href="../classes/EditPoint.html">EditPoint</a>, prevPoint: <a href="../classes/EditPoint.html">EditPoint</a>, nextPoint: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
                                 </td>
                             </tr>
@@ -2328,9 +2816,56 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>virtualEditPoint</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>prevPoint</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>nextPoint</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2340,13 +2875,13 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updatePointsLayer"></a>
-                                    <b><span class="modifier">Private</span> updatePointsLayer</b>
+                                    <span class="name"><b><span class="modifier">Private</span> updatePointsLayer</b><a href="#updatePointsLayer"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>updatePointsLayer(renderPolylines: , ...points: [])</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>updatePointsLayer(renderPolylines: , points: <a href="../classes/EditPoint.html">EditPoint[]</a>)</code>
                                 </td>
                             </tr>
             
@@ -2361,9 +2896,46 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>renderPolylines</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>points</td>
+                                                              <td>
+                                                                      <code><a href="../classes/EditPoint.html" target="_self" >EditPoint[]</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2373,12 +2945,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="updatePolygonsLayer"></a>
-                                    <b><span class="modifier">Private</span> updatePolygonsLayer</b>
+                                    <span class="name"><b><span class="modifier">Private</span> updatePolygonsLayer</b><a href="#updatePolygonsLayer"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>updatePolygonsLayer()</code>
                                 </td>
                             </tr>
@@ -2414,7 +2986,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_defaultPointProps"></a>
-                                    <b><span class="modifier">Private</span> _defaultPointProps</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _defaultPointProps</b><a href="#_defaultPointProps"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2443,7 +3015,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_defaultPolylineProps"></a>
-                                    <b><span class="modifier">Private</span> _defaultPolylineProps</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _defaultPolylineProps</b><a href="#_defaultPolylineProps"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2472,7 +3044,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_enableEdit"></a>
-                                    <b><span class="modifier">Private</span> _enableEdit</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _enableEdit</b><a href="#_enableEdit"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2500,18 +3072,18 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_labels"></a>
-                                    <b><span class="modifier">Private</span> _labels</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _labels</b><a href="#_labels"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>_labels:     <code>[]</code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>_labels:     <code><a href="../interfaces/LabelProps.html" target="_self" >LabelProps[]</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code>[]</code>
+                                        <i>Type : </i>    <code><a href="../interfaces/LabelProps.html" target="_self" >LabelProps[]</a></code>
             
                                     </td>
                                 </tr>
@@ -2529,7 +3101,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_polygonProps"></a>
-                                    <b><span class="modifier">Private</span> _polygonProps</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _polygonProps</b><a href="#_polygonProps"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2557,66 +3129,8 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="defaultPointProps"></a>
-                                    <b> defaultPointProps</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>defaultPointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:66</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="defaultPolylineProps"></a>
-                                    <b> defaultPolylineProps</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>defaultPolylineProps:     <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:58</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="doneCreation"></a>
-                                    <b><span class="modifier">Private</span> doneCreation</b>
+                                    <span class="name"><b><span class="modifier">Private</span> doneCreation</b><a href="#doneCreation"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2643,60 +3157,8 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="enableEdit"></a>
-                                    <b> enableEdit</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>enableEdit:     <code></code>
-            </code>
-                                </td>
-                            </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:82</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="labels"></a>
-                                    <b> labels</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>labels:     <code>[]</code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code>[]</code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:40</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="lastDraggedToPosition"></a>
-                                    <b><span class="modifier">Private</span> lastDraggedToPosition</b>
+                                    <span class="name"><b><span class="modifier">Private</span> lastDraggedToPosition</b><a href="#lastDraggedToPosition"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2725,7 +3187,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="movingPoint"></a>
-                                    <b><span class="modifier">Private</span> movingPoint</b>
+                                    <span class="name"><b><span class="modifier">Private</span> movingPoint</b><a href="#movingPoint"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2753,48 +3215,19 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="polygonProps"></a>
-                                    <b> polygonProps</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>polygonProps:     <code><a href="../interfaces/PolygonProps.html" target="_self" >PolygonProps</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/PolygonProps.html" target="_self" >PolygonProps</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:70</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="polylines"></a>
-                                    <b><span class="modifier">Private</span> polylines</b>
+                                    <span class="name"><b><span class="modifier">Private</span> polylines</b><a href="#polylines"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>polylines:     <code>[]</code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>polylines:     <code><a href="../classes/EditPolyline.html" target="_self" >EditPolyline[]</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code>[]</code>
+                                        <i>Type : </i>    <code><a href="../classes/EditPolyline.html" target="_self" >EditPolyline[]</a></code>
             
                                     </td>
                                 </tr>
@@ -2812,18 +3245,18 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="positions"></a>
-                                    <b><span class="modifier">Private</span> positions</b>
+                                    <span class="name"><b><span class="modifier">Private</span> positions</b><a href="#positions"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>positions:     <code>[]</code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>positions:     <code><a href="../classes/EditPoint.html" target="_self" >EditPoint[]</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code>[]</code>
+                                        <i>Type : </i>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint[]</a></code>
             
                                     </td>
                                 </tr>
@@ -2834,6 +3267,380 @@
                                     </tr>
             
             
+                        </tbody>
+                    </table>
+            </section>
+
+            <section>
+                <h3 id="accessors">
+                    Accessors
+                </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="labels"></a>
+                                    <span class="name"><b>labels</b><a href="#labels"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>labels()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:40</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code>[]</code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>labels(labels: [])</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:44</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>labels</td>
+                                                                  <td>
+                                                                          <code>[]</code>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="defaultPolylineProps"></a>
+                                    <span class="name"><b>defaultPolylineProps</b><a href="#defaultPolylineProps"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>defaultPolylineProps()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:58</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/PolylineProps.html" target="_self" >PolylineProps</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>defaultPolylineProps(value: )</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:62</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="defaultPointProps"></a>
+                                    <span class="name"><b>defaultPointProps</b><a href="#defaultPointProps"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>defaultPointProps()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:66</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>defaultPointProps(value: )</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:78</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="polygonProps"></a>
+                                    <span class="name"><b>polygonProps</b><a href="#polygonProps"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>polygonProps()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:70</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/PolygonProps.html" target="_self" >PolygonProps</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>polygonProps(value: )</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:74</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="enableEdit"></a>
+                                    <span class="name"><b>enableEdit</b><a href="#enableEdit"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>enableEdit()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:82</a></div>
+                                            </td>
+                                        </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>set</b><code>enableEdit(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/angular-cesium-widgets/models/editable-polygon.ts:86</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                    <b>Parameters :</b>
+                                                    <table class="params">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>Type</td>
+                                                                <td>Optional</td>
+                                                                <td>Description</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                  <td>value</td>
+                                                                  <td>
+                                                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                                  </td>
+                                                                  <td>
+                                                                  </td>
+                                                                  <td></td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div>
+                                            </div>
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
             </section>

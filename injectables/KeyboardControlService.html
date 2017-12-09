@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1183,6 +1190,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
@@ -1553,7 +1561,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(ngZone: <a href="https://angular.io/docs/ts/latest/api/core/index/NgZone-class.html" target="_blank">NgZone</a>, cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>, document: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                                    <code>constructor(ngZone: <a href="https://angular.io/docs/ts/latest/api/api/core/NgZone" target="_blank">NgZone</a>, cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>, document: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -1566,6 +1574,48 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                 <td class="col-md-4">
                                         <div class="io-description"><p>Creats the keyboard control service.</p>
             </div>
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>ngZone</td>
+                                                              <td>
+                                                                        <code><a href="https://angular.io/docs/ts/latest/api/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>cesiumService</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>document</td>
+                                                              <td>
+                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1582,12 +1632,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="defaultKeyMappingFn"></a>
-                                    <b><span class="modifier">Private</span> defaultKeyMappingFn</b>
+                                    <span class="name"><b><span class="modifier">Private</span> defaultKeyMappingFn</b><a href="#defaultKeyMappingFn"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>defaultKeyMappingFn(keyEvent: KeyboardEvent)</code>
                                 </td>
                             </tr>
@@ -1611,6 +1661,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1619,6 +1670,8 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                               <td>keyEvent</td>
                                                               <td>
                                                                       <code>KeyboardEvent</code>
+                                                              </td>
+                                                              <td>
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1643,12 +1696,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="executeAction"></a>
-                                    <b><span class="modifier">Private</span> executeAction</b>
+                                    <span class="name"><b><span class="modifier">Private</span> executeAction</b><a href="#executeAction"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>executeAction(execution: <a href="../interfaces/KeyboardControlParams.html">KeyboardControlParams</a>, key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, keyboardEvent: KeyboardEvent)</code>
                                 </td>
                             </tr>
@@ -1672,6 +1725,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1681,6 +1735,8 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                               <td>
                                                                       <code><a href="../interfaces/KeyboardControlParams.html" target="_self" >KeyboardControlParams</a></code>
                                                               </td>
+                                                              <td>
+                                                              </td>
                                                               <td></td>
                                                             </tr>
                                                             <tr>
@@ -1688,12 +1744,16 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                               <td>
                                                                       <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                                               </td>
+                                                              <td>
+                                                              </td>
                                                               <td></td>
                                                             </tr>
                                                             <tr>
                                                               <td>keyboardEvent</td>
                                                               <td>
                                                                       <code>KeyboardEvent</code>
+                                                              </td>
+                                                              <td>
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1718,12 +1778,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getAction"></a>
-                                    <b><span class="modifier">Private</span> getAction</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getAction</b><a href="#getAction"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>getAction(char: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
@@ -1747,6 +1807,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1755,6 +1816,8 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                               <td>char</td>
                                                               <td>
                                                                       <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1779,12 +1842,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getParams"></a>
-                                    <b><span class="modifier">Private</span> getParams</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getParams</b><a href="#getParams"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>getParams(paramsDef: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, keyboardEvent: KeyboardEvent)</code>
                                 </td>
                             </tr>
@@ -1809,6 +1872,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1818,12 +1882,16 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                               <td>
                                                                       <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                                               </td>
+                                                              <td>
+                                                              </td>
                                                               <td></td>
                                                             </tr>
                                                             <tr>
                                                               <td>keyboardEvent</td>
                                                               <td>
                                                                       <code>KeyboardEvent</code>
+                                                              </td>
+                                                              <td>
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1848,12 +1916,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="handleKeydown"></a>
-                                    <b><span class="modifier">Private</span> handleKeydown</b>
+                                    <span class="name"><b><span class="modifier">Private</span> handleKeydown</b><a href="#handleKeydown"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>handleKeydown(e: KeyboardEvent)</code>
                                 </td>
                             </tr>
@@ -1877,6 +1945,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1885,6 +1954,8 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                               <td>e</td>
                                                               <td>
                                                                       <code>KeyboardEvent</code>
+                                                              </td>
+                                                              <td>
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1909,12 +1980,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="handleKeyup"></a>
-                                    <b><span class="modifier">Private</span> handleKeyup</b>
+                                    <span class="name"><b><span class="modifier">Private</span> handleKeyup</b><a href="#handleKeyup"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>handleKeyup(e: KeyboardEvent)</code>
                                 </td>
                             </tr>
@@ -1938,6 +2009,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1946,6 +2018,8 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                               <td>e</td>
                                                               <td>
                                                                       <code>KeyboardEvent</code>
+                                                              </td>
+                                                              <td>
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1970,12 +2044,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="handleTick"></a>
-                                    <b><span class="modifier">Private</span> handleTick</b>
+                                    <span class="name"><b><span class="modifier">Private</span> handleTick</b><a href="#handleTick"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>handleTick()</code>
                                 </td>
                             </tr>
@@ -2005,7 +2079,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="init"></a>
-                                    <b> init</b>
+                                    <span class="name"><b> init</b><a href="#init"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2026,15 +2100,10 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                         <div class="io-description"><p>Initializes the keyboard control service.</p>
             </div>
             
-                                        <div>
-                                        </div>
                                         <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2044,12 +2113,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="registerEvents"></a>
-                                    <b><span class="modifier">Private</span> registerEvents</b>
+                                    <span class="name"><b><span class="modifier">Private</span> registerEvents</b><a href="#registerEvents"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>registerEvents(outsideOfAngularZone: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                                 </td>
                             </tr>
@@ -2067,9 +2136,38 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             </div>
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>outsideOfAngularZone</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2079,7 +2177,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="removeKeyboardControls"></a>
-                                    <b> removeKeyboardControls</b>
+                                    <span class="name"><b> removeKeyboardControls</b><a href="#removeKeyboardControls"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2113,12 +2211,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="setKeyboardControls"></a>
-                                    <b> setKeyboardControls</b>
+                                    <span class="name"><b> setKeyboardControls</b><a href="#setKeyboardControls"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>setKeyboardControls(definitions: <a href="../interfaces/KeyboardControlDefinition.html">KeyboardControlDefinition</a>, keyMappingFn: (keyEvent: KeyboardEvent) => void, outsideOfAngularZone: )</code>
+            <code>setKeyboardControls(definitions: <a href="../interfaces/KeyboardControlDefinition.html">KeyboardControlDefinition</a>, keyMappingFn?: (keyEvent?: KeyboardEvent) => void, outsideOfAngularZone: )</code>
                                 </td>
                             </tr>
             
@@ -2149,6 +2247,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -2158,12 +2257,17 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                               <td>
                                                                       <code><a href="../interfaces/KeyboardControlDefinition.html" target="_self" >KeyboardControlDefinition</a></code>
                                                               </td>
+                                                              <td>
+                                                              </td>
                                                               <td></td>
                                                             </tr>
                                                             <tr>
                                                               <td>keyMappingFn</td>
                                                               <td>
-                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
                                                               </td>
                                                               <td><ul>
             <li>Mapping function for custom keys</li>
@@ -2173,7 +2277,8 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                                             <tr>
                                                               <td>outsideOfAngularZone</td>
                                                               <td>
-                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+                                                              </td>
+                                                              <td>
                                                               </td>
                                                               <td><ul>
             <li>if key down events will run outside of angular zone.</li>
@@ -2201,12 +2306,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="unregisterEvents"></a>
-                                    <b><span class="modifier">Private</span> unregisterEvents</b>
+                                    <span class="name"><b><span class="modifier">Private</span> unregisterEvents</b><a href="#unregisterEvents"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>unregisterEvents()</code>
                                 </td>
                             </tr>
@@ -2243,7 +2348,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_activeDefinitions"></a>
-                                    <b><span class="modifier">Private</span> _activeDefinitions</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _activeDefinitions</b><a href="#_activeDefinitions"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2272,7 +2377,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_currentDefinitions"></a>
-                                    <b><span class="modifier">Private</span> _currentDefinitions</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _currentDefinitions</b><a href="#_currentDefinitions"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2301,7 +2406,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_keyMappingFn"></a>
-                                    <b><span class="modifier">Private</span> _keyMappingFn</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _keyMappingFn</b><a href="#_keyMappingFn"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2326,6 +2431,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -2671,6 +2777,7 @@ export class KeyboardControlService {
 </code></pre>
     </div>
 </div>
+
 
 
 

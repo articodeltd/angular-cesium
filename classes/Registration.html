@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1384,6 +1392,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Classes</li>
   <li>Registration</li>
@@ -1459,6 +1468,61 @@
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>observable</td>
+                                                              <td>
+                                                                        <code><a href="../interfaces/EventResult.html" target="_self" >Observable&lt;EventResult&gt;</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>stopper</td>
+                                                              <td>
+                                                                        <code>Subject&lt;any&gt;</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>priority</td>
+                                                              <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>isPaused</td>
+                                                              <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1475,12 +1539,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="isPaused"></a>
-                                    <b><span class="modifier">Public</span> isPaused</b>
+                                    <span class="name"><b><span class="modifier">Public</span> isPaused</b><a href="#isPaused"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>isPaused:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    <span class="modifier-icon fa fa-reset"></span><code>isPaused:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
             </code>
                                 </td>
                             </tr>
@@ -1504,12 +1568,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="observable"></a>
-                                    <b><span class="modifier">Public</span> observable</b>
+                                    <span class="name"><b><span class="modifier">Public</span> observable</b><a href="#observable"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>observable:     <code><a href="../interfaces/EventResult.html" target="_self" >Observable&lt;EventResult&gt;</a></code>
+                                    <span class="modifier-icon fa fa-reset"></span><code>observable:     <code><a href="../interfaces/EventResult.html" target="_self" >Observable&lt;EventResult&gt;</a></code>
             </code>
                                 </td>
                             </tr>
@@ -1533,12 +1597,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="priority"></a>
-                                    <b><span class="modifier">Public</span> priority</b>
+                                    <span class="name"><b><span class="modifier">Public</span> priority</b><a href="#priority"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>priority:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    <span class="modifier-icon fa fa-reset"></span><code>priority:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
             </code>
                                 </td>
                             </tr>
@@ -1562,12 +1626,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="stopper"></a>
-                                    <b><span class="modifier">Public</span> stopper</b>
+                                    <span class="name"><b><span class="modifier">Public</span> stopper</b><a href="#stopper"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>stopper:     <code>Subject&lt;any&gt;</code>
+                                    <span class="modifier-icon fa fa-reset"></span><code>stopper:     <code>Subject&lt;any&gt;</code>
             </code>
                                 </td>
                             </tr>
@@ -1587,6 +1651,7 @@
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1646,7 +1711,7 @@ export interface EventResult {
 @Injectable()
 export class MapEventsManagerService {
 	
-	private scene;
+	private scene: any;
 	private eventRegistrations &#x3D; new Map&lt;string, Registration[]&gt;();
 	
 	constructor(private cesiumService: CesiumService,
@@ -1693,7 +1758,7 @@ export class MapEventsManagerService {
 		return &lt;DisposableObservable&lt;EventResult&gt;&gt; registrationObservable;
 	}
 	
-	private disposeObservable(eventRegistration, eventName) {
+	private disposeObservable(eventRegistration: Registration, eventName: string) {
 		eventRegistration.stopper.next(1);
 		const registrations &#x3D; this.eventRegistrations.get(eventName);
 		const index &#x3D; registrations.indexOf(eventRegistration);
@@ -1719,7 +1784,7 @@ export class MapEventsManagerService {
 	}
 	
 	private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier,
-																	entityType, pickOption: PickOptions, priority: number): Registration {
+																	entityType: any, pickOption: PickOptions, priority: number): Registration {
 		const cesiumEventObservable &#x3D; this.eventBuilder.get(event, modifier);
 		const stopper &#x3D; new Subject&lt;any&gt;();
 		
@@ -1743,17 +1808,19 @@ export class MapEventsManagerService {
 		return registration;
 	}
 	
-	private createDragEvent(event, modifier, entityType, pickOption, priority): Observable&lt;EventResult&gt; {
+	private createDragEvent(event: CesiumEvent, modifier: CesiumEventModifier, entityType: any, pickOption: PickOptions,
+							priority: number): Observable&lt;EventResult&gt; {
 		const {mouseDownEvent, mouseUpEvent} &#x3D; CesiumDragDropHelper.getDragEventTypes(event);
 		
 		const mouseUpObservable &#x3D; this.eventBuilder.get(mouseUpEvent);
 		const mouseMoveObservable &#x3D; this.eventBuilder.get(CesiumEvent.MOUSE_MOVE);
 		
-		const mouseDownRegistration &#x3D; this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption, priority);
+		const mouseDownRegistration &#x3D; this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption,
+			priority);
 		
 		const dropSubject &#x3D; new Subject&lt;EventResult&gt;();
 		const dragObserver &#x3D; mouseDownRegistration.observable.mergeMap(e &#x3D;&gt; {
-			let lastMove &#x3D; null;
+			let lastMove: any &#x3D; null;
 			const dragStartPositionX &#x3D; e.movement.startPosition.x;
 			const dragStartPositionY &#x3D; e.movement.startPosition.y;
 			return mouseMoveObservable.map((movement) &#x3D;&gt; {
@@ -1804,13 +1871,13 @@ export class MapEventsManagerService {
 		
 		// Picks can be cesium entity or cesium primitive
 		if (picks) {
-			picks &#x3D; picks.map((pick) &#x3D;&gt; pick.id &amp;&amp; pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
+			picks &#x3D; picks.map((pick: any) &#x3D;&gt; pick.id &amp;&amp; pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
 		}
 		
 		return {movement : movement, cesiumEntities : picks};
 	}
 	
-	private addEntities(picksAndMovement, entityType, pickOption: PickOptions): EventResult {
+	private addEntities(picksAndMovement: any, entityType: any, pickOption: PickOptions): EventResult {
 		
 		if (picksAndMovement.cesiumEntities &#x3D;&#x3D;&#x3D; null) {
 			picksAndMovement.entities &#x3D; null;
@@ -1819,11 +1886,11 @@ export class MapEventsManagerService {
 		let entities &#x3D; [];
 		if (pickOption !&#x3D;&#x3D; PickOptions.NO_PICK) {
 			if (entityType) {
-				entities &#x3D; picksAndMovement.cesiumEntities.map((pick) &#x3D;&gt; pick.acEntity).filter((acEntity) &#x3D;&gt; {
+				entities &#x3D; picksAndMovement.cesiumEntities.map((pick: any) &#x3D;&gt; pick.acEntity).filter((acEntity: any) &#x3D;&gt; {
 					return acEntity &amp;&amp; acEntity instanceof entityType;
 				});
 			} else {
-				entities &#x3D; picksAndMovement.cesiumEntities.map((pick) &#x3D;&gt; pick.acEntity);
+				entities &#x3D; picksAndMovement.cesiumEntities.map((pick: any) &#x3D;&gt; pick.acEntity);
 			}
 			
 			entities &#x3D; UtilsService.unique(entities);

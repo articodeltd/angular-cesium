@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1454,12 +1462,6 @@ The Service allows opening and closing of the context menu and passing data to t
                                         <span class="modifier">Private</span> <a href="#_showContextMenu">_showContextMenu</a>
                                     </li>
                                     <li>
-                                         <a href="#content">content</a>
-                                    </li>
-                                    <li>
-                                         <a href="#contextMenuChangeNotifier">contextMenuChangeNotifier</a>
-                                    </li>
-                                    <li>
                                         <span class="modifier">Private</span> <a href="#leftClickRegistration">leftClickRegistration</a>
                                     </li>
                                     <li>
@@ -1467,21 +1469,6 @@ The Service allows opening and closing of the context menu and passing data to t
                                     </li>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#mapEventsManager">mapEventsManager</a>
-                                    </li>
-                                    <li>
-                                         <a href="#onClose">onClose</a>
-                                    </li>
-                                    <li>
-                                         <a href="#onOpen">onOpen</a>
-                                    </li>
-                                    <li>
-                                         <a href="#options">options</a>
-                                    </li>
-                                    <li>
-                                         <a href="#position">position</a>
-                                    </li>
-                                    <li>
-                                         <a href="#showContextMenu">showContextMenu</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1506,6 +1493,38 @@ The Service allows opening and closing of the context menu and passing data to t
                                 </ul>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Accessors</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#contextMenuChangeNotifier">contextMenuChangeNotifier</a>
+                                    </li>
+                                    <li>
+                                         <a href="#showContextMenu">showContextMenu</a>
+                                    </li>
+                                    <li>
+                                         <a href="#options">options</a>
+                                    </li>
+                                    <li>
+                                         <a href="#position">position</a>
+                                    </li>
+                                    <li>
+                                         <a href="#content">content</a>
+                                    </li>
+                                    <li>
+                                         <a href="#onOpen">onOpen</a>
+                                    </li>
+                                    <li>
+                                         <a href="#onClose">onClose</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -1521,7 +1540,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="close"></a>
-                                    <b> close</b>
+                                    <span class="name"><b> close</b><a href="#close"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1553,7 +1572,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="init"></a>
-                                    <b> init</b>
+                                    <span class="name"><b> init</b><a href="#init"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1573,9 +1592,38 @@ The Service allows opening and closing of the context menu and passing data to t
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>mapEventsManager</td>
+                                                              <td>
+                                                                      <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1585,12 +1633,12 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="open"></a>
-                                    <b> open</b>
+                                    <span class="name"><b> open</b><a href="#open"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>open(content: , position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, options: <a href="../interfaces/ContextMenuOptions.html">ContextMenuOptions</a>)</code>
+            <code>open(content: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, options: <a href="../interfaces/ContextMenuOptions.html">ContextMenuOptions</a>)</code>
                                 </td>
                             </tr>
             
@@ -1605,9 +1653,56 @@ The Service allows opening and closing of the context menu and passing data to t
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>content</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>position</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/ContextMenuOptions.html" target="_self" >ContextMenuOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1624,7 +1719,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_content"></a>
-                                    <b><span class="modifier">Private</span> _content</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _content</b><a href="#_content"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1653,7 +1748,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_contextMenuChangeNotifier"></a>
-                                    <b><span class="modifier">Private</span> _contextMenuChangeNotifier</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _contextMenuChangeNotifier</b><a href="#_contextMenuChangeNotifier"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1676,7 +1771,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_defaultContextMenuOptions"></a>
-                                    <b><span class="modifier">Private</span> _defaultContextMenuOptions</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _defaultContextMenuOptions</b><a href="#_defaultContextMenuOptions"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1705,7 +1800,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_onClose"></a>
-                                    <b><span class="modifier">Private</span> _onClose</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _onClose</b><a href="#_onClose"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1728,7 +1823,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_onOpen"></a>
-                                    <b><span class="modifier">Private</span> _onOpen</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _onOpen</b><a href="#_onOpen"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1751,7 +1846,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_options"></a>
-                                    <b><span class="modifier">Private</span> _options</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _options</b><a href="#_options"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1780,7 +1875,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_position"></a>
-                                    <b><span class="modifier">Private</span> _position</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _position</b><a href="#_position"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1809,7 +1904,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="_showContextMenu"></a>
-                                    <b><span class="modifier">Private</span> _showContextMenu</b>
+                                    <span class="name"><b><span class="modifier">Private</span> _showContextMenu</b><a href="#_showContextMenu"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1836,66 +1931,8 @@ The Service allows opening and closing of the context menu and passing data to t
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="content"></a>
-                                    <b> content</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>content:     <code><a href="../interfaces/BasicContextMenu.html" target="_self" >BasicContextMenu</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/BasicContextMenu.html" target="_self" >BasicContextMenu</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:50</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="contextMenuChangeNotifier"></a>
-                                    <b> contextMenuChangeNotifier</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>contextMenuChangeNotifier:     <code>EventEmitter&lt;any&gt;</code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code>EventEmitter&lt;any&gt;</code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:34</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
                                     <a name="leftClickRegistration"></a>
-                                    <b><span class="modifier">Private</span> leftClickRegistration</b>
+                                    <span class="name"><b><span class="modifier">Private</span> leftClickRegistration</b><a href="#leftClickRegistration"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1924,7 +1961,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="leftClickSubscription"></a>
-                                    <b><span class="modifier">Private</span> leftClickSubscription</b>
+                                    <span class="name"><b><span class="modifier">Private</span> leftClickSubscription</b><a href="#leftClickSubscription"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1953,7 +1990,7 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="mapEventsManager"></a>
-                                    <b><span class="modifier">Private</span> mapEventsManager</b>
+                                    <span class="name"><b><span class="modifier">Private</span> mapEventsManager</b><a href="#mapEventsManager"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1977,119 +2014,40 @@ The Service allows opening and closing of the context menu and passing data to t
             
                         </tbody>
                     </table>
+            </section>
+
+            <section>
+                <h3 id="accessors">
+                    Accessors
+                </h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="onClose"></a>
-                                    <b> onClose</b>
+                                    <a name="contextMenuChangeNotifier"></a>
+                                    <span class="name"><b>contextMenuChangeNotifier</b><a href="#contextMenuChangeNotifier"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
+            
                             <tr>
                                 <td class="col-md-4">
-                                    <code>onClose:     <code>EventEmitter&lt;any&gt;</code>
-            </code>
+                                    <span class="accessor"><b>get</b><code>contextMenuChangeNotifier()</code></span>
                                 </td>
                             </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:34</a></div>
+                                            </td>
+                                        </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code>EventEmitter&lt;any&gt;</code>
             
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code>EventEmitter&lt;any&gt;</code>
+            
+                                            </div>
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:58</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="onOpen"></a>
-                                    <b> onOpen</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>onOpen:     <code>EventEmitter&lt;any&gt;</code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code>EventEmitter&lt;any&gt;</code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:54</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="options"></a>
-                                    <b> options</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>options:     <code><a href="../interfaces/ContextMenuOptions.html" target="_self" >ContextMenuOptions</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/ContextMenuOptions.html" target="_self" >ContextMenuOptions</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:42</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="position"></a>
-                                    <b> position</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>position:     <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:46</a></div>
-                                        </td>
-                                    </tr>
-            
             
                         </tbody>
                     </table>
@@ -2098,27 +2056,184 @@ The Service allows opening and closing of the context menu and passing data to t
                             <tr>
                                 <td class="col-md-4">
                                     <a name="showContextMenu"></a>
-                                    <b> showContextMenu</b>
+                                    <span class="name"><b>showContextMenu</b><a href="#showContextMenu"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
+            
                             <tr>
                                 <td class="col-md-4">
-                                    <code>showContextMenu:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-            </code>
+                                    <span class="accessor"><b>get</b><code>showContextMenu()</code></span>
                                 </td>
                             </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:38</a></div>
+                                            </td>
+                                        </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
             
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            
+                                            </div>
                                     </td>
                                 </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:38</a></div>
-                                        </td>
-                                    </tr>
             
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="options"></a>
+                                    <span class="name"><b>options</b><a href="#options"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>options()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:42</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/ContextMenuOptions.html" target="_self" >ContextMenuOptions</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="position"></a>
+                                    <span class="name"><b>position</b><a href="#position"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>position()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:46</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="content"></a>
+                                    <span class="name"><b>content</b><a href="#content"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>content()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:50</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code><a href="../interfaces/BasicContextMenu.html" target="_self" >BasicContextMenu</a></code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="onOpen"></a>
+                                    <span class="name"><b>onOpen</b><a href="#onOpen"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>onOpen()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:54</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code>EventEmitter&lt;any&gt;</code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="onClose"></a>
+                                    <span class="name"><b>onClose</b><a href="#onClose"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="accessor"><b>get</b><code>onClose()</code></span>
+                                </td>
+                            </tr>
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/angular-cesium/services/context-menu/context-menu.service.ts:58</a></div>
+                                            </td>
+                                        </tr>
+                                <tr>
+                                    <td class="col-md-4">
+            
+                                            <div class="io-description">
+                                                <b>Returns : </b>    <code>EventEmitter&lt;any&gt;</code>
+            
+                                            </div>
+                                    </td>
+                                </tr>
             
                         </tbody>
                     </table>
@@ -2193,7 +2308,7 @@ export class ContextMenuService {
     this.mapEventsManager &#x3D; mapEventsManager;
   }
 
-  open(content, position: Cartesian3, options: ContextMenuOptions &#x3D; {}) {
+  open(content: any, position: Cartesian3, options: ContextMenuOptions &#x3D; {}) {
     this.close();
     this._content &#x3D; content;
     this._position &#x3D; position;
@@ -2236,6 +2351,7 @@ export class ContextMenuService {
 </code></pre>
     </div>
 </div>
+
 
 
 

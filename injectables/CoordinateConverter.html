@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1183,6 +1190,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
@@ -1486,7 +1494,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>)</code>
+                                    <code>constructor(cesiumService?: <a href="../injectables/CesiumService.html">CesiumService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -1495,6 +1503,35 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>cesiumService</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                                                              </td>
+                                                              <td>
+                                                                      true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1509,7 +1546,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="bearingTo"></a>
-                                    <b> bearingTo</b>
+                                    <span class="name"><b> bearingTo</b><a href="#bearingTo"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1528,6 +1565,9 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>initial bearing between two points</p>
+            <ul>
+            <li>@return bearing in degrees</li>
+            </ul>
             </div>
             
                                         <div class="io-description">
@@ -1537,6 +1577,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1544,20 +1585,24 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                                             <tr>
                                                               <td>first</td>
                                                               <td>
+                                                                      <code>literal type</code>
+                                                              </td>
+                                                              <td>
                                                               </td>
                                                               <td><ul>
-            <li>in radians</li>
+            <li>{latitude,longitude} in radians</li>
             </ul>
             </td>
                                                             </tr>
                                                             <tr>
                                                               <td>second</td>
                                                               <td>
+                                                                      <code>literal type</code>
+                                                              </td>
+                                                              <td>
                                                               </td>
                                                               <td><ul>
-            <li><p>in radians</p>
-            </li>
-            <li></li>
+            <li>{latitude,longitude} in radians</li>
             </ul>
             </td>
                                                             </tr>
@@ -1582,12 +1627,12 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="bearingToCartesian"></a>
-                                    <b> bearingToCartesian</b>
+                                    <span class="name"><b> bearingToCartesian</b><a href="#bearingToCartesian"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>bearingToCartesian(firstCartesian3: , secondCartesian3: )</code>
+            <code>bearingToCartesian(firstCartesian3: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, secondCartesian3: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
                                 </td>
                             </tr>
             
@@ -1610,6 +1655,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1617,20 +1663,20 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                                             <tr>
                                                               <td>firstCartesian3</td>
                                                               <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
                                                               </td>
-                                                              <td><ul>
-            <li>in Cartesian3</li>
-            </ul>
-            </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
                                                             </tr>
                                                             <tr>
                                                               <td>secondCartesian3</td>
                                                               <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
                                                               </td>
-                                                              <td><ul>
-            <li>in Cartesian3</li>
-            </ul>
-            </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
                                                             </tr>
                                                     </tbody>
                                                 </table>
@@ -1653,12 +1699,12 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="cartesian3ToCartographic"></a>
-                                    <b> cartesian3ToCartographic</b>
+                                    <span class="name"><b> cartesian3ToCartographic</b><a href="#cartesian3ToCartographic"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>cartesian3ToCartographic(cartesian: , ellipsoid: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+            <code>cartesian3ToCartographic(cartesian: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, ellipsoid?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
@@ -1673,9 +1719,48 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>cartesian</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>ellipsoid</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1685,12 +1770,12 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="degreesToCartographic"></a>
-                                    <b> degreesToCartographic</b>
+                                    <span class="name"><b> degreesToCartographic</b><a href="#degreesToCartographic"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>degreesToCartographic(longitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, latitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, height: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+            <code>degreesToCartographic(longitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, latitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, height?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                                 </td>
                             </tr>
             
@@ -1705,9 +1790,57 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>longitude</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>latitude</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>height</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1717,7 +1850,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="degreesToUTM"></a>
-                                    <b> degreesToUTM</b>
+                                    <span class="name"><b> degreesToUTM</b><a href="#degreesToUTM"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1737,9 +1870,47 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>longitude</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>latitude</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1749,13 +1920,13 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="geodesyToCesiumObject"></a>
-                                    <b><span class="modifier">Private</span> geodesyToCesiumObject</b>
+                                    <span class="name"><b><span class="modifier">Private</span> geodesyToCesiumObject</b><a href="#geodesyToCesiumObject"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>geodesyToCesiumObject(geodesyRadians: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>geodesyToCesiumObject(geodesyRadians: LatLon)</code>
                                 </td>
                             </tr>
             
@@ -1770,9 +1941,38 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>geodesyRadians</td>
+                                                              <td>
+                                                                      <code>LatLon</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code>{ longitude: any; latitude: any; height: any; }</code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1782,7 +1982,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="middlePointByScreen"></a>
-                                    <b> middlePointByScreen</b>
+                                    <span class="name"><b> middlePointByScreen</b><a href="#middlePointByScreen"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1802,9 +2002,47 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>position0</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>position1</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1814,7 +2052,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="midPointToCartesian3"></a>
-                                    <b> midPointToCartesian3</b>
+                                    <span class="name"><b> midPointToCartesian3</b><a href="#midPointToCartesian3"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1842,6 +2080,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
@@ -1849,19 +2088,21 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                                             <tr>
                                                               <td>first</td>
                                                               <td>
+                                                                      <code>literal type</code>
                                                               </td>
-                                                              <td><ul>
-            <li>in radians</li>
-            </ul>
+                                                              <td>
+                                                              </td>
+                                                              <td><p>,longitude} in radians</p>
             </td>
                                                             </tr>
                                                             <tr>
                                                               <td>second</td>
                                                               <td>
+                                                                      <code>literal type</code>
                                                               </td>
-                                                              <td><ul>
-            <li>in radians</li>
-            </ul>
+                                                              <td>
+                                                              </td>
+                                                              <td><p>,longitude} in radians</p>
             </td>
                                                             </tr>
                                                     </tbody>
@@ -1885,12 +2126,12 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="radiansToCartographic"></a>
-                                    <b> radiansToCartographic</b>
+                                    <span class="name"><b> radiansToCartographic</b><a href="#radiansToCartographic"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>radiansToCartographic(longitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, latitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, height: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+            <code>radiansToCartographic(longitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, latitude: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, height?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                                 </td>
                             </tr>
             
@@ -1905,9 +2146,57 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>longitude</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>latitude</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>height</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1917,12 +2206,12 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="screenToCartesian3"></a>
-                                    <b> screenToCartesian3</b>
+                                    <span class="name"><b> screenToCartesian3</b><a href="#screenToCartesian3"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>screenToCartesian3(screenPos: literal type, addMapCanvansBoundsToPos: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+            <code>screenToCartesian3(screenPos: literal type, addMapCanvansBoundsToPos?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                                 </td>
                             </tr>
             
@@ -1937,9 +2226,48 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>screenPos</td>
+                                                              <td>
+                                                                      <code>literal type</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>addMapCanvansBoundsToPos</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1949,12 +2277,12 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="screenToCartographic"></a>
-                                    <b> screenToCartographic</b>
+                                    <span class="name"><b> screenToCartographic</b><a href="#screenToCartographic"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>screenToCartographic(screenPos: literal type, ellipsoid: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+            <code>screenToCartographic(screenPos: literal type, ellipsoid?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
@@ -1969,9 +2297,48 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>screenPos</td>
+                                                              <td>
+                                                                      <code>literal type</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>ellipsoid</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1981,7 +2348,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                             <tr>
                                 <td class="col-md-4">
                                     <a name="UTMToDegrees"></a>
-                                    <b> UTMToDegrees</b>
+                                    <span class="name"><b> UTMToDegrees</b><a href="#UTMToDegrees"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -2001,14 +2368,71 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>zone</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>hemisphereType</td>
+                                                              <td>
+                                                                      <code>hemisphere</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>easting</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>northing</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code>{ longitude: any; latitude: any; height: any; }</code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
             </section>
+
 
     </div>
 
@@ -2017,7 +2441,7 @@ We are using the geodesy implementation of UTM conversion. see: <a href="https:/
         <pre class="line-numbers"><code class="language-typescript">import { Injectable, Optional } from &#x27;@angular/core&#x27;;
 import { CesiumService } from &#x27;../cesium/cesium.service&#x27;;
 import * as geodesy from &#x27;geodesy&#x27;;
-import { hemisphere, LatLonEllipsoidal, Utm } from &#x27;geodesy&#x27;;
+import {hemisphere, LatLon, LatLonEllipsoidal, Utm} from &#x27;geodesy&#x27;;
 import { Cartesian3 } from &#x27;../../models/cartesian3&#x27;;
 
 const LatLonVectors &#x3D; geodesy[&#x27;LatLonVectors&#x27;]; // doesnt exists on typings
@@ -2075,7 +2499,7 @@ export class CoordinateConverter {
 		return this.cartesian3ToCartographic(this.screenToCartesian3(screenPos), ellipsoid);
 	}
 	
-	cartesian3ToCartographic(cartesian, ellipsoid?: any) {
+	cartesian3ToCartographic(cartesian: Cartesian3, ellipsoid?: any) {
 		return Cesium.Cartographic.fromCartesian(cartesian, ellipsoid);
 	}
 	
@@ -2095,21 +2519,21 @@ export class CoordinateConverter {
 		return this.geodesyToCesiumObject(new Utm(zone, hemisphereType, easting, northing).toLatLonE());
 	}
 	
-	private geodesyToCesiumObject(geodesyRadians) {
+	private geodesyToCesiumObject(geodesyRadians: LatLon) {
 		return {
 			longitude : geodesyRadians.lon,
 			latitude : geodesyRadians.lat,
-			height : geodesyRadians.height ? geodesyRadians.height : 0
+			height : geodesyRadians[&#x27;height&#x27;] ? geodesyRadians[&#x27;height&#x27;] : 0
 		};
 	}
-	
-	/**
-	 * middle point between two points
-	 * @param {{latitude; longitude}} first - in radians
-	 * @param {{latitude; longitude}} second - in radians
-	 */
-	midPointToCartesian3(first: { latitude, longitude }, second: { latitude, longitude }) {
-		const toDeg &#x3D; (rad) &#x3D;&gt; Cesium.Math.toDegrees(rad);
+
+    /**
+     * middle point between two points
+     * @param first  {latitude,longitude} in radians
+     * @param second {latitude,longitude} in radians
+     */
+	midPointToCartesian3(first: { latitude: number, longitude: number }, second: { latitude: number, longitude: number }) {
+		const toDeg &#x3D; (rad: number) &#x3D;&gt; Cesium.Math.toDegrees(rad);
 		const firstPoint &#x3D; new LatLonVectors(toDeg(first.latitude), toDeg(first.longitude));
 		const secondPoint &#x3D; new LatLonVectors(toDeg(second.latitude), toDeg(second.longitude));
 		const middlePoint: any &#x3D; firstPoint.midpointTo(secondPoint);
@@ -2125,31 +2549,31 @@ export class CoordinateConverter {
       new Cesium.Cartesian2((screenPosition2.x + screenPosition1.x) / 2.0, (screenPosition2.y + screenPosition1.y) / 2.0);
     return scene.pickPosition(middleScreenPoint);
   }
-	
-	/**
-	 * initial bearing between two points
-	 * @param {{latitude; longitude}} first - in radians
-	 * @param {{latitude; longitude}} second - in radians
-	 *
-	 * * @return bearing in degrees
-	 */
-	bearingTo(first: { latitude, longitude }, second: { latitude, longitude }) {
-		const toDeg &#x3D; (rad) &#x3D;&gt; Cesium.Math.toDegrees(rad);
+
+    /**
+     * initial bearing between two points
+     *
+     * * @return bearing in degrees
+     * @param first - {latitude,longitude} in radians
+     * @param second - {latitude,longitude} in radians
+     */
+	bearingTo(first: { latitude: number, longitude: number }, second: { latitude: number, longitude: number }) {
+		const toDeg &#x3D; (rad: number) &#x3D;&gt; Cesium.Math.toDegrees(rad);
 		const firstPoint &#x3D; new LatLonVectors(toDeg(first.latitude), toDeg(first.longitude));
 		const secondPoint &#x3D; new LatLonVectors(toDeg(second.latitude), toDeg(second.longitude));
 		const bearing &#x3D; firstPoint.bearingTo(secondPoint);
 		
 		return bearing;
 	}
-	
-	/**
-	 * initial bearing between two points
-	 * @param {{latitude; longitude}} firstCartesian3 - in Cartesian3
-	 * @param {{latitude; longitude}} secondCartesian3 - in Cartesian3
-	 *
-	 * @return bearing in degrees
-	 */
-	bearingToCartesian(firstCartesian3, secondCartesian3) {
+
+    /**
+     * initial bearing between two points
+     *
+     * @return bearing in degrees
+     * @param firstCartesian3
+     * @param secondCartesian3
+     */
+	bearingToCartesian(firstCartesian3: Cartesian3, secondCartesian3: Cartesian3) {
 		const firstCart &#x3D; Cesium.Cartographic.fromCartesian(firstCartesian3);
 		const secondCart &#x3D; Cesium.Cartographic.fromCartesian(secondCartesian3);
 		
@@ -2159,6 +2583,7 @@ export class CoordinateConverter {
 </code></pre>
     </div>
 </div>
+
 
 
 

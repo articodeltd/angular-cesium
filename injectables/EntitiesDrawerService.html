@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1183,6 +1190,7 @@
                                        </li>
                                </ul>
                            </li>
+                   
                    
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
@@ -1492,6 +1500,52 @@ Drawers the handle Cesium primitives extend it.</p>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>cesiumService</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>graphicsType</td>
+                                                              <td>
+                                                                        <code><a href="../miscellaneous/enumerations.html#GraphicsType" target="_self" >GraphicsType</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>defaultOptions</td>
+                                                              <td>
+                                                                        <code><a href="../interfaces/EntitiesDrawerOptions.html" target="_self" >EntitiesDrawerOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1506,7 +1560,7 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="add"></a>
-                                    <b> add</b>
+                                    <span class="name"><b> add</b><a href="#add"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1526,9 +1580,38 @@ Drawers the handle Cesium primitives extend it.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>cesiumProps</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1538,12 +1621,12 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="getFreeEntitiesCollection"></a>
-                                    <b><span class="modifier">Private</span> getFreeEntitiesCollection</b>
+                                    <span class="name"><b><span class="modifier">Private</span> getFreeEntitiesCollection</b><a href="#getFreeEntitiesCollection"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon fa fa-lock"></span>
                                     <code>getFreeEntitiesCollection()</code>
                                 </td>
                             </tr>
@@ -1571,12 +1654,12 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="init"></a>
-                                    <b> init</b>
+                                    <span class="name"><b> init</b><a href="#init"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>init(options: <a href="../interfaces/EntitiesDrawerOptions.html">EntitiesDrawerOptions</a>)</code>
+            <code>init(options?: <a href="../interfaces/EntitiesDrawerOptions.html">EntitiesDrawerOptions</a>)</code>
                                 </td>
                             </tr>
             
@@ -1591,9 +1674,39 @@ Drawers the handle Cesium primitives extend it.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/EntitiesDrawerOptions.html" target="_self" >EntitiesDrawerOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code>{}</code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1603,7 +1716,7 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="remove"></a>
-                                    <b> remove</b>
+                                    <span class="name"><b> remove</b><a href="#remove"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1623,9 +1736,38 @@ Drawers the handle Cesium primitives extend it.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1635,7 +1777,7 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="removeAll"></a>
-                                    <b> removeAll</b>
+                                    <span class="name"><b> removeAll</b><a href="#removeAll"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1667,7 +1809,7 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="setShow"></a>
-                                    <b> setShow</b>
+                                    <span class="name"><b> setShow</b><a href="#setShow"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1687,9 +1829,38 @@ Drawers the handle Cesium primitives extend it.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>showValue</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1699,13 +1870,13 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="suspendEntityCollection"></a>
-                                    <b><span class="modifier">Private</span> suspendEntityCollection</b>
+                                    <span class="name"><b><span class="modifier">Private</span> suspendEntityCollection</b><a href="#suspendEntityCollection"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>suspendEntityCollection(entity: )</code>
+                                        <span class="modifier-icon fa fa-lock"></span>
+                                    <code>suspendEntityCollection(entity: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
@@ -1720,9 +1891,38 @@ Drawers the handle Cesium primitives extend it.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1732,7 +1932,7 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="update"></a>
-                                    <b> update</b>
+                                    <span class="name"><b> update</b><a href="#update"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1752,9 +1952,47 @@ Drawers the handle Cesium primitives extend it.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>cesiumProps</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1771,7 +2009,7 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="entityCollections"></a>
-                                    <b><span class="modifier">Private</span> entityCollections</b>
+                                    <span class="name"><b><span class="modifier">Private</span> entityCollections</b><a href="#entityCollections"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1794,7 +2032,7 @@ Drawers the handle Cesium primitives extend it.</p>
                             <tr>
                                 <td class="col-md-4">
                                     <a name="graphicsTypeName"></a>
-                                    <b><span class="modifier">Private</span> graphicsTypeName</b>
+                                    <span class="name"><b><span class="modifier">Private</span> graphicsTypeName</b><a href="#graphicsTypeName"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1819,6 +2057,7 @@ Drawers the handle Cesium primitives extend it.</p>
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1878,7 +2117,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
 		return dataSources;
   }
 
-  add(cesiumProps: any) {
+  add(cesiumProps: any): any {
     const optimizedEntityCollection &#x3D; this.getFreeEntitiesCollection();
     if (optimizedEntityCollection &#x3D;&#x3D;&#x3D; null) {
       throw new Error(&#x27;No more free entity collections&#x27;);
@@ -1934,7 +2173,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     });
   }
 
-  private suspendEntityCollection(entity) {
+  private suspendEntityCollection(entity: any) {
     const id &#x3D; entity.entityCollection;
     if (!this.entityCollections.has(id)) {
       throw new Error(&#x27;No EntityCollection for entity.entityCollection&#x27;);
@@ -1947,6 +2186,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
 </code></pre>
     </div>
 </div>
+
 
 
 

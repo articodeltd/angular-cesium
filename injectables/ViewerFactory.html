@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -203,6 +203,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -504,6 +507,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -728,8 +732,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -883,6 +887,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcPolylineVolumeDescComponent.html" >AcPolylineVolumeDescComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AcPrimitivePolylineComponent.html" >AcPrimitivePolylineComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AcRectangleDescComponent.html" >AcRectangleDescComponent</a>
@@ -1184,6 +1191,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1474,12 +1482,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="createViewer"></a>
-                                    <b> createViewer</b>
+                                    <span class="name"><b> createViewer</b><a href="#createViewer"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>createViewer(mapContainer: HTMLElement, options: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+            <code>createViewer(mapContainer: HTMLElement, options?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
@@ -1502,12 +1510,16 @@
                                                         <tr>
                                                             <td>Name</td>
                                                             <td>Type</td>
+                                                            <td>Optional</td>
                                                             <td>Description</td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                             <tr>
                                                               <td>mapContainer</td>
+                                                              <td>
+                                                                      <code>HTMLElement</code>
+                                                              </td>
                                                               <td>
                                                               </td>
                                                               <td><ul>
@@ -1518,6 +1530,10 @@
                                                             <tr>
                                                               <td>options</td>
                                                               <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
                                                               </td>
                                                               <td><ul>
             <li>Options to create the viewer with - Optional</li>
@@ -1553,7 +1569,7 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="cesium"></a>
-                                    <b> cesium</b>
+                                    <span class="name"><b> cesium</b><a href="#cesium"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -1578,6 +1594,7 @@
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
@@ -1635,6 +1652,7 @@ export class ViewerFactory {
 </code></pre>
     </div>
 </div>
+
 
 
 
