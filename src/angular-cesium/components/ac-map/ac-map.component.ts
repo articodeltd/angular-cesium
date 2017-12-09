@@ -20,6 +20,7 @@ import { ConfigurationService } from '../../cesium-enhancements/ConfigurationSer
 import { ScreenshotService } from '../../services/screenshot/screenshot.service';
 import { ContextMenuService } from '../../services/context-menu/context-menu.service';
 import { CoordinateConverter } from '../../services/coordinate-converter/coordinate-converter.service';
+import {PolylinePrimitiveDrawerService} from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service'
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -51,6 +52,7 @@ import { CoordinateConverter } from '../../services/coordinate-converter/coordin
     PlonterService,
     LabelDrawerService,
     PolylineDrawerService,
+    PolylinePrimitiveDrawerService,
     EllipseDrawerService,
     PointDrawerService,
     ArcDrawerService,

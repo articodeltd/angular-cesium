@@ -14,6 +14,7 @@ export * from './components/ac-label-primitive-desc/ac-label-primitive-desc.comp
 export * from './components/ac-polygon-desc/ac-polygon-desc.component';
 export * from './components/ac-polygon/ac-polygon.component';
 export * from './components/ac-polyline/ac-polyline.component';
+export * from './components/ac-primitive-polyline/ac-primitive-polyline.component';
 export * from './components/ac-point/ac-point.component';
 export * from './components/ac-point-desc/ac-point-desc.component';
 export * from './components/ac-circle/ac-circle.component';
