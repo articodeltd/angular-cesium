@@ -1,3 +1,7 @@
+## NEXT
+### Fixes
+* Fix range and bearing example
+
 ## 0.037
 ### Fixes
 * Html Primitive - change primitive screen position to Cesium.Cartesian2
