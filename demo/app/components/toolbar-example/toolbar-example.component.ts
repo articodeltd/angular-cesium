@@ -38,26 +38,30 @@ export class ToolbarExampleComponent implements OnInit {
     });
     this.rnb.filter(e => e.editAction === EditActions.ADD_LAST_POINT).subscribe(() => this.rnb.disable());
     this.rnb.setLabelsRenderFn((update) => {
-      if (!update.positions[0]) {
+      const  firstPosition = update.positions[0];
+      if (!firstPosition) {
         return [];
       }
-      const position = update.positions[1] ? update.positions[1] : update.updatedPosition;
+      let lastPosition = update.positions[1] ? update.positions[1] : update.updatedPosition;
+      if (!lastPosition){
+        lastPosition = firstPosition;
+      }
       return [
         {
-          text: `Range: ${(Cesium.Cartesian3.distance(update.positions[0], position) / 1000).toFixed(2)}`,
+          text: `Range: ${(Cesium.Cartesian3.distance(firstPosition, lastPosition) / 1000).toFixed(2)}`,
           scale: 0.6,
           eyeOffset: new Cesium.Cartesian3(0, 0, -1000),
           pixelOffset: new Cesium.Cartesian2(-50, -40),
-          position,
+          position: lastPosition,
           fillColor: Cesium.Color.RED,
           showBackground: true,
         },
         {
-          text: `Bearing: ${this.coordinateConverter.bearingToCartesian(update.positions[0], position).toFixed(2)}`,
+          text: `Bearing: ${this.coordinateConverter.bearingToCartesian(firstPosition, lastPosition).toFixed(2)}`,
           scale: 0.6,
           eyeOffset: new Cesium.Cartesian3(0, 0, -1000),
           pixelOffset: new Cesium.Cartesian2(-50, -15),
-          position,
+          position: lastPosition,
           fillColor: Cesium.Color.RED,
           showBackground: true,
         },
