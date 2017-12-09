@@ -1,14 +1,16 @@
-## NEXT
+## 0.0.39
 ### Fixes
 * Fix range and bearing example
 
-## 0.037
+### Features
+* Added `ac-primitive-polyline` - Using primitive drawer
+
+## 0.0.37
 ### Fixes
 * Html Primitive - change primitive screen position to Cesium.Cartesian2
 * Fix demo typescript compilation 
 * Fix project implicit any 
 * Change `ngOutletContext` to `ngTemplateOutletContext`
-* Added primitive polyline - Using primitive drawer
 
 ## 0.0.36
 ### Fixes
