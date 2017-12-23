@@ -1,4 +1,3 @@
-import { Cartesian2 } from './cartesian2';
 export interface Cartesian2 {
   x: number;
   y: number;

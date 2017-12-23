@@ -1,6 +1,5 @@
-import { Rectangle } from './cesium-heatmap-material-creator';
-import { Cartesian2 } from './../angular-cesium/models/cartesian2';
-import { Cartesian3 } from './../angular-cesium/models/cartesian3';
+import { Cartesian2 } from '../angular-cesium/models/cartesian2';
+import { Cartesian3 } from '../angular-cesium/models/cartesian3';
 import { GeoUtilsService } from '../angular-cesium/services/geo-utils/geo-utils.service';
 import * as h337 from 'heatmap.js/build/heatmap.js';
 import { Injectable } from '@angular/core';
