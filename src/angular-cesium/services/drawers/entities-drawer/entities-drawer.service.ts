@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
 import { CesiumService } from '../../cesium/cesium.service';
 import { GraphicsType } from './enums/graphics-type.enum';
@@ -10,7 +9,6 @@ import { OptimizedEntityCollection } from './optimized-entity-collection';
  *  Drawers the handle Cesium primitives extend it.
  */
 
-@Injectable()
 export class EntitiesDrawerService extends BasicDrawerService {
   private entityCollections = new Map<any, OptimizedEntityCollection>();
   private graphicsTypeName: string;

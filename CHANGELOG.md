@@ -1,6 +1,7 @@
-## NEXT
+## 0.0.40
 ### Features
 * Upgraded to Angular 5
+* Fixed aot build
 
 ## 0.0.39
 ### Fixes
