@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -40,17 +40,16 @@
     "@angular/core": "^4.2.6"
   },
   "devDependencies": {
-    "@angular/animations": "^4.3.2",
-    "@angular/cdk": "^2.0.0-beta.8",
-    "@angular/common": "^4.3.2",
-    "@angular/compiler": "^4.3.2",
-    "@angular/compiler-cli": "^4.3.2",
-    "@angular/core": "^4.3.2",
-    "@angular/forms": "^4.3.2",
-    "@angular/http": "^4.3.2",
-    "@angular/material": "2.0.0-beta.12",
-    "@angular/platform-browser": "^4.3.2",
-    "@angular/platform-browser-dynamic": "^4.3.2",
+    "@angular/animations": "5.1.0",
+    "@angular/cdk": "5.0.1",
+    "@angular/common": "5.1.0",
+    "@angular/compiler": "5.1.0",
+    "@angular/core": "5.1.0",
+    "@angular/forms": "5.1.0",
+    "@angular/http": "5.1.0",
+    "@angular/material": "5.0.1",
+    "@angular/platform-browser": "5.1.0",
+    "@angular/platform-browser-dynamic": "5.1.0",
     "@compodoc/compodoc": "^1.0.0-beta.14",
     "@types/body-parser": "^1.16.3",
     "@types/cors": "^2.8.3",
@@ -120,7 +119,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "run-sequence": "^1.2.1",
-    "rxjs": "^5.4.2",
+    "rxjs": "^5.5.5",
     "script-loader": "^0.7.0",
     "socket.io": "^2.0.1",
     "socket.io-client": "^2.0.1",
@@ -134,7 +133,7 @@
     "webpack-dev-server": "2.4.1",
     "webpack-merge": "^3.0.0",
     "webpack-node-externals": "^1.5.4",
-    "zone.js": "^0.8.4"
+    "zone.js": "0.8.18"
   },
   "dependencies": {
     "@types/geodesy": "^1.1.2",

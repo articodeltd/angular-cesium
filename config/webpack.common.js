@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var root = require('./root-helper');
 
 var ENV = process.env.npm_lifecycle_event;
-var SERVER = ENV === 'build-demo' ? '' :'http://localhost:3000';
+var SERVER = ENV === 'build-demo' ? '' : 'http://localhost:3000';
 
 module.exports = {
   entry: {
@@ -12,9 +12,9 @@ module.exports = {
     'vendor': './demo/vendor.ts',
     'app': './demo/app/main.ts'
   },
-  
+
   resolve: {
-    extensions: [ '.ts', '.js' ]
+    extensions: ['.ts', '.js']
   },
   module: {
     rules: [
@@ -30,7 +30,7 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader'
-        
+
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
@@ -38,12 +38,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: [ root.root('demo', 'app'), root.root('src') ],
+        exclude: [root.root('demo', 'app'), root.root('src')],
         loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
       },
       {
         test: /\.css$/,
-        include: [ root.root('demo', 'app'), root.root('src') ],
+        include: [root.root('demo', 'app'), root.root('src')],
         loader: 'raw-loader'
       },
       {
@@ -55,7 +55,7 @@ module.exports = {
       }
     ]
   },
-  
+
   plugins: [
     new webpack.DefinePlugin({
       // Environment helpers
@@ -74,10 +74,15 @@ module.exports = {
       root.root('demo'),
       {}
     ),
+    new webpack.ContextReplacementPlugin(
+      /\@angular(\\|\/)core(\\|\/)esm5/,
+      root.root('demo'),
+      {}
+    ),
     new webpack.optimize.CommonsChunkPlugin({
-      name: [ 'app', 'vendor', 'polyfills' ]
+      name: ['app', 'vendor', 'polyfills']
     }),
-    
+
     new HtmlWebpackPlugin({
       template: 'demo/index.html'
     }),
