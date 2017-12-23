@@ -1,3 +1,7 @@
+## NEXT
+### Features
+* Upgraded to Angular 5
+
 ## 0.0.39
 ### Fixes
 * Fix range and bearing example
