@@ -44,6 +44,26 @@ export class EventTestLayerComponent implements OnInit {
 				position : Cesium.Cartesian3.fromRadians(0.7, 0.7),
 			})
 		};
+    const track10: AcNotification = {
+      id : '10',
+      actionType : ActionType.ADD_UPDATE,
+      entity : AcEntity.create({
+        id : '10',
+        name : 'click me now :)',
+        color : Cesium.Color.BLUE,
+        position : Cesium.Cartesian3.fromRadians(0.72, 0.7),
+      })
+    };
+    const track11: AcNotification = {
+      id : '11',
+      actionType : ActionType.ADD_UPDATE,
+      entity : AcEntity.create({
+        id : '11',
+        name : 'choose me now :)',
+        color : Cesium.Color.BLUE,
+        position : Cesium.Cartesian3.fromRadians(0.73, 0.7),
+      })
+    };
 		const track3: AcNotification = {
 			id : '2',
 			actionType : ActionType.ADD_UPDATE,
@@ -65,7 +85,7 @@ export class EventTestLayerComponent implements OnInit {
 			})
 		};
 		
-		const trackArray = [track1, track2, track3, track4];
+		const trackArray = [track1, track2, track3, track4, track10, track11];
 		this.tracks$ = Observable.from(trackArray);
 	}
 	
@@ -115,9 +135,11 @@ export class EventTestLayerComponent implements OnInit {
 	}
 	
 	testPlonter() {
-		this.eventManager.register({event : CesiumEvent.LEFT_CLICK, pick : PickOptions.PICK_ONE})
+		this.eventManager.register({
+			event : CesiumEvent.LEFT_CLICK,
+			pick : PickOptions.PICK_ONE,
+			pickFilter: (entity) => entity.id === '1' || entity.id === '2'})
 			.map((result) => result.entities)
-			.filter(entities => entities && (entities[0].id === '1' || entities[0].id === '2'))
 			.subscribe((result) => {
 				console.log('plonter result: ' + JSON.stringify(result));
 				alert('picked: ' + JSON.stringify(result));

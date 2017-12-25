@@ -5,10 +5,13 @@ import { ActionType } from '../../../../src/angular-cesium/models/action-type.en
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
 import { Observable } from 'rxjs/Observable';
+import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
+import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
+import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
 
 @Component({
-	selector : 'layer-order-example',
-	template : `
+  selector: 'layer-order-example',
+  template: `
       <ac-layer acFor="let track of simTracks1$" [context]="this" [zIndex]="firstZIndex">
           <ac-ellipse-desc props="{
 														position: track.position,
@@ -30,46 +33,55 @@ import { Observable } from 'rxjs/Observable';
       <button mat-raised-button style="position: fixed; top: 200px;left: 200px" (click)="changeZIndex()">
           change order
       </button>
-	`,
-	providers : [TracksDataProvider]
+  `,
+  providers: [TracksDataProvider]
 })
 export class LayerOrderComponent implements OnInit {
-	
-	Cesium = Cesium;
-	simTracks1$: Observable<AcNotification> = Observable.of({
-		id : '1',
-		actionType : ActionType.ADD_UPDATE,
-		entity : new AcEntity({
-			position : Cesium.Cartesian3.fromDegrees(-90, 40),
-		})
-	});
-	simTracks2$: Observable<AcNotification> = Observable.of({
-		id : '2',
-		actionType : ActionType.ADD_UPDATE,
-		entity : new AcEntity({
-			position : Cesium.Cartesian3.fromDegrees(-90, 40),
-		})
-	});
-	
-	show = true;
-	firstZIndex = 0;
-	secondZIndex = 1;
-	
-	constructor(webSocketSupllier: WebSocketSupplier) {
-	}
-	
-	ngOnInit() {
-	}
-	
-	changeZIndex() {
-		if (this.firstZIndex === 0) {
-			this.firstZIndex = 1;
-			this.secondZIndex = 0;
-		} else {
-			this.secondZIndex = 1;
-			this.firstZIndex = 0;
-		}
-	}
-	
-	
+
+  Cesium = Cesium;
+  simTracks1$: Observable<AcNotification> = Observable.of({
+    id: '1',
+    actionType: ActionType.ADD_UPDATE,
+    entity: new AcEntity({
+      position: Cesium.Cartesian3.fromDegrees(-90, 40),
+    })
+  });
+  simTracks2$: Observable<AcNotification> = Observable.of({
+    id: '2',
+    actionType: ActionType.ADD_UPDATE,
+    entity: new AcEntity({
+      position: Cesium.Cartesian3.fromDegrees(-90, 40),
+    })
+  });
+
+  show = true;
+  firstZIndex = 0;
+  secondZIndex = 1;
+
+  constructor(webSocketSupllier: WebSocketSupplier, private eventManager: MapEventsManagerService) {
+  }
+
+  ngOnInit() {
+    this.eventManager.register({
+      event: CesiumEvent.LEFT_CLICK,
+      pick: PickOptions.PICK_FIRST
+    })
+      .map((result) => result.cesiumEntities)
+      .subscribe((result) => {
+        console.log(result[0]);
+        alert(result[0].ellipse.material.color._value);
+      });
+  }
+
+  changeZIndex() {
+    if (this.firstZIndex === 0) {
+      this.firstZIndex = 1;
+      this.secondZIndex = 0;
+    } else {
+      this.secondZIndex = 1;
+      this.firstZIndex = 0;
+    }
+  }
+
+
 }

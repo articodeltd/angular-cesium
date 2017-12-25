@@ -1,3 +1,8 @@
+## 0.0.41
+### Features
+* Added `pickFilter` to `EventRegistrationInput` - you can now pass a filter function to `MapEventsManager.register()` - in order to filter the returned entities.
+
+
 ## 0.0.40
 ### Features
 * Upgraded to Angular 5
