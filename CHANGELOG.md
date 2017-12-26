@@ -5,7 +5,6 @@
 ### Fixes
 * Fixed editing of multiple shapes simultaneously
 
-
 ## 0.0.40
 ### Features
 * Upgraded to Angular 5
