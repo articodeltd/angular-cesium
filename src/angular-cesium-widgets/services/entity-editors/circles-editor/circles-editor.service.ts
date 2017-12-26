@@ -20,8 +20,7 @@ import { CircleEditOptions, CircleProps } from '../../../models/circle-edit-opti
 import { EditableCircle } from '../../../models/editable-circle';
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
-import {BasicEditUpdate} from '../../../models/basic-edit-update';
-
+import { BasicEditUpdate } from '../../../models/basic-edit-update';
 
 
 export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
@@ -270,6 +269,7 @@ export class CirclesEditorService {
       entityType : EditPoint,
       pick : PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity => id === entity.editedEntityId,
     });
     
     let shapeDragRegistration;
@@ -279,6 +279,7 @@ export class CirclesEditorService {
         entityType : EditableCircle,
         pick : PickOptions.PICK_FIRST,
         priority : priority,
+        pickFilter: entity => id === entity.editedEntityId,
       });
     }
     

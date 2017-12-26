@@ -171,7 +171,7 @@ export class MapEventsManagerService {
     const mouseUpObservable = this.eventBuilder.get(mouseUpEvent);
     const mouseMoveObservable = this.eventBuilder.get(CesiumEvent.MOUSE_MOVE);
 
-    const mouseDownRegistration = this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption, priority);
+    const mouseDownRegistration = this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption, priority, pickFilter);
 
     const dropSubject = new Subject<EventResult>();
     const dragObserver = mouseDownRegistration.observable.mergeMap(e => {
@@ -249,12 +249,14 @@ export class MapEventsManagerService {
       }
 
       entities = UtilsService.unique(entities);
+      entities = (pickFilter && entities) ? entities.filter(pickFilter) : entities;
       if (entities.length === 0) {
         entities = null;
       }
     }
 
-    picksAndMovement.entities = pickFilter ? entities.filter(pickFilter) : entities;
+    picksAndMovement.entities = entities;
+
     return picksAndMovement;
   }
 

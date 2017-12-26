@@ -242,6 +242,7 @@ export class HippodromeEditorService {
         entityType: EditableHippodrome,
         pick: PickOptions.PICK_FIRST,
         priority,
+        pickFilter: entity => id === entity.editedEntityId,
       });
     }
     const pointDragRegistration = this.mapEventsManager.register({
@@ -249,6 +250,7 @@ export class HippodromeEditorService {
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity => id === entity.editedEntityId,
     });
 
     pointDragRegistration

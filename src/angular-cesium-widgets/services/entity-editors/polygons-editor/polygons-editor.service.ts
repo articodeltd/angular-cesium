@@ -270,6 +270,7 @@ export class PolygonsEditorService {
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity => id === entity.editedEntityId,
     });
 
     let shapeDragRegistration;
@@ -279,13 +280,15 @@ export class PolygonsEditorService {
         entityType: EditablePolygon,
         pick: PickOptions.PICK_FIRST,
         priority,
-      });
+        pickFilter: entity => id === entity.editedEntityId,
+      })
     }
     const pointRemoveRegistration = this.mapEventsManager.register({
       event: options.removePointEvent,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity => id === entity.editedEntityId,
     });
 
     pointDragRegistration

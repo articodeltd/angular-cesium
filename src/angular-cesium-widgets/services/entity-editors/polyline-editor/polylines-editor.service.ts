@@ -291,6 +291,7 @@ export class PolylinesEditorService {
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity => id === entity.editedEntityId,
     });
 
     const pointRemoveRegistration = this.mapEventsManager.register({
@@ -298,6 +299,7 @@ export class PolylinesEditorService {
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity => id === entity.editedEntityId,
     });
 
 
@@ -308,6 +310,7 @@ export class PolylinesEditorService {
         entityType: EditPolyline,
         pick: PickOptions.PICK_FIRST,
         priority,
+        pickFilter: entity => id === entity.editedEntityId,
       });
     }
 
