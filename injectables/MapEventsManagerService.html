@@ -1576,14 +1576,14 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon fa fa-lock"></span>
-                                    <code>addEntities(picksAndMovement: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, entityType: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>)</code>
+                                    <code>addEntities(picksAndMovement: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, entityType: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>, pickFilter?: (undefined) => void)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:222</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:235</a></div>
                                         </td>
                                     </tr>
             
@@ -1629,6 +1629,16 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                                               </td>
                                                               <td></td>
                                                             </tr>
+                                                            <tr>
+                                                              <td>pickFilter</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -1656,14 +1666,14 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon fa fa-lock"></span>
-                                    <code>createDragEvent(event: <a href="../miscellaneouss/CesiumEvent.html">CesiumEvent</a>, modifier: <a href="../miscellaneouss/CesiumEventModifier.html">CesiumEventModifier</a>, entityType: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                    <code>createDragEvent(event: <a href="../miscellaneouss/CesiumEvent.html">CesiumEvent</a>, modifier: <a href="../miscellaneouss/CesiumEventModifier.html">CesiumEventModifier</a>, entityType: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, pickFilter?: (undefined) => void)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:153</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:163</a></div>
                                         </td>
                                     </tr>
             
@@ -1724,6 +1734,16 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                                                       <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                                               </td>
                                                               <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>pickFilter</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1754,14 +1774,14 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon fa fa-lock"></span>
-                                    <code>createEventRegistration(event: <a href="../miscellaneouss/CesiumEvent.html">CesiumEvent</a>, modifier: <a href="../miscellaneouss/CesiumEventModifier.html">CesiumEventModifier</a>, entityType: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                    <code>createEventRegistration(event: <a href="../miscellaneouss/CesiumEvent.html">CesiumEvent</a>, modifier: <a href="../miscellaneouss/CesiumEventModifier.html">CesiumEventModifier</a>, entityType: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, pickOption: <a href="../miscellaneouss/PickOptions.html">PickOptions</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, pickFilter?: (undefined) => void)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:128</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:134</a></div>
                                         </td>
                                     </tr>
             
@@ -1822,6 +1842,16 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
                                                                       <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                                               </td>
                                                               <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>pickFilter</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1859,7 +1889,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:103</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:109</a></div>
                                         </td>
                                     </tr>
             
@@ -1962,7 +1992,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:248</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="263" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:263</a></div>
                                         </td>
                                     </tr>
             
@@ -2096,7 +2126,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:113</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:119</a></div>
                                         </td>
                                     </tr>
             
@@ -2158,7 +2188,7 @@ or from the <code>&lt;ac-map/&gt;</code> component reference <code>acMapComponen
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:196</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">src/angular-cesium/services/map-events-mananger/map-events-manager.ts:209</a></div>
                                         </td>
                                     </tr>
             
@@ -2291,26 +2321,26 @@ import { UtilsService } from &#x27;../../utils/utils.service&#x27;;
 import { CesiumDragDropHelper } from &#x27;./event-observers/cesium-drag-drop-helper&#x27;;
 
 class Registration {
-	constructor(public observable: Observable&lt;EventResult&gt;,
-							public  stopper: Subject&lt;any&gt;,
-							public  priority: number,
-							public  isPaused: boolean) {
-	}
+  constructor(public observable: Observable&lt;EventResult&gt;,
+              public  stopper: Subject&lt;any&gt;,
+              public  priority: number,
+              public  isPaused: boolean) {
+  }
 }
 
 /**
  * Returns screen position, drag boolean for drag events only
  */
 export interface Movement {
-	startPosition: { x: number, y: number };
-	endPosition: { x: number, y: number };
-	drop?: boolean;
+  startPosition: { x: number, y: number };
+  endPosition: { x: number, y: number };
+  drop?: boolean;
 }
 
 export interface EventResult {
-	movement: Movement;
-	cesiumEntities: any[];
-	entities: any[];
+  movement: Movement;
+  cesiumEntities: any[];
+  entities: any[];
 }
 
 /**
@@ -2330,206 +2360,221 @@ export interface EventResult {
  */
 @Injectable()
 export class MapEventsManagerService {
-	
-	private scene: any;
-	private eventRegistrations &#x3D; new Map&lt;string, Registration[]&gt;();
-	
-	constructor(private cesiumService: CesiumService,
-							private eventBuilder: CesiumEventBuilder,
-							private plonterService: PlonterService) {
-	}
-	
-	init() {
-		this.eventBuilder.init();
-		this.scene &#x3D; this.cesiumService.getScene();
-	}
-	
-	/**
-	 * Register to map event
-	 * @param input {EventRegistrationInput}
-	 *
-	 * @returns {DisposableObservable&lt;EventResult&gt;}
-	 */
-	register(input: EventRegistrationInput): DisposableObservable&lt;EventResult&gt; {
-		if (this.scene &#x3D;&#x3D;&#x3D; undefined) {
-			throw new Error(&#x27;CesiumService has not been initialized yet - MapEventsManagerService must be injected  under ac-map&#x27;);
-		}
-		
-		input.pick &#x3D; input.pick || PickOptions.NO_PICK;
-		input.priority &#x3D; input.priority || 0;
-		
-		if (input.entityType &amp;&amp; input.pick &#x3D;&#x3D;&#x3D; PickOptions.NO_PICK) {
-			throw new Error(&#x27;MapEventsManagerService: can\&#x27;t register an event &#x27; +
-				&#x27;with entityType and PickOptions.NO_PICK - It doesn\&#x27;t make sense &#x27;);
-		}
-		
-		const eventName &#x3D; CesiumEventBuilder.getEventFullName(input.event, input.modifier);
-		
-		if (!this.eventRegistrations.has(eventName)) {
-			this.eventRegistrations.set(eventName, []);
-		}
-		
-		const eventRegistration &#x3D; this.createEventRegistration(input.event, input.modifier, input.entityType, input.pick, input.priority);
-		const registrationObservable: any &#x3D; eventRegistration.observable;
-		registrationObservable.dispose &#x3D; () &#x3D;&gt; this.disposeObservable(eventRegistration, eventName);
-		this.eventRegistrations.get(eventName).push(eventRegistration);
-		
-		this.sortRegistrationsByPriority(eventName);
-		return &lt;DisposableObservable&lt;EventResult&gt;&gt; registrationObservable;
-	}
-	
-	private disposeObservable(eventRegistration: Registration, eventName: string) {
-		eventRegistration.stopper.next(1);
-		const registrations &#x3D; this.eventRegistrations.get(eventName);
-		const index &#x3D; registrations.indexOf(eventRegistration);
-		if (index !&#x3D;&#x3D; -1) {
-			registrations.splice(index, 1);
-		}
-		this.sortRegistrationsByPriority(eventName);
-	}
-	
-	private sortRegistrationsByPriority(eventName: string) {
-		const registrations &#x3D; this.eventRegistrations.get(eventName);
-		registrations.sort((a, b) &#x3D;&gt; b.priority - a.priority);
-		if (registrations.length &#x3D;&#x3D;&#x3D; 0) {
-			return;
-		}
-		
-		// Active registrations by priority
-		const currentPriority &#x3D; registrations[0].priority;
-		registrations.forEach((registration) &#x3D;&gt; {
-			registration.isPaused &#x3D; registration.priority &lt; currentPriority;
-		});
-		
-	}
-	
-	private createEventRegistration(event: CesiumEvent, modifier: CesiumEventModifier,
-																	entityType: any, pickOption: PickOptions, priority: number): Registration {
-		const cesiumEventObservable &#x3D; this.eventBuilder.get(event, modifier);
-		const stopper &#x3D; new Subject&lt;any&gt;();
-		
-		const registration &#x3D; new Registration(undefined, stopper, priority, false);
-		let observable: Observable&lt;EventResult&gt;;
-		
-		if (!CesiumDragDropHelper.dragEvents.has(event)) {
-			observable &#x3D; cesiumEventObservable
-				.filter(() &#x3D;&gt; !registration.isPaused)
-				.map((movement) &#x3D;&gt; this.triggerPick(movement, pickOption))
-				.filter((result) &#x3D;&gt; result.cesiumEntities !&#x3D;&#x3D; null || entityType &#x3D;&#x3D;&#x3D; undefined)
-				.map((picksAndMovement) &#x3D;&gt; this.addEntities(picksAndMovement, entityType, pickOption))
-				.filter((result) &#x3D;&gt; result.entities !&#x3D;&#x3D; null || entityType &#x3D;&#x3D;&#x3D; undefined)
-				.switchMap((entitiesAndMovement) &#x3D;&gt; this.plonter(entitiesAndMovement, pickOption))
-				.takeUntil(stopper);
-		} else {
-			observable &#x3D; this.createDragEvent(event, modifier, entityType, pickOption, priority).takeUntil(stopper);
-		}
-		
-		registration.observable &#x3D; observable;
-		return registration;
-	}
-	
-	private createDragEvent(event: CesiumEvent, modifier: CesiumEventModifier, entityType: any, pickOption: PickOptions,
-							priority: number): Observable&lt;EventResult&gt; {
-		const {mouseDownEvent, mouseUpEvent} &#x3D; CesiumDragDropHelper.getDragEventTypes(event);
-		
-		const mouseUpObservable &#x3D; this.eventBuilder.get(mouseUpEvent);
-		const mouseMoveObservable &#x3D; this.eventBuilder.get(CesiumEvent.MOUSE_MOVE);
-		
-		const mouseDownRegistration &#x3D; this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption,
-			priority);
-		
-		const dropSubject &#x3D; new Subject&lt;EventResult&gt;();
-		const dragObserver &#x3D; mouseDownRegistration.observable.mergeMap(e &#x3D;&gt; {
-			let lastMove: any &#x3D; null;
-			const dragStartPositionX &#x3D; e.movement.startPosition.x;
-			const dragStartPositionY &#x3D; e.movement.startPosition.y;
-			return mouseMoveObservable.map((movement) &#x3D;&gt; {
-				lastMove &#x3D; {
-					movement : {
-						drop : false,
-						startPosition : {
-							x : dragStartPositionX,
-							y : dragStartPositionY,
-						},
-						endPosition : movement.endPosition,
-					},
-					entities : e.entities,
-					cesiumEntities : e.cesiumEntities
-				};
-				return lastMove;
-			}).takeUntil(mouseUpObservable).do(undefined, undefined, () &#x3D;&gt; {
-				// On complete
-				if (lastMove) {
-					const dropEvent &#x3D; Object.assign({}, lastMove);
-					dropEvent.movement.drop &#x3D; true;
-					dropSubject.next(dropEvent);
-				}
-			});
-		});
-		
-		return dragObserver.merge(dropSubject);
-		
-	}
-	
-	private triggerPick(movement: any, pickOptions: PickOptions) {
-		let picks: any &#x3D; [];
-		switch (pickOptions) {
-			case PickOptions.PICK_ONE:
-			case PickOptions.PICK_ALL:
-				picks &#x3D; this.scene.drillPick(movement.endPosition);
-				picks &#x3D; picks.length &#x3D;&#x3D;&#x3D; 0 ? null : picks;
-				break;
-			case PickOptions.PICK_FIRST:
-				const pick &#x3D; this.scene.pick(movement.endPosition);
-				picks &#x3D; pick &#x3D;&#x3D;&#x3D; undefined ? null : [pick];
-				break;
-			case PickOptions.NO_PICK:
-				break;
-			default:
-				break;
-		}
-		
-		// Picks can be cesium entity or cesium primitive
-		if (picks) {
-			picks &#x3D; picks.map((pick: any) &#x3D;&gt; pick.id &amp;&amp; pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
-		}
-		
-		return {movement : movement, cesiumEntities : picks};
-	}
-	
-	private addEntities(picksAndMovement: any, entityType: any, pickOption: PickOptions): EventResult {
-		
-		if (picksAndMovement.cesiumEntities &#x3D;&#x3D;&#x3D; null) {
-			picksAndMovement.entities &#x3D; null;
-			return picksAndMovement;
-		}
-		let entities &#x3D; [];
-		if (pickOption !&#x3D;&#x3D; PickOptions.NO_PICK) {
-			if (entityType) {
-				entities &#x3D; picksAndMovement.cesiumEntities.map((pick: any) &#x3D;&gt; pick.acEntity).filter((acEntity: any) &#x3D;&gt; {
-					return acEntity &amp;&amp; acEntity instanceof entityType;
-				});
-			} else {
-				entities &#x3D; picksAndMovement.cesiumEntities.map((pick: any) &#x3D;&gt; pick.acEntity);
-			}
-			
-			entities &#x3D; UtilsService.unique(entities);
-			if (entities.length &#x3D;&#x3D;&#x3D; 0) {
-				entities &#x3D; null;
-			}
-		}
-		
-		picksAndMovement.entities &#x3D; entities;
-		return picksAndMovement;
-	}
-	
-	private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable&lt;EventResult&gt; {
-		if (pickOption &#x3D;&#x3D;&#x3D; PickOptions.PICK_ONE &amp;&amp; entitiesAndMovement.entities !&#x3D;&#x3D; null &amp;&amp; entitiesAndMovement.entities.length &gt; 1) {
-			return this.plonterService.plonterIt(entitiesAndMovement);
-		} else {
-			return Observable.of(entitiesAndMovement);
-		}
-	}
+
+  private scene: any;
+  private eventRegistrations &#x3D; new Map&lt;string, Registration[]&gt;();
+
+  constructor(private cesiumService: CesiumService,
+              private eventBuilder: CesiumEventBuilder,
+              private plonterService: PlonterService) {
+  }
+
+  init() {
+    this.eventBuilder.init();
+    this.scene &#x3D; this.cesiumService.getScene();
+  }
+
+  /**
+   * Register to map event
+   * @param input {EventRegistrationInput}
+   *
+   * @returns {DisposableObservable&lt;EventResult&gt;}
+   */
+  register(input: EventRegistrationInput): DisposableObservable&lt;EventResult&gt; {
+    if (this.scene &#x3D;&#x3D;&#x3D; undefined) {
+      throw new Error(&#x27;CesiumService has not been initialized yet - MapEventsManagerService must be injected  under ac-map&#x27;);
+    }
+
+    input.pick &#x3D; input.pick || PickOptions.NO_PICK;
+    input.priority &#x3D; input.priority || 0;
+
+    if (input.entityType &amp;&amp; input.pick &#x3D;&#x3D;&#x3D; PickOptions.NO_PICK) {
+      throw new Error(&#x27;MapEventsManagerService: can\&#x27;t register an event &#x27; +
+        &#x27;with entityType and PickOptions.NO_PICK - It doesn\&#x27;t make sense &#x27;);
+    }
+
+    const eventName &#x3D; CesiumEventBuilder.getEventFullName(input.event, input.modifier);
+
+    if (!this.eventRegistrations.has(eventName)) {
+      this.eventRegistrations.set(eventName, []);
+    }
+
+    const eventRegistration &#x3D; this.createEventRegistration(
+      input.event,
+      input.modifier,
+      input.entityType,
+      input.pick,
+      input.priority,
+      input.pickFilter);
+    const registrationObservable: any &#x3D; eventRegistration.observable;
+    registrationObservable.dispose &#x3D; () &#x3D;&gt; this.disposeObservable(eventRegistration, eventName);
+    this.eventRegistrations.get(eventName).push(eventRegistration);
+
+    this.sortRegistrationsByPriority(eventName);
+    return &lt;DisposableObservable&lt;EventResult&gt;&gt; registrationObservable;
+  }
+
+  private disposeObservable(eventRegistration: Registration, eventName: string) {
+    eventRegistration.stopper.next(1);
+    const registrations &#x3D; this.eventRegistrations.get(eventName);
+    const index &#x3D; registrations.indexOf(eventRegistration);
+    if (index !&#x3D;&#x3D; -1) {
+      registrations.splice(index, 1);
+    }
+    this.sortRegistrationsByPriority(eventName);
+  }
+
+  private sortRegistrationsByPriority(eventName: string) {
+    const registrations &#x3D; this.eventRegistrations.get(eventName);
+    registrations.sort((a, b) &#x3D;&gt; b.priority - a.priority);
+    if (registrations.length &#x3D;&#x3D;&#x3D; 0) {
+      return;
+    }
+
+    // Active registrations by priority
+    const currentPriority &#x3D; registrations[0].priority;
+    registrations.forEach((registration) &#x3D;&gt; {
+      registration.isPaused &#x3D; registration.priority &lt; currentPriority;
+    });
+
+  }
+
+  private createEventRegistration(event: CesiumEvent,
+                                  modifier: CesiumEventModifier,
+                                  entityType: any,
+                                  pickOption: PickOptions,
+                                  priority: number,
+                                  pickFilter?: (any) &#x3D;&gt; boolean): Registration {
+    const cesiumEventObservable &#x3D; this.eventBuilder.get(event, modifier);
+    const stopper &#x3D; new Subject&lt;any&gt;();
+
+    const registration &#x3D; new Registration(undefined, stopper, priority, false);
+    let observable: Observable&lt;EventResult&gt;;
+
+    if (!CesiumDragDropHelper.dragEvents.has(event)) {
+      observable &#x3D; cesiumEventObservable
+        .filter(() &#x3D;&gt; !registration.isPaused)
+        .map((movement) &#x3D;&gt; this.triggerPick(movement, pickOption))
+        .filter((result) &#x3D;&gt; result.cesiumEntities !&#x3D;&#x3D; null || entityType &#x3D;&#x3D;&#x3D; undefined)
+        .map((picksAndMovement) &#x3D;&gt; this.addEntities(picksAndMovement, entityType, pickOption, pickFilter))
+        .filter((result) &#x3D;&gt; result.entities !&#x3D;&#x3D; null || entityType &#x3D;&#x3D;&#x3D; undefined)
+        .switchMap((entitiesAndMovement) &#x3D;&gt; this.plonter(entitiesAndMovement, pickOption))
+        .takeUntil(stopper);
+    } else {
+      observable &#x3D; this.createDragEvent(event, modifier, entityType, pickOption, priority, pickFilter).takeUntil(stopper);
+    }
+
+    registration.observable &#x3D; observable;
+    return registration;
+  }
+
+  private createDragEvent(event: CesiumEvent,
+                          modifier: CesiumEventModifier,
+                          entityType: any,
+                          pickOption: PickOptions,
+                          priority: number,
+                          pickFilter?: (any) &#x3D;&gt; boolean): Observable&lt;EventResult&gt; {
+    const { mouseDownEvent, mouseUpEvent } &#x3D; CesiumDragDropHelper.getDragEventTypes(event);
+
+    const mouseUpObservable &#x3D; this.eventBuilder.get(mouseUpEvent);
+    const mouseMoveObservable &#x3D; this.eventBuilder.get(CesiumEvent.MOUSE_MOVE);
+
+    const mouseDownRegistration &#x3D; this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption, priority, pickFilter);
+
+    const dropSubject &#x3D; new Subject&lt;EventResult&gt;();
+    const dragObserver &#x3D; mouseDownRegistration.observable.mergeMap(e &#x3D;&gt; {
+      let lastMove: any &#x3D; null;
+      const dragStartPositionX &#x3D; e.movement.startPosition.x;
+      const dragStartPositionY &#x3D; e.movement.startPosition.y;
+      return mouseMoveObservable.map((movement) &#x3D;&gt; {
+        lastMove &#x3D; {
+          movement: {
+            drop: false,
+            startPosition: {
+              x: dragStartPositionX,
+              y: dragStartPositionY,
+            },
+            endPosition: movement.endPosition,
+          },
+          entities: e.entities,
+          cesiumEntities: e.cesiumEntities
+        };
+        return lastMove;
+      }).takeUntil(mouseUpObservable).do(undefined, undefined, () &#x3D;&gt; {
+        // On complete
+        if (lastMove) {
+          const dropEvent &#x3D; Object.assign({}, lastMove);
+          dropEvent.movement.drop &#x3D; true;
+          dropSubject.next(dropEvent);
+        }
+      });
+    });
+
+    return dragObserver.merge(dropSubject);
+
+  }
+
+  private triggerPick(movement: any, pickOptions: PickOptions) {
+    let picks: any &#x3D; [];
+    switch (pickOptions) {
+      case PickOptions.PICK_ONE:
+      case PickOptions.PICK_ALL:
+        picks &#x3D; this.scene.drillPick(movement.endPosition);
+        picks &#x3D; picks.length &#x3D;&#x3D;&#x3D; 0 ? null : picks;
+        break;
+      case PickOptions.PICK_FIRST:
+        const pick &#x3D; this.scene.pick(movement.endPosition);
+        picks &#x3D; pick &#x3D;&#x3D;&#x3D; undefined ? null : [pick];
+        break;
+      case PickOptions.NO_PICK:
+        break;
+      default:
+        break;
+    }
+
+    // Picks can be cesium entity or cesium primitive
+    if (picks) {
+      picks &#x3D; picks.map((pick: any) &#x3D;&gt; pick.id &amp;&amp; pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
+    }
+
+    return { movement: movement, cesiumEntities: picks };
+  }
+
+  private addEntities(picksAndMovement: any, entityType: any, pickOption: PickOptions, pickFilter?: (any) &#x3D;&gt; boolean ): EventResult {
+
+    if (picksAndMovement.cesiumEntities &#x3D;&#x3D;&#x3D; null) {
+      picksAndMovement.entities &#x3D; null;
+      return picksAndMovement;
+    }
+    let entities &#x3D; [];
+    if (pickOption !&#x3D;&#x3D; PickOptions.NO_PICK) {
+      if (entityType) {
+        entities &#x3D; picksAndMovement.cesiumEntities.map((pick: any) &#x3D;&gt; pick.acEntity).filter((acEntity: any) &#x3D;&gt; {
+          return acEntity &amp;&amp; acEntity instanceof entityType;
+        });
+      } else {
+        entities &#x3D; picksAndMovement.cesiumEntities.map((pick: any) &#x3D;&gt; pick.acEntity);
+      }
+
+      entities &#x3D; UtilsService.unique(entities);
+      entities &#x3D; (pickFilter &amp;&amp; entities) ? entities.filter(pickFilter) : entities;
+      if (entities.length &#x3D;&#x3D;&#x3D; 0) {
+        entities &#x3D; null;
+      }
+    }
+
+    picksAndMovement.entities &#x3D; entities;
+
+    return picksAndMovement;
+  }
+
+  private plonter(entitiesAndMovement: EventResult, pickOption: PickOptions): Observable&lt;EventResult&gt; {
+    if (pickOption &#x3D;&#x3D;&#x3D; PickOptions.PICK_ONE &amp;&amp; entitiesAndMovement.entities !&#x3D;&#x3D; null &amp;&amp; entitiesAndMovement.entities.length &gt; 1) {
+      return this.plonterService.plonterIt(entitiesAndMovement);
+    } else {
+      return Observable.of(entitiesAndMovement);
+    }
+  }
 }
 </code></pre>
     </div>

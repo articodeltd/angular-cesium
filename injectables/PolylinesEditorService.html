@@ -1626,7 +1626,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="411" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:411</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="414" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:414</a></div>
                                         </td>
                                     </tr>
             
@@ -1882,7 +1882,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="483" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:483</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="486" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:486</a></div>
                                         </td>
                                     </tr>
             
@@ -1915,7 +1915,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="492" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:492</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="495" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:495</a></div>
                                         </td>
                                     </tr>
             
@@ -1977,7 +1977,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="487" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:487</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="490" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:490</a></div>
                                         </td>
                                     </tr>
             
@@ -2159,7 +2159,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="401" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:401</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="404" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts:404</a></div>
                                         </td>
                                     </tr>
             
@@ -2722,6 +2722,7 @@ export class PolylinesEditorService {
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
     });
 
     const pointRemoveRegistration &#x3D; this.mapEventsManager.register({
@@ -2729,6 +2730,7 @@ export class PolylinesEditorService {
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
     });
 
 
@@ -2739,6 +2741,7 @@ export class PolylinesEditorService {
         entityType: EditPolyline,
         pick: PickOptions.PICK_FIRST,
         priority,
+        pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
       });
     }
 

@@ -1627,7 +1627,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="326" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:326</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="328" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:328</a></div>
                                         </td>
                                     </tr>
             
@@ -1874,7 +1874,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="402" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:402</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="404" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:404</a></div>
                                         </td>
                                     </tr>
             
@@ -1907,7 +1907,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="411" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:411</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="413" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:413</a></div>
                                         </td>
                                     </tr>
             
@@ -1969,7 +1969,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="406" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:406</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="408" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:408</a></div>
                                         </td>
                                     </tr>
             
@@ -2031,7 +2031,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="416" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:416</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="418" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:418</a></div>
                                         </td>
                                     </tr>
             
@@ -2213,7 +2213,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="317" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:317</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="319" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:319</a></div>
                                         </td>
                                     </tr>
             
@@ -2727,6 +2727,7 @@ export class HippodromeEditorService {
         entityType: EditableHippodrome,
         pick: PickOptions.PICK_FIRST,
         priority,
+        pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
       });
     }
     const pointDragRegistration &#x3D; this.mapEventsManager.register({
@@ -2734,6 +2735,7 @@ export class HippodromeEditorService {
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
     });
 
     pointDragRegistration

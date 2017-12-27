@@ -1624,7 +1624,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="388" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:388</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="391" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:391</a></div>
                                         </td>
                                     </tr>
             
@@ -1880,7 +1880,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="458" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:458</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="461" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:461</a></div>
                                         </td>
                                     </tr>
             
@@ -1913,7 +1913,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="467" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:467</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="470" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:470</a></div>
                                         </td>
                                     </tr>
             
@@ -1975,7 +1975,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="462" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:462</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="465" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:465</a></div>
                                         </td>
                                     </tr>
             
@@ -2157,7 +2157,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="378" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:378</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="381" class="link-to-prism">src/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:381</a></div>
                                         </td>
                                     </tr>
             
@@ -2699,6 +2699,7 @@ export class PolygonsEditorService {
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
     });
 
     let shapeDragRegistration;
@@ -2708,13 +2709,15 @@ export class PolygonsEditorService {
         entityType: EditablePolygon,
         pick: PickOptions.PICK_FIRST,
         priority,
-      });
+        pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
+      })
     }
     const pointRemoveRegistration &#x3D; this.mapEventsManager.register({
       event: options.removePointEvent,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
     });
 
     pointDragRegistration
