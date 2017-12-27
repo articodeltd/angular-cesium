@@ -29,7 +29,7 @@ export const defaultLabelProps: LabelProps = {
   backgroundColor: new Cesium.Color(0.165, 0.165, 0.165, 0.8),
   backgroundPadding: new Cesium.Cartesian2(7, 5),
   distanceDisplayCondition: undefined,
-  eyeOffset: Cesium.Cartesian3.ZERO,
+  eyeOffset: new Cesium.Cartesian3(0, 0, -999),
   fillColor: Cesium.Color.WHITE,
   font: '30px sans-serif',
   heightReference: Cesium.HeightReference.NONE,

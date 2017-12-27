@@ -17,19 +17,28 @@ import { MapEventsManagerService } from '../../../../src/angular-cesium/services
 														position: track.position,
 														semiMajorAxis:450000.0,
 														semiMinorAxis:280000.0,
-														granularity:0.03,
+														granularity:0.014,
 														material: Cesium.Color.GREEN
 					}"></ac-ellipse-desc>
       </ac-layer>
+      
       <ac-layer acFor="let track of simTracks2$" [context]="this" [zIndex]="secondZIndex">
           <ac-ellipse-desc props="{
 														position: track.position,
-														semiMajorAxis:400000.0,
-														semiMinorAxis:250000.0,
-														granularity:0.03,
+														semiMajorAxis:500000.0,
+														semiMinorAxis:200000.0,
+														granularity:0.014,
 														material: Cesium.Color.RED
 					}"></ac-ellipse-desc>
       </ac-layer>
+      
+      <ac-layer acFor="let polygon of polygons$" [context]="this" [zIndex]="thirdZIndex">
+          <ac-polygon-desc props="{
+														hierarchy: polygon.hierarchy,
+                            material: polygon.material
+					}"></ac-polygon-desc>
+      </ac-layer>
+      
       <button mat-raised-button style="position: fixed; top: 200px;left: 200px" (click)="changeZIndex()">
           change order
       </button>
@@ -54,9 +63,25 @@ export class LayerOrderComponent implements OnInit {
     })
   });
 
+  polygons$: Observable<AcNotification> = Observable.of({
+    id : '30',
+    entity : new AcEntity({
+      hierarchy : Cesium.Cartesian3.fromDegreesArrayHeights([-90, 40, 0,
+        -100.0, 25.0, 0,
+        -100.0, 30.0, 0,
+        -108.0, 30.0, 0]),
+      perPositionHeight : false,
+      material : Cesium.Color.ORANGE,
+      outline : true,
+      outlineColor : Cesium.Color.BLACK,
+    }),
+    actionType : ActionType.ADD_UPDATE
+  });
+
   show = true;
   firstZIndex = 0;
   secondZIndex = 1;
+  thirdZIndex = 2;
 
   constructor(webSocketSupllier: WebSocketSupplier, private eventManager: MapEventsManagerService) {
   }
@@ -67,6 +92,7 @@ export class LayerOrderComponent implements OnInit {
       pick: PickOptions.PICK_FIRST
     })
       .map((result) => result.cesiumEntities)
+      .filter(result => result !== null && result !== undefined)
       .subscribe((result) => {
         console.log(result[0]);
         alert(result[0].ellipse.material.color._value);
@@ -74,14 +100,8 @@ export class LayerOrderComponent implements OnInit {
   }
 
   changeZIndex() {
-    if (this.firstZIndex === 0) {
-      this.firstZIndex = 1;
-      this.secondZIndex = 0;
-    } else {
-      this.secondZIndex = 1;
-      this.firstZIndex = 0;
-    }
+    this.firstZIndex  = (this.firstZIndex + 1) % 3;
+    this.secondZIndex  = (this.secondZIndex + 1) % 3;
+    this.thirdZIndex  = (this.thirdZIndex + 1) % 3;
   }
-
-
 }
