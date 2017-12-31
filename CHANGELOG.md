@@ -1,3 +1,7 @@
+## 0.0.42
+### Fixes
+* Fixed `PolygonsEditorService` shape drag
+
 ## 0.0.41
 ### Features
 * Added `pickFilter` to `EventRegistrationInput` - you can now pass a filter function to `MapEventsManager.register()` - in order to filter the returned entities.

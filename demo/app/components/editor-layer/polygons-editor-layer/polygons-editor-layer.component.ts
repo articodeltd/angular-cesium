@@ -25,13 +25,11 @@ export class PolygonsEditorLayerComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.polygonsEditor.create({ allowDrag: false });
+    this.editing$ = this.polygonsEditor.create({ allowDrag: true });
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
-      if (editUpdate.editAction === EditActions.ADD_POINT) {
-        console.log(editUpdate.points); // point = position with id
-        console.log(editUpdate.positions); // or just position
-        console.log(editUpdate.updatedPosition); // added position
-      }
+      console.log(editUpdate.points); // point = position with id
+      console.log(editUpdate.positions); // or just position
+      console.log(editUpdate.updatedPosition); // added position
     });
   }
 
@@ -102,8 +100,8 @@ export class PolygonsEditorLayerComponent implements OnInit {
       const firstPoint = polygonPoints[0];
       firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
       const newUpdatedPoints = polygonPoints.map(p => ({
-        position : p.getPosition(),
-        pointProps : p.props,
+        position: p.getPosition(),
+        pointProps: p.props,
       }));
       this.editing$.setManually(newUpdatedPoints);
 

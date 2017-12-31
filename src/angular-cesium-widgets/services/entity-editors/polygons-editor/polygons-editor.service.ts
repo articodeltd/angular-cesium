@@ -280,7 +280,7 @@ export class PolygonsEditorService {
         entityType: EditablePolygon,
         pick: PickOptions.PICK_FIRST,
         priority,
-        pickFilter: entity => id === entity.editedEntityId,
+        pickFilter: entity => id === entity.id,
       })
     }
     const pointRemoveRegistration = this.mapEventsManager.register({
