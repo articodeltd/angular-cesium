@@ -2709,7 +2709,7 @@ export class PolygonsEditorService {
         entityType: EditablePolygon,
         pick: PickOptions.PICK_FIRST,
         priority,
-        pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
+        pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.id,
       })
     }
     const pointRemoveRegistration &#x3D; this.mapEventsManager.register({
