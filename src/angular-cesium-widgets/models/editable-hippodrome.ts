@@ -164,7 +164,7 @@ export class EditableHippodrome extends AcEntity {
 
     if (!editPoint.isVirtualEditPoint()) {
       editPoint.setPosition(toPosition);
-
+      this.createHeightEditPoints();
       this.updatePointsLayer(...this.positions);
       this.updateHippdromeLayer();
     } else {

@@ -1,4 +1,4 @@
-<ac-layer #editHippodromesLayer acFor="let hippodrome of editHippodromes$" [context]="this" [zIndex]="2">
+<ac-layer #editHippodromesLayer acFor="let hippodrome of editHippodromes$" [context]="this">
     <ac-corridor-desc props="{
 		positions: hippodrome.getRealPositions(),
 		cornerType: Cesium.CornerType.ROUNDED,
@@ -39,7 +39,7 @@
     </ac-array-desc>
 </ac-layer>
 
-<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
+<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
     <ac-point-desc props="{
         position: point.getPosition(),
         pixelSize: getPointSize(point),

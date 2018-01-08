@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PolygonEditUpdate } from '../../../../../src/angular-cesium-widgets/models/polygon-edit-update';
 import { EditActions } from '../../../../../src/angular-cesium-widgets/models/edit-actions.enum';
 import { PolylinesEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service';
@@ -10,6 +10,7 @@ import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/lab
   templateUrl: 'polyline-editor-layer.component.html',
   styleUrls: ['./polyline-editor-layer.component.css'],
   providers: [PolylinesEditorService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PolylineEditorLayerComponent implements OnInit {
 

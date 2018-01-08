@@ -1,14 +1,6 @@
 import {
-  AfterContentInit,
-  ChangeDetectorRef,
-  Component,
-  ContentChildren,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  SimpleChanges,
-  ViewChild
+  AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, Input, OnChanges,
+  OnDestroy, OnInit, SimpleChanges, ViewChild
 } from '@angular/core';
 import { AcNotification } from '../../models/ac-notification';
 import { Subject } from 'rxjs/Subject';
@@ -56,6 +48,7 @@ import { Subscription } from 'rxjs/Subscription';
           <ng-content #content></ng-content>
       </ac-layer>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit, OnDestroy, IDescription {
 

@@ -149,7 +149,7 @@ export class MapEventsManagerService {
         .map((movement) => this.triggerPick(movement, pickOption))
         .filter((result) => result.cesiumEntities !== null || entityType === undefined)
         .map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption, pickFilter))
-        .filter((result) => result.entities !== null || entityType === undefined)
+        .filter((result) => result.entities !== null || (entityType === undefined && !pickFilter))
         .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption))
         .takeUntil(stopper);
     } else {

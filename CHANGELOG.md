@@ -1,3 +1,14 @@
+## 0.0.43
+### Fixes
+* Improved shape editors performance
+* Fixed undragable editable hippodrome
+* Fixed editable hippodrome updating
+* Fixed editing multiple shapes of the same type simultaneously
+
+### Features
+* Labels of editable shapes now update on mouse move
+* Update Cesium version to 1.41.0
+
 ## 0.0.42
 ### Fixes
 * Fixed `PolygonsEditorService` shape drag

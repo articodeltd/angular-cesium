@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
 import { EditModes } from '../../models/edit-mode.enum';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
 import { EditActions } from '../../models/edit-actions.enum';
@@ -17,7 +17,8 @@ import { EditableCircle } from '../../models/editable-circle';
 @Component({
   selector: 'circles-editor',
   templateUrl: './circles-editor.component.html',
-  providers: [CoordinateConverter, CirclesManagerService]
+  providers: [CoordinateConverter, CirclesManagerService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CirclesEditorComponent implements OnDestroy {
 
@@ -170,6 +171,7 @@ export class CirclesEditorComponent implements OnDestroy {
         const circle = this.circlesManager.get(update.id);
         if (circle && circle.enableEdit) {
           circle.moveCircle(update.startDragPosition, update.endDragPosition);
+          this.renderEditLabels(circle, update);
         }
         break;
       }

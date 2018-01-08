@@ -19,6 +19,7 @@ import { EditablePolygon } from '../../../models/editable-polygon';
 import { PolygonEditOptions, PolygonProps } from '../../../models/polygon-edit-options';
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
+import { generateKey } from '../../utils';
 
 export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -83,7 +84,6 @@ export class PolygonsEditorService {
   private mapEventsManager: MapEventsManagerService;
   private updateSubject = new Subject<PolygonEditUpdate>();
   private updatePublisher = this.updateSubject.publish(); // TODO maybe not needed
-  private counter = 0;
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
   private polygonsManager: PolygonsManagerService;
@@ -94,11 +94,10 @@ export class PolygonsEditorService {
        cameraService: CameraService,
        polygonsManager: PolygonsManagerService) {
     this.mapEventsManager = mapEventsManager;
-    this.updatePublisher.connect();
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
     this.polygonsManager = polygonsManager;
-
+    this.updatePublisher.connect();
   }
 
   onUpdate(): Observable<PolygonEditUpdate> {
@@ -107,7 +106,7 @@ export class PolygonsEditorService {
 
   create(options = DEFAULT_POLYGON_OPTIONS, priority = 100): PolygonEditorObservable {
     const positions: Cartesian3[] = [];
-    const id = this.generteId();
+    const id = generateKey();
     const polygonOptions = this.setOptions(options);
 
     const clientEditSubject = new BehaviorSubject<PolygonEditUpdate>({
@@ -229,7 +228,7 @@ export class PolygonsEditorService {
     if (positions.length < 3) {
       throw new Error('Polygons editor error edit(): polygon should have at least 3 positions');
     }
-    const id = this.generteId();
+    const id = generateKey();
     const polygonOptions = this.setOptions(options);
     const editSubject = new BehaviorSubject<PolygonEditUpdate>({
       id,
@@ -455,11 +454,6 @@ export class PolygonsEditorService {
     observableToExtend.getLabels = (): LabelProps[] => this.polygonsManager.get(id).labels;
 
     return observableToExtend as PolygonEditorObservable;
-  }
-
-
-  private generteId(): string {
-    return 'edit-polygon-' + this.counter++;
   }
 
   private getPositions(id: string) {

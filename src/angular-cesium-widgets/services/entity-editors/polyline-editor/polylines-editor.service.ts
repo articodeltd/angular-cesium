@@ -18,6 +18,7 @@ import { PolylineEditUpdate } from '../../../models/polyline-edit-update';
 import { PolylineEditorObservable } from '../../../models/polyline-editor-observable';
 import { EditPolyline } from '../../../models';
 import { LabelProps } from '../../../models/label-props';
+import { generateKey } from '../../utils';
 
 export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -79,7 +80,6 @@ export class PolylinesEditorService {
   private mapEventsManager: MapEventsManagerService;
   private updateSubject = new Subject<PolylineEditUpdate>();
   private updatePublisher = this.updateSubject.publish(); // TODO maybe not needed
-  private counter = 0;
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
   private polylinesManager: PolylinesManagerService;
@@ -90,10 +90,10 @@ export class PolylinesEditorService {
        cameraService: CameraService,
        polylinesManager: PolylinesManagerService) {
     this.mapEventsManager = mapEventsManager;
-    this.updatePublisher.connect();
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
     this.polylinesManager = polylinesManager;
+    this.updatePublisher.connect();
   }
 
   onUpdate(): Observable<PolylineEditUpdate> {
@@ -102,7 +102,7 @@ export class PolylinesEditorService {
 
   create(options = DEFAULT_POLYLINE_OPTIONS, eventPriority = 100): PolylineEditorObservable {
     const positions: Cartesian3[] = [];
-    const id = this.generteId();
+    const id = generateKey();
     const polylineOptions = this.setOptions(options);
 
     const clientEditSubject = new BehaviorSubject<PolylineEditUpdate>({
@@ -250,7 +250,7 @@ export class PolylinesEditorService {
     if (positions.length < 2) {
       throw new Error('Polylines editor error edit(): polyline should have at least 2 positions');
     }
-    const id = this.generteId();
+    const id = generateKey();
     const polylineOptions = this.setOptions(options);
     const editSubject = new BehaviorSubject<PolylineEditUpdate>({
       id,
@@ -301,7 +301,6 @@ export class PolylinesEditorService {
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });
-
 
     let shapeDragRegistration;
     if (options.allowDrag) {
@@ -481,10 +480,6 @@ export class PolylinesEditorService {
     observableToExtend.getLabels = (): LabelProps[] => this.polylinesManager.get(id).labels;
 
     return observableToExtend as PolylineEditorObservable;
-  }
-
-  private generteId(): string {
-    return 'edit-polyline-' + this.counter++;
   }
 
   private getPositions(id: string) {
