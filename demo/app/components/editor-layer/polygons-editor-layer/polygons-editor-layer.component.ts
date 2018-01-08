@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PolygonEditUpdate } from '../../../../../src/angular-cesium-widgets/models/polygon-edit-update';
 import { EditActions } from '../../../../../src/angular-cesium-widgets/models/edit-actions.enum';
 import { PolygonEditorObservable } from '../../../../../src/angular-cesium-widgets/models/polygon-editor-observable';
@@ -10,6 +10,7 @@ import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/lab
   templateUrl: 'polygons-editor-layer.component.html',
   styleUrls: ['./polygons-editor-layer.component.css'],
   providers: [PolygonsEditorService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PolygonsEditorLayerComponent implements OnInit {
   editing$: PolygonEditorObservable;
@@ -25,7 +26,7 @@ export class PolygonsEditorLayerComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.polygonsEditor.create({ allowDrag: true });
+    this.editing$ = this.polygonsEditor.create();
     this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
       console.log(editUpdate.points); // point = position with id
       console.log(editUpdate.positions); // or just position

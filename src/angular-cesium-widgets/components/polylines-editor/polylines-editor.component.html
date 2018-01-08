@@ -1,4 +1,4 @@
-<ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" [zIndex]="1">
+<ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this">
     <ac-polyline-primitive-desc props="{
         positions: polyline.getPositions(),
         width: polyline.props.width,
@@ -7,7 +7,7 @@
     </ac-polyline-primitive-desc>
 </ac-layer>
 
-<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
+<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
     <ac-point-desc props="{
         position: point.getPosition(),
         pixelSize: getPointSize(point),
@@ -19,7 +19,7 @@
     </ac-point-desc>
 </ac-layer>
 
-<ac-layer #polylineLabelsLayer acFor="let polylineLabels of polylineLabels$" [context]="this" [zIndex]="3">
+<ac-layer #polylineLabelsLayer acFor="let polylineLabels of polylineLabels$" [context]="this">
     <ac-array-desc acFor="let label of polylineLabels.labels" [idGetter]="getLabelId">
         <ac-label-primitive-desc props="{
             position: label.position,

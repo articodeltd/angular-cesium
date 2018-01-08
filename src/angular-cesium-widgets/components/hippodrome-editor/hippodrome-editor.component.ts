@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
 import { EditModes } from '../../models/edit-mode.enum';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
 import { EditActions } from '../../models/edit-actions.enum';
@@ -17,7 +17,8 @@ import { EditableHippodrome } from '../../models/editable-hippodrome';
 @Component({
   selector: 'hippodrome-editor',
   templateUrl: './hippodrome-editor.component.html',
-  providers: [CoordinateConverter, HippodromeManagerService]
+  providers: [CoordinateConverter, HippodromeManagerService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HippodromeEditorComponent implements OnDestroy {
 
@@ -181,6 +182,7 @@ export class HippodromeEditorComponent implements OnDestroy {
         const hippodrome = this.hippodromesManager.get(update.id);
         if (hippodrome && hippodrome.enableEdit) {
           hippodrome.moveShape(update.draggedPosition, update.updatedPosition);
+          this.renderEditLabels(hippodrome, update);
         }
         break;
       }

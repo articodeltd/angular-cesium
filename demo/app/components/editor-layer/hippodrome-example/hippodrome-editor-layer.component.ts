@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { EditActions } from '../../../../../src/angular-cesium-widgets/models/edit-actions.enum';
 import { HippodromeEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service';
 import { HippodromeEditorObservable } from '../../../../../src/angular-cesium-widgets/models/hippodrome-editor-oboservable';
 import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/label-props';
-import {HippodromeEditUpdate} from '../../../../../src/angular-cesium-widgets/models/hippodrome-edit-update';
+import { HippodromeEditUpdate } from '../../../../../src/angular-cesium-widgets/models/hippodrome-edit-update';
 
 @Component({
 	selector : 'hippodrome-editor-layer',
 	templateUrl : 'hippodrome-editor-layer.component.html',
 	styleUrls : ['./hippodrome-editor-layer.component.css'],
 	providers: [HippodromeEditorService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HippodromeEditorLayerComponent implements OnInit {
 	editing$: HippodromeEditorObservable;
@@ -31,7 +32,6 @@ export class HippodromeEditorLayerComponent implements OnInit {
 				outline : true,
 				outlineWidth : 2,
 			},
-			allowDrag : false
 		});
 		this.editing$.subscribe((editUpdate: HippodromeEditUpdate) => {
 

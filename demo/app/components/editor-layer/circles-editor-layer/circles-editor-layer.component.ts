@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CircleEditorObservable } from '../../../../../src/angular-cesium-widgets/models/circle-editor-observable';
 import { CircleEditUpdate } from '../../../../../src/angular-cesium-widgets/models/circle-edit-update';
 import { CirclesEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service';
@@ -9,6 +9,7 @@ import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/lab
   templateUrl: 'circles-editor-layer.component.html',
   styleUrls: ['./circles-editor-layer.component.css'],
   providers: [CirclesEditorService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CirclesEditorLayerComponent implements OnInit {
 
@@ -25,7 +26,7 @@ export class CirclesEditorLayerComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.circlesEditor.create({ allowDrag: false });
+    this.editing$ = this.circlesEditor.create();
     this.editing$.subscribe((editUpdate: CircleEditUpdate) => {
       // current edit value
       console.log(editUpdate);

@@ -1,4 +1,4 @@
-<ac-layer #editArcsLayer acFor="let arc of editArcs$" [context]="this" [zIndex]="1">
+<ac-layer #editArcsLayer acFor="let arc of editArcs$" [context]="this">
     <ac-arc-desc props="{
         angle: arc.angle,
         delta: arc.delta,
@@ -10,7 +10,7 @@
     </ac-arc-desc>
 </ac-layer>
 
-<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this" [zIndex]="2">
+<ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
     <ac-point-desc props="{
         position: point.getPosition(),
         pixelSize: getPointSize(point),

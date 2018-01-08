@@ -1,6 +1,9 @@
 // tslint:disable
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
-import { AfterContentInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import {
+  AfterContentInit, ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit,
+  SimpleChanges
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -106,7 +109,8 @@ import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawe
 		StaticPolylineDrawerService,
 		StaticPolygonDrawerService,
 		StaticEllipseDrawerService,
-	]
+	],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
 	@Input()
@@ -269,10 +273,11 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			const initOptions = this.options ? this.options[drawerName] : undefined;
 			const drawerDataSources = drawer.init(initOptions);
 			// only entities drawers create data sources
-			if (drawerDataSources) {
-				this.mapLayersService.registerLayerDataSources(drawerDataSources, this.zIndex);
-				this.layerDrawerDataSources.push(...drawerDataSources);
-			}
+      // TODO: Causes Bad Performance
+      // if (drawerDataSources) {
+				// this.mapLayersService.registerLayerDataSources(drawerDataSources, this.zIndex);
+				// this.layerDrawerDataSources.push(...drawerDataSources);
+      // }
 			drawer.setShow(this.show);
 		});
 	}

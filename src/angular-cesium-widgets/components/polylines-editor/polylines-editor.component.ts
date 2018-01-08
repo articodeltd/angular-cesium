@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
 import { EditModes } from '../../models/edit-mode.enum';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
 import { EditActions } from '../../models/edit-actions.enum';
@@ -17,7 +17,8 @@ import { LabelProps } from '../../models/label-props';
 @Component({
   selector: 'polylines-editor',
   templateUrl: './polylines-editor.component.html',
-  providers: [CoordinateConverter, PolylinesManagerService]
+  providers: [CoordinateConverter, PolylinesManagerService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PolylinesEditorComponent implements OnDestroy {
 
@@ -200,6 +201,7 @@ export class PolylinesEditorComponent implements OnDestroy {
         const polyline = this.polylinesManager.get(update.id);
         if (polyline && polyline.enableEdit) {
           polyline.moveShape(update.draggedPosition, update.updatedPosition)
+          this.renderEditLabels(polyline, update);
         }
         break;
       }

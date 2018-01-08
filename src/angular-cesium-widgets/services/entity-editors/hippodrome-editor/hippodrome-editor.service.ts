@@ -19,6 +19,7 @@ import { HippodromeEditUpdate } from '../../../models/hippodrome-edit-update';
 import { EditableHippodrome } from '../../../models/editable-hippodrome';
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
+import { generateKey } from '../../utils';
 
 export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -80,7 +81,6 @@ export class HippodromeEditorService {
   private mapEventsManager: MapEventsManagerService;
   private updateSubject = new Subject<HippodromeEditUpdate>();
   private updatePublisher = this.updateSubject.publish(); // TODO maybe not needed
-  private counter = 0;
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
   private hippodromeManager: HippodromeManagerService;
@@ -91,11 +91,10 @@ export class HippodromeEditorService {
        cameraService: CameraService,
        managerService: HippodromeManagerService) {
     this.mapEventsManager = mapEventsManager;
-    this.updatePublisher.connect();
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
     this.hippodromeManager = managerService;
-
+    this.updatePublisher.connect();
   }
 
   onUpdate(): Observable<HippodromeEditUpdate> {
@@ -104,7 +103,7 @@ export class HippodromeEditorService {
 
   create(options = DEFAULT_HIPPODROME_OPTIONS, eventPriority = 100): HippodromeEditorObservable {
     const positions: Cartesian3[] = [];
-    const id = this.generteId();
+    const id = generateKey();
     const hippodromeOptions = this.setOptions(options);
 
     const clientEditSubject = new BehaviorSubject<HippodromeEditUpdate>({
@@ -201,7 +200,7 @@ export class HippodromeEditorService {
     if (positions.length !== 2) {
       throw new Error('Hippodrome editor error edit(): polygon should have 2 positions but received ' + positions);
     }
-    const id = this.generteId();
+    const id = generateKey();
     const hippodromeEditOptions = this.setOptions(options);
     const editSubject = new BehaviorSubject<HippodromeEditUpdate>({
       id,
@@ -242,7 +241,7 @@ export class HippodromeEditorService {
         entityType: EditableHippodrome,
         pick: PickOptions.PICK_FIRST,
         priority,
-        pickFilter: entity => id === entity.editedEntityId,
+        pickFilter: entity => id === entity.id,
       });
     }
     const pointDragRegistration = this.mapEventsManager.register({
@@ -399,10 +398,6 @@ export class HippodromeEditorService {
     observableToExtend.getCurrentWidth = (): number => this.getWidth(id);
 
     return observableToExtend as HippodromeEditorObservable;
-  }
-
-  private generteId(): string {
-    return 'edit-hippodrome-' + this.counter++;
   }
 
   private getPositions(id: any) {

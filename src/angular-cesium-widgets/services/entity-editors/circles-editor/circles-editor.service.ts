@@ -21,6 +21,7 @@ import { EditableCircle } from '../../../models/editable-circle';
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
 import { BasicEditUpdate } from '../../../models/basic-edit-update';
+import { generateKey } from '../../utils';
 
 
 export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
@@ -87,21 +88,21 @@ export class CirclesEditorService {
   private mapEventsManager: MapEventsManagerService;
   private updateSubject = new Subject<CircleEditUpdate>();
   private updatePublisher = this.updateSubject.publish(); // TODO maybe not needed
-  private counter = 0;
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
   private circlesManager: CirclesManagerService;
   private observablesMap = new Map<string, DisposableObservable<any>[]>();
-  
+
   init(mapEventsManager: MapEventsManagerService,
        coordinateConverter: CoordinateConverter,
        cameraService: CameraService,
-       circlesManager: CirclesManagerService) {
+       circlesManager: CirclesManagerService,
+  ) {
     this.mapEventsManager = mapEventsManager;
-    this.updatePublisher.connect();
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
     this.circlesManager = circlesManager;
+    this.updatePublisher.connect();
   }
   
   onUpdate(): Observable<CircleEditUpdate> {
@@ -110,7 +111,7 @@ export class CirclesEditorService {
   
   create(options = DEFAULT_CIRCLE_OPTIONS, priority = 100): CircleEditorObservable {
     let center: any = undefined;
-    const id = this.generteId();
+    const id = generateKey();
     const circleOptions = this.setOptions(options);
     const clientEditSubject = new BehaviorSubject<CircleEditUpdate>({
       id,
@@ -226,7 +227,7 @@ export class CirclesEditorService {
   }
   
   edit(center: Cartesian3, radius: number, options = DEFAULT_CIRCLE_OPTIONS, priority = 100): CircleEditorObservable {
-    const id = this.generteId();
+    const id = generateKey();
     const circleOptions = this.setOptions(options);
     const editSubject = new BehaviorSubject<CircleEditUpdate>({
       id,
@@ -467,9 +468,5 @@ export class CirclesEditorService {
       radiusPoint : circle.getRadiusPoint(),
       radius : circle.getRadius()
     }
-  }
-  
-  private generteId(): string {
-    return 'edit-circle-' + this.counter++;
   }
 }

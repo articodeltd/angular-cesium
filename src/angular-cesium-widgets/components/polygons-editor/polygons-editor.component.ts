@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
 import { EditModes } from '../../models/edit-mode.enum';
 import { PolygonEditUpdate } from '../../models/polygon-edit-update';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
@@ -17,7 +17,8 @@ import { EditablePolygon } from '../../models/editable-polygon';
 @Component({
   selector: 'polygons-editor',
   templateUrl: './polygons-editor.component.html',
-  providers: [CoordinateConverter, PolygonsManagerService]
+  providers: [CoordinateConverter, PolygonsManagerService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PolygonsEditorComponent implements OnDestroy {
 
@@ -200,6 +201,7 @@ export class PolygonsEditorComponent implements OnDestroy {
         const polygon = this.polygonsManager.get(update.id);
         if (polygon && polygon.enableEdit) {
           polygon.movePolygon(update.draggedPosition, update.updatedPosition);
+          this.renderEditLabels(polygon, update);
         }
         break;
       }
