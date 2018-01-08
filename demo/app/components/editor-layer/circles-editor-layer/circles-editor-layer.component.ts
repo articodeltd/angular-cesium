@@ -48,6 +48,11 @@ export class CirclesEditorLayerComponent implements OnInit {
       this.stopEdit();
     }
     this.editing$ = this.circlesEditor.edit(Cesium.Cartesian3.fromDegrees(-70, 0), 800000);
+    this.editing$.subscribe((editUpdate: CircleEditUpdate) => {
+      console.log(editUpdate);
+      console.log('center', this.editing$.getCenter());
+      console.log('radius', this.editing$.getRadius());
+    });
     this.editing$.setLabelsRenderFn((update: CircleEditUpdate) => {
       const newLabels: LabelProps[] = [];
       newLabels.push(
