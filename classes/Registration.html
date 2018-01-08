@@ -1807,7 +1807,7 @@ export class MapEventsManagerService {
         .map((movement) &#x3D;&gt; this.triggerPick(movement, pickOption))
         .filter((result) &#x3D;&gt; result.cesiumEntities !&#x3D;&#x3D; null || entityType &#x3D;&#x3D;&#x3D; undefined)
         .map((picksAndMovement) &#x3D;&gt; this.addEntities(picksAndMovement, entityType, pickOption, pickFilter))
-        .filter((result) &#x3D;&gt; result.entities !&#x3D;&#x3D; null || entityType &#x3D;&#x3D;&#x3D; undefined)
+        .filter((result) &#x3D;&gt; result.entities !&#x3D;&#x3D; null || (entityType &#x3D;&#x3D;&#x3D; undefined &amp;&amp; !pickFilter))
         .switchMap((entitiesAndMovement) &#x3D;&gt; this.plonter(entitiesAndMovement, pickOption))
         .takeUntil(stopper);
     } else {

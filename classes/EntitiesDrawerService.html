@@ -1583,7 +1583,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:54</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:55</a></div>
                                         </td>
                                     </tr>
             
@@ -1739,7 +1739,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:93</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:94</a></div>
                                         </td>
                                     </tr>
             
@@ -1800,7 +1800,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:98</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:99</a></div>
                                         </td>
                                     </tr>
             
@@ -1832,7 +1832,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:104</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:105</a></div>
                                         </td>
                                     </tr>
             
@@ -1894,7 +1894,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:110</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:111</a></div>
                                         </td>
                                     </tr>
             
@@ -1955,7 +1955,7 @@ Drawers the handle Cesium primitives extend it.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:76</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:77</a></div>
                                         </td>
                                     </tr>
             
@@ -2117,6 +2117,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     for (let i &#x3D; 0; i &lt; finalOptions.collectionsNumber; i++) {
       const dataSource &#x3D; new Cesium.CustomDataSource();
 			dataSources.push(dataSource);
+      this.cesiumService.getViewer().dataSources.add(dataSource);
       this.entityCollections.set(dataSource.entities,
         new OptimizedEntityCollection(
           dataSource.entities,
