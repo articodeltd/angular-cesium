@@ -36,8 +36,8 @@
     "postpublish": "npm run docs:push"
   },
   "peerDependencies": {
-    "@angular/common": "^5.1.0",
-    "@angular/core": "^5.1.0"
+    "@angular/common": "^4.2.6 || ^5.0.0",
+    "@angular/core": "^4.2.6 || ^5.0.0"
   },
   "devDependencies": {
     "@angular/animations": "5.1.0",
