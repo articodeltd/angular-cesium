@@ -1,3 +1,7 @@
+## 0.0.45
+### Fixes
+* Some minor fixes
+
 ## 0.0.43
 ### Fixes
 * Improved shape editors performance
