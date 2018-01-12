@@ -1,3 +1,8 @@
+## 0.0.48
+### Fixes
+* Fixed `ac-circle-desc` radius changing.
+* Fixed `ac-ellipse-desc` & `ac-circle-desc` updating bug 
+
 ## 0.0.45
 ### Fixes
 * Some minor fixes

@@ -44,7 +44,12 @@ export class AcCircleDescComponent extends BasicDesc {
 
 		cesiumProps.semiMajorAxis = cesiumProps.radius;
 		cesiumProps.semiMinorAxis = cesiumProps.radius;
+		delete cesiumProps.radius;
 
 		return cesiumProps;
+	}
+
+	protected _getPropsAssigner(): (cesiumObject: Object, desc: Object) => Object {
+		return (cesiumObject: Object, desc: Object) => Object.assign(cesiumObject, desc)
 	}
 }
