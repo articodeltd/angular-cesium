@@ -71,10 +71,11 @@ export class SimGenerator {
         this.client.simData = dataChunk;
       }
 
-      const chunk = this.client.numOfEntities > INTERVAL_DIVIDER ? this.getChunkPart(counter) : dataChunk;
+      const chunk = this.client.numOfEntities > 100 ?
+        this.getChunkPart(counter) : dataChunk;
       this.client.socket.emit('birds', chunk);
       counter++;
-    }, this.client.intervalMs / INTERVAL_DIVIDER);
+    }, this.client.numOfEntities <= 100 ? this.client.intervalMs : this.client.intervalMs / INTERVAL_DIVIDER);
     this.client.intervalId = id;
     return id;
   }
