@@ -1496,6 +1496,9 @@ All other properties of props are the same as the properties of Entity and Ellip
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <span class="modifier">Protected</span> <a href="#_getPropsAssigner">_getPropsAssigner</a>
+                            </li>
+                            <li>
                                 <span class="modifier">Protected</span> <a href="#_propsEvaluator">_propsEvaluator</a>
                             </li>
                         </ul>
@@ -1588,6 +1591,39 @@ All other properties of props are the same as the properties of Entity and Ellip
             <h3 id="methods">
                 Methods
             </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="_getPropsAssigner"></a>
+                            <span class="name"><b><span class="modifier">Protected</span> _getPropsAssigner</b><a href="#_getPropsAssigner"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-lock"></span>
+                            <code>_getPropsAssigner()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/angular-cesium/components/ac-circle-desc/ac-circle-desc.component.ts:52</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -1703,8 +1739,13 @@ export class AcCircleDescComponent extends BasicDesc {
 
 		cesiumProps.semiMajorAxis &#x3D; cesiumProps.radius;
 		cesiumProps.semiMinorAxis &#x3D; cesiumProps.radius;
+		delete cesiumProps.radius;
 
 		return cesiumProps;
+	}
+
+	protected _getPropsAssigner(): (cesiumObject: Object, desc: Object) &#x3D;&gt; Object {
+		return (cesiumObject: Object, desc: Object) &#x3D;&gt; Object.assign(cesiumObject, desc)
 	}
 }
 </code></pre>
