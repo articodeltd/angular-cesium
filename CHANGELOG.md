@@ -1,3 +1,7 @@
+## Unreleased
+### Fixes
+* Fixed mistakenly rejecting Observables from other contexts
+
 ## 0.0.48
 ### Fixes
 * Fixed `ac-circle-desc` radius changing.
