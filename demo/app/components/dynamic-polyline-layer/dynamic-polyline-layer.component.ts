@@ -16,6 +16,11 @@ export class DynamicPolylineLayerComponent implements OnInit {
 	polylines$: Observable<AcNotification>;
 	Cesium = Cesium;
 	show = true;
+  myMaterial = Cesium.Material.fromType('PolylineDash', {
+    color: Cesium.Color.RED,
+    gapColor: Cesium.Color.TRANSPARENT,
+    dashLength: 12.0
+  });
 
 	constructor(private tracksDataProvider: TracksDataProvider) {
 	}

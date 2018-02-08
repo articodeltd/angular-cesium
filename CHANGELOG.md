@@ -1,3 +1,7 @@
+## 0.0.49
+### Fixes
+* Fixed `draggableToMap` directive not working correctly because of missing default z-index
+
 ## 0.0.48
 ### Fixes
 * Fixed `ac-circle-desc` radius changing.

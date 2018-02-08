@@ -45,7 +45,6 @@ export class DraggableToMapService {
     const imgElement = document.createElement('img');
     imgElement.src = imageSrc;
     imgElement.style.position = 'fixed';
-    imgElement.style.visibility = 'hidden';
     imgElement.style.width = '30px';
     imgElement.style.height = '30px';
     imgElement.style['user-drag'] = 'none';
@@ -54,13 +53,13 @@ export class DraggableToMapService {
     imgElement.style['-webkit-user-drag'] = 'none';
     imgElement.style['-webkit-user-select'] = 'none';
     imgElement.style['-ms-user-select'] = 'none';
+    imgElement.style['z-index'] = 9999;
     Object.assign(imgElement.style, style);
     document.body.appendChild(imgElement);
 
     this.createDragObservable();
     this.dragObservable.subscribe(
       (e) => {
-        imgElement.style.visibility = 'visible';
         imgElement.style.left = e.screenPosition.x - imgElement.clientWidth / 2 + 'px';
         imgElement.style.top = e.screenPosition.y - imgElement.clientHeight / 2 + 'px';
         this.mainSubject.next(e);
