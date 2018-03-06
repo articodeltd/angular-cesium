@@ -252,12 +252,19 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		const acForArr = this.acFor.split(' ');
 		this.observable = this.context[acForArr[3]];
 		this.entityName = acForArr[1];
-		if (!this.observable || !(this.observable instanceof Observable)) {
+		if (!this.isObservable(this.observable)) {
 			throw  new Error('ac-layer: must initailize [acFor] with rx observable, instead received: ' + this.observable);
 		}
 
 		this.layerService.context = this.context;
 		this.layerService.setEntityName(this.entityName);
+	}
+
+	/** Test for a rxjs Observable */
+	private isObservable(obj: any): boolean {
+		/* check via duck-typing rather than instance of
+		 * to allow passing between window contexts */
+		return obj && typeof obj.subscribe === 'function'
 	}
 
 	ngAfterContentInit(): void {
