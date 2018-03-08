@@ -1,6 +1,7 @@
 ## Unreleased
 ### Fixes
 * Fixed mistakenly rejecting Observables from other contexts
+* Fixed `ac-toolbar` onDestroy() [#217](https://github.com/TGFTech/angular-cesium/issues/217).
 
 ## 0.0.48
 ### Fixes
