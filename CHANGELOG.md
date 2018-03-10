@@ -2,6 +2,7 @@
 ### Fixes
 * Fixed mistakenly rejecting Observables from other contexts
 * Fixed `ac-toolbar` onDestroy() [#217](https://github.com/TGFTech/angular-cesium/issues/217).
+* Fixed ac-html element is shown when show initially set to false [#216](https://github.com/TGFTech/angular-cesium/issues/216).
 
 ## 0.0.48
 ### Fixes
