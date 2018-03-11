@@ -388,6 +388,6 @@ Take screenshot of your cesium globe.
 [Mit License](https://opensource.org/licenses/MIT)
 
 ## Support
-Angular Cesium is an open source project, feel free to open issues,ask questions and open PRs.
+Angular Cesium is an open source project, feel free to open issues,ask questions and open PRs.  
 For additional support options contact us: [contact@guild.software](mailto:\\contact@guild.software).
 
