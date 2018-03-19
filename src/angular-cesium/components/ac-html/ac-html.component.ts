@@ -1,4 +1,4 @@
-import { Component, DoCheck, ElementRef, Input, OnDestroy, Renderer2 } from '@angular/core';
+import {Component, DoCheck, ElementRef, Input, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
 
 /**
@@ -20,7 +20,8 @@ import { CesiumService } from '../../services/cesium/cesium.service';
                 z-index: 100;
 				}`]
 })
-export class AcHtmlComponent implements DoCheck, OnDestroy {
+export class AcHtmlComponent implements DoCheck, OnDestroy, OnInit {
+
 
   @Input() props: any;
   private isDraw = false;
@@ -36,12 +37,22 @@ export class AcHtmlComponent implements DoCheck, OnDestroy {
     }
   }
 
+  ngOnInit(): void {
+    if (this.props.show === false) {
+      this.hideElement();
+    }
+  }
+
   remove() {
     if (this.isDraw) {
       this.isDraw = false;
       this.cesiumService.getScene().preRender.removeEventListener(this.preRenderEventListener);
-      this.renderer.setStyle(this.elementRef.nativeElement, 'display', `none`);
+      this.hideElement();
     }
+  }
+
+  hideElement() {
+      this.renderer.setStyle(this.elementRef.nativeElement, 'display', `none`);
   }
 
   add() {
