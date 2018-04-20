@@ -28,20 +28,20 @@ export class SimGenerator {
     const data = [];
     for (let i = 0; i < this.client.numOfEntities; i++) {
       const position = {
-        lat : 70 * Math.random() * getSign(),
-        long : 180 * Math.random() * getSign(),
-        altitude : 50000 * Math.random()
+        lat: 70 * Math.random() * getSign(),
+        long: 180 * Math.random() * getSign(),
+        altitude: 50000 * Math.random()
       };
       const heading = Math.random() * 2 * Math.PI;
       const futurePosition = this.getFuturePosition(position, heading);
       data.push({
-        id : i,
-        action : 'ADD_OR_UPDATE',
-        entity : {
-          id : i,
-          isTarget : i % 2 === 0,
-          callsign : 'track' + i,
-          image : '/assets/fighter-jet.png',
+        id: i,
+        action: 'ADD_OR_UPDATE',
+        entity: {
+          id: i,
+          isTarget: i % 2 === 0,
+          callsign: 'track' + i,
+          image: '/assets/fighter-jet.png',
           heading,
           position,
           futurePosition
@@ -65,7 +65,7 @@ export class SimGenerator {
     let counter = 0;
     const id = setInterval(() => {
       let dataChunk = simData;
-      if (counter % INTERVAL_DIVIDER === 0) {
+      if (this.client.numOfEntities <= 100 || counter % INTERVAL_DIVIDER === 0) {
         counter = 0;
         dataChunk = this.updateChunk(simData);
         this.client.simData = dataChunk;
@@ -84,8 +84,8 @@ export class SimGenerator {
     const simData = this.client.simData;
     const numOfEntities = this.client.numOfEntities;
     const result = [];
-    const maxIndex = (numOfEntities / INTERVAL_DIVIDER) * (part + 1);
-    for (let i = (numOfEntities / INTERVAL_DIVIDER) * part; i < maxIndex; i++) {
+    const maxIndex = Math.floor(numOfEntities / INTERVAL_DIVIDER) * (part + 1);
+    for (let i = Math.floor(numOfEntities / INTERVAL_DIVIDER) * part; i < maxIndex; i++) {
       result.push(simData[i]);
     }
     return result;
@@ -93,9 +93,9 @@ export class SimGenerator {
 
   private getFuturePosition(position: any, heading: number) {
     return {
-      lat : position.lat + Math.cos(heading) * this.maxMovementDistance * 30,
-      long : position.long + Math.sin(heading) * this.maxMovementDistance * 30,
-      altitude : position.altitude
+      lat: position.lat + Math.cos(heading) * this.maxMovementDistance * 30,
+      long: position.long + Math.sin(heading) * this.maxMovementDistance * 30,
+      altitude: position.altitude
     };
   }
 

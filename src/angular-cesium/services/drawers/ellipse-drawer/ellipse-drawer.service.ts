@@ -11,7 +11,7 @@ export class EllipseDrawerService extends EntitiesDrawerService {
   constructor(cesiumService: CesiumService) {
     super(cesiumService, GraphicsType.ellipse, {
       collectionsNumber: 10,
-      collectionMaxSize: 450,
+      collectionMaxSize: 100,
       collectionSuspensionTime: 100
     });
   }
