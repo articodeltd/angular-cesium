@@ -2,12 +2,16 @@
 ### Fixes
 * Fixed mistakenly rejecting Observables from other contexts
 * Fixed `ac-toolbar` onDestroy() [#217](https://github.com/TGFTech/angular-cesium/issues/217).
-* Fixed ac-html element is shown when show initially set to false [#216](https://github.com/TGFTech/angular-cesium/issues/216).
+* Fixed `ac-html` element is shown when show initially set to false [#216](https://github.com/TGFTech/angular-cesium/issues/216).
+* Changed `ellipse-drawer` service collection max size cap to 100
+* Fixed `sim-generator` in demo server
+* Locked cesium version in package.json to 1.41.0 - for now until we figure out what causing some bugs in newer version of cesium.
+* Changed `SmartAssigner` allowUndefined default from true to false
 
 ## 0.0.48
 ### Fixes
 * Fixed `ac-circle-desc` radius changing.
-* Fixed `ac-ellipse-desc` & `ac-circle-desc` updating bug 
+* Fixed `ac-ellipse-desc` & `ac-circle-desc` updating bug
 
 ## 0.0.45
 ### Fixes
@@ -50,8 +54,8 @@
 ## 0.0.37
 ### Fixes
 * Html Primitive - change primitive screen position to Cesium.Cartesian2
-* Fix demo typescript compilation 
-* Fix project implicit any 
+* Fix demo typescript compilation
+* Fix project implicit any
 * Change `ngOutletContext` to `ngTemplateOutletContext`
 
 ## 0.0.36
@@ -85,7 +89,7 @@
 
 ## 0.0.33
 ## Fixes
-* fix missing Cartesian3 typings  
+* fix missing Cartesian3 typings
 
 ## 0.0.32
 ### Features
@@ -95,23 +99,23 @@
 
 ## Fixes
 * Hippodrome editor - setManually supports positions and hippodrome width.
-* Fixed Polygons Editing  bug that happened when dragging a point.  
+* Fixed Polygons Editing  bug that happened when dragging a point.
 * Fixed Polyline Editing bug that happened when dragging a point.
 * Fixed `EntitesDrawerService` show prop bug.
 
 ## Breaking changes
-* Observer Editors methods: `setPolygonManually()`, `setPolylineManually()`,`setCircleManually()`,`setHippodromeManually()` changed to: `setManually()`.  
-Each shape accepts here own specific arguments to configure the edited object, for example: `polygonEditor$.setManaually(positions, pointOptions, polygonOptions)`.    
+* Observer Editors methods: `setPolygonManually()`, `setPolylineManually()`,`setCircleManually()`,`setHippodromeManually()` changed to: `setManually()`.
+Each shape accepts here own specific arguments to configure the edited object, for example: `polygonEditor$.setManaually(positions, pointOptions, polygonOptions)`.
 
 ## 0.0.31
 ### Features
 * All editors now except allowDrag option to allow or disable the ability to drag the edited shape.
 * Added options to circle editor  - `CircleEditOptions`.
- 
+
 
 ### Fixes
 * Fix hippodrome editor outline bug.
-* Fixed bug that caused polygons hiding to throw an error if they had outline. 
+* Fixed bug that caused polygons hiding to throw an error if they had outline.
 
 ## 0.0.30
 ### Fixes
@@ -120,13 +124,13 @@ Each shape accepts here own specific arguments to configure the edited object, f
 ### Features
 * Added `selectionManagerService` and example in selection-layer.component.ts
 * Added context menu service that allows dynamic injection of custom components.
-* Added Polyline editor `PolylinesEditorService` - allow for creating polylines and editing them from the map of from the code.  
+* Added Polyline editor `PolylinesEditorService` - allow for creating polylines and editing them from the map of from the code.
 * Added Circle editor `CirclesEditorService` - allow for creating circles and editing them from the map of from the code.
 * Added Hippodrome editor `HippodromeEditorService` - allow for creating hippodromes and editing them from the map of from the code.
 * Added `CesiumHeatMapMaterialCreator` for creating heatmap material for cesium entities.
 * edited polygons are now draggable.
 * added `ac-point-primitive-desc`
-* added `ac-html-desc` - ac-layer supports ac-html  
+* added `ac-html-desc` - ac-layer supports ac-html
 
 ## 0.0.29
 ### Features
@@ -148,7 +152,7 @@ Each shape accepts here own specific arguments to configure the edited object, f
 
 ## 0.0.21
 ### Features
-* Allow `KeyboardControlService` to run outside of angular zone. 
+* Allow `KeyboardControlService` to run outside of angular zone.
 
 ## 0.0.20
 ### Features
@@ -160,13 +164,13 @@ Each shape accepts here own specific arguments to configure the edited object, f
 * Fixed `npm run server`
 
 ### Breaking Changes
-* Renamed `ModuleOptions` to `ModuleConfiguration`. 
+* Renamed `ModuleOptions` to `ModuleConfiguration`.
 
 ## 0.0.19
 ### Features
 * Added `done` callback to `KeyboardControlService` definitions - now it's possible to know when the event is done.
 * Added internal `IGNORED` state to `KeyboardControlService` - now when action returns `false` it will ignore it until the next event cycle (keydown then keyup)
-* Added zIndex to `<ac-layer [zIndex]="1"/>`, ability to control the layers order. 
+* Added zIndex to `<ac-layer [zIndex]="1"/>`, ability to control the layers order.
 * Added `CameraService` that is provided by `ac-map`. The service exposes the scene's camera and screenSpaceCameraController.
 * Added `[sceneMode]` attribute to `ac-map` .
 * Added new components: `ac-billboard-primitive-desc`, `ac-label-primitive-desc`, `ac-polyline-primitive-desc`. The components uses Cesium Primitives for performance efficient drawing of map entities.
@@ -175,9 +179,9 @@ Each shape accepts here own specific arguments to configure the edited object, f
 * Event triggered from `KeyboardControlService` is now triggered with `cesiumService: CesiumService, key: string, keyboardEvent: KeyboardEvent`.
 * CesiumService no longer supports camera actions such as `setEnableTilt`, `setMaximumZoom`, etc... - instead use CameraService that is provided by `ac-map`.
 * `ac-map` function `getMapEventManager()` renamed to `getMapEventsManager()`
-* `maximumZoom`, `minimumZoom` and `enableTilt` attributes in `ac-map` were removed. use `CameraService` instead.  
+* `maximumZoom`, `minimumZoom` and `enableTilt` attributes in `ac-map` were removed. use `CameraService` instead.
 * `ViewersManagerService` renamed into `MapsManagerService`. It now manage ac-map instances. Internal functions changed accordingly to `getMap()` and `registerMap()`. The logic remained the same.
-* `AngularCesiumModule` should be loaded with `.forRoot()`. Additionally, `AngularCesiumModule.forRoot()` takes options of type `ModuleOptions`. Fixes cesium [bug](https://github.com/AnalyticalGraphicsInc/cesium/pull/5736) (height=0 on entities creates entities with shadows,shadows cant be turn off).  
+* `AngularCesiumModule` should be loaded with `.forRoot()`. Additionally, `AngularCesiumModule.forRoot()` takes options of type `ModuleOptions`. Fixes cesium [bug](https://github.com/AnalyticalGraphicsInc/cesium/pull/5736) (height=0 on entities creates entities with shadows,shadows cant be turn off).
 
 ## 0.0.18
 ### Features
@@ -200,8 +204,8 @@ Each shape accepts here own specific arguments to configure the edited object, f
 * add `<ac-3d-tile-layer/>` for 3d tiles
 
 ## 0.0.14
-### Breaking changes 
-* deprecated: 
+### Breaking changes
+* deprecated:
   * AcStaticEllipseDescComponent, instead use `ac-ellipse-desc`
   * AcDynamicPolylineDescComponent, instead use `ac-polyline-desc`
   * AcStaticPolylineDescComponent, instead use `ac-polyline-desc`
@@ -210,7 +214,7 @@ Each shape accepts here own specific arguments to configure the edited object, f
 * MapEventManagerService: EventResult.primitives changed to EventResult.cesiumEntities
 * `ac-polyline-desc` and `ac-polyline` accept Cesium.Color as material in props input.
 
-### Features 
+### Features
 * support models `ac-model-desc`
 
 ## 0.0.13
