@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { PrimitivePolygonDrawerService } from './primitive-polygon-drawer.service';
-import { mock, when, instance, verify, anything } from 'ts-mockito';
+import { anything, instance, mock, verify, when } from 'ts-mockito';
 import { CesiumService } from '../../cesium/cesium.service';
 import { providerFromMock } from '../../../utils/testingUtils';
 
@@ -49,7 +49,7 @@ describe('PrimitivePolygonDrawerService', () => {
 			providers: [PrimitivePolygonDrawerService, providerFromMock(CesiumService, cesiumService)]
 		});
 	});
-  
+
   beforeEach(inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
     service.init();
   }));
@@ -77,12 +77,6 @@ describe('PrimitivePolygonDrawerService', () => {
 		service.update(polygonPrimitive, otherGeometryProps, instanceProps, primitiveProps);
 
 		expect(oldWidth).toEqual(polygonPrimitive.polygonHierarchy);
-	}));
-
-	it('should throw if geometry props are empty', inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
-		geometryProps = {};
-
-		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
 	}));
 
 	it('should throw if geometry props are not given', inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {

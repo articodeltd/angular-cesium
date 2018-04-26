@@ -17,10 +17,12 @@ const BoundingSphereState = Cesium.BoundingSphereState;
 const ColorMaterialProperty = Cesium.ColorMaterialProperty;
 const MaterialProperty = Cesium.MaterialProperty;
 const Property = Cesium.Property;
-const colorScratch = new Color();
-const  distanceDisplayConditionScratch = new DistanceDisplayCondition();
 
-function Batch(primitives: any, translucent: any, appearanceType: any, depthFailAppearanceType: any, depthFailMaterialProperty: any, closed: any, shadows: any) {
+var colorScratch = new Color();
+var distanceDisplayConditionScratch = new DistanceDisplayCondition();
+var defaultDistanceDisplayCondition = new DistanceDisplayCondition();
+
+function Batch(primitives, translucent, appearanceType, depthFailAppearanceType, depthFailMaterialProperty, closed, shadows) {
   this.translucent = translucent;
   this.appearanceType = appearanceType;
   this.depthFailAppearanceType = depthFailAppearanceType;
@@ -53,7 +55,7 @@ Batch.prototype.onMaterialChanged = function() {
   this.invalidated = true;
 };
 
-Batch.prototype.isMaterial = function(updater: any) {
+Batch.prototype.isMaterial = function(updater) {
   var material = this.depthFailMaterialProperty;
   var updaterMaterial = updater.depthFailMaterialProperty;
   if (updaterMaterial === material) {
@@ -65,8 +67,8 @@ Batch.prototype.isMaterial = function(updater: any) {
   return false;
 };
 
-Batch.prototype.add = function(updater: any, instance: any) {
-  var id = updater.entity.id;
+Batch.prototype.add = function(updater, instance) {
+  var id = updater.id;
   this.createPrimitive = true;
   this.geometry.set(id, instance);
   this.updaters.set(id, updater);
@@ -76,14 +78,14 @@ Batch.prototype.add = function(updater: any, instance: any) {
     var that = this;
     this.subscriptions.set(id, updater.entity.definitionChanged.addEventListener(function(entity, propertyName, newValue, oldValue) {
       if (propertyName === 'isShowing') {
-        that.showsUpdated.set(entity.id, updater);
+        that.showsUpdated.set(updater.id, updater);
       }
     }));
   }
 };
 
-Batch.prototype.remove = function(updater: any) {
-  var id = updater.entity.id;
+Batch.prototype.remove = function(updater) {
+  var id = updater.id;
   this.createPrimitive = this.geometry.remove(id) || this.createPrimitive;
   if (this.updaters.remove(id)) {
     this.updatersWithAttributes.remove(id);
@@ -95,7 +97,7 @@ Batch.prototype.remove = function(updater: any) {
   }
 };
 
-Batch.prototype.update = function(time: any) {
+Batch.prototype.update = function(time) {
   var isUpdated = true;
   var removedCount = 0;
   var primitive = this.primitive;
@@ -146,6 +148,7 @@ Batch.prototype.update = function(time: any) {
       }
 
       primitive = new Primitive({
+        show : false,
         asynchronous : true,
         geometryInstances : geometries,
         appearance : new this.appearanceType({
@@ -175,6 +178,7 @@ Batch.prototype.update = function(time: any) {
     this.createPrimitive = false;
     this.waitingOnCreate = true;
   } else if (defined(primitive) && primitive.ready) {
+    primitive.show = true;
     if (defined(this.oldPrimitive)) {
       primitives.remove(this.oldPrimitive);
       this.oldPrimitive = undefined;
@@ -190,7 +194,7 @@ Batch.prototype.update = function(time: any) {
     var waitingOnCreate = this.waitingOnCreate;
     for (i = 0; i < length; i++) {
       var updater = updatersWithAttributes[i];
-      var instance = this.geometry.get(updater.entity.id);
+      var instance = this.geometry.get(updater.id);
 
       attributes = this.attributes.get(instance.id.id);
       if (!defined(attributes)) {
@@ -200,22 +204,22 @@ Batch.prototype.update = function(time: any) {
 
       if (!updater.fillMaterialProperty.isConstant || waitingOnCreate) {
         var colorProperty = updater.fillMaterialProperty.color;
-        colorProperty.getValue(time, colorScratch);
-        if (!Color.equals(attributes._lastColor, colorScratch)) {
-          attributes._lastColor = Color.clone(colorScratch, attributes._lastColor);
-          attributes.color = ColorGeometryInstanceAttribute.toValue(colorScratch, attributes.color);
+        var resultColor = Property.getValueOrDefault(colorProperty, time, Color.WHITE, colorScratch);
+        if (!Color.equals(attributes._lastColor, resultColor)) {
+          attributes._lastColor = Color.clone(resultColor, attributes._lastColor);
+          attributes.color = ColorGeometryInstanceAttribute.toValue(resultColor, attributes.color);
           if ((this.translucent && attributes.color[3] === 255) || (!this.translucent && attributes.color[3] !== 255)) {
             this.itemsToRemove[removedCount++] = updater;
           }
         }
       }
 
-      if (defined(this.depthFailAppearanceType) && this.depthFailAppearanceType instanceof ColorMaterialProperty && (!updater.depthFailMaterialProperty.isConstant || waitingOnCreate)) {
+      if (defined(this.depthFailAppearanceType) && updater.depthFailMaterialProperty instanceof ColorMaterialProperty && (!updater.depthFailMaterialProperty.isConstant || waitingOnCreate)) {
         var depthFailColorProperty = updater.depthFailMaterialProperty.color;
-        depthFailColorProperty.getValue(time, colorScratch);
-        if (!Color.equals(attributes._lastDepthFailColor, colorScratch)) {
-          attributes._lastDepthFailColor = Color.clone(colorScratch, attributes._lastDepthFailColor);
-          attributes.depthFailColor = ColorGeometryInstanceAttribute.toValue(colorScratch, attributes.depthFailColor);
+        var depthColor = Property.getValueOrDefault(depthFailColorProperty, time, Color.WHITE, colorScratch);
+        if (!Color.equals(attributes._lastDepthFailColor, depthColor)) {
+          attributes._lastDepthFailColor = Color.clone(depthColor, attributes._lastDepthFailColor);
+          attributes.depthFailColor = ColorGeometryInstanceAttribute.toValue(depthColor, attributes.depthFailColor);
         }
       }
 
@@ -227,7 +231,7 @@ Batch.prototype.update = function(time: any) {
 
       var distanceDisplayConditionProperty = updater.distanceDisplayConditionProperty;
       if (!Property.isConstant(distanceDisplayConditionProperty)) {
-        var distanceDisplayCondition = distanceDisplayConditionProperty.getValue(time, distanceDisplayConditionScratch);
+        var distanceDisplayCondition = Property.getValueOrDefault(distanceDisplayConditionProperty, time, defaultDistanceDisplayCondition, distanceDisplayConditionScratch);
         if (!DistanceDisplayCondition.equals(distanceDisplayCondition, attributes._lastDistanceDisplayCondition)) {
           attributes._lastDistanceDisplayCondition = DistanceDisplayCondition.clone(distanceDisplayCondition, attributes._lastDistanceDisplayCondition);
           attributes.distanceDisplayCondition = DistanceDisplayConditionGeometryInstanceAttribute.toValue(distanceDisplayCondition, attributes.distanceDisplayCondition);
@@ -244,12 +248,12 @@ Batch.prototype.update = function(time: any) {
   return isUpdated;
 };
 
-Batch.prototype.updateShows = function(primitive: any) {
+Batch.prototype.updateShows = function(primitive) {
   var showsUpdated = this.showsUpdated.values;
   var length = showsUpdated.length;
   for (var i = 0; i < length; i++) {
     var updater = showsUpdated[i];
-    var instance = this.geometry.get(updater.entity.id);
+    var instance = this.geometry.get(updater.id);
 
     var attributes = this.attributes.get(instance.id.id);
     if (!defined(attributes)) {
@@ -266,16 +270,16 @@ Batch.prototype.updateShows = function(primitive: any) {
   this.showsUpdated.removeAll();
 };
 
-Batch.prototype.contains = function(entity: any) {
-  return this.updaters.contains(entity.id);
+Batch.prototype.contains = function(updater) {
+  return this.updaters.contains(updater.id);
 };
 
-Batch.prototype.getBoundingSphere = function(entity: any, result: any) {
+Batch.prototype.getBoundingSphere = function(updater, result) {
   var primitive = this.primitive;
   if (!primitive.ready) {
     return BoundingSphereState.PENDING;
   }
-  var attributes = primitive.getGeometryInstanceAttributes(entity);
+  var attributes = primitive.getGeometryInstanceAttributes(updater.entity);
   if (!defined(attributes) || !defined(attributes.boundingSphere) ||//
     (defined(attributes.show) && attributes.show[0] === 0)) {
     return BoundingSphereState.FAILED;
@@ -316,6 +320,7 @@ Batch.prototype.destroy = function() {
     this.removeMaterialSubscription();
   }
 };
+
 
 let wasFixed = false;
 export function fixCesiumEntitiesShadows() {

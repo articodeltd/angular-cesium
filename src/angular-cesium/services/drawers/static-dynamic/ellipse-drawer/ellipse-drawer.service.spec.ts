@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { StaticEllipseDrawerService } from './ellipse-drawer.service';
-import { mock, when, instance, verify, anything } from 'ts-mockito';
+import { anything, instance, mock, verify, when } from 'ts-mockito';
 import { CesiumService } from '../../../cesium/cesium.service';
 import { providerFromMock } from '../../../../utils/testingUtils';
 
@@ -39,8 +39,8 @@ describe('EllipseStaticDrawerService', () => {
 			providers: [StaticEllipseDrawerService, providerFromMock(CesiumService, cesiumService)]
 		});
 	});
-  
-  
+
+
   beforeEach(inject([StaticEllipseDrawerService], (service: StaticEllipseDrawerService) => {
     service.init();
   }));
@@ -86,24 +86,6 @@ describe('EllipseStaticDrawerService', () => {
 		service.update(ellipsePrimitive, otherGeometryProps, instanceProps, primitiveProps);
 
 		expect(oldCenter).toEqual(ellipsePrimitive.center);
-	}));
-
-	it('should throw if geometry props are empty', inject([StaticEllipseDrawerService], (service: StaticEllipseDrawerService) => {
-		geometryProps = {};
-
-		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
-	}));
-
-	it('should throw if geometry props are not given', inject([StaticEllipseDrawerService], (service: StaticEllipseDrawerService) => {
-		geometryProps = undefined;
-
-		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
-	}));
-
-	it('should throw if instance props are empty', inject([StaticEllipseDrawerService], (service: StaticEllipseDrawerService) => {
-		instanceProps = {};
-
-		expect(() => service.add(geometryProps, instanceProps, primitiveProps)).toThrow();
 	}));
 
 	it('should throw if instance props are not given', inject([StaticEllipseDrawerService], (service: StaticEllipseDrawerService) => {

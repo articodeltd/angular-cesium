@@ -43,6 +43,7 @@ import { HippodromeEditorLayerComponent } from './components/editor-layer/hippod
 import { TracksWithArraysComponent } from './components/tracks-with-arrays-example/tracks-with-arrays.component';
 import { AngularCesiumWidgetsModule } from '../../src/angular-cesium-widgets/angular-cesium-widgets.module';
 import { ToolbarExampleComponent } from './components/toolbar-example/toolbar-example.component';
+import { BoxesLayerComponent } from './components/boxes-layer/boxes-layer.component';
 
 
 @NgModule({
@@ -64,24 +65,25 @@ import { ToolbarExampleComponent } from './components/toolbar-example/toolbar-ex
     DrawOnMapComponent,
     DemoMapComponent,
     MapsLayerComponent,
-		ModelsLayerComponent,
+    ModelsLayerComponent,
     MaxValidatorDirective,
     MinValidatorDirective,
-		PolygonPerformanceTestComponent,
+    PolygonPerformanceTestComponent,
     KeyboardControlLayerComponent,
     HippodromeLayerComponent,
-		LayerOrderComponent,
+    LayerOrderComponent,
     ContextMenuComponent,
     ContextMenuLayerComponent,
-		SelectionLayerComponent,
-		PolygonsEditorLayerComponent,
-		CirclesEditorLayerComponent,
-		PolylineEditorLayerComponent,
+    SelectionLayerComponent,
+    PolygonsEditorLayerComponent,
+    CirclesEditorLayerComponent,
+    PolylineEditorLayerComponent,
     HeatmapLayerComponent,
-		HippodromeEditorLayerComponent,
+    HippodromeEditorLayerComponent,
     HtmlLayerComponent,
     TracksWithArraysComponent,
     ToolbarExampleComponent,
+    BoxesLayerComponent,
   ],
   imports: [
     BrowserModule,
