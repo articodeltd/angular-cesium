@@ -1604,12 +1604,12 @@
 @Injectable()
 export class ViewerFactory {
 	cesium: any;
-	
-	
+
+
 	constructor() {
 		this.cesium &#x3D; Cesium;
 	}
-	
+
 	/**
 	 * Creates a viewer with default or custom options
 	 * @param mapContainer - container to initialize the viewer on
@@ -1618,11 +1618,6 @@ export class ViewerFactory {
 	 * @returns {any} new viewer
 	 */
 	createViewer(mapContainer: HTMLElement, options?: any) {
-		// For backwards compatibility, TODO: should be removed
-		if (!window[&#x27;CESIUM_BASE_URL&#x27;]) {
-			window[&#x27;CESIUM_BASE_URL&#x27;] &#x3D; &#x27;/node_modules/cesium/Build/Cesium&#x27;;
-		}
-		
 		let viewer &#x3D; null;
 		if (options) {
 			viewer &#x3D; new this.cesium.Viewer(mapContainer, {
@@ -1645,7 +1640,7 @@ export class ViewerFactory {
 					},
 				});
 		}
-		
+
 		return viewer;
 	}
 }
