@@ -7,6 +7,7 @@
 * Fixed `sim-generator` in demo server
 * Locked cesium version in package.json to 1.41.0 - for now until we figure out what causing some bugs in newer version of cesium.
 * Changed `SmartAssigner` allowUndefined default from true to false
+* Removed deprecated code in `ViewerFactory` that set CESIUM_BASE_URL if ti wasn't already set.
 
 ## 0.0.48
 ### Fixes

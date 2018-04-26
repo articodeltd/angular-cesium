@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ViewerFactory {
 	cesium: any;
-	
-	
+
+
 	constructor() {
 		this.cesium = Cesium;
 	}
-	
+
 	/**
 	 * Creates a viewer with default or custom options
 	 * @param mapContainer - container to initialize the viewer on
@@ -17,11 +17,6 @@ export class ViewerFactory {
 	 * @returns {any} new viewer
 	 */
 	createViewer(mapContainer: HTMLElement, options?: any) {
-		// For backwards compatibility, TODO: should be removed
-		if (!window['CESIUM_BASE_URL']) {
-			window['CESIUM_BASE_URL'] = '/node_modules/cesium/Build/Cesium';
-		}
-		
 		let viewer = null;
 		if (options) {
 			viewer = new this.cesium.Viewer(mapContainer, {
@@ -44,7 +39,7 @@ export class ViewerFactory {
 					},
 				});
 		}
-		
+
 		return viewer;
 	}
 }
