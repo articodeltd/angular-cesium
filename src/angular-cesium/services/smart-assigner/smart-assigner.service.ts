@@ -3,7 +3,7 @@
  */
 export class SmartAssigner {
 
-    static create(props: string[] = [], allowUndefined: boolean = false): (obj1: Object, obj2: Object) => Object {
+    static create(props: string[] = [], allowUndefined: boolean = true): (obj1: Object, obj2: Object) => Object {
         let fnBody = ``;
 
         props.forEach(prop => {
