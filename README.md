@@ -9,22 +9,33 @@ Focusing on high performance with easy usage.
 Check out our [Demo](http://www.angular-cesium.com) that contains small app built with angular-cesium.
 
 ## Getting started
+#### For existing project just install angular-cesium
 + install `angular-cesium`:
   ```bash
   $ npm install --save angular-cesium
   ```
 
-#### Angular cli
+#### New Angular CLI project 
 + If you didn't installed [Angular CLI](https://github.com/angular/angular-cli) yet:
     ```bash
     $ npm install -g @angular/cli
     ```
 
-+ start new project:
++ Start new project:
     ```bash
     $ ng new PROJECT_NAME
     $ cd PROJECT_NAME
     ```
+    
++ Install `angular-cesium`:
+  ```bash
+  $ npm install --save angular-cesium
+  ```
++ For Angular 6 users:
+ ```bash
+  $ npm install --save rxjs-compat
+  ```
+  
 + Import and add `AngularCesiumModule` to your app root module:
     ```javascript
     import { AngularCesiumModule } from 'angular-cesium';
@@ -56,7 +67,7 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
   $ npm install --save cesium
   ```
 
- + Add cesium assets, script and css in `.angular-cli.json` file:
+ + Add cesium assets, script and css in `.angular-cli.json` or `angular.json`(Angular 6) file:
   ```javascript
 	  "assets": [ // ...
 	    { "glob": "**/*", "input": "../node_modules/cesium/Build/Cesium", "output": "./assets/cesium" }
