@@ -117,6 +117,9 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
     $ yarn start
     $ open http://localhost:8080
     ```
++ More demos:
+  + [GeoStrike](http://geo-strike.com)
+  + [GLO](https://glo.now.sh)
 
 ## Basic example
 
