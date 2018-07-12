@@ -1,3 +1,7 @@
+## NEXT
+### Features
+* Added `maximumNumberOfPoints` to `PolygonEditOptions` - you can now set maximum number of points when creating polygon using `PolygonEditorService` .
+
 ## 0.0.49
 ### Fixes
 * Fixed mistakenly rejecting Observables from other contexts
