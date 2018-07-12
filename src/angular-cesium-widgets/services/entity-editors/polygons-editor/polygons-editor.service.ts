@@ -183,6 +183,18 @@ export class PolygonsEditorService {
         positions: this.getPositions(id),
         points: this.getPoints(id),
       });
+
+      if (polygonOptions.maximumNumberOfPoints && allPositions.length + 1 === polygonOptions.maximumNumberOfPoints) {
+        finishedCreate = this.switchToEditMode(
+          id,
+          position,
+          clientEditSubject,
+          positions,
+          priority,
+          polygonOptions,
+          editorObservable,
+          finishedCreate);
+      }
     });
 
 
@@ -192,36 +204,49 @@ export class PolygonsEditorService {
         return;
       }
       // position already added by addPointRegistration
-      const updateValue = {
+      finishedCreate = this.switchToEditMode(
         id,
-        positions: this.getPositions(id),
-        editMode: EditModes.CREATE,
-        updatedPosition: position,
-        editAction: EditActions.ADD_LAST_POINT,
-      };
-      this.updateSubject.next(updateValue);
-      clientEditSubject.next({
-        ...updateValue,
-        positions: this.getPositions(id),
-        points: this.getPoints(id),
-      });
-
-      const changeMode = {
-        id,
-        editMode: EditModes.CREATE,
-        editAction: EditActions.CHANGE_TO_EDIT,
-      };
-      this.updateSubject.next(changeMode);
-      clientEditSubject.next(changeMode);
-      if (this.observablesMap.has(id)) {
-        this.observablesMap.get(id).forEach(registration => registration.dispose());
-      }
-      this.observablesMap.delete(id);
-      this.editPolygon(id, positions, priority, clientEditSubject, polygonOptions, editorObservable);
-      finishedCreate = true;
+        position,
+        clientEditSubject,
+        positions,
+        priority,
+        polygonOptions,
+        editorObservable,
+        finishedCreate);
     });
 
     return editorObservable;
+  }
+
+  private switchToEditMode(id, position, clientEditSubject, positions: Cartesian3[], priority, polygonOptions, editorObservable, finishedCreate: boolean) {
+    const updateValue = {
+      id,
+      positions: this.getPositions(id),
+      editMode: EditModes.CREATE,
+      updatedPosition: position,
+      editAction: EditActions.ADD_LAST_POINT,
+    };
+    this.updateSubject.next(updateValue);
+    clientEditSubject.next({
+      ...updateValue,
+      positions: this.getPositions(id),
+      points: this.getPoints(id),
+    });
+
+    const changeMode = {
+      id,
+      editMode: EditModes.CREATE,
+      editAction: EditActions.CHANGE_TO_EDIT,
+    };
+    this.updateSubject.next(changeMode);
+    clientEditSubject.next(changeMode);
+    if (this.observablesMap.has(id)) {
+      this.observablesMap.get(id).forEach(registration => registration.dispose());
+    }
+    this.observablesMap.delete(id);
+    this.editPolygon(id, positions, priority, clientEditSubject, polygonOptions, editorObservable);
+    finishedCreate = true;
+    return finishedCreate;
   }
 
   edit(positions: Cartesian3[], options = DEFAULT_POLYGON_OPTIONS, priority = 100): PolygonEditorObservable {
@@ -378,6 +403,12 @@ export class PolygonsEditorService {
   }
 
   private setOptions(options: PolygonEditOptions) {
+    if (options.maximumNumberOfPoints && options.maximumNumberOfPoints < 3) {
+      console.warn('Warn: PolygonEditor invalid option.' +
+        ' maximumNumberOfPoints smaller then 3, maximumNumberOfPoints changed to 3');
+      options.maximumNumberOfPoints = 3;
+    }
+
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYGON_OPTIONS));
     const polygonOptions = Object.assign(defaultClone, options);
     polygonOptions.pointProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.pointProps, options.pointProps);
