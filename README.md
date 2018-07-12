@@ -361,7 +361,9 @@ With angular cesium you can define your map provider in a declarative way using 
    </ac-3d-tile-layer>
 ```
 
-### Camera [Keyboard Control Service](https://tgftech.github.io/angular-cesium/injectables/KeyboardControlService.html)
+### Camera
+#### [Camera Keyboard Control Service](https://tgftech.github.io/angular-cesium/injectables/KeyboardControlService.html)
+Service that manages keyboard keys and execute actions per request. Inject the keyboard control service into any layer, under your ac-map component, And defined you keyboard handlers using setKeyboardControls.
 ```javascript
  this.keyboardControlService.setKeyboardControls({
       W: { action: KeyboardAction.CAMERA_FORWARD },
@@ -371,6 +373,9 @@ With angular cesium you can define your map provider in a declarative way using 
     },
 
 ```
+#### [CameraService](https://tgftech.github.io/angular-cesium/injectables/CameraService.html)
+Util service that warps cesium camera, exposes the scene's camera and screenSpaceCameraController.
+
 
 ### MapsManagerService
 Angular Cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use [MapsManagerService](https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
