@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CoordinateConverter } from '../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { EditActions } from '../../models/edit-actions.enum';
-import { EditModes, LabelProps, PolylinesEditorService } from '../..';
 import { PolylineEditorObservable } from '../../models/polyline-editor-observable';
 import { PolylineEditOptions } from '../../models/polyline-edit-options';
-import { LabelStyle } from '../../models/label-props';
+import { LabelProps, LabelStyle } from '../../models/label-props';
 import { PolylineEditUpdate } from '../../models/polyline-edit-update';
+import { EditModes } from '../../models/edit-mode.enum';
+import { PolylinesEditorService } from '../../services/entity-editors/polyline-editor/polylines-editor.service';
 
 /**
  * Range and bearing component that is used to draw range and bearing on the map.
