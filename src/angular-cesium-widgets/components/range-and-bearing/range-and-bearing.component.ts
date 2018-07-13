@@ -11,9 +11,9 @@ import { PolylinesEditorService } from '../../services/entity-editors/polyline-e
 /**
  * Range and bearing component that is used to draw range and bearing on the map.
  * The inputs are used to customize the range and bearing style and behavior.
- * Use component reference to create range and bearing on the map.
- * User Reference `create` function to start creating R&B on the map.
- * The function receives an optional RangeAndBearingOptions object that defines the created range and bearing style and behavior.
+ * Create component reference and use the `create()` function to start creating R&B on the map.
+ * The function receives an optional RangeAndBearingOptions object that defines the created range and bearing style and behavior
+ * (on top of the default and global definitions).
  *
  * Usage:
  *
