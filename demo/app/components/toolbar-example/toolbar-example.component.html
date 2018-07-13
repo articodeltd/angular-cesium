@@ -5,7 +5,7 @@
     </ac-toolbar-button>
     <ac-toolbar-button matTooltip="Range And Bearing" matTooltipPosition="right"
                        [iconUrl]="'assets/explore-icon.svg'"
-                       (onClick)="rangeAndBearing()">
+                       (onClick)="createRangeAndBearing()">
     </ac-toolbar-button>
-    <polylines-editor></polylines-editor>
+    <range-and-bearing #rangeAndBearing></range-and-bearing>
 </ac-toolbar>
