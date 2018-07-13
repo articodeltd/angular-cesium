@@ -1,6 +1,7 @@
 ## 0.0.50
 ### Features
 * New `<range-and-bearing>` component that is used to to draw range & bearing on the map.
+* Refactored `KeyboardControlService` docs.
 
 ## 0.0.49
 ### Fixes
