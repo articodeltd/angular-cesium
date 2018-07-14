@@ -1,3 +1,9 @@
+## Next
+### Features
+* Added flyTo options to `CameraService.trackEntity()` + example in the demo.
+### Fixes
+* `ac-point-desc` changed to Entity instead of Primitive. For primitive use `ac-point-primitive-desc`.
+
 ## 0.0.49
 ### Fixes
 * Fixed mistakenly rejecting Observables from other contexts

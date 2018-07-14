@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.service';
 import { CesiumService } from '../../cesium/cesium.service';
+import { EntitiesDrawerService } from '../entities-drawer/entities-drawer.service';
+import { GraphicsType } from '../entities-drawer/enums/graphics-type.enum';
 
 /**
  *  This drawer is responsible for drawing points.
  */
 @Injectable()
-export class PointDrawerService extends PrimitivesDrawerService {
-	constructor(cesiumService: CesiumService) {
-		super(Cesium.PointPrimitiveCollection, cesiumService);
-	}
+export class PointDrawerService extends EntitiesDrawerService {
+  constructor(cesiumService: CesiumService) {
+    super(cesiumService, GraphicsType.point);
+  }
 }

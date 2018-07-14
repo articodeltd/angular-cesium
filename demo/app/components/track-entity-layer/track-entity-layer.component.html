@@ -1,0 +1,17 @@
+<ac-layer acFor="let point of points$" [context]="this" [show]="show">
+    <ac-point-desc props = "{
+        pixelSize : 50,
+        position: point.position,
+        color: point.color
+     }">
+    </ac-point-desc>
+</ac-layer>
+<div style="
+    display: flex;
+    position: fixed;
+    bottom: 60px;
+    left: 300px;">
+    <button mat-raised-button (click)="stopTracking()">Stop Tracking</button>
+    <button mat-raised-button (click)="zoomOut()">zoom out</button>
+    <button mat-raised-button (click)="zoomIn()">zoom in</button>
+</div>
