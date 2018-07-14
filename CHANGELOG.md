@@ -1,3 +1,7 @@
+## Next
+### Features
+* Refactored `KeyboardControlService` docs. 
+
 ## 0.0.49
 ### Fixes
 * Fixed mistakenly rejecting Observables from other contexts
