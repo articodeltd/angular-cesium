@@ -210,7 +210,14 @@ export class PolylinesEditorService {
     return editorObservable;
   }
 
-  private switchToEditMode(id, position, clientEditSubject, positions: Cartesian3[], eventPriority, polylineOptions, editorObservable, finishedCreate: boolean) {
+  private switchToEditMode(id,
+                           position,
+                           clientEditSubject,
+                           positions: Cartesian3[],
+                           eventPriority,
+                           polylineOptions,
+                           editorObservable,
+                           finishedCreate: boolean) {
     const update = {
       id,
       positions: this.getPositions(id),

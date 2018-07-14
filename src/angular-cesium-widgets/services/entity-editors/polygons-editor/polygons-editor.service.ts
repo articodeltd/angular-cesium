@@ -218,7 +218,14 @@ export class PolygonsEditorService {
     return editorObservable;
   }
 
-  private switchToEditMode(id, position, clientEditSubject, positions: Cartesian3[], priority, polygonOptions, editorObservable, finishedCreate: boolean) {
+  private switchToEditMode(id,
+                           position,
+                           clientEditSubject,
+                           positions: Cartesian3[],
+                           priority,
+                           polygonOptions,
+                           editorObservable,
+                           finishedCreate: boolean) {
     const updateValue = {
       id,
       positions: this.getPositions(id),
