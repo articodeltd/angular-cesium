@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material';
 import { TracksDialogComponent } from './track-dialog/track-dialog.component';
 import { RealTracksDataProvider } from '../../../utils/services/dataProvider/real-tracks-data-provider';
 import { AppSettingsService, TracksType } from '../../services/app-settings-service/app-settings-service';
-import { SimTracksDataProvider } from '../../../utils/services/dataProvider/sim-tracks-data-provider';
+import { SimTracksDataProvider, Track } from '../../../utils/services/dataProvider/sim-tracks-data-provider';
 import { CameraService } from '../../../../src/angular-cesium/services/camera/camera.service';
 
 @Component({
@@ -56,6 +56,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     const mouseOverObservable = this.mapEventsManager.register({
+      entityType: Track,
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.PICK_FIRST,
       priority: 2,
@@ -78,6 +79,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
     // Open dialog on double click
     const doubleClickObservable = this.mapEventsManager.register({
+      entityType: Track,
       event: CesiumEvent.LEFT_DOUBLE_CLICK,
       pick: PickOptions.PICK_FIRST,
       priority: 2,
