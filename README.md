@@ -15,7 +15,7 @@ Check out our [Demo](http://www.angular-cesium.com) that contains small app buil
   $ npm install --save angular-cesium
   ```
 
-#### New Angular CLI project 
+#### New Angular CLI project
 + If you didn't installed [Angular CLI](https://github.com/angular/angular-cli) yet:
     ```bash
     $ npm install -g @angular/cli
@@ -26,7 +26,7 @@ Check out our [Demo](http://www.angular-cesium.com) that contains small app buil
     $ ng new PROJECT_NAME
     $ cd PROJECT_NAME
     ```
-    
+
 + Install `angular-cesium`:
   ```bash
   $ npm install --save angular-cesium
@@ -35,7 +35,7 @@ Check out our [Demo](http://www.angular-cesium.com) that contains small app buil
  ```bash
   $ npm install --save rxjs-compat
   ```
-  
+
 + Import and add `AngularCesiumModule` to your app root module:
     ```javascript
     import { AngularCesiumModule } from 'angular-cesium';
@@ -389,12 +389,13 @@ constructor(mapsManagerService: MapsManagerService)
 
 ```
 
-### Geometry Editors
+### Geometry Editors And Widgets
 Part of [`AngularCesiumWidgetsModule`](https://tgftech.github.io/angular-cesium/modules/AngularCesiumWidgetsModule.html) are useful geometry editors tool:
 + [`CirlcesEditorService`](https://tgftech.github.io/angular-cesium/injectables/CirclesEditorService.html) - for drawing circles
 + [`PolylinesEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolylinesEditorService.html) - for drawing polylines
 + [`PolygonsEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolygonsEditorService.html) - for drawing polygons
 + [`HippodromeEditorService`](https://tgftech.github.io/angular-cesium/injectables/HippodromeEditorService.html) - for drawing hippodromes (path in cesium)
++ [`RangeAndBearingComponent`](https://tgftech.github.io/angular-cesium/components/RangeAndBearingComponent.html) - for drawing range and bearing
 
 Try running our demo for examples (uncomment the relevant components in `demo-map.component.html`).
 

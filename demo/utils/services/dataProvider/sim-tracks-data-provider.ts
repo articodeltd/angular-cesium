@@ -4,7 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
-import {Subscriber} from "rxjs/Subscriber";
+import { Subscriber } from 'rxjs/Subscriber';
+
+export class Track extends AcEntity {
+};
 
 @Injectable()
 export class SimTracksDataProvider {
@@ -20,7 +23,7 @@ export class SimTracksDataProvider {
           (acNotification: any) => {
             if (acNotification.action === 'ADD_OR_UPDATE') {
               acNotification.actionType = ActionType.ADD_UPDATE;
-              acNotification.entity = new AcEntity(this.convertToCesiumObj(acNotification.entity));
+              acNotification.entity = new Track(this.convertToCesiumObj(acNotification.entity));
             }
             else if (acNotification.action === 'DELETE') {
               acNotification.actionType = ActionType.DELETE;
