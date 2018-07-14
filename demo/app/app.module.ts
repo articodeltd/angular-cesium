@@ -44,6 +44,7 @@ import { TracksWithArraysComponent } from './components/tracks-with-arrays-examp
 import { AngularCesiumWidgetsModule } from '../../src/angular-cesium-widgets/angular-cesium-widgets.module';
 import { ToolbarExampleComponent } from './components/toolbar-example/toolbar-example.component';
 import { BoxesLayerComponent } from './components/boxes-layer/boxes-layer.component';
+import { TrackEntityLayerComponent } from './components/track-entity-layer/track-entity-layer.component';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { BoxesLayerComponent } from './components/boxes-layer/boxes-layer.compon
     TracksWithArraysComponent,
     ToolbarExampleComponent,
     BoxesLayerComponent,
+    TrackEntityLayerComponent,
   ],
   imports: [
     BrowserModule,
