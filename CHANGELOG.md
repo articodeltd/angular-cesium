@@ -2,6 +2,8 @@
 ### Features
 * New `<range-and-bearing>` component that is used to to draw range & bearing on the map.
 * Refactored `KeyboardControlService` docs.
+* Added `maximumNumberOfPoints` to `PolygonEditOptions` - you can now set maximum number of points when creating polygon using `PolygonEditorService` .
+* Refactored `KeyboardControlService` docs. 
 
 ## 0.0.49
 ### Fixes
