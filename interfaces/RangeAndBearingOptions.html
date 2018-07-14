@@ -463,7 +463,7 @@
                                     <a href="../injectables/PlonterService.html" >PlonterService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/PointPrimitiveDrawerService.html"  data-type="entity-link" class="active" >PointPrimitiveDrawerService</a>
+                                    <a href="../injectables/PointPrimitiveDrawerService.html" >PointPrimitiveDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
@@ -628,7 +628,7 @@
                                     <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/RangeAndBearingOptions.html" >RangeAndBearingOptions</a>
+                                    <a href="../interfaces/RangeAndBearingOptions.html"  data-type="entity-link" class="active" >RangeAndBearingOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Rectangle.html" >Rectangle</a>
@@ -1156,7 +1156,7 @@
                                            <a href="../injectables/PlonterService.html" >PlonterService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/PointPrimitiveDrawerService.html"  data-type="entity-link" class="active" >PointPrimitiveDrawerService</a>
+                                           <a href="../injectables/PointPrimitiveDrawerService.html" >PointPrimitiveDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PolygonsEditorService.html" >PolygonsEditorService</a>
@@ -1321,7 +1321,7 @@
                                            <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/RangeAndBearingOptions.html" >RangeAndBearingOptions</a>
+                                           <a href="../interfaces/RangeAndBearingOptions.html"  data-type="entity-link" class="active" >RangeAndBearingOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Rectangle.html" >Rectangle</a>
@@ -1400,7 +1400,7 @@
                    
                    </nav>
                </div>
-               <div class="content injectable">
+               <div class="content interface">
                    <div class="content-data">
 
 
@@ -1408,9 +1408,13 @@
 
 
 
+
+
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>PointPrimitiveDrawerService</li>
+  <li>Interfaces</li>
+  <li>RangeAndBearingOptions</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -1430,94 +1434,458 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/angular-cesium/services/drawers/point-primitive-drawer/point-primitive-drawer.service.ts</code>
+            <code>src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>This drawer is responsible of drawing points as primitives.
-This drawer is more efficient than PointDrawerService when drawing dynamic points.</p>
 
-            </p>
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#bearingLabelsStyle">bearingLabelsStyle</a>
+                                </li>
+                                <li>
+                                        <a href="#bearingStringFn">bearingStringFn</a>
+                                </li>
+                                <li>
+                                        <a href="#distanceLabelsStyle">distanceLabelsStyle</a>
+                                </li>
+                                <li>
+                                        <a href="#distanceStringFn">distanceStringFn</a>
+                                </li>
+                                <li>
+                                        <a href="#labelsRenderFn">labelsRenderFn</a>
+                                </li>
+                                <li>
+                                        <a href="#labelsStyle">labelsStyle</a>
+                                </li>
+                                <li>
+                                        <a href="#style">style</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
 
 
             <section>
-                <h3 id="constructor">Constructor</h3>
+                <h3 id="inputs">Properties</h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>constructor(cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>)</code>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="bearingLabelsStyle"></a>
+                                        <span class="name"><b>bearingLabelsStyle</b><a href="#bearingLabelsStyle"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>bearingLabelsStyle:     <code><a href="../interfaces/LabelStyle.html" target="_self" >LabelStyle</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/angular-cesium/services/drawers/point-primitive-drawer/point-primitive-drawer.service.ts:10</a></div>
+                                            <i>Type : </i>    <code><a href="../interfaces/LabelStyle.html" target="_self" >LabelStyle</a></code>
+
                                         </td>
                                     </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div>
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                            <td>Type</td>
-                                                            <td>Optional</td>
-                                                            <td>Description</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                              <td>cesiumService</td>
-                                                              <td>
-                                                                        <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
-                                                              </td>
-                                                              <td>
-                                                              </td>
-                                                              <td></td>
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                </td>
-                            </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:160</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="bearingStringFn"></a>
+                                        <span class="name"><b>bearingStringFn</b><a href="#bearingStringFn"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>bearingStringFn:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:161</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="distanceLabelsStyle"></a>
+                                        <span class="name"><b>distanceLabelsStyle</b><a href="#distanceLabelsStyle"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>distanceLabelsStyle:     <code><a href="../interfaces/LabelStyle.html" target="_self" >LabelStyle</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="../interfaces/LabelStyle.html" target="_self" >LabelStyle</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:159</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="distanceStringFn"></a>
+                                        <span class="name"><b>distanceStringFn</b><a href="#distanceStringFn"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>distanceStringFn:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:162</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="labelsRenderFn"></a>
+                                        <span class="name"><b>labelsRenderFn</b><a href="#labelsRenderFn"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>labelsRenderFn:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:163</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="labelsStyle"></a>
+                                        <span class="name"><b>labelsStyle</b><a href="#labelsStyle"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>labelsStyle:     <code><a href="../interfaces/LabelStyle.html" target="_self" >LabelStyle</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="../interfaces/LabelStyle.html" target="_self" >LabelStyle</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:158</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="style"></a>
+                                        <span class="name"><b>style</b><a href="#style"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>style:     <code><a href="../interfaces/PolylineEditOptions.html" target="_self" >PolylineEditOptions</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="../interfaces/PolylineEditOptions.html" target="_self" >PolylineEditOptions</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:157</a></div>
+                                        </td>
+                                    </tr>
+
                         </tbody>
                     </table>
             </section>
-
-
-
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { CesiumService } from &#x27;../../cesium/cesium.service&#x27;;
-import { PrimitivesDrawerService } from &#x27;../primitives-drawer/primitives-drawer.service&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { ChangeDetectionStrategy, Component, Input } from &#x27;@angular/core&#x27;;
+import { CoordinateConverter } from &#x27;../../../angular-cesium/services/coordinate-converter/coordinate-converter.service&#x27;;
+import { EditActions } from &#x27;../../models/edit-actions.enum&#x27;;
+import { PolylineEditorObservable } from &#x27;../../models/polyline-editor-observable&#x27;;
+import { PolylineEditOptions } from &#x27;../../models/polyline-edit-options&#x27;;
+import { LabelProps, LabelStyle } from &#x27;../../models/label-props&#x27;;
+import { PolylineEditUpdate } from &#x27;../../models/polyline-edit-update&#x27;;
+import { EditModes } from &#x27;../../models/edit-mode.enum&#x27;;
+import { PolylinesEditorService } from &#x27;../../services/entity-editors/polyline-editor/polylines-editor.service&#x27;;
 
 /**
- *  This drawer is responsible of drawing points as primitives.
- *  This drawer is more efficient than PointDrawerService when drawing dynamic points.
+ * Range and bearing component that is used to draw range and bearing on the map.
+ * The inputs are used to customize the range and bearing style and behavior.
+ * Create component reference and use the &#x60;create()&#x60; function to start creating R&amp;B on the map.
+ * The function receives an optional RangeAndBearingOptions object that defines the created range and bearing style and behavior
+ * (on top of the default and global definitions).
+ *
+ * Usage:
+ *
+ * my-component.ts:
+ * &#x60;&#x60;&#x60;
+ * @ViewChild(&#x27;rangeAndBearing&#x27;) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
+ * // ...
+ * this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLabelsStyle: { fillColor: Cesium.Color.GREEN } });
+ * &#x60;&#x60;&#x60;
+ *
+ * my-component.html
+ * &#x60;&#x60;&#x60;
+ * &lt;range-and-bearing #rangeAndBearing&gt;&lt;/range-and-bearing&gt; // Optional inputs defines global style and behavior.
+ * &#x60;&#x60;&#x60;
+ *
  */
-@Injectable()
-export class PointPrimitiveDrawerService extends PrimitivesDrawerService {
-	constructor(cesiumService: CesiumService) {
-		super(Cesium.PointPrimitiveCollection, cesiumService);
-	}
+@Component(
+  {
+    selector: &#x27;range-and-bearing&#x27;,
+    template: &#x60;
+        &lt;polylines-editor&gt;&lt;/polylines-editor&gt;&#x60;,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [PolylinesEditorService],
+  }
+)
+export class RangeAndBearingComponent {
+  @Input() style?: PolylineEditOptions &#x3D; {};
+  @Input() labelsStyle?: LabelStyle &#x3D; {};
+  @Input() distanceLabelsStyle?: LabelStyle &#x3D; {};
+  @Input() bearingLabelsStyle?: LabelStyle &#x3D; {};
+  @Input() bearingStringFn?: (value: number) &#x3D;&gt; string;
+  @Input() distanceStringFn?: (value: number) &#x3D;&gt; string;
+  @Input() labelsRenderFn?: (update: PolylineEditUpdate, labels: LabelProps[]) &#x3D;&gt; LabelProps[];
+
+  constructor(private polylineEditor: PolylinesEditorService, private coordinateConverter: CoordinateConverter) {
+  }
+
+  create({
+           style &#x3D; {},
+           labelsStyle &#x3D; {},
+           distanceLabelsStyle &#x3D; {},
+           bearingLabelsStyle &#x3D; {},
+           bearingStringFn &#x3D; undefined,
+           distanceStringFn &#x3D; undefined,
+           labelsRenderFn &#x3D; undefined
+         }: RangeAndBearingOptions &#x3D; { style: {}, labelsStyle: {}, distanceLabelsStyle: {}, bearingLabelsStyle: {} })
+    : PolylineEditorObservable {
+    const rnb &#x3D; this.polylineEditor.create({
+      allowDrag: false,
+      pointProps: {
+        showVirtual: false,
+        pixelSize: 8,
+      },
+      polylineProps: {
+        width: 2,
+      },
+      ...this.style,
+      ...style
+    });
+
+    labelsRenderFn &amp;&amp; rnb.setLabelsRenderFn(labelsRenderFn) ||
+    this.labelsRenderFn &amp;&amp; rnb.setLabelsRenderFn(this.labelsRenderFn) ||
+    rnb.setLabelsRenderFn((update) &#x3D;&gt; {
+      const positions &#x3D; update.positions;
+      let totalDistance &#x3D; 0;
+      if (!positions || positions.length &#x3D;&#x3D;&#x3D; 0) {
+        return [];
+      }
+      return (
+        update.editMode &#x3D;&#x3D;&#x3D; EditModes.CREATE &amp;&amp; update.editAction !&#x3D;&#x3D; EditActions.ADD_LAST_POINT ?
+          [...positions, update.updatedPosition] : positions
+      )
+        .reduce((labels, position, index, array) &#x3D;&gt; {
+          if (index !&#x3D;&#x3D; 0) {
+            const previousPosition &#x3D; array[index - 1];
+            const bearing &#x3D; this.coordinateConverter.bearingToCartesian(previousPosition, position);
+            const distance &#x3D; Cesium.Cartesian3.distance(previousPosition, position) / 1000;
+            labels.push({
+              text: bearingStringFn &amp;&amp; bearingStringFn(bearing) ||
+              this.bearingStringFn &amp;&amp; this.bearingStringFn(bearing) ||
+              &#x60;${bearing.toFixed(2)}°&#x60;,
+              scale: 0.2,
+              font: &#x27;80px Helvetica&#x27;,
+              pixelOffset: new Cesium.Cartesian2(-20, -8),
+              position: new Cesium.Cartesian3(
+                (position.x + previousPosition.x) / 2,
+                (position.y + previousPosition.y) / 2,
+                (position.z + previousPosition.z) / 2
+              ),
+              fillColor: Cesium.Color.WHITE,
+              outlineColor: Cesium.Color.WHITE,
+              showBackground: true,
+              ...this.labelsStyle as any,
+              ...labelsStyle as any,
+              ...this.bearingLabelsStyle as any,
+              ...bearingLabelsStyle as any,
+            }, {
+              text: distanceStringFn &amp;&amp; distanceStringFn(totalDistance + distance) ||
+              this.distanceStringFn &amp;&amp; this.distanceStringFn(totalDistance + distance) ||
+              &#x60;${(totalDistance + distance).toFixed(2)} Km&#x60;,
+              scale: 0.2,
+              font: &#x27;80px Helvetica&#x27;,
+              pixelOffset: new Cesium.Cartesian2(-35, -8),
+              position: position,
+              fillColor: Cesium.Color.WHITE,
+              outlineColor: Cesium.Color.WHITE,
+              showBackground: true,
+              ...this.labelsStyle as any,
+              ...labelsStyle as any,
+              ...this.distanceLabelsStyle as any,
+              ...distanceLabelsStyle as any,
+            });
+
+            totalDistance +&#x3D; distance;
+          }
+
+          return labels;
+        }, [{
+          text: distanceStringFn &amp;&amp; distanceStringFn(0) ||
+          this.distanceStringFn &amp;&amp; this.distanceStringFn(0) ||
+          &#x60;0 Km&#x60;,
+          scale: 0.2,
+          font: &#x27;80px Helvetica&#x27;,
+          pixelOffset: new Cesium.Cartesian2(-20, -8),
+          position: positions[0],
+          fillColor: Cesium.Color.WHITE,
+          outlineColor: Cesium.Color.WHITE,
+          showBackground: true,
+          ...this.labelsStyle as any,
+          ...labelsStyle as any,
+          ...this.distanceLabelsStyle as any,
+          ...distanceLabelsStyle as any,
+        }]);
+    });
+
+    return rnb;
+  }
+}
+
+export interface RangeAndBearingOptions {
+  style?: PolylineEditOptions;
+  labelsStyle?: LabelStyle;
+  distanceLabelsStyle?: LabelStyle;
+  bearingLabelsStyle?: LabelStyle;
+  bearingStringFn?: (value: number) &#x3D;&gt; string;
+  distanceStringFn?: (value: number) &#x3D;&gt; string;
+  labelsRenderFn?: (update: PolylineEditUpdate, labels: LabelProps[]) &#x3D;&gt; LabelProps[];
 }
 </code></pre>
     </div>
 </div>
-
-
-
-
 
 
 

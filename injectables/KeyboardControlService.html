@@ -249,6 +249,9 @@
                                 <li class="link">
                                     <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../components/RangeAndBearingComponent.html" >RangeAndBearingComponent</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -592,6 +595,9 @@
                                     <a href="../interfaces/LabelProps.html" >LabelProps</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/LabelStyle.html" >LabelStyle</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                 </li>
                                 <li class="link">
@@ -620,6 +626,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/RangeAndBearingOptions.html" >RangeAndBearingOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Rectangle.html" >Rectangle</a>
@@ -932,6 +941,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RangeAndBearingComponent.html" >RangeAndBearingComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -1276,6 +1288,9 @@
                                            <a href="../interfaces/LabelProps.html" >LabelProps</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/LabelStyle.html" >LabelStyle</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                        </li>
                                        <li class="link">
@@ -1304,6 +1319,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/RangeAndBearingOptions.html" >RangeAndBearingOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Rectangle.html" >Rectangle</a>
@@ -1476,7 +1494,46 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.keyboardControlService.removeKeyboardControls();
   }
-}</code></pre>
+}</code></pre><p><b>Predefined keyboard actions:</b></p>
+<ul>
+<li><code>KeyboardAction.CAMERA_FORWARD</code> - Moves the camera forward, accepts a numeric parameter named <code>moveRate</code> that controls
+the factor of movement, according to the camera height.</li>
+<li><code>KeyboardAction.CAMERA_BACKWARD</code> - Moves the camera backward, accepts a numeric parameter named <code>moveRate</code> that controls
+the factor of movement, according to the camera height.</li>
+<li><code>KeyboardAction.CAMERA_UP</code> - Moves the camera up, accepts a numeric parameter named <code>moveRate</code> that controls
+the factor of movement, according to the camera height.</li>
+<li><code>KeyboardAction.CAMERA_DOWN</code> - Moves the camera down, accepts a numeric parameter named <code>moveRate</code> that controls
+the factor of movement, according to the camera height.</li>
+<li><code>KeyboardAction.CAMERA_RIGHT</code> - Moves the camera right, accepts a numeric parameter named <code>moveRate</code> that controls
+the factor of movement, according to the camera height.</li>
+<li><code>KeyboardAction.CAMERA_LEFT</code> - Moves the camera left, accepts a numeric parameter named <code>moveRate</code> that controls
+the factor of movement, according to the camera height.</li>
+<li><code>KeyboardAction.CAMERA_LOOK_RIGHT</code> - Changes the camera to look to the right, accepts a numeric parameter named <code>lookFactor</code> that
+controls the factor of looking, according to the camera current position.</li>
+<li><code>KeyboardAction.CAMERA_LOOK_LEFT</code> - Changes the camera to look to the left, accepts a numeric parameter named <code>lookFactor</code> that
+controls the factor of looking, according to the camera current position.</li>
+<li><code>KeyboardAction.CAMERA_LOOK_UP</code> - Changes the camera to look up, accepts a numeric parameter named <code>lookFactor</code> that controls
+the factor of looking, according to the camera current position.</li>
+<li><code>KeyboardAction.CAMERA_LOOK_DOWN</code> - Changes the camera to look down, accepts a numeric parameter named <code>lookFactor</code> that controls
+the factor of looking, according to the camera current position.</li>
+<li><code>KeyboardAction.CAMERA_TWIST_RIGHT</code> - Twists the camera to the right, accepts a numeric parameter named <code>amount</code> that controls
+the twist amount</li>
+<li><code>KeyboardAction.CAMERA_TWIST_LEFT</code> - Twists the camera to the left, accepts a numeric parameter named <code>amount</code> that controls
+the twist amount</li>
+<li><code>KeyboardAction.CAMERA_ROTATE_RIGHT</code> - Rotates the camera to the right, accepts a numeric parameter named <code>angle</code> that controls
+the rotation angle</li>
+<li><code>KeyboardAction.CAMERA_ROTATE_LEFT</code> - Rotates the camera to the left, accepts a numeric parameter named <code>angle</code> that controls
+the rotation angle</li>
+<li><code>KeyboardAction.CAMERA_ROTATE_UP</code> - Rotates the camera upwards, accepts a numeric parameter named <code>angle</code> that controls
+the rotation angle</li>
+<li><code>KeyboardAction.CAMERA_ROTATE_DOWN</code> - Rotates the camera downwards, accepts a numeric parameter named <code>angle</code> that controls
+the rotation angle</li>
+<li><code>KeyboardAction.CAMERA_ZOOM_IN</code> - Zoom in into the current camera center position, accepts a numeric parameter named
+<code>amount</code> that controls the amount of zoom in meters.</li>
+<li><code>KeyboardAction.CAMERA_ZOOM_OUT</code> -  Zoom out from the current camera center position, accepts a numeric parameter named
+<code>amount</code> that controls the amount of zoom in meters.</li>
+</ul>
+
             </p>
 
 
@@ -1566,7 +1623,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:107</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:143</a></div>
                                         </td>
                                     </tr>
             
@@ -1645,7 +1702,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:186</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:222</a></div>
                                         </td>
                                     </tr>
             
@@ -1709,7 +1766,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="287" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:287</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="323" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:323</a></div>
                                         </td>
                                     </tr>
             
@@ -1791,7 +1848,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:178</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="214" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:214</a></div>
                                         </td>
                                     </tr>
             
@@ -1855,7 +1912,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:266</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="302" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:302</a></div>
                                         </td>
                                     </tr>
             
@@ -1929,7 +1986,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="194" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:194</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="230" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:230</a></div>
                                         </td>
                                     </tr>
             
@@ -1993,7 +2050,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:225</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:261</a></div>
                                         </td>
                                     </tr>
             
@@ -2057,7 +2114,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="245" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:245</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="281" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:281</a></div>
                                         </td>
                                     </tr>
             
@@ -2091,7 +2148,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:120</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:156</a></div>
                                         </td>
                                     </tr>
             
@@ -2126,7 +2183,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="316" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:316</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="352" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:352</a></div>
                                         </td>
                                     </tr>
             
@@ -2189,7 +2246,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:169</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="205" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:205</a></div>
                                         </td>
                                     </tr>
             
@@ -2223,7 +2280,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:143</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:179</a></div>
                                         </td>
                                     </tr>
             
@@ -2319,7 +2376,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="333" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:333</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="369" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:369</a></div>
                                         </td>
                                     </tr>
             
@@ -2365,7 +2422,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:106</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:142</a></div>
                                         </td>
                                     </tr>
             
@@ -2394,7 +2451,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:105</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:141</a></div>
                                         </td>
                                     </tr>
             
@@ -2423,7 +2480,7 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:107</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/angular-cesium/services/keyboard-control/keyboard-control.service.ts:143</a></div>
                                         </td>
                                     </tr>
             
@@ -2536,7 +2593,43 @@ interface ActiveDefinition {
  *   }
  * }
  * &#x60;&#x60;&#x60;
- *
+ * &lt;b&gt;Predefined keyboard actions:&lt;/b&gt;
+ * + &#x60;KeyboardAction.CAMERA_FORWARD&#x60; - Moves the camera forward, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_BACKWARD&#x60; - Moves the camera backward, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_UP&#x60; - Moves the camera up, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_DOWN&#x60; - Moves the camera down, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_RIGHT&#x60; - Moves the camera right, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_LEFT&#x60; - Moves the camera left, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_LOOK_RIGHT&#x60; - Changes the camera to look to the right, accepts a numeric parameter named &#x60;lookFactor&#x60; that
+ * controls the factor of looking, according to the camera current position.
+ * + &#x60;KeyboardAction.CAMERA_LOOK_LEFT&#x60; - Changes the camera to look to the left, accepts a numeric parameter named &#x60;lookFactor&#x60; that
+ * controls the factor of looking, according to the camera current position.
+ * + &#x60;KeyboardAction.CAMERA_LOOK_UP&#x60; - Changes the camera to look up, accepts a numeric parameter named &#x60;lookFactor&#x60; that controls
+ * the factor of looking, according to the camera current position.
+ * + &#x60;KeyboardAction.CAMERA_LOOK_DOWN&#x60; - Changes the camera to look down, accepts a numeric parameter named &#x60;lookFactor&#x60; that controls
+ * the factor of looking, according to the camera current position.
+ * + &#x60;KeyboardAction.CAMERA_TWIST_RIGHT&#x60; - Twists the camera to the right, accepts a numeric parameter named &#x60;amount&#x60; that controls
+ * the twist amount
+ * + &#x60;KeyboardAction.CAMERA_TWIST_LEFT&#x60; - Twists the camera to the left, accepts a numeric parameter named &#x60;amount&#x60; that controls
+ * the twist amount
+ * + &#x60;KeyboardAction.CAMERA_ROTATE_RIGHT&#x60; - Rotates the camera to the right, accepts a numeric parameter named &#x60;angle&#x60; that controls
+ * the rotation angle
+ * + &#x60;KeyboardAction.CAMERA_ROTATE_LEFT&#x60; - Rotates the camera to the left, accepts a numeric parameter named &#x60;angle&#x60; that controls
+ * the rotation angle
+ * + &#x60;KeyboardAction.CAMERA_ROTATE_UP&#x60; - Rotates the camera upwards, accepts a numeric parameter named &#x60;angle&#x60; that controls
+ * the rotation angle
+ * + &#x60;KeyboardAction.CAMERA_ROTATE_DOWN&#x60; - Rotates the camera downwards, accepts a numeric parameter named &#x60;angle&#x60; that controls
+ * the rotation angle
+ * + &#x60;KeyboardAction.CAMERA_ZOOM_IN&#x60; - Zoom in into the current camera center position, accepts a numeric parameter named
+ * &#x60;amount&#x60; that controls the amount of zoom in meters.
+ * + &#x60;KeyboardAction.CAMERA_ZOOM_OUT&#x60; -  Zoom out from the current camera center position, accepts a numeric parameter named
+ * &#x60;amount&#x60; that controls the amount of zoom in meters.
  */
 @Injectable()
 export class KeyboardControlService {

@@ -249,6 +249,9 @@
                                 <li class="link">
                                     <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../components/RangeAndBearingComponent.html" >RangeAndBearingComponent</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -592,6 +595,9 @@
                                     <a href="../interfaces/LabelProps.html" >LabelProps</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/LabelStyle.html" >LabelStyle</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                 </li>
                                 <li class="link">
@@ -620,6 +626,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/RangeAndBearingOptions.html" >RangeAndBearingOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Rectangle.html" >Rectangle</a>
@@ -932,6 +941,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RangeAndBearingComponent.html" >RangeAndBearingComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -1276,6 +1288,9 @@
                                            <a href="../interfaces/LabelProps.html" >LabelProps</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/LabelStyle.html" >LabelStyle</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                        </li>
                                        <li class="link">
@@ -1304,6 +1319,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/RangeAndBearingOptions.html" >RangeAndBearingOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Rectangle.html" >Rectangle</a>
@@ -1543,6 +1561,12 @@ but is more efficient performance wise.</p>
                                          <a href="#untrackEntity">untrackEntity</a>
                                     </li>
                                     <li>
+                                         <a href="#zoomIn">zoomIn</a>
+                                    </li>
+                                    <li>
+                                         <a href="#zoomOut">zoomOut</a>
+                                    </li>
+                                    <li>
                                          <a href="#zoomTo">zoomTo</a>
                                     </li>
                                 </ul>
@@ -1723,7 +1747,7 @@ but is more efficient performance wise.</p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -2624,7 +2648,7 @@ but is more efficient performance wise.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:243</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:261</a></div>
                                         </td>
                                     </tr>
             
@@ -2681,14 +2705,14 @@ but is more efficient performance wise.</p>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>trackEntity(entity?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+            <code>trackEntity(entity?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, options?: literal type)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="252" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:252</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:271</a></div>
                                         </td>
                                     </tr>
             
@@ -2718,7 +2742,23 @@ but is more efficient performance wise.</p>
                                                               <td>
                                                                   true
                                                               </td>
-                                                              <td></td>
+                                                              <td><ul>
+            <li>entity to track</li>
+            </ul>
+            </td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                                      <code>literal type</code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td><ul>
+            <li>track entity options</li>
+            </ul>
+            </td>
                                                             </tr>
                                                     </tbody>
                                                 </table>
@@ -2726,7 +2766,7 @@ but is more efficient performance wise.</p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -2753,7 +2793,7 @@ but is more efficient performance wise.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="256" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:256</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="310" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:310</a></div>
                                         </td>
                                     </tr>
             
@@ -2764,6 +2804,134 @@ but is more efficient performance wise.</p>
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="zoomIn"></a>
+                                    <span class="name"><b> zoomIn</b><a href="#zoomIn"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>zoomIn(amount: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="232" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:232</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Zooms amount along the camera&#39;s view vector.
+            API: <a href="https://cesiumjs.org/Cesium/Build/Documentation/Camera.html#zoomIn">https://cesiumjs.org/Cesium/Build/Documentation/Camera.html#zoomIn</a></p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>amount</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="zoomOut"></a>
+                                    <span class="name"><b> zoomOut</b><a href="#zoomOut"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>zoomOut(amount: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:241</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Zooms amount along the opposite direction of the camera&#39;s view vector.
+            API: <a href="https://cesiumjs.org/Cesium/Build/Documentation/Camera.html#zoomOut">https://cesiumjs.org/Cesium/Build/Documentation/Camera.html#zoomOut</a></p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>amount</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2785,7 +2953,7 @@ but is more efficient performance wise.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="234" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:234</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="252" class="link-to-prism">src/angular-cesium/services/camera/camera.service.ts:252</a></div>
                                         </td>
                                     </tr>
             
@@ -3355,7 +3523,7 @@ export class CameraService {
    * @param options
    */
   cameraFlyTo(options: any) {
-    this.camera.flyTo(options);
+    return this.camera.flyTo(options);
   }
 
   /**
@@ -3367,6 +3535,24 @@ export class CameraService {
    */
   flyTo(target: any, options?: any) {
     return this.viewer.flyTo(target, options);
+  }
+
+  /**
+   * Zooms amount along the camera&#x27;s view vector.
+   * API: https://cesiumjs.org/Cesium/Build/Documentation/Camera.html#zoomIn
+   * @param {number} amount
+   */
+  zoomIn(amount: number) {
+    return this.camera.zoomIn(amount || this.camera.defaultZoomAmount);
+  }
+
+  /**
+   * Zooms amount along the opposite direction of the camera&#x27;s view vector.
+   * API: https://cesiumjs.org/Cesium/Build/Documentation/Camera.html#zoomOut
+   * @param {number} amount
+   */
+  zoomOut(amount: number) {
+    return this.camera.zoomIn(amount || this.camera.defaultZoomAmount);
   }
 
   /**
@@ -3392,10 +3578,46 @@ export class CameraService {
   /**
    * Make the camera track a specific entity
    * API: https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classFilter&#x3D;viewer#trackedEntity
-   * @param entity
+   * @param entity - entity to track
+   * @param options - track entity options
    */
-  trackEntity(entity?: any) {
-    this.viewer.trackedEntity &#x3D; entity;
+  trackEntity(entity?: any, options?: { flyTo: boolean, flyToDuration?: number, altitude?: number }) {
+    const flyTo &#x3D; options &amp;&amp; options.flyTo || false;
+
+    this.viewer.trackedEntity &#x3D; undefined;
+    return new Promise(resolve &#x3D;&gt; {
+      if (flyTo) {
+        const flyToDuration &#x3D; options &amp;&amp; options.flyToDuration || 1;
+        const altitude &#x3D; options &amp;&amp; options.altitude || 10000;
+
+        // Calc entity flyTo position and wanted altitude
+        const entPosCar3 &#x3D; entity.position.getValue(Cesium.JulianDate.now());
+        const entPosCart &#x3D; Cesium.Cartographic.fromCartesian(entPosCar3);
+        const zoomAmount &#x3D; altitude - entPosCart.height;
+        entPosCart.height &#x3D; altitude;
+        const flyToPosition &#x3D; Cesium.Cartesian3.fromRadians(entPosCart.longitude, entPosCart.latitude, entPosCart.height);
+
+        this.cameraFlyTo({
+            duration: flyToDuration,
+            destination: flyToPosition,
+            complete: () &#x3D;&gt; {
+              this.viewer.trackedEntity &#x3D; entity;
+              setTimeout(() &#x3D;&gt; {
+                if (zoomAmount &gt; 0) {
+                  this.camera.zoomOut(zoomAmount);
+                } else {
+                  this.camera.zoomIn(zoomAmount);
+                }
+              }, 0);
+              resolve();
+            }
+          }
+        )
+      } else {
+        this.viewer.trackedEntity &#x3D; entity;
+        resolve();
+      }
+    })
   }
 
   untrackEntity() {

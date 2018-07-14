@@ -249,6 +249,9 @@
                                 <li class="link">
                                     <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../components/RangeAndBearingComponent.html" >RangeAndBearingComponent</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -592,6 +595,9 @@
                                     <a href="../interfaces/LabelProps.html" >LabelProps</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/LabelStyle.html" >LabelStyle</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                 </li>
                                 <li class="link">
@@ -620,6 +626,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/RangeAndBearingOptions.html" >RangeAndBearingOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Rectangle.html" >Rectangle</a>
@@ -932,6 +941,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/PolylinesEditorComponent.html" >PolylinesEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RangeAndBearingComponent.html" >RangeAndBearingComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -1276,6 +1288,9 @@
                                            <a href="../interfaces/LabelProps.html" >LabelProps</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/LabelStyle.html" >LabelStyle</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/LayerOptions.html" >LayerOptions</a>
                                        </li>
                                        <li class="link">
@@ -1304,6 +1319,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/PolylineProps.html" >PolylineProps</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/RangeAndBearingOptions.html" >RangeAndBearingOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Rectangle.html" >Rectangle</a>
@@ -1657,7 +1675,43 @@ interface ActiveDefinition {
  *   }
  * }
  * &#x60;&#x60;&#x60;
- *
+ * &lt;b&gt;Predefined keyboard actions:&lt;/b&gt;
+ * + &#x60;KeyboardAction.CAMERA_FORWARD&#x60; - Moves the camera forward, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_BACKWARD&#x60; - Moves the camera backward, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_UP&#x60; - Moves the camera up, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_DOWN&#x60; - Moves the camera down, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_RIGHT&#x60; - Moves the camera right, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_LEFT&#x60; - Moves the camera left, accepts a numeric parameter named &#x60;moveRate&#x60; that controls
+ * the factor of movement, according to the camera height.
+ * + &#x60;KeyboardAction.CAMERA_LOOK_RIGHT&#x60; - Changes the camera to look to the right, accepts a numeric parameter named &#x60;lookFactor&#x60; that
+ * controls the factor of looking, according to the camera current position.
+ * + &#x60;KeyboardAction.CAMERA_LOOK_LEFT&#x60; - Changes the camera to look to the left, accepts a numeric parameter named &#x60;lookFactor&#x60; that
+ * controls the factor of looking, according to the camera current position.
+ * + &#x60;KeyboardAction.CAMERA_LOOK_UP&#x60; - Changes the camera to look up, accepts a numeric parameter named &#x60;lookFactor&#x60; that controls
+ * the factor of looking, according to the camera current position.
+ * + &#x60;KeyboardAction.CAMERA_LOOK_DOWN&#x60; - Changes the camera to look down, accepts a numeric parameter named &#x60;lookFactor&#x60; that controls
+ * the factor of looking, according to the camera current position.
+ * + &#x60;KeyboardAction.CAMERA_TWIST_RIGHT&#x60; - Twists the camera to the right, accepts a numeric parameter named &#x60;amount&#x60; that controls
+ * the twist amount
+ * + &#x60;KeyboardAction.CAMERA_TWIST_LEFT&#x60; - Twists the camera to the left, accepts a numeric parameter named &#x60;amount&#x60; that controls
+ * the twist amount
+ * + &#x60;KeyboardAction.CAMERA_ROTATE_RIGHT&#x60; - Rotates the camera to the right, accepts a numeric parameter named &#x60;angle&#x60; that controls
+ * the rotation angle
+ * + &#x60;KeyboardAction.CAMERA_ROTATE_LEFT&#x60; - Rotates the camera to the left, accepts a numeric parameter named &#x60;angle&#x60; that controls
+ * the rotation angle
+ * + &#x60;KeyboardAction.CAMERA_ROTATE_UP&#x60; - Rotates the camera upwards, accepts a numeric parameter named &#x60;angle&#x60; that controls
+ * the rotation angle
+ * + &#x60;KeyboardAction.CAMERA_ROTATE_DOWN&#x60; - Rotates the camera downwards, accepts a numeric parameter named &#x60;angle&#x60; that controls
+ * the rotation angle
+ * + &#x60;KeyboardAction.CAMERA_ZOOM_IN&#x60; - Zoom in into the current camera center position, accepts a numeric parameter named
+ * &#x60;amount&#x60; that controls the amount of zoom in meters.
+ * + &#x60;KeyboardAction.CAMERA_ZOOM_OUT&#x60; -  Zoom out from the current camera center position, accepts a numeric parameter named
+ * &#x60;amount&#x60; that controls the amount of zoom in meters.
  */
 @Injectable()
 export class KeyboardControlService {
