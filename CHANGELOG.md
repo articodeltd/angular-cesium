@@ -1,6 +1,7 @@
 ## NEXT
 ### Features
 * Added `maximumNumberOfPoints` to `PolygonEditOptions` - you can now set maximum number of points when creating polygon using `PolygonEditorService` .
+* Refactored `KeyboardControlService` docs. 
 
 ## 0.0.49
 ### Fixes

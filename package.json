@@ -13,6 +13,9 @@
   "homepage": "https://github.com/TGFTech/angular-cesium#readme",
   "main": "bundles/angular-cesium.umd.js",
   "typings": "index.d.ts",
+  "engines": {
+    "node": "8.9.4"
+  },
   "scripts": {
     "clean_src": "rimraf src/**/*.metadata.json src/**/*.js src/**/*.js.map src/**/*.ngfactory.ts src/**/*.ngstyle.ts src/**/*.ngsummary.json",
     "clean_typings": "rimraf src/*.d.ts src/angular-cesium/**/*.d.ts src/angular-cesium-entities-editor/**/*.d.ts src/heatmap/**/*.d.ts src/cesium-extender/**/*.d.ts src/angular-cesium-widgets/**/*.d.ts",
