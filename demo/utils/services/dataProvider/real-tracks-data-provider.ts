@@ -5,6 +5,7 @@ import { ActionType } from '../../../../src/angular-cesium/models/action-type.en
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { Track } from './sim-tracks-data-provider';
 
 const TracksDataQuery = gql`
     query TracksData {
@@ -41,7 +42,7 @@ export class RealTracksDataProvider {
     track.alt = trackData.position.alt;
     track.position = Cesium.Cartesian3.fromDegrees(trackData.position.long, trackData.position.lat);
     track.futurePosition = this.getFuturePosition(trackData.position, trackData.heading);
-    return { id: track.id, entity: track, actionType: ActionType.ADD_UPDATE };
+    return { id: track.id, entity: new Track(track), actionType: ActionType.ADD_UPDATE };
   }
 
   private saveInCache(track: AcNotification) {
@@ -146,7 +147,7 @@ export class RealTracksDataProvider {
     const fromServerTracks$ = watchQuery$
     .catch(err => this.tryReconnect(err))
       .map((reuslt: any) => reuslt.data.tracks);
-    
+
 
     return this.createInterpolatedTracksObservable(fromServerTracks$);
   }

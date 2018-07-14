@@ -225,6 +225,24 @@ export class CameraService {
   }
 
   /**
+   * Zooms amount along the camera's view vector.
+   * API: https://cesiumjs.org/Cesium/Build/Documentation/Camera.html#zoomIn
+   * @param {number} amount
+   */
+  zoomIn(amount: number) {
+    return this.camera.zoomIn(amount || this.camera.defaultZoomAmount);
+  }
+
+  /**
+   * Zooms amount along the opposite direction of the camera's view vector.
+   * API: https://cesiumjs.org/Cesium/Build/Documentation/Camera.html#zoomOut
+   * @param {number} amount
+   */
+  zoomOut(amount: number) {
+    return this.camera.zoomIn(amount || this.camera.defaultZoomAmount);
+  }
+
+  /**
    * Zoom the camera to a target
    * API: https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classFilter=viewer#zoomTo
    * @param target
