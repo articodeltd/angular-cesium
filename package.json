@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.49",
+  "version": "0.0.51",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/TGFTech/angular-cesium",
@@ -13,8 +13,9 @@
   "homepage": "https://github.com/TGFTech/angular-cesium#readme",
   "main": "bundles/angular-cesium.umd.js",
   "typings": "index.d.ts",
+  "engineStrict": false,
   "engines": {
-    "node": "8.9.4"
+    "node": ">= 7.9.0"
   },
   "scripts": {
     "clean_src": "rimraf src/**/*.metadata.json src/**/*.js src/**/*.js.map src/**/*.ngfactory.ts src/**/*.ngstyle.ts src/**/*.ngsummary.json",

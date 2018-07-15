@@ -9,6 +9,7 @@ import { EditModes } from '../../models/edit-mode.enum';
 import { PolylinesEditorService } from '../../services/entity-editors/polyline-editor/polylines-editor.service';
 
 /**
+ *
  * Range and bearing component that is used to draw range and bearing on the map.
  * The inputs are used to customize the range and bearing style and behavior.
  * Create component reference and use the `create()` function to start creating R&B on the map.
@@ -18,9 +19,10 @@ import { PolylinesEditorService } from '../../services/entity-editors/polyline-e
  * Usage:
  *
  * my-component.ts:
+ *
  * ```
- * @ViewChild('rangeAndBearing') private rangeAndBearing: RangeAndBearingComponent; // Get R&B reference
- * // ...
+ * \@ViewChild('rangeAndBearing') private rangeAndBearing: RangeAndBearingComponent; // Get R&B reference
+ *  // ...
  * this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLabelsStyle: { fillColor: Cesium.Color.GREEN } });
  * ```
  *
@@ -40,7 +42,7 @@ import { PolylinesEditorService } from '../../services/entity-editors/polyline-e
   }
 )
 export class RangeAndBearingComponent {
-  @Input() style?: PolylineEditOptions = {};
+  @Input() lineEditOptions?: PolylineEditOptions = {};
   @Input() labelsStyle?: LabelStyle = {};
   @Input() distanceLabelsStyle?: LabelStyle = {};
   @Input() bearingLabelsStyle?: LabelStyle = {};
@@ -52,14 +54,14 @@ export class RangeAndBearingComponent {
   }
 
   create({
-           style = {},
+           lineEditOptions = {},
            labelsStyle = {},
            distanceLabelsStyle = {},
            bearingLabelsStyle = {},
            bearingStringFn = undefined,
            distanceStringFn = undefined,
            labelsRenderFn = undefined
-         }: RangeAndBearingOptions = { style: {}, labelsStyle: {}, distanceLabelsStyle: {}, bearingLabelsStyle: {} })
+         }: RangeAndBearingOptions = { lineEditOptions: {}, labelsStyle: {}, distanceLabelsStyle: {}, bearingLabelsStyle: {} })
     : PolylineEditorObservable {
     const rnb = this.polylineEditor.create({
       allowDrag: false,
@@ -70,8 +72,8 @@ export class RangeAndBearingComponent {
       polylineProps: {
         width: 2,
       },
-      ...this.style,
-      ...style
+      ...this.lineEditOptions,
+      ...lineEditOptions
     });
 
     labelsRenderFn && rnb.setLabelsRenderFn(labelsRenderFn) ||
@@ -154,7 +156,7 @@ export class RangeAndBearingComponent {
 }
 
 export interface RangeAndBearingOptions {
-  style?: PolylineEditOptions;
+  lineEditOptions?: PolylineEditOptions;
   labelsStyle?: LabelStyle;
   distanceLabelsStyle?: LabelStyle;
   bearingLabelsStyle?: LabelStyle;

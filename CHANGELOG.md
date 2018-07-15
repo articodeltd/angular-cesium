@@ -1,3 +1,7 @@
+## 0.0.51
+### Fixes
+* Fix `package.json` engines section. 
+
 ## 0.0.50
 ### Features
 * New `<range-and-bearing>` component that is used to to draw range & bearing on the map.
