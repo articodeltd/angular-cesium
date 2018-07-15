@@ -1470,7 +1470,7 @@
                                         <a href="#labelsStyle">labelsStyle</a>
                                 </li>
                                 <li>
-                                        <a href="#style">style</a>
+                                        <a href="#lineEditOptions">lineEditOptions</a>
                                 </li>
                             </ul>
                         </td>
@@ -1510,7 +1510,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:160</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:162</a></div>
                                         </td>
                                     </tr>
 
@@ -1543,7 +1543,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:161</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:163</a></div>
                                         </td>
                                     </tr>
 
@@ -1576,7 +1576,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:159</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:161</a></div>
                                         </td>
                                     </tr>
 
@@ -1609,7 +1609,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:162</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:164</a></div>
                                         </td>
                                     </tr>
 
@@ -1642,7 +1642,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:163</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:165</a></div>
                                         </td>
                                     </tr>
 
@@ -1675,7 +1675,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:158</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:160</a></div>
                                         </td>
                                     </tr>
 
@@ -1685,13 +1685,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="style"></a>
-                                        <span class="name"><b>style</b><a href="#style"><span class="fa fa-link"></span></a></span>
+                                        <a name="lineEditOptions"></a>
+                                        <span class="name"><b>lineEditOptions</b><a href="#lineEditOptions"><span class="fa fa-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>style:     <code><a href="../interfaces/PolylineEditOptions.html" target="_self" >PolylineEditOptions</a></code>
+                                        <code>lineEditOptions:     <code><a href="../interfaces/PolylineEditOptions.html" target="_self" >PolylineEditOptions</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -1708,7 +1708,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:157</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:159</a></div>
                                         </td>
                                     </tr>
 
@@ -1730,6 +1730,7 @@ import { EditModes } from &#x27;../../models/edit-mode.enum&#x27;;
 import { PolylinesEditorService } from &#x27;../../services/entity-editors/polyline-editor/polylines-editor.service&#x27;;
 
 /**
+ *
  * Range and bearing component that is used to draw range and bearing on the map.
  * The inputs are used to customize the range and bearing style and behavior.
  * Create component reference and use the &#x60;create()&#x60; function to start creating R&amp;B on the map.
@@ -1739,9 +1740,10 @@ import { PolylinesEditorService } from &#x27;../../services/entity-editors/polyl
  * Usage:
  *
  * my-component.ts:
+ *
  * &#x60;&#x60;&#x60;
- * @ViewChild(&#x27;rangeAndBearing&#x27;) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
- * // ...
+ * \@ViewChild(&#x27;rangeAndBearing&#x27;) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
+ *  // ...
  * this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLabelsStyle: { fillColor: Cesium.Color.GREEN } });
  * &#x60;&#x60;&#x60;
  *
@@ -1761,7 +1763,7 @@ import { PolylinesEditorService } from &#x27;../../services/entity-editors/polyl
   }
 )
 export class RangeAndBearingComponent {
-  @Input() style?: PolylineEditOptions &#x3D; {};
+  @Input() lineEditOptions?: PolylineEditOptions &#x3D; {};
   @Input() labelsStyle?: LabelStyle &#x3D; {};
   @Input() distanceLabelsStyle?: LabelStyle &#x3D; {};
   @Input() bearingLabelsStyle?: LabelStyle &#x3D; {};
@@ -1773,14 +1775,14 @@ export class RangeAndBearingComponent {
   }
 
   create({
-           style &#x3D; {},
+           lineEditOptions &#x3D; {},
            labelsStyle &#x3D; {},
            distanceLabelsStyle &#x3D; {},
            bearingLabelsStyle &#x3D; {},
            bearingStringFn &#x3D; undefined,
            distanceStringFn &#x3D; undefined,
            labelsRenderFn &#x3D; undefined
-         }: RangeAndBearingOptions &#x3D; { style: {}, labelsStyle: {}, distanceLabelsStyle: {}, bearingLabelsStyle: {} })
+         }: RangeAndBearingOptions &#x3D; { lineEditOptions: {}, labelsStyle: {}, distanceLabelsStyle: {}, bearingLabelsStyle: {} })
     : PolylineEditorObservable {
     const rnb &#x3D; this.polylineEditor.create({
       allowDrag: false,
@@ -1791,8 +1793,8 @@ export class RangeAndBearingComponent {
       polylineProps: {
         width: 2,
       },
-      ...this.style,
-      ...style
+      ...this.lineEditOptions,
+      ...lineEditOptions
     });
 
     labelsRenderFn &amp;&amp; rnb.setLabelsRenderFn(labelsRenderFn) ||
@@ -1875,7 +1877,7 @@ export class RangeAndBearingComponent {
 }
 
 export interface RangeAndBearingOptions {
-  style?: PolylineEditOptions;
+  lineEditOptions?: PolylineEditOptions;
   labelsStyle?: LabelStyle;
   distanceLabelsStyle?: LabelStyle;
   bearingLabelsStyle?: LabelStyle;
