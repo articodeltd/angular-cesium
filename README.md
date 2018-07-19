@@ -118,8 +118,10 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
     $ open http://localhost:8080
     ```
 + More demos:
-  + [GeoStrike](http://geo-strike.com)
-  + [GLO](https://glo.now.sh)
+  + [GeoStrike](http://geo-strike.com) - [Repository](https://github.com/Webiks/GeoStrike)
+  + [GLO](https://glo.now.sh) - [Repository](https://github.com/sofwerx/glo-demo)
+  + [Safehouse](https://github.com/sofwerx/safehouse)
+  + [IMS](https://github.com/davidyaha/ims-workshop)
 
 ## Basic example
 
