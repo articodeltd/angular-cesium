@@ -1,3 +1,8 @@
+### Features
+* New `<ac-czml-desc>` component for adding CzmlDataSource to ac-layer.
+* New `czml-drawer` service 
+* New `<czml-layer` component in demo app to show usage of `<ac-czml-desc>``
+
 ## 0.0.51
 ### Fixes
 * Fix `package.json` engines section. 
