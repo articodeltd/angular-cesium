@@ -59,6 +59,7 @@ import { AcContextMenuWrapperComponent } from './components/ac-context-menu-wrap
 import { AcArrayDescComponent } from './components/ac-array-desc/ac-array-desc.component';
 import { AcPointPrimitiveDescComponent } from './components/ac-point-primitive-desc/ac-point-primitive-desc.component';
 import { AcPrimitivePolylineComponent } from './components/ac-primitive-polyline/ac-primitive-polyline.component';
+import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.component';
 
 @NgModule({
   imports: [
@@ -110,6 +111,7 @@ import { AcPrimitivePolylineComponent } from './components/ac-primitive-polyline
     AcHtmlDirective,
     AcHtmlContainerDirective,
     AcArrayDescComponent,
+    AcCzmlDescComponent,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
@@ -159,6 +161,7 @@ import { AcPrimitivePolylineComponent } from './components/ac-primitive-polyline
 		AcPointPrimitiveDescComponent,
     AcHtmlDescComponent,
     AcArrayDescComponent,
+    AcCzmlDescComponent,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
