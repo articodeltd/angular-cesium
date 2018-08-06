@@ -7,6 +7,7 @@ import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { ViewerConfiguration } from '../../../../src/angular-cesium/services/viewer-configuration/viewer-configuration.service';
+import { MapsManagerService } from '../../../../src/angular-cesium';
 
 @Component({
   selector: 'czml-layer',
@@ -19,7 +20,7 @@ export class CzmlLayerComponent implements OnInit {
   show = true;
   updater = new Subscriber<AcNotification>();
 
-  constructor() { }
+  constructor(private mapsManagerService: MapsManagerService) { }
 
   ngOnInit() {
 
@@ -76,7 +77,7 @@ export class CzmlLayerComponent implements OnInit {
       }
     }
 
- 
+
 
     this.czmlPackets$ = new Observable(observer => {
       this.updater = observer;
@@ -102,28 +103,6 @@ export class CzmlLayerComponent implements OnInit {
         entity: new AcEntity(packet2),
         actionType: ActionType.ADD_UPDATE
       })
-
-
-      // after 3 seconds, update outlineColor of point 2 
-      setTimeout(() => {
-
-        // providing an object that only contains the diff 
-        const updatePoint2 = {
-          id: "point_2",
-          point: {
-            outlineColor: {
-              rgba: [0, 0, 255, 200]
-            }
-          }
-        }
-
-        this.updater.next({
-          id: updatePoint2.id,
-          entity: new AcEntity(updatePoint2),
-          actionType: ActionType.ADD_UPDATE
-        })
-
-      }, 3000);
 
       // after 4 seconds, remove point 1
       setTimeout(() => {
@@ -190,11 +169,36 @@ export class CzmlLayerComponent implements OnInit {
 
       }, 10000);
 
+      // after 11 seconds, update outlineColor of point 2 
+      setTimeout(() => {
+
+        // providing an object that only contains the diff 
+        const updatePoint2 = {
+          id: 'point_2',
+          point: {
+            outlineColor: {
+              rgba: [0, 0, 255, 200]
+            }
+          }
+        }
+
+        this.updater.next({
+          id: updatePoint2.id,
+          entity: new AcEntity(updatePoint2),
+          actionType: ActionType.ADD_UPDATE
+        })
+
+        this.zoomOnDataSource();
+      }, 11000);
 
     })
 
+  }
 
 
-
+  zoomOnDataSource() {
+    const czmlDataSources = this.layer.getDrawerDataSourcesByName('czml');
+    const viewer = this.mapsManagerService.getMap().getCesiumViewer();
+    viewer.flyTo(czmlDataSources[0].entities);
   }
 }

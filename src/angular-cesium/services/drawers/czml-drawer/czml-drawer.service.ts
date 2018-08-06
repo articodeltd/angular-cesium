@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { CesiumService } from '../../cesium/cesium.service';
 import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
+import { EntitiesDrawerOptions } from '../../../models/entities-drawer-options';
 
 /**
  *  This drawer is responsible for drawing czml dataSources.
@@ -18,10 +19,10 @@ export class CzmlDrawerService extends BasicDrawerService {
     }
 
 
-    init() {
+    init(options?: EntitiesDrawerOptions) {
         const dataSources = [];
 
-        this.czmlStream = new Cesium.CzmlDataSource();
+        this.czmlStream = new Cesium.CzmlDataSource('czml');
 
         dataSources.push(this.czmlStream);
 
@@ -43,11 +44,11 @@ export class CzmlDrawerService extends BasicDrawerService {
     }
 
     remove(entity: any) {
-        this.czmlStream.entities.removeById(entity.acEntity.id)        
+        this.czmlStream.entities.removeById(entity.acEntity.id)
     }
 
     removeAll() {
-        this.czmlStream.entities.removeAll();        
+        this.czmlStream.entities.removeAll();
     }
 
     setShow(showValue: boolean) {

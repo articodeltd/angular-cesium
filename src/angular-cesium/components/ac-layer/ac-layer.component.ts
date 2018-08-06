@@ -284,11 +284,11 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 			const initOptions = this.options ? this.options[drawerName] : undefined;
 			const drawerDataSources = drawer.init(initOptions);
 			// only entities drawers create data sources
-			// TODO: Causes Bad Performance
-			// if (drawerDataSources) {
-			// this.mapLayersService.registerLayerDataSources(drawerDataSources, this.zIndex);
-			// this.layerDrawerDataSources.push(...drawerDataSources);
-			// }
+			if (drawerDataSources) {
+				// this.mapLayersService.registerLayerDataSources(drawerDataSources, this.zIndex);
+				// TODO: Check if the following line causes Bad Performance
+				this.layerDrawerDataSources.push(...drawerDataSources);
+			}
 			drawer.setShow(this.show);
 		});
 	}
@@ -318,6 +318,23 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	}
 
 	/**
+	 * Returns an array of DataSources registered by a drawer of this layer 
+	 * @return Array of Cesium.DataSources 
+	 */
+	getLayerDrawerDataSources(): any[] {
+		return this.layerDrawerDataSources;
+	}
+
+	/**
+	 * Returns an Array of DataSources of the drawer with the provided DataSource.name 
+	 * Example: getDataSourceOfDrawer('polyline') returns the dataSource of polyline drawer
+	 * @return Array of Cesium.DataSources 
+	 */
+	getDrawerDataSourcesByName(name: string): any[] {
+		return this.layerDrawerDataSources.filter(d => d.name === name);
+	}
+
+	/**
 	 * Returns the store.
 	 */
 	getStore(): Map<string, any> {
@@ -331,7 +348,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 		this.layerService.getDescriptions().forEach((description) => description.removeAll());
 		this.entitiesStore.clear();
 	}
- 
+
 	/**
 	 * remove entity from the layer
 	 * @param {number} entityId
