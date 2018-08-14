@@ -287,12 +287,8 @@ export class EditablePolygon extends AcEntity {
     return this.positions.filter(position => !position.isVirtualEditPoint() && position !== this.movingPoint);
   }
 
-  getPositions(): Cartesian3[] {
-    return this.positions.map(position => position.getPosition());
-  }
-
-  getHierarchy() {
-    return new Cesium.PolygonHierarchy(this.getPositions());
+  getPositionsHierarchy(): Cartesian3[] {
+    return this.positions.filter(position => !position.isVirtualEditPoint()).map(position => position.getPosition());
   }
 
   private removePosition(point: EditPoint) {
