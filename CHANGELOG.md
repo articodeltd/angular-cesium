@@ -1,6 +1,11 @@
+## 0.0.52
+### Fixes
+* Fixed shape editors 2D points bug - remove height reference
+* Fixed polygon editor moving point updates
+
 ## 0.0.51
 ### Fixes
-* Fix `package.json` engines section. 
+* Fixed `package.json` engines section. 
 
 ## 0.0.50
 ### Features

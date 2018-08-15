@@ -14,7 +14,6 @@
         color: point.props.color,
         outlineColor: point.props.outlineColor,
         outlineWidth: point.props.outlineWidth,
-        heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
         show: getPointShow(point)
     }">
     </ac-point-desc>
@@ -22,7 +21,7 @@
 
 <ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this">
     <ac-polygon-desc props="{
-        hierarchy: polygon.getRealPositions(),
+        hierarchy: polygon.getPositionsHierarchy(),
         material: polygon.polygonProps.material
     }">
     </ac-polygon-desc>
