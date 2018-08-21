@@ -9,10 +9,16 @@
       true,
       "check-space"
     ],
-    "curly": true,
+    "curly": [
+      true,
+      "ignore-same-line"
+    ],
     "eofline": true,
     "forin": true,
-    "import-blacklist": [true, "rxjs"],
+    "import-blacklist": [
+      true,
+      "rxjs"
+    ],
     "import-spacing": true,
     "indent": [
       true
@@ -25,7 +31,8 @@
     ],
     "member-access": false,
     "member-ordering": [
-      true, "static-before-instance"
+      true,
+      "static-before-instance"
     ],
     "no-arg": true,
     "no-bitwise": true,
@@ -43,7 +50,10 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
-    "no-inferrable-types": [true, "ignore-params"],
+    "no-inferrable-types": [
+      true,
+      "ignore-params"
+    ],
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
@@ -69,7 +79,7 @@
       "always"
     ],
     "triple-equals": [
-      true,
+      false,
       "allow-null-check"
     ],
     "typedef-whitespace": [
@@ -93,10 +103,23 @@
       "check-separator",
       "check-type"
     ],
-
-    "angular-whitespace": [true, "check-interpolation", "check-semicolon"],
-    "directive-selector": [true, "attribute", "", "camelCase"],
-    "component-selector": [true, "element", "", "kebab-case"],
+    "angular-whitespace": [
+      true,
+      "check-interpolation",
+      "check-semicolon"
+    ],
+    "directive-selector": [
+      true,
+      "attribute",
+      "",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "",
+      "kebab-case"
+    ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
@@ -106,7 +129,13 @@
     "use-pipe-transform-interface": true,
     "no-attribute-parameter-decorator": true,
     "no-output-on-prefix": false,
-    "component-class-suffix": [true, "Component"],
-    "directive-class-suffix": [true, "Directive"]
+    "component-class-suffix": [
+      true,
+      "Component"
+    ],
+    "directive-class-suffix": [
+      true,
+      "Directive"
+    ]
   }
 }

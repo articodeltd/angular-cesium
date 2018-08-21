@@ -1,16 +1,62 @@
 import { Injectable } from '@angular/core';
-import { JsonMapper } from '../json-mapper/json-mapper.service';
-import { Parse } from 'angular2parse';
-import { SmartAssigner } from '../smart-assigner/smart-assigner.service';
+import { ASTWithSource, Lexer, Parser } from '../../../angular-parse/angular';
+import { ParseVisitorCompiler } from '../../../angular-parse/visitors';
+import { PixelOffsetPipe } from '../../pipes/pixel-offset/pixel-offset.pipe';
+import { RadiansToDegreesPipe } from '../../pipes/radians-to-degrees/radians-to-degrees.pipe';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
+import { JsonMapper } from '../json-mapper/json-mapper.service';
+import { SmartAssigner } from '../smart-assigner/smart-assigner.service';
+
+
+
+
 
 @Injectable()
 export class CesiumProperties {
   private _assignersCache = new Map<string, (oldVal: Object, newVal: Object) => Object>();
   private _evaluatorsCache = new Map<string, (cache: ComputationCache, context: Object) => Object>();
 
-  constructor(private _parser: Parse,
-              private _jsonMapper: JsonMapper) {
+  private _evalCache: Map<string, Function> = new Map<string, Function>();
+  private _pipesCache: Map<string, any> = new Map<string, any>();
+  private _parser: Parser = new Parser(new Lexer());
+
+
+  constructor(
+    private _jsonMapper: JsonMapper
+  ) {
+
+    // TODO: Check if other pipes are needed for parsing or 
+    // find a way to get all pipes injected to this module
+    this._pipesCache.set('pixelOffset', new PixelOffsetPipe())
+    this._pipesCache.set('radiansToDegrees', new RadiansToDegreesPipe())
+  }
+
+
+  _eval(expression: string): Function {
+    if (this._evalCache.has(expression)) {
+      return this._evalCache.get(expression);
+    }
+
+    const visitor = new ParseVisitorCompiler();
+
+    let ast: ASTWithSource = this._parser.parseInterpolation(expression, 'Parse');
+
+    if (!ast) {
+      ast = this._parser.parseBinding(expression, 'Parse');
+    }
+
+    const fnBody = ast.visit(visitor);
+
+    const pipesCache = this._pipesCache;
+    const getFn = new Function('context', 'pipesCache', `return ${fnBody};`);
+
+    const evalParseFn = function evalParse(context: any): any {
+      return getFn(context, pipesCache);
+    };
+
+    this._evalCache.set(expression, evalParseFn);
+
+    return evalParseFn;
   }
 
   _compile(expression: string, withCache = true): (cache: ComputationCache, context: Object) => Object {
@@ -19,9 +65,12 @@ export class CesiumProperties {
 
     const resultMap = this._jsonMapper.map(expression);
 
+
+
     resultMap.forEach((resultExpression, prop) => propsMap.set(prop, {
       expression: resultExpression,
-      get: this._parser.eval(resultExpression)
+      get: this._eval(resultExpression) // changed code
+      // get: this._parser.eval(resultExpression) // changed code
     }));
 
     propsMap.forEach((value, prop) => {

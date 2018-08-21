@@ -1,3 +1,6 @@
+### Fixes
+* Fixed Angular 6 AOT Compilation error  [#244](https://github.com/TGFTech/angular-cesium/issues/224) by removing angular2parse dependency and adding a angular-parse folder instead
+
 ## 0.0.52
 ### Fixes
 * Fixed shape editors 2D points bug - remove height reference
