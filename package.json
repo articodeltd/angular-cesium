@@ -40,8 +40,8 @@
     "postpublish": "npm run docs:push"
   },
   "peerDependencies": {
-    "@angular/common": "^4.2.6 || ^5.0.0",
-    "@angular/core": "^4.2.6 || ^5.0.0"
+    "@angular/common": "^4.2.6 || ^5.0.0 || ^6.0.0",
+    "@angular/core": "^4.2.6 || ^5.0.0 || ^6.0.0"
   },
   "devDependencies": {
     "@angular/animations": "5.1.0",
@@ -142,7 +142,7 @@
   },
   "dependencies": {
     "@types/geodesy": "^1.1.2",
-    "angular2parse": "^1.0.5",
+    "angular2parse": "^1.0.6",
     "geodesy": "^1.1.1",
     "json-string-mapper": "^1.0.0",
     "lodash.get": "^4.4.2",

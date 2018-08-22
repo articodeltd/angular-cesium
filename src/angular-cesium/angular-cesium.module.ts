@@ -6,7 +6,7 @@ import { AcBillboardComponent } from './components/ac-billboard/ac-billboard.com
 import { AcBillboardDescComponent } from './components/ac-billborad-desc/ac-billborad-desc.component';
 import { AcEllipseDescComponent } from './components/ac-ellipse-desc/ac-ellipse-desc.component';
 import { AcPolylineDescComponent } from './components/ac-polyline-desc/ac-polyline-desc.component';
-import { Angular2ParseModule } from 'angular2parse';
+import { Angular2ParseModule, PIPES_CONFIG } from 'angular2parse';
 import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
 import { RadiansToDegreesPipe } from './pipes/radians-to-degrees/radians-to-degrees.pipe';
 import { JsonMapper } from './services/json-mapper/json-mapper.service';
@@ -59,11 +59,13 @@ import { AcContextMenuWrapperComponent } from './components/ac-context-menu-wrap
 import { AcArrayDescComponent } from './components/ac-array-desc/ac-array-desc.component';
 import { AcPointPrimitiveDescComponent } from './components/ac-point-primitive-desc/ac-point-primitive-desc.component';
 import { AcPrimitivePolylineComponent } from './components/ac-primitive-polyline/ac-primitive-polyline.component';
+import PARSE_PIPES_CONFIG_MAP from './pipes/pipe-config-map';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    Angular2ParseModule,
+    Angular2ParseModule.forRoot(PARSE_PIPES_CONFIG_MAP),
     UtilsModule,
   ],
   declarations: [
@@ -156,7 +158,7 @@ import { AcPrimitivePolylineComponent } from './components/ac-primitive-polyline
     AcWallDescComponent,
     AcRectangleDescComponent,
     AcContextMenuWrapperComponent,
-		AcPointPrimitiveDescComponent,
+    AcPointPrimitiveDescComponent,
     AcHtmlDescComponent,
     AcArrayDescComponent,
 
@@ -174,7 +176,10 @@ export class AngularCesiumModule {
   static forRoot(config?: ModuleConfiguration): ModuleWithProviders {
     return {
       ngModule: AngularCesiumModule,
-      providers: [{provide: ANGULAR_CESIUM_CONFIG, useValue: config}]
+      providers: [
+        { provide: ANGULAR_CESIUM_CONFIG, useValue: config },
+        { provide: PIPES_CONFIG, multi: true, useValue:  config && config.customPipes || []},
+      ],
     };
   }
 

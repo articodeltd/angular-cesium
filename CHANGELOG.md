@@ -1,3 +1,12 @@
+## NEXT 
+### Fixes
+* Fixed AOT compilation for angular 6, the issue was with `angular2parse` reaching angular compiler pipes.  
+
+### Breaking Changes
+* From now Angular Pipes need to be set in `AngularCesiumModule.forRoot(ustomPipes: myCustomPipes)`.
+angular-cesium won't be aware of pipes that wont be defined as `customPipes`.
+There for any user Pipes need to be declared when initializing angular cesium. 
+
 ## 0.0.52
 ### Fixes
 * Fixed shape editors 2D points bug - remove height reference
