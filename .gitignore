@@ -49,3 +49,4 @@ tmp
 .DS_Store
 src/client/app/shared/config/env.config.js
 src/client/app/shared/config/env.config.js.map
+.vscode/*

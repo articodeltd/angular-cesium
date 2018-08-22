@@ -21,6 +21,7 @@ import { ScreenshotService } from '../../services/screenshot/screenshot.service'
 import { ContextMenuService } from '../../services/context-menu/context-menu.service';
 import { CoordinateConverter } from '../../services/coordinate-converter/coordinate-converter.service';
 import {PolylinePrimitiveDrawerService} from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service'
+import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawer.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -56,7 +57,8 @@ import {PolylinePrimitiveDrawerService} from '../../services/drawers/polyline-pr
     EllipseDrawerService,
     PointDrawerService,
     ArcDrawerService,
-    PolygonDrawerService,
+    CzmlDrawerService,
+    PolygonDrawerService,    
     MapLayersService,
     CameraService,
 		ScreenshotService,
@@ -106,6 +108,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
               private polygonDrawerService: PolygonDrawerService,
               private arcDrawerService: ArcDrawerService,
               private pointDrawerService: PointDrawerService,
+              private czmlDrawerService: CzmlDrawerService,
               private mapEventsManager: MapEventsManagerService,
               private keyboardControlService: KeyboardControlService,
               private mapLayersService: MapLayersService,
@@ -125,7 +128,8 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
 		this.polylineDrawerService.init();
 		this.polygonDrawerService.init();
 		this.arcDrawerService.init();
-		this.pointDrawerService.init();
+    this.pointDrawerService.init();
+    this.czmlDrawerService.init();
 		this.keyboardControlService.init();
     this.contextMenuService.init(this.mapEventsManager);
   }

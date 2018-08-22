@@ -45,6 +45,7 @@ import { AngularCesiumWidgetsModule } from '../../src/angular-cesium-widgets/ang
 import { ToolbarExampleComponent } from './components/toolbar-example/toolbar-example.component';
 import { BoxesLayerComponent } from './components/boxes-layer/boxes-layer.component';
 import { TrackEntityLayerComponent } from './components/track-entity-layer/track-entity-layer.component';
+import { CzmlLayerComponent } from './components/czml-layer/czml-layer.component';
 
 
 @NgModule({
@@ -86,6 +87,7 @@ import { TrackEntityLayerComponent } from './components/track-entity-layer/track
     ToolbarExampleComponent,
     BoxesLayerComponent,
     TrackEntityLayerComponent,
+    CzmlLayerComponent,
   ],
   imports: [
     BrowserModule,
