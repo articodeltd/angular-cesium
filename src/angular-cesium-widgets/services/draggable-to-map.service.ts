@@ -38,9 +38,9 @@ export class DraggableToMapService {
 
   drag(imageSrc: string, style?: any) {
     if (!this.coordinateConverter) {
-      const map = this.mapsManager.getMap();
-      if (map) {
-        this.coordinateConverter = map.getCoordinateConverter();
+      const mapComponent = this.mapsManager.getMap();
+      if (mapComponent) {
+        this.coordinateConverter = mapComponent.getCoordinateConverter();
       }
     }
     this.cancel();
@@ -125,9 +125,9 @@ export class DraggableToMapService {
           dropEvent.drop = true;
           dropSubject.next(dropEvent);
         }
-      }),);
+      }), );
 
-    this.dragObservable = moveObservable.pipe(merge(dropSubject),takeUntil(stopper),);
+    this.dragObservable = moveObservable.pipe(merge(dropSubject), takeUntil(stopper), );
     this.stopper = stopper;
   }
 }
