@@ -1,5 +1,6 @@
+
+import {from as observableFrom,  Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
@@ -45,7 +46,7 @@ export class SelectionLayerComponent implements OnInit {
 			actionType : ActionType.ADD_UPDATE,
 			entity
 		}));
-		this.entities$ = Observable.from(entitiesNotifications);
+		this.entities$ = observableFrom(entitiesNotifications);
 		this.snakBar.open('Click + ALT to selected the plane', 'ok');
 	}
 	

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { CesiumService } from '../../../../src/angular-cesium/services/cesium/cesium.service';
 import { CoordinateConverter } from '../../../../src/angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { CesiumHeatMapMaterialCreator } from '../../../../src/heatmap/cesium-heatmap-material-creator';

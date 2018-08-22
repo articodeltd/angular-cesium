@@ -1,13 +1,13 @@
+
+import {filter, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject ,  Observable ,  Subject } from 'rxjs';
 import { AcEntity } from '../../models/ac-entity';
 import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
 import { MapEventsManagerService } from '../map-events-mananger/map-events-manager';
 import { PickOptions } from '../map-events-mananger/consts/pickOptions.enum';
 import { CesiumEventModifier } from '../map-events-mananger/consts/cesium-event-modifier.enum';
 import { MapsManagerService } from '../maps-manager/maps-manager.service';
-import { Subject } from 'rxjs/Subject';
 
 
 export interface SelectionOptions {
@@ -114,9 +114,9 @@ export class SelectionManagerService {
 			priority : eventPriority,
 		});
 		
-		eventSubscription
-			.map(result => result.entities)
-			.filter(entities => entities && entities.length > 0)
+		eventSubscription.pipe(
+			map(result => result.entities),
+			filter(entities => entities && entities.length > 0))
 			.subscribe(entities => {
 				const entity = entities[0];
 				this.toggleSelection(entity, addSelectedIndicator);

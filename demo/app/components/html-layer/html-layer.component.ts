@@ -1,5 +1,6 @@
+
+import {from as observableFrom,  Observable } from 'rxjs';
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
@@ -40,7 +41,7 @@ export class HtmlLayerComponent implements OnInit, AfterViewInit {
         };
 
         const htmlArray = [html1, html2];
-        this.htmls$ = Observable.from(htmlArray);
+        this.htmls$ = observableFrom(htmlArray);
 
         setTimeout(() => {
             html1.entity.name = 'tsahi';

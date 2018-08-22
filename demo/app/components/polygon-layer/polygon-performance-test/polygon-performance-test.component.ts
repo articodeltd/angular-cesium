@@ -1,5 +1,8 @@
+
+import {range as observableRange,  Observable } from 'rxjs';
+
+import {map} from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AcNotification } from '../../../../../src/angular-cesium/models/ac-notification';
 import { AcEntity } from '../../../../../src/angular-cesium/models/ac-entity';
 import { ActionType } from '../../../../../src/angular-cesium/models/action-type.enum';
@@ -28,7 +31,7 @@ export class PolygonPerformanceTestComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		this.polygons$ = Observable.range(1, this.COUNT).map(index => {
+		this.polygons$ = observableRange(1, this.COUNT).pipe(map(index => {
 			const entity = new AcEntity({
 				hierarchy : this.createPosition(index),
 				material : Cesium.Color.fromRandom(),
@@ -40,7 +43,7 @@ export class PolygonPerformanceTestComponent implements OnInit {
 				id : index.toString(),
 				actionType : ActionType.ADD_UPDATE,
 			} as AcNotification
-		});
+		}));
 	}
 	
 	createPosition(index: number) {

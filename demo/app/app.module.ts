@@ -18,10 +18,10 @@ import { DynamicCircleLayerComponent } from './components/dynamic-circle-layer/d
 import { PointLayerComponent } from './components/point-layer/point-layer.component';
 import { TracksDialogComponent } from './components/tracks-layer/track-dialog/track-dialog.component';
 import { DrawOnMapComponent } from './components/draw-on-map-layer/draw-on-map-layer.component';
-import { ApolloModule } from 'apollo-angular';
+import { Apollo, ApolloModule } from 'apollo-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { getApolloClient } from '../utils/apollo/apollo-client';
 import { AppMaterialModule } from './app.material.module';
+import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
 import { MaxValidatorDirective } from './shared/settings-form/max-validtor.directive';
 import { MinValidatorDirective } from './shared/settings-form/min-validator.directive';
@@ -46,6 +46,8 @@ import { ToolbarExampleComponent } from './components/toolbar-example/toolbar-ex
 import { BoxesLayerComponent } from './components/boxes-layer/boxes-layer.component';
 import { TrackEntityLayerComponent } from './components/track-entity-layer/track-entity-layer.component';
 import { CzmlLayerComponent } from './components/czml-layer/czml-layer.component';
+import { HttpClientModule } from '@angular/common/http';
+import {InMemoryCache} from 'apollo-cache-inmemory'
 
 
 @NgModule({
@@ -97,10 +99,21 @@ import { CzmlLayerComponent } from './components/czml-layer/czml-layer.component
     AngularCesiumWidgetsModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    ApolloModule.forRoot(getApolloClient),
+    ApolloModule,
+    HttpClientModule,
+    HttpLinkModule,
+
   ],
   entryComponents: [TracksDialogComponent, ContextMenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(apollo: Apollo, httpLink: HttpLink) {
+    apollo.create({
+      link: httpLink.create({
+        uri: process.env.SERVER + '/graphql',
+      }),
+      cache: new InMemoryCache(),
+    });
+  }
 }

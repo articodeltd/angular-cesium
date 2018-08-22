@@ -1,9 +1,9 @@
+
+import {of as observableOf,  Observable ,  Subscriber } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AcEntity, AcNotification, ActionType } from '../../../../src/angular-cesium';
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
-import { Subscriber } from 'rxjs/Subscriber';
 
 @Component({
   selector: 'boxes-layer',
@@ -23,7 +23,7 @@ import { Subscriber } from 'rxjs/Subscriber';
 })
 export class BoxesLayerComponent implements OnInit {
 
-  simTracks$: Observable<AcNotification> = Observable.of({
+  simTracks$: Observable<AcNotification> = observableOf({
     id: '1',
     actionType: ActionType.ADD_UPDATE,
     entity: {}

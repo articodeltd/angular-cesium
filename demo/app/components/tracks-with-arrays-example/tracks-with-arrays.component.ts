@@ -1,5 +1,7 @@
+
+import {map, filter, publish} from 'rxjs/operators';
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { ConnectableObservable } from 'rxjs/observable/ConnectableObservable';
+import { ConnectableObservable } from 'rxjs';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
 import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
@@ -26,7 +28,7 @@ export class TracksWithArraysComponent implements OnInit, OnChanges {
   constructor(private mapEventsManager: MapEventsManagerService,
               simDataProvider: SimTracksDataProvider,
               private appSettingsService: AppSettingsService) {
-    this.tracks$ = simDataProvider.get().publish();
+    this.tracks$ = publish<AcNotification>()(simDataProvider.get());
     this.tracks$.connect();
   }
 
@@ -53,8 +55,8 @@ export class TracksWithArraysComponent implements OnInit, OnChanges {
   }
 
   getSingleTrackObservable(trackId: string) {
-    return this.tracks$
-      .filter((notification) => notification.id === trackId).map((notification) => notification.entity);
+    return this.tracks$.pipe(
+      filter((notification) => notification.id === trackId),map((notification) => notification.entity),);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -1,9 +1,8 @@
 import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable , Subscriber} from 'rxjs';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
-import {Subscriber} from "rxjs/Subscriber";
 
 @Component({
 	selector: 'arc-layer',

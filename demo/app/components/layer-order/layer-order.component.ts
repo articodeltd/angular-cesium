@@ -1,10 +1,13 @@
+
+import {of as observableOf,  Observable } from 'rxjs';
+
+import {filter, map} from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
-import { Observable } from 'rxjs/Observable';
 import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
@@ -48,14 +51,14 @@ import { MapEventsManagerService } from '../../../../src/angular-cesium/services
 export class LayerOrderComponent implements OnInit {
 
   Cesium = Cesium;
-  simTracks1$: Observable<AcNotification> = Observable.of({
+  simTracks1$: Observable<AcNotification> = observableOf({
     id: '1',
     actionType: ActionType.ADD_UPDATE,
     entity: new AcEntity({
       position: Cesium.Cartesian3.fromDegrees(-90, 40),
     })
   });
-  simTracks2$: Observable<AcNotification> = Observable.of({
+  simTracks2$: Observable<AcNotification> = observableOf({
     id: '2',
     actionType: ActionType.ADD_UPDATE,
     entity: new AcEntity({
@@ -63,7 +66,7 @@ export class LayerOrderComponent implements OnInit {
     })
   });
 
-  polygons$: Observable<AcNotification> = Observable.of({
+  polygons$: Observable<AcNotification> = observableOf({
     id : '30',
     entity : new AcEntity({
       hierarchy : Cesium.Cartesian3.fromDegreesArrayHeights([-90, 40, 0,
@@ -90,9 +93,9 @@ export class LayerOrderComponent implements OnInit {
     this.eventManager.register({
       event: CesiumEvent.LEFT_CLICK,
       pick: PickOptions.PICK_FIRST
-    })
-      .map((result) => result.cesiumEntities)
-      .filter(result => result !== null && result !== undefined)
+    }).pipe(
+      map((result) => result.cesiumEntities),
+      filter(result => result !== null && result !== undefined),)
       .subscribe((result) => {
         console.log(result[0]);
         alert(result[0].ellipse.material.color._value);

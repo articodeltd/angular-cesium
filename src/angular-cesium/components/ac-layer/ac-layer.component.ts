@@ -1,11 +1,15 @@
+
+import {from as observableFrom, merge as observableMerge} from 'rxjs';
+
+import {takeUntil} from 'rxjs/operators';
 // tslint:disable
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import {
 	AfterContentInit, ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit,
 	SimpleChanges
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { AcNotification } from '../../models/ac-notification';
 import { ActionType } from '../../models/action-type.enum';
@@ -130,7 +134,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 
 	private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
 	private entityName: string;
-	private stopObservable = new Subject();
+	private stopObservable = new Subject<any>();
 	private observable: Observable<AcNotification>;
 	private _drawerList: Map<string, BasicDrawerService>;
 	private _updateStream: Subject<AcNotification> = new Subject<AcNotification>();
@@ -203,7 +207,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 	init() {
 		this.initValidParams();
 
-		Observable.merge(this._updateStream, this.observable).takeUntil(this.stopObservable).subscribe((notification) => {
+		observableMerge(this._updateStream, this.observable).pipe<AcNotification>(takeUntil(this.stopObservable)).subscribe((notification) => {
 			this._computationCache.clear();
 
 			let contextEntity = notification.entity;
@@ -377,6 +381,6 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 
 	refreshAll(collection: AcNotification[]): void {
 		// TODO make entity interface: collection of type entity not notification
-		Observable.from(collection).subscribe((entity) => this._updateStream.next(entity));
+		observableFrom(collection).subscribe((entity) => this._updateStream.next(entity));
 	}
 }

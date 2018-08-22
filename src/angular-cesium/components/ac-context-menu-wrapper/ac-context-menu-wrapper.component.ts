@@ -9,7 +9,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { ContextMenuService } from '../../services/context-menu/context-menu.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { BasicContextMenu } from '../../models/basic-context-menu';
 
 /**

@@ -1,5 +1,6 @@
+
+import {from as observableFrom,  Observable } from 'rxjs';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
@@ -27,7 +28,7 @@ export class BaseLayerComponent implements OnInit, AfterViewInit {
 			entity: {name: 'base beta', position: Cesium.Cartesian3.fromRadians(1.2, 1.2), show: true}
 		};
 		const baseArray = [base1, base2];
-		this.bases$ = Observable.from(baseArray);
+		this.bases$ = observableFrom(baseArray);
 
 		setTimeout(() => {
 			base2.entity.name = 'base gama';

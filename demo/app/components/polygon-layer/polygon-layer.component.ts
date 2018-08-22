@@ -1,10 +1,12 @@
+
+import {from as observableFrom,  Observable ,  Subject } from 'rxjs';
+
+import {merge} from 'rxjs/operators';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
-import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'polygon-layer',
@@ -48,7 +50,7 @@ export class PolygonLayerComponent implements OnInit {
       material : Cesium.Color.TRANSPARENT,
 
     });
-    this.polygons$ = Observable.from([
+    this.polygons$ = observableFrom([
       {
         id : '0',
         entity : new AcEntity({
@@ -104,7 +106,7 @@ export class PolygonLayerComponent implements OnInit {
         ),
         actionType : ActionType.ADD_UPDATE
       }
-    ]).merge(this.updater);
+    ]).pipe(merge(this.updater));
 
     setTimeout(() => {
       entX.show = true;

@@ -1,7 +1,8 @@
+
+import {tap, publish} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Subject ,  Observable ,  BehaviorSubject } from 'rxjs';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 import { PolygonEditUpdate } from '../../../models/polygon-edit-update';
@@ -13,7 +14,6 @@ import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { PolygonsManagerService } from './polygons-manager.service';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PolygonEditorObservable } from '../../../models/polygon-editor-observable';
 import { EditablePolygon } from '../../../models/editable-polygon';
 import { PolygonEditOptions, PolygonProps } from '../../../models/polygon-edit-options';
@@ -83,7 +83,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
 export class PolygonsEditorService {
   private mapEventsManager: MapEventsManagerService;
   private updateSubject = new Subject<PolygonEditUpdate>();
-  private updatePublisher = this.updateSubject.publish(); // TODO maybe not needed
+  private updatePublisher = publish<PolygonEditUpdate>()(this.updateSubject); // TODO maybe not needed
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
   private polygonsManager: PolygonsManagerService;
@@ -322,8 +322,8 @@ export class PolygonsEditorService {
       pickFilter: entity => id === entity.editedEntityId,
     });
 
-    pointDragRegistration
-      .do(({ movement: { drop } }) => this.cameraService.enableInputs(drop))
+    pointDragRegistration.pipe(
+      tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
         const position = this.coordinateConverter.screenToCartesian3(endPosition);
         if (!position) {

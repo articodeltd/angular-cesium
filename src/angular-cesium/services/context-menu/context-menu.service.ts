@@ -6,7 +6,7 @@ import { CesiumEvent } from '../map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../map-events-mananger/consts/pickOptions.enum';
 import { DisposableObservable } from '../map-events-mananger/disposable-observable';
 import { BasicContextMenu } from '../../models/basic-context-menu';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 
 /**

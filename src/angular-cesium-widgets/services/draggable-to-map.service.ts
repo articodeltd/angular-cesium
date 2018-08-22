@@ -1,9 +1,11 @@
+
+import {fromEvent as observableFromEvent,  Observable ,  Subject } from 'rxjs';
+
+import {takeUntil, merge, map, tap} from 'rxjs/operators';
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Vec2 } from '../../angular-cesium/models/vec2';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { MapsManagerService } from '../../angular-cesium/services/maps-manager/maps-manager.service';
 
@@ -92,13 +94,13 @@ export class DraggableToMapService {
   private createDragObservable() {
     const stopper = new Subject();
     const dropSubject = new Subject<any>();
-    const pointerUp = Observable.fromEvent(document, 'pointerup');
-    const pointerMove = Observable.fromEvent(document, 'pointermove');
+    const pointerUp = observableFromEvent(document, 'pointerup');
+    const pointerMove = observableFromEvent(document, 'pointermove');
 
     let dragStartPositionX: number;
     let dragStartPositionY: number;
     let lastMove: any;
-    const moveObservable = pointerMove.map((e: any) => {
+    const moveObservable = pointerMove.pipe(map((e: any) => {
       dragStartPositionX = dragStartPositionX ? dragStartPositionX : e.x;
       dragStartPositionY = dragStartPositionY ? dragStartPositionY : e.y;
       lastMove = {
@@ -115,17 +117,17 @@ export class DraggableToMapService {
           this.coordinateConverter.screenToCartesian3({ x: e.x, y: e.y }) : undefined,
       };
       return lastMove;
-    })
-      .takeUntil(pointerUp)
-      .do(undefined, undefined, () => {
+    }),
+      takeUntil(pointerUp),
+      tap(undefined, undefined, () => {
         if (lastMove) {
           const dropEvent = Object.assign({}, lastMove);
           dropEvent.drop = true;
           dropSubject.next(dropEvent);
         }
-      });
+      }),);
 
-    this.dragObservable = moveObservable.merge(dropSubject).takeUntil(stopper);
+    this.dragObservable = moveObservable.pipe(merge(dropSubject),takeUntil(stopper),);
     this.stopper = stopper;
   }
 }

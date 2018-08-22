@@ -1,7 +1,8 @@
+
+import {tap, publish} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Subject ,  Observable ,  BehaviorSubject } from 'rxjs';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 import { EditModes } from '../../../models/edit-mode.enum';
@@ -11,7 +12,6 @@ import { CoordinateConverter } from '../../../../angular-cesium/services/coordin
 import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { CircleEditUpdate } from '../../../models/circle-edit-update';
 import { GeoUtilsService } from '../../../../angular-cesium/services/geo-utils/geo-utils.service';
 import { CirclesManagerService } from './circles-manager.service';
@@ -87,7 +87,7 @@ export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
 export class CirclesEditorService {
   private mapEventsManager: MapEventsManagerService;
   private updateSubject = new Subject<CircleEditUpdate>();
-  private updatePublisher = this.updateSubject.publish(); // TODO maybe not needed
+  private updatePublisher = publish<CircleEditUpdate>()(this.updateSubject); // TODO maybe not needed
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
   private circlesManager: CirclesManagerService;
@@ -284,8 +284,8 @@ export class CirclesEditorService {
       });
     }
     
-    pointDragRegistration
-      .do(({movement : {drop}}) => this.cameraService.enableInputs(drop))
+    pointDragRegistration.pipe(
+      tap(({movement : {drop}}) => this.cameraService.enableInputs(drop)))
       .subscribe(({movement : {endPosition, startPosition, drop}, entities}) => {
         const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
         const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);

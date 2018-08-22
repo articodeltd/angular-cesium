@@ -1,5 +1,4 @@
-import { Subscriber } from 'rxjs/Subscriber';
-import { Observable } from 'rxjs/Observable';
+import { Subscriber ,  Observable } from 'rxjs';
 import { CesiumEvent } from '../consts/cesium-event.enum';
 import { CesiumEventModifier } from '../consts/cesium-event-modifier.enum';
 export class CesiumPureEventObserver {

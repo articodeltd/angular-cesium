@@ -3,13 +3,12 @@ import {
   OnDestroy, OnInit, SimpleChanges, ViewChild
 } from '@angular/core';
 import { AcNotification } from '../../models/ac-notification';
-import { Subject } from 'rxjs/Subject';
+import { Subject ,  Subscription } from 'rxjs';
 import { IDescription } from '../../models/description';
 import * as _get from 'lodash.get';
 import { AcLayerComponent } from '../ac-layer/ac-layer.component';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
-import { Subscription } from 'rxjs/Subscription';
 
 /**
  *  This is component represents an array under `ac-layer`.

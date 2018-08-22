@@ -1,11 +1,11 @@
+
+import {of as observableOf,  Observable , Subscriber} from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
-import {Subscriber} from 'rxjs/Subscriber';
 
 @Component({
 	selector : 'models-layer',
@@ -25,7 +25,7 @@ import {Subscriber} from 'rxjs/Subscriber';
 })
 export class ModelsLayerComponent implements OnInit {
 	
-	simTracks$: Observable<AcNotification> = Observable.of({
+	simTracks$: Observable<AcNotification> = observableOf({
 		id : '1',
 		actionType : ActionType.ADD_UPDATE,
 		entity : {}
