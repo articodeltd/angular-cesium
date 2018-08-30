@@ -281,7 +281,7 @@ export class SomeComponent{
   }
 }
 ```
-In the example above we start listing to Click events. according to `eventRegisration` object.
+In the example above we start listing to Click events. according to `eventRegistration` object.
 - `eventManager.register()`
   - Returns RxJs observer  of type `DisposableObservable<EventResult>` that we can subsribe to.
   - To remove the event registration just do: `resultObserver.dispose()`
@@ -301,8 +301,8 @@ In the example above we start listing to Click events. according to `eventRegisr
      *  PICK_ONE    - in case a few entities are picked plonter is resolved . use Cesium.scene.drillPick()
      *  PICK_ALL    - all entities are picked. use Cesium.scene.drillPick()
 
-`MapEventsManagerService` is porivided by `<ac-map/>`, therefor has 2 possibilitis to reach it:
-+ In any components under `<ac-map/>` hierarchy as seen in the example above  (recomannded).
+`MapEventsManagerService` is porivided by `<ac-map/>`, therefor has 2 possibilities to reach it:
++ In any components under `<ac-map/>` hierarchy as seen in the example above  (recommended).
 + Using` @viewChild` and ac-map reference: `acMapComponent.getMapEventManagerService()` .
 
 Checkout [demo/app/components/event-test-layer/event-test-layer.component.ts](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/event-test-layer.component.ts) for more examples.
@@ -312,7 +312,7 @@ Meaning that the the callback that you pass to map event manager
 will be executed outside of angular zone. That is because Cesium run outside of Angular zone
 in case for performance reasons , kind of `ON_PUSH` strategy.
 For example if you update your html template for every map event and you want it to render,
-you should use `ChangeDetectorRef` or warp your function with `NgZone.run()`
+you should use `ChangeDetectorRef` or wrap your function with `NgZone.run()`
 ```javascript
 class MyComponent {
   constructor(eventManager: MapEventsManagerService, ngZone: NgZone){
@@ -377,7 +377,7 @@ Service that manages keyboard keys and execute actions per request. Inject the k
 
 ```
 #### [CameraService](https://tgftech.github.io/angular-cesium/injectables/CameraService.html)
-Util service that warps cesium camera, exposes the scene's camera and screenSpaceCameraController.
+Util service that wraps cesium camera, exposes the scene's camera and screenSpaceCameraController.
 
 
 ### MapsManagerService
