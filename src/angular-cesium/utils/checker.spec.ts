@@ -1,5 +1,5 @@
-
 import { Checker } from './checker';
+
 describe('Checker', () => {
 
     describe('method: Present', () => {

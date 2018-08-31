@@ -1,8 +1,8 @@
 import { CesiumService } from '../../../cesium/cesium.service';
-
-;
 import { Injectable } from '@angular/core';
 import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
+
+;
 
 /**
  + *  This drawer is responsible for drawing an ellipse over the Cesium map.

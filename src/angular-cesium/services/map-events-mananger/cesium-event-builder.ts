@@ -1,5 +1,4 @@
-
-import {publish} from 'rxjs/operators';
+import { publish } from 'rxjs/operators';
 import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';

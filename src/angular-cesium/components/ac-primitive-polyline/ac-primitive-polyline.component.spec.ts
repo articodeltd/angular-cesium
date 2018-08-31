@@ -1,11 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { mock, instance, when } from 'ts-mockito';
+import { instance, mock, when } from 'ts-mockito';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
 import { AcPrimitivePolylineComponent } from './ac-primitive-polyline.component';
-import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
-import {PolylinePrimitiveDrawerService} from "../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service";
+import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service';
 
 describe('AcPrimitivePolylineComponent', () => {
 	let component: AcPrimitivePolylineComponent;

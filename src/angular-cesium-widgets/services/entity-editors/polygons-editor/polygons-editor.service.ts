@@ -1,8 +1,7 @@
-
-import {tap, publish} from 'rxjs/operators';
+import { publish, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
-import { Subject ,  Observable ,  BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 import { PolygonEditUpdate } from '../../../models/polygon-edit-update';

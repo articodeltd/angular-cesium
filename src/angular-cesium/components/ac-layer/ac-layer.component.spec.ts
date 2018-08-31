@@ -9,11 +9,8 @@ import { LabelDrawerService } from '../../services/drawers/label-drawer/label-dr
 import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { mockProvider, provider, providerFromMock } from '../../utils/testingUtils';
-import { mock, instance, when } from 'ts-mockito';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/takeUntil';
+import { instance, mock, when } from 'ts-mockito';
+import { of } from 'rxjs';
 import { MapLayersService } from '../../services/map-layers/map-layers.service';
 import { CesiumExtender } from '../../../cesium-extender/extender';
 
@@ -51,13 +48,13 @@ describe('AcLayerComponent', () => {
   });
   describe('validation tests', () => {
     it('should created successfully after init', () => {
-      component.context = { stream$: Observable.of('a') };
+      component.context = { stream$: of('a') };
       component.acFor = 'let item of stream$';
       fixture.detectChanges();
       expect(component).toBeTruthy();
     });
     it('should throw exception if acFor in wrong format', () => {
-      component.context = { stream$: Observable.of('a') };
+      component.context = { stream$: of('a') };
       component.acFor = 'let item in stream$';
       expect(fixture.detectChanges).toThrow();
     });

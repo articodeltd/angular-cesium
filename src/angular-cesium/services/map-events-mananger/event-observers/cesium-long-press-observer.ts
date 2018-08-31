@@ -1,6 +1,6 @@
-import { of as observableOf, Observable, ConnectableObservable } from 'rxjs';
+import { ConnectableObservable, of as observableOf } from 'rxjs';
 
-import { takeUntil, delay, mergeMap, publish } from 'rxjs/operators';
+import { delay, mergeMap, publish, takeUntil } from 'rxjs/operators';
 import { CesiumPureEventObserver } from './cesium-pure-event-observer';
 import { CesiumEvent } from '../consts/cesium-event.enum';
 import { CesiumEventModifier } from '../consts/cesium-event-modifier.enum';

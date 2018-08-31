@@ -1,7 +1,6 @@
+import { fromEvent as observableFromEvent, Observable, Subject } from 'rxjs';
 
-import {fromEvent as observableFromEvent,  Observable ,  Subject } from 'rxjs';
-
-import {takeUntil, merge, map, tap} from 'rxjs/operators';
+import { map, merge, takeUntil, tap } from 'rxjs/operators';
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Vec2 } from '../../angular-cesium/models/vec2';

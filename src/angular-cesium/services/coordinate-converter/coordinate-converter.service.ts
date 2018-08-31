@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 import * as geodesy from 'geodesy';
-import {hemisphere, LatLon, LatLonEllipsoidal, Utm} from 'geodesy';
+import { hemisphere, LatLon, LatLonEllipsoidal, Utm } from 'geodesy';
 import { Cartesian3 } from '../../models/cartesian3';
 
 const LatLonVectors = geodesy['LatLonVectors']; // doesnt exists on typings

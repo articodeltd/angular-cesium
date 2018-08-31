@@ -1,7 +1,6 @@
+import { fromEvent as observableFromEvent, Subscription } from 'rxjs';
 
-import {fromEvent as observableFromEvent,  Observable , Subscription} from 'rxjs';
-
-import {takeUntil, switchMap} from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 
 /**

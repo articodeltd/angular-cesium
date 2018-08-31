@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AcPointDescComponent } from './ac-point-desc.component';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
-import { mock, instance, when } from 'ts-mockito';
+import { instance, mock, when } from 'ts-mockito';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { CesiumProperties } from '../../services/cesium-properties/cesium-properties.service';

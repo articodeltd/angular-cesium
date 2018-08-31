@@ -5,6 +5,7 @@ import { LayerService } from '../../../services/layer-service/layer-service.serv
 import { ComputationCache } from '../../../services/computation-cache/computation-cache.service';
 import { CesiumProperties } from '../../../services/cesium-properties/cesium-properties.service';
 import { DynamicPolylineDrawerService } from '../../../services/drawers/static-dynamic/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
+
 // tslint:enable
 /**
  * @deprecated use ac-polylinc-desc instead

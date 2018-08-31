@@ -1,7 +1,6 @@
+import { Observable, of as observableOf, Subject } from 'rxjs';
 
-import {of as observableOf,  Subject ,  Observable } from 'rxjs';
-
-import {merge, filter, map, switchMap, tap, takeUntil, mergeMap} from 'rxjs/operators';
+import { filter, map, merge, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEventBuilder } from './cesium-event-builder';

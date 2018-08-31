@@ -1,9 +1,8 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { EllipseDrawerService } from './ellipse-drawer.service';
 import { CesiumService } from '../../cesium/cesium.service';
-import { ViewerFactory } from '../../viewer-factory/viewer-factory.service';
 import { mockProvider } from '../../../utils/testingUtils';
 
 describe('EllipseDrawerService', () => {
