@@ -130,6 +130,9 @@
                                     <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                 </li>
                                 <li class="link">
@@ -422,6 +425,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -823,6 +829,9 @@
                                            <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1124,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -1447,7 +1459,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/angular-cesium/cesium-enhancements/ConfigurationService.ts:5</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium/cesium-enhancements/ConfigurationService.ts:7</a></div>
                                         </td>
                                     </tr>
             
@@ -1489,12 +1501,14 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Inject, Injectable, Optional } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Inject, Injectable, InjectionToken, Optional } from &#x27;@angular/core&#x27;;
 import { fixCesiumEntitiesShadows } from &#x27;./StaticGeometryColorBatch&#x27;;
+
+export const ANGULAR_CESIUM_CONFIG &#x3D; new InjectionToken(&#x27;ANGULAR_CESIUM_CONFIG&#x27;);
 
 @Injectable()
 export class ConfigurationService {
-  constructor(@Optional() @Inject(&#x27;config&#x27;) private config: any) {
+  constructor(@Optional() @Inject(ANGULAR_CESIUM_CONFIG) private config: any) {
     const fixEntitiesShadows &#x3D; config ? config.fixEntitiesShadows : true;
     if (fixEntitiesShadows !&#x3D;&#x3D; false) {
       fixCesiumEntitiesShadows();

@@ -311,7 +311,7 @@
                                     <a href="../classes/CircleEditorObservable.html" >CircleEditorObservable</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/DisposableObservable.html"  data-type="entity-link" class="active" >DisposableObservable</a>
+                                    <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EditArc.html" >EditArc</a>
@@ -427,7 +427,7 @@
                                     <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
+                                    <a href="../injectables/CzmlDrawerService.html"  data-type="entity-link" class="active" >CzmlDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -1010,7 +1010,7 @@
                                            <a href="../classes/CircleEditorObservable.html" >CircleEditorObservable</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/DisposableObservable.html"  data-type="entity-link" class="active" >DisposableObservable</a>
+                                           <a href="../classes/DisposableObservable.html" >DisposableObservable</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EditArc.html" >EditArc</a>
@@ -1126,7 +1126,7 @@
                                            <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
+                                           <a href="../injectables/CzmlDrawerService.html"  data-type="entity-link" class="active" >CzmlDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -1412,7 +1412,7 @@
                    
                    </nav>
                </div>
-               <div class="content class">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -1420,12 +1420,9 @@
 
 
 
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>DisposableObservable</li>
+  <li>Injectables</li>
+  <li>CzmlDrawerService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -1445,17 +1442,16 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/angular-cesium/services/map-events-mananger/disposable-observable.ts</code>
+            <code>src/angular-cesium/services/drawers/czml-drawer/czml-drawer.service.ts</code>
         </p>
 
-
             <p class="comment">
-                <h3>Extends</h3>
+                <h3>Description</h3>
             </p>
             <p class="comment">
-                    <code>Observable</code>
-            </p>
+                <p>This drawer is responsible for drawing czml dataSources.</p>
 
+            </p>
 
 
             <section>
@@ -1471,7 +1467,36 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                         <a href="#dispose">dispose</a>
+                                         <a href="#czmlStream">czmlStream</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Methods</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                         <a href="#add">add</a>
+                                    </li>
+                                    <li>
+                                         <a href="#init">init</a>
+                                    </li>
+                                    <li>
+                                         <a href="#remove">remove</a>
+                                    </li>
+                                    <li>
+                                         <a href="#removeAll">removeAll</a>
+                                    </li>
+                                    <li>
+                                         <a href="#setShow">setShow</a>
+                                    </li>
+                                    <li>
+                                         <a href="#update">update</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1480,8 +1505,406 @@
                 </table>
             </section>
 
+            <section>
+                <h3 id="constructor">Constructor</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>constructor(cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>)</code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/angular-cesium/services/drawers/czml-drawer/czml-drawer.service.ts:13</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>cesiumService</td>
+                                                              <td>
+                                                                        <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
-
+            <section>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="add"></a>
+                                    <span class="name"><b> add</b><a href="#add"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>add(cesiumProps: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/angular-cesium/services/drawers/czml-drawer/czml-drawer.service.ts:35</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>cesiumProps</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="init"></a>
+                                    <span class="name"><b> init</b><a href="#init"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>init(options?: <a href="../interfaces/EntitiesDrawerOptions.html">EntitiesDrawerOptions</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/angular-cesium/services/drawers/czml-drawer/czml-drawer.service.ts:22</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>options</td>
+                                                              <td>
+                                                                      <code><a href="../interfaces/EntitiesDrawerOptions.html" target="_self" >EntitiesDrawerOptions</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>{}</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="remove"></a>
+                                    <span class="name"><b> remove</b><a href="#remove"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>remove(entity: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/angular-cesium/services/drawers/czml-drawer/czml-drawer.service.ts:46</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="removeAll"></a>
+                                    <span class="name"><b> removeAll</b><a href="#removeAll"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>removeAll()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/angular-cesium/services/drawers/czml-drawer/czml-drawer.service.ts:50</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="setShow"></a>
+                                    <span class="name"><b> setShow</b><a href="#setShow"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>setShow(showValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/angular-cesium/services/drawers/czml-drawer/czml-drawer.service.ts:54</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>showValue</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="update"></a>
+                                    <span class="name"><b> update</b><a href="#update"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>update(entity: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, cesiumProps: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/angular-cesium/services/drawers/czml-drawer/czml-drawer.service.ts:42</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>entity</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>cesiumProps</td>
+                                                              <td>
+                                                                      <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
             <section>
                 
@@ -1492,25 +1915,25 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="dispose"></a>
-                                    <span class="name"><b> dispose</b><a href="#dispose"><span class="fa fa-link"></span></a></span>
+                                    <a name="czmlStream"></a>
+                                    <span class="name"><b> czmlStream</b><a href="#czmlStream"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>dispose:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+                                    <code>czmlStream:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+                                        <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                     </td>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/angular-cesium/services/map-events-mananger/disposable-observable.ts:4</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/angular-cesium/services/drawers/czml-drawer/czml-drawer.service.ts:13</a></div>
                                         </td>
                                     </tr>
             
@@ -1523,14 +1946,72 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Observable } from &#x27;rxjs&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 
-export class DisposableObservable&lt;T&gt; extends Observable&lt;T&gt; {
-	dispose: Function;
+import { CesiumService } from &#x27;../../cesium/cesium.service&#x27;;
+import { BasicDrawerService } from &#x27;../basic-drawer/basic-drawer.service&#x27;;
+import { EntitiesDrawerOptions } from &#x27;../../../models/entities-drawer-options&#x27;;
+
+/**
+ *  This drawer is responsible for drawing czml dataSources.
+ */
+@Injectable()
+export class CzmlDrawerService extends BasicDrawerService {
+
+    czmlStream: any;
+
+    constructor(
+        private cesiumService: CesiumService,
+    ) {
+        super();
+    }
+
+
+    init(options?: EntitiesDrawerOptions) {
+        const dataSources &#x3D; [];
+
+        this.czmlStream &#x3D; new Cesium.CzmlDataSource(&#x27;czml&#x27;);
+
+        dataSources.push(this.czmlStream);
+
+        this.cesiumService.getViewer().dataSources.add(this.czmlStream);
+
+        return dataSources;
+    }
+
+    // returns the packet, provided by the stream
+    add(cesiumProps: any): any {
+
+        this.czmlStream.process(cesiumProps.czmlPacket);
+
+        return cesiumProps;
+    }
+
+    update(entity: any, cesiumProps: any) {
+        this.czmlStream.process(cesiumProps.czmlPacket);
+    }
+
+    remove(entity: any) {
+        this.czmlStream.entities.removeById(entity.acEntity.id)
+    }
+
+    removeAll() {
+        this.czmlStream.entities.removeAll();
+    }
+
+    setShow(showValue: boolean) {
+        this.czmlStream.entities.show &#x3D; showValue;
+    }
+
 }
+
+
 </code></pre>
     </div>
 </div>
+
+
+
 
 
 

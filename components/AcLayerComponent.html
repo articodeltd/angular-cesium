@@ -130,6 +130,9 @@
                                     <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                 </li>
                                 <li class="link">
@@ -422,6 +425,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -823,6 +829,9 @@
                                            <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1124,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -1526,6 +1538,7 @@ The ac-layer element must be a child of ac-map element.</p>
                         BillboardPrimitiveDrawerService
                         PointPrimitiveDrawerService
                         HtmlDrawerService
+                        CzmlDrawerService
                         DynamicEllipseDrawerService
                         DynamicPolylineDrawerService
                         StaticCircleDrawerService
@@ -1602,6 +1615,12 @@ The ac-layer element must be a child of ac-map element.</p>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                 <a href="#getDrawerDataSourcesByName">getDrawerDataSourcesByName</a>
+                            </li>
+                            <li>
+                                 <a href="#getLayerDrawerDataSources">getLayerDrawerDataSources</a>
+                            </li>
                             <li>
                                  <a href="#getLayerService">getLayerService</a>
                             </li>
@@ -1689,7 +1708,7 @@ The ac-layer element must be a child of ac-map element.</p>
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(layerService: LayerService, _computationCache: ComputationCache, mapLayersService: <a href="../injectables/MapLayersService.html">MapLayersService</a>, billboardDrawerService: BillboardDrawerService, labelDrawerService: LabelDrawerService, ellipseDrawerService: EllipseDrawerService, polylineDrawerService: <a href="../injectables/PolylineDrawerService.html">PolylineDrawerService</a>, polygonDrawerService: PolygonDrawerService, arcDrawerService: ArcDrawerService, pointDrawerService: PointDrawerService, modelDrawerService: <a href="../injectables/ModelDrawerService.html">ModelDrawerService</a>, boxDrawerService: <a href="../injectables/BoxDrawerService.html">BoxDrawerService</a>, corridorDrawerService: <a href="../injectables/CorridorDrawerService.html">CorridorDrawerService</a>, cylinderDrawerService: <a href="../injectables/CylinderDrawerService.html">CylinderDrawerService</a>, ellipsoidDrawerSerice: <a href="../injectables/EllipsoidDrawerService.html">EllipsoidDrawerService</a>, polylineVolumeDrawerService: <a href="../injectables/PolylineVolumeDrawerService.html">PolylineVolumeDrawerService</a>, wallDrawerService: <a href="../injectables/WallDrawerService.html">WallDrawerService</a>, rectangleDrawerService: <a href="../injectables/RectangleDrawerService.html">RectangleDrawerService</a>, dynamicEllipseDrawerService: DynamicEllipseDrawerService, dynamicPolylineDrawerService: <a href="../injectables/PolylineDrawerService.html">DynamicPolylineDrawerService</a>, staticCircleDrawerService: StaticCircleDrawerService, staticPolylineDrawerService: <a href="../injectables/PolylineDrawerService.html">StaticPolylineDrawerService</a>, staticPolygonDrawerService: StaticPolygonDrawerService, staticEllipseDrawerService: StaticEllipseDrawerService, polylinePrimitiveDrawerService: <a href="../injectables/PolylinePrimitiveDrawerService.html">PolylinePrimitiveDrawerService</a>, labelPrimitiveDrawerService: <a href="../injectables/LabelPrimitiveDrawerService.html">LabelPrimitiveDrawerService</a>, billboardPrimitiveDrawerService: <a href="../injectables/BillboardPrimitiveDrawerService.html">BillboardPrimitiveDrawerService</a>, pointPrimitiveDrawerService: <a href="../injectables/PointPrimitiveDrawerService.html">PointPrimitiveDrawerService</a>, htmlDrawerService: <a href="../injectables/HtmlDrawerService.html">HtmlDrawerService</a>)</code>
+                            <code>constructor(layerService: LayerService, _computationCache: ComputationCache, mapLayersService: <a href="../injectables/MapLayersService.html">MapLayersService</a>, billboardDrawerService: BillboardDrawerService, labelDrawerService: LabelDrawerService, ellipseDrawerService: EllipseDrawerService, polylineDrawerService: <a href="../injectables/PolylineDrawerService.html">PolylineDrawerService</a>, polygonDrawerService: PolygonDrawerService, arcDrawerService: ArcDrawerService, pointDrawerService: PointDrawerService, modelDrawerService: <a href="../injectables/ModelDrawerService.html">ModelDrawerService</a>, boxDrawerService: <a href="../injectables/BoxDrawerService.html">BoxDrawerService</a>, corridorDrawerService: <a href="../injectables/CorridorDrawerService.html">CorridorDrawerService</a>, cylinderDrawerService: <a href="../injectables/CylinderDrawerService.html">CylinderDrawerService</a>, ellipsoidDrawerSerice: <a href="../injectables/EllipsoidDrawerService.html">EllipsoidDrawerService</a>, polylineVolumeDrawerService: <a href="../injectables/PolylineVolumeDrawerService.html">PolylineVolumeDrawerService</a>, wallDrawerService: <a href="../injectables/WallDrawerService.html">WallDrawerService</a>, rectangleDrawerService: <a href="../injectables/RectangleDrawerService.html">RectangleDrawerService</a>, dynamicEllipseDrawerService: DynamicEllipseDrawerService, dynamicPolylineDrawerService: <a href="../injectables/PolylineDrawerService.html">DynamicPolylineDrawerService</a>, staticCircleDrawerService: StaticCircleDrawerService, staticPolylineDrawerService: <a href="../injectables/PolylineDrawerService.html">StaticPolylineDrawerService</a>, staticPolygonDrawerService: StaticPolygonDrawerService, staticEllipseDrawerService: StaticEllipseDrawerService, polylinePrimitiveDrawerService: <a href="../injectables/PolylinePrimitiveDrawerService.html">PolylinePrimitiveDrawerService</a>, labelPrimitiveDrawerService: <a href="../injectables/LabelPrimitiveDrawerService.html">LabelPrimitiveDrawerService</a>, billboardPrimitiveDrawerService: <a href="../injectables/BillboardPrimitiveDrawerService.html">BillboardPrimitiveDrawerService</a>, pointPrimitiveDrawerService: <a href="../injectables/PointPrimitiveDrawerService.html">PointPrimitiveDrawerService</a>, htmlDrawerService: <a href="../injectables/HtmlDrawerService.html">HtmlDrawerService</a>, czmlDrawerService: <a href="../injectables/CzmlDrawerService.html">CzmlDrawerService</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -1973,6 +1992,15 @@ The ac-layer element must be a child of ac-map element.</p>
                                                       </td>
                                                       <td></td>
                                                     </tr>
+                                                    <tr>
+                                                      <td>czmlDrawerService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/CzmlDrawerService.html" target="_self" >CzmlDrawerService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
                                             </tbody>
                                         </table>
                                 </div>
@@ -2121,6 +2149,104 @@ The ac-layer element must be a child of ac-map element.</p>
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="getDrawerDataSourcesByName"></a>
+                            <span class="name"><b> getDrawerDataSourcesByName</b><a href="#getDrawerDataSourcesByName"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>getDrawerDataSourcesByName(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="331" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:331</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Returns an Array of DataSources of the drawer with the provided DataSource.name
+    Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of polyline drawer</p>
+    </div>
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>name</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>any[]</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="getLayerDrawerDataSources"></a>
+                            <span class="name"><b> getLayerDrawerDataSources</b><a href="#getLayerDrawerDataSources"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>getLayerDrawerDataSources()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="322" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:322</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Returns an array of DataSources registered by a drawer of this layer</p>
+    </div>
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>any[]</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="getLayerService"></a>
                             <span class="name"><b> getLayerService</b><a href="#getLayerService"><span class="fa fa-link"></span></a></span>
                         </td>
@@ -2134,7 +2260,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="312" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:312</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="314" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:314</a></div>
                                 </td>
                             </tr>
     
@@ -2166,7 +2292,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="319" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:319</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="338" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:338</a></div>
                                 </td>
                             </tr>
     
@@ -2200,7 +2326,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:199</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:201</a></div>
                                 </td>
                             </tr>
     
@@ -2233,7 +2359,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="244" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:244</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:246</a></div>
                                 </td>
                             </tr>
     
@@ -2266,7 +2392,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="264" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:264</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:266</a></div>
                                 </td>
                             </tr>
     
@@ -2329,7 +2455,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:270</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="272" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:272</a></div>
                                 </td>
                             </tr>
     
@@ -2361,7 +2487,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="292" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:292</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="294" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:294</a></div>
                                 </td>
                             </tr>
     
@@ -2422,7 +2548,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="306" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:306</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="308" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:308</a></div>
                                 </td>
                             </tr>
     
@@ -2454,7 +2580,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:274</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="276" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:276</a></div>
                                 </td>
                             </tr>
     
@@ -2486,7 +2612,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="357" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:357</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="376" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:376</a></div>
                                 </td>
                             </tr>
     
@@ -2547,7 +2673,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="335" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:335</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="354" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:354</a></div>
                                 </td>
                             </tr>
     
@@ -2610,7 +2736,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="326" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:326</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="345" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:345</a></div>
                                 </td>
                             </tr>
     
@@ -2644,7 +2770,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="353" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:353</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="372" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:372</a></div>
                                 </td>
                             </tr>
     
@@ -2716,7 +2842,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="344" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:344</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="363" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:363</a></div>
                                 </td>
                             </tr>
     
@@ -2780,7 +2906,7 @@ The ac-layer element must be a child of ac-map element.</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:226</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">src/angular-cesium/components/ac-layer/ac-layer.component.ts:228</a></div>
                                 </td>
                             </tr>
     
@@ -3056,13 +3182,12 @@ The ac-layer element must be a child of ac-map element.</p>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { BillboardDrawerService } from &#x27;../../services/drawers/billboard-drawer/billboard-drawer.service&#x27;;
-import {
-  AfterContentInit, ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit,
-  SimpleChanges
-} from &#x27;@angular/core&#x27;;
-import { Observable } from &#x27;rxjs/Observable&#x27;;
-import { Subject } from &#x27;rxjs/Subject&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { from as observableFrom, merge as observableMerge, Observable, Subject } from &#x27;rxjs&#x27;;
+
+import { takeUntil } from &#x27;rxjs/operators&#x27;;
+// tslint:disable
+import { BillboardDrawerService } from &#x27;../../services/drawers/billboard-drawer/billboard-drawer.service&#x27;;
+import { AfterContentInit, ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from &#x27;@angular/core&#x27;;
 import { LayerService } from &#x27;../../services/layer-service/layer-service.service&#x27;;
 import { AcNotification } from &#x27;../../models/ac-notification&#x27;;
 import { ActionType } from &#x27;../../models/action-type.enum&#x27;;
@@ -3096,6 +3221,7 @@ import { BillboardPrimitiveDrawerService } from &#x27;../../services/drawers/bil
 import { MapLayersService } from &#x27;../../services/map-layers/map-layers.service&#x27;;
 import { PointPrimitiveDrawerService } from &#x27;../../services/drawers/point-primitive-drawer/point-primitive-drawer.service&#x27;;
 import { HtmlDrawerService } from &#x27;../../services/drawers/html-drawer/html-drawer.service&#x27;;
+import { CzmlDrawerService } from &#x27;../../services/drawers/czml-drawer/czml-drawer.service&#x27;;
 
 // tslint:enable
 /**
@@ -3134,287 +3260,307 @@ import { HtmlDrawerService } from &#x27;../../services/drawers/html-drawer/html-
  *  &#x60;&#x60;&#x60;
  */
 @Component({
-	selector : &#x27;ac-layer&#x27;,
-	template : &#x27;&lt;ng-content&gt;&lt;/ng-content&gt;&#x27;,
-	providers : [
-		LayerService,
-		ComputationCache,
-		BillboardDrawerService,
-		LabelDrawerService,
-		EllipseDrawerService,
-		PolylineDrawerService,
-		ArcDrawerService,
-		PointDrawerService,
-		PolygonDrawerService,
-		ModelDrawerService,
-		BoxDrawerService,
-		CorridorDrawerService,
-		CylinderDrawerService,
-		EllipsoidDrawerService,
-		PolylineVolumeDrawerService,
-		WallDrawerService,
-		RectangleDrawerService,
-		PolylinePrimitiveDrawerService,
-		LabelPrimitiveDrawerService,
-		BillboardPrimitiveDrawerService,
-		PointPrimitiveDrawerService,
-		HtmlDrawerService,
+  selector: &#x27;ac-layer&#x27;,
+  template: &#x27;&lt;ng-content&gt;&lt;/ng-content&gt;&#x27;,
+  providers: [
+    LayerService,
+    ComputationCache,
+    BillboardDrawerService,
+    LabelDrawerService,
+    EllipseDrawerService,
+    PolylineDrawerService,
+    ArcDrawerService,
+    PointDrawerService,
+    PolygonDrawerService,
+    ModelDrawerService,
+    BoxDrawerService,
+    CorridorDrawerService,
+    CylinderDrawerService,
+    EllipsoidDrawerService,
+    PolylineVolumeDrawerService,
+    WallDrawerService,
+    RectangleDrawerService,
+    PolylinePrimitiveDrawerService,
+    LabelPrimitiveDrawerService,
+    BillboardPrimitiveDrawerService,
+    PointPrimitiveDrawerService,
+    HtmlDrawerService,
+    CzmlDrawerService,
 
-		DynamicEllipseDrawerService,
-		DynamicPolylineDrawerService,
-		StaticCircleDrawerService,
-		StaticPolylineDrawerService,
-		StaticPolygonDrawerService,
-		StaticEllipseDrawerService,
-	],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+    DynamicEllipseDrawerService,
+    DynamicPolylineDrawerService,
+    StaticCircleDrawerService,
+    StaticPolylineDrawerService,
+    StaticPolygonDrawerService,
+    StaticEllipseDrawerService,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
-	@Input()
-	show &#x3D; true;
-	@Input()
-	acFor: string;
-	@Input()
-	context: any;
-	@Input()
-	store &#x3D; false;
-	@Input()
-	options: LayerOptions;
-	@Input()
-	zIndex &#x3D; 0;
+  @Input()
+  show &#x3D; true;
+  @Input()
+  acFor: string;
+  @Input()
+  context: any;
+  @Input()
+  store &#x3D; false;
+  @Input()
+  options: LayerOptions;
+  @Input()
+  zIndex &#x3D; 0;
 
-	private readonly acForRgx &#x3D; /^let\s+.+\s+of\s+.+$/;
-	private entityName: string;
-	private stopObservable &#x3D; new Subject();
-	private observable: Observable&lt;AcNotification&gt;;
-	private _drawerList: Map&lt;string, BasicDrawerService&gt;;
-	private _updateStream: Subject&lt;AcNotification&gt; &#x3D; new Subject&lt;AcNotification&gt;();
-	private entitiesStore &#x3D; new Map&lt;string, any&gt;();
-	private layerDrawerDataSources: any[] &#x3D; [];
+  private readonly acForRgx &#x3D; /^let\s+.+\s+of\s+.+$/;
+  private entityName: string;
+  private stopObservable &#x3D; new Subject&lt;any&gt;();
+  private observable: Observable&lt;AcNotification&gt;;
+  private _drawerList: Map&lt;string, BasicDrawerService&gt;;
+  private _updateStream: Subject&lt;AcNotification&gt; &#x3D; new Subject&lt;AcNotification&gt;();
+  private entitiesStore &#x3D; new Map&lt;string, any&gt;();
+  private layerDrawerDataSources: any[] &#x3D; [];
 
-	constructor(private  layerService: LayerService,
-							private _computationCache: ComputationCache,
-							private mapLayersService: MapLayersService,
-							billboardDrawerService: BillboardDrawerService,
-							labelDrawerService: LabelDrawerService,
-							ellipseDrawerService: EllipseDrawerService,
-							polylineDrawerService: PolylineDrawerService,
-							polygonDrawerService: PolygonDrawerService,
-							arcDrawerService: ArcDrawerService,
-							pointDrawerService: PointDrawerService,
-							modelDrawerService: ModelDrawerService,
-							boxDrawerService: BoxDrawerService,
-							corridorDrawerService: CorridorDrawerService,
-							cylinderDrawerService: CylinderDrawerService,
-							ellipsoidDrawerSerice: EllipsoidDrawerService,
-							polylineVolumeDrawerService: PolylineVolumeDrawerService,
-							wallDrawerService: WallDrawerService,
-							rectangleDrawerService: RectangleDrawerService,
-							dynamicEllipseDrawerService: DynamicEllipseDrawerService,
-							dynamicPolylineDrawerService: DynamicPolylineDrawerService,
-							staticCircleDrawerService: StaticCircleDrawerService,
-							staticPolylineDrawerService: StaticPolylineDrawerService,
-							staticPolygonDrawerService: StaticPolygonDrawerService,
-							staticEllipseDrawerService: StaticEllipseDrawerService,
-							polylinePrimitiveDrawerService: PolylinePrimitiveDrawerService,
-							labelPrimitiveDrawerService: LabelPrimitiveDrawerService,
-							billboardPrimitiveDrawerService: BillboardPrimitiveDrawerService,
-							pointPrimitiveDrawerService: PointPrimitiveDrawerService,
-							htmlDrawerService: HtmlDrawerService
-							) {
-		this._drawerList &#x3D; new Map([
-			[&#x27;billboard&#x27;, billboardDrawerService],
-			[&#x27;label&#x27;, labelDrawerService],
-			[&#x27;ellipse&#x27;, ellipseDrawerService],
-			[&#x27;polyline&#x27;, polylineDrawerService],
-			[&#x27;polygon&#x27;, polygonDrawerService as BasicDrawerService],
-			[&#x27;arc&#x27;, arcDrawerService],
-			[&#x27;point&#x27;, pointDrawerService],
-			[&#x27;model&#x27;, modelDrawerService],
-			[&#x27;box&#x27;, boxDrawerService],
-			[&#x27;corridor&#x27;, corridorDrawerService],
-			[&#x27;cylinder&#x27;, cylinderDrawerService],
-			[&#x27;ellipsoid&#x27;, ellipsoidDrawerSerice],
-			[&#x27;polylineVolume&#x27;, polylineVolumeDrawerService],
-			[&#x27;rectangle&#x27;, rectangleDrawerService],
-			[&#x27;wall&#x27;, wallDrawerService],
-			[&#x27;polylinePrimitive&#x27;, polylinePrimitiveDrawerService],
-			[&#x27;labelPrimitive&#x27;, labelPrimitiveDrawerService],
-			[&#x27;billboardPrimitive&#x27;, billboardPrimitiveDrawerService],
-			[&#x27;pointPrimitive&#x27;, pointPrimitiveDrawerService],
-			[&#x27;html&#x27;, htmlDrawerService],
+  constructor(private layerService: LayerService,
+              private _computationCache: ComputationCache,
+              private mapLayersService: MapLayersService,
+              billboardDrawerService: BillboardDrawerService,
+              labelDrawerService: LabelDrawerService,
+              ellipseDrawerService: EllipseDrawerService,
+              polylineDrawerService: PolylineDrawerService,
+              polygonDrawerService: PolygonDrawerService,
+              arcDrawerService: ArcDrawerService,
+              pointDrawerService: PointDrawerService,
+              modelDrawerService: ModelDrawerService,
+              boxDrawerService: BoxDrawerService,
+              corridorDrawerService: CorridorDrawerService,
+              cylinderDrawerService: CylinderDrawerService,
+              ellipsoidDrawerSerice: EllipsoidDrawerService,
+              polylineVolumeDrawerService: PolylineVolumeDrawerService,
+              wallDrawerService: WallDrawerService,
+              rectangleDrawerService: RectangleDrawerService,
+              dynamicEllipseDrawerService: DynamicEllipseDrawerService,
+              dynamicPolylineDrawerService: DynamicPolylineDrawerService,
+              staticCircleDrawerService: StaticCircleDrawerService,
+              staticPolylineDrawerService: StaticPolylineDrawerService,
+              staticPolygonDrawerService: StaticPolygonDrawerService,
+              staticEllipseDrawerService: StaticEllipseDrawerService,
+              polylinePrimitiveDrawerService: PolylinePrimitiveDrawerService,
+              labelPrimitiveDrawerService: LabelPrimitiveDrawerService,
+              billboardPrimitiveDrawerService: BillboardPrimitiveDrawerService,
+              pointPrimitiveDrawerService: PointPrimitiveDrawerService,
+              htmlDrawerService: HtmlDrawerService,
+              czmlDrawerService: CzmlDrawerService
+  ) {
+    this._drawerList &#x3D; new Map([
+      [&#x27;billboard&#x27;, billboardDrawerService],
+      [&#x27;label&#x27;, labelDrawerService],
+      [&#x27;ellipse&#x27;, ellipseDrawerService],
+      [&#x27;polyline&#x27;, polylineDrawerService],
+      [&#x27;polygon&#x27;, polygonDrawerService as BasicDrawerService],
+      [&#x27;arc&#x27;, arcDrawerService],
+      [&#x27;point&#x27;, pointDrawerService],
+      [&#x27;model&#x27;, modelDrawerService],
+      [&#x27;box&#x27;, boxDrawerService],
+      [&#x27;corridor&#x27;, corridorDrawerService],
+      [&#x27;cylinder&#x27;, cylinderDrawerService],
+      [&#x27;ellipsoid&#x27;, ellipsoidDrawerSerice],
+      [&#x27;polylineVolume&#x27;, polylineVolumeDrawerService],
+      [&#x27;rectangle&#x27;, rectangleDrawerService],
+      [&#x27;wall&#x27;, wallDrawerService],
+      [&#x27;polylinePrimitive&#x27;, polylinePrimitiveDrawerService],
+      [&#x27;labelPrimitive&#x27;, labelPrimitiveDrawerService],
+      [&#x27;billboardPrimitive&#x27;, billboardPrimitiveDrawerService],
+      [&#x27;pointPrimitive&#x27;, pointPrimitiveDrawerService],
+      [&#x27;html&#x27;, htmlDrawerService],
+      [&#x27;czml&#x27;, czmlDrawerService],
 
-			[&#x27;dynamicEllipse&#x27;, dynamicEllipseDrawerService],
-			[&#x27;dynamicPolyline&#x27;, dynamicPolylineDrawerService],
-			[&#x27;staticCircle&#x27;, staticCircleDrawerService],
-			[&#x27;staticPolyline&#x27;, staticPolylineDrawerService],
-			[&#x27;staticPolygon&#x27;, staticPolygonDrawerService],
-			[&#x27;staticEllipse&#x27;, staticEllipseDrawerService],
-		]);
-	}
+      [&#x27;dynamicEllipse&#x27;, dynamicEllipseDrawerService],
+      [&#x27;dynamicPolyline&#x27;, dynamicPolylineDrawerService],
+      [&#x27;staticCircle&#x27;, staticCircleDrawerService],
+      [&#x27;staticPolyline&#x27;, staticPolylineDrawerService],
+      [&#x27;staticPolygon&#x27;, staticPolygonDrawerService],
+      [&#x27;staticEllipse&#x27;, staticEllipseDrawerService],
+    ]);
+  }
 
-	init() {
-		this.initValidParams();
+  init() {
+    this.initValidParams();
 
-		Observable.merge(this._updateStream, this.observable).takeUntil(this.stopObservable).subscribe((notification) &#x3D;&gt; {
-			this._computationCache.clear();
+    observableMerge(this._updateStream, this.observable).pipe&lt;AcNotification&gt;(takeUntil(this.stopObservable)).subscribe((notification) &#x3D;&gt; {
+      this._computationCache.clear();
 
-			let contextEntity &#x3D; notification.entity;
-			if (this.store) {
-				contextEntity &#x3D; this.updateStore(notification);
-			}
+      let contextEntity &#x3D; notification.entity;
+      if (this.store) {
+        contextEntity &#x3D; this.updateStore(notification);
+      }
 
-			this.context[this.entityName] &#x3D; contextEntity;
-			this.layerService.getDescriptions().forEach((descriptionComponent) &#x3D;&gt; {
-				switch (notification.actionType) {
-					case ActionType.ADD_UPDATE:
-						descriptionComponent.draw(this.context, notification.id, contextEntity);
-						break;
-					case ActionType.DELETE:
-						descriptionComponent.remove(notification.id);
-						break;
-					default:
-						console.error(&#x27;[ac-layer] unknown AcNotification.actionType for notification: &#x27; + notification);
-				}
-			});
-		});
-	}
+      this.context[this.entityName] &#x3D; contextEntity;
+      this.layerService.getDescriptions().forEach((descriptionComponent) &#x3D;&gt; {
+        switch (notification.actionType) {
+          case ActionType.ADD_UPDATE:
+            descriptionComponent.draw(this.context, notification.id, contextEntity);
+            break;
+          case ActionType.DELETE:
+            descriptionComponent.remove(notification.id);
+            break;
+          default:
+            console.error(&#x27;[ac-layer] unknown AcNotification.actionType for notification: &#x27; + notification);
+        }
+      });
+    });
+  }
 
-	private updateStore(notification: AcNotification): any {
-		if (notification.actionType &#x3D;&#x3D;&#x3D; ActionType.DELETE) {
-			this.entitiesStore.delete(notification.id);
-			return undefined;
-		}
-		else {
-			if (this.entitiesStore.has(notification.id)) {
-				const entity &#x3D; this.entitiesStore.get(notification.id);
-				Object.assign(entity, notification.entity);
-				return entity;
-			}
-			else {
-				this.entitiesStore.set(notification.id, notification.entity);
-				return notification.entity;
-			}
-		}
-	}
+  private updateStore(notification: AcNotification): any {
+    if (notification.actionType &#x3D;&#x3D;&#x3D; ActionType.DELETE) {
+      this.entitiesStore.delete(notification.id);
+      return undefined;
+    }
+    else {
+      if (this.entitiesStore.has(notification.id)) {
+        const entity &#x3D; this.entitiesStore.get(notification.id);
+        Object.assign(entity, notification.entity);
+        return entity;
+      }
+      else {
+        this.entitiesStore.set(notification.id, notification.entity);
+        return notification.entity;
+      }
+    }
+  }
 
-	private initValidParams() {
-		if (!this.context) {
-			throw new Error(&#x27;ac-layer: must initialize [context] &#x27;);
-		}
+  private initValidParams() {
+    if (!this.context) {
+      throw new Error(&#x27;ac-layer: must initialize [context] &#x27;);
+    }
 
-		if (!this.acForRgx.test(this.acFor)) {
-			throw new Error(&#x60;ac-layer: Invalid [acFor] syntax. Expected: [acFor]&#x3D;&quot;let item of observable&quot; .Instead received: ${this.acFor}&#x60;);
-		}
-		const acForArr &#x3D; this.acFor.split(&#x27; &#x27;);
-		this.observable &#x3D; this.context[acForArr[3]];
-		this.entityName &#x3D; acForArr[1];
-		if (!this.isObservable(this.observable)) {
-			throw  new Error(&#x27;ac-layer: must initailize [acFor] with rx observable, instead received: &#x27; + this.observable);
-		}
+    if (!this.acForRgx.test(this.acFor)) {
+      throw new Error(&#x60;ac-layer: Invalid [acFor] syntax. Expected: [acFor]&#x3D;&quot;let item of observable&quot; .Instead received: ${this.acFor}&#x60;);
+    }
+    const acForArr &#x3D; this.acFor.split(&#x27; &#x27;);
+    this.observable &#x3D; this.context[acForArr[3]];
+    this.entityName &#x3D; acForArr[1];
+    if (!this.isObservable(this.observable)) {
+      throw new Error(&#x27;ac-layer: must initailize [acFor] with rx observable, instead received: &#x27; + this.observable);
+    }
 
-		this.layerService.context &#x3D; this.context;
-		this.layerService.setEntityName(this.entityName);
-	}
-
-	/** Test for a rxjs Observable */
-	private isObservable(obj: any): boolean {
-		/* check via duck-typing rather than instance of
-		 * to allow passing between window contexts */
-		return obj &amp;&amp; typeof obj.subscribe &#x3D;&#x3D;&#x3D; &#x27;function&#x27;
-	}
-
-	ngAfterContentInit(): void {
-		this.init();
-	}
-
-	ngOnInit(): void {
     this.layerService.context &#x3D; this.context;
-		this.layerService.options &#x3D; this.options;
-		this.layerService.show &#x3D; this.show;
-		this.layerService.zIndex &#x3D; this.zIndex;
-		this._drawerList.forEach((drawer, drawerName) &#x3D;&gt; {
-			const initOptions &#x3D; this.options ? this.options[drawerName] : undefined;
-			const drawerDataSources &#x3D; drawer.init(initOptions);
-			// only entities drawers create data sources
-      // TODO: Causes Bad Performance
-      // if (drawerDataSources) {
-				// this.mapLayersService.registerLayerDataSources(drawerDataSources, this.zIndex);
-				// this.layerDrawerDataSources.push(...drawerDataSources);
-      // }
-			drawer.setShow(this.show);
-		});
-	}
+    this.layerService.setEntityName(this.entityName);
+  }
 
-	ngOnChanges(changes: SimpleChanges): void {
-		if (changes.show &amp;&amp; !changes.show.firstChange) {
-			const showValue &#x3D; changes[&#x27;show&#x27;].currentValue;
+  /** Test for a rxjs Observable */
+  private isObservable(obj: any): boolean {
+    /* check via duck-typing rather than instance of
+     * to allow passing between window contexts */
+    return obj &amp;&amp; typeof obj.subscribe &#x3D;&#x3D;&#x3D; &#x27;function&#x27;
+  }
+
+  ngAfterContentInit(): void {
+    this.init();
+  }
+
+  ngOnInit(): void {
+    this.layerService.context &#x3D; this.context;
+    this.layerService.options &#x3D; this.options;
+    this.layerService.show &#x3D; this.show;
+    this.layerService.zIndex &#x3D; this.zIndex;
+    this._drawerList.forEach((drawer, drawerName) &#x3D;&gt; {
+      const initOptions &#x3D; this.options ? this.options[drawerName] : undefined;
+      const drawerDataSources &#x3D; drawer.init(initOptions);
+      // only entities drawers create data sources
+      if (drawerDataSources) {
+        // this.mapLayersService.registerLayerDataSources(drawerDataSources, this.zIndex);
+        // TODO: Check if the following line causes Bad Performance
+        this.layerDrawerDataSources.push(...drawerDataSources);
+      }
+      drawer.setShow(this.show);
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.show &amp;&amp; !changes.show.firstChange) {
+      const showValue &#x3D; changes[&#x27;show&#x27;].currentValue;
       this.layerService.show &#x3D; showValue;
-			this._drawerList.forEach((drawer) &#x3D;&gt; drawer.setShow(showValue));
-		}
+      this._drawerList.forEach((drawer) &#x3D;&gt; drawer.setShow(showValue));
+    }
 
-		if (changes.zIndex &amp;&amp; !changes.zIndex.firstChange) {
-			const zIndexValue &#x3D; changes[&#x27;zIndex&#x27;].currentValue;
+    if (changes.zIndex &amp;&amp; !changes.zIndex.firstChange) {
+      const zIndexValue &#x3D; changes[&#x27;zIndex&#x27;].currentValue;
       this.layerService.zIndex &#x3D; zIndexValue;
-			this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue);
-		}
-	}
+      this.mapLayersService.updateAndRefresh(this.layerDrawerDataSources, zIndexValue);
+    }
+  }
 
-	ngOnDestroy(): void {
-		this.mapLayersService.removeDataSources(this.layerDrawerDataSources);
-		this.stopObservable.next(true);
-		this.removeAll();
-	}
+  ngOnDestroy(): void {
+    this.mapLayersService.removeDataSources(this.layerDrawerDataSources);
+    this.stopObservable.next(true);
+    this.removeAll();
+  }
 
   getLayerService(): LayerService {
     return this.layerService;
   }
 
-	/**
-	 * Returns the store.
-	 */
-	getStore(): Map&lt;string, any&gt; {
-		return this.entitiesStore;
-	};
+  /**
+   * Returns an array of DataSources registered by a drawer of this layer
+   * @return Array of Cesium.DataSources
+   */
+  getLayerDrawerDataSources(): any[] {
+    return this.layerDrawerDataSources;
+  }
 
-	/**
-	 * Remove all the entities from the layer.
-	 */
-	removeAll(): void {
-		this.layerService.getDescriptions().forEach((description) &#x3D;&gt; description.removeAll());
-		this.entitiesStore.clear();
-	}
+  /**
+   * Returns an Array of DataSources of the drawer with the provided DataSource.name
+   * Example: getDataSourceOfDrawer(&#x27;polyline&#x27;) returns the dataSource of polyline drawer
+   * @return Array of Cesium.DataSources
+   */
+  getDrawerDataSourcesByName(name: string): any[] {
+    return this.layerDrawerDataSources.filter(d &#x3D;&gt; d.name &#x3D;&#x3D;&#x3D; name);
+  }
 
-	/**
-	 * remove entity from the layer
-	 * @param {number} entityId
-	 */
-	remove(entityId: string) {
-		this._updateStream.next({id : entityId, actionType : ActionType.DELETE});
-		this.entitiesStore.delete(entityId);
-	}
+  /**
+   * Returns the store.
+   */
+  getStore(): Map&lt;string, any&gt; {
+    return this.entitiesStore;
+  };
 
-	/**
-	 * add/update entity to/from the layer
-	 * @param {AcNotification} notification
-	 */
-	updateNotification(notification: AcNotification): void {
-		this._updateStream.next(notification);
-	}
+  /**
+   * Remove all the entities from the layer.
+   */
+  removeAll(): void {
+    this.layerService.getDescriptions().forEach((description) &#x3D;&gt; description.removeAll());
+    this.entitiesStore.clear();
+  }
 
-	/**
-	 * add/update entity to/from the layer
-	 * @param {AcEntity} entity
-	 * @param {number} id
-	 */
-	update(entity: AcEntity, id: string): void {
-		this._updateStream.next({entity, id, actionType : ActionType.ADD_UPDATE});
-	}
+  /**
+   * remove entity from the layer
+   * @param {number} entityId
+   */
+  remove(entityId: string) {
+    this._updateStream.next({ id: entityId, actionType: ActionType.DELETE });
+    this.entitiesStore.delete(entityId);
+  }
 
-	refreshAll(collection: AcNotification[]): void {
-		// TODO make entity interface: collection of type entity not notification
-		Observable.from(collection).subscribe((entity) &#x3D;&gt; this._updateStream.next(entity));
-	}
+  /**
+   * add/update entity to/from the layer
+   * @param {AcNotification} notification
+   */
+  updateNotification(notification: AcNotification): void {
+    this._updateStream.next(notification);
+  }
+
+  /**
+   * add/update entity to/from the layer
+   * @param {AcEntity} entity
+   * @param {number} id
+   */
+  update(entity: AcEntity, id: string): void {
+    this._updateStream.next({ entity, id, actionType: ActionType.ADD_UPDATE });
+  }
+
+  refreshAll(collection: AcNotification[]): void {
+    // TODO make entity interface: collection of type entity not notification
+    observableFrom(collection).subscribe((entity) &#x3D;&gt; this._updateStream.next(entity));
+  }
 }
 </code></pre>
     </div>
@@ -3444,7 +3590,7 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ng-content></ng-content></div>'
-    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcPrimitivePolylineComponent', 'selector': 'ac-primitive-polyline'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'},{'name': 'RangeAndBearingComponent', 'selector': 'range-and-bearing'}];
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcCzmlDescComponent', 'selector': 'ac-czml-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcPrimitivePolylineComponent', 'selector': 'ac-primitive-polyline'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'},{'name': 'RangeAndBearingComponent', 'selector': 'range-and-bearing'}];
     var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'},{'name': 'DraggableToMapDirective', 'selector': '[draggableToMap]'}];
     var ACTUAL_COMPONENT = {'name': 'AcLayerComponent'};
 </script>

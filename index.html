@@ -130,6 +130,9 @@
                                     <a href="./components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                 </li>
                                 <li class="link">
@@ -422,6 +425,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="./injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -823,6 +829,9 @@
                                            <a href="./components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1124,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="./injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -1424,8 +1436,6 @@ Check out our <a href="http://www.angular-cesium.com">Demo</a> that contains sma
   $ cd PROJECT_NAME</code></pre></li>
 <li><p>Install <code>angular-cesium</code>:</p>
 <pre class="line-numbers"><code class="language-bash">$ npm install --save angular-cesium</code></pre></li>
-<li><p>For Angular 6 users:</p>
-<pre class="line-numbers"><code class="language-bash">$ npm install --save rxjs-compat</code></pre></li>
 <li><p>Import and add <code>AngularCesiumModule</code> to your app root module:</p>
 <pre class="line-numbers"><code class="language-javascript">  import { AngularCesiumModule } from &#39;angular-cesium&#39;;
   // ....
@@ -1625,6 +1635,7 @@ why? because  there is no reason to, cesium entities are drawn on the canvas map
 <li>rectangle -<a href="https://tgftech.github.io/angular-cesium/components/AcRectangleDescComponent.html"><code>ac-rectangle-dec</code></a></li>
 <li>html - <a href="https://tgftech.github.io/angular-cesium/components/AcHtmlDescComponent.html"><code>ac-html-desc</code></a> / <a href="https://tgftech.github.io/angular-cesium/components/AcHtmlComponent.html"><code>ac-html</code></a></li>
 <li>array - <a href="https://tgftech.github.io/angular-cesium/components/AcArrayDescComponent.html"><code>ac-array-desc</code></a></li>
+<li>czmlPacket - <a href="https://tgftech.github.io/angular-cesium/components/AcCzmlDescComponent.html"><code>ac-czml-desc</code></a></li>
 </ul>
 <h3 id="-ac-entity-desc-vs-ac-entity-"><code>ac-entity-desc</code> vs <code>ac-entity</code></h3>
 <ul>
@@ -1661,7 +1672,7 @@ export class SomeComponent{
           console.log(&#39;map click&#39;, result.movement, &#39;primitives:&#39;, result.primitives, &#39;entities&#39;, result.entities);
         });
   }
-}</code></pre><p>In the example above we start listing to Click events. according to <code>eventRegisration</code> object.</p>
+}</code></pre><p>In the example above we start listing to Click events. according to <code>eventRegistration</code> object.</p>
 <ul>
 <li><code>eventManager.register()</code><ul>
 <li>Returns RxJs observer  of type <code>DisposableObservable&lt;EventResult&gt;</code> that we can subsribe to.</li>
@@ -1690,9 +1701,9 @@ e.g <code>class TrackEntity extends AcEntity {}</code></li>
 </ul>
 </li>
 </ul>
-<p><code>MapEventsManagerService</code> is porivided by <code>&lt;ac-map/&gt;</code>, therefor has 2 possibilitis to reach it:</p>
+<p><code>MapEventsManagerService</code> is porivided by <code>&lt;ac-map/&gt;</code>, therefor has 2 possibilities to reach it:</p>
 <ul>
-<li>In any components under <code>&lt;ac-map/&gt;</code> hierarchy as seen in the example above  (recomannded).</li>
+<li>In any components under <code>&lt;ac-map/&gt;</code> hierarchy as seen in the example above  (recommended).</li>
 <li>Using<code>@viewChild</code> and ac-map reference: <code>acMapComponent.getMapEventManagerService()</code> .</li>
 </ul>
 <p>Checkout <a href="https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/event-test-layer.component.ts">demo/app/components/event-test-layer/event-test-layer.component.ts</a> for more examples.</p>
@@ -1701,7 +1712,7 @@ e.g <code>class TrackEntity extends AcEntity {}</code></li>
 will be executed outside of angular zone. That is because Cesium run outside of Angular zone
 in case for performance reasons , kind of <code>ON_PUSH</code> strategy.
 For example if you update your html template for every map event and you want it to render,
-you should use <code>ChangeDetectorRef</code> or warp your function with <code>NgZone.run()</code></p>
+you should use <code>ChangeDetectorRef</code> or wrap your function with <code>NgZone.run()</code></p>
 <pre class="line-numbers"><code class="language-javascript">class MyComponent {
   constructor(eventManager: MapEventsManagerService, ngZone: NgZone){
       eventManager.register(eventRegistration).subscribe((result) =&gt; {
@@ -1748,7 +1759,7 @@ It is possible to create your own plonter context menu just take a look at <code
       D: { action: KeyboardAction.CAMERA_RIGHT },
       A: { action: KeyboardAction.CAMERA_LEFT },
     },</code></pre><h4 id="-cameraservice-https-tgftech-github-io-angular-cesium-injectables-cameraservice-html-"><a href="https://tgftech.github.io/angular-cesium/injectables/CameraService.html">CameraService</a></h4>
-<p>Util service that warps cesium camera, exposes the scene&#39;s camera and screenSpaceCameraController.</p>
+<p>Util service that wraps cesium camera, exposes the scene&#39;s camera and screenSpaceCameraController.</p>
 <h3 id="mapsmanagerservice">MapsManagerService</h3>
 <p>Angular Cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use <a href="https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html">MapsManagerService</a> to receive cesium <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html">viewer</a> or any other util service that was created by <code>ac-map</code>.</p>
 <pre class="line-numbers"><code class="language-typescript">class MyComp {

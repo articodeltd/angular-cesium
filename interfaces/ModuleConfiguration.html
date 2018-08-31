@@ -130,6 +130,9 @@
                                     <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                 </li>
                                 <li class="link">
@@ -422,6 +425,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -823,6 +829,9 @@
                                            <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1124,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -1437,13 +1449,6 @@
             <code>src/angular-cesium/models/module-options.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>The interface defines the options object that can be passed to AngularCesiumModule on initialization.</p>
-
-            </p>
 
 
         <section>
@@ -1459,6 +1464,9 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
+                                        <a href="#customPipes">customPipes</a>
+                                </li>
+                                <li>
                                         <a href="#fixEntitiesShadows">fixEntitiesShadows</a>
                                 </li>
                             </ul>
@@ -1472,6 +1480,39 @@
 
             <section>
                 <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="customPipes"></a>
+                                        <span class="name"><b>customPipes</b><a href="#customPipes"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>customPipes:     <code>PipesConfig[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>PipesConfig[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/angular-cesium/models/module-options.ts:8</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
@@ -1499,7 +1540,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/angular-cesium/models/module-options.ts:6</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/angular-cesium/models/module-options.ts:7</a></div>
                                         </td>
                                     </tr>
 
@@ -1510,8 +1551,11 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">export interface ModuleConfiguration {
+        <pre class="line-numbers"><code class="language-typescript">import { PipesConfig } from &#x27;angular2parse&#x27;;
+
+export interface ModuleConfiguration {
   fixEntitiesShadows?: boolean;
+  customPipes: PipesConfig[];
 }
 </code></pre>
     </div>

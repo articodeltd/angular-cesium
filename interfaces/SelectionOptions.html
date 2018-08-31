@@ -130,6 +130,9 @@
                                     <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                 </li>
                                 <li class="link">
@@ -422,6 +425,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -823,6 +829,9 @@
                                            <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1124,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -1498,7 +1510,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/angular-cesium/services/selection-manager/selection-manager.service.ts:16</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/angular-cesium/services/selection-manager/selection-manager.service.ts:15</a></div>
                                         </td>
                                     </tr>
 
@@ -1531,7 +1543,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/angular-cesium/services/selection-manager/selection-manager.service.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/angular-cesium/services/selection-manager/selection-manager.service.ts:13</a></div>
                                         </td>
                                     </tr>
 
@@ -1564,7 +1576,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/angular-cesium/services/selection-manager/selection-manager.service.ts:15</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/angular-cesium/services/selection-manager/selection-manager.service.ts:14</a></div>
                                         </td>
                                     </tr>
 
@@ -1575,16 +1587,15 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { BehaviorSubject } from &#x27;rxjs/BehaviorSubject&#x27;;
-import { Observable } from &#x27;rxjs/Observable&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { filter, map } from &#x27;rxjs/operators&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { BehaviorSubject, Observable, Subject } from &#x27;rxjs&#x27;;
 import { AcEntity } from &#x27;../../models/ac-entity&#x27;;
 import { CesiumEvent } from &#x27;../map-events-mananger/consts/cesium-event.enum&#x27;;
 import { MapEventsManagerService } from &#x27;../map-events-mananger/map-events-manager&#x27;;
 import { PickOptions } from &#x27;../map-events-mananger/consts/pickOptions.enum&#x27;;
 import { CesiumEventModifier } from &#x27;../map-events-mananger/consts/cesium-event-modifier.enum&#x27;;
 import { MapsManagerService } from &#x27;../maps-manager/maps-manager.service&#x27;;
-import { Subject } from &#x27;rxjs/Subject&#x27;;
 
 
 export interface SelectionOptions {
@@ -1691,9 +1702,9 @@ export class SelectionManagerService {
 			priority : eventPriority,
 		});
 		
-		eventSubscription
-			.map(result &#x3D;&gt; result.entities)
-			.filter(entities &#x3D;&gt; entities &amp;&amp; entities.length &gt; 0)
+		eventSubscription.pipe(
+			map(result &#x3D;&gt; result.entities),
+			filter(entities &#x3D;&gt; entities &amp;&amp; entities.length &gt; 0))
 			.subscribe(entities &#x3D;&gt; {
 				const entity &#x3D; entities[0];
 				this.toggleSelection(entity, addSelectedIndicator);

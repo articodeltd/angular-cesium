@@ -130,6 +130,9 @@
                                     <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                 </li>
                                 <li class="link">
@@ -422,6 +425,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -823,6 +829,9 @@
                                            <a href="../components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1124,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -1499,6 +1511,7 @@ Every layer should be tag inside ac-map tag</p>
                         EllipseDrawerService
                         PointDrawerService
                         ArcDrawerService
+                        CzmlDrawerService
                         PolygonDrawerService
                         MapLayersService
                         CameraService
@@ -1625,12 +1638,12 @@ Every layer should be tag inside ac-map tag</p>
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(_cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>, _cameraService: <a href="../injectables/CameraService.html">CameraService</a>, _elemRef: <a href="https://angular.io/docs/ts/latest/api/api/core/ElementRef" target="_blank">ElementRef</a>, document: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, mapsManagerService: <a href="../injectables/MapsManagerService.html">MapsManagerService</a>, billboardDrawerService: BillboardDrawerService, labelDrawerService: LabelDrawerService, ellipseDrawerService: EllipseDrawerService, polylineDrawerService: <a href="../injectables/PolylineDrawerService.html">PolylineDrawerService</a>, polygonDrawerService: PolygonDrawerService, arcDrawerService: ArcDrawerService, pointDrawerService: PointDrawerService, mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, keyboardControlService: <a href="../injectables/KeyboardControlService.html">KeyboardControlService</a>, mapLayersService: <a href="../injectables/MapLayersService.html">MapLayersService</a>, configurationService: <a href="../injectables/ConfigurationService.html">ConfigurationService</a>, screenshotService: <a href="../injectables/ScreenshotService.html">ScreenshotService</a>, contextMenuService: <a href="../injectables/ContextMenuService.html">ContextMenuService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>)</code>
+                            <code>constructor(_cesiumService: <a href="../injectables/CesiumService.html">CesiumService</a>, _cameraService: <a href="../injectables/CameraService.html">CameraService</a>, _elemRef: <a href="https://angular.io/docs/ts/latest/api/api/core/ElementRef" target="_blank">ElementRef</a>, document: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, mapsManagerService: <a href="../injectables/MapsManagerService.html">MapsManagerService</a>, billboardDrawerService: BillboardDrawerService, labelDrawerService: LabelDrawerService, ellipseDrawerService: EllipseDrawerService, polylineDrawerService: <a href="../injectables/PolylineDrawerService.html">PolylineDrawerService</a>, polygonDrawerService: PolygonDrawerService, arcDrawerService: ArcDrawerService, pointDrawerService: PointDrawerService, czmlDrawerService: <a href="../injectables/CzmlDrawerService.html">CzmlDrawerService</a>, mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, keyboardControlService: <a href="../injectables/KeyboardControlService.html">KeyboardControlService</a>, mapLayersService: <a href="../injectables/MapLayersService.html">MapLayersService</a>, configurationService: <a href="../injectables/ConfigurationService.html">ConfigurationService</a>, screenshotService: <a href="../injectables/ScreenshotService.html">ScreenshotService</a>, contextMenuService: <a href="../injectables/ContextMenuService.html">ContextMenuService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:97</a></div>
                                 </td>
                             </tr>
     
@@ -1757,6 +1770,15 @@ Every layer should be tag inside ac-map tag</p>
                                                       <td></td>
                                                     </tr>
                                                     <tr>
+                                                      <td>czmlDrawerService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/CzmlDrawerService.html" target="_self" >CzmlDrawerService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
                                                       <td>mapEventsManager</td>
                                                       <td>
                                                                 <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
@@ -1847,7 +1869,7 @@ Every layer should be tag inside ac-map tag</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:75</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1870,7 +1892,7 @@ Every layer should be tag inside ac-map tag</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:89</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1894,7 +1916,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:83</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1917,7 +1939,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:95</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1949,7 +1971,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:167</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:171</a></div>
                                 </td>
                             </tr>
     
@@ -1987,7 +2009,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:153</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:157</a></div>
                                 </td>
                             </tr>
     
@@ -2025,7 +2047,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:160</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:164</a></div>
                                 </td>
                             </tr>
     
@@ -2063,7 +2085,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:188</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:192</a></div>
                                 </td>
                             </tr>
     
@@ -2100,7 +2122,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="206" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:206</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:210</a></div>
                                 </td>
                             </tr>
     
@@ -2137,7 +2159,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:174</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:178</a></div>
                                 </td>
                             </tr>
     
@@ -2175,7 +2197,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:199</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:203</a></div>
                                 </td>
                             </tr>
     
@@ -2212,7 +2234,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:181</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:185</a></div>
                                 </td>
                             </tr>
     
@@ -2249,7 +2271,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:192</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:196</a></div>
                                 </td>
                             </tr>
     
@@ -2281,7 +2303,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:146</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:150</a></div>
                                 </td>
                             </tr>
     
@@ -2313,7 +2335,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:137</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:141</a></div>
                                 </td>
                             </tr>
     
@@ -2374,7 +2396,7 @@ default: &#39;default-map-id-[index]&#39;</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:133</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:137</a></div>
                                 </td>
                             </tr>
     
@@ -2418,7 +2440,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:114</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:117</a></div>
                                 </td>
                             </tr>
     
@@ -2447,7 +2469,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/angular-cesium/components/ac-map/ac-map.component.ts:97</a></div>
                                 </td>
                             </tr>
     
@@ -2482,7 +2504,8 @@ import { ConfigurationService } from &#x27;../../cesium-enhancements/Configurati
 import { ScreenshotService } from &#x27;../../services/screenshot/screenshot.service&#x27;;
 import { ContextMenuService } from &#x27;../../services/context-menu/context-menu.service&#x27;;
 import { CoordinateConverter } from &#x27;../../services/coordinate-converter/coordinate-converter.service&#x27;;
-import {PolylinePrimitiveDrawerService} from &#x27;../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service&#x27;
+import { PolylinePrimitiveDrawerService } from &#x27;../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service&#x27;
+import { CzmlDrawerService } from &#x27;../../services/drawers/czml-drawer/czml-drawer.service&#x27;;
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -2518,7 +2541,8 @@ import {PolylinePrimitiveDrawerService} from &#x27;../../services/drawers/polyli
     EllipseDrawerService,
     PointDrawerService,
     ArcDrawerService,
-    PolygonDrawerService,
+    CzmlDrawerService,
+    PolygonDrawerService,    
     MapLayersService,
     CameraService,
 		ScreenshotService,
@@ -2568,6 +2592,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
               private polygonDrawerService: PolygonDrawerService,
               private arcDrawerService: ArcDrawerService,
               private pointDrawerService: PointDrawerService,
+              private czmlDrawerService: CzmlDrawerService,
               private mapEventsManager: MapEventsManagerService,
               private keyboardControlService: KeyboardControlService,
               private mapLayersService: MapLayersService,
@@ -2587,7 +2612,8 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
 		this.polylineDrawerService.init();
 		this.polygonDrawerService.init();
 		this.arcDrawerService.init();
-		this.pointDrawerService.init();
+    this.pointDrawerService.init();
+    this.czmlDrawerService.init();
 		this.keyboardControlService.init();
     this.contextMenuService.init(this.mapEventsManager);
   }
@@ -2697,7 +2723,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div></div>'
-    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcPrimitivePolylineComponent', 'selector': 'ac-primitive-polyline'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'},{'name': 'RangeAndBearingComponent', 'selector': 'range-and-bearing'}];
+    var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcCzmlDescComponent', 'selector': 'ac-czml-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcPrimitivePolylineComponent', 'selector': 'ac-primitive-polyline'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'},{'name': 'RangeAndBearingComponent', 'selector': 'range-and-bearing'}];
     var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'},{'name': 'DraggableToMapDirective', 'selector': '[draggableToMap]'}];
     var ACTUAL_COMPONENT = {'name': 'AcMapComponent'};
 </script>

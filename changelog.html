@@ -130,6 +130,9 @@
                                     <a href="./components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                 </li>
                                 <li class="link">
@@ -422,6 +425,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="./injectables/DraggableToMapService.html" >DraggableToMapService</a>
@@ -823,6 +829,9 @@
                                            <a href="./components/AcCylinderDescComponent.html" >AcCylinderDescComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/AcCzmlDescComponent.html" >AcCzmlDescComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/AcDefaultPlonterComponent.html" >AcDefaultPlonterComponent</a>
                                        </li>
                                        <li class="link">
@@ -1117,6 +1126,9 @@
                                            <a href="./injectables/CylinderDrawerService.html" >CylinderDrawerService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./injectables/CzmlDrawerService.html" >CzmlDrawerService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./injectables/DraggableToMapService.html" >DraggableToMapService</a>
                                        </li>
                                        <li class="link">
@@ -1403,6 +1415,27 @@
                <div class="content getting-started">
                    <div class="content-data">
 
+<h2 id="0-53">0.53</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>New <code>&lt;ac-czml-desc&gt;</code> component for adding CzmlDataSource to ac-layer.</li>
+<li>New <code>czml-drawer</code> service </li>
+<li>New <code>&lt;czml-layer</code> component in demo app to show usage of <code>&lt;ac-czml-desc&gt;</code></li>
+<li>Support RxJs 6 </li>
+</ul>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fixed AOT compilation for angular 6, the issue was with <code>angular2parse</code> reaching angular compiler pipes.</li>
+<li>Fixed Shape editors points zIndex in 2D.  </li>
+<li>Updated demo dependencies</li>
+</ul>
+<h3 id="breaking-changes">Breaking Changes</h3>
+<ul>
+<li>From now Angular Pipes need to be set in <code>AngularCesiumModule.forRoot(ustomPipes: myCustomPipes)</code>.
+angular-cesium won&#39;t be aware of pipes that wont be defined as <code>customPipes</code>.
+There for any user Pipes need to be declared when initializing angular cesium.</li>
+<li>For upgrade to 0.53 from older versions remove <code>rxjs-compat</code> dependency and refactor to rxjs 6 new import paths.  </li>
+</ul>
 <h2 id="0-0-52">0.0.52</h2>
 <h3 id="fixes">Fixes</h3>
 <ul>
