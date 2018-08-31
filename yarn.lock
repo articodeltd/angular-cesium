@@ -333,9 +333,9 @@ angular2-template-loader@^0.6.0:
   dependencies:
     loader-utils "^0.2.15"
 
-angular2parse@^1.0.5:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/angular2parse/-/angular2parse-1.0.6.tgz#27acc6669a49117b64610e293f9cfd33c840bbfb"
+angular2parse@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/angular2parse/-/angular2parse-1.0.8.tgz#4e2516bb8ca76ce3e3516a6ed6f62de65472a828"
 
 ansi-align@^2.0.0:
   version "2.0.0"
