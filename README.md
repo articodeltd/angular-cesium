@@ -31,10 +31,6 @@ Check out our [Demo](http://www.angular-cesium.com) that contains small app buil
   ```bash
   $ npm install --save angular-cesium
   ```
-+ For Angular 6 users:
- ```bash
-  $ npm install --save rxjs-compat
-  ```
 
 + Import and add `AngularCesiumModule` to your app root module:
     ```javascript

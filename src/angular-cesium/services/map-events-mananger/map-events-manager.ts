@@ -1,6 +1,7 @@
+import { Observable, of as observableOf, Subject } from 'rxjs';
+
+import { filter, map, merge, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
 import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEventBuilder } from './cesium-event-builder';
 import { EventRegistrationInput } from './event-registration-input';
@@ -144,16 +145,16 @@ export class MapEventsManagerService {
     let observable: Observable<EventResult>;
 
     if (!CesiumDragDropHelper.dragEvents.has(event)) {
-      observable = cesiumEventObservable
-        .filter(() => !registration.isPaused)
-        .map((movement) => this.triggerPick(movement, pickOption))
-        .filter((result) => result.cesiumEntities !== null || entityType === undefined)
-        .map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption, pickFilter))
-        .filter((result) => result.entities !== null || (entityType === undefined && !pickFilter))
-        .switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption))
-        .takeUntil(stopper);
+      observable = cesiumEventObservable.pipe(
+        filter(() => !registration.isPaused),
+        map((movement) => this.triggerPick(movement, pickOption)),
+        filter((result) => result.cesiumEntities !== null || entityType === undefined),
+        map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption, pickFilter)),
+        filter((result) => result.entities !== null || (entityType === undefined && !pickFilter)),
+        switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption)),
+        takeUntil(stopper), );
     } else {
-      observable = this.createDragEvent(event, modifier, entityType, pickOption, priority, pickFilter).takeUntil(stopper);
+      observable = this.createDragEvent(event, modifier, entityType, pickOption, priority, pickFilter).pipe(takeUntil(stopper));
     }
 
     registration.observable = observable;
@@ -174,11 +175,11 @@ export class MapEventsManagerService {
     const mouseDownRegistration = this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption, priority, pickFilter);
 
     const dropSubject = new Subject<EventResult>();
-    const dragObserver = mouseDownRegistration.observable.mergeMap(e => {
+    const dragObserver = mouseDownRegistration.observable.pipe(mergeMap(e => {
       let lastMove: any = null;
       const dragStartPositionX = e.movement.startPosition.x;
       const dragStartPositionY = e.movement.startPosition.y;
-      return mouseMoveObservable.map((movement) => {
+      return mouseMoveObservable.pipe(map((movement) => {
         lastMove = {
           movement: {
             drop: false,
@@ -192,17 +193,17 @@ export class MapEventsManagerService {
           cesiumEntities: e.cesiumEntities
         };
         return lastMove;
-      }).takeUntil(mouseUpObservable).do(undefined, undefined, () => {
+      }), takeUntil(mouseUpObservable), tap(undefined, undefined, () => {
         // On complete
         if (lastMove) {
           const dropEvent = Object.assign({}, lastMove);
           dropEvent.movement.drop = true;
           dropSubject.next(dropEvent);
         }
-      });
-    });
+      }), );
+    }));
 
-    return dragObserver.merge(dropSubject);
+    return dragObserver.pipe(merge(dropSubject));
 
   }
 
@@ -264,7 +265,7 @@ export class MapEventsManagerService {
     if (pickOption === PickOptions.PICK_ONE && entitiesAndMovement.entities !== null && entitiesAndMovement.entities.length > 1) {
       return this.plonterService.plonterIt(entitiesAndMovement);
     } else {
-      return Observable.of(entitiesAndMovement);
+      return observableOf(entitiesAndMovement);
     }
   }
 }

@@ -6,7 +6,7 @@ import { LayerService } from '../../../services/layer-service/layer-service.serv
 import { CesiumProperties } from '../../../services/cesium-properties/cesium-properties.service'
 import { ComputationCache } from '../../../services/computation-cache/computation-cache.service'
 import { mock } from 'ts-mockito';
-import { providerFromMock, mockProvider } from '../../../utils/testingUtils';
+import { mockProvider, providerFromMock } from '../../../utils/testingUtils';
 
 describe('AcStaticPolylineDescComponent', () => {
 	let component: AcStaticPolylineDescComponent;

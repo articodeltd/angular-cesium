@@ -10,7 +10,7 @@ import {
 } from '../../../../src/angular-cesium';
 import { AcLayerComponent } from '../../../../src/angular-cesium';
 import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 
 const initialLocation = {

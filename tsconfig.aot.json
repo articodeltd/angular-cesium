@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "lib": [
       "es2015",
-      "dom"
+      "dom",
+      "es2017",
+      "esnext"
     ],
     "typeRoots" : [
       "./src/typings",

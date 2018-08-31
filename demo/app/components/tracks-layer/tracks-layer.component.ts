@@ -1,17 +1,19 @@
+
+import {merge as observableMerge,  Observable ,  ConnectableObservable } from 'rxjs';
+
+import {filter, map, publish} from 'rxjs/operators';
 import { Component, Input, NgZone, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { ConnectableObservable } from 'rxjs/observable/ConnectableObservable';
-import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
-import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
-import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
-import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
-import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
+import { AcNotification } from '../../../../src/angular-cesium';
+import { AcLayerComponent } from '../../../../src/angular-cesium';
+import { MapEventsManagerService } from '../../../../src/angular-cesium';
+import { CesiumEvent } from '../../../../src/angular-cesium';
+import { PickOptions } from '../../../../src/angular-cesium';
 import { MatDialog } from '@angular/material';
 import { TracksDialogComponent } from './track-dialog/track-dialog.component';
 import { RealTracksDataProvider } from '../../../utils/services/dataProvider/real-tracks-data-provider';
 import { AppSettingsService, TracksType } from '../../services/app-settings-service/app-settings-service';
 import { SimTracksDataProvider, Track } from '../../../utils/services/dataProvider/sim-tracks-data-provider';
-import { CameraService } from '../../../../src/angular-cesium/services/camera/camera.service';
+import { CameraService } from '../../../../src/angular-cesium';
 
 @Component({
   selector: 'tracks-layer',
@@ -45,12 +47,13 @@ export class TracksLayerComponent implements OnInit, OnChanges {
               private appSettingsService: AppSettingsService, private cameraService: CameraService) {
     const realTracks$ = realDataProvider.get();
     const simTracks$ = simDataProvider.get();
-    const simAndModelTracks$ = simTracks$.filter(e => +e.id < this.modelsCountFilter);
+    const simAndModelTracks$ = simTracks$.pipe(filter(e => +e.id < this.modelsCountFilter));
 
     this.realTracksPauser = new PauseableObserver(realTracks$);
     this.simAndModelTracksPauser = new PauseableObserver(simAndModelTracks$);
-    this.tracks$ = Observable.merge(this.simAndModelTracksPauser.getObserver(),
-      this.realTracksPauser.getObserver()).publish();
+    this.tracks$ = publish<AcNotification>()(observableMerge(
+      this.simAndModelTracksPauser.getObserver(),
+      this.realTracksPauser.getObserver()));
     this.tracks$.connect();
   }
 
@@ -123,8 +126,9 @@ export class TracksLayerComponent implements OnInit, OnChanges {
   }
 
   getSingleTrackObservable(trackId: string) {
-    return this.tracks$
-      .filter((notification) => notification.id === trackId).map((notification) => notification.entity);
+    return this.tracks$.pipe(
+      filter((notification) => notification.id === trackId),
+      map((notification) => notification.entity),);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -226,7 +230,7 @@ class PauseableObserver {
   private pauser = true;
 
   constructor(observer: Observable<any>) {
-    this.observer = observer.filter(() => this.pauser);
+    this.observer = observer.pipe(filter(() => this.pauser));
   }
 
   pause() {

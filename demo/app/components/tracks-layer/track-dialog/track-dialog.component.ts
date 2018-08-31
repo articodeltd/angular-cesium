@@ -1,3 +1,5 @@
+
+import {takeUntil} from 'rxjs/operators';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -8,11 +10,12 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
-import { Apollo, ApolloQueryObservable } from 'apollo-angular';
+import { Observable ,  Subject } from 'rxjs';
+import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Track } from '../../../../utils/services/dataProvider/track.model';
-import { Subject } from 'rxjs/Subject';
+import { ApolloQueryResult } from 'apollo-client';
+import { QueryRef } from 'apollo-angular/QueryRef';
 
 const TrackDataQuery = gql`
     query TrackData($id: String!) {
@@ -39,7 +42,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   public track: Track;
   public trackEntityFn: any;
   private stopper$ = new Subject();
-  private singleTrackQuery$: ApolloQueryObservable<Track>;
+  private singleTrackQuery$: QueryRef<Track>;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,
               private cd: ChangeDetectorRef, private apollo: Apollo) {
@@ -67,8 +70,8 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
         fetchPolicy: 'network-only',
       });
 
-      this.singleTrackQuery$
-        .takeUntil(this.stopper$)
+      this.singleTrackQuery$.valueChanges.pipe(
+        takeUntil(this.stopper$))
         .subscribe((result: any) => {
           const track = result.data.track;
           Object.assign(this.track, {

@@ -1,10 +1,11 @@
+import { publish } from 'rxjs/operators';
 import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEvent } from './consts/cesium-event.enum';
 import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { Injectable } from '@angular/core';
 import { CesiumPureEventObserver } from './event-observers/cesium-pure-event-observer';
 import { CesiumLongPressObserver } from './event-observers/cesium-long-press-observer';
-import { ConnectableObservable } from 'rxjs/observable/ConnectableObservable';
+import { ConnectableObservable } from 'rxjs';
 
 @Injectable()
 export class CesiumEventBuilder {
@@ -50,7 +51,7 @@ export class CesiumEventBuilder {
 			cesiumEventObservable = this.createSpecialCesiumEventObservable(event, modifier);
 		}
 		else {
-			cesiumEventObservable = new CesiumPureEventObserver(event, modifier).init(this.eventsHandler).publish();
+			cesiumEventObservable = publish()(new CesiumPureEventObserver(event, modifier).init(this.eventsHandler));
 		}
 		cesiumEventObservable.connect();
 		return cesiumEventObservable;

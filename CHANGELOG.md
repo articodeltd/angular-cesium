@@ -1,16 +1,20 @@
-## NEXT
+## 0.53
 ### Features
 * New `<ac-czml-desc>` component for adding CzmlDataSource to ac-layer.
 * New `czml-drawer` service 
 * New `<czml-layer` component in demo app to show usage of `<ac-czml-desc>`
+* Support RxJs 6
+* Update dependencies 
 
 ### Fixes
-* Fixed AOT compilation for angular 6, the issue was with `angular2parse` reaching angular compiler pipes.  
+* Fixed AOT compilation for angular 6, the issue was with `angular2parse` reaching angular compiler pipes.
+* Fixed Shape editors points zIndex in 2D.  
 
 ### Breaking Changes
 * From now Angular Pipes need to be set in `AngularCesiumModule.forRoot(ustomPipes: myCustomPipes)`.
 angular-cesium won't be aware of pipes that wont be defined as `customPipes`.
-There for any user Pipes need to be declared when initializing angular cesium. 
+There for any user Pipes need to be declared when initializing angular cesium.
+* For upgrade to 0.53 from older versions remove `rxjs-compat` dependency and refactor to rxjs 6 new import paths.  
 
 ## 0.0.52
 ### Fixes

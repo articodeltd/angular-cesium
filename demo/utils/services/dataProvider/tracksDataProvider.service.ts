@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  Subscriber } from 'rxjs';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { convertToCesiumObj } from '../dataCovertor/convertToCesiumObject';
 import { WebSocketSupplier } from '../webSocketSupplier/webSocketSupplier';
-import { Subscriber } from 'rxjs/Subscriber';
 
 @Injectable()
 export class TracksDataProvider {

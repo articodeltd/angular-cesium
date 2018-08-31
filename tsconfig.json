@@ -10,9 +10,11 @@
     "experimentalDecorators": true,
     "lib": [
       "es5",
-      "es2015",
       "es6",
-      "dom"
+      "es2015",
+      "dom",
+      "es2017",
+      "esnext"
     ],
     "sourceMap": true,
     "pretty": true,

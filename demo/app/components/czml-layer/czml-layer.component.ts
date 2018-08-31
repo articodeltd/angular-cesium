@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Subscriber } from 'rxjs';
-import { Observable } from 'rxjs/Observable';
+import { Subscriber ,  Observable } from 'rxjs';
 
 import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
@@ -25,55 +24,55 @@ export class CzmlLayerComponent implements OnInit {
   ngOnInit() {
 
     const document = {
-      "id": "document",
-      "version": "1.0"
+      'id': 'document',
+      'version': '1.0'
     };
 
     const packet1 = {
-      "id": "point_1",
-      "availability": "2012-08-04T16:00:00Z/2012-08-04T16:05:00Z",
-      "position": {
-        "epoch": "2012-08-04T16:00:00Z",
-        "cartographicDegrees": [
+      'id': 'point_1',
+      'availability': '2012-08-04T16:00:00Z/2012-08-04T16:05:00Z',
+      'position': {
+        'epoch': '2012-08-04T16:00:00Z',
+        'cartographicDegrees': [
           0, -70, 20, 150000,
           100, -80, 44, 150000,
           200, -90, 18, 150000,
           300, -98, 52, 150000
         ]
       },
-      "point": {
-        "color": {
-          "rgba": [255, 255, 255, 200]
+      'point': {
+        'color': {
+          'rgba': [255, 255, 255, 200]
         },
-        "outlineColor": {
-          "rgba": [255, 0, 0, 200]
+        'outlineColor': {
+          'rgba': [255, 0, 0, 200]
         },
-        "outlineWidth": 3,
-        "pixelSize": 15
+        'outlineWidth': 3,
+        'pixelSize': 15
       }
     }
 
     const packet2 = {
-      "id": "point_2",
-      "availability": "2012-08-04T16:00:00Z/2012-08-04T16:05:00Z",
-      "position": {
-        "epoch": "2012-08-04T16:00:00Z",
-        "cartographicDegrees": [
+      'id': 'point_2',
+      'availability': '2012-08-04T16:00:00Z/2012-08-04T16:05:00Z',
+      'position': {
+        'epoch': '2012-08-04T16:00:00Z',
+        'cartographicDegrees': [
           0, -70, 25, 150000,
           100, -80, 44, 150000,
           200, -90, 18, 150000,
           300, -98, 52, 150000
         ]
       },
-      "point": {
-        "color": {
-          "rgba": [255, 255, 255, 200]
+      'point': {
+        'color': {
+          'rgba': [255, 255, 255, 200]
         },
-        "outlineColor": {
-          "rgba": [0, 255, 0, 200]
+        'outlineColor': {
+          'rgba': [0, 255, 0, 200]
         },
-        "outlineWidth": 3,
-        "pixelSize": 15
+        'outlineWidth': 3,
+        'pixelSize': 15
       }
     }
 

@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit, ElementRef } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.service';
 
 @Directive({

@@ -20,7 +20,7 @@ import { ConfigurationService } from '../../cesium-enhancements/ConfigurationSer
 import { ScreenshotService } from '../../services/screenshot/screenshot.service';
 import { ContextMenuService } from '../../services/context-menu/context-menu.service';
 import { CoordinateConverter } from '../../services/coordinate-converter/coordinate-converter.service';
-import {PolylinePrimitiveDrawerService} from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service'
+import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service'
 import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawer.service';
 
 /**

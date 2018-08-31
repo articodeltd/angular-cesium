@@ -1,7 +1,7 @@
+import { publish, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
 import { EditModes } from '../../../models/edit-mode.enum';
@@ -11,7 +11,6 @@ import { CoordinateConverter } from '../../../../angular-cesium/services/coordin
 import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HippodromeEditOptions } from '../../../models/hippodrome-edit-options';
 import { HippodromeManagerService } from './hippodrome-manager.service';
 import { HippodromeEditorObservable } from '../../../models/hippodrome-editor-oboservable';
@@ -32,7 +31,7 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
     outline: false,
   },
   pointProps: {
-    color: Cesium.Color.WHITE,
+    color: Cesium.Color.WHITE.withAlpha(0.9),
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
     pixelSize: 15,
@@ -80,7 +79,7 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
 export class HippodromeEditorService {
   private mapEventsManager: MapEventsManagerService;
   private updateSubject = new Subject<HippodromeEditUpdate>();
-  private updatePublisher = this.updateSubject.publish(); // TODO maybe not needed
+  private updatePublisher = publish<HippodromeEditUpdate>()(this.updateSubject); // TODO maybe not needed
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
   private hippodromeManager: HippodromeManagerService;
@@ -252,8 +251,8 @@ export class HippodromeEditorService {
       pickFilter: entity => id === entity.editedEntityId,
     });
 
-    pointDragRegistration
-      .do(({ movement: { drop } }) => this.cameraService.enableInputs(drop))
+    pointDragRegistration.pipe(
+      tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
         const position = this.coordinateConverter.screenToCartesian3(endPosition);
         if (!position) {
@@ -280,7 +279,7 @@ export class HippodromeEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .do(({ movement: { drop } }) => this.cameraService.enableInputs(drop))
+        .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);

@@ -1,10 +1,12 @@
+
+import {timer as observableTimer, interval as observableInterval,  Observable ,  Subject } from 'rxjs';
+
+import {map, timeInterval, take, takeUntil, mergeMap, catchError} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 import { Track } from './sim-tracks-data-provider';
 
 const TracksDataQuery = gql`
@@ -87,10 +89,10 @@ export class RealTracksDataProvider {
 
       const stopper$ = new Subject();
 
-      Observable.interval(this.INTERPOLATION_RATE)
-        .timeInterval()
-        .take(interpolationLegs - 1)
-        .takeUntil(stopper$)
+      observableInterval(this.INTERPOLATION_RATE).pipe(
+        timeInterval(),
+        take(interpolationLegs - 1),
+        takeUntil(stopper$), )
         .subscribe(() => {
             serverTrackNotifications.forEach((notification: any) => {
               const serverTrack = notification.entity;
@@ -128,14 +130,14 @@ export class RealTracksDataProvider {
 
   tryReconnect(err: any): any {
     console.log(`Error connecting to Graphql: ${err}. Try to reconnect in ${this.RECONNECT_MS} ...`);
-    return Observable.timer(this.RECONNECT_MS)
-      .flatMap(() =>
+    return observableTimer(this.RECONNECT_MS).pipe(
+      mergeMap(() =>
         this.apollo.watchQuery<any>({
           query: TracksDataQuery,
           pollInterval: this.POLLING_RATE,
           fetchPolicy: 'network-only'
-        })
-          .catch(error => this.tryReconnect(error)));
+        }).valueChanges.pipe(
+          catchError(error => this.tryReconnect(error)))));
   }
 
   get() {
@@ -144,9 +146,9 @@ export class RealTracksDataProvider {
       pollInterval: this.POLLING_RATE, fetchPolicy: 'network-only'
     });
 
-    const fromServerTracks$ = watchQuery$
-    .catch(err => this.tryReconnect(err))
-      .map((reuslt: any) => reuslt.data.tracks);
+    const fromServerTracks$ = watchQuery$.valueChanges.pipe(
+    catchError(err => this.tryReconnect(err)),
+      map((reuslt: any) => reuslt.data.tracks), );
 
 
     return this.createInterpolatedTracksObservable(fromServerTracks$);

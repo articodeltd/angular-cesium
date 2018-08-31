@@ -1,4 +1,4 @@
-import {Component, DoCheck, ElementRef, Input, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import { Component, DoCheck, ElementRef, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
 
 /**

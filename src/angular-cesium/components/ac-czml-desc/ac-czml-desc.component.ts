@@ -5,7 +5,6 @@ import { CesiumProperties } from '../../services/cesium-properties/cesium-proper
 import { ComputationCache } from '../../services/computation-cache/computation-cache.service';
 import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawer.service';
 import { LayerService } from '../../services/layer-service/layer-service.service';
-import { AcEntity } from '../../models/ac-entity';
 
 /**
  *  This is a czml implementation.

@@ -1,5 +1,8 @@
+
+import {from as observableFrom,  Observable } from 'rxjs';
+
+import {map, filter, tap} from 'rxjs/operators';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
@@ -86,7 +89,7 @@ export class EventTestLayerComponent implements OnInit {
 		};
 		
 		const trackArray = [track1, track2, track3, track4, track10, track11];
-		this.tracks$ = Observable.from(trackArray);
+		this.tracks$ = observableFrom(trackArray);
 	}
 	
 	ngOnInit(): void {
@@ -112,24 +115,24 @@ export class EventTestLayerComponent implements OnInit {
 	}
 	
 	testDrag() {
-		this.eventManager.register({event : CesiumEvent.LEFT_CLICK_DRAG, pick : PickOptions.PICK_FIRST, entityType: AcEntity})
-			.filter((result) => result.entities && result.entities[0].name === 'Drag me')
-			.do((result) => {
+		this.eventManager.register({event : CesiumEvent.LEFT_CLICK_DRAG, pick : PickOptions.PICK_FIRST, entityType: AcEntity}).pipe(
+			filter((result) => result.entities && result.entities[0].name === 'Drag me'),
+			tap((result) => {
 				// disable camera rotation when dragging
 				if (!result.movement.drop) {
 					this.cameraService.enableInputs(false)
 				} else {
           this.cameraService.enableInputs(true)
 				}
-			})
-			.map((result) => {
+			}),
+			map((result) => {
 				const entity = result.entities[0];
 				const nextPos = this.geoConverter.screenToCartesian3(result.movement.endPosition, false);
 				if (nextPos) {
 					entity.position = nextPos;
 				}
 				return entity;
-			}).subscribe((entity) => {
+			}),).subscribe((entity) => {
 			this.layer.update(entity, entity.id);
 		});
 	}
@@ -138,8 +141,8 @@ export class EventTestLayerComponent implements OnInit {
 		this.eventManager.register({
 			event : CesiumEvent.LEFT_CLICK,
 			pick : PickOptions.PICK_ONE,
-			pickFilter: (entity) => entity.id === '1' || entity.id === '2'})
-			.map((result) => result.entities)
+			pickFilter: (entity) => entity.id === '1' || entity.id === '2'}).pipe(
+			map((result) => result.entities))
 			.subscribe((result) => {
 				console.log('plonter result: ' + JSON.stringify(result));
 				alert('picked: ' + JSON.stringify(result));
@@ -186,7 +189,7 @@ export class EventTestLayerComponent implements OnInit {
 	
 	testColorChange() {
 		const inputConf = {event : CesiumEvent.LEFT_CLICK, pick : PickOptions.PICK_FIRST, entityType : AcEntity};
-		this.eventManager.register(inputConf).map((result) => result.entities[0]).filter((entity) => entity.id === '0').subscribe((entity) => {
+		this.eventManager.register(inputConf).pipe(map((result) => result.entities[0]),filter((entity) => entity.id === '0'),).subscribe((entity) => {
 			console.log('click3', 'toggle color');
 			entity.color = entity.color === Cesium.Color.GREEN ? Cesium.Color.BLUE : Cesium.Color.GREEN;
 			this.layer.update(entity, entity.id);

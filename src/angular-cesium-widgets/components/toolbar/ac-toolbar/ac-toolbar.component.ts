@@ -1,6 +1,7 @@
+import { fromEvent as observableFromEvent, Subscription } from 'rxjs';
+
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
 
 /**
  * Toolbar widget, act as a container for ac-toolbar-button components
@@ -63,11 +64,11 @@ export class AcToolbarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     
     if (this.allowDrag) {
-      const mouseDown$ = Observable.fromEvent(this.element.nativeElement, 'mousedown');
-      const mouseMove$ = Observable.fromEvent(document, 'mousemove');
-      const mouseUp$ = Observable.fromEvent(document, 'mouseup');
+      const mouseDown$ = observableFromEvent(this.element.nativeElement, 'mousedown');
+      const mouseMove$ = observableFromEvent(document, 'mousemove');
+      const mouseUp$ = observableFromEvent(document, 'mouseup');
       
-      const drag$ = mouseDown$.switchMap(() => mouseMove$.takeUntil(mouseUp$));
+      const drag$ = mouseDown$.pipe(switchMap(() => mouseMove$.pipe(takeUntil(mouseUp$))));
       
       this.subscription = drag$.subscribe((event: MouseEvent) => {
         this.element.nativeElement.style.left = event.x + 'px';

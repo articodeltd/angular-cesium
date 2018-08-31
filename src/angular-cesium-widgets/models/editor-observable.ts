@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { LabelProps } from './label-props';
 
 export class EditorObservable<T> extends Observable<T> {
