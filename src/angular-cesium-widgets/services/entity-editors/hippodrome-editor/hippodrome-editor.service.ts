@@ -32,7 +32,7 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
     outline: false,
   },
   pointProps: {
-    color: Cesium.Color.WHITE,
+    color: Cesium.Color.WHITE.withAlpha(0.9),
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
     pixelSize: 15,
@@ -280,7 +280,7 @@ export class HippodromeEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .do(({ movement: { drop } }) => this.cameraService.enableInputs(drop))
+        .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);

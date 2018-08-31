@@ -29,7 +29,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
   pointProps: {
-    color: Cesium.Color.WHITE,
+    color: Cesium.Color.WHITE.withAlpha(0.9),
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
     pixelSize: 15,
@@ -349,7 +349,7 @@ export class PolygonsEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .do(({ movement: { drop } }) => this.cameraService.enableInputs(drop))
+        .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);

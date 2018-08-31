@@ -1,24 +1,23 @@
-
-import {tap, publish} from 'rxjs/operators';
-import {Injectable} from '@angular/core';
-import { EventResult, MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
-import {Subject, Observable, BehaviorSubject} from 'rxjs';
-import {CesiumEvent} from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
-import {PickOptions} from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
-import {EditModes} from '../../../models/edit-mode.enum';
-import {EditActions} from '../../../models/edit-actions.enum';
-import {DisposableObservable} from '../../../../angular-cesium/services/map-events-mananger/disposable-observable';
-import {CoordinateConverter} from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
-import {EditPoint} from '../../../models/edit-point';
-import {CameraService} from '../../../../angular-cesium/services/camera/camera.service';
-import {Cartesian3} from '../../../../angular-cesium/models/cartesian3';
-import {PolylinesManagerService} from './polylines-manager.service';
-import {PointProps, PolylineEditOptions, PolylineProps} from '../../../models/polyline-edit-options';
-import {PolylineEditUpdate} from '../../../models/polyline-edit-update';
-import {PolylineEditorObservable} from '../../../models/polyline-editor-observable';
-import {EditPolyline} from '../../../models';
-import {LabelProps} from '../../../models/label-props';
-import {generateKey} from '../../utils';
+import { publish, tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
+import { PickOptions } from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
+import { EditModes } from '../../../models/edit-mode.enum';
+import { EditActions } from '../../../models/edit-actions.enum';
+import { DisposableObservable } from '../../../../angular-cesium/services/map-events-mananger/disposable-observable';
+import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
+import { EditPoint } from '../../../models/edit-point';
+import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
+import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
+import { PolylinesManagerService } from './polylines-manager.service';
+import { PointProps, PolylineEditOptions, PolylineProps } from '../../../models/polyline-edit-options';
+import { PolylineEditUpdate } from '../../../models/polyline-edit-update';
+import { PolylineEditorObservable } from '../../../models/polyline-editor-observable';
+import { EditPolyline } from '../../../models';
+import { LabelProps } from '../../../models/label-props';
+import { generateKey } from '../../utils';
 
 export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -28,7 +27,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
   pointProps: {
-    color: Cesium.Color.WHITE,
+    color: Cesium.Color.WHITE.withAlpha(0.9),
     outlineColor: Cesium.Color.BLACK,
     outlineWidth: 1,
     pixelSize: 15,
@@ -317,8 +316,7 @@ export class PolylinesEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .do(x => console.log(x))
-        .do(({movement: {drop}}) => this.cameraService.enableInputs(drop))
+        .pipe(tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
         .subscribe(({movement: {startPosition, endPosition, drop}, entities}) => {
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);

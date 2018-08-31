@@ -36,7 +36,7 @@ export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
     outlineColor : Cesium.Color.BLACK,
   },
   pointProps : {
-    color : Cesium.Color.WHITE,
+    color: Cesium.Color.WHITE.withAlpha(0.9),
     outlineColor : Cesium.Color.BLACK,
     outlineWidth : 1,
     pixelSize: 15,
@@ -326,7 +326,7 @@ export class CirclesEditorService {
     
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .do(({movement : {drop}}) => this.cameraService.enableInputs(drop))
+        .pipe(tap(({movement : {drop}}) => this.cameraService.enableInputs(drop)))
         .subscribe(({movement : {startPosition, endPosition, drop}}) => {
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
