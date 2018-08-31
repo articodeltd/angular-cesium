@@ -61,6 +61,7 @@ import { AcPointPrimitiveDescComponent } from './components/ac-point-primitive-d
 import { AcPrimitivePolylineComponent } from './components/ac-primitive-polyline/ac-primitive-polyline.component';
 import PARSE_PIPES_CONFIG_MAP from './pipes/pipe-config-map';
 
+import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.component';
 
 @NgModule({
   imports: [
@@ -112,6 +113,7 @@ import PARSE_PIPES_CONFIG_MAP from './pipes/pipe-config-map';
     AcHtmlDirective,
     AcHtmlContainerDirective,
     AcArrayDescComponent,
+    AcCzmlDescComponent,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
@@ -161,6 +163,7 @@ import PARSE_PIPES_CONFIG_MAP from './pipes/pipe-config-map';
     AcPointPrimitiveDescComponent,
     AcHtmlDescComponent,
     AcArrayDescComponent,
+    AcCzmlDescComponent,
 
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,

@@ -25,6 +25,7 @@ export class DemoMapComponent {
 			fullscreenButton : false,
 			baseLayerPicker : false,
 			animation : false,
+			shouldAnimate: false,
 			homeButton : false,
 			geocoder : false,
 			navigationHelpButton : false,
