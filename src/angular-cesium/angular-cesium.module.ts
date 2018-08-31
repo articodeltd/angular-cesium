@@ -66,7 +66,7 @@ import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.comp
 @NgModule({
   imports: [
     CommonModule,
-    Angular2ParseModule.forRoot(PARSE_PIPES_CONFIG_MAP),
+    Angular2ParseModule,
     UtilsModule,
   ],
   declarations: [
@@ -182,6 +182,7 @@ export class AngularCesiumModule {
       providers: [
         { provide: ANGULAR_CESIUM_CONFIG, useValue: config },
         { provide: PIPES_CONFIG, multi: true, useValue:  config && config.customPipes || []},
+        { provide: PIPES_CONFIG, multi: true, useValue:  PARSE_PIPES_CONFIG_MAP},
       ],
     };
   }
