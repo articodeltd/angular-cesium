@@ -75,7 +75,7 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
 	    "../node_modules/cesium/Build/Cesium/Cesium.js"
 	  ],
   ```
-+ Add `CESIUM_BASE_URL` in `main.ts` file , before bootstraping:
++ Add `CESIUM_BASE_URL` in `main.ts` file, before bootstrapping:
   ```javascript
     // ...
     window['CESIUM_BASE_URL'] = '/assets/cesium'; // If youre using Cesium version < 1.42.0 add this line
@@ -147,7 +147,7 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
   in our example: `ac-billboard` and `ac-label` .
   + This example will render a billboard(icon) and label for each plane in the stream.
   + `props` accepts the same member options as cesium corresponding class.
-  For example `ac-billborad-desc` accepts same members as [cesium Billboard](https://cesiumjs.org/refdoc.html).
+  For example `ac-billboard-desc` accepts same members as [cesium Billboard](https://cesiumjs.org/refdoc.html).
 
 ## AC Layer
 [ac-layer](https://tgftech.github.io/angular-cesium/components/AcLayerComponent.html) is a directive which is meant to define a whole layer.
@@ -279,7 +279,7 @@ export class SomeComponent{
 ```
 In the example above we start listing to Click events. according to `eventRegistration` object.
 - `eventManager.register()`
-  - Returns RxJs observer  of type `DisposableObservable<EventResult>` that we can subsribe to.
+  - Returns RxJs observer  of type `DisposableObservable<EventResult>` that we can subscribe to.
   - To remove the event registration just do: `resultObserver.dispose()`
 - **event:** according to `CesiumEvent` enum. All cesium events are supported, includes additional events like DragNDrop and LongPress
 - **entityType:** it is possible to register to events on a specific entities types, e.g raise event only when `TrackEntity` is Clicked.
@@ -289,7 +289,7 @@ In the example above we start listing to Click events. according to `eventRegist
    e.g `class TrackEntity extends AcEntity {}`
 - **Priority:** by setting the priority you can register same events and only the one with the higher priority will be raised. For example
    lets say when you left_click on the map a context menu should appear but if you in a drag and drop state you want that
-   left_click will raise a drop event only, you can achive this by setting different priority
+   left_click will raise a drop event only, you can achieve this by setting different priority
    to each event.
 - **PickOptions:** according to the `PickOptions` enum, set the different strategies for picking entities on the map:
      *  NO_PICK    - will not pick entities
@@ -297,7 +297,7 @@ In the example above we start listing to Click events. according to `eventRegist
      *  PICK_ONE    - in case a few entities are picked plonter is resolved . use Cesium.scene.drillPick()
      *  PICK_ALL    - all entities are picked. use Cesium.scene.drillPick()
 
-`MapEventsManagerService` is porivided by `<ac-map/>`, therefor has 2 possibilities to reach it:
+`MapEventsManagerService` is provided by `<ac-map/>`, therefor has 2 possibilities to reach it:
 + In any components under `<ac-map/>` hierarchy as seen in the example above  (recommended).
 + Using` @viewChild` and ac-map reference: `acMapComponent.getMapEventManagerService()` .
 
