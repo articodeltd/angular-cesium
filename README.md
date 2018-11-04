@@ -410,5 +410,5 @@ Take screenshot of your cesium globe.
 
 ## Support
 Angular Cesium is an open source project, feel free to open issues,ask questions and open PRs.
-For additional support options contact us: [contact@guild.software](mailto:\\contact@guild.software).
+For additional support options contact us: [contact@articode.co](mailto:\\contact@articode.co).
 
