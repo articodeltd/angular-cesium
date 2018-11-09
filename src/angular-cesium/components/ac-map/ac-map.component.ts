@@ -1,4 +1,14 @@
-import { AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  OnDestroy
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
@@ -20,7 +30,7 @@ import { ConfigurationService } from '../../cesium-enhancements/ConfigurationSer
 import { ScreenshotService } from '../../services/screenshot/screenshot.service';
 import { ContextMenuService } from '../../services/context-menu/context-menu.service';
 import { CoordinateConverter } from '../../services/coordinate-converter/coordinate-converter.service';
-import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service'
+import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service';
 import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawer.service';
 
 /**
@@ -41,9 +51,10 @@ import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawe
 @Component({
   selector: 'ac-map',
   template: `
-      <ac-default-plonter *ngIf="!disableDefaultPlonter"></ac-default-plonter>
-      <ac-context-menu-wrapper></ac-context-menu-wrapper>
-      <ng-content></ng-content>`,
+    <ac-default-plonter *ngIf="!disableDefaultPlonter"></ac-default-plonter>
+    <ac-context-menu-wrapper></ac-context-menu-wrapper>
+    <ng-content></ng-content>
+  `,
   providers: [
     CesiumService,
     BillboardDrawerService,
@@ -58,16 +69,16 @@ import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawe
     PointDrawerService,
     ArcDrawerService,
     CzmlDrawerService,
-    PolygonDrawerService,    
+    PolygonDrawerService,
     MapLayersService,
     CameraService,
-		ScreenshotService,
+    ScreenshotService,
     ContextMenuService,
-    CoordinateConverter,
+    CoordinateConverter
   ]
 })
-export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
-
+export class AcMapComponent
+  implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   /**
    * Disable default plonter context menu
    */
@@ -80,7 +91,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
    * @type {string}
    */
   @Input()
-  id: string;
+  mapId: string;
 
   /**
    * flyTo options according to https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classFilter=cam#flyTo
@@ -94,48 +105,61 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
   @Input()
   sceneMode: SceneMode;
 
+  /**
+   * Optional - the container element's id in which the map's canvas will be appended to. 
+   * If not supplied - the container element will be the parent element of ac-map;
+   */
+  @Input()
+  containerId: string;
+
   private mapContainer: HTMLElement;
 
-  constructor(private _cesiumService: CesiumService,
-              private _cameraService: CameraService,
-              private _elemRef: ElementRef,
-              @Inject(DOCUMENT) private document: any,
-              private mapsManagerService: MapsManagerService,
-              private billboardDrawerService: BillboardDrawerService,
-              private labelDrawerService: LabelDrawerService,
-              private ellipseDrawerService: EllipseDrawerService,
-              private polylineDrawerService: PolylineDrawerService,
-              private polygonDrawerService: PolygonDrawerService,
-              private arcDrawerService: ArcDrawerService,
-              private pointDrawerService: PointDrawerService,
-              private czmlDrawerService: CzmlDrawerService,
-              private mapEventsManager: MapEventsManagerService,
-              private keyboardControlService: KeyboardControlService,
-              private mapLayersService: MapLayersService,
-              private configurationService: ConfigurationService,
-              private screenshotService: ScreenshotService,
-              public contextMenuService: ContextMenuService,
-              private coordinateConverter: CoordinateConverter) {
+  constructor(
+    private _cesiumService: CesiumService,
+    private _cameraService: CameraService,
+    private _elemRef: ElementRef,
+    @Inject(DOCUMENT) private document: Document,
+    private mapsManagerService: MapsManagerService,
+    private billboardDrawerService: BillboardDrawerService,
+    private labelDrawerService: LabelDrawerService,
+    private ellipseDrawerService: EllipseDrawerService,
+    private polylineDrawerService: PolylineDrawerService,
+    private polygonDrawerService: PolygonDrawerService,
+    private arcDrawerService: ArcDrawerService,
+    private pointDrawerService: PointDrawerService,
+    private czmlDrawerService: CzmlDrawerService,
+    private mapEventsManager: MapEventsManagerService,
+    private keyboardControlService: KeyboardControlService,
+    private mapLayersService: MapLayersService,
+    private configurationService: ConfigurationService,
+    private screenshotService: ScreenshotService,
+    public contextMenuService: ContextMenuService,
+    private coordinateConverter: CoordinateConverter
+  ) {
     this.mapContainer = this.document.createElement('div');
+    this.mapContainer.style.width = '100%';
+    this.mapContainer.style.height = '100%';
     this.mapContainer.className = 'map-container';
-    this._elemRef.nativeElement.appendChild(this.mapContainer);
     this._cesiumService.init(this.mapContainer);
     this._cameraService.init(this._cesiumService);
-		this.mapEventsManager.init();
-		this.billboardDrawerService.init();
-		this.labelDrawerService.init();
-		this.ellipseDrawerService.init();
-		this.polylineDrawerService.init();
-		this.polygonDrawerService.init();
-		this.arcDrawerService.init();
+    this.mapEventsManager.init();
+    this.billboardDrawerService.init();
+    this.labelDrawerService.init();
+    this.ellipseDrawerService.init();
+    this.polylineDrawerService.init();
+    this.polygonDrawerService.init();
+    this.arcDrawerService.init();
     this.pointDrawerService.init();
     this.czmlDrawerService.init();
-		this.keyboardControlService.init();
+    this.keyboardControlService.init();
     this.contextMenuService.init(this.mapEventsManager);
   }
 
   ngOnInit() {
-    this.mapsManagerService.registerMap(this.id, this);
+    this.mapsManagerService.registerMap(this.mapId, this);
+    if (!this.containerId) {
+      this._elemRef.nativeElement.appendChild(this.mapContainer);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -145,11 +169,26 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
     if (changes['flyTo']) {
       this._cameraService.cameraFlyTo(changes['flyTo'].currentValue);
     }
+    if (changes['containerId']) {
+      const element = this.document.getElementById(
+        changes['containerId'].currentValue
+      );
+      if (element) {
+        element.appendChild(this.mapContainer);
+      } else {
+        throw new Error(`No element found with id: ${changes['containerId'].currentValue}`);
+      }
+    }
   }
-	
-	ngAfterViewInit(): void {
+
+  ngAfterViewInit(): void {
     this.mapLayersService.drawAllLayers();
-	}
+  }
+
+  ngOnDestroy(): void {
+    this.mapContainer.remove();
+    this.mapsManagerService._removeMapById(this.mapId);
+  }
 
   /**
    * @returns {CesiumService} ac-map's cesium service
@@ -176,7 +215,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
    * @returns {string} the map id
    */
   getId() {
-    return this.id;
+    return this.mapId;
   }
 
   /**
@@ -208,6 +247,6 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit {
    * @returns {CoordinateConverter}
    */
   getCoordinateConverter() {
-    return this.coordinateConverter
+    return this.coordinateConverter;
   }
 }

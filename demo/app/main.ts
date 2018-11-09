@@ -20,6 +20,8 @@ if (process.env.ENV === 'build-demo') {
 // TP.getTranslationFile().then((providers: any) => {
   // const options: any = { providers };
 Cesium.buildModuleUrl.setBaseUrl('/node_modules/cesium/Build/Cesium/');
-Cesium.BingMapsApi.defaultKey = 'AtIXLwI-EOgRtuDna0r-bcIAfj7G_cN6fb98u3A1DbgEEW-SquLhxEi8KnGrlJkA';
+Cesium.BingMapsApi.defaultKey = 'Am8FCQ4k7r4ngrHuGL6wtJTREJIBIGwDVPbUhRA1vR4n0DiZARj8jHXxazLiS1j_';
+Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2YTY1NDYzYS01YzgxLT' +
+  'Q2MGUtODBiYy0zODRmY2MwOGY4MDIiLCJpZCI6MjA1LCJpYXQiOjE1MDQ3MjQ1Njh9.rKgXUKAfFiiSAm_b9T8bpsDVdj0YyZeqGxNpzLlhxpk';
 platformBrowserDynamic().bootstrapModule(AppModule/*, options*/);
 // });

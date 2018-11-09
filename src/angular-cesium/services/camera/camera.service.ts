@@ -21,8 +21,7 @@ export class CameraService {
   private lastLook: boolean;
   private isSceneModePerformance2D = false;
 
-  constructor() {
-  }
+  constructor() {}
 
   init(cesiumService: CesiumService) {
     this.viewer = cesiumService.getViewer();
@@ -35,9 +34,10 @@ export class CameraService {
   }
 
   _listenToSceneModeMorph(callback: Function) {
-    this.morphListenerCancelFn = this.scene.morphStart.addEventListener(callback);
+    this.morphListenerCancelFn = this.scene.morphStart.addEventListener(
+      callback
+    );
   }
-
 
   _revertCameraProperties() {
     this.isSceneModePerformance2D = false;
@@ -187,17 +187,27 @@ export class CameraService {
           this.morphListenerCancelFn();
         }
         this.scene.morphToColumbusView(duration);
-        const morphCompleteEventListener = this.scene.morphComplete.addEventListener(() => {
-          this.camera.setView({
-            destination: Cesium.Cartesian3.fromDegrees(0.0, 0.0,
-              Math.min(CameraService.PERFORMANCE_2D_ALTITUDE, this.getMaximumZoom())),
-            orientation: {
-              pitch: Cesium.Math.toRadians(-90),
-            }
-          });
-          morphCompleteEventListener();
-          this._listenToSceneModeMorph(this._revertCameraProperties.bind(this));
-        });
+        const morphCompleteEventListener = this.scene.morphComplete.addEventListener(
+          () => {
+            this.camera.setView({
+              destination: Cesium.Cartesian3.fromDegrees(
+                0.0,
+                0.0,
+                Math.min(
+                  CameraService.PERFORMANCE_2D_ALTITUDE,
+                  this.getMaximumZoom()
+                )
+              ),
+              orientation: {
+                pitch: Cesium.Math.toRadians(-90)
+              }
+            });
+            morphCompleteEventListener();
+            this._listenToSceneModeMorph(
+              this._revertCameraProperties.bind(this)
+            );
+          }
+        );
 
         break;
       }
@@ -263,48 +273,70 @@ export class CameraService {
   }
 
   /**
+   * Set camera's rotation
+   * @param {number} degreesInRadians
+   */
+  setRotation(degreesInRadians: number) {
+    this.setView({ orientation: { heading: degreesInRadians } });
+  }
+
+  /**
+   * Locks or unlocks camera rotation
+   * @param {boolean} lock
+   */
+  lockRotation(lock: boolean) {
+    this.scene.screenSpaceCameraController.enableRotate = !lock;
+  }
+
+  /**
    * Make the camera track a specific entity
    * API: https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classFilter=viewer#trackedEntity
    * @param entity - entity to track
    * @param options - track entity options
    */
-  trackEntity(entity?: any, options?: { flyTo: boolean, flyToDuration?: number, altitude?: number }) {
-    const flyTo = options && options.flyTo || false;
+  trackEntity(
+    entity?: any,
+    options?: { flyTo: boolean; flyToDuration?: number; altitude?: number }
+  ) {
+    const flyTo = (options && options.flyTo) || false;
 
     this.viewer.trackedEntity = undefined;
     return new Promise(resolve => {
       if (flyTo) {
-        const flyToDuration = options && options.flyToDuration || 1;
-        const altitude = options && options.altitude || 10000;
+        const flyToDuration = (options && options.flyToDuration) || 1;
+        const altitude = (options && options.altitude) || 10000;
 
         // Calc entity flyTo position and wanted altitude
         const entPosCar3 = entity.position.getValue(Cesium.JulianDate.now());
         const entPosCart = Cesium.Cartographic.fromCartesian(entPosCar3);
         const zoomAmount = altitude - entPosCart.height;
         entPosCart.height = altitude;
-        const flyToPosition = Cesium.Cartesian3.fromRadians(entPosCart.longitude, entPosCart.latitude, entPosCart.height);
+        const flyToPosition = Cesium.Cartesian3.fromRadians(
+          entPosCart.longitude,
+          entPosCart.latitude,
+          entPosCart.height
+        );
 
         this.cameraFlyTo({
-            duration: flyToDuration,
-            destination: flyToPosition,
-            complete: () => {
-              this.viewer.trackedEntity = entity;
-              setTimeout(() => {
-                if (zoomAmount > 0) {
-                  this.camera.zoomOut(zoomAmount);
-                } else {
-                  this.camera.zoomIn(zoomAmount);
-                }
-              }, 0);
-              resolve();
-            }
+          duration: flyToDuration,
+          destination: flyToPosition,
+          complete: () => {
+            this.viewer.trackedEntity = entity;
+            setTimeout(() => {
+              if (zoomAmount > 0) {
+                this.camera.zoomOut(zoomAmount);
+              } else {
+                this.camera.zoomIn(zoomAmount);
+              }
+            }, 0);
+            resolve();
           }
-        )
+        });
       } else {
         this.viewer.trackedEntity = entity;
         resolve();
       }
-    })
+    });
   }
 
   untrackEntity() {

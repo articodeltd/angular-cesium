@@ -48,6 +48,7 @@ import { TrackEntityLayerComponent } from './components/track-entity-layer/track
 import { CzmlLayerComponent } from './components/czml-layer/czml-layer.component';
 import { HttpClientModule } from '@angular/common/http';
 import {InMemoryCache} from 'apollo-cache-inmemory'
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -92,6 +93,7 @@ import {InMemoryCache} from 'apollo-cache-inmemory'
     CzmlLayerComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpModule,

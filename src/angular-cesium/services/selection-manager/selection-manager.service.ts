@@ -99,7 +99,12 @@ export class SelectionManagerService {
 	}
 	
 	initSelection(selectionOptions?: SelectionOptions, addSelectedIndicator = true, eventPriority?: number, mapId?: string) {
-		this.mapEventsManagerService = this.mapsManager.getMap(mapId).getMapEventsManager();
+		const mapComponent = this.mapsManager.getMap(mapId);
+		if (!mapComponent) {
+			return;
+		}
+		
+		this.mapEventsManagerService = mapComponent.getMapEventsManager();
 		
 		if (!selectionOptions) {
 			Object.assign(selectionOptions, {event : CesiumEvent.LEFT_CLICK});

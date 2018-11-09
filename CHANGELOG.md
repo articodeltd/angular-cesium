@@ -1,3 +1,15 @@
+## 0.54
+### Fixes
+* Fixed `ac-layer` onDestroy.
+* Fixed `ac-map` onDestroy.
+
+### Features
+* Multiple `AcMap` support using `ngFor` - The optional `@Input() containerId` in `AcMap` can be used to place the map canvas in any container / move the canvas to a new container.
+* New `bind2DMapsCameras()` function added to `MapsManagerService` for binding cameras position in different 2D maps.
+* New `unbindMapsCameras()` function added to `MapsManagerService` for unbinding maps camera.
+* New `setRotation()` function added to `CameraService`.
+* New `lockRotation()` function added to `CameraService`.
+
 ## 0.53
 ### Features
 * New `<ac-czml-desc>` component for adding CzmlDataSource to ac-layer.
