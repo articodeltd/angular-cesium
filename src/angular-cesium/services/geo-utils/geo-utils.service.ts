@@ -37,8 +37,8 @@ export class GeoUtilsService {
     }
   }
 
-  static addDeltaToPosition(position: Cartesian3, delta: Vec3, keepReference = false): Cartesian3 {
-    if (keepReference) {
+  static addDeltaToPosition(position: Cartesian3, delta: Vec3, updateReference = false): Cartesian3 {
+    if (updateReference) {
       position.x += delta.x;
       position.y += delta.y;
       position.z += delta.z;

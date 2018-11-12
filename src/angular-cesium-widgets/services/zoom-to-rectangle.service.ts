@@ -111,7 +111,7 @@ export class ZoomToRectangleService {
     container.style.left = '0';
     mapContainer.appendChild(container);
     const mapZoomData: ZoomData = { container };
-    this.mapsZoomElements.set(mapId, mapZoomData);
+    this.mapsZoomElements.set(mapId || this.cesiumService.getMap().getId(), mapZoomData);
     let mouse = {
       endX: 0,
       endY: 0,
