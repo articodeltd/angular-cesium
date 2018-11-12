@@ -1,37 +1,27 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Inject,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  OnDestroy
-} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { CesiumService } from '../../services/cesium/cesium.service';
-import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
-import { MapEventsManagerService } from '../../services/map-events-mananger/map-events-manager';
-import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-event-builder';
-import { PlonterService } from '../../services/plonter/plonter.service';
-import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
-import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
-import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
-import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
-import { MapsManagerService } from '../../services/maps-manager/maps-manager.service';
-import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
-import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
-import { KeyboardControlService } from '../../services/keyboard-control/keyboard-control.service';
-import { CameraService } from '../../services/camera/camera.service';
-import { SceneMode } from '../../models/scene-mode.enum';
-import { MapLayersService } from '../../services/map-layers/map-layers.service';
+import { AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
-import { ScreenshotService } from '../../services/screenshot/screenshot.service';
+import { SceneMode } from '../../models/scene-mode.enum';
+import { CameraService } from '../../services/camera/camera.service';
+import { CesiumService } from '../../services/cesium/cesium.service';
 import { ContextMenuService } from '../../services/context-menu/context-menu.service';
 import { CoordinateConverter } from '../../services/coordinate-converter/coordinate-converter.service';
-import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service';
+import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';
+import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawer.service';
+import { EllipseDrawerService } from '../../services/drawers/ellipse-drawer/ellipse-drawer.service';
+import { LabelDrawerService } from '../../services/drawers/label-drawer/label-drawer.service';
+import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
+import { PolygonDrawerService } from '../../services/drawers/polygon-drawer/polygon-drawer.service';
+import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
+import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-primitive-drawer/polyline-primitive-drawer.service';
+import { KeyboardControlService } from '../../services/keyboard-control/keyboard-control.service';
+import { CesiumEventBuilder } from '../../services/map-events-mananger/cesium-event-builder';
+import { MapEventsManagerService } from '../../services/map-events-mananger/map-events-manager';
+import { MapLayersService } from '../../services/map-layers/map-layers.service';
+import { MapsManagerService } from '../../services/maps-manager/maps-manager.service';
+import { PlonterService } from '../../services/plonter/plonter.service';
+import { ScreenshotService } from '../../services/screenshot/screenshot.service';
 
 /**
  * This is a map implementation, creates the cesium map.
@@ -74,11 +64,10 @@ import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawe
     CameraService,
     ScreenshotService,
     ContextMenuService,
-    CoordinateConverter
-  ]
+    CoordinateConverter,
+  ],
 })
-export class AcMapComponent
-  implements OnChanges, OnInit, AfterViewInit, OnDestroy {
+export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   /**
    * Disable default plonter context menu
    */
@@ -106,7 +95,7 @@ export class AcMapComponent
   sceneMode: SceneMode;
 
   /**
-   * Optional - the container element's id in which the map's canvas will be appended to. 
+   * Optional - the container element's id in which the map's canvas will be appended to.
    * If not supplied - the container element will be the parent element of ac-map;
    */
   @Input()
@@ -134,13 +123,13 @@ export class AcMapComponent
     private configurationService: ConfigurationService,
     private screenshotService: ScreenshotService,
     public contextMenuService: ContextMenuService,
-    private coordinateConverter: CoordinateConverter
+    private coordinateConverter: CoordinateConverter,
   ) {
     this.mapContainer = this.document.createElement('div');
     this.mapContainer.style.width = '100%';
     this.mapContainer.style.height = '100%';
     this.mapContainer.className = 'map-container';
-    this._cesiumService.init(this.mapContainer);
+    this._cesiumService.init(this.mapContainer, this);
     this._cameraService.init(this._cesiumService);
     this.mapEventsManager.init();
     this.billboardDrawerService.init();
@@ -156,7 +145,7 @@ export class AcMapComponent
   }
 
   ngOnInit() {
-    this.mapsManagerService.registerMap(this.mapId, this);
+    this.mapId = this.mapsManagerService._registerMap(this.mapId, this);
     if (!this.containerId) {
       this._elemRef.nativeElement.appendChild(this.mapContainer);
     }
@@ -170,9 +159,7 @@ export class AcMapComponent
       this._cameraService.cameraFlyTo(changes['flyTo'].currentValue);
     }
     if (changes['containerId']) {
-      const element = this.document.getElementById(
-        changes['containerId'].currentValue
-      );
+      const element = this.document.getElementById(changes['containerId'].currentValue);
       if (element) {
         element.appendChild(this.mapContainer);
       } else {

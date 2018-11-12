@@ -9,7 +9,6 @@ import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-uti
 import { defaultLabelProps, LabelProps } from './label-props';
 
 export class EditableHippodrome extends AcEntity {
-
   private positions: EditPoint[] = [];
   private movingPoint: EditPoint;
   private done = false;
@@ -19,12 +18,14 @@ export class EditableHippodrome extends AcEntity {
   private lastDraggedToPosition: Cartesian3;
   private _labels: LabelProps[] = [];
 
-  constructor(private id: string,
-              private pointsLayer: AcLayerComponent,
-              private hippodromeLayer: AcLayerComponent,
-              private coordinateConverter: CoordinateConverter,
-              editOptions: HippodromeEditOptions,
-              positions?: Cartesian3[]) {
+  constructor(
+    private id: string,
+    private pointsLayer: AcLayerComponent,
+    private hippodromeLayer: AcLayerComponent,
+    private coordinateConverter: CoordinateConverter,
+    editOptions: HippodromeEditOptions,
+    positions?: Cartesian3[],
+  ) {
     super();
     this.defaultPointProps = editOptions.pointProps;
     this.hippodromeProps = editOptions.hippodromeProps;
@@ -82,8 +83,8 @@ export class EditableHippodrome extends AcEntity {
   }
 
   private createFromExisting(positions: Cartesian3[]) {
-    positions.forEach((position) => {
-      this.addPointFromExisting(position)
+    positions.forEach(position => {
+      this.addPointFromExisting(position);
     });
     this.createHeightEditPoints();
     this.updateHippdromeLayer();
@@ -93,7 +94,7 @@ export class EditableHippodrome extends AcEntity {
 
   setPointsManually(points: EditPoint[], widthMeters?: number) {
     if (!this.done) {
-      throw new Error('Update manually only in edit mode, after polyline is created')
+      throw new Error('Update manually only in edit mode, after polyline is created');
     }
     this.hippodromeProps.width = widthMeters ? widthMeters : this.hippodromeProps.width;
     this.positions.forEach(p => this.pointsLayer.remove(p.getId()));
@@ -103,13 +104,11 @@ export class EditableHippodrome extends AcEntity {
     this.updateHippdromeLayer();
   }
 
-
   addPointFromExisting(position: Cartesian3) {
     const newPoint = new EditPoint(this.id, position, this.defaultPointProps);
     this.positions.push(newPoint);
     this.updatePointsLayer(newPoint);
   }
-
 
   addPoint(position: Cartesian3) {
     if (this.done) {
@@ -122,7 +121,6 @@ export class EditableHippodrome extends AcEntity {
       this.movingPoint = new EditPoint(this.id, position.clone(), this.defaultPointProps);
       this.positions.push(this.movingPoint);
       this.updatePointsLayer(firstPoint);
-
     } else {
       this.createHeightEditPoints();
 
@@ -131,13 +129,10 @@ export class EditableHippodrome extends AcEntity {
       this.done = true;
       this.movingPoint = null;
     }
-
   }
 
   private createHeightEditPoints() {
-    this.positions
-      .filter(p => p.isVirtualEditPoint())
-      .forEach(p => this.removePosition(p));
+    this.positions.filter(p => p.isVirtualEditPoint()).forEach(p => this.removePosition(p));
 
     const firstP = this.getRealPoints()[0];
     const secP = this.getRealPoints()[1];
@@ -149,19 +144,21 @@ export class EditableHippodrome extends AcEntity {
     this.createMiddleEditablePoint(midPointCartesian3, upAzimuth);
     const downAzimuth = Cesium.Math.toRadians(bearingDeg) + Math.PI / 2;
     this.createMiddleEditablePoint(midPointCartesian3, downAzimuth);
-
   }
 
   private createMiddleEditablePoint(midPointCartesian3: any, azimuth: number) {
-    const upEditCartesian3 = GeoUtilsService.pointByLocationDistanceAndAzimuth(midPointCartesian3,
-      this.hippodromeProps.width / 2, azimuth, true);
+    const upEditCartesian3 = GeoUtilsService.pointByLocationDistanceAndAzimuth(
+      midPointCartesian3,
+      this.hippodromeProps.width / 2,
+      azimuth,
+      true,
+    );
     const midPoint = new EditPoint(this.id, upEditCartesian3, this.defaultPointProps);
     midPoint.setVirtualEditPoint(true);
     this.positions.push(midPoint);
   }
 
   movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
-
     if (!editPoint.isVirtualEditPoint()) {
       editPoint.setPosition(toPosition);
       this.createHeightEditPoints();
@@ -188,9 +185,10 @@ export class EditableHippodrome extends AcEntity {
     if (bearingDegHippodromeDots > 180) {
       bearingDegHippodromeDots = this.coordinateConverter.bearingToCartesian(secP.getPosition(), firstP.getPosition());
     }
-    let fixedBearingDeg = bearingDegHippodromeDots > normalizedBearingDeb ?
-      bearingDegHippodromeDots - normalizedBearingDeb :
-      normalizedBearingDeb - bearingDegHippodromeDots;
+    let fixedBearingDeg =
+      bearingDegHippodromeDots > normalizedBearingDeb
+        ? bearingDegHippodromeDots - normalizedBearingDeb
+        : normalizedBearingDeb - bearingDegHippodromeDots;
 
     if (bearingDeg > 270) {
       fixedBearingDeg = bearingDeg - bearingDegHippodromeDots;
@@ -240,9 +238,7 @@ export class EditableHippodrome extends AcEntity {
 
   removePoint(pointToRemove: EditPoint) {
     this.removePosition(pointToRemove);
-    this.positions
-      .filter(p => p.isVirtualEditPoint())
-      .forEach(p => this.removePosition(p));
+    this.positions.filter(p => p.isVirtualEditPoint()).forEach(p => this.removePosition(p));
   }
 
   addLastPoint(position: Cartesian3) {
@@ -252,13 +248,15 @@ export class EditableHippodrome extends AcEntity {
   }
 
   getRealPositions(): Cartesian3[] {
-    return this.getRealPoints()
-      .map(position => position.getPosition());
+    return this.getRealPoints().map(position => position.getPosition());
+  }
+
+  getRealPositionsCallbackProperty() {
+    return new Cesium.CallbackProperty(this.getRealPositions.bind(this), false);
   }
 
   getRealPoints(): EditPoint[] {
-    return this.positions
-      .filter(position => !position.isVirtualEditPoint());
+    return this.positions.filter(position => !position.isVirtualEditPoint());
   }
 
   getWidth(): number {
@@ -270,7 +268,7 @@ export class EditableHippodrome extends AcEntity {
   }
 
   private removePosition(point: EditPoint) {
-    const index = this.positions.findIndex((p) => p === point);
+    const index = this.positions.findIndex(p => p === point);
     if (index < 0) {
       return;
     }

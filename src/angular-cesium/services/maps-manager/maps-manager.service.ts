@@ -21,12 +21,13 @@ export class MapsManagerService {
     return this._Maps.get(id);
   }
 
-  registerMap(id: string, acMap: AcMapComponent) {
+  _registerMap(id: string, acMap: AcMapComponent): string {
     if (!this.firstMap) {
       this.firstMap = acMap;
     }
     const mapId = id ? id : this.generateDefaultId();
     this._Maps.set(mapId, acMap);
+    return mapId;
   }
 
   _removeMapById(id: string) {

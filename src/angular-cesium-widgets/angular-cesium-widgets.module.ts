@@ -11,12 +11,10 @@ import { AcToolbarComponent } from './components/toolbar/ac-toolbar/ac-toolbar.c
 import { DragIconComponent } from './components/toolbar/ac-toolbar/drag-icon.component';
 import { AcToolbarButtonComponent } from './components/toolbar/ac-toolbar-button/ac-toolbar-button.component';
 import { RangeAndBearingComponent } from './components/range-and-bearing/range-and-bearing.component';
+import { ZoomToRectangleService } from './services/zoom-to-rectangle.service'
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AngularCesiumModule,
-  ],
+  imports: [CommonModule, AngularCesiumModule],
   declarations: [
     HippodromeEditorComponent,
     PolygonsEditorComponent,
@@ -40,7 +38,7 @@ import { RangeAndBearingComponent } from './components/range-and-bearing/range-a
   ],
   providers: [
     DraggableToMapService,
+    ZoomToRectangleService,
   ]
 })
-export class AngularCesiumWidgetsModule {
-}
+export class AngularCesiumWidgetsModule {}

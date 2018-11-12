@@ -202,8 +202,16 @@ export class EditableCircle extends AcEntity {
     return GeoUtilsService.distance(this._center.getPosition(), this._radiusPoint.getPosition());
   }
 
+  getRadiusCallbackProperty() {
+    return new Cesium.CallbackProperty(this.getRadius.bind(this), false);
+  }
+
   getCenter(): Cartesian3 {
     return this._center ? this._center.getPosition() : undefined;
+  }
+
+  getCenterCallbackProperty() {
+    return new Cesium.CallbackProperty(this.getCenter.bind(this), false);
   }
 
   getRadiusPoint(): Cartesian3 {

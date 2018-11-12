@@ -1,22 +1,27 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CameraService } from '../../../../src/angular-cesium';
+import { CameraService, CesiumService } from '../../../../src/angular-cesium';
 import { PolylineEditorObservable } from '../../../../src/angular-cesium-widgets/models/polyline-editor-observable';
 import { RangeAndBearingComponent } from '../../../../src/angular-cesium-widgets';
+import { ZoomToRectangleService } from '../../../../src/angular-cesium-widgets/services/zoom-to-rectangle.service';
 
 @Component({
   selector: 'toolbar-example',
   templateUrl: 'toolbar-example.component.html',
+  providers: [ZoomToRectangleService],
 })
 export class ToolbarExampleComponent implements OnInit {
-
   rnb: PolylineEditorObservable;
   @ViewChild('rangeAndBearing') private rangeAndBearing: RangeAndBearingComponent;
 
-  constructor(private cameraService: CameraService) {
+  constructor(
+    private cameraService: CameraService,
+    private cesiumService: CesiumService,
+    private zoomToRectangleService: ZoomToRectangleService,
+  ) {
+    this.zoomToRectangleService.init(cesiumService, cameraService)
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   createRangeAndBearing() {
     if (this.rnb) {
@@ -26,8 +31,11 @@ export class ToolbarExampleComponent implements OnInit {
     this.rnb = this.rangeAndBearing.create();
   }
 
-  goHome() {
-    this.cameraService.cameraFlyTo({ destination: Cesium.Cartesian3.fromDegrees(35.21, 31.77, 200000) })
+  zoomToRectangle() {
+    this.zoomToRectangleService.activate();
   }
 
+  goHome() {
+    this.cameraService.cameraFlyTo({ destination: Cesium.Cartesian3.fromDegrees(35.21, 31.77, 200000) });
+  }
 }

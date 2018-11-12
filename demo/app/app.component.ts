@@ -10,12 +10,13 @@ import {
 import { MapsManagerService } from '../../src/angular-cesium/services/maps-manager/maps-manager.service';
 import { DraggableToMapService } from '../../src/angular-cesium-widgets/services/draggable-to-map.service';
 import { TracksDataProvider } from '../utils/services/dataProvider/tracksDataProvider.service';
+import { SimTracksDataProvider } from '../utils/services/dataProvider/sim-tracks-data-provider';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  providers: [WebSocketSupplier, AppSettingsService, TracksDataProvider],
+  providers: [WebSocketSupplier, AppSettingsService, TracksDataProvider, SimTracksDataProvider],
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterViewInit {

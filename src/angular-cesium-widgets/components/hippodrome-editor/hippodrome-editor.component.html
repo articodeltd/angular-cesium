@@ -1,6 +1,6 @@
 <ac-layer #editHippodromesLayer acFor="let hippodrome of editHippodromes$" [context]="this">
     <ac-corridor-desc props="{
-		positions: hippodrome.getRealPositions(),
+		positions: hippodrome.getRealPositionsCallbackProperty(),
 		cornerType: Cesium.CornerType.ROUNDED,
 		material: hippodrome.hippodromeProps.material,
 		width : hippodrome.hippodromeProps.width,

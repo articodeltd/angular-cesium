@@ -1,11 +1,15 @@
-<ac-toolbar [allowDrag]="true">
+<ac-toolbar [allowDrag]="false">
     <ac-toolbar-button matTooltip="Home" matTooltipPosition="right"
                        [iconUrl]="'assets/home-icon.svg'"
                        (onClick)="goHome()">
     </ac-toolbar-button>
     <ac-toolbar-button matTooltip="Range And Bearing" matTooltipPosition="right"
-                       [iconUrl]="'assets/explore-icon.svg'"
+                       [iconUrl]="'assets/ruler.svg'"
                        (onClick)="createRangeAndBearing()">
+    </ac-toolbar-button>
+    <ac-toolbar-button matTooltip="Zoom To Rectangle" matTooltipPosition="right"
+                       [iconUrl]="'assets/select.svg'"
+                       (onClick)="zoomToRectangle()">
     </ac-toolbar-button>
     <range-and-bearing #rangeAndBearing></range-and-bearing>
 </ac-toolbar>

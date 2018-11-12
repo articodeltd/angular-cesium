@@ -21,7 +21,7 @@
 
 <ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this">
     <ac-polygon-desc props="{
-        hierarchy: polygon.getPositionsHierarchy(),
+        hierarchy: polygon.getPositionsHierarchyCallbackProperty(),
         material: polygon.polygonProps.material
     }">
     </ac-polygon-desc>

@@ -1,23 +1,28 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-toolbar color="primary">
-        <button mat-icon-button (click)="settingsClick(sidenav)" class="settings-button">
-            <mat-icon>settings</mat-icon>
-        </button>
-        <span>Angular-Cesium Demo</span>
-        <!-- This fills the remaining space of the current row -->
-        <span class="fill-remaining-space"></span>
-        <button mat-button matTooltip="Live updating planes from a real data source" (click)="appSettingsService.tracksDataType= TracksType.REAL_DATA">LIVE TRACKS</button>
-        <button mat-button (click)="appSettingsService.tracksDataType= TracksType.SIM_DATA">SIMULATED TRACKS</button>
-        <button mat-button (click)="appSettingsService.tracksDataType= TracksType.MODELS_3D">3D TRACKS</button>
-        <a href="https://github.com/TGFTech/angular-cesium" class="github-link"
-           [draggableToMap]="{src: '../assets/GitHub-Mark-Light.png', style: {width: '50px', height: '50px'}}">
-            <img class="github" src="../assets/GitHub-Mark-Light.png">
-        </a>
-    </mat-toolbar>
-    <mat-sidenav #sidenav class="sidenav">
-        <settings-form (cleanMap)="map.removeAll();" (showEvent)="layer.setShow($event);"></settings-form>
-    </mat-sidenav>
-
-    <demo-map #map></demo-map>
-
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="settingsClick(sidenav)" class="settings-button"><mat-icon>settings</mat-icon></button>
+    <span>Angular-Cesium Demo</span>
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+    <button mat-button matTooltip="Live updating planes from a real data source" (click)="appSettingsService.tracksDataType = TracksType.REAL_DATA">
+      LIVE TRACKS
+    </button>
+    <button mat-button (click)="appSettingsService.tracksDataType = TracksType.SIM_DATA">SIMULATED TRACKS</button>
+    <button mat-button (click)="appSettingsService.tracksDataType = TracksType.MODELS_3D">3D TRACKS</button>
+    <a
+      href="https://github.com/TGFTech/angular-cesium"
+      class="github-link"
+      [draggableToMap]="{ src: '../assets/GitHub-Mark-Light.png', style: { width: '50px', height: '50px' } }"
+    >
+      <img class="github" src="../assets/GitHub-Mark-Light.png" />
+    </a>
+  </mat-toolbar>
+  <mat-sidenav #sidenav class="sidenav">
+    <settings-form (cleanMap)="map.removeAll()" (showEvent)="layer.setShow($event)"></settings-form>
+  </mat-sidenav>
+  <div style="display: flex; flex-direction: row; flex: 1">
+    <div id="left-map-container" style="display: flex; flex: 1; position: relative"></div>
+    <!-- <div id="right-map-container" style="display: flex; flex: 1; position: relative"></div> -->
+  </div>
+  <demo-map #map></demo-map>
 </mat-sidenav-container>
