@@ -35,7 +35,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnIni
     styles : [`
         :host {
             position: absolute;
-            top: 100px;
+            top: 80px;
             left: 20px;
             width: 20px;
             height: 20px;
