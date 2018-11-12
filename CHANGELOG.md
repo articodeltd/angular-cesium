@@ -9,6 +9,8 @@
 * New `unbindMapsCameras()` function added to `MapsManagerService` for unbinding maps camera.
 * New `setRotation()` function added to `CameraService`.
 * New `lockRotation()` function added to `CameraService`.
+* New `ZoomToRectangleService` was added to `AngularCesiumWidgetsModule` - a tool for zooming into a rectangle that is drawn on the map.
+* Added initial support for `Cesium.CallbackProperty`.
 
 ## 0.53
 ### Features

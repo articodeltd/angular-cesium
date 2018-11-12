@@ -10,6 +10,41 @@ interface ZoomData {
   resetOnEscapePressFunc?: EventListenerOrEventListenerObject;
 }
 
+/**
+ * The Service is as a "zoom to rectangle" tool
+ *
+ * example:
+ * ```
+ * constructor(
+ *   private cameraService: CameraService,
+ *   private cesiumService: CesiumService,
+ *   private zoomToRectangleService: ZoomToRectangleService,
+ * ) {
+ *   this.zoomToRectangleService.init(cesiumService, cameraService);
+ * }
+ * ...
+ * this.zoomToRectangleService.activate({onComplete: () => this.zoomToRectangleService.disable()});
+ * ```
+ *
+ * @function init - initialize the service with CameraService and CesiumService.
+ * If no mapId is provided to activate() - must be called before calling `activate()`.
+ *
+ * @function disable - disables the tool.
+ *
+ * @function activate -
+ * @param options
+ * {
+ *  onStart - optional - a callback that will be called when the user start drawing the rectangle
+ *  onComplete - optional - a callback that will be called when the tool zoom in
+ *  autoDisableOnZoom - optional - determines if the tool should auto disable after zoom - default: true
+ *  animationDurationInSeconds - optional - zoom animation duration in seconds - default: 0.5
+ *  borderStyle - optional - the style of the rectangle element border - default: '3px dashed #FFFFFF'
+ *  resetKeyCode - optional - the key code of the key that is used to reset the drawing of the rectangle - default: 27 (ESC key)
+ * }
+ * @param mapId - optional - the mapId of the map that the tool will be used in.
+ *
+ */
+
 @Injectable()
 export class ZoomToRectangleService {
   private cameraService: CameraService;
@@ -35,8 +70,8 @@ export class ZoomToRectangleService {
 
   activate(
     options: {
-      onStart?: (acMap: AcMapComponent) => any;
-      onComplete?: (acMap: AcMapComponent) => any;
+      onStart?: (acMap?: AcMapComponent) => any;
+      onComplete?: (acMap?: AcMapComponent) => any;
       autoDisableOnZoom?: boolean;
       animationDurationInSeconds?: number;
       borderStyle?: string;
@@ -161,8 +196,11 @@ export class ZoomToRectangleService {
     mapZoomData.resetOnEscapePressFunc = resetOnEscapePress;
   }
 
-  disable(mapId) {
-    const data = this.mapsZoomElements.get(mapId);
+  disable(mapId?: string) {
+    if (!this.cesiumService && !mapId) {
+      throw new Error('If the service was not initialized with CesiumService, mapId must be provided');
+    }
+    const data = this.mapsZoomElements.get(mapId || this.cesiumService.getMap().getId());
     if (data) {
       data.container.remove();
       data.borderElement && data.borderElement.remove();
