@@ -25,7 +25,11 @@ export class MapsManagerService {
     if (!this.firstMap) {
       this.firstMap = acMap;
     }
+
     const mapId = id ? id : this.generateDefaultId();
+    if (this._Maps.has(mapId)) {
+      throw new Error(`Map with id: ${mapId} already exist`);
+    }
     this._Maps.set(mapId, acMap);
     return mapId;
   }
@@ -49,8 +53,8 @@ export class MapsManagerService {
   bind2DMapsCameras(
     mapIds: string[],
     options: { sensitivity?: number; bindZoom?: boolean } = {
-      sensitivity: 0.01
-    }
+      sensitivity: 0.01,
+    },
   ) {
     this.unbindMapsCameras();
     const maps: AcMapComponent[] = mapIds.map(id => {
@@ -77,14 +81,10 @@ export class MapsManagerService {
           const position = Cesium.Ellipsoid.WGS84.cartographicToCartesian({
             longitude: masterCameraCartographic.longitude,
             latitude: masterCameraCartographic.latitude,
-            height: options.bindZoom
-              ? masterCameraCartographic.height
-              : slaveCameraCartographic.height
+            height: options.bindZoom ? masterCameraCartographic.height : slaveCameraCartographic.height,
           });
 
-          if (
-            slaveMap.getCesiumViewer().scene.mode !== Cesium.SceneMode.MORPHING
-          ) {
+          if (slaveMap.getCesiumViewer().scene.mode !== Cesium.SceneMode.MORPHING) {
             slaveCamera.setView({ destination: position });
           }
         });
