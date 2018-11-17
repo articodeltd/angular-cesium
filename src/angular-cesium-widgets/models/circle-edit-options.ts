@@ -1,12 +1,6 @@
 import { EditorEditOptions } from './editor-edit-options';
-
-export interface CircleProps {
-  material?: any;
-  outline: boolean;
-  outlineWidth?: number;
-  outlineColor?: any
-}
+import { EllipseProps } from './ellipse-edit-options';
 
 export interface CircleEditOptions extends EditorEditOptions {
-  circleProps?: CircleProps;
+  circleProps?: EllipseProps;
 }

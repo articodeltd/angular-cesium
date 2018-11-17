@@ -1,36 +1,36 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { publish, tap } from 'rxjs/operators';
-import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
-import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
-import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
-import { GeoUtilsService } from '../../../../angular-cesium/services/geo-utils/geo-utils.service';
+import { Injectable } from '@angular/core';
+import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { PickOptions } from '../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
-import { DisposableObservable } from '../../../../angular-cesium/services/map-events-mananger/disposable-observable';
-import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
-import { BasicEditUpdate } from '../../../models/basic-edit-update';
-import { CircleEditOptions } from '../../../models/circle-edit-options';
-import { CircleEditUpdate } from '../../../models/circle-edit-update';
-import { CircleEditorObservable } from '../../../models/circle-editor-observable';
-import { EditActions } from '../../../models/edit-actions.enum';
 import { EditModes } from '../../../models/edit-mode.enum';
+import { EditActions } from '../../../models/edit-actions.enum';
+import { DisposableObservable } from '../../../../angular-cesium/services/map-events-mananger/disposable-observable';
+import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { EditPoint } from '../../../models/edit-point';
-import { EditableCircle } from '../../../models/editable-circle';
-import { EllipseProps } from '../../../models/ellipse-edit-options';
-import { LabelProps } from '../../../models/label-props';
+import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
+import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
+import { EllipseEditUpdate } from '../../../models/ellipse-edit-update';
+import { GeoUtilsService } from '../../../../angular-cesium/services/geo-utils/geo-utils.service';
+import { EllipsesManagerService } from './ellipses-manager.service';
+import { EllipseEditorObservable } from '../../../models/ellipse-editor-observable';
+import { EllipseEditOptions, EllipseProps } from '../../../models/ellipse-edit-options';
+import { EditableEllipse } from '../../../models/editable-ellipse';
 import { PointProps } from '../../../models/polyline-edit-options';
+import { LabelProps } from '../../../models/label-props';
+import { BasicEditUpdate } from '../../../models/basic-edit-update';
 import { generateKey } from '../../utils';
-import { CirclesManagerService } from './circles-manager.service';
+import { CesiumEventModifier } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum';
 
-export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
+export const DEFAULT_ELLIPSE_OPTIONS: EllipseEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
-  circleProps: {
+  ellipseProps: {
     material: Cesium.Color.GREEN.withAlpha(0.5),
-    outline: false,
+    outline: true,
     outlineWidth: 1,
     outlineColor: Cesium.Color.BLACK,
   },
@@ -50,20 +50,20 @@ export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
 };
 
 /**
- * Service for creating editable circles
+ * Service for creating editable ellipses
  *
- * You must provide `CircleEditorService` yourself.
- * PolygonsEditorService works together with `<circle-editor>` component. Therefor you need to create `<circle-editor>`
- * for each `CircleEditorService`, And of course somewhere under `<ac-map>`/
+ * You must provide `EllipsesEditorService` yourself.
+ * EllipsesEditorService works together with `<ellipse-editor>` component. Therefor you need to create `<ellipse-editor>`
+ * for each `EllipsesEditorService`, And of course somewhere under `<ac-map>`/
  *
- * + `create` for starting a creation of the shape over the map. Returns a extension of `CircleEditorObservable`.
- * + `edit` for editing shape over the map starting from a given positions. Returns an extension of `CircleEditorObservable`.
- * + To stop editing call `dsipose()` from the `CircleEditorObservable` you get back from `create()` \ `edit()`.
+ * + `create` for starting a creation of the shape over the map. Returns a extension of `EllipseEditorObservable`.
+ * + `edit` for editing shape over the map starting from a given positions. Returns an extension of `EllipseEditorObservable`.
+ * + To stop editing call `dsipose()` from the `EllipseEditorObservable` you get back from `create()` \ `edit()`.
  *
- * **Labels over editted shapes**
+ * **Labels over edited shapes**
  * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
  * To add label drawing logic to your editor use the function `setLabelsRenderFn()` that is defined on the
- * `CircleEditorObservable` that is returned from calling `create()` \ `edit()` of one of the editor services.
+ * `EllipseEditorObservable` that is returned from calling `create()` \ `edit()` of one of the editor services.
  * `setLabelsRenderFn()` - receives a callback that is called every time the shape is redrawn
  * (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
  * The callback should return type `LabelProps[]`.
@@ -71,49 +71,49 @@ export const DEFAULT_CIRCLE_OPTIONS: CircleEditOptions = {
  *
  * usage:
  * ```typescript
- *  // Start creating circle
- *  const editing$ = circlesEditorService.create();
+ *  // Start creating ellipse
+ *  const editing$ = ellipsesEditorService.create();
  *  this.editing$.subscribe(editResult => {
  *				console.log(editResult.positions);
  *		});
  *
- *  // Or edit circle from existing center point and radius
- *  const editing$ = this.circlesEditorService.edit(center, radius);
+ *  // Or edit ellipse from existing center point and two radiuses points
+ *  const editing$ = this.ellipsesEditorService.edit(center, radiusPoint, radiusPoint2);
  *
  * ```
  */
 @Injectable()
-export class CirclesEditorService {
+export class EllipsesEditorService {
   private mapEventsManager: MapEventsManagerService;
-  private updateSubject = new Subject<CircleEditUpdate>();
-  private updatePublisher = publish<CircleEditUpdate>()(this.updateSubject); // TODO maybe not needed
+  private updateSubject = new Subject<EllipseEditUpdate>();
+  private updatePublisher = publish<EllipseEditUpdate>()(this.updateSubject); // TODO maybe not needed
   private coordinateConverter: CoordinateConverter;
   private cameraService: CameraService;
-  private circlesManager: CirclesManagerService;
+  private ellipsesManager: EllipsesManagerService;
   private observablesMap = new Map<string, DisposableObservable<any>[]>();
 
   init(
     mapEventsManager: MapEventsManagerService,
     coordinateConverter: CoordinateConverter,
     cameraService: CameraService,
-    circlesManager: CirclesManagerService,
+    ellipsesManager: EllipsesManagerService,
   ) {
     this.mapEventsManager = mapEventsManager;
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
-    this.circlesManager = circlesManager;
+    this.ellipsesManager = ellipsesManager;
     this.updatePublisher.connect();
   }
 
-  onUpdate(): Observable<CircleEditUpdate> {
+  onUpdate(): Observable<EllipseEditUpdate> {
     return this.updatePublisher;
   }
 
-  create(options = DEFAULT_CIRCLE_OPTIONS, priority = 100): CircleEditorObservable {
+  create(options = DEFAULT_ELLIPSE_OPTIONS, priority = 100): EllipseEditorObservable {
     let center: any = undefined;
     const id = generateKey();
-    const circleOptions = this.setOptions(options);
-    const clientEditSubject = new BehaviorSubject<CircleEditUpdate>({
+    const ellipseOptions = this.setOptions(options);
+    const clientEditSubject = new BehaviorSubject<EllipseEditUpdate>({
       id,
       editAction: null,
       editMode: EditModes.CREATE,
@@ -124,7 +124,7 @@ export class CirclesEditorService {
       id,
       editMode: EditModes.CREATE,
       editAction: EditActions.INIT,
-      circleOptions,
+      ellipseOptions,
     });
 
     const mouseMoveRegistration = this.mapEventsManager.register({
@@ -133,7 +133,7 @@ export class CirclesEditorService {
       priority,
     });
     const addPointRegistration = this.mapEventsManager.register({
-      event: CesiumEvent.LEFT_CLICK,
+      event: ellipseOptions.addPointEvent,
       pick: PickOptions.NO_PICK,
       priority,
     });
@@ -151,7 +151,7 @@ export class CirclesEditorService {
       }
 
       if (!center) {
-        const update = {
+        const update: EllipseEditUpdate = {
           id,
           center: position,
           editMode: EditModes.CREATE,
@@ -160,27 +160,24 @@ export class CirclesEditorService {
         this.updateSubject.next(update);
         clientEditSubject.next({
           ...update,
-          ...this.getCircleProperties(id),
         });
         center = position;
       } else {
-        const update = {
+        const update: EllipseEditUpdate = {
           id,
           center,
-          radiusPoint: position,
+          updatedPosition: position,
           editMode: EditModes.CREATE,
           editAction: EditActions.ADD_LAST_POINT,
         };
         this.updateSubject.next(update);
         clientEditSubject.next({
           ...update,
-          ...this.getCircleProperties(id),
         });
 
-        const changeMode = {
+        const changeMode: EllipseEditUpdate = {
           id,
           center,
-          radiusPoint: position,
           editMode: EditModes.CREATE,
           editAction: EditActions.CHANGE_TO_EDIT,
         };
@@ -188,13 +185,12 @@ export class CirclesEditorService {
         this.updateSubject.next(changeMode);
         clientEditSubject.next({
           ...update,
-          ...this.getCircleProperties(id),
         });
         if (this.observablesMap.has(id)) {
           this.observablesMap.get(id).forEach(registration => registration.dispose());
         }
         this.observablesMap.delete(id);
-        this.editCircle(id, priority, clientEditSubject, circleOptions, editorObservable);
+        this.editEllipse(id, priority, clientEditSubject, ellipseOptions, editorObservable);
         finishedCreate = true;
       }
     });
@@ -206,17 +202,16 @@ export class CirclesEditorService {
       const position = this.coordinateConverter.screenToCartesian3(endPosition);
 
       if (position) {
-        const update = {
+        const update: EllipseEditUpdate = {
           id,
           center,
-          radiusPoint: position,
+          updatedPosition: position,
           editMode: EditModes.CREATE,
           editAction: EditActions.MOUSE_MOVE,
         };
         this.updateSubject.next(update);
         clientEditSubject.next({
           ...update,
-          ...this.getCircleProperties(id),
         });
       }
     });
@@ -224,54 +219,67 @@ export class CirclesEditorService {
     return editorObservable;
   }
 
-  edit(center: Cartesian3, radius: number, options = DEFAULT_CIRCLE_OPTIONS, priority = 100): CircleEditorObservable {
+  edit(
+    center: Cartesian3,
+    majorRadius: number,
+    rotation = Math.PI / 2,
+    minorRadius?: number,
+    options = DEFAULT_ELLIPSE_OPTIONS,
+    priority = 100,
+  ): EllipseEditorObservable {
     const id = generateKey();
-    const circleOptions = this.setOptions(options);
-    const editSubject = new BehaviorSubject<CircleEditUpdate>({
+    const ellipseOptions = this.setOptions(options);
+    const editSubject = new BehaviorSubject<EllipseEditUpdate>({
       id,
       editAction: null,
       editMode: EditModes.EDIT,
     });
 
-    const radiusPoint: Cartesian3 = GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
-
-    const update = {
+    const update: EllipseEditUpdate = {
       id,
       center,
-      radiusPoint,
+      majorRadius,
+      rotation,
+      minorRadius,
       editMode: EditModes.EDIT,
       editAction: EditActions.INIT,
-      circleOptions,
+      ellipseOptions,
     };
     this.updateSubject.next(update);
     editSubject.next({
       ...update,
-      ...this.getCircleProperties(id),
     });
 
-    return this.editCircle(id, priority, editSubject, circleOptions);
+    return this.editEllipse(id, priority, editSubject, ellipseOptions);
   }
 
-  private editCircle(
+  private editEllipse(
     id: string,
     priority: number,
-    editSubject: Subject<CircleEditUpdate>,
-    options: CircleEditOptions,
-    editObservable?: CircleEditorObservable,
-  ): CircleEditorObservable {
+    editSubject: Subject<EllipseEditUpdate>,
+    options: EllipseEditOptions,
+    editObservable?: EllipseEditorObservable,
+  ): EllipseEditorObservable {
     const pointDragRegistration = this.mapEventsManager.register({
-      event: CesiumEvent.LEFT_CLICK_DRAG,
+      event: options.dragPointEvent,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });
 
+    const addSecondRadius = this.mapEventsManager.register({
+      event: CesiumEvent.LEFT_CLICK,
+      modifier: CesiumEventModifier.SHIFT,
+      pick: PickOptions.NO_PICK,
+      priority,
+    });
+
     let shapeDragRegistration;
     if (options.allowDrag) {
       shapeDragRegistration = this.mapEventsManager.register({
-        event: CesiumEvent.LEFT_CLICK_DRAG,
-        entityType: EditableCircle,
+        event: options.dragShapeEvent,
+        entityType: EditableEllipse,
         pick: PickOptions.PICK_FIRST,
         priority: priority,
         pickFilter: entity => id === entity.editedEntityId,
@@ -301,21 +309,38 @@ export class CirclesEditorService {
           return;
         }
 
-        const update = {
+        const update: EllipseEditUpdate = {
           id,
-          center: this.getCenterPosition(id),
-          radiusPoint: this.getRadiusPosition(id),
+          updatedPoint: point,
           startDragPosition,
           endDragPosition,
           editMode: EditModes.EDIT,
           editAction,
+          ...this.getEllipseProperties(id),
         };
         this.updateSubject.next(update);
         editSubject.next({
           ...update,
-          ...this.getCircleProperties(id),
         });
       });
+
+    addSecondRadius.subscribe(({ movement: { endPosition, startPosition, drop }, entities }) => {
+      const position = this.coordinateConverter.screenToCartesian3(endPosition);
+      if (!position) {
+        return;
+      }
+      const update: EllipseEditUpdate = {
+        id,
+        updatedPosition: position,
+        editMode: EditModes.EDIT,
+        editAction: EditActions.ADD_POINT,
+        ...this.getEllipseProperties(id),
+      };
+      this.updateSubject.next(update);
+      editSubject.next({
+        ...update,
+      });
+    });
 
     if (shapeDragRegistration) {
       shapeDragRegistration
@@ -327,24 +352,22 @@ export class CirclesEditorService {
             return;
           }
 
-          const update = {
+          const update: EllipseEditUpdate = {
             id,
-            center: this.getCenterPosition(id),
-            radiusPoint: this.getRadiusPosition(id),
             startDragPosition,
             endDragPosition,
             editMode: EditModes.EDIT,
             editAction: drop ? EditActions.DRAG_SHAPE_FINISH : EditActions.DRAG_SHAPE,
+            ...this.getEllipseProperties(id),
           };
           this.updateSubject.next(update);
           editSubject.next({
             ...update,
-            ...this.getCircleProperties(id),
           });
         });
     }
 
-    const observables = [pointDragRegistration];
+    const observables = [pointDragRegistration, addSecondRadius];
     if (shapeDragRegistration) {
       observables.push(shapeDragRegistration);
     }
@@ -353,7 +376,7 @@ export class CirclesEditorService {
     return editObservable || this.createEditorObservable(editSubject, id);
   }
 
-  private createEditorObservable(observableToExtend: any, id: string): CircleEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string): EllipseEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {
@@ -362,43 +385,41 @@ export class CirclesEditorService {
       this.observablesMap.delete(id);
       this.updateSubject.next({
         id,
-        center: this.getCenterPosition(id),
-        radiusPoint: this.getRadiusPosition(id),
         editMode: EditModes.CREATE_OR_EDIT,
         editAction: EditActions.DISPOSE,
-      });
+        ...this.getEllipseProperties(id),
+      } as EllipseEditUpdate);
     };
 
     observableToExtend.enable = () => {
       this.updateSubject.next({
         id,
-        center: this.getCenterPosition(id),
-        radiusPoint: this.getRadiusPosition(id),
         editMode: EditModes.EDIT,
         editAction: EditActions.ENABLE,
-      });
+        ...this.getEllipseProperties(id),
+      } as EllipseEditUpdate);
     };
 
     observableToExtend.disable = () => {
       this.updateSubject.next({
         id,
-        center: this.getCenterPosition(id),
-        radiusPoint: this.getRadiusPosition(id),
         editMode: EditModes.EDIT,
         editAction: EditActions.DISABLE,
-      });
+        ...this.getEllipseProperties(id),
+      } as EllipseEditUpdate);
     };
 
     observableToExtend.setManually = (
       center: Cartesian3,
-      radius: number,
+      majorRadius: number,
+      rotation?: number,
+      minorRadius?: number,
       centerPointProp?: PointProps,
       radiusPointProp?: PointProps,
-      circleProp?: EllipseProps,
+      ellipseProp?: EllipseProps,
     ) => {
-      const radiusPoint = GeoUtilsService.pointByLocationDistanceAndAzimuth(center, radius, Math.PI / 2, true);
-      const circle = this.circlesManager.get(id);
-      circle.setManually(center, radiusPoint, centerPointProp, radiusPointProp, circleProp);
+      const ellipse = this.ellipsesManager.get(id);
+      ellipse.setManually(center, majorRadius, rotation, minorRadius, centerPointProp, radiusPointProp, ellipseProp);
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
@@ -412,7 +433,7 @@ export class CirclesEditorService {
         editMode: EditModes.CREATE_OR_EDIT,
         editAction: EditActions.SET_EDIT_LABELS_RENDER_CALLBACK,
         labelsRenderFn: callback,
-      });
+      } as EllipseEditUpdate);
     };
 
     observableToExtend.updateLabels = (labels: LabelProps[]) => {
@@ -421,49 +442,53 @@ export class CirclesEditorService {
         editMode: EditModes.CREATE_OR_EDIT,
         editAction: EditActions.UPDATE_EDIT_LABELS,
         updateLabels: labels,
-      });
+      } as EllipseEditUpdate);
     };
 
     observableToExtend.getEditValue = () => observableToExtend.getValue();
 
-    observableToExtend.getLabels = (): LabelProps[] => this.circlesManager.get(id).labels;
+    observableToExtend.getLabels = (): LabelProps[] => this.ellipsesManager.get(id).labels;
     observableToExtend.getCenter = (): Cartesian3 => this.getCenterPosition(id);
-    observableToExtend.getRadius = (): number => this.getRadius(id);
+    observableToExtend.getMajorRadius = (): number => this.getMajorRadius(id);
+    observableToExtend.getMinorRadius = (): number => this.getMinorRadius(id);
 
-    return observableToExtend as CircleEditorObservable;
+    return observableToExtend as EllipseEditorObservable;
   }
 
-  private setOptions(options: CircleEditOptions): CircleEditOptions {
-    const defaultClone = JSON.parse(JSON.stringify(DEFAULT_CIRCLE_OPTIONS));
-    const circleOptions = Object.assign(defaultClone, options);
-    circleOptions.pointProps = Object.assign({}, DEFAULT_CIRCLE_OPTIONS.pointProps, options.pointProps);
-    circleOptions.circleProps = Object.assign({}, DEFAULT_CIRCLE_OPTIONS.circleProps, options.circleProps);
-    circleOptions.polylineProps = Object.assign({}, DEFAULT_CIRCLE_OPTIONS.polylineProps, options.polylineProps);
-    return circleOptions;
+  private setOptions(options: EllipseEditOptions): EllipseEditOptions {
+    const defaultClone = JSON.parse(JSON.stringify(DEFAULT_ELLIPSE_OPTIONS));
+    const ellipseOptions = Object.assign(defaultClone, options);
+    ellipseOptions.pointProps = Object.assign({}, DEFAULT_ELLIPSE_OPTIONS.pointProps, options.pointProps);
+    ellipseOptions.ellipseProps = Object.assign({}, DEFAULT_ELLIPSE_OPTIONS.ellipseProps, options.ellipseProps);
+    ellipseOptions.polylineProps = Object.assign({}, DEFAULT_ELLIPSE_OPTIONS.polylineProps, options.polylineProps);
+    return ellipseOptions;
   }
 
   private getCenterPosition(id: string): Cartesian3 {
-    return this.circlesManager.get(id).getCenter();
+    return this.ellipsesManager.get(id).getCenter();
   }
 
   private getCenterPoint(id: string): EditPoint {
-    return this.circlesManager.get(id).center;
+    return this.ellipsesManager.get(id).center;
   }
 
-  private getRadiusPosition(id: string): Cartesian3 {
-    return this.circlesManager.get(id).getRadiusPoint();
+  private getMajorRadius(id: string): number {
+    return this.ellipsesManager.get(id).getMajorRadius();
   }
 
-  private getRadius(id: string): number {
-    return this.circlesManager.get(id).getRadius();
+  private getMinorRadius(id: string): number {
+    return this.ellipsesManager.get(id).getMinorRadius();
   }
 
-  private getCircleProperties(id: string) {
-    const circle = this.circlesManager.get(id);
+  private getEllipseProperties(id: string) {
+    const ellipse = this.ellipsesManager.get(id);
     return {
-      center: circle.getCenter(),
-      radiusPoint: circle.getRadiusPoint(),
-      radius: circle.getRadius(),
+      center: ellipse.getCenter(),
+      rotation: ellipse.getRotation(),
+      minorRadius: ellipse.getMinorRadius(),
+      majorRadius: ellipse.getMajorRadius(),
+      minorRadiusPointPosition: ellipse.getMinorRadiusPointPosition(),
+      majorRadiusPointPosition: ellipse.getMajorRadiusPointPosition(),
     };
   }
 }

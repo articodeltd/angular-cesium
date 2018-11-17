@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { EditActions } from '../../../../../src/angular-cesium-widgets/models/edit-actions.enum';
+// tslint:disable-next-line:max-line-length
 import { HippodromeEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service';
 import { HippodromeEditorObservable } from '../../../../../src/angular-cesium-widgets/models/hippodrome-editor-oboservable';
 import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/label-props';

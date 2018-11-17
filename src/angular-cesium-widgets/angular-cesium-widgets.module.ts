@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AngularCesiumModule } from '../angular-cesium/angular-cesium.module';
 import { PolygonsEditorComponent } from './components/polygons-editor/polygons-editor.component';
 import { CirclesEditorComponent } from './components/circles-editor/circles-editor.component';
+import { EllipsesEditorComponent } from './components/ellipses-editor/ellipses-editor.component';
 import { PolylinesEditorComponent } from './components/polylines-editor/polylines-editor.component';
 import { HippodromeEditorComponent } from './components/hippodrome-editor/hippodrome-editor.component';
 import { DraggableToMapDirective } from './directives/draggable-to-map.directive';
@@ -19,6 +20,7 @@ import { ZoomToRectangleService } from './services/zoom-to-rectangle.service'
     HippodromeEditorComponent,
     PolygonsEditorComponent,
     CirclesEditorComponent,
+    EllipsesEditorComponent,
     PolylinesEditorComponent,
     DraggableToMapDirective,
     DragIconComponent,
@@ -30,6 +32,7 @@ import { ZoomToRectangleService } from './services/zoom-to-rectangle.service'
     HippodromeEditorComponent,
     PolygonsEditorComponent,
     CirclesEditorComponent,
+    EllipsesEditorComponent,
     PolylinesEditorComponent,
     DraggableToMapDirective,
     AcToolbarComponent,
