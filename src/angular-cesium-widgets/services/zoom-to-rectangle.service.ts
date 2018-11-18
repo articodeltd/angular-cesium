@@ -39,6 +39,7 @@ interface ZoomData {
  *  autoDisableOnZoom - optional - determines if the tool should auto disable after zoom - default: true
  *  animationDurationInSeconds - optional - zoom animation duration in seconds - default: 0.5
  *  borderStyle - optional - the style of the rectangle element border - default: '3px dashed #FFFFFF'
+ *  backgroundColor - optional - the background color of the rectangle element - default: 'transparent'
  *  resetKeyCode - optional - the key code of the key that is used to reset the drawing of the rectangle - default: 27 (ESC key)
  * }
  * @param mapId - optional - the mapId of the map that the tool will be used in.
@@ -64,7 +65,8 @@ export class ZoomToRectangleService {
   private defaultOptions = {
     animationDurationInSeconds: 0.5,
     resetKeyCode: 27,
-    borderStyle: '3px dashed #FFFFFF',
+    borderStyle: '2px solid rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.2)',
     autoDisableOnZoom: true,
   };
 
@@ -75,6 +77,7 @@ export class ZoomToRectangleService {
       autoDisableOnZoom?: boolean;
       animationDurationInSeconds?: number;
       borderStyle?: string;
+      backgroundColor?: string;
       resetKeyCode?: number;
     } = {},
     mapId?: string,
@@ -135,6 +138,7 @@ export class ZoomToRectangleService {
         borderElement.className = 'zoom-to-rectangle-border';
         borderElement.style.position = 'absolute';
         borderElement.style.border = finalOptions.borderStyle;
+        borderElement.style.backgroundColor = finalOptions.backgroundColor;
         borderElement.style.left = mouse.startX + 'px';
         borderElement.style.top = mouse.startY + 'px';
         container.appendChild(borderElement);
