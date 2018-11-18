@@ -274,7 +274,7 @@ export class CirclesEditorService {
         entityType: EditableCircle,
         pick: PickOptions.PICK_FIRST,
         priority: priority,
-        pickFilter: entity => id === entity.editedEntityId,
+        pickFilter: entity => id === entity.id,
       });
     }
 

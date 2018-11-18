@@ -162,7 +162,7 @@ export class EditableEllipse extends AcEntity {
   }
 
   addPoint(position: Cartesian3) {
-    if (this.doneCreation && this._minorRadius) {
+    if (this.doneCreation) {
       return;
     }
 
@@ -170,19 +170,32 @@ export class EditableEllipse extends AcEntity {
       this._center = new EditPoint(this.id, position, this.pointProps);
       this._majorRadiusPoint = new EditPoint(this.id, position.clone(), this.pointProps);
       this._majorRadius = 0;
-    } else if (this._center && this._majorRadiusPoint && this._minorRadius === undefined) {
-      const newRadius = GeoUtilsService.distance(this.center.getPosition(), position);
-      const currentMajorRadius = this.getMajorRadius();
-      if (newRadius > currentMajorRadius) {
-        this._minorRadius = currentMajorRadius;
-        this._majorRadiusPoint.setPosition(position);
-        this._majorRadius = newRadius;
-      } else {
-        this._minorRadius = newRadius;
-      }
     }
+    // } else if (this._center && this._majorRadiusPoint && this._minorRadius === undefined) {
+    // const newRadius = GeoUtilsService.distance(this.center.getPosition(), position);
+    // const currentMajorRadius = this.getMajorRadius();
+    // if (newRadius > currentMajorRadius) {
+    // this._minorRadius = currentMajorRadius;
+    // this._majorRadiusPoint.setPosition(position);
+    // this._majorRadius = newRadius;
+    // }
+    // else {
+    //   this._minorRadius = newRadius;
+    // }
+    // }
 
     this.updateRotation();
+    this.updateMinorRadiusEditPoints();
+    this.updatePointsLayer();
+    this.updateEllipsesLayer();
+  }
+
+  transformToEllipse() {
+    if (this._minorRadius) {
+      return;
+    }
+
+    this._minorRadius = this.getMajorRadius();
     this.updateMinorRadiusEditPoints();
     this.updatePointsLayer();
     this.updateEllipsesLayer();

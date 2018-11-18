@@ -190,10 +190,10 @@ export class EllipsesEditorComponent implements OnDestroy {
         }
         break;
       }
-      case EditActions.ADD_POINT: {
+      case EditActions.TRANSFORM: {
         const ellipse = this.ellipsesManager.get(update.id);
         if (ellipse && ellipse.enableEdit) {
-          ellipse.addPoint(update.updatedPosition);
+          ellipse.transformToEllipse();
           this.renderEditLabels(ellipse, update);
         }
         break;

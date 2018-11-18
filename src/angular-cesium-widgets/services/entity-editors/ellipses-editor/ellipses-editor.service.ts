@@ -270,9 +270,11 @@ export class EllipsesEditorService {
 
     const addSecondRadius = this.mapEventsManager.register({
       event: CesiumEvent.LEFT_CLICK,
-      modifier: CesiumEventModifier.SHIFT,
-      pick: PickOptions.NO_PICK,
+      modifier: CesiumEventModifier.ALT,
+      entityType: EditableEllipse,
+      pick: PickOptions.PICK_FIRST,
       priority,
+      pickFilter: entity => id === entity.id,
     });
 
     let shapeDragRegistration;
@@ -282,7 +284,7 @@ export class EllipsesEditorService {
         entityType: EditableEllipse,
         pick: PickOptions.PICK_FIRST,
         priority: priority,
-        pickFilter: entity => id === entity.editedEntityId,
+        pickFilter: entity => id === entity.id,
       });
     }
 
@@ -325,15 +327,10 @@ export class EllipsesEditorService {
       });
 
     addSecondRadius.subscribe(({ movement: { endPosition, startPosition, drop }, entities }) => {
-      const position = this.coordinateConverter.screenToCartesian3(endPosition);
-      if (!position) {
-        return;
-      }
       const update: EllipseEditUpdate = {
         id,
-        updatedPosition: position,
         editMode: EditModes.EDIT,
-        editAction: EditActions.ADD_POINT,
+        editAction: EditActions.TRANSFORM,
         ...this.getEllipseProperties(id),
       };
       this.updateSubject.next(update);
