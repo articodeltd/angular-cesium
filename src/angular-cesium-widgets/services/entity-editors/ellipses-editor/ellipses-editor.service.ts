@@ -27,6 +27,8 @@ export const DEFAULT_ELLIPSE_OPTIONS: EllipseEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
+  circleToEllipseTransformEvent: CesiumEvent.LEFT_CLICK,
+  circleToEllipseTransformEventModifier: CesiumEventModifier.ALT,
   allowDrag: true,
   ellipseProps: {
     material: Cesium.Color.GREEN.withAlpha(0.5),
@@ -269,8 +271,8 @@ export class EllipsesEditorService {
     });
 
     const addSecondRadius = this.mapEventsManager.register({
-      event: CesiumEvent.LEFT_CLICK,
-      modifier: CesiumEventModifier.ALT,
+      event: options.circleToEllipseTransformEvent,
+      modifier: options.circleToEllipseTransformEventModifier,
       entityType: EditableEllipse,
       pick: PickOptions.PICK_FIRST,
       priority,

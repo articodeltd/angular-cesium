@@ -391,6 +391,7 @@ constructor(mapsManagerService: MapsManagerService)
 ### Geometry Editors And Widgets
 Part of [`AngularCesiumWidgetsModule`](https://tgftech.github.io/angular-cesium/modules/AngularCesiumWidgetsModule.html) are useful geometry editors tool:
 + [`CirlcesEditorService`](https://tgftech.github.io/angular-cesium/injectables/CirclesEditorService.html) - for drawing circles
++ [`EllipsesEditorService`](https://tgftech.github.io/angular-cesium/injectables/EllipsesEditorService.html) - for drawing ellipses and circles
 + [`PolylinesEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolylinesEditorService.html) - for drawing polylines
 + [`PolygonsEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolygonsEditorService.html) - for drawing polygons
 + [`HippodromeEditorService`](https://tgftech.github.io/angular-cesium/injectables/HippodromeEditorService.html) - for drawing hippodromes (path in cesium)

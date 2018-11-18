@@ -2,6 +2,7 @@
 ### Fixes
 * Fixed `ac-layer` onDestroy.
 * Fixed `ac-map` onDestroy.
+* Fixed `CircleEditorService` shape dragging.
 
 ### Features
 * Multiple `AcMap` support using `ngFor` - The optional `@Input() containerId` in `AcMap` can be used to place the map canvas in any container / move the canvas to a new container.
@@ -11,6 +12,7 @@
 * New `lockRotation()` function added to `CameraService`.
 * New `ZoomToRectangleService` was added to `AngularCesiumWidgetsModule` - a tool for zooming into a rectangle that is drawn on the map.
 * Added initial support for `Cesium.CallbackProperty`.
+* Added new ellipses shape editor that can be used to draw circles and ellipses.
 
 ## 0.53
 ### Features
