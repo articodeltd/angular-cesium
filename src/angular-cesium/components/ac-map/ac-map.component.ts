@@ -107,7 +107,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
     private _cesiumService: CesiumService,
     private _cameraService: CameraService,
     private _elemRef: ElementRef,
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document,
     private mapsManagerService: MapsManagerService,
     private billboardDrawerService: BillboardDrawerService,
     private labelDrawerService: LabelDrawerService,
