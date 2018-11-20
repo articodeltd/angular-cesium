@@ -206,6 +206,13 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
   }
 
   /**
+   * @returns {Element} the map container
+   */
+  getMapContainer() {
+    return this.mapContainer;
+  }
+
+  /**
    * @returns {MapEventsManagerService}
    */
   getMapEventsManager(): MapEventsManagerService {
