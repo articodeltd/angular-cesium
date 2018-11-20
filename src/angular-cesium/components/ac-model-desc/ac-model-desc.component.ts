@@ -8,9 +8,9 @@ import { ModelDrawerService } from '../../services/drawers/model-drawer/model-dr
 /**
  *  This is a model implementation.
  *  The ac-model element must be a child of ac-layer element.
- *  The properties of props are the same as the properties of Entity and PolygonGraphics:
+ *  The properties of props are the same as the properties of Entity and ModelGraphics:
  *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
- *  + https://cesiumjs.org/Cesium/Build/Documentation/PolygonGraphics.html
+ *  + https://cesiumjs.org/Cesium/Build/Documentation/ModelGraphics.html
  *
  *  __Usage:__
  *  ```
