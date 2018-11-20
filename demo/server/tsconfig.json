@@ -9,6 +9,7 @@
       "es2017"
     ],
     "noImplicitAny": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "resolveJsonModule": true
   }
 }

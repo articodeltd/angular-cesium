@@ -105,6 +105,7 @@ export class ZoomToRectangleService {
     if (!cameraService || !mapContainer) {
       throw new Error(`The function must receive a mapId if the service wasn't initialized`);
     }
+    this.disable(mapId);
     const container = document.createElement('div');
     mapContainer.style.position = 'relative';
     container.style.position = 'absolute';
@@ -208,11 +209,11 @@ export class ZoomToRectangleService {
     if (data) {
       data.container.remove();
       data.borderElement && data.borderElement.remove();
+      if (data.resetOnEscapePressFunc) {
+        document.removeEventListener('keydown', data.resetOnEscapePressFunc);
+      }
     }
     this.mapsZoomElements.delete(mapId);
-    if (data.resetOnEscapePressFunc) {
-      document.removeEventListener('keydown', data.resetOnEscapePressFunc);
-    }
   }
 
   private zoomCameraToRectangle(

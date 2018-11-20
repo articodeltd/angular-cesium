@@ -18,12 +18,12 @@ export async function parseAirplaneTypeCode(code: string): Promise<string> {
   return getDataFromIataCodes(aircraftsLoader, codeValue);
 }
 
-async function getDataFromIataCodes(loader: IataLoader, code: string): Promise<string>{
+async function getDataFromIataCodes(loader: IataLoader, code: string): Promise<string> {
   let name = code;
   try {
     name = await loader.load(code);
   } catch (e) {
-    console.log('Couldn\'t load Iata code ' + code + ' will return default value, ' + e);
+    console.log(`Couldn't load Iata code ` + code + ' will return default value, ' + e);
   }
 
   return name;
