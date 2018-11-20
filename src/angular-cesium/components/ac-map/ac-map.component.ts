@@ -158,7 +158,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
     if (changes['flyTo']) {
       this._cameraService.cameraFlyTo(changes['flyTo'].currentValue);
     }
-    if (changes['containerId']) {
+    if (changes['containerId'] && !changes['containerId'].firstChange) {
       const element = this.document.getElementById(changes['containerId'].currentValue);
       if (element) {
         element.appendChild(this.mapContainer);
@@ -170,6 +170,16 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
 
   ngAfterViewInit(): void {
     this.mapLayersService.drawAllLayers();
+    if (this.containerId) {
+      setTimeout(() => {
+        const element = this.document.getElementById(this.containerId);
+        if (element) {
+          element.appendChild(this.mapContainer);
+        } else {
+          throw new Error(`No element found with id: ${this.containerId}`);
+        }
+      }, 0);
+    }
   }
 
   ngOnDestroy(): void {

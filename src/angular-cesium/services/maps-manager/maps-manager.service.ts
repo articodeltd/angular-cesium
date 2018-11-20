@@ -50,28 +50,28 @@ export class MapsManagerService {
    * sensitivity - the amount the camera position should change in order to sync other maps
    * bindZoom - should bind zoom level
    */
-  bind2DMapsCameras(
-    mapIds: string[],
-    options: { sensitivity?: number; bindZoom?: boolean } = {
-      sensitivity: 0.01,
-    },
-  ) {
-    this.unbindMapsCameras();
-    const maps: AcMapComponent[] = mapIds.map(id => {
-      const map = this.getMap(id);
+  sync2DMapsCameras(mapsConfiguration: { id: string; sensitivity?: number; bindZoom?: boolean }[]) {
+    const DEFAULT_SENSITIVITY = 0.01;
+    this.unsyncMapsCameras();
+    const maps: { map: AcMapComponent; options?: { sensitivity?: number; bindZoom?: boolean } }[] = mapsConfiguration.map(config => {
+      const map = this.getMap(config.id);
       if (!map) {
-        throw new Error(`Couldn't find map with id: ${id}`);
+        throw new Error(`Couldn't find map with id: ${config.id}`);
       }
 
-      return map;
+      return { map, options: { sensitivity: config.sensitivity, bindZoom: config.bindZoom } };
     });
 
-    maps.forEach(masterMap => {
+    maps.forEach(masterMapConfig => {
+      const masterMap = masterMapConfig.map;
+      const options = masterMapConfig.options;
       const masterCamera = masterMap.getCameraService().getCamera();
       const masterCameraCartographic = masterCamera.positionCartographic;
-      masterCamera.percentageChanged = options.sensitivity || 0.01;
+      masterCamera.percentageChanged = options.sensitivity || DEFAULT_SENSITIVITY;
       const removeCallback = masterCamera.changed.addEventListener(() => {
-        maps.forEach(slaveMap => {
+        maps.forEach(slaveMapConfig => {
+          const slaveMap = slaveMapConfig.map;
+          const slaveMapOptions = slaveMapConfig.options;
           if (slaveMap === masterMap) {
             return;
           }
@@ -81,11 +81,17 @@ export class MapsManagerService {
           const position = Cesium.Ellipsoid.WGS84.cartographicToCartesian({
             longitude: masterCameraCartographic.longitude,
             latitude: masterCameraCartographic.latitude,
-            height: options.bindZoom ? masterCameraCartographic.height : slaveCameraCartographic.height,
+            height: slaveMapOptions.bindZoom ? masterCameraCartographic.height : slaveCameraCartographic.height,
           });
 
           if (slaveMap.getCesiumViewer().scene.mode !== Cesium.SceneMode.MORPHING) {
-            slaveCamera.setView({ destination: position });
+            slaveCamera.setView({
+              destination: position,
+              orientation: {
+                heading: slaveCamera.heading,
+                pitch: slaveCamera.pitch,
+              },
+            });
           }
         });
       });
@@ -94,9 +100,9 @@ export class MapsManagerService {
   }
 
   /**
-   * Unbinds maps cameras
+   * Unsyncs maps cameras
    */
-  unbindMapsCameras() {
+  unsyncMapsCameras() {
     this.eventRemoveCallbacks.forEach(removeCallback => removeCallback());
     this.eventRemoveCallbacks = [];
   }

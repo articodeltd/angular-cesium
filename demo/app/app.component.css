@@ -3,7 +3,7 @@
     position: absolute;
     display: flex !important;
     flex-direction: column;
-    flex: 1;
+    flex: 1 1;
     width: 100%;
     height: 100% !important;
 }
@@ -13,11 +13,6 @@
     flex-direction: column;
     flex: 1;
 }
-
-/* .map-container {
-    height: 100%;
-    width: 100%;
-} */
 
 .sidenav {
     width: 260px;

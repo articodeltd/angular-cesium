@@ -128,7 +128,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
   getSingleTrackObservable(trackId: string) {
     return this.tracks$.pipe(
       filter((notification) => notification.id === trackId),
-      map((notification) => notification.entity),);
+      map((notification) => notification.entity));
   }
 
   ngOnChanges(changes: SimpleChanges): void {

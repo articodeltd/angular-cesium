@@ -1,4 +1,4 @@
-<ac-map [sceneMode]="sceneMode" id="main-map">
+<ac-map *ngFor="let map of maps; trackBy: mapsTrackBy" [sceneMode]="map.sceneMode" [mapId]="map.id" [containerId]="map.containerId">
   <!-- <ac-map-layer-provider
     *ngIf="appSettingsService.showMapLayer"
     [provider]="arcGisMapServerProvider"
