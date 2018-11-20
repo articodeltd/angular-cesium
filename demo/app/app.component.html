@@ -21,8 +21,8 @@
     <settings-form (cleanMap)="map.removeAll()" (showEvent)="layer.setShow($event)"></settings-form>
   </mat-sidenav>
   <div style="display: flex; flex-direction: row; flex: 1">
-    <div id="left-map-container" style="display: flex; flex: 1; position: relative"></div>
-    <!-- <div id="right-map-container" style="display: flex; flex: 1; position: relative"></div> -->
+    <div id="left-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden"></div>
+    <!-- <div id="right-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden"></div> -->
   </div>
   <demo-map #map></demo-map>
 </mat-sidenav-container>

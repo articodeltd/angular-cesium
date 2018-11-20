@@ -22,7 +22,7 @@ export class ContextMenuLayerComponent implements OnInit {
     this.mapEventsManager
       .register({ event: CesiumEvent.RIGHT_CLICK, pick: PickOptions.NO_PICK })
       .subscribe(event => {
-        const position = this.coordinateConverter.screenToCartesian3(event.movement.endPosition, true);
+        const position = this.coordinateConverter.screenToCartesian3(event.movement.endPosition);
         if (!position) {
           return;
         }

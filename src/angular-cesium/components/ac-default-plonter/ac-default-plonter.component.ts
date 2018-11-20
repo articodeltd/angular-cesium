@@ -52,7 +52,7 @@ export class AcDefaultPlonterComponent implements OnInit {
   get plonterPosition() {
     if (this.plonterService.plonterShown) {
       const screenPos = this.plonterService.plonterClickPosition.endPosition;
-      return this.geoConverter.screenToCartesian3(screenPos, true);
+      return this.geoConverter.screenToCartesian3(screenPos);
     }
   }
   

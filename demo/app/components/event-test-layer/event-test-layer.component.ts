@@ -147,7 +147,7 @@ export class EventTestLayerComponent implements OnInit {
       .register({
         event: CesiumEvent.LEFT_CLICK,
         pick: PickOptions.PICK_ONE,
-        pickFilter: entity => entity.id === '1' || entity.id === '2',
+        pickFilter: entity => entity.id === '1' || entity.id === '2' || entity.id === '11' || entity.id === '10',
       })
       .pipe(map(result => result.entities))
       .subscribe(result => {
