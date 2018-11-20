@@ -171,18 +171,6 @@ export class EditableEllipse extends AcEntity {
       this._majorRadiusPoint = new EditPoint(this.id, position.clone(), this.pointProps);
       this._majorRadius = 0;
     }
-    // } else if (this._center && this._majorRadiusPoint && this._minorRadius === undefined) {
-    // const newRadius = GeoUtilsService.distance(this.center.getPosition(), position);
-    // const currentMajorRadius = this.getMajorRadius();
-    // if (newRadius > currentMajorRadius) {
-    // this._minorRadius = currentMajorRadius;
-    // this._majorRadiusPoint.setPosition(position);
-    // this._majorRadius = newRadius;
-    // }
-    // else {
-    //   this._minorRadius = newRadius;
-    // }
-    // }
 
     this.updateRotation();
     this.updateMinorRadiusEditPoints();

@@ -250,13 +250,10 @@ export class EditablePolygon extends AcEntity {
     this.updatePointsLayer();
     this.lastDraggedToPosition = draggedToPosition;
     this.positions.forEach(point => this.updatePointsLayer(true, point));
-    // this.updatePolygonsLayer();
   }
 
   endMovePolygon() {
     this.lastDraggedToPosition = undefined;
-    // this.positions.forEach(point => this.updatePointsLayer(true, point));
-    // this.updatePolygonsLayer();
   }
 
   removePoint(pointToRemove: EditPoint) {
