@@ -16,12 +16,82 @@ import { EditableCircle } from '../../models/editable-circle';
 
 @Component({
   selector: 'circles-editor',
-  templateUrl: './circles-editor.component.html',
+  template: /*html*/ `
+    <ac-layer #editArcsLayer acFor="let arc of editArcs$" [context]="this">
+      <ac-arc-desc
+        props="{
+        angle: arc.angle,
+        delta: arc.delta,
+        center: arc.center,
+        radius: arc.radius,
+        quality: 30,
+        color: arc.props.material()
+    }"
+      >
+      </ac-arc-desc>
+    </ac-layer>
+
+    <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
+      <ac-point-desc
+        props="{
+        position: point.getPosition(),
+        pixelSize: getPointSize(point),
+        color: point.props.color,
+        outlineColor: point.props.outlineColor,
+        outlineWidth: point.props.outlineWidth,
+        show: getPointShow(point)
+    }"
+      >
+      </ac-point-desc>
+    </ac-layer>
+
+    <ac-layer #editCirclesLayer acFor="let circle of editCircles$" [context]="this" [zIndex]="0">
+      <ac-ellipse-desc
+        props="{
+        position: circle.getCenterCallbackProperty(),
+        semiMajorAxis: circle.getRadiusCallbackProperty(),
+        semiMinorAxis: circle.getRadiusCallbackProperty(),
+        material: circle.circleProps.material,
+        outline: circle.circleProps.outline,
+        height: 0
+    }"
+      >
+      </ac-ellipse-desc>
+
+      <ac-array-desc acFor="let label of circle.labels" [idGetter]="getLabelId">
+        <ac-label-primitive-desc
+          props="{
+            position: label.position,
+            backgroundColor: label.backgroundColor,
+            backgroundPadding: label.backgroundPadding,
+            distanceDisplayCondition: label.distanceDisplayCondition,
+            eyeOffset: label.eyeOffset,
+            fillColor: label.fillColor,
+            font: label.font,
+            heightReference: label.heightReference,
+            horizontalOrigin: label.horizontalOrigin,
+            outlineColor: label.outlineColor,
+            outlineWidth: label.outlineWidth,
+            pixelOffset: label.pixelOffset,
+            pixelOffsetScaleByDistance: label.pixelOffsetScaleByDistance,
+            scale: label.scale,
+            scaleByDistance: label.scaleByDistance,
+            show: label.show,
+            showBackground: label.showBackground,
+            style: label.style,
+            text: label.text,
+            translucencyByDistance: label.translucencyByDistance,
+            verticalOrigin: label.verticalOrigin
+        }"
+        >
+        </ac-label-primitive-desc>
+      </ac-array-desc>
+    </ac-layer>
+  `,
   providers: [CoordinateConverter, CirclesManagerService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CirclesEditorComponent implements OnDestroy {
-
   private editLabelsRenderFn: (update: CircleEditUpdate, labels: LabelProps[]) => LabelProps[];
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
@@ -32,21 +102,22 @@ export class CirclesEditorComponent implements OnDestroy {
   @ViewChild('editArcsLayer') private editArcsLayer: AcLayerComponent;
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
 
-  constructor(private circlesEditor: CirclesEditorService,
-              private coordinateConverter: CoordinateConverter,
-              private mapEventsManager: MapEventsManagerService,
-              private cameraService: CameraService,
-              private circlesManager: CirclesManagerService) {
+  constructor(
+    private circlesEditor: CirclesEditorService,
+    private coordinateConverter: CoordinateConverter,
+    private mapEventsManager: MapEventsManagerService,
+    private cameraService: CameraService,
+    private circlesManager: CirclesManagerService,
+  ) {
     this.circlesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, this.circlesManager);
     this.startListeningToEditorUpdates();
   }
 
   private startListeningToEditorUpdates() {
-    this.circlesEditor.onUpdate().subscribe((update) => {
+    this.circlesEditor.onUpdate().subscribe(update => {
       if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
         this.handleCreateUpdates(update);
-      }
-      else if (update.editMode === EditModes.EDIT) {
+      } else if (update.editMode === EditModes.EDIT) {
         this.handleEditUpdates(update);
       }
     });
@@ -73,7 +144,6 @@ export class CirclesEditorComponent implements OnDestroy {
 
     circle.labels = this.editLabelsRenderFn(update, circle.labels);
     this.editCirclesLayer.update(circle, circle.getId());
-
   }
 
   removeEditLabels(circle: EditableCircle) {
@@ -89,7 +159,7 @@ export class CirclesEditorComponent implements OnDestroy {
           this.editCirclesLayer,
           this.editPointsLayer,
           this.editArcsLayer,
-          update.circleOptions
+          update.circleOptions,
         );
         break;
       }
@@ -153,7 +223,7 @@ export class CirclesEditorComponent implements OnDestroy {
           this.editCirclesLayer,
           this.editPointsLayer,
           this.editArcsLayer,
-          update.circleOptions
+          update.circleOptions,
         );
         circle.setManually(update.center, update.radiusPoint);
         break;
