@@ -13,6 +13,7 @@ export interface EllipseProps {
 
 export interface EllipseEditOptions extends EditorEditOptions {
   ellipseProps?: EllipseProps;
-  circleToEllipseTransformEvent: CesiumEvent;
-  circleToEllipseTransformEventModifier: CesiumEventModifier;
+  circleToEllipseTransformEvent?: CesiumEvent;
+  circleToEllipseTransformEventModifier?: CesiumEventModifier;
+  circleToEllipseTransformation?: boolean;
 }

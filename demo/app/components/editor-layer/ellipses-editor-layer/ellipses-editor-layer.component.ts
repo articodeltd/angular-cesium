@@ -32,7 +32,7 @@ export class EllipsesEditorLayerComponent implements OnInit {
         { text: '' },
         {
           text: Math.round(update.majorRadius / 1000).toString() + 'Km',
-          scale: 0.6,
+          scale: 0.5,
           // eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
           fillColor: Cesium.Color.BLUE,
         },
@@ -41,7 +41,7 @@ export class EllipsesEditorLayerComponent implements OnInit {
       if (update.minorRadius > 0) {
         newLabels.push({
           text: Math.round(update.minorRadius / 1000).toString() + 'Km',
-          scale: 0.6,
+          scale: 0.5,
           // eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
           fillColor: Cesium.Color.BLUE,
         });

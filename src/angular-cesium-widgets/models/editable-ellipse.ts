@@ -211,7 +211,12 @@ export class EditableEllipse extends AcEntity {
     this._majorRadius = newRadius;
     this.doneCreation = true;
 
+    if (!this.options.circleToEllipseTransformation) {
+      this._minorRadius = this._majorRadius;
+    }
+
     this.updateRotation();
+    this.updateMinorRadiusEditPoints();
     this.updatePointsLayer();
     this.updateEllipsesLayer();
   }
@@ -234,7 +239,7 @@ export class EditableEllipse extends AcEntity {
       }
     } else {
       if (newRadius > this._majorRadius) {
-        return;
+        this._minorRadius = this._majorRadius;
       } else {
         this._minorRadius = newRadius;
       }

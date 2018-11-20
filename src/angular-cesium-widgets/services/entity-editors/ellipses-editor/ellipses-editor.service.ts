@@ -49,6 +49,7 @@ export const DEFAULT_ELLIPSE_OPTIONS: EllipseEditOptions = {
     width: 1,
     material: () => Cesium.Color.BLACK,
   },
+  circleToEllipseTransformation: false,
 };
 
 /**
@@ -60,7 +61,7 @@ export const DEFAULT_ELLIPSE_OPTIONS: EllipseEditOptions = {
  *
  * + `create` for starting a creation of the shape over the map. Returns a extension of `EllipseEditorObservable`.
  * + `edit` for editing shape over the map starting from a given positions. Returns an extension of `EllipseEditorObservable`.
- * + To stop editing call `dsipose()` from the `EllipseEditorObservable` you get back from `create()` \ `edit()`.
+ * + To stop editing call `dispose()` from the `EllipseEditorObservable` you get back from `create()` \ `edit()`.
  *
  * **Labels over edited shapes**
  * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
@@ -270,14 +271,17 @@ export class EllipsesEditorService {
       pickFilter: entity => id === entity.editedEntityId,
     });
 
-    const addSecondRadius = this.mapEventsManager.register({
-      event: options.circleToEllipseTransformEvent,
-      modifier: options.circleToEllipseTransformEventModifier,
-      entityType: EditableEllipse,
-      pick: PickOptions.PICK_FIRST,
-      priority,
-      pickFilter: entity => id === entity.id,
-    });
+    let addSecondRadiusRegistration;
+    if (options.circleToEllipseTransformation) {
+      addSecondRadiusRegistration = this.mapEventsManager.register({
+        event: options.circleToEllipseTransformEvent,
+        modifier: options.circleToEllipseTransformEventModifier,
+        entityType: EditableEllipse,
+        pick: PickOptions.PICK_FIRST,
+        priority,
+        pickFilter: entity => id === entity.id,
+      });
+    }
 
     let shapeDragRegistration;
     if (options.allowDrag) {
@@ -328,18 +332,20 @@ export class EllipsesEditorService {
         });
       });
 
-    addSecondRadius.subscribe(({ movement: { endPosition, startPosition, drop }, entities }) => {
-      const update: EllipseEditUpdate = {
-        id,
-        editMode: EditModes.EDIT,
-        editAction: EditActions.TRANSFORM,
-        ...this.getEllipseProperties(id),
-      };
-      this.updateSubject.next(update);
-      editSubject.next({
-        ...update,
+    if (addSecondRadiusRegistration) {
+      addSecondRadiusRegistration.subscribe(({ movement: { endPosition, startPosition, drop }, entities }) => {
+        const update: EllipseEditUpdate = {
+          id,
+          editMode: EditModes.EDIT,
+          editAction: EditActions.TRANSFORM,
+          ...this.getEllipseProperties(id),
+        };
+        this.updateSubject.next(update);
+        editSubject.next({
+          ...update,
+        });
       });
-    });
+    }
 
     if (shapeDragRegistration) {
       shapeDragRegistration
@@ -366,9 +372,12 @@ export class EllipsesEditorService {
         });
     }
 
-    const observables = [pointDragRegistration, addSecondRadius];
+    const observables = [pointDragRegistration, addSecondRadiusRegistration];
     if (shapeDragRegistration) {
       observables.push(shapeDragRegistration);
+    }
+    if (addSecondRadiusRegistration) {
+      observables.push(addSecondRadiusRegistration);
     }
 
     this.observablesMap.set(id, observables);
