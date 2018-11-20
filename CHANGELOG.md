@@ -4,6 +4,7 @@
 * Fixed `ac-map` onDestroy.
 * Fixed `CircleEditorService` shape dragging.
 * Fixed `ac-model-desc` docs [#243](https://github.com/TGFTech/angular-cesium/issues/243).
+* Fixed entities drawing directly to map - without ac-layer [#212](https://github.com/TGFTech/angular-cesium/issues/212)
 
 ### Features
 * Multiple `AcMap` support using `ngFor` - The optional `@Input() containerId` in `AcMap` can be used to place the map canvas in any container / move the canvas to a new container.
