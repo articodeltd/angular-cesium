@@ -16,15 +16,12 @@ export class CesiumService {
   init(mapContainer: HTMLElement, map: AcMapComponent) {
     this.map = map;
     this.ngZone.runOutsideAngular(() => {
-      const options = this.viewerConfiguration ? this.viewerConfiguration.viewerOptions : undefined;
+      const options = this.viewerConfiguration ? this.viewerConfiguration.getNextViewerOptions() : undefined;
       this.cesiumViewer = this.viewerFactory.createViewer(mapContainer, options);
 
-      if (
-        this.viewerConfiguration &&
-        this.viewerConfiguration.viewerModifier &&
-        typeof this.viewerConfiguration.viewerModifier === 'function'
-      ) {
-        this.viewerConfiguration.viewerModifier(this.cesiumViewer);
+      const viewerModifier = this.viewerConfiguration.getNextViewerModifier();
+      if (typeof viewerModifier === 'function') {
+        viewerModifier(this.cesiumViewer);
       }
     });
   }

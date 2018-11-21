@@ -359,7 +359,7 @@ With angular cesium you can define your map provider in a declarative way using 
 ```
 ### Multi map support
 Angular Cesium supports seamless integration of multiple maps.
-The most simple way to implement multiple maps is to use *ngFor directive inside `<ac-map>` `AcMapComponent` has a `containerId` input which can be used to specify the id of the containing element. You can see an example of multiple map usage in `DemoMultipleMapsComponent` in our demo app.
+A simple way to implement multiple maps is by using *ngFor directive inside `<ac-map>`. `AcMapComponent` has a `containerId` input which can be used to specify the id of the containing element. You can see an example of multiple map usage in `DemoMultipleMapsComponent` in our demo app. In order to set initial viewer configuration for multiple maps you can set `ViewerConfigurationService.viewerOptions` to an array of options. The map initialized first will be set with the first option object in the options array and so on.
 
 ### Camera
 #### [Camera Keyboard Control Service](https://tgftech.github.io/angular-cesium/injectables/KeyboardControlService.html)
