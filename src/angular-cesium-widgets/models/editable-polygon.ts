@@ -249,12 +249,11 @@ export class EditablePolygon extends AcEntity {
     });
     this.updatePointsLayer();
     this.lastDraggedToPosition = draggedToPosition;
+    this.positions.forEach(point => this.updatePointsLayer(true, point));
   }
 
   endMovePolygon() {
     this.lastDraggedToPosition = undefined;
-    this.positions.forEach(point => this.updatePointsLayer(true, point));
-    this.updatePolygonsLayer();
   }
 
   removePoint(pointToRemove: EditPoint) {
@@ -289,6 +288,10 @@ export class EditablePolygon extends AcEntity {
 
   getPositionsHierarchy(): Cartesian3[] {
     return this.positions.filter(position => !position.isVirtualEditPoint()).map(position => position.getPosition());
+  }
+
+  getPositionsHierarchyCallbackProperty(): Cartesian3[] {
+    return new Cesium.CallbackProperty(this.getPositionsHierarchy.bind(this), false);
   }
 
   private removePosition(point: EditPoint) {

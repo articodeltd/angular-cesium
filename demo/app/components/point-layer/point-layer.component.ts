@@ -8,7 +8,6 @@ import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksD
 	selector: 'point-layer',
 	templateUrl: 'point-layer.component.html',
 	styleUrls: [],
-	providers: [TracksDataProvider]
 })
 export class PointLayerComponent implements OnInit {
 	@ViewChild(AcLayerComponent) layer: AcLayerComponent;

@@ -13,20 +13,22 @@ export class EntitiesDrawerService extends BasicDrawerService {
   private entityCollections = new Map<any, OptimizedEntityCollection>();
   private graphicsTypeName: string;
 
-  constructor(private cesiumService: CesiumService,
-              private graphicsType: GraphicsType,
-              private defaultOptions: EntitiesDrawerOptions = {
-                collectionMaxSize: -1,
-                collectionSuspensionTime: -1,
-                collectionsNumber: 1
-              }) {
+  constructor(
+    private cesiumService: CesiumService,
+    private graphicsType: GraphicsType,
+    private defaultOptions: EntitiesDrawerOptions = {
+      collectionMaxSize: -1,
+      collectionSuspensionTime: -1,
+      collectionsNumber: 1,
+    },
+  ) {
     super();
     this.graphicsTypeName = GraphicsType[this.graphicsType];
   }
 
   private getFreeEntitiesCollection(): OptimizedEntityCollection {
     let freeEntityCollection = null;
-    this.entityCollections.forEach((entityCollection) => {
+    this.entityCollections.forEach(entityCollection => {
       if (entityCollection.isFree()) {
         freeEntityCollection = entityCollection;
       }
@@ -40,16 +42,15 @@ export class EntitiesDrawerService extends BasicDrawerService {
     const dataSources = [];
     for (let i = 0; i < finalOptions.collectionsNumber; i++) {
       const dataSource = new Cesium.CustomDataSource(this.graphicsTypeName);
-			dataSources.push(dataSource);
+      dataSources.push(dataSource);
       this.cesiumService.getViewer().dataSources.add(dataSource);
-      this.entityCollections.set(dataSource.entities,
-        new OptimizedEntityCollection(
-          dataSource.entities,
-          finalOptions.collectionMaxSize,
-          finalOptions.collectionSuspensionTime));
+      this.entityCollections.set(
+        dataSource.entities,
+        new OptimizedEntityCollection(dataSource.entities, finalOptions.collectionMaxSize, finalOptions.collectionSuspensionTime),
+      );
     }
-    
-		return dataSources;
+
+    return dataSources;
   }
 
   add(cesiumProps: any): any {
@@ -77,6 +78,11 @@ export class EntitiesDrawerService extends BasicDrawerService {
   update(entity: any, cesiumProps: any) {
     this.suspendEntityCollection(entity);
 
+    if (entity.position instanceof Cesium.CallbackProperty) {
+      if (entity.position._isConstant) {
+        entity.position = cesiumProps.position;
+      }
+    }
     entity.position = cesiumProps.position !== undefined ? cesiumProps.position : undefined;
     entity.name = cesiumProps.name !== undefined ? cesiumProps.name : entity.name;
     entity.description = cesiumProps.description !== undefined ? cesiumProps.description : entity.description;
@@ -85,8 +91,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
 
     if (this._propsAssigner) {
       this._propsAssigner(entity[this.graphicsTypeName], cesiumProps);
-    }
-    else {
+    } else {
       Object.assign(entity[this.graphicsTypeName], cesiumProps);
     }
   }
@@ -97,13 +102,13 @@ export class EntitiesDrawerService extends BasicDrawerService {
   }
 
   removeAll() {
-    this.entityCollections.forEach((entityCollection) => {
+    this.entityCollections.forEach(entityCollection => {
       entityCollection.removeAll();
     });
   }
 
   setShow(showValue: boolean) {
-    this.entityCollections.forEach((entityCollection) => {
+    this.entityCollections.forEach(entityCollection => {
       entityCollection.setShow(showValue);
     });
   }

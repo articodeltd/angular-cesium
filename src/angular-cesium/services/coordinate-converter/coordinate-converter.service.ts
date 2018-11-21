@@ -38,13 +38,13 @@ export class CoordinateConverter {
 	constructor(@Optional() private cesiumService?: CesiumService) {
 	}
 	
-	screenToCartesian3(screenPos: { x: number, y: number }, addMapCanvansBoundsToPos?: boolean) {
+	screenToCartesian3(screenPos: { x: number, y: number }, addMapCanvasBoundsToPos?: boolean) {
 		if (!this.cesiumService) {
 			throw new Error('ANGULAR2-CESIUM - Cesium service should be provided in order to do screen position calculations');
 		}
 		else {
 			const screenPosition = {...screenPos};
-			if (addMapCanvansBoundsToPos) {
+			if (addMapCanvasBoundsToPos) {
 				const mapBounds = this.cesiumService.getViewer().canvas.getBoundingClientRect();
 				screenPosition.x += mapBounds.left;
 				screenPosition.y += mapBounds.top;

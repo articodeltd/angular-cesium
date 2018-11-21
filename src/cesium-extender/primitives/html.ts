@@ -11,6 +11,7 @@ export class HtmlPrimitive {
     private _pixelOffset: Cartesian2;
     private _element: HTMLElement;
     private _collection: HtmlCollection;
+    private _mapContainer;
 
     constructor(options: any, collection: HtmlCollection = null) {
         if (typeof options !== 'object') {
@@ -18,6 +19,7 @@ export class HtmlPrimitive {
         }
 
         this.scene = options.scene;
+        this._mapContainer = options.mapContainer;
         this.show = options.show || true;
         this.position = options.position;
         this.pixelOffset = options.pixelOffset;
@@ -66,6 +68,7 @@ export class HtmlPrimitive {
         this._element = element;
 
         if (Cesium.defined(element)) {
+            this._mapContainer.appendChild(element);
             this._element.style.position = 'absolute';
             this._element.style.zIndex = Number.MAX_VALUE.toString();
         }

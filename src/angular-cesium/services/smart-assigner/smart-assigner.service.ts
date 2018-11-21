@@ -8,10 +8,11 @@ export class SmartAssigner {
 
         props.forEach(prop => {
             if (!allowUndefined) {
-                fnBody += `if (obj2['${prop}'] !== undefined) { obj1['${prop}'] = obj2['${prop}']; } `;
+                // tslint:disable-next-line:max-line-length
+                fnBody += `if (!(obj1['${prop}'] instanceof Cesium.CallbackProperty) && obj2['${prop}'] !== undefined) { obj1['${prop}'] = obj2['${prop}']; } `;
             }
             else {
-                fnBody += `obj1['${prop}'] = obj2['${prop}']; `;
+                fnBody += `if(!(obj1['${prop}'] instanceof Cesium.CallbackProperty))obj1['${prop}'] = obj2['${prop}']; `;
             }
         });
 

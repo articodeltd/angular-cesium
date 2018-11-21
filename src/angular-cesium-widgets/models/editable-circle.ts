@@ -4,9 +4,10 @@ import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-la
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { EditArc } from './edit-arc';
-import { CircleEditOptions, CircleProps } from './circle-edit-options';
+import { CircleEditOptions } from './circle-edit-options';
 import { PointProps, PolylineProps } from './polyline-edit-options';
 import { defaultLabelProps, LabelProps } from './label-props';
+import { EllipseProps } from './ellipse-edit-options';
 
 export class EditableCircle extends AcEntity {
   private _center: EditPoint;
@@ -15,16 +16,18 @@ export class EditableCircle extends AcEntity {
   private doneCreation = false;
   private _enableEdit = true;
   private lastDraggedToPosition: any;
-  private _circleProps: CircleProps;
+  private _circleProps: EllipseProps;
   private _pointProps: PointProps;
   private _polylineProps: PolylineProps;
   private _labels: LabelProps[] = [];
 
-  constructor(private id: string,
-              private circlesLayer: AcLayerComponent,
-              private pointsLayer: AcLayerComponent,
-              private arcsLayer: AcLayerComponent,
-              private options: CircleEditOptions) {
+  constructor(
+    private id: string,
+    private circlesLayer: AcLayerComponent,
+    private pointsLayer: AcLayerComponent,
+    private arcsLayer: AcLayerComponent,
+    private options: CircleEditOptions,
+  ) {
     super();
     this._circleProps = options.circleProps;
     this._pointProps = options.pointProps;
@@ -43,12 +46,10 @@ export class EditableCircle extends AcEntity {
       if (!label.position) {
         if (index !== labels.length - 1) {
           label.position = this._center.getPosition();
-        }
-        else {
+        } else {
           label.position = this._radiusPoint.getPosition();
         }
       }
-
 
       return Object.assign({}, defaultLabelProps, label);
     });
@@ -70,11 +71,11 @@ export class EditableCircle extends AcEntity {
     this._pointProps = value;
   }
 
-  get circleProps(): CircleProps {
+  get circleProps(): EllipseProps {
     return this._circleProps;
   }
 
-  set circleProps(value: CircleProps) {
+  set circleProps(value: EllipseProps) {
     this._circleProps = value;
   }
 
@@ -97,26 +98,28 @@ export class EditableCircle extends AcEntity {
     this.updatePointsLayer();
   }
 
-  setManually(center: Cartesian3, radiusPoint: Cartesian3, centerPointProp = this.pointProps,
-              radiusPointProp = this.pointProps, circleProp = this.circleProps) {
+  setManually(
+    center: Cartesian3,
+    radiusPoint: Cartesian3,
+    centerPointProp = this.pointProps,
+    radiusPointProp = this.pointProps,
+    circleProp = this.circleProps,
+  ) {
     if (!this._center) {
       this._center = new EditPoint(this.id, center, centerPointProp);
-    }
-    else {
+    } else {
       this._center.setPosition(center);
     }
 
     if (!this._radiusPoint) {
       this._radiusPoint = new EditPoint(this.id, radiusPoint, radiusPointProp);
-    }
-    else {
+    } else {
       this._radiusPoint.setPosition(radiusPoint);
     }
 
     if (!this._outlineArc) {
       this.createOutlineArc();
-    }
-    else {
+    } else {
       this._outlineArc.radius = this.getRadius();
     }
 
@@ -170,7 +173,6 @@ export class EditableCircle extends AcEntity {
     this.updateCirclesLayer();
   }
 
-
   moveCircle(dragStartPosition: Cartesian3, dragEndPosition: Cartesian3) {
     if (!this.doneCreation) {
       return;
@@ -182,8 +184,7 @@ export class EditableCircle extends AcEntity {
     const radius = this.getRadius();
     const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, dragEndPosition);
     GeoUtilsService.addDeltaToPosition(this.getCenter(), delta, true);
-    this.radiusPoint.setPosition(
-      GeoUtilsService.pointByLocationDistanceAndAzimuth(this.getCenter(), radius, Math.PI / 2, true));
+    this.radiusPoint.setPosition(GeoUtilsService.pointByLocationDistanceAndAzimuth(this.getCenter(), radius, Math.PI / 2, true));
     this._outlineArc.radius = this.getRadius();
     this.updateArcsLayer();
     this.updatePointsLayer();
@@ -202,8 +203,16 @@ export class EditableCircle extends AcEntity {
     return GeoUtilsService.distance(this._center.getPosition(), this._radiusPoint.getPosition());
   }
 
+  getRadiusCallbackProperty() {
+    return new Cesium.CallbackProperty(this.getRadius.bind(this), false);
+  }
+
   getCenter(): Cartesian3 {
     return this._center ? this._center.getPosition() : undefined;
+  }
+
+  getCenterCallbackProperty() {
+    return new Cesium.CallbackProperty(this.getCenter.bind(this), false);
   }
 
   getRadiusPoint(): Cartesian3 {

@@ -21,7 +21,7 @@ export class EntityOnMapComponent implements OnInit, OnChanges, OnDestroy {
 		const dataSources = this._drawer.init();
 		if (dataSources) {
 			this.dataSources = dataSources;
-			this.mapLayers.registerLayerDataSources(dataSources, 0);
+			// this.mapLayers.registerLayerDataSources(dataSources, 0);
 		}
 		this.drawOnMap();
 	}

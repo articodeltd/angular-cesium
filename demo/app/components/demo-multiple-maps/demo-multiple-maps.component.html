@@ -1,0 +1,51 @@
+<ac-map *ngFor="let map of maps; trackBy: mapsTrackBy" [sceneMode]="map.sceneMode" [mapId]="map.id" [containerId]="map.containerId">
+  <!-- <ac-map-layer-provider
+    *ngIf="appSettingsService.showMapLayer"
+    [provider]="arcGisMapServerProvider"
+    [options]="{
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
+    }"
+  >
+  </ac-map-layer-provider> -->
+  <ac-3d-tile-layer
+    *ngIf="appSettingsService.show3dtiles"
+    [options]="{
+      url:
+        'https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s'
+    }"
+    [style]="{
+      color: 'mix(color(\'white\'), color(\'lightgreen\'), min(${area} / 10000.0, 1.0))'
+    }"
+  >
+  </ac-3d-tile-layer>
+  <tracks-layer #layer [show]="appSettingsService.showTracksLayer" [tracksType]="appSettingsService.tracksDataType"></tracks-layer>
+  <!-- <tracks-with-arrays #layer [show]="true"></tracks-with-arrays> -->
+  <!-- <maps-layer></maps-layer> -->
+  <!-- <models-layer></models-layer> -->
+  <!-- <dynamic-ellipse-layer #layer *ngIf="showLayer"></dynamic-ellipse-layer> -->
+  <!-- <base-layer #layer></base-layer> -->
+  <!-- <dynamic-circle-layer #layer></dynamic-circle-layer> -->
+  <!-- <dynamic-polyline-layer #layer></dynamic-polyline-layer> -->
+  <!-- <point-layer *ngIf="showLayer" #layer></point-layer> -->
+  <!-- <czml-layer></czml-layer> -->
+  <!-- <event-test-layer></event-test-layer> -->
+  <!-- <arc-layer #layer></arc-layer> -->
+  <!-- <draw-on-map-layer></draw-on-map-layer> -->
+  <!-- <polygon-layer></polygon-layer> -->
+  <!-- <polygon-performance-test></polygon-performance-test> -->
+  <!-- <layer-order-example></layer-order-example> -->
+  <!-- <hippodrome-layer></hippodrome-layer> -->
+  <!-- <polyline-editor-layer></polyline-editor-layer> -->
+  <!-- <polygons-editor-layer></polygons-editor-layer> -->
+  <!-- <circles-editor-layer></circles-editor-layer> -->
+  <!-- <ellipses-editor-layer></ellipses-editor-layer> -->
+  <!-- <hippodrome-editor-layer></hippodrome-editor-layer> -->
+  <!-- <selection-layer></selection-layer> -->
+  <!-- <heatmap-layer></heatmap-layer> -->
+  <!-- <html-layer></html-layer> -->
+  <!-- <track-entity-layer></track-entity-layer> -->
+
+  <toolbar-example></toolbar-example>
+  <context-menu-layer></context-menu-layer>
+  <keyboard-control-layer *ngIf="appSettingsService.keyboardControl"></keyboard-control-layer>
+</ac-map>

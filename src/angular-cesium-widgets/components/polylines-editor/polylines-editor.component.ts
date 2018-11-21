@@ -16,12 +16,67 @@ import { LabelProps } from '../../models/label-props';
 
 @Component({
   selector: 'polylines-editor',
-  templateUrl: './polylines-editor.component.html',
+  template: /*html*/ `
+    <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this">
+      <ac-polyline-primitive-desc
+        props="{
+        positions: polyline.getPositions(),
+        width: polyline.props.width,
+        material: polyline.props.material()
+    }"
+      >
+      </ac-polyline-primitive-desc>
+    </ac-layer>
+
+    <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
+      <ac-point-desc
+        props="{
+        position: point.getPosition(),
+        pixelSize: getPointSize(point),
+        color: point.props.color,
+        outlineColor: point.props.outlineColor,
+        outlineWidth: point.props.outlineWidth,
+        show: getPointShow(point)
+    }"
+      >
+      </ac-point-desc>
+    </ac-layer>
+
+    <ac-layer #polylineLabelsLayer acFor="let polylineLabels of polylineLabels$" [context]="this">
+      <ac-array-desc acFor="let label of polylineLabels.labels" [idGetter]="getLabelId">
+        <ac-label-primitive-desc
+          props="{
+            position: label.position,
+            backgroundColor: label.backgroundColor,
+            backgroundPadding: label.backgroundPadding,
+            distanceDisplayCondition: label.distanceDisplayCondition,
+            eyeOffset: label.eyeOffset,
+            fillColor: label.fillColor,
+            font: label.font,
+            heightReference: label.heightReference,
+            horizontalOrigin: label.horizontalOrigin,
+            outlineColor: label.outlineColor,
+            outlineWidth: label.outlineWidth,
+            pixelOffset: label.pixelOffset,
+            pixelOffsetScaleByDistance: label.pixelOffsetScaleByDistance,
+            scale: label.scale,
+            scaleByDistance: label.scaleByDistance,
+            show: label.show,
+            showBackground: label.showBackground,
+            style: label.style,
+            text: label.text,
+            translucencyByDistance: label.translucencyByDistance,
+            verticalOrigin: label.verticalOrigin
+        }"
+        >
+        </ac-label-primitive-desc>
+      </ac-array-desc>
+    </ac-layer>
+  `,
   providers: [CoordinateConverter, PolylinesManagerService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PolylinesEditorComponent implements OnDestroy {
-
   private editLabelsRenderFn: (update: PolylineEditUpdate, labels: LabelProps[]) => LabelProps[];
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
@@ -32,11 +87,13 @@ export class PolylinesEditorComponent implements OnDestroy {
   @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
   @ViewChild('polylineLabelsLayer') private polylineLabelsLayer: AcLayerComponent;
 
-  constructor(private polylinesEditor: PolylinesEditorService,
-              private coordinateConverter: CoordinateConverter,
-              private mapEventsManager: MapEventsManagerService,
-              private cameraService: CameraService,
-              private polylinesManager: PolylinesManagerService) {
+  constructor(
+    private polylinesEditor: PolylinesEditorService,
+    private coordinateConverter: CoordinateConverter,
+    private mapEventsManager: MapEventsManagerService,
+    private cameraService: CameraService,
+    private polylinesManager: PolylinesManagerService,
+  ) {
     this.polylinesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polylinesManager);
     this.startListeningToEditorUpdates();
   }
@@ -45,8 +102,7 @@ export class PolylinesEditorComponent implements OnDestroy {
     this.polylinesEditor.onUpdate().subscribe((update: PolylineEditUpdate) => {
       if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
         this.handleCreateUpdates(update);
-      }
-      else if (update.editMode === EditModes.EDIT) {
+      } else if (update.editMode === EditModes.EDIT) {
         this.handleEditUpdates(update);
       }
     });
@@ -72,7 +128,6 @@ export class PolylinesEditorComponent implements OnDestroy {
 
     polyline.labels = this.editLabelsRenderFn(update, polyline.labels);
     this.polylineLabelsLayer.update(polyline, polyline.getId());
-
   }
 
   removeEditLabels(polyline: EditablePolyline) {
@@ -88,7 +143,8 @@ export class PolylinesEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
-          update.polylineOptions);
+          update.polylineOptions,
+        );
         break;
       }
       case EditActions.MOUSE_MOVE: {
@@ -153,7 +209,7 @@ export class PolylinesEditorComponent implements OnDestroy {
           this.editPolylinesLayer,
           this.coordinateConverter,
           update.polylineOptions,
-          update.positions
+          update.positions,
         );
         break;
       }
@@ -200,7 +256,7 @@ export class PolylinesEditorComponent implements OnDestroy {
       case EditActions.DRAG_SHAPE: {
         const polyline = this.polylinesManager.get(update.id);
         if (polyline && polyline.enableEdit) {
-          polyline.moveShape(update.draggedPosition, update.updatedPosition)
+          polyline.moveShape(update.draggedPosition, update.updatedPosition);
           this.renderEditLabels(polyline, update);
         }
         break;

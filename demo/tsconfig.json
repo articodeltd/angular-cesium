@@ -25,7 +25,8 @@
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
-    "types": []
+    "types": [],
+    "resolveJsonModule": true
   },
   "exclude": [
     "../node_modules",

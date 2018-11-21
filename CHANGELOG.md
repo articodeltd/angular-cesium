@@ -1,3 +1,22 @@
+## 0.54
+### Fixes
+* Fixed `ac-layer` onDestroy.
+* Fixed `ac-map` onDestroy.
+* Fixed `CircleEditorService` shape dragging.
+* Fixed `ac-model-desc` docs [#243](https://github.com/TGFTech/angular-cesium/issues/243).
+* Fixed entities drawing directly to map - without ac-layer [#212](https://github.com/TGFTech/angular-cesium/issues/212)
+* Fixed plonter behavior
+
+### Features
+* Multiple `AcMap` support using `ngFor` - The optional `@Input() containerId` in `AcMap` can be used to place the map canvas in any container / move the canvas to a new container.
+* New `bind2DMapsCameras()` function added to `MapsManagerService` for binding cameras position in different 2D maps.
+* New `unbindMapsCameras()` function added to `MapsManagerService` for unbinding maps camera.
+* New `setRotation()` function added to `CameraService`.
+* New `lockRotation()` function added to `CameraService`.
+* New `ZoomToRectangleService` was added to `AngularCesiumWidgetsModule` - a tool for zooming into a rectangle that is drawn on the map.
+* Added initial support for `Cesium.CallbackProperty`.
+* Added new ellipses shape editor that can be used to draw circles and ellipses.
+
 ## 0.53
 ### Features
 * New `<ac-czml-desc>` component for adding CzmlDataSource to ac-layer.

@@ -16,12 +16,86 @@ import { EditablePolygon } from '../../models/editable-polygon';
 
 @Component({
   selector: 'polygons-editor',
-  templateUrl: './polygons-editor.component.html',
+  template: /*html*/ `
+    <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this">
+      <ac-polyline-primitive-desc
+        props="{
+        positions: polyline.getPositions(),
+        width: polyline.props.width,
+        material: polyline.props.material()
+    }"
+      >
+      </ac-polyline-primitive-desc>
+    </ac-layer>
+
+    <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
+      <ac-point-desc
+        props="{
+        position: point.getPosition(),
+        pixelSize: getPointSize(point),
+        color: point.props.color,
+        outlineColor: point.props.outlineColor,
+        outlineWidth: point.props.outlineWidth,
+        show: getPointShow(point)
+    }"
+      >
+      </ac-point-desc>
+    </ac-layer>
+
+    <ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this">
+      <ac-polygon-desc
+        props="{
+        hierarchy: polygon.getPositionsHierarchyCallbackProperty(),
+        material: polygon.polygonProps.material
+    }"
+      >
+      </ac-polygon-desc>
+      <!-- <ac-static-polygon-desc -->
+      <!-- geometryProps="{ -->
+      <!-- polygonHierarchy: polygon.getHierarchy(), -->
+      <!-- height: 1 -->
+      <!-- }" -->
+      <!-- instanceProps="{ -->
+      <!-- attributes: attributes -->
+      <!-- }" -->
+      <!-- primitiveProps="{ -->
+      <!-- appearance: appearance -->
+      <!-- }"> -->
+      <!-- </ac-static-polygon-desc -->
+      <ac-array-desc acFor="let label of polygon.labels" [idGetter]="getLabelId">
+        <ac-label-primitive-desc
+          props="{
+            position: label.position,
+            backgroundColor: label.backgroundColor,
+            backgroundPadding: label.backgroundPadding,
+            distanceDisplayCondition: label.distanceDisplayCondition,
+            eyeOffset: label.eyeOffset,
+            fillColor: label.fillColor,
+            font: label.font,
+            heightReference: label.heightReference,
+            horizontalOrigin: label.horizontalOrigin,
+            outlineColor: label.outlineColor,
+            outlineWidth: label.outlineWidth,
+            pixelOffset: label.pixelOffset,
+            pixelOffsetScaleByDistance: label.pixelOffsetScaleByDistance,
+            scale: label.scale,
+            scaleByDistance: label.scaleByDistance,
+            show: label.show,
+            showBackground: label.showBackground,
+            style: label.style,
+            text: label.text,
+            translucencyByDistance: label.translucencyByDistance,
+            verticalOrigin: label.verticalOrigin
+        }"
+        >
+        </ac-label-primitive-desc>
+      </ac-array-desc>
+    </ac-layer>
+  `,
   providers: [CoordinateConverter, PolygonsManagerService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PolygonsEditorComponent implements OnDestroy {
-
   private editLabelsRenderFn: (update: PolygonEditUpdate, labels: LabelProps[]) => LabelProps[];
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
@@ -37,11 +111,13 @@ export class PolygonsEditorComponent implements OnDestroy {
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
   @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
 
-  constructor(private polygonsEditor: PolygonsEditorService,
-              private coordinateConverter: CoordinateConverter,
-              private mapEventsManager: MapEventsManagerService,
-              private cameraService: CameraService,
-              private polygonsManager: PolygonsManagerService) {
+  constructor(
+    private polygonsEditor: PolygonsEditorService,
+    private coordinateConverter: CoordinateConverter,
+    private mapEventsManager: MapEventsManagerService,
+    private cameraService: CameraService,
+    private polygonsManager: PolygonsManagerService,
+  ) {
     this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polygonsManager);
     this.startListeningToEditorUpdates();
   }
@@ -50,8 +126,7 @@ export class PolygonsEditorComponent implements OnDestroy {
     this.polygonsEditor.onUpdate().subscribe((update: PolygonEditUpdate) => {
       if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
         this.handleCreateUpdates(update);
-      }
-      else if (update.editMode === EditModes.EDIT) {
+      } else if (update.editMode === EditModes.EDIT) {
         this.handleEditUpdates(update);
       }
     });
@@ -77,7 +152,6 @@ export class PolygonsEditorComponent implements OnDestroy {
 
     polygon.labels = this.editLabelsRenderFn(update, polygon.labels);
     this.editPolygonsLayer.update(polygon, polygon.getId());
-
   }
 
   removeEditLabels(polygon: EditablePolygon) {
@@ -94,7 +168,7 @@ export class PolygonsEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
-          update.polygonOptions
+          update.polygonOptions,
         );
         break;
       }
@@ -161,7 +235,7 @@ export class PolygonsEditorComponent implements OnDestroy {
           this.editPolylinesLayer,
           this.coordinateConverter,
           update.polygonOptions,
-          update.positions
+          update.positions,
         );
         break;
       }

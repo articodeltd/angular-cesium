@@ -18,7 +18,7 @@ import { CameraService } from '../../../../src/angular-cesium';
 @Component({
   selector: 'tracks-layer',
   templateUrl: './tracks-layer.component.html',
-  providers: [RealTracksDataProvider, SimTracksDataProvider],
+  providers: [RealTracksDataProvider],
   styleUrls: ['./tracks-layer.component.css']
 })
 export class TracksLayerComponent implements OnInit, OnChanges {
@@ -128,7 +128,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
   getSingleTrackObservable(trackId: string) {
     return this.tracks$.pipe(
       filter((notification) => notification.id === trackId),
-      map((notification) => notification.entity),);
+      map((notification) => notification.entity));
   }
 
   ngOnChanges(changes: SimpleChanges): void {

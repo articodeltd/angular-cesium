@@ -17,11 +17,11 @@ import { CesiumService } from '../cesium/cesium.service';
  */
 @Injectable()
 export class ScreenshotService {
-	constructor(private cesiumSerive: CesiumService) {
+	constructor(private cesiumService: CesiumService) {
 	}
 	
 	getMapScreenshotDataUrlBase64() {
-		const canvas = this.cesiumSerive.getCanvas();
+		const canvas = this.cesiumService.getCanvas();
 		return canvas.toDataURL()
 	}
 	

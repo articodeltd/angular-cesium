@@ -4,35 +4,41 @@ import { Observable ,  Subscriber } from 'rxjs';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
 import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
+import { publish } from 'rxjs/operators';
 
 export class Track extends AcEntity {
 };
 
 @Injectable()
 export class SimTracksDataProvider {
+  private _socket: SocketIO.Socket;
+	private tracks$;
 
   constructor(private webSocketSupplier: WebSocketSupplier) {
+    this._socket = webSocketSupplier.get();
+		this.tracks$ = publish()(Observable.create((observer: Subscriber<any>) => {
+			this._socket.on('birds', (data: any) => {
+				data.forEach(
+					(acNotification: any) => {
+						let action;
+						if (acNotification.action === 'ADD_OR_UPDATE') {
+							action = ActionType.ADD_UPDATE;
+						}
+						else if (acNotification.action === 'DELETE') {
+							action = ActionType.DELETE;
+						}
+						acNotification.actionType = action;
+						acNotification.entity = new Track(this.convertToCesiumObj(acNotification.entity));
+						observer.next(acNotification);
+					});
+			});
+		}));
+
+		this.tracks$.connect();
   }
 
   get(): Observable<AcNotification> {
-    const socket = this.webSocketSupplier.get();
-    const simTracks$ = Observable.create((observer: Subscriber<any>) => {
-      socket.on('birds', (data: any) => {
-        data.forEach(
-          (acNotification: any) => {
-            if (acNotification.action === 'ADD_OR_UPDATE') {
-              acNotification.actionType = ActionType.ADD_UPDATE;
-              acNotification.entity = new Track(this.convertToCesiumObj(acNotification.entity));
-            }
-            else if (acNotification.action === 'DELETE') {
-              acNotification.actionType = ActionType.DELETE;
-            }
-            observer.next(acNotification);
-          });
-      });
-    });
-
-    return simTracks$;
+    return this.tracks$;
   }
 
   convertToCesiumObj(entity: any): any {

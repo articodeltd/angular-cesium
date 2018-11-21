@@ -3,17 +3,16 @@ import { Observable ,  Subscriber } from 'rxjs';
 import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
 import { convertToCesiumObj } from '../dataCovertor/convertToCesiumObject';
 import { WebSocketSupplier } from '../webSocketSupplier/webSocketSupplier';
+import { publish } from 'rxjs/operators';
 
 @Injectable()
 export class TracksDataProvider {
 	private _socket: SocketIO.Socket;
+	private tracks$;
 
 	constructor(webSocketSupplier: WebSocketSupplier) {
 		this._socket = webSocketSupplier.get();
-	}
-
-	get() {
-		return Observable.create((observer: Subscriber<any>) => {
+		this.tracks$ = publish()(Observable.create((observer: Subscriber<any>) => {
 			this._socket.on('birds', (data: any) => {
 				data.forEach(
 					(acNotification: any) => {
@@ -29,6 +28,12 @@ export class TracksDataProvider {
 						observer.next(acNotification);
 					});
 			});
-		});
+		}));
+
+		this.tracks$.connect();
+	}
+
+	get() {
+		return this.tracks$;
 	}
 }

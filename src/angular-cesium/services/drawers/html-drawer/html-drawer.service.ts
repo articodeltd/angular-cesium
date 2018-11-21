@@ -10,6 +10,7 @@ export class HtmlDrawerService extends PrimitivesDrawerService {
 
     add(cesiumProps: any): any  {
         cesiumProps.scene = this._cesiumService.getScene();
+        cesiumProps.mapContainer = this._cesiumService.getMap().getMapContainer();
         return super.add(cesiumProps);
     }
 }

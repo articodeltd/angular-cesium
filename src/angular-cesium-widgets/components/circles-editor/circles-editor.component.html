@@ -24,9 +24,9 @@
 
 <ac-layer #editCirclesLayer acFor="let circle of editCircles$" [context]="this" [zIndex]="0">
     <ac-ellipse-desc props="{
-        position: circle.getCenter(),
-        semiMajorAxis: circle.getRadius(),
-        semiMinorAxis: circle.getRadius(),
+        position: circle.getCenterCallbackProperty(),
+        semiMajorAxis: circle.getRadiusCallbackProperty(),
+        semiMinorAxis: circle.getRadiusCallbackProperty(),
         material: circle.circleProps.material,
         outline: circle.circleProps.outline,
         height: 0

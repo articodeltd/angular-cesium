@@ -1,7 +1,8 @@
-import { fromEvent as observableFromEvent, Subscription } from 'rxjs';
-
-import { switchMap, takeUntil } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { fromEvent as observableFromEvent, Subscription } from 'rxjs';
+import { switchMap, takeUntil } from 'rxjs/operators';
+import { CesiumService } from '../../../../angular-cesium/services/cesium/cesium.service';
+
 
 /**
  * Toolbar widget, act as a container for ac-toolbar-button components
@@ -35,10 +36,11 @@ import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnIni
     styles : [`
         :host {
             position: absolute;
-            top: 100px;
+            top: 20px;
             left: 20px;
             width: 20px;
             height: 20px;
+            z-index: 999;
             -webkit-user-drag: none;
         }
     `],
@@ -58,11 +60,11 @@ export class AcToolbarComponent implements OnInit, OnDestroy {
   
   private subscription: Subscription;
   
-  constructor(private element: ElementRef) {
+  constructor(private element: ElementRef, private cesiumService: CesiumService) {
   }
   
   ngOnInit() {
-    
+    this.cesiumService.getMap().getMapContainer().appendChild(this.element.nativeElement);
     if (this.allowDrag) {
       const mouseDown$ = observableFromEvent(this.element.nativeElement, 'mousedown');
       const mouseMove$ = observableFromEvent(document, 'mousemove');

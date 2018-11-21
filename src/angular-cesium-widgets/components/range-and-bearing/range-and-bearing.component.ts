@@ -32,15 +32,14 @@ import { PolylinesEditorService } from '../../services/entity-editors/polyline-e
  * ```
  *
  */
-@Component(
-  {
-    selector: 'range-and-bearing',
-    template: `
-        <polylines-editor></polylines-editor>`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [PolylinesEditorService],
-  }
-)
+@Component({
+  selector: 'range-and-bearing',
+  template: `
+    <polylines-editor></polylines-editor>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [PolylinesEditorService],
+})
 export class RangeAndBearingComponent {
   @Input() lineEditOptions?: PolylineEditOptions = {};
   @Input() labelsStyle?: LabelStyle = {};
@@ -50,19 +49,19 @@ export class RangeAndBearingComponent {
   @Input() distanceStringFn?: (value: number) => string;
   @Input() labelsRenderFn?: (update: PolylineEditUpdate, labels: LabelProps[]) => LabelProps[];
 
-  constructor(private polylineEditor: PolylinesEditorService, private coordinateConverter: CoordinateConverter) {
-  }
+  constructor(private polylineEditor: PolylinesEditorService, private coordinateConverter: CoordinateConverter) {}
 
-  create({
-           lineEditOptions = {},
-           labelsStyle = {},
-           distanceLabelsStyle = {},
-           bearingLabelsStyle = {},
-           bearingStringFn = undefined,
-           distanceStringFn = undefined,
-           labelsRenderFn = undefined
-         }: RangeAndBearingOptions = { lineEditOptions: {}, labelsStyle: {}, distanceLabelsStyle: {}, bearingLabelsStyle: {} })
-    : PolylineEditorObservable {
+  create(
+    {
+      lineEditOptions = {},
+      labelsStyle = {},
+      distanceLabelsStyle = {},
+      bearingLabelsStyle = {},
+      bearingStringFn = undefined,
+      distanceStringFn = undefined,
+      labelsRenderFn = undefined,
+    }: RangeAndBearingOptions = { lineEditOptions: {}, labelsStyle: {}, distanceLabelsStyle: {}, bearingLabelsStyle: {} },
+  ): PolylineEditorObservable {
     const rnb = this.polylineEditor.create({
       allowDrag: false,
       pointProps: {
@@ -73,83 +72,94 @@ export class RangeAndBearingComponent {
         width: 2,
       },
       ...this.lineEditOptions,
-      ...lineEditOptions
+      ...lineEditOptions,
     });
 
-    labelsRenderFn && rnb.setLabelsRenderFn(labelsRenderFn) ||
-    this.labelsRenderFn && rnb.setLabelsRenderFn(this.labelsRenderFn) ||
-    rnb.setLabelsRenderFn((update) => {
-      const positions = update.positions;
-      let totalDistance = 0;
-      if (!positions || positions.length === 0) {
-        return [];
-      }
-      return (
-        update.editMode === EditModes.CREATE && update.editAction !== EditActions.ADD_LAST_POINT ?
-          [...positions, update.updatedPosition] : positions
-      )
-        .reduce((labels, position, index, array) => {
-          if (index !== 0) {
-            const previousPosition = array[index - 1];
-            const bearing = this.coordinateConverter.bearingToCartesian(previousPosition, position);
-            const distance = Cesium.Cartesian3.distance(previousPosition, position) / 1000;
-            labels.push({
-              text: bearingStringFn && bearingStringFn(bearing) ||
-              this.bearingStringFn && this.bearingStringFn(bearing) ||
-              `${bearing.toFixed(2)}°`,
+    if (labelsRenderFn) {
+      rnb.setLabelsRenderFn(labelsRenderFn);
+    } else if (this.labelsRenderFn) {
+      rnb.setLabelsRenderFn(this.labelsRenderFn);
+    } else {
+      rnb.setLabelsRenderFn(update => {
+        const positions = update.positions;
+        let totalDistance = 0;
+        if (!positions || positions.length === 0) {
+          return [];
+        }
+        return (update.editMode === EditModes.CREATE && update.editAction !== EditActions.ADD_LAST_POINT
+          ? [...positions, update.updatedPosition]
+          : positions
+        ).reduce(
+          (labels, position, index, array) => {
+            if (index !== 0) {
+              const previousPosition = array[index - 1];
+              const bearing = this.coordinateConverter.bearingToCartesian(previousPosition, position);
+              const distance = Cesium.Cartesian3.distance(previousPosition, position) / 1000;
+              labels.push(
+                {
+                  text:
+                    (bearingStringFn && bearingStringFn(bearing)) ||
+                    (this.bearingStringFn && this.bearingStringFn(bearing)) ||
+                    `${bearing.toFixed(2)}°`,
+                  scale: 0.2,
+                  font: '80px Helvetica',
+                  pixelOffset: new Cesium.Cartesian2(-20, -8),
+                  position: new Cesium.Cartesian3(
+                    (position.x + previousPosition.x) / 2,
+                    (position.y + previousPosition.y) / 2,
+                    (position.z + previousPosition.z) / 2,
+                  ),
+                  fillColor: Cesium.Color.WHITE,
+                  outlineColor: Cesium.Color.WHITE,
+                  showBackground: true,
+                  ...(this.labelsStyle as any),
+                  ...(labelsStyle as any),
+                  ...(this.bearingLabelsStyle as any),
+                  ...(bearingLabelsStyle as any),
+                },
+                {
+                  text:
+                    (distanceStringFn && distanceStringFn(totalDistance + distance)) ||
+                    (this.distanceStringFn && this.distanceStringFn(totalDistance + distance)) ||
+                    `${(totalDistance + distance).toFixed(2)} Km`,
+                  scale: 0.2,
+                  font: '80px Helvetica',
+                  pixelOffset: new Cesium.Cartesian2(-35, -8),
+                  position: position,
+                  fillColor: Cesium.Color.WHITE,
+                  outlineColor: Cesium.Color.WHITE,
+                  showBackground: true,
+                  ...(this.labelsStyle as any),
+                  ...(labelsStyle as any),
+                  ...(this.distanceLabelsStyle as any),
+                  ...(distanceLabelsStyle as any),
+                },
+              );
+
+              totalDistance += distance;
+            }
+
+            return labels;
+          },
+          [
+            {
+              text: (distanceStringFn && distanceStringFn(0)) || (this.distanceStringFn && this.distanceStringFn(0)) || `0 Km`,
               scale: 0.2,
               font: '80px Helvetica',
               pixelOffset: new Cesium.Cartesian2(-20, -8),
-              position: new Cesium.Cartesian3(
-                (position.x + previousPosition.x) / 2,
-                (position.y + previousPosition.y) / 2,
-                (position.z + previousPosition.z) / 2
-              ),
+              position: positions[0],
               fillColor: Cesium.Color.WHITE,
               outlineColor: Cesium.Color.WHITE,
               showBackground: true,
-              ...this.labelsStyle as any,
-              ...labelsStyle as any,
-              ...this.bearingLabelsStyle as any,
-              ...bearingLabelsStyle as any,
-            }, {
-              text: distanceStringFn && distanceStringFn(totalDistance + distance) ||
-              this.distanceStringFn && this.distanceStringFn(totalDistance + distance) ||
-              `${(totalDistance + distance).toFixed(2)} Km`,
-              scale: 0.2,
-              font: '80px Helvetica',
-              pixelOffset: new Cesium.Cartesian2(-35, -8),
-              position: position,
-              fillColor: Cesium.Color.WHITE,
-              outlineColor: Cesium.Color.WHITE,
-              showBackground: true,
-              ...this.labelsStyle as any,
-              ...labelsStyle as any,
-              ...this.distanceLabelsStyle as any,
-              ...distanceLabelsStyle as any,
-            });
-
-            totalDistance += distance;
-          }
-
-          return labels;
-        }, [{
-          text: distanceStringFn && distanceStringFn(0) ||
-          this.distanceStringFn && this.distanceStringFn(0) ||
-          `0 Km`,
-          scale: 0.2,
-          font: '80px Helvetica',
-          pixelOffset: new Cesium.Cartesian2(-20, -8),
-          position: positions[0],
-          fillColor: Cesium.Color.WHITE,
-          outlineColor: Cesium.Color.WHITE,
-          showBackground: true,
-          ...this.labelsStyle as any,
-          ...labelsStyle as any,
-          ...this.distanceLabelsStyle as any,
-          ...distanceLabelsStyle as any,
-        }]);
-    });
+              ...(this.labelsStyle as any),
+              ...(labelsStyle as any),
+              ...(this.distanceLabelsStyle as any),
+              ...(distanceLabelsStyle as any),
+            },
+          ],
+        );
+      });
+    }
 
     return rnb;
   }

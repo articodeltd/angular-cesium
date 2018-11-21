@@ -303,7 +303,7 @@ In the example above we start listing to Click events. according to `eventRegist
 
 Checkout [demo/app/components/event-test-layer/event-test-layer.component.ts](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/event-test-layer.component.ts) for more examples.
 
-##### All cesium map  events run out side angular zone
+##### All cesium map events run outside of angular zone
 Meaning that the the callback that you pass to map event manager
 will be executed outside of angular zone. That is because Cesium run outside of Angular zone
 in case for performance reasons , kind of `ON_PUSH` strategy.
@@ -320,7 +320,6 @@ class MyComponent {
   }
 }
 ```
-
 ##### Plonter
 In case a two or more entities are in the same location and both are clicked you have a plonter (which entity should be picked?).
 This is resolved according to the `PickOptions` that we pass to the event registration:
@@ -334,7 +333,6 @@ It is possible to create your own plonter context menu just take a look at `ac-d
 ```html
 <ac-map [disableDefaultPlonter]="true"></ac-map>
 ```
-
 
 ### Map layers
 With angular cesium you can define your map provider in a declarative way using `ac-map-layer-provider` :
@@ -359,6 +357,9 @@ With angular cesium you can define your map provider in a declarative way using 
        }">
    </ac-3d-tile-layer>
 ```
+### Multi map support
+Angular Cesium supports seamless integration of multiple maps.
+A simple way to implement multiple maps is by using *ngFor directive inside `<ac-map>`. `AcMapComponent` has a `containerId` input which can be used to specify the id of the containing element. You can see an example of multiple map usage in `DemoMultipleMapsComponent` in our demo app. In order to set initial viewer configuration for multiple maps you can set `ViewerConfigurationService.viewerOptions` to an array of options. The map initialized first will be set with the first option object in the options array and so on.
 
 ### Camera
 #### [Camera Keyboard Control Service](https://tgftech.github.io/angular-cesium/injectables/KeyboardControlService.html)
@@ -385,12 +386,20 @@ constructor(mapsManagerService: MapsManagerService)
 	const mapEventManager = mapsManagerService.getMap().getMapEventsManager();
 	const cameraService = mapsManagerService.getMap().getCameraService();
 }
-
 ```
+`MapsManagerService` manages all of the maps. The service exposes a `getMap()` function that can be used to retrieve a specific map by id.
+
+The Service can also be used in order to sync multiple *2D* maps using the `sync2DMapsCameras()` function. When maps are synced together, their cameras will automatically point to the same world position - if one map's camera is at a new position, all the other cameras will follow. the zoom level of the camera can also be synced by using options that are passed to the function.
+The `unsyncMapsCameras()` function can be used to unsync synced maps.
+
+
+#### [ZoomToRectangleService](https://tgftech.github.io/angular-cesium/injectables/ZoomToRectangleService.html)
+A service that is used to activate a zooming tool that enables the user to draw a rectangle over the map and zoom into the drawn rectangle
 
 ### Geometry Editors And Widgets
 Part of [`AngularCesiumWidgetsModule`](https://tgftech.github.io/angular-cesium/modules/AngularCesiumWidgetsModule.html) are useful geometry editors tool:
 + [`CirlcesEditorService`](https://tgftech.github.io/angular-cesium/injectables/CirclesEditorService.html) - for drawing circles
++ [`EllipsesEditorService`](https://tgftech.github.io/angular-cesium/injectables/EllipsesEditorService.html) - for drawing ellipses and circles
 + [`PolylinesEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolylinesEditorService.html) - for drawing polylines
 + [`PolygonsEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolygonsEditorService.html) - for drawing polygons
 + [`HippodromeEditorService`](https://tgftech.github.io/angular-cesium/injectables/HippodromeEditorService.html) - for drawing hippodromes (path in cesium)

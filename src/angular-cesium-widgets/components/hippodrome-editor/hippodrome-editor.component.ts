@@ -16,12 +16,70 @@ import { EditableHippodrome } from '../../models/editable-hippodrome';
 
 @Component({
   selector: 'hippodrome-editor',
-  templateUrl: './hippodrome-editor.component.html',
+  template: /*html*/ `
+    <ac-layer #editHippodromesLayer acFor="let hippodrome of editHippodromes$" [context]="this">
+      <ac-corridor-desc
+        props="{
+		positions: hippodrome.getRealPositionsCallbackProperty(),
+		cornerType: Cesium.CornerType.ROUNDED,
+		material: hippodrome.hippodromeProps.material,
+		width : hippodrome.hippodromeProps.width,
+		outline: hippodrome.hippodromeProps.outline,
+		outlineColor: hippodrome.hippodromeProps.outlineColor,
+        outlineWidth: hippodrome.hippodromeProps.outlineWidth,
+        height: 0
+	}"
+      >
+      </ac-corridor-desc>
+
+      <ac-array-desc acFor="let label of hippodrome.labels" [idGetter]="getLabelId">
+        <ac-label-primitive-desc
+          props="{
+            position: label.position,
+            backgroundColor: label.backgroundColor,
+            backgroundPadding: label.backgroundPadding,
+            distanceDisplayCondition: label.distanceDisplayCondition,
+            eyeOffset: label.eyeOffset,
+            fillColor: label.fillColor,
+            font: label.font,
+            heightReference: label.heightReference,
+            horizontalOrigin: label.horizontalOrigin,
+            outlineColor: label.outlineColor,
+            outlineWidth: label.outlineWidth,
+            pixelOffset: label.pixelOffset,
+            pixelOffsetScaleByDistance: label.pixelOffsetScaleByDistance,
+            scale: label.scale,
+            scaleByDistance: label.scaleByDistance,
+            show: label.show,
+            showBackground: label.showBackground,
+            style: label.style,
+            text: label.text,
+            translucencyByDistance: label.translucencyByDistance,
+            verticalOrigin: label.verticalOrigin
+        }"
+        >
+        </ac-label-primitive-desc>
+      </ac-array-desc>
+    </ac-layer>
+
+    <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
+      <ac-point-desc
+        props="{
+        position: point.getPosition(),
+        pixelSize: getPointSize(point),
+        color: point.props.color,
+        outlineColor: point.props.outlineColor,
+        outlineWidth: point.props.outlineWidth,
+        show: getPointShow(point)
+    }"
+      >
+      </ac-point-desc>
+    </ac-layer>
+  `,
   providers: [CoordinateConverter, HippodromeManagerService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HippodromeEditorComponent implements OnDestroy {
-
   private editLabelsRenderFn: (update: HippodromeEditUpdate, labels: LabelProps[]) => LabelProps[];
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
@@ -30,11 +88,13 @@ export class HippodromeEditorComponent implements OnDestroy {
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
   @ViewChild('editHippodromesLayer') private editHippodromesLayer: AcLayerComponent;
 
-  constructor(private hippodromesEditor: HippodromeEditorService,
-              private coordinateConverter: CoordinateConverter,
-              private mapEventsManager: MapEventsManagerService,
-              private cameraService: CameraService,
-              private hippodromesManager: HippodromeManagerService) {
+  constructor(
+    private hippodromesEditor: HippodromeEditorService,
+    private coordinateConverter: CoordinateConverter,
+    private mapEventsManager: MapEventsManagerService,
+    private cameraService: CameraService,
+    private hippodromesManager: HippodromeManagerService,
+  ) {
     this.hippodromesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, hippodromesManager);
     this.startListeningToEditorUpdates();
   }
@@ -43,8 +103,7 @@ export class HippodromeEditorComponent implements OnDestroy {
     this.hippodromesEditor.onUpdate().subscribe((update: HippodromeEditUpdate) => {
       if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
         this.handleCreateUpdates(update);
-      }
-      else if (update.editMode === EditModes.EDIT) {
+      } else if (update.editMode === EditModes.EDIT) {
         this.handleEditUpdates(update);
       }
     });
@@ -70,7 +129,6 @@ export class HippodromeEditorComponent implements OnDestroy {
 
     hippodrome.labels = this.editLabelsRenderFn(update, hippodrome.labels);
     this.editHippodromesLayer.update(hippodrome, hippodrome.getId());
-
   }
 
   removeEditLabels(hippodrome: EditableHippodrome) {
@@ -86,7 +144,8 @@ export class HippodromeEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editHippodromesLayer,
           this.coordinateConverter,
-          update.hippodromeOptions);
+          update.hippodromeOptions,
+        );
         break;
       }
       case EditActions.MOUSE_MOVE: {
@@ -142,7 +201,7 @@ export class HippodromeEditorComponent implements OnDestroy {
           this.editHippodromesLayer,
           this.coordinateConverter,
           update.hippodromeOptions,
-          update.positions
+          update.positions,
         );
         break;
       }
