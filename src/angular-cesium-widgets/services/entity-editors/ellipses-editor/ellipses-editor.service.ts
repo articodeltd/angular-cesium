@@ -80,8 +80,8 @@ export const DEFAULT_ELLIPSE_OPTIONS: EllipseEditOptions = {
  *				console.log(editResult.positions);
  *		});
  *
- *  // Or edit ellipse from existing center point and two radiuses points
- *  const editing$ = this.ellipsesEditorService.edit(center, radiusPoint, radiusPoint2);
+ *  // Or edit ellipse from existing center point, two radiuses and rotation
+ *  const editing$ = this.ellipsesEditorService.edit(center, majorRadius, rotation, minorRadius);
  *
  * ```
  */
