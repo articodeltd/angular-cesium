@@ -1804,8 +1804,8 @@ It is possible to create your own plonter context menu just take a look at <code
        [options]=&quot;{
          url: &#39;https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s&#39;
        }&quot;&gt;
-   &lt;/ac-3d-tile-layer&gt;</code></pre><h3 id="multi-map-support">Multi map support</h3>
-<p>Angular Cesium supports seamless integration of multiple maps.
+   &lt;/ac-3d-tile-layer&gt;</code></pre><h3 id="multiple-maps-support">Multiple maps support</h3>
+<p>Angular Cesium supports integration of multiple maps.
 A simple way to implement multiple maps is by using *ngFor directive inside <code>&lt;ac-map&gt;</code>. <code>AcMapComponent</code> has a <code>containerId</code> input which can be used to specify the id of the containing element. You can see an example of multiple map usage in <code>DemoMultipleMapsComponent</code> in our demo app. In order to set initial viewer configuration for multiple maps you can set <code>ViewerConfigurationService.viewerOptions</code> to an array of options. The map initialized first will be set with the first option object in the options array and so on.</p>
 <h3 id="camera">Camera</h3>
 <h4 id="-camera-keyboard-control-service-https-tgftech-github-io-angular-cesium-injectables-keyboardcontrolservice-html-"><a href="https://tgftech.github.io/angular-cesium/injectables/KeyboardControlService.html">Camera Keyboard Control Service</a></h4>

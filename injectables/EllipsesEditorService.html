@@ -1527,8 +1527,8 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                 console.log(editResult.positions);
         });
 
-  // Or edit ellipse from existing center point and two radiuses points
-  const editing$ = this.ellipsesEditorService.edit(center, radiusPoint, radiusPoint2);</code></pre>
+  // Or edit ellipse from existing center point, two radiuses and rotation
+  const editing$ = this.ellipsesEditorService.edit(center, majorRadius, rotation, minorRadius);</code></pre>
             </p>
 
 
@@ -2739,8 +2739,8 @@ export const DEFAULT_ELLIPSE_OPTIONS: EllipseEditOptions &#x3D; {
  *				console.log(editResult.positions);
  *		});
  *
- *  // Or edit ellipse from existing center point and two radiuses points
- *  const editing$ &#x3D; this.ellipsesEditorService.edit(center, radiusPoint, radiusPoint2);
+ *  // Or edit ellipse from existing center point, two radiuses and rotation
+ *  const editing$ &#x3D; this.ellipsesEditorService.edit(center, majorRadius, rotation, minorRadius);
  *
  * &#x60;&#x60;&#x60;
  */
