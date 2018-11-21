@@ -52,13 +52,13 @@ describe('CoordinateConverter', () => {
 
 		describe('Cartesian3 -> Cartographic', ()=> {
 			it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-				let cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30});
+				let cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30, clone: () => ({} as any), equals: (v) => false});
 
 				expect(cartographic).toBeDefined();
 			}));
 
 			it('should consist of Cartographic interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-				let cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30});
+				let cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30, clone: () => ({} as any), equals: (v) => false});
 
 				expect(cartographic.longitude).toBeDefined();
 				expect(cartographic.latitude).toBeDefined();
