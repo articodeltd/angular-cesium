@@ -150,7 +150,7 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
   For example `ac-billboard-desc` accepts same members as [cesium Billboard](https://cesiumjs.org/refdoc.html).
 
 ## AC Layer
-[ac-layer](https://tgftech.github.io/angular-cesium/components/AcLayerComponent.html) is a directive which is meant to define a whole layer.
+[ac-layer](https://articodeltd.github.io/angular-cesium/components/AcLayerComponent.html) is a directive which is meant to define a whole layer.
 In case you have previous knowledge about CesiumJs, you would notice that there are lots of map objects e.g. billboard, label, etc'.
 In the real world - we would like to merge all of this map objects into a single entity e.g. an airplane consists of a billboard(icon) and a label.
 Now, let's create a simple airplanes layer and go through it's definitions:
@@ -221,24 +221,24 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + Maintainable code.
 
 ## Supported Entity types
-+ billboard - [`ac-billboard-desc`](https://tgftech.github.io/angular-cesium/components/AcBillboardDescComponent.html) / [`ac-billboard`](https://tgftech.github.io/angular-cesium/components/AcBillboardComponent.html) / [`ac-billboard-primitive-desc`](https://tgftech.github.io/angular-cesium/components/AcBillboardPrimitiveDescComponent.html)
-+ label - [`ac-label-desc`](https://tgftech.github.io/angular-cesium/components/AcLabelDescComponent.html) / [`ac-label`](https://tgftech.github.io/angular-cesium/components/AcLabelComponent.html) / [`ac-label-primitive-desc`](https://tgftech.github.io/angular-cesium/components/AcLabelPrimitiveDescComponent.html)
-+ polyline - [`ac-polyline-desc`](https://tgftech.github.io/angular-cesium/components/AcPolylineDescComponent.html) / [`ac-polyline`](https://tgftech.github.io/angular-cesium/components/AcPolylineComponent.html) / [`ac-polyline-primitive-desc`](https://tgftech.github.io/angular-cesium/components/AcPolylinePrimitiveDescComponent.html)
-+ point - [`ac-point-desc`](https://tgftech.github.io/angular-cesium/components/AcPointDescComponent.html) / [`ac-point`](https://tgftech.github.io/angular-cesium/components/AcPointComponent.html) / [`ac-primitive-point`](https://tgftech.github.io/angular-cesium/components/AcPointPrimitiveDescComponent.html)
-+ ellipse - [`ac-ellipse-desc`](https://tgftech.github.io/angular-cesium/components/AcEllipseDescComponent.html) / [`ac-ellipse`](https://tgftech.github.io/angular-cesium/components/AcEllipseComponent.html)
-+ circle - [`ac-circle-desc`](https://tgftech.github.io/angular-cesium/components/AcCircleDescComponent.html) / [`ac-circle`](https://tgftech.github.io/angular-cesium/components/AcCircleComponent.html) *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis
-+ polygon - [`ac-polygon-desc`](https://tgftech.github.io/angular-cesium/components/AcPolygonDescComponent.html) / [`ac-polygon`](https://tgftech.github.io/angular-cesium/components/AcPolygonComponent.html)
-+ model - [`ac-model-desc`](https://tgftech.github.io/angular-cesium/components/AcModelDescComponent.html)
-+ box - [`ac-box-dec`](https://tgftech.github.io/angular-cesium/components/AcBoxDescComponent.html)
-+ corridor -[`ac-corridor-dec`](https://tgftech.github.io/angular-cesium/components/AcCorridorDescComponent.html)
-+ cylinder - [`ac-cylinder-dec`](https://tgftech.github.io/angular-cesium/components/AcCylinderDescComponent.html)
-+ ellipsoid - [`ac-ellipsoid-dec`](https://tgftech.github.io/angular-cesium/components/AcEllipsoidDescComponent.html)
-+ polyline volume - [`ac-polyline-volume-dec`](https://tgftech.github.io/angular-cesium/components/AcPolylineVolumeDescComponent.html)
-+ wall - [`ac-wall-dec`](https://tgftech.github.io/angular-cesium/components/AcWallDescComponent.html)
-+ rectangle -[`ac-rectangle-dec`](https://tgftech.github.io/angular-cesium/components/AcRectangleDescComponent.html)
-* html - [`ac-html-desc`](https://tgftech.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://tgftech.github.io/angular-cesium/components/AcHtmlComponent.html)
-* array - [`ac-array-desc`](https://tgftech.github.io/angular-cesium/components/AcArrayDescComponent.html)
-* czmlPacket - [`ac-czml-desc`](https://tgftech.github.io/angular-cesium/components/AcCzmlDescComponent.html)
++ billboard - [`ac-billboard-desc`](https://articodeltd.github.io/angular-cesium/components/AcBillboardDescComponent.html) / [`ac-billboard`](https://articodeltd.github.io/angular-cesium/components/AcBillboardComponent.html) / [`ac-billboard-primitive-desc`](https://articodeltd.github.io/angular-cesium/components/AcBillboardPrimitiveDescComponent.html)
++ label - [`ac-label-desc`](https://articodeltd.github.io/angular-cesium/components/AcLabelDescComponent.html) / [`ac-label`](https://articodeltd.github.io/angular-cesium/components/AcLabelComponent.html) / [`ac-label-primitive-desc`](https://articodeltd.github.io/angular-cesium/components/AcLabelPrimitiveDescComponent.html)
++ polyline - [`ac-polyline-desc`](https://articodeltd.github.io/angular-cesium/components/AcPolylineDescComponent.html) / [`ac-polyline`](https://articodeltd.github.io/angular-cesium/components/AcPolylineComponent.html) / [`ac-polyline-primitive-desc`](https://articodeltd.github.io/angular-cesium/components/AcPolylinePrimitiveDescComponent.html)
++ point - [`ac-point-desc`](https://articodeltd.github.io/angular-cesium/components/AcPointDescComponent.html) / [`ac-point`](https://articodeltd.github.io/angular-cesium/components/AcPointComponent.html) / [`ac-primitive-point`](https://articodeltd.github.io/angular-cesium/components/AcPointPrimitiveDescComponent.html)
++ ellipse - [`ac-ellipse-desc`](https://articodeltd.github.io/angular-cesium/components/AcEllipseDescComponent.html) / [`ac-ellipse`](https://articodeltd.github.io/angular-cesium/components/AcEllipseComponent.html)
++ circle - [`ac-circle-desc`](https://articodeltd.github.io/angular-cesium/components/AcCircleDescComponent.html) / [`ac-circle`](https://articodeltd.github.io/angular-cesium/components/AcCircleComponent.html) *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis
++ polygon - [`ac-polygon-desc`](https://articodeltd.github.io/angular-cesium/components/AcPolygonDescComponent.html) / [`ac-polygon`](https://articodeltd.github.io/angular-cesium/components/AcPolygonComponent.html)
++ model - [`ac-model-desc`](https://articodeltd.github.io/angular-cesium/components/AcModelDescComponent.html)
++ box - [`ac-box-dec`](https://articodeltd.github.io/angular-cesium/components/AcBoxDescComponent.html)
++ corridor -[`ac-corridor-dec`](https://articodeltd.github.io/angular-cesium/components/AcCorridorDescComponent.html)
++ cylinder - [`ac-cylinder-dec`](https://articodeltd.github.io/angular-cesium/components/AcCylinderDescComponent.html)
++ ellipsoid - [`ac-ellipsoid-dec`](https://articodeltd.github.io/angular-cesium/components/AcEllipsoidDescComponent.html)
++ polyline volume - [`ac-polyline-volume-dec`](https://articodeltd.github.io/angular-cesium/components/AcPolylineVolumeDescComponent.html)
++ wall - [`ac-wall-dec`](https://articodeltd.github.io/angular-cesium/components/AcWallDescComponent.html)
++ rectangle -[`ac-rectangle-dec`](https://articodeltd.github.io/angular-cesium/components/AcRectangleDescComponent.html)
+* html - [`ac-html-desc`](https://articodeltd.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://articodeltd.github.io/angular-cesium/components/AcHtmlComponent.html)
+* array - [`ac-array-desc`](https://articodeltd.github.io/angular-cesium/components/AcArrayDescComponent.html)
+* czmlPacket - [`ac-czml-desc`](https://articodeltd.github.io/angular-cesium/components/AcCzmlDescComponent.html)
 
 ### `ac-entity-desc` vs `ac-entity`
 + `ac-entity-desc` component is used to describe how each entity / array of entities in a stream of entities, managed inside `ac-layer`, should be drawn.
@@ -362,7 +362,7 @@ Angular Cesium supports integration of multiple maps.
 A simple way to implement multiple maps is by using *ngFor directive inside `<ac-map>`. `AcMapComponent` has a `containerId` input which can be used to specify the id of the containing element. You can see an example of multiple map usage in `DemoMultipleMapsComponent` in our demo app. In order to set initial viewer configuration for multiple maps you can set `ViewerConfigurationService.viewerOptions` to an array of options. The map initialized first will be set with the first option object in the options array and so on.
 
 ### Camera
-#### [Camera Keyboard Control Service](https://tgftech.github.io/angular-cesium/injectables/KeyboardControlService.html)
+#### [Camera Keyboard Control Service](https://articodeltd.github.io/angular-cesium/injectables/KeyboardControlService.html)
 Service that manages keyboard keys and execute actions per request. Inject the keyboard control service into any layer, under your ac-map component, And defined you keyboard handlers using setKeyboardControls.
 ```javascript
  this.keyboardControlService.setKeyboardControls({
@@ -373,12 +373,12 @@ Service that manages keyboard keys and execute actions per request. Inject the k
     },
 
 ```
-#### [CameraService](https://tgftech.github.io/angular-cesium/injectables/CameraService.html)
+#### [CameraService](https://articodeltd.github.io/angular-cesium/injectables/CameraService.html)
 Util service that wraps cesium camera, exposes the scene's camera and screenSpaceCameraController.
 
 
 ### MapsManagerService
-Angular Cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use [MapsManagerService](https://tgftech.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
+Angular Cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use [MapsManagerService](https://articodeltd.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
 ```typescript
 class MyComp {
 constructor(mapsManagerService: MapsManagerService)
@@ -393,17 +393,17 @@ The Service can also be used in order to sync multiple *2D* maps using the `sync
 The `unsyncMapsCameras()` function can be used to unsync synced maps.
 
 
-#### [ZoomToRectangleService](https://tgftech.github.io/angular-cesium/injectables/ZoomToRectangleService.html)
+#### [ZoomToRectangleService](https://articodeltd.github.io/angular-cesium/injectables/ZoomToRectangleService.html)
 A service that is used to activate a zooming tool that enables the user to draw a rectangle over the map and zoom into the drawn rectangle
 
 ### Geometry Editors And Widgets
-Part of [`AngularCesiumWidgetsModule`](https://tgftech.github.io/angular-cesium/modules/AngularCesiumWidgetsModule.html) are useful geometry editors tool:
-+ [`CirlcesEditorService`](https://tgftech.github.io/angular-cesium/injectables/CirclesEditorService.html) - for drawing circles
-+ [`EllipsesEditorService`](https://tgftech.github.io/angular-cesium/injectables/EllipsesEditorService.html) - for drawing ellipses and circles
-+ [`PolylinesEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolylinesEditorService.html) - for drawing polylines
-+ [`PolygonsEditorService`](https://tgftech.github.io/angular-cesium/injectables/PolygonsEditorService.html) - for drawing polygons
-+ [`HippodromeEditorService`](https://tgftech.github.io/angular-cesium/injectables/HippodromeEditorService.html) - for drawing hippodromes (path in cesium)
-+ [`RangeAndBearingComponent`](https://tgftech.github.io/angular-cesium/components/RangeAndBearingComponent.html) - for drawing range and bearing
+Part of [`AngularCesiumWidgetsModule`](https://articodeltd.github.io/angular-cesium/modules/AngularCesiumWidgetsModule.html) are useful geometry editors tool:
++ [`CirlcesEditorService`](https://articodeltd.github.io/angular-cesium/injectables/CirclesEditorService.html) - for drawing circles
++ [`EllipsesEditorService`](https://articodeltd.github.io/angular-cesium/injectables/EllipsesEditorService.html) - for drawing ellipses and circles
++ [`PolylinesEditorService`](https://articodeltd.github.io/angular-cesium/injectables/PolylinesEditorService.html) - for drawing polylines
++ [`PolygonsEditorService`](https://articodeltd.github.io/angular-cesium/injectables/PolygonsEditorService.html) - for drawing polygons
++ [`HippodromeEditorService`](https://articodeltd.github.io/angular-cesium/injectables/HippodromeEditorService.html) - for drawing hippodromes (path in cesium)
++ [`RangeAndBearingComponent`](https://articodeltd.github.io/angular-cesium/components/RangeAndBearingComponent.html) - for drawing range and bearing
 
 Try running our demo for examples (uncomment the relevant components in `demo-map.component.html`).
 
@@ -412,7 +412,7 @@ Take screenshot of your cesium globe.
 
 
 ## Documents
-+ #### Check out our api [Docs](https://tgftech.github.io/angular-cesium/)
++ #### Check out our api [Docs](https://articodeltd.github.io/angular-cesium/)
 
 ## License
 [Mit License](https://opensource.org/licenses/MIT)
