@@ -1,24 +1,23 @@
-
-import {of as observableOf,  Observable ,  Subscriber } from 'rxjs';
+import { Observable, of as observableOf, Subscriber } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { AcEntity, AcNotification, ActionType } from '../../../../src/angular-cesium';
-import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
-import { WebSocketSupplier } from '../../../utils/services/webSocketSupplier/webSocketSupplier';
+import { AcEntity, AcNotification, ActionType } from 'angular-cesium';
+import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
+import { WebSocketSupplier } from '../../utils/services/webSocketSupplier/webSocketSupplier';
 
 @Component({
   selector: 'boxes-layer',
   template: `
-      <ac-layer acFor="let track of simTracks$" [context]="this">
-          <ac-box-desc props="{
+    <ac-layer acFor="let track of simTracks$" [context]="this">
+      <ac-box-desc props="{
 														position: track.position,
 														dimensions: boxDimensions,
 														outline: true,
 														outlineWidth: 8,
 														outlineColor: Cesium.Color.BLACK
 														}">
-          </ac-box-desc>
-      </ac-layer>
-	`,
+      </ac-box-desc>
+    </ac-layer>
+  `,
   providers: [TracksDataProvider]
 })
 export class BoxesLayerComponent implements OnInit {
@@ -42,14 +41,13 @@ export class BoxesLayerComponent implements OnInit {
             if (acNotification.action === 'ADD_OR_UPDATE') {
               acNotification.actionType = ActionType.ADD_UPDATE;
               acNotification.entity = new AcEntity(this.convertToCesiumObj(acNotification.entity));
-            }
-            else if (acNotification.action === 'DELETE') {
+            } else if (acNotification.action === 'DELETE') {
               acNotification.actionType = ActionType.DELETE;
             }
             observer.next(acNotification);
           });
       });
-    })
+    });
   }
 
   convertToCesiumObj(entity: any): any {

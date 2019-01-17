@@ -1,5 +1,5 @@
 <ac-layer acFor="let ellipse of ellipses$" [context]="this" [show]="show">
-    <ac-dynamic-ellipse-desc props="{
+  <ac-dynamic-ellipse-desc props="{
             center: ellipse.geometry.center,
             semiMajorAxis:250000.0,
             semiMinorAxis:400000.0,
@@ -7,7 +7,7 @@
             granularity:0.03,
             width: 10000
         }"></ac-dynamic-ellipse-desc>
-    <ac-dynamic-circle-desc props="{
+  <ac-dynamic-circle-desc props="{
             center:  ellipse.geometry.center,
             radius:250000,
             rotation:0,

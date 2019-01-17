@@ -1,13 +1,12 @@
-import { AfterViewInit, Component, ViewEncapsulation } from '@angular/core';
-import { WebSocketSupplier } from '../utils/services/webSocketSupplier/webSocketSupplier';
-import { MapLayerProviderOptions } from '../../src/angular-cesium/models/map-layer-provider-options.enum';
+import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog, MatIconRegistry, MatSidenav } from '@angular/material';
 import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
-import { MapsManagerService } from '../../src/angular-cesium/services/maps-manager/maps-manager.service';
-import { DraggableToMapService } from '../../src/angular-cesium-widgets/services/draggable-to-map.service';
-import { TracksDataProvider } from '../utils/services/dataProvider/tracksDataProvider.service';
-import { SimTracksDataProvider } from '../utils/services/dataProvider/sim-tracks-data-provider';
+import { DraggableToMapService, MapLayerProviderOptions, MapsManagerService } from 'angular-cesium';
+import { TracksDataProvider } from './utils/services/dataProvider/tracksDataProvider.service';
+import { SimTracksDataProvider } from './utils/services/dataProvider/sim-tracks-data-provider';
+import { WebSocketSupplier } from './utils/services/webSocketSupplier/webSocketSupplier';
+import { DemoMapComponent } from './components/demo-map/demo-map.component';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +16,8 @@ import { SimTracksDataProvider } from '../utils/services/dataProvider/sim-tracks
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements AfterViewInit {
+
+  @ViewChild('mainMap') mainMap: DemoMapComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   flyToOptions = {
     duration: 2,
@@ -41,6 +42,10 @@ export class AppComponent implements AfterViewInit {
   settingsClick(sidenav: MatSidenav) {
     this.dialog.closeAll();
     sidenav.open();
+  }
+
+  cleanMainMap() {
+    this.mainMap.removeAll();
   }
 
   setMultiMaps() {

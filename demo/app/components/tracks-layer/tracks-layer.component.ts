@@ -1,19 +1,12 @@
-
-import {merge as observableMerge,  Observable ,  ConnectableObservable } from 'rxjs';
-
-import {filter, map, publish} from 'rxjs/operators';
+import { ConnectableObservable, merge as observableMerge, Observable } from 'rxjs';
+import { filter, map, publish } from 'rxjs/operators';
 import { Component, Input, NgZone, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { AcNotification } from '../../../../src/angular-cesium';
-import { AcLayerComponent } from '../../../../src/angular-cesium';
-import { MapEventsManagerService } from '../../../../src/angular-cesium';
-import { CesiumEvent } from '../../../../src/angular-cesium';
-import { PickOptions } from '../../../../src/angular-cesium';
+import { AcLayerComponent, AcNotification, CameraService, CesiumEvent, MapEventsManagerService, PickOptions } from 'angular-cesium';
 import { MatDialog } from '@angular/material';
 import { TracksDialogComponent } from './track-dialog/track-dialog.component';
-import { RealTracksDataProvider } from '../../../utils/services/dataProvider/real-tracks-data-provider';
 import { AppSettingsService, TracksType } from '../../services/app-settings-service/app-settings-service';
-import { SimTracksDataProvider, Track } from '../../../utils/services/dataProvider/sim-tracks-data-provider';
-import { CameraService } from '../../../../src/angular-cesium';
+import { RealTracksDataProvider } from '../../utils/services/dataProvider/real-tracks-data-provider';
+import { SimTracksDataProvider, Track } from '../../utils/services/dataProvider/sim-tracks-data-provider';
 
 @Component({
   selector: 'tracks-layer',
@@ -168,18 +161,15 @@ export class TracksLayerComponent implements OnInit, OnChanges {
     }
     if (this.tracksType === TracksType.MODELS_3D) {
       return Cesium.Color.GRAY;
-    }
-    else if (this.tracksType === TracksType.SIM_DATA) {
+    } else if (this.tracksType === TracksType.SIM_DATA) {
       return track.isTarget ? Cesium.Color.BLACK : Cesium.Color.fromCssColorString('#673ab7');
-    }
-    else if (this.tracksType === TracksType.REAL_DATA) {
+    } else if (this.tracksType === TracksType.REAL_DATA) {
       const lastChar = track.id.toString().charAt(track.id.length - 1);
       if (lastChar <= '3') {
         return Cesium.Color.fromCssColorString('#424242');
       } else if (lastChar <= '9') {
         return Cesium.Color.fromCssColorString('#212121');
-      }
-      else {
+      } else {
         return Cesium.Color.fromCssColorString('#616161');
       }
     }
@@ -222,6 +212,10 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
   setShow($event: boolean) {
     this.show = $event;
+  }
+
+  pixelOffset(value) {
+    return new Cesium.Cartesian2(value[0], value[1]);
   }
 }
 

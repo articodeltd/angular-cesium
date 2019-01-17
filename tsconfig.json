@@ -1,40 +1,31 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
     "declaration": false,
-    "removeComments": true,
-    "noLib": false,
+    "module": "es2015",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [
-      "es5",
-      "es6",
-      "es2015",
-      "dom",
-      "es2017",
-      "esnext"
-    ],
-    "sourceMap": true,
-    "pretty": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "noImplicitAny": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "noImplicitReturns": true,
-    "noImplicitUseStrict": false,
-    "noFallthroughCasesInSwitch": true,
+    "importHelpers": true,
+    "target": "es5",
     "typeRoots": [
-      "./src/typings",
-      "./node_modules/@types"
+      "node_modules/@types"
     ],
-    "resolveJsonModule": true
-  },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "src"
-  ],
-  "compileOnSave": false
+    "lib": [
+      "es2018",
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "paths": {
+      "angular-cesium": [
+        "dist/angular-cesium"
+      ],
+      "angular-cesium/*": [
+        "dist/angular-cesium/*"
+      ]
+    }
+  }
 }

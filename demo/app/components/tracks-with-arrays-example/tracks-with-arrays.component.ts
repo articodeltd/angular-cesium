@@ -1,14 +1,9 @@
-
-import {map, filter, publish} from 'rxjs/operators';
+import { filter, map, publish } from 'rxjs/operators';
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ConnectableObservable } from 'rxjs';
-import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
-import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
-import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
-import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
-import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
+import { AcLayerComponent, AcNotification, CesiumEvent, MapEventsManagerService, PickOptions } from 'angular-cesium';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
-import { SimTracksDataProvider } from '../../../utils/services/dataProvider/sim-tracks-data-provider';
+import { SimTracksDataProvider } from '../../utils/services/dataProvider/sim-tracks-data-provider';
 
 @Component({
   selector: 'tracks-with-arrays',
@@ -56,7 +51,7 @@ export class TracksWithArraysComponent implements OnInit, OnChanges {
 
   getSingleTrackObservable(trackId: string) {
     return this.tracks$.pipe(
-      filter((notification) => notification.id === trackId),map((notification) => notification.entity),);
+      filter((notification) => notification.id === trackId), map((notification) => notification.entity), );
   }
 
   ngOnChanges(changes: SimpleChanges): void {

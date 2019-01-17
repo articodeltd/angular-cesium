@@ -1,12 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Subscriber ,  Observable } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 
-import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
-import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
-import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
-import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
-import { ViewerConfiguration } from '../../../../src/angular-cesium/services/viewer-configuration/viewer-configuration.service';
-import { MapsManagerService } from '../../../../src/angular-cesium';
+import { AcEntity, AcLayerComponent, AcNotification, ActionType, MapsManagerService } from 'angular-cesium';
 
 @Component({
   selector: 'czml-layer',
@@ -19,7 +14,8 @@ export class CzmlLayerComponent implements OnInit {
   show = true;
   updater = new Subscriber<AcNotification>();
 
-  constructor(private mapsManagerService: MapsManagerService) { }
+  constructor(private mapsManagerService: MapsManagerService) {
+  }
 
   ngOnInit() {
 
@@ -50,7 +46,7 @@ export class CzmlLayerComponent implements OnInit {
         'outlineWidth': 3,
         'pixelSize': 15
       }
-    }
+    };
 
     const packet2 = {
       'id': 'point_2',
@@ -74,8 +70,7 @@ export class CzmlLayerComponent implements OnInit {
         'outlineWidth': 3,
         'pixelSize': 15
       }
-    }
-
+    };
 
 
     this.czmlPackets$ = new Observable(observer => {
@@ -87,91 +82,91 @@ export class CzmlLayerComponent implements OnInit {
         id: document.id,
         entity: new AcEntity(document),
         actionType: ActionType.ADD_UPDATE
-      })
+      });
 
-      // add point 1 
+      // add point 1
       this.updater.next({
         id: packet1.id,
         entity: new AcEntity(packet1),
         actionType: ActionType.ADD_UPDATE
-      })
+      });
 
       // add point 2
       this.updater.next({
         id: packet2.id,
         entity: new AcEntity(packet2),
         actionType: ActionType.ADD_UPDATE
-      })
+      });
 
       // after 4 seconds, remove point 1
       setTimeout(() => {
-        this.layer.remove('point_1')
+        this.layer.remove('point_1');
       }, 4000);
 
-      // after 5 seconds, update color and reset outlineColor of point 2 
+      // after 5 seconds, update color and reset outlineColor of point 2
       setTimeout(() => {
 
         // changing the initial packet2
-        packet2.point.color.rgba = [0, 0, 255, 200]
+        packet2.point.color.rgba = [0, 0, 255, 200];
 
         this.updater.next({
           id: packet2.id,
           entity: new AcEntity(packet2),
           actionType: ActionType.ADD_UPDATE
-        })
+        });
 
       }, 5000);
 
-      // after 6 seconds add point 1 again 
+      // after 6 seconds add point 1 again
       setTimeout(() => {
 
-        // add point 1 
+        // add point 1
         this.updater.next({
           id: packet1.id,
           entity: new AcEntity(packet1),
           actionType: ActionType.ADD_UPDATE
-        })
+        });
 
       }, 6000);
 
-      // after 7 seconds, hide the layer 
+      // after 7 seconds, hide the layer
       setTimeout(() => {
         this.show = false;
       }, 7000);
 
-      // after 8 seconds, show the layer 
+      // after 8 seconds, show the layer
       setTimeout(() => {
         this.show = true;
       }, 8000);
 
-      // after 9 seconds, remove all 
+      // after 9 seconds, remove all
       setTimeout(() => {
-        this.layer.removeAll()
+        this.layer.removeAll();
       }, 9000);
 
-      // after 10 seconds add points 1 and 2 again 
+      // after 10 seconds add points 1 and 2 again
       setTimeout(() => {
 
-        // add point 1 
+        // add point 1
         this.updater.next({
           id: packet1.id,
           entity: new AcEntity(packet1),
           actionType: ActionType.ADD_UPDATE
-        })
+        });
 
         // add point 2
         this.updater.next({
           id: packet2.id,
           entity: new AcEntity(packet2),
           actionType: ActionType.ADD_UPDATE
-        })
+        });
 
       }, 10000);
 
-      // after 11 seconds, update outlineColor of point 2 
+      // after 11 seconds, update outlineColor of point 2
       setTimeout(() => {
 
-        // providing an object that only contains the diff 
+        // providing an object that only contains the diff
         const updatePoint2 = {
           id: 'point_2',
           point: {
@@ -179,18 +174,18 @@ export class CzmlLayerComponent implements OnInit {
               rgba: [0, 0, 255, 200]
             }
           }
-        }
+        };
 
         this.updater.next({
           id: updatePoint2.id,
           entity: new AcEntity(updatePoint2),
           actionType: ActionType.ADD_UPDATE
-        })
+        });
 
         this.zoomOnDataSource();
       }, 11000);
 
-    })
+    });
 
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BasicContextMenu } from '../../../../src/angular-cesium/models/basic-context-menu';
+import { BasicContextMenu } from 'angular-cesium';
 
 @Component({
   template: `
@@ -11,7 +11,7 @@ import { BasicContextMenu } from '../../../../src/angular-cesium/models/basic-co
       .container {
           background-color: rgba(140, 140, 140, 0.8);
       }
-      
+
       .item {
           padding: 10px;
           color: white;

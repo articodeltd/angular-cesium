@@ -1,4 +1,5 @@
-<ac-map *ngFor="let map of maps; trackBy: mapsTrackBy" [sceneMode]="map.sceneMode" [mapId]="map.id" [containerId]="map.containerId">
+<ac-map *ngFor="let map of maps; trackBy: mapsTrackBy" [sceneMode]="map.sceneMode" [mapId]="map.id"
+        [containerId]="map.containerId">
   <!-- <ac-map-layer-provider
     *ngIf="appSettingsService.showMapLayer"
     [provider]="arcGisMapServerProvider"
@@ -18,7 +19,8 @@
     }"
   >
   </ac-3d-tile-layer>
-  <tracks-layer #layer [show]="appSettingsService.showTracksLayer" [tracksType]="appSettingsService.tracksDataType"></tracks-layer>
+  <tracks-layer #layer [show]="appSettingsService.showTracksLayer"
+                [tracksType]="appSettingsService.tracksDataType"></tracks-layer>
   <!-- <tracks-with-arrays #layer [show]="true"></tracks-with-arrays> -->
   <!-- <maps-layer></maps-layer> -->
   <!-- <models-layer></models-layer> -->

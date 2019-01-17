@@ -1,30 +1,19 @@
-
-import {takeUntil} from 'rxjs/operators';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Inject,
-  OnDestroy,
-  OnInit,
-  ViewEncapsulation
-} from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { Observable ,  Subject } from 'rxjs';
-import { Apollo } from 'apollo-angular';
+import { Observable, Subject } from 'rxjs';
+import { Apollo, QueryRef } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Track } from '../../../../utils/services/dataProvider/track.model';
-import { ApolloQueryResult } from 'apollo-client';
-import { QueryRef } from 'apollo-angular/QueryRef';
+import { Track } from '../../../utils/services/dataProvider/track.model';
 
 const TrackDataQuery = gql`
-    query TrackData($id: String!) {
-        track(id: $id){
-            from
-            to
-            type
-        }
+  query TrackData($id: String!) {
+    track(id: $id){
+      from
+      to
+      type
     }
+  }
 `;
 
 
@@ -44,7 +33,7 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
   private stopper$ = new Subject();
   private singleTrackQuery$: QueryRef<Track>;
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private cd: ChangeDetectorRef, private apollo: Apollo) {
   }
 
@@ -81,10 +70,9 @@ export class TracksDialogComponent implements OnInit, OnDestroy {
           });
           this.cd.markForCheck();
         });
-    }
-    else {
+    } else {
       this.cd.detectChanges();
-      this.track$ = this.data.trackObservable.takeUntil(this.stopper$);
+      this.track$ = this.data.trackObservable.pipe(takeUntil(this.stopper$));
       this.track$.subscribe((track) => {
         this.track = Object.assign({}, track);
         this.changeTrackPosToDeg(track);

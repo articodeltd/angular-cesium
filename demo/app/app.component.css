@@ -1,69 +1,72 @@
 
 .sidenav-container {
-    position: absolute;
-    display: flex !important;
-    flex-direction: column;
-    flex: 1 1;
-    width: 100%;
-    height: 100% !important;
+  position: absolute;
+  display: flex !important;
+  flex-direction: column;
+  flex: 1 1;
+  width: 100%;
+  height: 100% !important;
 }
 
 .mat-sidenav-content {
-    display: flex !important;
-    flex-direction: column;
-    flex: 1;
+  display: flex !important;
+  flex-direction: column;
+  flex: 1;
 }
 
 .sidenav {
-    width: 260px;
+  width: 260px;
 }
 
 .fill-remaining-space {
-    flex: 1 1;
+  flex: 1 1;
 }
 
 .github{
-    width: 56px;
-    height: 56px;
+  width: 56px;
+  height: 56px;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+@media (max-width:450px) {
+  .mat-toolbar {
+    flex-direction: column !important;
+    height: 80px !important;
+  }
+
+  .mat-toolbar button {
+    font-size: 8px;
+    line-height: 9px;
+  }
+  .github {
+    height: 24px;
+    width: 24px;
     user-drag: none;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-}
-@media (max-width:450px) {
-    mat-toolbar-row{
-        flex-direction: column !important;
-    }
-    .github {
-        height: 24px;
-        width: 24px;
-        user-drag: none;
-        user-select: none;
-        -moz-user-select: none;
-        -webkit-user-drag: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-    }
+  }
 
-    .github-link {
-        position: absolute;
-        right: 5px;
-        top: 0;
-        height: 40px;
-        width: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  .github-link {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .settings-button {
-        position: absolute !important;
-        left: 5px;
-        top: 0;
-    }
-
-
-
+  .settings-button {
+    position: absolute !important;
+    left: 5px;
+    top: 0;
+  }
 }

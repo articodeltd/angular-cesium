@@ -5,7 +5,8 @@
                             }">
 </ac-map-layer-provider>
 
-<ac-map-layer-provider #blackmarble *ngIf="appSettingsService.showMapLayer" [provider]="MapLayerProviderOptions.MapTileService" [alpha]="0.5"
+<ac-map-layer-provider #blackmarble *ngIf="appSettingsService.showMapLayer"
+                       [provider]="MapLayerProviderOptions.MapTileService" [alpha]="0.5"
                        [options]="{
                                 url :  '//cesiumjs.org/tilesets/imagery/blackmarble',
                                 maximumLevel : 8,
@@ -20,35 +21,34 @@
 </ac-map-layer-provider>
 
 
-
 <!--More examples -->
 <!--<ac-map-layer-provider *ngIf="appSettingsService.showMapLayer"-->
-                       <!--[provider]="MapLayerProviderOptions.OpenStreetMap"-->
-                       <!--[options]="{-->
-                                   <!--url : 'https://a.tile.openstreetmap.org/'-->
-                            <!--}">-->
+<!--[provider]="MapLayerProviderOptions.OpenStreetMap"-->
+<!--[options]="{-->
+<!--url : 'https://a.tile.openstreetmap.org/'-->
+<!--}">-->
 <!--</ac-map-layer-provider>-->
 <!--<ac-map-layer-provider *ngIf="appSettingsService.showMapLayer"-->
-                       <!--[provider]="MapLayerProviderOptions.BingMaps"-->
-                       <!--[options]="{-->
-                                    <!--url : 'https://dev.virtualearth.net',-->
-                                    <!--key : Cesium.BingMapsApi.defaultKey,-->
-                                    <!--mapStyle : Cesium.BingMapsStyle.AERIAL-->
-                            <!--}">-->
+<!--[provider]="MapLayerProviderOptions.BingMaps"-->
+<!--[options]="{-->
+<!--url : 'https://dev.virtualearth.net',-->
+<!--key : Cesium.BingMapsApi.defaultKey,-->
+<!--mapStyle : Cesium.BingMapsStyle.AERIAL-->
+<!--}">-->
 <!--</ac-map-layer-provider>-->
 
 <!--<ac-map-layer-provider *ngIf="appSettingsService.showMapLayer"-->
-                       <!--[provider]="MapLayerProviderOptions.BingMaps"-->
-                       <!--[options]="{-->
-                                    <!--url : 'https://dev.virtualearth.net',-->
-                                    <!--key : Cesium.BingMapsApi.defaultKey,-->
-                                    <!--mapStyle : Cesium.BingMapsStyle.AERIAL-->
-                            <!--}">-->
+<!--[provider]="MapLayerProviderOptions.BingMaps"-->
+<!--[options]="{-->
+<!--url : 'https://dev.virtualearth.net',-->
+<!--key : Cesium.BingMapsApi.defaultKey,-->
+<!--mapStyle : Cesium.BingMapsStyle.AERIAL-->
+<!--}">-->
 <!--</ac-map-layer-provider>-->
 <!--<ac-map-layer-provider *ngIf="appSettingsService.showMapLayer"-->
-                       <!--[provider]="MapLayerProviderOptions.UrlTemplateImagery"-->
-                       <!--[options]="{-->
-                                   <!--url : 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',-->
-                                   <!--credit : 'Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'-->
-                            <!--}">-->
+<!--[provider]="MapLayerProviderOptions.UrlTemplateImagery"-->
+<!--[options]="{-->
+<!--url : 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',-->
+<!--credit : 'Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'-->
+<!--}">-->
 <!--</ac-map-layer-provider>-->

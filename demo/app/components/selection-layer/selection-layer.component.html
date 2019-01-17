@@ -1,16 +1,16 @@
 <ac-layer acFor="let entity of entities$" [context]="this" [show]="show">
-    <ac-billboard-desc props="{
+  <ac-billboard-desc props="{
         image : entity.image,
         position: entity.position,
         color: Cesium.Color.PURPLE,
         scale: 0.3,
      }">
-    </ac-billboard-desc>
-    <ac-billboard-desc props="{
+  </ac-billboard-desc>
+  <ac-billboard-desc props="{
         show: entity.selected,
         image : selectionImage,
         position: entity.position,
         scale: 0.2,
      }">
-    </ac-billboard-desc>
+  </ac-billboard-desc>
 </ac-layer>
