@@ -32,7 +32,6 @@ export class DemoMapComponent {
 
     viewerConf.viewerModifier = (viewer: any) => {
       viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
-      viewer.bottomContainer.remove();
     };
 
     this.appSettingsService.showTracksLayer = true;
