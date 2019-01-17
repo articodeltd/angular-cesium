@@ -34,7 +34,7 @@ export class CesiumEventBuilder {
     this.eventsHandler = this.cesiumService.getViewer().screenSpaceEventHandler;
   }
 
-  get(event: CesiumEvent, modifier: CesiumEventModifier = undefined): ConnectableObservable<any> {
+  get(event: CesiumEvent, modifier?: CesiumEventModifier): ConnectableObservable<any> {
     const eventName = CesiumEventBuilder.getEventFullName(event, modifier);
     if (this.cesiumEventsObservables.has(eventName)) {
       return this.cesiumEventsObservables.get(eventName);

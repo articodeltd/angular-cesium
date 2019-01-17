@@ -40,9 +40,10 @@ export class CoordinateConverter {
 
   screenToCartesian3(screenPos: { x: number, y: number }, addMapCanvasBoundsToPos?: boolean) {
     if (!this.cesiumService) {
-      throw new Error('ANGULAR2-CESIUM - Cesium service should be provided in order to do screen position calculations');
+      throw new Error('ANGULAR2-CESIUM - Cesium service should be provided in order' +
+        ' to do screen position calculations');
     } else {
-      const screenPosition = {...screenPos};
+      const screenPosition = { ...screenPos };
       if (addMapCanvasBoundsToPos) {
         const mapBounds = this.cesiumService.getViewer().canvas.getBoundingClientRect();
         screenPosition.x += mapBounds.left;
@@ -88,8 +89,8 @@ export class CoordinateConverter {
 
   /**
    * middle point between two points
-   * @param first  {latitude,longitude} in radians
-   * @param second {latitude,longitude} in radians
+   * @param first  (latitude,longitude) in radians
+   * @param second (latitude,longitude) in radians
    */
   midPointToCartesian3(first: { latitude: number, longitude: number }, second: { latitude: number, longitude: number }) {
     const toDeg = (rad: number) => Cesium.Math.toDegrees(rad);
@@ -129,8 +130,6 @@ export class CoordinateConverter {
    * initial bearing between two points
    *
    * @return bearing in degrees
-   * @param firstCartesian3
-   * @param secondCartesian3
    */
   bearingToCartesian(firstCartesian3: Cartesian3, secondCartesian3: Cartesian3) {
     const firstCart = Cesium.Cartographic.fromCartesian(firstCartesian3);

@@ -1,6 +1,6 @@
-import { Observable, of as observableOf, Subject } from 'rxjs';
+import { merge, Observable, of as observableOf, Subject } from 'rxjs';
 
-import { filter, map, merge, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEventBuilder } from './cesium-event-builder';
@@ -167,7 +167,7 @@ export class MapEventsManagerService {
                           pickOption: PickOptions,
                           priority: number,
                           pickFilter?: (any) => boolean): Observable<EventResult> {
-    const {mouseDownEvent, mouseUpEvent} = CesiumDragDropHelper.getDragEventTypes(event);
+    const { mouseDownEvent, mouseUpEvent } = CesiumDragDropHelper.getDragEventTypes(event);
 
     const mouseUpObservable = this.eventBuilder.get(mouseUpEvent);
     const mouseMoveObservable = this.eventBuilder.get(CesiumEvent.MOUSE_MOVE);
@@ -203,7 +203,7 @@ export class MapEventsManagerService {
       }), );
     }));
 
-    return dragObserver.pipe(merge(dropSubject));
+    return merge(dragObserver, dropSubject);
 
   }
 
@@ -230,7 +230,7 @@ export class MapEventsManagerService {
       picks = picks.map((pick: any) => pick.id && pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
     }
 
-    return {movement: movement, cesiumEntities: picks};
+    return { movement: movement, cesiumEntities: picks };
   }
 
   private addEntities(picksAndMovement: any, entityType: any, pickOption: PickOptions, pickFilter?: (any) => boolean): EventResult {
