@@ -22,4 +22,4 @@ jobs:
           name: Run bundle
           command: npm run lib:build
       - store_artifacts:
-          path: ~/angular-cesium/artifacts
+          path: ~/angular-cesium/dist
