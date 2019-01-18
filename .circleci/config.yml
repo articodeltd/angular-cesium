@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: zenika/alpine-chrome:with-node
+      - image: circleci/node:8.9.4-browsers
     working_directory: ~/angular-cesium
     steps:
       - checkout
