@@ -42,7 +42,7 @@ describe('PrimitivePolygonDrawerService', () => {
   const cesiumService = mock(CesiumService);
   const primitiveCollection: any = mock(Cesium.PrimitiveCollection);
 
-  when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
+  when(cesiumService.getScene()).thenReturn({ primitives: instance(primitiveCollection) });
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -54,12 +54,13 @@ describe('PrimitivePolygonDrawerService', () => {
     service.init();
   }));
 
-  it('should create and return a new polygon primitive.', inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
-    const polygonPrimitive = service.add(geometryProps, instanceProps, primitiveProps);
+  it('should create and return a new polygon primitive.',
+    inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
+      const polygonPrimitive = service.add(geometryProps, instanceProps, primitiveProps);
 
-    verify(primitiveCollection.add(anything())).once();
-    expect(polygonPrimitive).toBeDefined();
-  }));
+      verify(primitiveCollection.add(anything())).once();
+      expect(polygonPrimitive).toBeDefined();
+    }));
 
   it('should not update a given polygon\'s height', inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
     const polygonPrimitive = service.add(geometryProps, instanceProps, primitiveProps);
@@ -70,14 +71,15 @@ describe('PrimitivePolygonDrawerService', () => {
     expect(oldPositions).toEqual(polygonPrimitive.height);
   }));
 
-  it('should not update given polygon\'s polygon hierarchy', inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
-    const polygonPrimitive = service.add(geometryProps, instanceProps, primitiveProps);
-    const oldWidth = polygonPrimitive.polygonHierarchy;
+  it('should not update given polygon\'s polygon hierarchy',
+    inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
+      const polygonPrimitive = service.add(geometryProps, instanceProps, primitiveProps);
+      const oldWidth = polygonPrimitive.polygonHierarchy;
 
-    service.update(polygonPrimitive, otherGeometryProps, instanceProps, primitiveProps);
+      service.update(polygonPrimitive, otherGeometryProps, instanceProps, primitiveProps);
 
-    expect(oldWidth).toEqual(polygonPrimitive.polygonHierarchy);
-  }));
+      expect(oldWidth).toEqual(polygonPrimitive.polygonHierarchy);
+    }));
 
   it('should throw if geometry props are not given', inject([PrimitivePolygonDrawerService], (service: PrimitivePolygonDrawerService) => {
     geometryProps = undefined;

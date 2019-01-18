@@ -8,7 +8,7 @@ describe('CoordinateConverter', () => {
   const cesiumService = mock(CesiumService);
   const cesiumCamera = mock(Cesium.Camera);
 
-  when(cesiumService.getViewer()).thenReturn({camera: instance(cesiumCamera)});
+  when(cesiumService.getViewer()).thenReturn({ camera: instance(cesiumCamera) } as any);
 
   describe('Exception', () => {
     beforeEach(() => {
@@ -20,7 +20,7 @@ describe('CoordinateConverter', () => {
     it('should throw when CesiumService was not passed', inject([CoordinateConverter], (service: CoordinateConverter) => {
       let testPassed = false;
       try {
-        service.screenToCartesian3({x: 10, y: 20});
+        service.screenToCartesian3({ x: 10, y: 20 });
       } catch (e) {
         testPassed = true;
       }
@@ -38,7 +38,7 @@ describe('CoordinateConverter', () => {
 
     describe('Screen -> Cartesian3', () => {
       it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-        const cartesian3 = service.screenToCartesian3({x: 10, y: 20});
+        const cartesian3 = service.screenToCartesian3({ x: 10, y: 20 });
 
         expect(cartesian3).toBeDefined();
       }));
@@ -52,13 +52,13 @@ describe('CoordinateConverter', () => {
 
     describe('Cartesian3 -> Cartographic', () => {
       it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-        const cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30, clone: () => ({} as any), equals: (v) => false});
+        const cartographic = service.cartesian3ToCartographic({ x: 10, y: 20, z: 30, clone: () => ({} as any), equals: (v) => false });
 
         expect(cartographic).toBeDefined();
       }));
 
       it('should consist of Cartographic interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-        const cartographic = service.cartesian3ToCartographic({x: 10, y: 20, z: 30, clone: () => ({} as any), equals: (v) => false});
+        const cartographic = service.cartesian3ToCartographic({ x: 10, y: 20, z: 30, clone: () => ({} as any), equals: (v) => false });
 
         expect(cartographic.longitude).toBeDefined();
         expect(cartographic.latitude).toBeDefined();
@@ -123,19 +123,23 @@ describe('CoordinateConverter', () => {
         expect(cartographic.height).toEqual(0);
       }));
 
-      it('should convert but be different from degrees (except for height)', inject([CoordinateConverter], (service: CoordinateConverter) => {
-        const latLongHeightObject = {long: 10, lat: 20, height: 30};
-        const cartographicFromDegrees = service.degreesToCartographic(latLongHeightObject.long, latLongHeightObject.lat, latLongHeightObject.height);
-        const cartographicFromRadians = service.radiansToCartographic(latLongHeightObject.long, latLongHeightObject.lat, latLongHeightObject.height);
+      it('should convert but be different from degrees (except for height)',
+        inject([CoordinateConverter], (service: CoordinateConverter) => {
+          const latLongHeightObject = { long: 10, lat: 20, height: 30 };
+          const cartographicFromDegrees = service.degreesToCartographic(latLongHeightObject.long,
+            latLongHeightObject.lat, latLongHeightObject.height);
+          const cartographicFromRadians = service.radiansToCartographic(latLongHeightObject.long,
+            latLongHeightObject.lat, latLongHeightObject.height);
 
-        expect(cartographicFromDegrees.longitude == cartographicFromRadians.longitude).toBeFalsy();
-        expect(cartographicFromDegrees.latitude == cartographicFromRadians.latitude).toBeFalsy();
-        expect(cartographicFromDegrees.height).toEqual(cartographicFromRadians.height);
-      }));
+          expect(cartographicFromDegrees.longitude === cartographicFromRadians.longitude).toBeFalsy();
+          expect(cartographicFromDegrees.latitude === cartographicFromRadians.latitude).toBeFalsy();
+          expect(cartographicFromDegrees.height).toEqual(cartographicFromRadians.height);
+        }));
 
       it('should convert and be equal to the sent parameters', inject([CoordinateConverter], (service: CoordinateConverter) => {
-        const latLongHeightObject = {long: 10, lat: 20, height: 30};
-        const cartographicFromRadians = service.radiansToCartographic(latLongHeightObject.long, latLongHeightObject.lat, latLongHeightObject.height);
+        const latLongHeightObject = { long: 10, lat: 20, height: 30 };
+        const cartographicFromRadians = service.radiansToCartographic(latLongHeightObject.long,
+          latLongHeightObject.lat, latLongHeightObject.height);
 
         expect(cartographicFromRadians.longitude).toEqual(10);
         expect(cartographicFromRadians.latitude).toEqual(20);

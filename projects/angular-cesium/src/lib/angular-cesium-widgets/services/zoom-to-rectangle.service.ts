@@ -210,7 +210,9 @@ export class ZoomToRectangleService {
     const data = this.mapsZoomElements.get(mapId || this.cesiumService.getMap().getId());
     if (data) {
       data.container.remove();
-      data.borderElement && data.borderElement.remove();
+      if (data.borderElement) {
+        data.borderElement.remove();
+      }
       if (data.resetOnEscapePressFunc) {
         document.removeEventListener('keydown', data.resetOnEscapePressFunc);
       }
