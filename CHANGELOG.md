@@ -1,3 +1,7 @@
+## 0.55
+### Features
+* New Angular CLI build system
+
 ## 0.54
 ### Fixes
 * Fixed `ac-layer` onDestroy.
