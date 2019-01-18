@@ -19,6 +19,7 @@
     "lib:start": "ng build angular-cesium --watch",
     "lib:publish": "npm run lib:build; cd dist/angular-cesium; npm publish; npm run docs:push",
     "test": "ng test angular-cesium",
+    "test:ci": "ng test angular-cesium --no-watch --browsers=ChromeHeadless",
     "lint": "ng lint angular-cesium",
     "e2e": "ng e2e",
     "gh-pages": "gh-pages -d docs -b gh-pages",
