@@ -63,16 +63,16 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
   $ npm install --save cesium
   ```
 
- + Add cesium assets, script and css in `.angular-cli.json` or `angular.json`(Angular 6) file:
+ + Add cesium assets, script and css in `.angular-cli.json` or `angular.json`(Angular >=6) file:
   ```javascript
 	  "assets": [ // ...
-	    { "glob": "**/*", "input": "../node_modules/cesium/Build/Cesium", "output": "./assets/cesium" }
+	    { "glob": "**/*", "input": "./node_modules/cesium/Build/Cesium", "output": "./assets/cesium" }
 	   ],
 	  "styles": [ // ...
-	    "../node_modules/cesium/Build/Cesium/Widgets/widgets.css"
+	    "./node_modules/cesium/Build/Cesium/Widgets/widgets.css"
 	  ],
 	  "scripts": [ // ...
-	    "../node_modules/cesium/Build/Cesium/Cesium.js"
+	    "./node_modules/cesium/Build/Cesium/Cesium.js"
 	  ],
   ```
 + Add `CESIUM_BASE_URL` in `main.ts` file, before bootstrapping:
@@ -84,7 +84,7 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
     ```
 *** Duplication of Cesium base url setting method is caused by a Cesium bug that was introduced in Cesium version 1.42 and should be fixed in Cesium 1.45 - https://github.com/AnalyticalGraphicsInc/cesium/issues/6411
 
-+ Add `declare var Cesium;` to `typing.d.ts` file.
++ Add `declare var Cesium;` to `typing.d.ts` file (add the file to `src` directory).
 
 + You can configure cesium viewer style:
    ```css
