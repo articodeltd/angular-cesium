@@ -3,4 +3,5 @@
   position: fixed;
   bottom: 140px;
   left: 50px;
+  z-index: 100;
 }

@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material';
 
 class MyEntity extends AcEntity {
   selected = false;
-  image = '`assets/fighter-jet.png';
+  image = 'assets/fighter-jet.png';
 
   constructor(public position: Cartesian3,
               public id: string) {
@@ -48,7 +48,6 @@ export class SelectionLayerComponent implements OnInit {
       entity
     }));
     this.entities$ = observableFrom(entitiesNotifications);
-    this.snakBar.open('Click + ALT to selected the plane', 'ok');
   }
 
   ngOnInit() {
@@ -63,6 +62,7 @@ export class SelectionLayerComponent implements OnInit {
 
       console.log('all selected entities:', this.selectionManager.selectedEntities());
     });
+    this.snakBar.open('Click + ALT to selected the plane', 'ok');
   }
 
   setShow($event: boolean) {
