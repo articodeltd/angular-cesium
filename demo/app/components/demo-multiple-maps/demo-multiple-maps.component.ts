@@ -1,9 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MapsManagerService } from '../../../../src/angular-cesium';
-import { ZoomToRectangleService } from '../../../../src/angular-cesium-widgets/services/zoom-to-rectangle.service';
-import { MapLayerProviderOptions } from '../../../../src/angular-cesium/models/map-layer-provider-options.enum';
-import { SceneMode } from '../../../../src/angular-cesium/models/scene-mode.enum';
-import { ViewerConfiguration } from '../../../../src/angular-cesium/services/viewer-configuration/viewer-configuration.service';
+import { MapLayerProviderOptions, MapsManagerService, SceneMode, ViewerConfiguration, ZoomToRectangleService } from 'angular-cesium';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
 
@@ -79,6 +75,6 @@ export class DemoMultipleMapsComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.mapsManagerService.sync2DMapsCameras([{ id: 'main-map' }, { id: 'sub-map' }]);
+    this.mapsManagerService.sync2DMapsCameras([{id: 'main-map'}, {id: 'sub-map'}]);
   }
 }

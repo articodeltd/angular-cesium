@@ -1,33 +1,31 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AcLabelComponent } from '../../../../src/angular-cesium/components/ac-label/ac-label.component';
-import { AcHtmlComponent } from '../../../../src/angular-cesium/components/ac-html/ac-html.component';
-import { AcArcComponent } from '../../../../src/angular-cesium/components/ac-arc/ac-arc.component';
+import { AcArcComponent, AcHtmlComponent, AcLabelComponent } from 'angular-cesium';
 
 @Component({
   selector: 'draw-on-map-layer',
   templateUrl: 'draw-on-map-layer.component.html'
 })
 export class DrawOnMapComponent implements OnInit {
-  private toggle: boolean;
-  private position: any;
-  private positions: any;
-  private polylineMaterial: any;
-  private aquamarine: any;
-  private longitude: number;
-  private latitude: number;
-  private radius: number;
-  private htmlElement: string;
-  public Cesium = Cesium;
-  private center = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
+  Cesium = Cesium;
+  position: any;
+  aquamarine: any;
+  positions: any;
+  polylineMaterial: any;
+  toggle: boolean;
+  longitude: number;
+  latitude: number;
+  radius: number;
+  htmlElement: string;
+  center = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
 
-  private delta = Math.PI;
-  private arcRadius = Math.random() * 1000000;
-  private angle = Math.random() * 3 - 1;
-  private color = Cesium.Color.RED;
-  private attributes = {
+  delta = Math.PI;
+  arcRadius = Math.random() * 1000000;
+  angle = Math.random() * 3 - 1;
+  color = Cesium.Color.RED;
+  attributes = {
     color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
   };
-  private appearance: any;
+  appearance: any;
 
   @ViewChild(AcLabelComponent) label: AcLabelComponent;
   @ViewChild(AcHtmlComponent) html: AcHtmlComponent;

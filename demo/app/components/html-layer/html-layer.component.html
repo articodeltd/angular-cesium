@@ -1,17 +1,17 @@
 <ac-layer acFor="let html of htmls$" [context]="this">
-    <ac-html-desc props="{position: html.position, show: html.show}">
-        <ng-template let-html>
-            <div>
-                <h1>This is ac-html {{html.name}}</h1>
-                <button (click)="changeText(html, 'Test')">change text</button>
-            </div>
-        </ng-template>
-    </ac-html-desc>
-    <ac-label-desc props="{
+  <ac-html-desc props="{position: html.position, show: html.show}">
+    <ng-template let-html>
+      <div>
+        <h1>This is ac-html {{html.name}}</h1>
+        <button (click)="changeText(html, 'Test')">change text</button>
+      </div>
+    </ng-template>
+  </ac-html-desc>
+  <ac-label-desc props="{
             position: html.position,
-            pixelOffset : [-15,20] | pixelOffset,
+            pixelOffset : pixelOffset([-15,20]),
             text: html.name,
             font: '15px sans-serif'
         }">
-    </ac-label-desc>
+  </ac-label-desc>
 </ac-layer>

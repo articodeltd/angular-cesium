@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CircleEditorObservable } from '../../../../../src/angular-cesium-widgets/models/circle-editor-observable';
-import { CircleEditUpdate } from '../../../../../src/angular-cesium-widgets/models/circle-edit-update';
 // tslint:disable-next-line:max-line-length
-import { CirclesEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/circles-editor/circles-editor.service';
-import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/label-props';
+import { CircleEditorObservable, CircleEditUpdate, CirclesEditorService, LabelProps } from 'angular-cesium';
 
 @Component({
   selector: 'circles-editor-layer',

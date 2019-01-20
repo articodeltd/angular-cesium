@@ -2,13 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:7.4.0
-    working_directory: ~/angular2cesium
+      - image: circleci/node:8.9.4-browsers
+    working_directory: ~/angular-cesium
     steps:
       - checkout
       - run:
           name: Pre-Dependencies
-          command: mkdir -p ~/angular2cesium/artifacts
+          command: mkdir -p ~/angular-cesium/artifacts
       - run:
           name: Install Dependencies
           command: npm install
@@ -17,9 +17,9 @@ jobs:
           command: npm run lint
       - run:
           name: Run tests
-          command: npm run test
+          command: npm run test:ci
       - run:
           name: Run bundle
-          command: npm run bundle
+          command: npm run lib:build
       - store_artifacts:
-          path: ~/angular2cesium/artifacts
+          path: ~/angular-cesium/dist

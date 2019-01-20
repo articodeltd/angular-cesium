@@ -1,9 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { PolygonEditUpdate } from '../../../../../src/angular-cesium-widgets/models/polygon-edit-update';
-import { EditActions } from '../../../../../src/angular-cesium-widgets/models/edit-actions.enum';
-import { PolylinesEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service';
-import { PolylineEditorObservable } from '../../../../../src/angular-cesium-widgets/models/polyline-editor-observable';
-import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/label-props';
+import { EditActions, LabelProps, PolygonEditUpdate, PolylineEditorObservable, PolylinesEditorService } from 'angular-cesium';
 
 @Component({
   selector: 'polyline-editor-layer',

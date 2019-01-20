@@ -1,15 +1,16 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {
   AcEntity,
+  AcLayerComponent,
   AcNotification,
   ActionType,
   CameraService,
   CesiumEvent,
   MapEventsManagerService,
-  PickOptions, SceneMode
-} from '../../../../src/angular-cesium';
-import { AcLayerComponent } from '../../../../src/angular-cesium';
-import { TracksDataProvider } from '../../../utils/services/dataProvider/tracksDataProvider.service';
+  PickOptions,
+  SceneMode
+} from 'angular-cesium';
+import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 
@@ -58,7 +59,7 @@ export class TrackEntityLayerComponent implements OnInit, AfterViewInit {
           color: Cesium.Color.BLUE,
           position,
         }),
-      })
+      });
     }, 500);
 
 
@@ -67,7 +68,7 @@ export class TrackEntityLayerComponent implements OnInit, AfterViewInit {
       pick: PickOptions.PICK_ONE
     }).subscribe(result => {
       if (result.cesiumEntities && result.cesiumEntities.length) {
-        this.cameraService.trackEntity(result.cesiumEntities[0], { flyTo: true, altitude: 10000 });
+        this.cameraService.trackEntity(result.cesiumEntities[0], {flyTo: true, altitude: 10000});
       }
     });
 
@@ -94,11 +95,11 @@ export class TrackEntityLayerComponent implements OnInit, AfterViewInit {
   }
 
   setShow($event: boolean) {
-    this.show = $event
+    this.show = $event;
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.snackBar.open('Start tracking by clicking on the circle', 'Ok', { duration: 3000 }), 0);
+    setTimeout(() => this.snackBar.open('Start tracking by clicking on the circle', 'Ok', {duration: 3000}), 0);
   }
 
 }

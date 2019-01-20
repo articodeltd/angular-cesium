@@ -10,18 +10,18 @@ interface AppSettings {
   showEllipses: boolean;
   keyboardControl: boolean;
   tracksDataType: TracksType;
-  
+
 }
 
 export enum TracksType {
-	REAL_DATA,
-	SIM_DATA,
-	MODELS_3D,
+  REAL_DATA,
+  SIM_DATA,
+  MODELS_3D,
 }
 
 @Injectable()
 export class AppSettingsService {
-  get settings(): AppSettings  {
+  get settings(): AppSettings {
     return this._settings;
   }
 
@@ -38,7 +38,7 @@ export class AppSettingsService {
     showEllipses: false,
     show3dtiles: false,
     keyboardControl: false,
-		tracksDataType: TracksType.MODELS_3D,
+    tracksDataType: TracksType.MODELS_3D,
   };
 
   setSettings(settings: AppSettings) {

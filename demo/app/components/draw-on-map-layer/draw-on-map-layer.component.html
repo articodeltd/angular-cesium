@@ -32,7 +32,7 @@
 }">
 </ac-ellipse>
 
-<ac-billboard [props] = "{
+<ac-billboard [props]="{
     image: '/assets/angry-bird-blue-icon.png',
     position: position,
     scale: 0.2,
@@ -40,7 +40,7 @@
 }">
 </ac-billboard>
 
-<ac-point [props] = "{
+<ac-point [props]="{
     width: 3,
     position: position,
     color: Cesium.Color.YELLOW
@@ -57,20 +57,20 @@
 </ac-circle>
 
 <ac-html #html *ngIf="toggle" [props]="{position: position}">
-    <p>{{htmlElement}}</p>
+  <p>{{htmlElement}}</p>
 </ac-html>
 
 <ac-arc
-    [geometryProps]="{
+  [geometryProps]="{
         center: center,
         angle: angle,
         delta: delta,
         radius: arcRadius
     }"
-    [instanceProps]="{
+  [instanceProps]="{
         attributes: attributes
     }"
-    [primitiveProps]="{
+  [primitiveProps]="{
         appearance: appearance
     }"
 ></ac-arc>

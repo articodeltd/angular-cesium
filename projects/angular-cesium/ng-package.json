@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "whitelistedNonPeerDependencies": [
+    "geodesy",
+    "angular2parse",
+    "json-string-mapper",
+    "primitive-primitives",
+    "lodash.get"
+  ],
+  "dest": "../../dist/angular-cesium",
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  }
+}

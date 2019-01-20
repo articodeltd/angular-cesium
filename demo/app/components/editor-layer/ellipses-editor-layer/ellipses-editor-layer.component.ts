@@ -1,10 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { EllipseEditorObservable } from '../../../../../src/angular-cesium-widgets/models/ellipse-editor-observable';
-import { EllipseEditUpdate } from '../../../../../src/angular-cesium-widgets/models/ellipse-edit-update';
 // tslint:disable-next-line:max-line-length
-import { EllipsesEditorService } from '../../../../../src/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service';
-import { LabelProps } from '../../../../../src/angular-cesium-widgets/models/label-props';
-import { CoordinateConverter } from '../../../../../src/angular-cesium';
+import { CoordinateConverter, EllipseEditorObservable, EllipseEditUpdate, EllipsesEditorService, LabelProps } from 'angular-cesium';
 
 @Component({
   selector: 'ellipses-editor-layer',
@@ -17,9 +13,11 @@ export class EllipsesEditorLayerComponent implements OnInit {
   editing$: EllipseEditorObservable;
   enableEditing = true;
 
-  constructor(private ellipsesEditor: EllipsesEditorService, private coordinateConverter: CoordinateConverter) {}
+  constructor(private ellipsesEditor: EllipsesEditorService, private coordinateConverter: CoordinateConverter) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   startEdit() {
     if (this.editing$) {
@@ -29,7 +27,7 @@ export class EllipsesEditorLayerComponent implements OnInit {
     this.editing$.setLabelsRenderFn((update: EllipseEditUpdate) => {
       const newLabels: LabelProps[] = [];
       newLabels.push(
-        { text: '' },
+        {text: ''},
         {
           text: Math.round(update.majorRadius / 1000).toString() + 'Km',
           scale: 0.5,
@@ -65,7 +63,7 @@ export class EllipsesEditorLayerComponent implements OnInit {
     this.editing$.setLabelsRenderFn((update: EllipseEditUpdate) => {
       const newLabels: LabelProps[] = [];
       newLabels.push(
-        { text: '' },
+        {text: ''},
         {
           text: Math.round(update.majorRadius / 1000).toString() + 'Km',
           scale: 0.3,

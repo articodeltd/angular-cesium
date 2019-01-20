@@ -1,14 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CameraService, CesiumService } from '../../../../src/angular-cesium';
-import { PolylineEditorObservable } from '../../../../src/angular-cesium-widgets/models/polyline-editor-observable';
 import {
-  RangeAndBearingComponent,
+  CameraService,
+  CesiumService,
   CirclesEditorService,
   EllipsesEditorService,
-  PolygonsEditorService,
   HippodromeEditorService,
-} from '../../../../src/angular-cesium-widgets';
-import { ZoomToRectangleService } from '../../../../src/angular-cesium-widgets/services/zoom-to-rectangle.service';
+  PolygonsEditorService,
+  PolylineEditorObservable,
+  RangeAndBearingComponent,
+  ZoomToRectangleService
+} from 'angular-cesium';
 
 @Component({
   selector: 'toolbar-example',
@@ -31,7 +32,8 @@ export class ToolbarExampleComponent implements OnInit {
     this.zoomToRectangleService.init(cesiumService, cameraService);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   createRangeAndBearing() {
     if (this.rnb) {
@@ -46,7 +48,7 @@ export class ToolbarExampleComponent implements OnInit {
   }
 
   goHome() {
-    this.cameraService.cameraFlyTo({ destination: Cesium.Cartesian3.fromDegrees(35.21, 31.77, 200000) });
+    this.cameraService.cameraFlyTo({destination: Cesium.Cartesian3.fromDegrees(35.21, 31.77, 200000)});
   }
 
   drawCircle() {

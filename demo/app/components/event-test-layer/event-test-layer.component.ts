@@ -1,16 +1,18 @@
 import { from as observableFrom, Observable } from 'rxjs';
 
-import { map, filter, tap } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { AcNotification } from '../../../../src/angular-cesium/models/ac-notification';
-import { ActionType } from '../../../../src/angular-cesium/models/action-type.enum';
-import { MapEventsManagerService } from '../../../../src/angular-cesium/services/map-events-mananger/map-events-manager';
-import { AcEntity } from '../../../../src/angular-cesium/models/ac-entity';
-import { AcLayerComponent } from '../../../../src/angular-cesium/components/ac-layer/ac-layer.component';
-import { CesiumEvent } from '../../../../src/angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
-import { PickOptions } from '../../../../src/angular-cesium/services/map-events-mananger/consts/pickOptions.enum';
-import { CoordinateConverter } from '../../../../src/angular-cesium/services/coordinate-converter/coordinate-converter.service';
-import { CameraService } from '../../../../src/angular-cesium/services/camera/camera.service';
+import {
+  AcEntity,
+  AcLayerComponent,
+  AcNotification,
+  ActionType,
+  CameraService,
+  CesiumEvent,
+  CoordinateConverter,
+  MapEventsManagerService,
+  PickOptions
+} from 'angular-cesium';
 
 @Component({
   selector: 'event-test-layer',
@@ -117,7 +119,7 @@ export class EventTestLayerComponent implements OnInit {
 
   testDrag() {
     this.eventManager
-      .register({ event: CesiumEvent.LEFT_CLICK_DRAG, pick: PickOptions.PICK_FIRST, entityType: AcEntity })
+      .register({event: CesiumEvent.LEFT_CLICK_DRAG, pick: PickOptions.PICK_FIRST, entityType: AcEntity})
       .pipe(
         filter(result => result.entities && result.entities[0].name === 'Drag me'),
         tap(result => {
@@ -168,7 +170,7 @@ export class EventTestLayerComponent implements OnInit {
   }
 
   testPriority() {
-    const o1 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 1 });
+    const o1 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 1});
     o1.subscribe(
       result => {
         console.log('click1 Priority 1', result.movement, 'cesiumEntities:', result.cesiumEntities, 'entities', result.entities);
@@ -176,15 +178,15 @@ export class EventTestLayerComponent implements OnInit {
       err => null,
       () => console.log('complete'),
     );
-    const o2 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 2 });
+    const o2 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 2});
     o2.subscribe(result => {
       console.log('click2 Priority 2', result.movement, 'cesiumEntities:', result.cesiumEntities, 'entities', result.entities);
     });
-    const o3 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 2 });
+    const o3 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 2});
     o3.subscribe(result => {
       console.log('click3 Priority 2', result.movement, 'cesiumEntities:', result.cesiumEntities, 'entities', result.entities);
     });
-    const o4 = this.eventManager.register({ event: CesiumEvent.LEFT_CLICK, priority: 3 });
+    const o4 = this.eventManager.register({event: CesiumEvent.LEFT_CLICK, priority: 3});
     o4.subscribe(
       pos => {
         console.log('click4 Priority 3', pos.movement, 'cesiumEntities:', pos.cesiumEntities, 'entities', pos.entities);
@@ -205,7 +207,7 @@ export class EventTestLayerComponent implements OnInit {
   }
 
   testColorChange() {
-    const inputConf = { event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST, entityType: AcEntity };
+    const inputConf = {event: CesiumEvent.LEFT_CLICK, pick: PickOptions.PICK_FIRST, entityType: AcEntity};
     this.eventManager
       .register(inputConf)
       .pipe(
