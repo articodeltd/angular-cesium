@@ -79,12 +79,18 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
     });
   }
 
+  private createWebMapServiceProvider(options) {
+    return new Cesium.WebMapServiceImageryProvider(options);
+  }
+
   ngOnInit() {
     if (!Checker.present(this.options.url) && this.provider !== MapLayerProviderOptions.OFFLINE) {
       throw new Error('options must have a url');
     }
     switch (this.provider) {
       case MapLayerProviderOptions.WebMapService:
+        this.layerProvider = this.createWebMapServiceProvider(this.options);
+        break;
       case MapLayerProviderOptions.WebMapTileService:
       case MapLayerProviderOptions.ArcGisMapServer:
       case MapLayerProviderOptions.SingleTileImagery:
