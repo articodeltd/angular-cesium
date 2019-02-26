@@ -189,7 +189,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
   /**
    * @returns ac-map's cesium service
    */
-  getCesiumSerivce() {
+  getCesiumService() {
     return this._cesiumService;
   }
 
