@@ -1,3 +1,8 @@
+## 0.56
+### Features
+* Added `onDrag` hook into the `ac-toolbar` component
+* Altered `ac-toolbar` to listen in to changes on its `allowDrag` input and subscribe/unsubscribe dynamically
+
 ## 0.55
 ### Features
 * New Angular CLI build system
