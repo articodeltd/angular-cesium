@@ -22,6 +22,49 @@
   flex: 1 1;
 }
 
+.page-footer {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+.page-footer:after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  opacity: .54;
+  position: relative;
+  margin-right: 5px;
+}
+.page-footer:before {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  opacity: .54;
+  position: relative;
+  margin-left: 5px;
+}
+
+
+.footer-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+
+  padding: 0 20px;
+}
+.logo-img {
+  height: 30px;
+  padding: 0 10px;
+}
+
 .github{
   width: 56px;
   height: 56px;

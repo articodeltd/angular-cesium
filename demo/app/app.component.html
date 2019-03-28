@@ -24,7 +24,7 @@
   <mat-sidenav #sidenav class="sidenav">
     <settings-form (cleanMap)="cleanMainMap()"></settings-form>
   </mat-sidenav>
-  <div *ngIf="!multiMap" style="position: relative; height: calc(100% - 64px)">
+  <div *ngIf="!multiMap" style="position: relative; height: calc(100% - 109px)">
     <demo-map #mainMap></demo-map>
   </div>
   <div *ngIf="multiMap" style="display: flex; flex-direction: row; flex: 1;">
@@ -32,4 +32,9 @@
     <div id="left-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden"></div>
     <div id="right-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden"></div>
   </div>
+  <footer class="page-footer">
+    <div class="footer-text">Created and maintained by
+      <a href="https://articode.co"> <img class="logo-img" src="/assets/articode-logo.svg"/></a>
+    </div>
+  </footer>
 </mat-sidenav-container>
