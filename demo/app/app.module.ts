@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { TracksDialogComponent } from './components/tracks-layer/track-dialog/track-dialog.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { TracksLayerComponent } from './components/tracks-layer/tracks-layer.component';
-import { SettingsFormComponent } from './shared/settings-form/settings-form.component';
 import { BaseLayerComponent } from './components/base-layer/base-layer.component';
 import { DynamicEllipseLayerComponent } from './components/dynamic-ellipse-layer/dynamic-ellipse-layer.component';
 import { DynamicCircleLayerComponent } from './components/dynamic-circle-layer/dynamic-circle-layer.component';
@@ -24,7 +23,6 @@ import { MapsLayerComponent } from './components/maps-layer/maps-layer.component
 import { DemoMultipleMapsComponent } from './components/demo-multiple-maps/demo-multiple-maps.component';
 import { ModelsLayerComponent } from './components/models-layer/models-layer.component';
 import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
-import { MinValidatorDirective } from './shared/settings-form/min-validator.directive';
 import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodrome-layer.component';
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
@@ -42,20 +40,21 @@ import { BoxesLayerComponent } from './components/boxes-layer/boxes-layer.compon
 import { TrackEntityLayerComponent } from './components/track-entity-layer/track-entity-layer.component';
 import { CzmlLayerComponent } from './components/czml-layer/czml-layer.component';
 import { EllipsesEditorLayerComponent } from './components/editor-layer/ellipses-editor-layer/ellipses-editor-layer.component';
-import { MaxValidatorDirective } from './shared/settings-form/max-validtor.directive';
 import { AppMaterialModule } from './app.material.module';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { environment } from '../environments/environment';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { Apollo, APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
-import { MainNavbarComponent } from './shared/main-navbar/main-navbar.component';
-import { SidenavToolbarComponent } from './shared/sidenav-toolbar/sidenav-toolbar.component';
+import { MaxValidatorDirective } from './layout/settings-form/max-validtor.directive';
+import { MinValidatorDirective } from './layout/settings-form/min-validator.directive';
+import { MainNavbarComponent } from './layout/main-navbar/main-navbar.component';
+import { SidenavToolbarComponent } from './layout/sidenav-toolbar/sidenav-toolbar.component';
+import { SettingsFormComponent } from './layout/settings-form/settings-form.component';
 
 
 @NgModule({
   imports: [
     BrowserModule,
-    AngularCesiumModule,
     FormsModule,
     AngularCesiumModule.forRoot(),
     AngularCesiumWidgetsModule,
@@ -67,8 +66,6 @@ import { SidenavToolbarComponent } from './shared/sidenav-toolbar/sidenav-toolba
   ],
   declarations: [
     AppComponent,
-    MainNavbarComponent,
-    SettingsFormComponent,
     TracksLayerComponent,
     BaseLayerComponent,
     DynamicEllipseLayerComponent,
@@ -85,8 +82,6 @@ import { SidenavToolbarComponent } from './shared/sidenav-toolbar/sidenav-toolba
     DemoMultipleMapsComponent,
     MapsLayerComponent,
     ModelsLayerComponent,
-    MaxValidatorDirective,
-    MinValidatorDirective,
     PolygonPerformanceTestComponent,
     KeyboardControlLayerComponent,
     HippodromeLayerComponent,
@@ -106,7 +101,11 @@ import { SidenavToolbarComponent } from './shared/sidenav-toolbar/sidenav-toolba
     TrackEntityLayerComponent,
     CzmlLayerComponent,
     EllipsesEditorLayerComponent,
+    MaxValidatorDirective,
+    MinValidatorDirective,
+    MainNavbarComponent,
     SidenavToolbarComponent,
+    SettingsFormComponent
   ],
   entryComponents: [TracksDialogComponent, ContextMenuComponent],
   bootstrap: [AppComponent]
