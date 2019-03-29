@@ -1,0 +1,17 @@
+<mat-toolbar>Angular Cesium</mat-toolbar>
+  <mat-nav-list>
+    <a mat-list-item href="https://github.com/TGFTech/angular-cesium"
+       [draggableToMap]="{ src: '../assets/GitHub-Mark-Light.png', style: { width: '50px', height: '50px' } }">
+      GITHUB <img class="github" src="../assets/GitHub-Mark-Light.png"/>
+    </a>
+    <a mat-list-item href="https://articodeltd.github.io/angular-cesium/">
+      DOCS
+    </a>
+    <a mat-list-item (click)="appSettingsService.tracksDataType = TracksType.MODELS_3D">3D TRACKS</a>
+    <a mat-list-item matTooltip="Live updating planes from a real data source"
+            (click)="appSettingsService.tracksDataType = TracksType.REAL_DATA">
+      LIVE TRACKS
+    </a>
+    <a mat-list-item (click)="appSettingsService.tracksDataType = TracksType.SIM_DATA">SIMULATED TRACKS</a>
+    <a mat-list-item (click)="onMultiMapClick.emit()">MULTI MAPS</a>
+  </mat-nav-list>

@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="onSettingClick.emit()" class="settings-button">
+    <mat-icon>settings</mat-icon>
+  </button>
+  <span>Angular-Cesium Demo</span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <div *ngIf="!(isHandset$ | async)" class="center-buttons">
+    <a mat-button href="https://github.com/TGFTech/angular-cesium"
+       [draggableToMap]="{ src: '../assets/GitHub-Mark-Light.png', style: { width: '50px', height: '50px' } }">
+      <img class="github" src="../assets/GitHub-Mark-Light.png"/> GITHUB
+    </a>
+    <a mat-button href="https://articodeltd.github.io/angular-cesium/">
+      DOCS
+    </a>
+    <button mat-button matTooltip="Live updating planes from a real data source"
+            (click)="appSettingsService.tracksDataType = TracksType.REAL_DATA">
+      LIVE TRACKS
+    </button>
+    <button mat-button (click)="appSettingsService.tracksDataType = TracksType.SIM_DATA">SIMULATED TRACKS</button>
+    <button mat-button (click)="appSettingsService.tracksDataType = TracksType.MODELS_3D">3D TRACKS</button>
+    <button mat-button (click)="onMultiMapClick.emit()">MULTI MAPS</button>
+  </div>
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="onToolbarSideNavClick.emit()"
+    *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+</mat-toolbar>

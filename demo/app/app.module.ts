@@ -48,6 +48,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { environment } from '../environments/environment';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { Apollo, APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
+import { MainNavbarComponent } from './shared/main-navbar/main-navbar.component';
+import { SidenavToolbarComponent } from './shared/sidenav-toolbar/sidenav-toolbar.component';
 
 
 @NgModule({
@@ -65,6 +67,7 @@ import { Apollo, APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
   ],
   declarations: [
     AppComponent,
+    MainNavbarComponent,
     SettingsFormComponent,
     TracksLayerComponent,
     BaseLayerComponent,
@@ -103,19 +106,8 @@ import { Apollo, APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
     TrackEntityLayerComponent,
     CzmlLayerComponent,
     EllipsesEditorLayerComponent,
+    SidenavToolbarComponent,
   ],
-  // providers: [{
-  //   provide: APOLLO_OPTIONS,
-  //   useFactory(httpLink: HttpLink) {
-  //     return {
-  //       cache: new InMemoryCache(),
-  //       link: httpLink.create({
-  //         uri: environment.server + '/graphql',
-  //       }),
-  //     };
-  //   },
-  //   deps: [HttpLink]
-  // }],
   entryComponents: [TracksDialogComponent, ContextMenuComponent],
   bootstrap: [AppComponent]
 })
@@ -129,17 +121,4 @@ export class AppModule {
     });
   }
 
-  // constructor( httpLink: HttpLink) {
-  //   const x = httpLink.create({
-  //       uri: environment.server + '/graphql',
-  //     });
-  // }
-
-  // constructor() {
-  //
-  //   const x = new InMemoryCache();
-  //   // const x = httpLink.create({
-  //   //   uri: environment.server + '/graphql',
-  //   // });
-  // }
 }
