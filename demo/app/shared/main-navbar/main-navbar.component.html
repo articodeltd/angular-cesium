@@ -2,8 +2,8 @@
   <button mat-icon-button (click)="onSettingClick.emit()" class="settings-button">
     <mat-icon>settings</mat-icon>
   </button>
+  <span *ngIf="(isHandset$ | async)" class="fill-remaining-space"></span>
   <span>Angular-Cesium Demo</span>
-  <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
   <div *ngIf="!(isHandset$ | async)" class="center-buttons">
     <a mat-button href="https://github.com/TGFTech/angular-cesium"
