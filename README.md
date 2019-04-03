@@ -6,7 +6,7 @@
 
 Create map based applications using cesium and angular2 components.
 Focusing on high performance with easy usage.
-Check out our [Demo](http://www.angular-cesium.com) that contains small app built with angular-cesium.
+Check out our [Demo](http://www.angular-cesium.com) that contains small app built with angular-cesium and our blog post [Intro to angular-cesium](https://cesium.com/blog/2019/03/28/angular-cesium/).
 
 ## Getting started
 #### For existing project just install angular-cesium

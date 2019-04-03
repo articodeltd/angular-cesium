@@ -25,7 +25,6 @@ export class AppComponent implements AfterViewInit {
   };
 
   multiMap = false; // Change to true to enable multiple maps
-  TracksType = TracksType;
 
   constructor(
     public appSettingsService: AppSettingsService,
@@ -39,7 +38,7 @@ export class AppComponent implements AfterViewInit {
     this.appSettingsService.showTracksLayer = true;
   }
 
-  settingsClick(sidenav: MatSidenav) {
+  openSidenav(sidenav: MatSidenav) {
     this.dialog.closeAll();
     sidenav.open();
   }
