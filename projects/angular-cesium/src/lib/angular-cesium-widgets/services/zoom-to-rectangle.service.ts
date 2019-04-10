@@ -41,10 +41,19 @@ interface ZoomData {
  *  borderStyle - optional - the style of the rectangle element border - default: '3px dashed #FFFFFF'
  *  backgroundColor - optional - the background color of the rectangle element - default: 'transparent'
  *  resetKeyCode - optional - the key code of the key that is used to reset the drawing of the rectangle - default: 27 (ESC key)
+ *  threshold - optional - the minimum area of the screen rectangle (in pixels) that is required to perform zoom - default: 9
+ *  keepRotation - optional - whether or not to keep the rotation when zooming in - default: true
+ *  mouseButton - optional - sets the mouse button for drawing the rectangle - default: left mouse button (0)
  * }
  * @param mapId - optional - the mapId of the map that the tool will be used in.
  *
  */
+
+export enum MouseButtons {
+  LEFT = 0,
+  MIDDLE = 1,
+  RIGHT = 2,
+}
 
 @Injectable()
 export class ZoomToRectangleService {
@@ -52,8 +61,7 @@ export class ZoomToRectangleService {
     private mapsManager: MapsManagerService,
     @Optional() cameraService: CameraService,
     @Optional() cesiumService: CesiumService,
-  ) {
-  }
+  ) {}
 
   private cameraService: CameraService;
   private cesiumService: CesiumService;
@@ -65,6 +73,9 @@ export class ZoomToRectangleService {
     borderStyle: '2px solid rgba(0,0,0,0.5)',
     backgroundColor: 'rgba(0,0,0,0.2)',
     autoDisableOnZoom: true,
+    threshold: 9,
+    keepRotation: true,
+    mouseButton: MouseButtons.LEFT,
   };
 
   init(cesiumService: CesiumService, cameraService: CameraService) {
@@ -76,8 +87,11 @@ export class ZoomToRectangleService {
     options: {
       onStart?: (acMap?: AcMapComponent) => any;
       onComplete?: (acMap?: AcMapComponent) => any;
+      mouseButton?: MouseButtons;
       autoDisableOnZoom?: boolean;
       animationDurationInSeconds?: number;
+      threshold?: number;
+      keepRotation?: boolean;
       borderStyle?: string;
       backgroundColor?: string;
       resetKeyCode?: number;
@@ -116,7 +130,7 @@ export class ZoomToRectangleService {
     container.style.top = '0';
     container.style.left = '0';
     mapContainer.appendChild(container);
-    const mapZoomData: ZoomData = {container};
+    const mapZoomData: ZoomData = { container };
     this.mapsZoomElements.set(mapId || this.cesiumService.getMap().getId(), mapZoomData);
     let mouse = {
       endX: 0,
@@ -127,6 +141,9 @@ export class ZoomToRectangleService {
     let borderElement: HTMLElement | undefined;
 
     container.onmousedown = e => {
+      if (e.button !== finalOptions.mouseButton) {
+        return;
+      }
       if (!borderElement) {
         if (options && options.onStart) {
           options.onStart(map);
@@ -151,12 +168,18 @@ export class ZoomToRectangleService {
 
     container.onmouseup = e => {
       if (borderElement) {
-        const zoomApplied = this.zoomCameraToRectangle(cameraService, mouse, finalOptions.animationDurationInSeconds);
-        if (borderElement) {
-          borderElement.remove();
-          borderElement = undefined;
-          mapZoomData.borderElement = undefined;
+        let zoomApplied;
+        if (mouse && Math.abs(mouse.endX - mouse.startX) * Math.abs(mouse.endY - mouse.startY) > finalOptions.threshold) {
+          zoomApplied = this.zoomCameraToRectangle(
+            cameraService,
+            mouse,
+            finalOptions.animationDurationInSeconds,
+            finalOptions,
+          );
         }
+        borderElement.remove();
+        borderElement = undefined;
+        mapZoomData.borderElement = undefined;
         mouse = {
           endX: 0,
           endY: 0,
@@ -224,10 +247,11 @@ export class ZoomToRectangleService {
     cameraService: CameraService,
     positions: { endX: number; endY: number; startX: number; startY: number },
     animationDuration,
+    options,
   ): boolean {
     const camera = cameraService.getCamera();
-    const cartesian1 = camera.pickEllipsoid({x: positions.startX, y: positions.startY});
-    const cartesian2 = camera.pickEllipsoid({x: positions.endX, y: positions.endY});
+    const cartesian1 = camera.pickEllipsoid({ x: positions.startX, y: positions.startY });
+    const cartesian2 = camera.pickEllipsoid({ x: positions.endX, y: positions.endY });
     if (!cartesian1 || !cartesian2) {
       return false;
     }
@@ -240,6 +264,7 @@ export class ZoomToRectangleService {
         Math.max(cartographic1.longitude, cartographic2.longitude),
         Math.max(cartographic1.latitude, cartographic2.latitude),
       ),
+      orientation: options.keepRotation ? { heading: camera.heading } : undefined,
       duration: animationDuration,
     });
     return true;

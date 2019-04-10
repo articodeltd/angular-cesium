@@ -1,11 +1,14 @@
 ## 0.56
 ### Features
-* Added `onDrag` hook into the `ac-toolbar` component
-* Altered `ac-toolbar` to listen in to changes on its `allowDrag` input and subscribe/unsubscribe dynamically
+* Added `onDrag` hook into the `ac-toolbar` component.
+* Altered `ac-toolbar` to listen in to changes on its `allowDrag` input and subscribe/unsubscribe dynamically.
+* Added threshold option to `ZoomToRectangleService` options.
+* Added keepRotation option to `ZoomToRectangleService` options.
+* Added mouseButton option to `ZoomToRectangleService` options.
 
 ## 0.55
 ### Features
-* New Angular CLI build system
+* New Angular CLI build system.
 
 ## 0.54
 ### Fixes
@@ -13,8 +16,8 @@
 * Fixed `ac-map` onDestroy.
 * Fixed `CircleEditorService` shape dragging.
 * Fixed `ac-model-desc` docs [#243](https://github.com/TGFTech/angular-cesium/issues/243).
-* Fixed entities drawing directly to map - without ac-layer [#212](https://github.com/TGFTech/angular-cesium/issues/212)
-* Fixed plonter behavior
+* Fixed entities drawing directly to map - without ac-layer [#212](https://github.com/TGFTech/angular-cesium/issues/212).
+* Fixed plonter behavior.
 
 ### Features
 * Multiple `AcMap` support using `ngFor` - The optional `@Input() containerId` in `AcMap` can be used to place the map canvas in any container / move the canvas to a new container.
