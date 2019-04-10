@@ -2,6 +2,9 @@
 
 ./newrelic_agent.log
 
+node_modules
+newrelic_agent.log
+
 # compiled output
 /dist
 /tmp
