@@ -85,6 +85,9 @@
                             <a href="#MapLayerProviderOptions" title="projects/angular-cesium/src/lib/angular-cesium/models/map-layer-provider-options.enum.ts"><b>MapLayerProviderOptions</b>&nbsp;&nbsp;&nbsp;(projects/.../map-layer-provider-options.enum.ts)</a>
                         </li>
                         <li>
+                            <a href="#MouseButtons" title="projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts"><b>MouseButtons</b>&nbsp;&nbsp;&nbsp;(projects/.../zoom-to-rectangle.service.ts)</a>
+                        </li>
+                        <li>
                             <a href="#PickOptions" title="projects/angular-cesium/src/lib/angular-cesium/services/map-events-mananger/consts/pickOptions.enum.ts"><b>PickOptions</b>&nbsp;&nbsp;&nbsp;(projects/.../pickOptions.enum.ts)</a>
                         </li>
                         <li>
@@ -712,6 +715,69 @@
                         <tr>
                             <td class="col-md-4">
                                 &nbsp;OFFLINE
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <h3>projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts</h3>
+    <section>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="MouseButtons"></a>
+                        <span class="name"><b>MouseButtons</b><a href="#MouseButtons"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The Service is as a &quot;zoom to rectangle&quot; tool</p>
+<p>example:</p>
+<div><pre class="line-numbers"><code class="language-none"> * constructor(
+ *   private cameraService: CameraService,
+ *   private cesiumService: CesiumService,
+ *   private zoomToRectangleService: ZoomToRectangleService,
+ * ) {
+ *   this.zoomToRectangleService.init(cesiumService, cameraService);
+ * }
+ * ...
+ * this.zoomToRectangleService.activate({onComplete: () =&gt; this.zoomToRectangleService.disable()});
+ *</code></pre></div><p><code>init()</code> - initialize the service with CameraService and CesiumService.
+If no mapId is provided to activate() - must be called before calling <code>activate()</code>.</p>
+<p><code>disable()</code> - disables the tool.</p>
+<p><code>activate()</code> -</p>
+</div>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;LEFT
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>0</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;MIDDLE
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>1</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;RIGHT
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>2</code>
                             </td>
                         </tr>
             </tbody>

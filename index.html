@@ -38,7 +38,7 @@
 <a href="https://www.npmjs.com/package/angular-cesium"><img src="https://img.shields.io/npm/v/angular-cesium.svg?style=flat-square" alt="npm version" class="img-responsive"></a></p>
 <p>Create map based applications using cesium and angular2 components.
 Focusing on high performance with easy usage.
-Check out our <a href="http://www.angular-cesium.com">Demo</a> that contains small app built with angular-cesium.</p>
+Check out our <a href="http://www.angular-cesium.com">Demo</a> that contains small app built with angular-cesium and our blog post <a href="https://cesium.com/blog/2019/03/28/angular-cesium/">Intro to angular-cesium</a>.</p>
 <h2 id="getting-started">Getting started</h2>
 <h4 id="for-existing-project-just-install-angular-cesium">For existing project just install angular-cesium</h4>
 <ul>
@@ -85,14 +85,14 @@ for webpack users try <a href="https://cesiumjs.org/2016/01/26/Cesium-and-Webpac
 </ul>
 </blockquote>
 <ul>
-<li>Add cesium assets, script and css in <code>.angular-cli.json</code> or <code>angular.json</code>(Angular 6) file:<div><pre class="line-numbers"><code class="language-javascript">   &quot;assets&quot;: [ // ...
-     { &quot;glob&quot;: &quot;**/*&quot;, &quot;input&quot;: &quot;../node_modules/cesium/Build/Cesium&quot;, &quot;output&quot;: &quot;./assets/cesium&quot; }
+<li>Add cesium assets, script and css in <code>.angular-cli.json</code> or <code>angular.json</code>(Angular &gt;=6) file:<div><pre class="line-numbers"><code class="language-javascript">   &quot;assets&quot;: [ // ...
+     { &quot;glob&quot;: &quot;**/*&quot;, &quot;input&quot;: &quot;./node_modules/cesium/Build/Cesium&quot;, &quot;output&quot;: &quot;./assets/cesium&quot; }
     ],
    &quot;styles&quot;: [ // ...
-     &quot;../node_modules/cesium/Build/Cesium/Widgets/widgets.css&quot;
+     &quot;./node_modules/cesium/Build/Cesium/Widgets/widgets.css&quot;
    ],
    &quot;scripts&quot;: [ // ...
-     &quot;../node_modules/cesium/Build/Cesium/Cesium.js&quot;
+     &quot;./node_modules/cesium/Build/Cesium/Cesium.js&quot;
    ],</code></pre></div><ul>
 <li>Add <code>CESIUM_BASE_URL</code> in <code>main.ts</code> file, before bootstrapping:<div><pre class="line-numbers"><code class="language-javascript">// ...
 window[&#39;CESIUM_BASE_URL&#39;] = &#39;/assets/cesium&#39;; // If youre using Cesium version &lt; 1.42.0 add this line
@@ -102,7 +102,7 @@ platformBrowserDynamic().bootstrapModule(AppModule);</code></pre></div>*** Dupli
 </li>
 </ul>
 <ul>
-<li><p>Add <code>declare var Cesium;</code> to <code>typing.d.ts</code> file.</p>
+<li><p>Add <code>declare var Cesium;</code> to <code>typing.d.ts</code> file (add the file to <code>src</code> directory).</p>
 </li>
 <li><p>You can configure cesium viewer style:</p>
 <div><pre class="line-numbers"><code class="language-css"> // styles.css

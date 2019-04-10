@@ -198,7 +198,7 @@ Every layer should be tag inside ac-map tag</p>
                                 <a href="#getCameraService">getCameraService</a>
                             </li>
                             <li>
-                                <a href="#getCesiumSerivce">getCesiumSerivce</a>
+                                <a href="#getCesiumService">getCesiumService</a>
                             </li>
                             <li>
                                 <a href="#getCesiumViewer">getCesiumViewer</a>
@@ -719,18 +719,18 @@ default: &#39;default-map-id-[index]&#39;</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="getCesiumSerivce"></a>
+                        <a name="getCesiumService"></a>
                         <span class="name">
                             <b>
-                            getCesiumSerivce
+                            getCesiumService
                             </b>
-                            <a href="#getCesiumSerivce"><span class="icon ion-ios-link"></span></a>
+                            <a href="#getCesiumService"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getCesiumSerivce()</code>
+<code>getCesiumService()</code>
                     </td>
                 </tr>
 
@@ -1526,7 +1526,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
   /**
    * @returns ac-map&#x27;s cesium service
    */
-  getCesiumSerivce() {
+  getCesiumService() {
     return this._cesiumService;
   }
 

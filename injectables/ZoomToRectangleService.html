@@ -60,33 +60,7 @@
             <code>projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>The Service is as a &quot;zoom to rectangle&quot; tool</p>
-<p>example:</p>
-<div><pre class="line-numbers"><code class="language-none"> * constructor(
- *   private cameraService: CameraService,
- *   private cesiumService: CesiumService,
- *   private zoomToRectangleService: ZoomToRectangleService,
- * ) {
- *   this.zoomToRectangleService.init(cesiumService, cameraService);
- * }
- * ...
- * this.zoomToRectangleService.activate({onComplete: () =&gt; this.zoomToRectangleService.disable()});
- *</code></pre></div><p><code>init()</code> - initialize the service with CameraService and CesiumService.
-If no mapId is provided to activate() - must be called before calling <code>activate()</code>.</p>
-<p><code>disable()</code> - disables the tool.</p>
-<p><code>activate()</code> -</p>
 
-            </p>
-
-            <p class="comment">
-                <h3>Example</h3>
-            </p>
-            <div class="io-description">
-            </div>
 
             <section>
     <h3 id="index">Index</h3>
@@ -164,7 +138,7 @@ If no mapId is provided to activate() - must be called before calling <code>acti
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:59</a></div>
                             </td>
                         </tr>
 
@@ -253,7 +227,7 @@ If no mapId is provided to activate() - must be called before calling <code>acti
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:86</a></div>
                             </td>
                         </tr>
 
@@ -340,7 +314,7 @@ If no mapId is provided to activate() - must be called before calling <code>acti
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="206" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:206</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:229</a></div>
                             </td>
                         </tr>
 
@@ -409,7 +383,7 @@ If no mapId is provided to activate() - must be called before calling <code>acti
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:70</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:81</a></div>
                             </td>
                         </tr>
 
@@ -485,14 +459,14 @@ If no mapId is provided to activate() - must be called before calling <code>acti
                 <tr>
                     <td class="col-md-4">
                             <span class="modifier-icon icon ion-ios-reset"></span>
-                        <code>zoomCameraToRectangle(cameraService: <a href="../injectables/CameraService.html">CameraService</a>, positions: literal type, animationDuration)</code>
+                        <code>zoomCameraToRectangle(cameraService: <a href="../injectables/CameraService.html">CameraService</a>, positions: literal type, animationDuration, options)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="223" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:223</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:246</a></div>
                             </td>
                         </tr>
 
@@ -537,6 +511,17 @@ If no mapId is provided to activate() - must be called before calling <code>acti
                                                 </tr>
                                                 <tr>
                                                         <td>animationDuration</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>options</td>
                                                         <td>
                                                         </td>
                                                     
@@ -597,7 +582,7 @@ If no mapId is provided to activate() - must be called before calling <code>acti
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -632,7 +617,7 @@ If no mapId is provided to activate() - must be called before calling <code>acti
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:67</a></div>
                             </td>
                         </tr>
 
@@ -673,12 +658,15 @@ If no mapId is provided to activate() - must be called before calling <code>acti
     borderStyle: &#x27;2px solid rgba(0,0,0,0.5)&#x27;,
     backgroundColor: &#x27;rgba(0,0,0,0.2)&#x27;,
     autoDisableOnZoom: true,
+    threshold: 9,
+    keepRotation: true,
+    mouseButton: MouseButtons.LEFT,
   }</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:70</a></div>
                             </td>
                         </tr>
 
@@ -712,7 +700,7 @@ If no mapId is provided to activate() - must be called before calling <code>acti
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/zoom-to-rectangle.service.ts:69</a></div>
                             </td>
                         </tr>
 
@@ -768,10 +756,19 @@ interface ZoomData {
  *  borderStyle - optional - the style of the rectangle element border - default: &#x27;3px dashed #FFFFFF&#x27;
  *  backgroundColor - optional - the background color of the rectangle element - default: &#x27;transparent&#x27;
  *  resetKeyCode - optional - the key code of the key that is used to reset the drawing of the rectangle - default: 27 (ESC key)
+ *  threshold - optional - the minimum area of the screen rectangle (in pixels) that is required to perform zoom - default: 9
+ *  keepRotation - optional - whether or not to keep the rotation when zooming in - default: true
+ *  mouseButton - optional - sets the mouse button for drawing the rectangle - default: left mouse button (0)
  * }
  * @param mapId - optional - the mapId of the map that the tool will be used in.
  *
  */
+
+export enum MouseButtons {
+  LEFT &#x3D; 0,
+  MIDDLE &#x3D; 1,
+  RIGHT &#x3D; 2,
+}
 
 @Injectable()
 export class ZoomToRectangleService {
@@ -779,8 +776,7 @@ export class ZoomToRectangleService {
     private mapsManager: MapsManagerService,
     @Optional() cameraService: CameraService,
     @Optional() cesiumService: CesiumService,
-  ) {
-  }
+  ) {}
 
   private cameraService: CameraService;
   private cesiumService: CesiumService;
@@ -792,6 +788,9 @@ export class ZoomToRectangleService {
     borderStyle: &#x27;2px solid rgba(0,0,0,0.5)&#x27;,
     backgroundColor: &#x27;rgba(0,0,0,0.2)&#x27;,
     autoDisableOnZoom: true,
+    threshold: 9,
+    keepRotation: true,
+    mouseButton: MouseButtons.LEFT,
   };
 
   init(cesiumService: CesiumService, cameraService: CameraService) {
@@ -803,8 +802,11 @@ export class ZoomToRectangleService {
     options: {
       onStart?: (acMap?: AcMapComponent) &#x3D;&gt; any;
       onComplete?: (acMap?: AcMapComponent) &#x3D;&gt; any;
+      mouseButton?: MouseButtons;
       autoDisableOnZoom?: boolean;
       animationDurationInSeconds?: number;
+      threshold?: number;
+      keepRotation?: boolean;
       borderStyle?: string;
       backgroundColor?: string;
       resetKeyCode?: number;
@@ -843,7 +845,7 @@ export class ZoomToRectangleService {
     container.style.top &#x3D; &#x27;0&#x27;;
     container.style.left &#x3D; &#x27;0&#x27;;
     mapContainer.appendChild(container);
-    const mapZoomData: ZoomData &#x3D; {container};
+    const mapZoomData: ZoomData &#x3D; { container };
     this.mapsZoomElements.set(mapId || this.cesiumService.getMap().getId(), mapZoomData);
     let mouse &#x3D; {
       endX: 0,
@@ -854,6 +856,9 @@ export class ZoomToRectangleService {
     let borderElement: HTMLElement | undefined;
 
     container.onmousedown &#x3D; e &#x3D;&gt; {
+      if (e.button !&#x3D;&#x3D; finalOptions.mouseButton) {
+        return;
+      }
       if (!borderElement) {
         if (options &amp;&amp; options.onStart) {
           options.onStart(map);
@@ -878,12 +883,18 @@ export class ZoomToRectangleService {
 
     container.onmouseup &#x3D; e &#x3D;&gt; {
       if (borderElement) {
-        const zoomApplied &#x3D; this.zoomCameraToRectangle(cameraService, mouse, finalOptions.animationDurationInSeconds);
-        if (borderElement) {
-          borderElement.remove();
-          borderElement &#x3D; undefined;
-          mapZoomData.borderElement &#x3D; undefined;
+        let zoomApplied;
+        if (mouse &amp;&amp; Math.abs(mouse.endX - mouse.startX) * Math.abs(mouse.endY - mouse.startY) &gt; finalOptions.threshold) {
+          zoomApplied &#x3D; this.zoomCameraToRectangle(
+            cameraService,
+            mouse,
+            finalOptions.animationDurationInSeconds,
+            finalOptions,
+          );
         }
+        borderElement.remove();
+        borderElement &#x3D; undefined;
+        mapZoomData.borderElement &#x3D; undefined;
         mouse &#x3D; {
           endX: 0,
           endY: 0,
@@ -951,10 +962,11 @@ export class ZoomToRectangleService {
     cameraService: CameraService,
     positions: { endX: number; endY: number; startX: number; startY: number },
     animationDuration,
+    options,
   ): boolean {
     const camera &#x3D; cameraService.getCamera();
-    const cartesian1 &#x3D; camera.pickEllipsoid({x: positions.startX, y: positions.startY});
-    const cartesian2 &#x3D; camera.pickEllipsoid({x: positions.endX, y: positions.endY});
+    const cartesian1 &#x3D; camera.pickEllipsoid({ x: positions.startX, y: positions.startY });
+    const cartesian2 &#x3D; camera.pickEllipsoid({ x: positions.endX, y: positions.endY });
     if (!cartesian1 || !cartesian2) {
       return false;
     }
@@ -967,6 +979,7 @@ export class ZoomToRectangleService {
         Math.max(cartographic1.longitude, cartographic2.longitude),
         Math.max(cartographic1.latitude, cartographic2.latitude),
       ),
+      orientation: options.keepRotation ? { heading: camera.heading } : undefined,
       duration: animationDuration,
     });
     return true;
