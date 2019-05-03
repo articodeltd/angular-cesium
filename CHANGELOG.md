@@ -1,3 +1,8 @@
+## 0.57
+### Fixes
+* Fixed demo app unit tests
+* Updated README with instructions for including Cesium scripts in test config
+
 ## 0.56
 ### Features
 * Added `onDrag` hook into the `ac-toolbar` component.
