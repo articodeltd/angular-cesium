@@ -21,16 +21,21 @@
             "assets": [
               "demo/favicon.ico",
               "demo/assets",
-              { "glob": "**/*", "input": "./node_modules/cesium/Build/Cesium", "output": "./assets/cesium" }
-
+              {
+                "glob": "**/*",
+                "input": "./node_modules/cesium/Build/Cesium",
+                "output": "./assets/cesium"
+              }
             ],
             "styles": [
               "demo/styles.css",
               "demo/app/utils/loading.css",
               "./node_modules/cesium/Build/Cesium/Widgets/widgets.css"
             ],
-            "scripts": [ "./node_modules/cesium/Build/Cesium/Cesium.js",
-              "./node_modules/socket.io-client/dist/socket.io.js"]
+            "scripts": [
+              "./node_modules/cesium/Build/Cesium/Cesium.js",
+              "./node_modules/socket.io-client/dist/socket.io.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -83,26 +88,19 @@
             "polyfills": "demo/polyfills.ts",
             "tsConfig": "demo/tsconfig.spec.json",
             "karmaConfig": "demo/karma.conf.js",
-            "styles": [
-              "demo/styles.css"
+            "styles": ["demo/styles.css"],
+            "scripts": [
+              "./node_modules/cesium/Build/Cesium/Cesium.js",
+              "./node_modules/socket.io-client/dist/socket.io.js"
             ],
-            "scripts": [],
-            "assets": [
-              "demo/favicon.ico",
-              "demo/assets"
-            ]
+            "assets": ["demo/favicon.ico", "demo/assets"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "demo/tsconfig.app.json",
-              "demo/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["demo/tsconfig.app.json", "demo/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -128,9 +126,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -163,9 +159,7 @@
               "projects/angular-cesium/tsconfig.lib.json",
               "projects/angular-cesium/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
