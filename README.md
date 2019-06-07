@@ -75,6 +75,24 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
 	    "./node_modules/cesium/Build/Cesium/Cesium.js"
 	  ],
   ```
+ + To avoid `ReferenceError: Cesium is not defined` errors when running unit tests, add Cesium scripts
+in `.angular-cli.json` or `angular.json`(Angular >=6) file in the test block of the app configuration.
+Note that in the example below, only the relevant sections and values are shown.
+
+  ```javascript
+  "projects": {
+      "angular-cesium-demo": {
+        "architect": {
+          "test": {
+            "scripts": [
+                "./node_modules/cesium/Build/Cesium/Cesium.js"
+              ],
+          }
+        }
+      }
+  }
+  ```
+  
 + Add `CESIUM_BASE_URL` in `main.ts` file, before bootstrapping:
   ```javascript
     // ...
