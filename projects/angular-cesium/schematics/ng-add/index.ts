@@ -10,6 +10,8 @@ export function ngAdd(_options: any): Rule {
   return (tree: Tree, _context: SchematicContext) => {
     _context.addTask(new NodePackageInstallTask());
     addModuleImportToRootModule(tree);
+    addGlobalsToTarget('build', tree);
+    addGlobalsToTarget('test', tree);
     return tree;
   };
 }
@@ -52,13 +54,9 @@ function getProjectTargetOptions(project: WorkspaceProject, buildTarget: string)
  * Adds AngularCesium module to the root module of the specified project.
  */
 function addModuleImportToRootModule(host: Tree) {
-  const workspaceConfig = host.read('/angular.json');
-  if (!workspaceConfig) {
-    throw new SchematicsException('Could not find Angular workspace configuration');
-  }
-
-  const workspace = JSON.parse(workspaceConfig.toString());
+  const workspace = getWorkspace(host);
   const project = workspace.projects[workspace.defaultProject];
+
   const modulePath = getAppModulePath(host, getProjectMainFile(project));
   const moduleSource = getSourceFile(host, modulePath);
 
@@ -74,4 +72,40 @@ function addModuleImportToRootModule(host: Tree) {
   host.commitUpdate(recorder);
 
   return host;
+}
+
+/**
+ * Adds scripts, styles and assets to the workspace configuration file.
+ */
+function addGlobalsToTarget(targetName: 'test' | 'build', host: Tree) {
+  const workspace = getWorkspace(host);
+  const project = workspace.projects[workspace.defaultProject];
+  const targetOptions = getProjectTargetOptions(project, targetName);
+
+  addOrAppendGlobal(targetOptions.scripts, './node_modules/cesium/Build/Cesium/Cesium.js');
+  addOrAppendGlobal(targetOptions.styles, './node_modules/cesium/Build/Cesium/Widgets/widgets.css');
+  addOrAppendGlobal(targetOptions.assets,  {
+    glob: '**/*',
+    input: './node_modules/cesium/Build/Cesium',
+    output: './assets/cesium'
+  });
+
+  host.overwrite('angular.json', JSON.stringify(workspace, null, 2));
+}
+
+function getWorkspace(host: Tree) {
+  const workspaceConfig = host.read('/angular.json');
+  if (!workspaceConfig) {
+    throw new SchematicsException('Could not find Angular workspace configuration');
+  }
+
+  return JSON.parse(workspaceConfig.toString());
+}
+
+function addOrAppendGlobal(section: any[], path: any) {
+  if (!section) {
+    section = [path];
+  } else {
+    section.unshift(path);
+  }
 }
