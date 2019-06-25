@@ -103,7 +103,7 @@ function addGlobalsToTarget(targetName: 'test' | 'build') {
     });
 
     tree.overwrite('angular.json', JSON.stringify(workspace, null, 2));
-  }
+  };
 }
 
 function getWorkspace(host: Tree) {
@@ -142,5 +142,5 @@ function addBaseUrlToMain() {
     recorder.insertLeft(bootstrapIndex - 1, insertion);
 
     tree.commitUpdate(recorder);
-  }
+  };
 }
