@@ -25,5 +25,11 @@
   },
   "optionalDependencies": {
     "heatmap.js": "^2.0.5"
-  }
+  },
+  "scripts": {
+    "build": "..\\..\\node_modules\\.bin\\tsc -p tsconfig.schematics.json",
+    "copy:collection": "copy schematics\\collection.json ..\\..\\dist\\angular-cesium\\schematics\\collection.json",
+    "postbuild": "npm run copy:collection"
+  },
+  "schematics": ".\\schematics\\collection.json"
 }
