@@ -2,6 +2,8 @@
 ### Fixes
 * Fixed demo app unit tests
 * Updated README with instructions for including Cesium scripts in test config
+* Added use of the 'availability' field inside of the Cesium entity API
+* Bumped library version
 
 ## 0.56
 ### Features

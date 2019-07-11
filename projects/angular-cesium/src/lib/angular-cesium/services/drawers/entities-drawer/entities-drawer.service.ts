@@ -66,12 +66,12 @@ export class EntitiesDrawerService extends BasicDrawerService {
       throw new Error('No more free entity collections');
     }
 
-    const graphicsClass = this.graphicsType as any;
     const entityObject = {
       position: cesiumProps.position !== undefined ? cesiumProps.position : undefined,
       description: cesiumProps.description !== undefined ? cesiumProps.description : undefined,
       orientation: cesiumProps.orientation !== undefined ? cesiumProps.orientation : undefined,
       viewFrom: cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : undefined,
+      availability: cesiumProps.availability !== undefined ? cesiumProps.availability : undefined,
       [this.graphicsTypeName]: cesiumProps,
     };
 
@@ -95,6 +95,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     entity.description = cesiumProps.description !== undefined ? cesiumProps.description : entity.description;
     entity.orientation = cesiumProps.orientation !== undefined ? cesiumProps.orientation : entity.orientation;
     entity.viewFrom = cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : entity.viewFrom;
+    entity.availability = cesiumProps.availability !== undefined ? cesiumProps.availability : undefined;
 
     if (this._propsAssigner) {
       this._propsAssigner(entity[this.graphicsTypeName], cesiumProps);
@@ -130,3 +131,4 @@ export class EntitiesDrawerService extends BasicDrawerService {
     entityCollection.suspend();
   }
 }
+
