@@ -235,7 +235,7 @@ export class CameraService {
    * API: https://cesiumjs.org/Cesium/Build/Documentation/Camera.html#zoomOut
    */
   zoomOut(amount: number) {
-    return this.camera.zoomIn(amount || this.camera.defaultZoomAmount);
+    return this.camera.zoomOut(amount || this.camera.defaultZoomAmount);
   }
 
   /**
