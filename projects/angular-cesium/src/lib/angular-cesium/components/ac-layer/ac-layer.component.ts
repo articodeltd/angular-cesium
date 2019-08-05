@@ -50,6 +50,7 @@ import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawe
  *  + zIndex `{number}` - controls the zIndex (order) of the layer, layers with greater zIndex will be in front of layers with lower zIndex
  *    (Exception For `Billboard` and `Label`, should use `[eyeOffset]` prop instead)</br>
  *    zIndex won't work for pritimitve descs (like ac-primitive-polyline...)
+ *  + debug `{boolean}` - prints every acNotification
  *
  *
  *  __Usage :__
@@ -125,6 +126,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
   options: LayerOptions;
   @Input()
   zIndex = 0;
+  @Input()
+  debug = false;
 
   private readonly acForRgx = /^let\s+.+\s+of\s+.+$/;
   private entityName: string;
@@ -203,6 +206,10 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 
     observableMerge(this._updateStream, this.observable).pipe<AcNotification>(takeUntil(this.stopObservable)).subscribe((notification) => {
       this._computationCache.clear();
+
+      if (this.debug) {
+        console.log('AcLayer received notification:', notification);
+      }
 
       let contextEntity = notification.entity;
       if (this.store) {
