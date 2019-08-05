@@ -252,7 +252,8 @@ export class EditablePolyline extends AcEntity {
 
     const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
     this.positions.forEach(point => {
-      GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+      const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+      point.setPosition(newPos);
     });
     this.updatePointsLayer(true, ...this.positions);
     this.lastDraggedToPosition = draggedToPosition;

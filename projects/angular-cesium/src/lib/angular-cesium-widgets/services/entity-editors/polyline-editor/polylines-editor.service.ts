@@ -341,8 +341,8 @@ export class PolylinesEditorService {
       shapeDragRegistration
         .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
-          const endDragPosition = this.screenToPosition(endPosition, options.clampHeightTo3D);
-          const startDragPosition = this.screenToPosition(startPosition, options.clampHeightTo3D);
+          const endDragPosition = this.screenToPosition(endPosition, false);
+          const startDragPosition = this.screenToPosition(startPosition, false);
           if (!endDragPosition) {
             return;
           }
@@ -443,6 +443,7 @@ export class PolylinesEditorService {
         console.warn('Point color and outline color must have alpha in order to make the editor work properly on 3D');
       }
 
+      polylineOptions.allowDrag = false;
       polylineOptions.polylineProps.clampToGround = true;
       polylineOptions.pointProps.disableDepthTestDistance = Number.POSITIVE_INFINITY;
     }
