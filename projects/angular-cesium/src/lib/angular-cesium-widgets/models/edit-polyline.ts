@@ -14,7 +14,7 @@ export class EditPolyline extends AcEntity {
     this.editedEntityId = entityId;
     this.id = this.generateId();
     this.positions = [startPosition, endPosition];
-    this._polylineProps = polylineProps;
+    this._polylineProps = {...polylineProps};
   }
 
   get props(): PolylineProps {
@@ -30,7 +30,12 @@ export class EditPolyline extends AcEntity {
   }
 
   getPositions(): any[] {
-    return this.positions;
+    return this.positions.map(p => p.clone());
+  }
+
+
+  getPositionsCallbackProperty(): Cartesian3[] {
+    return new Cesium.CallbackProperty(this.getPositions.bind(this), false);
   }
 
   validatePositions(): boolean {

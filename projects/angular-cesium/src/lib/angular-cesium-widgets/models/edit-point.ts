@@ -16,7 +16,7 @@ export class EditPoint extends AcEntity {
     this.editedEntityId = entityId;
     this.position = position;
     this.id = this.generateId();
-    this.pointProps = pointProps;
+    this.pointProps = {...pointProps};
     this._virtualEditPoint = virtualPoint;
   }
 
@@ -49,8 +49,13 @@ export class EditPoint extends AcEntity {
   }
 
   getPosition(): Cartesian3 {
-    return this.position;
+    return this.position.clone();
   }
+
+  getPositionCallbackProperty(): Cartesian3 {
+    return new Cesium.CallbackProperty(this.getPosition.bind(this), false);
+  }
+
 
   setPosition(position: Cartesian3) {
     this.position.x = position.x;

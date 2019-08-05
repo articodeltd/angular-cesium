@@ -29,9 +29,9 @@ export class EditableCircle extends AcEntity {
     private options: CircleEditOptions,
   ) {
     super();
-    this._circleProps = options.circleProps;
-    this._pointProps = options.pointProps;
-    this._polylineProps = options.polylineProps;
+    this._circleProps = {...options.circleProps};
+    this._pointProps = {...options.pointProps};
+    this._polylineProps = {...options.polylineProps};
   }
 
   get labels(): LabelProps[] {

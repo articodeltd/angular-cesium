@@ -27,8 +27,8 @@ export class EditableHippodrome extends AcEntity {
     positions?: Cartesian3[],
   ) {
     super();
-    this.defaultPointProps = editOptions.pointProps;
-    this.hippodromeProps = editOptions.hippodromeProps;
+    this.defaultPointProps = {...editOptions.pointProps};
+    this.hippodromeProps = {...editOptions.hippodromeProps};
     if (positions && positions.length === 2) {
       this.createFromExisting(positions);
     } else if (positions) {

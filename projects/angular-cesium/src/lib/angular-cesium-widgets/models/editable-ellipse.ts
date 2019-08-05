@@ -31,8 +31,8 @@ export class EditableEllipse extends AcEntity {
     private options: EllipseEditOptions,
   ) {
     super();
-    this._ellipseProps = options.ellipseProps;
-    this._pointProps = options.pointProps;
+    this._ellipseProps = {...options.ellipseProps};
+    this._pointProps = {...options.pointProps};
   }
 
   get labels(): LabelProps[] {
