@@ -13,30 +13,35 @@ import { PolygonsManagerService } from '../../services/entity-editors/polygons-e
 import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 import { LabelProps } from '../../models/label-props';
 import { EditablePolygon } from '../../models/editable-polygon';
+import { CesiumService } from '../../../angular-cesium';
 
 @Component({
   selector: 'polygons-editor',
   template: /*html*/ `
     <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this">
-      <ac-polyline-primitive-desc
+      <ac-polyline-desc
         props="{
-        positions: polyline.getPositions(),
+        positions: polyline.getPositionsCallbackProperty(),
         width: polyline.props.width,
-        material: polyline.props.material()
-    }"
+        material: polyline.props.material(),
+        clampToGround: polyline.props.clampToGround,
+        zIndex: polyline.props.zIndex,
+        classificationType: polyline.props.classificationType,
+      }"
       >
-      </ac-polyline-primitive-desc>
+      </ac-polyline-desc>
     </ac-layer>
 
     <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
       <ac-point-desc
         props="{
-        position: point.getPosition(),
+        position: point.getPositionCallbackProperty(),
         pixelSize: getPointSize(point),
         color: point.props.color,
         outlineColor: point.props.outlineColor,
         outlineWidth: point.props.outlineWidth,
-        show: getPointShow(point)
+        show: getPointShow(point),
+        disableDepthTestDistance: point.props.disableDepthTestDistance,
     }"
       >
       </ac-point-desc>
@@ -45,23 +50,14 @@ import { EditablePolygon } from '../../models/editable-polygon';
     <ac-layer #editPolygonsLayer acFor="let polygon of editPolygons$" [context]="this">
       <ac-polygon-desc
         props="{
-        hierarchy: polygon.getPositionsHierarchyCallbackProperty(),
-        material: polygon.polygonProps.material
-    }"
+          hierarchy: polygon.getPositionsHierarchyCallbackProperty(),
+          material: polygon.polygonProps.material,
+          fill: polygon.polygonProps.fill,
+          classificationType: polygon.polygonProps.classificationType,
+          zIndex: polygon.polygonProps.zIndex,
+        }"
       >
       </ac-polygon-desc>
-      <!-- <ac-static-polygon-desc -->
-      <!-- geometryProps="{ -->
-      <!-- polygonHierarchy: polygon.getHierarchy(), -->
-      <!-- height: 1 -->
-      <!-- }" -->
-      <!-- instanceProps="{ -->
-      <!-- attributes: attributes -->
-      <!-- }" -->
-      <!-- primitiveProps="{ -->
-      <!-- appearance: appearance -->
-      <!-- }"> -->
-      <!-- </ac-static-polygon-desc -->
       <ac-array-desc acFor="let label of polygon.labels" [idGetter]="getLabelId">
         <ac-label-primitive-desc
           props="{
@@ -85,7 +81,8 @@ import { EditablePolygon } from '../../models/editable-polygon';
             style: label.style,
             text: label.text,
             translucencyByDistance: label.translucencyByDistance,
-            verticalOrigin: label.verticalOrigin
+            verticalOrigin: label.verticalOrigin,
+            disableDepthTestDistance: label.disableDepthTestDistance,
         }"
         >
         </ac-label-primitive-desc>
@@ -102,10 +99,11 @@ export class PolygonsEditorComponent implements OnDestroy {
   public editPolylines$ = new Subject<AcNotification>();
   public editPolygons$ = new Subject<AcNotification>();
 
-  public appearance = new Cesium.PerInstanceColorAppearance({flat: true});
-  public attributes = {color: Cesium.ColorGeometryInstanceAttribute.fromColor(new Cesium.Color(0.2, 0.2, 0.5, 0.5))};
+  public appearance = new Cesium.PerInstanceColorAppearance({ flat: true });
+  public attributes = { color: Cesium.ColorGeometryInstanceAttribute.fromColor(new Cesium.Color(0.2, 0.2, 0.5, 0.5)) };
   public polygonColor = new Cesium.Color(0.1, 0.5, 0.2, 0.4);
   public lineColor = new Cesium.Color(0, 0, 0, 0.6);
+  public Number = Number;
 
   @ViewChild('editPolygonsLayer') private editPolygonsLayer: AcLayerComponent;
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
@@ -117,8 +115,9 @@ export class PolygonsEditorComponent implements OnDestroy {
     private mapEventsManager: MapEventsManagerService,
     private cameraService: CameraService,
     private polygonsManager: PolygonsManagerService,
+    private cesiumService: CesiumService
   ) {
-    this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polygonsManager);
+    this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polygonsManager, cesiumService);
     this.startListeningToEditorUpdates();
   }
 
@@ -249,9 +248,13 @@ export class PolygonsEditorComponent implements OnDestroy {
       }
       case EditActions.DRAG_POINT_FINISH: {
         const polygon = this.polygonsManager.get(update.id);
-        if (polygon && polygon.enableEdit && update.updatedPoint.isVirtualEditPoint()) {
-          polygon.changeVirtualPointToRealPoint(update.updatedPoint);
-          this.renderEditLabels(polygon, update);
+        if (polygon && polygon.enableEdit) {
+          polygon.movePointFinish(update.updatedPoint);
+
+          if (update.updatedPoint.isVirtualEditPoint()) {
+            polygon.changeVirtualPointToRealPoint(update.updatedPoint);
+            this.renderEditLabels(polygon, update);
+          }
         }
         break;
       }
