@@ -13,33 +13,37 @@ import { PolylinesManagerService } from '../../services/entity-editors/polyline-
 import { PolylineEditUpdate } from '../../models/polyline-edit-update';
 import { EditablePolyline } from '../../models/editable-polyline';
 import { LabelProps } from '../../models/label-props';
+import { CesiumService } from '../../../angular-cesium';
 
 @Component({
   selector: 'polylines-editor',
   template: /*html*/ `
     <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this">
-      <ac-polyline-primitive-desc
+      <ac-polyline-desc
         props="{
-        positions: polyline.getPositions(),
+        positions: polyline.getPositionsCallbackProperty(),
         width: polyline.props.width,
-        material: polyline.props.material()
-    }"
+        material: polyline.props.material(),
+        clampToGround: polyline.props.clampToGround,
+        zIndex: polyline.props.zIndex,
+        classificationType: polyline.props.classificationType,
+      }"
       >
-      </ac-polyline-primitive-desc>
+      </ac-polyline-desc>
     </ac-layer>
 
     <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
       <ac-point-desc
         props="{
-        position: point.getPosition(),
+        position: point.getPositionCallbackProperty(),
         pixelSize: getPointSize(point),
         color: point.props.color,
         outlineColor: point.props.outlineColor,
         outlineWidth: point.props.outlineWidth,
-        show: getPointShow(point)
+        show: getPointShow(point),
+        disableDepthTestDistance: point.props.disableDepthTestDistance,
     }"
-      >
-      </ac-point-desc>
+      ></ac-point-desc>
     </ac-layer>
 
     <ac-layer #polylineLabelsLayer acFor="let polylineLabels of polylineLabels$" [context]="this">
@@ -66,7 +70,8 @@ import { LabelProps } from '../../models/label-props';
             style: label.style,
             text: label.text,
             translucencyByDistance: label.translucencyByDistance,
-            verticalOrigin: label.verticalOrigin
+            verticalOrigin: label.verticalOrigin,
+            disableDepthTestDistance: label.disableDepthTestDistance,
         }"
         >
         </ac-label-primitive-desc>
@@ -83,6 +88,8 @@ export class PolylinesEditorComponent implements OnDestroy {
   public editPolylines$ = new Subject<AcNotification>();
   public polylineLabels$ = new Subject<AcNotification>();
 
+  Number = Number;
+
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
   @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
   @ViewChild('polylineLabelsLayer') private polylineLabelsLayer: AcLayerComponent;
@@ -93,8 +100,9 @@ export class PolylinesEditorComponent implements OnDestroy {
     private mapEventsManager: MapEventsManagerService,
     private cameraService: CameraService,
     private polylinesManager: PolylinesManagerService,
+    private cesiumService: CesiumService,
   ) {
-    this.polylinesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polylinesManager);
+    this.polylinesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polylinesManager, this.cesiumService);
     this.startListeningToEditorUpdates();
   }
 
@@ -223,9 +231,13 @@ export class PolylinesEditorComponent implements OnDestroy {
       }
       case EditActions.DRAG_POINT_FINISH: {
         const polyline = this.polylinesManager.get(update.id);
-        if (polyline && polyline.enableEdit && update.updatedPoint.isVirtualEditPoint()) {
-          polyline.changeVirtualPointToRealPoint(update.updatedPoint);
-          this.renderEditLabels(polyline, update);
+        if (polyline && polyline.enableEdit) {
+          polyline.movePointFinish(update.updatedPoint);
+
+          if (update.updatedPoint.isVirtualEditPoint()) {
+            polyline.changeVirtualPointToRealPoint(update.updatedPoint);
+            this.renderEditLabels(polyline, update);
+          }
         }
         break;
       }

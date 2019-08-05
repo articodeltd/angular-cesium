@@ -10,11 +10,16 @@ export interface PointProps {
   pixelSize?: number;
   showVirtual?: boolean;
   show?: boolean;
+  disableDepthTestDistance?: number;
 }
 
 export interface PolylineProps {
   width?: number;
   material?: Function;
+
+  clampToGround?: boolean;
+  zIndex?: number;
+  classificationType?: any;
 }
 
 export interface PolylineEditOptions extends EditorEditOptions {
