@@ -183,9 +183,11 @@ export class EditableCircle extends AcEntity {
 
     const radius = this.getRadius();
     const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, dragEndPosition);
-    GeoUtilsService.addDeltaToPosition(this.getCenter(), delta, true);
+    const newCenterPosition = GeoUtilsService.addDeltaToPosition(this.getCenter(), delta, true);
+    this._center.setPosition(newCenterPosition);
     this.radiusPoint.setPosition(GeoUtilsService.pointByLocationDistanceAndAzimuth(this.getCenter(), radius, Math.PI / 2, true));
     this._outlineArc.radius = this.getRadius();
+    this._outlineArc.center = this._center.getPosition();
     this.updateArcsLayer();
     this.updatePointsLayer();
     this.updateCirclesLayer();

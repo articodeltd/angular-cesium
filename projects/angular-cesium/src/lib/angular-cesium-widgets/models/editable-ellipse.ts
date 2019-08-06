@@ -250,7 +250,8 @@ export class EditableEllipse extends AcEntity {
     const majorRadius = this.getMajorRadius();
     const rotation = this.getRotation();
     const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, dragEndPosition);
-    GeoUtilsService.addDeltaToPosition(this.getCenter(), delta, true);
+    const newCenterPosition = GeoUtilsService.addDeltaToPosition(this.getCenter(), delta, true);
+    this._center.setPosition(newCenterPosition);
     this.majorRadiusPoint.setPosition(GeoUtilsService.pointByLocationDistanceAndAzimuth(this.getCenter(), majorRadius, rotation));
     this.updatePointsLayer();
     this.updateMinorRadiusEditPoints();

@@ -10,5 +10,4 @@ export interface EditorEditOptions {
   pointProps?: PointProps;
   polylineProps?: PolylineProps;
   allowDrag?: boolean;
-  clampHeightTo3D?: boolean;
 }

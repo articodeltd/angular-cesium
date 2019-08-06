@@ -17,9 +17,9 @@ import { EditableCircle } from '../../models/editable-circle';
 @Component({
   selector: 'circles-editor',
   template: /*html*/ `
-    <ac-layer #editArcsLayer acFor="let arc of editArcs$" [context]="this">
-      <ac-arc-desc
-        props="{
+      <ac-layer #editArcsLayer acFor="let arc of editArcs$" [context]="this">
+          <ac-arc-desc
+                  props="{
         angle: arc.angle,
         delta: arc.delta,
         center: arc.center,
@@ -27,40 +27,47 @@ import { EditableCircle } from '../../models/editable-circle';
         quality: 30,
         color: arc.props.material()
     }"
-      >
-      </ac-arc-desc>
-    </ac-layer>
+          >
+          </ac-arc-desc>
+      </ac-layer>
 
-    <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
-      <ac-point-desc
-        props="{
-        position: point.getPosition(),
-        pixelSize: getPointSize(point),
-        color: point.props.color,
-        outlineColor: point.props.outlineColor,
-        outlineWidth: point.props.outlineWidth,
-        show: getPointShow(point)
+      <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
+          <ac-point-desc
+                  props="{
+                    position: point.getPositionCallbackProperty(),
+                    pixelSize: getPointSize(point),
+                    color: point.props.color,
+                    outlineColor: point.props.outlineColor,
+                    outlineWidth: point.props.outlineWidth,
+                    show: getPointShow(point),
+                    disableDepthTestDistance: point.props.disableDepthTestDistance,
     }"
-      >
-      </ac-point-desc>
-    </ac-layer>
+          >
+          </ac-point-desc>
+      </ac-layer>
 
-    <ac-layer #editCirclesLayer acFor="let circle of editCircles$" [context]="this" [zIndex]="0">
-      <ac-ellipse-desc
-        props="{
-        position: circle.getCenterCallbackProperty(),
-        semiMajorAxis: circle.getRadiusCallbackProperty(),
-        semiMinorAxis: circle.getRadiusCallbackProperty(),
-        material: circle.circleProps.material,
-        outline: circle.circleProps.outline,
-        height: 0
+      <ac-layer #editCirclesLayer acFor="let circle of editCircles$" [context]="this" [zIndex]="0">
+          <ac-ellipse-desc
+                  props="{
+                  position: circle.getCenterCallbackProperty(),
+                  semiMajorAxis: circle.getRadiusCallbackProperty(),
+                  semiMinorAxis: circle.getRadiusCallbackProperty(),
+                  material: circle.circleProps.material,
+                  outline: circle.circleProps.outline,
+                  height: 0
+                  outlineWidth: circle.circleProps.outlineWidth,
+                  outlineColor: circle.circleProps.outlineColor,
+                  fill: circle.circleProps.fill,
+                  classificationType: circle.circleProps.classificationType,
+                  zIndex: circle.circleProps.zIndex,
+                  shadows: circle.circleProps.shadows,
     }"
-      >
-      </ac-ellipse-desc>
+          >
+          </ac-ellipse-desc>
 
-      <ac-array-desc acFor="let label of circle.labels" [idGetter]="getLabelId">
-        <ac-label-primitive-desc
-          props="{
+          <ac-array-desc acFor="let label of circle.labels" [idGetter]="getLabelId">
+              <ac-label-primitive-desc
+                      props="{
             position: label.position,
             backgroundColor: label.backgroundColor,
             backgroundPadding: label.backgroundPadding,
@@ -81,12 +88,13 @@ import { EditableCircle } from '../../models/editable-circle';
             style: label.style,
             text: label.text,
             translucencyByDistance: label.translucencyByDistance,
-            verticalOrigin: label.verticalOrigin
+            verticalOrigin: label.verticalOrigin,
+            disableDepthTestDistance: label.disableDepthTestDistance,
         }"
-        >
-        </ac-label-primitive-desc>
-      </ac-array-desc>
-    </ac-layer>
+              >
+              </ac-label-primitive-desc>
+          </ac-array-desc>
+      </ac-layer>
   `,
   providers: [CoordinateConverter, CirclesManagerService],
   changeDetection: ChangeDetectionStrategy.OnPush,

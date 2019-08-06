@@ -13,7 +13,8 @@ export class EllipsesEditorLayerComponent implements OnInit {
   editing$: EllipseEditorObservable;
   enableEditing = true;
 
-  constructor(private ellipsesEditor: EllipsesEditorService, private coordinateConverter: CoordinateConverter) {
+  constructor(private ellipsesEditor: EllipsesEditorService,
+              private coordinateConverter: CoordinateConverter) {
   }
 
   ngOnInit(): void {
@@ -23,24 +24,22 @@ export class EllipsesEditorLayerComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.ellipsesEditor.create();
+    this.editing$ = this.ellipsesEditor.create( );
     this.editing$.setLabelsRenderFn((update: EllipseEditUpdate) => {
       const newLabels: LabelProps[] = [];
       newLabels.push(
         {text: ''},
         {
-          text: Math.round(update.majorRadius / 1000).toString() + 'Km',
+          text: Math.round(update.majorRadius).toString() + 'm',
           scale: 0.5,
-          // eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
           fillColor: Cesium.Color.BLUE,
         },
       );
 
       if (update.minorRadius > 0) {
         newLabels.push({
-          text: Math.round(update.minorRadius / 1000).toString() + 'Km',
+          text: Math.round(update.majorRadius).toString() + 'm',
           scale: 0.5,
-          // eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
           fillColor: Cesium.Color.BLUE,
         });
       }
@@ -65,18 +64,16 @@ export class EllipsesEditorLayerComponent implements OnInit {
       newLabels.push(
         {text: ''},
         {
-          text: Math.round(update.majorRadius / 1000).toString() + 'Km',
+          text: Math.round(update.majorRadius).toString() + 'm',
           scale: 0.3,
-          // eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
           fillColor: Cesium.Color.BLUE,
         },
       );
 
       if (update.minorRadius > 0) {
         newLabels.push({
-          text: Math.round(update.minorRadius / 1000).toString() + 'Km',
+          text: Math.round(update.minorRadius).toString() + 'm',
           scale: 0.3,
-          // eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
           fillColor: Cesium.Color.BLUE,
         });
       }
