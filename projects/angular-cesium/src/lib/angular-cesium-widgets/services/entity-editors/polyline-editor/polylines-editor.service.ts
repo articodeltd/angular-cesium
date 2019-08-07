@@ -110,7 +110,8 @@ export class PolylinesEditorService {
 
   screenToPosition(cartesian2, clampHeightTo3D: boolean) {
     const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
-    if (clampHeightTo3D) {
+    // If cartesian3 is undefined then the point inst on the globe
+    if (clampHeightTo3D && cartesian3) {
       const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
       const latLon = CoordinateConverter.cartesian3ToLatLon(cartesian3PickPosition);
       if (latLon.height < 0) {
