@@ -13,6 +13,7 @@ export * from './models/polygon-editor-observable';
 export * from './models/circle-editor-observable';
 export * from './models/ellipse-editor-observable';
 export * from './models/polygon-edit-update';
+export * from './models/polyline-edit-update';
 export * from './models/circle-edit-update';
 export * from './models/ellipse-edit-update';
 export * from './models/basic-edit-update';

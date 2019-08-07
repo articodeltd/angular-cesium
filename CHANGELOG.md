@@ -2,6 +2,19 @@
 ### Features
 * Added `onDrag` hook into the `ac-toolbar` component
 * Altered `ac-toolbar` to listen in to changes on its `allowDrag` input and subscribe/unsubscribe dynamically
+* Added `debug` prop to `ac-layer` component for printing received AcNotifications
+* Polygon Editor and Polyline Editor support 3D tiles and terrain, to enable set `clampHeightTo3D` parameter to `true`.
+* Added examples for 3D mode in `polyline-editor-layer.ts` and `polygon-editor-layer.ts`. 
+
+### Fixes 
+* Fix `CameraService` zoomOut().
+* Fix Shape editors not cloning geometries props 
+* Shape editor use points to be shown above the lines (uses `disableDepthTestDistance` prop)
+
+### Breaking Changes
+* Remove default `viewer` configuration (the defualt was setting offline map as the initial imagery).
+* Change editors initial props - different color and outline.
+* Change editors initial props - to use Cesium `CallbackProperties`.
 
 ## 0.55
 ### Features
