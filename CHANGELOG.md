@@ -1,7 +1,5 @@
 ## 0.57
 ### Features
-* Added `onDrag` hook into the `ac-toolbar` component
-* Altered `ac-toolbar` to listen in to changes on its `allowDrag` input and subscribe/unsubscribe dynamically
 * Added `debug` prop to `ac-layer` component for printing received AcNotifications
 * Polygon Editor and Polyline Editor support 3D tiles and terrain, to enable set `clampHeightTo3D` parameter to `true`.
 * Added examples for 3D mode in `polyline-editor-layer.ts` and `polygon-editor-layer.ts`. 
@@ -10,15 +8,27 @@
 * Fix `CameraService` zoomOut().
 * Fix Shape editors not cloning geometries props 
 * Shape editor use points to be shown above the lines (uses `disableDepthTestDistance` prop)
+* Fixed demo app unit tests
+* Updated README with instructions for including Cesium scripts in test config
+* Added use of the 'availability' field inside of the Cesium entity API
+
 
 ### Breaking Changes
 * Remove default `viewer` configuration (the defualt was setting offline map as the initial imagery).
 * Change editors initial props - different color and outline.
 * Change editors initial props - to use Cesium `CallbackProperties`.
 
+## 0.56
+### Features
+* Added `onDrag` hook into the `ac-toolbar` component.
+* Altered `ac-toolbar` to listen in to changes on its `allowDrag` input and subscribe/unsubscribe dynamically.
+* Added threshold option to `ZoomToRectangleService` options.
+* Added keepRotation option to `ZoomToRectangleService` options.
+* Added mouseButton option to `ZoomToRectangleService` options.
+
 ## 0.55
 ### Features
-* New Angular CLI build system
+* New Angular CLI build system.
 
 ## 0.54
 ### Fixes
@@ -26,8 +36,8 @@
 * Fixed `ac-map` onDestroy.
 * Fixed `CircleEditorService` shape dragging.
 * Fixed `ac-model-desc` docs [#243](https://github.com/TGFTech/angular-cesium/issues/243).
-* Fixed entities drawing directly to map - without ac-layer [#212](https://github.com/TGFTech/angular-cesium/issues/212)
-* Fixed plonter behavior
+* Fixed entities drawing directly to map - without ac-layer [#212](https://github.com/TGFTech/angular-cesium/issues/212).
+* Fixed plonter behavior.
 
 ### Features
 * Multiple `AcMap` support using `ngFor` - The optional `@Input() containerId` in `AcMap` can be used to place the map canvas in any container / move the canvas to a new container.

@@ -17,7 +17,7 @@
     "demo:server": "nodemon --exec ts-node --project demo-server/tsconfig.json -- demo-server/src/main.ts",
     "lib:build": "ng build angular-cesium; npm run copy:extra-files",
     "lib:start": "ng build angular-cesium --watch",
-    "lib:publish": "npm run lib:build; cd dist/angular-cesium; npm publish; npm run docs:push",
+    "lib:publish": "npm run lib:build; cd dist/angular-cesium; npm publish; cd ...; npm run docs:push",
     "test": "ng test angular-cesium",
     "test:ci": "ng test angular-cesium --no-watch --browsers=ChromeHeadless",
     "lint": "ng lint angular-cesium",

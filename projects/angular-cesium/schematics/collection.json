@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add angular-cesium to the project.",
+      "factory": "./ng-add/index#ngAdd"
+    }
+  }
+}

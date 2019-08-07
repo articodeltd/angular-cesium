@@ -9,6 +9,12 @@ Focusing on high performance with easy usage.
 Check out our [Demo](http://www.angular-cesium.com) that contains small app built with angular-cesium and our blog post [Intro to angular-cesium](https://cesium.com/blog/2019/03/28/angular-cesium/).
 
 ## Getting started
+#### If you are using Angular CLI, you can add the angular-cesium library using schematics
++ add `angular-cesium`:
+  ```bash
+  $ ng add angular-cesium
+  ```
+
 #### For existing project just install angular-cesium
 + install `angular-cesium`:
   ```bash
@@ -75,6 +81,24 @@ for webpack users try [this](https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/
 	    "./node_modules/cesium/Build/Cesium/Cesium.js"
 	  ],
   ```
+ + To avoid `ReferenceError: Cesium is not defined` errors when running unit tests, add Cesium scripts
+in `.angular-cli.json` or `angular.json`(Angular >=6) file in the test block of the app configuration.
+Note that in the example below, only the relevant sections and values are shown.
+
+  ```javascript
+  "projects": {
+      "angular-cesium-demo": {
+        "architect": {
+          "test": {
+            "scripts": [
+                "./node_modules/cesium/Build/Cesium/Cesium.js"
+              ],
+          }
+        }
+      }
+  }
+  ```
+  
 + Add `CESIUM_BASE_URL` in `main.ts` file, before bootstrapping:
   ```javascript
     // ...
@@ -420,4 +444,7 @@ Take screenshot of your cesium globe.
 ## Support
 Angular Cesium is an open source project, feel free to open issues,ask questions and open PRs.
 For additional support options contact us: [contact@articode.co](mailto:\\contact@articode.co).
+
+Articode is a software company that specializes in GIS solutions and is the creator and the maintainer of angular-cesium.
+Feel free to contact us for consulting or any business endeavors.
 

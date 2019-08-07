@@ -28,6 +28,7 @@ export class DemoMapComponent {
       geocoder: false,
       navigationHelpButton: false,
       navigationInstructionsInitiallyVisible: false,
+      mapMode2D: Cesium.MapMode2D.ROTATE,
     };
 
     viewerConf.viewerModifier = (viewer: any) => {

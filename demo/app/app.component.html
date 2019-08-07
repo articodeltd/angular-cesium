@@ -10,13 +10,13 @@
                [position]="'end'">
     <sidenav-toolbar (onMultiMapClick)="setMultiMaps()"></sidenav-toolbar>
   </mat-sidenav>
-  <div *ngIf="!multiMap" style="position: relative; height: calc(100% - 109px)">
+  <div *ngIf="!multiMap" style="position: relative; height: calc(100% - 109px)" oncontextmenu="return false;">
     <demo-map #mainMap></demo-map>
   </div>
   <div *ngIf="multiMap" style="display: flex; flex-direction: row; flex: 1;">
     <demo-multiple-maps></demo-multiple-maps>
-    <div id="left-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden"></div>
-    <div id="right-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden"></div>
+    <div id="left-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden" oncontextmenu="return false;"></div>
+    <div id="right-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden" oncontextmenu="return false;"></div>
   </div>
   <footer class="page-footer">
     <div class="footer-text"><span class="footer-text-mobile">Created and maintained&nbsp;</span> by
