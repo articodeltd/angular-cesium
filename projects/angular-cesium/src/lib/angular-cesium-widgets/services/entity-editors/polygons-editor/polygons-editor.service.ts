@@ -28,6 +28,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
+  clampHeightTo3D: false,
   pointProps: {
     color: Cesium.Color.WHITE.withAlpha(0.8),
     outlineColor: Cesium.Color.BLACK.withAlpha(0.2),

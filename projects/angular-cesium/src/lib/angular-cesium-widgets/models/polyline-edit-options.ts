@@ -28,4 +28,5 @@ export interface PolylineEditOptions extends EditorEditOptions {
   removePointEvent?: CesiumEvent;
   removePointModifier?: CesiumEventModifier;
   maximumNumberOfPoints?: number;
+  clampHeightTo3D?: boolean;
 }
