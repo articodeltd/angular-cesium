@@ -210,7 +210,8 @@ export class EditableHippodrome extends AcEntity {
 
     const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
     this.getRealPoints().forEach(point => {
-      GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+      const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+      point.setPosition(newPos);
     });
     this.createHeightEditPoints();
     this.updatePointsLayer(...this.positions);

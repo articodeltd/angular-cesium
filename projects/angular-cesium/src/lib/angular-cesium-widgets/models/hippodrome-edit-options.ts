@@ -6,6 +6,10 @@ export interface HippodromeProps {
   outline?: boolean;
   outlineColor?: any;
   outlineWidth?: number;
+  fill?: boolean;
+  classificationType?: any;
+  zIndex?: any;
+  shadows?: any;
 }
 
 export interface HippodromeEditOptions extends EditorEditOptions {
