@@ -2,12 +2,13 @@
 ### Features
 * Added `debug` prop to `ac-layer` component for printing received AcNotifications
 * Polygon Editor and Polyline Editor support 3D tiles and terrain, to enable set `clampHeightTo3D` parameter to `true`.
-* Added examples for 3D mode in `polyline-editor-layer.ts` and `polygon-editor-layer.ts`. 
+* Added examples for 3D mode in `polyline-editor-layer.ts` and `polygon-editor-layer.ts`.
+* Add Angular CLI schematics
 
 ### Fixes 
 * Fix `CameraService` zoomOut().
 * Fix Shape editors not cloning geometries props 
-* Shape editor use points to be shown above the lines (uses `disableDepthTestDistance` prop)
+* Change Shape editor points to be shown above the lines (uses `disableDepthTestDistance` prop)
 * Fixed demo app unit tests
 * Updated README with instructions for including Cesium scripts in test config
 * Added use of the 'availability' field inside of the Cesium entity API
