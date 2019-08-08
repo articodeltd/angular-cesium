@@ -1,5 +1,16 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { EditActions, LabelProps, PolygonEditUpdate, PolylineEditorObservable, PolylinesEditorService } from 'angular-cesium';
+import {
+  CameraService,
+  CesiumEvent,
+  CesiumService,
+  EditActions,
+  LabelProps,
+  MapEventsManagerService, MapsManagerService,
+  PickOptions,
+  PolylineEditorObservable,
+  PolylineEditUpdate,
+  PolylinesEditorService
+} from 'angular-cesium';
 
 @Component({
   selector: 'polyline-editor-layer',
@@ -12,12 +23,46 @@ export class PolylineEditorLayerComponent implements OnInit {
 
   editing$: PolylineEditorObservable;
   enableEditing = true;
+  tileset: any;
+  tilesLocation = {longitude: 0.5433407074863252, latitude: 0.523107775892968, height: 450};
 
-  constructor(private polylineEditor: PolylinesEditorService) {
+  constructor(private polylineEditor: PolylinesEditorService,
+              private cesiumService: CesiumService,
+              private camService: CameraService,
+              private m: MapsManagerService,
+              private mapsManager: MapEventsManagerService) {
   }
 
   ngOnInit(): void {
-    // this.startEdit();
+  }
+
+  startEdit3D() {
+    const viewer = this.cesiumService.getViewer();
+    if (!this.tileset) {
+      this.tileset = viewer.scene.primitives.add(
+        new Cesium.Cesium3DTileset({
+          url: Cesium.IonResource.fromAssetId(29328)
+        })
+      );
+    }
+    this.camService.cameraFlyTo({
+      destination: Cesium.Cartesian3.fromRadians(this.tilesLocation.longitude, this.tilesLocation.latitude, this.tilesLocation.height),
+      orientation : {
+        pitch : Cesium.Math.toRadians(-35.0),
+      }});
+
+    if (this.editing$) {
+      this.stopEdit();
+    }
+    this.editing$ = this.polylineEditor.create({ clampHeightTo3D: true });
+    this.editing$.subscribe((editUpdate: PolylineEditUpdate) => {
+
+      // if (editUpdate.editAction === EditActions.ADD_POINT) {
+      //   console.log(editUpdate.points); // point = position with id
+      //   console.log(editUpdate.positions); // or just position
+      //   console.log(editUpdate.updatedPosition); // added position
+      // }
+    });
   }
 
   startEdit() {
@@ -25,7 +70,7 @@ export class PolylineEditorLayerComponent implements OnInit {
       this.stopEdit();
     }
     this.editing$ = this.polylineEditor.create();
-    this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
+    this.editing$.subscribe((editUpdate: PolylineEditUpdate) => {
 
       if (editUpdate.editAction === EditActions.ADD_POINT) {
         console.log(editUpdate.points); // point = position with id
@@ -54,7 +99,7 @@ export class PolylineEditorLayerComponent implements OnInit {
         width: 3,
       },
     });
-    this.editing$.setLabelsRenderFn((update: PolygonEditUpdate) => {
+    this.editing$.setLabelsRenderFn((update: PolylineEditUpdate) => {
       let counter = 0;
       const newLabels: LabelProps[] = [];
       update.positions.forEach(position => newLabels.push({
@@ -74,14 +119,14 @@ export class PolylineEditorLayerComponent implements OnInit {
           return label;
         })
       ), 2000);
-    this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
+    this.editing$.subscribe((editUpdate: PolylineEditUpdate) => {
       if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
         console.log(editUpdate.points); // point = position with id
         console.log(editUpdate.positions); // or just position
         console.log(editUpdate.updatedPosition); // added position
       }
     });
-    this.editing$.subscribe((editUpdate: PolygonEditUpdate) => {
+    this.editing$.subscribe((editUpdate: PolylineEditUpdate) => {
 
       if (editUpdate.editAction === EditActions.DRAG_POINT_FINISH) {
         console.log(editUpdate.points); // point = position with id

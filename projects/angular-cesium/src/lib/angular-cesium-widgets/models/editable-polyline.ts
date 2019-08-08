@@ -27,8 +27,8 @@ export class EditablePolyline extends AcEntity {
               private editOptions: PolylineEditOptions,
               positions?: Cartesian3[]) {
     super();
-    this._pointProps = editOptions.pointProps;
-    this.props = editOptions.polylineProps;
+    this._pointProps = {...editOptions.pointProps};
+    this.props = {...editOptions.polylineProps};
     if (positions && positions.length >= 2) {
       this.createFromExisting(positions);
     }
@@ -131,9 +131,7 @@ export class EditablePolyline extends AcEntity {
   }
 
   private setMiddleVirtualPoint(firstP: EditPoint, secondP: EditPoint): EditPoint {
-    const currentCart = Cesium.Cartographic.fromCartesian(firstP.getPosition());
-    const nextCart = Cesium.Cartographic.fromCartesian(secondP.getPosition());
-    const midPointCartesian3 = this.coordinateConverter.midPointToCartesian3(currentCart, nextCart);
+    const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secondP.getPosition(), 0.5, new Cesium.Cartesian3());
     const midPoint = new EditPoint(this.id, midPointCartesian3, this._pointProps);
     midPoint.setVirtualEditPoint(true);
 
@@ -143,9 +141,8 @@ export class EditablePolyline extends AcEntity {
   }
 
   private updateMiddleVirtualPoint(virtualEditPoint: EditPoint, prevPoint: EditPoint, nextPoint: EditPoint) {
-    const prevPointCart = Cesium.Cartographic.fromCartesian(prevPoint.getPosition());
-    const nextPointCart = Cesium.Cartographic.fromCartesian(nextPoint.getPosition());
-    virtualEditPoint.setPosition(this.coordinateConverter.midPointToCartesian3(prevPointCart, nextPointCart));
+    const midPointCartesian3 = Cesium.Cartesian3.lerp(prevPoint.getPosition(), nextPoint.getPosition(), 0.5, new Cesium.Cartesian3());
+    virtualEditPoint.setPosition(midPointCartesian3);
   }
 
   changeVirtualPointToRealPoint(point: EditPoint) {
@@ -203,9 +200,22 @@ export class EditablePolyline extends AcEntity {
     this.updatePointsLayer(true, this.movingPoint);
   }
 
+  movePointFinish(editPoint: EditPoint) {
+    if (this.editOptions.clampHeightTo3D) {
+      editPoint.props.disableDepthTestDistance = Number.POSITIVE_INFINITY;
+      this.updatePointsLayer(false, editPoint);
+    }
+  }
+
   movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
     editPoint.setPosition(toPosition);
     if (this.doneCreation) {
+      if (editPoint.props.disableDepthTestDistance && this.editOptions.clampHeightTo3D) {
+        // To avoid bug with pickPosition() on point with disableDepthTestDistance
+        editPoint.props.disableDepthTestDistance = undefined;
+        return; // ignore first move because the pickPosition() could be wrong
+      }
+
       if (editPoint.isVirtualEditPoint()) {
         this.changeVirtualPointToRealPoint(editPoint);
       }
@@ -216,13 +226,11 @@ export class EditablePolyline extends AcEntity {
         const nextVirtualPoint = this.positions[(pointIndex + 1) % (pointsCount)];
         const nextRealPoint = this.positions[(pointIndex + 2) % (pointsCount)];
         this.updateMiddleVirtualPoint(nextVirtualPoint, editPoint, nextRealPoint);
-        this.updatePointsLayer(false, nextVirtualPoint);
       }
       if (pointIndex > 0) {
         const prevVirtualPoint = this.positions[((pointIndex - 1) + pointsCount) % pointsCount];
         const prevRealPoint = this.positions[((pointIndex - 2) + pointsCount) % pointsCount];
         this.updateMiddleVirtualPoint(prevVirtualPoint, editPoint, prevRealPoint);
-        this.updatePointsLayer(false, prevVirtualPoint);
       }
     }
     this.updatePointsLayer(true, editPoint);
@@ -244,7 +252,8 @@ export class EditablePolyline extends AcEntity {
 
     const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
     this.positions.forEach(point => {
-      GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+      const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+      point.setPosition(newPos);
     });
     this.updatePointsLayer(true, ...this.positions);
     this.lastDraggedToPosition = draggedToPosition;
@@ -285,6 +294,10 @@ export class EditablePolyline extends AcEntity {
 
   getPositions(): Cartesian3[] {
     return this.positions.map(position => position.getPosition());
+  }
+
+  getPositionsCallbackProperty(): Cartesian3[] {
+    return new Cesium.CallbackProperty(this.getPositions.bind(this), false);
   }
 
   private removePosition(point: EditPoint) {

@@ -38,6 +38,15 @@ export class CoordinateConverter {
   constructor(@Optional() private cesiumService?: CesiumService) {
   }
 
+  static cartesian3ToLatLon(cartesian3: Cartesian3, ellipsoid?: any): {lon: number, lat: number; height: number} {
+    const cart = Cesium.Cartographic.fromCartesian(cartesian3, ellipsoid);
+    return {
+      lon: Cesium.Math.toDegrees(cart.longitude),
+      lat: Cesium.Math.toDegrees(cart.latitude),
+      height: cart.height
+    };
+  }
+
   screenToCartesian3(screenPos: { x: number, y: number }, addMapCanvasBoundsToPos?: boolean) {
     if (!this.cesiumService) {
       throw new Error('ANGULAR2-CESIUM - Cesium service should be provided in order' +

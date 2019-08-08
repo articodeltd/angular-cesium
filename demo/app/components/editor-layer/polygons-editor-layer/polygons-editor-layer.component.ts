@@ -1,6 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
-import { EditActions, LabelProps, PolygonEditorObservable, PolygonEditUpdate, PolygonsEditorService } from 'angular-cesium';
+import {
+  CameraService,
+  CesiumService,
+  EditActions,
+  LabelProps,
+  PolygonEditorObservable,
+  PolygonEditUpdate,
+  PolygonsEditorService
+} from 'angular-cesium';
 
 @Component({
   selector: 'polygons-editor-layer',
@@ -12,8 +20,10 @@ import { EditActions, LabelProps, PolygonEditorObservable, PolygonEditUpdate, Po
 export class PolygonsEditorLayerComponent implements OnInit {
   editing$: PolygonEditorObservable;
   enableEditing = true;
+  tileset: any;
+  tilesLocation = {longitude: 0.5433407074863252, latitude: 0.523107775892968, height: 450};
 
-  constructor(private polygonsEditor: PolygonsEditorService) {
+  constructor(private polygonsEditor: PolygonsEditorService, private cesiumService: CesiumService, private camService: CameraService) {
   }
 
   ngOnInit(): void {
@@ -29,6 +39,29 @@ export class PolygonsEditorLayerComponent implements OnInit {
       console.log(editUpdate.points); // point = position with id
       console.log(editUpdate.positions); // or just position
       console.log(editUpdate.updatedPosition); // added position
+    });
+  }
+
+  startEdit3D() {
+    const viewer = this.cesiumService.getViewer();
+    if (!this.tileset) {
+      this.tileset = viewer.scene.primitives.add(
+        new Cesium.Cesium3DTileset({
+          url: Cesium.IonResource.fromAssetId(29328)
+        })
+      );
+    }
+    this.camService.cameraFlyTo({
+      destination: Cesium.Cartesian3.fromRadians(this.tilesLocation.longitude, this.tilesLocation.latitude, this.tilesLocation.height),
+      orientation : {
+        pitch : Cesium.Math.toRadians(-35.0),
+      }});
+
+    if (this.editing$) {
+      this.stopEdit();
+    }
+    this.editing$ = this.polygonsEditor.create({
+      clampHeightTo3D: true
     });
   }
 

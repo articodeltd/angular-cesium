@@ -18,6 +18,7 @@ import { PolylineEditorObservable } from '../../../models/polyline-editor-observ
 import { EditPolyline } from '../../../models';
 import { LabelProps } from '../../../models/label-props';
 import { generateKey } from '../../utils';
+import { CesiumService } from '../../../../angular-cesium';
 
 export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -28,16 +29,20 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   allowDrag: true,
   pointProps: {
     color: Cesium.Color.WHITE.withAlpha(0.9),
-    outlineColor: Cesium.Color.BLACK,
+    outlineColor: Cesium.Color.BLACK.withAlpha(0.5),
     outlineWidth: 1,
     pixelSize: 15,
     virtualPointPixelSize: 8,
     show: true,
     showVirtual: true,
+    disableDepthTestDistance: Number.POSITIVE_INFINITY,
   },
   polylineProps: {
     material: () => Cesium.Color.BLACK,
     width: 3,
+    clampToGround: false,
+    zIndex: 0,
+    classificationType: Cesium.ClassificationType.BOTH,
   },
 };
 
@@ -83,20 +88,39 @@ export class PolylinesEditorService {
   private cameraService: CameraService;
   private polylinesManager: PolylinesManagerService;
   private observablesMap = new Map<string, DisposableObservable<any>[]>();
+  private cesiumScene;
 
   init(mapEventsManager: MapEventsManagerService,
        coordinateConverter: CoordinateConverter,
        cameraService: CameraService,
-       polylinesManager: PolylinesManagerService) {
+       polylinesManager: PolylinesManagerService,
+       cesiumViewer: CesiumService) {
     this.mapEventsManager = mapEventsManager;
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
     this.polylinesManager = polylinesManager;
     this.updatePublisher.connect();
+
+    this.cesiumScene = cesiumViewer.getScene();
   }
 
   onUpdate(): Observable<PolylineEditUpdate> {
     return this.updatePublisher;
+  }
+
+  screenToPosition(cartesian2, clampHeightTo3D: boolean) {
+    const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
+    // If cartesian3 is undefined then the point inst on the globe
+    if (clampHeightTo3D && cartesian3) {
+      const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
+      const latLon = CoordinateConverter.cartesian3ToLatLon(cartesian3PickPosition);
+      if (latLon.height < 0) {
+        return cartesian3; // means nothing picked -> Validate it
+      }
+      return this.cesiumScene.clampToHeight(cartesian3PickPosition);
+    }
+
+    return cartesian3;
   }
 
   create(options = DEFAULT_POLYLINE_OPTIONS, eventPriority = 100): PolylineEditorObservable {
@@ -138,8 +162,8 @@ export class PolylinesEditorService {
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
-    mouseMoveRegistration.subscribe(({movement: {endPosition}}) => {
-      const position = this.coordinateConverter.screenToCartesian3(endPosition);
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
+      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
       if (position) {
         this.updateSubject.next({
           id,
@@ -151,11 +175,11 @@ export class PolylinesEditorService {
       }
     });
 
-    addPointRegistration.subscribe(({movement: {endPosition}}) => {
+    addPointRegistration.subscribe(({ movement: { endPosition } }) => {
       if (finishedCreate) {
         return;
       }
-      const position = this.coordinateConverter.screenToCartesian3(endPosition);
+      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
       if (!position) {
         return;
       }
@@ -189,8 +213,8 @@ export class PolylinesEditorService {
       }
     });
 
-    addLastPointRegistration.subscribe(({movement: {endPosition}}) => {
-      const position = this.coordinateConverter.screenToCartesian3(endPosition);
+    addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
+      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
       if (!position) {
         return;
       }
@@ -316,10 +340,10 @@ export class PolylinesEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
-        .subscribe(({movement: {startPosition, endPosition, drop}, entities}) => {
-          const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
-          const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
+        .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+        .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
+          const endDragPosition = this.screenToPosition(endPosition, false);
+          const startDragPosition = this.screenToPosition(startPosition, false);
           if (!endDragPosition) {
             return;
           }
@@ -342,9 +366,9 @@ export class PolylinesEditorService {
     }
 
     pointDragRegistration.pipe(
-      tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
-      .subscribe(({movement: {endPosition, drop}, entities}) => {
-        const position = this.coordinateConverter.screenToCartesian3(endPosition);
+      tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+      .subscribe(({ movement: { endPosition, drop }, entities }) => {
+        const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
         if (!position) {
           return;
         }
@@ -366,7 +390,7 @@ export class PolylinesEditorService {
         });
       });
 
-    pointRemoveRegistration.subscribe(({entities}) => {
+    pointRemoveRegistration.subscribe(({ entities }) => {
       const point: EditPoint = entities[0];
       const allPositions = [...this.getPositions(id)];
       if (allPositions.length < 3) {
@@ -402,10 +426,28 @@ export class PolylinesEditorService {
 
   private setOptions(options: PolylineEditOptions) {
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYLINE_OPTIONS));
-    const polylineOptions = Object.assign(defaultClone, options);
+    const polylineOptions: PolylineEditOptions = Object.assign(defaultClone, options);
     polylineOptions.pointProps = Object.assign({}, DEFAULT_POLYLINE_OPTIONS.pointProps, options.pointProps);
     polylineOptions.polylineProps = Object.assign({},
       DEFAULT_POLYLINE_OPTIONS.polylineProps, options.polylineProps);
+
+    if (options.clampHeightTo3D) {
+      if (!this.cesiumScene.pickPositionSupported || !this.cesiumScene.clampToHeightSupported) {
+        throw new Error(`Cesium pickPosition and clampToHeight must be supported to use clampHeightTo3D`);
+      }
+
+      if (this.cesiumScene.pickTranslucentDepth) {
+        console.warn(`Cesium scene.pickTranslucentDepth must be false in order to make the editors work properly on 3D`);
+      }
+
+      if (polylineOptions.pointProps.color.alpha === 1 || polylineOptions.pointProps.outlineColor.alpha === 1) {
+        console.warn('Point color and outline color must have alpha in order to make the editor work properly on 3D');
+      }
+
+      polylineOptions.allowDrag = false;
+      polylineOptions.polylineProps.clampToGround = true;
+      polylineOptions.pointProps.disableDepthTestDistance = Number.POSITIVE_INFINITY;
+    }
     return polylineOptions;
   }
 

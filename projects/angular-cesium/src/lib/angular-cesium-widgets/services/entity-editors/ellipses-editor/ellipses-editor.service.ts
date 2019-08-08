@@ -21,6 +21,7 @@ import { LabelProps } from '../../../models/label-props';
 import { BasicEditUpdate } from '../../../models/basic-edit-update';
 import { generateKey } from '../../utils';
 import { CesiumEventModifier } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum';
+import { CesiumService } from '../../../../angular-cesium';
 
 export const DEFAULT_ELLIPSE_OPTIONS: EllipseEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -30,23 +31,28 @@ export const DEFAULT_ELLIPSE_OPTIONS: EllipseEditOptions = {
   circleToEllipseTransformEventModifier: CesiumEventModifier.ALT,
   allowDrag: true,
   ellipseProps: {
-    material: Cesium.Color.GREEN.withAlpha(0.5),
+    material: Cesium.Color.CORNFLOWERBLUE.withAlpha(0.4),
+    fill: true,
     outline: true,
     outlineWidth: 1,
-    outlineColor: Cesium.Color.BLACK,
+    outlineColor: Cesium.Color.WHITE.withAlpha(0.8),
+    classificationType: Cesium.ClassificationType.BOTH,
+    zIndex: 0,
+    shadows: Cesium.ShadowMode.DISABLED,
   },
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.9),
-    outlineColor: Cesium.Color.BLACK,
+    color: Cesium.Color.WHITE.withAlpha(0.95),
+    outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
     outlineWidth: 1,
-    pixelSize: 15,
+    pixelSize: 13,
     virtualPointPixelSize: 8,
     show: true,
     showVirtual: true,
+    disableDepthTestDistance: Number.POSITIVE_INFINITY,
   },
   polylineProps: {
     width: 1,
-    material: () => Cesium.Color.BLACK,
+    material: () => Cesium.Color.WHITE,
   },
   circleToEllipseTransformation: false,
 };
@@ -93,18 +99,22 @@ export class EllipsesEditorService {
   private cameraService: CameraService;
   private ellipsesManager: EllipsesManagerService;
   private observablesMap = new Map<string, DisposableObservable<any>[]>();
+  private cesiumScene: any;
 
   init(
     mapEventsManager: MapEventsManagerService,
     coordinateConverter: CoordinateConverter,
     cameraService: CameraService,
     ellipsesManager: EllipsesManagerService,
+    cesiumViewer: CesiumService,
   ) {
     this.mapEventsManager = mapEventsManager;
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
     this.ellipsesManager = ellipsesManager;
     this.updatePublisher.connect();
+
+    this.cesiumScene = cesiumViewer.getScene();
   }
 
   onUpdate(): Observable<EllipseEditUpdate> {

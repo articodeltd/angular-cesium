@@ -1,4 +1,4 @@
-import { publish, tap } from 'rxjs/operators';
+import { debounceTime, publish, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
@@ -19,6 +19,7 @@ import { PolygonEditOptions, PolygonProps } from '../../../models/polygon-edit-o
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
 import { generateKey } from '../../utils';
+import { CesiumService } from '../../../../angular-cesium';
 
 export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -27,21 +28,29 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
+  clampHeightTo3D: false,
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.9),
-    outlineColor: Cesium.Color.BLACK,
+    color: Cesium.Color.WHITE.withAlpha(0.8),
+    outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
     outlineWidth: 1,
-    pixelSize: 15,
+    pixelSize: 13,
     virtualPointPixelSize: 8,
     show: true,
     showVirtual: true,
+    disableDepthTestDistance: Number.POSITIVE_INFINITY,
   },
   polygonProps: {
-    material: new Cesium.Color(0.1, 0.5, 0.2, 0.4),
+    material: Cesium.Color.CORNFLOWERBLUE.withAlpha(0.4),
+    fill: true,
+    classificationType: Cesium.ClassificationType.BOTH,
+    zIndex: 0,
   },
   polylineProps: {
-    material: () => Cesium.Color.BLACK,
-    width: 1,
+    material: () => Cesium.Color.WHITE,
+    width: 3,
+    clampToGround: false,
+    zIndex: 0,
+    classificationType: Cesium.ClassificationType.BOTH,
   },
 };
 
@@ -87,20 +96,40 @@ export class PolygonsEditorService {
   private cameraService: CameraService;
   private polygonsManager: PolygonsManagerService;
   private observablesMap = new Map<string, DisposableObservable<any>[]>();
+  private cesiumScene: any;
 
   init(mapEventsManager: MapEventsManagerService,
        coordinateConverter: CoordinateConverter,
        cameraService: CameraService,
-       polygonsManager: PolygonsManagerService) {
+       polygonsManager: PolygonsManagerService,
+       cesiumViewer: CesiumService,
+  ) {
     this.mapEventsManager = mapEventsManager;
     this.coordinateConverter = coordinateConverter;
     this.cameraService = cameraService;
     this.polygonsManager = polygonsManager;
     this.updatePublisher.connect();
+
+    this.cesiumScene = cesiumViewer.getScene();
   }
 
   onUpdate(): Observable<PolygonEditUpdate> {
     return this.updatePublisher;
+  }
+
+  screenToPosition(cartesian2, clampHeightTo3D: boolean) {
+    const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
+    // If cartesian3 is undefined then the point inst on the globe
+    if (clampHeightTo3D && cartesian3) {
+      const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
+      const latLon = CoordinateConverter.cartesian3ToLatLon(cartesian3PickPosition);
+      if (latLon.height < 0) {
+        return cartesian3; // means nothing picked -> Validate it
+      }
+      return this.cesiumScene.clampToHeight(cartesian3PickPosition);
+    }
+
+    return cartesian3;
   }
 
   create(options = DEFAULT_POLYGON_OPTIONS, priority = 100): PolygonEditorObservable {
@@ -142,8 +171,8 @@ export class PolygonsEditorService {
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
-    mouseMoveRegistration.subscribe(({movement: {endPosition}}) => {
-      const position = this.coordinateConverter.screenToCartesian3(endPosition);
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
+      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
 
       if (position) {
         this.updateSubject.next({
@@ -156,11 +185,11 @@ export class PolygonsEditorService {
       }
     });
 
-    addPointRegistration.subscribe(({movement: {endPosition}}) => {
+    addPointRegistration.subscribe(({ movement: { endPosition } }) => {
       if (finishedCreate) {
         return;
       }
-      const position = this.coordinateConverter.screenToCartesian3(endPosition);
+      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
       if (!position) {
         return;
       }
@@ -197,8 +226,8 @@ export class PolygonsEditorService {
     });
 
 
-    addLastPointRegistration.subscribe(({movement: {endPosition}}) => {
-      const position = this.coordinateConverter.screenToCartesian3(endPosition);
+    addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
+      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
       if (!position) {
         return;
       }
@@ -322,9 +351,9 @@ export class PolygonsEditorService {
     });
 
     pointDragRegistration.pipe(
-      tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
-      .subscribe(({movement: {endPosition, drop}, entities}) => {
-        const position = this.coordinateConverter.screenToCartesian3(endPosition);
+      tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+      .subscribe(({ movement: { endPosition, drop }, entities }) => {
+        const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
         if (!position) {
           return;
         }
@@ -348,10 +377,10 @@ export class PolygonsEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
-        .subscribe(({movement: {startPosition, endPosition, drop}, entities}) => {
-          const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
-          const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
+        .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+        .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
+          const endDragPosition = this.screenToPosition(endPosition, false);
+          const startDragPosition = this.screenToPosition(startPosition, false);
           if (!endDragPosition) {
             return;
           }
@@ -373,7 +402,7 @@ export class PolygonsEditorService {
         });
     }
 
-    pointRemoveRegistration.subscribe(({entities}) => {
+    pointRemoveRegistration.subscribe(({ entities }) => {
       const point: EditPoint = entities[0];
       const allPositions = [...this.getPositions(id)];
       if (allPositions.length < 4) {
@@ -416,10 +445,28 @@ export class PolygonsEditorService {
     }
 
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYGON_OPTIONS));
-    const polygonOptions = Object.assign(defaultClone, options);
+    const polygonOptions: PolygonEditOptions = Object.assign(defaultClone, options);
     polygonOptions.pointProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.pointProps, options.pointProps);
     polygonOptions.polygonProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.polygonProps, options.polygonProps);
     polygonOptions.polylineProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.polylineProps, options.polylineProps);
+
+    if (options.clampHeightTo3D) {
+      if (!this.cesiumScene.pickPositionSupported || !this.cesiumScene.clampToHeightSupported) {
+        throw new Error(`Cesium pickPosition and clampToHeight must be supported to use clampHeightTo3D`);
+      }
+
+      if (this.cesiumScene.pickTranslucentDepth) {
+        console.warn(`Cesium scene.pickTranslucentDepth must be false in order to make the editors work properly on 3D`);
+      }
+
+      if (polygonOptions.pointProps.color.alpha === 1 || polygonOptions.pointProps.outlineColor.alpha === 1) {
+        console.warn('Point color and outline color must have alpha in order to make the editor work properly on 3D');
+      }
+
+      polygonOptions.allowDrag = false;
+      polygonOptions.polylineProps.clampToGround = true;
+      polygonOptions.pointProps.disableDepthTestDistance = Number.POSITIVE_INFINITY;
+    }
     return polygonOptions;
   }
 

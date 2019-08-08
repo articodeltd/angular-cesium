@@ -26,12 +26,12 @@ export class EditablePolygon extends AcEntity {
               private pointsLayer: AcLayerComponent,
               private polylinesLayer: AcLayerComponent,
               private coordinateConverter: CoordinateConverter,
-              polygonOptions: PolygonEditOptions,
+              private polygonOptions: PolygonEditOptions,
               positions?: Cartesian3[]) {
     super();
-    this.polygonProps = polygonOptions.polygonProps;
-    this.defaultPointProps = polygonOptions.pointProps;
-    this.defaultPolylineProps = polygonOptions.polylineProps;
+    this.polygonProps = {...polygonOptions.polygonProps};
+    this.defaultPointProps = {...polygonOptions.pointProps};
+    this.defaultPolylineProps = {...polygonOptions.polylineProps};
     if (positions && positions.length >= 3) {
       this.createFromExisting(positions);
     }
@@ -136,9 +136,7 @@ export class EditablePolygon extends AcEntity {
   }
 
   private setMiddleVirtualPoint(firstP: EditPoint, secondP: EditPoint): EditPoint {
-    const currentCart = Cesium.Cartographic.fromCartesian(firstP.getPosition());
-    const nextCart = Cesium.Cartographic.fromCartesian(secondP.getPosition());
-    const midPointCartesian3 = this.coordinateConverter.midPointToCartesian3(currentCart, nextCart);
+    const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secondP.getPosition(), 0.5, new Cesium.Cartesian3());
     const midPoint = new EditPoint(this.id, midPointCartesian3, this.defaultPointProps);
     midPoint.setVirtualEditPoint(true);
 
@@ -148,9 +146,8 @@ export class EditablePolygon extends AcEntity {
   }
 
   private updateMiddleVirtualPoint(virtualEditPoint: EditPoint, prevPoint: EditPoint, nextPoint: EditPoint) {
-    const prevPointCart = Cesium.Cartographic.fromCartesian(prevPoint.getPosition());
-    const nextPointCart = Cesium.Cartographic.fromCartesian(nextPoint.getPosition());
-    virtualEditPoint.setPosition(this.coordinateConverter.midPointToCartesian3(prevPointCart, nextPointCart));
+    const midPointCartesian3 = Cesium.Cartesian3.lerp(prevPoint.getPosition(), nextPoint.getPosition(), 0.5, new Cesium.Cartesian3());
+    virtualEditPoint.setPosition(midPointCartesian3);
   }
 
   changeVirtualPointToRealPoint(point: EditPoint) {
@@ -208,10 +205,22 @@ export class EditablePolygon extends AcEntity {
     this.updatePolygonsLayer();
   }
 
+  movePointFinish(editPoint: EditPoint) {
+    if (this.polygonOptions.clampHeightTo3D) {
+      editPoint.props.disableDepthTestDistance = Number.POSITIVE_INFINITY;
+      this.updatePointsLayer(false, editPoint);
+    }
+  }
+
   movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
     editPoint.setPosition(toPosition);
-    this.updatePolygonsLayer();
     if (this.doneCreation) {
+      if (editPoint.props.disableDepthTestDistance && this.polygonOptions.clampHeightTo3D) {
+        // To avoid bug with pickPosition() on point with disableDepthTestDistance
+        editPoint.props.disableDepthTestDistance = undefined;
+        return; // ignore first move because the pickPosition() could be wrong
+      }
+
       if (editPoint.isVirtualEditPoint()) {
         this.changeVirtualPointToRealPoint(editPoint);
       }
@@ -223,9 +232,8 @@ export class EditablePolygon extends AcEntity {
       const prevRealPoint = this.positions[((pointIndex - 2) + pointsCount) % pointsCount];
       this.updateMiddleVirtualPoint(nextVirtualPoint, editPoint, nextRealPoint);
       this.updateMiddleVirtualPoint(prevVirtualPoint, editPoint, prevRealPoint);
-      this.updatePointsLayer(false, nextVirtualPoint);
-      this.updatePointsLayer(false, prevVirtualPoint);
     }
+    this.updatePolygonsLayer();
     this.updatePointsLayer(true, editPoint);
   }
 
@@ -245,7 +253,8 @@ export class EditablePolygon extends AcEntity {
 
     const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
     this.positions.forEach(point => {
-      GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+      const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+      point.setPosition(newPos);
     });
     this.updatePointsLayer();
     this.lastDraggedToPosition = draggedToPosition;
@@ -287,7 +296,8 @@ export class EditablePolygon extends AcEntity {
   }
 
   getPositionsHierarchy(): Cartesian3[] {
-    return this.positions.filter(position => !position.isVirtualEditPoint()).map(position => position.getPosition());
+    const positions = this.positions.filter(position => !position.isVirtualEditPoint()).map(position => position.getPosition().clone());
+    return new Cesium.PolygonHierarchy(positions);
   }
 
   getPositionsHierarchyCallbackProperty(): Cartesian3[] {

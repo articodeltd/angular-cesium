@@ -13,69 +13,76 @@ import { EllipsesEditorService } from '../../services/entity-editors/ellipses-ed
 import { EllipseEditUpdate } from '../../models/ellipse-edit-update';
 import { LabelProps } from '../../models/label-props';
 import { EditableEllipse } from '../../models/editable-ellipse';
+import { CesiumService } from '../../../angular-cesium';
 
 @Component({
   selector: 'ellipses-editor',
   template: /*html*/ `
-    <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
-      <ac-point-desc
-        props="{
-        position: point.getPosition(),
-        pixelSize: getPointSize(point),
-        color: point.props.color,
-        outlineColor: point.props.outlineColor,
-        outlineWidth: point.props.outlineWidth,
-        show: getPointShow(point)
+      <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
+          <ac-point-desc
+                  props="{
+                    position: point.getPositionCallbackProperty(),
+                    pixelSize: getPointSize(point),
+                    color: point.props.color,
+                    outlineColor: point.props.outlineColor,
+                    outlineWidth: point.props.outlineWidth,
+                    show: getPointShow(point),
+                    disableDepthTestDistance: point.props.disableDepthTestDistance,
     }"
-      >
-      </ac-point-desc>
-    </ac-layer>
+          >
+          </ac-point-desc>
+      </ac-layer>
 
-    <ac-layer #editEllipsesLayer acFor="let ellipse of editEllipses$" [context]="this" [zIndex]="0">
-      <ac-ellipse-desc
-        props="{
-        position: ellipse.getCenterCallbackProperty(),
-        semiMajorAxis: ellipse.getMajorRadiusCallbackProperty(),
-        semiMinorAxis: ellipse.getMinorRadiusCallbackProperty(),
-        rotation: ellipse.getRotationCallbackProperty(),
-        material: ellipse.ellipseProps.material,
-        outline: ellipse.ellipseProps.outline,
-        outlineWidth: ellipse.ellipseProps.outlineWidth,
-        outlineColor: ellipse.ellipseProps.outlineColor,
-        height: 0
+      <ac-layer #editEllipsesLayer acFor="let ellipse of editEllipses$" [context]="this" [zIndex]="0">
+          <ac-ellipse-desc
+                  props="{
+                    position: ellipse.getCenterCallbackProperty(),
+                    semiMajorAxis: ellipse.getMajorRadiusCallbackProperty(),
+                    semiMinorAxis: ellipse.getMinorRadiusCallbackProperty(),
+                    rotation: ellipse.getRotationCallbackProperty(),
+                    material: ellipse.ellipseProps.material,
+                    outline: ellipse.ellipseProps.outline,
+                    outlineWidth: ellipse.ellipseProps.outlineWidth,
+                    outlineColor: ellipse.ellipseProps.outlineColor,
+                    height: 0,
+                    fill: ellipse.ellipseProps.fill,
+                    classificationType: ellipse.ellipseProps.classificationType,
+                    zIndex: ellipse.ellipseProps.zIndex,
+                    shadows: ellipse.ellipseProps.shadows,
     }"
-      >
-      </ac-ellipse-desc>
+          >
+          </ac-ellipse-desc>
 
-      <ac-array-desc acFor="let label of ellipse.labels" [idGetter]="getLabelId">
-        <ac-label-primitive-desc
-          props="{
-            position: label.position,
-            text: label.text,
-            backgroundColor: label.backgroundColor,
-            backgroundPadding: label.backgroundPadding,
-            distanceDisplayCondition: label.distanceDisplayCondition,
-            eyeOffset: label.eyeOffset,
-            fillColor: label.fillColor,
-            font: label.font,
-            heightReference: label.heightReference,
-            horizontalOrigin: label.horizontalOrigin,
-            outlineColor: label.outlineColor,
-            outlineWidth: label.outlineWidth,
-            pixelOffset: label.pixelOffset,
-            pixelOffsetScaleByDistance: label.pixelOffsetScaleByDistance,
-            scale: label.scale,
-            scaleByDistance: label.scaleByDistance,
-            show: label.show,
-            showBackground: label.showBackground,
-            style: label.style,
-            translucencyByDistance: label.translucencyByDistance,
-            verticalOrigin: label.verticalOrigin
+          <ac-array-desc acFor="let label of ellipse.labels" [idGetter]="getLabelId">
+              <ac-label-primitive-desc
+                      props="{
+                        position: label.position,
+                        text: label.text,
+                        backgroundColor: label.backgroundColor,
+                        backgroundPadding: label.backgroundPadding,
+                        distanceDisplayCondition: label.distanceDisplayCondition,
+                        eyeOffset: label.eyeOffset,
+                        fillColor: label.fillColor,
+                        font: label.font,
+                        heightReference: label.heightReference,
+                        horizontalOrigin: label.horizontalOrigin,
+                        outlineColor: label.outlineColor,
+                        outlineWidth: label.outlineWidth,
+                        pixelOffset: label.pixelOffset,
+                        pixelOffsetScaleByDistance: label.pixelOffsetScaleByDistance,
+                        scale: label.scale,
+                        scaleByDistance: label.scaleByDistance,
+                        show: label.show,
+                        showBackground: label.showBackground,
+                        style: label.style,
+                        translucencyByDistance: label.translucencyByDistance,
+                        verticalOrigin: label.verticalOrigin,
+                        disableDepthTestDistance: label.disableDepthTestDistance,
         }"
-        >
-        </ac-label-primitive-desc>
-      </ac-array-desc>
-    </ac-layer>
+              >
+              </ac-label-primitive-desc>
+          </ac-array-desc>
+      </ac-layer>
   `,
   providers: [CoordinateConverter, EllipsesManagerService],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -95,8 +102,9 @@ export class EllipsesEditorComponent implements OnDestroy {
     private mapEventsManager: MapEventsManagerService,
     private cameraService: CameraService,
     private ellipsesManager: EllipsesManagerService,
+    private cesiumService: CesiumService,
   ) {
-    this.ellipsesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, this.ellipsesManager);
+    this.ellipsesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, this.ellipsesManager, cesiumService);
     this.startListeningToEditorUpdates();
   }
 
