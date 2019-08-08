@@ -173,13 +173,13 @@ import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.comp
     AcStaticCircleDescComponent,
     AcStaticPolygonDescComponent,
   ],
-  providers: [JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, MapsManagerService, ConfigurationService],
 })
 export class AngularCesiumModule {
   static forRoot(config?: ModuleConfiguration): ModuleWithProviders {
     return {
       ngModule: AngularCesiumModule,
       providers: [
+        JsonMapper, CesiumProperties, GeoUtilsService, ViewerFactory, MapsManagerService, ConfigurationService,
         {provide: ANGULAR_CESIUM_CONFIG, useValue: config},
         {provide: PIPES_CONFIG, multi: true, useValue: config && config.customPipes || []},
         {provide: PIPES_CONFIG, multi: true, useValue: PARSE_PIPES_CONFIG_MAP},

@@ -12,6 +12,7 @@
 * Fixed demo app unit tests
 * Updated README with instructions for including Cesium scripts in test config
 * Added use of the 'availability' field inside of the Cesium entity API
+* Add `MapsManagerService` and other global service to be provided by `forRoot()` - for lazy loading. 
 
 
 ### Breaking Changes
