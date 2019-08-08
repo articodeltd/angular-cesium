@@ -31,6 +31,30 @@
                <div class="content getting-started">
                    <div class="content-data">
 
+<h2 id="0-57">0.57</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>Added <code>debug</code> prop to <code>ac-layer</code> component for printing received AcNotifications</li>
+<li>Polygon Editor and Polyline Editor support 3D tiles and terrain, to enable set <code>clampHeightTo3D</code> parameter to <code>true</code>.</li>
+<li>Added examples for 3D mode in <code>polyline-editor-layer.ts</code> and <code>polygon-editor-layer.ts</code>.</li>
+<li>Add Angular CLI schematics</li>
+</ul>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fix <code>CameraService</code> zoomOut().</li>
+<li>Fix Shape editors not cloning geometries props </li>
+<li>Change Shape editor points to be shown above the lines (uses <code>disableDepthTestDistance</code> prop)</li>
+<li>Fixed demo app unit tests</li>
+<li>Updated README with instructions for including Cesium scripts in test config</li>
+<li>Added use of the &#39;availability&#39; field inside of the Cesium entity API</li>
+<li>Add <code>MapsManagerService</code> and other global service to be provided by <code>forRoot()</code> - for lazy loading. </li>
+</ul>
+<h3 id="breaking-changes">Breaking Changes</h3>
+<ul>
+<li>Remove default <code>viewer</code> configuration (the defualt was setting offline map as the initial imagery).</li>
+<li>Change editors initial props - different color and outline.</li>
+<li>Change editors initial props - to use Cesium <code>CallbackProperties</code>.</li>
+</ul>
 <h2 id="0-56">0.56</h2>
 <h3 id="features">Features</h3>
 <ul>

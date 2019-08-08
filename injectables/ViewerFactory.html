@@ -302,12 +302,6 @@ export class ViewerFactory {
     } else {
       viewer &#x3D; new this.cesium.Viewer(mapContainer,
         {
-          // Poor internet connection - use default globe image, TODO: should be removed
-          imageryProvider: Cesium.createTileMapServiceImageryProvider({
-            url: Cesium.buildModuleUrl(&#x27;Assets/Textures/NaturalEarthII&#x27;)
-          }),
-          baseLayerPicker: false,
-          geocoder: false,
           contextOptions: {
             webgl: {preserveDrawingBuffer: true}
           },

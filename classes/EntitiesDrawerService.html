@@ -578,7 +578,7 @@ Drawers the handle Cesium primitives extend it.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:107</a></div>
                             </td>
                         </tr>
 
@@ -647,7 +647,7 @@ Drawers the handle Cesium primitives extend it.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:111</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:112</a></div>
                             </td>
                         </tr>
 
@@ -685,7 +685,7 @@ Drawers the handle Cesium primitives extend it.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:117</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:118</a></div>
                             </td>
                         </tr>
 
@@ -756,7 +756,7 @@ Drawers the handle Cesium primitives extend it.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/entities-drawer/entities-drawer.service.ts:124</a></div>
                             </td>
                         </tr>
 
@@ -1505,12 +1505,12 @@ export class EntitiesDrawerService extends BasicDrawerService {
       throw new Error(&#x27;No more free entity collections&#x27;);
     }
 
-    const graphicsClass &#x3D; this.graphicsType as any;
     const entityObject &#x3D; {
       position: cesiumProps.position !&#x3D;&#x3D; undefined ? cesiumProps.position : undefined,
       description: cesiumProps.description !&#x3D;&#x3D; undefined ? cesiumProps.description : undefined,
       orientation: cesiumProps.orientation !&#x3D;&#x3D; undefined ? cesiumProps.orientation : undefined,
       viewFrom: cesiumProps.viewFrom !&#x3D;&#x3D; undefined ? cesiumProps.viewFrom : undefined,
+      availability: cesiumProps.availability !&#x3D;&#x3D; undefined ? cesiumProps.availability : undefined,
       [this.graphicsTypeName]: cesiumProps,
     };
 
@@ -1534,6 +1534,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     entity.description &#x3D; cesiumProps.description !&#x3D;&#x3D; undefined ? cesiumProps.description : entity.description;
     entity.orientation &#x3D; cesiumProps.orientation !&#x3D;&#x3D; undefined ? cesiumProps.orientation : entity.orientation;
     entity.viewFrom &#x3D; cesiumProps.viewFrom !&#x3D;&#x3D; undefined ? cesiumProps.viewFrom : entity.viewFrom;
+    entity.availability &#x3D; cesiumProps.availability !&#x3D;&#x3D; undefined ? cesiumProps.availability : undefined;
 
     if (this._propsAssigner) {
       this._propsAssigner(entity[this.graphicsTypeName], cesiumProps);
@@ -1569,6 +1570,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     entityCollection.suspend();
   }
 }
+
 </code></pre>
     </div>
 </div>

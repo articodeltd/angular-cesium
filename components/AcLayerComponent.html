@@ -73,6 +73,7 @@ The ac-layer element must be a child of ac-map element.</p>
 <li>zIndex <code>{number}</code> - controls the zIndex (order) of the layer, layers with greater zIndex will be in front of layers with lower zIndex
  (Exception For <code>Billboard</code> and <code>Label</code>, should use <code>[eyeOffset]</code> prop instead)</br>
  zIndex won&#39;t work for pritimitve descs (like ac-primitive-polyline...)</li>
+<li>debug <code>{boolean}</code> - prints every acNotification</li>
 </ul>
 <p><strong>Usage :</strong></p>
 <div><pre class="line-numbers"><code class="language-none"> *  &lt;ac-map&gt;
@@ -316,6 +317,9 @@ The ac-layer element must be a child of ac-map element.</p>
                                 <a href="#context">context</a>
                             </li>
                             <li>
+                                <a href="#debug">debug</a>
+                            </li>
+                            <li>
                                 <a href="#options">options</a>
                             </li>
                             <li>
@@ -349,7 +353,7 @@ The ac-layer element must be a child of ac-map element.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:136</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:139</a></div>
                             </td>
                         </tr>
 
@@ -753,7 +757,7 @@ The ac-layer element must be a child of ac-map element.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:119</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:120</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -774,7 +778,27 @@ The ac-layer element must be a child of ac-map element.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:121</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:122</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="debug"></a>
+                        <code>debug</code>
+                    </td>
+                    <td class="col-md-10">
+                        <p>
+                            <em>Default value : </em><code>false</code>
+                        </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:130</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -795,7 +819,7 @@ The ac-layer element must be a child of ac-map element.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:125</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:126</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -815,7 +839,7 @@ The ac-layer element must be a child of ac-map element.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:117</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:118</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -835,7 +859,7 @@ The ac-layer element must be a child of ac-map element.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:124</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -855,7 +879,7 @@ The ac-layer element must be a child of ac-map element.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:128</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -891,7 +915,7 @@ The ac-layer element must be a child of ac-map element.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="329" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:329</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="336" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:336</a></div>
                             </td>
                         </tr>
 
@@ -964,7 +988,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="320" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:320</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="327" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:327</a></div>
                             </td>
                         </tr>
 
@@ -1010,7 +1034,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="312" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:312</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="319" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:319</a></div>
                             </td>
                         </tr>
 
@@ -1048,7 +1072,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="336" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:336</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="343" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:343</a></div>
                             </td>
                         </tr>
 
@@ -1088,7 +1112,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:201</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:204</a></div>
                             </td>
                         </tr>
 
@@ -1128,7 +1152,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="244" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:244</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:251</a></div>
                             </td>
                         </tr>
 
@@ -1168,7 +1192,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="264" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:264</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:271</a></div>
                             </td>
                         </tr>
 
@@ -1239,7 +1263,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:270</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="277" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:277</a></div>
                             </td>
                         </tr>
 
@@ -1277,7 +1301,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="292" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:292</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="299" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:299</a></div>
                             </td>
                         </tr>
 
@@ -1346,7 +1370,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="306" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:306</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="313" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:313</a></div>
                             </td>
                         </tr>
 
@@ -1384,7 +1408,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:274</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="281" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:281</a></div>
                             </td>
                         </tr>
 
@@ -1422,7 +1446,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="370" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:370</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="377" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:377</a></div>
                             </td>
                         </tr>
 
@@ -1491,7 +1515,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="351" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:351</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="358" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:358</a></div>
                             </td>
                         </tr>
 
@@ -1562,7 +1586,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="343" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:343</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="350" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:350</a></div>
                             </td>
                         </tr>
 
@@ -1602,7 +1626,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="366" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:366</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="373" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:373</a></div>
                             </td>
                         </tr>
 
@@ -1685,7 +1709,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="359" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:359</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="366" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:366</a></div>
                             </td>
                         </tr>
 
@@ -1758,7 +1782,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:228</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:235</a></div>
                             </td>
                         </tr>
 
@@ -1840,7 +1864,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:133</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:136</a></div>
                             </td>
                         </tr>
 
@@ -1880,7 +1904,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:137</a></div>
                             </td>
                         </tr>
 
@@ -1915,7 +1939,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:129</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:132</a></div>
                             </td>
                         </tr>
 
@@ -1949,7 +1973,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:138</a></div>
                             </td>
                         </tr>
 
@@ -1984,7 +2008,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:130</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:133</a></div>
                             </td>
                         </tr>
 
@@ -2024,7 +2048,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:136</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:139</a></div>
                             </td>
                         </tr>
 
@@ -2059,7 +2083,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:132</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:135</a></div>
                             </td>
                         </tr>
 
@@ -2093,7 +2117,7 @@ Example: getDataSourceOfDrawer(&#39;polyline&#39;) returns the dataSource of pol
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:131</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-layer/ac-layer.component.ts:134</a></div>
                             </td>
                         </tr>
 
@@ -2158,6 +2182,7 @@ import { CzmlDrawerService } from &#x27;../../services/drawers/czml-drawer/czml-
  *  + zIndex &#x60;{number}&#x60; - controls the zIndex (order) of the layer, layers with greater zIndex will be in front of layers with lower zIndex
  *    (Exception For &#x60;Billboard&#x60; and &#x60;Label&#x60;, should use &#x60;[eyeOffset]&#x60; prop instead)&lt;/br&gt;
  *    zIndex won&#x27;t work for pritimitve descs (like ac-primitive-polyline...)
+ *  + debug &#x60;{boolean}&#x60; - prints every acNotification
  *
  *
  *  __Usage :__
@@ -2233,6 +2258,8 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
   options: LayerOptions;
   @Input()
   zIndex &#x3D; 0;
+  @Input()
+  debug &#x3D; false;
 
   private readonly acForRgx &#x3D; /^let\s+.+\s+of\s+.+$/;
   private entityName: string;
@@ -2311,6 +2338,10 @@ export class AcLayerComponent implements OnInit, OnChanges, AfterContentInit, On
 
     observableMerge(this._updateStream, this.observable).pipe&lt;AcNotification&gt;(takeUntil(this.stopObservable)).subscribe((notification) &#x3D;&gt; {
       this._computationCache.clear();
+
+      if (this.debug) {
+        console.log(&#x27;AcLayer received notification:&#x27;, notification);
+      }
 
       let contextEntity &#x3D; notification.entity;
       if (this.store) {

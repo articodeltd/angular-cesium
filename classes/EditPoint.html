@@ -140,6 +140,9 @@
                                 <a href="#getPosition">getPosition</a>
                             </li>
                             <li>
+                                <a href="#getPositionCallbackProperty">getPositionCallbackProperty</a>
+                            </li>
+                            <li>
                                 <a href="#isVirtualEditPoint">isVirtualEditPoint</a>
                             </li>
                             <li>
@@ -550,7 +553,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-point.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-point.ts:70</a></div>
                             </td>
                         </tr>
 
@@ -626,7 +629,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-point.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-point.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -665,6 +668,44 @@
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-point.ts:51</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getPositionCallbackProperty"></a>
+                        <span class="name">
+                            <b>
+                            getPositionCallbackProperty
+                            </b>
+                            <a href="#getPositionCallbackProperty"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getPositionCallbackProperty()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-point.ts:55</a></div>
                             </td>
                         </tr>
 
@@ -740,7 +781,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-point.ts:55</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-point.ts:60</a></div>
                             </td>
                         </tr>
 
@@ -1105,7 +1146,7 @@ export class EditPoint extends AcEntity {
     this.editedEntityId &#x3D; entityId;
     this.position &#x3D; position;
     this.id &#x3D; this.generateId();
-    this.pointProps &#x3D; pointProps;
+    this.pointProps &#x3D; {...pointProps};
     this._virtualEditPoint &#x3D; virtualPoint;
   }
 
@@ -1138,8 +1179,13 @@ export class EditPoint extends AcEntity {
   }
 
   getPosition(): Cartesian3 {
-    return this.position;
+    return this.position.clone();
   }
+
+  getPositionCallbackProperty(): Cartesian3 {
+    return new Cesium.CallbackProperty(this.getPosition.bind(this), false);
+  }
+
 
   setPosition(position: Cartesian3) {
     this.position.x &#x3D; position.x;

@@ -40,6 +40,10 @@
 Focusing on high performance with easy usage.
 Check out our <a href="http://www.angular-cesium.com">Demo</a> that contains small app built with angular-cesium and our blog post <a href="https://cesium.com/blog/2019/03/28/angular-cesium/">Intro to angular-cesium</a>.</p>
 <h2 id="getting-started">Getting started</h2>
+<h4 id="if-you-are-using-angular-cli-you-can-add-the-angular-cesium-library-using-schematics">If you are using Angular CLI, you can add the angular-cesium library using schematics</h4>
+<ul>
+<li>add <code>angular-cesium</code>:<div><pre class="line-numbers"><code class="language-bash">$ ng add angular-cesium</code></pre></div></li>
+</ul>
 <h4 id="for-existing-project-just-install-angular-cesium">For existing project just install angular-cesium</h4>
 <ul>
 <li>install <code>angular-cesium</code>:<div><pre class="line-numbers"><code class="language-bash">$ npm install --save angular-cesium</code></pre></div></li>
@@ -93,15 +97,29 @@ for webpack users try <a href="https://cesiumjs.org/2016/01/26/Cesium-and-Webpac
    ],
    &quot;scripts&quot;: [ // ...
      &quot;./node_modules/cesium/Build/Cesium/Cesium.js&quot;
-   ],</code></pre></div><ul>
-<li>Add <code>CESIUM_BASE_URL</code> in <code>main.ts</code> file, before bootstrapping:<div><pre class="line-numbers"><code class="language-javascript">// ...
-window[&#39;CESIUM_BASE_URL&#39;] = &#39;/assets/cesium&#39;; // If youre using Cesium version &lt; 1.42.0 add this line
-Cesium.buildModuleUrl.setBaseUrl(&#39;/assets/cesium/&#39;); // If youre using Cesium version &gt;= 1.42.0 add this line
-platformBrowserDynamic().bootstrapModule(AppModule);</code></pre></div>*** Duplication of Cesium base url setting method is caused by a Cesium bug that was introduced in Cesium version 1.42 and should be fixed in Cesium 1.45 - <a href="https://github.com/AnalyticalGraphicsInc/cesium/issues/6411">https://github.com/AnalyticalGraphicsInc/cesium/issues/6411</a></li>
-</ul>
-</li>
+   ],</code></pre></div></li>
+<li><p>To avoid <code>ReferenceError: Cesium is not defined</code> errors when running unit tests, add Cesium scripts
+in <code>.angular-cli.json</code> or <code>angular.json</code>(Angular &gt;=6) file in the test block of the app configuration.
+Note that in the example below, only the relevant sections and values are shown.</p>
+<div><pre class="line-numbers"><code class="language-javascript">&quot;projects&quot;: {
+   &quot;angular-cesium-demo&quot;: {
+     &quot;architect&quot;: {
+       &quot;test&quot;: {
+         &quot;scripts&quot;: [
+             &quot;./node_modules/cesium/Build/Cesium/Cesium.js&quot;
+           ],
+       }
+     }
+   }
+}</code></pre></div></li>
 </ul>
 <ul>
+<li><p>Add <code>CESIUM_BASE_URL</code> in <code>main.ts</code> file, before bootstrapping:</p>
+<div><pre class="line-numbers"><code class="language-javascript">  // ...
+  window[&#39;CESIUM_BASE_URL&#39;] = &#39;/assets/cesium&#39;; // If youre using Cesium version &lt; 1.42.0 add this line
+  Cesium.buildModuleUrl.setBaseUrl(&#39;/assets/cesium/&#39;); // If youre using Cesium version &gt;= 1.42.0 add this line
+  platformBrowserDynamic().bootstrapModule(AppModule);</code></pre></div><p>*** Duplication of Cesium base url setting method is caused by a Cesium bug that was introduced in Cesium version 1.42 and should be fixed in Cesium 1.45 - <a href="https://github.com/AnalyticalGraphicsInc/cesium/issues/6411">https://github.com/AnalyticalGraphicsInc/cesium/issues/6411</a></p>
+</li>
 <li><p>Add <code>declare var Cesium;</code> to <code>typing.d.ts</code> file (add the file to <code>src</code> directory).</p>
 </li>
 <li><p>You can configure cesium viewer style:</p>
@@ -416,6 +434,8 @@ The <code>unsyncMapsCameras()</code> function can be used to unsync synced maps.
 <h2 id="support">Support</h2>
 <p>Angular Cesium is an open source project, feel free to open issues,ask questions and open PRs.
 For additional support options contact us: <a href="mailto:%5Ccontact@articode.co">contact@articode.co</a>.</p>
+<p>Articode is a software company that specializes in GIS solutions and is the creator and the maintainer of angular-cesium.
+Feel free to contact us for consulting or any business endeavors.</p>
 
 
 

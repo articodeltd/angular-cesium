@@ -135,6 +135,9 @@
                                 <a href="#getPositions">getPositions</a>
                             </li>
                             <li>
+                                <a href="#getPositionsCallbackProperty">getPositionsCallbackProperty</a>
+                            </li>
+                            <li>
                                 <a href="#getStartPosition">getStartPosition</a>
                             </li>
                             <li>
@@ -477,7 +480,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:65</a></div>
                             </td>
                         </tr>
 
@@ -553,7 +556,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -591,7 +594,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:61</a></div>
                             </td>
                         </tr>
 
@@ -649,6 +652,44 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="getPositionsCallbackProperty"></a>
+                        <span class="name">
+                            <b>
+                            getPositionsCallbackProperty
+                            </b>
+                            <a href="#getPositionsCallbackProperty"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getPositionsCallbackProperty()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:37</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="getStartPosition"></a>
                         <span class="name">
                             <b>
@@ -667,7 +708,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -705,7 +746,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -774,7 +815,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -843,7 +884,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/edit-polyline.ts:41</a></div>
                             </td>
                         </tr>
 
@@ -1041,7 +1082,7 @@ export class EditPolyline extends AcEntity {
     this.editedEntityId &#x3D; entityId;
     this.id &#x3D; this.generateId();
     this.positions &#x3D; [startPosition, endPosition];
-    this._polylineProps &#x3D; polylineProps;
+    this._polylineProps &#x3D; {...polylineProps};
   }
 
   get props(): PolylineProps {
@@ -1057,7 +1098,12 @@ export class EditPolyline extends AcEntity {
   }
 
   getPositions(): any[] {
-    return this.positions;
+    return this.positions.map(p &#x3D;&gt; p.clone());
+  }
+
+
+  getPositionsCallbackProperty(): Cartesian3[] {
+    return new Cesium.CallbackProperty(this.getPositions.bind(this), false);
   }
 
   validatePositions(): boolean {

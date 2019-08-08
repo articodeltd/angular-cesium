@@ -113,6 +113,10 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
+                                <a href="#cesiumScene">cesiumScene</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
                                 <a href="#coordinateConverter">coordinateConverter</a>
                             </li>
                             <li>
@@ -176,6 +180,9 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <a href="#onUpdate">onUpdate</a>
                             </li>
                             <li>
+                                <a href="#screenToPosition">screenToPosition</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#setOptions">setOptions</a>
                             </li>
@@ -223,7 +230,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:135</a></div>
                             </td>
                         </tr>
 
@@ -312,7 +319,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="427" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:427</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="474" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:474</a></div>
                             </td>
                         </tr>
 
@@ -393,7 +400,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="258" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:258</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="287" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:287</a></div>
                             </td>
                         </tr>
 
@@ -496,7 +503,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="291" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:291</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="320" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:320</a></div>
                             </td>
                         </tr>
 
@@ -627,7 +634,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="501" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:501</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="548" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:548</a></div>
                             </td>
                         </tr>
 
@@ -698,7 +705,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="496" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:496</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="543" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:543</a></div>
                             </td>
                         </tr>
 
@@ -760,14 +767,14 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>init(mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, cameraService: <a href="../injectables/CameraService.html">CameraService</a>, polygonsManager: <a href="../injectables/PolygonsManagerService.html">PolygonsManagerService</a>)</code>
+<code>init(mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, cameraService: <a href="../injectables/CameraService.html">CameraService</a>, polygonsManager: <a href="../injectables/PolygonsManagerService.html">PolygonsManagerService</a>, cesiumViewer: <a href="../injectables/CesiumService.html">CesiumService</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:101</a></div>
                             </td>
                         </tr>
 
@@ -834,6 +841,18 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                                     
 
                                                 </tr>
+                                                <tr>
+                                                        <td>cesiumViewer</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -872,7 +891,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:116</a></div>
                             </td>
                         </tr>
 
@@ -884,6 +903,86 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                                 <b>Returns : </b>    <code><a href="../interfaces/PolygonEditUpdate.html" target="_self" >Observable&lt;PolygonEditUpdate&gt;</a></code>
 
                             </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="screenToPosition"></a>
+                        <span class="name">
+                            <b>
+                            screenToPosition
+                            </b>
+                            <a href="#screenToPosition"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>screenToPosition(cartesian2, clampHeightTo3D: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:120</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cartesian2</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>clampHeightTo3D</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -912,7 +1011,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="411" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:411</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="440" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:440</a></div>
                             </td>
                         </tr>
 
@@ -983,7 +1082,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:249</a></div>
                             </td>
                         </tr>
 
@@ -1143,7 +1242,42 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:96</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cesiumScene"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            cesiumScene
+                            </b>
+                            <a href="#cesiumScene"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>cesiumScene:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:99</a></div>
                             </td>
                         </tr>
 
@@ -1178,7 +1312,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:95</a></div>
                             </td>
                         </tr>
 
@@ -1213,7 +1347,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:92</a></div>
                             </td>
                         </tr>
 
@@ -1247,7 +1381,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:89</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:98</a></div>
                             </td>
                         </tr>
 
@@ -1282,7 +1416,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:97</a></div>
                             </td>
                         </tr>
 
@@ -1316,7 +1450,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:94</a></div>
                             </td>
                         </tr>
 
@@ -1350,7 +1484,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:84</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-editor.service.ts:93</a></div>
                             </td>
                         </tr>
 
@@ -1363,7 +1497,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { publish, tap } from &#x27;rxjs/operators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { debounceTime, publish, tap } from &#x27;rxjs/operators&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { MapEventsManagerService } from &#x27;../../../../angular-cesium/services/map-events-mananger/map-events-manager&#x27;;
 import { BehaviorSubject, Observable, Subject } from &#x27;rxjs&#x27;;
@@ -1384,6 +1518,7 @@ import { PolygonEditOptions, PolygonProps } from &#x27;../../../models/polygon-e
 import { PointProps } from &#x27;../../../models/polyline-edit-options&#x27;;
 import { LabelProps } from &#x27;../../../models/label-props&#x27;;
 import { generateKey } from &#x27;../../utils&#x27;;
+import { CesiumService } from &#x27;../../../../angular-cesium&#x27;;
 
 export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions &#x3D; {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -1392,21 +1527,29 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions &#x3D; {
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
+  clampHeightTo3D: false,
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.9),
-    outlineColor: Cesium.Color.BLACK,
+    color: Cesium.Color.WHITE.withAlpha(0.8),
+    outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
     outlineWidth: 1,
-    pixelSize: 15,
+    pixelSize: 13,
     virtualPointPixelSize: 8,
     show: true,
     showVirtual: true,
+    disableDepthTestDistance: Number.POSITIVE_INFINITY,
   },
   polygonProps: {
-    material: new Cesium.Color(0.1, 0.5, 0.2, 0.4),
+    material: Cesium.Color.CORNFLOWERBLUE.withAlpha(0.4),
+    fill: true,
+    classificationType: Cesium.ClassificationType.BOTH,
+    zIndex: 0,
   },
   polylineProps: {
-    material: () &#x3D;&gt; Cesium.Color.BLACK,
-    width: 1,
+    material: () &#x3D;&gt; Cesium.Color.WHITE,
+    width: 3,
+    clampToGround: false,
+    zIndex: 0,
+    classificationType: Cesium.ClassificationType.BOTH,
   },
 };
 
@@ -1452,20 +1595,40 @@ export class PolygonsEditorService {
   private cameraService: CameraService;
   private polygonsManager: PolygonsManagerService;
   private observablesMap &#x3D; new Map&lt;string, DisposableObservable&lt;any&gt;[]&gt;();
+  private cesiumScene: any;
 
   init(mapEventsManager: MapEventsManagerService,
        coordinateConverter: CoordinateConverter,
        cameraService: CameraService,
-       polygonsManager: PolygonsManagerService) {
+       polygonsManager: PolygonsManagerService,
+       cesiumViewer: CesiumService,
+  ) {
     this.mapEventsManager &#x3D; mapEventsManager;
     this.coordinateConverter &#x3D; coordinateConverter;
     this.cameraService &#x3D; cameraService;
     this.polygonsManager &#x3D; polygonsManager;
     this.updatePublisher.connect();
+
+    this.cesiumScene &#x3D; cesiumViewer.getScene();
   }
 
   onUpdate(): Observable&lt;PolygonEditUpdate&gt; {
     return this.updatePublisher;
+  }
+
+  screenToPosition(cartesian2, clampHeightTo3D: boolean) {
+    const cartesian3 &#x3D; this.coordinateConverter.screenToCartesian3(cartesian2);
+    // If cartesian3 is undefined then the point inst on the globe
+    if (clampHeightTo3D &amp;&amp; cartesian3) {
+      const cartesian3PickPosition &#x3D; this.cesiumScene.pickPosition(cartesian2);
+      const latLon &#x3D; CoordinateConverter.cartesian3ToLatLon(cartesian3PickPosition);
+      if (latLon.height &lt; 0) {
+        return cartesian3; // means nothing picked -&gt; Validate it
+      }
+      return this.cesiumScene.clampToHeight(cartesian3PickPosition);
+    }
+
+    return cartesian3;
   }
 
   create(options &#x3D; DEFAULT_POLYGON_OPTIONS, priority &#x3D; 100): PolygonEditorObservable {
@@ -1507,8 +1670,8 @@ export class PolygonsEditorService {
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
     const editorObservable &#x3D; this.createEditorObservable(clientEditSubject, id);
 
-    mouseMoveRegistration.subscribe(({movement: {endPosition}}) &#x3D;&gt; {
-      const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
+      const position &#x3D; this.screenToPosition(endPosition, options.clampHeightTo3D);
 
       if (position) {
         this.updateSubject.next({
@@ -1521,11 +1684,11 @@ export class PolygonsEditorService {
       }
     });
 
-    addPointRegistration.subscribe(({movement: {endPosition}}) &#x3D;&gt; {
+    addPointRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
       if (finishedCreate) {
         return;
       }
-      const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+      const position &#x3D; this.screenToPosition(endPosition, options.clampHeightTo3D);
       if (!position) {
         return;
       }
@@ -1562,8 +1725,8 @@ export class PolygonsEditorService {
     });
 
 
-    addLastPointRegistration.subscribe(({movement: {endPosition}}) &#x3D;&gt; {
-      const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+    addLastPointRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
+      const position &#x3D; this.screenToPosition(endPosition, options.clampHeightTo3D);
       if (!position) {
         return;
       }
@@ -1687,9 +1850,9 @@ export class PolygonsEditorService {
     });
 
     pointDragRegistration.pipe(
-      tap(({movement: {drop}}) &#x3D;&gt; this.cameraService.enableInputs(drop)))
-      .subscribe(({movement: {endPosition, drop}, entities}) &#x3D;&gt; {
-        const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+      tap(({ movement: { drop } }) &#x3D;&gt; this.cameraService.enableInputs(drop)))
+      .subscribe(({ movement: { endPosition, drop }, entities }) &#x3D;&gt; {
+        const position &#x3D; this.screenToPosition(endPosition, options.clampHeightTo3D);
         if (!position) {
           return;
         }
@@ -1713,10 +1876,10 @@ export class PolygonsEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({movement: {drop}}) &#x3D;&gt; this.cameraService.enableInputs(drop)))
-        .subscribe(({movement: {startPosition, endPosition, drop}, entities}) &#x3D;&gt; {
-          const endDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
-          const startDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(startPosition);
+        .pipe(tap(({ movement: { drop } }) &#x3D;&gt; this.cameraService.enableInputs(drop)))
+        .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) &#x3D;&gt; {
+          const endDragPosition &#x3D; this.screenToPosition(endPosition, false);
+          const startDragPosition &#x3D; this.screenToPosition(startPosition, false);
           if (!endDragPosition) {
             return;
           }
@@ -1738,7 +1901,7 @@ export class PolygonsEditorService {
         });
     }
 
-    pointRemoveRegistration.subscribe(({entities}) &#x3D;&gt; {
+    pointRemoveRegistration.subscribe(({ entities }) &#x3D;&gt; {
       const point: EditPoint &#x3D; entities[0];
       const allPositions &#x3D; [...this.getPositions(id)];
       if (allPositions.length &lt; 4) {
@@ -1781,10 +1944,28 @@ export class PolygonsEditorService {
     }
 
     const defaultClone &#x3D; JSON.parse(JSON.stringify(DEFAULT_POLYGON_OPTIONS));
-    const polygonOptions &#x3D; Object.assign(defaultClone, options);
+    const polygonOptions: PolygonEditOptions &#x3D; Object.assign(defaultClone, options);
     polygonOptions.pointProps &#x3D; Object.assign({}, DEFAULT_POLYGON_OPTIONS.pointProps, options.pointProps);
     polygonOptions.polygonProps &#x3D; Object.assign({}, DEFAULT_POLYGON_OPTIONS.polygonProps, options.polygonProps);
     polygonOptions.polylineProps &#x3D; Object.assign({}, DEFAULT_POLYGON_OPTIONS.polylineProps, options.polylineProps);
+
+    if (options.clampHeightTo3D) {
+      if (!this.cesiumScene.pickPositionSupported || !this.cesiumScene.clampToHeightSupported) {
+        throw new Error(&#x60;Cesium pickPosition and clampToHeight must be supported to use clampHeightTo3D&#x60;);
+      }
+
+      if (this.cesiumScene.pickTranslucentDepth) {
+        console.warn(&#x60;Cesium scene.pickTranslucentDepth must be false in order to make the editors work properly on 3D&#x60;);
+      }
+
+      if (polygonOptions.pointProps.color.alpha &#x3D;&#x3D;&#x3D; 1 || polygonOptions.pointProps.outlineColor.alpha &#x3D;&#x3D;&#x3D; 1) {
+        console.warn(&#x27;Point color and outline color must have alpha in order to make the editor work properly on 3D&#x27;);
+      }
+
+      polygonOptions.allowDrag &#x3D; false;
+      polygonOptions.polylineProps.clampToGround &#x3D; true;
+      polygonOptions.pointProps.disableDepthTestDistance &#x3D; Number.POSITIVE_INFINITY;
+    }
     return polygonOptions;
   }
 
