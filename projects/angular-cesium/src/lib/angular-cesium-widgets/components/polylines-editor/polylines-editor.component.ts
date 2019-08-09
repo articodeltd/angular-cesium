@@ -13,7 +13,7 @@ import { PolylinesManagerService } from '../../services/entity-editors/polyline-
 import { PolylineEditUpdate } from '../../models/polyline-edit-update';
 import { EditablePolyline } from '../../models/editable-polyline';
 import { LabelProps } from '../../models/label-props';
-import { CesiumService } from '../../../angular-cesium';
+import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 
 @Component({
   selector: 'polylines-editor',
@@ -87,8 +87,6 @@ export class PolylinesEditorComponent implements OnDestroy {
   public editPoints$ = new Subject<AcNotification>();
   public editPolylines$ = new Subject<AcNotification>();
   public polylineLabels$ = new Subject<AcNotification>();
-
-  Number = Number;
 
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
   @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;

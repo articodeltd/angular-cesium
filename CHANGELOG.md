@@ -1,3 +1,7 @@
+## 0.58
+### Fixes 
+* Fix AOT build - remove unwanted type in `PolygonEditorComponent` and `PolylinesEditorComponent`.
+
 ## 0.57
 ### Features
 * Added `debug` prop to `ac-layer` component for printing received AcNotifications

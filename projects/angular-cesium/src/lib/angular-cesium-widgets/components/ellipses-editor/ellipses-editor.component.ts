@@ -13,7 +13,7 @@ import { EllipsesEditorService } from '../../services/entity-editors/ellipses-ed
 import { EllipseEditUpdate } from '../../models/ellipse-edit-update';
 import { LabelProps } from '../../models/label-props';
 import { EditableEllipse } from '../../models/editable-ellipse';
-import { CesiumService } from '../../../angular-cesium';
+import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 
 @Component({
   selector: 'ellipses-editor',

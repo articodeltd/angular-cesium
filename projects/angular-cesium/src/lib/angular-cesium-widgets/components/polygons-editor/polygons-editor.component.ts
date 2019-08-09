@@ -13,7 +13,7 @@ import { PolygonsManagerService } from '../../services/entity-editors/polygons-e
 import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 import { LabelProps } from '../../models/label-props';
 import { EditablePolygon } from '../../models/editable-polygon';
-import { CesiumService } from '../../../angular-cesium';
+import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 
 @Component({
   selector: 'polygons-editor',
@@ -98,12 +98,6 @@ export class PolygonsEditorComponent implements OnDestroy {
   public editPoints$ = new Subject<AcNotification>();
   public editPolylines$ = new Subject<AcNotification>();
   public editPolygons$ = new Subject<AcNotification>();
-
-  public appearance = new Cesium.PerInstanceColorAppearance({ flat: true });
-  public attributes = { color: Cesium.ColorGeometryInstanceAttribute.fromColor(new Cesium.Color(0.2, 0.2, 0.5, 0.5)) };
-  public polygonColor = new Cesium.Color(0.1, 0.5, 0.2, 0.4);
-  public lineColor = new Cesium.Color(0, 0, 0, 0.6);
-  public Number = Number;
 
   @ViewChild('editPolygonsLayer') private editPolygonsLayer: AcLayerComponent;
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
