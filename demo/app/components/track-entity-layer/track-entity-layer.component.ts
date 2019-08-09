@@ -12,7 +12,7 @@ import {
 } from 'angular-cesium';
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 import { BehaviorSubject } from 'rxjs';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const initialLocation = {
   id: '1',

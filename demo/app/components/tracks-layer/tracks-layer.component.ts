@@ -2,7 +2,7 @@ import { ConnectableObservable, merge as observableMerge, Observable } from 'rxj
 import { filter, map, publish } from 'rxjs/operators';
 import { Component, Input, NgZone, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { AcLayerComponent, AcNotification, CameraService, CesiumEvent, MapEventsManagerService, PickOptions } from 'angular-cesium';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TracksDialogComponent } from './track-dialog/track-dialog.component';
 import { AppSettingsService, TracksType } from '../../services/app-settings-service/app-settings-service';
 import { RealTracksDataProvider } from '../../utils/services/dataProvider/real-tracks-data-provider';

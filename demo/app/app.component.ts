@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatDialog, MatIconRegistry, MatSidenav } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatIconRegistry } from '@angular/material/icon';
+import { MatSidenav } from '@angular/material/sidenav';
 import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
 import { DraggableToMapService, MapLayerProviderOptions, MapsManagerService } from 'angular-cesium';
 import { TracksDataProvider } from './utils/services/dataProvider/tracksDataProvider.service';

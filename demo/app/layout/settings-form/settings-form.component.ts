@@ -1,4 +1,4 @@
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 import { FormControl, NgForm } from '@angular/forms';
