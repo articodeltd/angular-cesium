@@ -1,3 +1,8 @@
+## 0.60
+### Breaking Changes/Improvements
+* Updated library and demo application to Angular 8
+* Bumped CircleCI Node version to 10.16.1
+
 ## 0.59
 ### Fixes 
 * Fix `CameraService.trackEntity()` doc.
