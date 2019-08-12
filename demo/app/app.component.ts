@@ -19,7 +19,7 @@ import { DemoMapComponent } from './components/demo-map/demo-map.component';
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild('mainMap') mainMap: DemoMapComponent;
+  @ViewChild('mainMap', {static: false}) mainMap: DemoMapComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   flyToOptions = {
     duration: 2,

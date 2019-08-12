@@ -9,7 +9,7 @@ import { TracksDataProvider } from '../../utils/services/dataProvider/tracksData
   styleUrls: [],
 })
 export class PointLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   points$: Observable<AcNotification>;
   Cesium = Cesium;

@@ -9,8 +9,8 @@ import { TracksDataProvider } from '../../utils/services/dataProvider/tracksData
   styleUrls: ['circle-layer-example.component.css'],
   providers: [TracksDataProvider]
 })
-export class CircleLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+export class DynamicCircleLayerComponent implements OnInit {
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   circles$: Observable<AcNotification>;
   Cesium = Cesium;

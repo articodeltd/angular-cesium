@@ -10,8 +10,8 @@ import { SimTracksDataProvider } from '../../utils/services/dataProvider/sim-tra
   templateUrl: './entities-with-arrays-example.component.html',
   providers: [SimTracksDataProvider],
 })
-export class EntitiesWithArraysExampleComponent implements OnInit, OnChanges {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+export class TracksWithArraysComponent implements OnInit, OnChanges {
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   @Input()
   show: boolean;

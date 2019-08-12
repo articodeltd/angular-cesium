@@ -21,7 +21,7 @@ import {
   providers: [CoordinateConverter],
 })
 export class MapEventsExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
   tracks$: Observable<AcNotification>;
   @Output() mouseMove = new EventEmitter();
 

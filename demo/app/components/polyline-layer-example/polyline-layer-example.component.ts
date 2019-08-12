@@ -10,7 +10,7 @@ import { TracksDataProvider } from '../../utils/services/dataProvider/tracksData
   providers: [TracksDataProvider]
 })
 export class PolylineLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   polylines$: Observable<AcNotification>;
   Cesium = Cesium;

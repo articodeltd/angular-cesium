@@ -65,7 +65,7 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
   @Input() idGetter: (item: any, index: number) => string;
 
   @Input() show = true;
-  @ViewChild('layer') private layer: AcLayerComponent;
+  @ViewChild('layer', {static: false}) private layer: AcLayerComponent;
   @ContentChildren(BasicDesc, {descendants: false}) private basicDescs: any;
   @ContentChildren(AcArrayDescComponent, {descendants: false}) private arrayDescs: any;
   private entitiesMap = new Map<string, string[]>();
@@ -92,7 +92,10 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
   }
 
   ngOnInit(): void {
-    this.layer.getLayerService().cache = false;
+    if (this.layer) {
+      this.layer.getLayerService().cache = false;
+    }
+
     this.layerServiceSubscription = this.layerService.layerUpdates().subscribe(() => {
       this.cd.detectChanges();
     });

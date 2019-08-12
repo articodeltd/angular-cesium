@@ -7,8 +7,8 @@ import { AcEntity, AcLayerComponent, AcNotification, ActionType, MapsManagerServ
   selector: 'czml-layer-example',
   templateUrl: 'czml-layer-example.component.html',
 })
-export class CzmlLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+export class CzmlLayerComponent implements OnInit {
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   czmlPackets$: Observable<AcNotification>;
   show = true;

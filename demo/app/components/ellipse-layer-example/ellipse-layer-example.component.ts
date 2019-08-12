@@ -9,8 +9,8 @@ import { TracksDataProvider } from '../../utils/services/dataProvider/tracksData
   styleUrls: ['ellipse-layer-example.component.css'],
   providers: [TracksDataProvider]
 })
-export class EllipseLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+export class DynamicEllipseLayerComponent implements OnInit {
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   ellipses$: Observable<AcNotification>;
   Cesium = Cesium;

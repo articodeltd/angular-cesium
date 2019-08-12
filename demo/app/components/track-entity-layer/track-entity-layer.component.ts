@@ -31,7 +31,7 @@ const initialLocation = {
   providers: [TracksDataProvider]
 })
 export class TrackEntityLayerComponent implements OnInit, AfterViewInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
 
   points$: BehaviorSubject<AcNotification> = new BehaviorSubject(initialLocation);

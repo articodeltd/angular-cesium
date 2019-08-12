@@ -8,8 +8,8 @@ import { CesiumHeatMapMaterialCreator } from 'angular-cesium';
   templateUrl: 'heatmap-example.component.html',
   providers: [CoordinateConverter]
 })
-export class HeatmapExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+export class HeatmapLayerComponent implements OnInit {
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   entities$: Subject<AcNotification> = new Subject();
   Cesium = Cesium;

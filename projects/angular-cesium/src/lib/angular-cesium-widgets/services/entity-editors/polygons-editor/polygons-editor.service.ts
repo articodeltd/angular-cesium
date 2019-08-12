@@ -1,5 +1,6 @@
 import { debounceTime, publish, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { CesiumService } from '../../../../angular-cesium/services/cesium/cesium.service';
 import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
@@ -19,7 +20,6 @@ import { PolygonEditOptions, PolygonProps } from '../../../models/polygon-edit-o
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
 import { generateKey } from '../../utils';
-import { CesiumService } from '../../../../angular-cesium';
 
 export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,

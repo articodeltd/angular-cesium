@@ -21,7 +21,7 @@ import { PolylinesEditorService } from '../../services/entity-editors/polyline-e
  * my-component.ts:
  *
  * ```
- * \@ViewChild('rangeAndBearing') private rangeAndBearing: RangeAndBearingComponent; // Get R&B reference
+ * \@ViewChild('rangeAndBearing', {static: false}) private rangeAndBearing: RangeAndBearingComponent; // Get R&B reference
  *  // ...
  * this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLabelsStyle: { fillColor: Cesium.Color.GREEN } });
  * ```

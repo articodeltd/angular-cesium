@@ -10,7 +10,7 @@ import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 export class ArcLayerExampleComponent implements OnInit, AfterViewInit {
   arcs$: Observable<AcNotification>;
   show = true;
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   constructor() {
     const colorMaterial = Cesium.Material.fromType('Color');

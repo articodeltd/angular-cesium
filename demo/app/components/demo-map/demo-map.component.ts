@@ -10,7 +10,7 @@ import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
   styleUrls: ['./demo-map.component.css']
 })
 export class DemoMapComponent {
-  @ViewChild('layer') tracksLayer: TracksLayerComponent;
+  @ViewChild('layer', {static: false}) tracksLayer: TracksLayerComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   sceneMode = SceneMode.SCENE3D;
 
