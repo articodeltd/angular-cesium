@@ -25,7 +25,7 @@ export class DemoMapComponent {
       animation: false,
       shouldAnimate: false,
       homeButton: false,
-      geocoder: false,
+      geocoder: true,
       navigationHelpButton: false,
       navigationInstructionsInitiallyVisible: false,
       mapMode2D: Cesium.MapMode2D.ROTATE,
