@@ -41,6 +41,7 @@ import { EditableCircle } from '../../models/editable-circle';
                     outlineWidth: point.props.outlineWidth,
                     show: getPointShow(point),
                     disableDepthTestDistance: point.props.disableDepthTestDistance,
+                    heightReference: point.props.heightReference,
     }"
           >
           </ac-point-desc>

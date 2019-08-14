@@ -36,6 +36,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
     show: true,
     showVirtual: true,
     disableDepthTestDistance: Number.POSITIVE_INFINITY,
+    heightReference: Cesium.HeightReference.NONE,
   },
   polylineProps: {
     material: () => Cesium.Color.BLACK,
@@ -114,8 +115,9 @@ export class PolylinesEditorService {
     if (clampHeightTo3D && cartesian3) {
       const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
       const latLon = CoordinateConverter.cartesian3ToLatLon(cartesian3PickPosition);
-      if (latLon.height < 0) {
-        return cartesian3; // means nothing picked -> Validate it
+      if (latLon.height < 0) {// means nothing picked -> Validate it
+        const ray = this.cameraService.getCamera().getPickRay(cartesian2);
+        return  this.cesiumScene.globe.pick(ray, this.cesiumScene);
       }
       return this.cesiumScene.clampToHeight(cartesian3PickPosition);
     }
@@ -446,6 +448,7 @@ export class PolylinesEditorService {
 
       polylineOptions.allowDrag = false;
       polylineOptions.polylineProps.clampToGround = true;
+      polylineOptions.pointProps.heightReference = Cesium.HeightReference.CLAMP_TO_GROUND;
       polylineOptions.pointProps.disableDepthTestDistance = Number.POSITIVE_INFINITY;
     }
     return polylineOptions;

@@ -52,7 +52,7 @@ export interface LabelProps {
 
 export const defaultLabelProps: LabelProps = {
   backgroundColor: new Cesium.Color(0.165, 0.165, 0.165, 0.7),
-  backgroundPadding: new Cesium.Cartesian2(7, 5),
+  backgroundPadding: new Cesium.Cartesian2(70, 50),
   distanceDisplayCondition: undefined,
   fillColor: Cesium.Color.WHITE,
   font: '30px sans-serif',
