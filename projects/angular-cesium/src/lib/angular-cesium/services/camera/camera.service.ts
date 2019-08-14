@@ -273,11 +273,11 @@ export class CameraService {
   /**
    * Make the camera track a specific entity
    * API: https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classFilter=viewer#trackedEntity
-   * @param entity - entity to track
+   * @param cesiumEntity - cesium entity( billboard, polygon...) to track
    * @param options - track entity options
    */
   trackEntity(
-    entity?: any,
+    cesiumEntity?: any,
     options?: { flyTo: boolean; flyToDuration?: number; altitude?: number }
   ) {
     const flyTo = (options && options.flyTo) || false;
@@ -289,7 +289,7 @@ export class CameraService {
         const altitude = (options && options.altitude) || 10000;
 
         // Calc entity flyTo position and wanted altitude
-        const entPosCar3 = entity.position.getValue(Cesium.JulianDate.now());
+        const entPosCar3 = cesiumEntity.position.getValue(Cesium.JulianDate.now());
         const entPosCart = Cesium.Cartographic.fromCartesian(entPosCar3);
         const zoomAmount = altitude - entPosCart.height;
         entPosCart.height = altitude;
@@ -303,7 +303,7 @@ export class CameraService {
           duration: flyToDuration,
           destination: flyToPosition,
           complete: () => {
-            this.viewer.trackedEntity = entity;
+            this.viewer.trackedEntity = cesiumEntity;
             setTimeout(() => {
               if (zoomAmount > 0) {
                 this.camera.zoomOut(zoomAmount);
@@ -315,7 +315,7 @@ export class CameraService {
           }
         });
       } else {
-        this.viewer.trackedEntity = entity;
+        this.viewer.trackedEntity = cesiumEntity;
         resolve();
       }
     });
