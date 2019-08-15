@@ -1,18 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AcLayerComponent, AcNotification } from 'angular-cesium';
+import { Observable } from 'rxjs';
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
-  selector: 'dynamic-polyline-layer',
-  templateUrl: 'dynamic-polyline-layer.component.html',
-  styleUrls: ['dynamic-polyline-layer.component.css'],
+  selector: 'ellipse-layer-example',
+  templateUrl: 'ellipse-layer-example.component.html',
+  styleUrls: ['ellipse-layer-example.component.css'],
   providers: [TracksDataProvider]
 })
-export class DynamicPolylineLayerComponent implements OnInit {
+export class EllipseLayerExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
-  polylines$: Observable<AcNotification>;
+  ellipses$: Observable<AcNotification>;
   Cesium = Cesium;
   show = true;
 
@@ -20,7 +20,7 @@ export class DynamicPolylineLayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.polylines$ = this.tracksDataProvider.get();
+    this.ellipses$ = this.tracksDataProvider.get();
   }
 
   removeAll() {
@@ -30,5 +30,4 @@ export class DynamicPolylineLayerComponent implements OnInit {
   setShow($event: boolean) {
     this.show = $event;
   }
-
 }

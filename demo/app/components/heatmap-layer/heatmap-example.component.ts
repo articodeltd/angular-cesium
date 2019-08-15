@@ -4,11 +4,11 @@ import { Subject } from 'rxjs';
 import { CesiumHeatMapMaterialCreator } from 'angular-cesium';
 
 @Component({
-  selector: 'heatmap-layer',
-  templateUrl: 'heatmap-layer.component.html',
+  selector: 'heatmap-example',
+  templateUrl: 'heatmap-example.component.html',
   providers: [CoordinateConverter]
 })
-export class HeatmapLayerComponent implements OnInit {
+export class HeatmapExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   entities$: Subject<AcNotification> = new Subject();

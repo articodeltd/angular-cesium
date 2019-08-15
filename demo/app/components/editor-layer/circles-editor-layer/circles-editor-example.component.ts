@@ -3,13 +3,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CircleEditorObservable, CircleEditUpdate, CirclesEditorService, LabelProps } from 'angular-cesium';
 
 @Component({
-  selector: 'circles-editor-layer',
-  templateUrl: 'circles-editor-layer.component.html',
-  styleUrls: ['./circles-editor-layer.component.css'],
+  selector: 'circles-editor-example',
+  templateUrl: 'circles-editor-example.component.html',
+  styleUrls: ['./circles-editor-example.component.css'],
   providers: [CirclesEditorService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CirclesEditorLayerComponent implements OnInit {
+export class CirclesEditorExampleComponent implements OnInit {
 
   editing$: CircleEditorObservable;
   enableEditing = true;

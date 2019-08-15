@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
-  selector: 'html-example',
+  selector: 'html-layer-example',
   templateUrl: './html-example.component.html',
   styleUrls: ['./html-example.component.css']
 })

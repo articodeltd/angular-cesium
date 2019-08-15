@@ -3,11 +3,11 @@ import { Observable, Subscriber } from 'rxjs';
 import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
-  selector: 'arc-layer',
-  templateUrl: 'arc-layer.component.html'
+  selector: 'arc-layer-example',
+  templateUrl: 'arc-layer-example.component.html'
 })
 
-export class ArcLayerComponent implements OnInit, AfterViewInit {
+export class ArcLayerExampleComponent implements OnInit, AfterViewInit {
   arcs$: Observable<AcNotification>;
   show = true;
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;

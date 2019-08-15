@@ -6,11 +6,11 @@ import { AppSettingsService } from '../../services/app-settings-service/app-sett
 import { SimTracksDataProvider } from '../../utils/services/dataProvider/sim-tracks-data-provider';
 
 @Component({
-  selector: 'tracks-with-arrays',
-  templateUrl: './tracks-with-arrays.component.html',
+  selector: 'entities-with-arrays-example',
+  templateUrl: './entities-with-arrays-example.component.html',
   providers: [SimTracksDataProvider],
 })
-export class TracksWithArraysComponent implements OnInit, OnChanges {
+export class EntitiesWithArraysExampleComponent implements OnInit, OnChanges {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   @Input()

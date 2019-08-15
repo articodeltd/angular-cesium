@@ -5,10 +5,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AcEntity, AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
-  selector: 'polygon-layer',
-  templateUrl: 'polygon-layer.component.html',
+  selector: 'polygon-layer-example',
+  templateUrl: 'polygon-layer-example.component.html',
 })
-export class PolygonLayerComponent implements OnInit {
+export class PolygonLayerExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   polygons$: Observable<AcNotification>;

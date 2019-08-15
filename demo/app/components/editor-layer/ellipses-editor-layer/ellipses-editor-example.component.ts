@@ -3,13 +3,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CoordinateConverter, EllipseEditorObservable, EllipseEditUpdate, EllipsesEditorService, LabelProps } from 'angular-cesium';
 
 @Component({
-  selector: 'ellipses-editor-layer',
-  templateUrl: 'ellipses-editor-layer.component.html',
-  styleUrls: ['./ellipses-editor-layer.component.css'],
+  selector: 'ellipses-editor-example',
+  templateUrl: 'ellipses-editor-example.component.html',
+  styleUrls: ['./ellipses-editor-example.component.css'],
   providers: [EllipsesEditorService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EllipsesEditorLayerComponent implements OnInit {
+export class EllipsesEditorExampleComponent implements OnInit {
   editing$: EllipseEditorObservable;
   enableEditing = true;
 

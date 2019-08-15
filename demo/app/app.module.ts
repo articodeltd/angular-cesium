@@ -8,38 +8,37 @@ import { FormsModule } from '@angular/forms';
 import { TracksDialogComponent } from './components/tracks-layer/track-dialog/track-dialog.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { TracksLayerComponent } from './components/tracks-layer/tracks-layer.component';
-import { BaseLayerComponent } from './components/base-layer/base-layer.component';
-import { DynamicEllipseLayerComponent } from './components/dynamic-ellipse-layer/dynamic-ellipse-layer.component';
-import { DynamicCircleLayerComponent } from './components/dynamic-circle-layer/dynamic-circle-layer.component';
+import { LabelLayerExampleComponent } from './components/label-layer-example/label-layer-example.component';
+import { EllipseLayerExampleComponent } from './components/ellipse-layer-example/ellipse-layer-example.component';
+import { CircleLayerExampleComponent } from './components/circle-layer-example/circle-layer-example.component';
 import { EllipseLayerComponent } from './components/ellipse-layer/ellipse-layer.component';
-import { DynamicPolylineLayerComponent } from './components/dynamic-polyline-layer/dynamic-polyline-layer.component';
-import { PolygonLayerComponent } from './components/polygon-layer/polygon-layer.component';
-import { EventTestLayerComponent } from './components/event-test-layer/event-test-layer.component';
-import { ArcLayerComponent } from './components/arc-layer/arc-layer.component';
-import { PointLayerComponent } from './components/point-layer/point-layer.component';
+import { PolylineLayerExampleComponent } from './components/polyline-layer-example/polyline-layer-example.component';
+import { PolygonLayerExampleComponent } from './components/polygon-layer/polygon-layer-example.component';
+import { MapEventsExampleComponent } from './components/map-events-example/map-events-example.component';
+import { ArcLayerExampleComponent } from './components/arc-layer/arc-layer-example.component';
+import { PointLayerExampleComponent } from './components/point-layer/point-layer-example.component';
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
-import { DrawOnMapComponent } from './components/draw-on-map-layer/draw-on-map-layer.component';
-import { MapsLayerComponent } from './components/maps-layer/maps-layer.component';
+import { MapsProviderExampleComponent } from './components/maps-layer/maps-provider-example.component';
 import { DemoMultipleMapsComponent } from './components/demo-multiple-maps/demo-multiple-maps.component';
-import { ModelsLayerComponent } from './components/models-layer/models-layer.component';
+import { ModelsLayerExampleComponent } from './components/models-layer/models-layer-example.component';
 import { PolygonPerformanceTestComponent } from './components/polygon-layer/polygon-performance-test/polygon-performance-test.component';
-import { HippodromeLayerComponent } from './components/hippodrome-layer/hippodrome-layer.component';
+import { HippodromeLayerExampleComponent } from './components/hippodrome-layer/hippodrome-layer-example.component';
 import { KeyboardControlLayerComponent } from './components/keyboard-control-layer/keyboard-control-layer.component';
 import { LayerOrderComponent } from './components/layer-order/layer-order.component';
 import { ContextMenuLayerComponent } from './components/context-menu-layer/context-menu-layer.component';
-import { SelectionLayerComponent } from './components/selection-layer/selection-layer.component';
-import { PolygonsEditorLayerComponent } from './components/editor-layer/polygons-editor-layer/polygons-editor-layer.component';
-import { HeatmapLayerComponent } from './components/heatmap-layer/heatmap-layer.component';
-import { PolylineEditorLayerComponent } from './components/editor-layer/polyline-example/polyline-editor-layer.component';
-import { CirclesEditorLayerComponent } from './components/editor-layer/circles-editor-layer/circles-editor-layer.component';
-import { HippodromeEditorLayerComponent } from './components/editor-layer/hippodrome-example/hippodrome-editor-layer.component';
-import { HtmlLayerComponent } from './components/html-layer/html-layer.component';
-import { TracksWithArraysComponent } from './components/tracks-with-arrays-example/tracks-with-arrays.component';
+import { SelectionLayerExampleComponent } from './components/selection-layer/selection-layer-example.component';
+import { PolygonsEditorExampleComponent } from './components/editor-layer/polygons-editor-layer/polygons-editor-example.component';
+import { HeatmapExampleComponent } from './components/heatmap-layer/heatmap-example.component';
+import { PolylineEditorExampleComponent } from './components/editor-layer/polyline-example/polyline-editor-example.component';
+import { CirclesEditorExampleComponent } from './components/editor-layer/circles-editor-layer/circles-editor-example.component';
+import { HippodromeEditorExampleComponent } from './components/editor-layer/hippodrome-example/hippodrome-editor-example.component';
+import { HtmlExampleComponent } from './components/html-layer/html-example.component';
+import { EntitiesWithArraysExampleComponent } from './components/entities-with-arrays-example/entities-with-arrays-example.component';
 import { ToolbarExampleComponent } from './components/toolbar-example/toolbar-example.component';
 import { BoxesLayerComponent } from './components/boxes-layer/boxes-layer.component';
 import { TrackEntityLayerComponent } from './components/track-entity-layer/track-entity-layer.component';
-import { CzmlLayerComponent } from './components/czml-layer/czml-layer.component';
-import { EllipsesEditorLayerComponent } from './components/editor-layer/ellipses-editor-layer/ellipses-editor-layer.component';
+import { CzmlLayerExampleComponent } from './components/czml-layer/czml-layer-example.component';
+import { EllipsesEditorExampleComponent } from './components/editor-layer/ellipses-editor-layer/ellipses-editor-example.component';
 import { AppMaterialModule } from './app.material.module';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { environment } from '../environments/environment';
@@ -50,6 +49,7 @@ import { MinValidatorDirective } from './layout/settings-form/min-validator.dire
 import { MainNavbarComponent } from './layout/main-navbar/main-navbar.component';
 import { SidenavToolbarComponent } from './layout/sidenav-toolbar/sidenav-toolbar.component';
 import { SettingsFormComponent } from './layout/settings-form/settings-form.component';
+import { SingleEntityOnMapExampleComponent } from './components/single-entity-on-map-example/single-entity-on-map-example.component';
 
 
 @NgModule({
@@ -67,40 +67,40 @@ import { SettingsFormComponent } from './layout/settings-form/settings-form.comp
   declarations: [
     AppComponent,
     TracksLayerComponent,
-    BaseLayerComponent,
-    DynamicEllipseLayerComponent,
-    DynamicCircleLayerComponent,
+    LabelLayerExampleComponent,
+    EllipseLayerExampleComponent,
+    CircleLayerExampleComponent,
     EllipseLayerComponent,
-    DynamicPolylineLayerComponent,
-    PolygonLayerComponent,
-    EventTestLayerComponent,
-    ArcLayerComponent,
-    PointLayerComponent,
+    PolylineLayerExampleComponent,
+    PolygonLayerExampleComponent,
+    MapEventsExampleComponent,
+    ArcLayerExampleComponent,
+    PointLayerExampleComponent,
     TracksDialogComponent,
-    DrawOnMapComponent,
+    SingleEntityOnMapExampleComponent,
     DemoMapComponent,
     DemoMultipleMapsComponent,
-    MapsLayerComponent,
-    ModelsLayerComponent,
+    MapsProviderExampleComponent,
+    ModelsLayerExampleComponent,
     PolygonPerformanceTestComponent,
     KeyboardControlLayerComponent,
-    HippodromeLayerComponent,
+    HippodromeLayerExampleComponent,
     LayerOrderComponent,
     ContextMenuComponent,
     ContextMenuLayerComponent,
-    SelectionLayerComponent,
-    PolygonsEditorLayerComponent,
-    CirclesEditorLayerComponent,
-    PolylineEditorLayerComponent,
-    HeatmapLayerComponent,
-    HippodromeEditorLayerComponent,
-    HtmlLayerComponent,
-    TracksWithArraysComponent,
+    SelectionLayerExampleComponent,
+    PolygonsEditorExampleComponent,
+    CirclesEditorExampleComponent,
+    PolylineEditorExampleComponent,
+    HeatmapExampleComponent,
+    HippodromeEditorExampleComponent,
+    HtmlExampleComponent,
+    EntitiesWithArraysExampleComponent,
     ToolbarExampleComponent,
     BoxesLayerComponent,
     TrackEntityLayerComponent,
-    CzmlLayerComponent,
-    EllipsesEditorLayerComponent,
+    CzmlLayerExampleComponent,
+    EllipsesEditorExampleComponent,
     MaxValidatorDirective,
     MinValidatorDirective,
     MainNavbarComponent,

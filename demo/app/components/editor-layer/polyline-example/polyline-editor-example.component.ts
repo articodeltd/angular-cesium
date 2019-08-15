@@ -13,13 +13,13 @@ import {
 } from 'angular-cesium';
 
 @Component({
-  selector: 'polyline-editor-layer',
-  templateUrl: 'polyline-editor-layer.component.html',
-  styleUrls: ['./polyline-editor-layer.component.css'],
+  selector: 'polyline-editor-example',
+  templateUrl: 'polyline-editor-example.component.html',
+  styleUrls: ['./polyline-editor-example.component.css'],
   providers: [PolylinesEditorService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PolylineEditorLayerComponent implements OnInit {
+export class PolylineEditorExampleComponent implements OnInit {
 
   editing$: PolylineEditorObservable;
   enableEditing = true;

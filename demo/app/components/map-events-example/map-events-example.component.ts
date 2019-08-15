@@ -15,12 +15,12 @@ import {
 } from 'angular-cesium';
 
 @Component({
-  selector: 'event-test-layer',
-  templateUrl: 'event-test-layer.component.html',
-  styleUrls: ['event-test-layer.component.css'],
+  selector: 'map-events-example',
+  templateUrl: 'map-events-example.component.html',
+  styleUrls: ['map-events-example.component.css'],
   providers: [CoordinateConverter],
 })
-export class EventTestLayerComponent implements OnInit {
+export class MapEventsExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
   tracks$: Observable<AcNotification>;
   @Output() mouseMove = new EventEmitter();

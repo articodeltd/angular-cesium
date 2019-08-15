@@ -5,7 +5,7 @@ import { WebSocketSupplier } from '../../utils/services/webSocketSupplier/webSoc
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
-  selector: 'models-layer',
+  selector: 'models-layer-example',
   template: `
     <ac-layer acFor="let track of simTracks$" [context]="this">
       <ac-model-desc props="{
@@ -20,7 +20,7 @@ import { TracksDataProvider } from '../../utils/services/dataProvider/tracksData
   `,
   providers: [TracksDataProvider]
 })
-export class ModelsLayerComponent implements OnInit {
+export class ModelsLayerExampleComponent implements OnInit {
 
   simTracks$: Observable<AcNotification> = observableOf({
     id: '1',

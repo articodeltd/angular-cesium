@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AcArcComponent, AcHtmlComponent, AcLabelComponent } from 'angular-cesium';
 
 @Component({
-  selector: 'draw-on-map-layer',
-  templateUrl: 'draw-on-map-layer.component.html'
+  selector: 'single-entity-on-map-example',
+  templateUrl: 'single-entity-on-map-example.component.html'
 })
-export class DrawOnMapComponent implements OnInit {
+export class SingleEntityOnMapExampleComponent implements OnInit {
   Cesium = Cesium;
   position: any;
   aquamarine: any;

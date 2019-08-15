@@ -1,17 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AcLayerComponent, AcNotification } from 'angular-cesium';
+import { Observable } from 'rxjs';
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
-  selector: 'point-layer',
-  templateUrl: 'point-layer.component.html',
-  styleUrls: [],
+  selector: 'circle-layer-example',
+  templateUrl: 'circle-layer-example.component.html',
+  styleUrls: ['circle-layer-example.component.css'],
+  providers: [TracksDataProvider]
 })
-export class PointLayerComponent implements OnInit {
+export class CircleLayerExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
-  points$: Observable<AcNotification>;
+  circles$: Observable<AcNotification>;
   Cesium = Cesium;
   show = true;
 
@@ -19,7 +20,7 @@ export class PointLayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.points$ = this.tracksDataProvider.get();
+    this.circles$ = this.tracksDataProvider.get();
   }
 
   removeAll() {
@@ -29,5 +30,4 @@ export class PointLayerComponent implements OnInit {
   setShow($event: boolean) {
     this.show = $event;
   }
-
 }

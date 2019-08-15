@@ -3,11 +3,11 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
-  selector: 'base-layer',
-  templateUrl: 'base-layer.component.html',
-  styleUrls: ['base-layer.component.css']
+  selector: 'label-layer-example',
+  templateUrl: 'label-layer-example.component.html',
+  styleUrls: ['label-layer-example.component.css']
 })
-export class BaseLayerComponent implements OnInit, AfterViewInit {
+export class LabelLayerExampleComponent implements OnInit, AfterViewInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   bases$: Observable<AcNotification>;

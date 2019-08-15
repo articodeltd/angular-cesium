@@ -3,11 +3,11 @@ import { AcMapLayerProviderComponent, MapLayerProviderOptions } from 'angular-ce
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 
 @Component({
-  selector: 'maps-layer',
-  templateUrl: 'maps-layer.component.html'
+  selector: 'maps-provider-example',
+  templateUrl: 'maps-provider-example.component.html'
 })
 
-export class MapsLayerComponent implements AfterViewInit {
+export class MapsProviderExampleComponent implements AfterViewInit {
 
   @ViewChild('blackmarble') blackMarbleMap: AcMapLayerProviderComponent;
 

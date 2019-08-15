@@ -1,18 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AcLayerComponent, AcNotification } from 'angular-cesium';
 import { Observable } from 'rxjs';
+import { AcLayerComponent, AcNotification } from 'angular-cesium';
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 
 @Component({
-  selector: 'dynamic-ellipse-layer',
-  templateUrl: 'dynamic-ellipse-layer.component.html',
-  styleUrls: ['dynamic-ellipse-layer.component.css'],
-  providers: [TracksDataProvider]
+  selector: 'point-layer-example',
+  templateUrl: 'point-layer-example.component.html',
+  styleUrls: [],
 })
-export class DynamicEllipseLayerComponent implements OnInit {
+export class PointLayerExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
-  ellipses$: Observable<AcNotification>;
+  points$: Observable<AcNotification>;
   Cesium = Cesium;
   show = true;
 
@@ -20,7 +19,7 @@ export class DynamicEllipseLayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ellipses$ = this.tracksDataProvider.get();
+    this.points$ = this.tracksDataProvider.get();
   }
 
   removeAll() {
@@ -30,4 +29,5 @@ export class DynamicEllipseLayerComponent implements OnInit {
   setShow($event: boolean) {
     this.show = $event;
   }
+
 }

@@ -4,10 +4,10 @@ import { Observable, Subscriber } from 'rxjs';
 import { AcEntity, AcLayerComponent, AcNotification, ActionType, MapsManagerService } from 'angular-cesium';
 
 @Component({
-  selector: 'czml-layer',
-  templateUrl: 'czml-layer.component.html',
+  selector: 'czml-layer-example',
+  templateUrl: 'czml-layer-example.component.html',
 })
-export class CzmlLayerComponent implements OnInit {
+export class CzmlLayerExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   czmlPackets$: Observable<AcNotification>;
