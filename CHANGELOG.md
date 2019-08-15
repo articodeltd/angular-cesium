@@ -8,10 +8,10 @@
 ### Breaking Changes
 * Demo layers name change to `-example` suffix.
 
-
 ## 0.58
 ### Fixes 
 * Fix AOT build - remove unwanted type in `PolygonEditorComponent` and `PolylinesEditorComponent`.
+* Fix entity `availability` bug in `entities-drawer.service.ts `
 
 ## 0.57
 ### Features
