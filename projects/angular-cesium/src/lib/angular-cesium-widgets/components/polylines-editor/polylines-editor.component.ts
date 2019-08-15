@@ -42,6 +42,7 @@ import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.se
         outlineWidth: point.props.outlineWidth,
         show: getPointShow(point),
         disableDepthTestDistance: point.props.disableDepthTestDistance,
+        heightReference: point.props.heightReference,
     }"
       ></ac-point-desc>
     </ac-layer>

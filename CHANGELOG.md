@@ -1,3 +1,10 @@
+## 0.59
+### Fixes 
+* Fix `CameraService.trackEntity()` doc.
+
+### Features
+* Add support for terrian in Polygon and Polyline Editors. 
+
 ## 0.58
 ### Fixes 
 * Fix AOT build - remove unwanted type in `PolygonEditorComponent` and `PolylinesEditorComponent`.

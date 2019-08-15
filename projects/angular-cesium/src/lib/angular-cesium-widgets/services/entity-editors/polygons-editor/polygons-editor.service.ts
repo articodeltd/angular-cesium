@@ -38,6 +38,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
     show: true,
     showVirtual: true,
     disableDepthTestDistance: Number.POSITIVE_INFINITY,
+    heightReference: Cesium.HeightReference.NONE,
   },
   polygonProps: {
     material: Cesium.Color.CORNFLOWERBLUE.withAlpha(0.4),
@@ -123,8 +124,9 @@ export class PolygonsEditorService {
     if (clampHeightTo3D && cartesian3) {
       const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
       const latLon = CoordinateConverter.cartesian3ToLatLon(cartesian3PickPosition);
-      if (latLon.height < 0) {
-        return cartesian3; // means nothing picked -> Validate it
+      if (latLon.height < 0) {// means nothing picked -> Validate it
+        const ray = this.cameraService.getCamera().getPickRay(cartesian2);
+        return this.cesiumScene.globe.pick(ray, this.cesiumScene);
       }
       return this.cesiumScene.clampToHeight(cartesian3PickPosition);
     }
@@ -465,6 +467,7 @@ export class PolygonsEditorService {
 
       polygonOptions.allowDrag = false;
       polygonOptions.polylineProps.clampToGround = true;
+      polygonOptions.pointProps.heightReference = Cesium.HeightReference.CLAMP_TO_GROUND;
       polygonOptions.pointProps.disableDepthTestDistance = Number.POSITIVE_INFINITY;
     }
     return polygonOptions;
