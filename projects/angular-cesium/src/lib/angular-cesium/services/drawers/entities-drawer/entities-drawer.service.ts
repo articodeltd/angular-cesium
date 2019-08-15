@@ -71,12 +71,14 @@ export class EntitiesDrawerService extends BasicDrawerService {
       description: cesiumProps.description !== undefined ? cesiumProps.description : undefined,
       orientation: cesiumProps.orientation !== undefined ? cesiumProps.orientation : undefined,
       viewFrom: cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : undefined,
-      availability: cesiumProps.availability !== undefined ? cesiumProps.availability : undefined,
       [this.graphicsTypeName]: cesiumProps,
     };
 
     if (cesiumProps.name !== undefined) {
       entityObject.name = cesiumProps.name;
+    }
+    if (cesiumProps.availability !== undefined) {
+      entityObject.availability = cesiumProps.availability;
     }
 
     return optimizedEntityCollection.add(entityObject);
@@ -95,7 +97,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     entity.description = cesiumProps.description !== undefined ? cesiumProps.description : entity.description;
     entity.orientation = cesiumProps.orientation !== undefined ? cesiumProps.orientation : entity.orientation;
     entity.viewFrom = cesiumProps.viewFrom !== undefined ? cesiumProps.viewFrom : entity.viewFrom;
-    entity.availability = cesiumProps.availability !== undefined ? cesiumProps.availability : undefined;
+    entity.availability = cesiumProps.availability !== undefined ? cesiumProps.availability : cesiumProps.availability;
 
     if (this._propsAssigner) {
       this._propsAssigner(entity[this.graphicsTypeName], cesiumProps);
