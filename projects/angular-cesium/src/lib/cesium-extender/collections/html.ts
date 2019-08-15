@@ -20,11 +20,11 @@ export class HtmlCollection {
 
   remove(html: HtmlPrimitive): boolean {
     const index = this._collection.indexOf(html);
-
     if (index === (-1)) {
       return false;
     }
 
+    this._collection[index].remove();
     this._collection.splice(index, 1);
     return true;
   }
@@ -37,7 +37,8 @@ export class HtmlCollection {
 
   removeAll() {
     while (this._collection.length > 0) {
-      this._collection.pop();
+      const html = this._collection.pop();
+      html.remove();
     }
   }
 

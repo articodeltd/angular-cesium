@@ -325,7 +325,7 @@ In the example above we start listing to Click events. according to `eventRegist
 + In any components under `<ac-map/>` hierarchy as seen in the example above  (recommended).
 + Using` @viewChild` and ac-map reference: `acMapComponent.getMapEventManagerService()` .
 
-Checkout [demo/app/components/event-test-layer/event-test-layer.component.ts](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/event-test-layer.component.ts) for more examples.
+Checkout [demo/app/components/event-test-layer/map-events-example.component.ts](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/map-events-example.component.ts) for more examples.
 
 ##### All cesium map events run outside of angular zone
 Meaning that the the callback that you pass to map event manager
@@ -370,7 +370,7 @@ With angular cesium you can define your map provider in a declarative way using 
 - All cesium imagery map layers are supported , defined with `[provider]` according to the `MapLayerProviderOptions` enum
 - Pass additional configuration to `[options]` . `url` is mandatory.
 - Support multi map layers, map ordering and map image layer configuration.
-- Check out usage example from our demo [here](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-layer.component.html)
+- Check out usage example from our demo [here](https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-provider-example.component.html)
 
 ### 3d Tiles
 ```html

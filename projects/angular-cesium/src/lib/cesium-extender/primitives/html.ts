@@ -107,4 +107,10 @@ export class HtmlPrimitive {
     this._element.style.left = `${screenPosition.x}px`;
     this._lastPosition = screenPosition;
   }
+
+  remove() {
+    if (this._element) {
+      this._element.remove();
+    }
+  }
 }
