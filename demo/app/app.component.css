@@ -23,41 +23,25 @@
 }
 
 .page-footer {
-  height: 45px;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  color: rgba(255,255,255,0.7);
-  font-weight: 500;
+  position: fixed;
+  bottom: 0;
+  margin: auto;
 }
-
-.page-footer:after {
-  content: '';
-  width: 100%;
-  height: 1px;
-  background-color: white;
-  opacity: .54;
-  position: relative;
-  margin-right: 5px;
-}
-.page-footer:before {
-  content: '';
-  width: 100%;
-  height: 1px;
-  background-color: white;
-  opacity: .54;
-  position: relative;
-  margin-left: 5px;
-}
-
-
 .footer-text {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: white;
+  color: black;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: nowrap;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 @media (max-width:450px) {
