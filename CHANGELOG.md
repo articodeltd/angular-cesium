@@ -1,6 +1,10 @@
 ## 0.59
 ### Fixes 
+* Fix `CameraService.trackEntity()` doc.
 * Fix `AcHtmlDesc` remove.
+### Features
+* Add support for terrian in Polygon and Polyline Editors. 
+
 ### Breaking Changes
 * Demo layers name change to `-example` suffix.
 

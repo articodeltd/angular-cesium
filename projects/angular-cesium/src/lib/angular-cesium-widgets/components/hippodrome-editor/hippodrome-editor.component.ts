@@ -71,6 +71,7 @@ import { EditableHippodrome } from '../../models/editable-hippodrome';
          outlineWidth: point.props.outlineWidth,
          show: getPointShow(point),
          disableDepthTestDistance: point.props.disableDepthTestDistance,
+         heightReference: point.props.heightReference,
     }">
           </ac-point-desc>
       </ac-layer>

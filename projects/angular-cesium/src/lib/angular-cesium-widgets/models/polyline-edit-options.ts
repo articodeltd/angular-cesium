@@ -11,6 +11,7 @@ export interface PointProps {
   showVirtual?: boolean;
   show?: boolean;
   disableDepthTestDistance?: number;
+  heightReference?: any;
 }
 
 export interface PolylineProps {
