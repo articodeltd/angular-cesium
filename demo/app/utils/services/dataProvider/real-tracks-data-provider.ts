@@ -78,7 +78,7 @@ export class RealTracksDataProvider {
       if (this.lastIntervalStopper) {
         this.lastIntervalStopper.next(0);
       }
-      const serverTrackNotifications = serverTracks.map((track: any) => {
+      const serverTrackNotifications = serverTracks.filter(track => track.position && track.position.lat && track.position.long).map((track: any) => {
         const trackNotification = this.convertToCesiumEntity(track);
         if (!this.tracksCache.has(track.id)) {
           this.saveInCache(trackNotification);
