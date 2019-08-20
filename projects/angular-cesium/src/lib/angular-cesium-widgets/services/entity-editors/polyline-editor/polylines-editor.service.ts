@@ -36,7 +36,6 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
     show: true,
     showVirtual: true,
     disableDepthTestDistance: Number.POSITIVE_INFINITY,
-    heightReference: Cesium.HeightReference.NONE,
   },
   polylineProps: {
     material: () => Cesium.Color.BLACK,
@@ -44,6 +43,10 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
     clampToGround: false,
     zIndex: 0,
     classificationType: Cesium.ClassificationType.BOTH,
+  },
+  clampHeightTo3D: false,
+  clampHeightTo3DOptions: {
+    clampToTerrain: false,
   },
 };
 
@@ -448,7 +451,8 @@ export class PolylinesEditorService {
 
       polylineOptions.allowDrag = false;
       polylineOptions.polylineProps.clampToGround = true;
-      polylineOptions.pointProps.heightReference = Cesium.HeightReference.CLAMP_TO_GROUND;
+      polylineOptions.pointProps.heightReference = polylineOptions.clampHeightTo3DOptions.clampToTerrain ?
+        Cesium.HeightReference.CLAMP_TO_GROUND : Cesium.HeightReference.RELATIVE_TO_GROUND;
       polylineOptions.pointProps.disableDepthTestDistance = Number.POSITIVE_INFINITY;
     }
     return polylineOptions;

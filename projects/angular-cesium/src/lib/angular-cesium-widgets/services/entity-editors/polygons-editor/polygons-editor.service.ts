@@ -28,7 +28,6 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
-  clampHeightTo3D: false,
   pointProps: {
     color: Cesium.Color.WHITE.withAlpha(0.8),
     outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
@@ -38,7 +37,6 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
     show: true,
     showVirtual: true,
     disableDepthTestDistance: Number.POSITIVE_INFINITY,
-    heightReference: Cesium.HeightReference.NONE,
   },
   polygonProps: {
     material: Cesium.Color.CORNFLOWERBLUE.withAlpha(0.4),
@@ -52,6 +50,10 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
     clampToGround: false,
     zIndex: 0,
     classificationType: Cesium.ClassificationType.BOTH,
+  },
+  clampHeightTo3D: false,
+  clampHeightTo3DOptions: {
+    clampToTerrain: false,
   },
 };
 
@@ -467,7 +469,8 @@ export class PolygonsEditorService {
 
       polygonOptions.allowDrag = false;
       polygonOptions.polylineProps.clampToGround = true;
-      polygonOptions.pointProps.heightReference = Cesium.HeightReference.CLAMP_TO_GROUND;
+      polygonOptions.pointProps.heightReference =  polygonOptions.clampHeightTo3DOptions.clampToTerrain ?
+        Cesium.HeightReference.CLAMP_TO_GROUND : Cesium.HeightReference.RELATIVE_TO_GROUND;
       polygonOptions.pointProps.disableDepthTestDistance = Number.POSITIVE_INFINITY;
     }
     return polygonOptions;
