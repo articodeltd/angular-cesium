@@ -42,8 +42,8 @@ import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.se
 })
 export class AcHtmlDescComponent extends BasicDesc implements OnInit {
 
-  @ViewChild(AcHtmlDirective) acHtmlCreator: AcHtmlDirective;
-  @ContentChild(TemplateRef) acHtmlTemplate: TemplateRef<any>;
+  @ViewChild(AcHtmlDirective, {static: false}) acHtmlCreator: AcHtmlDirective;
+  @ContentChild(TemplateRef, {static: false}) acHtmlTemplate: TemplateRef<any>;
 
   constructor(htmlDrawer: HtmlDrawerService, layerService: LayerService,
               computationCache: ComputationCache, cesiumProperties: CesiumProperties) {

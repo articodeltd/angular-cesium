@@ -9,7 +9,7 @@ import { AcEntity, AcLayerComponent, AcNotification, ActionType } from 'angular-
   templateUrl: 'polygon-layer-example.component.html',
 })
 export class PolygonLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   polygons$: Observable<AcNotification>;
   show = true;

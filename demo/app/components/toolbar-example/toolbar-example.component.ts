@@ -18,7 +18,7 @@ import {
 })
 export class ToolbarExampleComponent implements OnInit {
   rnb: PolylineEditorObservable;
-  @ViewChild('rangeAndBearing') private rangeAndBearing: RangeAndBearingComponent;
+  @ViewChild('rangeAndBearing', {static: false}) private rangeAndBearing: RangeAndBearingComponent;
 
   constructor(
     private cameraService: CameraService,

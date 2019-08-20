@@ -11,7 +11,7 @@ import { SimTracksDataProvider } from '../../utils/services/dataProvider/sim-tra
   providers: [SimTracksDataProvider],
 })
 export class EntitiesWithArraysExampleComponent implements OnInit, OnChanges {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   @Input()
   show: boolean;

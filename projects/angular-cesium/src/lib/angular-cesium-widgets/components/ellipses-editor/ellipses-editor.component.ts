@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
+import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
 import { EditActions } from '../../models/edit-actions.enum';
@@ -13,7 +14,6 @@ import { EllipsesEditorService } from '../../services/entity-editors/ellipses-ed
 import { EllipseEditUpdate } from '../../models/ellipse-edit-update';
 import { LabelProps } from '../../models/label-props';
 import { EditableEllipse } from '../../models/editable-ellipse';
-import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 
 @Component({
   selector: 'ellipses-editor',
@@ -94,8 +94,8 @@ export class EllipsesEditorComponent implements OnDestroy {
   public editPoints$ = new Subject<AcNotification>();
   public editEllipses$ = new Subject<AcNotification>();
 
-  @ViewChild('editEllipsesLayer') private editEllipsesLayer: AcLayerComponent;
-  @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
+  @ViewChild('editEllipsesLayer', {static: false}) private editEllipsesLayer: AcLayerComponent;
+  @ViewChild('editPointsLayer', {static: false}) private editPointsLayer: AcLayerComponent;
 
   constructor(
     private ellipsesEditor: EllipsesEditorService,
@@ -105,7 +105,7 @@ export class EllipsesEditorComponent implements OnDestroy {
     private ellipsesManager: EllipsesManagerService,
     private cesiumService: CesiumService,
   ) {
-    this.ellipsesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, this.ellipsesManager, cesiumService);
+    this.ellipsesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, this.ellipsesManager, this.cesiumService);
     this.startListeningToEditorUpdates();
   }
 

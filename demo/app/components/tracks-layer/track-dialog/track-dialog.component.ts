@@ -1,6 +1,6 @@
 import { takeUntil } from 'rxjs/operators';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
 import { Apollo, QueryRef } from 'apollo-angular';
 import gql from 'graphql-tag';

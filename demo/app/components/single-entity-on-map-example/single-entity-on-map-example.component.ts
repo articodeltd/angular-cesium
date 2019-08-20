@@ -27,9 +27,9 @@ export class SingleEntityOnMapExampleComponent implements OnInit {
   };
   appearance: any;
 
-  @ViewChild(AcLabelComponent) label: AcLabelComponent;
-  @ViewChild(AcHtmlComponent) html: AcHtmlComponent;
-  @ViewChild(AcArcComponent) arc: AcArcComponent;
+  @ViewChild(AcLabelComponent, {static: false}) label: AcLabelComponent;
+  @ViewChild(AcHtmlComponent, {static: false}) html: AcHtmlComponent;
+  @ViewChild(AcArcComponent, {static: false}) arc: AcArcComponent;
 
   constructor() {
   }

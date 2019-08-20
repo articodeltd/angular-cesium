@@ -12,7 +12,7 @@ import {
 } from 'angular-cesium';
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 import { BehaviorSubject } from 'rxjs';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const initialLocation = {
   id: '1',
@@ -31,7 +31,7 @@ const initialLocation = {
   providers: [TracksDataProvider]
 })
 export class TrackEntityLayerComponent implements OnInit, AfterViewInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
 
   points$: BehaviorSubject<AcNotification> = new BehaviorSubject(initialLocation);

@@ -10,7 +10,7 @@ import {
   CesiumEventModifier,
   SelectionManagerService
 } from 'angular-cesium';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 class MyEntity extends AcEntity {
   selected = false;
@@ -30,7 +30,7 @@ class MyEntity extends AcEntity {
 })
 export class SelectionLayerExampleComponent implements OnInit {
 
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   selectionImage = '/assets/selected.png';
   entities$: Observable<AcNotification>;

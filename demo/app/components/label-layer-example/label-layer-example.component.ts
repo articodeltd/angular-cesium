@@ -8,7 +8,7 @@ import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
   styleUrls: ['label-layer-example.component.css']
 })
 export class LabelLayerExampleComponent implements OnInit, AfterViewInit {
-  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
 
   bases$: Observable<AcNotification>;
   show = true;

@@ -1,9 +1,9 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { CesiumService } from '../../services/cesium/cesium.service';
 import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
 import { SceneMode } from '../../models/scene-mode.enum';
 import { CameraService } from '../../services/camera/camera.service';
-import { CesiumService } from '../../services/cesium/cesium.service';
 import { ContextMenuService } from '../../services/context-menu/context-menu.service';
 import { CoordinateConverter } from '../../services/coordinate-converter/coordinate-converter.service';
 import { ArcDrawerService } from '../../services/drawers/arc-drawer/arc-drawer.service';

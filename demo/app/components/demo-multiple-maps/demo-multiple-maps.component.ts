@@ -9,7 +9,7 @@ import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
   providers: [ViewerConfiguration],
 })
 export class DemoMultipleMapsComponent implements AfterViewInit {
-  @ViewChild('layer') tracksLayer: TracksLayerComponent;
+  @ViewChild('layer', {static: false}) tracksLayer: TracksLayerComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   sceneMode = SceneMode.SCENE3D;
   showLayer = true;

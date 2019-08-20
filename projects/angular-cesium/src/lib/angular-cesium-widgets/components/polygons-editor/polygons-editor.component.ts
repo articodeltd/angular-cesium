@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
+import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { PolygonEditUpdate } from '../../models/polygon-edit-update';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
@@ -13,7 +14,6 @@ import { PolygonsManagerService } from '../../services/entity-editors/polygons-e
 import { PolygonsEditorService } from '../../services/entity-editors/polygons-editor/polygons-editor.service';
 import { LabelProps } from '../../models/label-props';
 import { EditablePolygon } from '../../models/editable-polygon';
-import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 
 @Component({
   selector: 'polygons-editor',
@@ -100,9 +100,9 @@ export class PolygonsEditorComponent implements OnDestroy {
   public editPolylines$ = new Subject<AcNotification>();
   public editPolygons$ = new Subject<AcNotification>();
 
-  @ViewChild('editPolygonsLayer') private editPolygonsLayer: AcLayerComponent;
-  @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
-  @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
+  @ViewChild('editPolygonsLayer', {static: false}) private editPolygonsLayer: AcLayerComponent;
+  @ViewChild('editPointsLayer', {static: false}) private editPointsLayer: AcLayerComponent;
+  @ViewChild('editPolylinesLayer', {static: false}) private editPolylinesLayer: AcLayerComponent;
 
   constructor(
     private polygonsEditor: PolygonsEditorService,
@@ -112,7 +112,7 @@ export class PolygonsEditorComponent implements OnDestroy {
     private polygonsManager: PolygonsManagerService,
     private cesiumService: CesiumService
   ) {
-    this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, polygonsManager, cesiumService);
+    this.polygonsEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, this.polygonsManager, this.cesiumService);
     this.startListeningToEditorUpdates();
   }
 
