@@ -13,6 +13,7 @@ export class DemoMapComponent {
   @ViewChild('layer', {static: false}) tracksLayer: TracksLayerComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   sceneMode = SceneMode.SCENE3D;
+  Cesium = Cesium;
 
   constructor(private viewerConf: ViewerConfiguration,
               public appSettingsService: AppSettingsService) {

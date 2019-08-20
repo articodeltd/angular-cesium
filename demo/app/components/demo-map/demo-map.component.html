@@ -1,4 +1,4 @@
-<ac-map [sceneMode]="sceneMode" id="main-map">
+<ac-map [sceneMode]="sceneMode" id="main-map" [flyTo]="initialDestination">
   <!-- <ac-map-layer-provider
     *ngIf="appSettingsService.showMapLayer"
     [provider]="arcGisMapServerProvider"
@@ -10,28 +10,24 @@
   <ac-3d-tile-layer
     *ngIf="appSettingsService.show3dtiles"
     [options]="{
-      url:
-        'https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s'
-    }"
-    [style]="{
-      color: 'mix(color(\'white\'), color(\'lightgreen\'), min(${area} / 10000.0, 1.0))'
+      url: Cesium.IonResource.fromAssetId(29328)
     }"
   >
   </ac-3d-tile-layer>
   <tracks-layer #layer [show]="appSettingsService.showTracksLayer"
                 [tracksType]="appSettingsService.tracksDataType"></tracks-layer>
 <!--   <entities-with-arrays-example #layer [show]="true"></entities-with-arrays-example>-->
-<!--   <html-layer-example></html-layer-example>-->
+<!--   <html-layer-example> </html-layer-example>-->
 <!--   <models-layer-example></models-layer-example>-->
-<!--   <ellipse-layer-example #layer *ngIf="showLayer"></ellipse-layer-example>-->
+<!--   <ellipse-layer-example #layer></ellipse-layer-example>-->
 <!--   <label-layer-example #layer></label-layer-example>-->
 <!--   <circle-layer-example #layer></circle-layer-example>-->
 <!--   <polyline-layer-example #layer></polyline-layer-example>-->
-<!--   <point-layer-example *ngIf="showLayer" #layer></point-layer-example>-->
+<!--   <point-layer-example #layer></point-layer-example>-->
 <!--   <arc-layer-example #layer></arc-layer-example>-->
 <!--   <polygon-layer-example></polygon-layer-example>-->
-  <!-- <polygon-performance-test></polygon-performance-test> -->
-  <!-- <layer-order-example></layer-order-example> -->
+<!--   <polygon-performance-test></polygon-performance-test> -->
+<!--   <layer-order-example></layer-order-example>-->
 <!--   <hippodrome-layer-example></hippodrome-layer-example>-->
 <!--   <polyline-editor-example></polyline-editor-example>-->
 <!--   <polygons-editor-example></polygons-editor-example>-->
@@ -42,7 +38,7 @@
 <!--   <heatmap-example></heatmap-example>-->
 <!--        <single-entity-on-map-example></single-entity-on-map-example>-->
 <!--   <czml-layer-example></czml-layer-example>-->
-  <!-- <track-entity-layer></track-entity-layer> -->
+<!--   <track-entity-layer></track-entity-layer>-->
 <!--   <maps-provider-example></maps-provider-example>-->
 <!--  <map-events-example></map-events-example>-->
 

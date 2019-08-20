@@ -1,17 +1,16 @@
-## 0.60
-### Breaking Changes/Improvements
-* Updated library and demo application to Angular 8
-* Bumped CircleCI Node version to 10.16.1
-
 ## 0.59
 ### Fixes 
 * Fix `CameraService.trackEntity()` doc.
 * Fix `AcHtmlDesc` remove.
+* Add doc to the `ContextMenuService`
 ### Features
-* Add support for terrian in Polygon and Polyline Editors. 
+* Add support for terrian in Polygon and Polyline Editors.
+  * To enable terrain support: `this.polylineEditor.create({ clampHeightTo3D: true, clampHeightTo3DOptions: {clampToTerrain: true} });` 
 
 ### Breaking Changes
 * Demo layers name change to `-example` suffix.
+* Updated library and demo application to Angular 8
+* Bumped CircleCI Node version to 10.16.1
 
 ## 0.58
 ### Fixes 

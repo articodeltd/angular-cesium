@@ -18,7 +18,7 @@ export class TracksLayerComponent implements OnInit, OnChanges {
 
   private readonly MAX_MODELS = 100;
 
-  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, {static: true}) layer: AcLayerComponent;
 
   @Input()
   show: boolean;
