@@ -284,7 +284,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/angular-cesium/src/lib/cesium-extender/collections/html.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/angular-cesium/src/lib/cesium-extender/collections/html.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -605,11 +605,11 @@ export class HtmlCollection {
 
   remove(html: HtmlPrimitive): boolean {
     const index &#x3D; this._collection.indexOf(html);
-
     if (index &#x3D;&#x3D;&#x3D; (-1)) {
       return false;
     }
 
+    this._collection[index].remove();
     this._collection.splice(index, 1);
     return true;
   }
@@ -622,7 +622,8 @@ export class HtmlCollection {
 
   removeAll() {
     while (this._collection.length &gt; 0) {
-      this._collection.pop();
+      const html &#x3D; this._collection.pop();
+      html.remove();
     }
   }
 

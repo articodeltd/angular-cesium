@@ -125,6 +125,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#remove">remove</a>
+                            </li>
+                            <li>
                                 <a href="#update">update</a>
                             </li>
                         </ul>
@@ -515,6 +518,44 @@
         <h3 id="methods">
             Methods
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="remove"></a>
+                        <span class="name">
+                            <b>
+                            remove
+                            </b>
+                            <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>remove()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">projects/angular-cesium/src/lib/cesium-extender/primitives/html.ts:111</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -1065,6 +1106,12 @@ export class HtmlPrimitive {
     this._element.style.top &#x3D; &#x60;${screenPosition.y}px&#x60;;
     this._element.style.left &#x3D; &#x60;${screenPosition.x}px&#x60;;
     this._lastPosition &#x3D; screenPosition;
+  }
+
+  remove() {
+    if (this._element) {
+      this._element.remove();
+    }
   }
 }
 </code></pre>

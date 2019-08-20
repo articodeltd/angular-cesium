@@ -31,10 +31,29 @@
                <div class="content getting-started">
                    <div class="content-data">
 
+<h2 id="0-59">0.59</h2>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fix <code>CameraService.trackEntity()</code> doc.</li>
+<li>Fix <code>AcHtmlDesc</code> remove.</li>
+<li>Add doc to the <code>ContextMenuService</code><h3 id="features">Features</h3>
+</li>
+<li>Add support for terrian in Polygon and Polyline Editors.<ul>
+<li>To enable terrain support: <code>this.polylineEditor.create({ clampHeightTo3D: true, clampHeightTo3DOptions: {clampToTerrain: true} });</code> </li>
+</ul>
+</li>
+</ul>
+<h3 id="breaking-changes">Breaking Changes</h3>
+<ul>
+<li>Demo layers name change to <code>-example</code> suffix.</li>
+<li>Updated library and demo application to Angular 8</li>
+<li>Bumped CircleCI Node version to 10.16.1</li>
+</ul>
 <h2 id="0-58">0.58</h2>
 <h3 id="fixes">Fixes</h3>
 <ul>
 <li>Fix AOT build - remove unwanted type in <code>PolygonEditorComponent</code> and <code>PolylinesEditorComponent</code>.</li>
+<li>Fix entity <code>availability</code> bug in <code>entities-drawer.service.ts</code></li>
 </ul>
 <h2 id="0-57">0.57</h2>
 <h3 id="features">Features</h3>

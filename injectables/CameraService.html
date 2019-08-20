@@ -1640,7 +1640,7 @@ API: <a href="https://cesiumjs.org/Cesium/Build/Documentation/Camera.html?classF
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>trackEntity(entity?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, options?: literal type)</code>
+<code>trackEntity(cesiumEntity?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, options?: literal type)</code>
                     </td>
                 </tr>
 
@@ -1671,7 +1671,7 @@ API: <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classF
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>entity</td>
+                                                        <td>cesiumEntity</td>
                                                         <td>
                                                                     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                                         </td>
@@ -1683,7 +1683,7 @@ API: <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classF
 
                                                         <td>
                                                                 <code><ul>
-<li>entity to track</li>
+<li>cesium entity( billboard, polygon...) to track</li>
 </ul>
 </code>
                                                         </td>
@@ -2631,11 +2631,11 @@ export class CameraService {
   /**
    * Make the camera track a specific entity
    * API: https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html?classFilter&#x3D;viewer#trackedEntity
-   * @param entity - entity to track
+   * @param cesiumEntity - cesium entity( billboard, polygon...) to track
    * @param options - track entity options
    */
   trackEntity(
-    entity?: any,
+    cesiumEntity?: any,
     options?: { flyTo: boolean; flyToDuration?: number; altitude?: number }
   ) {
     const flyTo &#x3D; (options &amp;&amp; options.flyTo) || false;
@@ -2647,7 +2647,7 @@ export class CameraService {
         const altitude &#x3D; (options &amp;&amp; options.altitude) || 10000;
 
         // Calc entity flyTo position and wanted altitude
-        const entPosCar3 &#x3D; entity.position.getValue(Cesium.JulianDate.now());
+        const entPosCar3 &#x3D; cesiumEntity.position.getValue(Cesium.JulianDate.now());
         const entPosCart &#x3D; Cesium.Cartographic.fromCartesian(entPosCar3);
         const zoomAmount &#x3D; altitude - entPosCart.height;
         entPosCart.height &#x3D; altitude;
@@ -2661,7 +2661,7 @@ export class CameraService {
           duration: flyToDuration,
           destination: flyToPosition,
           complete: () &#x3D;&gt; {
-            this.viewer.trackedEntity &#x3D; entity;
+            this.viewer.trackedEntity &#x3D; cesiumEntity;
             setTimeout(() &#x3D;&gt; {
               if (zoomAmount &gt; 0) {
                 this.camera.zoomOut(zoomAmount);
@@ -2673,7 +2673,7 @@ export class CameraService {
           }
         });
       } else {
-        this.viewer.trackedEntity &#x3D; entity;
+        this.viewer.trackedEntity &#x3D; cesiumEntity;
         resolve();
       }
     });

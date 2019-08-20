@@ -70,7 +70,7 @@ The function receives an optional RangeAndBearingOptions object that defines the
 (on top of the default and global definitions).</p>
 <p>Usage:</p>
 <p>my-component.ts:</p>
-<div><pre class="line-numbers"><code class="language-none"> * \&#64;ViewChild(&#39;rangeAndBearing&#39;) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
+<div><pre class="line-numbers"><code class="language-none"> * \&#64;ViewChild(&#39;rangeAndBearing&#39;, {static: false}) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
  *  // ...
  * this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLabelsStyle: { fillColor: Cesium.Color.GREEN } });
  *</code></pre></div><p>my-component.html</p>
@@ -524,7 +524,7 @@ import { PolylinesEditorService } from &#x27;../../services/entity-editors/polyl
  * my-component.ts:
  *
  * &#x60;&#x60;&#x60;
- * \@ViewChild(&#x27;rangeAndBearing&#x27;) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
+ * \@ViewChild(&#x27;rangeAndBearing&#x27;, {static: false}) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
  *  // ...
  * this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLabelsStyle: { fillColor: Cesium.Color.GREEN } });
  * &#x60;&#x60;&#x60;

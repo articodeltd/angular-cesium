@@ -298,6 +298,7 @@ export interface PointProps {
   showVirtual?: boolean;
   show?: boolean;
   disableDepthTestDistance?: number;
+  heightReference?: any;
 }
 
 export interface PolylineProps {
@@ -316,6 +317,9 @@ export interface PolylineEditOptions extends EditorEditOptions {
   removePointModifier?: CesiumEventModifier;
   maximumNumberOfPoints?: number;
   clampHeightTo3D?: boolean;
+  clampHeightTo3DOptions?: {
+    clampToTerrain?: boolean;
+  };
 }
 </code></pre>
     </div>

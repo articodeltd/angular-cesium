@@ -498,7 +498,7 @@ It shouldn&#39;t be used directly.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;contextMenuContainer&#x27;, {read: ViewContainerRef})<br />
+                                @ViewChild(&#x27;contextMenuContainer&#x27;, {static: undefined, read: ViewContainerRef})<br />
                             </code>
                         </td>
                     </tr>
@@ -571,7 +571,7 @@ export class AcContextMenuWrapperComponent implements OnInit, OnDestroy {
   private contextMenuChangeSubscription: Subscription;
   private contextMenuOpenSubscription: Subscription;
 
-  @ViewChild(&#x27;contextMenuContainer&#x27;, {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
+  @ViewChild(&#x27;contextMenuContainer&#x27;, {static: false, read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
   constructor(public contextMenuService: ContextMenuService,
               private cd: ChangeDetectorRef,

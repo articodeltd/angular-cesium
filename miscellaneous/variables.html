@@ -1257,7 +1257,6 @@ PR in Cesium repo: <a href="https://github.com/AnalyticalGraphicsInc/cesium/pull
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
-  clampHeightTo3D: false,
   pointProps: {
     color: Cesium.Color.WHITE.withAlpha(0.8),
     outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
@@ -1280,6 +1279,10 @@ PR in Cesium repo: <a href="https://github.com/AnalyticalGraphicsInc/cesium/pull
     clampToGround: false,
     zIndex: 0,
     classificationType: Cesium.ClassificationType.BOTH,
+  },
+  clampHeightTo3D: false,
+  clampHeightTo3DOptions: {
+    clampToTerrain: false,
   },
 }</code>
                         </td>
@@ -1342,6 +1345,10 @@ PR in Cesium repo: <a href="https://github.com/AnalyticalGraphicsInc/cesium/pull
     zIndex: 0,
     classificationType: Cesium.ClassificationType.BOTH,
   },
+  clampHeightTo3D: false,
+  clampHeightTo3DOptions: {
+    clampToTerrain: false,
+  },
 }</code>
                         </td>
                     </tr>
@@ -1381,7 +1388,7 @@ PR in Cesium repo: <a href="https://github.com/AnalyticalGraphicsInc/cesium/pull
                         <td class="col-md-4">
                             <i>Default value : </i><code>{
   backgroundColor: new Cesium.Color(0.165, 0.165, 0.165, 0.7),
-  backgroundPadding: new Cesium.Cartesian2(7, 5),
+  backgroundPadding: new Cesium.Cartesian2(25, 20),
   distanceDisplayCondition: undefined,
   fillColor: Cesium.Color.WHITE,
   font: &#x27;30px sans-serif&#x27;,

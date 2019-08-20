@@ -89,6 +89,10 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#heightReference">heightReference</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#outlineColor">outlineColor</a>
                                 </li>
                                 <li>
@@ -175,6 +179,40 @@
                                     <tr>
                                         <td class="col-md-4">
                                             <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="heightReference"></a>
+                                        <span class="name"><b>heightReference</b><a href="#heightReference"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>heightReference:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                                         </td>
                                     </tr>
@@ -412,6 +450,7 @@ export interface PointProps {
   showVirtual?: boolean;
   show?: boolean;
   disableDepthTestDistance?: number;
+  heightReference?: any;
 }
 
 export interface PolylineProps {
@@ -430,6 +469,9 @@ export interface PolylineEditOptions extends EditorEditOptions {
   removePointModifier?: CesiumEventModifier;
   maximumNumberOfPoints?: number;
   clampHeightTo3D?: boolean;
+  clampHeightTo3DOptions?: {
+    clampToTerrain?: boolean;
+  };
 }
 </code></pre>
     </div>

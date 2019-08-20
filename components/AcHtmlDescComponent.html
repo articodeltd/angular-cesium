@@ -559,7 +559,7 @@ The ac-html element must be a child of ac-layer element.
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(AcHtmlDirective)<br />
+                                @ViewChild(AcHtmlDirective, {static: undefined})<br />
                             </code>
                         </td>
                     </tr>
@@ -602,7 +602,7 @@ The ac-html element must be a child of ac-layer element.
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ContentChild(TemplateRef)<br />
+                                @ContentChild(TemplateRef, {static: undefined})<br />
                             </code>
                         </td>
                     </tr>
@@ -665,8 +665,8 @@ import { AcHtmlManager } from &#x27;../../services/ac-html-manager/ac-html-manag
 })
 export class AcHtmlDescComponent extends BasicDesc implements OnInit {
 
-  @ViewChild(AcHtmlDirective) acHtmlCreator: AcHtmlDirective;
-  @ContentChild(TemplateRef) acHtmlTemplate: TemplateRef&lt;any&gt;;
+  @ViewChild(AcHtmlDirective, {static: true}) acHtmlCreator: AcHtmlDirective;
+  @ContentChild(TemplateRef, {static: true}) acHtmlTemplate: TemplateRef&lt;any&gt;;
 
   constructor(htmlDrawer: HtmlDrawerService, layerService: LayerService,
               computationCache: ComputationCache, cesiumProperties: CesiumProperties) {

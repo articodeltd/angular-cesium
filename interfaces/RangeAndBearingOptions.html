@@ -384,7 +384,7 @@ import { PolylinesEditorService } from &#x27;../../services/entity-editors/polyl
  * my-component.ts:
  *
  * &#x60;&#x60;&#x60;
- * \@ViewChild(&#x27;rangeAndBearing&#x27;) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
+ * \@ViewChild(&#x27;rangeAndBearing&#x27;, {static: false}) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
  *  // ...
  * this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLabelsStyle: { fillColor: Cesium.Color.GREEN } });
  * &#x60;&#x60;&#x60;

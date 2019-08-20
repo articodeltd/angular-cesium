@@ -341,7 +341,7 @@ e.g <code>class TrackEntity extends AcEntity {}</code></li>
 <li>In any components under <code>&lt;ac-map/&gt;</code> hierarchy as seen in the example above  (recommended).</li>
 <li>Using<code>@viewChild</code> and ac-map reference: <code>acMapComponent.getMapEventManagerService()</code> .</li>
 </ul>
-<p>Checkout <a href="https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/event-test-layer.component.ts">demo/app/components/event-test-layer/event-test-layer.component.ts</a> for more examples.</p>
+<p>Checkout <a href="https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/map-events-example.component.ts">demo/app/components/event-test-layer/map-events-example.component.ts</a> for more examples.</p>
 <h5 id="all-cesium-map-events-run-outside-of-angular-zone">All cesium map events run outside of angular zone</h5>
 <p>Meaning that the the callback that you pass to map event manager
 will be executed outside of angular zone. That is because Cesium run outside of Angular zone
@@ -377,7 +377,7 @@ It is possible to create your own plonter context menu just take a look at <code
 <li>All cesium imagery map layers are supported , defined with <code>[provider]</code> according to the <code>MapLayerProviderOptions</code> enum</li>
 <li>Pass additional configuration to <code>[options]</code> . <code>url</code> is mandatory.</li>
 <li>Support multi map layers, map ordering and map image layer configuration.</li>
-<li>Check out usage example from our demo <a href="https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-layer.component.html">here</a></li>
+<li>Check out usage example from our demo <a href="https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-provider-example.component.html">here</a></li>
 </ul>
 <h3 id="3d-tiles">3d Tiles</h3>
 <div><pre class="line-numbers"><code class="language-html">   &lt;ac-3d-tile-layer

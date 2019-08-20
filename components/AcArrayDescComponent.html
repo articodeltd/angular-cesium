@@ -436,7 +436,7 @@ The element must be a child of ac-layer element.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:126</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:129</a></div>
                             </td>
                         </tr>
 
@@ -531,7 +531,7 @@ The element must be a child of ac-layer element.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:170</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:173</a></div>
                             </td>
                         </tr>
 
@@ -624,7 +624,7 @@ The element must be a child of ac-layer element.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:166</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:169</a></div>
                             </td>
                         </tr>
 
@@ -662,7 +662,7 @@ The element must be a child of ac-layer element.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:101</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:104</a></div>
                             </td>
                         </tr>
 
@@ -769,7 +769,7 @@ The element must be a child of ac-layer element.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:119</a></div>
                             </td>
                         </tr>
 
@@ -845,7 +845,7 @@ The element must be a child of ac-layer element.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:153</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:156</a></div>
                             </td>
                         </tr>
 
@@ -914,7 +914,7 @@ The element must be a child of ac-layer element.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:161</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:164</a></div>
                             </td>
                         </tr>
 
@@ -952,7 +952,7 @@ The element must be a child of ac-layer element.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:122</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-array-desc/ac-array-desc.component.ts:125</a></div>
                             </td>
                         </tr>
 
@@ -1335,7 +1335,7 @@ The element must be a child of ac-layer element.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;layer&#x27;)<br />
+                                @ViewChild(&#x27;layer&#x27;, {static: undefined})<br />
                             </code>
                         </td>
                     </tr>
@@ -1491,7 +1491,7 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
   @Input() idGetter: (item: any, index: number) &#x3D;&gt; string;
 
   @Input() show &#x3D; true;
-  @ViewChild(&#x27;layer&#x27;) private layer: AcLayerComponent;
+  @ViewChild(&#x27;layer&#x27;, {static: true}) private layer: AcLayerComponent;
   @ContentChildren(BasicDesc, {descendants: false}) private basicDescs: any;
   @ContentChildren(AcArrayDescComponent, {descendants: false}) private arrayDescs: any;
   private entitiesMap &#x3D; new Map&lt;string, string[]&gt;();
@@ -1518,7 +1518,10 @@ export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit
   }
 
   ngOnInit(): void {
-    this.layer.getLayerService().cache &#x3D; false;
+    if (this.layer) {
+      this.layer.getLayerService().cache &#x3D; false;
+    }
+
     this.layerServiceSubscription &#x3D; this.layerService.layerUpdates().subscribe(() &#x3D;&gt; {
       this.cd.detectChanges();
     });
