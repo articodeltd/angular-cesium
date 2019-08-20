@@ -39,13 +39,17 @@ export class SettingsFormComponent {
     });
   }
 
-  newYorkToggle(toggle: any) {
+  tiles3DToggle(toggle: any) {
     if (toggle.checked) {
       if (!this.cameraService) {
         this.cameraService = this.mapsManagerService.getMap().getCameraService();
       }
+      const tilesLocation = {longitude: 0.5433, latitude: 0.523107, height: 2000};
       this.cameraService.cameraFlyTo({
-        destination: Cesium.Cartesian3.fromDegrees(-73.980689, 40.762991, 5000.0)
+        destination: Cesium.Cartesian3.fromRadians(tilesLocation.longitude, tilesLocation.latitude, tilesLocation.height),
+        orientation : {
+          pitch : Cesium.Math.toRadians(-35.0),
+        }
       });
     }
   }
