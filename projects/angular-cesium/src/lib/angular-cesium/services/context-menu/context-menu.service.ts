@@ -12,8 +12,32 @@ import { Subscription } from 'rxjs';
 /**
  * The Service manages a singleton context menu over the map. It should be initialized with MapEventsManager.
  * The Service allows opening and closing of the context menu and passing data to the context menu inner component.
+ *
+ * notice, `data` will be injected to your custom menu component into the `data` field in the component.
+ * __Usage :__
+ * ```
+ *  ngOnInit() {
+ *   this.clickEvent$ = this.eventsManager.register({ event: CesiumEvent.RIGHT_CLICK, pick: PickOptions.PICK_ONE });
+ *   this.clickEvent$.subscribe(result => {
+ *    if (result.entities) {
+ *      const pickedMarker = result.entities[0];
+ *      this.contextMenuService.open(MapContextmenuComponent, pickedMarker.position, {
+ *        data: {
+ *          myData: data,
+ *          onDelete: () => this.delete(pickedMarker.id)
+ *        }
+ *      });
+ *    }
+ *   });
+ *  }
+ *
+ *
+ *  private delete(id) {
+ *    this.mapMenu.close();
+ *    this.detailedSiteService.removeMarker(id);
+ *  }
+ * ```
  */
-
 @Injectable()
 export class ContextMenuService {
   private _showContextMenu = false;
@@ -64,9 +88,9 @@ export class ContextMenuService {
     this.mapEventsManager = mapEventsManager;
   }
 
-  open(content: any, position: Cartesian3, options: ContextMenuOptions = {}) {
+  open<D>(contentComponent: any, position: Cartesian3, options: ContextMenuOptions<D> = {}) {
     this.close();
-    this._content = content;
+    this._content = contentComponent;
     this._position = position;
     this._options = Object.assign({}, this._defaultContextMenuOptions, options);
     this._showContextMenu = true;
