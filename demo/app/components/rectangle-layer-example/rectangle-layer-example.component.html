@@ -1,0 +1,13 @@
+<ac-layer acFor="let rectangle of rectangles$" [context]="this" [show]="true">
+  <ac-rectangle-desc props="{
+        coordinates: rectangle.coordinates,
+        material: rectangle.material,
+        height: rectangle.height,
+        outline: rectangle.outline,
+        outlineColor: rectangle.outlineColor,
+        extrudedHeight: rectangle.extrudedHeight,
+        show: rectangle.show
+    }">
+  </ac-rectangle-desc>
+</ac-layer>
+
