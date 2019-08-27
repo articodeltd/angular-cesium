@@ -62,6 +62,7 @@ import { AcPrimitivePolylineComponent } from './components/ac-primitive-polyline
 import PARSE_PIPES_CONFIG_MAP from './pipes/pipe-config-map';
 
 import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.component';
+import { AcRectangleComponent } from './components/ac-rectangle/ac-rectangle.component';
 
 @NgModule({
   imports: [
@@ -122,6 +123,7 @@ import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.comp
     AcDynamicCircleDescComponent,
     AcStaticCircleDescComponent,
     AcStaticPolygonDescComponent,
+    AcRectangleComponent,
   ],
   exports: [
     AcMapComponent,

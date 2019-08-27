@@ -14,6 +14,7 @@ import { CircleLayerExampleComponent } from './components/circle-layer-example/c
 import { EllipseLayerComponent } from './components/ellipse-layer/ellipse-layer.component';
 import { PolylineLayerExampleComponent } from './components/polyline-layer-example/polyline-layer-example.component';
 import { PolygonLayerExampleComponent } from './components/polygon-layer/polygon-layer-example.component';
+import { RectangleLayerExampleComponent } from './components/rectangle-layer-example/rectangle-layer-example.component';
 import { MapEventsExampleComponent } from './components/map-events-example/map-events-example.component';
 import { ArcLayerExampleComponent } from './components/arc-layer/arc-layer-example.component';
 import { PointLayerExampleComponent } from './components/point-layer/point-layer-example.component';
@@ -73,6 +74,7 @@ import { SingleEntityOnMapExampleComponent } from './components/single-entity-on
     EllipseLayerComponent,
     PolylineLayerExampleComponent,
     PolygonLayerExampleComponent,
+    RectangleLayerExampleComponent,
     MapEventsExampleComponent,
     ArcLayerExampleComponent,
     PointLayerExampleComponent,
