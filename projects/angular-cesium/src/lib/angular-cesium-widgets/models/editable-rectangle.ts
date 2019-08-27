@@ -1,40 +1,39 @@
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
 import { EditPoint } from './edit-point';
-import { EditPolyline } from './edit-polyline';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { Rectangle } from '../../angular-cesium/models/rectangle';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { RectangleEditOptions, RectangleProps } from './rectangle-edit-options';
-import { PointProps, PolylineProps } from './polyline-edit-options';
+import { PointProps } from './polyline-edit-options';
 import { defaultLabelProps, LabelProps } from './label-props';
 
 export class EditableRectangle extends AcEntity {
   private positions: EditPoint[] = [];
-  private polylines: EditPolyline[] = [];
   private movingPoint: EditPoint;
-  private doneCreation = false;
+  private done = false;
   private _enableEdit = true;
-  private _rectangleProps: RectangleProps;
   private _defaultPointProps: PointProps;
-  private _defaultPolylineProps: PolylineProps;
+  private _rectangleProps: RectangleProps;
   private lastDraggedToPosition: Cartesian3;
   private _labels: LabelProps[] = [];
 
-  constructor(private id: string,
-              private rectanglesLayer: AcLayerComponent,
-              private pointsLayer: AcLayerComponent,
-              private polylinesLayer: AcLayerComponent,
-              private coordinateConverter: CoordinateConverter,
-              private rectangleOptions: RectangleEditOptions,
-              positions?: Cartesian3[]) {
+  constructor(
+    private id: string,
+    private pointsLayer: AcLayerComponent,
+    private rectangleLayer: AcLayerComponent,
+    private coordinateConverter: CoordinateConverter,
+    editOptions: RectangleEditOptions,
+    positions?: Cartesian3[],
+  ) {
     super();
-    this.rectangleProps = {...rectangleOptions.rectangleProps};
-    this.defaultPointProps = {...rectangleOptions.pointProps};
-    this.defaultPolylineProps = {...rectangleOptions.polylineProps};
-    if (positions && positions.length >= 3) {
+    this.defaultPointProps = {...editOptions.pointProps};
+    this.rectangleProps = {...editOptions.rectangleProps};
+    if (positions && positions.length === 2) {
       this.createFromExisting(positions);
+    } else if (positions) {
+      throw new Error('Rectangle consist of 2 points but provided ' + positions.length);
     }
   }
 
@@ -56,24 +55,16 @@ export class EditableRectangle extends AcEntity {
     });
   }
 
-  get defaultPolylineProps(): PolylineProps {
-    return this._defaultPolylineProps;
-  }
-
-  set defaultPolylineProps(value: PolylineProps) {
-    this._defaultPolylineProps = value;
-  }
-
-  get defaultPointProps(): PointProps {
-    return this._defaultPointProps;
-  }
-
   get rectangleProps(): RectangleProps {
     return this._rectangleProps;
   }
 
   set rectangleProps(value: RectangleProps) {
     this._rectangleProps = value;
+  }
+
+  get defaultPointProps(): PointProps {
+    return this._defaultPointProps;
   }
 
   set defaultPointProps(value: PointProps) {
@@ -88,154 +79,95 @@ export class EditableRectangle extends AcEntity {
     this._enableEdit = value;
     this.positions.forEach(point => {
       point.show = value;
-      this.updatePointsLayer(false, point);
+      this.updatePointsLayer(point);
     });
   }
 
   private createFromExisting(positions: Cartesian3[]) {
-    positions.forEach((position) => {
+    positions.forEach(position => {
       this.addPointFromExisting(position);
     });
-    this.addAllVirtualEditPoints();
-    this.updateRectanglesLayer();
-    this.doneCreation = true;
+    this.updateRectangleLayer();
+    this.updatePointsLayer(...this.positions);
+    this.done = true;
   }
 
-  setPointsManually(points: { position: Cartesian3, pointProps: PointProps }[] | Cartesian3[], rectangleProps?: RectangleProps) {
-    if (!this.doneCreation) {
+  setPointsManually(points: EditPoint[], widthMeters?: number) {
+    if (!this.done) {
       throw new Error('Update manually only in edit mode, after rectangle is created');
     }
-
     this.positions.forEach(p => this.pointsLayer.remove(p.getId()));
-    const newPoints: EditPoint[] = [];
-    for (let i = 0; i < points.length; i++) {
-      const pointOrCartesian: any = points[i];
-      let newPoint = null;
-      if (pointOrCartesian.pointProps) {
-        newPoint = new EditPoint(this.id, pointOrCartesian.position, pointOrCartesian.pointProps);
-      } else {
-        newPoint = new EditPoint(this.id, pointOrCartesian, this.defaultPointProps);
-      }
-      newPoints.push(newPoint);
-    }
-    this.positions = newPoints;
-    this.rectangleProps = rectangleProps ? rectangleProps : this.rectangleProps;
-    this.updatePointsLayer(true, ...this.positions);
-    this.addAllVirtualEditPoints();
-    this.updateRectanglesLayer();
-  }
-
-  private addAllVirtualEditPoints() {
-    const currentPoints = [...this.positions];
-    currentPoints.forEach((pos, index) => {
-      const currentPoint = pos;
-      const nextIndex = (index + 1) % (currentPoints.length);
-      const nextPoint = currentPoints[nextIndex];
-      const midPoint = this.setMiddleVirtualPoint(currentPoint, nextPoint);
-      this.updatePointsLayer(false, midPoint);
-    });
-  }
-
-  private setMiddleVirtualPoint(firstP: EditPoint, secondP: EditPoint): EditPoint {
-    const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secondP.getPosition(), 0.5, new Cesium.Cartesian3());
-    const midPoint = new EditPoint(this.id, midPointCartesian3, this.defaultPointProps);
-    midPoint.setVirtualEditPoint(true);
-
-    const firstIndex = this.positions.indexOf(firstP);
-    this.positions.splice(firstIndex + 1, 0, midPoint);
-    return midPoint;
-  }
-
-  private updateMiddleVirtualPoint(virtualEditPoint: EditPoint, prevPoint: EditPoint, nextPoint: EditPoint) {
-    const midPointCartesian3 = Cesium.Cartesian3.lerp(prevPoint.getPosition(), nextPoint.getPosition(), 0.5, new Cesium.Cartesian3());
-    virtualEditPoint.setPosition(midPointCartesian3);
-  }
-
-  changeVirtualPointToRealPoint(point: EditPoint) {
-    point.setVirtualEditPoint(false); // virtual point becomes a real point
-    const pointsCount = this.positions.length;
-    const pointIndex = this.positions.indexOf(point);
-    const nextIndex = (pointIndex + 1) % (pointsCount);
-    const preIndex = ((pointIndex - 1) + pointsCount) % pointsCount;
-
-    const nextPoint = this.positions[nextIndex];
-    const prePoint = this.positions[preIndex];
-
-    const firstMidPoint = this.setMiddleVirtualPoint(prePoint, point);
-    const secMidPoint = this.setMiddleVirtualPoint(point, nextPoint);
-    this.updatePointsLayer(true, firstMidPoint, secMidPoint, point);
-    this.updateRectanglesLayer();
-
-  }
-
-  private renderPolylines() {
-    this.polylines.forEach(polyline => this.polylinesLayer.remove(polyline.getId()));
-    this.polylines = [];
-    const realPoints = this.positions.filter(pos => !pos.isVirtualEditPoint());
-    realPoints.forEach((point, index) => {
-      const nextIndex = (index + 1) % (realPoints.length);
-      const nextPoint = realPoints[nextIndex];
-      const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this.defaultPolylineProps);
-      this.polylines.push(polyline);
-      this.polylinesLayer.update(polyline, polyline.getId());
-    });
+    this.positions = points;
+    this.updatePointsLayer(...points);
+    this.updateRectangleLayer();
   }
 
   addPointFromExisting(position: Cartesian3) {
     const newPoint = new EditPoint(this.id, position, this.defaultPointProps);
     this.positions.push(newPoint);
-    this.updatePointsLayer(true, newPoint);
+    this.updatePointsLayer(newPoint);
   }
 
-
   addPoint(position: Cartesian3) {
-    if (this.doneCreation) {
+    if (this.done) {
       return;
     }
     const isFirstPoint = !this.positions.length;
     if (isFirstPoint) {
       const firstPoint = new EditPoint(this.id, position, this.defaultPointProps);
       this.positions.push(firstPoint);
-      this.updatePointsLayer(true, firstPoint);
-    }
+      this.movingPoint = new EditPoint(this.id, position.clone(), this.defaultPointProps);
+      this.positions.push(this.movingPoint);
+      this.updatePointsLayer(firstPoint);
+    } else {
 
-    this.movingPoint = new EditPoint(this.id, position.clone(), this.defaultPointProps);
-    this.positions.push(this.movingPoint);
-
-    this.updatePointsLayer(true, this.movingPoint);
-    this.updateRectanglesLayer();
-  }
-
-  movePointFinish(editPoint: EditPoint) {
-    if (this.rectangleOptions.clampHeightTo3D) {
-      editPoint.props.disableDepthTestDistance = Number.POSITIVE_INFINITY;
-      this.updatePointsLayer(false, editPoint);
+      this.updatePointsLayer(...this.positions);
+      this.updateRectangleLayer();
+      this.done = true;
+      this.movingPoint = null;
     }
   }
 
   movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
-    editPoint.setPosition(toPosition);
-    if (this.doneCreation) {
-      if (editPoint.props.disableDepthTestDistance && this.rectangleOptions.clampHeightTo3D) {
-        // To avoid bug with pickPosition() on point with disableDepthTestDistance
-        editPoint.props.disableDepthTestDistance = undefined;
-        return; // ignore first move because the pickPosition() could be wrong
-      }
-
-      if (editPoint.isVirtualEditPoint()) {
-        this.changeVirtualPointToRealPoint(editPoint);
-      }
-      const pointsCount = this.positions.length;
-      const pointIndex = this.positions.indexOf(editPoint);
-      const nextVirtualPoint = this.positions[(pointIndex + 1) % (pointsCount)];
-      const nextRealPoint = this.positions[(pointIndex + 2) % (pointsCount)];
-      const prevVirtualPoint = this.positions[((pointIndex - 1) + pointsCount) % pointsCount];
-      const prevRealPoint = this.positions[((pointIndex - 2) + pointsCount) % pointsCount];
-      this.updateMiddleVirtualPoint(nextVirtualPoint, editPoint, nextRealPoint);
-      this.updateMiddleVirtualPoint(prevVirtualPoint, editPoint, prevRealPoint);
+    if (!editPoint.isVirtualEditPoint()) {
+      editPoint.setPosition(toPosition);
+      this.updatePointsLayer(...this.positions);
+      this.updateRectangleLayer();
     }
-    this.updateRectanglesLayer();
-    this.updatePointsLayer(true, editPoint);
+  }
+
+  moveShape(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
+    if (!this.lastDraggedToPosition) {
+      this.lastDraggedToPosition = startMovingPosition;
+    }
+
+    // const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
+    // this.getRealPoints().forEach(point => {
+    //   const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+    //   point.setPosition(newPos);
+    // });
+    // this.updatePointsLayer(...this.positions);
+    // this.updateRectangleLayer();
+    // this.lastDraggedToPosition = draggedToPosition;
+
+    const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
+    this.positions.forEach(point => {
+      const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+      point.setPosition(newPos);
+    });
+    this.updatePointsLayer(...this.positions);
+    this.updateRectangleLayer();
+    this.lastDraggedToPosition = draggedToPosition;
+  }
+
+  endMoveShape() {
+    this.lastDraggedToPosition = undefined;
+    this.positions.forEach(point => this.updatePointsLayer(point));
+    this.updateRectangleLayer();
+  }
+
+  endMovePoint() {
+    this.updatePointsLayer(...this.positions);
   }
 
   moveTempMovingPoint(toPosition: Cartesian3) {
@@ -244,68 +176,43 @@ export class EditableRectangle extends AcEntity {
     }
   }
 
-  moveRectangle(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
-    if (!this.doneCreation) {
-      return;
-    }
-    if (!this.lastDraggedToPosition) {
-      this.lastDraggedToPosition = startMovingPosition;
-    }
-
-    const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
-    this.positions.forEach(point => {
-      const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
-      point.setPosition(newPos);
-    });
-    this.updatePointsLayer();
-    this.lastDraggedToPosition = draggedToPosition;
-    this.positions.forEach(point => this.updatePointsLayer(true, point));
-  }
-
-  endMoveRectangle() {
-    this.lastDraggedToPosition = undefined;
-  }
-
   removePoint(pointToRemove: EditPoint) {
     this.removePosition(pointToRemove);
-    this.positions
-      .filter(p => p.isVirtualEditPoint())
-      .forEach(p => this.removePosition(p));
-    this.addAllVirtualEditPoints();
-
-    this.renderPolylines();
-    if (this.getPointsCount() >= 3) {
-      this.rectanglesLayer.update(this, this.id);
-    }
+    this.positions.filter(p => p.isVirtualEditPoint()).forEach(p => this.removePosition(p));
   }
 
   addLastPoint(position: Cartesian3) {
-    this.doneCreation = true;
+    this.done = true;
     this.removePosition(this.movingPoint); // remove movingPoint
     this.movingPoint = null;
-    this.updateRectanglesLayer();
-
-    this.addAllVirtualEditPoints();
   }
 
   getRealPositions(): Cartesian3[] {
     return this.getRealPoints().map(position => position.getPosition());
   }
 
+  getRealPositionsCallbackProperty() {
+    return new Cesium.CallbackProperty(this.getRealPositions.bind(this), false);
+  }
+
   getRealPoints(): EditPoint[] {
-    return this.positions.filter(position => !position.isVirtualEditPoint() && position !== this.movingPoint);
+    return this.positions.filter(position => !position.isVirtualEditPoint());
+  }
+
+  getPositions(): Cartesian3[] {
+    return this.positions.map(position => position.getPosition());
   }
 
   getRectangle(): Rectangle {
-    const positions = this.positions.filter(position => !position.isVirtualEditPoint()).map(position => position.getPosition().clone());
-    const longitudes = positions.map(pos => pos.x);
-    const latitudes = positions.map(pos => pos.y);
-    return new Cesium.Rectangle(
-        Math.min(...longitudes),
-        Math.min(...latitudes),
-        Math.max(...longitudes),
-        Math.max(...latitudes),
+    const cartographics = this.getPositions().map(cartesian => Cesium.Cartographic.fromCartesian(cartesian));
+    const longitudes = cartographics.map(position => position.longitude);
+    const latitudes = cartographics.map(position => position.latitude);
 
+    return new Cesium.Rectangle(
+      Math.min(...longitudes),
+      Math.min(...latitudes),
+      Math.max(...longitudes),
+      Math.max(...latitudes)
     );
   }
 
@@ -314,7 +221,7 @@ export class EditableRectangle extends AcEntity {
   }
 
   private removePosition(point: EditPoint) {
-    const index = this.positions.findIndex((p) => p === point);
+    const index = this.positions.findIndex(p => p === point);
     if (index < 0) {
       return;
     }
@@ -322,26 +229,20 @@ export class EditableRectangle extends AcEntity {
     this.pointsLayer.remove(point.getId());
   }
 
-  private updateRectanglesLayer() {
-    if (this.getPointsCount() >= 3) {
-      this.rectanglesLayer.update(this, this.id);
-    }
+  private updatePointsLayer(...point: EditPoint[]) {
+    point.forEach(p => this.pointsLayer.update(p, p.getId()));
   }
 
-  private updatePointsLayer(renderPolylines = true, ...points: EditPoint[]) {
-    if (renderPolylines) {
-      this.renderPolylines();
-    }
-    points.forEach(p => this.pointsLayer.update(p, p.getId()));
+  private updateRectangleLayer() {
+    this.rectangleLayer.update(this, this.id);
   }
 
   dispose() {
-    this.rectanglesLayer.remove(this.id);
+    this.rectangleLayer.remove(this.id);
 
     this.positions.forEach(editPoint => {
       this.pointsLayer.remove(editPoint.getId());
     });
-    this.polylines.forEach(line => this.polylinesLayer.remove(line.getId()));
     if (this.movingPoint) {
       this.pointsLayer.remove(this.movingPoint.getId());
       this.movingPoint = undefined;

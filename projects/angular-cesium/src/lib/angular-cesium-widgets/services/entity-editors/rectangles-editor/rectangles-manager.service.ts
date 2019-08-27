@@ -9,19 +9,24 @@ import { CoordinateConverter } from '../../../../angular-cesium/services/coordin
 export class RectanglesManagerService {
   rectangles: Map<string, EditableRectangle> = new Map<string, EditableRectangle>();
 
-  createEditableRectangle(id: string, editRectanglesLayer: AcLayerComponent, editPointsLayer: AcLayerComponent,
-                        editPolylinesLayer: AcLayerComponent, coordinateConverter: CoordinateConverter,
-                        rectangleOptions?: RectangleEditOptions, positions?: Cartesian3[]) {
+  createEditableRectangle(
+    id: string,
+    editRectanglesLayer: AcLayerComponent,
+    editPointsLayer: AcLayerComponent,
+    coordinateConverter: CoordinateConverter,
+    rectangleOptions?: RectangleEditOptions,
+    positions?: Cartesian3[]
+  ) {
     const editableRectangle = new EditableRectangle(
       id,
-      editRectanglesLayer,
       editPointsLayer,
-      editPolylinesLayer,
+      editRectanglesLayer,
       coordinateConverter,
       rectangleOptions,
-      positions);
-    this.rectangles.set(id, editableRectangle
+      positions
     );
+
+    this.rectangles.set(id, editableRectangle);
   }
 
   dispose(id: string) {

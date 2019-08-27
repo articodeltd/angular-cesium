@@ -18,44 +18,18 @@ export class RectangleLayerExampleComponent implements OnInit {
   }
 
   ngOnInit() {
-    const entX: any = new AcEntity({
-      coordinates: new Cesium.Rectangle(
-        -115.0,
-        32.0,
-        -102.0,
-        35.0
-      ),
-      outline: true,
-      outlineColor: Cesium.Color.BLUE,
-      fill: true,
-      material: Cesium.Color.TRANSPARENT,
-    });
-
-    const entY: any = new AcEntity({
-      coordinates: new Cesium.Rectangle(
-        -108.0,
-        40.0,
-        -104.0,
-        42.0
-      ),
-      outline: true,
-      outlineColor: Cesium.Color.BLUE,
-      fill: true,
-      material: Cesium.Color.TRANSPARENT,
-
-    });
     this.rectangles$ = observableFrom([
       {
         id: '0',
         entity: new AcEntity({
           coordinates: new Cesium.Rectangle(
-            -108.0,
-            25.0,
-            -100.0,
-            30.0
+            -1.88496,
+            0.436332,
+            -1.74533,
+            0.523599
           ),
           extrudedHeight: 0,
-          perPositionHeight: true,
+          height: 0,
           material: Cesium.Color.ORANGE.withAlpha(0.5),
           outline: true,
           outlineColor: Cesium.Color.BLACK
@@ -64,53 +38,5 @@ export class RectangleLayerExampleComponent implements OnInit {
       }
     ]).pipe(merge(this.updater));
 
-    setTimeout(() => {
-      entX.show = true;
-      this.updater.next({
-        id: 'x',
-        actionType: ActionType.ADD_UPDATE,
-        entity: entX
-      });
-    }, 3000);
-
-    setTimeout(() => {
-      entY.show = true;
-      this.updater.next({
-        id: 'y',
-        actionType: ActionType.ADD_UPDATE,
-        entity: entY
-      });
-    }, 3000);
-
-    setTimeout(() => {
-      entX.show = false;
-      this.updater.next({
-        id: 'x',
-        actionType: ActionType.ADD_UPDATE,
-        entity: entX
-      });
-    }, 4000);
-
-
-    setTimeout(() => {
-      entX.show = true;
-      entX.outlineColor = Cesium.Color.RED;
-      entX.material = Cesium.Color.BLUE;
-      this.updater.next({
-        id: 'x',
-        actionType: ActionType.ADD_UPDATE,
-        entity: entX
-      });
-    }, 4500);
-
-    setTimeout(() => {
-      entY.outlineColor = Cesium.Color.RED;
-      entY.material = Cesium.Color.YELLOW;
-      this.updater.next({
-        id: 'y',
-        actionType: ActionType.ADD_UPDATE,
-        entity: entY
-      });
-    }, 5000);
   }
 }

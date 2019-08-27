@@ -1,4 +1,4 @@
-import { debounceTime, publish, tap } from 'rxjs/operators';
+import { publish, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../../../../angular-cesium/services/cesium/cesium.service';
 import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
@@ -16,15 +16,13 @@ import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { RectanglesManagerService } from './rectangles-manager.service';
 import { RectangleEditorObservable } from '../../../models/rectangle-editor-observable';
 import { EditableRectangle } from '../../../models/editable-rectangle';
-import { RectangleEditOptions, RectangleProps } from '../../../models/rectangle-edit-options';
+import { RectangleEditOptions } from '../../../models/rectangle-edit-options';
 import { PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
 import { generateKey } from '../../utils';
 
 export const DEFAULT_RECTANGLE_OPTIONS: RectangleEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
-  addLastPointEvent: CesiumEvent.LEFT_DOUBLE_CLICK,
-  removePointEvent: CesiumEvent.RIGHT_CLICK,
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
@@ -44,13 +42,6 @@ export const DEFAULT_RECTANGLE_OPTIONS: RectangleEditOptions = {
     classificationType: Cesium.ClassificationType.BOTH,
     zIndex: 0,
   },
-  polylineProps: {
-    material: () => Cesium.Color.WHITE,
-    width: 3,
-    clampToGround: false,
-    zIndex: 0,
-    classificationType: Cesium.ClassificationType.BOTH,
-  },
   clampHeightTo3D: false,
   clampHeightTo3DOptions: {
     clampToTerrain: false,
@@ -58,7 +49,7 @@ export const DEFAULT_RECTANGLE_OPTIONS: RectangleEditOptions = {
 };
 
 /**
- * Service for creating editable rectangles 
+ * Service for creating editable rectangles
  *
  * You must provide `RectanglesEditorService` yourself.
  * RectanglesEditorService works together with `<rectangles-editor>` component. Therefor you need to create `<rectangles-editor>`
@@ -120,22 +111,6 @@ export class RectanglesEditorService {
     return this.updatePublisher;
   }
 
-  screenToPosition(cartesian2, clampHeightTo3D: boolean) {
-    const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
-    // If cartesian3 is undefined then the point inst on the globe
-    if (clampHeightTo3D && cartesian3) {
-      const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
-      const latLon = CoordinateConverter.cartesian3ToLatLon(cartesian3PickPosition);
-      if (latLon.height < 0) {// means nothing picked -> Validate it
-        const ray = this.cameraService.getCamera().getPickRay(cartesian2);
-        return this.cesiumScene.globe.pick(ray, this.cesiumScene);
-      }
-      return this.cesiumScene.clampToHeight(cartesian3PickPosition);
-    }
-
-    return cartesian3;
-  }
-
   create(options = DEFAULT_RECTANGLE_OPTIONS, priority = 100): RectangleEditorObservable {
     const positions: Cartesian3[] = [];
     const id = generateKey();
@@ -166,17 +141,12 @@ export class RectanglesEditorService {
       pick: PickOptions.NO_PICK,
       priority,
     });
-    const addLastPointRegistration = this.mapEventsManager.register({
-      event: rectangleOptions.addLastPointEvent,
-      pick: PickOptions.NO_PICK,
-      priority,
-    });
 
-    this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
+    this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration ]);
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
+      const position = this.coordinateConverter.screenToCartesian3(endPosition);
 
       if (position) {
         this.updateSubject.next({
@@ -193,14 +163,12 @@ export class RectanglesEditorService {
       if (finishedCreate) {
         return;
       }
-      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
+      const position = this.coordinateConverter.screenToCartesian3(endPosition);
       if (!position) {
         return;
       }
       const allPositions = this.getPositions(id);
-      if (allPositions.find((cartesian) => cartesian.equals(position))) {
-        return;
-      }
+      const isFirstPoint = this.getPositions(id).length === 0;
 
       const updateValue = {
         id,
@@ -216,81 +184,30 @@ export class RectanglesEditorService {
         points: this.getPoints(id),
       });
 
-      if (rectangleOptions.maximumNumberOfPoints && allPositions.length + 1 === rectangleOptions.maximumNumberOfPoints) {
-        finishedCreate = this.switchToEditMode(
+      if (!isFirstPoint) {
+        const changeMode = {
           id,
-          position,
-          clientEditSubject,
-          positions,
-          priority,
-          rectangleOptions,
-          editorObservable,
-          finishedCreate);
+          editMode: EditModes.CREATE,
+          editAction: EditActions.CHANGE_TO_EDIT,
+        };
+        this.updateSubject.next(changeMode);
+        clientEditSubject.next(changeMode);
+        if (this.observablesMap.has(id)) {
+          this.observablesMap.get(id).forEach(registration => registration.dispose());
+        }
+        this.observablesMap.delete(id);
+        this.editRectangle(id, positions, priority, clientEditSubject, rectangleOptions, editorObservable);
+        finishedCreate = true;
       }
-    });
 
-
-    addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
-      if (!position) {
-        return;
-      }
-      // position already added by addPointRegistration
-      finishedCreate = this.switchToEditMode(
-        id,
-        position,
-        clientEditSubject,
-        positions,
-        priority,
-        rectangleOptions,
-        editorObservable,
-        finishedCreate);
     });
 
     return editorObservable;
   }
 
-  private switchToEditMode(id,
-                           position,
-                           clientEditSubject,
-                           positions: Cartesian3[],
-                           priority,
-                           rectangleOptions,
-                           editorObservable,
-                           finishedCreate: boolean) {
-    const updateValue = {
-      id,
-      positions: this.getPositions(id),
-      editMode: EditModes.CREATE,
-      updatedPosition: position,
-      editAction: EditActions.ADD_LAST_POINT,
-    };
-    this.updateSubject.next(updateValue);
-    clientEditSubject.next({
-      ...updateValue,
-      positions: this.getPositions(id),
-      points: this.getPoints(id),
-    });
-
-    const changeMode = {
-      id,
-      editMode: EditModes.CREATE,
-      editAction: EditActions.CHANGE_TO_EDIT,
-    };
-    this.updateSubject.next(changeMode);
-    clientEditSubject.next(changeMode);
-    if (this.observablesMap.has(id)) {
-      this.observablesMap.get(id).forEach(registration => registration.dispose());
-    }
-    this.observablesMap.delete(id);
-    this.editRectangle(id, positions, priority, clientEditSubject, rectangleOptions, editorObservable);
-    finishedCreate = true;
-    return finishedCreate;
-  }
-
   edit(positions: Cartesian3[], options = DEFAULT_RECTANGLE_OPTIONS, priority = 100): RectangleEditorObservable {
-    if (positions.length < 3) {
-      throw new Error('Rectangles editor error edit(): rectangle should have at least 3 positions');
+    if (positions.length !== 2) {
+      throw new Error('Rectangles editor error edit(): rectangle should have at least 2 positions');
     }
     const id = generateKey();
     const rectangleOptions = this.setOptions(options);
@@ -346,18 +263,11 @@ export class RectanglesEditorService {
         pickFilter: entity => id === entity.id,
       });
     }
-    const pointRemoveRegistration = this.mapEventsManager.register({
-      event: options.removePointEvent,
-      entityType: EditPoint,
-      pick: PickOptions.PICK_FIRST,
-      priority,
-      pickFilter: entity => id === entity.editedEntityId,
-    });
 
     pointDragRegistration.pipe(
       tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
-        const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
+        const position = this.coordinateConverter.screenToCartesian3(endPosition);
         if (!position) {
           return;
         }
@@ -383,8 +293,8 @@ export class RectanglesEditorService {
       shapeDragRegistration
         .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
-          const endDragPosition = this.screenToPosition(endPosition, false);
-          const startDragPosition = this.screenToPosition(startPosition, false);
+          const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
+          const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
           if (!endDragPosition) {
             return;
           }
@@ -406,33 +316,7 @@ export class RectanglesEditorService {
         });
     }
 
-    pointRemoveRegistration.subscribe(({ entities }) => {
-      const point: EditPoint = entities[0];
-      const allPositions = [...this.getPositions(id)];
-      if (allPositions.length < 4) {
-        return;
-      }
-      const index = allPositions.findIndex(position => point.getPosition().equals(position as Cartesian3));
-      if (index < 0) {
-        return;
-      }
-
-      const update = {
-        id,
-        positions: allPositions,
-        editMode: EditModes.EDIT,
-        updatedPoint: point,
-        editAction: EditActions.REMOVE_POINT,
-      };
-      this.updateSubject.next(update);
-      editSubject.next({
-        ...update,
-        positions: this.getPositions(id),
-        points: this.getPoints(id),
-      });
-    });
-
-    const observables = [pointDragRegistration, pointRemoveRegistration];
+    const observables = [pointDragRegistration];
     if (shapeDragRegistration) {
       observables.push(shapeDragRegistration);
     }
@@ -442,17 +326,10 @@ export class RectanglesEditorService {
   }
 
   private setOptions(options: RectangleEditOptions) {
-    if (options.maximumNumberOfPoints && options.maximumNumberOfPoints < 3) {
-      console.warn('Warn: RectangleEditor invalid option.' +
-        ' maximumNumberOfPoints smaller then 3, maximumNumberOfPoints changed to 3');
-      options.maximumNumberOfPoints = 3;
-    }
-
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_RECTANGLE_OPTIONS));
     const rectangleOptions: RectangleEditOptions = Object.assign(defaultClone, options);
     rectangleOptions.pointProps = Object.assign({}, DEFAULT_RECTANGLE_OPTIONS.pointProps, options.pointProps);
     rectangleOptions.rectangleProps = Object.assign({}, DEFAULT_RECTANGLE_OPTIONS.rectangleProps, options.rectangleProps);
-    rectangleOptions.polylineProps = Object.assign({}, DEFAULT_RECTANGLE_OPTIONS.polylineProps, options.polylineProps);
 
     if (options.clampHeightTo3D) {
       if (!this.cesiumScene.pickPositionSupported || !this.cesiumScene.clampToHeightSupported) {
@@ -467,8 +344,6 @@ export class RectanglesEditorService {
         console.warn('Point color and outline color must have alpha in order to make the editor work properly on 3D');
       }
 
-      rectangleOptions.allowDrag = false;
-      rectangleOptions.polylineProps.clampToGround = true;
       rectangleOptions.pointProps.heightReference =  rectangleOptions.clampHeightTo3DOptions.clampToTerrain ?
         Cesium.HeightReference.CLAMP_TO_GROUND : Cesium.HeightReference.RELATIVE_TO_GROUND;
       rectangleOptions.pointProps.disableDepthTestDistance = Number.POSITIVE_INFINITY;
@@ -507,11 +382,16 @@ export class RectanglesEditorService {
         editAction: EditActions.DISABLE,
       });
     };
-    observableToExtend.setManually = (points: {
-      position: Cartesian3, pointProps: PointProps
-    }[] | Cartesian3[], rectangleProps?: RectangleProps) => {
+
+    observableToExtend.setManually = (firstPosition: Cartesian3,
+                                      secondPosition: Cartesian3,
+                                      firstPointProp?: PointProps,
+                                      secondPointProp?: PointProps) => {
+      const firstP = new EditPoint(id, firstPosition, firstPointProp ? firstPointProp : DEFAULT_RECTANGLE_OPTIONS.pointProps);
+      const secP = new EditPoint(id, secondPosition, secondPointProp ? secondPointProp : DEFAULT_RECTANGLE_OPTIONS.pointProps);
+
       const rectangle = this.rectanglesManager.get(id);
-      rectangle.setPointsManually(points, rectangleProps);
+      rectangle.setPointsManually([firstP, secP]);
       this.updateSubject.next({
         id,
         editMode: EditModes.CREATE_OR_EDIT,
@@ -546,12 +426,12 @@ export class RectanglesEditorService {
     return observableToExtend as RectangleEditorObservable;
   }
 
-  private getPositions(id: string) {
+  private getPositions(id: any) {
     const rectangle = this.rectanglesManager.get(id);
     return rectangle.getRealPositions();
   }
 
-  private getPoints(id: string) {
+  private getPoints(id: any) {
     const rectangle = this.rectanglesManager.get(id);
     return rectangle.getRealPoints();
   }

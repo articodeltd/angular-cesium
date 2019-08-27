@@ -123,7 +123,7 @@ import { AcRectangleComponent } from './components/ac-rectangle/ac-rectangle.com
     AcDynamicCircleDescComponent,
     AcStaticCircleDescComponent,
     AcStaticPolygonDescComponent,
-    AcRectangleComponent,
+    AcRectangleComponent
   ],
   exports: [
     AcMapComponent,
@@ -174,6 +174,7 @@ import { AcRectangleComponent } from './components/ac-rectangle/ac-rectangle.com
     AcDynamicCircleDescComponent,
     AcStaticCircleDescComponent,
     AcStaticPolygonDescComponent,
+    AcRectangleComponent
   ],
 })
 export class AngularCesiumModule {

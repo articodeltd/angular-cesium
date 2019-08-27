@@ -18,20 +18,6 @@ import { EditableRectangle } from '../../models/editable-rectangle';
 @Component({
   selector: 'rectangles-editor',
   template: /*html*/ `
-    <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this">
-      <ac-polyline-desc
-        props="{
-        positions: polyline.getPositionsCallbackProperty(),
-        width: polyline.props.width,
-        material: polyline.props.material(),
-        clampToGround: polyline.props.clampToGround,
-        zIndex: polyline.props.zIndex,
-        classificationType: polyline.props.classificationType,
-      }"
-      >
-      </ac-polyline-desc>
-    </ac-layer>
-
     <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
       <ac-point-desc
         props="{
@@ -51,7 +37,7 @@ import { EditableRectangle } from '../../models/editable-rectangle';
     <ac-layer #editRectanglesLayer acFor="let rectangle of editRectangles$" [context]="this">
       <ac-rectangle-desc
         props="{
-          hierarchy: rectangle.getPositionsHierarchyCallbackProperty(),
+          coordinates: rectangle.getRectangleCallbackProperty(),
           material: rectangle.rectangleProps.material,
           fill: rectangle.rectangleProps.fill,
           classificationType: rectangle.rectangleProps.classificationType,
@@ -97,12 +83,10 @@ export class RectanglesEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: RectangleEditUpdate, labels: LabelProps[]) => LabelProps[];
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
-  public editPolylines$ = new Subject<AcNotification>();
   public editRectangles$ = new Subject<AcNotification>();
 
   @ViewChild('editRectanglesLayer', {static: false}) private editRectanglesLayer: AcLayerComponent;
   @ViewChild('editPointsLayer', {static: false}) private editPointsLayer: AcLayerComponent;
-  @ViewChild('editPolylinesLayer', {static: false}) private editPolylinesLayer: AcLayerComponent;
 
   constructor(
     private rectanglesEditor: RectanglesEditorService,
@@ -112,7 +96,13 @@ export class RectanglesEditorComponent implements OnDestroy {
     private rectanglesManager: RectanglesManagerService,
     private cesiumService: CesiumService
   ) {
-    this.rectanglesEditor.init(this.mapEventsManager, this.coordinateConverter, this.cameraService, this.rectanglesManager, this.cesiumService);
+    this.rectanglesEditor.init(
+      this.mapEventsManager,
+      this.coordinateConverter,
+      this.cameraService,
+      this.rectanglesManager,
+      this.cesiumService
+    );
     this.startListeningToEditorUpdates();
   }
 
@@ -160,7 +150,6 @@ export class RectanglesEditorComponent implements OnDestroy {
           update.id,
           this.editRectanglesLayer,
           this.editPointsLayer,
-          this.editPolylinesLayer,
           this.coordinateConverter,
           update.rectangleOptions,
         );
@@ -224,9 +213,8 @@ export class RectanglesEditorComponent implements OnDestroy {
       case EditActions.INIT: {
         this.rectanglesManager.createEditableRectangle(
           update.id,
-          this.editRectanglesLayer,
           this.editPointsLayer,
-          this.editPolylinesLayer,
+          this.editRectanglesLayer,
           this.coordinateConverter,
           update.rectangleOptions,
           update.positions,
@@ -244,19 +232,7 @@ export class RectanglesEditorComponent implements OnDestroy {
       case EditActions.DRAG_POINT_FINISH: {
         const rectangle = this.rectanglesManager.get(update.id);
         if (rectangle && rectangle.enableEdit) {
-          rectangle.movePointFinish(update.updatedPoint);
-
-          if (update.updatedPoint.isVirtualEditPoint()) {
-            rectangle.changeVirtualPointToRealPoint(update.updatedPoint);
-            this.renderEditLabels(rectangle, update);
-          }
-        }
-        break;
-      }
-      case EditActions.REMOVE_POINT: {
-        const rectangle = this.rectanglesManager.get(update.id);
-        if (rectangle && rectangle.enableEdit) {
-          rectangle.removePoint(update.updatedPoint);
+          rectangle.endMovePoint();
           this.renderEditLabels(rectangle, update);
         }
         break;
@@ -269,10 +245,18 @@ export class RectanglesEditorComponent implements OnDestroy {
         }
         break;
       }
+      case EditActions.ENABLE: {
+        const rectangle = this.rectanglesManager.get(update.id);
+        if (rectangle) {
+          rectangle.enableEdit = true;
+          this.renderEditLabels(rectangle, update);
+        }
+        break;
+      }
       case EditActions.DRAG_SHAPE: {
         const rectangle = this.rectanglesManager.get(update.id);
         if (rectangle && rectangle.enableEdit) {
-          rectangle.moveRectangle(update.draggedPosition, update.updatedPosition);
+          rectangle.moveShape(update.draggedPosition, update.updatedPosition);
           this.renderEditLabels(rectangle, update);
         }
         break;
@@ -281,15 +265,7 @@ export class RectanglesEditorComponent implements OnDestroy {
       case EditActions.DRAG_SHAPE_FINISH: {
         const rectangle = this.rectanglesManager.get(update.id);
         if (rectangle && rectangle.enableEdit) {
-          rectangle.endMoveRectangle();
-          this.renderEditLabels(rectangle, update);
-        }
-        break;
-      }
-      case EditActions.ENABLE: {
-        const rectangle = this.rectanglesManager.get(update.id);
-        if (rectangle) {
-          rectangle.enableEdit = true;
+          rectangle.endMoveShape();
           this.renderEditLabels(rectangle, update);
         }
         break;
