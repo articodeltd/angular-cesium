@@ -25,7 +25,7 @@ export class EditableRectangle extends AcEntity {
     private rectangleLayer: AcLayerComponent,
     private coordinateConverter: CoordinateConverter,
     editOptions: RectangleEditOptions,
-    positions?: Cartesian3[],
+    positions?: Cartesian3[]
   ) {
     super();
     this.defaultPointProps = {...editOptions.pointProps};
@@ -141,20 +141,12 @@ export class EditableRectangle extends AcEntity {
       this.lastDraggedToPosition = startMovingPosition;
     }
 
-    // const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
-    // this.getRealPoints().forEach(point => {
-    //   const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
-    //   point.setPosition(newPos);
-    // });
-    // this.updatePointsLayer(...this.positions);
-    // this.updateRectangleLayer();
-    // this.lastDraggedToPosition = draggedToPosition;
-
     const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
-    this.positions.forEach(point => {
-      const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta, true);
+    this.getRealPoints().forEach(point => {
+      const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta);
       point.setPosition(newPos);
     });
+
     this.updatePointsLayer(...this.positions);
     this.updateRectangleLayer();
     this.lastDraggedToPosition = draggedToPosition;
@@ -206,7 +198,7 @@ export class EditableRectangle extends AcEntity {
   getRectangle(): Rectangle {
     const cartographics = this.getPositions().map(cartesian => Cesium.Cartographic.fromCartesian(cartesian));
     const longitudes = cartographics.map(position => position.longitude);
-    const latitudes = cartographics.map(position => position.latitude);
+    const latitudes = cartographics.map(position =>  position.latitude);
 
     return new Cesium.Rectangle(
       Math.min(...longitudes),
