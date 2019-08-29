@@ -31,7 +31,7 @@ export const DEFAULT_RECTANGLE_OPTIONS: RectangleEditOptions = {
     outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
     outlineWidth: 1,
     pixelSize: 13,
-    virtualPointPixelSize: 13,
+    virtualPointPixelSize: 8,
     show: true,
     showVirtual: true,
     disableDepthTestDistance: Number.POSITIVE_INFINITY,
