@@ -141,10 +141,13 @@ export class EditableRectangle extends AcEntity {
       this.lastDraggedToPosition = startMovingPosition;
     }
 
-    const delta = GeoUtilsService.getPositionsDelta(this.lastDraggedToPosition, draggedToPosition);
+    const lastDraggedCartographic = Cesium.Cartographic.fromCartesian(this.lastDraggedToPosition);
+    const draggedToPositionCartographic = Cesium.Cartographic.fromCartesian(draggedToPosition);
     this.getRealPoints().forEach(point => {
-      const newPos = GeoUtilsService.addDeltaToPosition(point.getPosition(), delta);
-      point.setPosition(newPos);
+      const cartographic = Cesium.Cartographic.fromCartesian(point.getPosition());
+      cartographic.longitude += (draggedToPositionCartographic.longitude - lastDraggedCartographic.longitude);
+      cartographic.latitude += (draggedToPositionCartographic.latitude - lastDraggedCartographic.latitude);
+      point.setPosition(Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, 0));
     });
 
     this.updatePointsLayer(...this.positions);
