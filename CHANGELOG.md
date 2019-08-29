@@ -1,3 +1,8 @@
+## 0.60
+### Features
+* Added a rectangle drawing widget
+* Added an example rectangle component in the demo app
+
 ## 0.59
 ### Fixes 
 * Fix `CameraService.trackEntity()` doc.
