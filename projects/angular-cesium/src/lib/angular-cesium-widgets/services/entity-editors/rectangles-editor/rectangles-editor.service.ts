@@ -37,9 +37,13 @@ export const DEFAULT_RECTANGLE_OPTIONS: RectangleEditOptions = {
     disableDepthTestDistance: Number.POSITIVE_INFINITY,
   },
   rectangleProps: {
+    height: 0,
+    extrudedHeight: 0,
     material: Cesium.Color.CORNFLOWERBLUE.withAlpha(0.4),
     fill: true,
     classificationType: Cesium.ClassificationType.BOTH,
+    outline: true,
+    outlineColor: Cesium.Color.WHITE,
     zIndex: 0,
   },
   clampHeightTo3D: false,

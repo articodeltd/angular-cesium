@@ -5,6 +5,11 @@ export interface RectangleProps {
   fill?: boolean;
   classificationType?: any;
   zIndex?: any;
+  outline?: boolean;
+  outlineColor?: any;
+  outlineWidth?: number;
+  height?: number;
+  extrudedHeight?: number;
 }
 
 export interface RectangleEditOptions extends PolygonEditOptions {

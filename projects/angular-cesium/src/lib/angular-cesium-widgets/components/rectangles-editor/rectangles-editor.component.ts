@@ -42,6 +42,10 @@ import { EditableRectangle } from '../../models/editable-rectangle';
           fill: rectangle.rectangleProps.fill,
           classificationType: rectangle.rectangleProps.classificationType,
           zIndex: rectangle.rectangleProps.zIndex,
+          outline: rectangle.rectangleProps.outline,
+          outlineColor: rectangle.rectangleProps.outlineColor,
+          height: rectangle.rectangleProps.height,
+          extrudedHeight: rectangle.rectangleProps.extrudedHeight
         }"
       >
       </ac-rectangle-desc>
