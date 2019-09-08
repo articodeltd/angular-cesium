@@ -155,11 +155,13 @@ export class PolylinesEditorService {
     });
     const addPointRegistration = this.mapEventsManager.register({
       event: polylineOptions.addPointEvent,
+      modifier: polylineOptions.addPointModifier,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
     });
     const addLastPointRegistration = this.mapEventsManager.register({
       event: polylineOptions.addLastPointEvent,
+      modifier: polylineOptions.addLastPointModifier,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
     });
@@ -326,6 +328,7 @@ export class PolylinesEditorService {
 
     const pointRemoveRegistration = this.mapEventsManager.register({
       event: options.removePointEvent,
+      modifier: options.removePointModifier,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
       priority,

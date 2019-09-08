@@ -163,11 +163,13 @@ export class PolygonsEditorService {
     });
     const addPointRegistration = this.mapEventsManager.register({
       event: polygonOptions.addPointEvent,
+      modifier: polygonOptions.addPointModifier,
       pick: PickOptions.NO_PICK,
       priority,
     });
     const addLastPointRegistration = this.mapEventsManager.register({
       event: polygonOptions.addLastPointEvent,
+      modifier: polygonOptions.addLastPointModifier,
       pick: PickOptions.NO_PICK,
       priority,
     });
@@ -349,6 +351,7 @@ export class PolygonsEditorService {
     const pointRemoveRegistration = this.mapEventsManager.register({
       event: options.removePointEvent,
       entityType: EditPoint,
+      modifier: options.removePointModifier,
       pick: PickOptions.PICK_FIRST,
       priority,
       pickFilter: entity => id === entity.editedEntityId,

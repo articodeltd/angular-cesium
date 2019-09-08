@@ -1,3 +1,7 @@
+## Next
+### Fixes
+* Polyline and polygon editor - fix support of events modifiers (`alt`, `ctrl`, `shift`).
+
 ## 0.59
 ### Fixes 
 * Fix `CameraService.trackEntity()` doc.
@@ -5,7 +9,7 @@
 * Add doc to the `ContextMenuService`
 ### Features
 * Add support for terrian in Polygon and Polyline Editors.
-  * To enable terrain support: `this.polylineEditor.create({ clampHeightTo3D: true, clampHeightTo3DOptions: {clampToTerrain: true} });` 
+* To enable terrain support: `this.polylineEditor.create({ clampHeightTo3D: true, clampHeightTo3DOptions: {clampToTerrain: true} });` 
 
 ### Breaking Changes
 * Demo layers name change to `-example` suffix.
