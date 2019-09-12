@@ -1,4 +1,8 @@
-## 0.60
+
+## Next
+### Fixes
+* Polyline and polygon editor - fix support of events modifiers (`alt`, `ctrl`, `shift`).
+
 ### Features
 * Added a rectangle drawing widget
 * Added an example rectangle component in the demo app
@@ -10,7 +14,7 @@
 * Add doc to the `ContextMenuService`
 ### Features
 * Add support for terrian in Polygon and Polyline Editors.
-  * To enable terrain support: `this.polylineEditor.create({ clampHeightTo3D: true, clampHeightTo3DOptions: {clampToTerrain: true} });` 
+* To enable terrain support: `this.polylineEditor.create({ clampHeightTo3D: true, clampHeightTo3DOptions: {clampToTerrain: true} });` 
 
 ### Breaking Changes
 * Demo layers name change to `-example` suffix.
