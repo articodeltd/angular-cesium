@@ -1,6 +1,11 @@
+
 ## Next
 ### Fixes
 * Polyline and polygon editor - fix support of events modifiers (`alt`, `ctrl`, `shift`).
+
+### Features
+* Added a rectangle drawing widget
+* Added an example rectangle component in the demo app
 
 ## 0.59
 ### Fixes 

@@ -4,7 +4,7 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { GraphicsType } from '../entities-drawer/enums/graphics-type.enum';
 
 /**
- *  This drawer is responsible for drawing rectangle.
+ *  This drawer is responsible for drawing rectangles.
  */
 @Injectable()
 export class RectangleDrawerService extends EntitiesDrawerService {
