@@ -15,6 +15,10 @@
                      [iconUrl]="'assets/circle.svg'"
                      (onClick)="drawCircle()">
   </ac-toolbar-button>
+  <ac-toolbar-button matTooltip="Draw Rectangle" matTooltipPosition="right"
+                     [iconUrl]="'assets/rectangle.svg'"
+                     (onClick)="drawRectangle()">
+  </ac-toolbar-button>
   <ac-toolbar-button matTooltip="Draw Ellipse" matTooltipPosition="right"
                      [iconUrl]="'assets/ellipse.svg'"
                      (onClick)="drawEllipse()">
@@ -29,6 +33,7 @@
   </ac-toolbar-button>
   <range-and-bearing #rangeAndBearing></range-and-bearing>
   <circles-editor></circles-editor>
+  <rectangles-editor></rectangles-editor>
   <ellipses-editor></ellipses-editor>
   <polygons-editor></polygons-editor>
   <hippodrome-editor></hippodrome-editor>

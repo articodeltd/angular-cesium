@@ -4,6 +4,7 @@ import {
   CesiumService,
   CirclesEditorService,
   EllipsesEditorService,
+  RectanglesEditorService,
   HippodromeEditorService,
   PolygonsEditorService,
   PolylineEditorObservable,
@@ -14,7 +15,14 @@ import {
 @Component({
   selector: 'toolbar-example',
   templateUrl: 'toolbar-example.component.html',
-  providers: [ZoomToRectangleService, CirclesEditorService, EllipsesEditorService, PolygonsEditorService, HippodromeEditorService],
+  providers: [
+    ZoomToRectangleService,
+    CirclesEditorService,
+    EllipsesEditorService,
+    PolygonsEditorService,
+    RectanglesEditorService,
+    HippodromeEditorService
+  ],
 })
 export class ToolbarExampleComponent implements OnInit {
   rnb: PolylineEditorObservable;
@@ -27,6 +35,7 @@ export class ToolbarExampleComponent implements OnInit {
     private circlesEditor: CirclesEditorService,
     private ellipsesEditor: EllipsesEditorService,
     private polygonsEditor: PolygonsEditorService,
+    private rectanglesEditor: RectanglesEditorService,
     private hippodromesEditor: HippodromeEditorService,
   ) {
     this.zoomToRectangleService.init(cesiumService, cameraService);
@@ -61,6 +70,10 @@ export class ToolbarExampleComponent implements OnInit {
 
   drawPolygon() {
     this.polygonsEditor.create();
+  }
+
+  drawRectangle() {
+    this.rectanglesEditor.create();
   }
 
   drawHippodrome() {
