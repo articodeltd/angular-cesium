@@ -18,7 +18,7 @@ import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcCircleDescComponent } from './components/ac-circle-desc/ac-circle-desc.component';
 import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
 import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
-import { AcMapTerrainProviderComponent } from './components/ac-map-terrain-provider/ac-map-terrian-provider.component';
+import { AcMapTerrainProviderComponent } from './components/ac-map-terrain-provider/ac-map-terrain-provider.component';
 import { AcPointDescComponent } from './components/ac-point-desc/ac-point-desc.component';
 import { AcLabelComponent } from './components/ac-label/ac-label.component';
 import { AcPolylineComponent } from './components/ac-polyline/ac-polyline.component';
