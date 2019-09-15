@@ -6,6 +6,8 @@
 ### Features
 * Added a rectangle drawing widget
 * Added an example rectangle component in the demo app
+* Added `ac-map-terrain-provider` component which supports Cesium terrain providers
+* Added `ac-map-terrain-provider` component to demo app to show it's usage
 
 ## 0.59
 ### Fixes 
