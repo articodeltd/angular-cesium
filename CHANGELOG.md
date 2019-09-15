@@ -15,7 +15,7 @@
 * Fix `AcHtmlDesc` remove.
 * Add doc to the `ContextMenuService`
 ### Features
-* Add support for terrian in Polygon and Polyline Editors.
+* Add support for terrain in Polygon and Polyline Editors.
 * To enable terrain support: `this.polylineEditor.create({ clampHeightTo3D: true, clampHeightTo3DOptions: {clampToTerrain: true} });` 
 
 ### Breaking Changes
