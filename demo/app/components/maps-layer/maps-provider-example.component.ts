@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { AcMapLayerProviderComponent, MapLayerProviderOptions } from 'angular-cesium';
+import { AcMapLayerProviderComponent, MapLayerProviderOptions, MapTerrainProviderOptions } from 'angular-cesium';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 
 @Component({
@@ -12,6 +12,7 @@ export class MapsProviderExampleComponent implements AfterViewInit {
   @ViewChild('blackmarble', {static: false}) blackMarbleMap: AcMapLayerProviderComponent;
 
   MapLayerProviderOptions = MapLayerProviderOptions;
+  MapTerrainProviderOptions = MapTerrainProviderOptions;
   Cesium = Cesium;
 
   constructor(public appSettingsService: AppSettingsService) {

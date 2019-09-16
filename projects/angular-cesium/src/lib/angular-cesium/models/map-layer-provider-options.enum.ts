@@ -11,4 +11,3 @@ export enum MapLayerProviderOptions {
   UrlTemplateImagery = Cesium.UrlTemplateImageryProvider,
   OFFLINE = null,
 }
-

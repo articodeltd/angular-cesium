@@ -19,6 +19,12 @@
                             }">
 </ac-map-layer-provider>
 
+<ac-map-terrain-provider [provider]="MapTerrainProviderOptions.WorldTerrain"
+                         [options]="{
+                                  requestWaterMask: true,
+                                  requestVertexNormals: true
+                              }">
+</ac-map-terrain-provider>
 
 
 <!--More examples -->
