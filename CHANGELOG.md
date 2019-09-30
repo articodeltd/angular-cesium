@@ -1,10 +1,11 @@
 
-## Next
+## 0.60
 ### Fixes
 * Polyline and polygon editor - fix support of events modifiers (`alt`, `ctrl`, `shift`).
+* Polyline and polygon editor - fix screen position to geo position.
 
 ### Features
-* Added a rectangle drawing widget
+* Added a rectangle drawing editor widget
 * Added an example rectangle component in the demo app
 * Added `ac-map-terrain-provider` component which supports Cesium terrain providers
 * Added `ac-map-terrain-provider` component to demo app to show it's usage
