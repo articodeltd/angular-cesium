@@ -8,7 +8,7 @@ import { RectangleDrawerService } from '../../services/drawers/rectangle-dawer/r
 /**
  *  This is a point implementation.
  *  The ac-rectangle-desc element must be a child of ac-layer element.
- *  The properties of props are the same as the properties PointGraphics and the general properties
+ *  The properties of props are the same as the properties RectangleGraphics and the general properties
  *  of Entity
  *  + https://cesiumjs.org/Cesium/Build/Documentation/Entity.html
  *  + https://cesiumjs.org/Cesium/Build/Documentation/RectangleGraphics.html

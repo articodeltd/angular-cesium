@@ -13,12 +13,14 @@ import { DragIconComponent } from './components/toolbar/ac-toolbar/drag-icon.com
 import { AcToolbarButtonComponent } from './components/toolbar/ac-toolbar-button/ac-toolbar-button.component';
 import { RangeAndBearingComponent } from './components/range-and-bearing/range-and-bearing.component';
 import { ZoomToRectangleService } from './services/zoom-to-rectangle.service';
+import { RectanglesEditorComponent } from './components/rectangles-editor/rectangles-editor.component';
 
 @NgModule({
   imports: [CommonModule, AngularCesiumModule],
   declarations: [
     HippodromeEditorComponent,
     PolygonsEditorComponent,
+    RectanglesEditorComponent,
     CirclesEditorComponent,
     EllipsesEditorComponent,
     PolylinesEditorComponent,
@@ -31,6 +33,7 @@ import { ZoomToRectangleService } from './services/zoom-to-rectangle.service';
   exports: [
     HippodromeEditorComponent,
     PolygonsEditorComponent,
+    RectanglesEditorComponent,
     CirclesEditorComponent,
     EllipsesEditorComponent,
     PolylinesEditorComponent,

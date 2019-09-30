@@ -18,6 +18,7 @@ import { GeoUtilsService } from './services/geo-utils/geo-utils.service';
 import { AcCircleDescComponent } from './components/ac-circle-desc/ac-circle-desc.component';
 import { AcArcDescComponent } from './components/ac-arc-desc/ac-arc-desc.component';
 import { AcMapLayerProviderComponent } from './components/ac-map-layer-provider/ac-map-layer-provider.component';
+import { AcMapTerrainProviderComponent } from './components/ac-map-terrain-provider/ac-map-terrain-provider.component';
 import { AcPointDescComponent } from './components/ac-point-desc/ac-point-desc.component';
 import { AcLabelComponent } from './components/ac-label/ac-label.component';
 import { AcPolylineComponent } from './components/ac-polyline/ac-polyline.component';
@@ -62,6 +63,7 @@ import { AcPrimitivePolylineComponent } from './components/ac-primitive-polyline
 import PARSE_PIPES_CONFIG_MAP from './pipes/pipe-config-map';
 
 import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.component';
+import { AcRectangleComponent } from './components/ac-rectangle/ac-rectangle.component';
 
 @NgModule({
   imports: [
@@ -85,6 +87,7 @@ import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.comp
     AcCircleDescComponent,
     AcArcDescComponent,
     AcMapLayerProviderComponent,
+    AcMapTerrainProviderComponent,
     AcPointDescComponent,
     AcLabelComponent,
     AcPolylineComponent,
@@ -122,6 +125,7 @@ import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.comp
     AcDynamicCircleDescComponent,
     AcStaticCircleDescComponent,
     AcStaticPolygonDescComponent,
+    AcRectangleComponent
   ],
   exports: [
     AcMapComponent,
@@ -137,6 +141,7 @@ import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.comp
     AcCircleDescComponent,
     AcArcDescComponent,
     AcMapLayerProviderComponent,
+    AcMapTerrainProviderComponent,
     AcPointDescComponent,
     AcLabelComponent,
     AcPolylineComponent,
@@ -172,6 +177,7 @@ import { AcCzmlDescComponent } from './components/ac-czml-desc/ac-czml-desc.comp
     AcDynamicCircleDescComponent,
     AcStaticCircleDescComponent,
     AcStaticPolygonDescComponent,
+    AcRectangleComponent
   ],
 })
 export class AngularCesiumModule {

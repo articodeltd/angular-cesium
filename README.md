@@ -426,6 +426,7 @@ Part of [`AngularCesiumWidgetsModule`](https://articodeltd.github.io/angular-ces
 + [`EllipsesEditorService`](https://articodeltd.github.io/angular-cesium/injectables/EllipsesEditorService.html) - for drawing ellipses and circles
 + [`PolylinesEditorService`](https://articodeltd.github.io/angular-cesium/injectables/PolylinesEditorService.html) - for drawing polylines
 + [`PolygonsEditorService`](https://articodeltd.github.io/angular-cesium/injectables/PolygonsEditorService.html) - for drawing polygons
++ [`RectanglesEditorService`](https://articodeltd.github.io/angular-cesium/injectables/RectanglesEditorService.html) - for drawing rectangles
 + [`HippodromeEditorService`](https://articodeltd.github.io/angular-cesium/injectables/HippodromeEditorService.html) - for drawing hippodromes (path in cesium)
 + [`RangeAndBearingComponent`](https://articodeltd.github.io/angular-cesium/components/RangeAndBearingComponent.html) - for drawing range and bearing
 
