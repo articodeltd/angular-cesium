@@ -106,6 +106,9 @@
                             <a href="#DEFAULT_POLYLINE_OPTIONS" title="projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-editor.service.ts"><b>DEFAULT_POLYLINE_OPTIONS</b>&nbsp;&nbsp;&nbsp;(projects/.../polylines-editor.service.ts)</a>
                         </li>
                         <li>
+                            <a href="#DEFAULT_RECTANGLE_OPTIONS" title="projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts"><b>DEFAULT_RECTANGLE_OPTIONS</b>&nbsp;&nbsp;&nbsp;(projects/.../rectangles-editor.service.ts)</a>
+                        </li>
+                        <li>
                             <a href="#defaultDistanceDisplayCondition" title="projects/angular-cesium/src/lib/angular-cesium/cesium-enhancements/StaticGeometryColorBatch.ts"><b>defaultDistanceDisplayCondition</b>&nbsp;&nbsp;&nbsp;(projects/.../StaticGeometryColorBatch.ts)</a>
                         </li>
                         <li>
@@ -1258,7 +1261,7 @@ PR in Cesium repo: <a href="https://github.com/AnalyticalGraphicsInc/cesium/pull
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.8),
+    color: Cesium.Color.WHITE.withAlpha(0.95),
     outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
     outlineWidth: 1,
     pixelSize: 13,
@@ -1329,7 +1332,7 @@ PR in Cesium repo: <a href="https://github.com/AnalyticalGraphicsInc/cesium/pull
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.9),
+    color: Cesium.Color.WHITE.withAlpha(0.95),
     outlineColor: Cesium.Color.BLACK.withAlpha(0.5),
     outlineWidth: 1,
     pixelSize: 15,
@@ -1344,6 +1347,72 @@ PR in Cesium repo: <a href="https://github.com/AnalyticalGraphicsInc/cesium/pull
     clampToGround: false,
     zIndex: 0,
     classificationType: Cesium.ClassificationType.BOTH,
+  },
+  clampHeightTo3D: false,
+  clampHeightTo3DOptions: {
+    clampToTerrain: false,
+  },
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DEFAULT_RECTANGLE_OPTIONS"></a>
+                        <span class="name">
+                            <b>
+                            DEFAULT_RECTANGLE_OPTIONS
+                            </b>
+                            <a href="#DEFAULT_RECTANGLE_OPTIONS"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>DEFAULT_RECTANGLE_OPTIONS:     <code><a href="../interfaces/RectangleEditOptions.html" target="_self" >RectangleEditOptions</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../interfaces/RectangleEditOptions.html" target="_self" >RectangleEditOptions</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  addPointEvent: CesiumEvent.LEFT_CLICK,
+  dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
+  dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
+  allowDrag: true,
+  pointProps: {
+    color: Cesium.Color.WHITE.withAlpha(0.95),
+    outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
+    outlineWidth: 1,
+    pixelSize: 13,
+    virtualPointPixelSize: 8,
+    show: true,
+    showVirtual: true,
+    disableDepthTestDistance: Number.POSITIVE_INFINITY,
+  },
+  rectangleProps: {
+    height: 0,
+    extrudedHeight: 0,
+    material: Cesium.Color.CORNFLOWERBLUE.withAlpha(0.4),
+    fill: true,
+    classificationType: Cesium.ClassificationType.BOTH,
+    outline: true,
+    outlineColor: Cesium.Color.WHITE,
+    zIndex: 0,
   },
   clampHeightTo3D: false,
   clampHeightTo3DOptions: {
@@ -1406,6 +1475,7 @@ PR in Cesium repo: <a href="https://github.com/AnalyticalGraphicsInc/cesium/pull
   text: &#x27;&#x27;,
   translucencyByDistance: undefined,
   verticalOrigin: Cesium.VerticalOrigin.BASELINE,
+  eyeOffset: Cesium.Cartesian3.ZERO,
   disableDepthTestDistance: Number.POSITIVE_INFINITY,
 }</code>
                         </td>

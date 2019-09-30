@@ -1,0 +1,2596 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular Cesium</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/stripe.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Angular Cesium</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>EditableRectangle</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code><a href="../classes/AcEntity.html" target="_self" >AcEntity</a></code>
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_defaultPointProps">_defaultPointProps</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_enableEdit">_enableEdit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_labels">_labels</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_rectangleProps">_rectangleProps</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#done">done</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#lastDraggedToPosition">lastDraggedToPosition</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#movingPoint">movingPoint</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#positions">positions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addLastPoint">addLastPoint</a>
+                            </li>
+                            <li>
+                                <a href="#addPoint">addPoint</a>
+                            </li>
+                            <li>
+                                <a href="#addPointFromExisting">addPointFromExisting</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createFromExisting">createFromExisting</a>
+                            </li>
+                            <li>
+                                <a href="#dispose">dispose</a>
+                            </li>
+                            <li>
+                                <a href="#endMovePoint">endMovePoint</a>
+                            </li>
+                            <li>
+                                <a href="#endMoveShape">endMoveShape</a>
+                            </li>
+                            <li>
+                                <a href="#getId">getId</a>
+                            </li>
+                            <li>
+                                <a href="#getPointsCount">getPointsCount</a>
+                            </li>
+                            <li>
+                                <a href="#getPositions">getPositions</a>
+                            </li>
+                            <li>
+                                <a href="#getRealPoints">getRealPoints</a>
+                            </li>
+                            <li>
+                                <a href="#getRealPositions">getRealPositions</a>
+                            </li>
+                            <li>
+                                <a href="#getRealPositionsCallbackProperty">getRealPositionsCallbackProperty</a>
+                            </li>
+                            <li>
+                                <a href="#getRectangle">getRectangle</a>
+                            </li>
+                            <li>
+                                <a href="#getRectangleCallbackProperty">getRectangleCallbackProperty</a>
+                            </li>
+                            <li>
+                                <a href="#movePoint">movePoint</a>
+                            </li>
+                            <li>
+                                <a href="#moveShape">moveShape</a>
+                            </li>
+                            <li>
+                                <a href="#moveTempMovingPoint">moveTempMovingPoint</a>
+                            </li>
+                            <li>
+                                <a href="#removePoint">removePoint</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#removePosition">removePosition</a>
+                            </li>
+                            <li>
+                                <a href="#setPointsManually">setPointsManually</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updatePointsLayer">updatePointsLayer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updateRectangleLayer">updateRectangleLayer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#create">create</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#labels">labels</a>
+                                </li>
+                                <li>
+                                    <a href="#rectangleProps">rectangleProps</a>
+                                </li>
+                                <li>
+                                    <a href="#defaultPointProps">defaultPointProps</a>
+                                </li>
+                                <li>
+                                    <a href="#enableEdit">enableEdit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, pointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, rectangleLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, editOptions: <a href="../interfaces/RectangleEditOptions.html">RectangleEditOptions</a>, positions?: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>pointsLayer</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>rectangleLayer</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../components/AcLayerComponent.html" target="_self" >AcLayerComponent</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>coordinateConverter</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>editOptions</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../interfaces/RectangleEditOptions.html" target="_self" >RectangleEditOptions</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>positions</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_defaultPointProps"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _defaultPointProps
+                            </b>
+                            <a href="#_defaultPointProps"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>_defaultPointProps:     <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../interfaces/PointProps.html" target="_self" >PointProps</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_enableEdit"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _enableEdit
+                            </b>
+                            <a href="#_enableEdit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>_enableEdit:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>true</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_labels"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _labels
+                            </b>
+                            <a href="#_labels"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>_labels:     <code><a href="../interfaces/LabelProps.html" target="_self" >LabelProps[]</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../interfaces/LabelProps.html" target="_self" >LabelProps[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_rectangleProps"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _rectangleProps
+                            </b>
+                            <a href="#_rectangleProps"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>_rectangleProps:     <code><a href="../interfaces/RectangleProps.html" target="_self" >RectangleProps</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../interfaces/RectangleProps.html" target="_self" >RectangleProps</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="done"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            done
+                            </b>
+                            <a href="#done"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>done:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lastDraggedToPosition"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            lastDraggedToPosition
+                            </b>
+                            <a href="#lastDraggedToPosition"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>lastDraggedToPosition:     <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="movingPoint"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            movingPoint
+                            </b>
+                            <a href="#movingPoint"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>movingPoint:     <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="positions"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            positions
+                            </b>
+                            <a href="#positions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>positions:     <code><a href="../classes/EditPoint.html" target="_self" >EditPoint[]</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:13</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addLastPoint"></a>
+                        <span class="name">
+                            <b>
+                            addLastPoint
+                            </b>
+                            <a href="#addLastPoint"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addLastPoint(position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:179</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>position</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addPoint"></a>
+                        <span class="name">
+                            <b>
+                            addPoint
+                            </b>
+                            <a href="#addPoint"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addPoint(position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:111</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>position</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addPointFromExisting"></a>
+                        <span class="name">
+                            <b>
+                            addPointFromExisting
+                            </b>
+                            <a href="#addPointFromExisting"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addPointFromExisting(position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:105</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>position</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createFromExisting"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            createFromExisting
+                            </b>
+                            <a href="#createFromExisting"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>createFromExisting(positions: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:86</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>positions</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dispose"></a>
+                        <span class="name">
+                            <b>
+                            dispose
+                            </b>
+                            <a href="#dispose"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>dispose()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:235</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="endMovePoint"></a>
+                        <span class="name">
+                            <b>
+                            endMovePoint
+                            </b>
+                            <a href="#endMovePoint"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>endMovePoint()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:164</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="endMoveShape"></a>
+                        <span class="name">
+                            <b>
+                            endMoveShape
+                            </b>
+                            <a href="#endMoveShape"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>endMoveShape()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:158</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getId"></a>
+                        <span class="name">
+                            <b>
+                            getId
+                            </b>
+                            <a href="#getId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getId()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="252" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:252</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getPointsCount"></a>
+                        <span class="name">
+                            <b>
+                            getPointsCount
+                            </b>
+                            <a href="#getPointsCount"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getPointsCount()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:248</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getPositions"></a>
+                        <span class="name">
+                            <b>
+                            getPositions
+                            </b>
+                            <a href="#getPositions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getPositions()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:197</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getRealPoints"></a>
+                        <span class="name">
+                            <b>
+                            getRealPoints
+                            </b>
+                            <a href="#getRealPoints"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getRealPoints()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="193" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:193</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint[]</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getRealPositions"></a>
+                        <span class="name">
+                            <b>
+                            getRealPositions
+                            </b>
+                            <a href="#getRealPositions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getRealPositions()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:185</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getRealPositionsCallbackProperty"></a>
+                        <span class="name">
+                            <b>
+                            getRealPositionsCallbackProperty
+                            </b>
+                            <a href="#getRealPositionsCallbackProperty"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getRealPositionsCallbackProperty()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="189" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:189</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getRectangle"></a>
+                        <span class="name">
+                            <b>
+                            getRectangle
+                            </b>
+                            <a href="#getRectangle"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getRectangle()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:201</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Rectangle.html" target="_self" >Rectangle</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getRectangleCallbackProperty"></a>
+                        <span class="name">
+                            <b>
+                            getRectangleCallbackProperty
+                            </b>
+                            <a href="#getRectangleCallbackProperty"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getRectangleCallbackProperty()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="214" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:214</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Rectangle.html" target="_self" >Rectangle</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="movePoint"></a>
+                        <span class="name">
+                            <b>
+                            movePoint
+                            </b>
+                            <a href="#movePoint"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>movePoint(toPosition: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, editPoint: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:131</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>toPosition</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>editPoint</td>
+                                                        <td>
+                                                                    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moveShape"></a>
+                        <span class="name">
+                            <b>
+                            moveShape
+                            </b>
+                            <a href="#moveShape"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>moveShape(startMovingPosition: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, draggedToPosition: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:139</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>startMovingPosition</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>draggedToPosition</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moveTempMovingPoint"></a>
+                        <span class="name">
+                            <b>
+                            moveTempMovingPoint
+                            </b>
+                            <a href="#moveTempMovingPoint"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>moveTempMovingPoint(toPosition: <a href="../interfaces/Cartesian3.html">Cartesian3</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:168</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>toPosition</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="removePoint"></a>
+                        <span class="name">
+                            <b>
+                            removePoint
+                            </b>
+                            <a href="#removePoint"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>removePoint(pointToRemove: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:174</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>pointToRemove</td>
+                                                        <td>
+                                                                    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="removePosition"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            removePosition
+                            </b>
+                            <a href="#removePosition"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>removePosition(point: <a href="../classes/EditPoint.html">EditPoint</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="218" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:218</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>point</td>
+                                                        <td>
+                                                                    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setPointsManually"></a>
+                        <span class="name">
+                            <b>
+                            setPointsManually
+                            </b>
+                            <a href="#setPointsManually"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setPointsManually(points: <a href="../classes/EditPoint.html">EditPoint[]</a>, widthMeters?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:95</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>points</td>
+                                                        <td>
+                                                                    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint[]</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>widthMeters</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updatePointsLayer"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            updatePointsLayer
+                            </b>
+                            <a href="#updatePointsLayer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>updatePointsLayer(point: <a href="../classes/EditPoint.html">EditPoint[]</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="227" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:227</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>point</td>
+                                                        <td>
+                                                                    <code><a href="../classes/EditPoint.html" target="_self" >EditPoint[]</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updateRectangleLayer"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            updateRectangleLayer
+                            </b>
+                            <a href="#updateRectangleLayer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>updateRectangleLayer()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="231" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:231</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="create"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            create
+                            </b>
+                            <a href="#create"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>create(json?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/AcEntity.html" target="_self" >AcEntity</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in AcEntity:18</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates entity from a json</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>json</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>entity object</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>entity as AcEntity</p>
+
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="labels"></a>
+                        <span class="name"><b>labels</b><a href="#labels"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>labels()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:40</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>labels(labels: [])</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:44</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>labels</td>
+                                                    
+                                                            <td>
+                                                                        <code>[]</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rectangleProps"></a>
+                        <span class="name"><b>rectangleProps</b><a href="#rectangleProps"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>rectangleProps()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:58</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>rectangleProps(value)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:62</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="defaultPointProps"></a>
+                        <span class="name"><b>defaultPointProps</b><a href="#defaultPointProps"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>defaultPointProps()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:66</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>defaultPointProps(value)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:70</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="enableEdit"></a>
+                        <span class="name"><b>enableEdit</b><a href="#enableEdit"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>enableEdit()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:74</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>enableEdit(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/models/editable-rectangle.ts:78</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AcEntity } from &#x27;../../angular-cesium/models/ac-entity&#x27;;
+import { EditPoint } from &#x27;./edit-point&#x27;;
+import { AcLayerComponent } from &#x27;../../angular-cesium/components/ac-layer/ac-layer.component&#x27;;
+import { Cartesian3 } from &#x27;../../angular-cesium/models/cartesian3&#x27;;
+import { Rectangle } from &#x27;../../angular-cesium/models/rectangle&#x27;;
+import { CoordinateConverter } from &#x27;../../angular-cesium/services/coordinate-converter/coordinate-converter.service&#x27;;
+import { GeoUtilsService } from &#x27;../../angular-cesium/services/geo-utils/geo-utils.service&#x27;;
+import { RectangleEditOptions, RectangleProps } from &#x27;./rectangle-edit-options&#x27;;
+import { PointProps } from &#x27;./polyline-edit-options&#x27;;
+import { defaultLabelProps, LabelProps } from &#x27;./label-props&#x27;;
+
+export class EditableRectangle extends AcEntity {
+  private positions: EditPoint[] &#x3D; [];
+  private movingPoint: EditPoint;
+  private done &#x3D; false;
+  private _enableEdit &#x3D; true;
+  private _defaultPointProps: PointProps;
+  private _rectangleProps: RectangleProps;
+  private lastDraggedToPosition: Cartesian3;
+  private _labels: LabelProps[] &#x3D; [];
+
+  constructor(
+    private id: string,
+    private pointsLayer: AcLayerComponent,
+    private rectangleLayer: AcLayerComponent,
+    private coordinateConverter: CoordinateConverter,
+    editOptions: RectangleEditOptions,
+    positions?: Cartesian3[]
+  ) {
+    super();
+    this.defaultPointProps &#x3D; {...editOptions.pointProps};
+    this.rectangleProps &#x3D; {...editOptions.rectangleProps};
+    if (positions &amp;&amp; positions.length &#x3D;&#x3D;&#x3D; 2) {
+      this.createFromExisting(positions);
+    } else if (positions) {
+      throw new Error(&#x27;Rectangle consist of 2 points but provided &#x27; + positions.length);
+    }
+  }
+
+  get labels(): LabelProps[] {
+    return this._labels;
+  }
+
+  set labels(labels: LabelProps[]) {
+    if (!labels) {
+      return;
+    }
+    const positions &#x3D; this.getRealPositions();
+    this._labels &#x3D; labels.map((label, index) &#x3D;&gt; {
+      if (!label.position) {
+        label.position &#x3D; positions[index];
+      }
+
+      return Object.assign({}, defaultLabelProps, label);
+    });
+  }
+
+  get rectangleProps(): RectangleProps {
+    return this._rectangleProps;
+  }
+
+  set rectangleProps(value: RectangleProps) {
+    this._rectangleProps &#x3D; value;
+  }
+
+  get defaultPointProps(): PointProps {
+    return this._defaultPointProps;
+  }
+
+  set defaultPointProps(value: PointProps) {
+    this._defaultPointProps &#x3D; value;
+  }
+
+  get enableEdit() {
+    return this._enableEdit;
+  }
+
+  set enableEdit(value: boolean) {
+    this._enableEdit &#x3D; value;
+    this.positions.forEach(point &#x3D;&gt; {
+      point.show &#x3D; value;
+      this.updatePointsLayer(point);
+    });
+  }
+
+  private createFromExisting(positions: Cartesian3[]) {
+    positions.forEach(position &#x3D;&gt; {
+      this.addPointFromExisting(position);
+    });
+    this.updateRectangleLayer();
+    this.updatePointsLayer(...this.positions);
+    this.done &#x3D; true;
+  }
+
+  setPointsManually(points: EditPoint[], widthMeters?: number) {
+    if (!this.done) {
+      throw new Error(&#x27;Update manually only in edit mode, after rectangle is created&#x27;);
+    }
+    this.positions.forEach(p &#x3D;&gt; this.pointsLayer.remove(p.getId()));
+    this.positions &#x3D; points;
+    this.updatePointsLayer(...points);
+    this.updateRectangleLayer();
+  }
+
+  addPointFromExisting(position: Cartesian3) {
+    const newPoint &#x3D; new EditPoint(this.id, position, this.defaultPointProps);
+    this.positions.push(newPoint);
+    this.updatePointsLayer(newPoint);
+  }
+
+  addPoint(position: Cartesian3) {
+    if (this.done) {
+      return;
+    }
+    const isFirstPoint &#x3D; !this.positions.length;
+    if (isFirstPoint) {
+      const firstPoint &#x3D; new EditPoint(this.id, position, this.defaultPointProps);
+      this.positions.push(firstPoint);
+      this.movingPoint &#x3D; new EditPoint(this.id, position.clone(), this.defaultPointProps);
+      this.positions.push(this.movingPoint);
+      this.updatePointsLayer(firstPoint);
+    } else {
+
+      this.updatePointsLayer(...this.positions);
+      this.updateRectangleLayer();
+      this.done &#x3D; true;
+      this.movingPoint &#x3D; null;
+    }
+  }
+
+  movePoint(toPosition: Cartesian3, editPoint: EditPoint) {
+    if (!editPoint.isVirtualEditPoint()) {
+      editPoint.setPosition(toPosition);
+      this.updatePointsLayer(...this.positions);
+      this.updateRectangleLayer();
+    }
+  }
+
+  moveShape(startMovingPosition: Cartesian3, draggedToPosition: Cartesian3) {
+    if (!this.lastDraggedToPosition) {
+      this.lastDraggedToPosition &#x3D; startMovingPosition;
+    }
+
+    const lastDraggedCartographic &#x3D; Cesium.Cartographic.fromCartesian(this.lastDraggedToPosition);
+    const draggedToPositionCartographic &#x3D; Cesium.Cartographic.fromCartesian(draggedToPosition);
+    this.getRealPoints().forEach(point &#x3D;&gt; {
+      const cartographic &#x3D; Cesium.Cartographic.fromCartesian(point.getPosition());
+      cartographic.longitude +&#x3D; (draggedToPositionCartographic.longitude - lastDraggedCartographic.longitude);
+      cartographic.latitude +&#x3D; (draggedToPositionCartographic.latitude - lastDraggedCartographic.latitude);
+      point.setPosition(Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, 0));
+    });
+
+    this.updatePointsLayer(...this.positions);
+    this.updateRectangleLayer();
+    this.lastDraggedToPosition &#x3D; draggedToPosition;
+  }
+
+  endMoveShape() {
+    this.lastDraggedToPosition &#x3D; undefined;
+    this.positions.forEach(point &#x3D;&gt; this.updatePointsLayer(point));
+    this.updateRectangleLayer();
+  }
+
+  endMovePoint() {
+    this.updatePointsLayer(...this.positions);
+  }
+
+  moveTempMovingPoint(toPosition: Cartesian3) {
+    if (this.movingPoint) {
+      this.movePoint(toPosition, this.movingPoint);
+    }
+  }
+
+  removePoint(pointToRemove: EditPoint) {
+    this.removePosition(pointToRemove);
+    this.positions.filter(p &#x3D;&gt; p.isVirtualEditPoint()).forEach(p &#x3D;&gt; this.removePosition(p));
+  }
+
+  addLastPoint(position: Cartesian3) {
+    this.done &#x3D; true;
+    this.removePosition(this.movingPoint); // remove movingPoint
+    this.movingPoint &#x3D; null;
+  }
+
+  getRealPositions(): Cartesian3[] {
+    return this.getRealPoints().map(position &#x3D;&gt; position.getPosition());
+  }
+
+  getRealPositionsCallbackProperty() {
+    return new Cesium.CallbackProperty(this.getRealPositions.bind(this), false);
+  }
+
+  getRealPoints(): EditPoint[] {
+    return this.positions.filter(position &#x3D;&gt; !position.isVirtualEditPoint());
+  }
+
+  getPositions(): Cartesian3[] {
+    return this.positions.map(position &#x3D;&gt; position.getPosition());
+  }
+
+  getRectangle(): Rectangle {
+    const cartographics &#x3D; this.getPositions().map(cartesian &#x3D;&gt; Cesium.Cartographic.fromCartesian(cartesian));
+    const longitudes &#x3D; cartographics.map(position &#x3D;&gt; position.longitude);
+    const latitudes &#x3D; cartographics.map(position &#x3D;&gt;  position.latitude);
+
+    return new Cesium.Rectangle(
+      Math.min(...longitudes),
+      Math.min(...latitudes),
+      Math.max(...longitudes),
+      Math.max(...latitudes)
+    );
+  }
+
+  getRectangleCallbackProperty(): Rectangle {
+    return new Cesium.CallbackProperty(this.getRectangle.bind(this), false);
+  }
+
+  private removePosition(point: EditPoint) {
+    const index &#x3D; this.positions.findIndex(p &#x3D;&gt; p &#x3D;&#x3D;&#x3D; point);
+    if (index &lt; 0) {
+      return;
+    }
+    this.positions.splice(index, 1);
+    this.pointsLayer.remove(point.getId());
+  }
+
+  private updatePointsLayer(...point: EditPoint[]) {
+    point.forEach(p &#x3D;&gt; this.pointsLayer.update(p, p.getId()));
+  }
+
+  private updateRectangleLayer() {
+    this.rectangleLayer.update(this, this.id);
+  }
+
+  dispose() {
+    this.rectangleLayer.remove(this.id);
+
+    this.positions.forEach(editPoint &#x3D;&gt; {
+      this.pointsLayer.remove(editPoint.getId());
+    });
+    if (this.movingPoint) {
+      this.pointsLayer.remove(this.movingPoint.getId());
+      this.movingPoint &#x3D; undefined;
+    }
+    this.positions.length &#x3D; 0;
+  }
+
+  getPointsCount(): number {
+    return this.positions.length;
+  }
+
+  getId() {
+    return this.id;
+  }
+}
+
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'EditableRectangle.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

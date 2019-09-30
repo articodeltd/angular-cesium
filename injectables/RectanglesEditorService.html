@@ -1,0 +1,1770 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular Cesium</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/stripe.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Angular Cesium</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>RectanglesEditorService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for creating editable rectangles</p>
+<p>You must provide <code>RectanglesEditorService</code> yourself.
+RectanglesEditorService works together with <code>&lt;rectangles-editor&gt;</code> component. Therefor you need to create <code>&lt;rectangles-editor&gt;</code>
+for each <code>RectanglesEditorService</code>, And of course somewhere under <code>&lt;ac-map&gt;</code>/</p>
+<ul>
+<li><code>create</code> for starting a creation of the shape over the map. Returns a extension of <code>RectangleEditorObservable</code>.</li>
+<li><code>edit</code> for editing shape over the map starting from a given positions. Returns an extension of <code>RectangleEditorObservable</code>.</li>
+<li>To stop editing call <code>dsipose()</code> from the <code>RectangleEditorObservable</code> you get back from <code>create()</code> \ <code>edit()</code>.</li>
+</ul>
+<p><strong>Labels over editted shapes</strong>
+Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+To add label drawing logic to your editor use the function <code>setLabelsRenderFn()</code> that is defined on the
+<code>RectangleEditorObservable</code> that is returned from calling <code>create()</code> \ <code>edit()</code> of one of the editor services.
+<code>setLabelsRenderFn()</code> - receives a callback that is called every time the shape is redrawn
+(except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+The callback should return type <code>LabelProps[]</code>.
+You can also use <code>updateLabels()</code> to pass an array of labels of type <code>LabelProps[]</code> to be drawn.</p>
+<p>usage:</p>
+<div><pre class="line-numbers"><code class="language-typescript"> *  // Start creating rectangle
+ *  const editing$ = rectanglesEditorService.create();
+ *  this.editing$.subscribe(editResult =&gt; {
+ *                console.log(editResult.positions);
+ *        });
+ *
+ *  // Or edit rectangle from existing rectangle positions
+ *  const editing$ = this.rectanglesEditorService.edit(initialPos);
+ *
+ *</code></pre></div>
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cameraService">cameraService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cesiumScene">cesiumScene</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#coordinateConverter">coordinateConverter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#mapEventsManager">mapEventsManager</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#observablesMap">observablesMap</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#rectanglesManager">rectanglesManager</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updatePublisher">updatePublisher</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updateSubject">updateSubject</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#create">create</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createEditorObservable">createEditorObservable</a>
+                            </li>
+                            <li>
+                                <a href="#edit">edit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#editRectangle">editRectangle</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getPoints">getPoints</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getPositions">getPositions</a>
+                            </li>
+                            <li>
+                                <a href="#init">init</a>
+                            </li>
+                            <li>
+                                <a href="#onUpdate">onUpdate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setOptions">setOptions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="create"></a>
+                        <span class="name">
+                            <b>
+                            create
+                            </b>
+                            <a href="#create"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>create(options, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:118</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>DEFAULT_RECTANGLE_OPTIONS</code>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>priority</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>100</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Rectangle.html" target="_self" >RectangleEditorObservable</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createEditorObservable"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            createEditorObservable
+                            </b>
+                            <a href="#createEditorObservable"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>createEditorObservable(observableToExtend: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="359" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:359</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>observableToExtend</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Rectangle.html" target="_self" >RectangleEditorObservable</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edit"></a>
+                        <span class="name">
+                            <b>
+                            edit
+                            </b>
+                            <a href="#edit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>edit(positions: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>, options, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="212" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:212</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>positions</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>DEFAULT_RECTANGLE_OPTIONS</code>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>priority</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>100</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Rectangle.html" target="_self" >RectangleEditorObservable</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="editRectangle"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            editRectangle
+                            </b>
+                            <a href="#editRectangle"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>editRectangle(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, positions: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, editSubject: <a href="../interfaces/RectangleEditUpdate.html">Subject<RectangleEditUpdate></a>, options: <a href="../interfaces/RectangleEditOptions.html">RectangleEditOptions</a>, editObservable?: <a href="../interfaces/Rectangle.html">RectangleEditorObservable</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="245" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:245</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>positions</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3[]</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>priority</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>editSubject</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/RectangleEditUpdate.html" target="_self" >Subject&lt;RectangleEditUpdate&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/RectangleEditOptions.html" target="_self" >RectangleEditOptions</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>editObservable</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Rectangle.html" target="_self" >RectangleEditorObservable</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/Rectangle.html" target="_self" >RectangleEditorObservable</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getPoints"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            getPoints
+                            </b>
+                            <a href="#getPoints"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getPoints(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="438" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:438</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getPositions"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            getPositions
+                            </b>
+                            <a href="#getPositions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getPositions(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="433" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:433</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="init"></a>
+                        <span class="name">
+                            <b>
+                            init
+                            </b>
+                            <a href="#init"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>init(mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, cameraService: <a href="../injectables/CameraService.html">CameraService</a>, rectanglesManager: <a href="../injectables/RectanglesManagerService.html">RectanglesManagerService</a>, cesiumViewer: <a href="../injectables/CesiumService.html">CesiumService</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:99</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>mapEventsManager</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>coordinateConverter</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>cameraService</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>rectanglesManager</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/RectanglesManagerService.html" target="_self" >RectanglesManagerService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>cesiumViewer</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onUpdate"></a>
+                        <span class="name">
+                            <b>
+                            onUpdate
+                            </b>
+                            <a href="#onUpdate"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>onUpdate()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:114</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/RectangleEditUpdate.html" target="_self" >Observable&lt;RectangleEditUpdate&gt;</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setOptions"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            setOptions
+                            </b>
+                            <a href="#setOptions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>setOptions(options: <a href="../interfaces/RectangleEditOptions.html">RectangleEditOptions</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="332" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:332</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/RectangleEditOptions.html" target="_self" >RectangleEditOptions</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cameraService"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            cameraService
+                            </b>
+                            <a href="#cameraService"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>cameraService:     <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:94</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cesiumScene"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            cesiumScene
+                            </b>
+                            <a href="#cesiumScene"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>cesiumScene:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:97</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="coordinateConverter"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            coordinateConverter
+                            </b>
+                            <a href="#coordinateConverter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>coordinateConverter:     <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:93</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mapEventsManager"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            mapEventsManager
+                            </b>
+                            <a href="#mapEventsManager"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>mapEventsManager:     <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:90</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="observablesMap"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            observablesMap
+                            </b>
+                            <a href="#observablesMap"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>observablesMap:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Map&lt;string, DisposableObservable&lt;any&gt;[]&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:96</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rectanglesManager"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            rectanglesManager
+                            </b>
+                            <a href="#rectanglesManager"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>rectanglesManager:     <code><a href="../injectables/RectanglesManagerService.html" target="_self" >RectanglesManagerService</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/RectanglesManagerService.html" target="_self" >RectanglesManagerService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:95</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updatePublisher"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            updatePublisher
+                            </b>
+                            <a href="#updatePublisher"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>updatePublisher:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>publish&lt;RectangleEditUpdate&gt;()(this.updateSubject)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:92</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updateSubject"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            updateSubject
+                            </b>
+                            <a href="#updateSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>updateSubject:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;RectangleEditUpdate&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/rectangles-editor/rectangles-editor.service.ts:91</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { publish, tap } from &#x27;rxjs/operators&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { CesiumService } from &#x27;../../../../angular-cesium/services/cesium/cesium.service&#x27;;
+import { MapEventsManagerService } from &#x27;../../../../angular-cesium/services/map-events-mananger/map-events-manager&#x27;;
+import { BehaviorSubject, Observable, Subject } from &#x27;rxjs&#x27;;
+import { CesiumEvent } from &#x27;../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum&#x27;;
+import { PickOptions } from &#x27;../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum&#x27;;
+import { RectangleEditUpdate } from &#x27;../../../models/rectangle-edit-update&#x27;;
+import { EditModes } from &#x27;../../../models/edit-mode.enum&#x27;;
+import { EditActions } from &#x27;../../../models/edit-actions.enum&#x27;;
+import { DisposableObservable } from &#x27;../../../../angular-cesium/services/map-events-mananger/disposable-observable&#x27;;
+import { CoordinateConverter } from &#x27;../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service&#x27;;
+import { EditPoint } from &#x27;../../../models/edit-point&#x27;;
+import { CameraService } from &#x27;../../../../angular-cesium/services/camera/camera.service&#x27;;
+import { Cartesian3 } from &#x27;../../../../angular-cesium/models/cartesian3&#x27;;
+import { RectanglesManagerService } from &#x27;./rectangles-manager.service&#x27;;
+import { RectangleEditorObservable } from &#x27;../../../models/rectangle-editor-observable&#x27;;
+import { EditableRectangle } from &#x27;../../../models/editable-rectangle&#x27;;
+import { RectangleEditOptions } from &#x27;../../../models/rectangle-edit-options&#x27;;
+import { PointProps } from &#x27;../../../models/polyline-edit-options&#x27;;
+import { LabelProps } from &#x27;../../../models/label-props&#x27;;
+import { generateKey } from &#x27;../../utils&#x27;;
+
+export const DEFAULT_RECTANGLE_OPTIONS: RectangleEditOptions &#x3D; {
+  addPointEvent: CesiumEvent.LEFT_CLICK,
+  dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
+  dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
+  allowDrag: true,
+  pointProps: {
+    color: Cesium.Color.WHITE.withAlpha(0.95),
+    outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
+    outlineWidth: 1,
+    pixelSize: 13,
+    virtualPointPixelSize: 8,
+    show: true,
+    showVirtual: true,
+    disableDepthTestDistance: Number.POSITIVE_INFINITY,
+  },
+  rectangleProps: {
+    height: 0,
+    extrudedHeight: 0,
+    material: Cesium.Color.CORNFLOWERBLUE.withAlpha(0.4),
+    fill: true,
+    classificationType: Cesium.ClassificationType.BOTH,
+    outline: true,
+    outlineColor: Cesium.Color.WHITE,
+    zIndex: 0,
+  },
+  clampHeightTo3D: false,
+  clampHeightTo3DOptions: {
+    clampToTerrain: false,
+  },
+};
+
+/**
+ * Service for creating editable rectangles
+ *
+ * You must provide &#x60;RectanglesEditorService&#x60; yourself.
+ * RectanglesEditorService works together with &#x60;&lt;rectangles-editor&gt;&#x60; component. Therefor you need to create &#x60;&lt;rectangles-editor&gt;&#x60;
+ * for each &#x60;RectanglesEditorService&#x60;, And of course somewhere under &#x60;&lt;ac-map&gt;&#x60;/
+ *
+ * + &#x60;create&#x60; for starting a creation of the shape over the map. Returns a extension of &#x60;RectangleEditorObservable&#x60;.
+ * + &#x60;edit&#x60; for editing shape over the map starting from a given positions. Returns an extension of &#x60;RectangleEditorObservable&#x60;.
+ * + To stop editing call &#x60;dsipose()&#x60; from the &#x60;RectangleEditorObservable&#x60; you get back from &#x60;create()&#x60; \ &#x60;edit()&#x60;.
+ *
+ * **Labels over editted shapes**
+ * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+ * To add label drawing logic to your editor use the function &#x60;setLabelsRenderFn()&#x60; that is defined on the
+ * &#x60;RectangleEditorObservable&#x60; that is returned from calling &#x60;create()&#x60; \ &#x60;edit()&#x60; of one of the editor services.
+ * &#x60;setLabelsRenderFn()&#x60; - receives a callback that is called every time the shape is redrawn
+ * (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+ * The callback should return type &#x60;LabelProps[]&#x60;.
+ * You can also use &#x60;updateLabels()&#x60; to pass an array of labels of type &#x60;LabelProps[]&#x60; to be drawn.
+ *
+ * usage:
+ * &#x60;&#x60;&#x60;typescript
+ *  // Start creating rectangle
+ *  const editing$ &#x3D; rectanglesEditorService.create();
+ *  this.editing$.subscribe(editResult &#x3D;&gt; {
+ *				console.log(editResult.positions);
+ *		});
+ *
+ *  // Or edit rectangle from existing rectangle positions
+ *  const editing$ &#x3D; this.rectanglesEditorService.edit(initialPos);
+ *
+ * &#x60;&#x60;&#x60;
+ */
+@Injectable()
+export class RectanglesEditorService {
+  private mapEventsManager: MapEventsManagerService;
+  private updateSubject &#x3D; new Subject&lt;RectangleEditUpdate&gt;();
+  private updatePublisher &#x3D; publish&lt;RectangleEditUpdate&gt;()(this.updateSubject); // TODO maybe not needed
+  private coordinateConverter: CoordinateConverter;
+  private cameraService: CameraService;
+  private rectanglesManager: RectanglesManagerService;
+  private observablesMap &#x3D; new Map&lt;string, DisposableObservable&lt;any&gt;[]&gt;();
+  private cesiumScene: any;
+
+  init(mapEventsManager: MapEventsManagerService,
+       coordinateConverter: CoordinateConverter,
+       cameraService: CameraService,
+       rectanglesManager: RectanglesManagerService,
+       cesiumViewer: CesiumService,
+  ) {
+    this.mapEventsManager &#x3D; mapEventsManager;
+    this.coordinateConverter &#x3D; coordinateConverter;
+    this.cameraService &#x3D; cameraService;
+    this.rectanglesManager &#x3D; rectanglesManager;
+    this.updatePublisher.connect();
+
+    this.cesiumScene &#x3D; cesiumViewer.getScene();
+  }
+
+  onUpdate(): Observable&lt;RectangleEditUpdate&gt; {
+    return this.updatePublisher;
+  }
+
+  create(options &#x3D; DEFAULT_RECTANGLE_OPTIONS, priority &#x3D; 100): RectangleEditorObservable {
+    const positions: Cartesian3[] &#x3D; [];
+    const id &#x3D; generateKey();
+    const rectangleOptions &#x3D; this.setOptions(options);
+
+    const clientEditSubject &#x3D; new BehaviorSubject&lt;RectangleEditUpdate&gt;({
+      id,
+      editAction: null,
+      editMode: EditModes.CREATE
+    });
+    let finishedCreate &#x3D; false;
+
+    this.updateSubject.next({
+      id,
+      positions,
+      editMode: EditModes.CREATE,
+      editAction: EditActions.INIT,
+      rectangleOptions: rectangleOptions,
+    });
+
+    const mouseMoveRegistration &#x3D; this.mapEventsManager.register({
+      event: CesiumEvent.MOUSE_MOVE,
+      pick: PickOptions.NO_PICK,
+      priority,
+    });
+    const addPointRegistration &#x3D; this.mapEventsManager.register({
+      event: rectangleOptions.addPointEvent,
+      pick: PickOptions.NO_PICK,
+      priority,
+    });
+
+    this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration ]);
+    const editorObservable &#x3D; this.createEditorObservable(clientEditSubject, id);
+
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
+      const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+
+      if (position) {
+        this.updateSubject.next({
+          id,
+          positions: this.getPositions(id),
+          editMode: EditModes.CREATE,
+          updatedPosition: position,
+          editAction: EditActions.MOUSE_MOVE,
+        });
+      }
+    });
+
+    addPointRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
+      if (finishedCreate) {
+        return;
+      }
+      const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+      if (!position) {
+        return;
+      }
+      const allPositions &#x3D; this.getPositions(id);
+      const isFirstPoint &#x3D; this.getPositions(id).length &#x3D;&#x3D;&#x3D; 0;
+
+      const updateValue &#x3D; {
+        id,
+        positions: allPositions,
+        editMode: EditModes.CREATE,
+        updatedPosition: position,
+        editAction: EditActions.ADD_POINT,
+      };
+      this.updateSubject.next(updateValue);
+      clientEditSubject.next({
+        ...updateValue,
+        positions: this.getPositions(id),
+        points: this.getPoints(id),
+      });
+
+      if (!isFirstPoint) {
+        const changeMode &#x3D; {
+          id,
+          editMode: EditModes.CREATE,
+          editAction: EditActions.CHANGE_TO_EDIT,
+        };
+        this.updateSubject.next(changeMode);
+        clientEditSubject.next(changeMode);
+        if (this.observablesMap.has(id)) {
+          this.observablesMap.get(id).forEach(registration &#x3D;&gt; registration.dispose());
+        }
+        this.observablesMap.delete(id);
+        this.editRectangle(id, positions, priority, clientEditSubject, rectangleOptions, editorObservable);
+        finishedCreate &#x3D; true;
+      }
+
+    });
+
+    return editorObservable;
+  }
+
+  edit(positions: Cartesian3[], options &#x3D; DEFAULT_RECTANGLE_OPTIONS, priority &#x3D; 100): RectangleEditorObservable {
+    if (positions.length !&#x3D;&#x3D; 2) {
+      throw new Error(&#x27;Rectangles editor error edit(): rectangle should have at least 2 positions&#x27;);
+    }
+    const id &#x3D; generateKey();
+    const rectangleOptions &#x3D; this.setOptions(options);
+    const editSubject &#x3D; new BehaviorSubject&lt;RectangleEditUpdate&gt;({
+      id,
+      editAction: null,
+      editMode: EditModes.EDIT
+    });
+    const update &#x3D; {
+      id,
+      positions: positions,
+      editMode: EditModes.EDIT,
+      editAction: EditActions.INIT,
+      rectangleOptions: rectangleOptions,
+    };
+    this.updateSubject.next(update);
+    editSubject.next({
+      ...update,
+      positions: this.getPositions(id),
+      points: this.getPoints(id),
+    });
+    return this.editRectangle(
+      id,
+      positions,
+      priority,
+      editSubject,
+      rectangleOptions
+    );
+  }
+
+  private editRectangle(id: string,
+                      positions: Cartesian3[],
+                      priority: number,
+                      editSubject: Subject&lt;RectangleEditUpdate&gt;,
+                      options: RectangleEditOptions,
+                      editObservable?: RectangleEditorObservable): RectangleEditorObservable {
+
+    const pointDragRegistration &#x3D; this.mapEventsManager.register({
+      event: options.dragPointEvent,
+      entityType: EditPoint,
+      pick: PickOptions.PICK_FIRST,
+      priority,
+      pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
+    });
+
+    let shapeDragRegistration;
+    if (options.allowDrag) {
+      shapeDragRegistration &#x3D; this.mapEventsManager.register({
+        event: options.dragShapeEvent,
+        entityType: EditableRectangle,
+        pick: PickOptions.PICK_FIRST,
+        priority,
+        pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.id,
+      });
+    }
+
+    pointDragRegistration.pipe(
+      tap(({ movement: { drop } }) &#x3D;&gt; this.cameraService.enableInputs(drop)))
+      .subscribe(({ movement: { endPosition, drop }, entities }) &#x3D;&gt; {
+        const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+        if (!position) {
+          return;
+        }
+        const point: EditPoint &#x3D; entities[0];
+
+        const update &#x3D; {
+          id,
+          positions: this.getPositions(id),
+          editMode: EditModes.EDIT,
+          updatedPosition: position,
+          updatedPoint: point,
+          editAction: drop ? EditActions.DRAG_POINT_FINISH : EditActions.DRAG_POINT,
+        };
+        this.updateSubject.next(update);
+        editSubject.next({
+          ...update,
+          positions: this.getPositions(id),
+          points: this.getPoints(id),
+        });
+      });
+
+    if (shapeDragRegistration) {
+      shapeDragRegistration
+        .pipe(tap(({ movement: { drop } }) &#x3D;&gt; this.cameraService.enableInputs(drop)))
+        .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) &#x3D;&gt; {
+          const endDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
+          const startDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(startPosition);
+          if (!endDragPosition) {
+            return;
+          }
+
+          const update &#x3D; {
+            id,
+            positions: this.getPositions(id),
+            editMode: EditModes.EDIT,
+            updatedPosition: endDragPosition,
+            draggedPosition: startDragPosition,
+            editAction: drop ? EditActions.DRAG_SHAPE_FINISH : EditActions.DRAG_SHAPE,
+          };
+          this.updateSubject.next(update);
+          editSubject.next({
+            ...update,
+            positions: this.getPositions(id),
+            points: this.getPoints(id),
+          });
+        });
+    }
+
+    const observables &#x3D; [pointDragRegistration];
+    if (shapeDragRegistration) {
+      observables.push(shapeDragRegistration);
+    }
+
+    this.observablesMap.set(id, observables);
+    return editObservable || this.createEditorObservable(editSubject, id);
+  }
+
+  private setOptions(options: RectangleEditOptions) {
+    const defaultClone &#x3D; JSON.parse(JSON.stringify(DEFAULT_RECTANGLE_OPTIONS));
+    const rectangleOptions: RectangleEditOptions &#x3D; Object.assign(defaultClone, options);
+    rectangleOptions.pointProps &#x3D; Object.assign({}, DEFAULT_RECTANGLE_OPTIONS.pointProps, options.pointProps);
+    rectangleOptions.rectangleProps &#x3D; Object.assign({}, DEFAULT_RECTANGLE_OPTIONS.rectangleProps, options.rectangleProps);
+
+    if (options.clampHeightTo3D) {
+      if (!this.cesiumScene.pickPositionSupported || !this.cesiumScene.clampToHeightSupported) {
+        throw new Error(&#x60;Cesium pickPosition and clampToHeight must be supported to use clampHeightTo3D&#x60;);
+      }
+
+      if (this.cesiumScene.pickTranslucentDepth) {
+        console.warn(&#x60;Cesium scene.pickTranslucentDepth must be false in order to make the editors work properly on 3D&#x60;);
+      }
+
+      if (rectangleOptions.pointProps.color.alpha &#x3D;&#x3D;&#x3D; 1 || rectangleOptions.pointProps.outlineColor.alpha &#x3D;&#x3D;&#x3D; 1) {
+        console.warn(&#x27;Point color and outline color must have alpha in order to make the editor work properly on 3D&#x27;);
+      }
+
+      rectangleOptions.pointProps.heightReference &#x3D;  rectangleOptions.clampHeightTo3DOptions.clampToTerrain ?
+        Cesium.HeightReference.CLAMP_TO_GROUND : Cesium.HeightReference.RELATIVE_TO_GROUND;
+      rectangleOptions.pointProps.disableDepthTestDistance &#x3D; Number.POSITIVE_INFINITY;
+    }
+    return rectangleOptions;
+  }
+
+
+  private createEditorObservable(observableToExtend: any, id: string): RectangleEditorObservable {
+    observableToExtend.dispose &#x3D; () &#x3D;&gt; {
+      const observables &#x3D; this.observablesMap.get(id);
+      if (observables) {
+        observables.forEach(obs &#x3D;&gt; obs.dispose());
+      }
+      this.observablesMap.delete(id);
+      this.updateSubject.next({
+        id,
+        positions: this.getPositions(id),
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.DISPOSE,
+      });
+    };
+    observableToExtend.enable &#x3D; () &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        positions: this.getPositions(id),
+        editMode: EditModes.EDIT,
+        editAction: EditActions.ENABLE,
+      });
+    };
+    observableToExtend.disable &#x3D; () &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        positions: this.getPositions(id),
+        editMode: EditModes.EDIT,
+        editAction: EditActions.DISABLE,
+      });
+    };
+
+    observableToExtend.setManually &#x3D; (firstPosition: Cartesian3,
+                                      secondPosition: Cartesian3,
+                                      firstPointProp?: PointProps,
+                                      secondPointProp?: PointProps) &#x3D;&gt; {
+      const firstP &#x3D; new EditPoint(id, firstPosition, firstPointProp ? firstPointProp : DEFAULT_RECTANGLE_OPTIONS.pointProps);
+      const secP &#x3D; new EditPoint(id, secondPosition, secondPointProp ? secondPointProp : DEFAULT_RECTANGLE_OPTIONS.pointProps);
+
+      const rectangle &#x3D; this.rectanglesManager.get(id);
+      rectangle.setPointsManually([firstP, secP]);
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_MANUALLY,
+      });
+    };
+
+    observableToExtend.setLabelsRenderFn &#x3D; (callback: any) &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_EDIT_LABELS_RENDER_CALLBACK,
+        labelsRenderFn: callback,
+      });
+    };
+
+    observableToExtend.updateLabels &#x3D; (labels: LabelProps[]) &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.UPDATE_EDIT_LABELS,
+        updateLabels: labels,
+      });
+    };
+
+    observableToExtend.getCurrentPoints &#x3D; () &#x3D;&gt; this.getPoints(id);
+
+    observableToExtend.getEditValue &#x3D; () &#x3D;&gt; observableToExtend.getValue();
+
+    observableToExtend.getLabels &#x3D; (): LabelProps[] &#x3D;&gt; this.rectanglesManager.get(id).labels;
+
+    return observableToExtend as RectangleEditorObservable;
+  }
+
+  private getPositions(id: any) {
+    const rectangle &#x3D; this.rectanglesManager.get(id);
+    return rectangle.getRealPositions();
+  }
+
+  private getPoints(id: any) {
+    const rectangle &#x3D; this.rectanglesManager.get(id);
+    return rectangle.getRealPoints();
+  }
+}
+
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'RectanglesEditorService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
