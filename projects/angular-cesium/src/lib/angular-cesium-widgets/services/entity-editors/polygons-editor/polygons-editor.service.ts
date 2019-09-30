@@ -29,7 +29,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.8),
+    color: Cesium.Color.WHITE.withAlpha(0.95),
     outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
     outlineWidth: 1,
     pixelSize: 13,
@@ -187,7 +187,8 @@ export class PolygonsEditorService {
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D, polygonOptions.clampHeightTo3DOptions.clampToTerrain);
+      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D,
+        polygonOptions.clampHeightTo3DOptions.clampToTerrain);
 
       if (position) {
         this.updateSubject.next({
@@ -204,7 +205,8 @@ export class PolygonsEditorService {
       if (finishedCreate) {
         return;
       }
-      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D, polygonOptions.clampHeightTo3DOptions.clampToTerrain);
+      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D,
+          polygonOptions.clampHeightTo3DOptions.clampToTerrain);
       if (!position) {
         return;
       }
@@ -242,7 +244,8 @@ export class PolygonsEditorService {
 
 
     addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D, polygonOptions.clampHeightTo3DOptions.clampToTerrain);
+      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D,
+        polygonOptions.clampHeightTo3DOptions.clampToTerrain);
       if (!position) {
         return;
       }

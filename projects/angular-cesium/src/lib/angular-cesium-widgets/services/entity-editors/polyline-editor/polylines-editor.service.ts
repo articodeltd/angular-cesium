@@ -28,7 +28,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.9),
+    color: Cesium.Color.WHITE.withAlpha(0.95),
     outlineColor: Cesium.Color.BLACK.withAlpha(0.5),
     outlineWidth: 1,
     pixelSize: 15,
@@ -179,7 +179,8 @@ export class PolylinesEditorService {
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions.clampToTerrain);
+      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D,
+        polylineOptions.clampHeightTo3DOptions.clampToTerrain);
       if (position) {
         this.updateSubject.next({
           id,
@@ -195,7 +196,8 @@ export class PolylinesEditorService {
       if (finishedCreate) {
         return;
       }
-      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions.clampToTerrain);
+      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D,
+        polylineOptions.clampHeightTo3DOptions.clampToTerrain);
       if (!position) {
         return;
       }
@@ -230,7 +232,8 @@ export class PolylinesEditorService {
     });
 
     addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions.clampToTerrain);
+      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D,
+        polylineOptions.clampHeightTo3DOptions.clampToTerrain);
       if (!position) {
         return;
       }
