@@ -70,5 +70,6 @@ export const defaultLabelProps: LabelProps = {
   text: '',
   translucencyByDistance: undefined,
   verticalOrigin: Cesium.VerticalOrigin.BASELINE,
+  eyeOffset: Cesium.Cartesian3.ZERO,
   disableDepthTestDistance: Number.POSITIVE_INFINITY,
 };

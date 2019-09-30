@@ -112,17 +112,26 @@ export class PolylinesEditorService {
     return this.updatePublisher;
   }
 
-  screenToPosition(cartesian2, clampHeightTo3D: boolean) {
+  screenToPosition(cartesian2, clampHeightTo3D: boolean, isTerrain?) {
     const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
+
     // If cartesian3 is undefined then the point inst on the globe
     if (clampHeightTo3D && cartesian3) {
-      const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
-      const latLon = CoordinateConverter.cartesian3ToLatLon(cartesian3PickPosition);
-      if (latLon.height < 0) {// means nothing picked -> Validate it
+      const globePositionPick = () => {
         const ray = this.cameraService.getCamera().getPickRay(cartesian2);
-        return  this.cesiumScene.globe.pick(ray, this.cesiumScene);
+        return this.cesiumScene.globe.pick(ray, this.cesiumScene);
+      };
+
+      if (isTerrain) {
+        return globePositionPick();
+      } else {
+        const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
+        const latLon = CoordinateConverter.cartesian3ToLatLon(cartesian3PickPosition);
+        if (latLon.height < 0) {// means nothing picked -> Validate it
+          return globePositionPick();
+        }
+        return this.cesiumScene.clampToHeight(cartesian3PickPosition);
       }
-      return this.cesiumScene.clampToHeight(cartesian3PickPosition);
     }
 
     return cartesian3;
@@ -170,7 +179,7 @@ export class PolylinesEditorService {
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
+      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions.clampToTerrain);
       if (position) {
         this.updateSubject.next({
           id,
@@ -186,7 +195,7 @@ export class PolylinesEditorService {
       if (finishedCreate) {
         return;
       }
-      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
+      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions.clampToTerrain);
       if (!position) {
         return;
       }
@@ -221,7 +230,7 @@ export class PolylinesEditorService {
     });
 
     addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
+      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions.clampToTerrain);
       if (!position) {
         return;
       }
@@ -376,7 +385,7 @@ export class PolylinesEditorService {
     pointDragRegistration.pipe(
       tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
-        const position = this.screenToPosition(endPosition, options.clampHeightTo3D);
+        const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions.clampToTerrain);
         if (!position) {
           return;
         }
