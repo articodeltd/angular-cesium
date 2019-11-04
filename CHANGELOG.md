@@ -1,3 +1,6 @@
+## Next
+### Fixes
+* Fix `AcHtml` toggle `show` created new html elements instead of updating the current element.
 
 ## 0.60
 ### Fixes
