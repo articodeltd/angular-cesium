@@ -36,9 +36,7 @@ export class AcHtmlDirective implements OnInit {
       const viewRef = this._viewContainerRef.createEmbeddedView(this._templateRef, context);
       this._views.set(id, {viewRef, context});
       this._changeDetector.detectChanges();
-    } else if (this._views.has(id) && !primitive.show) {
-      this.remove(id, primitive);
-    } else if (this._views.has(id) && primitive.show) {
+    }  else if (this._views.has(id) && primitive.show) {
       this._changeDetector.detectChanges();
     }
   }
