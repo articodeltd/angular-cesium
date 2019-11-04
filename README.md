@@ -260,7 +260,7 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + polyline volume - [`ac-polyline-volume-dec`](https://articodeltd.github.io/angular-cesium/components/AcPolylineVolumeDescComponent.html)
 + wall - [`ac-wall-dec`](https://articodeltd.github.io/angular-cesium/components/AcWallDescComponent.html)
 + rectangle -[`ac-rectangle-dec`](https://articodeltd.github.io/angular-cesium/components/AcRectangleDescComponent.html)
-* html - [`ac-html-desc`](https://articodeltd.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://articodeltd.github.io/angular-cesium/components/AcHtmlComponent.html)
+* html - [`ac-html-desc`](https://articodeltd.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://articodeltd.github.io/angular-cesium/components/AcHtmlComponent.html) / [stackblitz](https://stackblitz.com/edit/angular-cesium-html-example?embed=1&file=src/app/html-layer/html-example.component.ts)
 * array - [`ac-array-desc`](https://articodeltd.github.io/angular-cesium/components/AcArrayDescComponent.html)
 * czmlPacket - [`ac-czml-desc`](https://articodeltd.github.io/angular-cesium/components/AcCzmlDescComponent.html)
 
