@@ -7,15 +7,9 @@
       </div>
     </ng-template>
   </ac-html-desc>
-  <ac-label-desc props="{
-            position: html.position,
-            pixelOffset : pixelOffset([-15,20]),
-            text: html.name,
-            font: '15px sans-serif'
-        }">
-  </ac-label-desc>
 </ac-layer>
 <div class="remove-btn">
   <button mat-flat-button (click)="removeFirst()" >remove first</button>
   <button mat-flat-button (click)="updateHtml()">update data</button>
+  <button mat-flat-button (click)="toggleShow()">toggle show</button>
 </div>

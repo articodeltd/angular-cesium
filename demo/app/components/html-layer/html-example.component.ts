@@ -1,4 +1,4 @@
-import { from as observableFrom, Observable } from 'rxjs';
+import { from, from as observableFrom, Observable, Subject } from 'rxjs';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
@@ -7,9 +7,8 @@ import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
   templateUrl: './html-example.component.html',
   styleUrls: ['./html-example.component.css']
 })
-export class HtmlExampleComponent implements OnInit, AfterViewInit {
+export class HtmlExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
-
   htmls$: Observable<AcNotification>;
 
   html1 = {
@@ -36,22 +35,18 @@ export class HtmlExampleComponent implements OnInit, AfterViewInit {
   };
 
   constructor() {
-
-
     const htmlArray = [this.html1, this.html2];
-    this.htmls$ = observableFrom(htmlArray);
+    this.htmls$ = from(htmlArray);
   }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-
-  }
-
   updateHtml() {
-    this.html1.entity.name = 'tsahi';
-    this.layer.update(this.html1.entity, this.html1.id);
+    if (this.html1) {
+      this.html1.entity.name = 'tsahi';
+      this.layer.update(this.html1.entity, this.html1.id);
+    }
 
     this.html2.entity.name = 'gonen';
     this.html2.entity.position = Cesium.Cartesian3.fromDegrees(44, 44);
@@ -69,5 +64,13 @@ export class HtmlExampleComponent implements OnInit, AfterViewInit {
 
   removeFirst() {
     this.layer.remove('0');
+    this.html1 = null;
+  }
+
+  toggleShow() {
+    if (this.html1) {
+      this.html1.entity.show = !this.html1.entity.show;
+      this.layer.update(this.html1.entity, this.html1.id);
+    }
   }
 }
