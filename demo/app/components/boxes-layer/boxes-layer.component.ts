@@ -1,16 +1,17 @@
-import { Observable, of as observableOf, Subscriber } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
-import { AcEntity, AcNotification, ActionType } from 'angular-cesium';
+import { from, Observable } from 'rxjs';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AcNotification, ActionType } from 'angular-cesium';
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
-import { WebSocketSupplier } from '../../utils/services/webSocketSupplier/webSocketSupplier';
+import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'boxes-layer',
+  selector: 'boxes-layer-example',
   template: `
-    <ac-layer acFor="let track of simTracks$" [context]="this">
+    <ac-layer acFor="let box of boxes$" [context]="this" [debug]="true">
       <ac-box-desc props="{
-														position: track.position,
+														position: box.position,
 														dimensions: boxDimensions,
+														material: Cesium.Color.fromRandom(),
 														outline: true,
 														outlineWidth: 8,
 														outlineColor: Cesium.Color.BLACK
@@ -22,54 +23,28 @@ import { WebSocketSupplier } from '../../utils/services/webSocketSupplier/webSoc
 })
 export class BoxesLayerComponent implements OnInit {
 
-  simTracks$: Observable<AcNotification> = observableOf({
-    id: '1',
-    actionType: ActionType.ADD_UPDATE,
-    entity: {}
-  });
+  entities = [
+    {
+      id: '0',
+      position: Cesium.Cartesian3.fromDegrees(-100.0, 40.0, 300000.0),
+    },
+    {
+      id: '1',
+      position: Cesium.Cartesian3.fromDegrees(-120.0, 40.0, 300000.0),
+    }
+  ];
 
   boxDimensions = new Cesium.Cartesian3(800000, 800000, 800000);
+  boxes$: Observable<AcNotification>;
   Cesium = Cesium;
-  show = true;
 
-  constructor(webSocketSupllier: WebSocketSupplier) {
-    const socket = webSocketSupllier.get();
-    this.simTracks$ = Observable.create((observer: Subscriber<any>) => {
-      socket.on('birds', (data: any) => {
-        data.forEach(
-          (acNotification: any) => {
-            if (acNotification.action === 'ADD_OR_UPDATE') {
-              acNotification.actionType = ActionType.ADD_UPDATE;
-              acNotification.entity = new AcEntity(this.convertToCesiumObj(acNotification.entity));
-            } else if (acNotification.action === 'DELETE') {
-              acNotification.actionType = ActionType.DELETE;
-            }
-            observer.next(acNotification);
-          });
-      });
-    });
-  }
-
-  convertToCesiumObj(entity: any): any {
-
-    const fixedHeading = entity.heading - (Math.PI / 2);
-    const heading = fixedHeading;
-    const pitch = Cesium.Math.toRadians(0.0);
-    const roll = Cesium.Math.toRadians(0.0);
-
-    entity.scale = entity.id === 1 ? 0.3 : 0.15;
-    entity.alt = Math.round(entity.position.altitude);
-    entity.position = Cesium.Cartesian3.fromDegrees(entity.position.long, entity.position.lat, entity.alt);
-    entity.futurePosition =
-      Cesium.Cartesian3.fromDegrees(entity.futurePosition.long, entity.futurePosition.lat, entity.futurePosition.altitude);
-    const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
-    entity.orientation = Cesium.Transforms.headingPitchRollQuaternion(entity.position, hpr);
-
-    return entity;
-  }
-
+  constructor() {}
   ngOnInit() {
+    this.boxes$ = from(this.entities).pipe(map(entity => ({
+          id: entity.id,
+          actionType: ActionType.ADD_UPDATE,
+          entity: entity,
+        }
+    )));
   }
-
-
 }

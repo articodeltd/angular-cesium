@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AcLayerComponent, AcNotification } from 'angular-cesium';
+import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 import { Observable } from 'rxjs';
 import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
+import { MockDataProviderService } from '../../utils/services/dataProvider/mock-data-provider.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'circle-layer-example',
@@ -16,11 +18,16 @@ export class CircleLayerExampleComponent implements OnInit {
   Cesium = Cesium;
   show = true;
 
-  constructor(private tracksDataProvider: TracksDataProvider) {
+  constructor(private tracksDataProvider: TracksDataProvider, private mockDataProvider: MockDataProviderService) {
   }
 
   ngOnInit() {
-    this.circles$ = this.tracksDataProvider.get();
+    this.circles$ = this.mockDataProvider.getDataSteam$().pipe(map(entity => ({
+        id: entity.id,
+        actionType: ActionType.ADD_UPDATE,
+        entity: entity,
+      }
+    )));
   }
 
   removeAll() {
