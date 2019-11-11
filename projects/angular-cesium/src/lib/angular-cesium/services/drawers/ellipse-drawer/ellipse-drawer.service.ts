@@ -9,10 +9,6 @@ import { GraphicsType } from '../entities-drawer/enums/graphics-type.enum';
 @Injectable()
 export class EllipseDrawerService extends EntitiesDrawerService {
   constructor(cesiumService: CesiumService) {
-    super(cesiumService, GraphicsType.ellipse, {
-      collectionsNumber: 10,
-      collectionMaxSize: 450,
-      collectionSuspensionTime: 100
-    });
+    super(cesiumService, GraphicsType.ellipse);
   }
 }
