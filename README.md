@@ -113,12 +113,13 @@ Note that in the example below, only the relevant sections and values are shown.
 + You can configure cesium viewer style:
    ```css
    // styles.css
-   html, body, #cesiumContainer {
+   html, body, .map-container {
        width: 100%;
        height: 100%;
        margin: 0;
        padding: 0;
        overflow: hidden;
+       position: relative;
    }
    ```
 
@@ -249,18 +250,19 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + label - [`ac-label-desc`](https://articodeltd.github.io/angular-cesium/components/AcLabelDescComponent.html) / [`ac-label`](https://articodeltd.github.io/angular-cesium/components/AcLabelComponent.html) / [`ac-label-primitive-desc`](https://articodeltd.github.io/angular-cesium/components/AcLabelPrimitiveDescComponent.html)
 + polyline - [`ac-polyline-desc`](https://articodeltd.github.io/angular-cesium/components/AcPolylineDescComponent.html) / [`ac-polyline`](https://articodeltd.github.io/angular-cesium/components/AcPolylineComponent.html) / [`ac-polyline-primitive-desc`](https://articodeltd.github.io/angular-cesium/components/AcPolylinePrimitiveDescComponent.html)
 + point - [`ac-point-desc`](https://articodeltd.github.io/angular-cesium/components/AcPointDescComponent.html) / [`ac-point`](https://articodeltd.github.io/angular-cesium/components/AcPointComponent.html) / [`ac-primitive-point`](https://articodeltd.github.io/angular-cesium/components/AcPointPrimitiveDescComponent.html)
-+ ellipse - [`ac-ellipse-desc`](https://articodeltd.github.io/angular-cesium/components/AcEllipseDescComponent.html) / [`ac-ellipse`](https://articodeltd.github.io/angular-cesium/components/AcEllipseComponent.html)
-+ circle - [`ac-circle-desc`](https://articodeltd.github.io/angular-cesium/components/AcCircleDescComponent.html) / [`ac-circle`](https://articodeltd.github.io/angular-cesium/components/AcCircleComponent.html) *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis
++ ellipse - [`ac-ellipse-desc`](https://articodeltd.github.io/angular-cesium/components/AcEllipseDescComponent.html) / [`ac-ellipse`](https://articodeltd.github.io/angular-cesium/components/AcEllipseComponent.html) - [stackbliz](https://stackblitz.com/edit/angular-cesium-demo-ellipse?embed=1&file=src/app/ellipse-layer/ellipse-layer-example.component.ts)
++ circle - [`ac-circle-desc`](https://articodeltd.github.io/angular-cesium/components/AcCircleDescComponent.html) / [`ac-circle`](https://articodeltd.github.io/angular-cesium/components/AcCircleComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-circle-example?embed=1&file=src/app/circle-layer-example/circle-layer-example.component.ts) *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis
 + polygon - [`ac-polygon-desc`](https://articodeltd.github.io/angular-cesium/components/AcPolygonDescComponent.html) / [`ac-polygon`](https://articodeltd.github.io/angular-cesium/components/AcPolygonComponent.html)
 + model - [`ac-model-desc`](https://articodeltd.github.io/angular-cesium/components/AcModelDescComponent.html)
-+ box - [`ac-box-dec`](https://articodeltd.github.io/angular-cesium/components/AcBoxDescComponent.html)
-+ corridor -[`ac-corridor-dec`](https://articodeltd.github.io/angular-cesium/components/AcCorridorDescComponent.html)
-+ cylinder - [`ac-cylinder-dec`](https://articodeltd.github.io/angular-cesium/components/AcCylinderDescComponent.html)
-+ ellipsoid - [`ac-ellipsoid-dec`](https://articodeltd.github.io/angular-cesium/components/AcEllipsoidDescComponent.html)
-+ polyline volume - [`ac-polyline-volume-dec`](https://articodeltd.github.io/angular-cesium/components/AcPolylineVolumeDescComponent.html)
-+ wall - [`ac-wall-dec`](https://articodeltd.github.io/angular-cesium/components/AcWallDescComponent.html)
-+ rectangle -[`ac-rectangle-dec`](https://articodeltd.github.io/angular-cesium/components/AcRectangleDescComponent.html)
++ box - [`ac-box-desc`](https://articodeltd.github.io/angular-cesium/components/AcBoxDescComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-box-example?embed=1&file=src/app/boxes-layer/boxes-layer.component.ts)
++ corridor -[`ac-corridor-desc`](https://articodeltd.github.io/angular-cesium/components/AcCorridorDescComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-demo?embed=1&file=src/app/hippodrome-layer/hippodrome-layer-example.component.ts)
++ cylinder - [`ac-cylinder-desc`](https://articodeltd.github.io/angular-cesium/components/AcCylinderDescComponent.html)
++ ellipsoid - [`ac-ellipsoid-desc`](https://articodeltd.github.io/angular-cesium/components/AcEllipsoidDescComponent.html)
++ polyline volume - [`ac-polyline-volume-desc`](https://articodeltd.github.io/angular-cesium/components/AcPolylineVolumeDescComponent.html)
++ wall - [`ac-wall-desc`](https://articodeltd.github.io/angular-cesium/components/AcWallDescComponent.html)
++ rectangle -[`ac-rectangle-decc`](https://articodeltd.github.io/angular-cesium/components/AcRectangleDescComponent.html)
 * html - [`ac-html-desc`](https://articodeltd.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://articodeltd.github.io/angular-cesium/components/AcHtmlComponent.html)
++ arc -[`ac-arc-dec`](https://articodeltd.github.io/angular-cesium/components/AcArcDescComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-arc-example?embed=1&file=src/app/arc-layer/arc-layer-example.component.ts)
 * array - [`ac-array-desc`](https://articodeltd.github.io/angular-cesium/components/AcArrayDescComponent.html)
 * czmlPacket - [`ac-czml-desc`](https://articodeltd.github.io/angular-cesium/components/AcCzmlDescComponent.html)
 
@@ -435,6 +437,32 @@ Try running our demo for examples (uncomment the relevant components in `demo-ma
 ### ScreenshotService
 Take screenshot of your cesium globe.
 
+### ContextMenuService - [stackblitz](https://stackblitz.com/edit/angular-cesium-context-menu-example?embed=1&file=src/app/context-menu-layer/context-menu-layer.component.ts)
+create any custom angular component and anchor it to a map position.
+```javascript
+ this.mapEventsManager
+      .register({ event: CesiumEvent.RIGHT_CLICK, pick: PickOptions.NO_PICK })
+      .subscribe(event => {
+        const position = this.coordinateConverter.screenToCartesian3(event.movement.endPosition);
+        if (!position) {
+          return;
+        }
+
+        this.contextMenuService.open(
+          MyCustomContextMenuComponent,
+          position,
+          {
+            data: {
+              item: {name: 'Cool name'},
+              onActionClick: () => {
+                console.log('do action');
+                this.contextMenuService.close();
+              }
+            }
+          }
+        );
+      });
+```
 
 ## Documents
 + #### Check out our api [Docs](https://articodeltd.github.io/angular-cesium/)
@@ -449,3 +477,46 @@ For additional support options contact us: [contact@articode.co](mailto:\\contac
 Articode is a software company that specializes in GIS solutions and is the creator and the maintainer of angular-cesium.
 Feel free to contact us for consulting or any business endeavors.
 
+
+
+```typescript
+// app.moudule.ts
+import { Angular2ParseModule } from 'angular2parse';
+
+@NgModule({
+  imports: [Angular2ParseModule, ...],
+  // ...
+export class AppModule {}
+
+// my-service.ts
+import { Parse } from 'angular2parse';
+
+@Injectable()
+class MyService {
+  constructor(private parser: Parse) {}
+  
+  parseAngularString() {
+    const expression = `{
+	positions: track.positions,
+	cornerType: getCornerType(),
+	material: track.color,
+	width : 200000.0 }`;
+
+   const expressionEvalFn = this.parser.eval(expression)
+  
+   const context = {
+      getCornerType: () => 'value',
+      track: {
+          positions: [1,2,3],
+          color: 'red',
+        }
+      }
+   };
+    
+   const result = expressionEvalFn(context);
+   console.log(result);
+   // {positions: [1,2,3], cornerType: 'value', material: 'red', width: 2000}
+  
+}
+
+```
