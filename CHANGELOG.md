@@ -1,6 +1,7 @@
 ## Next
 ### Features
 * Add `PickConfiguration` for `MapEventManager` for setting `pick()` width, height and `drillPick()` limit.
+* Add support for Polyline and Polygon editors to clamp most detailed to ground in `clampHeightTo3D` mode.
 
 ## 0.60
 ### Fixes
