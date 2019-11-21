@@ -161,18 +161,21 @@ export class PolylinesEditorService {
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
+      pickConfig: options.pickConfiguration,
     });
     const addPointRegistration = this.mapEventsManager.register({
       event: polylineOptions.addPointEvent,
       modifier: polylineOptions.addPointModifier,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
+      pickConfig: options.pickConfiguration,
     });
     const addLastPointRegistration = this.mapEventsManager.register({
       event: polylineOptions.addLastPointEvent,
       modifier: polylineOptions.addLastPointModifier,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
+      pickConfig: options.pickConfiguration,
     });
 
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
@@ -334,6 +337,7 @@ export class PolylinesEditorService {
       event: options.dragPointEvent,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });
@@ -343,6 +347,7 @@ export class PolylinesEditorService {
       modifier: options.removePointModifier,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });
@@ -353,6 +358,7 @@ export class PolylinesEditorService {
         event: options.dragShapeEvent,
         entityType: EditPolyline,
         pick: PickOptions.PICK_FIRST,
+        pickConfig: options.pickConfiguration,
         priority,
         pickFilter: entity => id === entity.editedEntityId,
       });

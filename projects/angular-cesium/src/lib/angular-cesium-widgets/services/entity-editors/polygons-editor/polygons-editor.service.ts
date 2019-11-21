@@ -168,18 +168,21 @@ export class PolygonsEditorService {
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
+      pickConfig: options.pickConfiguration,
       priority,
     });
     const addPointRegistration = this.mapEventsManager.register({
       event: polygonOptions.addPointEvent,
       modifier: polygonOptions.addPointModifier,
       pick: PickOptions.NO_PICK,
+      pickConfig: options.pickConfiguration,
       priority,
     });
     const addLastPointRegistration = this.mapEventsManager.register({
       event: polygonOptions.addLastPointEvent,
       modifier: polygonOptions.addLastPointModifier,
       pick: PickOptions.NO_PICK,
+      pickConfig: options.pickConfiguration,
       priority,
     });
 
@@ -346,6 +349,7 @@ export class PolygonsEditorService {
       event: options.dragPointEvent,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });
@@ -356,6 +360,7 @@ export class PolygonsEditorService {
         event: options.dragShapeEvent,
         entityType: EditablePolygon,
         pick: PickOptions.PICK_FIRST,
+        pickConfig: options.pickConfiguration,
         priority,
         pickFilter: entity => id === entity.id,
       });
@@ -365,6 +370,7 @@ export class PolygonsEditorService {
       entityType: EditPoint,
       modifier: options.removePointModifier,
       pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });

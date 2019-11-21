@@ -9,6 +9,7 @@ import {
   PolygonEditUpdate,
   PolygonsEditorService
 } from 'angular-cesium';
+import { verifyHostBindings } from '@angular/compiler';
 
 @Component({
   selector: 'polygons-editor-example',
@@ -21,7 +22,7 @@ export class PolygonsEditorExampleComponent implements OnInit {
   editing$: PolygonEditorObservable;
   enableEditing = true;
   tileset: any;
-  tilesLocation = {longitude: 0.5433407074863252, latitude: 0.523107775892968, height: 450};
+  tilesLocation = { longitude: 0.5433407074863252, latitude: 0.523107775892968, height: 450 };
 
   constructor(private polygonsEditor: PolygonsEditorService, private cesiumService: CesiumService, private camService: CameraService) {
   }
@@ -42,20 +43,57 @@ export class PolygonsEditorExampleComponent implements OnInit {
     });
   }
 
+  getViewerCredentials() {
+    return {
+      policy: '',
+      signature: '',
+      keyPairId: '',
+    };
+  }
+
+  createResourceFromUrl(url: string) {
+    const credentials = this.getViewerCredentials();
+    return new Cesium.Resource({
+      url,
+      queryParameters: {
+        Policy: credentials.policy,
+        Signature: credentials.signature,
+        'Key-Pair-Id': credentials.keyPairId
+      },
+      retryAttempts: 1,
+    });
+  }
+
+
+  add3d() {
+    const viewer = this.cesiumService.getViewer();
+    const urlBySiteAndTask = '';
+    this.tileset = new Cesium.Cesium3DTileset({
+      url: this.createResourceFromUrl(urlBySiteAndTask)
+    });
+
+    this.tileset.readyPromise.then(function(tileset) {
+      viewer.scene.primitives.add(tileset);
+      viewer.zoomTo(tileset, new Cesium.HeadingPitchRange(0.0, -0.5, tileset.boundingSphere.radius * 2.0));
+    }).otherwise(function(error) {
+      console.log(error);
+    });
+  }
+
   startEdit3D() {
     const viewer = this.cesiumService.getViewer();
-    if (!this.tileset) {
-      this.tileset = viewer.scene.primitives.add(
-        new Cesium.Cesium3DTileset({
-          url: Cesium.IonResource.fromAssetId(29328)
-        })
-      );
-    }
-    this.camService.cameraFlyTo({
-      destination: Cesium.Cartesian3.fromRadians(this.tilesLocation.longitude, this.tilesLocation.latitude, this.tilesLocation.height),
-      orientation : {
-        pitch : Cesium.Math.toRadians(-35.0),
-      }});
+    // if (!this.tileset) {
+    //   this.tileset = viewer.scene.primitives.add(
+    //     new Cesium.Cesium3DTileset({
+    //       url: Cesium.IonResource.fromAssetId(29328)
+    //     })
+    //   );
+    // }
+    // this.camService.cameraFlyTo({
+    //   destination: Cesium.Cartesian3.fromRadians(this.tilesLocation.longitude, this.tilesLocation.latitude, this.tilesLocation.height),
+    //   orientation : {
+    //     pitch : Cesium.Math.toRadians(-35.0),
+    //   }});
 
     if (this.editing$) {
       this.stopEdit();

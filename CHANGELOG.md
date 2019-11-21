@@ -1,3 +1,6 @@
+## Next
+### Features
+* Add `PickConfiguration` for `MapEventManager` for setting `pick()` width, height and `drillPick()` limit.
 
 ## 0.60
 ### Fixes
