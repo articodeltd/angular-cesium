@@ -56,7 +56,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
     clampToTerrain: false,
   },
   pickConfiguration: {
-    clampToHeightWidth: 2,
+    clampToHeightWidth: 1,
   }
 };
 

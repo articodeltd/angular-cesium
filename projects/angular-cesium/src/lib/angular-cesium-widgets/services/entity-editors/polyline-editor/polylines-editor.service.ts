@@ -49,7 +49,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
     clampToTerrain: false,
   },
   pickConfiguration: {
-    clampToHeightWidth: 2,
+    clampToHeightWidth: 1,
   },
 };
 
