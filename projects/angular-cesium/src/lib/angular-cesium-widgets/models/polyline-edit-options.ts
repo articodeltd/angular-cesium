@@ -33,4 +33,9 @@ export interface PolylineEditOptions extends EditorEditOptions {
   clampHeightTo3DOptions?: {
     clampToTerrain?: boolean;
   };
+  pickConfiguration?: {
+    pickHeight?: number;
+    pickWidth?: number;
+    clampToHeightWidth?: number;
+  };
 }

@@ -55,6 +55,9 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   clampHeightTo3DOptions: {
     clampToTerrain: false,
   },
+  pickConfiguration: {
+    clampToHeightWidth: 2,
+  }
 };
 
 /**
@@ -120,7 +123,7 @@ export class PolygonsEditorService {
     return this.updatePublisher;
   }
 
-  screenToPosition(cartesian2, clampHeightTo3D: boolean, isTerrain?) {
+  screenToPosition(cartesian2, clampHeightTo3D: boolean, isTerrain: boolean, clampToHeightWidth) {
     const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
 
     // If cartesian3 is undefined then the point inst on the globe
@@ -138,7 +141,7 @@ export class PolygonsEditorService {
         if (latLon.height < 0) {// means nothing picked -> Validate it
           return globePositionPick();
         }
-        return this.cesiumScene.clampToHeight(cartesian3PickPosition);
+        return this.cesiumScene.clampToHeight(cartesian3PickPosition, undefined, clampToHeightWidth);
       }
     }
 
@@ -191,7 +194,7 @@ export class PolygonsEditorService {
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D,
-        polygonOptions.clampHeightTo3DOptions.clampToTerrain);
+        polygonOptions.clampHeightTo3DOptions.clampToTerrain, options.pickConfiguration.clampToHeightWidth);
 
       if (position) {
         this.updateSubject.next({
@@ -209,7 +212,7 @@ export class PolygonsEditorService {
         return;
       }
       const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D,
-          polygonOptions.clampHeightTo3DOptions.clampToTerrain);
+        polygonOptions.clampHeightTo3DOptions.clampToTerrain, options.pickConfiguration.clampToHeightWidth);
       if (!position) {
         return;
       }
@@ -248,7 +251,7 @@ export class PolygonsEditorService {
 
     addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D,
-        polygonOptions.clampHeightTo3DOptions.clampToTerrain);
+        polygonOptions.clampHeightTo3DOptions.clampToTerrain, options.pickConfiguration.clampToHeightWidth);
       if (!position) {
         return;
       }
@@ -378,7 +381,8 @@ export class PolygonsEditorService {
     pointDragRegistration.pipe(
       tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
-        const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions.clampToTerrain);
+        const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions.clampToTerrain,
+          options.pickConfiguration.clampToHeightWidth);
         if (!position) {
           return;
         }
@@ -404,8 +408,8 @@ export class PolygonsEditorService {
       shapeDragRegistration
         .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
-          const endDragPosition = this.screenToPosition(endPosition, false);
-          const startDragPosition = this.screenToPosition(startPosition, false);
+          const endDragPosition = this.screenToPosition(endPosition, false, false, options.pickConfiguration.clampToHeightWidth);
+          const startDragPosition = this.screenToPosition(startPosition, false, false, options.pickConfiguration.clampToHeightWidth);
           if (!endDragPosition) {
             return;
           }

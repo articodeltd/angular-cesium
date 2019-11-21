@@ -48,6 +48,9 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   clampHeightTo3DOptions: {
     clampToTerrain: false,
   },
+  pickConfiguration: {
+    clampToHeightWidth: 2,
+  },
 };
 
 /**
@@ -112,7 +115,7 @@ export class PolylinesEditorService {
     return this.updatePublisher;
   }
 
-  screenToPosition(cartesian2, clampHeightTo3D: boolean, isTerrain?) {
+  screenToPosition(cartesian2, clampHeightTo3D: boolean, isTerrain: boolean, clampToHeightWidth) {
     const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
 
     // If cartesian3 is undefined then the point inst on the globe
@@ -130,7 +133,7 @@ export class PolylinesEditorService {
         if (latLon.height < 0) {// means nothing picked -> Validate it
           return globePositionPick();
         }
-        return this.cesiumScene.clampToHeight(cartesian3PickPosition);
+        return this.cesiumScene.clampToHeight(cartesian3PickPosition, undefined, clampToHeightWidth);
       }
     }
 
@@ -183,7 +186,7 @@ export class PolylinesEditorService {
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D,
-        polylineOptions.clampHeightTo3DOptions.clampToTerrain);
+        polylineOptions.clampHeightTo3DOptions.clampToTerrain, options.clampHeightTo3DOptions.clampToTerrain);
       if (position) {
         this.updateSubject.next({
           id,
@@ -200,7 +203,7 @@ export class PolylinesEditorService {
         return;
       }
       const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D,
-        polylineOptions.clampHeightTo3DOptions.clampToTerrain);
+        polylineOptions.clampHeightTo3DOptions.clampToTerrain, options.clampHeightTo3DOptions.clampToTerrain);
       if (!position) {
         return;
       }
@@ -236,7 +239,7 @@ export class PolylinesEditorService {
 
     addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D,
-        polylineOptions.clampHeightTo3DOptions.clampToTerrain);
+        polylineOptions.clampHeightTo3DOptions.clampToTerrain, options.clampHeightTo3DOptions.clampToTerrain);
       if (!position) {
         return;
       }
@@ -368,8 +371,8 @@ export class PolylinesEditorService {
       shapeDragRegistration
         .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
-          const endDragPosition = this.screenToPosition(endPosition, false);
-          const startDragPosition = this.screenToPosition(startPosition, false);
+          const endDragPosition = this.screenToPosition(endPosition, false, false, options.clampHeightTo3DOptions.clampToTerrain);
+          const startDragPosition = this.screenToPosition(startPosition, false, false, options.clampHeightTo3DOptions.clampToTerrain);
           if (!endDragPosition) {
             return;
           }
@@ -394,7 +397,8 @@ export class PolylinesEditorService {
     pointDragRegistration.pipe(
       tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
-        const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions.clampToTerrain);
+        const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions.clampToTerrain,
+          options.clampHeightTo3DOptions.clampToTerrain);
         if (!position) {
           return;
         }
