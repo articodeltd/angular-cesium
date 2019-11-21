@@ -17,9 +17,9 @@ import { PolygonsManagerService } from './polygons-manager.service';
 import { PolygonEditorObservable } from '../../../models/polygon-editor-observable';
 import { EditablePolygon } from '../../../models/editable-polygon';
 import { PolygonEditOptions, PolygonProps } from '../../../models/polygon-edit-options';
-import { PointProps } from '../../../models/polyline-edit-options';
+import { ClampTo3DOptions, PointProps } from '../../../models/polyline-edit-options';
 import { LabelProps } from '../../../models/label-props';
-import { generateKey } from '../../utils';
+import { debounce, generateKey } from '../../utils';
 
 export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -54,10 +54,9 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
   clampHeightTo3D: false,
   clampHeightTo3DOptions: {
     clampToTerrain: false,
+    clampMostDetailed: true,
+    clampToHeightPickWidth: 2,
   },
-  pickConfiguration: {
-    clampToHeightWidth: 1,
-  }
 };
 
 /**
@@ -104,6 +103,10 @@ export class PolygonsEditorService {
   private observablesMap = new Map<string, DisposableObservable<any>[]>();
   private cesiumScene: any;
 
+  private clampPointsDebounced = debounce((id, clampHeightTo3D: boolean, clampHeightTo3DOptions) => {
+    this.clampPoints(id, clampHeightTo3D, clampHeightTo3DOptions);
+  }, 300);
+
   init(mapEventsManager: MapEventsManagerService,
        coordinateConverter: CoordinateConverter,
        cameraService: CameraService,
@@ -123,7 +126,38 @@ export class PolygonsEditorService {
     return this.updatePublisher;
   }
 
-  screenToPosition(cartesian2, clampHeightTo3D: boolean, isTerrain: boolean, clampToHeightWidth) {
+  private clampPoints(id, clampHeightTo3D: boolean, { clampToTerrain, clampMostDetailed, clampToHeightPickWidth }: ClampTo3DOptions) {
+    if (clampHeightTo3D && clampMostDetailed) {
+      const polygon = this.polygonsManager.get(id);
+      const points = polygon.getPoints();
+
+      console.log('clampPoints');
+
+      if (!clampToTerrain) {
+        // 3dTiles
+        points.forEach(point => {
+          point.setPosition(this.cesiumScene.clampToHeight(point.getPosition(), undefined, clampToHeightPickWidth));
+        });
+        // const cartesians = points.map(point => point.getPosition());
+        // const promise = this.cesiumScene.clampToHeightMostDetailed(cartesians, undefined, clampToHeightPickWidth);
+        // promise.then((updatedCartesians) => {
+        //   points.forEach((point, index) => {
+        //     point.setPosition(updatedCartesians[index]);
+        //   });
+        // });
+      } else {
+        const cartographics = points.map(point => this.coordinateConverter.cartesian3ToCartographic(point.getPosition()));
+        const promise = Cesium.sampleTerrain(this.cesiumScene.terrainProvider, 11, cartographics);
+        Cesium.when(promise,  (updatedPositions) => {
+          points.forEach((point, index) => {
+            point.setPosition(Cesium.Cartographic.toCartesian(updatedPositions[index]));
+          });
+        });
+      }
+    }
+  }
+
+  private screenToPosition(cartesian2, clampHeightTo3D: boolean, {clampToHeightPickWidth, clampToTerrain}: ClampTo3DOptions) {
     const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
 
     // If cartesian3 is undefined then the point inst on the globe
@@ -133,7 +167,8 @@ export class PolygonsEditorService {
         return this.cesiumScene.globe.pick(ray, this.cesiumScene);
       };
 
-      if (isTerrain) {
+      // is terrain?
+      if (clampToTerrain) {
         return globePositionPick();
       } else {
         const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
@@ -141,7 +176,7 @@ export class PolygonsEditorService {
         if (latLon.height < 0) {// means nothing picked -> Validate it
           return globePositionPick();
         }
-        return this.cesiumScene.clampToHeight(cartesian3PickPosition, undefined, clampToHeightWidth);
+        return this.cesiumScene.clampToHeight(cartesian3PickPosition, undefined, clampToHeightPickWidth);
       }
     }
 
@@ -193,8 +228,7 @@ export class PolygonsEditorService {
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D,
-        polygonOptions.clampHeightTo3DOptions.clampToTerrain, options.pickConfiguration.clampToHeightWidth);
+      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D, polygonOptions.clampHeightTo3DOptions);
 
       if (position) {
         this.updateSubject.next({
@@ -211,8 +245,7 @@ export class PolygonsEditorService {
       if (finishedCreate) {
         return;
       }
-      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D,
-        polygonOptions.clampHeightTo3DOptions.clampToTerrain, options.pickConfiguration.clampToHeightWidth);
+      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D, polygonOptions.clampHeightTo3DOptions);
       if (!position) {
         return;
       }
@@ -250,8 +283,7 @@ export class PolygonsEditorService {
 
 
     addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D,
-        polygonOptions.clampHeightTo3DOptions.clampToTerrain, options.pickConfiguration.clampToHeightWidth);
+      const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D, polygonOptions.clampHeightTo3DOptions);
       if (!position) {
         return;
       }
@@ -347,6 +379,7 @@ export class PolygonsEditorService {
                       editSubject: Subject<PolygonEditUpdate>,
                       options: PolygonEditOptions,
                       editObservable?: PolygonEditorObservable): PolygonEditorObservable {
+    this.clampPoints(id, options.clampHeightTo3D, options.clampHeightTo3DOptions);
 
     const pointDragRegistration = this.mapEventsManager.register({
       event: options.dragPointEvent,
@@ -381,8 +414,7 @@ export class PolygonsEditorService {
     pointDragRegistration.pipe(
       tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
-        const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions.clampToTerrain,
-          options.pickConfiguration.clampToHeightWidth);
+        const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions);
         if (!position) {
           return;
         }
@@ -402,14 +434,16 @@ export class PolygonsEditorService {
           positions: this.getPositions(id),
           points: this.getPoints(id),
         });
+
+        this.clampPointsDebounced(id, options.clampHeightTo3D, options.clampHeightTo3DOptions);
       });
 
     if (shapeDragRegistration) {
       shapeDragRegistration
         .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
-          const endDragPosition = this.screenToPosition(endPosition, false, false, options.pickConfiguration.clampToHeightWidth);
-          const startDragPosition = this.screenToPosition(startPosition, false, false, options.pickConfiguration.clampToHeightWidth);
+          const endDragPosition = this.screenToPosition(endPosition, false, options.clampHeightTo3DOptions);
+          const startDragPosition = this.screenToPosition(startPosition, false, options.clampHeightTo3DOptions);
           if (!endDragPosition) {
             return;
           }
@@ -455,6 +489,8 @@ export class PolygonsEditorService {
         positions: this.getPositions(id),
         points: this.getPoints(id),
       });
+
+      this.clampPoints(id, options.clampHeightTo3D, options.clampHeightTo3DOptions);
     });
 
     const observables = [pointDragRegistration, pointRemoveRegistration];
