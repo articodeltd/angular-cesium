@@ -292,6 +292,10 @@ export class EditablePolyline extends AcEntity {
       .filter(position => !position.isVirtualEditPoint() && position !== this.movingPoint);
   }
 
+  getPoints(): EditPoint[] {
+    return this.positions.filter(position => position !== this.movingPoint);
+  }
+
   getPositions(): Cartesian3[] {
     return this.positions.map(position => position.getPosition());
   }

@@ -1,6 +1,7 @@
 import { CesiumEvent } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
 import { CesiumEventModifier } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum';
 import { PointProps, PolylineProps } from './polyline-edit-options';
+import { PickConfiguration } from '../../angular-cesium';
 
 export interface EditorEditOptions {
   addPointEvent?: CesiumEvent;
@@ -10,4 +11,5 @@ export interface EditorEditOptions {
   pointProps?: PointProps;
   polylineProps?: PolylineProps;
   allowDrag?: boolean;
+  pickConfiguration?: PickConfiguration;
 }

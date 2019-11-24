@@ -138,11 +138,13 @@ export class RectanglesEditorService {
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
+      pickConfig: options.pickConfiguration,
       priority,
     });
     const addPointRegistration = this.mapEventsManager.register({
       event: rectangleOptions.addPointEvent,
       pick: PickOptions.NO_PICK,
+      pickConfig: options.pickConfiguration,
       priority,
     });
 
@@ -253,6 +255,7 @@ export class RectanglesEditorService {
       event: options.dragPointEvent,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });
@@ -263,6 +266,7 @@ export class RectanglesEditorService {
         event: options.dragShapeEvent,
         entityType: EditableRectangle,
         pick: PickOptions.PICK_FIRST,
+        pickConfig: options.pickConfiguration,
         priority,
         pickFilter: entity => id === entity.id,
       });

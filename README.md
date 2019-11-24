@@ -261,7 +261,7 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + polyline volume - [`ac-polyline-volume-desc`](https://articodeltd.github.io/angular-cesium/components/AcPolylineVolumeDescComponent.html)
 + wall - [`ac-wall-desc`](https://articodeltd.github.io/angular-cesium/components/AcWallDescComponent.html)
 + rectangle -[`ac-rectangle-decc`](https://articodeltd.github.io/angular-cesium/components/AcRectangleDescComponent.html)
-* html - [`ac-html-desc`](https://articodeltd.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://articodeltd.github.io/angular-cesium/components/AcHtmlComponent.html)
+* html - [`ac-html-desc`](https://articodeltd.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://articodeltd.github.io/angular-cesium/components/AcHtmlComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-html-example?embed=1&file=src/app/html-layer/html-example.component.ts)
 + arc -[`ac-arc-dec`](https://articodeltd.github.io/angular-cesium/components/AcArcDescComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-arc-example?embed=1&file=src/app/arc-layer/arc-layer-example.component.ts)
 * array - [`ac-array-desc`](https://articodeltd.github.io/angular-cesium/components/AcArrayDescComponent.html)
 * czmlPacket - [`ac-czml-desc`](https://articodeltd.github.io/angular-cesium/components/AcCzmlDescComponent.html)
@@ -477,46 +477,3 @@ For additional support options contact us: [contact@articode.co](mailto:\\contac
 Articode is a software company that specializes in GIS solutions and is the creator and the maintainer of angular-cesium.
 Feel free to contact us for consulting or any business endeavors.
 
-
-
-```typescript
-// app.moudule.ts
-import { Angular2ParseModule } from 'angular2parse';
-
-@NgModule({
-  imports: [Angular2ParseModule, ...],
-  // ...
-export class AppModule {}
-
-// my-service.ts
-import { Parse } from 'angular2parse';
-
-@Injectable()
-class MyService {
-  constructor(private parser: Parse) {}
-  
-  parseAngularString() {
-    const expression = `{
-	positions: track.positions,
-	cornerType: getCornerType(),
-	material: track.color,
-	width : 200000.0 }`;
-
-   const expressionEvalFn = this.parser.eval(expression)
-  
-   const context = {
-      getCornerType: () => 'value',
-      track: {
-          positions: [1,2,3],
-          color: 'red',
-        }
-      }
-   };
-    
-   const result = expressionEvalFn(context);
-   console.log(result);
-   // {positions: [1,2,3], cornerType: 'value', material: 'red', width: 2000}
-  
-}
-
-```

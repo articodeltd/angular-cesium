@@ -129,11 +129,13 @@ export class HippodromeEditorService {
 
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
+      pickConfig: options.pickConfiguration,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
     });
     const addPointRegistration = this.mapEventsManager.register({
       event: hippodromeOptions.addPointEvent,
+      pickConfig: options.pickConfiguration,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
     });
@@ -246,6 +248,7 @@ export class HippodromeEditorService {
         event: options.dragShapeEvent,
         entityType: EditableHippodrome,
         pick: PickOptions.PICK_FIRST,
+        pickConfig: options.pickConfiguration,
         priority,
         pickFilter: entity => id === entity.id,
       });
@@ -254,6 +257,7 @@ export class HippodromeEditorService {
       event: options.dragPointEvent,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });
