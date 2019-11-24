@@ -131,8 +131,6 @@ export class PolygonsEditorService {
       const polygon = this.polygonsManager.get(id);
       const points = polygon.getPoints();
 
-      console.log('clampPoints');
-
       if (!clampToTerrain) {
         // 3dTiles
         points.forEach(point => {

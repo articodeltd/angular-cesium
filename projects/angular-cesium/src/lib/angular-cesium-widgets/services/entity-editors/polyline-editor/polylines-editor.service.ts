@@ -123,8 +123,6 @@ export class PolylinesEditorService {
       const polyline = this.polylinesManager.get(id);
       const points = polyline.getPoints();
 
-      console.log('clampPoints');
-
       if (!clampToTerrain) {
         // 3dTiles
         points.forEach(point => {
