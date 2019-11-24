@@ -148,7 +148,7 @@ export class PolygonsEditorService {
       } else {
         const cartographics = points.map(point => this.coordinateConverter.cartesian3ToCartographic(point.getPosition()));
         const promise = Cesium.sampleTerrain(this.cesiumScene.terrainProvider, 11, cartographics);
-        Cesium.when(promise,  (updatedPositions) => {
+        Cesium.when(promise, (updatedPositions) => {
           points.forEach((point, index) => {
             point.setPosition(Cesium.Cartographic.toCartesian(updatedPositions[index]));
           });
@@ -157,7 +157,7 @@ export class PolygonsEditorService {
     }
   }
 
-  private screenToPosition(cartesian2, clampHeightTo3D: boolean, {clampToHeightPickWidth, clampToTerrain}: ClampTo3DOptions) {
+  private screenToPosition(cartesian2, clampHeightTo3D: boolean, { clampToHeightPickWidth, clampToTerrain }: ClampTo3DOptions) {
     const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
 
     // If cartesian3 is undefined then the point inst on the globe
@@ -511,9 +511,10 @@ export class PolygonsEditorService {
 
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYGON_OPTIONS));
     const polygonOptions: PolygonEditOptions = Object.assign(defaultClone, options);
-    polygonOptions.pointProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.pointProps, options.pointProps);
-    polygonOptions.polygonProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.polygonProps, options.polygonProps);
-    polygonOptions.polylineProps = Object.assign({}, DEFAULT_POLYGON_OPTIONS.polylineProps, options.polylineProps);
+    polygonOptions.pointProps = { ...DEFAULT_POLYGON_OPTIONS.pointProps, ...options.pointProps};
+    polygonOptions.polygonProps = {...DEFAULT_POLYGON_OPTIONS.polygonProps, ...options.polygonProps};
+    polygonOptions.polylineProps = {...DEFAULT_POLYGON_OPTIONS.polylineProps, ...options.polylineProps};
+    polygonOptions.clampHeightTo3DOptions = { ...DEFAULT_POLYGON_OPTIONS.clampHeightTo3DOptions, ...options.clampHeightTo3DOptions};
 
     if (options.clampHeightTo3D) {
       if (!this.cesiumScene.pickPositionSupported || !this.cesiumScene.clampToHeightSupported) {
