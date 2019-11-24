@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { TracksDialogComponent } from './components/tracks-layer/track-dialog/track-dialog.component';
-import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { TracksLayerComponent } from './components/tracks-layer/tracks-layer.component';
 import { LabelLayerExampleComponent } from './components/label-layer-example/label-layer-example.component';
 import { EllipseLayerExampleComponent } from './components/ellipse-layer-example/ellipse-layer-example.component';
@@ -51,6 +50,7 @@ import { MainNavbarComponent } from './layout/main-navbar/main-navbar.component'
 import { SidenavToolbarComponent } from './layout/sidenav-toolbar/sidenav-toolbar.component';
 import { SettingsFormComponent } from './layout/settings-form/settings-form.component';
 import { SingleEntityOnMapExampleComponent } from './components/single-entity-on-map-example/single-entity-on-map-example.component';
+import { MyCustomContextMenuComponent } from './components/context-menu-layer/context-menu/my-custom-context-menu.component';
 
 
 @NgModule({
@@ -88,7 +88,6 @@ import { SingleEntityOnMapExampleComponent } from './components/single-entity-on
     KeyboardControlLayerComponent,
     HippodromeLayerExampleComponent,
     LayerOrderComponent,
-    ContextMenuComponent,
     ContextMenuLayerComponent,
     SelectionLayerExampleComponent,
     PolygonsEditorExampleComponent,
@@ -107,9 +106,10 @@ import { SingleEntityOnMapExampleComponent } from './components/single-entity-on
     MinValidatorDirective,
     MainNavbarComponent,
     SidenavToolbarComponent,
-    SettingsFormComponent
+    SettingsFormComponent,
+    MyCustomContextMenuComponent,
   ],
-  entryComponents: [TracksDialogComponent, ContextMenuComponent],
+  entryComponents: [TracksDialogComponent, MyCustomContextMenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

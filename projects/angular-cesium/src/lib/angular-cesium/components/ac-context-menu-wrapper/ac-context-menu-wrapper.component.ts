@@ -26,9 +26,9 @@ import { BasicContextMenu } from '../../models/basic-context-menu';
  *       if (!position) {
  *         return;
  *       }
- *       // Open the context menu on the position that was clicked and pass some data to ContextMenuComponent.
+ *       // Open the context menu on the position that was clicked and pass some data to MyCustomContextMenuComponent.
  *       this.contextMenuService.open(
- *         ContextMenuComponent,
+ *         MyCustomContextMenuComponent,
  *         position,
  *         { data: { items: ['New Track', 'Change Map', 'Context Menu', 'Do Something'] } }
  *       )

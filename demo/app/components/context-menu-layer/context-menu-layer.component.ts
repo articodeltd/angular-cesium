@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CesiumEvent, ContextMenuService, CoordinateConverter, MapEventsManagerService, PickOptions } from 'angular-cesium';
-import { ContextMenuComponent } from '../context-menu/context-menu.component';
+import { ContextMenuData, MyCustomContextMenuComponent } from './context-menu/my-custom-context-menu.component';
 
 @Component({
   selector: 'context-menu-layer',
@@ -16,17 +16,25 @@ export class ContextMenuLayerComponent implements OnInit {
 
   ngOnInit() {
     this.mapEventsManager
-      .register({event: CesiumEvent.RIGHT_CLICK, pick: PickOptions.NO_PICK})
+      .register({ event: CesiumEvent.RIGHT_CLICK, pick: PickOptions.NO_PICK })
       .subscribe(event => {
         const position = this.coordinateConverter.screenToCartesian3(event.movement.endPosition);
         if (!position) {
           return;
         }
 
-        this.contextMenuService.open(
-          ContextMenuComponent,
+        this.contextMenuService.open<ContextMenuData>(
+          MyCustomContextMenuComponent,
           position,
-          {data: {items: ['New Track', 'Change Map', 'Context Menu', 'Do Something']}}
+          {
+            data: {
+              item: {name: 'Cool name'},
+              onActionClick: () => {
+                console.log('do action');
+                this.contextMenuService.close();
+              }
+            }
+          }
         );
       });
   }

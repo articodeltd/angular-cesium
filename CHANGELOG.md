@@ -1,8 +1,9 @@
-## Next
+## 0.61
 ### Features
 * Add `PickConfiguration` for `MapEventManager` for setting `pick()` width, height and `drillPick()` limit.
 * Add support for Polyline and Polygon editors to clamp most detailed ground in `clampHeightTo3D` mode.
  using `clampHeightTo3DOptions.clampMostDetailed = true`.
+* Add stackblitz examples to the docs.  
 
 ### Fixes
 * Shape Editor default label `disableDepthTestDistance` changed to 0.
