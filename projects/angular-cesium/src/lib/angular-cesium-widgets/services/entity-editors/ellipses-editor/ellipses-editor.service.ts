@@ -142,11 +142,13 @@ export class EllipsesEditorService {
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
+      pickConfig: options.pickConfiguration,
       priority,
     });
     const addPointRegistration = this.mapEventsManager.register({
       event: ellipseOptions.addPointEvent,
       pick: PickOptions.NO_PICK,
+      pickConfig: options.pickConfiguration,
       priority,
     });
 
@@ -275,6 +277,7 @@ export class EllipsesEditorService {
     const pointDragRegistration = this.mapEventsManager.register({
       event: options.dragPointEvent,
       entityType: EditPoint,
+      pickConfig: options.pickConfiguration,
       pick: PickOptions.PICK_FIRST,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
@@ -286,6 +289,7 @@ export class EllipsesEditorService {
         event: options.circleToEllipseTransformEvent,
         modifier: options.circleToEllipseTransformEventModifier,
         entityType: EditableEllipse,
+        pickConfig: options.pickConfiguration,
         pick: PickOptions.PICK_FIRST,
         priority,
         pickFilter: entity => id === entity.id,
@@ -297,6 +301,7 @@ export class EllipsesEditorService {
       shapeDragRegistration = this.mapEventsManager.register({
         event: options.dragShapeEvent,
         entityType: EditableEllipse,
+        pickConfig: options.pickConfiguration,
         pick: PickOptions.PICK_FIRST,
         priority: priority,
         pickFilter: entity => id === entity.id,

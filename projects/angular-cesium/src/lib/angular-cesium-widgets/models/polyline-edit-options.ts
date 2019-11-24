@@ -2,6 +2,12 @@ import { CesiumEvent } from '../../angular-cesium/services/map-events-mananger/c
 import { CesiumEventModifier } from '../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum';
 import { EditorEditOptions } from './editor-edit-options';
 
+export interface ClampTo3DOptions {
+  clampToTerrain?: boolean;
+  clampMostDetailed?: boolean;
+  clampToHeightPickWidth?: number;
+}
+
 export interface PointProps {
   color?: any;
   outlineColor?: any;
@@ -30,7 +36,5 @@ export interface PolylineEditOptions extends EditorEditOptions {
   removePointModifier?: CesiumEventModifier;
   maximumNumberOfPoints?: number;
   clampHeightTo3D?: boolean;
-  clampHeightTo3DOptions?: {
-    clampToTerrain?: boolean;
-  };
+  clampHeightTo3DOptions?: ClampTo3DOptions;
 }

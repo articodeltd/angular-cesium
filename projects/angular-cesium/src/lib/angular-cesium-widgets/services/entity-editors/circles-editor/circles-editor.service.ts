@@ -135,11 +135,13 @@ export class CirclesEditorService {
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
+      pickConfig: options.pickConfiguration,
       priority,
     });
     const addPointRegistration = this.mapEventsManager.register({
       event: CesiumEvent.LEFT_CLICK,
       pick: PickOptions.NO_PICK,
+      pickConfig: options.pickConfiguration,
       priority,
     });
 
@@ -267,6 +269,7 @@ export class CirclesEditorService {
     const pointDragRegistration = this.mapEventsManager.register({
       event: CesiumEvent.LEFT_CLICK_DRAG,
       entityType: EditPoint,
+      pickConfig: options.pickConfiguration,
       pick: PickOptions.PICK_FIRST,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
@@ -277,6 +280,7 @@ export class CirclesEditorService {
       shapeDragRegistration = this.mapEventsManager.register({
         event: CesiumEvent.LEFT_CLICK_DRAG,
         entityType: EditableCircle,
+        pickConfig: options.pickConfiguration,
         pick: PickOptions.PICK_FIRST,
         priority: priority,
         pickFilter: entity => id === entity.id,
