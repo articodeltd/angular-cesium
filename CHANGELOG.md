@@ -6,6 +6,7 @@
 
 ### Fixes
 * Shape Editor default label `disableDepthTestDistance` changed to 0.
+* Fix `AcHtml` toggle `show` created new html elements instead of updating the current element.
 
 ## 0.60
 ### Fixes
