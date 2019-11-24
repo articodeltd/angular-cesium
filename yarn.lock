@@ -897,11 +897,6 @@ angular2parse@^1.0.9:
   resolved "https://registry.yarnpkg.com/angular2parse/-/angular2parse-1.0.9.tgz#5523f115022b4dfb51459780df4f78d6d9a2d6f9"
   integrity sha512-vbTIld/HQ+LbDbJnlh9u+oQsN/5mkaKUHzs+WsZMKBqY47X5xn3BrslADhP5+iMtk1Au2Dc0JlX8T6YO6HHxVw==
 
-animejs@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/animejs/-/animejs-3.1.0.tgz#748a90fc1d4bef3efed64508af9a6a82babf5c47"
-  integrity sha512-BjnCroPPQPEAngT0M89pz9TBcOGgOFLnVoq3+jV2upl4rn60k57/AXvESTnuILsNgOEjGuhMEOMp7IlQzk40kA==
-
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
