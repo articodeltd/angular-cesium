@@ -124,12 +124,13 @@ Note that in the example below, only the relevant sections and values are shown.
 </li>
 <li><p>You can configure cesium viewer style:</p>
 <div><pre class="line-numbers"><code class="language-css"> // styles.css
- html, body, #cesiumContainer {
+ html, body, .map-container {
      width: 100%;
      height: 100%;
      margin: 0;
      padding: 0;
      overflow: hidden;
+     position: relative;
  }</code></pre></div></li>
 <li><p>Live long and prosper</p>
 </li>
@@ -254,21 +255,22 @@ why? because  there is no reason to, cesium entities are drawn on the canvas map
 <h2 id="supported-entity-types">Supported Entity types</h2>
 <ul>
 <li>billboard - <a href="https://articodeltd.github.io/angular-cesium/components/AcBillboardDescComponent.html"><code>ac-billboard-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcBillboardComponent.html"><code>ac-billboard</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcBillboardPrimitiveDescComponent.html"><code>ac-billboard-primitive-desc</code></a></li>
-<li>label - <a href="https://articodeltd.github.io/angular-cesium/components/AcLabelDescComponent.html"><code>ac-label-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcLabelComponent.html"><code>ac-label</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcLabelPrimitiveDescComponent.html"><code>ac-label-primitive-desc</code></a></li>
+<li>label - <a href="https://articodeltd.github.io/angular-cesium/components/AcLabelDescComponent.html"><code>ac-label-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcLabelComponent.html"><code>ac-label</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcLabelPrimitiveDescComponent.html"><code>ac-label-primitive-desc</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-demo-label-example?embed=1&amp;file=src/app/label-layer-example/label-layer-example.component.ts">stackblitz</a></li>
 <li>polyline - <a href="https://articodeltd.github.io/angular-cesium/components/AcPolylineDescComponent.html"><code>ac-polyline-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcPolylineComponent.html"><code>ac-polyline</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcPolylinePrimitiveDescComponent.html"><code>ac-polyline-primitive-desc</code></a></li>
 <li>point - <a href="https://articodeltd.github.io/angular-cesium/components/AcPointDescComponent.html"><code>ac-point-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcPointComponent.html"><code>ac-point</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcPointPrimitiveDescComponent.html"><code>ac-primitive-point</code></a></li>
-<li>ellipse - <a href="https://articodeltd.github.io/angular-cesium/components/AcEllipseDescComponent.html"><code>ac-ellipse-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcEllipseComponent.html"><code>ac-ellipse</code></a></li>
-<li>circle - <a href="https://articodeltd.github.io/angular-cesium/components/AcCircleDescComponent.html"><code>ac-circle-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcCircleComponent.html"><code>ac-circle</code></a> *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis</li>
+<li>ellipse - <a href="https://articodeltd.github.io/angular-cesium/components/AcEllipseDescComponent.html"><code>ac-ellipse-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcEllipseComponent.html"><code>ac-ellipse</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-demo-ellipse?embed=1&amp;file=src/app/ellipse-layer/ellipse-layer-example.component.ts">stackbliz</a></li>
+<li>circle - <a href="https://articodeltd.github.io/angular-cesium/components/AcCircleDescComponent.html"><code>ac-circle-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcCircleComponent.html"><code>ac-circle</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-circle-example?embed=1&amp;file=src/app/circle-layer-example/circle-layer-example.component.ts">stackblitz</a> *Same API as ellipse, but accepting a radius instead of semiMajorAxis and semiMinorAxis</li>
 <li>polygon - <a href="https://articodeltd.github.io/angular-cesium/components/AcPolygonDescComponent.html"><code>ac-polygon-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcPolygonComponent.html"><code>ac-polygon</code></a></li>
 <li>model - <a href="https://articodeltd.github.io/angular-cesium/components/AcModelDescComponent.html"><code>ac-model-desc</code></a></li>
-<li>box - <a href="https://articodeltd.github.io/angular-cesium/components/AcBoxDescComponent.html"><code>ac-box-dec</code></a></li>
-<li>corridor -<a href="https://articodeltd.github.io/angular-cesium/components/AcCorridorDescComponent.html"><code>ac-corridor-dec</code></a></li>
-<li>cylinder - <a href="https://articodeltd.github.io/angular-cesium/components/AcCylinderDescComponent.html"><code>ac-cylinder-dec</code></a></li>
-<li>ellipsoid - <a href="https://articodeltd.github.io/angular-cesium/components/AcEllipsoidDescComponent.html"><code>ac-ellipsoid-dec</code></a></li>
-<li>polyline volume - <a href="https://articodeltd.github.io/angular-cesium/components/AcPolylineVolumeDescComponent.html"><code>ac-polyline-volume-dec</code></a></li>
-<li>wall - <a href="https://articodeltd.github.io/angular-cesium/components/AcWallDescComponent.html"><code>ac-wall-dec</code></a></li>
-<li>rectangle -<a href="https://articodeltd.github.io/angular-cesium/components/AcRectangleDescComponent.html"><code>ac-rectangle-dec</code></a></li>
-<li>html - <a href="https://articodeltd.github.io/angular-cesium/components/AcHtmlDescComponent.html"><code>ac-html-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcHtmlComponent.html"><code>ac-html</code></a></li>
+<li>box - <a href="https://articodeltd.github.io/angular-cesium/components/AcBoxDescComponent.html"><code>ac-box-desc</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-box-example?embed=1&amp;file=src/app/boxes-layer/boxes-layer.component.ts">stackblitz</a></li>
+<li>corridor -<a href="https://articodeltd.github.io/angular-cesium/components/AcCorridorDescComponent.html"><code>ac-corridor-desc</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-demo?embed=1&amp;file=src/app/hippodrome-layer/hippodrome-layer-example.component.ts">stackblitz</a></li>
+<li>cylinder - <a href="https://articodeltd.github.io/angular-cesium/components/AcCylinderDescComponent.html"><code>ac-cylinder-desc</code></a></li>
+<li>ellipsoid - <a href="https://articodeltd.github.io/angular-cesium/components/AcEllipsoidDescComponent.html"><code>ac-ellipsoid-desc</code></a></li>
+<li>polyline volume - <a href="https://articodeltd.github.io/angular-cesium/components/AcPolylineVolumeDescComponent.html"><code>ac-polyline-volume-desc</code></a></li>
+<li>wall - <a href="https://articodeltd.github.io/angular-cesium/components/AcWallDescComponent.html"><code>ac-wall-desc</code></a></li>
+<li>rectangle -<a href="https://articodeltd.github.io/angular-cesium/components/AcRectangleDescComponent.html"><code>ac-rectangle-decc</code></a></li>
+<li>html - <a href="https://articodeltd.github.io/angular-cesium/components/AcHtmlDescComponent.html"><code>ac-html-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcHtmlComponent.html"><code>ac-html</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-html-example?embed=1&amp;file=src/app/html-layer/html-example.component.ts">stackblitz</a></li>
+<li>arc -<a href="https://articodeltd.github.io/angular-cesium/components/AcArcDescComponent.html"><code>ac-arc-dec</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-arc-example?embed=1&amp;file=src/app/arc-layer/arc-layer-example.component.ts">stackblitz</a></li>
 <li>array - <a href="https://articodeltd.github.io/angular-cesium/components/AcArrayDescComponent.html"><code>ac-array-desc</code></a></li>
 <li>czmlPacket - <a href="https://articodeltd.github.io/angular-cesium/components/AcCzmlDescComponent.html"><code>ac-czml-desc</code></a></li>
 </ul>
@@ -425,7 +427,30 @@ The <code>unsyncMapsCameras()</code> function can be used to unsync synced maps.
 <p>Try running our demo for examples (uncomment the relevant components in <code>demo-map.component.html</code>).</p>
 <h3 id="screenshotservice">ScreenshotService</h3>
 <p>Take screenshot of your cesium globe.</p>
-<h2 id="documents">Documents</h2>
+<h3 id="contextmenuservice-stackblitz">ContextMenuService - <a href="https://stackblitz.com/edit/angular-cesium-context-menu-example?embed=1&amp;file=src/app/context-menu-layer/context-menu-layer.component.ts">stackblitz</a></h3>
+<p>create any custom angular component and anchor it to a map position.</p>
+<div><pre class="line-numbers"><code class="language-javascript"> this.mapEventsManager
+      .register({ event: CesiumEvent.RIGHT_CLICK, pick: PickOptions.NO_PICK })
+      .subscribe(event =&gt; {
+        const position = this.coordinateConverter.screenToCartesian3(event.movement.endPosition);
+        if (!position) {
+          return;
+        }
+
+        this.contextMenuService.open(
+          MyCustomContextMenuComponent,
+          position,
+          {
+            data: {
+              item: {name: &#39;Cool name&#39;},
+              onActionClick: () =&gt; {
+                console.log(&#39;do action&#39;);
+                this.contextMenuService.close();
+              }
+            }
+          }
+        );
+      });</code></pre></div><h2 id="documents">Documents</h2>
 <ul>
 <li><h4 id="check-out-our-api-docs">Check out our api <a href="https://articodeltd.github.io/angular-cesium/">Docs</a></h4>
 </li>

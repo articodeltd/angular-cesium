@@ -101,6 +101,10 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#pickConfiguration">pickConfiguration</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#pointProps">pointProps</a>
                                 </li>
                                 <li>
@@ -292,6 +296,40 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+                                        <a name="pickConfiguration"></a>
+                                        <span class="name"><b>pickConfiguration</b><a href="#pickConfiguration"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>pickConfiguration:     <code><a href="../interfaces/PickConfiguration.html" target="_self" >PickConfiguration</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="../interfaces/PickConfiguration.html" target="_self" >PickConfiguration</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
                                         <a name="pointProps"></a>
                                         <span class="name"><b>pointProps</b><a href="#pointProps"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
@@ -364,6 +402,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CesiumEvent } from &#x27;../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum&#x27;;
 import { CesiumEventModifier } from &#x27;../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum&#x27;;
 import { PointProps, PolylineProps } from &#x27;./polyline-edit-options&#x27;;
+import { PickConfiguration } from &#x27;../../angular-cesium&#x27;;
 
 export interface EditorEditOptions {
   addPointEvent?: CesiumEvent;
@@ -373,6 +412,7 @@ export interface EditorEditOptions {
   pointProps?: PointProps;
   polylineProps?: PolylineProps;
   allowDrag?: boolean;
+  pickConfiguration?: PickConfiguration;
 }
 </code></pre>
     </div>

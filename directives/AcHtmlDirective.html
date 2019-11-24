@@ -358,7 +358,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/directives/ac-html/ac-html.directive.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/directives/ac-html/ac-html.directive.ts:44</a></div>
                             </td>
                         </tr>
 
@@ -477,7 +477,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/directives/ac-html/ac-html.directive.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/directives/ac-html/ac-html.directive.ts:56</a></div>
                             </td>
                         </tr>
 
@@ -622,9 +622,7 @@ export class AcHtmlDirective implements OnInit {
       const viewRef &#x3D; this._viewContainerRef.createEmbeddedView(this._templateRef, context);
       this._views.set(id, {viewRef, context});
       this._changeDetector.detectChanges();
-    } else if (this._views.has(id) &amp;&amp; !primitive.show) {
-      this.remove(id, primitive);
-    } else if (this._views.has(id) &amp;&amp; primitive.show) {
+    }  else if (this._views.has(id) &amp;&amp; primitive.show) {
       this._changeDetector.detectChanges();
     }
   }

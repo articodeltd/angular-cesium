@@ -312,7 +312,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="333" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:333</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="337" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:337</a></div>
                             </td>
                         </tr>
 
@@ -393,7 +393,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="205" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:205</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="207" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:207</a></div>
                             </td>
                         </tr>
 
@@ -496,7 +496,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="238" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:238</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:240</a></div>
                             </td>
                         </tr>
 
@@ -615,7 +615,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="414" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:414</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="418" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:418</a></div>
                             </td>
                         </tr>
 
@@ -686,7 +686,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="409" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:409</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="413" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:413</a></div>
                             </td>
                         </tr>
 
@@ -757,7 +757,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="419" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:419</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="423" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:423</a></div>
                             </td>
                         </tr>
 
@@ -971,7 +971,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="324" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:324</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="328" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/hippodrome-editor/hippodrome-editor.service.ts:328</a></div>
                             </td>
                         </tr>
 
@@ -1404,11 +1404,13 @@ export class HippodromeEditorService {
 
     const mouseMoveRegistration &#x3D; this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
+      pickConfig: options.pickConfiguration,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
     });
     const addPointRegistration &#x3D; this.mapEventsManager.register({
       event: hippodromeOptions.addPointEvent,
+      pickConfig: options.pickConfiguration,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
     });
@@ -1521,6 +1523,7 @@ export class HippodromeEditorService {
         event: options.dragShapeEvent,
         entityType: EditableHippodrome,
         pick: PickOptions.PICK_FIRST,
+        pickConfig: options.pickConfiguration,
         priority,
         pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.id,
       });
@@ -1529,6 +1532,7 @@ export class HippodromeEditorService {
       event: options.dragPointEvent,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
       priority,
       pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
     });

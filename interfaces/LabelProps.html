@@ -927,7 +927,6 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Cartesian3 } from &#x27;../../angular-cesium/models/cartesian3&#x27;;
 import { Cartesian2 } from &#x27;../../angular-cesium/models/cartesian2&#x27;;
-import mockLink from &#x27;apollo-link/lib/test-utils/mockLink&#x27;;
 
 export interface LabelStyle {
   show?: boolean;
@@ -950,6 +949,7 @@ export interface LabelStyle {
   scaleByDistance?: any;
   translucencyByDistance?: any;
   verticalOrigin?: any;
+  disableDepthTestDistance?: number;
 }
 
 export interface LabelProps {
@@ -998,7 +998,7 @@ export const defaultLabelProps: LabelProps &#x3D; {
   translucencyByDistance: undefined,
   verticalOrigin: Cesium.VerticalOrigin.BASELINE,
   eyeOffset: Cesium.Cartesian3.ZERO,
-  disableDepthTestDistance: Number.POSITIVE_INFINITY,
+  disableDepthTestDistance: 0,
 };
 </code></pre>
     </div>
