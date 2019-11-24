@@ -487,9 +487,9 @@ export class PolylinesEditorService {
   private setOptions(options: PolylineEditOptions) {
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYLINE_OPTIONS));
     const polylineOptions: PolylineEditOptions = Object.assign(defaultClone, options);
-    polylineOptions.pointProps = Object.assign({}, DEFAULT_POLYLINE_OPTIONS.pointProps, options.pointProps);
-    polylineOptions.polylineProps = Object.assign({},
-      DEFAULT_POLYLINE_OPTIONS.polylineProps, options.polylineProps);
+    polylineOptions.pointProps = {...DEFAULT_POLYLINE_OPTIONS.pointProps, ...options.pointProps};
+    polylineOptions.polylineProps = {...DEFAULT_POLYLINE_OPTIONS.polylineProps, ...options.polylineProps};
+    polylineOptions.clampHeightTo3DOptions = {...DEFAULT_POLYLINE_OPTIONS.clampHeightTo3DOptions, ...options.clampHeightTo3DOptions};
 
     if (options.clampHeightTo3D) {
       if (!this.cesiumScene.pickPositionSupported || !this.cesiumScene.clampToHeightSupported) {

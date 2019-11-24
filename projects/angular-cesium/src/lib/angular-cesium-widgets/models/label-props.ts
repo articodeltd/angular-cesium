@@ -1,6 +1,5 @@
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { Cartesian2 } from '../../angular-cesium/models/cartesian2';
-import mockLink from 'apollo-link/lib/test-utils/mockLink';
 
 export interface LabelStyle {
   show?: boolean;
@@ -23,6 +22,7 @@ export interface LabelStyle {
   scaleByDistance?: any;
   translucencyByDistance?: any;
   verticalOrigin?: any;
+  disableDepthTestDistance?: number;
 }
 
 export interface LabelProps {
@@ -71,5 +71,5 @@ export const defaultLabelProps: LabelProps = {
   translucencyByDistance: undefined,
   verticalOrigin: Cesium.VerticalOrigin.BASELINE,
   eyeOffset: Cesium.Cartesian3.ZERO,
-  disableDepthTestDistance: Number.POSITIVE_INFINITY,
+  disableDepthTestDistance: 0,
 };
