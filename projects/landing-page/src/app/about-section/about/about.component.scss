@@ -1,0 +1,161 @@
+.about {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 30px 0 30px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 25px;
+}
+
+.ac-image {
+  width: 100px;
+  margin-right: 20px;
+}
+
+.header {
+  margin-top: 50px;
+  padding: 0 30px 0 30px;
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.what-is-ac {
+  margin-top: 50px;
+  font-style: italic;
+  line-height: 25px;
+  max-width: 700px;
+  font-weight: bold;
+}
+
+.explaining-section {
+  max-width: 700px;
+}
+
+.title {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  color: rgb(233, 92, 244);
+}
+
+.articode-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  :active {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.clients-logos {
+  background-color: rgba(100, 230, 255, 0.3);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.client-logo {
+  height: 80px;
+  margin: 20px;
+  filter: grayscale(100%);
+}
+
+.made-with-love {
+  margin-top: 80px;
+  margin-bottom: 10px;
+}
+
+.features-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 320px;
+  margin: 30px;
+}
+
+.feature-header {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.feature-title {
+  font-weight: bold;
+  margin-left: 10px;
+  color: white;
+  line-height: 32px;
+}
+
+.icon-box {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+
+.feature-icon {
+  color: white;
+}
+
+.feature-text {
+  margin-top: 10px;
+}
+
+.showcase {
+  display: flex;
+  margin-bottom: 50px;
+  max-width: 800px;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.showcase-title-img {
+  height: 30px;
+}
+
+.showcase-img {
+  width: 300px;
+  @media only screen and (max-width: 600px) {
+    margin-top: 10px;
+  }
+}
+
+.showcase-images-section {
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.showcase-about {
+  margin-right: 20px;
+  @media only screen and (max-width: 600px) {
+    margin-right: 0;
+  }
+}
+
+.datubim-title {
+  color: #fda929;
+  text-decoration: none;
+  font-size: 24px;
+  &:active {
+    color: #fda929;
+  }
+}

@@ -1,0 +1,25 @@
+.nav-bar {
+  background-color: rgb(47, 6, 52);
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+
+.nav-bar-button {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  width: 120px;
+  cursor: pointer;
+  transition: 0.3s all;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    color: rgb(233, 92, 244);
+    background-color: rgb(9, 9, 39);
+  }
+}
