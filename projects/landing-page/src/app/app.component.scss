@@ -12,6 +12,7 @@
   }
 
   .map-section {
+    position: relative;
     flex: 1;
     @media only screen and (max-width: 600px) {
       height: calc(100vh - 45px);
@@ -31,6 +32,34 @@
     &::-webkit-scrollbar {
       width: 0px;
       background: transparent;
+    }
+  }
+
+  .split-map-button {
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    top: 45px;
+    right: 5px;
+    width: 85px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(50, 50, 50, 0.7);
+    color: white;
+    z-index: 100;
+    transition: 0.3s all;
+    cursor: pointer;
+    user-select: none;
+
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
+
+    &:hover {
+      background: rgba(0, 100, 200, 0.7);
     }
   }
 }

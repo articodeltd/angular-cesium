@@ -3,5 +3,22 @@
     <nav-bar></nav-bar>
     <about class="about-container"></about>
   </div>
-  <main-map class="map-section"></main-map>
+  <div *ngIf="!multiMap" class="map-section" oncontextmenu="return false;">
+    <div class="split-map-button" (click)="setMultiMaps()">Split Map</div>
+    <main-map class="map-section"></main-map>
+  </div>
+  <div *ngIf="multiMap" style="display: flex; flex-direction: column; flex: 1;">
+    <div class="split-map-button" (click)="setMultiMaps()">Unsplit Map</div>
+    <main-map [multiMaps]="true"></main-map>
+    <div
+      id="main-map-container"
+      style="display: flex; flex: 1; position: relative; overflow: hidden;"
+      oncontextmenu="return false;"
+    ></div>
+    <div
+      id="sub-map-container"
+      style="display: flex; flex: 1; position: relative; overflow: hidden;"
+      oncontextmenu="return false;"
+    ></div>
+  </div>
 </div>

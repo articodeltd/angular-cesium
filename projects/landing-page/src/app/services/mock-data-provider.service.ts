@@ -22,19 +22,24 @@ interface CubicArea {
 export class MockDataProviderService {
   constructor() {}
 
+  dataStream$;
+
   get$(amount = 5) {
     const staticEntities = this.initEntities(amount);
     return from(staticEntities);
   }
 
   getDataSteam$(amount = 50, intervalMs = 1000, restrictedArea?: CubicArea) {
-    const staticEntities = this.initRandom(amount, restrictedArea);
+    if (this.dataStream$) {
+      return this.dataStream$;
+    }
 
+    const staticEntities = this.initRandom(amount, restrictedArea);
     const movementDistance = getMovementDistance(intervalMs);
     const maxHeadingChange = getMaxHeadingChange(intervalMs);
     const chanceToChangeDirection = getChanceToChangeDirection(intervalMs);
 
-    return interval(intervalMs).pipe(
+    this.dataStream$ = interval(intervalMs).pipe(
       map(intervalValue => {
         return staticEntities.map(entity => {
           const nextEntityState = this.getNextEntityState(
@@ -53,6 +58,8 @@ export class MockDataProviderService {
       }),
       flatMap(entity => entity)
     );
+
+    return this.dataStream$;
   }
 
   private getNextEntityState(
@@ -133,7 +140,6 @@ export class MockDataProviderService {
         heading: Math.random() * 2 * Math.PI
       });
     }
-    console.log(staticEntities);
     return staticEntities;
   }
 }

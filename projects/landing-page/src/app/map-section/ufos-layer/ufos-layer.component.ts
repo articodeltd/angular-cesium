@@ -30,7 +30,7 @@ export class UFOsLayerComponent {
       })
       .pipe(
         map(entity => ({
-          id: entity.id,
+          id: (entity as any).id,
           actionType: ActionType.ADD_UPDATE,
           entity
         }))

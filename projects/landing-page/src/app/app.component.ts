@@ -1,5 +1,5 @@
-import { Component, ViewChild, ViewEncapsulation } from "@angular/core";
-import { MainMapComponent } from "./map-section/main-map/main-map.component";
+import { Component, ViewEncapsulation } from "@angular/core";
+import { MapsManagerService } from "angular-cesium";
 
 @Component({
   selector: "app-root",
@@ -8,7 +8,7 @@ import { MainMapComponent } from "./map-section/main-map/main-map.component";
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  multiMap = false; // Change to true to enable multiple maps
+  multiMap = false;
 
   constructor() {}
 
