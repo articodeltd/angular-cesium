@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation } from "@angular/core";
-import { MapsManagerService } from "angular-cesium";
 
 @Component({
   selector: "app-root",
