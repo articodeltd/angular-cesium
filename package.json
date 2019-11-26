@@ -14,6 +14,7 @@
     "ng": "ng",
     "demo:start": "ng serve",
     "demo:build": "ng build --prod",
+    "landing-page:deploy": "ng build landing-page --prod=true; cp projects/landing-page/now.json dist/landing-page; cd dist/landing-page; now && now alias",
     "demo:server": "nodemon --exec ts-node --project demo-server/tsconfig.json -- demo-server/src/main.ts",
     "landing-page": "ng serve landing-page --host 0.0.0.0 --disableHostCheck",
     "lib:build": "ng build angular-cesium; npm run copy:extra-files",
