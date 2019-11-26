@@ -4,11 +4,10 @@ import { filter, map, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators
 import { Injectable } from '@angular/core';
 import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEventBuilder } from './cesium-event-builder';
-import { EventRegistrationInput } from './event-registration-input';
+import { EventRegistrationInput, PickConfiguration } from './event-registration-input';
 import { DisposableObservable } from './disposable-observable';
 import { PickOptions } from './consts/pickOptions.enum';
 import { CesiumEvent } from './consts/cesium-event.enum';
-import { CesiumEventModifier } from './consts/cesium-event-modifier.enum';
 import { PlonterService } from '../plonter/plonter.service';
 import { UtilsService } from '../../utils/utils.service';
 import { CesiumDragDropHelper } from './event-observers/cesium-drag-drop-helper';
@@ -80,6 +79,7 @@ export class MapEventsManagerService {
 
     input.pick = input.pick || PickOptions.NO_PICK;
     input.priority = input.priority || 0;
+    input.pickConfig = input.pickConfig || {};
 
     if (input.entityType && input.pick === PickOptions.NO_PICK) {
       throw new Error('MapEventsManagerService: can\'t register an event ' +
@@ -92,19 +92,13 @@ export class MapEventsManagerService {
       this.eventRegistrations.set(eventName, []);
     }
 
-    const eventRegistration = this.createEventRegistration(
-      input.event,
-      input.modifier,
-      input.entityType,
-      input.pick,
-      input.priority,
-      input.pickFilter);
+    const eventRegistration = this.createEventRegistration(input);
     const registrationObservable: any = eventRegistration.observable;
     registrationObservable.dispose = () => this.disposeObservable(eventRegistration, eventName);
     this.eventRegistrations.get(eventName).push(eventRegistration);
 
     this.sortRegistrationsByPriority(eventName);
-    return <DisposableObservable<EventResult>> registrationObservable;
+    return <DisposableObservable<EventResult>>registrationObservable;
   }
 
   private disposeObservable(eventRegistration: Registration, eventName: string) {
@@ -132,12 +126,15 @@ export class MapEventsManagerService {
 
   }
 
-  private createEventRegistration(event: CesiumEvent,
-                                  modifier: CesiumEventModifier,
-                                  entityType: any,
-                                  pickOption: PickOptions,
-                                  priority: number,
-                                  pickFilter?: (any) => boolean): Registration {
+  private createEventRegistration({
+                                    event,
+                                    modifier,
+                                    entityType,
+                                    pick: pickOption,
+                                    priority,
+                                    pickFilter,
+                                    pickConfig,
+                                  }: EventRegistrationInput): Registration {
     const cesiumEventObservable = this.eventBuilder.get(event, modifier);
     const stopper = new Subject<any>();
 
@@ -147,32 +144,51 @@ export class MapEventsManagerService {
     if (!CesiumDragDropHelper.dragEvents.has(event)) {
       observable = cesiumEventObservable.pipe(
         filter(() => !registration.isPaused),
-        map((movement) => this.triggerPick(movement, pickOption)),
+        map((movement) => this.triggerPick(movement, pickOption, pickConfig)),
         filter((result) => result.cesiumEntities !== null || entityType === undefined),
         map((picksAndMovement) => this.addEntities(picksAndMovement, entityType, pickOption, pickFilter)),
         filter((result) => result.entities !== null || (entityType === undefined && !pickFilter)),
         switchMap((entitiesAndMovement) => this.plonter(entitiesAndMovement, pickOption)),
-        takeUntil(stopper), );
+        takeUntil(stopper));
     } else {
-      observable = this.createDragEvent(event, modifier, entityType, pickOption, priority, pickFilter).pipe(takeUntil(stopper));
+      observable = this.createDragEvent({
+        event,
+        modifier,
+        entityType,
+        pick: pickOption,
+        priority,
+        pickFilter,
+        pickConfig
+      }).pipe(takeUntil(stopper));
     }
 
     registration.observable = observable;
     return registration;
   }
 
-  private createDragEvent(event: CesiumEvent,
-                          modifier: CesiumEventModifier,
-                          entityType: any,
-                          pickOption: PickOptions,
-                          priority: number,
-                          pickFilter?: (any) => boolean): Observable<EventResult> {
+  private createDragEvent({
+                            event,
+                            modifier,
+                            entityType,
+                            pick: pickOption,
+                            priority,
+                            pickFilter,
+                            pickConfig,
+                          }: EventRegistrationInput): Observable<EventResult> {
     const { mouseDownEvent, mouseUpEvent } = CesiumDragDropHelper.getDragEventTypes(event);
 
     const mouseUpObservable = this.eventBuilder.get(mouseUpEvent);
     const mouseMoveObservable = this.eventBuilder.get(CesiumEvent.MOUSE_MOVE);
 
-    const mouseDownRegistration = this.createEventRegistration(mouseDownEvent, modifier, entityType, pickOption, priority, pickFilter);
+    const mouseDownRegistration = this.createEventRegistration({
+      event: mouseDownEvent,
+      modifier,
+      entityType,
+      pick: pickOption,
+      priority,
+      pickFilter,
+      pickConfig,
+    });
 
     const dropSubject = new Subject<EventResult>();
     const dragObserver = mouseDownRegistration.observable.pipe(mergeMap(e => {
@@ -193,30 +209,32 @@ export class MapEventsManagerService {
           cesiumEntities: e.cesiumEntities
         };
         return lastMove;
-      }), takeUntil(mouseUpObservable), tap(undefined, undefined, () => {
-        // On complete
-        if (lastMove) {
-          const dropEvent = Object.assign({}, lastMove);
-          dropEvent.movement.drop = true;
-          dropSubject.next(dropEvent);
+      }), takeUntil(mouseUpObservable), tap({
+        complete: () => {
+          // On complete
+          if (lastMove) {
+            const dropEvent = Object.assign({}, lastMove);
+            dropEvent.movement.drop = true;
+            dropSubject.next(dropEvent);
+          }
         }
-      }), );
+      }));
     }));
 
     return merge(dragObserver, dropSubject);
 
   }
 
-  private triggerPick(movement: any, pickOptions: PickOptions) {
+  private triggerPick(movement: any, pickOptions: PickOptions, pickConfig: PickConfiguration) {
     let picks: any = [];
     switch (pickOptions) {
       case PickOptions.PICK_ONE:
       case PickOptions.PICK_ALL:
-        picks = this.scene.drillPick(movement.endPosition);
+        picks = this.scene.drillPick(movement.endPosition, pickConfig.drillPickLimit, pickConfig.pickWidth, pickConfig.pickHeight);
         picks = picks.length === 0 ? null : picks;
         break;
       case PickOptions.PICK_FIRST:
-        const pick = this.scene.pick(movement.endPosition);
+        const pick = this.scene.pick(movement.endPosition, pickConfig.pickWidth, pickConfig.pickHeight);
         picks = pick === undefined ? null : [pick];
         break;
       case PickOptions.NO_PICK:

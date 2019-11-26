@@ -12,12 +12,12 @@ import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { PolylinesManagerService } from './polylines-manager.service';
-import { PointProps, PolylineEditOptions, PolylineProps } from '../../../models/polyline-edit-options';
+import { ClampTo3DOptions, PointProps, PolylineEditOptions, PolylineProps } from '../../../models/polyline-edit-options';
 import { PolylineEditUpdate } from '../../../models/polyline-edit-update';
 import { PolylineEditorObservable } from '../../../models/polyline-editor-observable';
 import { EditPolyline } from '../../../models';
 import { LabelProps } from '../../../models/label-props';
-import { generateKey } from '../../utils';
+import { debounce, generateKey } from '../../utils';
 import { CesiumService } from '../../../../angular-cesium';
 
 export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
@@ -47,6 +47,8 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   clampHeightTo3D: false,
   clampHeightTo3DOptions: {
     clampToTerrain: false,
+    clampMostDetailed: true,
+    clampToHeightPickWidth: 2,
   },
 };
 
@@ -94,6 +96,10 @@ export class PolylinesEditorService {
   private observablesMap = new Map<string, DisposableObservable<any>[]>();
   private cesiumScene;
 
+  private clampPointsDebounced = debounce((id, clampHeightTo3D: boolean, clampHeightTo3DOptions) => {
+    this.clampPoints(id, clampHeightTo3D, clampHeightTo3DOptions);
+  }, 300);
+
   init(mapEventsManager: MapEventsManagerService,
        coordinateConverter: CoordinateConverter,
        cameraService: CameraService,
@@ -112,7 +118,30 @@ export class PolylinesEditorService {
     return this.updatePublisher;
   }
 
-  screenToPosition(cartesian2, clampHeightTo3D: boolean, isTerrain?) {
+  private clampPoints(id, clampHeightTo3D: boolean, { clampToTerrain, clampMostDetailed, clampToHeightPickWidth }: ClampTo3DOptions) {
+    if (clampHeightTo3D && clampMostDetailed) {
+      const polyline = this.polylinesManager.get(id);
+      const points = polyline.getPoints();
+
+      if (!clampToTerrain) {
+        // 3dTiles
+        points.forEach(point => {
+          point.setPosition(this.cesiumScene.clampToHeight(point.getPosition(), undefined, clampToHeightPickWidth));
+        });
+      } else {
+        const cartographics = points.map(point => this.coordinateConverter.cartesian3ToCartographic(point.getPosition()));
+        const promise = Cesium.sampleTerrain(this.cesiumScene.terrainProvider, 11, cartographics);
+        Cesium.when(promise, function (updatedPositions) {
+          points.forEach((point, index) => {
+            point.setPosition(Cesium.Cartographic.toCartesian(updatedPositions[index]));
+          });
+        });
+      }
+    }
+  }
+
+
+  private screenToPosition(cartesian2, clampHeightTo3D: boolean, {clampToHeightPickWidth, clampToTerrain}: ClampTo3DOptions) {
     const cartesian3 = this.coordinateConverter.screenToCartesian3(cartesian2);
 
     // If cartesian3 is undefined then the point inst on the globe
@@ -122,7 +151,8 @@ export class PolylinesEditorService {
         return this.cesiumScene.globe.pick(ray, this.cesiumScene);
       };
 
-      if (isTerrain) {
+      // is terrain?
+      if (clampToTerrain) {
         return globePositionPick();
       } else {
         const cartesian3PickPosition = this.cesiumScene.pickPosition(cartesian2);
@@ -130,7 +160,7 @@ export class PolylinesEditorService {
         if (latLon.height < 0) {// means nothing picked -> Validate it
           return globePositionPick();
         }
-        return this.cesiumScene.clampToHeight(cartesian3PickPosition);
+        return this.cesiumScene.clampToHeight(cartesian3PickPosition, undefined, clampToHeightPickWidth);
       }
     }
 
@@ -161,26 +191,28 @@ export class PolylinesEditorService {
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
+      pickConfig: options.pickConfiguration,
     });
     const addPointRegistration = this.mapEventsManager.register({
       event: polylineOptions.addPointEvent,
       modifier: polylineOptions.addPointModifier,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
+      pickConfig: options.pickConfiguration,
     });
     const addLastPointRegistration = this.mapEventsManager.register({
       event: polylineOptions.addLastPointEvent,
       modifier: polylineOptions.addLastPointModifier,
       pick: PickOptions.NO_PICK,
       priority: eventPriority,
+      pickConfig: options.pickConfiguration,
     });
 
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D,
-        polylineOptions.clampHeightTo3DOptions.clampToTerrain);
+      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions);
       if (position) {
         this.updateSubject.next({
           id,
@@ -196,8 +228,7 @@ export class PolylinesEditorService {
       if (finishedCreate) {
         return;
       }
-      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D,
-        polylineOptions.clampHeightTo3DOptions.clampToTerrain);
+      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions);
       if (!position) {
         return;
       }
@@ -232,8 +263,7 @@ export class PolylinesEditorService {
     });
 
     addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
-      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D,
-        polylineOptions.clampHeightTo3DOptions.clampToTerrain);
+      const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions);
       if (!position) {
         return;
       }
@@ -329,11 +359,13 @@ export class PolylinesEditorService {
                        editSubject: Subject<PolylineEditUpdate>,
                        options: PolylineEditOptions,
                        editObservable?: PolylineEditorObservable) {
+    this.clampPoints(id, options.clampHeightTo3D, options.clampHeightTo3DOptions);
 
     const pointDragRegistration = this.mapEventsManager.register({
       event: options.dragPointEvent,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });
@@ -343,6 +375,7 @@ export class PolylinesEditorService {
       modifier: options.removePointModifier,
       entityType: EditPoint,
       pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
       priority,
       pickFilter: entity => id === entity.editedEntityId,
     });
@@ -353,6 +386,7 @@ export class PolylinesEditorService {
         event: options.dragShapeEvent,
         entityType: EditPolyline,
         pick: PickOptions.PICK_FIRST,
+        pickConfig: options.pickConfiguration,
         priority,
         pickFilter: entity => id === entity.editedEntityId,
       });
@@ -362,8 +396,8 @@ export class PolylinesEditorService {
       shapeDragRegistration
         .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
-          const endDragPosition = this.screenToPosition(endPosition, false);
-          const startDragPosition = this.screenToPosition(startPosition, false);
+          const endDragPosition = this.screenToPosition(endPosition, false, options.clampHeightTo3DOptions);
+          const startDragPosition = this.screenToPosition(startPosition, false, options.clampHeightTo3DOptions);
           if (!endDragPosition) {
             return;
           }
@@ -388,7 +422,7 @@ export class PolylinesEditorService {
     pointDragRegistration.pipe(
       tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
-        const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions.clampToTerrain);
+        const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions);
         if (!position) {
           return;
         }
@@ -408,6 +442,8 @@ export class PolylinesEditorService {
           positions: this.getPositions(id),
           points: this.getPoints(id),
         });
+
+        this.clampPointsDebounced(id, options.clampHeightTo3D, options.clampHeightTo3DOptions);
       });
 
     pointRemoveRegistration.subscribe(({ entities }) => {
@@ -434,6 +470,8 @@ export class PolylinesEditorService {
         positions: this.getPositions(id),
         points: this.getPoints(id),
       });
+
+      this.clampPoints(id, options.clampHeightTo3D, options.clampHeightTo3DOptions);
     });
 
     const observables = [pointDragRegistration, pointRemoveRegistration];
@@ -447,9 +485,9 @@ export class PolylinesEditorService {
   private setOptions(options: PolylineEditOptions) {
     const defaultClone = JSON.parse(JSON.stringify(DEFAULT_POLYLINE_OPTIONS));
     const polylineOptions: PolylineEditOptions = Object.assign(defaultClone, options);
-    polylineOptions.pointProps = Object.assign({}, DEFAULT_POLYLINE_OPTIONS.pointProps, options.pointProps);
-    polylineOptions.polylineProps = Object.assign({},
-      DEFAULT_POLYLINE_OPTIONS.polylineProps, options.polylineProps);
+    polylineOptions.pointProps = {...DEFAULT_POLYLINE_OPTIONS.pointProps, ...options.pointProps};
+    polylineOptions.polylineProps = {...DEFAULT_POLYLINE_OPTIONS.polylineProps, ...options.polylineProps};
+    polylineOptions.clampHeightTo3DOptions = {...DEFAULT_POLYLINE_OPTIONS.clampHeightTo3DOptions, ...options.clampHeightTo3DOptions};
 
     if (options.clampHeightTo3D) {
       if (!this.cesiumScene.pickPositionSupported || !this.cesiumScene.clampToHeightSupported) {

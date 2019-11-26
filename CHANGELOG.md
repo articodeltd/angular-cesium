@@ -1,11 +1,18 @@
-## Next
+## 0.61
+### Features
+* Add `PickConfiguration` for `MapEventManager` for setting `pick()` width, height and `drillPick()` limit.
+* Add support for Polyline and Polygon editors to clamp most detailed ground in `clampHeightTo3D` mode.
+ using `clampHeightTo3DOptions.clampMostDetailed = true`.
+* Add stackblitz examples to the docs.  
+
 ### Fixes
+* Shape Editor default label `disableDepthTestDistance` changed to 0.
 * Fix `AcHtml` toggle `show` created new html elements instead of updating the current element.
 
 ## 0.60
 ### Fixes
 * Polyline and polygon editor - fix support of events modifiers (`alt`, `ctrl`, `shift`).
-* Polyline and polygon editor - fix screen position to geo position.
+* Polyline and polygon editor - fix screen position to geo position. 
 
 ### Features
 * Added a rectangle drawing editor widget
