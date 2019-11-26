@@ -15,7 +15,6 @@
 
 .header {
   margin-top: 50px;
-  padding: 0 30px 0 30px;
   font-size: 50px;
   line-height: 50px;
   font-weight: bold;
@@ -29,11 +28,17 @@
   font-style: italic;
   line-height: 25px;
   max-width: 700px;
+  @media only screen and (min-width: 1900px) {
+    max-width: 800px;
+  }
   font-weight: bold;
 }
 
 .explaining-section {
   max-width: 700px;
+  @media only screen and (min-width: 1900px) {
+    max-width: 800px;
+  }
 }
 
 .title {
@@ -54,7 +59,7 @@
 }
 
 .clients-logos {
-  background-color: rgba(100, 230, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -72,17 +77,26 @@
 }
 
 .features-row {
+  position: relative;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  max-width: 700px;
+  @media only screen and (min-width: 1900px) {
+    max-width: 800px;
+  }
 }
 
 .feature {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 320px;
-  margin: 30px;
+  max-width: calc(50% - 30px);
+  @media only screen and (max-width: 1200px) {
+    max-width: 100%;
+  }
+  min-width: 260px;
+  margin: 30px 0 30px 0;
 }
 
 .feature-header {
