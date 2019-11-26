@@ -120,7 +120,7 @@
   display: flex;
   margin-bottom: 50px;
   max-width: 800px;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 900px) {
     flex-direction: column;
   }
 }
@@ -131,13 +131,13 @@
 
 .showcase-img {
   width: 300px;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 900px) {
     margin-top: 10px;
   }
 }
 
 .showcase-images-section {
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 900px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -146,7 +146,7 @@
 
 .showcase-about {
   margin-right: 20px;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 900px) {
     margin-right: 0;
   }
 }

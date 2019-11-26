@@ -5,7 +5,7 @@
   height: 100vh;
   width: 100vw;
   position: relative;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 900px) {
     flex-direction: column;
     height: auto;
     width: auto;
@@ -14,7 +14,7 @@
   .map-section {
     position: relative;
     flex: 1;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 900px) {
       height: calc(100vh - 45px);
     }
   }
@@ -54,7 +54,7 @@
     cursor: pointer;
     user-select: none;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 900px) {
       display: none;
     }
 
