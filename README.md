@@ -4,8 +4,8 @@
 [![CircleCI](https://circleci.com/gh/articodeltd/angular-cesium.svg?style=shield)](https://circleci.com/gh/articodeltd/angular-cesium)
 [![npm version](https://img.shields.io/npm/v/angular-cesium.svg?style=flat-square)](https://www.npmjs.com/package/angular-cesium)
 
-Create map based applications using cesium and angular2 components.
-Focusing on high performance with easy usage.
+Create amazing mapping applications using Cesium and Angular components.
+Angular-Cesium is focused on high performance and simple usage.
 Check out our [Demo](http://www.angular-cesium.com) that contains small app built with angular-cesium and our blog post [Intro to angular-cesium](https://cesium.com/blog/2019/03/28/angular-cesium/).
 
 ## Getting started
