@@ -9,11 +9,11 @@ Focusing on high performance with easy usage.
 Check out our [Demo](http://www.angular-cesium.com) that contains small app built with angular-cesium and our blog post [Intro to angular-cesium](https://cesium.com/blog/2019/03/28/angular-cesium/).
 
 ## Getting started
-#### If you are using Angular CLI, you can add the angular-cesium library using schematics
+<!-- #### If you are using Angular CLI, you can add the angular-cesium library using schematics
 + add `angular-cesium`:
   ```bash
   $ ng add angular-cesium
-  ```
+  ``` -->
 
 #### For existing project just install angular-cesium
 + install `angular-cesium`:
@@ -122,8 +122,6 @@ Note that in the example below, only the relevant sections and values are shown.
        position: relative;
    }
    ```
-
-+ Live long and prosper
 
 ## Demo
 + You can try and learn about angular-cesium from our demo: [http://www.angular-cesium.com](http://www.angular-cesium.com) ( most optimized as desktop application ).
