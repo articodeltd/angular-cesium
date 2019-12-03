@@ -261,7 +261,7 @@ After explaining a little bit about `ac-layer` we hope that you may see it's ben
 + rectangle -[`ac-rectangle-decc`](https://articodeltd.github.io/angular-cesium/components/AcRectangleDescComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-rectangle-example?embed=1&file=src/app/rectangle-layer-example/rectangle-layer-example.component.ts)
 * html - [`ac-html-desc`](https://articodeltd.github.io/angular-cesium/components/AcHtmlDescComponent.html) / [`ac-html`](https://articodeltd.github.io/angular-cesium/components/AcHtmlComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-html-example?embed=1&file=src/app/html-layer/html-example.component.ts)
 + arc -[`ac-arc-dec`](https://articodeltd.github.io/angular-cesium/components/AcArcDescComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-arc-example?embed=1&file=src/app/arc-layer/arc-layer-example.component.ts)
-* array - [`ac-array-desc`](https://articodeltd.github.io/angular-cesium/components/AcArrayDescComponent.html)
+* array - [`ac-array-desc`](https://articodeltd.github.io/angular-cesium/components/AcArrayDescComponent.html) - [stackblitz](https://stackblitz.com/edit/angular-cesium-demo-arrays?embed=1&file=src/app/entities-with-arrays/entities-with-arrays-example.component.ts)
 * czmlPacket - [`ac-czml-desc`](https://articodeltd.github.io/angular-cesium/components/AcCzmlDescComponent.html)
 
 ### `ac-entity-desc` vs `ac-entity`

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { from, interval } from 'rxjs';
 import { flatMap, map } from 'rxjs/operators';
-import { CoordinateConverter } from '../../../../../projects/angular-cesium/src/lib/angular-cesium';
+import { CoordinateConverter } from 'angular-cesium';
 
 const randomSign = () => Math.round(Math.random()) * 2 - 1;
 

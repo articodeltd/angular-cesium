@@ -7,7 +7,7 @@ import { MockDataProviderService } from '../../utils/services/dataProvider/mock-
 @Component({
   selector: 'entities-with-arrays-example',
   template: `
-      <ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [store]="true" debug="true">
+      <ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [store]="true">
           <ac-point-desc props="{
                     position: track.position,
                     pixelSize: 20,
