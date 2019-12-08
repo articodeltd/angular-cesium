@@ -1,0 +1,40 @@
+<ac-toolbar [allowDrag]="false">
+  <ac-toolbar-button matTooltip="Home" matTooltipPosition="right"
+                     [iconUrl]="'assets/home-icon.svg'"
+                     (onClick)="goHome()">
+  </ac-toolbar-button>
+  <ac-toolbar-button matTooltip="Range And Bearing" matTooltipPosition="right"
+                     [iconUrl]="'assets/ruler.svg'"
+                     (onClick)="createRangeAndBearing()">
+  </ac-toolbar-button>
+  <ac-toolbar-button matTooltip="Zoom To Rectangle" matTooltipPosition="right"
+                     [iconUrl]="'assets/select.svg'"
+                     (onClick)="zoomToRectangle()">
+  </ac-toolbar-button>
+  <ac-toolbar-button matTooltip="Draw Circle" matTooltipPosition="right"
+                     [iconUrl]="'assets/circle.svg'"
+                     (onClick)="drawCircle()">
+  </ac-toolbar-button>
+  <ac-toolbar-button matTooltip="Draw Rectangle" matTooltipPosition="right"
+                     [iconUrl]="'assets/rectangle.svg'"
+                     (onClick)="drawRectangle()">
+  </ac-toolbar-button>
+  <ac-toolbar-button matTooltip="Draw Ellipse" matTooltipPosition="right"
+                     [iconUrl]="'assets/ellipse.svg'"
+                     (onClick)="drawEllipse()">
+  </ac-toolbar-button>
+  <ac-toolbar-button matTooltip="Draw Polygon" matTooltipPosition="right"
+                     [iconUrl]="'assets/polygon.svg'"
+                     (onClick)="drawPolygon()">
+  </ac-toolbar-button>
+  <ac-toolbar-button matTooltip="Draw hippodrome" matTooltipPosition="right"
+                     [iconUrl]="'assets/hippodrome.svg'"
+                     (onClick)="drawHippodrome()">
+  </ac-toolbar-button>
+  <range-and-bearing #rangeAndBearing></range-and-bearing>
+  <circles-editor></circles-editor>
+  <rectangles-editor></rectangles-editor>
+  <ellipses-editor></ellipses-editor>
+  <polygons-editor></polygons-editor>
+  <hippodrome-editor></hippodrome-editor>
+</ac-toolbar>

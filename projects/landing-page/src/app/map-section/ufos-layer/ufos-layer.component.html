@@ -1,0 +1,18 @@
+<ac-layer acFor="let ufo of ufos$" [context]="this" [store]="true">
+  <ac-model-desc props="{
+      position: interpolatePosition(ufo),
+      minimumPixelSize: 30,
+      uri: '/assets/flying-saucer.glb'
+  }">
+  </ac-model-desc>
+
+  <ac-cylinder-desc props="{
+    position: interpolateBeamPosition(ufo),
+    length: ufo.position.height,
+    topRadius: 10,
+    bottomRadius: ufo.position.height / 3,
+    show: shouldShowBeam(ufo),
+    material: ufoBeamColor
+  }">
+  </ac-cylinder-desc>
+</ac-layer>

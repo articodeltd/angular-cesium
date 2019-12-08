@@ -163,6 +163,134 @@
           }
         }
       }
+    },
+    "landing-page": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/landing-page",
+      "sourceRoot": "projects/landing-page/src",
+      "prefix": "",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/landing-page",
+            "index": "projects/landing-page/src/index.html",
+            "main": "projects/landing-page/src/main.ts",
+            "polyfills": "projects/landing-page/src/polyfills.ts",
+            "tsConfig": "projects/landing-page/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/landing-page/src/favicon.ico",
+              "projects/landing-page/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/cesium/Build/Cesium",
+                "output": "./assets/cesium"
+              }
+            ],
+            "styles": [
+              "projects/landing-page/src/styles.scss",
+              "./node_modules/cesium/Build/Cesium/Widgets/widgets.css"
+            ],
+            "scripts": ["./node_modules/cesium/Build/Cesium/Cesium.js"]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/landing-page/src/environments/environment.ts",
+                  "with": "projects/landing-page/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "landing-page:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "landing-page:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "landing-page:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/landing-page/src/test.ts",
+            "polyfills": "projects/landing-page/src/polyfills.ts",
+            "tsConfig": "projects/landing-page/tsconfig.spec.json",
+            "karmaConfig": "projects/landing-page/karma.conf.js",
+            "assets": [
+              "projects/landing-page/src/favicon.ico",
+              "projects/landing-page/src/assets"
+            ],
+            "styles": [
+              "projects/landing-page/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/landing-page/tsconfig.app.json",
+              "projects/landing-page/tsconfig.spec.json",
+              "projects/landing-page/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/landing-page/e2e/protractor.conf.js",
+            "devServerTarget": "landing-page:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "landing-page:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "angular-cesium-demo"

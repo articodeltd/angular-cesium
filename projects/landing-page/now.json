@@ -1,0 +1,8 @@
+{
+  "version": 2,
+    "name": "angular-cesium",
+    "builds": [
+      { "src": "./**", "use": "@now/static" }
+    ],
+    "alias": ["angular-cesium"]
+}

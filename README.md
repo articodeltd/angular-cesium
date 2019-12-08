@@ -474,4 +474,3 @@ For additional support options contact us: [contact@articode.co](mailto:\\contac
 
 Articode is a software company that specializes in GIS solutions and is the creator and the maintainer of angular-cesium.
 Feel free to contact us for consulting or any business endeavors.
-

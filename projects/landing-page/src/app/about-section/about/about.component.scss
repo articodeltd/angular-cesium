@@ -1,0 +1,173 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  padding: 0 35px 0 35px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 25px;
+}
+
+.ac-image {
+  width: 150px;
+  margin-right: 20px;
+
+  @media only screen and (max-width: 1200px) {
+    width: 100px;
+  }
+}
+
+.header {
+  margin-top: 50px;
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+}
+
+.what-is-ac {
+  margin-top: 50px;
+  line-height: 25px;
+  font-weight: 500;
+}
+
+.explaining-section {
+  max-width: 900px;
+  @media only screen and (min-width: 1900px) {
+    max-width: 900px;
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 30px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  color: rgb(233, 92, 244);
+}
+
+.articode-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+
+  :active {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.clients-logos {
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.client-logo {
+  height: 80px;
+  margin: 20px;
+  filter: grayscale(100%);
+}
+
+.made-with-love {
+  margin-top: 80px;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+.features-row {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: calc(50% - 30px);
+  @media only screen and (max-width: 1200px) {
+    max-width: 100%;
+  }
+  min-width: 260px;
+  margin: 30px 0 30px 0;
+}
+
+.feature-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.feature-title {
+  font-weight: 500;
+  margin-left: 10px;
+  color: white;
+  line-height: 32px;
+}
+
+.icon-box {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+
+.feature-icon {
+  color: white;
+}
+
+.feature-text {
+  margin-top: 10px;
+}
+
+.showcase {
+  display: flex;
+  margin-bottom: 50px;
+  max-width: 900px;
+  align-items: center;
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.showcase-title-img {
+  height: 30px;
+}
+
+.showcase-img {
+  width: 300px;
+  @media only screen and (max-width: 900px) {
+    margin-top: 10px;
+  }
+}
+
+.showcase-images-section {
+  @media only screen and (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.showcase-about {
+  margin-right: 20px;
+  @media only screen and (max-width: 900px) {
+    margin-right: 0;
+  }
+}
+
+.datubim-title {
+  color: #fda929;
+  text-decoration: none;
+  font-size: 24px;
+
+  &:active {
+    color: #fda929;
+  }
+}

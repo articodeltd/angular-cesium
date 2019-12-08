@@ -1,0 +1,15 @@
+<ac-map *ngIf="!multiMaps" [sceneMode]="sceneMode3D" mapId="main-map">
+  <ufos-layer></ufos-layer>
+  <toolbar-example></toolbar-example>
+  <keyboard-control-layer></keyboard-control-layer>
+</ac-map>
+
+<ac-map *ngIf="multiMaps" [sceneMode]="sceneMode2D" mapId="main-map" containerId="main-map-container">
+  <ufos-layer></ufos-layer>
+  <keyboard-control-layer></keyboard-control-layer>
+</ac-map>
+
+<ac-map *ngIf="multiMaps" [sceneMode]="sceneMode2D" mapId="sub-map" containerId="sub-map-container">
+  <ufos-layer></ufos-layer>
+  <keyboard-control-layer></keyboard-control-layer>
+</ac-map>
