@@ -51,6 +51,11 @@ import { SidenavToolbarComponent } from './layout/sidenav-toolbar/sidenav-toolba
 import { SettingsFormComponent } from './layout/settings-form/settings-form.component';
 import { SingleEntityOnMapExampleComponent } from './components/single-entity-on-map-example/single-entity-on-map-example.component';
 import { MyCustomContextMenuComponent } from './components/context-menu-layer/context-menu/my-custom-context-menu.component';
+import { BillboardLayerExampleComponent } from './components/billboard-layer-example/billboard-layer-example.component';
+import { CylinderLayerExampleComponent } from './components/cylinder-layer-example/cylinder-layer-example.component';
+import { EllipsoidLayerExampleComponent } from './components/ellipsoid-layer-example/ellipsoid-layer-example.component';
+import { VolumeLayerExampleComponent } from './components/volume-layer-example/volume-layer-example.component';
+import { WallLayerExampleComponent } from './components/wall-layer-example/wall-layer-example.component';
 
 
 @NgModule({
@@ -68,6 +73,11 @@ import { MyCustomContextMenuComponent } from './components/context-menu-layer/co
   declarations: [
     AppComponent,
     TracksLayerComponent,
+    BillboardLayerExampleComponent,
+    WallLayerExampleComponent,
+    CylinderLayerExampleComponent,
+    EllipsoidLayerExampleComponent,
+    VolumeLayerExampleComponent,
     LabelLayerExampleComponent,
     EllipseLayerExampleComponent,
     CircleLayerExampleComponent,

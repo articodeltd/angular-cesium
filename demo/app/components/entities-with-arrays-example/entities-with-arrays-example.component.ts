@@ -1,33 +1,66 @@
-import { filter, map, publish } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { ConnectableObservable } from 'rxjs';
-import { AcLayerComponent, AcNotification, CesiumEvent, MapEventsManagerService, PickOptions } from 'angular-cesium';
-import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
-import { SimTracksDataProvider } from '../../utils/services/dataProvider/sim-tracks-data-provider';
+import { Observable } from 'rxjs';
+import { AcLayerComponent, AcNotification, ActionType, CesiumEvent, MapEventsManagerService, PickOptions } from 'angular-cesium';
+import { MockDataProviderService } from '../../utils/services/dataProvider/mock-data-provider.service';
 
 @Component({
   selector: 'entities-with-arrays-example',
-  templateUrl: './entities-with-arrays-example.component.html',
-  providers: [SimTracksDataProvider],
+  template: `
+      <ac-layer acFor="let track of tracks$" [show]="show" [context]="this" [store]="true">
+          <ac-point-desc props="{
+                    position: track.position,
+                    pixelSize: 20,
+                    color: track.color,
+                    outlineColor: Cesium.Color.RED,
+                }">
+          </ac-point-desc>
+
+          <ac-array-desc acFor="let arrayItem of track.array" [idGetter]="trackArrayIdGetter">
+              <ac-point-desc props="{
+                    position: arrayItem.pos,
+                    pixelSize: 10,
+                    color: track.color,
+                    outlineColor: Cesium.Color.RED,
+                    outlineWidth: 2
+                }">
+              </ac-point-desc>
+              <ac-array-desc acFor="let innerArrayItem of arrayItem.innerArray" [idGetter]="trackArrayIdGetter">
+                  <ac-point-desc props="{
+                      position: innerArrayItem.pos,
+                      pixelSize: 10,
+                      color: track.color,
+                      outlineColor: Cesium.Color.BLUE,
+                      outlineWidth: 2
+                  }">
+                  </ac-point-desc>
+              </ac-array-desc>
+          </ac-array-desc>
+      </ac-layer>
+
+  `,
 })
 export class EntitiesWithArraysExampleComponent implements OnInit, OnChanges {
-  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, { static: false }) layer: AcLayerComponent;
 
   @Input()
   show: boolean;
 
-  private tracks$: ConnectableObservable<AcNotification>;
+  private tracks$: Observable<AcNotification>;
   private Cesium = Cesium;
   private lastPickTrack: any;
 
   constructor(private mapEventsManager: MapEventsManagerService,
-              simDataProvider: SimTracksDataProvider,
-              private appSettingsService: AppSettingsService) {
-    this.tracks$ = publish<AcNotification>()(simDataProvider.get());
-    this.tracks$.connect();
+              private dataProvider: MockDataProviderService) {
   }
 
   ngOnInit() {
+    this.tracks$ = this.dataProvider.getDataSteam$().pipe(map(entity => ({
+      id: entity.id,
+      actionType: ActionType.ADD_UPDATE,
+      entity: entity,
+    })));
+
     const mouseOverObservable = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.PICK_FIRST,
@@ -49,11 +82,6 @@ export class EntitiesWithArraysExampleComponent implements OnInit, OnChanges {
     });
   }
 
-  getSingleTrackObservable(trackId: string) {
-    return this.tracks$.pipe(
-      filter((notification) => notification.id === trackId), map((notification) => notification.entity), );
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['show']) {
       this.show = changes['show'].currentValue;
@@ -61,34 +89,8 @@ export class EntitiesWithArraysExampleComponent implements OnInit, OnChanges {
     }
   }
 
-  getTrackColor(track: any): any {
-    if (track.dialogOpen) {
-      return Cesium.Color.GREENYELLOW;
-    }
-    if (track.picked) {
-      return Cesium.Color.YELLOW;
-    }
-    return track.isTarget ? Cesium.Color.BLACK : Cesium.Color.fromCssColorString('#673ab7');
-  }
-
-  getTextColor(): any {
-    return Cesium.Color.BLACK;
-  }
-
-  getPolylineColor() {
-    return new Cesium.Color(0.3, 1.0, 0.3, 1.0);
-  }
-
   trackArrayIdGetter(entity: any): string {
     return entity.id;
-  }
-
-  showVelocityVectors(): boolean {
-    return this.appSettingsService.showVelocityVectors;
-  }
-
-  showEllipses(): boolean {
-    return this.appSettingsService.showEllipses;
   }
 
   removeAll() {

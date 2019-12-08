@@ -16,7 +16,7 @@
     "cesium": ">= 1.48.0"
   },
   "dependencies": {
-    "angular2parse": "^1.0.8",
+    "angular2parse": "^1.0.9",
     "geodesy": "^1.1.1",
     "@types/geodesy": "^1.1.2",
     "json-string-mapper": "^1.0.0",
@@ -27,9 +27,10 @@
     "heatmap.js": "^2.0.5"
   },
   "scripts": {
-    "build": "..\\..\\node_modules\\.bin\\tsc -p tsconfig.schematics.json",
-    "copy:collection": "copy schematics\\collection.json ..\\..\\dist\\angular-cesium\\schematics\\collection.json",
-    "postbuild": "npm run copy:collection"
+    "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
+    "copy:files": "cp -a ./schematics/ng-add ../../dist/angular-cesium/schematics",
+    "copy:collection": "cp ./schematics/collection.json ../../dist/angular-cesium/schematics/collection.json",
+    "postbuild": "npm run copy:files && npm run copy:collection"
   },
-  "schematics": ".\\schematics\\collection.json"
+  "schematics": "./schematics/collection.json"
 }

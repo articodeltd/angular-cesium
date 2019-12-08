@@ -1,4 +1,4 @@
-import { WorkspaceProject } from '@angular-devkit/core/src/workspace';
+import { WorkspaceProject } from '@schematics/angular/utility/workspace-models';
 import { chain, Rule, SchematicContext, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { addImportToModule } from '@schematics/angular/utility/ast-utils';
@@ -12,10 +12,18 @@ export function ngAdd(_options: any): Rule {
       addModuleImportToRootModule(),
       addGlobalsToTarget('build'),
       addGlobalsToTarget('test'),
-      addBaseUrlToMain(),
+      updateMain(),
+      addTypings(),
       installPackageJsonDependencies()
     ]);
   };
+}
+
+function addTypings(): Rule {
+  return (tree: Tree) => {
+    tree.create('./src/typing.d.ts', 'declare var Cesium;');
+    return tree;
+  }
 }
 
 function installPackageJsonDependencies(): Rule {
@@ -70,7 +78,8 @@ function addModuleImportToRootModule() {
     const modulePath = getAppModulePath(tree, getProjectMainFile(project));
     const moduleSource = getSourceFile(tree, modulePath);
 
-    const changes = addImportToModule(moduleSource, modulePath, 'AngularCesiumModule.forRoot()', 'angular-cesium');
+    const changes = addImportToModule(moduleSource, modulePath, 'AngularCesiumModule.forRoot()', 'angular-cesium')
+      .concat(addImportToModule(moduleSource, modulePath, 'AngularCesiumWidgetsModule', 'angular-cesium'));
     const recorder = tree.beginUpdate(modulePath);
 
     changes.forEach((change) => {
@@ -123,7 +132,7 @@ function addOrAppendGlobal(section: any[], path: any) {
   }
 }
 
-function addBaseUrlToMain() {
+function updateMain() {
   return (tree: Tree, _context: SchematicContext) => {
     const workspace = getWorkspace(tree);
     const project = workspace.projects[workspace.defaultProject];
@@ -135,12 +144,10 @@ function addBaseUrlToMain() {
     }
 
     const tsContent = buffer.toString();
-    const insertion = 'Cesium.buildModuleUrl.setBaseUrl(\'/assets/cesium/\');';
+    const insertion = '\nCesium.buildModuleUrl.setBaseUrl(\'/assets/cesium/\');\n//Cesium.Ion.defaultAccessToken="";\n';
     const recorder = tree.beginUpdate(mainFile);
     const bootstrapIndex = tsContent.indexOf('platformBrowserDynamic().bootstrapModule(AppModule)');
-
     recorder.insertLeft(bootstrapIndex - 1, insertion);
-
     tree.commitUpdate(recorder);
   };
 }

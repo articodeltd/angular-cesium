@@ -27,7 +27,7 @@ export const DEFAULT_RECTANGLE_OPTIONS: RectangleEditOptions = {
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.95),
+    color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
     outlineWidth: 1,
     pixelSize: 13,

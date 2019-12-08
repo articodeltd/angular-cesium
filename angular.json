@@ -35,7 +35,6 @@
             "scripts": [
               "./node_modules/cesium/Build/Cesium/Cesium.js",
               "./node_modules/socket.io-client/dist/socket.io.js",
-              "./node_modules/animejs/lib/anime.js"
             ]
           },
           "configurations": {
