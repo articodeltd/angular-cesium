@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "ng": "ng",
-    "demo:start": "ng serve",
+    "demo:start": "ng serve angular-cesium-demo",
     "demo:build": "ng build --prod",
     "landing-page:deploy": "ng build landing-page --prod=true; cp projects/landing-page/now.json dist/landing-page; cd dist/landing-page; now --prod",
     "demo:server": "nodemon --exec ts-node --project demo-server/tsconfig.json -- demo-server/src/main.ts",
