@@ -27,9 +27,10 @@
     "heatmap.js": "^2.0.5"
   },
   "scripts": {
-    "build": "..\\..\\node_modules\\.bin\\tsc -p tsconfig.schematics.json",
-    "copy:collection": "copy schematics\\collection.json ..\\..\\dist\\angular-cesium\\schematics\\collection.json",
-    "postbuild": "npm run copy:collection"
+    "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
+    "copy:files": "cp -a ./schematics/ng-add ../../dist/angular-cesium/schematics",
+    "copy:collection": "cp ./schematics/collection.json ../../dist/angular-cesium/schematics/collection.json",
+    "postbuild": "npm run copy:files && npm run copy:collection"
   },
-  "schematics": ".\\schematics\\collection.json"
+  "schematics": "./schematics/collection.json"
 }
