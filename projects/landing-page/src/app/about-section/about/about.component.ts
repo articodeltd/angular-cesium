@@ -1,15 +1,11 @@
-import { Component } from "@angular/core";
-import { faBolt } from '@fortawesome/free-solid-svg-icons';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { faFeatherAlt } from '@fortawesome/free-solid-svg-icons';
-import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
-import { faTools } from '@fortawesome/free-solid-svg-icons';
+import { Component } from '@angular/core';
+import { faBolt, faCog, faFeatherAlt, faProjectDiagram, faTools } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
-  selector: "about",
-  templateUrl: "about.component.html",
-  styleUrls: ["about.component.scss"],
+  selector: 'about',
+  templateUrl: 'about.component.html',
+  styleUrls: ['about.component.scss'],
 })
 export class AboutComponent {
   boltIcon = faBolt;
@@ -18,5 +14,6 @@ export class AboutComponent {
   diagramIcon = faProjectDiagram;
   toolsIcon = faTools;
 
-  constructor() {}
+  constructor() {
+  }
 }

@@ -1,8 +1,20 @@
 .nav-bar {
-  background-color: rgb(47, 6, 52);
   display: flex;
+  flex: 1;
   height: 60px;
   align-items: center;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 5px;
+
+  @media only screen and (max-width: 1200px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.nav-bar-img {
+  width: 50px;
 }
 
 .nav-bar-button {
@@ -12,14 +24,18 @@
   justify-content: center;
   color: white;
   font-size: 14px;
-  width: 120px;
+  margin-right: 40px;
   cursor: pointer;
   transition: 0.3s all;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
+
+  @media only screen and (max-width: 1200px) {
+    margin: 0 10px 0 10px;
+  }
 
   &:hover {
     color: rgb(233, 92, 244);
-    background-color: rgb(9, 9, 39);
+    font-size: 16px;
   }
 }

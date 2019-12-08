@@ -12,12 +12,12 @@ export class KeyboardControlLayerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.keyboardControlService.setKeyboardControls({
-      W: {action: KeyboardAction.CAMERA_UP},
-      S: {action: KeyboardAction.CAMERA_DOWN},
-      D: {action: KeyboardAction.CAMERA_RIGHT},
-      A: {action: KeyboardAction.CAMERA_LEFT},
-      ['+']: {action: KeyboardAction.CAMERA_FORWARD},
-      ['-']: {action: KeyboardAction.CAMERA_BACKWARD},
+      W: { action: KeyboardAction.CAMERA_UP },
+      S: { action: KeyboardAction.CAMERA_DOWN },
+      D: { action: KeyboardAction.CAMERA_RIGHT },
+      A: { action: KeyboardAction.CAMERA_LEFT },
+      ['+']: { action: KeyboardAction.CAMERA_FORWARD },
+      ['-']: { action: KeyboardAction.CAMERA_BACKWARD },
     }, (keyEvent: KeyboardEvent) => {
       if (keyEvent.code === 'KeyW' || keyEvent.code === 'ArrowUp') {
         return 'W';

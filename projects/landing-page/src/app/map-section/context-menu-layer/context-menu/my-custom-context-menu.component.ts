@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BasicContextMenu } from 'angular-cesium';
 
 export interface ContextMenuData {
-  item: {name: string};
+  item: { name: string };
   onActionClick: () => void;
 }
 

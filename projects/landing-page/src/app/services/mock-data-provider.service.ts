@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { from, interval } from "rxjs";
-import { flatMap, map } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { from, interval } from 'rxjs';
+import { flatMap, map } from 'rxjs/operators';
 
 const getMovementDistance = intervalMs =>
   (Cesium.Math.toRadians(0.01) * intervalMs) / 1000;
@@ -17,10 +17,11 @@ interface CubicArea {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class MockDataProviderService {
-  constructor() {}
+  constructor() {
+  }
 
   dataStream$;
 
@@ -89,7 +90,7 @@ export class MockDataProviderService {
         nextState.position.latitude < restrictedArea.minLat ||
         nextState.position.longitude > restrictedArea.maxLon ||
         nextState.position.longitude < restrictedArea.minLon
-      ) {
+        ) {
         heading = heading += Math.PI / 2;
         nextState = {
           position: {
@@ -122,18 +123,18 @@ export class MockDataProviderService {
     for (let i = 0; i < amount; i++) {
       const lat = restrictedArea
         ? restrictedArea.minLat +
-          Math.random() * (restrictedArea.maxLat - restrictedArea.minLat)
+        Math.random() * (restrictedArea.maxLat - restrictedArea.minLat)
         : 70 * Math.random() * randomSign();
       const long = restrictedArea
         ? restrictedArea.minLon +
-          Math.random() * (restrictedArea.maxLon - restrictedArea.minLon)
+        Math.random() * (restrictedArea.maxLon - restrictedArea.minLon)
         : 180 * Math.random() * randomSign();
       const height =
         ((restrictedArea && restrictedArea.minHeight) || 0) +
         (restrictedArea && restrictedArea.minHeight && restrictedArea.maxHeight
           ? restrictedArea.maxHeight - restrictedArea.minHeight
           : 10000) *
-          Math.random();
+        Math.random();
       staticEntities.push({
         id: i.toString(),
         position: new Cesium.Cartographic(long, lat, height),

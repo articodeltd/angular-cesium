@@ -4,11 +4,11 @@ import {
   CesiumService,
   CirclesEditorService,
   EllipsesEditorService,
-  RectanglesEditorService,
   HippodromeEditorService,
   PolygonsEditorService,
   PolylineEditorObservable,
   RangeAndBearingComponent,
+  RectanglesEditorService,
   ZoomToRectangleService
 } from 'angular-cesium';
 
@@ -27,7 +27,7 @@ import {
 })
 export class ToolbarExampleComponent implements OnInit {
   rnb: PolylineEditorObservable;
-  @ViewChild('rangeAndBearing', {static: false}) private rangeAndBearing: RangeAndBearingComponent;
+  @ViewChild('rangeAndBearing', { static: false }) private rangeAndBearing: RangeAndBearingComponent;
 
   constructor(
     private cameraService: CameraService,
@@ -58,7 +58,7 @@ export class ToolbarExampleComponent implements OnInit {
   }
 
   goHome() {
-    this.cameraService.cameraFlyTo({destination: Cesium.Cartesian3.fromDegrees(35.21, 31.77, 200000)});
+    this.cameraService.cameraFlyTo({ destination: Cesium.Cartesian3.fromDegrees(35.21, 31.77, 200000) });
   }
 
   drawCircle() {
@@ -74,10 +74,10 @@ export class ToolbarExampleComponent implements OnInit {
   }
 
   drawRectangle() {
-    this.rectanglesEditor.create({rectangleProps: { height: undefined, extrudedHeight: undefined }});
+    this.rectanglesEditor.create({ rectangleProps: { height: undefined, extrudedHeight: undefined } });
   }
 
   drawHippodrome() {
-    this.hippodromesEditor.create({hippodromeProps: { width: 100}});
+    this.hippodromesEditor.create({ hippodromeProps: { width: 100 } });
   }
 }

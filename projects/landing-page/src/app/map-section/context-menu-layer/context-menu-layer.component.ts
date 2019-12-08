@@ -28,7 +28,7 @@ export class ContextMenuLayerComponent implements OnInit {
           position,
           {
             data: {
-              item: {name: 'Cool name'},
+              item: { name: 'Cool name' },
               onActionClick: () => {
                 console.log('do action');
                 this.contextMenuService.close();

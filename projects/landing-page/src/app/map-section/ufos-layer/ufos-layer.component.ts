@@ -1,13 +1,13 @@
-import { Component } from "@angular/core";
-import { AcNotification, ActionType } from "angular-cesium";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { MockDataProviderService } from "../../services/mock-data-provider.service";
-import { interpolate, InterpolationType } from "../../utils/interpolation";
+import { Component } from '@angular/core';
+import { AcNotification, ActionType } from 'angular-cesium';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { MockDataProviderService } from '../../services/mock-data-provider.service';
+import { interpolate, InterpolationType } from '../../utils/interpolation';
 
 @Component({
-  selector: "ufos-layer",
-  templateUrl: "./ufos-layer.component.html"
+  selector: 'ufos-layer',
+  templateUrl: './ufos-layer.component.html'
 })
 export class UFOsLayerComponent {
   private ufos$: Observable<AcNotification>;
@@ -36,18 +36,18 @@ export class UFOsLayerComponent {
         }))
       );
 
-      this.initialTime = Date.now() + TIME_ADDITION;
+    this.initialTime = Date.now() + TIME_ADDITION;
   }
 
   interpolatePosition(entity) {
     const now = Date.now();
-    const ufo =  interpolate({
+    const ufo = interpolate({
       data: Cesium.Cartographic.toCartesian(entity.position),
       time: this.initialTime + (now + TIME_ADDITION - this.initialTime) * TIME_MULTIPLIER,
       cesiumSampledProperty: this.ufosPosition.get(entity.id)
     }, InterpolationType.POSITION);
 
-    const beam =  interpolate({
+    const beam = interpolate({
       data: Cesium.Cartesian3.fromRadians(entity.position.longitude + Cesium.Math.toRadians(0.002), entity.position.latitude, entity.position.height / 2),
       time: this.initialTime + (now + TIME_ADDITION - this.initialTime) * TIME_MULTIPLIER,
       cesiumSampledProperty: this.beamsPosition.get(entity.id)

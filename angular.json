@@ -173,7 +173,7 @@
       },
       "root": "projects/landing-page",
       "sourceRoot": "projects/landing-page/src",
-      "prefix": "app",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

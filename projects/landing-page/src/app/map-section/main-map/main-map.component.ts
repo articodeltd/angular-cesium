@@ -1,11 +1,11 @@
-import { Component, Input, AfterViewInit } from "@angular/core";
-import { SceneMode, ViewerConfiguration, MapsManagerService } from "angular-cesium";
+import { AfterViewInit, Component, Input } from '@angular/core';
+import { MapsManagerService, SceneMode, ViewerConfiguration } from 'angular-cesium';
 
 @Component({
-  selector: "main-map",
-  templateUrl: "./main-map.component.html",
+  selector: 'main-map',
+  templateUrl: './main-map.component.html',
   providers: [ViewerConfiguration],
-  styleUrls: ["./main-map.component.scss"]
+  styleUrls: ['./main-map.component.scss']
 })
 export class MainMapComponent implements AfterViewInit {
   @Input() multiMaps = false
@@ -41,9 +41,9 @@ export class MainMapComponent implements AfterViewInit {
       viewer.clock.multiplier = 1000;
 
       viewer.camera.flyTo({
-        destination : new Cesium.Cartesian3(1333201.265614267, -4656207.315943864, 4137300.0112722577),
-        orientation : new Cesium.HeadingPitchRoll(0.5900541155692771, -0.2936886344551206, 0.0019308789347078914),
-    });
+        destination: new Cesium.Cartesian3(1333201.265614267, -4656207.315943864, 4137300.0112722577),
+        orientation: new Cesium.HeadingPitchRoll(0.5900541155692771, -0.2936886344551206, 0.0019308789347078914),
+      });
 
       const tileset = new Cesium.Cesium3DTileset({
         url: Cesium.IonResource.fromAssetId(1988)
@@ -68,18 +68,18 @@ export class MainMapComponent implements AfterViewInit {
     };
   }
 
-  ngAfterViewInit(){
-    if(this.multiMaps) {
+  ngAfterViewInit() {
+    if (this.multiMaps) {
       setTimeout(() => {
         this.mapsManagerService.getMap('sub-map').getCesiumViewer().camera.flyTo({
-          destination : new Cesium.Cartesian3.fromDegrees(-74, 40.5, 10000),
+          destination: new Cesium.Cartesian3.fromDegrees(-74, 40.5, 10000),
           duration: 1
         });
         this.mapsManagerService.getMap('main-map').getCesiumViewer().camera.flyTo({
-          destination : new Cesium.Cartesian3(1333201.265614267, -4656207.315943864, 4137300.0112722577),
-          orientation : new Cesium.HeadingPitchRoll(0.5900541155692771, -0.2936886344551206, 0.0019308789347078914),
+          destination: new Cesium.Cartesian3(1333201.265614267, -4656207.315943864, 4137300.0112722577),
+          orientation: new Cesium.HeadingPitchRoll(0.5900541155692771, -0.2936886344551206, 0.0019308789347078914),
         });
-        setTimeout(() => this.mapsManagerService.sync2DMapsCameras([{id: 'main-map'}, {id: 'sub-map'}]), 2000);
+        setTimeout(() => this.mapsManagerService.sync2DMapsCameras([{ id: 'main-map' }, { id: 'sub-map' }]), 2000);
       }, 5000);
 
       setInterval(() => console.log(this.mapsManagerService.getMap('sub-map').getCesiumViewer().camera.position), 1000)
