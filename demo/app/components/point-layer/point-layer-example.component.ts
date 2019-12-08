@@ -1,25 +1,40 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AcLayerComponent, AcNotification } from 'angular-cesium';
-import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
+import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
+import { MockDataProviderService } from '../../utils/services/dataProvider/mock-data-provider.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'point-layer-example',
-  templateUrl: 'point-layer-example.component.html',
+  template: `
+      <ac-layer acFor="let point of entities$" [context]="this" [show]="show">
+          <ac-point-desc props="{
+              position: point.position,
+              pixelSize : 10,
+              outlineColor: Cesium.Color.CORNFLOWERBLUE,
+              outlineWidth: 2,
+           }">
+          </ac-point-desc>
+      </ac-layer>
+  `,
   styleUrls: [],
 })
 export class PointLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent, { static: false }) layer: AcLayerComponent;
 
-  points$: Observable<AcNotification>;
   Cesium = Cesium;
+  entities$: Observable<AcNotification>;
   show = true;
 
-  constructor(private tracksDataProvider: TracksDataProvider) {
+  constructor(private dataProvider: MockDataProviderService) {
   }
 
   ngOnInit() {
-    this.points$ = this.tracksDataProvider.get();
+    this.entities$ = this.dataProvider.getDataSteam$().pipe(map(entity => ({
+      id: entity.id,
+      actionType: ActionType.ADD_UPDATE,
+      entity: entity,
+    })));
   }
 
   removeAll() {

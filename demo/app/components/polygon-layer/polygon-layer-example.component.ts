@@ -6,7 +6,22 @@ import { AcEntity, AcLayerComponent, AcNotification, ActionType } from 'angular-
 
 @Component({
   selector: 'polygon-layer-example',
-  templateUrl: 'polygon-layer-example.component.html',
+  template: `
+      <ac-layer acFor="let polygon of polygons$" [context]="this" [show]="true">
+          <ac-polygon-desc props="{
+            hierarchy: polygon.hierarchy,
+            material: polygon.material,
+            height: polygon.height,
+            outline: polygon.outline,
+            outlineColor: polygon.outlineColor,
+            extrudedHeight: polygon.extrudedHeight,
+            perPositionHeight: polygon.perPositionHeight,
+            show: polygon.show
+    }">
+          </ac-polygon-desc>
+      </ac-layer>
+
+  `,
 })
 export class PolygonLayerExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;

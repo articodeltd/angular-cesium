@@ -37,7 +37,7 @@ export const DEFAULT_HIPPODROME_OPTIONS: HippodromeEditOptions = {
     shadows: Cesium.ShadowMode.DISABLED,
   },
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.95),
+    color: Cesium.Color.WHITE,
     outlineColor: Cesium.Color.BLACK.withAlpha(0.2),
     outlineWidth: 1,
     pixelSize: 13,
