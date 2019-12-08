@@ -9,11 +9,11 @@ Angular-Cesium is focused on high performance and simple usage.
 Check out our [Demo](http://www.angular-cesium.com) that contains small app built with angular-cesium and our blog post [Intro to angular-cesium](https://cesium.com/blog/2019/03/28/angular-cesium/).
 
 ## Getting started
-<!-- #### If you are using Angular CLI, you can add the angular-cesium library using schematics
+#### If you are using Angular CLI, you can add the angular-cesium library using schematics
 + add `angular-cesium`:
   ```bash
   $ ng add angular-cesium
-  ``` -->
+  ```
 
 #### For existing project just install angular-cesium
 + install `angular-cesium`:
@@ -22,7 +22,7 @@ Check out our [Demo](http://www.angular-cesium.com) that contains small app buil
   ```
 
 #### New Angular CLI project
-+ If you didn't installed [Angular CLI](https://github.com/angular/angular-cli) yet:
++ If you didn't install [Angular CLI](https://github.com/angular/angular-cli) yet:
     ```bash
     $ npm install -g @angular/cli
     ```
