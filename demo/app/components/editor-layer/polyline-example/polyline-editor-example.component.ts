@@ -91,9 +91,9 @@ export class PolylineEditorExampleComponent implements OnInit {
       this.stopEdit();
     }
     const initialPos = [
-      Cesium.Cartesian3.fromDegrees(20, 40),
-      Cesium.Cartesian3.fromDegrees(45, 40),
-      Cesium.Cartesian3.fromDegrees(30, 20)];
+      Cesium.Cartesian3.fromDegrees(-80, 35),
+      Cesium.Cartesian3.fromDegrees(-90, 33),
+      Cesium.Cartesian3.fromDegrees(-80, 30)];
     this.editing$ = this.polylineEditor.edit(initialPos, {
       polylineProps: {
         width: 3,

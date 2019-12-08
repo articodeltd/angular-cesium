@@ -37,7 +37,7 @@ export class MapEventsExampleComponent implements OnInit {
         id: '0',
         name: 'click me',
         color: Cesium.Color.BLUE,
-        position: Cesium.Cartesian3.fromRadians(0.5, 0.5),
+        position: Cesium.Cartesian3.fromDegrees(-95, 40),
       }),
     };
     const track2: AcNotification = {
@@ -46,8 +46,8 @@ export class MapEventsExampleComponent implements OnInit {
       entity: AcEntity.create({
         id: '1',
         name: 'choose me',
-        color: Cesium.Color.BLUE,
-        position: Cesium.Cartesian3.fromRadians(0.7, 0.7),
+        color: Cesium.Color.AQUA,
+        position: Cesium.Cartesian3.fromDegrees(-85, 35),
       }),
     };
     const track10: AcNotification = {
@@ -55,9 +55,9 @@ export class MapEventsExampleComponent implements OnInit {
       actionType: ActionType.ADD_UPDATE,
       entity: AcEntity.create({
         id: '10',
-        name: 'click me now :)',
+        name: 'click me now please!',
         color: Cesium.Color.BLUE,
-        position: Cesium.Cartesian3.fromRadians(0.72, 0.7),
+        position: Cesium.Cartesian3.fromDegrees(-84, 35),
       }),
     };
     const track11: AcNotification = {
@@ -65,9 +65,9 @@ export class MapEventsExampleComponent implements OnInit {
       actionType: ActionType.ADD_UPDATE,
       entity: AcEntity.create({
         id: '11',
-        name: 'choose me now :)',
-        color: Cesium.Color.BLUE,
-        position: Cesium.Cartesian3.fromRadians(0.73, 0.7),
+        name: 'choose me too :)',
+        color: Cesium.Color.CORNFLOWERBLUE,
+        position: Cesium.Cartesian3.fromDegrees(-86, 35.5),
       }),
     };
     const track3: AcNotification = {
@@ -76,8 +76,8 @@ export class MapEventsExampleComponent implements OnInit {
       entity: AcEntity.create({
         id: '2',
         name: 'click me too',
-        color: Cesium.Color.BLUE,
-        position: Cesium.Cartesian3.fromRadians(0.71, 0.7),
+        color: Cesium.Color.DARKBLUE,
+        position: Cesium.Cartesian3.fromDegrees(-84, 35),
       }),
     };
     const track4: AcNotification = {
@@ -87,7 +87,7 @@ export class MapEventsExampleComponent implements OnInit {
         id: '3',
         name: 'Drag me',
         color: Cesium.Color.BLUE,
-        position: Cesium.Cartesian3.fromRadians(0.6, 0.6),
+        position: Cesium.Cartesian3.fromDegrees(-110, 40),
       }),
     };
 
