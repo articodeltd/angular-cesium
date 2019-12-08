@@ -23,7 +23,7 @@ function addTypings(): Rule {
   return (tree: Tree) => {
     tree.create('./src/typing.d.ts', 'declare var Cesium;');
     return tree;
-  }
+  };
 }
 
 function installPackageJsonDependencies(): Rule {
