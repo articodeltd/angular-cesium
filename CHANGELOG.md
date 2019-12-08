@@ -3,6 +3,9 @@
 * Add more stackblitz examples and refactor the demo examples.
 * Change Circle, Ellipse and Hippodrome default point color changed to white. 
 
+### Fixes
+* Fix `ng add angular-cesium`
+
 ## 0.61
 ### Features
 * Add `PickConfiguration` for `MapEventManager` for setting `pick()` width, height and `drillPick()` limit.
