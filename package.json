@@ -15,9 +15,8 @@
     "demo:start": "ng serve angular-cesium-demo",
     "demo:build": "ng build angular-cesium-demo --prod",
     "landing-page:deploy": "ng build landing-page --prod; cp projects/landing-page/now.json dist/landing-page; cd dist/landing-page; now --prod",
-    "demo:server": "nodemon --exec ts-node --project demo-server/tsconfig.json -- demo-server/src/main.ts",
     "landing-page": "ng serve landing-page --host 0.0.0.0 --disableHostCheck",
-    "lib:build": "ng build angular-cesium; npm run copy:extra-files",
+    "lib:build": "ng build angular-cesium; npm run copy:extra-files; npm run schemnantics:build",
     "lib:start": "ng build angular-cesium --watch",
     "lib:publish": "npm run lib:build; cd dist/angular-cesium; npm publish; cd ../../; npm run docs:push",
     "test": "ng test angular-cesium",
@@ -26,10 +25,10 @@
     "e2e": "ng e2e",
     "gh-pages": "gh-pages -d docs -b gh-pages",
     "copy:extra-files": "cp README.md LICENSE.txt dist/angular-cesium",
+    "schemnantics:build": "cd projects/angular-cesium; yarn build;",
     "docs:run": "compodoc -p projects/angular-cesium/src/lib/tsconfig.compodoc.json --theme stripe -d docs -n \"Angular Cesium\" --watch --serve",
     "docs:compile": "rimraf docs && compodoc -p projects/angular-cesium/src/lib/tsconfig.compodoc.json --theme stripe -d docs -n \"Angular Cesium\"",
     "docs:push": "npm run docs:compile && npm run gh-pages && rimraf docs",
-    "heroku-postbuild": "npm run lib:build; npm run demo:build"
   },
   "private": true,
   "dependencies": {
