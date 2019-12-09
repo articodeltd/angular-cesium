@@ -11,8 +11,8 @@
     "Angular2 Cesium"
   ],
   "peerDependencies": {
-    "@angular/common": "^8.2.1",
-    "@angular/core": "^8.2.1",
+    "@angular/common": "^8.0.1",
+    "@angular/core": "^8.0.1",
     "cesium": ">= 1.48.0"
   },
   "dependencies": {
