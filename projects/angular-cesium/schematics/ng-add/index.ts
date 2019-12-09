@@ -1,23 +1,23 @@
-import { WorkspaceProject } from "@schematics/angular/utility/workspace-models";
+import { WorkspaceProject } from '@schematics/angular/utility/workspace-models';
 import {
   chain,
   Rule,
   SchematicContext,
   SchematicsException,
   Tree
-} from "@angular-devkit/schematics";
-import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
-import { addImportToModule } from "@schematics/angular/utility/ast-utils";
-import { InsertChange } from "@schematics/angular/utility/change";
-import { getAppModulePath } from "@schematics/angular/utility/ng-ast-utils";
-import * as ts from "typescript";
+} from '@angular-devkit/schematics';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import { addImportToModule } from '@schematics/angular/utility/ast-utils';
+import { InsertChange } from '@schematics/angular/utility/change';
+import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
+import * as ts from 'typescript';
 
 export function ngAdd(_options: any): Rule {
   return (_: Tree, _context: SchematicContext) => {
     return chain([
       addModuleImportToRootModule(),
-      addGlobalsToTarget("build"),
-      addGlobalsToTarget("test"),
+      addGlobalsToTarget('build'),
+      addGlobalsToTarget('test'),
       updateMain(),
       updateStyles(),
       addTypings(),
@@ -28,11 +28,11 @@ export function ngAdd(_options: any): Rule {
 
 function addTypings(): Rule {
   return (tree: Tree) => {
-    if (!tree.exists("./src/typing.d.ts")) {
-      tree.create("./src/typing.d.ts", "declare var Cesium;");
+    if (!tree.exists('./src/typing.d.ts')) {
+      tree.create('./src/typing.d.ts', 'declare var Cesium;');
     } else {
-      const recorder = tree.beginUpdate("./src/typing.d.ts");
-      recorder.insertLeft(0, "declare var Cesium;\n");
+      const recorder = tree.beginUpdate('./src/typing.d.ts');
+      recorder.insertLeft(0, 'declare var Cesium;\n');
       tree.commitUpdate(recorder);
     }
     return tree;
@@ -43,20 +43,21 @@ function updateStyles(): Rule {
   return (tree: Tree) => {
     let stylesPath;
 
-    if (tree.exists("./src/styles.css")) {
-      stylesPath = "./src/styles.css";
-    } else if (tree.exists("./src/styles.scss")) {
-      stylesPath = "./src/styles.scss";
-    } else if (tree.exists("./src/styles.less")) {
-      stylesPath = "./src/styles.less";
-    } else if (tree.exists("./src/styles.styl")) {
-      stylesPath = "./src/styles.styl";
+    if (tree.exists('./src/styles.css')) {
+      stylesPath = './src/styles.css';
+    } else if (tree.exists('./src/styles.scss')) {
+      stylesPath = './src/styles.scss';
+    } else if (tree.exists('./src/styles.less')) {
+      stylesPath = './src/styles.less';
+    } else if (tree.exists('./src/styles.styl')) {
+      stylesPath = './src/styles.styl';
     } else {
       return;
     }
 
     const insertion =
-      "\nhtml, body {\n  margin: 0;\n  width: 100%;\n  height: 100%;\n}\n\n.map-container {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n}\n";
+      '\nhtml, body {\n  margin: 0;\n  width: 100%;\n  height: 100%;\n}\n\n.map-container {\n  width: 100%;\n  height: 100%;\n' +
+      '  overflow: hidden;\n  position: relative;\n}\n';
     const recorder = tree.beginUpdate(stylesPath);
     recorder.insertRight(0, insertion);
     tree.commitUpdate(recorder);
@@ -70,6 +71,7 @@ function updateStyles(): Rule {
 function installPackageJsonDependencies(): Rule {
   return (host: Tree, context: SchematicContext) => {
     context.addTask(new NodePackageInstallTask());
+    context.addTask(new NodePackageInstallTask({packageName: 'cesium'}));
     return host;
   };
 }
@@ -90,7 +92,7 @@ function getSourceFile(host: Tree, path: string): ts.SourceFile {
 
 /** Looks for the main TypeScript file in the given project and returns its path. */
 function getProjectMainFile(project: WorkspaceProject): string {
-  const buildOptions = getProjectTargetOptions(project, "build");
+  const buildOptions = getProjectTargetOptions(project, 'build');
 
   if (!buildOptions.main) {
     throw new SchematicsException(
@@ -134,14 +136,14 @@ function addModuleImportToRootModule() {
     const changes = addImportToModule(
       moduleSource,
       modulePath,
-      "AngularCesiumModule.forRoot()",
-      "angular-cesium"
+      'AngularCesiumModule.forRoot()',
+      'angular-cesium'
     ).concat(
       addImportToModule(
         moduleSource,
         modulePath,
-        "AngularCesiumWidgetsModule",
-        "angular-cesium"
+        'AngularCesiumWidgetsModule',
+        'angular-cesium'
       )
     );
     const recorder = tree.beginUpdate(modulePath);
@@ -161,7 +163,7 @@ function addModuleImportToRootModule() {
 /**
  * Adds scripts, styles and assets to the workspace configuration file.
  */
-function addGlobalsToTarget(targetName: "test" | "build") {
+function addGlobalsToTarget(targetName: 'test' | 'build') {
   return (tree: Tree, _context: SchematicContext) => {
     const workspace = getWorkspace(tree);
     const project = workspace.projects[workspace.defaultProject];
@@ -169,27 +171,27 @@ function addGlobalsToTarget(targetName: "test" | "build") {
 
     addOrAppendGlobal(
       targetOptions.scripts,
-      "./node_modules/cesium/Build/Cesium/Cesium.js"
+      './node_modules/cesium/Build/Cesium/Cesium.js'
     );
     addOrAppendGlobal(
       targetOptions.styles,
-      "./node_modules/cesium/Build/Cesium/Widgets/widgets.css"
+      './node_modules/cesium/Build/Cesium/Widgets/widgets.css'
     );
     addOrAppendGlobal(targetOptions.assets, {
-      glob: "**/*",
-      input: "./node_modules/cesium/Build/Cesium",
-      output: "./assets/cesium"
+      glob: '**/*',
+      input: './node_modules/cesium/Build/Cesium',
+      output: './assets/cesium'
     });
 
-    tree.overwrite("angular.json", JSON.stringify(workspace, null, 2));
+    tree.overwrite('angular.json', JSON.stringify(workspace, null, 2));
   };
 }
 
 function getWorkspace(host: Tree) {
-  const workspaceConfig = host.read("/angular.json");
+  const workspaceConfig = host.read('/angular.json');
   if (!workspaceConfig) {
     throw new SchematicsException(
-      "Could not find Angular workspace configuration"
+      'Could not find Angular workspace configuration'
     );
   }
 
@@ -219,10 +221,10 @@ function updateMain() {
 
     const tsContent = buffer.toString();
     const insertion =
-      "\nCesium.buildModuleUrl.setBaseUrl('/assets/cesium/');\n//Cesium.Ion.defaultAccessToken=\"\";\n";
+      '\nCesium.buildModuleUrl.setBaseUrl(\'/assets/cesium/\');\n//Cesium.Ion.defaultAccessToken="";\n';
     const recorder = tree.beginUpdate(mainFile);
     const bootstrapIndex = tsContent.indexOf(
-      "platformBrowserDynamic().bootstrapModule(AppModule)"
+      'platformBrowserDynamic().bootstrapModule(AppModule)'
     );
     recorder.insertLeft(bootstrapIndex - 1, insertion);
     tree.commitUpdate(recorder);

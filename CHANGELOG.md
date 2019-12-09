@@ -1,3 +1,11 @@
+## 0.63
+### Features
+* Refactor demo project and create: https://github.com/articodeltd/angular-cesium-demo
+
+### Fixes
+* Fix `ng add angular-cesium`
+
+
 ## 0.62
 ### Features
 * Add more stackblitz examples and refactor the demo examples.

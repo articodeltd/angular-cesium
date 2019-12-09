@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.62",
+  "version": "0.0.63",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/articodeltd/angular-cesium",
@@ -11,8 +11,8 @@
     "Angular2 Cesium"
   ],
   "peerDependencies": {
-    "@angular/common": "^8.2.1",
-    "@angular/core": "^8.2.1",
+    "@angular/common": "^8.0.1",
+    "@angular/core": "^8.0.1",
     "cesium": ">= 1.48.0"
   },
   "dependencies": {

@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MapLayerProviderOptions, SceneMode, ViewerConfiguration } from 'angular-cesium';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
-import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
 
 @Component({
   selector: 'demo-map',
@@ -10,8 +9,6 @@ import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
   styleUrls: ['./demo-map.component.css']
 })
 export class DemoMapComponent {
-  @ViewChild('layer', {static: false}) tracksLayer: TracksLayerComponent;
-  arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   sceneMode = SceneMode.SCENE3D;
   Cesium = Cesium;
 
@@ -37,9 +34,5 @@ export class DemoMapComponent {
     };
 
     this.appSettingsService.showTracksLayer = true;
-  }
-
-  removeAll() {
-    this.tracksLayer.removeAll();
   }
 }

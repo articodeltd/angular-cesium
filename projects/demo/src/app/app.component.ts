@@ -5,21 +5,17 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
 import { DraggableToMapService, MapLayerProviderOptions, MapsManagerService } from 'angular-cesium';
-import { TracksDataProvider } from './utils/services/dataProvider/tracksDataProvider.service';
-import { SimTracksDataProvider } from './utils/services/dataProvider/sim-tracks-data-provider';
-import { WebSocketSupplier } from './utils/services/webSocketSupplier/webSocketSupplier';
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  providers: [WebSocketSupplier, AppSettingsService, TracksDataProvider, SimTracksDataProvider],
+  providers: [ AppSettingsService],
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild('mainMap', {static: false}) mainMap: DemoMapComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   flyToOptions = {
     duration: 2,
@@ -46,7 +42,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   cleanMainMap() {
-    this.mainMap.removeAll();
   }
 
   setMultiMaps() {
