@@ -4,5 +4,5 @@
     "builds": [
       { "src": "./**", "use": "@now/static" }
     ],
-    "alias": ["angular-cesium"]
+    "alias": ["angular-cesium.com"]
 }
