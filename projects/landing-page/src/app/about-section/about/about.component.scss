@@ -1,10 +1,13 @@
 .about {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 0 35px 0 35px;
   position: relative;
   color: rgba(255, 255, 255, 0.8);
   line-height: 25px;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .ac-image {
@@ -34,10 +37,6 @@
 }
 
 .explaining-section {
-  max-width: 900px;
-  @media only screen and (min-width: 1900px) {
-    max-width: 900px;
-  }
 }
 
 .title {
@@ -46,6 +45,7 @@
   margin-top: 50px;
   margin-bottom: 40px;
   color: rgb(233, 92, 244);
+  align-self: flex-start;
 }
 
 .articode-link {
@@ -129,7 +129,6 @@
 .showcase {
   display: flex;
   margin-bottom: 50px;
-  max-width: 900px;
   align-items: center;
   @media only screen and (max-width: 900px) {
     flex-direction: column;
