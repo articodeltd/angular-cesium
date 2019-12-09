@@ -29,6 +29,7 @@ function addTypings(): Rule {
 function installPackageJsonDependencies(): Rule {
   return (host: Tree, context: SchematicContext) => {
     context.addTask(new NodePackageInstallTask());
+    context.addTask(new NodePackageInstallTask({packageName: 'cesium'}));
     return host;
   };
 }
