@@ -463,7 +463,8 @@ create any custom angular component and anchor it to a map position.
 ```
 
 ## Documents
-+ #### Check out our api [Docs](https://articodeltd.github.io/angular-cesium/)
++ #### Docs https://docs.angular-cesium.com/
++ #### [Api Docs](https://articodeltd.github.io/angular-cesium/)
 
 ## License
 [Mit License](https://opensource.org/licenses/MIT)
