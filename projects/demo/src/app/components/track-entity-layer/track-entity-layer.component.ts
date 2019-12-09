@@ -10,7 +10,6 @@ import {
   PickOptions,
   SceneMode
 } from 'angular-cesium';
-import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -28,7 +27,6 @@ const initialLocation = {
   selector: 'track-entity-layer',
   templateUrl: 'track-entity-layer.component.html',
   styleUrls: [],
-  providers: [TracksDataProvider]
 })
 export class TrackEntityLayerComponent implements OnInit, AfterViewInit {
   @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;

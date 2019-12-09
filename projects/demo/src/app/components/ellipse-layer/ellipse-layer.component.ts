@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AcLayerComponent, AcNotification } from 'angular-cesium';
-import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
+import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
+import { MockDataProviderService } from '../../utils/services/dataProvider/mock-data-provider.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ellipse-layer',
@@ -15,11 +16,15 @@ export class EllipseLayerComponent implements OnInit {
   Cesium = Cesium;
   show = true;
 
-  constructor(private tracksDataProvider: TracksDataProvider) {
+  constructor(private tracksDataProvider: MockDataProviderService) {
   }
 
   ngOnInit() {
-    this.ellipses$ = this.tracksDataProvider.get();
+    this.ellipses$ = this.tracksDataProvider.getDataSteam$().pipe(map(entity => ({
+      id: entity.id,
+      actionType: ActionType.ADD_UPDATE,
+      entity: entity,
+    })));
   }
 
   removeAll() {

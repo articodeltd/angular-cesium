@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MapLayerProviderOptions, MapsManagerService, SceneMode, ViewerConfiguration, ZoomToRectangleService } from 'angular-cesium';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
-import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
 
 @Component({
   selector: 'demo-multiple-maps',
@@ -9,7 +8,6 @@ import { TracksLayerComponent } from '../tracks-layer/tracks-layer.component';
   providers: [ViewerConfiguration],
 })
 export class DemoMultipleMapsComponent implements AfterViewInit {
-  @ViewChild('layer', {static: false}) tracksLayer: TracksLayerComponent;
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   sceneMode = SceneMode.SCENE3D;
   showLayer = true;
@@ -66,12 +64,8 @@ export class DemoMultipleMapsComponent implements AfterViewInit {
     // setTimeout(() => this.maps.pop(), 15000);
   }
 
-  removeAll() {
-    this.tracksLayer.removeAll();
-  }
-
   mapsTrackBy(index, item) {
-    item.id || index;
+    return item.id || index;
   }
 
   ngAfterViewInit(): void {

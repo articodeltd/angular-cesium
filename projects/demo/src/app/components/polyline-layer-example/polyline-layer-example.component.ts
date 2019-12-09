@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AcNotification, ActionType } from 'angular-cesium';
-import { TracksDataProvider } from '../../utils/services/dataProvider/tracksDataProvider.service';
 import { map } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
 
@@ -17,7 +16,6 @@ import { from, Observable } from 'rxjs';
       </ac-layer>
 
   `,
-  providers: [TracksDataProvider]
 })
 export class PolylineLayerExampleComponent implements OnInit {
   polylines$: Observable<AcNotification>;
