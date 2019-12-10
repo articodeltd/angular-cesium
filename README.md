@@ -124,23 +124,23 @@ Note that in the example below, only the relevant sections and values are shown.
    ```
 
 ## Demo
-+ You can try and learn about angular-cesium from our demo: [http://www.angular-cesium.com](http://www.angular-cesium.com) ( most optimized as desktop application ).
-+ The demo contains 2 examples
-  + Real data: showing real planes using **GraphQL** to warp an exiting REST service.
-  + Simulated data: displaying planes data and sending using **Socket.io**.
++ You can try and learn about angular-cesium from our demo.
++ The demo contains many examples, check out the `demo-map.component.ts` file.
++ Run: 
     ```
-    $ git clone https://github.com/TGFTech/angular-cesium.git
+    $ git clone https://github.com/articodeltd/angular-cesium.git
     $ cd angular-cesium
     $ yarn
-    $ yarn server
-    $ yarn start
-    $ open http://localhost:8080
+    $ yarn demo:start
+    $ open http://localhost:4200
     ```
 + More demos:
+  + [Angular Cesium Demo](https://github.com/articodeltd/angular-cesium-demo)
   + [GeoStrike](http://geo-strike.com) - [Repository](https://github.com/Webiks/GeoStrike)
   + [GLO](https://glo.now.sh) - [Repository](https://github.com/sofwerx/glo-demo)
   + [Safehouse](https://github.com/sofwerx/safehouse)
   + [IMS](https://github.com/davidyaha/ims-workshop)
+
 
 ## Basic example
 
