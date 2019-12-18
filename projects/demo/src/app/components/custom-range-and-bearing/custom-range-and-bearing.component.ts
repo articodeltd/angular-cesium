@@ -1,0 +1,363 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnDestroy,
+  ViewChild
+} from '@angular/core';
+import {
+  AcLayerComponent,
+  AcNotification,
+  CameraService,
+  CesiumService,
+  CoordinateConverter,
+  EditablePolyline,
+  EditActions,
+  EditModes,
+  EditPoint,
+  LabelProps,
+  LabelStyle,
+  MapEventsManagerService,
+  PolylineEditOptions,
+  PolylineEditUpdate,
+  PolylinesEditorService,
+  PolylinesManagerService
+} from 'angular-cesium';
+import { Subject } from 'rxjs';
+
+@Component({
+  selector: "custom-range-and-bearing",
+  template: /*html*/ `
+    <ac-layer
+      #editPolylinesLayer
+      acFor="let polyline of editPolylines$"
+      [context]="this"
+    >
+      <ac-polyline-desc
+        props="{
+        positions: polyline.getPositionsCallbackProperty(),
+        width: polyline.props.width,
+        material: polyline.props.material(),
+        clampToGround: polyline.props.clampToGround,
+        zIndex: polyline.props.zIndex,
+        classificationType: polyline.props.classificationType,
+      }"
+      >
+      </ac-polyline-desc>
+    </ac-layer>
+
+    <ac-layer
+      #editPointsLayer
+      acFor="let point of editPoints$"
+      [context]="this"
+    >
+      <ac-point-desc
+        props="{
+        position: point.getPositionCallbackProperty(),
+        pixelSize: getPointSize(point),
+        color: point.props.color,
+        outlineColor: point.props.outlineColor,
+        outlineWidth: point.props.outlineWidth,
+        show: getPointShow(point),
+        disableDepthTestDistance: point.props.disableDepthTestDistance,
+        heightReference: point.props.heightReference,
+    }"
+      ></ac-point-desc>
+    </ac-layer>
+
+    <ac-layer
+      #polylineLabelsLayer
+      acFor="let polylineLabels of polylineLabels$"
+      [context]="this"
+    >
+      <ac-array-desc
+        acFor="let label of polylineLabels.labels"
+        [idGetter]="getLabelId"
+      >
+        <ac-label-primitive-desc
+          props="{
+            position: label.position,
+            backgroundColor: label.backgroundColor,
+            backgroundPadding: label.backgroundPadding,
+            distanceDisplayCondition: label.distanceDisplayCondition,
+            eyeOffset: label.eyeOffset,
+            fillColor: label.fillColor,
+            font: label.font,
+            heightReference: label.heightReference,
+            horizontalOrigin: label.horizontalOrigin,
+            outlineColor: label.outlineColor,
+            outlineWidth: label.outlineWidth,
+            pixelOffset: label.pixelOffset,
+            pixelOffsetScaleByDistance: label.pixelOffsetScaleByDistance,
+            scale: label.scale,
+            scaleByDistance: label.scaleByDistance,
+            show: label.show,
+            showBackground: label.showBackground,
+            style: label.style,
+            text: label.text,
+            translucencyByDistance: label.translucencyByDistance,
+            verticalOrigin: label.verticalOrigin,
+            disableDepthTestDistance: label.disableDepthTestDistance,
+        }"
+        >
+        </ac-label-primitive-desc>
+      </ac-array-desc>
+    </ac-layer>
+  `,
+  providers: [CoordinateConverter, PolylinesManagerService],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class CustomRangeAndBearingComponent implements OnDestroy {
+  @Input() lineEditOptions?: PolylineEditOptions = {};
+  @Input() labelsStyle?: LabelStyle = {};
+  @Input() distanceLabelsStyle?: LabelStyle = {};
+  @Input() bearingLabelsStyle?: LabelStyle = {};
+  @Input() bearingStringFn?: (value: number) => string;
+  @Input() distanceStringFn?: (value: number) => string;
+  private editLabelsRenderFn: (
+    update: PolylineEditUpdate,
+    labels: LabelProps[]
+  ) => LabelProps[];
+  public Cesium = Cesium;
+  public editPoints$ = new Subject<AcNotification>();
+  public editPolylines$ = new Subject<AcNotification>();
+  public polylineLabels$ = new Subject<AcNotification>();
+
+  @ViewChild('editPointsLayer', { static: false })
+  private editPointsLayer: AcLayerComponent;
+  @ViewChild('editPolylinesLayer', { static: false })
+  private editPolylinesLayer: AcLayerComponent;
+  @ViewChild('polylineLabelsLayer', { static: false })
+  private polylineLabelsLayer: AcLayerComponent;
+
+  constructor(
+    private polylinesEditor: PolylinesEditorService,
+    private coordinateConverter: CoordinateConverter,
+    private mapEventsManager: MapEventsManagerService,
+    private cameraService: CameraService,
+    private polylinesManager: PolylinesManagerService,
+    private cesiumService: CesiumService
+  ) {
+    this.polylinesEditor.init(
+      this.mapEventsManager,
+      this.coordinateConverter,
+      this.cameraService,
+      polylinesManager,
+      this.cesiumService
+    );
+    this.startListeningToEditorUpdates();
+  }
+
+  private startListeningToEditorUpdates() {
+    this.polylinesEditor.onUpdate().subscribe((update: PolylineEditUpdate) => {
+      if (
+        update.editMode === EditModes.CREATE ||
+        update.editMode === EditModes.CREATE_OR_EDIT
+      ) {
+        this.handleCreateUpdates(update);
+      } else if (update.editMode === EditModes.EDIT) {
+        this.handleEditUpdates(update);
+      }
+    });
+  }
+
+  getLabelId(element: any, index: number): string {
+    return index.toString();
+  }
+
+  renderEditLabels(
+    polyline: EditablePolyline,
+    update: PolylineEditUpdate,
+    labels?: LabelProps[]
+  ) {
+    update.positions = polyline.getRealPositions();
+    update.points = polyline.getRealPoints();
+
+    if (labels) {
+      polyline.labels = labels;
+      this.polylineLabelsLayer.update(polyline, polyline.getId());
+      return;
+    }
+
+    if (!this.editLabelsRenderFn) {
+      return;
+    }
+
+    polyline.labels = this.editLabelsRenderFn(update, polyline.labels);
+    this.polylineLabelsLayer.update(polyline, polyline.getId());
+  }
+
+  removeEditLabels(polyline: EditablePolyline) {
+    polyline.labels = [];
+    this.polylineLabelsLayer.remove(polyline.getId());
+  }
+
+  handleCreateUpdates(update: PolylineEditUpdate) {
+    switch (update.editAction) {
+      case EditActions.INIT: {
+        this.polylinesManager.createEditablePolyline(
+          update.id,
+          this.editPointsLayer,
+          this.editPolylinesLayer,
+          this.coordinateConverter,
+          update.polylineOptions
+        );
+        break;
+      }
+      case EditActions.MOUSE_MOVE: {
+        const polyline = this.polylinesManager.get(update.id);
+        if (update.updatedPosition) {
+          polyline.moveTempMovingPoint(update.updatedPosition);
+          this.renderEditLabels(polyline, update);
+        }
+        break;
+      }
+      case EditActions.ADD_POINT: {
+        const polyline = this.polylinesManager.get(update.id);
+        if (update.updatedPosition) {
+          polyline.addPoint(update.updatedPosition);
+          this.renderEditLabels(polyline, update);
+        }
+        break;
+      }
+      case EditActions.ADD_LAST_POINT: {
+        const polyline = this.polylinesManager.get(update.id);
+        if (update.updatedPosition) {
+          polyline.addLastPoint(update.updatedPosition);
+          this.renderEditLabels(polyline, update);
+        }
+        break;
+      }
+      case EditActions.DISPOSE: {
+        const polyline = this.polylinesManager.get(update.id);
+        polyline.dispose();
+        this.removeEditLabels(polyline);
+        this.editLabelsRenderFn = undefined;
+        break;
+      }
+      case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {
+        const polyline = this.polylinesManager.get(update.id);
+        this.editLabelsRenderFn = update.labelsRenderFn;
+        this.renderEditLabels(polyline, update);
+        break;
+      }
+      case EditActions.UPDATE_EDIT_LABELS: {
+        const polyline = this.polylinesManager.get(update.id);
+        this.renderEditLabels(polyline, update, update.updateLabels);
+        break;
+      }
+      case EditActions.SET_MANUALLY: {
+        const polyline = this.polylinesManager.get(update.id);
+        this.renderEditLabels(polyline, update, update.updateLabels);
+        break;
+      }
+      default: {
+        return;
+      }
+    }
+  }
+
+  handleEditUpdates(update: PolylineEditUpdate) {
+    switch (update.editAction) {
+      case EditActions.INIT: {
+        this.polylinesManager.createEditablePolyline(
+          update.id,
+          this.editPointsLayer,
+          this.editPolylinesLayer,
+          this.coordinateConverter,
+          update.polylineOptions,
+          update.positions
+        );
+        break;
+      }
+      case EditActions.DRAG_POINT: {
+        const polyline = this.polylinesManager.get(update.id);
+        if (polyline && polyline.enableEdit) {
+          polyline.movePoint(update.updatedPosition, update.updatedPoint);
+          this.renderEditLabels(polyline, update);
+        }
+        break;
+      }
+      case EditActions.DRAG_POINT_FINISH: {
+        const polyline = this.polylinesManager.get(update.id);
+        if (polyline && polyline.enableEdit) {
+          polyline.movePointFinish(update.updatedPoint);
+
+          if (update.updatedPoint.isVirtualEditPoint()) {
+            polyline.changeVirtualPointToRealPoint(update.updatedPoint);
+            this.renderEditLabels(polyline, update);
+          }
+        }
+        break;
+      }
+      case EditActions.REMOVE_POINT: {
+        const polyline = this.polylinesManager.get(update.id);
+        const points = polyline.getPoints();
+        if (polyline && polyline.enableEdit) {
+          if (update.updatedPoint === points[0] || points.length === 2) {
+            polyline.dispose();
+            this.removeEditLabels(polyline);
+            this.editLabelsRenderFn = undefined;
+          } else {
+            polyline.removePoint(update.updatedPoint);
+            this.renderEditLabels(polyline, update);
+          }
+        }
+        break;
+      }
+      case EditActions.DISABLE: {
+        const polyline = this.polylinesManager.get(update.id);
+        if (polyline) {
+          polyline.enableEdit = false;
+          this.renderEditLabels(polyline, update);
+        }
+        break;
+      }
+      case EditActions.ENABLE: {
+        const polyline = this.polylinesManager.get(update.id);
+        if (polyline) {
+          polyline.enableEdit = true;
+          this.renderEditLabels(polyline, update);
+        }
+        break;
+      }
+      case EditActions.DRAG_SHAPE: {
+        const polyline = this.polylinesManager.get(update.id);
+        if (polyline && polyline.enableEdit) {
+          polyline.moveShape(update.draggedPosition, update.updatedPosition);
+          this.renderEditLabels(polyline, update);
+        }
+        break;
+      }
+
+      case EditActions.DRAG_SHAPE_FINISH: {
+        const polyline = this.polylinesManager.get(update.id);
+        if (polyline && polyline.enableEdit) {
+          polyline.endMoveShape();
+          this.renderEditLabels(polyline, update);
+        }
+        break;
+      }
+      default: {
+        return;
+      }
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.polylinesManager.clear();
+  }
+
+  getPointSize(point: EditPoint) {
+    return point.isVirtualEditPoint()
+      ? point.props.virtualPointPixelSize
+      : point.props.pixelSize;
+  }
+
+  getPointShow(point: EditPoint) {
+    return (
+      point.show &&
+      (point.isVirtualEditPoint() ? point.props.showVirtual : point.props.show)
+    );
+  }
+}

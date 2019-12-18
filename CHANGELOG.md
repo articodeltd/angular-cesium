@@ -1,3 +1,6 @@
+### Fixes
+* Exposed the `entity-editors\*ManagerService`s (*`PolylinesManagerService`, `CirclesManagerService`, etc.) so that custom components can support multiple entities.
+
 ## 0.63
 ### Features
 * Refactor demo project and create: https://github.com/articodeltd/angular-cesium-demo

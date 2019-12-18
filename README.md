@@ -185,6 +185,19 @@ Part of `AngularCesiumWidgetsModule` are useful geometry editors tool:
 
 Check out the [Geometry Editors Doc](https://docs.angular-cesium.com/widgets/shape-editors)
 
+### Geometry Editors Manager Services
+
+Manager Services that manages creating, fetching, and removing entity editors.
+
++ PolygonsManagerService
++ RectanglesManagerService
++ CirclesManagerService
++ PolylinesManagerService
++ HippodromeManagerService
++ EllipsesManagerService
+
+ See [Custom Range and Bearing Demo Component](https://github.com/articodeltd/angular-cesium/blob/master/projects/demo/src/app/components/custom-range-and-bearing/custom-range-and-bearing.component.ts) for example usage from custom component.
+
 ### ScreenshotService
 Take screenshot of your cesium globe.
 
