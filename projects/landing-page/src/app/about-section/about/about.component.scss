@@ -64,6 +64,11 @@
   height: 70px;
   margin: 20px;
   filter: invert(50%);
+  transition: 0.3s all;
+
+  &:hover {
+    filter: invert(0%);
+  }
 }
 
 .made-with-love {
