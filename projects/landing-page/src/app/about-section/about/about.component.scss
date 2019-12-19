@@ -36,9 +36,6 @@
   font-weight: 500;
 }
 
-.explaining-section {
-}
-
 .title {
   font-weight: 500;
   font-size: 30px;
@@ -58,16 +55,15 @@
 }
 
 .clients-logos {
-  background-color: rgba(255, 255, 255, 0.1);
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .client-logo {
-  height: 80px;
+  height: 70px;
   margin: 20px;
-  filter: grayscale(100%);
+  filter: invert(50%);
 }
 
 .made-with-love {
