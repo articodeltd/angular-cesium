@@ -19,7 +19,7 @@ import { EditPoint } from '../../../models/edit-point';
 import { EditableCircle } from '../../../models/editable-circle';
 import { EllipseProps } from '../../../models/ellipse-edit-options';
 import { LabelProps } from '../../../models/label-props';
-import { PointProps } from '../../../models/polyline-edit-options';
+import { PointProps } from '../../../models/point-edit-options';
 import { generateKey } from '../../utils';
 import { CirclesManagerService } from './circles-manager.service';
 

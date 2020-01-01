@@ -4,7 +4,8 @@ import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-la
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { EllipseEditOptions, EllipseProps } from './ellipse-edit-options';
-import { PointProps, PolylineProps } from './polyline-edit-options';
+import { PointProps } from './point-edit-options';
+import { PolylineProps } from './polyline-edit-options';
 import { defaultLabelProps, LabelProps } from './label-props';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 

@@ -1,7 +1,8 @@
 import { EditPoint } from './edit-point';
 import { EditorObservable } from './editor-observable';
 import { PolylineEditUpdate } from './polyline-edit-update';
-import { PointProps, PolylineProps } from './polyline-edit-options';
+import { PointProps } from './point-edit-options';
+import { PolylineProps } from './polyline-edit-options';
 import { Cartesian3 } from '../../angular-cesium';
 
 export class PolylineEditorObservable extends EditorObservable<PolylineEditUpdate> {

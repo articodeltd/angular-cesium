@@ -17,7 +17,7 @@ import { RectanglesManagerService } from './rectangles-manager.service';
 import { RectangleEditorObservable } from '../../../models/rectangle-editor-observable';
 import { EditableRectangle } from '../../../models/editable-rectangle';
 import { RectangleEditOptions } from '../../../models/rectangle-edit-options';
-import { PointProps } from '../../../models/polyline-edit-options';
+import { PointProps } from '../../../models/point-edit-options';
 import { LabelProps } from '../../../models/label-props';
 import { generateKey } from '../../utils';
 

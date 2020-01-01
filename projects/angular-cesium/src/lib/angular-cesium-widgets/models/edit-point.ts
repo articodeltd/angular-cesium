@@ -1,6 +1,6 @@
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
-import { PointProps } from './polyline-edit-options';
+import { PointProps } from './point-edit-options';
 
 export class EditPoint extends AcEntity {
   static counter = 0;

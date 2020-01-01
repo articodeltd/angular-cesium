@@ -16,7 +16,7 @@ import { HippodromeManagerService } from './hippodrome-manager.service';
 import { HippodromeEditorObservable } from '../../../models/hippodrome-editor-oboservable';
 import { HippodromeEditUpdate } from '../../../models/hippodrome-edit-update';
 import { EditableHippodrome } from '../../../models/editable-hippodrome';
-import { PointProps } from '../../../models/polyline-edit-options';
+import { PointProps } from '../../../models/point-edit-options';
 import { LabelProps } from '../../../models/label-props';
 import { generateKey } from '../../utils';
 

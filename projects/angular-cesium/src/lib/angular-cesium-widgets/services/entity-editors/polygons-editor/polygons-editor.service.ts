@@ -17,7 +17,8 @@ import { PolygonsManagerService } from './polygons-manager.service';
 import { PolygonEditorObservable } from '../../../models/polygon-editor-observable';
 import { EditablePolygon } from '../../../models/editable-polygon';
 import { PolygonEditOptions, PolygonProps } from '../../../models/polygon-edit-options';
-import { ClampTo3DOptions, PointProps } from '../../../models/polyline-edit-options';
+import { ClampTo3DOptions } from '../../../models/polyline-edit-options';
+import { PointProps } from '../../../models/point-edit-options';
 import { LabelProps } from '../../../models/label-props';
 import { debounce, generateKey } from '../../utils';
 
