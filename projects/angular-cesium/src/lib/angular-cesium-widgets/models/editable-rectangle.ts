@@ -6,7 +6,7 @@ import { Rectangle } from '../../angular-cesium/models/rectangle';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { RectangleEditOptions, RectangleProps } from './rectangle-edit-options';
-import { PointProps } from './polyline-edit-options';
+import { PointProps } from './point-edit-options';
 import { defaultLabelProps, LabelProps } from './label-props';
 
 export class EditableRectangle extends AcEntity {

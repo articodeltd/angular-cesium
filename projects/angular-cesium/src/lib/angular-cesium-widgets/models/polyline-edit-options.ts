@@ -8,18 +8,6 @@ export interface ClampTo3DOptions {
   clampToHeightPickWidth?: number;
 }
 
-export interface PointProps {
-  color?: any;
-  outlineColor?: any;
-  outlineWidth?: number;
-  virtualPointPixelSize?: number;
-  pixelSize?: number;
-  showVirtual?: boolean;
-  show?: boolean;
-  disableDepthTestDistance?: number;
-  heightReference?: any;
-}
-
 export interface PolylineProps {
   width?: number;
   material?: Function;

@@ -6,6 +6,7 @@ import {
   EllipsesEditorService,
   RectanglesEditorService,
   HippodromeEditorService,
+  PointsEditorService,
   PolygonsEditorService,
   PolylineEditorObservable,
   RangeAndBearingComponent,
@@ -17,6 +18,7 @@ import {
   templateUrl: 'toolbar-example.component.html',
   providers: [
     ZoomToRectangleService,
+    PointsEditorService,
     CirclesEditorService,
     EllipsesEditorService,
     PolygonsEditorService,
@@ -32,6 +34,7 @@ export class ToolbarExampleComponent implements OnInit {
     private cameraService: CameraService,
     private zoomToRectangleService: ZoomToRectangleService,
     private cesiumService: CesiumService,
+    private pointEditor: PointsEditorService,
     private circlesEditor: CirclesEditorService,
     private ellipsesEditor: EllipsesEditorService,
     private polygonsEditor: PolygonsEditorService,
@@ -58,6 +61,10 @@ export class ToolbarExampleComponent implements OnInit {
 
   goHome() {
     this.cameraService.cameraFlyTo({destination: Cesium.Cartesian3.fromDegrees(35.21, 31.77, 200000)});
+  }
+
+  drawPoint() {
+    this.pointEditor.create();
   }
 
   drawCircle() {

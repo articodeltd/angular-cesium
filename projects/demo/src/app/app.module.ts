@@ -27,6 +27,7 @@ import { PolygonsEditorExampleComponent } from './components/editor-layer/polygo
 import { HeatmapExampleComponent } from './components/heatmap-layer/heatmap-example.component';
 import { PolylineEditorExampleComponent } from './components/editor-layer/polyline-example/polyline-editor-example.component';
 import { CirclesEditorExampleComponent } from './components/editor-layer/circles-editor-layer/circles-editor-example.component';
+import { PointsEditorExampleComponent } from './components/editor-layer/points-editor-layer/points-editor-example.component';
 import { HippodromeEditorExampleComponent } from './components/editor-layer/hippodrome-example/hippodrome-editor-example.component';
 import { HtmlExampleComponent } from './components/html-layer/html-example.component';
 import { EntitiesWithArraysExampleComponent } from './components/entities-with-arrays-example/entities-with-arrays-example.component';
@@ -82,6 +83,7 @@ import { WallLayerExampleComponent } from './components/wall-layer-example/wall-
     ContextMenuLayerComponent,
     SelectionLayerExampleComponent,
     PolygonsEditorExampleComponent,
+    PointsEditorExampleComponent,
     CirclesEditorExampleComponent,
     PolylineEditorExampleComponent,
     HeatmapExampleComponent,

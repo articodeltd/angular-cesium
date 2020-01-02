@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularCesiumModule } from '../angular-cesium/angular-cesium.module';
+import { PointsEditorComponent } from './components/points-editor/points-editor.component';
 import { PolygonsEditorComponent } from './components/polygons-editor/polygons-editor.component';
 import { CirclesEditorComponent } from './components/circles-editor/circles-editor.component';
 import { EllipsesEditorComponent } from './components/ellipses-editor/ellipses-editor.component';
@@ -18,6 +19,7 @@ import { RectanglesEditorComponent } from './components/rectangles-editor/rectan
 @NgModule({
   imports: [CommonModule, AngularCesiumModule],
   declarations: [
+    PointsEditorComponent,
     HippodromeEditorComponent,
     PolygonsEditorComponent,
     RectanglesEditorComponent,
@@ -31,6 +33,7 @@ import { RectanglesEditorComponent } from './components/rectangles-editor/rectan
     RangeAndBearingComponent,
   ],
   exports: [
+    PointsEditorComponent,
     HippodromeEditorComponent,
     PolygonsEditorComponent,
     RectanglesEditorComponent,

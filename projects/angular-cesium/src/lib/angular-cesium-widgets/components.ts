@@ -1,3 +1,4 @@
+export * from './components/points-editor/points-editor.component';
 export * from './components/polygons-editor/polygons-editor.component';
 export * from './components/rectangles-editor/rectangles-editor.component';
 export * from './components/circles-editor/circles-editor.component';

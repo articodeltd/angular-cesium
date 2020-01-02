@@ -6,7 +6,8 @@ import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { PolygonEditOptions, PolygonProps } from './polygon-edit-options';
-import { PointProps, PolylineProps } from './polyline-edit-options';
+import { PointProps } from './point-edit-options';
+import { PolylineProps } from './polyline-edit-options';
 import { defaultLabelProps, LabelProps } from './label-props';
 
 export class EditablePolygon extends AcEntity {

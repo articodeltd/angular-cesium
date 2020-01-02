@@ -1,0 +1,7 @@
+.edit-buttons {
+  display: flex;
+  position: fixed;
+  bottom: 220px;
+  left: 50px;
+  z-index: 100;
+}

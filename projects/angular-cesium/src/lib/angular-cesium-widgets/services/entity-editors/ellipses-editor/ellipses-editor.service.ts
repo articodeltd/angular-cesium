@@ -16,7 +16,7 @@ import { EllipsesManagerService } from './ellipses-manager.service';
 import { EllipseEditorObservable } from '../../../models/ellipse-editor-observable';
 import { EllipseEditOptions, EllipseProps } from '../../../models/ellipse-edit-options';
 import { EditableEllipse } from '../../../models/editable-ellipse';
-import { PointProps } from '../../../models/polyline-edit-options';
+import { PointProps } from '../../../models/point-edit-options';
 import { LabelProps } from '../../../models/label-props';
 import { BasicEditUpdate } from '../../../models/basic-edit-update';
 import { generateKey } from '../../utils';
