@@ -1,5 +1,7 @@
+## Next
 ### Features
 * Add points-editor component, model, and service. `Points` are now first class components that support entity features, such as labels and enable/disable.
+
 
 ## 0.63
 ### Features
