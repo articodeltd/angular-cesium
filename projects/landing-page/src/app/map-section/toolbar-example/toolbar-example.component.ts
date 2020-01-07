@@ -4,7 +4,7 @@ import {
   CesiumService,
   CirclesEditorService,
   EllipsesEditorService,
-  HippodromeEditorService,
+  HippodromeEditorService, PointsEditorService,
   PolygonsEditorService,
   PolylineEditorObservable,
   RangeAndBearingComponent,
@@ -22,7 +22,8 @@ import {
     EllipsesEditorService,
     PolygonsEditorService,
     RectanglesEditorService,
-    HippodromeEditorService
+    HippodromeEditorService,
+    PointsEditorService,
   ],
 })
 export class ToolbarExampleComponent implements OnInit {
@@ -38,6 +39,7 @@ export class ToolbarExampleComponent implements OnInit {
     private polygonsEditor: PolygonsEditorService,
     private rectanglesEditor: RectanglesEditorService,
     private hippodromesEditor: HippodromeEditorService,
+    private pointEditor: PointsEditorService,
   ) {
     this.zoomToRectangleService.init(cesiumService, cameraService);
   }
@@ -79,5 +81,9 @@ export class ToolbarExampleComponent implements OnInit {
 
   drawHippodrome() {
     this.hippodromesEditor.create({ hippodromeProps: { width: 100 } });
+  }
+
+  drawPoint() {
+    this.pointEditor.create();
   }
 }

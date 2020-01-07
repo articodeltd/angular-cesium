@@ -11,6 +11,10 @@
                      [iconUrl]="'assets/select.svg'"
                      (onClick)="zoomToRectangle()">
   </ac-toolbar-button>
+  <ac-toolbar-button matTooltip="Draw Point" matTooltipPosition="right"
+                     [iconUrl]="'assets/point.png'"
+                     (onClick)="drawPoint()">
+  </ac-toolbar-button>
   <ac-toolbar-button matTooltip="Draw Circle" matTooltipPosition="right"
                      [iconUrl]="'assets/circle.svg'"
                      (onClick)="drawCircle()">
@@ -37,4 +41,5 @@
   <ellipses-editor></ellipses-editor>
   <polygons-editor></polygons-editor>
   <hippodrome-editor></hippodrome-editor>
+  <points-editor></points-editor>
 </ac-toolbar>
