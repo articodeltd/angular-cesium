@@ -411,7 +411,7 @@ export class PolygonsEditorService {
     });
 
     pointDragRegistration.pipe(
-      tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+      tap(({ movement: { drop } }) => this.polygonsManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
         const position = this.screenToPosition(endPosition, options.clampHeightTo3D, options.clampHeightTo3DOptions);
         if (!position) {
@@ -439,7 +439,7 @@ export class PolygonsEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+        .pipe(tap(({ movement: { drop } }) => this.polygonsManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
           const endDragPosition = this.screenToPosition(endPosition, false, options.clampHeightTo3DOptions);
           const startDragPosition = this.screenToPosition(startPosition, false, options.clampHeightTo3DOptions);

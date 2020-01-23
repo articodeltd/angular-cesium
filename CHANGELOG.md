@@ -1,7 +1,8 @@
 ## Next
 ### Features
 * Add points-editor component, model, and service. `Points` are now first class components that support entity features, such as labels and enable/disable.
-
+### Fixes
+* Fix shape editor drag feature - in disable mode dont disable cesium camera rotation. 
 
 ## 0.63
 ### Features

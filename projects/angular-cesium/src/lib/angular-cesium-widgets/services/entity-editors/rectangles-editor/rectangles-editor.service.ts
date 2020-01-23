@@ -273,7 +273,7 @@ export class RectanglesEditorService {
     }
 
     pointDragRegistration.pipe(
-      tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+      tap(({ movement: { drop } }) => this.rectanglesManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) => {
         const position = this.coordinateConverter.screenToCartesian3(endPosition);
         if (!position) {
@@ -299,7 +299,7 @@ export class RectanglesEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+        .pipe(tap(({ movement: { drop } }) => this.rectanglesManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) => {
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
