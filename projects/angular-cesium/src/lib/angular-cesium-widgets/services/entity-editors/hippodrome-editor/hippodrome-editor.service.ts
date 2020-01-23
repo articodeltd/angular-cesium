@@ -263,7 +263,7 @@ export class HippodromeEditorService {
     });
 
     pointDragRegistration.pipe(
-      tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
+      tap(({movement: {drop}}) => this.hippodromeManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
       .subscribe(({movement: {endPosition, drop}, entities}) => {
         const position = this.coordinateConverter.screenToCartesian3(endPosition);
         if (!position) {
@@ -290,7 +290,7 @@ export class HippodromeEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
+        .pipe(tap(({movement: {drop}}) => this.hippodromeManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
         .subscribe(({movement: {startPosition, endPosition, drop}, entities}) => {
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);

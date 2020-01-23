@@ -155,7 +155,7 @@ export class EllipsesEditorService {
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration]);
     const editorObservable = this.createEditorObservable(clientEditSubject, id);
 
-    addPointRegistration.subscribe(({movement: {endPosition}}) => {
+    addPointRegistration.subscribe(({ movement: { endPosition } }) => {
       if (finishedCreate) {
         return;
       }
@@ -209,7 +209,7 @@ export class EllipsesEditorService {
       }
     });
 
-    mouseMoveRegistration.subscribe(({movement: {endPosition}}) => {
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
       if (!center) {
         return;
       }
@@ -309,8 +309,8 @@ export class EllipsesEditorService {
     }
 
     pointDragRegistration
-      .pipe(tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
-      .subscribe(({movement: {endPosition, startPosition, drop}, entities}) => {
+      .pipe(tap(({ movement: { drop } }) => this.ellipsesManager.get(id).enableEdit && this.ellipsesManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
+      .subscribe(({ movement: { endPosition, startPosition, drop }, entities }) => {
         const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
         const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
         if (!endDragPosition) {
@@ -326,7 +326,8 @@ export class EllipsesEditorService {
           editAction = pointIsCenter ? EditActions.DRAG_SHAPE : EditActions.DRAG_POINT;
         }
 
-        if (!options.allowDrag && (editAction === EditActions.DRAG_SHAPE || editAction === EditActions.DRAG_SHAPE_FINISH)) {
+        if (!options.allowDrag && this.ellipsesManager.get(id).enableEdit &&
+          (editAction === EditActions.DRAG_SHAPE || editAction === EditActions.DRAG_SHAPE_FINISH)) {
           this.cameraService.enableInputs(true);
           return;
         }
@@ -347,7 +348,7 @@ export class EllipsesEditorService {
       });
 
     if (addSecondRadiusRegistration) {
-      addSecondRadiusRegistration.subscribe(({movement: {endPosition, startPosition, drop}, entities}) => {
+      addSecondRadiusRegistration.subscribe(({ movement: { endPosition, startPosition, drop }, entities }) => {
         const update: EllipseEditUpdate = {
           id,
           editMode: EditModes.EDIT,
@@ -363,8 +364,8 @@ export class EllipsesEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
-        .subscribe(({movement: {startPosition, endPosition, drop}}) => {
+        .pipe(tap(({ movement: { drop } }) => this.ellipsesManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
+        .subscribe(({ movement: { startPosition, endPosition, drop } }) => {
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
           if (!endDragPosition || !startDragPosition) {
