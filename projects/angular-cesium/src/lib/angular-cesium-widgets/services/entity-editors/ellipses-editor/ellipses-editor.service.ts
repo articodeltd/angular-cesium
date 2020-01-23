@@ -309,7 +309,7 @@ export class EllipsesEditorService {
     }
 
     pointDragRegistration
-      .pipe(tap(({ movement: { drop } }) => this.ellipsesManager.get(id).enableEdit && this.ellipsesManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
+      .pipe(tap(({ movement: { drop } }) => this.ellipsesManager.get(id).enableEdit && this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, startPosition, drop }, entities }) => {
         const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
         const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
