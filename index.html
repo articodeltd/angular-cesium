@@ -42,111 +42,20 @@ Check out our <a href="https://docs.angular-cesium.com">Docs</a> and our blog po
 <h2 id="getting-started">Getting started</h2>
 <h4 id="if-you-are-using-angular-cli-you-can-add-the-angular-cesium-library-using-schematics">If you are using Angular CLI, you can add the angular-cesium library using schematics</h4>
 <ul>
-<li>add <code>angular-cesium</code>:<div><pre class="line-numbers"><code class="language-bash">$ ng add angular-cesium</code></pre></div></li>
-</ul>
-<h4 id="for-existing-project-just-install-angular-cesium">For existing project just install angular-cesium</h4>
-<ul>
-<li>install <code>angular-cesium</code>:<div><pre class="line-numbers"><code class="language-bash">$ npm install --save angular-cesium</code></pre></div></li>
-</ul>
-<h4 id="new-angular-cli-project">New Angular CLI project</h4>
-<ul>
-<li><p>If you didn&#39;t install <a href="https://github.com/angular/angular-cli">Angular CLI</a> yet:</p>
-<div><pre class="line-numbers"><code class="language-bash">  $ npm install -g &#64;angular/cli</code></pre></div></li>
-<li><p>Start new project:</p>
-<div><pre class="line-numbers"><code class="language-bash">  $ ng new PROJECT_NAME
-  $ cd PROJECT_NAME</code></pre></div></li>
-<li><p>Install <code>angular-cesium</code>:</p>
-<div><pre class="line-numbers"><code class="language-bash">$ npm install --save angular-cesium</code></pre></div></li>
-<li><p>Import and add <code>AngularCesiumModule</code> to your app root module:</p>
-<div><pre class="line-numbers"><code class="language-javascript">  import { AngularCesiumModule } from &#39;angular-cesium&#39;;
-  // ....
-  &#64;NgModule({
-      declarations: [],
-      imports: [
-          // ...
-          AngularCesiumModule.forRoot()
-      ],
-      bootstrap: [AppComponent]
-  })
-  export class AppModule {
-  }</code></pre></div></li>
-</ul>
-<h6 id="angularcesiummodule-configuration">AngularCesiumModule configuration</h6>
-<ul>
-<li>The main module should be loaded with <code>.forRoot()</code> in order to make the module perform enhancements to Cesium, However, the module can be loaded with out calling <code>forRoot()</code>.</li>
-<li><code>.forRoot()</code> excepts an optional option object of type <code>ModuleConfiguration</code> where every option can be toggled on or off. If no options object is passed, a default one will be used.</li>
-</ul>
-<h6 id="cesium-fixes-enhancements-">Cesium fixes / enhancements:</h6>
-<ul>
-<li>Fix entities shadowing bug - <code>fixEntitiesShadows</code></li>
-</ul>
-<h6 id="cesium-configuration">Cesium configuration</h6>
-<blockquote>
-<p><sup>In order to use cesium you must serve some assets from cesium package. The following configuration is for angular-cli projects,
-for webpack users try <a href="https://cesiumjs.org/2016/01/26/Cesium-and-Webpack/">this</a>.</sup></p>
-<ul>
-<li>install <code>cesium</code> via:<div><pre class="line-numbers"><code class="language-bash">$ npm install --save cesium</code></pre></div></li>
-</ul>
-</blockquote>
-<ul>
-<li>Add cesium assets, script and css in <code>.angular-cli.json</code> or <code>angular.json</code>(Angular &gt;=6) file:<div><pre class="line-numbers"><code class="language-javascript">   &quot;assets&quot;: [ // ...
-     { &quot;glob&quot;: &quot;**/*&quot;, &quot;input&quot;: &quot;./node_modules/cesium/Build/Cesium&quot;, &quot;output&quot;: &quot;./assets/cesium&quot; }
-    ],
-   &quot;styles&quot;: [ // ...
-     &quot;./node_modules/cesium/Build/Cesium/Widgets/widgets.css&quot;
-   ],
-   &quot;scripts&quot;: [ // ...
-     &quot;./node_modules/cesium/Build/Cesium/Cesium.js&quot;
-   ],</code></pre></div></li>
-<li><p>To avoid <code>ReferenceError: Cesium is not defined</code> errors when running unit tests, add Cesium scripts
-in <code>.angular-cli.json</code> or <code>angular.json</code>(Angular &gt;=6) file in the test block of the app configuration.
-Note that in the example below, only the relevant sections and values are shown.</p>
-<div><pre class="line-numbers"><code class="language-javascript">&quot;projects&quot;: {
-   &quot;angular-cesium-demo&quot;: {
-     &quot;architect&quot;: {
-       &quot;test&quot;: {
-         &quot;scripts&quot;: [
-             &quot;./node_modules/cesium/Build/Cesium/Cesium.js&quot;
-           ],
-       }
-     }
-   }
-}</code></pre></div></li>
-</ul>
-<ul>
-<li><p>Add <code>CESIUM_BASE_URL</code> in <code>main.ts</code> file, before bootstrapping:</p>
-<div><pre class="line-numbers"><code class="language-javascript">  // ...
-  window[&#39;CESIUM_BASE_URL&#39;] = &#39;/assets/cesium&#39;; // If youre using Cesium version &lt; 1.42.0 add this line
-  Cesium.buildModuleUrl.setBaseUrl(&#39;/assets/cesium/&#39;); // If youre using Cesium version &gt;= 1.42.0 add this line
-  platformBrowserDynamic().bootstrapModule(AppModule);</code></pre></div><p>*** Duplication of Cesium base url setting method is caused by a Cesium bug that was introduced in Cesium version 1.42 and should be fixed in Cesium 1.45 - <a href="https://github.com/AnalyticalGraphicsInc/cesium/issues/6411">https://github.com/AnalyticalGraphicsInc/cesium/issues/6411</a></p>
+<li>add <code>angular-cesium</code>:<div><pre class="line-numbers"><code class="language-bash">$ ng add angular-cesium</code></pre></div><h4 id="manual-installation-details-here-">Manual installation details <a href="https://docs.angular-cesium.com/getting-started/installation">here</a>.</h4>
 </li>
-<li><p>Add <code>declare var Cesium;</code> to <code>typing.d.ts</code> file (add the file to <code>src</code> directory).</p>
-</li>
-<li><p>You can configure cesium viewer style:</p>
-<div><pre class="line-numbers"><code class="language-css"> // styles.css
- html, body, .map-container {
-     width: 100%;
-     height: 100%;
-     margin: 0;
-     padding: 0;
-     overflow: hidden;
-     position: relative;
- }</code></pre></div></li>
 </ul>
 <h2 id="demo">Demo</h2>
 <ul>
-<li>You can try and learn about angular-cesium from our demo: <a href="http://www.angular-cesium.com">http://www.angular-cesium.com</a> ( most optimized as desktop application ).</li>
-<li>The demo contains 2 examples<ul>
-<li>Real data: showing real planes using <strong>GraphQL</strong> to warp an exiting REST service.</li>
-<li>Simulated data: displaying planes data and sending using <strong>Socket.io</strong>.<div><pre class="line-numbers"><code class="language-none">$ git clone https://github.com/TGFTech/angular-cesium.git
-$ cd angular-cesium
-$ yarn
-$ yarn server
-$ yarn start
-$ open http://localhost:8080</code></pre></div></li>
-</ul>
-</li>
+<li>You can try and learn about angular-cesium from our demo.</li>
+<li>The demo contains many examples, check out the <code>demo-map.component.ts</code> file.</li>
+<li>Run: <div><pre class="line-numbers"><code class="language-none">  $ git clone https://github.com/articodeltd/angular-cesium.git
+  $ cd angular-cesium
+  $ yarn
+  $ yarn demo:start
+  $ open http://localhost:4200</code></pre></div></li>
 <li>More demos:<ul>
+<li><a href="https://github.com/articodeltd/angular-cesium-demo">Angular Cesium Demo</a></li>
 <li><a href="http://geo-strike.com">GeoStrike</a> - <a href="https://github.com/Webiks/GeoStrike">Repository</a></li>
 <li><a href="https://glo.now.sh">GLO</a> - <a href="https://github.com/sofwerx/glo-demo">Repository</a></li>
 <li><a href="https://github.com/sofwerx/safehouse">Safehouse</a></li>
@@ -186,70 +95,7 @@ For example <code>ac-billboard-desc</code> accepts same members as <a href="http
 </ul>
 </li>
 </ul>
-<h2 id="ac-layer">AC Layer</h2>
-<p><a href="https://articodeltd.github.io/angular-cesium/components/AcLayerComponent.html">ac-layer</a> is a directive which is meant to define a whole layer.
-In case you have previous knowledge about CesiumJs, you would notice that there are lots of map objects e.g. billboard, label, etc&#39;.
-In the real world - we would like to merge all of this map objects into a single entity e.g. an airplane consists of a billboard(icon) and a label.
-Now, let&#39;s create a simple airplanes layer and go through it&#39;s definitions:
-First of all - the data source for a layer must be an RxJs stream.
-Second - every notification on the stream should be of type AcNotification:</p>
-<div><pre class="line-numbers"><code class="language-js">export class AcNotification {
-    id: number;
-    entity?: AcEntity;
-    actionType: ActionType;
-}</code></pre></div><p><code>id</code> - unique entity key, <code>entity</code>- the data itself for the entity, <code>actionType</code>- presents what happened to the entity.
-<code>actionType</code> can be one of those values:</p>
-<div><pre class="line-numbers"><code class="language-js">export enum ActionType {
-    ADD_UPDATE,
-    DELETE
-}</code></pre></div><p>In case <code>ADD_UPDATE</code> is passed - the entity will be created or updated depending on if it exists or not.
-In case <code>DELETE</code> is passed - the entity will be removed from the map.</p>
-<p>Now, assuming that each entity on this stream presents a plane, lets assume that each plane consists of this schema:</p>
-<ul>
-<li><code>position</code> - which presents the current plan position</li>
-<li><code>name</code> - which presents the plane name(to be presented on the map).</li>
-<li><code>image</code> - the PNG or whatever image you may like to use.</li>
-</ul>
-<p>Now, Let&#39;s look at this piece of code:</p>
-<div><pre class="line-numbers"><code class="language-html">    &lt;ac-map&gt;
-        &lt;ac-layer acFor=&quot;let plane of planes$&quot; [context]=&quot;this&quot; [store]=&quot;true&quot;&gt;
-            &lt;ac-billboard-desc props=&quot;{
-                      image: plane.image,
-                      position: plane.position
-                    }&quot;&gt;
-            &lt;/ac-billboard-desc&gt;
-            &lt;ac-label-desc props=&quot;{
-                    position: plane.position,
-                    text: plane.name,
-                    fillColor: getColor(plane)
-            }&quot;&gt;
-            &lt;/ac-label-desc&gt;
-        &lt;/ac-layer&gt;
-    &lt;/ac-map&gt;</code></pre></div><ul>
-<li><code>ac-map</code> - Is a directive which presents the map and create a new Cesium instance.</li>
-<li><code>ac-layer</code> - Is our current directive which presents a plan layer. Remember that the data source must be a stream? In our case the stream is <code>planes$</code>.</li>
-<li><code>acFor</code> - Is a directive which lets you decide how would you call a single plane(or a single entity on the stream) in order to write the relevant expressions inside the directive(we&#39;ll see this in a moment). It should be noticed that the format for acFor is: <code>let {x} of {our stream}</code>.</li>
-<li><code>context</code> - The context of the observable (<code>planes$</code>) and the cesium descriptions <code>props</code> (same context as <code>getColor</code>). Usually it will be the context of the component itself - <code>this</code>.</li>
-<li><code>store</code> - Default: false. Tells Ac-Layer if it should store the entities it receives. The entities stored in the Ac-Layer store are extends by notifications from the stream (<code>planes$</code>).The store is an &lt;entity id, entity&gt; map.
-This in an optional basic data store. You can you use any kind of third party data store (e.g. ngrx/store).</li>
-</ul>
-<p>Now, after we have defined our layer and decided that each entity on the stream will be called <code>plane</code>, let&#39;s drill down into the definitions of how an entity should look.</p>
-<ul>
-<li><code>ac-billboard-desc</code> - which presents billboard from CesiumJs. This directive allows you to pass props(expressions) to this billboard. You may see that although we do pass props - we actually pass expressions that are based on the <code>plane</code> that we defined earlier. Actually we say: &#39;Dear <code>angular-cesium</code>, please create and manage a <code>billboard</code> using those expressions for each <code>plane</code>&#39;.
-Now, when an entity is passed through the stream - based on it&#39;s <code>id</code>, <code>actionType</code> and <code>entity</code> - <code>angular-cesium</code> will know what to do.
-When passing data with the same <code>id</code> and <code>actionType=ADD_UPDATE</code> - the entity will be updated on the map for every message.</li>
-<li><code>ac-label-desc</code> - the same as ac-billboard-desc but just for labels.
-It should be mentioned that <code>ac-billboard-desc</code> &amp; <code>ac-label-desc</code> are all exposing the same API as Cesium expose for each map-entity.</li>
-</ul>
-<p>It is important to mention that angular-cesium doesn&#39;t duplicate the description component over the DOM for each different plane in <code>$plane</code> (as <code>ngFor</code> does).
-why? because  there is no reason to, cesium entities are drawn on the canvas map using javascript API i.e. entities aren&#39;t represented as HTML, by doing so we gain a major boost in performance.</p>
-<p>After explaining a little bit about <code>ac-layer</code> we hope that you may see it&#39;s benefits:</p>
-<ul>
-<li>Easily defining a layer</li>
-<li>Easily add/update/remove entities - all you have to do is pass a message through the stream and <code>angular-cesium</code> will keep track of all the rest.</li>
-<li>Readable code - when reading your html which describes your layer - it is pretty easy to understand how your layer would look.</li>
-<li>Maintainable code.</li>
-</ul>
+<p>For better understading check out the <a href="https://docs.angular-cesium.com/core-concepts/ac-layer">layer guide</a></p>
 <h2 id="supported-entity-types">Supported Entity types</h2>
 <ul>
 <li>billboard - <a href="https://articodeltd.github.io/angular-cesium/components/AcBillboardDescComponent.html"><code>ac-billboard-desc</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcBillboardComponent.html"><code>ac-billboard</code></a> / <a href="https://articodeltd.github.io/angular-cesium/components/AcBillboardPrimitiveDescComponent.html"><code>ac-billboard-primitive-desc</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-billboard-example?embed=1&amp;file=src/app/billboard-layer-example/billboard-layer-example.component.ts">stackblitz</a></li>
@@ -271,19 +117,6 @@ why? because  there is no reason to, cesium entities are drawn on the canvas map
 <li>arc -<a href="https://articodeltd.github.io/angular-cesium/components/AcArcDescComponent.html"><code>ac-arc-dec</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-arc-example?embed=1&amp;file=src/app/arc-layer/arc-layer-example.component.ts">stackblitz</a></li>
 <li>array - <a href="https://articodeltd.github.io/angular-cesium/components/AcArrayDescComponent.html"><code>ac-array-desc</code></a> - <a href="https://stackblitz.com/edit/angular-cesium-demo-arrays?embed=1&amp;file=src/app/entities-with-arrays/entities-with-arrays-example.component.ts">stackblitz</a></li>
 <li>czmlPacket - <a href="https://articodeltd.github.io/angular-cesium/components/AcCzmlDescComponent.html"><code>ac-czml-desc</code></a></li>
-</ul>
-<h3 id="ac-entity-desc-vs-ac-entity"><code>ac-entity-desc</code> vs <code>ac-entity</code></h3>
-<ul>
-<li><code>ac-entity-desc</code> component is used to describe how each entity / array of entities in a stream of entities, managed inside <code>ac-layer</code>, should be drawn.</li>
-<li><code>ac-entity-primitive-desc</code> component is the same as <code>ac-entity-desc</code> with the difference of using Primitives to render the graphics. It is more efficient than <code>ac-entity-desc</code> when drawing an updating entity.</li>
-<li><code>ac-entity</code> component is used to draw an entity directly on the map, and so, can be used directly under <code>ac-map</code>.</li>
-</ul>
-<h3 id="entities-api">Entities API</h3>
-<ul>
-<li>All of the entity components are using a flatten Cesium Entities API.</li>
-<li>e.g: <code>ac-billboard</code> <code>props</code> input accepts a JSON which can have all properties found in Cesium Entity (like <code>position</code>) plus all properties found in Cesium BillboardGraphics (like).</li>
-<li>In AngularCesium, entities have a default height of 0 (except of Billboards and Labels). This as in line with Cesium docs. For some reason in Cesium itself, the default height is undefined which leads Cesium to use GroundPrimitive which is less efficient.
-As a result, if you want your entity to be more efficient, set <code>height: 0</code> or any other value in the props.</li>
 </ul>
 <h2 id="map-events">Map Events</h2>
 <p><code>MapEventsManagerService</code> is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection, event priority management
@@ -307,67 +140,8 @@ export class SomeComponent{
           console.log(&#39;map click&#39;, result.movement, &#39;primitives:&#39;, result.primitives, &#39;entities&#39;, result.entities);
         });
   }
-}</code></pre></div><p>In the example above we start listing to Click events. according to <code>eventRegistration</code> object.</p>
-<ul>
-<li><code>eventManager.register()</code><ul>
-<li>Returns RxJs observer  of type <code>DisposableObservable&lt;EventResult&gt;</code> that we can subscribe to.</li>
-<li>To remove the event registration just do: <code>resultObserver.dispose()</code></li>
-</ul>
-</li>
-<li><strong>event:</strong> according to <code>CesiumEvent</code> enum. All cesium events are supported, includes additional events like DragNDrop and LongPress</li>
-<li><strong>entityType:</strong> it is possible to register to events on a specific entities types, e.g raise event only when <code>TrackEntity</code> is Clicked.<ul>
-<li><code>AcEntity</code> is the base class for all angular-cesium entities, it is a part of <code>AcNotification</code> and is
-required for <code>MapEventManager</code> to work properly.<ul>
-<li>All entities should inherit from <code>AcEntity</code>
-e.g <code>class TrackEntity extends AcEntity {}</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>Priority:</strong> by setting the priority you can register same events and only the one with the higher priority will be raised. For example
- lets say when you left_click on the map a context menu should appear but if you in a drag and drop state you want that
- left_click will raise a drop event only, you can achieve this by setting different priority
- to each event.</li>
-<li><strong>PickOptions:</strong> according to the <code>PickOptions</code> enum, set the different strategies for picking entities on the map:<ul>
-<li>NO_PICK    - will not pick entities</li>
-<li>PICK_FIRST  - first entity will be picked . use Cesium.scene.pick()</li>
-<li>PICK_ONE    - in case a few entities are picked plonter is resolved . use Cesium.scene.drillPick()</li>
-<li>PICK_ALL    - all entities are picked. use Cesium.scene.drillPick()</li>
-</ul>
-</li>
-</ul>
-<p><code>MapEventsManagerService</code> is provided by <code>&lt;ac-map/&gt;</code>, therefor has 2 possibilities to reach it:</p>
-<ul>
-<li>In any components under <code>&lt;ac-map/&gt;</code> hierarchy as seen in the example above  (recommended).</li>
-<li>Using<code>@viewChild</code> and ac-map reference: <code>acMapComponent.getMapEventManagerService()</code> .</li>
-</ul>
-<p>Checkout <a href="https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/event-test-layer/map-events-example.component.ts">demo/app/components/event-test-layer/map-events-example.component.ts</a> for more examples.</p>
-<h5 id="all-cesium-map-events-run-outside-of-angular-zone">All cesium map events run outside of angular zone</h5>
-<p>Meaning that the the callback that you pass to map event manager
-will be executed outside of angular zone. That is because Cesium run outside of Angular zone
-in case for performance reasons , kind of <code>ON_PUSH</code> strategy.
-For example if you update your html template for every map event and you want it to render,
-you should use <code>ChangeDetectorRef</code> or wrap your function with <code>NgZone.run()</code></p>
-<div><pre class="line-numbers"><code class="language-javascript">class MyComponent {
-  constructor(eventManager: MapEventsManagerService, ngZone: NgZone){
-      eventManager.register(eventRegistration).subscribe((result) =&gt; {
-          ngZone.run(()=&gt;{
-              this.textShownInTheTemplateHtml = result.movment;
-          });
-       });
-  }
-}</code></pre></div><h5 id="plonter">Plonter</h5>
-<p>In case a two or more entities are in the same location and both are clicked you have a plonter (which entity should be picked?).
-This is resolved according to the <code>PickOptions</code> that we pass to the event registration:</p>
-<ul>
-<li>NO_PICK    - non of the entities will be picked, you only interested in the map location.</li>
-<li>PICK_FIRST - the first(upper) entity will be picked.</li>
-<li>PICK_ALL    - all entities are picked and returned.</li>
-<li>PICK_ONE    - only one should be picked, a context will appear allowing the client to choose which entity he wants, selected entity will be passed to the eventcall back.</li>
-</ul>
-<p>angular-cesium comes with <code>ac-default-plonter</code> a basic implementation for the plonter context menu. showing a list of entities names to select from.
-It is possible to create your own plonter context menu just take a look at <code>ac-default-plonter</code> implementation, and disable the default plonter:</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;ac-map [disableDefaultPlonter]=&quot;true&quot;&gt;&lt;/ac-map&gt;</code></pre></div><h3 id="map-layers">Map layers</h3>
+}</code></pre></div><p>For further details check the <a href="https://docs.angular-cesium.com/guides/map-events">map events guide</a></p>
+<h3 id="map-layers">Map layers</h3>
 <p>With angular cesium you can define your map provider in a declarative way using <code>ac-map-layer-provider</code> :</p>
 <div><pre class="line-numbers"><code class="language-html">    &lt;ac-map-layer-provider *ngIf=&quot;appSettingsService.showMapLayer&quot; [provider]=&quot;MapLayerProviderOptions.ArcGisMapServer&quot;
                            [options]=&quot;{
@@ -386,10 +160,9 @@ It is possible to create your own plonter context menu just take a look at <code
          url: &#39;https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s&#39;
        }&quot;&gt;
    &lt;/ac-3d-tile-layer&gt;</code></pre></div><h3 id="multiple-maps-support">Multiple maps support</h3>
-<p>Angular Cesium supports integration of multiple maps.
-A simple way to implement multiple maps is by using *ngFor directive inside <code>&lt;ac-map&gt;</code>. <code>AcMapComponent</code> has a <code>containerId</code> input which can be used to specify the id of the containing element. You can see an example of multiple map usage in <code>DemoMultipleMapsComponent</code> in our demo app. In order to set initial viewer configuration for multiple maps you can set <code>ViewerConfigurationService.viewerOptions</code> to an array of options. The map initialized first will be set with the first option object in the options array and so on.</p>
+<p>Angular Cesium supports integration of multiple maps, for more details <a href="https://docs.angular-cesium.com/guides/multiple-maps-sync">here</a></p>
 <h3 id="camera">Camera</h3>
-<h4 id="camera-keyboard-control-service"><a href="https://articodeltd.github.io/angular-cesium/injectables/KeyboardControlService.html">Camera Keyboard Control Service</a></h4>
+<h4 id="camera-keyboard-control-service"><a href="https://docs.angular-cesium.com/guides/camera-keyboard-control">Camera Keyboard Control Service</a></h4>
 <p>Service that manages keyboard keys and execute actions per request. Inject the keyboard control service into any layer, under your ac-map component, And defined you keyboard handlers using setKeyboardControls.</p>
 <div><pre class="line-numbers"><code class="language-javascript"> this.keyboardControlService.setKeyboardControls({
       W: { action: KeyboardAction.CAMERA_FORWARD },
@@ -397,7 +170,7 @@ A simple way to implement multiple maps is by using *ngFor directive inside <cod
       D: { action: KeyboardAction.CAMERA_RIGHT },
       A: { action: KeyboardAction.CAMERA_LEFT },
     },
-</code></pre></div><h4 id="cameraservice"><a href="https://articodeltd.github.io/angular-cesium/injectables/CameraService.html">CameraService</a></h4>
+</code></pre></div><h4 id="cameraservice"><a href="https://docs.angular-cesium.com/guides/camera-controls">CameraService</a></h4>
 <p>Util service that wraps cesium camera, exposes the scene&#39;s camera and screenSpaceCameraController.</p>
 <h3 id="mapsmanagerservice">MapsManagerService</h3>
 <p>Angular Cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use <a href="https://articodeltd.github.io/angular-cesium/injectables/MapsManagerService.html">MapsManagerService</a> to receive cesium <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html">viewer</a> or any other util service that was created by <code>ac-map</code>.</p>
@@ -407,48 +180,24 @@ constructor(mapsManagerService: MapsManagerService)
     const mapEventManager = mapsManagerService.getMap().getMapEventsManager();
     const cameraService = mapsManagerService.getMap().getCameraService();
 }</code></pre></div><p><code>MapsManagerService</code> manages all of the maps. The service exposes a <code>getMap()</code> function that can be used to retrieve a specific map by id.</p>
-<p>The Service can also be used in order to sync multiple <em>2D</em> maps using the <code>sync2DMapsCameras()</code> function. When maps are synced together, their cameras will automatically point to the same world position - if one map&#39;s camera is at a new position, all the other cameras will follow. the zoom level of the camera can also be synced by using options that are passed to the function.
-The <code>unsyncMapsCameras()</code> function can be used to unsync synced maps.</p>
-<h4 id="zoomtorectangleservice"><a href="https://articodeltd.github.io/angular-cesium/injectables/ZoomToRectangleService.html">ZoomToRectangleService</a></h4>
+<h4 id="zoomtorectangleservice"><a href="https://docs.angular-cesium.com/widgets/zoomto-rectangle">ZoomToRectangleService</a></h4>
 <p>A service that is used to activate a zooming tool that enables the user to draw a rectangle over the map and zoom into the drawn rectangle</p>
 <h3 id="geometry-editors-and-widgets">Geometry Editors And Widgets</h3>
-<p>Part of <a href="https://articodeltd.github.io/angular-cesium/modules/AngularCesiumWidgetsModule.html"><code>AngularCesiumWidgetsModule</code></a> are useful geometry editors tool:</p>
+<p>Part of <code>AngularCesiumWidgetsModule</code> are useful geometry editors tool:</p>
 <ul>
-<li><a href="https://articodeltd.github.io/angular-cesium/injectables/CirclesEditorService.html"><code>CirlcesEditorService</code></a> - for drawing circles</li>
-<li><a href="https://articodeltd.github.io/angular-cesium/injectables/EllipsesEditorService.html"><code>EllipsesEditorService</code></a> - for drawing ellipses and circles</li>
-<li><a href="https://articodeltd.github.io/angular-cesium/injectables/PolylinesEditorService.html"><code>PolylinesEditorService</code></a> - for drawing polylines</li>
-<li><a href="https://articodeltd.github.io/angular-cesium/injectables/PolygonsEditorService.html"><code>PolygonsEditorService</code></a> - for drawing polygons</li>
-<li><a href="https://articodeltd.github.io/angular-cesium/injectables/RectanglesEditorService.html"><code>RectanglesEditorService</code></a> - for drawing rectangles</li>
-<li><a href="https://articodeltd.github.io/angular-cesium/injectables/HippodromeEditorService.html"><code>HippodromeEditorService</code></a> - for drawing hippodromes (path in cesium)</li>
-<li><a href="https://articodeltd.github.io/angular-cesium/components/RangeAndBearingComponent.html"><code>RangeAndBearingComponent</code></a> - for drawing range and bearing</li>
+<li><a href="https://docs.angular-cesium.com/widgets/shape-editors/circle-editor"><code>CirlcesEditorService</code></a> - for drawing circles</li>
+<li><a href="https://docs.angular-cesium.com/widgets/shape-editors/ellipse-editor"><code>EllipsesEditorService</code></a> - for drawing ellipses and circles</li>
+<li><a href="https://docs.angular-cesium.com/widgets/shape-editors/polyline-editor"><code>PolylinesEditorService</code></a> - for drawing polylines</li>
+<li><a href="https://docs.angular-cesium.com/widgets/shape-editors/polygon-editor"><code>PolygonsEditorService</code></a> - for drawing polygons</li>
+<li><a href="https://docs.angular-cesium.com/widgets/shape-editors/rectangle-editor"><code>RectanglesEditorService</code></a> - for drawing rectangles</li>
+<li><a href="https://docs.angular-cesium.com/widgets/shape-editors/hippodrome-editor"><code>HippodromeEditorService</code></a> - for drawing hippodromes (path in cesium)</li>
 </ul>
-<p>Try running our demo for examples (uncomment the relevant components in <code>demo-map.component.html</code>).</p>
+<p>Check out the <a href="https://docs.angular-cesium.com/widgets/shape-editors">Geometry Editors Doc</a></p>
 <h3 id="screenshotservice">ScreenshotService</h3>
 <p>Take screenshot of your cesium globe.</p>
 <h3 id="contextmenuservice-stackblitz">ContextMenuService - <a href="https://stackblitz.com/edit/angular-cesium-context-menu-example?embed=1&amp;file=src/app/context-menu-layer/context-menu-layer.component.ts">stackblitz</a></h3>
-<p>create any custom angular component and anchor it to a map position.</p>
-<div><pre class="line-numbers"><code class="language-javascript"> this.mapEventsManager
-      .register({ event: CesiumEvent.RIGHT_CLICK, pick: PickOptions.NO_PICK })
-      .subscribe(event =&gt; {
-        const position = this.coordinateConverter.screenToCartesian3(event.movement.endPosition);
-        if (!position) {
-          return;
-        }
-
-        this.contextMenuService.open(
-          MyCustomContextMenuComponent,
-          position,
-          {
-            data: {
-              item: {name: &#39;Cool name&#39;},
-              onActionClick: () =&gt; {
-                console.log(&#39;do action&#39;);
-                this.contextMenuService.close();
-              }
-            }
-          }
-        );
-      });</code></pre></div><h2 id="documents">Documents</h2>
+<p>create any custom angular component and anchor it to a map position, <a href="https://docs.angular-cesium.com/guides/context-menu-on-the-map">context menu guide</a>.</p>
+<h2 id="documents">Documents</h2>
 <ul>
 <li><h4 id="docs-https-docs-angular-cesium-com-">Docs <a href="https://docs.angular-cesium.com/">https://docs.angular-cesium.com/</a></h4>
 </li>

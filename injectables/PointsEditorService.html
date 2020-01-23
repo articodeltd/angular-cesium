@@ -1,0 +1,1918 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular Cesium</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/stripe.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Angular Cesium</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>PointsEditorService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for creating editable point</p>
+<ul>
+<li>You must provide <code>PointsEditorService</code> yourself.
+PolygonsEditorService works together with <code>&lt;points-editor&gt;</code> component. Therefor you need to create <code>&lt;points-editor&gt;</code>
+for each <code>PointsEditorService</code>, And of course somewhere under <code>&lt;ac-map&gt;</code>/</li>
+</ul>
+<ul>
+<li><code>create</code> for starting a creation of the shape over the map. Returns a extension of <code>PointEditorObservable</code>.</li>
+<li><code>edit</code> for editing shape over the map starting from a given positions. Returns an extension of <code>PointEditorObservable</code>.</li>
+<li>To stop editing call <code>dsipose()</code> from the <code>PointEditorObservable</code> you get back from <code>create()</code> \ <code>edit()</code>.</li>
+</ul>
+<p><strong>Labels over editted shapes</strong>
+Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+To add label drawing logic to your editor use the function <code>setLabelsRenderFn()</code> that is defined on the
+<code>PointEditorObservable</code> that is returned from calling <code>create()</code> \ <code>edit()</code> of one of the editor services.
+<code>setLabelsRenderFn()</code> - receives a callback that is called every time the shape is redrawn
+(except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+The callback should return type <code>LabelProps[]</code>.
+You can also use <code>updateLabels()</code> to pass an array of labels of type <code>LabelProps[]</code> to be drawn.</p>
+<p>usage:</p>
+<div><pre class="line-numbers"><code class="language-typescript"> *  // Start creating point
+ *  const editing$ = pointEditorService.create();
+ *  this.editing$.subscribe(editResult =&gt; {
+ *                console.log(editResult.positions);
+ *        });
+ *
+ *  // Or edit point from existing point cartesian3 positions
+ *  const editing$ = this.pointEditor.edit(initialPos);
+ *
+ *</code></pre></div>
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cameraService">cameraService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cesiumScene">cesiumScene</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#coordinateConverter">coordinateConverter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#mapEventsManager">mapEventsManager</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#observablesMap">observablesMap</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#pointManager">pointManager</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updatePublisher">updatePublisher</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updateSubject">updateSubject</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#create">create</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createEditorObservable">createEditorObservable</a>
+                            </li>
+                            <li>
+                                <a href="#edit">edit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#editPoint">editPoint</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getPoint">getPoint</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getPosition">getPosition</a>
+                            </li>
+                            <li>
+                                <a href="#init">init</a>
+                            </li>
+                            <li>
+                                <a href="#onUpdate">onUpdate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#screenToPosition">screenToPosition</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setOptions">setOptions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#switchToEditMode">switchToEditMode</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="create"></a>
+                        <span class="name">
+                            <b>
+                            create
+                            </b>
+                            <a href="#create"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>create(options, eventPriority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:110</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>DEFAULT_POINT_OPTIONS</code>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>eventPriority</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>100</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../classes/PointEditorObservable.html" target="_self" >PointEditorObservable</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createEditorObservable"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            createEditorObservable
+                            </b>
+                            <a href="#createEditorObservable"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>createEditorObservable(observableToExtend: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="300" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:300</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>observableToExtend</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../classes/PointEditorObservable.html" target="_self" >PointEditorObservable</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edit"></a>
+                        <span class="name">
+                            <b>
+                            edit
+                            </b>
+                            <a href="#edit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>edit(position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, options, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:209</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>position</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>DEFAULT_POINT_OPTIONS</code>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>priority</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>100</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../classes/PointEditorObservable.html" target="_self" >PointEditorObservable</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="editPoint"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            editPoint
+                            </b>
+                            <a href="#editPoint"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>editPoint(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, editSubject: <a href="../interfaces/PointEditUpdate.html">Subject<PointEditUpdate></a>, options: <a href="../interfaces/PointEditOptions.html">PointEditOptions</a>, editObservable?: <a href="../classes/PointEditorObservable.html">PointEditorObservable</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="239" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:239</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>position</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>priority</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>editSubject</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/PointEditUpdate.html" target="_self" >Subject&lt;PointEditUpdate&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/PointEditOptions.html" target="_self" >PointEditOptions</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>editObservable</td>
+                                                        <td>
+                                                                    <code><a href="../classes/PointEditorObservable.html" target="_self" >PointEditorObservable</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getPoint"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            getPoint
+                            </b>
+                            <a href="#getPoint"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getPoint(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="376" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:376</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getPosition"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            getPosition
+                            </b>
+                            <a href="#getPosition"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getPosition(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="371" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:371</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="init"></a>
+                        <span class="name">
+                            <b>
+                            init
+                            </b>
+                            <a href="#init"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>init(mapEventsManager: <a href="../injectables/MapEventsManagerService.html">MapEventsManagerService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, cameraService: <a href="../injectables/CameraService.html">CameraService</a>, pointManager: <a href="../injectables/PointsManagerService.html">PointsManagerService</a>, cesiumViewer: <a href="../injectables/CesiumService.html">CesiumService</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:81</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>mapEventsManager</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>coordinateConverter</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>cameraService</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>pointManager</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/PointsManagerService.html" target="_self" >PointsManagerService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>cesiumViewer</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onUpdate"></a>
+                        <span class="name">
+                            <b>
+                            onUpdate
+                            </b>
+                            <a href="#onUpdate"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>onUpdate()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:95</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/PointEditUpdate.html" target="_self" >Observable&lt;PointEditUpdate&gt;</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="screenToPosition"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            screenToPosition
+                            </b>
+                            <a href="#screenToPosition"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>screenToPosition(cartesian2)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:99</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cartesian2</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setOptions"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            setOptions
+                            </b>
+                            <a href="#setOptions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>setOptions(options: <a href="../interfaces/PointEditOptions.html">PointEditOptions</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="291" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:291</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/PointEditOptions.html" target="_self" >PointEditOptions</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="switchToEditMode"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            switchToEditMode
+                            </b>
+                            <a href="#switchToEditMode"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>switchToEditMode(id, clientEditSubject, position: <a href="../interfaces/Cartesian3.html">Cartesian3</a>, eventPriority, pointOptions, editorObservable, finishedCreate: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:172</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>clientEditSubject</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>position</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Cartesian3.html" target="_self" >Cartesian3</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>eventPriority</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>pointOptions</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>editorObservable</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>finishedCreate</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cameraService"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            cameraService
+                            </b>
+                            <a href="#cameraService"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>cameraService:     <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:76</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cesiumScene"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            cesiumScene
+                            </b>
+                            <a href="#cesiumScene"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>cesiumScene:     <code></code>
+</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:79</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="coordinateConverter"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            coordinateConverter
+                            </b>
+                            <a href="#coordinateConverter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>coordinateConverter:     <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:75</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mapEventsManager"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            mapEventsManager
+                            </b>
+                            <a href="#mapEventsManager"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>mapEventsManager:     <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:72</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="observablesMap"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            observablesMap
+                            </b>
+                            <a href="#observablesMap"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>observablesMap:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Map&lt;string, DisposableObservable&lt;any&gt;[]&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:78</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pointManager"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            pointManager
+                            </b>
+                            <a href="#pointManager"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>pointManager:     <code><a href="../injectables/PointsManagerService.html" target="_self" >PointsManagerService</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/PointsManagerService.html" target="_self" >PointsManagerService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:77</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updatePublisher"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            updatePublisher
+                            </b>
+                            <a href="#updatePublisher"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>updatePublisher:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>publish&lt;PointEditUpdate&gt;()(this.updateSubject)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:74</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updateSubject"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            updateSubject
+                            </b>
+                            <a href="#updateSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>updateSubject:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;PointEditUpdate&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/points-editor/points-editor.service.ts:73</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { publish, tap } from &#x27;rxjs/operators&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { MapEventsManagerService } from &#x27;../../../../angular-cesium/services/map-events-mananger/map-events-manager&#x27;;
+import { BehaviorSubject, Observable, Subject } from &#x27;rxjs&#x27;;
+import { CesiumEvent } from &#x27;../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum&#x27;;
+import { PickOptions } from &#x27;../../../../angular-cesium/services/map-events-mananger/consts/pickOptions.enum&#x27;;
+import { EditModes } from &#x27;../../../models/edit-mode.enum&#x27;;
+import { EditActions } from &#x27;../../../models/edit-actions.enum&#x27;;
+import { DisposableObservable } from &#x27;../../../../angular-cesium/services/map-events-mananger/disposable-observable&#x27;;
+import { CoordinateConverter } from &#x27;../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service&#x27;;
+import { EditPoint } from &#x27;../../../models/edit-point&#x27;;
+import { CameraService } from &#x27;../../../../angular-cesium/services/camera/camera.service&#x27;;
+import { Cartesian3 } from &#x27;../../../../angular-cesium/models/cartesian3&#x27;;
+import { PointsManagerService } from &#x27;./points-manager.service&#x27;;
+import { LabelProps } from &#x27;../../../models/label-props&#x27;;
+import { generateKey } from &#x27;../../utils&#x27;;
+import { CesiumService } from &#x27;../../../../angular-cesium&#x27;;
+import { PointEditOptions, PointProps } from &#x27;../../../models/point-edit-options&#x27;;
+import { PointEditUpdate } from &#x27;../../../models/point-edit-update&#x27;;
+import { PointEditorObservable } from &#x27;../../../models/point-editor-observable&#x27;;
+
+export const DEFAULT_POINT_OPTIONS: PointEditOptions &#x3D; {
+  addLastPointEvent: CesiumEvent.LEFT_CLICK,
+  removePointEvent: CesiumEvent.RIGHT_CLICK,
+  dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
+  allowDrag: true,
+  pointProps: {
+    color: Cesium.Color.WHITE.withAlpha(0.95),
+    outlineColor: Cesium.Color.BLACK.withAlpha(0.5),
+    outlineWidth: 1,
+    pixelSize: 10,
+    show: true,
+    disableDepthTestDistance: Number.POSITIVE_INFINITY,
+  },
+};
+
+/**
+ * Service for creating editable point
+ *
+ *  * You must provide &#x60;PointsEditorService&#x60; yourself.
+ * PolygonsEditorService works together with &#x60;&lt;points-editor&gt;&#x60; component. Therefor you need to create &#x60;&lt;points-editor&gt;&#x60;
+ * for each &#x60;PointsEditorService&#x60;, And of course somewhere under &#x60;&lt;ac-map&gt;&#x60;/
+ *
+ * + &#x60;create&#x60; for starting a creation of the shape over the map. Returns a extension of &#x60;PointEditorObservable&#x60;.
+ * + &#x60;edit&#x60; for editing shape over the map starting from a given positions. Returns an extension of &#x60;PointEditorObservable&#x60;.
+ * + To stop editing call &#x60;dsipose()&#x60; from the &#x60;PointEditorObservable&#x60; you get back from &#x60;create()&#x60; \ &#x60;edit()&#x60;.
+ *
+ * **Labels over editted shapes**
+ * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+ * To add label drawing logic to your editor use the function &#x60;setLabelsRenderFn()&#x60; that is defined on the
+ * &#x60;PointEditorObservable&#x60; that is returned from calling &#x60;create()&#x60; \ &#x60;edit()&#x60; of one of the editor services.
+ * &#x60;setLabelsRenderFn()&#x60; - receives a callback that is called every time the shape is redrawn
+ * (except when the shape is being dragged). The callback is called with the last shape state and with an array of the current labels.
+ * The callback should return type &#x60;LabelProps[]&#x60;.
+ * You can also use &#x60;updateLabels()&#x60; to pass an array of labels of type &#x60;LabelProps[]&#x60; to be drawn.
+ *
+ * usage:
+ * &#x60;&#x60;&#x60;typescript
+ *  // Start creating point
+ *  const editing$ &#x3D; pointEditorService.create();
+ *  this.editing$.subscribe(editResult &#x3D;&gt; {
+ *				console.log(editResult.positions);
+ *		});
+ *
+ *  // Or edit point from existing point cartesian3 positions
+ *  const editing$ &#x3D; this.pointEditor.edit(initialPos);
+ *
+ * &#x60;&#x60;&#x60;
+ */
+@Injectable()
+export class PointsEditorService {
+  private mapEventsManager: MapEventsManagerService;
+  private updateSubject &#x3D; new Subject&lt;PointEditUpdate&gt;();
+  private updatePublisher &#x3D; publish&lt;PointEditUpdate&gt;()(this.updateSubject); // TODO maybe not needed
+  private coordinateConverter: CoordinateConverter;
+  private cameraService: CameraService;
+  private pointManager: PointsManagerService;
+  private observablesMap &#x3D; new Map&lt;string, DisposableObservable&lt;any&gt;[]&gt;();
+  private cesiumScene;
+
+  init(mapEventsManager: MapEventsManagerService,
+       coordinateConverter: CoordinateConverter,
+       cameraService: CameraService,
+       pointManager: PointsManagerService,
+       cesiumViewer: CesiumService) {
+    this.mapEventsManager &#x3D; mapEventsManager;
+    this.coordinateConverter &#x3D; coordinateConverter;
+    this.cameraService &#x3D; cameraService;
+    this.pointManager &#x3D; pointManager;
+    this.updatePublisher.connect();
+
+    this.cesiumScene &#x3D; cesiumViewer.getScene();
+  }
+
+  onUpdate(): Observable&lt;PointEditUpdate&gt; {
+    return this.updatePublisher;
+  }
+
+  private screenToPosition(cartesian2) {
+    const cartesian3 &#x3D; this.coordinateConverter.screenToCartesian3(cartesian2);
+
+    // If cartesian3 is undefined then the point inst on the globe
+    if (cartesian3) {
+      const ray &#x3D; this.cameraService.getCamera().getPickRay(cartesian2);
+      return this.cesiumScene.globe.pick(ray, this.cesiumScene);
+    }
+    return cartesian3;
+  }
+
+  create(options &#x3D; DEFAULT_POINT_OPTIONS, eventPriority &#x3D; 100): PointEditorObservable {
+    const id &#x3D; generateKey();
+    const pointOptions &#x3D; this.setOptions(options);
+
+    const clientEditSubject &#x3D; new BehaviorSubject&lt;PointEditUpdate&gt;({
+      id,
+      editAction: null,
+      editMode: EditModes.CREATE
+    });
+    let finishedCreate &#x3D; false;
+
+    this.updateSubject.next({
+      id,
+      editMode: EditModes.CREATE,
+      editAction: EditActions.INIT,
+      pointOptions: pointOptions,
+    });
+
+    const mouseMoveRegistration &#x3D; this.mapEventsManager.register({
+      event: CesiumEvent.MOUSE_MOVE,
+      pick: PickOptions.NO_PICK,
+      priority: eventPriority,
+      pickConfig: options.pickConfiguration,
+    });
+    const addLastPointRegistration &#x3D; this.mapEventsManager.register({
+      event: pointOptions.addLastPointEvent,
+      modifier: pointOptions.addLastPointModifier,
+      pick: PickOptions.NO_PICK,
+      priority: eventPriority,
+      pickConfig: options.pickConfiguration,
+    });
+
+    this.observablesMap.set(id, [mouseMoveRegistration, addLastPointRegistration]);
+    const editorObservable &#x3D; this.createEditorObservable(clientEditSubject, id);
+
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
+      const position &#x3D; this.screenToPosition(endPosition);
+      if (position) {
+
+        this.updateSubject.next({
+          id,
+          position,
+          editMode: EditModes.CREATE,
+          updatedPosition: position,
+          editAction: EditActions.MOUSE_MOVE,
+        });
+      }
+    });
+    addLastPointRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
+      const position &#x3D; this.screenToPosition(endPosition);
+      finishedCreate &#x3D; this.switchToEditMode(
+          id,
+          clientEditSubject,
+          position,
+          eventPriority,
+          pointOptions,
+          editorObservable,
+          true);
+    });
+    return editorObservable;
+  }
+
+  private switchToEditMode(id,
+                           clientEditSubject,
+                           position: Cartesian3,
+                           eventPriority,
+                           pointOptions,
+                           editorObservable,
+                           finishedCreate: boolean) {
+    const update &#x3D; {
+      id,
+      position: position,
+      editMode: EditModes.CREATE_OR_EDIT,
+      updatedPosition: position,
+      editAction: EditActions.ADD_LAST_POINT,
+    };
+    this.updateSubject.next(update);
+    clientEditSubject.next({
+      ...update,
+      position: position,
+      point: this.getPoint(id),
+    });
+
+    const changeMode &#x3D; {
+      id,
+      editMode: EditModes.CREATE,
+      editAction: EditActions.CHANGE_TO_EDIT,
+    };
+    this.updateSubject.next(changeMode);
+    clientEditSubject.next(changeMode);
+    if (this.observablesMap.has(id)) {
+      this.observablesMap.get(id).forEach(registration &#x3D;&gt; registration.dispose());
+    }
+    this.observablesMap.delete(id);
+    this.editPoint(id, position, eventPriority, clientEditSubject, pointOptions, editorObservable);
+    finishedCreate &#x3D; true;
+    return finishedCreate;
+  }
+
+  edit(position: Cartesian3, options &#x3D; DEFAULT_POINT_OPTIONS, priority &#x3D; 100): PointEditorObservable {
+    const id &#x3D; generateKey();
+    const pointOptions &#x3D; this.setOptions(options);
+    const editSubject &#x3D; new BehaviorSubject&lt;PointEditUpdate&gt;({
+      id,
+      editAction: null,
+      editMode: EditModes.EDIT
+    });
+    const update &#x3D; {
+      id,
+      position: position,
+      editMode: EditModes.EDIT,
+      editAction: EditActions.INIT,
+      pointOptions: pointOptions,
+    };
+    this.updateSubject.next(update);
+    editSubject.next({
+      ...update,
+      position: position,
+      point: this.getPoint(id),
+    });
+    return this.editPoint(
+      id,
+      position,
+      priority,
+      editSubject,
+      pointOptions
+    );
+  }
+
+  private editPoint(id: string,
+                       position: Cartesian3,
+                       priority: number,
+                       editSubject: Subject&lt;PointEditUpdate&gt;,
+                       options: PointEditOptions,
+                       editObservable?: PointEditorObservable) {
+    const pointDragRegistration &#x3D; this.mapEventsManager.register({
+      event: options.dragPointEvent,
+      entityType: EditPoint,
+      pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
+      priority,
+      pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
+    });
+
+    const pointRemoveRegistration &#x3D; this.mapEventsManager.register({
+      event: options.removePointEvent,
+      modifier: options.removePointModifier,
+      entityType: EditPoint,
+      pick: PickOptions.PICK_FIRST,
+      pickConfig: options.pickConfiguration,
+      priority,
+      pickFilter: entity &#x3D;&gt; id &#x3D;&#x3D;&#x3D; entity.editedEntityId,
+    });
+
+    pointDragRegistration.pipe(
+      tap(({ movement: { drop } }) &#x3D;&gt; this.cameraService.enableInputs(drop)))
+      .subscribe(({ movement: { endPosition, drop }, entities }) &#x3D;&gt; {
+        const updatedPosition &#x3D; this.screenToPosition(endPosition);
+        if (!updatedPosition) {
+          return;
+        }
+        const update &#x3D; {
+          id,
+          editMode: EditModes.EDIT,
+          updatedPosition,
+          editAction: drop ? EditActions.DRAG_POINT_FINISH : EditActions.DRAG_POINT,
+        };
+        this.updateSubject.next(update);
+        editSubject.next({
+          ...update,
+          position: updatedPosition,
+          point: this.getPoint(id),
+        });
+
+      });
+
+    const observables &#x3D; [pointDragRegistration, pointRemoveRegistration];
+    this.observablesMap.set(id, observables);
+    return this.createEditorObservable(editSubject, id);
+  }
+
+  private setOptions(options: PointEditOptions) {
+    const defaultClone &#x3D; JSON.parse(JSON.stringify(DEFAULT_POINT_OPTIONS));
+    const pointOptions: PointEditOptions &#x3D; Object.assign(defaultClone, options);
+    pointOptions.pointProps &#x3D; {...DEFAULT_POINT_OPTIONS.pointProps, ...options.pointProps};
+    pointOptions.pointProps &#x3D; {...DEFAULT_POINT_OPTIONS.pointProps, ...options.pointProps};
+    return pointOptions;
+  }
+
+
+  private createEditorObservable(observableToExtend: any, id: string): PointEditorObservable {
+    observableToExtend.dispose &#x3D; () &#x3D;&gt; {
+      const observables &#x3D; this.observablesMap.get(id);
+      if (observables) {
+        observables.forEach(obs &#x3D;&gt; obs.dispose());
+      }
+      this.observablesMap.delete(id);
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.DISPOSE,
+      });
+    };
+
+    observableToExtend.enable &#x3D; () &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        position: this.getPosition(id),
+        editMode: EditModes.EDIT,
+        editAction: EditActions.ENABLE,
+      });
+    };
+
+    observableToExtend.disable &#x3D; () &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        position: this.getPosition(id),
+        editMode: EditModes.EDIT,
+        editAction: EditActions.DISABLE,
+      });
+    };
+
+    observableToExtend.setManually &#x3D; (point: {
+      position: Cartesian3,
+      pointProp?: PointProps
+    } | Cartesian3, pointProps?: PointProps) &#x3D;&gt; {
+      const newPoint &#x3D; this.pointManager.get(id);
+      newPoint.setManually(point, pointProps);
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_MANUALLY,
+      });
+    };
+
+    observableToExtend.setLabelsRenderFn &#x3D; (callback: any) &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.SET_EDIT_LABELS_RENDER_CALLBACK,
+        labelsRenderFn: callback,
+      });
+    };
+
+    observableToExtend.updateLabels &#x3D; (labels: LabelProps[]) &#x3D;&gt; {
+      this.updateSubject.next({
+        id,
+        editMode: EditModes.CREATE_OR_EDIT,
+        editAction: EditActions.UPDATE_EDIT_LABELS,
+        updateLabels: labels,
+      });
+    };
+    observableToExtend.getCurrentPoint &#x3D; () &#x3D;&gt; this.getPoint(id);
+
+    observableToExtend.getEditValue &#x3D; () &#x3D;&gt; observableToExtend.getValue();
+
+    observableToExtend.getLabels &#x3D; (): LabelProps[] &#x3D;&gt; this.pointManager.get(id).labels;
+
+    return observableToExtend as PointEditorObservable;
+  }
+
+  private getPosition(id: string) {
+    const point &#x3D; this.pointManager.get(id);
+    return point.getPosition();
+  }
+
+  private getPoint(id: string) {
+    const point &#x3D; this.pointManager.get(id);
+    if (point) {
+      return point.getCurrentPoint();
+    }
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'PointsEditorService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

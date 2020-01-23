@@ -62,7 +62,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/angular-cesium/src/lib/angular-cesium-widgets/models/polyline-edit-options.ts</code>
+            <code>projects/angular-cesium/src/lib/angular-cesium-widgets/models/point-edit-options.ts</code>
         </p>
 
 
@@ -441,12 +441,6 @@
 import { CesiumEventModifier } from &#x27;../../angular-cesium/services/map-events-mananger/consts/cesium-event-modifier.enum&#x27;;
 import { EditorEditOptions } from &#x27;./editor-edit-options&#x27;;
 
-export interface ClampTo3DOptions {
-  clampToTerrain?: boolean;
-  clampMostDetailed?: boolean;
-  clampToHeightPickWidth?: number;
-}
-
 export interface PointProps {
   color?: any;
   outlineColor?: any;
@@ -459,23 +453,11 @@ export interface PointProps {
   heightReference?: any;
 }
 
-export interface PolylineProps {
-  width?: number;
-  material?: Function;
-
-  clampToGround?: boolean;
-  zIndex?: number;
-  classificationType?: any;
-}
-
-export interface PolylineEditOptions extends EditorEditOptions {
+export interface PointEditOptions extends EditorEditOptions {
   addLastPointEvent?: CesiumEvent;
   addLastPointModifier?: CesiumEventModifier;
   removePointEvent?: CesiumEvent;
   removePointModifier?: CesiumEventModifier;
-  maximumNumberOfPoints?: number;
-  clampHeightTo3D?: boolean;
-  clampHeightTo3DOptions?: ClampTo3DOptions;
 }
 </code></pre>
     </div>

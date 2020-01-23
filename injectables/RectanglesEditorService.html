@@ -1280,7 +1280,7 @@ import { RectanglesManagerService } from &#x27;./rectangles-manager.service&#x27
 import { RectangleEditorObservable } from &#x27;../../../models/rectangle-editor-observable&#x27;;
 import { EditableRectangle } from &#x27;../../../models/editable-rectangle&#x27;;
 import { RectangleEditOptions } from &#x27;../../../models/rectangle-edit-options&#x27;;
-import { PointProps } from &#x27;../../../models/polyline-edit-options&#x27;;
+import { PointProps } from &#x27;../../../models/point-edit-options&#x27;;
 import { LabelProps } from &#x27;../../../models/label-props&#x27;;
 import { generateKey } from &#x27;../../utils&#x27;;
 
@@ -1536,7 +1536,7 @@ export class RectanglesEditorService {
     }
 
     pointDragRegistration.pipe(
-      tap(({ movement: { drop } }) &#x3D;&gt; this.cameraService.enableInputs(drop)))
+      tap(({ movement: { drop } }) &#x3D;&gt; this.rectanglesManager.get(id).enableEdit &amp;&amp; this.cameraService.enableInputs(drop)))
       .subscribe(({ movement: { endPosition, drop }, entities }) &#x3D;&gt; {
         const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
         if (!position) {
@@ -1562,7 +1562,7 @@ export class RectanglesEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({ movement: { drop } }) &#x3D;&gt; this.cameraService.enableInputs(drop)))
+        .pipe(tap(({ movement: { drop } }) &#x3D;&gt; this.rectanglesManager.get(id).enableEdit &amp;&amp; this.cameraService.enableInputs(drop)))
         .subscribe(({ movement: { startPosition, endPosition, drop }, entities }) &#x3D;&gt; {
           const endDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
           const startDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(startPosition);

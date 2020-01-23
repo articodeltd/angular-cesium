@@ -1291,7 +1291,7 @@ import { HippodromeManagerService } from &#x27;./hippodrome-manager.service&#x27
 import { HippodromeEditorObservable } from &#x27;../../../models/hippodrome-editor-oboservable&#x27;;
 import { HippodromeEditUpdate } from &#x27;../../../models/hippodrome-edit-update&#x27;;
 import { EditableHippodrome } from &#x27;../../../models/editable-hippodrome&#x27;;
-import { PointProps } from &#x27;../../../models/polyline-edit-options&#x27;;
+import { PointProps } from &#x27;../../../models/point-edit-options&#x27;;
 import { LabelProps } from &#x27;../../../models/label-props&#x27;;
 import { generateKey } from &#x27;../../utils&#x27;;
 
@@ -1538,7 +1538,7 @@ export class HippodromeEditorService {
     });
 
     pointDragRegistration.pipe(
-      tap(({movement: {drop}}) &#x3D;&gt; this.cameraService.enableInputs(drop)))
+      tap(({movement: {drop}}) &#x3D;&gt; this.hippodromeManager.get(id).enableEdit &amp;&amp; this.cameraService.enableInputs(drop)))
       .subscribe(({movement: {endPosition, drop}, entities}) &#x3D;&gt; {
         const position &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
         if (!position) {
@@ -1565,7 +1565,7 @@ export class HippodromeEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({movement: {drop}}) &#x3D;&gt; this.cameraService.enableInputs(drop)))
+        .pipe(tap(({movement: {drop}}) &#x3D;&gt; this.hippodromeManager.get(id).enableEdit &amp;&amp; this.cameraService.enableInputs(drop)))
         .subscribe(({movement: {startPosition, endPosition, drop}, entities}) &#x3D;&gt; {
           const endDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
           const startDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(startPosition);

@@ -324,7 +324,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="401" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:401</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="402" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:402</a></div>
                             </td>
                         </tr>
 
@@ -669,7 +669,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="493" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:493</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="494" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:494</a></div>
                             </td>
                         </tr>
 
@@ -740,7 +740,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="489" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:489</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="490" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:490</a></div>
                             </td>
                         </tr>
 
@@ -811,7 +811,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="505" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:505</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="506" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:506</a></div>
                             </td>
                         </tr>
 
@@ -882,7 +882,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="497" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:497</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="498" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:498</a></div>
                             </td>
                         </tr>
 
@@ -953,7 +953,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="501" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:501</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="502" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:502</a></div>
                             </td>
                         </tr>
 
@@ -1179,7 +1179,7 @@ You can also use <code>updateLabels()</code> to pass an array of labels of type 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="480" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:480</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="481" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/ellipses-editor/ellipses-editor.service.ts:481</a></div>
                             </td>
                         </tr>
 
@@ -1534,7 +1534,7 @@ import { EllipsesManagerService } from &#x27;./ellipses-manager.service&#x27;;
 import { EllipseEditorObservable } from &#x27;../../../models/ellipse-editor-observable&#x27;;
 import { EllipseEditOptions, EllipseProps } from &#x27;../../../models/ellipse-edit-options&#x27;;
 import { EditableEllipse } from &#x27;../../../models/editable-ellipse&#x27;;
-import { PointProps } from &#x27;../../../models/polyline-edit-options&#x27;;
+import { PointProps } from &#x27;../../../models/point-edit-options&#x27;;
 import { LabelProps } from &#x27;../../../models/label-props&#x27;;
 import { BasicEditUpdate } from &#x27;../../../models/basic-edit-update&#x27;;
 import { generateKey } from &#x27;../../utils&#x27;;
@@ -1673,7 +1673,7 @@ export class EllipsesEditorService {
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration]);
     const editorObservable &#x3D; this.createEditorObservable(clientEditSubject, id);
 
-    addPointRegistration.subscribe(({movement: {endPosition}}) &#x3D;&gt; {
+    addPointRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
       if (finishedCreate) {
         return;
       }
@@ -1727,7 +1727,7 @@ export class EllipsesEditorService {
       }
     });
 
-    mouseMoveRegistration.subscribe(({movement: {endPosition}}) &#x3D;&gt; {
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) &#x3D;&gt; {
       if (!center) {
         return;
       }
@@ -1827,8 +1827,8 @@ export class EllipsesEditorService {
     }
 
     pointDragRegistration
-      .pipe(tap(({movement: {drop}}) &#x3D;&gt; this.cameraService.enableInputs(drop)))
-      .subscribe(({movement: {endPosition, startPosition, drop}, entities}) &#x3D;&gt; {
+      .pipe(tap(({ movement: { drop } }) &#x3D;&gt; this.ellipsesManager.get(id).enableEdit &amp;&amp; this.cameraService.enableInputs(drop)))
+      .subscribe(({ movement: { endPosition, startPosition, drop }, entities }) &#x3D;&gt; {
         const startDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(startPosition);
         const endDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
         if (!endDragPosition) {
@@ -1844,7 +1844,8 @@ export class EllipsesEditorService {
           editAction &#x3D; pointIsCenter ? EditActions.DRAG_SHAPE : EditActions.DRAG_POINT;
         }
 
-        if (!options.allowDrag &amp;&amp; (editAction &#x3D;&#x3D;&#x3D; EditActions.DRAG_SHAPE || editAction &#x3D;&#x3D;&#x3D; EditActions.DRAG_SHAPE_FINISH)) {
+        if (!options.allowDrag &amp;&amp; this.ellipsesManager.get(id).enableEdit &amp;&amp;
+          (editAction &#x3D;&#x3D;&#x3D; EditActions.DRAG_SHAPE || editAction &#x3D;&#x3D;&#x3D; EditActions.DRAG_SHAPE_FINISH)) {
           this.cameraService.enableInputs(true);
           return;
         }
@@ -1865,7 +1866,7 @@ export class EllipsesEditorService {
       });
 
     if (addSecondRadiusRegistration) {
-      addSecondRadiusRegistration.subscribe(({movement: {endPosition, startPosition, drop}, entities}) &#x3D;&gt; {
+      addSecondRadiusRegistration.subscribe(({ movement: { endPosition, startPosition, drop }, entities }) &#x3D;&gt; {
         const update: EllipseEditUpdate &#x3D; {
           id,
           editMode: EditModes.EDIT,
@@ -1881,8 +1882,8 @@ export class EllipsesEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({movement: {drop}}) &#x3D;&gt; this.cameraService.enableInputs(drop)))
-        .subscribe(({movement: {startPosition, endPosition, drop}}) &#x3D;&gt; {
+        .pipe(tap(({ movement: { drop } }) &#x3D;&gt; this.ellipsesManager.get(id).enableEdit &amp;&amp; this.cameraService.enableInputs(drop)))
+        .subscribe(({ movement: { startPosition, endPosition, drop } }) &#x3D;&gt; {
           const startDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(startPosition);
           const endDragPosition &#x3D; this.coordinateConverter.screenToCartesian3(endPosition);
           if (!endDragPosition || !startDragPosition) {
