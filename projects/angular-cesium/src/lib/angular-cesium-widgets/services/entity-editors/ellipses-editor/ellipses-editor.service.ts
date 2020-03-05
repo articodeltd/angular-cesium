@@ -387,7 +387,7 @@ export class EllipsesEditorService {
         });
     }
 
-    const observables = [pointDragRegistration, addSecondRadiusRegistration];
+    const observables = [pointDragRegistration];
     if (shapeDragRegistration) {
       observables.push(shapeDragRegistration);
     }
