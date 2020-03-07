@@ -3,7 +3,9 @@
 * Upgrade to Angular 9 (Ivy)
 ### Fixes
 * Fix EllipseEditorObservable Disposing throws `undefined` error
-* Fix Cesium breaking change with `createTileMapServiceImageryProvider` and `createOpenStreetMapImageryProvider`.  
+* Fix Cesium breaking change with `createTileMapServiceImageryProvider` and `createOpenStreetMapImageryProvider`.
+### Breaking changes 
+* `CesiumHeatMapMaterialCreator` removed to avoid compilation warnings. TBD: publish as external library.  
 
 ## 0.64
 ### Features
