@@ -89,9 +89,9 @@ export class PolylinesEditorComponent implements OnDestroy {
   public editPolylines$ = new Subject<AcNotification>();
   public polylineLabels$ = new Subject<AcNotification>();
 
-  @ViewChild('editPointsLayer', {static: false}) private editPointsLayer: AcLayerComponent;
-  @ViewChild('editPolylinesLayer', {static: false}) private editPolylinesLayer: AcLayerComponent;
-  @ViewChild('polylineLabelsLayer', {static: false}) private polylineLabelsLayer: AcLayerComponent;
+  @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
+  @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
+  @ViewChild('polylineLabelsLayer') private polylineLabelsLayer: AcLayerComponent;
 
   constructor(
     private polylinesEditor: PolylinesEditorService,

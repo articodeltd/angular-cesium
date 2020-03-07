@@ -169,7 +169,7 @@ import { AcRectangleComponent } from './components/ac-rectangle/ac-rectangle.com
     AcHtmlDescComponent,
     AcArrayDescComponent,
     AcCzmlDescComponent,
-
+    AcRectangleComponent,
     AcStaticEllipseDescComponent,
     AcDynamicEllipseDescComponent,
     AcDynamicPolylineDescComponent,
@@ -177,11 +177,10 @@ import { AcRectangleComponent } from './components/ac-rectangle/ac-rectangle.com
     AcDynamicCircleDescComponent,
     AcStaticCircleDescComponent,
     AcStaticPolygonDescComponent,
-    AcRectangleComponent
   ],
 })
 export class AngularCesiumModule {
-  static forRoot(config?: ModuleConfiguration): ModuleWithProviders {
+  static forRoot(config?: ModuleConfiguration): ModuleWithProviders<AngularCesiumModule> {
     return {
       ngModule: AngularCesiumModule,
       providers: [

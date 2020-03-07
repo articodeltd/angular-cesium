@@ -30,7 +30,7 @@ class MyEntity extends AcEntity {
 })
 export class SelectionLayerExampleComponent implements OnInit {
 
-  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   selectionImage = '/assets/selected.png';
   entities$: Observable<AcNotification>;

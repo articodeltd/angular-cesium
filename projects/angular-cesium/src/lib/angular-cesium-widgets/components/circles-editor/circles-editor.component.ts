@@ -107,9 +107,9 @@ export class CirclesEditorComponent implements OnDestroy {
   public editCircles$ = new Subject<AcNotification>();
   public editArcs$ = new Subject<AcNotification>();
 
-  @ViewChild('editCirclesLayer', {static: false}) private editCirclesLayer: AcLayerComponent;
-  @ViewChild('editArcsLayer', {static: false}) private editArcsLayer: AcLayerComponent;
-  @ViewChild('editPointsLayer', {static: false}) private editPointsLayer: AcLayerComponent;
+  @ViewChild('editCirclesLayer') private editCirclesLayer: AcLayerComponent;
+  @ViewChild('editArcsLayer') private editArcsLayer: AcLayerComponent;
+  @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
 
   constructor(
     private circlesEditor: CirclesEditorService,
