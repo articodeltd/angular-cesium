@@ -22,7 +22,7 @@ import { AcEntity, AcLayerComponent, AcNotification, ActionType } from 'angular-
   `,
 })
 export class RectangleLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent, { static: false }) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   rectangles$: Observable<AcNotification>;
   show = true;

@@ -9,7 +9,7 @@ import { AppSettingsService } from '../../services/app-settings-service/app-sett
 
 export class MapsProviderExampleComponent implements AfterViewInit {
 
-  @ViewChild('blackmarble', {static: false}) blackMarbleMap: AcMapLayerProviderComponent;
+  @ViewChild('blackmarble') blackMarbleMap: AcMapLayerProviderComponent;
 
   MapLayerProviderOptions = MapLayerProviderOptions;
   MapTerrainProviderOptions = MapTerrainProviderOptions;

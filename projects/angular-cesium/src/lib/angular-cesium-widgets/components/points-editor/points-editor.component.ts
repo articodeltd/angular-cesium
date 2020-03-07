@@ -74,8 +74,8 @@ export class PointsEditorComponent implements OnDestroy {
   public editPoint$ = new Subject<AcNotification>();
   public pointLabels$ = new Subject<AcNotification>();
 
-  @ViewChild('editPointLayer', {static: false}) private editPointLayer: AcLayerComponent;
-  @ViewChild('pointLabelsLayer', {static: false}) private pointLabelsLayer: AcLayerComponent;
+  @ViewChild('editPointLayer') private editPointLayer: AcLayerComponent;
+  @ViewChild('pointLabelsLayer') private pointLabelsLayer: AcLayerComponent;
 
   constructor(
     private pointsEditor: PointsEditorService,

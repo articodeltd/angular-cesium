@@ -52,7 +52,7 @@ export class AcContextMenuWrapperComponent implements OnInit, OnDestroy {
   private contextMenuChangeSubscription: Subscription;
   private contextMenuOpenSubscription: Subscription;
 
-  @ViewChild('contextMenuContainer', {static: false, read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
+  @ViewChild('contextMenuContainer', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
 
   constructor(public contextMenuService: ContextMenuService,
               private cd: ChangeDetectorRef,

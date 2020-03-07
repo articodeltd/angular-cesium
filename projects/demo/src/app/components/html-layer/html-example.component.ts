@@ -8,7 +8,7 @@ import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
   styleUrls: ['./html-example.component.css']
 })
 export class HtmlExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
   htmls$: Observable<AcNotification>;
 
   html1 = {

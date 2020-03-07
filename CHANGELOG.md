@@ -1,4 +1,8 @@
-## Next
+## 0.65
+### Features
+* Upgrade to Angular 9 (Ivy)
+
+## 0.64
 ### Features
 * Add points-editor component, model, and service. `Points` are now first class components that support entity features, such as labels and enable/disable.
 ### Fixes

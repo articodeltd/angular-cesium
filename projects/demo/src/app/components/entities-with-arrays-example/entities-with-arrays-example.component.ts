@@ -41,7 +41,7 @@ import { MockDataProviderService } from '../../utils/services/dataProvider/mock-
   `,
 })
 export class EntitiesWithArraysExampleComponent implements OnInit, OnChanges {
-  @ViewChild(AcLayerComponent, { static: false }) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   @Input()
   show: boolean;

@@ -89,8 +89,8 @@ export class RectanglesEditorComponent implements OnDestroy {
   public editPoints$ = new Subject<AcNotification>();
   public editRectangles$ = new Subject<AcNotification>();
 
-  @ViewChild('editRectanglesLayer', {static: false}) private editRectanglesLayer: AcLayerComponent;
-  @ViewChild('editPointsLayer', {static: false}) private editPointsLayer: AcLayerComponent;
+  @ViewChild('editRectanglesLayer') private editRectanglesLayer: AcLayerComponent;
+  @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
 
   constructor(
     private rectanglesEditor: RectanglesEditorService,

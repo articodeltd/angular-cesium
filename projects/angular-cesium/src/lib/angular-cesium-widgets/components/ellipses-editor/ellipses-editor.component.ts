@@ -94,8 +94,8 @@ export class EllipsesEditorComponent implements OnDestroy {
   public editPoints$ = new Subject<AcNotification>();
   public editEllipses$ = new Subject<AcNotification>();
 
-  @ViewChild('editEllipsesLayer', {static: false}) private editEllipsesLayer: AcLayerComponent;
-  @ViewChild('editPointsLayer', {static: false}) private editPointsLayer: AcLayerComponent;
+  @ViewChild('editEllipsesLayer') private editEllipsesLayer: AcLayerComponent;
+  @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
 
   constructor(
     private ellipsesEditor: EllipsesEditorService,

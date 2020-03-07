@@ -85,8 +85,8 @@ export class HippodromeEditorComponent implements OnDestroy {
   public editPoints$ = new Subject<AcNotification>();
   public editHippodromes$ = new Subject<AcNotification>();
 
-  @ViewChild('editPointsLayer', {static: false}) private editPointsLayer: AcLayerComponent;
-  @ViewChild('editHippodromesLayer', {static: false}) private editHippodromesLayer: AcLayerComponent;
+  @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
+  @ViewChild('editHippodromesLayer') private editHippodromesLayer: AcLayerComponent;
 
   constructor(
     private hippodromesEditor: HippodromeEditorService,

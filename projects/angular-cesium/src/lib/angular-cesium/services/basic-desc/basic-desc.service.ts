@@ -1,4 +1,4 @@
-import { EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { EventEmitter, Input, OnDestroy, OnInit, Output, Directive } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';
 import { CesiumProperties } from '../cesium-properties/cesium-properties.service';
@@ -16,6 +16,7 @@ export interface OnDrawParams {
  *  the ancestor class for creating components.
  *  extend this class to create desc component.
  */
+@Directive()
 export class BasicDesc implements OnInit, OnDestroy, IDescription {
   @Input()
   props: any;
