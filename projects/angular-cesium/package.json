@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.63",
+  "version": "0.0.64",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/articodeltd/angular-cesium",

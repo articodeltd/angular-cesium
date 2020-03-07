@@ -1729,10 +1729,10 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-cesium@1.63.1:
-  version "1.63.1"
-  resolved "https://registry.yarnpkg.com/cesium/-/cesium-1.63.1.tgz#ac8c143e0c9157d40c09637f3815d6a6baae0122"
-  integrity sha512-aq/l+k4DT51VPqXj3DeVZtHLQ3GLcVQMxQjYdja4tOc5RALZAJnuCD2uYQB9bmg/KqJcoH1GW6eqNkJnadVqTA==
+cesium@1.66.0:
+  version "1.66.0"
+  resolved "https://registry.yarnpkg.com/cesium/-/cesium-1.66.0.tgz#ac8a9858329740eb22304936076ea6f8e6faad82"
+  integrity sha512-IcM+NpG5Gm4BbW9NLWkuL9SJ59tTQh8SsN8x6KYd4B1N36Y0kBtNKJPWpGe7H5thaaKm2QLKzJdjqmWyGNCTNA==
   dependencies:
     esm "^3.2.25"
 
