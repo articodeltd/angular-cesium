@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['circle-layer-example.component.css'],
 })
 export class CircleLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   circles$: Observable<AcNotification>;
   Cesium = Cesium;

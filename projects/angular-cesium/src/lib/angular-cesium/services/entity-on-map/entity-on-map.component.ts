@@ -1,10 +1,11 @@
-import { Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Input, OnChanges, OnDestroy, OnInit, SimpleChanges, Directive } from '@angular/core';
 import { BasicDrawerService } from '../drawers/basic-drawer/basic-drawer.service';
 import { MapLayersService } from '../map-layers/map-layers.service';
 
 /**
  *  Extend this class to create drawing on map components.
  */
+@Directive()
 export class EntityOnMapComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   props: any;

@@ -92,11 +92,9 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
       case MapLayerProviderOptions.GoogleEarthEnterpriseMaps:
       case MapLayerProviderOptions.MapBox:
       case MapLayerProviderOptions.UrlTemplateImagery:
-        this.layerProvider = new this.provider(this.options);
-        break;
       case MapLayerProviderOptions.MapTileService:
       case MapLayerProviderOptions.OpenStreetMap:
-        this.layerProvider = this.provider(this.options);
+        this.layerProvider = new this.provider(this.options);
         break;
       case MapLayerProviderOptions.OFFLINE:
         this.layerProvider = this.createOfflineMapProvider();

@@ -20,7 +20,7 @@ import { map } from 'rxjs/operators';
   styleUrls: [],
 })
 export class PointLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent, { static: false }) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   Cesium = Cesium;
   entities$: Observable<AcNotification>;

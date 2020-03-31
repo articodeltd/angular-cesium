@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AcLayerComponent, AcNotification, ActionType, CesiumService, CoordinateConverter } from 'angular-cesium';
 import { Subject } from 'rxjs';
-import { CesiumHeatMapMaterialCreator } from 'angular-cesium';
+// import { CesiumHeatMapMaterialCreator } from 'angular-cesium';
 
 @Component({
   selector: 'heatmap-example',
@@ -9,7 +9,7 @@ import { CesiumHeatMapMaterialCreator } from 'angular-cesium';
   providers: [CoordinateConverter]
 })
 export class HeatmapExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   entities$: Subject<AcNotification> = new Subject();
   Cesium = Cesium;
@@ -46,37 +46,37 @@ export class HeatmapExampleComponent implements OnInit {
       maxOpacity: 0.9,
     } as any;
 
-    const mCreator = new CesiumHeatMapMaterialCreator();
-    const containingRect = CesiumHeatMapMaterialCreator.calcCircleContainingRect(this.circleCenter, this.circleRadius);
-    this.circleHeatMapMaterial = mCreator.create(containingRect, {
-      heatPointsData: [
-        {
-          x: -100.0,
-          y: 24.0,
-          value: 95
-        }
-      ],
-      min: 0,
-      max: 100,
-    }, userHeatmapOptions);
+    // const mCreator = new CesiumHeatMapMaterialCreator();
+    // const containingRect = CesiumHeatMapMaterialCreator.calcCircleContainingRect(this.circleCenter, this.circleRadius);
+    // this.circleHeatMapMaterial = mCreator.create(containingRect, {
+    //   heatPointsData: [
+    //     {
+    //       x: -100.0,
+    //       y: 24.0,
+    //       value: 95
+    //     }
+    //   ],
+    //   min: 0,
+    //   max: 100,
+    // }, userHeatmapOptions);
 
 
-    this.rectHeatMapMaterial = mCreator.create(this.rect, {
-      heatPointsData: [
-        {
-          x: -100,
-          y: 34.0,
-          value: 50,
-        },
-        {
-          x: -95,
-          y: 34.0,
-          value: 80,
-        },
-      ]
-    }, {
-      radius: 400,
-    });
+    // this.rectHeatMapMaterial = mCreator.create(this.rect, {
+    //   heatPointsData: [
+    //     {
+    //       x: -100,
+    //       y: 34.0,
+    //       value: 50,
+    //     },
+    //     {
+    //       x: -95,
+    //       y: 34.0,
+    //       value: 80,
+    //     },
+    //   ]
+    // }, {
+    //   radius: 400,
+    // });
 
   }
 

@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['ellipse-layer-example.component.css'],
 })
 export class EllipseLayerExampleComponent implements OnInit {
-  @ViewChild(AcLayerComponent, {static: false}) layer: AcLayerComponent;
+  @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   ellipses$: Observable<AcNotification>;
   Cesium = Cesium;

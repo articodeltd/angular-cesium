@@ -100,9 +100,9 @@ export class PolygonsEditorComponent implements OnDestroy {
   public editPolylines$ = new Subject<AcNotification>();
   public editPolygons$ = new Subject<AcNotification>();
 
-  @ViewChild('editPolygonsLayer', {static: false}) private editPolygonsLayer: AcLayerComponent;
-  @ViewChild('editPointsLayer', {static: false}) private editPointsLayer: AcLayerComponent;
-  @ViewChild('editPolylinesLayer', {static: false}) private editPolylinesLayer: AcLayerComponent;
+  @ViewChild('editPolygonsLayer') private editPolygonsLayer: AcLayerComponent;
+  @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
+  @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
 
   constructor(
     private polygonsEditor: PolygonsEditorService,
