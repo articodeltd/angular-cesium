@@ -1,3 +1,7 @@
+## Next
+### Fixes
+* Fixed HippodromeEditorObservable using wrong interface
+
 ## 0.65
 ### Features
 * Upgrade to Angular 9 (Ivy)
