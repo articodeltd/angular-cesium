@@ -198,8 +198,10 @@ export class CirclesEditorComponent implements OnDestroy {
       }
       case EditActions.DISPOSE: {
         const circle = this.circlesManager.get(update.id);
-        this.removeEditLabels(circle);
-        this.circlesManager.dispose(update.id);
+        if (circle) {
+          this.removeEditLabels(circle);
+          this.circlesManager.dispose(update.id);
+        }
         break;
       }
       case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {

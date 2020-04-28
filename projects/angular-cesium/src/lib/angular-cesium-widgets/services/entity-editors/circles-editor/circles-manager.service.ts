@@ -18,7 +18,10 @@ export class CirclesManagerService {
   }
 
   dispose(id: string) {
-    this.circles.get(id).dispose();
+    const circle = this.circles.get(id);
+    if (circle) {
+      circle.dispose();
+    }
     this.circles.delete(id);
   }
 

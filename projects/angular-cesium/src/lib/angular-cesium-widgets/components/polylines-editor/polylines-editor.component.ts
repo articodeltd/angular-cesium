@@ -180,9 +180,11 @@ export class PolylinesEditorComponent implements OnDestroy {
       }
       case EditActions.DISPOSE: {
         const polyline = this.polylinesManager.get(update.id);
-        polyline.dispose();
-        this.removeEditLabels(polyline);
-        this.editLabelsRenderFn = undefined;
+        if (polyline) {
+          polyline.dispose();
+          this.removeEditLabels(polyline);
+          this.editLabelsRenderFn = undefined;
+        }
         break;
       }
       case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {

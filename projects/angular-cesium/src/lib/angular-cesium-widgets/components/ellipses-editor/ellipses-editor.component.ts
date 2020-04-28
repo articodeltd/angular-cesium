@@ -186,8 +186,10 @@ export class EllipsesEditorComponent implements OnDestroy {
       }
       case EditActions.DISPOSE: {
         const ellipse = this.ellipsesManager.get(update.id);
-        this.removeEditLabels(ellipse);
-        this.ellipsesManager.dispose(update.id);
+        if (ellipse) {
+          this.removeEditLabels(ellipse);
+          this.ellipsesManager.dispose(update.id);
+        }
         break;
       }
       case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {
