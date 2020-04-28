@@ -1,6 +1,7 @@
 ## Next
 ### Fixes
 * Fix `ContextMenuService` can't create instance bug - replace `div` with `ng-template`
+* Fix `viewer.destroy()` throwing exception `TypeError: e[i].destroy is not a function`. Added missing `destroy()` to `HtmlCollection`.
 
 ## 0.65
 ### Features
