@@ -1,3 +1,7 @@
+## Next
+### Fixes
+* Fix `ContextMenuService` can't create instance bug - replace `div` with `ng-template`
+
 ## 0.65
 ### Features
 * Upgrade to Angular 9 (Ivy)

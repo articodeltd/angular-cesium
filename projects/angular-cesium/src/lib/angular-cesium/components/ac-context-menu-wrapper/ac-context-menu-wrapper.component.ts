@@ -41,7 +41,7 @@ import { BasicContextMenu } from '../../models/basic-context-menu';
   selector: 'ac-context-menu-wrapper',
   template: `
     <ac-html *ngIf="contextMenuService.showContextMenu" [props]="{position: contextMenuService.position}">
-      <div #contextMenuContainer></div>
+      <ng-template #contextMenuContainer></ng-template>
     </ac-html>
   `,
   styles: [],

@@ -164,7 +164,6 @@ import { AcRectangleComponent } from './components/ac-rectangle/ac-rectangle.com
     AcPolylineVolumeDescComponent,
     AcWallDescComponent,
     AcRectangleDescComponent,
-    AcContextMenuWrapperComponent,
     AcPointPrimitiveDescComponent,
     AcHtmlDescComponent,
     AcArrayDescComponent,
