@@ -547,7 +547,6 @@ export class PolygonsEditorService {
       this.observablesMap.delete(id);
       this.updateSubject.next({
         id,
-        positions: this.getPositions(id),
         editMode: EditModes.CREATE_OR_EDIT,
         editAction: EditActions.DISPOSE,
       });

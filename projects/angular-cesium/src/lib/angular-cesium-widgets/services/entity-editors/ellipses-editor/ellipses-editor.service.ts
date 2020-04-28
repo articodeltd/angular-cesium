@@ -410,7 +410,6 @@ export class EllipsesEditorService {
         id,
         editMode: EditModes.CREATE_OR_EDIT,
         editAction: EditActions.DISPOSE,
-        ...this.getEllipseProperties(id),
       } as EllipseEditUpdate);
     };
 

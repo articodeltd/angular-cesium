@@ -34,6 +34,10 @@ export * from './components/ac-rectangle-desc/ac-rectangle-desc.component';
 export * from './components/ac-3d-tileset/ac-tileset-3d.component';
 export * from './components/ac-html-desc/ac-html-desc.component';
 export * from './components/ac-array-desc/ac-array-desc.component';
+export * from './components/ac-model-desc/ac-model-desc.component';
+export * from './components/ac-point-primitive-desc/ac-point-primitive-desc.component';
+export * from './components/ac-rectangle/ac-rectangle.component';
+export * from './components/ac-czml-desc/ac-czml-desc.component';
 
 export * from './components/static-dynamic/ac-dynamic-circle-desc/ac-dynamic-circle-desc.component';
 export * from './components/static-dynamic/ac-dynamic-ellipse-desc/ac-dynamic-ellipse-desc.component';
