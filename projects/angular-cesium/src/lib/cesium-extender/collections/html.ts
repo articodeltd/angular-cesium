@@ -45,4 +45,8 @@ export class HtmlCollection {
   contains(html: HtmlPrimitive): boolean {
     return Cesium.defined(html) && html.collection === this;
   }
+
+  destroy() {
+    this.removeAll();
+  }
 }
