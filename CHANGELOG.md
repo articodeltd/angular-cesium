@@ -1,10 +1,13 @@
 ## Next
 ### Fixes
 * Fix `ContextMenuService` can't create instance bug - replace `div` with `ng-template`
+* Fix `viewer.destroy()` throwing exception `TypeError: e[i].destroy is not a function`. Added missing `destroy()` to `HtmlCollection`.
+* Fix Editors `dispose()` issue when component is destroyed.
 
 ## 0.65
 ### Features
 * Upgrade to Angular 9 (Ivy)
+
 ### Fixes
 * Fix EllipseEditorObservable Disposing throws `undefined` error
 * Fix Cesium breaking change with `createTileMapServiceImageryProvider` and `createOpenStreetMapImageryProvider`.

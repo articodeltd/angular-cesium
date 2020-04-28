@@ -185,8 +185,10 @@ export class RectanglesEditorComponent implements OnDestroy {
       }
       case EditActions.DISPOSE: {
         const rectangle = this.rectanglesManager.get(update.id);
-        rectangle.dispose();
-        this.removeEditLabels(rectangle);
+        if (rectangle) {
+          rectangle.dispose();
+          this.removeEditLabels(rectangle);
+        }
         this.editLabelsRenderFn = undefined;
         break;
       }
