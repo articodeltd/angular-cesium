@@ -219,8 +219,8 @@ export class RectanglesEditorComponent implements OnDestroy {
       case EditActions.INIT: {
         this.rectanglesManager.createEditableRectangle(
           update.id,
-          this.editPointsLayer,
           this.editRectanglesLayer,
+          this.editPointsLayer,
           this.coordinateConverter,
           update.rectangleOptions,
           update.positions,
