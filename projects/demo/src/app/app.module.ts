@@ -44,6 +44,7 @@ import { CylinderLayerExampleComponent } from './components/cylinder-layer-examp
 import { EllipsoidLayerExampleComponent } from './components/ellipsoid-layer-example/ellipsoid-layer-example.component';
 import { VolumeLayerExampleComponent } from './components/volume-layer-example/volume-layer-example.component';
 import { WallLayerExampleComponent } from './components/wall-layer-example/wall-layer-example.component';
+import { RectangleEditorExampleComponent } from './components/editor-layer/rectangle-editor-example/rectangle-editor-example.component';
 
 
 @NgModule({
@@ -68,9 +69,9 @@ import { WallLayerExampleComponent } from './components/wall-layer-example/wall-
     EllipseLayerComponent,
     PolylineLayerExampleComponent,
     PolygonLayerExampleComponent,
-    RectangleLayerExampleComponent,
     MapEventsExampleComponent,
     ArcLayerExampleComponent,
+    RectangleEditorExampleComponent,
     PointLayerExampleComponent,
     SingleEntityOnMapExampleComponent,
     DemoMapComponent,
@@ -96,6 +97,7 @@ import { WallLayerExampleComponent } from './components/wall-layer-example/wall-
     CzmlLayerExampleComponent,
     EllipsesEditorExampleComponent,
     MyCustomContextMenuComponent,
+    RectangleLayerExampleComponent,
   ],
   entryComponents: [MyCustomContextMenuComponent],
   bootstrap: [AppComponent]
