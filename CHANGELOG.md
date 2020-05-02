@@ -1,11 +1,10 @@
-## Next
+## 0.66
 ### Fixes
 * Fix `HippodromeEditorObservable` using wrong interface
 * Fix `ContextMenuService` can't create instance bug - replace `div` with `ng-template`
 * Fix `viewer.destroy()` throwing exception `TypeError: e[i].destroy is not a function`. Added missing `destroy()` to `HtmlCollection`.
 * Fix Editors `dispose()` issue when component is destroyed.
 * Fix Rectangle editor `edit()`.
-
 
 ## 0.65
 ### Features
