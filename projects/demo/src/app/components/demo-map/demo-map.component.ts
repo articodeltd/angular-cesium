@@ -11,7 +11,7 @@ import { AppSettingsService } from '../../services/app-settings-service/app-sett
 export class DemoMapComponent {
   sceneMode = SceneMode.SCENE3D;
   Cesium = Cesium;
-
+  mapboxStyleImageryProvider = MapLayerProviderOptions.MapboxStyleImageryProvider;
   constructor(private viewerConf: ViewerConfiguration,
               public appSettingsService: AppSettingsService) {
     viewerConf.viewerOptions = {

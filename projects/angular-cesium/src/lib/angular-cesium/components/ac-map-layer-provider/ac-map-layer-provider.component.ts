@@ -91,6 +91,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
       case MapLayerProviderOptions.BingMaps:
       case MapLayerProviderOptions.GoogleEarthEnterpriseMaps:
       case MapLayerProviderOptions.MapBox:
+      case MapLayerProviderOptions.MapboxStyleImageryProvider:
       case MapLayerProviderOptions.UrlTemplateImagery:
       case MapLayerProviderOptions.MapTileService:
       case MapLayerProviderOptions.OpenStreetMap:

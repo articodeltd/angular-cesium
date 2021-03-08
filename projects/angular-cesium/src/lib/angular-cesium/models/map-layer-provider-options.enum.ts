@@ -8,6 +8,7 @@ export enum MapLayerProviderOptions {
   BingMaps = Cesium.BingMapsImageryProvider,
   GoogleEarthEnterpriseMaps = Cesium.GoogleEarthEnterpriseMapsProvider,
   MapBox = Cesium.MapboxImageryProvider,
+  MapboxStyleImageryProvider = Cesium.MapboxStyleImageryProvider,
   UrlTemplateImagery = Cesium.UrlTemplateImageryProvider,
   OFFLINE = null,
 }
