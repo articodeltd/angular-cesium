@@ -92,9 +92,6 @@ For better understading check out the [layer guide](https://docs.angular-cesium.
 `MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection, event priority management
 and adds custom events (drag and drop, long press).
 
-## MapLayerProviderOptions Updates
-`MapboxStyleImageryProvider` has been added to the `MapLayerProviderOptions` enum for mapBox styles support.
-
 Usage:
 ```javascript
 @Component(...)
@@ -145,6 +142,33 @@ With angular cesium you can define your map provider in a declarative way using 
 ```
 ### Multiple maps support
 Angular Cesium supports integration of multiple maps, for more details [here](https://docs.angular-cesium.com/guides/multiple-maps-sync)
+
+### MapLayerProviderOptions Updates
+`MapboxStyleImageryProvider` has been added to `MapLayerProviderOptions` for mapBox styles support. 
+
+Component Usage:
+```javascript
+  import{ MapLayerProviderOptions } from 'angular-cesium'
+  @Component(...)
+  class SomeComponent{
+    mapboxStyleImageryProvider = MapLayerProviderOptions.MapboxStyleImageryProvider
+```
+Template Usage:
+```html
+<ac-map>
+  <ac-map-layer-provider 
+  [provider]="mapboxStyleImageryProvider"
+  [options]="{
+      styleId:'style id from mapbox style dashboard item',
+      url:'https://api.mapbox.com/styles/v1/',
+      username:'your user name',
+      scaleFactor:'@2x',
+      tilesize:'512',
+      accessToken : 'your access token from map box'
+    }">   
+  </ac-map-layer-provider> 
+</ac-map>
+```
 
 ### Camera
 #### [Camera Keyboard Control Service](https://docs.angular-cesium.com/guides/camera-keyboard-control)
