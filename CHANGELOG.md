@@ -1,4 +1,6 @@
 ## 0.66
+### Feautures
+* Add in `MapboxStyleImageryProvider` functionality
 ### Fixes
 * Fix `HippodromeEditorObservable` using wrong interface
 * Fix `ContextMenuService` can't create instance bug - replace `div` with `ng-template`

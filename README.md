@@ -92,6 +92,9 @@ For better understading check out the [layer guide](https://docs.angular-cesium.
 `MapEventsManagerService` is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection, event priority management
 and adds custom events (drag and drop, long press).
 
+## MapLayerProviderOptions Updates
+`MapboxStyleImageryProvider` has been added to the `MapLayerProviderOptions` enum for mapBox styles support.
+
 Usage:
 ```javascript
 @Component(...)
