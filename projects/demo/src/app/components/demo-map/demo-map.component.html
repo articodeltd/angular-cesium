@@ -7,6 +7,25 @@
     }"
   >
   </ac-map-layer-provider> -->
+
+
+<!-- start - mapbox style image provider different than the tile api -->
+
+  <!-- <ac-map-layer-provider 
+  [provider]="mapboxStyleImageryProvider"
+  [options]="{
+      styleId:'style id from mapbox style dashboard item',
+      url:'https://api.mapbox.com/styles/v1/',
+      username:'your user name',
+      scaleFactor:'@2x',
+      tilesize:'512',
+      accessToken : 'your access token from map box'
+    }"
+>   
+</ac-map-layer-provider> -->
+
+<!-- end - mapbox style image provider-->
+
   <ac-3d-tile-layer
     *ngIf="appSettingsService.show3dtiles"
     [options]="{
