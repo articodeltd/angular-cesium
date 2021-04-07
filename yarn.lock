@@ -153,10 +153,12 @@
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-9.0.5.tgz#ac64c9f702e78d5e2d6bff645daf047c4865cc02"
   integrity sha512-WGs4Jxw5sr8GCpxMcwEVuZnDIkdNp9qtmuI2j13v/XAaMjvJ7jssCj9+JG5uI8joCi7PFVAWokPT1DdPwWb13Q==
 
-"@angular/cdk@^9.1.1":
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-9.1.1.tgz#343901c5d6c0d6c502ccbd075cb9e17ea3bc05f5"
-  integrity sha512-yzssAqbllGYgX+WeSYLjmEWtXVG5UPZwA0+dPlh+g85nG7b70DVRVYBi8PJySydsfPX/JMherFUU9h0QOWhhZw==
+"@angular/cdk@^10.2.7":
+  version "10.2.7"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-10.2.7.tgz#0ff82eb91b2653ea26909c57a460d4593b44f186"
+  integrity sha512-ZQjDfTRTn7JuAKsf3jiIdU2XBaxxGBi/ZWYv5Pb3HCl6B4PISsIE5VWRhkoUogoAB0MiFHpjnWeIqknJEm11YQ==
+  dependencies:
+    tslib "^2.0.0"
   optionalDependencies:
     parse5 "^5.0.0"
 
