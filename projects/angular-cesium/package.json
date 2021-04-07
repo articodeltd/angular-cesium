@@ -21,7 +21,8 @@
     "@types/geodesy": "^1.1.2",
     "json-string-mapper": "^1.0.0",
     "lodash.get": "^4.4.2",
-    "primitive-primitives": "0.0.6"
+    "primitive-primitives": "0.0.6",
+    "tslib": "^2.0.0"
   },
   "optionalDependencies": {
     "heatmap.js": "^2.0.5"
