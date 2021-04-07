@@ -35,7 +35,7 @@
             ],
             "scripts": [
               "./node_modules/cesium/Build/Cesium/Cesium.js",
-              "./node_modules/socket.io-client/dist/socket.io.js",
+              "./node_modules/socket.io-client/dist/socket.io.js"
             ]
           },
           "configurations": {
@@ -89,7 +89,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/demo/test.ts",
+            "main": "projects/demo/src/test.ts",
             "polyfills": "projects/demo/src/polyfills.ts",
             "tsConfig": "projects/demo/src/tsconfig.spec.json",
             "karmaConfig": "projects/demo/src/karma.conf.js",
@@ -98,7 +98,7 @@
               "./node_modules/cesium/Build/Cesium/Cesium.js",
               "./node_modules/socket.io-client/dist/socket.io.js"
             ],
-            "assets": ["projects/demo/src/favicon.ico", "projects/demo/assets"]
+            "assets": ["projects/demo/src/favicon.ico", "projects/demo/src/assets"]
           }
         },
         "lint": {
