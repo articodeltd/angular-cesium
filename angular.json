@@ -150,11 +150,7 @@
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "tsConfig": "projects/angular-cesium/tsconfig.lib.json",
-            "project": "projects/angular-cesium/ng-package.json",
-            "allowedCommonJsDependencies": [
-              "geodesy",
-              "util"
-            ]
+            "project": "projects/angular-cesium/ng-package.json"
           },
           "configurations": {
             "production": {
