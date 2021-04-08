@@ -36,6 +36,10 @@
             "scripts": [
               "./node_modules/cesium/Build/Cesium/Cesium.js",
               "./node_modules/socket.io-client/dist/socket.io.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "geodesy",
+              "util"
             ]
           },
           "configurations": {
@@ -146,9 +150,13 @@
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "tsConfig": "projects/angular-cesium/tsconfig.lib.json",
-            "project": "projects/angular-cesium/ng-package.json"
-          }
-        ,          "configurations": {
+            "project": "projects/angular-cesium/ng-package.json",
+            "allowedCommonJsDependencies": [
+              "geodesy",
+              "util"
+            ]
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/angular-cesium/tsconfig.lib.prod.json"
             }
