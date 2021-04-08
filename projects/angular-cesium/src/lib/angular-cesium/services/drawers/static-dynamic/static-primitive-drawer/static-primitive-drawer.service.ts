@@ -12,6 +12,9 @@ export abstract class StaticPrimitiveDrawer extends PrimitivesDrawerService {
   }
 
   add(geometryProps: any, instanceProps: any, primitiveProps: any): any {
+    if (Object.keys(instanceProps).length === 0) {
+      throw(new Error('instanceProps object is empty'));
+    }
     instanceProps.geometry = new this.geometryType(geometryProps);
     primitiveProps.geometryInstances = new Cesium.GeometryInstance(instanceProps);
     primitiveProps.asynchronous = false;

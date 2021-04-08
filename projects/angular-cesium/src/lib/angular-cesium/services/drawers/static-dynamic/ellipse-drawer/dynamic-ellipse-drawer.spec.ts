@@ -15,9 +15,7 @@ describe('DynamicEllipseDrawerService', () => {
     semiMinorAxis: 300000
   };
   const cesiumService = mock(CesiumService);
-  const primitiveCollection: any = mock(Cesium.PrimitiveCollection);
-
-  when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
+  let primitiveCollection;
 
   beforeEach(() => {
     ellipseProps = {
@@ -27,6 +25,9 @@ describe('DynamicEllipseDrawerService', () => {
       semiMajorAxis: 250000,
       semiMinorAxis: 400000
     };
+
+    primitiveCollection = mock(Cesium.PrimitiveCollection);
+    when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 
     TestBed.configureTestingModule({
       providers: [DynamicEllipseDrawerService, providerFromMock(CesiumService, cesiumService)]
