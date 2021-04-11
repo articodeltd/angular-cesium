@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AcCircleDescComponent } from './ac-circle-desc.component';
 import { instance, mock, when } from 'ts-mockito';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -17,7 +17,7 @@ describe('AcCircleDescComponent', () => {
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AcCircleDescComponent],
       providers: [EllipseDrawerService,

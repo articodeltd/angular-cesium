@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AcStaticCircleDescComponent } from './ac-static-circle-desc.component';
 import { CesiumService } from '../../../services/cesium/cesium.service';
@@ -12,7 +12,7 @@ xdescribe('AcStaticCircleDescComponent', () => {
   let component: AcStaticCircleDescComponent;
   let fixture: ComponentFixture<AcStaticCircleDescComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     const mockStaticCircleDrawerService = mock(StaticCircleDrawerService);
     const mockLayerService = mock(LayerService);
     const mockComputationCache = mock(ComputationCache);

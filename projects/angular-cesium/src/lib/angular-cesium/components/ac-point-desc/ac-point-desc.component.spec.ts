@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AcPointDescComponent } from './ac-point-desc.component';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { instance, mock, when } from 'ts-mockito';
@@ -17,7 +17,7 @@ describe('AcPointDescComponent', () => {
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(pointCollection)});
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AcPointDescComponent],
       providers: [PointDrawerService,

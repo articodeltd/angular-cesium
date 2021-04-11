@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AcPolylineDescComponent } from './ac-polyline-desc.component';
 import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
 import { instance, mock, when } from 'ts-mockito';
@@ -17,7 +17,7 @@ describe('AcPolylineDescComponent', () => {
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(collection)});
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AcPolylineDescComponent],
       providers: [PolylineDrawerService,
