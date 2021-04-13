@@ -89,6 +89,6 @@
     "rimraf": "^2.6.3",
     "ts-node": "^7.0.1",
     "tslint": "~6.1.0",
-    "typescript": "4.0.7"
+    "typescript": "4.1.5"
   }
 }
