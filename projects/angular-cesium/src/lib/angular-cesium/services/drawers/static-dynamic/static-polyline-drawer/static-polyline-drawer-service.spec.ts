@@ -7,33 +7,10 @@ import { providerFromMock } from '../../../../utils/testingUtils';
 describe('StaticPolylineDrawerService', () => {
 
   let staticPolylineAttribute;
-  const staticPolylineProps = {
-    geometry: {
-      width: 1,
-      positions: Cesium.Cartesian3.fromDegreesArray(
-        [
-          Math.floor(Math.random() * 50), Math.floor(Math.random() * 50),
-          Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)
-        ]),
-    },
-    attributes: {
-      color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
-    },
-    appearance: new Cesium.PolylineColorAppearance({
-      closed: true,
-      translucent: false
-    }),
-    ready: null,
-    readyPromise: null,
-    getGeometryInstanceAttributes: () => {
-      return {color: null};
-    }
-  };
+  let staticPolylineProps;
 
   const cesiumService = mock(CesiumService);
-  const primitiveCollection: any = mock(Cesium.PrimitiveCollection);
-
-  when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
+  let primitiveCollection;
 
   beforeEach(() => {
     staticPolylineAttribute = {
@@ -41,6 +18,32 @@ describe('StaticPolylineDrawerService', () => {
         color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
       }
     };
+
+    staticPolylineProps = {
+      geometry: {
+        width: 1,
+        positions: Cesium.Cartesian3.fromDegreesArray(
+          [
+            Math.floor(Math.random() * 50), Math.floor(Math.random() * 50),
+            Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)
+          ]),
+      },
+      attributes: {
+        color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+      },
+      appearance: new Cesium.PolylineColorAppearance({
+        closed: true,
+        translucent: false
+      }),
+      ready: null,
+      readyPromise: null,
+      getGeometryInstanceAttributes: () => {
+        return {color: null};
+      }
+    };
+
+    primitiveCollection = mock(Cesium.PrimitiveCollection);
+    when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 
     TestBed.configureTestingModule({
       providers: [StaticPolylineDrawerService, providerFromMock(CesiumService, cesiumService)],

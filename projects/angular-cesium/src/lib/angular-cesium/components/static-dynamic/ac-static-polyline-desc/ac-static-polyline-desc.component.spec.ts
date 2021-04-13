@@ -1,5 +1,5 @@
 // tslint:disable
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AcStaticPolylineDescComponent } from './ac-static-polyline-desc.component';
 import { CesiumService } from '../../../services/cesium/cesium.service';
 import { StaticPolylineDrawerService } from '../../../services/drawers/static-dynamic/static-polyline-drawer/static-polyline-drawer.service';
@@ -13,7 +13,7 @@ describe('AcStaticPolylineDescComponent', () => {
   let component: AcStaticPolylineDescComponent;
   let fixture: ComponentFixture<AcStaticPolylineDescComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     const cesiumService = mock(CesiumService);
 
     TestBed.configureTestingModule({

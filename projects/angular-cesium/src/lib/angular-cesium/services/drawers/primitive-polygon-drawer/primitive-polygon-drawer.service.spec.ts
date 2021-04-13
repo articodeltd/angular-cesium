@@ -5,26 +5,9 @@ import { CesiumService } from '../../cesium/cesium.service';
 import { providerFromMock } from '../../../utils/testingUtils';
 
 describe('PrimitivePolygonDrawerService', () => {
-  let geometryProps: any = {
-    height: 15000.0,
-    polygonHierarchy: new Cesium.PolygonHierarchy(
-      Cesium.Cartesian3.fromDegreesArray([
-        30 * Math.random(), 30 * Math.random(),
-        30 * Math.random(), 30 * Math.random(),
-        30 * Math.random(), 30 * Math.random(),
-        30 * Math.random(), 30 * Math.random(),
-        30 * Math.random(), 30 * Math.random()
-      ])
-    )
-  };
-
-  let instanceProps: any = {
-    color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
-  };
-  let primitiveProps: any = new Cesium.PerInstanceColorAppearance({
-    translucent: false,
-    closed: true
-  });
+  let geometryProps;
+  let instanceProps;
+  let primitiveProps;
 
   const otherGeometryProps = {
     height: 13000.0,
@@ -40,9 +23,31 @@ describe('PrimitivePolygonDrawerService', () => {
   };
 
   const cesiumService = mock(CesiumService);
-  const primitiveCollection: any = mock(Cesium.PrimitiveCollection);
+  let primitiveCollection;
 
-  when(cesiumService.getScene()).thenReturn({ primitives: instance(primitiveCollection) });
+  beforeEach(() => {
+    geometryProps = {
+      height: 15000.0,
+      polygonHierarchy: new Cesium.PolygonHierarchy(
+        Cesium.Cartesian3.fromDegreesArray([
+          30 * Math.random(), 30 * Math.random(),
+          30 * Math.random(), 30 * Math.random(),
+          30 * Math.random(), 30 * Math.random(),
+          30 * Math.random(), 30 * Math.random(),
+          30 * Math.random(), 30 * Math.random()
+        ])
+      )
+    };
+    instanceProps = {
+      color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+    };
+    primitiveProps = new Cesium.PerInstanceColorAppearance({
+      translucent: false,
+      closed: true
+    });
+    primitiveCollection = mock(Cesium.PrimitiveCollection);
+    when(cesiumService.getScene()).thenReturn({ primitives: instance(primitiveCollection) });
+  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({

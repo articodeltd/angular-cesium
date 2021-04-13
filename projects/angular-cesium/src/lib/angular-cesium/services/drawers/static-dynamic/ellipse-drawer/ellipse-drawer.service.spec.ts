@@ -13,13 +13,8 @@ describe('EllipseStaticDrawerService', () => {
     rotation: Cesium.Math.toRadians(45)
   };
 
-  let instanceProps: any = {
-    color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
-  };
-  let primitiveProps: any = new Cesium.PerInstanceColorAppearance({
-    translucent: false,
-    closed: true
-  });
+  let instanceProps;
+  let primitiveProps;
 
   const otherGeometryProps = {
     center: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
@@ -30,9 +25,19 @@ describe('EllipseStaticDrawerService', () => {
   };
 
   const cesiumService = mock(CesiumService);
-  const primitiveCollection: any = mock(Cesium.PrimitiveCollection);
+  let primitiveCollection;
 
-  when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
+  beforeEach(() => {
+    instanceProps = {
+      color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+    };
+    primitiveProps = new Cesium.PerInstanceColorAppearance({
+      translucent: false,
+      closed: true
+    });
+    primitiveCollection = mock(Cesium.PrimitiveCollection);
+    when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
+  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({

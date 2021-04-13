@@ -31,9 +31,7 @@ describe('PrimitivesDrawerService', () => {
 
   let geometryProps;
   const cesiumService = mock(CesiumService);
-  const primitiveCollection: any = mock(Cesium.PrimitiveCollection);
-
-  when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
+  let primitiveCollection;
 
   beforeEach(() => {
     geometryProps = {
@@ -50,6 +48,9 @@ describe('PrimitivesDrawerService', () => {
         })
       }
     };
+
+    primitiveCollection = mock(Cesium.PrimitiveCollection);
+    when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 
     TestBed.configureTestingModule({
       providers: [SimpleDrawerServiceTestClass, providerFromMock(CesiumService, cesiumService)],

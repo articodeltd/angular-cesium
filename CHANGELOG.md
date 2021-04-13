@@ -1,3 +1,7 @@
+## 0.67
+### Features
+* Upgrade to Angular 11
+
 ## 0.66
 ### Feautures
 * Add in `MapboxStyleImageryProvider` functionality

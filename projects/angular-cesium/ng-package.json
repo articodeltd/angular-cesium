@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "whitelistedNonPeerDependencies": [
+  "allowedNonPeerDependencies": [
     "geodesy",
     "angular2parse",
     "json-string-mapper",

@@ -283,7 +283,7 @@ export class CameraService {
     const flyTo = (options && options.flyTo) || false;
 
     this.viewer.trackedEntity = undefined;
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       if (flyTo) {
         const flyToDuration = (options && options.flyToDuration) || 1;
         const altitude = (options && options.altitude) || 10000;

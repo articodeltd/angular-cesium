@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { instance, mock, when } from 'ts-mockito';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
@@ -15,7 +15,7 @@ describe('AcAcrComponent', () => {
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(arcCollection)});
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AcArcComponent],
       providers: [ArcDrawerService, MapLayersService,

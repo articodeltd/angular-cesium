@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AcBillboardDescComponent } from './ac-billborad-desc.component';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import { instance, mock, when } from 'ts-mockito';
@@ -17,7 +17,7 @@ describe('AcBillboardDescComponent', () => {
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(billboardCollection)});
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AcBillboardDescComponent],
       providers: [BillboardDrawerService,
