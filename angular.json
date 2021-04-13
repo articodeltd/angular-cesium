@@ -34,8 +34,7 @@
               "./node_modules/cesium/Build/Cesium/Widgets/widgets.css"
             ],
             "scripts": [
-              "./node_modules/cesium/Build/Cesium/Cesium.js",
-              "./node_modules/socket.io-client/dist/socket.io.js"
+              "./node_modules/cesium/Build/Cesium/Cesium.js"
             ],
             "allowedCommonJsDependencies": [
               "geodesy",
@@ -98,8 +97,7 @@
             "karmaConfig": "projects/demo/src/karma.conf.js",
             "styles": ["projects/demo/src/styles.css"],
             "scripts": [
-              "./node_modules/cesium/Build/Cesium/Cesium.js",
-              "./node_modules/socket.io-client/dist/socket.io.js"
+              "./node_modules/cesium/Build/Cesium/Cesium.js"
             ],
             "assets": ["projects/demo/src/favicon.ico", "projects/demo/src/assets"]
           }
