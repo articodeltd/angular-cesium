@@ -1,3 +1,7 @@
+## 0.68
+## Fixes
+* Fix `socket.io` path in `angular.json` (used by the demo)
+
 ## 0.67
 ### Features
 * Upgrade to Angular 11
