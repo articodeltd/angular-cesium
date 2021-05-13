@@ -304,7 +304,7 @@ export class PolygonsEditorService {
         this.updateSubject.next(updateValue);
         clientEditSubject.next({
           ...updateValue,
-          positions: allPositions,
+          positions: this.getPositions(id),
           points: this.getPoints(id),
         });
       }
