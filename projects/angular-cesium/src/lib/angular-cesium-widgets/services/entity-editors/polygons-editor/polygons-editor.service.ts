@@ -202,6 +202,18 @@ export class PolygonsEditorService {
       polygonOptions: polygonOptions,
     });
 
+    const finishCreation = (position: Cartesian3) => {
+      return this.switchToEditMode(
+        id,
+        position,
+        clientEditSubject,
+        positions,
+        priority,
+        polygonOptions,
+        editorObservable,
+        finishedCreate);
+    };
+
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
@@ -224,7 +236,7 @@ export class PolygonsEditorService {
     });
 
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
-    const editorObservable = this.createEditorObservable(clientEditSubject, id);
+    const editorObservable = this.createEditorObservable(clientEditSubject, id, finishCreation);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.screenToPosition(endPosition, polygonOptions.clampHeightTo3D, polygonOptions.clampHeightTo3DOptions);
@@ -268,15 +280,7 @@ export class PolygonsEditorService {
       });
 
       if (polygonOptions.maximumNumberOfPoints && allPositions.length + 1 === polygonOptions.maximumNumberOfPoints) {
-        finishedCreate = this.switchToEditMode(
-          id,
-          position,
-          clientEditSubject,
-          positions,
-          priority,
-          polygonOptions,
-          editorObservable,
-          finishedCreate);
+        finishedCreate = finishCreation(position);
       }
     });
 
@@ -305,15 +309,7 @@ export class PolygonsEditorService {
         });
       }
 
-      finishedCreate = this.switchToEditMode(
-        id,
-        position,
-        clientEditSubject,
-        positions,
-        priority,
-        polygonOptions,
-        editorObservable,
-        finishedCreate);
+      finishedCreate = finishCreation(position);
     });
 
     return editorObservable;
@@ -556,7 +552,7 @@ export class PolygonsEditorService {
   }
 
 
-  private createEditorObservable(observableToExtend: any, id: string): PolygonEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean): PolygonEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {
@@ -613,6 +609,14 @@ export class PolygonsEditorService {
         editAction: EditActions.UPDATE_EDIT_LABELS,
         updateLabels: labels,
       });
+    };
+
+    observableToExtend.finishCreation = () => {
+      if (!finishCreation) {
+        throw new Error('Polygons editor error edit(): cannot call finishCreation() on edit');
+      }
+
+      return finishCreation(null);
     };
 
     observableToExtend.getCurrentPoints = () => this.getPoints(id);
