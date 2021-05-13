@@ -2,6 +2,9 @@
 ### Features
 * Upgrade to Angular 11
 
+### Fixes
+* Fix `PolylinesEditorService` and `PolygonesEditorService` not adding last point when `addLastPointEvent` is `CesiumEvent.LONG_LEFT_PRESS`
+
 ## 0.66
 ### Feautures
 * Add in `MapboxStyleImageryProvider` functionality
