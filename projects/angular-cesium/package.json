@@ -29,8 +29,8 @@
   },
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
-    "copy:files": "cp -a ./schematics/ng-add ../../dist/angular-cesium/schematics",
-    "copy:collection": "cp ./schematics/collection.json ../../dist/angular-cesium/schematics/collection.json",
+    "copy:files": "xcopy .\\schematics\\ng-add ..\\..\\dist\\angular-cesium\\schematics",
+    "copy:collection": "copy .\\schematics\\collection.json ..\\..\\dist\\angular-cesium\\schematics\\collection.json",
     "postbuild": "npm run copy:files && npm run copy:collection"
   },
   "schematics": "./schematics/collection.json"
