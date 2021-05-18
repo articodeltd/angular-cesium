@@ -28,7 +28,8 @@
     "schemnantics:build": "cd projects/angular-cesium; yarn build;",
     "docs:run": "compodoc -p projects/angular-cesium/src/lib/tsconfig.compodoc.json --theme stripe -d docs -n \"Angular Cesium\" --watch --serve",
     "docs:compile": "rimraf docs && compodoc -p projects/angular-cesium/src/lib/tsconfig.compodoc.json --theme stripe -d docs -n \"Angular Cesium\"",
-    "docs:push": "npm run docs:compile && npm run gh-pages && rimraf docs"
+    "docs:push": "npm run docs:compile && npm run gh-pages && rimraf docs",
+    "prepare": "npm run lib:build"
   },
   "private": true,
   "dependencies": {
