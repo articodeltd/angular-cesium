@@ -3,9 +3,6 @@
 * Upgrade to Angular 11
 * Add `finishCreation` functionality to `PolylinesEditorService` and `PolygonesEditorService` to allow users to finish polyline/polygon creation externally
 
-### Fixes
-* Fix `PolylinesEditorService` and `PolygonesEditorService` not adding last point when `addLastPointEvent` is `CesiumEvent.LONG_LEFT_PRESS`
-
 ## 0.66
 ### Feautures
 * Add in `MapboxStyleImageryProvider` functionality
