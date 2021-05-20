@@ -9,4 +9,5 @@ export class EditorObservable<T> extends Observable<T> {
   getEditValue: () => T;
   setLabelsRenderFn: (func: (update: T, labels: LabelProps[]) => LabelProps[]) => void;
   updateLabels: (labels: LabelProps[]) => void;
+  finishCreation: () => boolean;
 }
