@@ -188,6 +188,18 @@ export class PolylinesEditorService {
       polylineOptions: polylineOptions,
     });
 
+    const finishCreation = (position: Cartesian3) => {
+      return this.switchToEditMode(
+        id,
+        position,
+        clientEditSubject,
+        positions,
+        eventPriority,
+        polylineOptions,
+        editorObservable,
+        finishedCreate);
+    };
+
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
@@ -210,7 +222,7 @@ export class PolylinesEditorService {
     });
 
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration, addLastPointRegistration]);
-    const editorObservable = this.createEditorObservable(clientEditSubject, id);
+    const editorObservable = this.createEditorObservable(clientEditSubject, id, finishCreation);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.screenToPosition(endPosition, polylineOptions.clampHeightTo3D, polylineOptions.clampHeightTo3DOptions);
@@ -251,15 +263,7 @@ export class PolylinesEditorService {
         points: this.getPoints(id),
       });
       if (polylineOptions.maximumNumberOfPoints && allPositions.length + 1 === polylineOptions.maximumNumberOfPoints) {
-        finishedCreate = this.switchToEditMode(
-          id,
-          position,
-          clientEditSubject,
-          positions,
-          eventPriority,
-          polylineOptions,
-          editorObservable,
-          finishedCreate);
+        finishedCreate = finishCreation(position);
       }
     });
 
@@ -268,34 +272,8 @@ export class PolylinesEditorService {
       if (!position) {
         return;
       }
-
-      // Add last point to positions if not already added
-      const allPositions = this.getPositions(id);
-      if (!allPositions.find((cartesian) => cartesian.equals(position))) {
-        const updateValue = {
-          id,
-          positions: allPositions,
-          editMode: EditModes.CREATE,
-          updatedPosition: position,
-          editAction: EditActions.ADD_POINT,
-        };
-        this.updateSubject.next(updateValue);
-        clientEditSubject.next({
-          ...updateValue,
-          positions: this.getPositions(id),
-          points: this.getPoints(id),
-        });
-      }
-
-      finishedCreate = this.switchToEditMode(
-        id,
-        position,
-        clientEditSubject,
-        positions,
-        eventPriority,
-        polylineOptions,
-        editorObservable,
-        finishedCreate);
+      // position already added by addPointRegistration
+      finishedCreate = finishCreation(position);
     });
 
     return editorObservable;
@@ -531,7 +509,7 @@ export class PolylinesEditorService {
   }
 
 
-  private createEditorObservable(observableToExtend: any, id: string): PolylineEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean): PolylineEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {
@@ -593,6 +571,15 @@ export class PolylinesEditorService {
         updateLabels: labels,
       });
     };
+
+    observableToExtend.finishCreation = () => {
+      if (!finishCreation) {
+        throw new Error('Polylines editor error edit(): cannot call finishCreation() on edit');
+      }
+
+      return finishCreation(null);
+    };
+
     observableToExtend.getCurrentPoints = () => this.getPoints(id);
 
     observableToExtend.getEditValue = () => observableToExtend.getValue();

@@ -1,9 +1,7 @@
 ## 0.67
 ### Features
 * Upgrade to Angular 11
-
-### Fixes
-* Fix `PolylinesEditorService` and `PolygonesEditorService` not adding last point when `addLastPointEvent` is `CesiumEvent.LONG_LEFT_PRESS`
+* Add `finishCreation` functionality to `PolylinesEditorService` and `PolygonesEditorService` to allow users to finish polyline/polygon creation externally
 
 ## 0.66
 ### Feautures

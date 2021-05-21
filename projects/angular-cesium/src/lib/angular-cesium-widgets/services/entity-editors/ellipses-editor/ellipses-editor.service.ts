@@ -139,6 +139,39 @@ export class EllipsesEditorService {
       ellipseOptions,
     });
 
+    const finishCreation = (position: Cartesian3) => {
+      const update: EllipseEditUpdate = {
+        id,
+        center,
+        updatedPosition: position,
+        editMode: EditModes.CREATE,
+        editAction: EditActions.ADD_LAST_POINT,
+      };
+      this.updateSubject.next(update);
+      clientEditSubject.next({
+        ...update,
+      });
+
+      const changeMode: EllipseEditUpdate = {
+        id,
+        center,
+        editMode: EditModes.CREATE,
+        editAction: EditActions.CHANGE_TO_EDIT,
+      };
+
+      this.updateSubject.next(changeMode);
+      clientEditSubject.next({
+        ...update,
+      });
+      if (this.observablesMap.has(id)) {
+        this.observablesMap.get(id).forEach(registration => registration.dispose());
+      }
+      this.observablesMap.delete(id);
+      this.editEllipse(id, priority, clientEditSubject, ellipseOptions, editorObservable);
+      finishedCreate = true;
+      return finishedCreate;
+    }
+
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
@@ -153,7 +186,7 @@ export class EllipsesEditorService {
     });
 
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration]);
-    const editorObservable = this.createEditorObservable(clientEditSubject, id);
+    const editorObservable = this.createEditorObservable(clientEditSubject, id, finishCreation);
 
     addPointRegistration.subscribe(({ movement: { endPosition } }) => {
       if (finishedCreate) {
@@ -177,35 +210,7 @@ export class EllipsesEditorService {
         });
         center = position;
       } else {
-        const update: EllipseEditUpdate = {
-          id,
-          center,
-          updatedPosition: position,
-          editMode: EditModes.CREATE,
-          editAction: EditActions.ADD_LAST_POINT,
-        };
-        this.updateSubject.next(update);
-        clientEditSubject.next({
-          ...update,
-        });
-
-        const changeMode: EllipseEditUpdate = {
-          id,
-          center,
-          editMode: EditModes.CREATE,
-          editAction: EditActions.CHANGE_TO_EDIT,
-        };
-
-        this.updateSubject.next(changeMode);
-        clientEditSubject.next({
-          ...update,
-        });
-        if (this.observablesMap.has(id)) {
-          this.observablesMap.get(id).forEach(registration => registration.dispose());
-        }
-        this.observablesMap.delete(id);
-        this.editEllipse(id, priority, clientEditSubject, ellipseOptions, editorObservable);
-        finishedCreate = true;
+        finishedCreate = finishCreation(position);
       }
     });
 
@@ -399,7 +404,7 @@ export class EllipsesEditorService {
     return editObservable || this.createEditorObservable(editSubject, id);
   }
 
-  private createEditorObservable(observableToExtend: any, id: string): EllipseEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean): EllipseEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {
@@ -465,6 +470,14 @@ export class EllipsesEditorService {
         editAction: EditActions.UPDATE_EDIT_LABELS,
         updateLabels: labels,
       } as EllipseEditUpdate);
+    };
+
+    observableToExtend.finishCreation = () => {
+      if (!finishCreation) {
+        throw new Error('Ellipses editor error edit(): cannot call finishCreation() on edit');
+      }
+
+      return finishCreation(null);
     };
 
     observableToExtend.getEditValue = () => observableToExtend.getValue();
