@@ -1,7 +1,11 @@
+## 0.68
+### Features
+* Add `finishCreation()` functionality to shape editors to allow users to finish creation programmatically. 
+* Update dependencies
+
 ## 0.67
 ### Features
 * Upgrade to Angular 11
-* Add `finishCreation` functionality to `PolylinesEditorService` and `PolygonesEditorService` to allow users to finish polyline/polygon creation externally
 
 ## 0.66
 ### Feautures

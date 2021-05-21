@@ -1,6 +1,6 @@
 {
   "name": "angular-cesium",
-  "version": "0.0.67",
+  "version": "0.0.68",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/articodeltd/angular-cesium",
@@ -45,7 +45,7 @@
     "@fortawesome/angular-fontawesome": "^0.7.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "angular2parse": "1.0.10",
+    "angular2parse": "^1.0.11",
     "cesium": "1.66.0",
     "core-js": "^3.2.0",
     "dataloader": "^1.3.0",
