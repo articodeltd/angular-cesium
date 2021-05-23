@@ -10,5 +10,4 @@ export class PolygonEditorObservable extends EditorObservable<PolygonEditUpdate>
   setManually: (points: { position: Cartesian3, pointProp?: PointProps }[] | Cartesian3[],
                 polygonProps?: PolygonProps) => void;
   getCurrentPoints: () => EditPoint[];
-  finishCreation: () => boolean;
 }

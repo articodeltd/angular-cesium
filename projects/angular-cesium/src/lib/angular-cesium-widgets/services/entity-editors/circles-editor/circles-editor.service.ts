@@ -132,6 +132,42 @@ export class CirclesEditorService {
       circleOptions,
     });
 
+    const finishCreation = (position: Cartesian3) => {
+      const update = {
+        id,
+        center,
+        radiusPoint: position,
+        editMode: EditModes.CREATE,
+        editAction: EditActions.ADD_LAST_POINT,
+      };
+      this.updateSubject.next(update);
+      clientEditSubject.next({
+        ...update,
+        ...this.getCircleProperties(id),
+      });
+
+      const changeMode = {
+        id,
+        center,
+        radiusPoint: position,
+        editMode: EditModes.CREATE,
+        editAction: EditActions.CHANGE_TO_EDIT,
+      };
+
+      this.updateSubject.next(changeMode);
+      clientEditSubject.next({
+        ...update,
+        ...this.getCircleProperties(id),
+      });
+      if (this.observablesMap.has(id)) {
+        this.observablesMap.get(id).forEach(registration => registration.dispose());
+      }
+      this.observablesMap.delete(id);
+      this.editCircle(id, priority, clientEditSubject, circleOptions, editorObservable);
+      finishedCreate = true;
+      return finishedCreate;
+    }
+
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
@@ -146,7 +182,7 @@ export class CirclesEditorService {
     });
 
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration]);
-    const editorObservable = this.createEditorObservable(clientEditSubject, id);
+    const editorObservable = this.createEditorObservable(clientEditSubject, id, finishCreation);
 
     addPointRegistration.subscribe(({movement: {endPosition}}) => {
       if (finishedCreate) {
@@ -171,38 +207,7 @@ export class CirclesEditorService {
         });
         center = position;
       } else {
-        const update = {
-          id,
-          center,
-          radiusPoint: position,
-          editMode: EditModes.CREATE,
-          editAction: EditActions.ADD_LAST_POINT,
-        };
-        this.updateSubject.next(update);
-        clientEditSubject.next({
-          ...update,
-          ...this.getCircleProperties(id),
-        });
-
-        const changeMode = {
-          id,
-          center,
-          radiusPoint: position,
-          editMode: EditModes.CREATE,
-          editAction: EditActions.CHANGE_TO_EDIT,
-        };
-
-        this.updateSubject.next(changeMode);
-        clientEditSubject.next({
-          ...update,
-          ...this.getCircleProperties(id),
-        });
-        if (this.observablesMap.has(id)) {
-          this.observablesMap.get(id).forEach(registration => registration.dispose());
-        }
-        this.observablesMap.delete(id);
-        this.editCircle(id, priority, clientEditSubject, circleOptions, editorObservable);
-        finishedCreate = true;
+        finishedCreate = finishCreation(position);
       }
     });
 
@@ -362,7 +367,7 @@ export class CirclesEditorService {
     return editObservable || this.createEditorObservable(editSubject, id);
   }
 
-  private createEditorObservable(observableToExtend: any, id: string): CircleEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean): CircleEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {
@@ -431,6 +436,14 @@ export class CirclesEditorService {
         editAction: EditActions.UPDATE_EDIT_LABELS,
         updateLabels: labels,
       });
+    };
+
+    observableToExtend.finishCreation = () => {
+      if (!finishCreation) {
+        throw new Error('Circles editor error edit(): cannot call finishCreation() on edit');
+      }
+
+      return finishCreation(null);
     };
 
     observableToExtend.getEditValue = () => observableToExtend.getValue();

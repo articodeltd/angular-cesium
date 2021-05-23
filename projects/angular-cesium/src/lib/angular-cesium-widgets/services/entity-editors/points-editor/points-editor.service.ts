@@ -125,6 +125,18 @@ export class PointsEditorService {
       pointOptions: pointOptions,
     });
 
+    const finishCreation = (position: Cartesian3) => {
+      return this.switchToEditMode(
+        id,
+        clientEditSubject,
+        position,
+        eventPriority,
+        pointOptions,
+        editorObservable,
+        true
+      );
+    };
+
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
@@ -140,7 +152,7 @@ export class PointsEditorService {
     });
 
     this.observablesMap.set(id, [mouseMoveRegistration, addLastPointRegistration]);
-    const editorObservable = this.createEditorObservable(clientEditSubject, id);
+    const editorObservable = this.createEditorObservable(clientEditSubject, id, finishCreation);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.screenToPosition(endPosition);
@@ -157,14 +169,7 @@ export class PointsEditorService {
     });
     addLastPointRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.screenToPosition(endPosition);
-      finishedCreate = this.switchToEditMode(
-          id,
-          clientEditSubject,
-          position,
-          eventPriority,
-          pointOptions,
-          editorObservable,
-          true);
+      finishedCreate = finishCreation(position);
     });
     return editorObservable;
   }
@@ -297,7 +302,7 @@ export class PointsEditorService {
   }
 
 
-  private createEditorObservable(observableToExtend: any, id: string): PointEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean): PointEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {
@@ -359,6 +364,15 @@ export class PointsEditorService {
         updateLabels: labels,
       });
     };
+
+    observableToExtend.finishCreation = () => {
+      if (!finishCreation) {
+        throw new Error('Points editor error edit(): cannot call finishCreation() on edit');
+      }
+
+      return finishCreation(null);
+    };
+
     observableToExtend.getCurrentPoint = () => this.getPoint(id);
 
     observableToExtend.getEditValue = () => observableToExtend.getValue();

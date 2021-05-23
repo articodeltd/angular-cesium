@@ -290,25 +290,7 @@ export class PolygonsEditorService {
       if (!position) {
         return;
       }
-      
-      // Add last point to positions if not already added
-      const allPositions = this.getPositions(id);
-      if (!allPositions.find((cartesian) => cartesian.equals(position))) {
-        const updateValue = {
-          id,
-          positions: allPositions,
-          editMode: EditModes.CREATE,
-          updatedPosition: position,
-          editAction: EditActions.ADD_POINT,
-        };
-        this.updateSubject.next(updateValue);
-        clientEditSubject.next({
-          ...updateValue,
-          positions: this.getPositions(id),
-          points: this.getPoints(id),
-        });
-      }
-
+      // position already added by addPointRegistration
       finishedCreate = finishCreation(position);
     });
 

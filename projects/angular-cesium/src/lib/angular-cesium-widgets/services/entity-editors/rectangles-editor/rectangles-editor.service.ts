@@ -135,6 +135,23 @@ export class RectanglesEditorService {
       rectangleOptions: rectangleOptions,
     });
 
+    const finishCreation = () => {
+      const changeMode = {
+        id,
+        editMode: EditModes.CREATE,
+        editAction: EditActions.CHANGE_TO_EDIT,
+      };
+      this.updateSubject.next(changeMode);
+      clientEditSubject.next(changeMode);
+      if (this.observablesMap.has(id)) {
+        this.observablesMap.get(id).forEach(registration => registration.dispose());
+      }
+      this.observablesMap.delete(id);
+      this.editRectangle(id, positions, priority, clientEditSubject, rectangleOptions, editorObservable);
+      finishedCreate = true;
+      return finishedCreate;
+    };
+
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
       pick: PickOptions.NO_PICK,
@@ -149,7 +166,7 @@ export class RectanglesEditorService {
     });
 
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration ]);
-    const editorObservable = this.createEditorObservable(clientEditSubject, id);
+    const editorObservable = this.createEditorObservable(clientEditSubject, id, finishCreation);
 
     mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
       const position = this.coordinateConverter.screenToCartesian3(endPosition);
@@ -191,19 +208,7 @@ export class RectanglesEditorService {
       });
 
       if (!isFirstPoint) {
-        const changeMode = {
-          id,
-          editMode: EditModes.CREATE,
-          editAction: EditActions.CHANGE_TO_EDIT,
-        };
-        this.updateSubject.next(changeMode);
-        clientEditSubject.next(changeMode);
-        if (this.observablesMap.has(id)) {
-          this.observablesMap.get(id).forEach(registration => registration.dispose());
-        }
-        this.observablesMap.delete(id);
-        this.editRectangle(id, positions, priority, clientEditSubject, rectangleOptions, editorObservable);
-        finishedCreate = true;
+        finishedCreate = finishCreation();
       }
 
     });
@@ -360,7 +365,7 @@ export class RectanglesEditorService {
   }
 
 
-  private createEditorObservable(observableToExtend: any, id: string): RectangleEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: () => boolean): RectangleEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {
@@ -422,6 +427,14 @@ export class RectanglesEditorService {
         editAction: EditActions.UPDATE_EDIT_LABELS,
         updateLabels: labels,
       });
+    };
+
+    observableToExtend.finishCreation = () => {
+      if (!finishCreation) {
+        throw new Error('Rectangles editor error edit(): cannot call finishCreation() on edit');
+      }
+
+      return finishCreation();
     };
 
     observableToExtend.getCurrentPoints = () => this.getPoints(id);

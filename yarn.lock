@@ -2094,10 +2094,12 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular2parse@1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/angular2parse/-/angular2parse-1.0.10.tgz#1522e7707fbcd656ff190d24ba461aa9c53f5098"
-  integrity sha512-IHrJ3V4/2JWGSJAukNn7SMdJEuItalCJ9KDM9qTTtH5xIdGHwQet6QYHNWa5Fg2PhtyJ5gH+VG5KuK0iGkdy0A==
+angular2parse@^1.0.10:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/angular2parse/-/angular2parse-1.0.11.tgz#e94e56b3d1be0e2cbfb5ba3d30431a5eb793152e"
+  integrity sha512-kDHv8yyCYxX5hV/IIFdKoCpI2B6RF9gl+4QhN24cSv1x6Tafd83+LKm5oiRwAeytFLnV5jtLdsMOjldOZdLnoQ==
+  dependencies:
+    tslib "^1.10.0"
 
 ansi-colors@4.1.1, ansi-colors@^4.1.1:
   version "4.1.1"
