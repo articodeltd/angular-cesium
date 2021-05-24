@@ -1,3 +1,7 @@
+## 0.69
+### Fixes
+* Fix `finishCreation()` missing functionality for `PolygonEditorService` and `PolylineEditorService`
+
 ## 0.68
 ### Features
 * Add `finishCreation()` functionality to shape editors to allow users to finish creation programmatically. 
