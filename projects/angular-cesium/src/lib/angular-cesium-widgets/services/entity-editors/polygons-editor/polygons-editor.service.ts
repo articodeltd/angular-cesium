@@ -308,7 +308,7 @@ export class PolygonsEditorService {
           points: this.getPoints(id),
         });
       }
-      
+
       finishedCreate = finishCreation(position);
     });
 
@@ -552,7 +552,8 @@ export class PolygonsEditorService {
   }
 
 
-  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean): PolygonEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean)
+                                                                                                        : PolygonEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {

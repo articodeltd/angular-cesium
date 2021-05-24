@@ -170,7 +170,7 @@ export class EllipsesEditorService {
       this.editEllipse(id, priority, clientEditSubject, ellipseOptions, editorObservable);
       finishedCreate = true;
       return finishedCreate;
-    }
+    };
 
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
@@ -404,7 +404,8 @@ export class EllipsesEditorService {
     return editObservable || this.createEditorObservable(editSubject, id);
   }
 
-  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean): EllipseEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean)
+                                                                                                        : EllipseEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {

@@ -166,7 +166,7 @@ export class CirclesEditorService {
       this.editCircle(id, priority, clientEditSubject, circleOptions, editorObservable);
       finishedCreate = true;
       return finishedCreate;
-    }
+    };
 
     const mouseMoveRegistration = this.mapEventsManager.register({
       event: CesiumEvent.MOUSE_MOVE,
@@ -184,7 +184,7 @@ export class CirclesEditorService {
     this.observablesMap.set(id, [mouseMoveRegistration, addPointRegistration]);
     const editorObservable = this.createEditorObservable(clientEditSubject, id, finishCreation);
 
-    addPointRegistration.subscribe(({movement: {endPosition}}) => {
+    addPointRegistration.subscribe(({ movement: { endPosition } }) => {
       if (finishedCreate) {
         return;
       }
@@ -211,7 +211,7 @@ export class CirclesEditorService {
       }
     });
 
-    mouseMoveRegistration.subscribe(({movement: {endPosition}}) => {
+    mouseMoveRegistration.subscribe(({ movement: { endPosition } }) => {
       if (!center) {
         return;
       }
@@ -293,8 +293,8 @@ export class CirclesEditorService {
     }
 
     pointDragRegistration
-      .pipe(tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
-      .subscribe(({movement: {endPosition, startPosition, drop}, entities}) => {
+      .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+      .subscribe(({ movement: { endPosition, startPosition, drop }, entities }) => {
         const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
         const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
         if (!endDragPosition) {
@@ -333,8 +333,8 @@ export class CirclesEditorService {
 
     if (shapeDragRegistration) {
       shapeDragRegistration
-        .pipe(tap(({movement: {drop}}) => this.cameraService.enableInputs(drop)))
-        .subscribe(({movement: {startPosition, endPosition, drop}}) => {
+        .pipe(tap(({ movement: { drop } }) => this.cameraService.enableInputs(drop)))
+        .subscribe(({ movement: { startPosition, endPosition, drop } }) => {
           const startDragPosition = this.coordinateConverter.screenToCartesian3(startPosition);
           const endDragPosition = this.coordinateConverter.screenToCartesian3(endPosition);
           if (!endDragPosition || !startDragPosition) {
@@ -367,7 +367,8 @@ export class CirclesEditorService {
     return editObservable || this.createEditorObservable(editSubject, id);
   }
 
-  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean): CircleEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean)
+                                                                                                        : CircleEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {

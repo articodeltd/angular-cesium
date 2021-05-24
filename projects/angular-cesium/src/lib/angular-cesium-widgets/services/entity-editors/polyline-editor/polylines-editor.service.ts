@@ -272,7 +272,7 @@ export class PolylinesEditorService {
       if (!position) {
         return;
       }
-      
+
       // Add last point to positions if not already added
       const allPositions = this.getPositions(id);
       if (!allPositions.find((cartesian) => cartesian.equals(position))) {
@@ -527,7 +527,8 @@ export class PolylinesEditorService {
   }
 
 
-  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean): PolylineEditorObservable {
+  private createEditorObservable(observableToExtend: any, id: string, finishCreation?: (position: Cartesian3) => boolean)
+                                                                                                      : PolylineEditorObservable {
     observableToExtend.dispose = () => {
       const observables = this.observablesMap.get(id);
       if (observables) {
