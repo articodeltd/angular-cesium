@@ -177,6 +177,7 @@ export class PolygonsEditorComponent implements OnDestroy {
       case EditActions.ADD_POINT: {
         const polygon = this.polygonsManager.get(update.id);
         if (update.updatedPosition) {
+          polygon.moveTempMovingPoint(update.updatedPosition);
           polygon.addPoint(update.updatedPosition);
           this.renderEditLabels(polygon, update);
         }
