@@ -159,6 +159,7 @@ export class HippodromeEditorComponent implements OnDestroy {
       case EditActions.ADD_POINT: {
         const hippodrome = this.hippodromesManager.get(update.id);
         if (update.updatedPosition) {
+          hippodrome.moveTempMovingPoint(update.updatedPosition);
           hippodrome.addPoint(update.updatedPosition);
           this.renderEditLabels(hippodrome, update);
         }
