@@ -165,6 +165,7 @@ export class PolylinesEditorComponent implements OnDestroy {
       case EditActions.ADD_POINT: {
         const polyline = this.polylinesManager.get(update.id);
         if (update.updatedPosition) {
+          polyline.moveTempMovingPoint(update.updatedPosition);
           polyline.addPoint(update.updatedPosition);
           this.renderEditLabels(polyline, update);
         }

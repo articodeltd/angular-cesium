@@ -170,6 +170,7 @@ export class RectanglesEditorComponent implements OnDestroy {
       case EditActions.ADD_POINT: {
         const rectangle = this.rectanglesManager.get(update.id);
         if (update.updatedPosition) {
+          rectangle.moveTempMovingPoint(update.updatedPosition);
           rectangle.addPoint(update.updatedPosition);
           this.renderEditLabels(rectangle, update);
         }
