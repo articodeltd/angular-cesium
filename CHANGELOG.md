@@ -1,3 +1,7 @@
+## 0.70
+### Fixes
+* Fix update moving point on editors that don't work properly in tablets #385
+
 ## 0.69
 ### Fixes
 * Fix `finishCreation()` missing functionality for `PolygonEditorService` and `PolylineEditorService`
