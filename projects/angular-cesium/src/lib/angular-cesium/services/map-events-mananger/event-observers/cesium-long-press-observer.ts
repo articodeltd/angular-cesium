@@ -1,5 +1,4 @@
-import { ConnectableObservable, of as observableOf } from 'rxjs';
-
+import { ConnectableObservable, merge, of as observableOf } from 'rxjs';
 import { delay, mergeMap, publish, takeUntil } from 'rxjs/operators';
 import { CesiumPureEventObserver } from './cesium-pure-event-observer';
 import { CesiumEvent } from '../consts/cesium-event.enum';
@@ -31,7 +30,10 @@ export class CesiumLongPressObserver extends CesiumPureEventObserver {
     }
 
     const startEventObservable = this.eventFactory.get(startEvent, this.modifier);
-    const stopEventObservable = this.eventFactory.get(stopEvent, this.modifier);
+    const stopEventObservable = merge(
+      this.eventFactory.get(stopEvent, this.modifier),
+      this.eventFactory.get(CesiumEvent.MOUSE_MOVE, this.modifier) // Prevent drag mistaken for long press
+    );
 
     // publish for preventing side effect
     const longPressObservable = publish()(startEventObservable.pipe(
