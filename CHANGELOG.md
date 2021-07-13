@@ -1,8 +1,12 @@
+## 0.72
+### Fixes
+* Fix update moving point on editors that don't work properly in tablets
+
 ## 0.71
 ### Fixes
 * Fix drag event mistaken for long press event #390
 
-## 0.70
+## 0.71
 ### Fixes
 * Fix update moving point on editors that don't work properly in tablets #385
 
