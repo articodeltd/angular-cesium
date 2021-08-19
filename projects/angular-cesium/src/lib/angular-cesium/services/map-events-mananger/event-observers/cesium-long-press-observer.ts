@@ -1,12 +1,14 @@
 import { ConnectableObservable, merge, of as observableOf } from 'rxjs';
-import { delay, mergeMap, publish, takeUntil } from 'rxjs/operators';
+import { delay, filter, mergeMap, publish, takeUntil, tap } from 'rxjs/operators';
 import { CesiumPureEventObserver } from './cesium-pure-event-observer';
 import { CesiumEvent } from '../consts/cesium-event.enum';
 import { CesiumEventModifier } from '../consts/cesium-event-modifier.enum';
 import { CesiumEventBuilder } from '../cesium-event-builder';
+import { Cartesian2 } from '../../../models/cartesian2';
 
 export class CesiumLongPressObserver extends CesiumPureEventObserver {
   public static LONG_PRESS_EVENTS_DURATION = 250;
+  public static LONG_PRESS_EVENTS_MIN_DISTANCE_PX = 10;
 
   constructor(protected event: CesiumEvent,
               protected modifier: CesiumEventModifier,
@@ -29,10 +31,23 @@ export class CesiumLongPressObserver extends CesiumPureEventObserver {
       stopEvent = CesiumEvent.MIDDLE_UP;
     }
 
-    const startEventObservable = this.eventFactory.get(startEvent, this.modifier);
+    // Save start event position
+    let startEventPosition: Cartesian2 = null;
+    const startEventObservable = this.eventFactory.get(startEvent, this.modifier)
+      .pipe(tap((movement) => (startEventPosition = movement.endPosition)));
+
+    // Prevent drag mistaken for long press by observing mouse move far from start event position
+    const mouseMoveEventObservable = this.eventFactory.get(CesiumEvent.MOUSE_MOVE)
+      .pipe(
+        filter((movement) => 
+          Math.abs(movement.endPosition.x - startEventPosition.x) > CesiumLongPressObserver.LONG_PRESS_EVENTS_MIN_DISTANCE_PX ||
+          Math.abs(movement.endPosition.y - startEventPosition.y) > CesiumLongPressObserver.LONG_PRESS_EVENTS_MIN_DISTANCE_PX
+        )
+      );
+
     const stopEventObservable = merge(
       this.eventFactory.get(stopEvent, this.modifier),
-      this.eventFactory.get(CesiumEvent.MOUSE_MOVE, this.modifier) // Prevent drag mistaken for long press
+      mouseMoveEventObservable 
     );
 
     // publish for preventing side effect
