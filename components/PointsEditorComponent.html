@@ -1109,7 +1109,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editPointLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editPointLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1187,7 +1187,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;pointLabelsLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;pointLabelsLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1282,8 +1282,8 @@ export class PointsEditorComponent implements OnDestroy {
   public editPoint$ &#x3D; new Subject&lt;AcNotification&gt;();
   public pointLabels$ &#x3D; new Subject&lt;AcNotification&gt;();
 
-  @ViewChild(&#x27;editPointLayer&#x27;, {static: false}) private editPointLayer: AcLayerComponent;
-  @ViewChild(&#x27;pointLabelsLayer&#x27;, {static: false}) private pointLabelsLayer: AcLayerComponent;
+  @ViewChild(&#x27;editPointLayer&#x27;) private editPointLayer: AcLayerComponent;
+  @ViewChild(&#x27;pointLabelsLayer&#x27;) private pointLabelsLayer: AcLayerComponent;
 
   constructor(
     private pointsEditor: PointsEditorService,

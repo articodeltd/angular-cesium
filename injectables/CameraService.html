@@ -2641,7 +2641,7 @@ export class CameraService {
     const flyTo &#x3D; (options &amp;&amp; options.flyTo) || false;
 
     this.viewer.trackedEntity &#x3D; undefined;
-    return new Promise(resolve &#x3D;&gt; {
+    return new Promise&lt;void&gt;(resolve &#x3D;&gt; {
       if (flyTo) {
         const flyToDuration &#x3D; (options &amp;&amp; options.flyToDuration) || 1;
         const altitude &#x3D; (options &amp;&amp; options.altitude) || 10000;

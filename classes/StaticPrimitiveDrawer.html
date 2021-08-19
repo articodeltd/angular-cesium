@@ -584,7 +584,7 @@ General static primitives drawer responsible of drawing static Cesium primitives
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/static-dynamic/static-primitive-drawer/static-primitive-drawer.service.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/services/drawers/static-dynamic/static-primitive-drawer/static-primitive-drawer.service.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -1702,6 +1702,9 @@ export abstract class StaticPrimitiveDrawer extends PrimitivesDrawerService {
   }
 
   add(geometryProps: any, instanceProps: any, primitiveProps: any): any {
+    if (Object.keys(instanceProps).length &#x3D;&#x3D;&#x3D; 0) {
+      throw(new Error(&#x27;instanceProps object is empty&#x27;));
+    }
     instanceProps.geometry &#x3D; new this.geometryType(geometryProps);
     primitiveProps.geometryInstances &#x3D; new Cesium.GeometryInstance(instanceProps);
     primitiveProps.asynchronous &#x3D; false;

@@ -103,6 +103,9 @@
                                 <a href="#contains">contains</a>
                             </li>
                             <li>
+                                <a href="#destroy">destroy</a>
+                            </li>
+                            <li>
                                 <a href="#get">get</a>
                             </li>
                             <li>
@@ -327,6 +330,44 @@
                                 <div class="io-description">
                                     
                                 </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="destroy"></a>
+                        <span class="name">
+                            <b>
+                            destroy
+                            </b>
+                            <a href="#destroy"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>destroy()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/angular-cesium/src/lib/cesium-extender/collections/html.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
                     </td>
                 </tr>
             </tbody>
@@ -629,6 +670,10 @@ export class HtmlCollection {
 
   contains(html: HtmlPrimitive): boolean {
     return Cesium.defined(html) &amp;&amp; html.collection &#x3D;&#x3D;&#x3D; this;
+  }
+
+  destroy() {
+    this.removeAll();
   }
 }
 </code></pre>

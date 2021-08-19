@@ -494,7 +494,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="300" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/ellipses-editor/ellipses-editor.component.ts:300</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="302" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/ellipses-editor/ellipses-editor.component.ts:302</a></div>
                             </td>
                         </tr>
 
@@ -563,7 +563,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="296" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/ellipses-editor/ellipses-editor.component.ts:296</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="298" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/ellipses-editor/ellipses-editor.component.ts:298</a></div>
                             </td>
                         </tr>
 
@@ -701,7 +701,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/ellipses-editor/ellipses-editor.component.ts:215</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/ellipses-editor/ellipses-editor.component.ts:217</a></div>
                             </td>
                         </tr>
 
@@ -770,7 +770,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="292" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/ellipses-editor/ellipses-editor.component.ts:292</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="294" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/ellipses-editor/ellipses-editor.component.ts:294</a></div>
                             </td>
                         </tr>
 
@@ -1094,7 +1094,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editEllipsesLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editEllipsesLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1207,7 +1207,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editPointsLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editPointsLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1322,8 +1322,8 @@ export class EllipsesEditorComponent implements OnDestroy {
   public editPoints$ &#x3D; new Subject&lt;AcNotification&gt;();
   public editEllipses$ &#x3D; new Subject&lt;AcNotification&gt;();
 
-  @ViewChild(&#x27;editEllipsesLayer&#x27;, {static: false}) private editEllipsesLayer: AcLayerComponent;
-  @ViewChild(&#x27;editPointsLayer&#x27;, {static: false}) private editPointsLayer: AcLayerComponent;
+  @ViewChild(&#x27;editEllipsesLayer&#x27;) private editEllipsesLayer: AcLayerComponent;
+  @ViewChild(&#x27;editPointsLayer&#x27;) private editPointsLayer: AcLayerComponent;
 
   constructor(
     private ellipsesEditor: EllipsesEditorService,
@@ -1414,8 +1414,10 @@ export class EllipsesEditorComponent implements OnDestroy {
       }
       case EditActions.DISPOSE: {
         const ellipse &#x3D; this.ellipsesManager.get(update.id);
-        this.removeEditLabels(ellipse);
-        this.ellipsesManager.dispose(update.id);
+        if (ellipse) {
+          this.removeEditLabels(ellipse);
+          this.ellipsesManager.dispose(update.id);
+        }
         break;
       }
       case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {

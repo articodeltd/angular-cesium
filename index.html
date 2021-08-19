@@ -161,7 +161,26 @@ export class SomeComponent{
        }&quot;&gt;
    &lt;/ac-3d-tile-layer&gt;</code></pre></div><h3 id="multiple-maps-support">Multiple maps support</h3>
 <p>Angular Cesium supports integration of multiple maps, for more details <a href="https://docs.angular-cesium.com/guides/multiple-maps-sync">here</a></p>
-<h3 id="camera">Camera</h3>
+<h3 id="maplayerprovideroptions-updates">MapLayerProviderOptions Updates</h3>
+<p><code>MapboxStyleImageryProvider</code> has been added to <code>MapLayerProviderOptions</code> for mapBox styles support. </p>
+<p>Component Usage:</p>
+<div><pre class="line-numbers"><code class="language-javascript">  import{ MapLayerProviderOptions } from &#39;angular-cesium&#39;
+  &#64;Component(...)
+  class SomeComponent{
+    mapboxStyleImageryProvider = MapLayerProviderOptions.MapboxStyleImageryProvider</code></pre></div><p>Template Usage:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ac-map&gt;
+  &lt;ac-map-layer-provider 
+  [provider]=&quot;mapboxStyleImageryProvider&quot;
+  [options]=&quot;{
+      styleId:&#39;style id from mapbox style dashboard item&#39;,
+      url:&#39;https://api.mapbox.com/styles/v1/&#39;,
+      username:&#39;your user name&#39;,
+      scaleFactor:&#39;&#64;2x&#39;,
+      tilesize:&#39;512&#39;,
+      accessToken : &#39;your access token from map box&#39;
+    }&quot;&gt;   
+  &lt;/ac-map-layer-provider&gt; 
+&lt;/ac-map&gt;</code></pre></div><h3 id="camera">Camera</h3>
 <h4 id="camera-keyboard-control-service"><a href="https://docs.angular-cesium.com/guides/camera-keyboard-control">Camera Keyboard Control Service</a></h4>
 <p>Service that manages keyboard keys and execute actions per request. Inject the keyboard control service into any layer, under your ac-map component, And defined you keyboard handlers using setKeyboardControls.</p>
 <div><pre class="line-numbers"><code class="language-javascript"> this.keyboardControlService.setKeyboardControls({

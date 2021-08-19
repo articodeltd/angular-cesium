@@ -496,7 +496,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="298" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polylines-editor/polylines-editor.component.ts:298</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="301" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polylines-editor/polylines-editor.component.ts:301</a></div>
                             </td>
                         </tr>
 
@@ -565,7 +565,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="294" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polylines-editor/polylines-editor.component.ts:294</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="297" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polylines-editor/polylines-editor.component.ts:297</a></div>
                             </td>
                         </tr>
 
@@ -703,7 +703,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polylines-editor/polylines-editor.component.ts:210</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polylines-editor/polylines-editor.component.ts:213</a></div>
                             </td>
                         </tr>
 
@@ -772,7 +772,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="290" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polylines-editor/polylines-editor.component.ts:290</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="293" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polylines-editor/polylines-editor.component.ts:293</a></div>
                             </td>
                         </tr>
 
@@ -1131,7 +1131,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editPointsLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editPointsLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1209,7 +1209,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editPolylinesLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editPolylinesLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1287,7 +1287,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;polylineLabelsLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;polylineLabelsLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1397,9 +1397,9 @@ export class PolylinesEditorComponent implements OnDestroy {
   public editPolylines$ &#x3D; new Subject&lt;AcNotification&gt;();
   public polylineLabels$ &#x3D; new Subject&lt;AcNotification&gt;();
 
-  @ViewChild(&#x27;editPointsLayer&#x27;, {static: false}) private editPointsLayer: AcLayerComponent;
-  @ViewChild(&#x27;editPolylinesLayer&#x27;, {static: false}) private editPolylinesLayer: AcLayerComponent;
-  @ViewChild(&#x27;polylineLabelsLayer&#x27;, {static: false}) private polylineLabelsLayer: AcLayerComponent;
+  @ViewChild(&#x27;editPointsLayer&#x27;) private editPointsLayer: AcLayerComponent;
+  @ViewChild(&#x27;editPolylinesLayer&#x27;) private editPolylinesLayer: AcLayerComponent;
+  @ViewChild(&#x27;polylineLabelsLayer&#x27;) private polylineLabelsLayer: AcLayerComponent;
 
   constructor(
     private polylinesEditor: PolylinesEditorService,
@@ -1473,6 +1473,7 @@ export class PolylinesEditorComponent implements OnDestroy {
       case EditActions.ADD_POINT: {
         const polyline &#x3D; this.polylinesManager.get(update.id);
         if (update.updatedPosition) {
+          polyline.moveTempMovingPoint(update.updatedPosition);
           polyline.addPoint(update.updatedPosition);
           this.renderEditLabels(polyline, update);
         }
@@ -1488,9 +1489,11 @@ export class PolylinesEditorComponent implements OnDestroy {
       }
       case EditActions.DISPOSE: {
         const polyline &#x3D; this.polylinesManager.get(update.id);
-        polyline.dispose();
-        this.removeEditLabels(polyline);
-        this.editLabelsRenderFn &#x3D; undefined;
+        if (polyline) {
+          polyline.dispose();
+          this.removeEditLabels(polyline);
+          this.editLabelsRenderFn &#x3D; undefined;
+        }
         break;
       }
       case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {

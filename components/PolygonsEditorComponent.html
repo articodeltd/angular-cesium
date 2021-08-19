@@ -507,7 +507,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="311" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polygons-editor/polygons-editor.component.ts:311</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="314" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polygons-editor/polygons-editor.component.ts:314</a></div>
                             </td>
                         </tr>
 
@@ -576,7 +576,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="307" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polygons-editor/polygons-editor.component.ts:307</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="310" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polygons-editor/polygons-editor.component.ts:310</a></div>
                             </td>
                         </tr>
 
@@ -714,7 +714,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polygons-editor/polygons-editor.component.ts:222</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polygons-editor/polygons-editor.component.ts:225</a></div>
                             </td>
                         </tr>
 
@@ -783,7 +783,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="303" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polygons-editor/polygons-editor.component.ts:303</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="306" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/polygons-editor/polygons-editor.component.ts:306</a></div>
                             </td>
                         </tr>
 
@@ -1142,7 +1142,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editPointsLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editPointsLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1220,7 +1220,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editPolygonsLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editPolygonsLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1298,7 +1298,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editPolylinesLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editPolylinesLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1419,9 +1419,9 @@ export class PolygonsEditorComponent implements OnDestroy {
   public editPolylines$ &#x3D; new Subject&lt;AcNotification&gt;();
   public editPolygons$ &#x3D; new Subject&lt;AcNotification&gt;();
 
-  @ViewChild(&#x27;editPolygonsLayer&#x27;, {static: false}) private editPolygonsLayer: AcLayerComponent;
-  @ViewChild(&#x27;editPointsLayer&#x27;, {static: false}) private editPointsLayer: AcLayerComponent;
-  @ViewChild(&#x27;editPolylinesLayer&#x27;, {static: false}) private editPolylinesLayer: AcLayerComponent;
+  @ViewChild(&#x27;editPolygonsLayer&#x27;) private editPolygonsLayer: AcLayerComponent;
+  @ViewChild(&#x27;editPointsLayer&#x27;) private editPointsLayer: AcLayerComponent;
+  @ViewChild(&#x27;editPolylinesLayer&#x27;) private editPolylinesLayer: AcLayerComponent;
 
   constructor(
     private polygonsEditor: PolygonsEditorService,
@@ -1496,6 +1496,7 @@ export class PolygonsEditorComponent implements OnDestroy {
       case EditActions.ADD_POINT: {
         const polygon &#x3D; this.polygonsManager.get(update.id);
         if (update.updatedPosition) {
+          polygon.moveTempMovingPoint(update.updatedPosition);
           polygon.addPoint(update.updatedPosition);
           this.renderEditLabels(polygon, update);
         }
@@ -1511,9 +1512,11 @@ export class PolygonsEditorComponent implements OnDestroy {
       }
       case EditActions.DISPOSE: {
         const polygon &#x3D; this.polygonsManager.get(update.id);
-        polygon.dispose();
-        this.removeEditLabels(polygon);
-        this.editLabelsRenderFn &#x3D; undefined;
+        if (polygon) {
+          polygon.dispose();
+          this.removeEditLabels(polygon);
+          this.editLabelsRenderFn &#x3D; undefined;
+        }
         break;
       }
       case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {

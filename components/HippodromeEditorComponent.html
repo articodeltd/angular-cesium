@@ -474,7 +474,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/hippodrome-editor/hippodrome-editor.component.ts:271</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/hippodrome-editor/hippodrome-editor.component.ts:274</a></div>
                             </td>
                         </tr>
 
@@ -543,7 +543,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="267" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/hippodrome-editor/hippodrome-editor.component.ts:267</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/hippodrome-editor/hippodrome-editor.component.ts:270</a></div>
                             </td>
                         </tr>
 
@@ -681,7 +681,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/hippodrome-editor/hippodrome-editor.component.ts:195</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/hippodrome-editor/hippodrome-editor.component.ts:198</a></div>
                             </td>
                         </tr>
 
@@ -750,7 +750,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="263" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/hippodrome-editor/hippodrome-editor.component.ts:263</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/hippodrome-editor/hippodrome-editor.component.ts:266</a></div>
                             </td>
                         </tr>
 
@@ -1074,7 +1074,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editHippodromesLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editHippodromesLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1187,7 +1187,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;editPointsLayer&#x27;, {static: undefined})<br />
+                                @ViewChild(&#x27;editPointsLayer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -1293,8 +1293,8 @@ export class HippodromeEditorComponent implements OnDestroy {
   public editPoints$ &#x3D; new Subject&lt;AcNotification&gt;();
   public editHippodromes$ &#x3D; new Subject&lt;AcNotification&gt;();
 
-  @ViewChild(&#x27;editPointsLayer&#x27;, {static: false}) private editPointsLayer: AcLayerComponent;
-  @ViewChild(&#x27;editHippodromesLayer&#x27;, {static: false}) private editHippodromesLayer: AcLayerComponent;
+  @ViewChild(&#x27;editPointsLayer&#x27;) private editPointsLayer: AcLayerComponent;
+  @ViewChild(&#x27;editHippodromesLayer&#x27;) private editHippodromesLayer: AcLayerComponent;
 
   constructor(
     private hippodromesEditor: HippodromeEditorService,
@@ -1367,6 +1367,7 @@ export class HippodromeEditorComponent implements OnDestroy {
       case EditActions.ADD_POINT: {
         const hippodrome &#x3D; this.hippodromesManager.get(update.id);
         if (update.updatedPosition) {
+          hippodrome.moveTempMovingPoint(update.updatedPosition);
           hippodrome.addPoint(update.updatedPosition);
           this.renderEditLabels(hippodrome, update);
         }
@@ -1374,8 +1375,10 @@ export class HippodromeEditorComponent implements OnDestroy {
       }
       case EditActions.DISPOSE: {
         const hippodrome &#x3D; this.hippodromesManager.get(update.id);
-        hippodrome.dispose();
-        this.removeEditLabels(hippodrome);
+        if (hippodrome) {
+          hippodrome.dispose();
+          this.removeEditLabels(hippodrome);
+        }
         break;
       }
       case EditActions.SET_EDIT_LABELS_RENDER_CALLBACK: {

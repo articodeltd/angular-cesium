@@ -124,7 +124,7 @@ It shouldn&#39;t be used directly.</p>
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ac-html *ngIf&#x3D;&quot;contextMenuService.showContextMenu&quot; [props]&#x3D;&quot;{position: contextMenuService.position}&quot;&gt;
-  &lt;div #contextMenuContainer&gt;&lt;/div&gt;
+  &lt;ng-template #contextMenuContainer&gt;&lt;/ng-template&gt;
 &lt;/ac-html&gt;
 </code></pre></td>
             </tr>
@@ -498,7 +498,7 @@ It shouldn&#39;t be used directly.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;contextMenuContainer&#x27;, {static: undefined, read: ViewContainerRef})<br />
+                                @ViewChild(&#x27;contextMenuContainer&#x27;, {read: ViewContainerRef})<br />
                             </code>
                         </td>
                     </tr>
@@ -560,7 +560,7 @@ import { BasicContextMenu } from &#x27;../../models/basic-context-menu&#x27;;
   selector: &#x27;ac-context-menu-wrapper&#x27;,
   template: &#x60;
     &lt;ac-html *ngIf&#x3D;&quot;contextMenuService.showContextMenu&quot; [props]&#x3D;&quot;{position: contextMenuService.position}&quot;&gt;
-      &lt;div #contextMenuContainer&gt;&lt;/div&gt;
+      &lt;ng-template #contextMenuContainer&gt;&lt;/ng-template&gt;
     &lt;/ac-html&gt;
   &#x60;,
   styles: [],
@@ -571,7 +571,7 @@ export class AcContextMenuWrapperComponent implements OnInit, OnDestroy {
   private contextMenuChangeSubscription: Subscription;
   private contextMenuOpenSubscription: Subscription;
 
-  @ViewChild(&#x27;contextMenuContainer&#x27;, {static: false, read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
+  @ViewChild(&#x27;contextMenuContainer&#x27;, { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
 
   constructor(public contextMenuService: ContextMenuService,
               private cd: ChangeDetectorRef,
@@ -631,7 +631,7 @@ export class AcContextMenuWrapperComponent implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ac-html *ngIf="contextMenuService.showContextMenu" [props]="{position: contextMenuService.position}">  <div #contextMenuContainer></div></ac-html></div>'
+        var COMPONENT_TEMPLATE = '<div><ac-html *ngIf="contextMenuService.showContextMenu" [props]="{position: contextMenuService.position}">  <ng-template #contextMenuContainer></ng-template></ac-html></div>'
     var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcCzmlDescComponent', 'selector': 'ac-czml-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcMapTerrainProviderComponent', 'selector': 'ac-map-terrain-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcPrimitivePolylineComponent', 'selector': 'ac-primitive-polyline'},{'name': 'AcRectangleComponent', 'selector': 'ac-rectangle'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'EllipsesEditorComponent', 'selector': 'ellipses-editor'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PointsEditorComponent', 'selector': 'points-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'},{'name': 'RangeAndBearingComponent', 'selector': 'range-and-bearing'},{'name': 'RectanglesEditorComponent', 'selector': 'rectangles-editor'}];
     var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'},{'name': 'DraggableToMapDirective', 'selector': '[draggableToMap]'}];
     var ACTUAL_COMPONENT = {'name': 'AcContextMenuWrapperComponent'};

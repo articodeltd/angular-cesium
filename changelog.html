@@ -31,7 +31,66 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h2 id="next">Next</h2>
+<h2 id="0-73">0.73</h2>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Enhance moving point in editors fix for tablets to accomodate inaccurate taps</li>
+</ul>
+<h2 id="0-72">0.72</h2>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fix update moving point on editors that don&#39;t work properly in tablets</li>
+</ul>
+<h2 id="0-71">0.71</h2>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fix drag event mistaken for long press event #390</li>
+</ul>
+<h2 id="0-71">0.71</h2>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fix update moving point on editors that don&#39;t work properly in tablets #385</li>
+</ul>
+<h2 id="0-69">0.69</h2>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fix <code>finishCreation()</code> missing functionality for <code>PolygonEditorService</code> and <code>PolylineEditorService</code></li>
+</ul>
+<h2 id="0-68">0.68</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>Add <code>finishCreation()</code> functionality to shape editors to allow users to finish creation programmatically. </li>
+<li>Update dependencies</li>
+</ul>
+<h2 id="0-67">0.67</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>Upgrade to Angular 11</li>
+</ul>
+<h2 id="0-66">0.66</h2>
+<h3 id="feautures">Feautures</h3>
+<ul>
+<li>Add in <code>MapboxStyleImageryProvider</code> functionality<h3 id="fixes">Fixes</h3>
+</li>
+<li>Fix <code>HippodromeEditorObservable</code> using wrong interface</li>
+<li>Fix <code>ContextMenuService</code> can&#39;t create instance bug - replace <code>div</code> with <code>ng-template</code></li>
+<li>Fix <code>viewer.destroy()</code> throwing exception <code>TypeError: e[i].destroy is not a function</code>. Added missing <code>destroy()</code> to <code>HtmlCollection</code>.</li>
+<li>Fix Editors <code>dispose()</code> issue when component is destroyed.</li>
+<li>Fix Rectangle editor <code>edit()</code>.</li>
+</ul>
+<h2 id="0-65">0.65</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>Upgrade to Angular 9 (Ivy)</li>
+</ul>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fix EllipseEditorObservable Disposing throws <code>undefined</code> error</li>
+<li>Fix Cesium breaking change with <code>createTileMapServiceImageryProvider</code> and <code>createOpenStreetMapImageryProvider</code>.<h3 id="breaking-changes">Breaking changes</h3>
+</li>
+<li><code>CesiumHeatMapMaterialCreator</code> removed to avoid compilation warnings. TBD: publish as external library.  </li>
+</ul>
+<h2 id="0-64">0.64</h2>
 <h3 id="features">Features</h3>
 <ul>
 <li>Add points-editor component, model, and service. <code>Points</code> are now first class components that support entity features, such as labels and enable/disable.<h3 id="fixes">Fixes</h3>

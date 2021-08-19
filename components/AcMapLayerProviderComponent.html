@@ -498,7 +498,7 @@ and: <a href="https://cesiumjs.org/Cesium/Build/Documentation/ImageryLayerCollec
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map-layer-provider/ac-map-layer-provider.component.ts:117</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map-layer-provider/ac-map-layer-provider.component.ts:116</a></div>
                             </td>
                         </tr>
 
@@ -567,7 +567,7 @@ and: <a href="https://cesiumjs.org/Cesium/Build/Documentation/ImageryLayerCollec
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map-layer-provider/ac-map-layer-provider.component.ts:145</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map-layer-provider/ac-map-layer-provider.component.ts:144</a></div>
                             </td>
                         </tr>
 
@@ -832,12 +832,11 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
       case MapLayerProviderOptions.BingMaps:
       case MapLayerProviderOptions.GoogleEarthEnterpriseMaps:
       case MapLayerProviderOptions.MapBox:
+      case MapLayerProviderOptions.MapboxStyleImageryProvider:
       case MapLayerProviderOptions.UrlTemplateImagery:
-        this.layerProvider &#x3D; new this.provider(this.options);
-        break;
       case MapLayerProviderOptions.MapTileService:
       case MapLayerProviderOptions.OpenStreetMap:
-        this.layerProvider &#x3D; this.provider(this.options);
+        this.layerProvider &#x3D; new this.provider(this.options);
         break;
       case MapLayerProviderOptions.OFFLINE:
         this.layerProvider &#x3D; this.createOfflineMapProvider();
