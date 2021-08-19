@@ -1,3 +1,7 @@
+## 0.73
+### Fixes
+* Enhance moving point in editors fix for tablets to accomodate inaccurate taps
+
 ## 0.72
 ### Fixes
 * Fix update moving point on editors that don't work properly in tablets
