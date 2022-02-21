@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist/angular-cesium-demo",
             "index": "projects/demo/src/index.html",
             "main": "projects/demo/src/main.ts",
@@ -39,7 +38,13 @@
             "allowedCommonJsDependencies": [
               "geodesy",
               "util"
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -53,7 +58,6 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -69,7 +73,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -194,7 +199,6 @@
             "main": "projects/landing-page/src/main.ts",
             "polyfills": "projects/landing-page/src/polyfills.ts",
             "tsConfig": "projects/landing-page/tsconfig.app.json",
-              "aot": true,
             "assets": [
               "projects/landing-page/src/favicon.ico",
               "projects/landing-page/src/assets",
@@ -208,7 +212,13 @@
               "projects/landing-page/src/styles.scss",
               "./node_modules/cesium/Build/Cesium/Widgets/widgets.css"
             ],
-            "scripts": ["./node_modules/cesium/Build/Cesium/Cesium.js"]
+            "scripts": ["./node_modules/cesium/Build/Cesium/Cesium.js"],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -238,7 +248,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
