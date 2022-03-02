@@ -1,11 +1,11 @@
 import { from as observableFrom, Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Cartesian3 } from 'cesium';
 import {
   AcEntity,
   AcLayerComponent,
   AcNotification,
   ActionType,
-  Cartesian3,
   CesiumEvent,
   CesiumEventModifier,
   SelectionManagerService

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { WebMercatorProjection, Rectangle as cRectangle, Cartographic, ImageMaterialProperty, Cartesian2, Cartesian3 } from 'cesium';
+import { WebMercatorProjection, Rectangle, Cartographic, ImageMaterialProperty, Cartesian2, Cartesian3 } from 'cesium';
 //import { Cartesian2 } from '../angular-cesium/models/cartesian2';
 //import { Cartesian3 } from '../angular-cesium/models/cartesian3';
 import { GeoUtilsService } from '../angular-cesium/services/geo-utils/geo-utils.service';
@@ -13,12 +13,12 @@ if (!h337) {
 }
 
 
-export interface Rectangle {
-  west: number;
-  south: number;
-  east: number;
-  north: number;
-}
+// export interface Rectangle {
+//  west: number;
+//  south: number;
+//  east: number;
+//  north: number;
+// }
 
 
 /**
@@ -163,7 +163,7 @@ export class CesiumHeatMapMaterialCreator {
     );
 
     const ellipsePoints = [top, right, bottom, left];
-    return cRectangle.fromCartesianArray(ellipsePoints);
+    return Rectangle.fromCartesianArray(ellipsePoints);
   }
 
   /**
@@ -171,7 +171,7 @@ export class CesiumHeatMapMaterialCreator {
    * @param points Cartesian3
    */
   static calculateContainingRectFromPoints(points: Cartesian3[]) {
-    return cRectangle.fromCartesianArray(points);
+    return Rectangle.fromCartesianArray(points);
   }
 
 
@@ -369,7 +369,7 @@ export class CesiumHeatMapMaterialCreator {
     this._mbounds.north += this._spacing * this._factor;
 
     this.bounds = this.mercatorToWgs84BB(this._mbounds);
-    this._rectangle = cRectangle.fromDegrees(this.bounds.west, this.bounds.south, this.bounds.east, this.bounds.north);
+    this._rectangle = Rectangle.fromDegrees(this.bounds.west, this.bounds.south, this.bounds.east, this.bounds.north);
 
     const {container, id} = this.createContainer(this.height, this.width);
     Object.assign(finalHeatmapOptions, {container});

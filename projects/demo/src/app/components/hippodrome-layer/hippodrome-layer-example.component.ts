@@ -51,7 +51,7 @@ export class HippodromeLayerExampleComponent implements OnInit {
 
   ngOnInit() {
     const viewer = this.cesiumService.getViewer();
-    viewer.camera.flyTo({destination: this.Cartesian3.fromDegrees(-90.0, 40.0, 1000000)});
+    viewer.camera.flyTo({destination: Cartesian3.fromDegrees(-90.0, 40.0, 1000000)});
   }
 
 

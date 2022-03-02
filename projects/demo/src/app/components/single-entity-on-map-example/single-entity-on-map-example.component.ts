@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Color, Cartesian3, ColorGeometryInstanceAttribute } from 'cesium';
+import { Color, Cartesian3, ColorGeometryInstanceAttribute, PolylineMaterialAppearance, Material } from 'cesium';
 import { AcArcComponent, AcHtmlComponent, AcLabelComponent } from 'angular-cesium';
 
 @Component({
@@ -7,7 +7,8 @@ import { AcArcComponent, AcHtmlComponent, AcLabelComponent } from 'angular-cesiu
   templateUrl: 'single-entity-on-map-example.component.html'
 })
 export class SingleEntityOnMapExampleComponent implements OnInit {
-  Cesium = Cesium;
+  // Cesium = Cesium;
+  Color = Color;
   position: any;
   aquamarine: any;
   positions: any;
