@@ -35,7 +35,7 @@ import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
  *        position: innerArrayItem.pos,
  *        pixelSize: 10,
  *        color: getTrackColor(track),
- *        outlineColor: Cesium.Color.BLUE,
+ *        outlineColor: Color.BLUE,
  *        outlineWidth: 1
  *      }">
  *      </ac-point-desc>

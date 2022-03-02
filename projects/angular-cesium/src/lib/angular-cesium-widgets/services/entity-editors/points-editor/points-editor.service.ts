@@ -1,5 +1,6 @@
 import { publish, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { Color, Cartesian3 } from 'cesium';
 import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
@@ -10,7 +11,7 @@ import { DisposableObservable } from '../../../../angular-cesium/services/map-ev
 import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
-import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
+// import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { PointsManagerService } from './points-manager.service';
 import { LabelProps } from '../../../models/label-props';
 import { generateKey } from '../../utils';
@@ -25,8 +26,8 @@ export const DEFAULT_POINT_OPTIONS: PointEditOptions = {
   dragPointEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.95),
-    outlineColor: Cesium.Color.BLACK.withAlpha(0.5),
+    color: Color.WHITE.withAlpha(0.95),
+    outlineColor: Color.BLACK.withAlpha(0.5),
     outlineWidth: 1,
     pixelSize: 10,
     show: true,

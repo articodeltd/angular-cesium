@@ -23,7 +23,7 @@ import { DynamicEllipseDrawerService } from '../../../services/drawers/static-dy
  *    ">
  *    &lt;/ac-dynamic-ellipse-desc&gt;
  *  ```
- *  __param:__ {Cesium.Cartesian3} center
+ *  __param:__ {Cartesian3} center
  *  __param:__ {number} semiMajorAxis
  *  __param:__ {number} semiMinorAxis
  *  __param:__ {number} rotation

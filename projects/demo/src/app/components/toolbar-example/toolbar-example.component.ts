@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Cartesian3 } from 'cesium';
 import {
   CameraService,
   CesiumService,
@@ -60,7 +61,7 @@ export class ToolbarExampleComponent implements OnInit {
   }
 
   goHome() {
-    this.cameraService.cameraFlyTo({destination: Cesium.Cartesian3.fromDegrees(35.21, 31.77, 200000)});
+    this.cameraService.cameraFlyTo({destination: Cartesian3.fromDegrees(35.21, 31.77, 200000)});
   }
 
   drawPoint() {

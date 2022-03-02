@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Color } from 'cesium';
 import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 import { MockDataProviderService } from '../../utils/services/dataProvider/mock-data-provider.service';
 import { map } from 'rxjs/operators';
@@ -11,7 +12,7 @@ import { map } from 'rxjs/operators';
           <ac-point-desc props="{
               position: point.position,
               pixelSize : 10,
-              outlineColor: Cesium.Color.CORNFLOWERBLUE,
+              outlineColor: Color.CORNFLOWERBLUE,
               outlineWidth: 2,
            }">
           </ac-point-desc>

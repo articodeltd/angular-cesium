@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { LabelCollection } from 'cesium';
 import { instance, mock, when } from 'ts-mockito';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { providerFromMock } from '../../utils/testingUtils';
@@ -11,7 +12,7 @@ describe('AcLabelComponent', () => {
   let fixture: ComponentFixture<AcLabelComponent>;
 
   const cesiumService = mock(CesiumService);
-  const labelCollection = mock(Cesium.LabelCollection);
+  const labelCollection = mock(LabelCollection);
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(labelCollection)});
 

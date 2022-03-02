@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { PolylineGeometry } from 'cesium';
+import { when } from 'when';
 import { CesiumService } from '../../../cesium/cesium.service';
 import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
 
@@ -9,7 +11,7 @@ import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primiti
 @Injectable()
 export class StaticPolylineDrawerService extends StaticPrimitiveDrawer {
   constructor(cesiumService: CesiumService) {
-    super(Cesium.PolylineGeometry, cesiumService);
+    super(PolylineGeometry, cesiumService);
   }
 
   /**
@@ -21,7 +23,7 @@ export class StaticPolylineDrawerService extends StaticPrimitiveDrawer {
     if (primitive.ready) {
       primitive.getGeometryInstanceAttributes().color = color;
     } else {
-      Cesium.when(primitive.readyPromise).then((readyPrimitive: any) => {
+      when(primitive.readyPromise).then((readyPrimitive: any) => {
         readyPrimitive.getGeometryInstanceAttributes().color.value = color;
       });
     }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PolylineCollection } from 'cesium';
 import { CesiumService } from '../../../cesium/cesium.service';
 import { PrimitivesDrawerService } from '../../primitives-drawer/primitives-drawer.service';
 
@@ -8,6 +9,6 @@ import { PrimitivesDrawerService } from '../../primitives-drawer/primitives-draw
 @Injectable()
 export class DynamicPolylineDrawerService extends PrimitivesDrawerService {
   constructor(cesiumService: CesiumService) {
-    super(Cesium.PolylineCollection, cesiumService);
+    super(PolylineCollection, cesiumService);
   }
 }

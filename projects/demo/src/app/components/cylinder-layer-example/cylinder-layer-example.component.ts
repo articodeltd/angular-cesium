@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 														length : 400000.0,
                             topRadius : 200000.0,
                             bottomRadius : 200000.0,
-                            material : Cesium.Color.GREEN.withAlpha(0.5),
+                            material : Color.GREEN.withAlpha(0.5),
 														}">
       </ac-cylinder-desc>
     </ac-layer>

@@ -15,7 +15,7 @@ import { PointPrimitiveDrawerService } from '../../services/drawers/point-primit
  *  ```
  *    <ac-point-primitive-desc props="{
  *      position: track.position,
- *      color: Cesium.Color.RED
+ *      color: Color.RED
  *    }">
  *    </ac-point-primitive-desc>
  *  ```

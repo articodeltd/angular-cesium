@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
+import { Color, Cartesian3 } from 'cesium';
 import { CoordinateConverter, EllipseEditorObservable, EllipseEditUpdate, EllipsesEditorService, LabelProps } from 'angular-cesium';
 
 @Component({
@@ -32,7 +33,7 @@ export class EllipsesEditorExampleComponent implements OnInit {
         {
           text: Math.round(update.majorRadius).toString() + 'm',
           scale: 0.5,
-          fillColor: Cesium.Color.BLUE,
+          fillColor: Color.BLUE,
         },
       );
 
@@ -40,7 +41,7 @@ export class EllipsesEditorExampleComponent implements OnInit {
         newLabels.push({
           text: Math.round(update.majorRadius).toString() + 'm',
           scale: 0.5,
-          fillColor: Cesium.Color.BLUE,
+          fillColor: Color.BLUE,
         });
       }
       return newLabels;
@@ -58,7 +59,7 @@ export class EllipsesEditorExampleComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.ellipsesEditor.edit(Cesium.Cartesian3.fromDegrees(-70, 0), 800000, 20, 400000);
+    this.editing$ = this.ellipsesEditor.edit(Cartesian3.fromDegrees(-70, 0), 800000, 20, 400000);
     this.editing$.setLabelsRenderFn((update: EllipseEditUpdate) => {
       const newLabels: LabelProps[] = [];
       newLabels.push(
@@ -66,7 +67,7 @@ export class EllipsesEditorExampleComponent implements OnInit {
         {
           text: Math.round(update.majorRadius).toString() + 'm',
           scale: 0.3,
-          fillColor: Cesium.Color.BLUE,
+          fillColor: Color.BLUE,
         },
       );
 
@@ -74,7 +75,7 @@ export class EllipsesEditorExampleComponent implements OnInit {
         newLabels.push({
           text: Math.round(update.minorRadius).toString() + 'm',
           scale: 0.3,
-          fillColor: Cesium.Color.BLUE,
+          fillColor: Color.BLUE,
         });
       }
       return newLabels;
@@ -96,7 +97,7 @@ export class EllipsesEditorExampleComponent implements OnInit {
 
   updateEllipseManually() {
     if (this.editing$) {
-      this.editing$.setManually(Cesium.Cartesian3.fromDegrees(-80, 0), 500000, 300000);
+      this.editing$.setManually(Cartesian3.fromDegrees(-80, 0), 500000, 300000);
     }
   }
 }

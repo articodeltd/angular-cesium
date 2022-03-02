@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
+import { Color, Cartesian3, PolylineMaterialAppearance, ColorGeometryInstanceAttribute, Material } from 'cesium';
 import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
@@ -13,12 +14,12 @@ export class ArcLayerExampleComponent implements OnInit, AfterViewInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;
 
   constructor() {
-    const colorMaterial = Cesium.Material.fromType('Color');
-    colorMaterial.uniforms.color = Cesium.Color.YELLOW;
+    const colorMaterial = Material.fromType('Color');
+    colorMaterial.uniforms.color = Color.YELLOW;
 
     const arcArray: any[] = [];
     for (let i = 0; i < 1000; i++) {
-      const randCenter = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
+      const randCenter = Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
       const randomDelta = Math.PI;
       const randomRadius = Math.random() * 1000000;
       const randomAngle = Math.random() * 3 - 1;
@@ -31,11 +32,11 @@ export class ArcLayerExampleComponent implements OnInit, AfterViewInit {
           delta: randomDelta,
           radius: randomRadius,
           center: randCenter,
-          appearance: new Cesium.PolylineMaterialAppearance({
+          appearance: new PolylineMaterialAppearance({
             material: colorMaterial
           }),
           attributes: {
-            color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+            color: ColorGeometryInstanceAttribute.fromColor(Color.fromRandom())
           },
         }
       });
@@ -47,15 +48,15 @@ export class ArcLayerExampleComponent implements OnInit, AfterViewInit {
       });
 
       setTimeout(function () {
-        const newColorMaterial = Cesium.Material.fromType('Color');
-        newColorMaterial.uniforms.color = Cesium.Color.RED;
+        const newColorMaterial = Material.fromType('Color');
+        newColorMaterial.uniforms.color = Color.RED;
 
         arcArray.forEach(function (arc) {
           const newArc = Object.assign({}, arc);
 
           newArc.entity = {};
 
-          newArc.entity.appearance = new Cesium.PolylineMaterialAppearance({
+          newArc.entity.appearance = new PolylineMaterialAppearance({
             material: newColorMaterial
           });
 

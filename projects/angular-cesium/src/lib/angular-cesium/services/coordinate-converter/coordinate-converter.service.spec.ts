@@ -1,4 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
+import { Camera } from 'cesium';
 import { instance, mock, when } from 'ts-mockito';
 import { providerFromMock } from '../../utils/testingUtils';
 import { CoordinateConverter } from './coordinate-converter.service';
@@ -6,7 +7,7 @@ import { CesiumService } from '../cesium/cesium.service';
 
 describe('CoordinateConverter', () => {
   const cesiumService = mock(CesiumService);
-  const cesiumCamera = mock(Cesium.Camera);
+  const cesiumCamera = mock(Camera);
 
   when(cesiumService.getViewer()).thenReturn({ camera: instance(cesiumCamera) } as any);
 

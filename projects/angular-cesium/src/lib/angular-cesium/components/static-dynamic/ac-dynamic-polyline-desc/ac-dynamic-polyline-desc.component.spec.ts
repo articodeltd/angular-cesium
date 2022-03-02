@@ -1,5 +1,6 @@
 // tslint:disable
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { PrimitiveCollection } from 'cesium';
 import { AcDynamicPolylineDescComponent } from './ac-dynamic-polyline-desc.component';
 import { DynamicPolylineDrawerService } from '../../../services/drawers/static-dynamic/dynamic-polyline-drawer/dynamic-polyline-drawer.service';
 import { instance, mock, when } from 'ts-mockito';
@@ -14,7 +15,7 @@ describe('AcDynamicPolylineDescComponent', () => {
   let fixture: ComponentFixture<AcDynamicPolylineDescComponent>;
 
   const cesiumService = mock(CesiumService);
-  const collection = mock(Cesium.PrimitiveCollection);
+  const collection = mock(PrimitiveCollection);
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(collection)} as any);
 

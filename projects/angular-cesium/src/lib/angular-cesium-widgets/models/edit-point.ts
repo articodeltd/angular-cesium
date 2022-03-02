@@ -1,5 +1,6 @@
+import { CallbackProperty, Cartesian3 } from 'cesium';
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
-import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+//import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { PointProps } from './point-edit-options';
 
 export class EditPoint extends AcEntity {
@@ -52,8 +53,8 @@ export class EditPoint extends AcEntity {
     return this.position.clone();
   }
 
-  getPositionCallbackProperty(): Cartesian3 {
-    return new Cesium.CallbackProperty(this.getPosition.bind(this), false);
+  getPositionCallbackProperty(): CallbackProperty {
+    return new CallbackProperty(this.getPosition.bind(this), false);
   }
 
 

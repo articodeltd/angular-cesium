@@ -1,4 +1,7 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
+import { MapMode2D, ScreenSpaceEventType, Cartesian3, HeadingPitchRoll, Cesium3DTileset, IonResource, 
+         Cesium3DTileStyle
+        } from 'cesium';
 import { MapsManagerService, SceneMode, ViewerConfiguration } from 'angular-cesium';
 
 @Component({
@@ -22,7 +25,7 @@ export class MainMapComponent implements AfterViewInit {
       homeButton: false,
       navigationHelpButton: false,
       navigationInstructionsInitiallyVisible: false,
-      mapMode2D: Cesium.MapMode2D.ROTATE,
+      mapMode2D: MapMode2D.ROTATE,
       timeline: false,
       animation: false,
       shouldAnimate: true,
@@ -32,7 +35,7 @@ export class MainMapComponent implements AfterViewInit {
 
     viewerConf.viewerModifier = (viewer: any) => {
       viewer.screenSpaceEventHandler.removeInputAction(
-        Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK
+        ScreenSpaceEventType.LEFT_DOUBLE_CLICK
       );
       viewer.scene.highDynamicRange = true;
 
@@ -41,15 +44,15 @@ export class MainMapComponent implements AfterViewInit {
       viewer.clock.multiplier = 1000;
 
       viewer.camera.flyTo({
-        destination: new Cesium.Cartesian3(1333201.265614267, -4656207.315943864, 4137300.0112722577),
-        orientation: new Cesium.HeadingPitchRoll(0.5900541155692771, -0.2936886344551206, 0.0019308789347078914),
+        destination: new Cartesian3(1333201.265614267, -4656207.315943864, 4137300.0112722577),
+        orientation: new HeadingPitchRoll(0.5900541155692771, -0.2936886344551206, 0.0019308789347078914),
       });
 
-      const tileset = new Cesium.Cesium3DTileset({
-        url: Cesium.IonResource.fromAssetId(1988)
+      const tileset = new Cesium3DTileset({
+        url: IonResource.fromAssetId(1988)
       });
 
-      //   tileset.style = new Cesium.Cesium3DTileStyle({
+      //   tileset.style = new Cesium3DTileStyle({
       //     color: {
       //         conditions: [
       //             ['${height} >= 300', 'rgba(45, 0, 75, 0.5)'],
@@ -72,12 +75,12 @@ export class MainMapComponent implements AfterViewInit {
     if (this.multiMaps) {
       setTimeout(() => {
         this.mapsManagerService.getMap('sub-map').getCesiumViewer().camera.flyTo({
-          destination: new Cesium.Cartesian3.fromDegrees(-74, 40.5, 10000),
+          destination: Cartesian3.fromDegrees(-74, 40.5, 10000),
           duration: 1
         });
         this.mapsManagerService.getMap('main-map').getCesiumViewer().camera.flyTo({
-          destination: new Cesium.Cartesian3(1333201.265614267, -4656207.315943864, 4137300.0112722577),
-          orientation: new Cesium.HeadingPitchRoll(0.5900541155692771, -0.2936886344551206, 0.0019308789347078914),
+          destination: new Cartesian3(1333201.265614267, -4656207.315943864, 4137300.0112722577),
+          orientation: new HeadingPitchRoll(0.5900541155692771, -0.2936886344551206, 0.0019308789347078914),
         });
         setTimeout(() => this.mapsManagerService.sync2DMapsCameras([{ id: 'main-map' }, { id: 'sub-map' }]), 2000);
       }, 5000);

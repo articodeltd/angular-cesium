@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
+import { Color, Cartesian3, Cesium3DTileset, IonResource, Math as cMath } from 'cesium';
 import {
   CameraService,
   CesiumService,
@@ -46,15 +47,15 @@ export class PolygonsEditorExampleComponent implements OnInit {
     const viewer = this.cesiumService.getViewer();
     if (!this.tileset) {
       this.tileset = viewer.scene.primitives.add(
-        new Cesium.Cesium3DTileset({
-          url: Cesium.IonResource.fromAssetId(29328)
+        new Cesium3DTileset({
+          url: IonResource.fromAssetId(29328)
         })
       );
     }
     this.camService.cameraFlyTo({
-      destination: Cesium.Cartesian3.fromRadians(this.tilesLocation.longitude, this.tilesLocation.latitude, this.tilesLocation.height),
+      destination: Cartesian3.fromRadians(this.tilesLocation.longitude, this.tilesLocation.latitude, this.tilesLocation.height),
       orientation : {
-        pitch : Cesium.Math.toRadians(-35.0),
+        pitch : cMath.toRadians(-35.0),
       }});
 
     if (this.editing$) {
@@ -78,9 +79,9 @@ export class PolygonsEditorExampleComponent implements OnInit {
       this.stopEdit();
     }
     const initialPos = [
-      Cesium.Cartesian3.fromDegrees(20, 40),
-      Cesium.Cartesian3.fromDegrees(45, 40),
-      Cesium.Cartesian3.fromDegrees(30, 20)];
+      Cartesian3.fromDegrees(20, 40),
+      Cartesian3.fromDegrees(45, 40),
+      Cartesian3.fromDegrees(30, 20)];
     this.editing$ = this.polygonsEditor.edit(initialPos);
     this.editing$.setLabelsRenderFn((update: PolygonEditUpdate) => {
       let counter = 0;
@@ -88,8 +89,8 @@ export class PolygonsEditorExampleComponent implements OnInit {
       update.positions.forEach(position => newLabels.push({
         text: `Point ${counter++}`,
         scale: 0.6,
-        eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
-        fillColor: Cesium.Color.BLUE,
+        eyeOffset: new Cartesian3(10, 10, -1000),
+        fillColor: Color.BLUE,
       }));
       return newLabels;
     });
@@ -97,7 +98,7 @@ export class PolygonsEditorExampleComponent implements OnInit {
       this.editing$.updateLabels(
         this.editing$.getLabels().map(label => {
           label.text += '*';
-          label.fillColor = Cesium.Color.RED;
+          label.fillColor = Color.RED;
           label.showBackground = true;
           return label;
         })
@@ -130,7 +131,7 @@ export class PolygonsEditorExampleComponent implements OnInit {
       // update current point
       const polygonPoints = this.editing$.getCurrentPoints();
       const firstPoint = polygonPoints[0];
-      firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
+      firstPoint.setPosition(Cartesian3.fromDegrees(20, 20));
       const newUpdatedPoints = polygonPoints.map(p => ({
         position: p.getPosition(),
         pointProps: p.props,
@@ -140,7 +141,7 @@ export class PolygonsEditorExampleComponent implements OnInit {
 
       // or add new point
       const polygonPositions = this.editing$.getCurrentPoints().map(p => p.getPosition());
-      const newPosition = Cesium.Cartesian3.fromDegrees(30, 24);
+      const newPosition = Cartesian3.fromDegrees(30, 24);
       polygonPositions.push(newPosition);
       this.editing$.setManually(polygonPositions);
     }

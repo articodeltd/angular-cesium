@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PolylineCollection, Color, Material } from 'cesium';
 import { CesiumService } from '../../cesium/cesium.service';
 import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.service';
 
@@ -9,7 +10,7 @@ import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.
 @Injectable()
 export class PolylinePrimitiveDrawerService extends PrimitivesDrawerService {
   constructor(cesiumService: CesiumService) {
-    super(Cesium.PolylineCollection, cesiumService);
+    super(PolylineCollection, cesiumService);
   }
 
   add(cesiumProps: any) {
@@ -17,9 +18,9 @@ export class PolylinePrimitiveDrawerService extends PrimitivesDrawerService {
   }
 
   update(cesiumObject: any, cesiumProps: any) {
-    if (cesiumProps.material instanceof Cesium.Color) {
+    if (cesiumProps.material instanceof Color) {
       if (cesiumObject.material && cesiumObject.material.uniforms &&
-        cesiumObject.material.uniforms.color instanceof Cesium.Color) {
+        cesiumObject.material.uniforms.color instanceof Color) {
         this.withColorMaterial(cesiumProps);
       } else if (!cesiumObject.material.uniforms.color.equals(cesiumProps.material)) {
         cesiumObject.material.uniforms.color = cesiumProps.material;
@@ -29,8 +30,8 @@ export class PolylinePrimitiveDrawerService extends PrimitivesDrawerService {
   }
 
   withColorMaterial(cesiumProps: any) {
-    if (cesiumProps.material instanceof Cesium.Color) {
-      const material = Cesium.Material.fromType('Color');
+    if (cesiumProps.material instanceof Color) {
+      const material = Material.fromType('Color');
       material.uniforms.color = cesiumProps.material;
       cesiumProps.material = material;
     }

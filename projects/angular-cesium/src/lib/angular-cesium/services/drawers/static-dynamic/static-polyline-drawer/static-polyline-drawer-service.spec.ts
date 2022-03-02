@@ -1,4 +1,5 @@
 import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { ColorGeometryInstanceAttribute, Color, Cartesian3, PolylineColorAppearance, PrimitiveCollection } from 'cesium';
 import { anything, instance, mock, verify, when } from 'ts-mockito';
 import { StaticPolylineDrawerService } from './static-polyline-drawer.service';
 import { CesiumService } from '../../../cesium/cesium.service';
@@ -15,23 +16,23 @@ describe('StaticPolylineDrawerService', () => {
   beforeEach(() => {
     staticPolylineAttribute = {
       attributes: {
-        color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+        color: ColorGeometryInstanceAttribute.fromColor(Color.fromRandom())
       }
     };
 
     staticPolylineProps = {
       geometry: {
         width: 1,
-        positions: Cesium.Cartesian3.fromDegreesArray(
+        positions: Cartesian3.fromDegreesArray(
           [
             Math.floor(Math.random() * 50), Math.floor(Math.random() * 50),
             Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)
           ]),
       },
       attributes: {
-        color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+        color: ColorGeometryInstanceAttribute.fromColor(Color.fromRandom())
       },
-      appearance: new Cesium.PolylineColorAppearance({
+      appearance: new PolylineColorAppearance({
         closed: true,
         translucent: false
       }),
@@ -42,7 +43,7 @@ describe('StaticPolylineDrawerService', () => {
       }
     };
 
-    primitiveCollection = mock(Cesium.PrimitiveCollection);
+    primitiveCollection = mock(PrimitiveCollection);
     when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 
     TestBed.configureTestingModule({

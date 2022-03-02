@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
+// import * as Cesium from 'cesium';
 import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { PolygonEditUpdate } from '../../models/polygon-edit-update';
@@ -95,7 +96,7 @@ import { EditablePolygon } from '../../models/editable-polygon';
 })
 export class PolygonsEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: PolygonEditUpdate, labels: LabelProps[]) => LabelProps[];
-  public Cesium = Cesium;
+  // public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editPolylines$ = new Subject<AcNotification>();
   public editPolygons$ = new Subject<AcNotification>();

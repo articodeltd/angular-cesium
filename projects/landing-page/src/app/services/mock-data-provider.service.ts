@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { from, interval } from 'rxjs';
 import { flatMap, map } from 'rxjs/operators';
+import { Math as cMath, Cartesian3, Cartographic } from 'cesium';
 
 const getMovementDistance = intervalMs =>
-  (Cesium.Math.toRadians(0.01) * intervalMs) / 1000;
+  (cMath.toRadians(0.01) * intervalMs) / 1000;
 const getMaxHeadingChange = intervalMs => ((Math.PI / 2) * intervalMs) / 1000;
 const getChanceToChangeDirection = intervalMs => (0.333 * intervalMs) / 1000;
 
@@ -112,7 +113,7 @@ export class MockDataProviderService {
     for (let i = 0; i < amount; i++) {
       staticEntities.push({
         id: i.toString(),
-        position: Cesium.Cartesian3.fromDegrees(-100.0 + i * 5, 40.0)
+        position: Cartesian3.fromDegrees(-100.0 + i * 5, 40.0)
       });
     }
     return staticEntities;
@@ -137,7 +138,7 @@ export class MockDataProviderService {
         Math.random();
       staticEntities.push({
         id: i.toString(),
-        position: new Cesium.Cartographic(long, lat, height),
+        position: new Cartographic(long, lat, height),
         heading: Math.random() * 2 * Math.PI
       });
     }

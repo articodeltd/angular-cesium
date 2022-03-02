@@ -59,6 +59,7 @@
     "rxjs": "~6.5.4",
     "ts-mockito": "^2.0.2",
     "tslib": "^2.0.0",
+    "when": "^3.7.8",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

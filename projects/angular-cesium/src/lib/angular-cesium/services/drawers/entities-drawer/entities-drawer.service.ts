@@ -1,4 +1,5 @@
 import { BasicDrawerService } from '../basic-drawer/basic-drawer.service';
+import { CustomDataSource, CallbackProperty } from 'cesium';
 import { CesiumService } from '../../cesium/cesium.service';
 import { GraphicsType } from './enums/graphics-type.enum';
 import { EntitiesDrawerOptions } from '../../../models/entities-drawer-options';
@@ -23,7 +24,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     },
   ) {
     super();
-    this.graphicsTypeName = GraphicsType[this.graphicsType];
+    this.graphicsTypeName = "Unknown";
 
     // Fix bad enum compilation
     for (const i in GraphicsType) {
@@ -48,7 +49,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     const finalOptions = options || this.defaultOptions;
     const dataSources = [];
     for (let i = 0; i < finalOptions.collectionsNumber; i++) {
-      const dataSource = new Cesium.CustomDataSource(this.graphicsTypeName);
+      const dataSource = new CustomDataSource(this.graphicsTypeName);
       dataSources.push(dataSource);
       this.cesiumService.getViewer().dataSources.add(dataSource);
       this.entityCollections.set(
@@ -87,7 +88,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
   update(entity: any, cesiumProps: any) {
     this.suspendEntityCollection(entity);
 
-    if (entity.position instanceof Cesium.CallbackProperty) {
+    if (entity.position instanceof CallbackProperty) {
       if (entity.position._isConstant) {
         entity.position = cesiumProps.position;
       }

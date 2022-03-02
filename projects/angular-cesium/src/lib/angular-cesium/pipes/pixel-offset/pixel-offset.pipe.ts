@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Cartesian2 } from 'cesium';
 
 /**
  * @example
@@ -16,7 +17,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PixelOffsetPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    return new Cesium.Cartesian2(value[0], value[1]);
+    return new Cartesian2(value[0], value[1]);
   }
 
 }

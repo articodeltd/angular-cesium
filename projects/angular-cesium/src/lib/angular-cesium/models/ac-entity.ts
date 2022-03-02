@@ -4,7 +4,7 @@
  * entity= new AcEntity({
  *  	id: 0,
  *  	name: 'click me',
- *  	position: Cesium.Cartesian3.fromRadians(0.5, 0.5),
+ *  	position: Cartesian3.fromRadians(0.5, 0.5),
  * });
  * ```
  */

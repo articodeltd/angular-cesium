@@ -14,8 +14,8 @@
 </ac-map-layer-provider>
 <ac-map-layer-provider *ngIf="appSettingsService.showMapLayer" [provider]="MapLayerProviderOptions.SingleTileImagery"
                        [options]="{
-                                url : 'assets/angular_cesium.png',
-                                rectangle : Cesium.Rectangle.fromDegrees(-75.0, 28.0, -67.0, 29.75)
+                                url : 'assets/angular_png',
+                                rectangle : Rectangle.fromDegrees(-75.0, 28.0, -67.0, 29.75)
                             }">
 </ac-map-layer-provider>
 
@@ -38,8 +38,8 @@
                        <!--[provider]="MapLayerProviderOptions.BingMaps"-->
                        <!--[options]="{-->
                                     <!--url : 'https://dev.virtualearth.net',-->
-                                    <!--key : Cesium.BingMapsApi.defaultKey,-->
-                                    <!--mapStyle : Cesium.BingMapsStyle.AERIAL-->
+                                    <!--key : BingMapsApi.defaultKey,-->
+                                    <!--mapStyle : BingMapsStyle.AERIAL-->
                             <!--}">-->
 <!--</ac-map-layer-provider>-->
 
@@ -47,8 +47,8 @@
                        <!--[provider]="MapLayerProviderOptions.BingMaps"-->
                        <!--[options]="{-->
                                     <!--url : 'https://dev.virtualearth.net',-->
-                                    <!--key : Cesium.BingMapsApi.defaultKey,-->
-                                    <!--mapStyle : Cesium.BingMapsStyle.AERIAL-->
+                                    <!--key : BingMapsApi.defaultKey,-->
+                                    <!--mapStyle : BingMapsStyle.AERIAL-->
                             <!--}">-->
 <!--</ac-map-layer-provider>-->
 <!--<ac-map-layer-provider *ngIf="appSettingsService.showMapLayer"-->

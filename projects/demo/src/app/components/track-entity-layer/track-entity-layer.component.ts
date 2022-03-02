@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Color, Cartesian3, Cartographic } from 'cesium';
 import {
   AcEntity,
   AcLayerComponent,
@@ -18,8 +19,8 @@ const initialLocation = {
   actionType: ActionType.ADD_UPDATE,
   entity: AcEntity.create({
     width: 10,
-    color: Cesium.Color.BLUE,
-    position: Cesium.Cartesian3.fromDegrees(32, 40),
+    color: Color.BLUE,
+    position: Cartesian3.fromDegrees(32, 40),
   }),
 };
 
@@ -46,15 +47,15 @@ export class TrackEntityLayerComponent implements OnInit, AfterViewInit {
 
     setInterval(() => {
       const oldPoint: any = this.points$.getValue().entity;
-      const oldPos = Cesium.Cartographic.fromCartesian(oldPoint.position);
+      const oldPos = Cartographic.fromCartesian(oldPoint.position);
 
-      const position = Cesium.Cartesian3.fromRadians(oldPos.longitude + 0.0001, oldPos.latitude);
+      const position = Cartesian3.fromRadians(oldPos.longitude + 0.0001, oldPos.latitude);
       this.points$.next({
         id: '1',
         actionType: ActionType.ADD_UPDATE,
         entity: AcEntity.create({
           width: 10,
-          color: Cesium.Color.BLUE,
+          color: Color.BLUE,
           position,
         }),
       });

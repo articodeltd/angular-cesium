@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Ellipsoid, Cartesian3, Cartographic } from 'cesium';
 import { CesiumService } from '../cesium/cesium.service';
-import { Cartesian3 } from '../../models/cartesian3';
+// import { Cartesian3 } from '../../models/cartesian3';
 import { Vec3 } from '../../models/vec3';
 
 @Injectable()
 export class GeoUtilsService {
   static pointByLocationDistanceAndAzimuth(currentLocation: any, meterDistance: number, radianAzimuth: number, deprecated?) {
-    const distance = meterDistance / Cesium.Ellipsoid.WGS84.maximumRadius;
+    const distance = meterDistance / Ellipsoid.WGS84.maximumRadius;
     const cartographicLocation =
-      currentLocation instanceof Cesium.Cartesian3 ? Cesium.Cartographic.fromCartesian(currentLocation) : currentLocation;
+      currentLocation instanceof Cartesian3 ? Cartographic.fromCartesian(currentLocation) : currentLocation;
     const cartesianLocation =
-      currentLocation instanceof Cesium.Cartesian3
+      currentLocation instanceof Cartesian3
         ? currentLocation
-        : Cesium.Cartesian3.fromRadians(currentLocation.longitude, currentLocation.latitude, currentLocation.height);
+        : Cartesian3.fromRadians(currentLocation.longitude, currentLocation.latitude, currentLocation.height);
 
     let resultPosition;
     let resultDistance;
@@ -54,11 +55,11 @@ export class GeoUtilsService {
 
     destinationLon = ((destinationLon + 3 * Math.PI) % (2 * Math.PI)) - Math.PI;
 
-    return Cesium.Cartesian3.fromRadians(destinationLon, destinationLat);
+    return Cartesian3.fromRadians(destinationLon, destinationLat);
   }
 
   static distance(pos0: Cartesian3, pos1: Cartesian3): number {
-    return Cesium.Cartesian3.distance(pos0, pos1);
+    return Cartesian3.distance(pos0, pos1);
   }
 
   static getPositionsDelta(position0: Cartesian3, position1: Cartesian3): Vec3 {
@@ -74,23 +75,23 @@ export class GeoUtilsService {
       position.x += delta.x;
       position.y += delta.y;
       position.z += delta.z;
-      const cartographic = Cesium.Cartographic.fromCartesian(position);
+      const cartographic = Cartographic.fromCartesian(position);
       cartographic.height = 0;
-      const cartesian = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, cartographic.height);
+      const cartesian = Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, cartographic.height);
       position.x = cartesian.x;
       position.y = cartesian.y;
       position.z = cartesian.z;
       return position;
     } else {
-      const cartesian = new Cesium.Cartesian3(position.x + delta.x, position.y + delta.y, position.z + delta.z);
-      const cartographic = Cesium.Cartographic.fromCartesian(cartesian);
+      const cartesian = new Cartesian3(position.x + delta.x, position.y + delta.y, position.z + delta.z);
+      const cartographic = Cartographic.fromCartesian(cartesian);
       cartographic.height = 0;
-      return Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, cartographic.height);
+      return Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, cartographic.height);
     }
   }
 
   static middleCartesian3Point(position0: Cartesian3, position1: Cartesian3) {
-    return new Cesium.Cartesian3(position1.x - position0.x / 2, position1.y - position0.y / 2, position1.z - position0.z / 2);
+    return new Cartesian3(position1.x - position0.x / 2, position1.y - position0.y / 2, position1.z - position0.z / 2);
   }
 
   constructor(private cesiumService: CesiumService) {

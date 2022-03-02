@@ -21,11 +21,11 @@ import { BasicStaticPrimitiveDesc } from '../../../services/basic-primitive-desc
  *            }"
  *            instanceProps="{
  *              attributes: {
- *                  Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+ *                  ColorGeometryInstanceAttribute.fromColor(Color.fromRandom())
  *              }
  *            }"
  *            primitiveProps="{
- *              appearance: new Cesium.PolylineColorAppearance()
+ *              appearance: new PolylineColorAppearance()
  *    }"&gt&lt/ac-static-polyline-desc&gt
  *  ```
  */

@@ -11,9 +11,9 @@
 // 	const viewerFactory = mock(ViewerFactory);
 // 	const element = document.createElement("div");
 // 	const defaultTilt = true;
-// 	const mode3D = Cesium.SceneMode.SCENE3D;
-// 	const mode2D = Cesium.SceneMode.SCENE2D;
-// 	const modeColumbus = Cesium.SceneMode.COLUMBUS_VIEW;
+// 	const mode3D = SceneMode.SCENE3D;
+// 	const mode2D = SceneMode.SCENE2D;
+// 	const modeColumbus = SceneMode.COLUMBUS_VIEW;
 
 // 	when(viewerFactory.createViewer(anything(),anything())).thenReturn({
 // 		scene: {

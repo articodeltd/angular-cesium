@@ -1,5 +1,6 @@
 import { from, from as observableFrom, Observable, Subject } from 'rxjs';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Cartesian3, Cartesian2, Color } from 'cesium';
 import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
@@ -18,8 +19,8 @@ export class HtmlExampleComponent implements OnInit {
       id: '0',
       show: true,
       name: 'html 1',
-      position: Cesium.Cartesian3.fromDegrees(30, 30),
-      color: Cesium.Color.RED
+      position: Cartesian3.fromDegrees(30, 30),
+      color: Color.RED
     },
   };
   html2 = {
@@ -29,8 +30,8 @@ export class HtmlExampleComponent implements OnInit {
       id: '1',
       show: true,
       name: 'html 2',
-      position: Cesium.Cartesian3.fromDegrees(35, 35),
-      color: Cesium.Color.RED
+      position: Cartesian3.fromDegrees(35, 35),
+      color: Color.RED
     }
   };
 
@@ -49,7 +50,7 @@ export class HtmlExampleComponent implements OnInit {
     }
 
     this.html2.entity.name = 'gonen';
-    this.html2.entity.position = Cesium.Cartesian3.fromDegrees(44, 44);
+    this.html2.entity.position = Cartesian3.fromDegrees(44, 44);
     this.layer.update(this.html2.entity, this.html2.id);
   }
 
@@ -59,7 +60,7 @@ export class HtmlExampleComponent implements OnInit {
   }
 
   pixelOffset(value) {
-    return new Cesium.Cartesian2(value[0], value[1]);
+    return new Cartesian2(value[0], value[1]);
   }
 
   removeFirst() {

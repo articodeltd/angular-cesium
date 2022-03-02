@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { BillboardCollection } from 'cesium';
 import { AcBillboardDescComponent } from './ac-billborad-desc.component';
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import { instance, mock, when } from 'ts-mockito';
@@ -13,7 +14,7 @@ describe('AcBillboardDescComponent', () => {
   let fixture: ComponentFixture<AcBillboardDescComponent>;
 
   const cesiumService = mock(CesiumService);
-  const billboardCollection = mock(Cesium.BillboardCollection);
+  const billboardCollection = mock(BillboardCollection);
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(billboardCollection)});
 

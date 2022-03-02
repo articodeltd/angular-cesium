@@ -12,7 +12,7 @@ import { MockDataProviderService } from '../../utils/services/dataProvider/mock-
                     position: track.position,
                     pixelSize: 20,
                     color: track.color,
-                    outlineColor: Cesium.Color.RED,
+                    outlineColor: Color.RED,
                 }">
           </ac-point-desc>
 
@@ -21,7 +21,7 @@ import { MockDataProviderService } from '../../utils/services/dataProvider/mock-
                     position: arrayItem.pos,
                     pixelSize: 10,
                     color: track.color,
-                    outlineColor: Cesium.Color.RED,
+                    outlineColor: Color.RED,
                     outlineWidth: 2
                 }">
               </ac-point-desc>
@@ -30,7 +30,7 @@ import { MockDataProviderService } from '../../utils/services/dataProvider/mock-
                       position: innerArrayItem.pos,
                       pixelSize: 10,
                       color: track.color,
-                      outlineColor: Cesium.Color.BLUE,
+                      outlineColor: Color.BLUE,
                       outlineWidth: 2
                   }">
                   </ac-point-desc>

@@ -1,5 +1,6 @@
 import { publish, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { Color, ClassificationType, sampleTerrain, Cartographic, HeightReference, Cartesian3 } from 'cesium';
 import { MapEventsManagerService } from '../../../../angular-cesium/services/map-events-mananger/map-events-manager';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { CesiumEvent } from '../../../../angular-cesium/services/map-events-mananger/consts/cesium-event.enum';
@@ -10,7 +11,7 @@ import { DisposableObservable } from '../../../../angular-cesium/services/map-ev
 import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
-import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
+// import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { PolylinesManagerService } from './polylines-manager.service';
 import { ClampTo3DOptions, PolylineEditOptions, PolylineProps } from '../../../models/polyline-edit-options';
 import { PointProps } from '../../../models/point-edit-options';
@@ -20,6 +21,7 @@ import { EditPolyline } from '../../../models';
 import { LabelProps } from '../../../models/label-props';
 import { debounce, generateKey } from '../../utils';
 import { CesiumService } from '../../../../angular-cesium';
+import { when } from 'when';
 
 export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   addPointEvent: CesiumEvent.LEFT_CLICK,
@@ -29,8 +31,8 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
   dragShapeEvent: CesiumEvent.LEFT_CLICK_DRAG,
   allowDrag: true,
   pointProps: {
-    color: Cesium.Color.WHITE.withAlpha(0.95),
-    outlineColor: Cesium.Color.BLACK.withAlpha(0.5),
+    color: Color.WHITE.withAlpha(0.95),
+    outlineColor: Color.BLACK.withAlpha(0.5),
     outlineWidth: 1,
     pixelSize: 15,
     virtualPointPixelSize: 8,
@@ -39,11 +41,11 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
     disableDepthTestDistance: Number.POSITIVE_INFINITY,
   },
   polylineProps: {
-    material: () => Cesium.Color.BLACK,
+    material: () => Color.BLACK,
     width: 3,
     clampToGround: false,
     zIndex: 0,
-    classificationType: Cesium.ClassificationType.BOTH,
+    classificationType: ClassificationType.BOTH,
   },
   clampHeightTo3D: false,
   clampHeightTo3DOptions: {
@@ -131,10 +133,10 @@ export class PolylinesEditorService {
         });
       } else {
         const cartographics = points.map(point => this.coordinateConverter.cartesian3ToCartographic(point.getPosition()));
-        const promise = Cesium.sampleTerrain(this.cesiumScene.terrainProvider, 11, cartographics);
-        Cesium.when(promise, function (updatedPositions) {
+        const promise = sampleTerrain(this.cesiumScene.terrainProvider, 11, cartographics);
+        when(promise, function (updatedPositions) {
           points.forEach((point, index) => {
-            point.setPosition(Cesium.Cartographic.toCartesian(updatedPositions[index]));
+            point.setPosition(Cartographic.toCartesian(updatedPositions[index]));
           });
         });
       }
@@ -520,7 +522,7 @@ export class PolylinesEditorService {
       polylineOptions.allowDrag = false;
       polylineOptions.polylineProps.clampToGround = true;
       polylineOptions.pointProps.heightReference = polylineOptions.clampHeightTo3DOptions.clampToTerrain ?
-        Cesium.HeightReference.CLAMP_TO_GROUND : Cesium.HeightReference.RELATIVE_TO_GROUND;
+        HeightReference.CLAMP_TO_GROUND : HeightReference.RELATIVE_TO_GROUND;
       polylineOptions.pointProps.disableDepthTestDistance = Number.POSITIVE_INFINITY;
     }
     return polylineOptions;

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Color, Cartesian3, ColorGeometryInstanceAttribute } from 'cesium';
 import { AcArcComponent, AcHtmlComponent, AcLabelComponent } from 'angular-cesium';
 
 @Component({
@@ -16,14 +17,14 @@ export class SingleEntityOnMapExampleComponent implements OnInit {
   latitude: number;
   radius: number;
   htmlElement: string;
-  center = Cesium.Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
+  center = Cartesian3.fromDegrees(Math.random() * 90 - 40, Math.random() * 90 - 40);
 
   delta = Math.PI;
   arcRadius = Math.random() * 1000000;
   angle = Math.random() * 3 - 1;
-  color = Cesium.Color.RED;
+  color = Color.RED;
   attributes = {
-    color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+    color: ColorGeometryInstanceAttribute.fromColor(Color.fromRandom())
   };
   appearance: any;
 
@@ -35,9 +36,9 @@ export class SingleEntityOnMapExampleComponent implements OnInit {
   }
 
   ngOnInit() {
-    const colorMaterial = Cesium.Material.fromType('Color');
-    colorMaterial.uniforms.color = Cesium.Color.YELLOW;
-    this.appearance = new Cesium.PolylineMaterialAppearance({
+    const colorMaterial = Material.fromType('Color');
+    colorMaterial.uniforms.color = Color.YELLOW;
+    this.appearance = new PolylineMaterialAppearance({
       material: colorMaterial
     });
 
@@ -46,23 +47,23 @@ export class SingleEntityOnMapExampleComponent implements OnInit {
     this.htmlElement = 'HTML';
     this.longitude = 35.1;
     this.latitude = 0.1;
-    this.position = Cesium.Cartesian3.fromDegrees(34.0, 32.0);
-    this.positions = Cesium.Cartesian3.fromDegreesArray([
+    this.position = Cartesian3.fromDegrees(34.0, 32.0);
+    this.positions = Cartesian3.fromDegreesArray([
       34.1, 35.1,
       this.longitude, this.latitude
     ]);
 
-    this.polylineMaterial = Cesium.Color.RED;
+    this.polylineMaterial = Color.RED;
 
-    this.aquamarine = Cesium.Color.AQUAMARINE;
+    this.aquamarine = Color.AQUAMARINE;
 
     setTimeout(() => {
-      this.position = Cesium.Cartesian3.fromDegrees(40.0, 40.0);
+      this.position = Cartesian3.fromDegrees(40.0, 40.0);
       this.htmlElement = 'NEW HTML';
     }, 5000);
 
     setInterval(() => {
-      this.positions = Cesium.Cartesian3.fromDegreesArray(
+      this.positions = Cartesian3.fromDegreesArray(
         [
           34.1, 35.1,
           ++this.longitude, ++this.latitude

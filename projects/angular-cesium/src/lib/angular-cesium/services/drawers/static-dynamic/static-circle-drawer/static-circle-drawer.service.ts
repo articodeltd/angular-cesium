@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CircleGeometry } from 'cesium';
 import { CesiumService } from '../../../cesium/cesium.service';
 import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
 
@@ -8,6 +9,6 @@ import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primiti
 @Injectable()
 export class StaticCircleDrawerService extends StaticPrimitiveDrawer {
   constructor(cesiumService: CesiumService) {
-    super(Cesium.CircleGeometry, cesiumService);
+    super(CircleGeometry, cesiumService);
   }
 }

@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+
+import { Cartesian3, Cartographic, JulianDate } from 'cesium';
+import { Math as cMath} from 'cesium';
+
 import { CesiumService } from '../cesium/cesium.service';
 import { SceneMode } from '../../models/scene-mode.enum';
 
@@ -181,7 +185,7 @@ export class CameraService {
         const morphCompleteEventListener = this.scene.morphComplete.addEventListener(
           () => {
             this.camera.setView({
-              destination: Cesium.Cartesian3.fromDegrees(
+              destination: Cartesian3.fromDegrees(
                 0.0,
                 0.0,
                 Math.min(
@@ -190,7 +194,7 @@ export class CameraService {
                 )
               ),
               orientation: {
-                pitch: Cesium.Math.toRadians(-90)
+                pitch: cMath.toRadians(-90)
               }
             });
             morphCompleteEventListener();
@@ -289,11 +293,11 @@ export class CameraService {
         const altitude = (options && options.altitude) || 10000;
 
         // Calc entity flyTo position and wanted altitude
-        const entPosCar3 = cesiumEntity.position.getValue(Cesium.JulianDate.now());
-        const entPosCart = Cesium.Cartographic.fromCartesian(entPosCar3);
+        const entPosCar3 = cesiumEntity.position.getValue(JulianDate.now());
+        const entPosCart = Cartographic.fromCartesian(entPosCar3);
         const zoomAmount = altitude - entPosCart.height;
         entPosCart.height = altitude;
-        const flyToPosition = Cesium.Cartesian3.fromRadians(
+        const flyToPosition = Cartesian3.fromRadians(
           entPosCart.longitude,
           entPosCart.latitude,
           entPosCart.height

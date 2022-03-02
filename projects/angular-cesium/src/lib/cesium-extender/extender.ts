@@ -1,3 +1,4 @@
+declare var Cesium: any;
 import { HtmlPrimitive } from './primitives';
 import { HtmlCollection } from './collections';
 

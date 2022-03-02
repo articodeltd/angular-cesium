@@ -1,5 +1,6 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { Injectable } from '@angular/core';
+import { PrimitiveCollection, GeometryAttribute } from 'cesium';
 import { anything, instance, mock, verify, when } from 'ts-mockito';
 import { providerFromMock } from '../../../utils/testingUtils';
 import { PrimitivesDrawerService } from './primitives-drawer.service';
@@ -8,7 +9,7 @@ import { CesiumService } from '../../cesium/cesium.service';
 @Injectable()
 class SimpleDrawerServiceTestClass extends PrimitivesDrawerService {
   constructor(cesiumService: CesiumService) {
-    super(Cesium.PrimitiveCollection, cesiumService);
+    super(PrimitiveCollection, cesiumService);
   }
 }
 
@@ -16,14 +17,14 @@ describe('PrimitivesDrawerService', () => {
 
   const geometryProps2 = {
     attributes: {
-      position: new Cesium.GeometryAttribute({
+      position: new GeometryAttribute({
         values: new Float64Array([
           0.0, 0.0, 0.0,
           7500000.0, 0.0, 0.0,
           0.0, 7500000.0, 0.0
         ])
       }),
-      color: new Cesium.GeometryAttribute({
+      color: new GeometryAttribute({
         values: [80, 80, 80, 100]
       })
     }
@@ -36,20 +37,20 @@ describe('PrimitivesDrawerService', () => {
   beforeEach(() => {
     geometryProps = {
       attributes: {
-        position: new Cesium.GeometryAttribute({
+        position: new GeometryAttribute({
           values: new Float64Array([
             1.0, 0.0, 0.0,
             8000000.0, 0.0, 0.0,
             0.0, 0.0, 0.0
           ])
         }),
-        color: new Cesium.GeometryAttribute({
+        color: new GeometryAttribute({
           values: [101, 0, 100, 100]
         })
       }
     };
 
-    primitiveCollection = mock(Cesium.PrimitiveCollection);
+    primitiveCollection = mock(PrimitiveCollection);
     when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 
     TestBed.configureTestingModule({

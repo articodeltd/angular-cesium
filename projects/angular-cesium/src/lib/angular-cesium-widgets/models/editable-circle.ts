@@ -1,7 +1,8 @@
+import { CallbackProperty, Cartesian3 } from 'cesium';
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
 import { EditPoint } from './edit-point';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
-import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+//import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { EditArc } from './edit-arc';
 import { CircleEditOptions } from './circle-edit-options';
@@ -206,16 +207,16 @@ export class EditableCircle extends AcEntity {
     return GeoUtilsService.distance(this._center.getPosition(), this._radiusPoint.getPosition());
   }
 
-  getRadiusCallbackProperty() {
-    return new Cesium.CallbackProperty(this.getRadius.bind(this), false);
+  getRadiusCallbackProperty(): CallbackProperty {
+    return new CallbackProperty(this.getRadius.bind(this), false);
   }
 
   getCenter(): Cartesian3 {
     return this._center ? this._center.getPosition() : undefined;
   }
 
-  getCenterCallbackProperty() {
-    return new Cesium.CallbackProperty(this.getCenter.bind(this), false);
+  getCenterCallbackProperty(): CallbackProperty {
+    return new CallbackProperty(this.getCenter.bind(this), false);
   }
 
   getRadiusPoint(): Cartesian3 {

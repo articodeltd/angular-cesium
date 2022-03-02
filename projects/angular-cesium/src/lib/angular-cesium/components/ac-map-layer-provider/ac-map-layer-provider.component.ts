@@ -1,7 +1,9 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { buildModuleUrl } from 'cesium';
 import { CesiumService } from '../../services/cesium/cesium.service';
 import { Checker } from '../../utils/checker';
 import { MapLayerProviderOptions } from '../../models';
+declare var Cesium: any;
 
 /**
  *  This component is used for adding a map provider service to the map (ac-map)
@@ -75,7 +77,7 @@ export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy
 
   private createOfflineMapProvider() {
     return Cesium.createTileMapServiceImageryProvider({
-      url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
+      url: buildModuleUrl('Assets/Textures/NaturalEarthII')
     });
   }
 

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
+import * as Cesium from 'cesium';
 import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
@@ -70,7 +71,7 @@ import { LabelProps } from '../../models/label-props';
 })
 export class PointsEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: PointEditUpdate, labels: LabelProps[]) => LabelProps[];
-  public Cesium = Cesium;
+  //public Cesium = Cesium;
   public editPoint$ = new Subject<AcNotification>();
   public pointLabels$ = new Subject<AcNotification>();
 

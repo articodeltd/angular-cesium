@@ -1,8 +1,9 @@
+import { Cartesian3, PolygonHierarchy, CallbackProperty } from 'cesium';
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
 import { EditPoint } from './edit-point';
 import { EditPolyline } from './edit-polyline';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
-import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+// import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { PolygonEditOptions, PolygonProps } from './polygon-edit-options';
@@ -137,7 +138,7 @@ export class EditablePolygon extends AcEntity {
   }
 
   private setMiddleVirtualPoint(firstP: EditPoint, secondP: EditPoint): EditPoint {
-    const midPointCartesian3 = Cesium.Cartesian3.lerp(firstP.getPosition(), secondP.getPosition(), 0.5, new Cesium.Cartesian3());
+    const midPointCartesian3 = Cartesian3.lerp(firstP.getPosition(), secondP.getPosition(), 0.5, new Cartesian3());
     const midPoint = new EditPoint(this.id, midPointCartesian3, this.defaultPointProps);
     midPoint.setVirtualEditPoint(true);
 
@@ -147,7 +148,7 @@ export class EditablePolygon extends AcEntity {
   }
 
   private updateMiddleVirtualPoint(virtualEditPoint: EditPoint, prevPoint: EditPoint, nextPoint: EditPoint) {
-    const midPointCartesian3 = Cesium.Cartesian3.lerp(prevPoint.getPosition(), nextPoint.getPosition(), 0.5, new Cesium.Cartesian3());
+    const midPointCartesian3 = Cartesian3.lerp(prevPoint.getPosition(), nextPoint.getPosition(), 0.5, new Cartesian3());
     virtualEditPoint.setPosition(midPointCartesian3);
   }
 
@@ -300,13 +301,13 @@ export class EditablePolygon extends AcEntity {
     return this.positions.filter(position => position !== this.movingPoint);
   }
 
-  getPositionsHierarchy(): Cartesian3[] {
+  getPositionsHierarchy(): PolygonHierarchy {
     const positions = this.positions.filter(position => !position.isVirtualEditPoint()).map(position => position.getPosition().clone());
-    return new Cesium.PolygonHierarchy(positions);
+    return new PolygonHierarchy(positions);
   }
 
-  getPositionsHierarchyCallbackProperty(): Cartesian3[] {
-    return new Cesium.CallbackProperty(this.getPositionsHierarchy.bind(this), false);
+  getPositionsHierarchyCallbackProperty(): CallbackProperty {
+    return new CallbackProperty(this.getPositionsHierarchy.bind(this), false);
   }
 
   private removePosition(point: EditPoint) {

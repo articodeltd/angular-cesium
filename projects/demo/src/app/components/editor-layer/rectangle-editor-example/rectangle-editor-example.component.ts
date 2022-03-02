@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cartesian3 } from 'cesium';
 import {
   CameraService,
   CesiumService, EditActions, LabelProps,
@@ -56,8 +57,8 @@ export class RectangleEditorExampleComponent implements OnInit {
       this.stopEdit();
     }
     const initialPos = [
-      Cesium.Cartesian3.fromDegrees(-80, 35),
-      Cesium.Cartesian3.fromDegrees(-90, 33)];
+      Cartesian3.fromDegrees(-80, 35),
+      Cartesian3.fromDegrees(-90, 33)];
     this.editing$ = this.rectangleEditor.edit(initialPos, {
       polylineProps: {
         width: 3,

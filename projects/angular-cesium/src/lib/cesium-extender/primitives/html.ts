@@ -1,6 +1,7 @@
+import { defined, Cartesian2, Cartesian3, SceneTransforms } from 'cesium';
 import { HtmlCollection } from '../collections';
-import { Cartesian2 } from '../../angular-cesium/models/cartesian2';
-import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+//import { Cartesian2 } from '../../angular-cesium/models/cartesian2';
+//import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 
 export class HtmlPrimitive {
 
@@ -34,7 +35,7 @@ export class HtmlPrimitive {
   set show(show: boolean) {
     this._show = show;
 
-    if (Cesium.defined(this.element)) {
+    if (defined(this.element)) {
       if (show) {
         this._element.style.display = 'block';
       } else {
@@ -66,7 +67,7 @@ export class HtmlPrimitive {
   set element(element: HTMLElement) {
     this._element = element;
 
-    if (Cesium.defined(element)) {
+    if (defined(element)) {
       this._mapContainer.appendChild(element);
       this._element.style.position = 'absolute';
       this._element.style.zIndex = Number.MAX_VALUE.toString();
@@ -86,15 +87,15 @@ export class HtmlPrimitive {
   }
 
   update() {
-    if (!Cesium.defined(this._show) || !Cesium.defined(this._element)) {
+    if (!defined(this._show) || !defined(this._element)) {
       return;
     }
 
-    let screenPosition = Cesium.SceneTransforms.wgs84ToWindowCoordinates(this._scene, this._position);
+    let screenPosition = SceneTransforms.wgs84ToWindowCoordinates(this._scene, new Cartesian3(this._position.x, this._position.y, this._position.z));
 
-    if (!Cesium.defined(screenPosition)) {
-      screenPosition = new Cesium.Cartesian2((-1000), (-1000));
-    } else if (Cesium.defined(this._pixelOffset) && Cesium.defined(this._pixelOffset.x) && Cesium.defined(this._pixelOffset.y)) {
+    if (!defined(screenPosition)) {
+      screenPosition = new Cartesian2((-1000), (-1000));
+    } else if (defined(this._pixelOffset) && defined(this._pixelOffset.x) && defined(this._pixelOffset.y)) {
       screenPosition.y += this._pixelOffset.y;
       screenPosition.x += this._pixelOffset.x;
     }

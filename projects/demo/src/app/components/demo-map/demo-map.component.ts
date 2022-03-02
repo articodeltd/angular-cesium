@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { ScreenSpaceEventType, MapMode2D } from 'cesium';
 import { MapLayerProviderOptions, SceneMode, ViewerConfiguration } from 'angular-cesium';
 import { AppSettingsService } from '../../services/app-settings-service/app-settings-service';
 
@@ -26,11 +27,11 @@ export class DemoMapComponent {
       geocoder: true,
       navigationHelpButton: false,
       navigationInstructionsInitiallyVisible: false,
-      mapMode2D: Cesium.MapMode2D.ROTATE,
+      mapMode2D: MapMode2D.ROTATE,
     };
 
     viewerConf.viewerModifier = (viewer: any) => {
-      viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
+      viewer.screenSpaceEventHandler.removeInputAction(ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
     };
 
     this.appSettingsService.showTracksLayer = true;

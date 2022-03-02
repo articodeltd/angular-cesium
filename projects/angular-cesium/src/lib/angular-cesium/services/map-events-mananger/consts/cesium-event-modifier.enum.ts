@@ -1,8 +1,9 @@
+import { KeyboardEventModifier } from 'cesium';
 /**
  * EventModifier options for registration on map-event-manager.
  */
 export enum CesiumEventModifier {
-  ALT = Cesium.KeyboardEventModifier.ALT,
-  CTRL = Cesium.KeyboardEventModifier.CTRL,
-  SHIFT = Cesium.KeyboardEventModifier.SHIFT,
+  ALT = KeyboardEventModifier.ALT,
+  CTRL = KeyboardEventModifier.CTRL,
+  SHIFT = KeyboardEventModifier.SHIFT,
 }

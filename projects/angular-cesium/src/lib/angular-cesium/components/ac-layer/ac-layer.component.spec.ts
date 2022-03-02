@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { PrimitiveCollection, DataSource } from 'cesium';
 import { AcLayerComponent } from './ac-layer.component';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { PolylineDrawerService } from '../../services/drawers/polyline-drawer/polyline-drawer.service';
@@ -21,8 +22,8 @@ describe('AcLayerComponent', () => {
   let fixture: ComponentFixture<AcLayerComponent>;
 
   const cesiumService = mock(CesiumService);
-  const primitiveCollection = mock(Cesium.PrimitiveCollection);
-  const dataSource = mock(Cesium.DataSource);
+  const primitiveCollection = mock(PrimitiveCollection);
+  const dataSource = mock(DataSource);
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
   when(cesiumService.getViewer()).thenReturn({dataSources: instance(primitiveCollection)});

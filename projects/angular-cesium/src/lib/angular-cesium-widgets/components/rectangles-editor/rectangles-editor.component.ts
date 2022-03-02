@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
+// import * as Cesium from 'cesium';
 import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { RectangleEditUpdate } from '../../models/rectangle-edit-update';
@@ -85,7 +86,7 @@ import { EditableRectangle } from '../../models/editable-rectangle';
 })
 export class RectanglesEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: RectangleEditUpdate, labels: LabelProps[]) => LabelProps[];
-  public Cesium = Cesium;
+  // public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editRectangles$ = new Subject<AcNotification>();
 

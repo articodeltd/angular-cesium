@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Cartesian3 } from 'cesium';
 import { AppSettingsService, TracksType } from './services/app-settings-service/app-settings-service';
 import { DraggableToMapService, MapLayerProviderOptions, MapsManagerService } from 'angular-cesium';
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
@@ -19,7 +20,7 @@ export class AppComponent implements AfterViewInit {
   arcGisMapServerProvider = MapLayerProviderOptions.ArcGisMapServer;
   flyToOptions = {
     duration: 2,
-    destination: Cesium.Cartesian3.fromDegrees(-117.16, 32.71, 15000.0),
+    destination: Cartesian3.fromDegrees(-117.16, 32.71, 15000.0),
   };
 
   multiMap = false; // Change to true to enable multiple maps

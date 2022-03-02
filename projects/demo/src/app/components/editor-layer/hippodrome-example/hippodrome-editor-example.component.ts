@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
+import { Cartesian3, Color } from 'cesium';
 import { EditActions, HippodromeEditorObservable, HippodromeEditorService, HippodromeEditUpdate, LabelProps } from 'angular-cesium';
 
 @Component({
@@ -53,8 +54,8 @@ export class HippodromeEditorExampleComponent implements OnInit {
       this.stopEdit();
     }
     const initialPos = [
-      Cesium.Cartesian3.fromDegrees(20, 40),
-      Cesium.Cartesian3.fromDegrees(30, 20)];
+      Cartesian3.fromDegrees(20, 40),
+      Cartesian3.fromDegrees(30, 20)];
     this.editing$ = this.hippodromeEditor.edit(initialPos);
     this.editing$.setLabelsRenderFn((update: HippodromeEditUpdate) => {
       let counter = 0;
@@ -62,8 +63,8 @@ export class HippodromeEditorExampleComponent implements OnInit {
       update.positions.forEach(position => newLabels.push({
         text: `Point ${counter++}`,
         scale: 0.6,
-        eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
-        fillColor: Cesium.Color.BLUE,
+        eyeOffset: new Cartesian3(10, 10, -1000),
+        fillColor: Color.BLUE,
       }));
       return newLabels;
     });
@@ -71,7 +72,7 @@ export class HippodromeEditorExampleComponent implements OnInit {
       this.editing$.updateLabels(
         this.editing$.getLabels().map(label => {
           label.text += '*';
-          label.fillColor = Cesium.Color.RED;
+          label.fillColor = Color.RED;
           label.showBackground = true;
           return label;
         })
@@ -104,7 +105,7 @@ export class HippodromeEditorExampleComponent implements OnInit {
       const hippodromePoints = this.editing$.getCurrentPoints();
 
       const firstPointPos = hippodromePoints[0].getPosition();
-      const newSecondPos = Cesium.Cartesian3.fromDegrees(20, 20);
+      const newSecondPos = Cartesian3.fromDegrees(20, 20);
       const newWidth = 250000.0;
       this.editing$.setManually(firstPointPos, newSecondPos, newWidth);
     }

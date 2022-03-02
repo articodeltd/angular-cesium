@@ -1,4 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
+import { PolygonHierarchy, Cartesian3, ColorGeometryInstanceAttribute, PerInstanceColorAppearance, Color, PrimitiveCollection } from 'cesium';
 import { PrimitivePolygonDrawerService } from './primitive-polygon-drawer.service';
 import { anything, instance, mock, verify, when } from 'ts-mockito';
 import { CesiumService } from '../../cesium/cesium.service';
@@ -11,8 +12,8 @@ describe('PrimitivePolygonDrawerService', () => {
 
   const otherGeometryProps = {
     height: 13000.0,
-    polygonHierarchy: new Cesium.PolygonHierarchy(
-      Cesium.Cartesian3.fromDegreesArray([
+    polygonHierarchy: new PolygonHierarchy(
+      Cartesian3.fromDegreesArray([
         30 * Math.random(), 30 * Math.random(),
         30 * Math.random(), 30 * Math.random(),
         30 * Math.random(), 30 * Math.random(),
@@ -28,8 +29,8 @@ describe('PrimitivePolygonDrawerService', () => {
   beforeEach(() => {
     geometryProps = {
       height: 15000.0,
-      polygonHierarchy: new Cesium.PolygonHierarchy(
-        Cesium.Cartesian3.fromDegreesArray([
+      polygonHierarchy: new PolygonHierarchy(
+        Cartesian3.fromDegreesArray([
           30 * Math.random(), 30 * Math.random(),
           30 * Math.random(), 30 * Math.random(),
           30 * Math.random(), 30 * Math.random(),
@@ -39,13 +40,13 @@ describe('PrimitivePolygonDrawerService', () => {
       )
     };
     instanceProps = {
-      color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+      color: ColorGeometryInstanceAttribute.fromColor(Color.fromRandom())
     };
-    primitiveProps = new Cesium.PerInstanceColorAppearance({
+    primitiveProps = new PerInstanceColorAppearance({
       translucent: false,
       closed: true
     });
-    primitiveCollection = mock(Cesium.PrimitiveCollection);
+    primitiveCollection = mock(PrimitiveCollection);
     when(cesiumService.getScene()).thenReturn({ primitives: instance(primitiveCollection) });
   });
 

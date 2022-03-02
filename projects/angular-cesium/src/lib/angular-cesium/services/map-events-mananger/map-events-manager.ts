@@ -2,6 +2,7 @@ import { merge, Observable, of as observableOf, Subject } from 'rxjs';
 
 import { filter, map, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { Entity } from 'cesium';
 import { CesiumService } from '../cesium/cesium.service';
 import { CesiumEventBuilder } from './cesium-event-builder';
 import { EventRegistrationInput, PickConfiguration } from './event-registration-input';
@@ -245,7 +246,7 @@ export class MapEventsManagerService {
 
     // Picks can be cesium entity or cesium primitive
     if (picks) {
-      picks = picks.map((pick: any) => pick.id && pick.id instanceof Cesium.Entity ? pick.id : pick.primitive);
+      picks = picks.map((pick: any) => pick.id && pick.id instanceof Entity ? pick.id : pick.primitive);
     }
 
     return { movement: movement, cesiumEntities: picks };

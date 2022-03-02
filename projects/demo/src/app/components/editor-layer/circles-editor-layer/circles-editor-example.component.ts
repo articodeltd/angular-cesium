@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
+import { Color, Cartesian3 } from 'cesium';
 import { CircleEditorObservable, CircleEditUpdate, CirclesEditorService, LabelProps } from 'angular-cesium';
 
 @Component({
@@ -45,7 +46,7 @@ export class CirclesEditorExampleComponent implements OnInit {
     if (this.editing$) {
       this.stopEdit();
     }
-    this.editing$ = this.circlesEditor.edit(Cesium.Cartesian3.fromDegrees(-70, 0), 800000);
+    this.editing$ = this.circlesEditor.edit(Cartesian3.fromDegrees(-70, 0), 800000);
     this.editing$.subscribe((editUpdate: CircleEditUpdate) => {
       console.log(editUpdate);
       console.log('center', this.editing$.getCenter());
@@ -57,14 +58,14 @@ export class CirclesEditorExampleComponent implements OnInit {
         {
           text: 'Center',
           scale: 0.6,
-          eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
-          fillColor: Cesium.Color.BLUE,
+          eyeOffset: new Cartesian3(10, 10, -1000),
+          fillColor: Color.BLUE,
         },
         {
           text: Math.round(update.radius).toString(),
           scale: 0.6,
-          eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
-          fillColor: Cesium.Color.RED,
+          eyeOffset: new Cartesian3(10, 10, -1000),
+          fillColor: Color.RED,
         },
       );
       return newLabels;
@@ -73,7 +74,7 @@ export class CirclesEditorExampleComponent implements OnInit {
       this.editing$.updateLabels(
         this.editing$.getLabels().map(label => {
           label.text += '*';
-          label.fillColor = Cesium.Color.YELLOW;
+          label.fillColor = Color.YELLOW;
           return label;
         })
       ), 2000);
@@ -94,7 +95,7 @@ export class CirclesEditorExampleComponent implements OnInit {
 
   updateCircleManually() {
     if (this.editing$) {
-      this.editing$.setManually(Cesium.Cartesian3.fromDegrees(-80, 0), 500000);
+      this.editing$.setManually(Cartesian3.fromDegrees(-80, 0), 500000);
     }
   }
 }

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Color, Math as cMath, Cartesian3, Cesium3DTileset, IonResource } from 'cesium';
 import {
   CameraService,
   CesiumEvent,
@@ -40,15 +41,15 @@ export class PolylineEditorExampleComponent implements OnInit {
     const viewer = this.cesiumService.getViewer();
     if (!this.tileset) {
       this.tileset = viewer.scene.primitives.add(
-        new Cesium.Cesium3DTileset({
-          url: Cesium.IonResource.fromAssetId(29328)
+        new Cesium3DTileset({
+          url: IonResource.fromAssetId(29328)
         })
       );
     }
     this.camService.cameraFlyTo({
-      destination: Cesium.Cartesian3.fromRadians(this.tilesLocation.longitude, this.tilesLocation.latitude, this.tilesLocation.height),
+      destination: Cartesian3.fromRadians(this.tilesLocation.longitude, this.tilesLocation.latitude, this.tilesLocation.height),
       orientation : {
-        pitch : Cesium.Math.toRadians(-35.0),
+        pitch : cMath.toRadians(-35.0),
       }});
 
     if (this.editing$) {
@@ -91,9 +92,9 @@ export class PolylineEditorExampleComponent implements OnInit {
       this.stopEdit();
     }
     const initialPos = [
-      Cesium.Cartesian3.fromDegrees(-80, 35),
-      Cesium.Cartesian3.fromDegrees(-90, 33),
-      Cesium.Cartesian3.fromDegrees(-80, 30)];
+      Cartesian3.fromDegrees(-80, 35),
+      Cartesian3.fromDegrees(-90, 33),
+      Cartesian3.fromDegrees(-80, 30)];
     this.editing$ = this.polylineEditor.edit(initialPos, {
       polylineProps: {
         width: 3,
@@ -105,8 +106,8 @@ export class PolylineEditorExampleComponent implements OnInit {
       update.positions.forEach(position => newLabels.push({
         text: `Point ${counter++}`,
         scale: 0.6,
-        eyeOffset: new Cesium.Cartesian3(10, 10, -1000),
-        fillColor: Cesium.Color.BLUE,
+        eyeOffset: new Cartesian3(10, 10, -1000),
+        fillColor: Color.BLUE,
       }));
       return newLabels;
     });
@@ -114,7 +115,7 @@ export class PolylineEditorExampleComponent implements OnInit {
       this.editing$.updateLabels(
         this.editing$.getLabels().map(label => {
           label.text += '*';
-          label.fillColor = Cesium.Color.RED;
+          label.fillColor = Color.RED;
           label.showBackground = true;
           return label;
         })
@@ -155,7 +156,7 @@ export class PolylineEditorExampleComponent implements OnInit {
       // update current point
       const polylinePoints = this.editing$.getCurrentPoints();
       const firstPoint = polylinePoints[0];
-      firstPoint.setPosition(Cesium.Cartesian3.fromDegrees(20, 20));
+      firstPoint.setPosition(Cartesian3.fromDegrees(20, 20));
       const newUpdatedPoints = polylinePoints.map(p => ({
         position: p.getPosition(),
         pointProps: p.props,
@@ -164,7 +165,7 @@ export class PolylineEditorExampleComponent implements OnInit {
 
       // or add new point
       const polylinePositions = this.editing$.getCurrentPoints().map(p => p.getPosition());
-      const newPosition = Cesium.Cartesian3.fromDegrees(30, 24);
+      const newPosition = Cartesian3.fromDegrees(30, 24);
       polylinePositions.push(newPosition);
       this.editing$.setManually(polylinePositions);
     }

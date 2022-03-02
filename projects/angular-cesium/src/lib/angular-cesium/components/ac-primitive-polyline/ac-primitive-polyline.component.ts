@@ -15,7 +15,7 @@ import { PolylinePrimitiveDrawerService } from '../../services/drawers/polyline-
  *    position: position,
  *    text: 'labelText',
  *    font: '30px sans-serif'
- *    color: Cesium.Color.GREEN
+ *    color: Color.GREEN
  *  }">;
  *  </ac-polyline>
  *  ```

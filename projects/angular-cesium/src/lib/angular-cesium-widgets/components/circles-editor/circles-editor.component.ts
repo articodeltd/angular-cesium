@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
+// import * as Cesium from 'cesium';
 import { EditModes } from '../../models/edit-mode.enum';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
 import { EditActions } from '../../models/edit-actions.enum';
@@ -102,7 +103,7 @@ import { EditableCircle } from '../../models/editable-circle';
 })
 export class CirclesEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: CircleEditUpdate, labels: LabelProps[]) => LabelProps[];
-  public Cesium = Cesium;
+  // public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editCircles$ = new Subject<AcNotification>();
   public editArcs$ = new Subject<AcNotification>();

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { PrimitiveCollection } from 'cesium';
 import { AcEllipseDescComponent } from './ac-ellipse-desc.component';
 import { instance, mock, when } from 'ts-mockito';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -13,7 +14,7 @@ describe('AcEllipseDescComponent', () => {
   let fixture: ComponentFixture<AcEllipseDescComponent>;
 
   const cesiumService = mock(CesiumService);
-  const primitiveCollection = mock(Cesium.PrimitiveCollection);
+  const primitiveCollection = mock(PrimitiveCollection);
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 

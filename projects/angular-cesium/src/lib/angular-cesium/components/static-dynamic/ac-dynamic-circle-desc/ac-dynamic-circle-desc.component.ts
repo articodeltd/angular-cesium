@@ -21,7 +21,7 @@ import { DynamicEllipseDrawerService } from '../../../services/drawers/static-dy
  *    &lt;/ac-dynamic-circle-desc&gt;
  *  ```
  *
- *  __param__: {Cesium.Cartesian3} center
+ *  __param__: {Cartesian3} center
  *   __param__: {number} rotation
  *   __param__: {number} radius in meters
  *   __param__: {number} [1] width

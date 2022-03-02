@@ -2,6 +2,7 @@ import { Observable, range as observableRange } from 'rxjs';
 
 import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
+import { Color, Cartesian3 } from 'cesium';
 import { AcEntity, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
@@ -31,7 +32,7 @@ export class PolygonPerformanceTestComponent implements OnInit {
     this.polygons$ = observableRange(1, this.COUNT).pipe(map(index => {
       const entity = new AcEntity({
         hierarchy: this.createPosition(index),
-        material: Cesium.Color.fromRandom(),
+        material: Color.fromRandom(),
         height: 0,
 
       });
@@ -60,6 +61,6 @@ export class PolygonPerformanceTestComponent implements OnInit {
       degArray.push(lon, lat);
     }
 
-    return Cesium.Cartesian3.fromDegreesArray(degArray);
+    return Cartesian3.fromDegreesArray(degArray);
   }
 }

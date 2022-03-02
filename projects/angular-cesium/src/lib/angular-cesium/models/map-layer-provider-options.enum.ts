@@ -1,14 +1,16 @@
-export enum MapLayerProviderOptions {
-  ArcGisMapServer = Cesium.ArcGisMapServerImageryProvider,
-  WebMapTileService = Cesium.WebMapTileServiceImageryProvider,
-  MapTileService = Cesium.TileMapServiceImageryProvider,
-  WebMapService = Cesium.WebMapServiceImageryProvider,
-  SingleTileImagery = Cesium.SingleTileImageryProvider,
-  OpenStreetMap = Cesium.OpenStreetMapImageryProvider,
-  BingMaps = Cesium.BingMapsImageryProvider,
-  GoogleEarthEnterpriseMaps = Cesium.GoogleEarthEnterpriseMapsProvider,
-  MapBox = Cesium.MapboxImageryProvider,
-  MapboxStyleImageryProvider = Cesium.MapboxStyleImageryProvider,
-  UrlTemplateImagery = Cesium.UrlTemplateImageryProvider,
-  OFFLINE = null,
+import * as Cesium from 'cesium';
+
+export class MapLayerProviderOptions {
+  static ArcGisMapServer = Cesium.ArcGisMapServerImageryProvider;
+  static WebMapTileService = Cesium.WebMapTileServiceImageryProvider;
+  static MapTileService = Cesium.TileMapServiceImageryProvider;
+  static WebMapService = Cesium.WebMapServiceImageryProvider;
+  static SingleTileImagery = Cesium.SingleTileImageryProvider;
+  static OpenStreetMap = Cesium.OpenStreetMapImageryProvider;
+  static BingMaps = Cesium.BingMapsImageryProvider;
+  static GoogleEarthEnterpriseMaps = Cesium.GoogleEarthEnterpriseMapsProvider;
+  static MapBox = Cesium.MapboxImageryProvider;
+  static MapboxStyleImageryProvider = Cesium.MapboxStyleImageryProvider;
+  static UrlTemplateImagery = Cesium.UrlTemplateImageryProvider;
+  static OFFLINE = null;
 }

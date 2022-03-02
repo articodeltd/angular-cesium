@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PrimitiveCollection } from 'cesium';
 import { CesiumService } from '../../../cesium/cesium.service';
 import { Checker } from '../../../../utils/checker';
 import { EllipsePrimitive } from 'primitive-primitives';
@@ -14,7 +15,7 @@ import { PrimitivesDrawerService } from '../../primitives-drawer/primitives-draw
 @Injectable()
 export class DynamicEllipseDrawerService extends PrimitivesDrawerService {
   constructor(cesiumService: CesiumService) {
-    super(Cesium.PrimitiveCollection, cesiumService);
+    super(PrimitiveCollection, cesiumService);
   }
 
   add(cesiumProps: any): any {

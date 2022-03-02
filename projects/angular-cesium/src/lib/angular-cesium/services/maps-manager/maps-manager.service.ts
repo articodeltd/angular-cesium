@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Ellipsoid, SceneMode } from 'cesium';
+import Cartographic from 'cesium/Source/Core/Cartographic';
 import { AcMapComponent } from '../../components/ac-map/ac-map.component';
 
 /**
@@ -79,13 +81,14 @@ export class MapsManagerService {
 
           const slaveCamera = slaveMap.getCameraService().getCamera();
           const slaveCameraCartographic = slaveCamera.positionCartographic;
-          const position = Cesium.Ellipsoid.WGS84.cartographicToCartesian({
-            longitude: masterCameraCartographic.longitude,
-            latitude: masterCameraCartographic.latitude,
-            height: slaveMapOptions.bindZoom ? masterCameraCartographic.height : slaveCameraCartographic.height,
-          });
+          const position = Ellipsoid.WGS84.cartographicToCartesian(
+            new Cartographic(
+                masterCameraCartographic.longitude,
+                masterCameraCartographic.latitude,
+                slaveMapOptions.bindZoom ? masterCameraCartographic.height : slaveCameraCartographic.height)
+          );
 
-          if (slaveMap.getCesiumViewer().scene.mode !== Cesium.SceneMode.MORPHING) {
+          if (slaveMap.getCesiumViewer().scene.mode !== SceneMode.MORPHING) {
             slaveCamera.setView({
               destination: position,
               orientation: {

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
+// import * as Cesium from 'cesium';
 import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { AcNotification } from '../../../angular-cesium/models/ac-notification';
@@ -90,7 +91,7 @@ import { EditableEllipse } from '../../models/editable-ellipse';
 })
 export class EllipsesEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: EllipseEditUpdate, labels: LabelProps[]) => LabelProps[];
-  public Cesium = Cesium;
+  // public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editEllipses$ = new Subject<AcNotification>();
 

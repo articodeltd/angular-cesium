@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PolygonGeometry } from 'cesium';
 import { StaticPrimitiveDrawer } from '../static-primitive-drawer/static-primitive-drawer.service';
 import { CesiumService } from '../../../cesium/cesium.service';
 
@@ -10,6 +11,6 @@ import { CesiumService } from '../../../cesium/cesium.service';
 @Injectable()
 export class StaticPolygonDrawerService extends StaticPrimitiveDrawer {
   constructor(cesiumService: CesiumService) {
-    super(Cesium.PolygonGeometry, cesiumService);
+    super(PolygonGeometry, cesiumService);
   }
 }

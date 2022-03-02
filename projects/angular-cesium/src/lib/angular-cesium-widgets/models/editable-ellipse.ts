@@ -1,7 +1,8 @@
+import { Cartesian3, CallbackProperty, Math as cMath } from 'cesium';
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
 import { EditPoint } from './edit-point';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
-import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+// import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { GeoUtilsService } from '../../angular-cesium/services/geo-utils/geo-utils.service';
 import { EllipseEditOptions, EllipseProps } from './ellipse-edit-options';
 import { PointProps } from './point-edit-options';
@@ -50,13 +51,13 @@ export class EditableEllipse extends AcEntity {
           label.position = this._center.getPosition();
         } else if (index === 1) {
           label.position = this._majorRadiusPoint
-            ? Cesium.Cartesian3.midpoint(this.getCenter(), this._majorRadiusPoint.getPosition(), new Cesium.Cartesian3())
-            : new Cesium.Cartesian3();
+            ? Cartesian3.midpoint(this.getCenter(), this._majorRadiusPoint.getPosition(), new Cartesian3())
+            : new Cartesian3();
         } else if (index === 2) {
           label.position =
             this._minorRadiusPoints.length > 0 && this._minorRadius
-              ? Cesium.Cartesian3.midpoint(this.getCenter(), this.getMinorRadiusPointPosition(), new Cesium.Cartesian3())
-              : new Cesium.Cartesian3();
+              ? Cartesian3.midpoint(this.getCenter(), this.getMinorRadiusPointPosition(), new Cartesian3())
+              : new Cartesian3();
         }
       }
 
@@ -269,8 +270,8 @@ export class EditableEllipse extends AcEntity {
       return;
     }
     if (this._minorRadiusPoints.length === 0) {
-      this._minorRadiusPoints.push(new EditPoint(this.id, new Cesium.Cartesian3(), this.pointProps, true));
-      this._minorRadiusPoints.push(new EditPoint(this.id, new Cesium.Cartesian3(), this.pointProps, true));
+      this._minorRadiusPoints.push(new EditPoint(this.id, new Cartesian3(), this.pointProps, true));
+      this._minorRadiusPoints.push(new EditPoint(this.id, new Cartesian3(), this.pointProps, true));
     }
 
     this._minorRadiusPoints[0].setPosition(
@@ -304,28 +305,28 @@ export class EditableEllipse extends AcEntity {
     }
 
     const azimuthInDegrees = this.coordinateConverter.bearingToCartesian(this.getCenter(), this._majorRadiusPoint.getPosition());
-    this._rotation = Cesium.Math.toRadians(azimuthInDegrees);
+    this._rotation = cMath.toRadians(azimuthInDegrees);
     return this._rotation;
   }
 
-  getRotationCallbackProperty() {
-    return new Cesium.CallbackProperty(() => Math.PI / 2 - this.getRotation(), false);
+  getRotationCallbackProperty(): CallbackProperty {
+    return new CallbackProperty(() => Math.PI / 2 - this.getRotation(), false);
   }
 
-  getMinorRadiusCallbackProperty() {
-    return new Cesium.CallbackProperty(() => this.getMinorRadius(), false);
+  getMinorRadiusCallbackProperty(): CallbackProperty {
+    return new CallbackProperty(() => this.getMinorRadius(), false);
   }
 
-  getMajorRadiusCallbackProperty() {
-    return new Cesium.CallbackProperty(() => this.getMajorRadius(), false);
+  getMajorRadiusCallbackProperty(): CallbackProperty {
+    return new CallbackProperty(() => this.getMajorRadius(), false);
   }
 
   getCenter(): Cartesian3 {
     return this._center ? this._center.getPosition() : undefined;
   }
 
-  getCenterCallbackProperty() {
-    return new Cesium.CallbackProperty(() => this.getCenter(), false);
+  getCenterCallbackProperty(): CallbackProperty {
+    return new CallbackProperty(() => this.getCenter(), false);
   }
 
   dispose() {

@@ -39,8 +39,8 @@ export class SelectionLayerExampleComponent implements OnInit {
 
   constructor(private selectionManager: SelectionManagerService, private snakBar: MatSnackBar) {
     const entities = [
-      new MyEntity(Cesium.Cartesian3.fromDegrees(10.0, 30.0), '1'),
-      new MyEntity(Cesium.Cartesian3.fromDegrees(33.0, 33.0), '2')
+      new MyEntity(Cartesian3.fromDegrees(10.0, 30.0), '1'),
+      new MyEntity(Cartesian3.fromDegrees(33.0, 33.0), '2')
     ];
     const entitiesNotifications = entities.map((entity, index) => ({
       id: entity.id,

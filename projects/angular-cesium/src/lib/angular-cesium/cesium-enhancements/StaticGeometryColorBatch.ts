@@ -2,21 +2,26 @@
  * Fix for the constant entity shadowing.
  * PR in Cesium repo: https://github.com/AnalyticalGraphicsInc/cesium/pull/5736
  */
+import { Color, AssociativeArray, defined, ColorGeometryInstanceAttribute,  DistanceDisplayCondition,
+  DistanceDisplayConditionGeometryInstanceAttribute, ShowGeometryInstanceAttribute, Primitive,
+  ShadowMode, ColorMaterialProperty
+ } from 'cesium';
+ declare var Cesium: any;
 
 // tslint:disable
-const AssociativeArray = Cesium.AssociativeArray;
-const Color = Cesium.Color;
-const ColorGeometryInstanceAttribute = Cesium.ColorGeometryInstanceAttribute;
-const defined = Cesium.defined;
-const DistanceDisplayCondition = Cesium.DistanceDisplayCondition;
-const DistanceDisplayConditionGeometryInstanceAttribute = Cesium.DistanceDisplayConditionGeometryInstanceAttribute;
-const ShowGeometryInstanceAttribute = Cesium.ShowGeometryInstanceAttribute;
-const Primitive = Cesium.Primitive;
-const ShadowMode = Cesium.ShadowMode;
-const BoundingSphereState = Cesium.BoundingSphereState;
-const ColorMaterialProperty = Cesium.ColorMaterialProperty;
-const MaterialProperty = Cesium.MaterialProperty;
-const Property = Cesium.Property;
+// const AssociativeArray = AssociativeArray;
+// const Color = Color;
+// const ColorGeometryInstanceAttribute = ColorGeometryInstanceAttribute;
+// const defined = defined;
+// const DistanceDisplayCondition = DistanceDisplayCondition;
+// const DistanceDisplayConditionGeometryInstanceAttribute = DistanceDisplayConditionGeometryInstanceAttribute;
+// const ShowGeometryInstanceAttribute = ShowGeometryInstanceAttribute;
+// const Primitive = Primitive;
+// const ShadowMode = ShadowMode;
+// const BoundingSphereState = BoundingSphereState;
+// const ColorMaterialProperty = ColorMaterialProperty;
+// const MaterialProperty = MaterialProperty;
+//  const Property = Property;
 
 var colorScratch = new Color();
 var distanceDisplayConditionScratch = new DistanceDisplayCondition();
@@ -72,7 +77,7 @@ Batch.prototype.add = function (updater, instance) {
   this.createPrimitive = true;
   this.geometry.set(id, instance);
   this.updaters.set(id, updater);
-  if (!updater.hasConstantFill || !updater.fillMaterialProperty.isConstant || !Property.isConstant(updater.distanceDisplayConditionProperty)) {
+  if (!updater.hasConstantFill || !updater.fillMaterialProperty.isConstant || !Cesium.Property.isConstant(updater.distanceDisplayConditionProperty)) {
     this.updatersWithAttributes.set(id, updater);
   } else {
     var that = this;
@@ -138,7 +143,7 @@ Batch.prototype.update = function (time) {
       var depthFailAppearance;
       if (defined(this.depthFailAppearanceType)) {
         if (defined(this.depthFailMaterialProperty)) {
-          this.depthFailMaterial = MaterialProperty.getValue(time, this.depthFailMaterialProperty, this.depthFailMaterial);
+          this.depthFailMaterial = Cesium.MaterialProperty.getValue(time, this.depthFailMaterialProperty, this.depthFailMaterial);
         }
         depthFailAppearance = new this.depthFailAppearanceType({
           material: this.depthFailMaterial,
@@ -185,7 +190,7 @@ Batch.prototype.update = function (time) {
     }
     
     if (defined(this.depthFailAppearanceType) && !(this.depthFailMaterialProperty instanceof ColorMaterialProperty)) {
-      this.depthFailMaterial = MaterialProperty.getValue(time, this.depthFailMaterialProperty, this.depthFailMaterial);
+      this.depthFailMaterial = Cesium.MaterialProperty.getValue(time, this.depthFailMaterialProperty, this.depthFailMaterial);
       this.primitive.depthFailAppearance.material = this.depthFailMaterial;
     }
     
@@ -204,7 +209,7 @@ Batch.prototype.update = function (time) {
       
       if (!updater.fillMaterialProperty.isConstant || waitingOnCreate) {
         var colorProperty = updater.fillMaterialProperty.color;
-        var resultColor = Property.getValueOrDefault(colorProperty, time, Color.WHITE, colorScratch);
+        var resultColor = Cesium.Property.getValueOrDefault(colorProperty, time, Color.WHITE, colorScratch);
         if (!Color.equals(attributes._lastColor, resultColor)) {
           attributes._lastColor = Color.clone(resultColor, attributes._lastColor);
           attributes.color = ColorGeometryInstanceAttribute.toValue(resultColor, attributes.color);
@@ -216,7 +221,7 @@ Batch.prototype.update = function (time) {
       
       if (defined(this.depthFailAppearanceType) && updater.depthFailMaterialProperty instanceof ColorMaterialProperty && (!updater.depthFailMaterialProperty.isConstant || waitingOnCreate)) {
         var depthFailColorProperty = updater.depthFailMaterialProperty.color;
-        var depthColor = Property.getValueOrDefault(depthFailColorProperty, time, Color.WHITE, colorScratch);
+        var depthColor = Cesium.Property.getValueOrDefault(depthFailColorProperty, time, Color.WHITE, colorScratch);
         if (!Color.equals(attributes._lastDepthFailColor, depthColor)) {
           attributes._lastDepthFailColor = Color.clone(depthColor, attributes._lastDepthFailColor);
           attributes.depthFailColor = ColorGeometryInstanceAttribute.toValue(depthColor, attributes.depthFailColor);
@@ -230,8 +235,8 @@ Batch.prototype.update = function (time) {
       }
       
       var distanceDisplayConditionProperty = updater.distanceDisplayConditionProperty;
-      if (!Property.isConstant(distanceDisplayConditionProperty)) {
-        var distanceDisplayCondition = Property.getValueOrDefault(distanceDisplayConditionProperty, time, defaultDistanceDisplayCondition, distanceDisplayConditionScratch);
+      if (!Cesium.Property.isConstant(distanceDisplayConditionProperty)) {
+        var distanceDisplayCondition = Cesium.Property.getValueOrDefault(distanceDisplayConditionProperty, time, defaultDistanceDisplayCondition, distanceDisplayConditionScratch);
         if (!DistanceDisplayCondition.equals(distanceDisplayCondition, attributes._lastDistanceDisplayCondition)) {
           attributes._lastDistanceDisplayCondition = DistanceDisplayCondition.clone(distanceDisplayCondition, attributes._lastDistanceDisplayCondition);
           attributes.distanceDisplayCondition = DistanceDisplayConditionGeometryInstanceAttribute.toValue(distanceDisplayCondition, attributes.distanceDisplayCondition);
@@ -277,15 +282,15 @@ Batch.prototype.contains = function (updater) {
 Batch.prototype.getBoundingSphere = function (updater, result) {
   var primitive = this.primitive;
   if (!primitive.ready) {
-    return BoundingSphereState.PENDING;
+    return Cesium.BoundingSphereState.PENDING;
   }
   var attributes = primitive.getGeometryInstanceAttributes(updater.entity);
   if (!defined(attributes) || !defined(attributes.boundingSphere) ||//
     (defined(attributes.show) && attributes.show[0] === 0)) {
-    return BoundingSphereState.FAILED;
+    return Cesium.BoundingSphereState.FAILED;
   }
   attributes.boundingSphere.clone(result);
-  return BoundingSphereState.DONE;
+  return Cesium.BoundingSphereState.DONE;
 };
 
 Batch.prototype.removeAllPrimitives = function () {

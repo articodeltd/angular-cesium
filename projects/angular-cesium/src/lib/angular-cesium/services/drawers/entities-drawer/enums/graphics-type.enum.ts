@@ -1,17 +1,18 @@
-export enum GraphicsType {
-  ellipse = Cesium.EllipseGraphics,
-  ellipsoid = Cesium.EllipsoidGraphics,
-  polygon = Cesium.PolygonGraphics,
-  polyline = Cesium.PolylineGraphics,
-  polylineVolume = Cesium.PolylineVolumeGraphics,
-  box = Cesium.BoxGraphics,
-  corridor = Cesium.CorridorGraphics,
-  cylinder = Cesium.CylinderGraphics,
-  label = Cesium.LabelGraphics,
-  billboard = Cesium.BillboardGraphics,
-  model = Cesium.ModelGraphics,
-  path = Cesium.PathGraphics,
-  point = Cesium.PointGraphics,
-  rectangle = Cesium.RectangleGraphics,
-  wall = Cesium.WallGraphics,
+import * as Cesium from 'cesium';
+export class GraphicsType {
+  static ellipse = Cesium.EllipseGraphics;
+  static ellipsoid = Cesium.EllipsoidGraphics;
+  static polygon = Cesium.PolygonGraphics;
+  static polyline = Cesium.PolylineGraphics;
+  static polylineVolume = Cesium.PolylineVolumeGraphics;
+  static box = Cesium.BoxGraphics;
+  static corridor = Cesium.CorridorGraphics;
+  static cylinder = Cesium.CylinderGraphics;
+  static label = Cesium.LabelGraphics;
+  static billboard = Cesium.BillboardGraphics;
+  static model = Cesium.ModelGraphics;
+  static path = Cesium.PathGraphics;
+  static point = Cesium.PointGraphics;
+  static rectangle = Cesium.RectangleGraphics;
+  static wall = Cesium.WallGraphics;
 }

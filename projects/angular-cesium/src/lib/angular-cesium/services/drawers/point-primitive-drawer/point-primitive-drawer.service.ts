@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PointPrimitiveCollection } from 'cesium';
 import { CesiumService } from '../../cesium/cesium.service';
 import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.service';
 
@@ -9,6 +10,6 @@ import { PrimitivesDrawerService } from '../primitives-drawer/primitives-drawer.
 @Injectable()
 export class PointPrimitiveDrawerService extends PrimitivesDrawerService {
   constructor(cesiumService: CesiumService) {
-    super(Cesium.PointPrimitiveCollection, cesiumService);
+    super(PointPrimitiveCollection, cesiumService);
   }
 }

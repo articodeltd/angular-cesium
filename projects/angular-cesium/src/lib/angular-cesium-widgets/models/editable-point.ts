@@ -1,6 +1,7 @@
+import { Color, CallbackProperty, Cartesian3 } from 'cesium';
 import { AcLayerComponent } from '../../angular-cesium/components/ac-layer/ac-layer.component';
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
-import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
+// import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { EditPoint } from './edit-point';
 import { defaultLabelProps, LabelProps } from './label-props';
@@ -61,9 +62,9 @@ export class EditablePoint extends AcEntity {
   set enableEdit(value: boolean) {
     this._enableEdit = value;
     if (value) {
-      this.point.props.color = Cesium.Color.WHITE;
+      this.point.props.color = Color.WHITE;
     } else {
-      this.point.props.color = Cesium.Color.DIMGREY;
+      this.point.props.color = Color.DIMGREY;
       this.point.props.pixelSize = 10;
     }
     this.updatePointLayer();
@@ -118,8 +119,8 @@ export class EditablePoint extends AcEntity {
     return this.point.getPosition();
   }
 
-  getPositionCallbackProperty(): Cartesian3 {
-    return new Cesium.CallbackProperty(this.getPosition.bind(this), false);
+  getPositionCallbackProperty(): CallbackProperty {
+    return new CallbackProperty(this.getPosition.bind(this), false);
   }
 
   private updatePointLayer() {

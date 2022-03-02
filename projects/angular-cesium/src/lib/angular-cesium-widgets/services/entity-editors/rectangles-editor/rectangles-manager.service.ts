@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Cartesian3 } from 'cesium';
 import { EditableRectangle } from '../../../models/editable-rectangle';
-import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
+// import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { RectangleEditOptions } from '../../../models/rectangle-edit-options';
 import { AcLayerComponent } from '../../../../angular-cesium/components/ac-layer/ac-layer.component';
 import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';

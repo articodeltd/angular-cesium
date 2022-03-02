@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AcStaticCircleDescComponent } from './ac-static-circle-desc.component';
+import { PrimitiveCollection } from 'cesium';
 import { CesiumService } from '../../../services/cesium/cesium.service';
 import { StaticCircleDrawerService } from '../../../services/drawers/static-dynamic/static-circle-drawer/static-circle-drawer.service';
 import { LayerService } from '../../../services/layer-service/layer-service.service';
@@ -19,7 +20,7 @@ xdescribe('AcStaticCircleDescComponent', () => {
     const mockCesiumProperties = mock(CesiumProperties);
 
     const cesiumService = mock(CesiumService);
-    const collection = mock(Cesium.PrimitiveCollection);
+    const collection = mock(PrimitiveCollection);
 
     when(cesiumService.getScene()).thenReturn({primitives: instance(collection)} as any);
 

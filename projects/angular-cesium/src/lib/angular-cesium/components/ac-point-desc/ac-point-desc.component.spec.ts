@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { PointPrimitiveCollection } from 'cesium';
 import { AcPointDescComponent } from './ac-point-desc.component';
 import { PointDrawerService } from '../../services/drawers/point-drawer/point-drawer.service';
 import { instance, mock, when } from 'ts-mockito';
@@ -13,7 +14,7 @@ describe('AcPointDescComponent', () => {
   let fixture: ComponentFixture<AcPointDescComponent>;
 
   const cesiumService = mock(CesiumService);
-  const pointCollection = mock(Cesium.PointPrimitiveCollection);
+  const pointCollection = mock(PointPrimitiveCollection);
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(pointCollection)});
 

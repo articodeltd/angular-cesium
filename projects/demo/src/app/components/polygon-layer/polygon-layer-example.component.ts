@@ -2,6 +2,7 @@ import { from as observableFrom, Observable, Subject } from 'rxjs';
 
 import { merge } from 'rxjs/operators';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Cartesian3, Color } from 'cesium';
 import { AcEntity, AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
@@ -35,45 +36,45 @@ export class PolygonLayerExampleComponent implements OnInit {
 
   ngOnInit() {
     const entX: any = new AcEntity({
-      hierarchy: Cesium.Cartesian3.fromDegreesArray([
+      hierarchy: Cartesian3.fromDegreesArray([
         -115.0, 37.0,
         -115.0, 32.0,
         -107.0, 33.0,
         -102.0, 31.0,
         -102.0, 35.0]),
       outline: true,
-      outlineColor: Cesium.Color.BLUE,
+      outlineColor: Color.BLUE,
       fill: true,
       perPositionHeight: true,
-      material: Cesium.Color.TRANSPARENT,
+      material: Color.TRANSPARENT,
     });
 
     const entY: any = new AcEntity({
-      hierarchy: Cesium.Cartesian3.fromDegreesArray([
+      hierarchy: Cartesian3.fromDegreesArray([
         -108.0, 42.0,
         -100.0, 42.0,
         -104.0, 40.0,
       ]),
       outline: true,
-      outlineColor: Cesium.Color.BLUE,
+      outlineColor: Color.BLUE,
       fill: true,
       perPositionHeight: true,
-      material: Cesium.Color.TRANSPARENT,
+      material: Color.TRANSPARENT,
 
     });
     this.polygons$ = observableFrom([
       {
         id: '0',
         entity: new AcEntity({
-          hierarchy: Cesium.Cartesian3.fromDegreesArrayHeights([-108.0, 25.0, 100000,
+          hierarchy: Cartesian3.fromDegreesArrayHeights([-108.0, 25.0, 100000,
             -100.0, 25.0, 100000,
             -100.0, 30.0, 100000,
             -108.0, 30.0, 300000]),
           extrudedHeight: 0,
           perPositionHeight: true,
-          material: Cesium.Color.ORANGE.withAlpha(0.5),
+          material: Color.ORANGE.withAlpha(0.5),
           outline: true,
-          outlineColor: Cesium.Color.BLACK
+          outlineColor: Color.BLACK
         }),
         actionType: ActionType.ADD_UPDATE
       },
@@ -81,26 +82,26 @@ export class PolygonLayerExampleComponent implements OnInit {
         id: '1',
         entity: new AcEntity({
             hierarchy: {
-              positions: Cesium.Cartesian3.fromDegreesArray([-99.0, 30.0,
+              positions: Cartesian3.fromDegreesArray([-99.0, 30.0,
                 -85.0, 30.0,
                 -85.0, 40.0,
                 -99.0, 40.0]),
               holes: [{
-                positions: Cesium.Cartesian3.fromDegreesArray([
+                positions: Cartesian3.fromDegreesArray([
                   -97.0, 31.0,
                   -97.0, 39.0,
                   -87.0, 39.0,
                   -87.0, 31.0
                 ]),
                 holes: [{
-                  positions: Cesium.Cartesian3.fromDegreesArray([
+                  positions: Cartesian3.fromDegreesArray([
                     -95.0, 33.0,
                     -89.0, 33.0,
                     -89.0, 37.0,
                     -95.0, 37.0
                   ]),
                   holes: [{
-                    positions: Cesium.Cartesian3.fromDegreesArray([
+                    positions: Cartesian3.fromDegreesArray([
                       -93.0, 34.0,
                       -91.0, 34.0,
                       -91.0, 36.0,
@@ -110,7 +111,7 @@ export class PolygonLayerExampleComponent implements OnInit {
                 }]
               }]
             },
-            material: Cesium.Color.BLUE.withAlpha(0.5),
+            material: Color.BLUE.withAlpha(0.5),
             height: 0,
             outline: true
           }
@@ -149,8 +150,8 @@ export class PolygonLayerExampleComponent implements OnInit {
 
     setTimeout(() => {
       entX.show = true;
-      entX.outlineColor = Cesium.Color.RED;
-      entX.material = Cesium.Color.BLUE;
+      entX.outlineColor = Color.RED;
+      entX.material = Color.BLUE;
       this.updater.next({
         id: 'x',
         actionType: ActionType.ADD_UPDATE,
@@ -159,8 +160,8 @@ export class PolygonLayerExampleComponent implements OnInit {
     }, 4500);
 
     setTimeout(() => {
-      entY.outlineColor = Cesium.Color.RED;
-      entY.material = Cesium.Color.YELLOW;
+      entY.outlineColor = Color.RED;
+      entY.material = Color.YELLOW;
       this.updater.next({
         id: 'y',
         actionType: ActionType.ADD_UPDATE,

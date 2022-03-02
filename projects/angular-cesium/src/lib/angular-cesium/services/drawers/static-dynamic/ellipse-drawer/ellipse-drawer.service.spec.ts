@@ -1,4 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
+import { Math as cMath, PrimitiveCollection, Cartesian3, Color, ColorGeometryInstanceAttribute, PerInstanceColorAppearance } from 'cesium';
 import { StaticEllipseDrawerService } from './ellipse-drawer.service';
 import { anything, instance, mock, verify, when } from 'ts-mockito';
 import { CesiumService } from '../../../cesium/cesium.service';
@@ -6,22 +7,22 @@ import { providerFromMock } from '../../../../utils/testingUtils';
 
 describe('EllipseStaticDrawerService', () => {
   const geometryProps: any = {
-    center: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
+    center: Cartesian3.fromRadians(Math.random(), Math.random()),
     semiMajorAxis: 500000.0,
     semiMinorAxis: 300000.0,
     height: 15000.0,
-    rotation: Cesium.Math.toRadians(45)
+    rotation: cMath.toRadians(45)
   };
 
   let instanceProps;
   let primitiveProps;
 
   const otherGeometryProps = {
-    center: Cesium.Cartesian3.fromRadians(Math.random(), Math.random()),
+    center: Cartesian3.fromRadians(Math.random(), Math.random()),
     semiMajorAxis: 900000.0,
     semiMinorAxis: 1000000.0,
     height: 9000.0,
-    rotation: Cesium.Math.toRadians(20)
+    rotation: cMath.toRadians(20)
   };
 
   const cesiumService = mock(CesiumService);
@@ -29,13 +30,13 @@ describe('EllipseStaticDrawerService', () => {
 
   beforeEach(() => {
     instanceProps = {
-      color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.fromRandom())
+      color: ColorGeometryInstanceAttribute.fromColor(Color.fromRandom())
     };
-    primitiveProps = new Cesium.PerInstanceColorAppearance({
+    primitiveProps = new PerInstanceColorAppearance({
       translucent: false,
       closed: true
     });
-    primitiveCollection = mock(Cesium.PrimitiveCollection);
+    primitiveCollection = mock(PrimitiveCollection);
     when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
   });
 
