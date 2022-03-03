@@ -12,7 +12,7 @@ export class InterpolationType {
   static GENERAL = SampledProperty;
 }
 
-export function interpolate(input: InterpolationInput, interpolationType = InterpolationType.GENERAL) {
+export function interpolate(input: InterpolationInput, interpolationType: SampledPositionProperty | SampledProperty) {
   const time = input.time ? JulianDate.fromDate(new Date(input.time)) : JulianDate.now();
   const cesiumSampledProperty = input.cesiumSampledProperty || new (interpolationType as any)();
   if (!input.cesiumSampledProperty) {

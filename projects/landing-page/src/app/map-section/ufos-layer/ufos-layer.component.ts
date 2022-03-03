@@ -46,13 +46,13 @@ export class UFOsLayerComponent {
       data: Cartographic.toCartesian(entity.position),
       time: this.initialTime + (now + TIME_ADDITION - this.initialTime) * TIME_MULTIPLIER,
       cesiumSampledProperty: this.ufosPosition.get(entity.id)
-    }, InterpolationType.POSITION);
+    }, new InterpolationType.POSITION());
 
     const beam = interpolate({
       data: Cartesian3.fromRadians(entity.position.longitude + cMath.toRadians(0.002), entity.position.latitude, entity.position.height / 2),
       time: this.initialTime + (now + TIME_ADDITION - this.initialTime) * TIME_MULTIPLIER,
       cesiumSampledProperty: this.beamsPosition.get(entity.id)
-    }, InterpolationType.POSITION);
+    }, new InterpolationType.POSITION());
 
     this.ufosPosition.set(entity.id, ufo);
     this.beamsPosition.set(entity.id, beam);
