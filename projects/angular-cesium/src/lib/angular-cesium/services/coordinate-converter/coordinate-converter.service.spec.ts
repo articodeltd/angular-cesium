@@ -1,5 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
-import { Camera } from 'cesium';
+import { Camera, Cartesian3 } from 'cesium';
 import { instance, mock, when } from 'ts-mockito';
 import { providerFromMock } from '../../utils/testingUtils';
 import { CoordinateConverter } from './coordinate-converter.service';
@@ -53,13 +53,13 @@ describe('CoordinateConverter', () => {
 
     describe('Cartesian3 -> Cartographic', () => {
       it('should convert.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-        const cartographic = service.cartesian3ToCartographic({ x: 10, y: 20, z: 30, clone: () => ({} as any), equals: (v) => false });
+        const cartographic = service.cartesian3ToCartographic(new Cartesian3(10, 20, 30));
 
         expect(cartographic).toBeDefined();
       }));
 
       it('should consist of Cartographic interface.', inject([CoordinateConverter], (service: CoordinateConverter) => {
-        const cartographic = service.cartesian3ToCartographic({ x: 10, y: 20, z: 30, clone: () => ({} as any), equals: (v) => false });
+        const cartographic = service.cartesian3ToCartographic(new Cartesian3(10, 20, 30));
 
         expect(cartographic.longitude).toBeDefined();
         expect(cartographic.latitude).toBeDefined();

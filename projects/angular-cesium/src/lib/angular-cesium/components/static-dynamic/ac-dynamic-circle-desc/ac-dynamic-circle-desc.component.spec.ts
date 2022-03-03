@@ -14,7 +14,7 @@ describe('AcDynamicCircleDescComponent', () => {
   let fixture: ComponentFixture<AcDynamicCircleDescComponent>;
 
   const cesiumService = mock(CesiumService);
-  const primitiveCollection = mock(import { PrimitiveCollection } from 'cesium';PrimitiveCollection);
+  const primitiveCollection = mock(PrimitiveCollection);
 
   when(cesiumService.getScene()).thenReturn({primitives: instance(primitiveCollection)});
 

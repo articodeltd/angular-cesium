@@ -33,7 +33,6 @@ describe('StaticPolylineDrawerService', () => {
         color: ColorGeometryInstanceAttribute.fromColor(Color.fromRandom())
       },
       appearance: new PolylineColorAppearance({
-        closed: true,
         translucent: false
       }),
       ready: null,
