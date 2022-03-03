@@ -24,7 +24,7 @@
               {
                 "glob": "**/*",
                 "input": "./node_modules/cesium/Build/Cesium",
-                "output": "./assets/cesium"
+                "output": "./"
               }
             ],
             "styles": [
