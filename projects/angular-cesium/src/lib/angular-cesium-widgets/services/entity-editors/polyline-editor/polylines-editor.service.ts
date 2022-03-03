@@ -11,7 +11,6 @@ import { DisposableObservable } from '../../../../angular-cesium/services/map-ev
 import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { EditPoint } from '../../../models/edit-point';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
-// import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { PolylinesManagerService } from './polylines-manager.service';
 import { ClampTo3DOptions, PolylineEditOptions, PolylineProps } from '../../../models/polyline-edit-options';
 import { PointProps } from '../../../models/point-edit-options';

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { WebMercatorProjection, Rectangle, Cartographic, ImageMaterialProperty, Cartesian2, Cartesian3 } from 'cesium';
-//import { Cartesian2 } from '../angular-cesium/models/cartesian2';
-//import { Cartesian3 } from '../angular-cesium/models/cartesian3';
 import { GeoUtilsService } from '../angular-cesium/services/geo-utils/geo-utils.service';
 import * as h337 from 'heatmap.js/build/heatmap.js';
 

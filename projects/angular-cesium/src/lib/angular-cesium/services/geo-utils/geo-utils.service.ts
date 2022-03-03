@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Ellipsoid, Cartesian3, Cartographic } from 'cesium';
 import { CesiumService } from '../cesium/cesium.service';
-// import { Cartesian3 } from '../../models/cartesian3';
 import { Vec3 } from '../../models/vec3';
 
 @Injectable()

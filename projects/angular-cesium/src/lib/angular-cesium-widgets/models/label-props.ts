@@ -1,5 +1,3 @@
-// import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
-//import { Cartesian2 } from '../../angular-cesium/models/cartesian2';
 import { Cartesian3, Cartesian2, Color, HeightReference, HorizontalOrigin, LabelStyle as cLabelStyle, VerticalOrigin } from 'cesium';
 
 export interface LabelStyle {

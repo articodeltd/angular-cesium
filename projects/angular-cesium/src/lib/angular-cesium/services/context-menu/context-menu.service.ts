@@ -1,5 +1,4 @@
 import { EventEmitter, Injectable } from '@angular/core';
-// import { Cartesian3 } from '../../models/cartesian3';
 import { Cartesian3 } from 'cesium';
 import { ContextMenuOptions } from '../../models/context-menu-options';
 import { MapEventsManagerService } from '../map-events-mananger/map-events-manager';

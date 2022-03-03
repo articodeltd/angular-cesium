@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { publish, tap } from 'rxjs/operators';
 import { Color, ClassificationType, ShadowMode, Cartesian3 } from 'cesium';
-// import { Cartesian3 } from '../../../../angular-cesium/models/cartesian3';
 import { CameraService } from '../../../../angular-cesium/services/camera/camera.service';
 import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { GeoUtilsService } from '../../../../angular-cesium/services/geo-utils/geo-utils.service';

@@ -1,6 +1,5 @@
 import { Cartesian3 } from 'cesium';
 import { AcEntity } from '../../angular-cesium/models/ac-entity';
-// import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { PolylineProps } from './polyline-edit-options';
 
 export class EditArc extends AcEntity {

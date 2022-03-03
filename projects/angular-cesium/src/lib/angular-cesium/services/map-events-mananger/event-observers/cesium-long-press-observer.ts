@@ -1,10 +1,10 @@
 import { ConnectableObservable, merge, of as observableOf } from 'rxjs';
 import { delay, filter, mergeMap, publish, takeUntil, tap } from 'rxjs/operators';
+import { Cartesian2 } from 'cesium';
 import { CesiumPureEventObserver } from './cesium-pure-event-observer';
 import { CesiumEvent } from '../consts/cesium-event.enum';
 import { CesiumEventModifier } from '../consts/cesium-event-modifier.enum';
 import { CesiumEventBuilder } from '../cesium-event-builder';
-import { Cartesian2 } from '../../../models/cartesian2';
 
 export class CesiumLongPressObserver extends CesiumPureEventObserver {
   public static LONG_PRESS_EVENTS_DURATION = 250;
