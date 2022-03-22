@@ -2012,8 +2012,11 @@
   "resolved" "https://registry.npmjs.org/amdefine/-/amdefine-1.0.1.tgz"
   "version" "1.0.1"
 
-"angular2parse@file:../../angular2parse/project/angular2parse":
-  "resolved" "file:../../angular2parse/project/angular2parse"
+"angular2parse@file:../angular2parse/dist/angular2parse":
+  "resolved" "file:../angular2parse/dist/angular2parse"
+  "version" "3.0.0"
+  dependencies:
+    "tslib" "^2.3.0"
 
 "ansi-colors@^1.0.1":
   "integrity" "sha512-SFKX67auSNoVR38N3L+nvsPjOE0bybKTYbkf5tRvushrAPQ9V75huw0ZxBkKVeRU9kqH3d6HA4xTckbwZ4ixmA=="
