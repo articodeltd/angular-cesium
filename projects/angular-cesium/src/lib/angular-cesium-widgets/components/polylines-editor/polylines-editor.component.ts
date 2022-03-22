@@ -85,7 +85,6 @@ import { LabelProps } from '../../models/label-props';
 })
 export class PolylinesEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: PolylineEditUpdate, labels: LabelProps[]) => LabelProps[];
-  // public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editPolylines$ = new Subject<AcNotification>();
   public polylineLabels$ = new Subject<AcNotification>();

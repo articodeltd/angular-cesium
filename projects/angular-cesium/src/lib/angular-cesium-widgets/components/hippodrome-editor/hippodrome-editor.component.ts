@@ -81,7 +81,6 @@ import { EditableHippodrome } from '../../models/editable-hippodrome';
 })
 export class HippodromeEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: HippodromeEditUpdate, labels: LabelProps[]) => LabelProps[];
-  // public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editHippodromes$ = new Subject<AcNotification>();
 

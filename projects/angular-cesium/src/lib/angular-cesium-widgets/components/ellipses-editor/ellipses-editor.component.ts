@@ -90,7 +90,6 @@ import { EditableEllipse } from '../../models/editable-ellipse';
 })
 export class EllipsesEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: EllipseEditUpdate, labels: LabelProps[]) => LabelProps[];
-  // public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editEllipses$ = new Subject<AcNotification>();
 

@@ -102,7 +102,6 @@ import { EditableCircle } from '../../models/editable-circle';
 })
 export class CirclesEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: CircleEditUpdate, labels: LabelProps[]) => LabelProps[];
-  // public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editCircles$ = new Subject<AcNotification>();
   public editArcs$ = new Subject<AcNotification>();
