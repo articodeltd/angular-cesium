@@ -45,7 +45,7 @@
     "@fortawesome/angular-fontawesome": "^0.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "angular2parse": "^2.0.0",
+    "angular2parse": "file:../../angular2parse/project/angular2parse",
     "cesium": "1.75.0",
     "core-js": "^3.2.0",
     "dataloader": "^1.3.0",
