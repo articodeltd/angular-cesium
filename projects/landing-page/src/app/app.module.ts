@@ -15,26 +15,25 @@ import { AboutComponent } from './about-section/about/about.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainMapComponent,
-    ToolbarExampleComponent,
-    MyCustomContextMenuComponent,
-    ContextMenuLayerComponent,
-    KeyboardControlLayerComponent,
-    UFOsLayerComponent,
-    NavBarComponent,
-    AboutComponent
-  ],
-  imports: [
-    BrowserModule,
-    AngularCesiumModule.forRoot(),
-    AngularCesiumWidgetsModule,
-    FontAwesomeModule
-  ],
-  entryComponents: [MyCustomContextMenuComponent],
-  providers: [MockDataProviderService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MainMapComponent,
+        ToolbarExampleComponent,
+        MyCustomContextMenuComponent,
+        ContextMenuLayerComponent,
+        KeyboardControlLayerComponent,
+        UFOsLayerComponent,
+        NavBarComponent,
+        AboutComponent
+    ],
+    imports: [
+        BrowserModule,
+        AngularCesiumModule.forRoot(),
+        AngularCesiumWidgetsModule,
+        FontAwesomeModule
+    ],
+    providers: [MockDataProviderService],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -106,13 +106,6 @@
             ],
             "assets": ["projects/demo/src/favicon.ico", "projects/demo/src/assets"]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["projects/demo/tsconfig.app.json", "projects/demo/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
-          }
         }
       }
     },
@@ -131,13 +124,6 @@
             "production": {
               "devServerTarget": "angular-cesium-demo:serve:production"
             }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -166,16 +152,6 @@
             "main": "projects/angular-cesium/src/test.ts",
             "tsConfig": "projects/angular-cesium/tsconfig.spec.json",
             "karmaConfig": "projects/angular-cesium/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/angular-cesium/tsconfig.lib.json",
-              "projects/angular-cesium/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -283,19 +259,6 @@
               "projects/landing-page/src/styles.scss"
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/landing-page/tsconfig.app.json",
-              "projects/landing-page/tsconfig.spec.json",
-              "projects/landing-page/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
