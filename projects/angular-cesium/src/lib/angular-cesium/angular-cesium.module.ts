@@ -6,7 +6,7 @@ import { AcBillboardComponent } from './components/ac-billboard/ac-billboard.com
 import { AcBillboardDescComponent } from './components/ac-billborad-desc/ac-billborad-desc.component';
 import { AcEllipseDescComponent } from './components/ac-ellipse-desc/ac-ellipse-desc.component';
 import { AcPolylineDescComponent } from './components/ac-polyline-desc/ac-polyline-desc.component';
-import { Angular2ParseModule, PIPES_CONFIG } from 'angular2parse';
+import { Angular2ParseModule, PIPES_CONFIG } from '@auscope/angular2parse';
 import { PixelOffsetPipe } from './pipes/pixel-offset/pixel-offset.pipe';
 import { RadiansToDegreesPipe } from './pipes/radians-to-degrees/radians-to-degrees.pipe';
 import { JsonMapper } from './services/json-mapper/json-mapper.service';
