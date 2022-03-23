@@ -105,13 +105,11 @@ export class ZoomToRectangleService {
     const finalOptions = Object.assign({}, this.defaultOptions, options);
     let cameraService = this.cameraService;
     let mapContainer;
-    let map;
     if (this.cesiumService) {
       mapContainer = this.cesiumService.getViewer().container;
-      map = this.cesiumService.getMap();
     }
+    const map = this.mapsManager.getMap(mapId);
     if (mapId) {
-      map = this.mapsManager.getMap(mapId);
       if (!map) {
         throw new Error(`Map not found with id: ${mapId}`);
       }
@@ -132,7 +130,7 @@ export class ZoomToRectangleService {
     container.style.left = '0';
     mapContainer.appendChild(container);
     const mapZoomData: ZoomData = { container };
-    this.mapsZoomElements.set(mapId || this.cesiumService.getMap().getId(), mapZoomData);
+    this.mapsZoomElements.set(mapId, mapZoomData);
     let mouse = {
       endX: 0,
       endY: 0,
@@ -227,11 +225,15 @@ export class ZoomToRectangleService {
     mapZoomData.resetOnEscapePressFunc = resetOnEscapePress;
   }
 
-  disable(mapId?: string) {
-    if (!this.cesiumService && !mapId) {
-      throw new Error('If the service was not initialized with CesiumService, mapId must be provided');
+  public disable(mapId?: string) {
+    if (!this.mapsManager && !mapId) {
+      throw new Error('If the service was not initialized with MapsManager, mapId must be provided');
     }
-    const data = this.mapsZoomElements.get(mapId || this.cesiumService.getMap().getId());
+    if (!mapId) {
+      const map = this.mapsManager.getMap();
+      mapId = map.getId();
+    }
+    const data = this.mapsZoomElements.get(mapId);
     if (data) {
       data.container.remove();
       if (data.borderElement) {

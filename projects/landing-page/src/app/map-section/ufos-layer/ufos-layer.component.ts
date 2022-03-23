@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Math as cMath, Color, Cartographic, Cartesian3 } from 'cesium';
-import { AcNotification, ActionType } from 'angular-cesium';
+import { AcNotification, ActionType } from '@auscope/angular-cesium';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MockDataProviderService } from '../../services/mock-data-provider.service';

@@ -1,7 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { CesiumService } from '../../services/cesium/cesium.service';
-import { ConfigurationService } from '../../cesium-enhancements/ConfigurationService';
 import { SceneMode } from '../../models/scene-mode.enum';
 import { CameraService } from '../../services/camera/camera.service';
 import { ContextMenuService } from '../../services/context-menu/context-menu.service';
@@ -119,7 +118,6 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
     private mapEventsManager: MapEventsManagerService,
     private keyboardControlService: KeyboardControlService,
     private mapLayersService: MapLayersService,
-    private configurationService: ConfigurationService,
     private screenshotService: ScreenshotService,
     public contextMenuService: ContextMenuService,
     private coordinateConverter: CoordinateConverter,
@@ -128,7 +126,7 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
     this.mapContainer.style.width = '100%';
     this.mapContainer.style.height = '100%';
     this.mapContainer.className = 'map-container';
-    this._cesiumService.init(this.mapContainer, this);
+    this._cesiumService.init(this.mapContainer);
     this._cameraService.init(this._cesiumService);
     this.mapEventsManager.init();
     this.billboardDrawerService.init();

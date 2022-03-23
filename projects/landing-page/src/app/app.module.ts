@@ -7,7 +7,7 @@ import { ToolbarExampleComponent } from './map-section/toolbar-example/toolbar-e
 import { MyCustomContextMenuComponent } from './map-section/context-menu-layer/context-menu/my-custom-context-menu.component';
 import { ContextMenuLayerComponent } from './map-section/context-menu-layer/context-menu-layer.component';
 import { KeyboardControlLayerComponent } from './map-section/keyboard-control-layer/keyboard-control-layer.component';
-import { AngularCesiumModule, AngularCesiumWidgetsModule } from 'angular-cesium';
+import { AngularCesiumModule, AngularCesiumWidgetsModule } from '@auscope/angular-cesium';
 import { MockDataProviderService } from './services/mock-data-provider.service';
 import { UFOsLayerComponent } from './map-section/ufos-layer/ufos-layer.component';
 import { NavBarComponent } from './about-section/nav-bar/nav-bar.component'

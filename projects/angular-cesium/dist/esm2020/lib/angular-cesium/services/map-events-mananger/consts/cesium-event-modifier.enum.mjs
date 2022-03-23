@@ -1,0 +1,11 @@
+import { KeyboardEventModifier } from 'cesium';
+/**
+ * EventModifier options for registration on map-event-manager.
+ */
+export var CesiumEventModifier;
+(function (CesiumEventModifier) {
+    CesiumEventModifier[CesiumEventModifier["ALT"] = 2] = "ALT";
+    CesiumEventModifier[CesiumEventModifier["CTRL"] = 1] = "CTRL";
+    CesiumEventModifier[CesiumEventModifier["SHIFT"] = 0] = "SHIFT";
+})(CesiumEventModifier || (CesiumEventModifier = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2VzaXVtLWV2ZW50LW1vZGlmaWVyLmVudW0uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi8uLi9zcmMvbGliL2FuZ3VsYXItY2VzaXVtL3NlcnZpY2VzL21hcC1ldmVudHMtbWFuYW5nZXIvY29uc3RzL2Nlc2l1bS1ldmVudC1tb2RpZmllci5lbnVtLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxxQkFBcUIsRUFBRSxNQUFNLFFBQVEsQ0FBQztBQUMvQzs7R0FFRztBQUNILE1BQU0sQ0FBTixJQUFZLG1CQUlYO0FBSkQsV0FBWSxtQkFBbUI7SUFDN0IsMkRBQStCLENBQUE7SUFDL0IsNkRBQWlDLENBQUE7SUFDakMsK0RBQW1DLENBQUE7QUFDckMsQ0FBQyxFQUpXLG1CQUFtQixLQUFuQixtQkFBbUIsUUFJOUIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBLZXlib2FyZEV2ZW50TW9kaWZpZXIgfSBmcm9tICdjZXNpdW0nO1xyXG4vKipcclxuICogRXZlbnRNb2RpZmllciBvcHRpb25zIGZvciByZWdpc3RyYXRpb24gb24gbWFwLWV2ZW50LW1hbmFnZXIuXHJcbiAqL1xyXG5leHBvcnQgZW51bSBDZXNpdW1FdmVudE1vZGlmaWVyIHtcclxuICBBTFQgPSBLZXlib2FyZEV2ZW50TW9kaWZpZXIuQUxULFxyXG4gIENUUkwgPSBLZXlib2FyZEV2ZW50TW9kaWZpZXIuQ1RSTCxcclxuICBTSElGVCA9IEtleWJvYXJkRXZlbnRNb2RpZmllci5TSElGVCxcclxufVxyXG4iXX0=

@@ -39,7 +39,7 @@ export class AcHtmlComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.cesiumService.getMap().getMapContainer().appendChild(this.elementRef.nativeElement);
+    this.cesiumService.getMapContainer().appendChild(this.elementRef.nativeElement);
     if (this.props.show === false) {
       this.hideElement();
     }

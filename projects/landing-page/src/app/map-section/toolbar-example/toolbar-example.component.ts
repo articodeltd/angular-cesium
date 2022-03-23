@@ -11,7 +11,7 @@ import {
   RangeAndBearingComponent,
   RectanglesEditorService,
   ZoomToRectangleService
-} from 'angular-cesium';
+} from '@auscope/angular-cesium';
 
 @Component({
   selector: 'toolbar-example',

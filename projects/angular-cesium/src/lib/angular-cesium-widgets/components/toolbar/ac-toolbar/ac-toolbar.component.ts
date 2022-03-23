@@ -80,7 +80,7 @@ export class AcToolbarComponent implements OnInit, OnChanges, OnDestroy {
   constructor(private element: ElementRef, private cesiumService: CesiumService) {}
 
   ngOnInit() {
-    this.cesiumService.getMap().getMapContainer().appendChild(this.element.nativeElement);
+    this.cesiumService.getMapContainer().appendChild(this.element.nativeElement);
     if (this.allowDrag) {
       this.listenForDragging();
     }

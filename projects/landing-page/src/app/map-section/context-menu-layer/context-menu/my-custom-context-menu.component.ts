@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BasicContextMenu } from 'angular-cesium';
+import { BasicContextMenu } from '@auscope/angular-cesium';
 
 export interface ContextMenuData {
   item: { name: string };

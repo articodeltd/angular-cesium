@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { MapMode2D, ScreenSpaceEventType, Cartesian3, HeadingPitchRoll, Cesium3DTileset, IonResource, 
          Cesium3DTileStyle
         } from 'cesium';
-import { MapsManagerService, SceneMode, ViewerConfiguration } from 'angular-cesium';
+import { MapsManagerService, SceneMode, ViewerConfiguration } from '@auscope/angular-cesium';
 
 @Component({
   selector: 'main-map',

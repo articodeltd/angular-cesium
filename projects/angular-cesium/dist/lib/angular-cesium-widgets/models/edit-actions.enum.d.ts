@@ -1,0 +1,20 @@
+export declare enum EditActions {
+    INIT = 0,
+    MOUSE_MOVE = 1,
+    ADD_POINT = 2,
+    ADD_LAST_POINT = 3,
+    CHANGE_TO_EDIT = 4,
+    REMOVE_POINT = 5,
+    DRAG_POINT = 6,
+    DRAG_POINT_FINISH = 7,
+    DRAG_SHAPE = 8,
+    DRAG_SHAPE_FINISH = 9,
+    DONE = 10,
+    DISABLE = 11,
+    ENABLE = 12,
+    DISPOSE = 13,
+    SET_EDIT_LABELS_RENDER_CALLBACK = 14,
+    UPDATE_EDIT_LABELS = 15,
+    SET_MANUALLY = 16,
+    TRANSFORM = 17
+}

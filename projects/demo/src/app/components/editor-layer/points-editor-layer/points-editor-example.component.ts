@@ -1,18 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Color, Cartesian3 } from 'cesium';
-import {
-  CameraService,
-  CesiumEvent,
-  CesiumService,
-  EditActions,
+import { EditActions,
   LabelProps,
-  MapEventsManagerService, MapsManagerService,
-  PickOptions,
   PointEditorObservable,
   PointEditUpdate,
   PointsEditorService
-} from 'angular-cesium';
-import { defaultLabelProps } from 'projects/angular-cesium/src/public_api';
+} from '../../../../../../angular-cesium/dist';
 
 @Component({
   selector: 'points-editor-example',
@@ -28,11 +21,7 @@ export class PointsEditorExampleComponent implements OnInit {
   tileset: any;
   tilesLocation = {longitude: 0.5433407074863252, latitude: 0.523107775892968, height: 450};
 
-  constructor(private pointEditor: PointsEditorService,
-              private cesiumService: CesiumService,
-              private camService: CameraService,
-              private m: MapsManagerService,
-              private mapsManager: MapEventsManagerService) {
+  constructor(private pointEditor: PointsEditorService) {
   }
 
   ngOnInit(): void {

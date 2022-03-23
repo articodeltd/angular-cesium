@@ -1,0 +1,11 @@
+/**
+ * Cesium scene modes
+ */
+export var SceneMode;
+(function (SceneMode) {
+    SceneMode[SceneMode["SCENE3D"] = 0] = "SCENE3D";
+    SceneMode[SceneMode["COLUMBUS_VIEW"] = 1] = "COLUMBUS_VIEW";
+    SceneMode[SceneMode["SCENE2D"] = 2] = "SCENE2D";
+    SceneMode[SceneMode["PERFORMANCE_SCENE2D"] = 3] = "PERFORMANCE_SCENE2D";
+})(SceneMode || (SceneMode = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NlbmUtbW9kZS5lbnVtLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vc3JjL2xpYi9hbmd1bGFyLWNlc2l1bS9tb2RlbHMvc2NlbmUtbW9kZS5lbnVtLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBQ0gsTUFBTSxDQUFOLElBQVksU0FLWDtBQUxELFdBQVksU0FBUztJQUNuQiwrQ0FBTyxDQUFBO0lBQ1AsMkRBQWEsQ0FBQTtJQUNiLCtDQUFPLENBQUE7SUFDUCx1RUFBbUIsQ0FBQTtBQUNyQixDQUFDLEVBTFcsU0FBUyxLQUFULFNBQVMsUUFLcEIiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQ2VzaXVtIHNjZW5lIG1vZGVzXHJcbiAqL1xyXG5leHBvcnQgZW51bSBTY2VuZU1vZGUge1xyXG4gIFNDRU5FM0QsXHJcbiAgQ09MVU1CVVNfVklFVyxcclxuICBTQ0VORTJELFxyXG4gIFBFUkZPUk1BTkNFX1NDRU5FMkRcclxufVxyXG4iXX0=
