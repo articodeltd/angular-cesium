@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "license": "MIT",
   "description": "Angular v13 library for working with Cesium.",
-  "repository": "https://github.com/AuScope/angular-cesium",
   "repository": {
     "type": "git",
     "url": "https://github.com/AuScope/angular-cesium.git",
-    "directory": "projects/angular2parse"
+    "directory": "projects/angular-cesium"
   },
   "keywords": [
     "Angular",
