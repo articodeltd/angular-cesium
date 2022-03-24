@@ -1,7 +1,0 @@
-export var EditModes;
-(function (EditModes) {
-    EditModes[EditModes["CREATE"] = 0] = "CREATE";
-    EditModes[EditModes["EDIT"] = 1] = "EDIT";
-    EditModes[EditModes["CREATE_OR_EDIT"] = 2] = "CREATE_OR_EDIT";
-})(EditModes || (EditModes = {}));
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZWRpdC1tb2RlLmVudW0uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbGliL2FuZ3VsYXItY2VzaXVtLXdpZGdldHMvbW9kZWxzL2VkaXQtbW9kZS5lbnVtLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE1BQU0sQ0FBTixJQUFZLFNBSVg7QUFKRCxXQUFZLFNBQVM7SUFDbkIsNkNBQU0sQ0FBQTtJQUNOLHlDQUFJLENBQUE7SUFDSiw2REFBYyxDQUFBO0FBQ2hCLENBQUMsRUFKVyxTQUFTLEtBQVQsU0FBUyxRQUlwQiIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBlbnVtIEVkaXRNb2RlcyB7XHJcbiAgQ1JFQVRFLFxyXG4gIEVESVQsXHJcbiAgQ1JFQVRFX09SX0VESVRcclxufVxyXG4iXX0=
