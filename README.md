@@ -1,8 +1,9 @@
 # Angular-Cesium
 <img src="https://preview.ibb.co/cpDuwF/angular_cesium.png" width=150 alt="Drawing" style="margin:10"/>
 
-[![CircleCI](https://circleci.com/gh/articodeltd/angular-cesium.svg?style=shield)](https://circleci.com/gh/articodeltd/angular-cesium)
-[![npm version](https://img.shields.io/npm/v/angular-cesium.svg?style=flat-square)](https://www.npmjs.com/package/angular-cesium)
+[![npm version](https://img.shields.io/npm/v/angular-cesium.svg?style=flat-square)](https://www.npmjs.com/package/@auscope/angular-cesium)
+
+**This is a fork of Articode's "angular-cesium", adapted for Angular v13 [Angular Cesium](https://github.com/articodeltd/angular-cesium)**
 
 Create amazing mapping applications using Cesium and Angular components.
 Angular-Cesium is focused on high performance and simple usage.
