@@ -105,11 +105,16 @@ export class ZoomToRectangleService {
     const finalOptions = Object.assign({}, this.defaultOptions, options);
     let cameraService = this.cameraService;
     let mapContainer;
-    if (this.cesiumService) {
+    let map;
+    if (!mapId) {
+      map = this.mapsManager.getMap();
+      if (!map) {
+        throw new Error(`Map not found`);
+      }
+      mapId = map.getId();
       mapContainer = this.cesiumService.getViewer().container;
-    }
-    const map = this.mapsManager.getMap(mapId);
-    if (mapId) {
+    } else {
+      map = this.mapsManager.getMap(mapId);
       if (!map) {
         throw new Error(`Map not found with id: ${mapId}`);
       }
