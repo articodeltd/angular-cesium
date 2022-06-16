@@ -167,8 +167,8 @@ export class HippodromeEditorComponent implements OnDestroy {
       case EditActions.DISPOSE: {
         const hippodrome = this.hippodromesManager.get(update.id);
         if (hippodrome) {
-          hippodrome.dispose();
           this.removeEditLabels(hippodrome);
+          hippodrome.dispose();
         }
         break;
       }

@@ -193,8 +193,8 @@ export class PolygonsEditorComponent implements OnDestroy {
       case EditActions.DISPOSE: {
         const polygon = this.polygonsManager.get(update.id);
         if (polygon) {
-          polygon.dispose();
           this.removeEditLabels(polygon);
+          polygon.dispose();
           this.editLabelsRenderFn = undefined;
         }
         break;

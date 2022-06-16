@@ -182,8 +182,8 @@ export class PolylinesEditorComponent implements OnDestroy {
       case EditActions.DISPOSE: {
         const polyline = this.polylinesManager.get(update.id);
         if (polyline) {
-          polyline.dispose();
           this.removeEditLabels(polyline);
+          polyline.dispose();
           this.editLabelsRenderFn = undefined;
         }
         break;
