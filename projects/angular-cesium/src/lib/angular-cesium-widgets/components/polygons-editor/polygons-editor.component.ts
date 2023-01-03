@@ -18,20 +18,6 @@ import { EditablePolygon } from '../../models/editable-polygon';
 @Component({
   selector: 'polygons-editor',
   template: /*html*/ `
-    <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this">
-      <ac-polyline-desc
-        props="{
-        positions: polyline.getPositionsCallbackProperty(),
-        width: polyline.props.width,
-        material: polyline.props.material(),
-        clampToGround: polyline.props.clampToGround,
-        zIndex: polyline.props.zIndex,
-        classificationType: polyline.props.classificationType,
-      }"
-      >
-      </ac-polyline-desc>
-    </ac-layer>
-
     <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
       <ac-point-desc
         props="{
@@ -160,7 +146,6 @@ export class PolygonsEditorComponent implements OnDestroy {
           update.id,
           this.editPolygonsLayer,
           this.editPointsLayer,
-          this.editPolylinesLayer,
           this.coordinateConverter,
           update.polygonOptions,
         );
@@ -229,7 +214,6 @@ export class PolygonsEditorComponent implements OnDestroy {
           update.id,
           this.editPolygonsLayer,
           this.editPointsLayer,
-          this.editPolylinesLayer,
           this.coordinateConverter,
           update.polygonOptions,
           update.positions,
