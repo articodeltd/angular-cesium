@@ -19,6 +19,7 @@ export class EditablePolygon extends AcEntity {
   private _defaultPolylineProps: PolylineProps;
   private lastDraggedToPosition: Cartesian3;
   private _labels: LabelProps[] = [];
+  private tempInstance = {};
 
 
   constructor(private id: string,
@@ -335,7 +336,7 @@ export class EditablePolygon extends AcEntity {
         }),
         id: 'outline-' + this.id
       });
-      this.tempInstance[this.id] = this.tempInstance[this.id] || [];
+
       this.tempInstance[this.id] = this.cesiumService.getScene().groundPrimitives.add(
         new Cesium.GroundPolylinePrimitive({
           geometryInstances: instance,
