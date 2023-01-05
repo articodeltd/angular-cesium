@@ -15,7 +15,6 @@ export class EditablePolygon extends AcEntity {
   private polylines: EditPolyline[] = [];
   private movingPoint: EditPoint;
   private doneCreation = false;
-
   private _enableEdit = true;
   private _polygonProps: PolygonProps;
   private _defaultPointProps: PointProps;
