@@ -340,7 +340,7 @@ export class EditablePolygon extends AcEntity {
 
     const positions = this.positions.map(p => p.getPosition());
 
-    console.log('123');
+
     if (positions.length > 1 && this.useGroundPrimitiveOutline) {
       this.cesiumService.getScene().groundPrimitives.remove(this.outlineInstance);
 
@@ -364,7 +364,7 @@ export class EditablePolygon extends AcEntity {
         })
       );
 
-      console.log(this.outlineInstance);
+
     }
 
     if (renderPolylines) {
