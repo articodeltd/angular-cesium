@@ -106,7 +106,7 @@ export class PolygonsEditorComponent implements OnDestroy {
   @ViewChild('editPolygonsLayer') private editPolygonsLayer: AcLayerComponent;
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
   @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
-  @Input() useGroundPrimitiveOutline = false;
+  @Input() useGroundPrimitiveOutline = true;
 
   constructor(
     private polygonsEditor: PolygonsEditorService,
