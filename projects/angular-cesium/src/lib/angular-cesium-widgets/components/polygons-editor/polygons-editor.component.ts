@@ -18,7 +18,6 @@ import { EditablePolygon } from '../../models/editable-polygon';
 @Component({
   selector: 'polygons-editor',
   template: /*html*/ `
-
     <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" *ngIf="!useGroundPrimitiveOutline">
       <ac-polyline-desc
         props="{
@@ -32,8 +31,6 @@ import { EditablePolygon } from '../../models/editable-polygon';
       >
       </ac-polyline-desc>
     </ac-layer>
-
-
 
     <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
       <ac-point-desc

@@ -6,7 +6,6 @@ import { AcLayerComponent } from '../../../../angular-cesium/components/ac-layer
 import { CoordinateConverter } from '../../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import {CesiumService} from '../../../../angular-cesium';
 
-
 @Injectable()
 export class PolygonsManagerService {
   polygons: Map<string, EditablePolygon> = new Map<string, EditablePolygon>();
