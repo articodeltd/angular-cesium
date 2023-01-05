@@ -15,16 +15,18 @@ export class PolygonsManagerService {
   }
 
   createEditablePolygon(id: string, editPolygonsLayer: AcLayerComponent, editPointsLayer: AcLayerComponent,
-                        coordinateConverter: CoordinateConverter,
-                        polygonOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
+                        editPolylinesLayer: AcLayerComponent, coordinateConverter: CoordinateConverter,
+                        polygonOptions?: PolygonEditOptions, positions: Cartesian3[] = [], useGroundPrimitiveOutline= false) {
     const editablePolygon = new EditablePolygon(
       id,
       editPolygonsLayer,
       editPointsLayer,
+      editPolylinesLayer,
       coordinateConverter,
       polygonOptions,
       positions || null,
-      this.cesiumService
+      this.cesiumService,
+      useGroundPrimitiveOutline
     );
     this.polygons.set(id, editablePolygon
     );

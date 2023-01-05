@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, ViewChild} from '@angular/core';
 import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { PolygonEditUpdate } from '../../models/polygon-edit-update';
@@ -18,6 +18,23 @@ import { EditablePolygon } from '../../models/editable-polygon';
 @Component({
   selector: 'polygons-editor',
   template: /*html*/ `
+
+    <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" *ngIf="!useGroundPrimitiveOutline">
+      <ac-polyline-desc
+        props="{
+        positions: polyline.getPositionsCallbackProperty(),
+        width: polyline.props.width,
+        material: polyline.props.material(),
+        clampToGround: polyline.props.clampToGround,
+        zIndex: polyline.props.zIndex,
+        classificationType: polyline.props.classificationType,
+      }"
+      >
+      </ac-polyline-desc>
+    </ac-layer>
+
+
+
     <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
       <ac-point-desc
         props="{
@@ -89,6 +106,7 @@ export class PolygonsEditorComponent implements OnDestroy {
   @ViewChild('editPolygonsLayer') private editPolygonsLayer: AcLayerComponent;
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
   @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
+  @Input() useGroundPrimitiveOutline = false;
 
   constructor(
     private polygonsEditor: PolygonsEditorService,
@@ -146,8 +164,11 @@ export class PolygonsEditorComponent implements OnDestroy {
           update.id,
           this.editPolygonsLayer,
           this.editPointsLayer,
+          this.editPolylinesLayer,
           this.coordinateConverter,
           update.polygonOptions,
+          update.positions || [],
+          this.useGroundPrimitiveOutline
         );
         break;
       }
@@ -214,9 +235,11 @@ export class PolygonsEditorComponent implements OnDestroy {
           update.id,
           this.editPolygonsLayer,
           this.editPointsLayer,
+          this.editPolylinesLayer,
           this.coordinateConverter,
           update.polygonOptions,
           update.positions,
+          this.useGroundPrimitiveOutline
         );
         break;
       }
