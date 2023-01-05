@@ -331,16 +331,20 @@ export class EditablePolygon extends AcEntity {
       const instance = new Cesium.GeometryInstance({
         geometry: new Cesium.GroundPolylineGeometry({
           positions,
-          width: 7.0,
+          width: this.defaultPolylineProps.width,
           loop: true
         }),
-        id: 'outline-' + this.id
+        id: 'outline_' + this.id,
+        attributes: {
+          color: Cesium.ColorGeometryInstanceAttribute.fromColor(this.defaultPolylineProps.material())
+        }
       });
 
       this.tempInstance[this.id] = this.cesiumService.getScene().groundPrimitives.add(
         new Cesium.GroundPolylinePrimitive({
           geometryInstances: instance,
-          appearance: new Cesium.PolylineMaterialAppearance()
+          asynchronous: false,
+          appearance: new Cesium.PolylineColorAppearance({translucent: true})
         })
       );
     }
