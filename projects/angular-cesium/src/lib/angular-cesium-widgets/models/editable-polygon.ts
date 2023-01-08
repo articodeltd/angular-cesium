@@ -21,17 +21,18 @@ export class EditablePolygon extends AcEntity {
   private _defaultPolylineProps: PolylineProps;
   private lastDraggedToPosition: Cartesian3;
   private _labels: LabelProps[] = [];
-  private outlineInstance = {};
+  private outlineInstance = null;
 
   constructor(private id: string,
               private polygonsLayer: AcLayerComponent,
               private pointsLayer: AcLayerComponent,
               private polylinesLayer: AcLayerComponent,
               private coordinateConverter: CoordinateConverter,
+              private scene: any,
               private polygonOptions: PolygonEditOptions,
               positions: Cartesian3[] = [],
-              private cesiumService,
-              private useGroundPrimitiveOutline = false
+
+
 
   ) {
     super();
@@ -174,15 +175,40 @@ export class EditablePolygon extends AcEntity {
   }
 
   private renderPolylines() {
+    const positions = this.positions.map(p => p.getPosition());
+    if (positions.length > 1 && this.polygonProps.useGroundPrimitiveOutline) {
+      this.scene.groundPrimitives.remove(this.outlineInstance);
+      const instance = new Cesium.GeometryInstance({
+        geometry: new Cesium.GroundPolylineGeometry({
+          positions,
+          width: this.defaultPolylineProps.width,
+          loop: true
+        }),
+        id: 'edit-polygon-outline-' + this.id,
+        attributes: {
+          color: Cesium.ColorGeometryInstanceAttribute.fromColor(this.defaultPolylineProps.material())
+        }
+      });
+      this.outlineInstance = this.scene.groundPrimitives.add(
+        new Cesium.GroundPolylinePrimitive({
+          geometryInstances: instance,
+          asynchronous: false,
+          appearance: new Cesium.PolylineColorAppearance({translucent: true})
+        })
+      );
+    }
     this.polylines.forEach(polyline => this.polylinesLayer.remove(polyline.getId()));
     this.polylines = [];
     const realPoints = this.positions.filter(pos => !pos.isVirtualEditPoint());
     realPoints.forEach((point, index) => {
       const nextIndex = (index + 1) % (realPoints.length);
       const nextPoint = realPoints[nextIndex];
-      const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this.defaultPolylineProps);
-      this.polylines.push(polyline);
-      this.polylinesLayer.update(polyline, polyline.getId());
+
+      if (!this.polygonProps.useGroundPrimitiveOutline) {
+        const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this.defaultPolylineProps);
+        this.polylines.push(polyline);
+        this.polylinesLayer.update(polyline, polyline.getId());
+      }
     });
   }
 
@@ -278,9 +304,7 @@ export class EditablePolygon extends AcEntity {
       .forEach(p => this.removePosition(p));
     this.addAllVirtualEditPoints();
 
-    if (!this.useGroundPrimitiveOutline) {
       this.renderPolylines();
-    }
 
     if (this.getPointsCount() >= 3) {
       this.polygonsLayer.update(this, this.id);
@@ -333,30 +357,8 @@ export class EditablePolygon extends AcEntity {
   }
 
   private updatePointsLayer(renderPolylines = true, ...points: EditPoint[]) {
-    const positions = this.positions.map(p => p.getPosition());
-    if (positions.length > 1 && this.useGroundPrimitiveOutline) {
-      this.cesiumService.getScene().groundPrimitives.remove(this.outlineInstance);
-      const instance = new Cesium.GeometryInstance({
-        geometry: new Cesium.GroundPolylineGeometry({
-          positions,
-          width: this.defaultPolylineProps.width,
-          loop: true
-        }),
-        id: 'outline_' + this.id,
-        attributes: {
-          color: Cesium.ColorGeometryInstanceAttribute.fromColor(this.defaultPolylineProps.material())
-        }
-      });
-      this.outlineInstance = this.cesiumService.getScene().groundPrimitives.add(
-        new Cesium.GroundPolylinePrimitive({
-          geometryInstances: instance,
-          asynchronous: false,
-          appearance: new Cesium.PolylineColorAppearance({translucent: true})
-        })
-      );
-    }
 
-    if (renderPolylines && !this.useGroundPrimitiveOutline) {
+    if (renderPolylines) {
       this.renderPolylines();
     }
     points.forEach(p => this.pointsLayer.update(p, p.getId()));
@@ -364,15 +366,11 @@ export class EditablePolygon extends AcEntity {
 
   dispose() {
     this.polygonsLayer.remove(this.id);
-
+    this.scene.groundPrimitives.remove(this.outlineInstance);
     this.positions.forEach(editPoint => {
       this.pointsLayer.remove(editPoint.getId());
     });
-
-    if (!this.useGroundPrimitiveOutline) {
-      this.polylines.forEach(line => this.polylinesLayer.remove(line.getId()));
-    }
-
+    this.polylines.forEach(line => this.polylinesLayer.remove(line.getId()));
     if (this.movingPoint) {
       this.pointsLayer.remove(this.movingPoint.getId());
       this.movingPoint = undefined;

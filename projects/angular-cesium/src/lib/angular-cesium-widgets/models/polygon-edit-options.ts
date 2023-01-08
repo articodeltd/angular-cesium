@@ -5,6 +5,7 @@ export interface PolygonProps {
   fill?: boolean;
   classificationType?: any;
   zIndex?: any;
+  useGroundPrimitiveOutline?: boolean;
 }
 
 export interface PolygonEditOptions extends PolylineEditOptions {

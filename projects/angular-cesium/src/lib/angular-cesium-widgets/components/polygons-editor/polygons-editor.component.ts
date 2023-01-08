@@ -18,7 +18,7 @@ import { EditablePolygon } from '../../models/editable-polygon';
 @Component({
   selector: 'polygons-editor',
   template: /*html*/ `
-    <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" *ngIf="!useGroundPrimitiveOutline">
+    <ac-layer #editPolylinesLayer acFor="let polyline of editPolylines$" [context]="this" >
       <ac-polyline-desc
         props="{
         positions: polyline.getPositionsCallbackProperty(),
@@ -103,7 +103,6 @@ export class PolygonsEditorComponent implements OnDestroy {
   @ViewChild('editPolygonsLayer') private editPolygonsLayer: AcLayerComponent;
   @ViewChild('editPointsLayer') private editPointsLayer: AcLayerComponent;
   @ViewChild('editPolylinesLayer') private editPolylinesLayer: AcLayerComponent;
-  @Input() useGroundPrimitiveOutline = false;
 
   constructor(
     private polygonsEditor: PolygonsEditorService,
@@ -163,9 +162,8 @@ export class PolygonsEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
+          this.cesiumService.getScene(),
           update.polygonOptions,
-          update.positions || [],
-          this.useGroundPrimitiveOutline
         );
         break;
       }
@@ -234,9 +232,8 @@ export class PolygonsEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
+          this.cesiumService.getScene(),
           update.polygonOptions,
-          update.positions,
-          this.useGroundPrimitiveOutline
         );
         break;
       }
