@@ -44,6 +44,7 @@ export const DEFAULT_POLYGON_OPTIONS: PolygonEditOptions = {
     fill: true,
     classificationType: Cesium.ClassificationType.BOTH,
     zIndex: 0,
+    useGroundPrimitiveOutline: false
   },
   polylineProps: {
     material: () => Cesium.Color.WHITE,

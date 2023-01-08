@@ -30,11 +30,7 @@ export class EditablePolygon extends AcEntity {
               private coordinateConverter: CoordinateConverter,
               private scene: any,
               private polygonOptions: PolygonEditOptions,
-              positions: Cartesian3[] = [],
-
-
-
-  ) {
+              positions: Cartesian3[] = []) {
     super();
     this.polygonProps = {...polygonOptions.polygonProps};
     this.defaultPointProps = {...polygonOptions.pointProps};

@@ -21,8 +21,7 @@ export class PolygonsManagerService {
       coordinateConverter,
       scene,
       polygonOptions,
-      positions || null,
-    );
+      positions);
     this.polygons.set(id, editablePolygon
     );
   }

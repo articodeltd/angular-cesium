@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, ViewChild} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
 import { CesiumService } from '../../../angular-cesium/services/cesium/cesium.service';
 import { EditModes } from '../../models/edit-mode.enum';
 import { PolygonEditUpdate } from '../../models/polygon-edit-update';
@@ -234,6 +234,7 @@ export class PolygonsEditorComponent implements OnDestroy {
           this.coordinateConverter,
           this.cesiumService.getScene(),
           update.polygonOptions,
+          update.positions,
         );
         break;
       }
