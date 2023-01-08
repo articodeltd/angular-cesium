@@ -192,20 +192,21 @@ export class EditablePolygon extends AcEntity {
           appearance: new Cesium.PolylineColorAppearance({translucent: true})
         })
       );
-    }
-    this.polylines.forEach(polyline => this.polylinesLayer.remove(polyline.getId()));
-    this.polylines = [];
-    const realPoints = this.positions.filter(pos => !pos.isVirtualEditPoint());
-    realPoints.forEach((point, index) => {
-      const nextIndex = (index + 1) % (realPoints.length);
-      const nextPoint = realPoints[nextIndex];
+    } else {
+      this.polylines.forEach(polyline => this.polylinesLayer.remove(polyline.getId()));
+      this.polylines = [];
+      const realPoints = this.positions.filter(pos => !pos.isVirtualEditPoint());
+      realPoints.forEach((point, index) => {
+        const nextIndex = (index + 1) % (realPoints.length);
+        const nextPoint = realPoints[nextIndex];
 
-      if (!this.polygonProps.useGroundPrimitiveOutline) {
+
         const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this.defaultPolylineProps);
         this.polylines.push(polyline);
         this.polylinesLayer.update(polyline, polyline.getId());
-      }
-    });
+
+      });
+    }
   }
 
   addPointFromExisting(position: Cartesian3) {
@@ -300,7 +301,7 @@ export class EditablePolygon extends AcEntity {
       .forEach(p => this.removePosition(p));
     this.addAllVirtualEditPoints();
 
-      this.renderPolylines();
+    this.renderPolylines();
     if (this.getPointsCount() >= 3) {
       this.polygonsLayer.update(this, this.id);
     }
