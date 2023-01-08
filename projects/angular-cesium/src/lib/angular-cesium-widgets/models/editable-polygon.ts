@@ -30,7 +30,7 @@ export class EditablePolygon extends AcEntity {
               private coordinateConverter: CoordinateConverter,
               private scene: any,
               private polygonOptions: PolygonEditOptions,
-              positions: Cartesian3[] = []) {
+              positions?: Cartesian3[]) {
     super();
     this.polygonProps = {...polygonOptions.polygonProps};
     this.defaultPointProps = {...polygonOptions.pointProps};
@@ -301,7 +301,6 @@ export class EditablePolygon extends AcEntity {
     this.addAllVirtualEditPoints();
 
       this.renderPolylines();
-
     if (this.getPointsCount() >= 3) {
       this.polygonsLayer.update(this, this.id);
     }
@@ -353,7 +352,6 @@ export class EditablePolygon extends AcEntity {
   }
 
   private updatePointsLayer(renderPolylines = true, ...points: EditPoint[]) {
-
     if (renderPolylines) {
       this.renderPolylines();
     }
