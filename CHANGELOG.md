@@ -1,3 +1,8 @@
+## 0.74
+### Features
+* Added possibility to use ground polyline as outline of polygon for improving performance. By default, feature not enabled. You can enable it in polygon config by setting parameter `useGroundPrimitiveOutline` in `PolygonEditOptions.polygonProps` as `true`  
+
+
 ## 0.73
 ### Fixes
 * Enhance moving point in editors fix for tablets to accomodate inaccurate taps
