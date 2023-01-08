@@ -21,7 +21,7 @@ export class EditablePolygon extends AcEntity {
   private _defaultPolylineProps: PolylineProps;
   private lastDraggedToPosition: Cartesian3;
   private _labels: LabelProps[] = [];
-  private outlineInstance = null;
+  private _outlineInstance = null;
 
   constructor(private id: string,
               private polygonsLayer: AcLayerComponent,
@@ -172,8 +172,8 @@ export class EditablePolygon extends AcEntity {
 
   private renderPolylines() {
     const positions = this.positions.map(p => p.getPosition());
-    if (positions.length > 1 && this.polygonProps.useGroundPrimitiveOutline) {
-      this.scene.groundPrimitives.remove(this.outlineInstance);
+    if (this.polygonProps.useGroundPrimitiveOutline) {
+      this.scene.groundPrimitives.remove(this._outlineInstance);
       const instance = new Cesium.GeometryInstance({
         geometry: new Cesium.GroundPolylineGeometry({
           positions,
@@ -185,11 +185,11 @@ export class EditablePolygon extends AcEntity {
           color: Cesium.ColorGeometryInstanceAttribute.fromColor(this.defaultPolylineProps.material())
         }
       });
-      this.outlineInstance = this.scene.groundPrimitives.add(
+      this._outlineInstance = this.scene.groundPrimitives.add(
         new Cesium.GroundPolylinePrimitive({
           geometryInstances: instance,
           asynchronous: false,
-          appearance: new Cesium.PolylineColorAppearance({translucent: true})
+          appearance: new Cesium.PolylineColorAppearance()
         })
       );
     } else {
@@ -361,7 +361,7 @@ export class EditablePolygon extends AcEntity {
 
   dispose() {
     this.polygonsLayer.remove(this.id);
-    this.scene.groundPrimitives.remove(this.outlineInstance);
+    this.scene.groundPrimitives.remove(this._outlineInstance);
     this.positions.forEach(editPoint => {
       this.pointsLayer.remove(editPoint.getId());
     });
