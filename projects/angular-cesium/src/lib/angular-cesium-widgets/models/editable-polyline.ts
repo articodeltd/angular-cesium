@@ -163,7 +163,7 @@ export class EditablePolyline extends AcEntity {
   }
 
   private renderPolylines() {
-    this.polylines.forEach(polyline => this.polylinesLayer?.remove(polyline.getId()));
+    this.polylines.forEach(polyline => this.polylinesLayer.remove(polyline.getId()));
     this.polylines = [];
     const realPoints = this.positions.filter(point => !point.isVirtualEditPoint());
     realPoints.forEach((point, index) => {
@@ -172,7 +172,7 @@ export class EditablePolyline extends AcEntity {
         const nextPoint = realPoints[nextIndex];
         const polyline = new EditPolyline(this.id, point.getPosition(), nextPoint.getPosition(), this.polylineProps);
         this.polylines.push(polyline);
-        this.polylinesLayer?.update(polyline, polyline.getId());
+        this.polylinesLayer.update(polyline, polyline.getId());
       }
     });
   }
@@ -329,7 +329,7 @@ export class EditablePolyline extends AcEntity {
     this.positions.forEach(editPoint => {
       this.pointsLayer.remove(editPoint.getId());
     });
-    this.polylines.forEach(line => this.polylinesLayer?.remove(line.getId()));
+    this.polylines.forEach(line => this.polylinesLayer.remove(line.getId()));
     if (this.movingPoint) {
       this.pointsLayer.remove(this.movingPoint.getId());
       this.movingPoint = undefined;
