@@ -21,17 +21,16 @@ export class EditablePolyline extends AcEntity {
   private lastDraggedToPosition: any;
   private _labels: LabelProps[] = [];
   private _outlineInstance = null;
-  private scene: any;
+
   constructor(private id: string,
               private pointsLayer: AcLayerComponent,
               private polylinesLayer: AcLayerComponent,
               private coordinateConverter: CoordinateConverter,
-              scene: any,
+              private scene: any,
               private editOptions: PolylineEditOptions,
               positions?: Cartesian3[]) {
     super();
     this._pointProps = {...editOptions.pointProps};
-    this.scene = scene;
     this.props = {...editOptions.polylineProps};
     if (positions && positions.length >= 2) {
       this.createFromExisting(positions);
