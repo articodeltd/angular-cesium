@@ -171,7 +171,11 @@ export class EditablePolygon extends AcEntity {
   }
 
   private renderPolylines() {
+    const realPoints = this.positions.filter(pos => !pos.isVirtualEditPoint());
     if (this.defaultPolylineProps.useGroundPrimitiveOutline) {
+      if (realPoints.length < 2) {
+        return;
+      }
       this.scene.groundPrimitives.remove(this._outlineInstance);
       const instance = new Cesium.GeometryInstance({
         geometry: new Cesium.GroundPolylineGeometry({
@@ -194,7 +198,6 @@ export class EditablePolygon extends AcEntity {
     } else {
       this.polylines.forEach(polyline => this.polylinesLayer.remove(polyline.getId()));
       this.polylines = [];
-      const realPoints = this.positions.filter(pos => !pos.isVirtualEditPoint());
       realPoints.forEach((point, index) => {
         const nextIndex = (index + 1) % (realPoints.length);
         const nextPoint = realPoints[nextIndex];
