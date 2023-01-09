@@ -150,6 +150,7 @@ export class PolylinesEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
+          this.cesiumService.getScene(),
           update.polylineOptions,
         );
         break;
@@ -218,6 +219,7 @@ export class PolylinesEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
+          this.cesiumService.getScene(),
           update.polylineOptions,
           update.positions,
         );

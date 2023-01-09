@@ -162,6 +162,7 @@ export class PolygonsEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
+          this.cesiumService.getScene(),
           update.polygonOptions,
         );
         break;
@@ -231,6 +232,7 @@ export class PolygonsEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
+          this.cesiumService.getScene(),
           update.polygonOptions,
           update.positions,
         );

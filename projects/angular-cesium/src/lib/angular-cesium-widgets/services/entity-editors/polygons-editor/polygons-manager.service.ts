@@ -11,6 +11,7 @@ export class PolygonsManagerService {
 
   createEditablePolygon(id: string, editPolygonsLayer: AcLayerComponent, editPointsLayer: AcLayerComponent,
                         editPolylinesLayer: AcLayerComponent, coordinateConverter: CoordinateConverter,
+                        scene: any,
                         polygonOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
     const editablePolygon = new EditablePolygon(
       id,
@@ -18,6 +19,7 @@ export class PolygonsManagerService {
       editPointsLayer,
       editPolylinesLayer,
       coordinateConverter,
+      scene,
       polygonOptions,
       positions);
     this.polygons.set(id, editablePolygon
