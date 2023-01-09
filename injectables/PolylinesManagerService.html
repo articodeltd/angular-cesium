@@ -138,7 +138,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-manager.service.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-manager.service.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -169,7 +169,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>createEditablePolyline(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editPolylinesLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, editPointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, polylineOptions?: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, positions?: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
+<code>createEditablePolyline(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editPolylinesLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, editPointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, scene: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, polylineOptions?: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, positions?: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
                     </td>
                 </tr>
 
@@ -244,6 +244,18 @@
 
                                                 </tr>
                                                 <tr>
+                                                        <td>scene</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
                                                         <td>polylineOptions</td>
                                                         <td>
                                                                     <code><a href="../interfaces/PolygonEditOptions.html" target="_self" >PolygonEditOptions</a></code>
@@ -305,7 +317,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-manager.service.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polyline-editor/polylines-manager.service.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -416,12 +428,14 @@ export class PolylinesManagerService {
   polylines: Map&lt;string, EditablePolyline&gt; &#x3D; new Map&lt;string, EditablePolyline&gt;();
 
   createEditablePolyline(id: string, editPolylinesLayer: AcLayerComponent, editPointsLayer: AcLayerComponent,
-                         coordinateConverter: CoordinateConverter, polylineOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
+                         coordinateConverter: CoordinateConverter, scene: any,
+                         polylineOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
     const editablePolyline &#x3D; new EditablePolyline(
       id,
       editPolylinesLayer,
       editPointsLayer,
       coordinateConverter,
+      scene,
       polylineOptions,
       positions);
     this.polylines.set(id, editablePolyline

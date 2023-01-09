@@ -141,7 +141,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -172,7 +172,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>createEditablePolygon(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editPolygonsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, editPointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, editPolylinesLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, polygonOptions?: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, positions?: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
+<code>createEditablePolygon(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, editPolygonsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, editPointsLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, editPolylinesLayer: <a href="../components/AcLayerComponent.html">AcLayerComponent</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html">CoordinateConverter</a>, scene: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, polygonOptions?: <a href="../interfaces/PolygonEditOptions.html">PolygonEditOptions</a>, positions?: <a href="../interfaces/Cartesian3.html">Cartesian3[]</a>)</code>
                     </td>
                 </tr>
 
@@ -259,6 +259,18 @@
 
                                                 </tr>
                                                 <tr>
+                                                        <td>scene</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
                                                         <td>polygonOptions</td>
                                                         <td>
                                                                     <code><a href="../interfaces/PolygonEditOptions.html" target="_self" >PolygonEditOptions</a></code>
@@ -320,7 +332,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -389,7 +401,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/services/entity-editors/polygons-editor/polygons-manager.service.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -501,6 +513,7 @@ export class PolygonsManagerService {
 
   createEditablePolygon(id: string, editPolygonsLayer: AcLayerComponent, editPointsLayer: AcLayerComponent,
                         editPolylinesLayer: AcLayerComponent, coordinateConverter: CoordinateConverter,
+                        scene: any,
                         polygonOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
     const editablePolygon &#x3D; new EditablePolygon(
       id,
@@ -508,6 +521,7 @@ export class PolygonsManagerService {
       editPointsLayer,
       editPolylinesLayer,
       coordinateConverter,
+      scene,
       polygonOptions,
       positions);
     this.polygons.set(id, editablePolygon

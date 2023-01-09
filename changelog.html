@@ -31,6 +31,28 @@
                <div class="content getting-started">
                    <div class="content-data">
 
+<h2 id="0-74">0.74</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li>Added the ability to use ground polyline primitives to improve performance<ul>
+<li>Ground polyline primitives can be used: <ul>
+<li>as the outline of polygons in polygon editor </li>
+<li>as the line in polyline editor</li>
+</ul>
+</li>
+<li>Can be enabled by setting the <code>useGroundPrimitiveOutline</code> parameter to <code>true</code> (default is <code>false</code>) in  <ul>
+<li><code>PolygonEditOptions.polylineProps</code> </li>
+<li><code>PolylineEditOptions.polylineProps</code></li>
+</ul>
+</li>
+<li>Please note:<ul>
+<li>To use this feature you must wait for the following promise to resolve <code>Cesium.GroundPolylinePrimitive.initializeTerrainHeights()</code></li>
+<li>Material parameter can be only of type <code>Cesium.Color</code>. Any other type of material may not work</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="0-73">0.73</h2>
 <h3 id="fixes">Fixes</h3>
 <ul>
