@@ -10,12 +10,14 @@ export class PolylinesManagerService {
   polylines: Map<string, EditablePolyline> = new Map<string, EditablePolyline>();
 
   createEditablePolyline(id: string, editPolylinesLayer: AcLayerComponent, editPointsLayer: AcLayerComponent,
-                         coordinateConverter: CoordinateConverter, polylineOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
+                         coordinateConverter: CoordinateConverter, scene: any,
+                         polylineOptions?: PolygonEditOptions, positions?: Cartesian3[]) {
     const editablePolyline = new EditablePolyline(
       id,
       editPolylinesLayer,
       editPointsLayer,
       coordinateConverter,
+      scene,
       polylineOptions,
       positions);
     this.polylines.set(id, editablePolyline

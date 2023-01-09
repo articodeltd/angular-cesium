@@ -15,6 +15,7 @@ export interface PolylineProps {
   clampToGround?: boolean;
   zIndex?: number;
   classificationType?: any;
+  useGroundPrimitiveOutline?: boolean;
 }
 
 export interface PolylineEditOptions extends EditorEditOptions {

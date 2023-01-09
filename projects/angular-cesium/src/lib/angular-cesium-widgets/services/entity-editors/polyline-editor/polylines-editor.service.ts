@@ -44,6 +44,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
     clampToGround: false,
     zIndex: 0,
     classificationType: Cesium.ClassificationType.BOTH,
+    useGroundPrimitiveOutline: false
   },
   clampHeightTo3D: false,
   clampHeightTo3DOptions: {
