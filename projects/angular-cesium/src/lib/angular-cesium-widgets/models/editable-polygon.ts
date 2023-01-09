@@ -171,7 +171,7 @@ export class EditablePolygon extends AcEntity {
   }
 
   private renderPolylines() {
-    if (this.polygonProps.useGroundPrimitiveOutline) {
+    if (this.defaultPolylineProps.useGroundPrimitiveOutline) {
       this.scene.groundPrimitives.remove(this._outlineInstance);
       const instance = new Cesium.GeometryInstance({
         geometry: new Cesium.GroundPolylineGeometry({

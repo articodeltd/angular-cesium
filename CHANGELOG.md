@@ -1,6 +1,6 @@
 ## 0.74
 ### Features
-* Added the ability to use a ground polyline as the outline of polygon editors to improve performance. Can be enabled by setting the `useGroundPrimitiveOutline` parameter in `PolygonEditOptions.polygonProps` to `true` (default is `false`).
+* Added the ability to use a ground polyline as the outline of polygon editors to improve performance. Can be enabled by setting the `useGroundPrimitiveOutline` parameter in `PolygonEditOptions.polylineProps` to `true` (default is `false`).
 * To use this feature you must wait for the following promise to resolve `Cesium.GroundPolylinePrimitive.initializeTerrainHeights()`.
 
 
