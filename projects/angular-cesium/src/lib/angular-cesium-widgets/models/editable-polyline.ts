@@ -353,6 +353,7 @@ export class EditablePolyline extends AcEntity {
   }
 
   dispose() {
+    this.scene.groundPrimitives.remove(this._outlineInstance);
     this.positions.forEach(editPoint => {
       this.pointsLayer.remove(editPoint.getId());
     });
