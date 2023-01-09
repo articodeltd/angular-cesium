@@ -179,7 +179,7 @@ export class EditablePolygon extends AcEntity {
           width: this.defaultPolylineProps.width,
           loop: true
         }),
-        id: 'edit-polygon-outline-' + this.id,
+        id: 'edit-ground-primitive-' + this.id,
         attributes: {
           color: Cesium.ColorGeometryInstanceAttribute.fromColor(this.defaultPolylineProps.material())
         }

@@ -165,7 +165,7 @@ export class EditablePolyline extends AcEntity {
   }
 
   private renderPolylines() {
-    if (this.polylineProps.useGroundPrimitiveOutline && this.positions.length>1) {
+    if (this.polylineProps.useGroundPrimitiveOutline) {
       this.scene.groundPrimitives.remove(this._outlineInstance);
       const instance = new Cesium.GeometryInstance({
         geometry: new Cesium.GroundPolylineGeometry({
