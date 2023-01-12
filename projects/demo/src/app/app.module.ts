@@ -45,6 +45,7 @@ import { EllipsoidLayerExampleComponent } from './components/ellipsoid-layer-exa
 import { VolumeLayerExampleComponent } from './components/volume-layer-example/volume-layer-example.component';
 import { WallLayerExampleComponent } from './components/wall-layer-example/wall-layer-example.component';
 import { RectangleEditorExampleComponent } from './components/editor-layer/rectangle-editor-example/rectangle-editor-example.component';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { RectangleEditorExampleComponent } from './components/editor-layer/recta
     AngularCesiumWidgetsModule,
     BrowserAnimationsModule,
     AppMaterialModule,
+    CommonModule
   ],
   declarations: [
     AppComponent,
