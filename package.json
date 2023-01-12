@@ -1,5 +1,5 @@
 {
-  "name": "angular-cesium",
+  "name": "ccs-angular-cesium",
   "version": "1.0.0",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
