@@ -133,19 +133,11 @@ function addModuleImportToRootModule() {
     const modulePath = getAppModulePath(tree, getProjectMainFile(project));
     const moduleSource = getSourceFile(tree, modulePath);
 
-    const changes = addImportToModule(
-      moduleSource,
-      modulePath,
-      'AngularCesiumModule.forRoot()',
-      'angular-cesium'
-    ).concat(
-      addImportToModule(
-        moduleSource,
-        modulePath,
-        'AngularCesiumWidgetsModule',
-        'angular-cesium'
-      )
-    );
+    // @ts-ignore
+    const firstChanges = addImportToModule(moduleSource, modulePath, 'AngularCesiumModule.forRoot()', 'angular-cesium');
+    // @ts-ignore
+    const secondChanges = addImportToModule(moduleSource, modulePath, 'AngularCesiumWidgetsModule', 'angular-cesium');
+    const changes = firstChanges.concat(secondChanges);
     const recorder = tree.beginUpdate(modulePath);
 
     changes.forEach(change => {
