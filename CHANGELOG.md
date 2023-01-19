@@ -1,3 +1,15 @@
+#0.75
+### Features
+* Upgraded to Angular 13
+* Upgraded to latest Cesium Version, 1.101.0
+* Upgraded typescript
+* Added util library which angular uses now
+### Fixes
+* Removed cyclical dependency in cesium service to fix partial ivy compilation error, since now Angular 13 compiles using ivy not ngcc
+* Added common module to demo app.module for latest angular compatibility
+* Fixed issue in ng-add schematics where "moduleSource" was not defined in the concatenation
+
+
 ## 0.74
 ### Features
 * Added the ability to use ground polyline primitives to improve performance
