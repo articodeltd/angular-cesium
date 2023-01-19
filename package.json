@@ -1,6 +1,6 @@
 {
-  "name": "ccs-angular-cesium",
-  "version": "1.0.1",
+  "name": "angular-cesium",
+  "version": "0.0.75",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/articodeltd/angular-cesium",
@@ -16,8 +16,7 @@
     "demo:build": "ng build angular-cesium-demo --prod",
     "landing-page:deploy": "ng build landing-page --prod; cp projects/landing-page/now.json dist/landing-page; cd dist/landing-page; now --prod",
     "landing-page": "ng serve landing-page --host 0.0.0.0 --disableHostCheck",
-    "lib:build-with-schemnantics": "ng build angular-cesium --configuration production; npm run copy:extra-files; npm run schemnantics:build",
-    "lib:build": "ng build angular-cesium --configuration production; npm run copy:extra-files",
+    "lib:build": "ng build angular-cesium --configuration production; npm run copy:extra-files; npm run schemnantics:build",
     "lib:start": "ng build angular-cesium --watch",
     "lib:publish": "npm run lib:build; cd dist/angular-cesium; npm publish; cd ../../; npm run docs:push",
     "test": "ng test angular-cesium",
