@@ -8,7 +8,7 @@ export class SmartAssigner {
 
     props.forEach(prop => {
       if (!allowUndefined) {
-        // tslint:disable-next-line:max-line-length
+        // eslint-disable-next-line max-len
         fnBody += `if (!(obj1['${prop}'] instanceof Cesium.CallbackProperty) && obj2['${prop}'] !== undefined) { obj1['${prop}'] = obj2['${prop}']; } `;
       } else {
         fnBody += `if(!(obj1['${prop}'] instanceof Cesium.CallbackProperty))obj1['${prop}'] = obj2['${prop}']; `;

@@ -3,7 +3,7 @@
  * PR in Cesium repo: https://github.com/AnalyticalGraphicsInc/cesium/pull/5736
  */
 
-// tslint:disable
+/* eslint-disable */
 const AssociativeArray = Cesium.AssociativeArray;
 const Color = Cesium.Color;
 const ColorGeometryInstanceAttribute = Cesium.ColorGeometryInstanceAttribute;

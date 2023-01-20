@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AcDynamicPolylineDescComponent } from './ac-dynamic-polyline-desc.component';
 import { DynamicPolylineDrawerService } from '../../../services/drawers/static-dynamic/dynamic-polyline-drawer/dynamic-polyline-drawer.service';

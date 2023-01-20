@@ -1,7 +1,7 @@
 import { from as observableFrom, merge as observableMerge, Observable, Subject } from 'rxjs';
 
 import { takeUntil } from 'rxjs/operators';
-// tslint:disable
+/* eslint-disable */
 import { BillboardDrawerService } from '../../services/drawers/billboard-drawer/billboard-drawer.service';
 import { AfterContentInit, ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { LayerService } from '../../services/layer-service/layer-service.service';
@@ -39,7 +39,7 @@ import { PointPrimitiveDrawerService } from '../../services/drawers/point-primit
 import { HtmlDrawerService } from '../../services/drawers/html-drawer/html-drawer.service';
 import { CzmlDrawerService } from '../../services/drawers/czml-drawer/czml-drawer.service';
 
-// tslint:enable
+/* eslint-enable */
 /**
  *  This is a ac-layer implementation.
  *  The ac-layer element must be a child of ac-map element.

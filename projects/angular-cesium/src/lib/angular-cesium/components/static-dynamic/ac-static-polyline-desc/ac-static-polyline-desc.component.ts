@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 import { Component } from '@angular/core';
 import { StaticPolylineDrawerService } from '../../../services/drawers/static-dynamic/static-polyline-drawer/static-polyline-drawer.service';
 import { LayerService } from '../../../services/layer-service/layer-service.service';
@@ -6,7 +6,7 @@ import { CesiumProperties } from '../../../services/cesium-properties/cesium-pro
 import { ComputationCache } from '../../../services/computation-cache/computation-cache.service';
 import { BasicStaticPrimitiveDesc } from '../../../services/basic-primitive-desc/basic-static-primitive-desc.service';
 
-// tslint:enable
+/* eslint-enable */
 
 /**
  * @deprecated use ac-ployline-desc instead

@@ -98,18 +98,28 @@
             "polyfills": "projects/demo/src/polyfills.ts",
             "tsConfig": "projects/demo/src/tsconfig.spec.json",
             "karmaConfig": "projects/demo/src/karma.conf.js",
-            "styles": ["projects/demo/src/styles.css"],
+            "styles": [
+              "projects/demo/src/styles.css"
+            ],
             "scripts": [
               "./node_modules/cesium/Build/Cesium/Cesium.js"
             ],
-            "assets": ["projects/demo/src/favicon.ico", "projects/demo/src/assets"]
+            "assets": [
+              "projects/demo/src/favicon.ico",
+              "projects/demo/src/assets"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["projects/demo/tsconfig.app.json", "projects/demo/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "projects/demo/tsconfig.app.json",
+              "projects/demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -135,7 +145,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -157,7 +169,7 @@
               "tsConfig": "projects/angular-cesium/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -167,13 +179,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/angular-cesium/tsconfig.lib.json",
-              "projects/angular-cesium/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/angular-cesium/**/*.ts",
+              "projects/angular-cesium/**/*.html"
+            ]
           }
         }
       }
@@ -197,7 +208,7 @@
             "main": "projects/landing-page/src/main.ts",
             "polyfills": "projects/landing-page/src/polyfills.ts",
             "tsConfig": "projects/landing-page/tsconfig.app.json",
-              "aot": true,
+            "aot": true,
             "assets": [
               "projects/landing-page/src/favicon.ico",
               "projects/landing-page/src/assets",
@@ -211,7 +222,9 @@
               "projects/landing-page/src/styles.scss",
               "./node_modules/cesium/Build/Cesium/Widgets/widgets.css"
             ],
-            "scripts": ["./node_modules/cesium/Build/Cesium/Cesium.js"]
+            "scripts": [
+              "./node_modules/cesium/Build/Cesium/Cesium.js"
+            ]
           },
           "configurations": {
             "production": {

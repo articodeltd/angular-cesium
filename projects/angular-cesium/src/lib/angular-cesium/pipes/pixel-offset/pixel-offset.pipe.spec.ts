@@ -1,4 +1,4 @@
-/* tslint:disable:no-unused-variable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { PixelOffsetPipe } from './pixel-offset.pipe';
 
 describe('PixelOffsetPipe', () => {
