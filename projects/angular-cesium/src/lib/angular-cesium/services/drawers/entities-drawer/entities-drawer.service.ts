@@ -107,13 +107,15 @@ export class EntitiesDrawerService extends BasicDrawerService {
   }
 
   remove(entity: any) {
-    const optimizedEntityCollection = this.entityCollections.get(entity.entityCollection);
-    optimizedEntityCollection.remove(entity);
+    if (entity) {
+      const optimizedEntityCollection = this.entityCollections.get(entity.entityCollection);
+      optimizedEntityCollection.remove(entity);
+    }
   }
 
   removeAll() {
     this.entityCollections.forEach(entityCollection => {
-      entityCollection.removeAll();
+      entityCollection?.removeAll();
     });
   }
 
@@ -130,7 +132,7 @@ export class EntitiesDrawerService extends BasicDrawerService {
     }
 
     const entityCollection = this.entityCollections.get(id);
-    entityCollection.suspend();
+    entityCollection?.suspend();
   }
 }
 

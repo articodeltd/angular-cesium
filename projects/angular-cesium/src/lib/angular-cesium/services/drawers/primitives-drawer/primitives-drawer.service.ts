@@ -35,11 +35,11 @@ export abstract class PrimitivesDrawerService extends BasicDrawerService {
   }
 
   remove(entity: any) {
-    this._cesiumCollection.remove(entity);
+    this._cesiumCollection?.remove(entity);
   }
 
   removeAll() {
-    this._cesiumCollection.removeAll();
+    this._cesiumCollection?.removeAll();
   }
 
   setShow(showValue: boolean) {

@@ -40,7 +40,7 @@ export class MapLayersService {
   }
 
   removeDataSources(dataSources: any[]) {
-    dataSources.forEach(ds => {
+    dataSources?.forEach(ds => {
       const index = this.layersDataSources.indexOf(ds);
       if (index !== -1) {
         this.layersDataSources.splice(index, 1);
