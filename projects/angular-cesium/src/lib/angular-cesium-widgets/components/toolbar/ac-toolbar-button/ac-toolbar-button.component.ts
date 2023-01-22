@@ -1,3 +1,5 @@
+/* eslint-disable no-output-on-prefix */
+
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 /**
@@ -52,7 +54,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
     changeDetection: ChangeDetectionStrategy.OnPush,
   }
 )
-export class AcToolbarButtonComponent implements OnInit {
+export class AcToolbarButtonComponent {
 
   @Input()
   iconUrl: string;
@@ -69,7 +71,4 @@ export class AcToolbarButtonComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
-
-  }
 }

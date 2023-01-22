@@ -13,7 +13,7 @@ export class AcHtmlContext {
 @Directive({
   selector: '[acHtml]',
 })
-export class AcHtmlDirective implements OnInit {
+export class AcHtmlDirective {
 
   private _views = new Map<any, { viewRef: any, context: any }>();
 
@@ -24,10 +24,6 @@ export class AcHtmlDirective implements OnInit {
     private _layerService: LayerService,
     private _acHtmlManager: AcHtmlManager
   ) {
-  }
-
-  ngOnInit() {
-
   }
 
   private _handleView(id: any, primitive: any, entity: any) {

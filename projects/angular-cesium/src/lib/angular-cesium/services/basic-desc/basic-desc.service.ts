@@ -1,3 +1,5 @@
+/* eslint-disable no-output-on-prefix */
+
 import { EventEmitter, Input, OnDestroy, OnInit, Output, Directive } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
 import { ComputationCache } from '../computation-cache/computation-cache.service';

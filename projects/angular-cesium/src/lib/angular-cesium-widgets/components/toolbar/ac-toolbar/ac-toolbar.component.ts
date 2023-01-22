@@ -1,3 +1,5 @@
+/* eslint-disable no-output-on-prefix */
+
 import {
   ChangeDetectionStrategy,
   Component,
