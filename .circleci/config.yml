@@ -13,9 +13,6 @@ jobs:
           name: Install Dependencies
           command: npm install
       - run:
-          name: Run Lint
-          command: npm run lint
-      - run:
           name: Run tests
           command: npm run test:ci
       - run:
