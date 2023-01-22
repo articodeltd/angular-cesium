@@ -1,4 +1,4 @@
-/* eslint-disable no-output-on-prefix */
+/* eslint-disable */
 
 import {
   ChangeDetectionStrategy,

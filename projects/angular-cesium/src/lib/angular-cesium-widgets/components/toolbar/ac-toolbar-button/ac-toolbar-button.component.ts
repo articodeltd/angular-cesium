@@ -1,6 +1,6 @@
-/* eslint-disable no-output-on-prefix */
+/* eslint-disable */
 
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 /**
  * Toolbar button widget, act as a single button inside ac-toolbar component

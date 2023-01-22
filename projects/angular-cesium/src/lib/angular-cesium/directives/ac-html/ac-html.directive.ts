@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ChangeDetectorRef, Directive, TemplateRef, ViewContainerRef } from '@angular/core';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { AcHtmlManager } from '../../services/ac-html-manager/ac-html-manager.service';
 

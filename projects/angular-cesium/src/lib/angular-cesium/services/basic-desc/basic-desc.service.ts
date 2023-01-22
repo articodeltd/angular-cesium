@@ -1,4 +1,4 @@
-/* eslint-disable no-output-on-prefix */
+/* eslint-disable */
 
 import { EventEmitter, Input, OnDestroy, OnInit, Output, Directive } from '@angular/core';
 import { LayerService } from '../layer-service/layer-service.service';
