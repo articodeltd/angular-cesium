@@ -147,7 +147,7 @@ export class PolygonsEditorService {
       } else {
         const cartographics = points.map(point => this.coordinateConverter.cartesian3ToCartographic(point.getPosition()));
         const promise = Cesium.sampleTerrain(this.cesiumScene.terrainProvider, 11, cartographics);
-        Cesium.when(promise, (updatedPositions) => {
+        promise.then((updatedPositions) => {
           points.forEach((point, index) => {
             point.setPosition(Cesium.Cartographic.toCartesian(updatedPositions[index]));
           });
