@@ -2094,7 +2094,7 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular2parse@^1.0.10:
+angular2parse@^1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/angular2parse/-/angular2parse-1.0.11.tgz#e94e56b3d1be0e2cbfb5ba3d30431a5eb793152e"
   integrity sha512-kDHv8yyCYxX5hV/IIFdKoCpI2B6RF9gl+4QhN24cSv1x6Tafd83+LKm5oiRwAeytFLnV5jtLdsMOjldOZdLnoQ==
