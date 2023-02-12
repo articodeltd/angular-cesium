@@ -14,7 +14,7 @@ import {
 import { AcNotification } from '../../models/ac-notification';
 import { Subject, Subscription } from 'rxjs';
 import { IDescription } from '../../models/description';
-import * as _get from 'lodash.get';
+import _get from 'lodash.get';
 import { AcLayerComponent } from '../ac-layer/ac-layer.component';
 import { LayerService } from '../../services/layer-service/layer-service.service';
 import { BasicDesc } from '../../services/basic-desc/basic-desc.service';
