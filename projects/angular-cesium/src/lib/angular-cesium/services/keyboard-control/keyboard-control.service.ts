@@ -1,4 +1,3 @@
-import { isNumber } from 'util';
 import { Inject, Injectable, NgZone } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { KeyboardAction } from '../../models/ac-keyboard-action.enum';
@@ -314,7 +313,7 @@ export class KeyboardControlService {
 
     const params = this.getParams(execution.params, keyboardEvent);
 
-    if (isNumber(execution.action)) {
+    if (typeof execution.action === 'number') {
       const predefinedAction = PREDEFINED_KEYBOARD_ACTIONS[execution.action as number];
 
       if (predefinedAction) {
