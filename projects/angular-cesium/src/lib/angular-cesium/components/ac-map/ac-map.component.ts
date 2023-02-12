@@ -40,11 +40,7 @@ import { ScreenshotService } from '../../services/screenshot/screenshot.service'
  */
 @Component({
   selector: 'ac-map',
-  template: `
-    <ac-default-plonter *ngIf="!disableDefaultPlonter"></ac-default-plonter>
-    <ac-context-menu-wrapper></ac-context-menu-wrapper>
-    <ng-content></ng-content>
-  `,
+  templateUrl: './ac-map.component.html',
   providers: [
     CesiumService,
     BillboardDrawerService,
