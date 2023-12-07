@@ -1,3 +1,12 @@
+## 0.75
+## Fixes
+* Allow dragging clamped polygons and polylines.
+* The fix concerns:
+  * `PolylineEditOptions` in `PolylinesEditorService`
+  * `PolygonEditOptions` in `PolygonsEditorService`
+* Please note:
+  * If `clampHeightTo3D` option is `true`, the `allowDrag` option should be defined manually. Otherway, it will be `false`.
+
 ## 0.74
 ### Features
 * Added the ability to use ground polyline primitives to improve performance
