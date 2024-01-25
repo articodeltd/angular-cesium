@@ -16,10 +16,11 @@ export abstract class PrimitivesDrawerService extends BasicDrawerService {
   }
 
   init() {
-    this._cesiumCollection = new this.drawerType();
+    const scene = this.cesiumService.getScene();
+    this._cesiumCollection = new this.drawerType({ scene });
     this._primitiveCollectionWrap = new Cesium.PrimitiveCollection();
     this._primitiveCollectionWrap.add(this._cesiumCollection);
-    this.cesiumService.getScene().primitives.add(this._primitiveCollectionWrap);
+    scene.primitives.add(this._primitiveCollectionWrap);
   }
 
   add(cesiumProps: any, ...args: any[]): any {
