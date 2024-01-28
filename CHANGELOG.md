@@ -1,5 +1,10 @@
+## 0.76
+### Fixes
+* Fix editors update subscription not being unsubscribed on destroy
+* Fix editor labels heightReference can't be set to CLAMP_TO_GROUP
+
 ## 0.75
-## Fixes
+### Fixes
 * Allow dragging clamped polygons and polylines.
 * The fix concerns:
   * `PolylineEditOptions` in `PolylinesEditorService`
