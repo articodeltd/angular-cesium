@@ -1,3 +1,30 @@
+## 0.76
+### Fixes
+* Fix editors update subscription not being unsubscribed on destroy
+* Fix editor labels heightReference can't be set to CLAMP_TO_GROUP
+
+## 0.75
+### Fixes
+* Allow dragging clamped polygons and polylines.
+* The fix concerns:
+  * `PolylineEditOptions` in `PolylinesEditorService`
+  * `PolygonEditOptions` in `PolygonsEditorService`
+* Please note:
+  * If `clampHeightTo3D` option is `true`, the `allowDrag` option should be defined manually. Otherway, it will be `false`.
+
+## 0.74
+### Features
+* Added the ability to use ground polyline primitives to improve performance
+  * Ground polyline primitives can be used: 
+    * as the outline of polygons in polygon editor 
+    * as the line in polyline editor
+  * Can be enabled by setting the `useGroundPrimitiveOutline` parameter to `true` (default is `false`) in  
+    * `PolygonEditOptions.polylineProps` 
+    * `PolylineEditOptions.polylineProps`
+  * Please note:
+    * To use this feature you must wait for the following promise to resolve `Cesium.GroundPolylinePrimitive.initializeTerrainHeights()`
+    * Material parameter can be only of type `Cesium.Color`. Any other type of material may not work
+
 ## 0.73
 ### Fixes
 * Enhance moving point in editors fix for tablets to accomodate inaccurate taps

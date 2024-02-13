@@ -7,7 +7,7 @@ import { EditActions } from '../../models/edit-actions.enum';
 import { AcLayerComponent } from '../../../angular-cesium/components/ac-layer/ac-layer.component';
 import { CoordinateConverter } from '../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { MapEventsManagerService } from '../../../angular-cesium/services/map-events-mananger/map-events-manager';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { CameraService } from '../../../angular-cesium/services/camera/camera.service';
 import { EditPoint } from '../../models/edit-point';
 import { PolygonsManagerService } from '../../services/entity-editors/polygons-editor/polygons-manager.service';
@@ -95,6 +95,7 @@ import { EditablePolygon } from '../../models/editable-polygon';
 })
 export class PolygonsEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: PolygonEditUpdate, labels: LabelProps[]) => LabelProps[];
+  private editorUpdatesSubscription: Subscription;
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editPolylines$ = new Subject<AcNotification>();
@@ -117,7 +118,7 @@ export class PolygonsEditorComponent implements OnDestroy {
   }
 
   private startListeningToEditorUpdates() {
-    this.polygonsEditor.onUpdate().subscribe((update: PolygonEditUpdate) => {
+    this.editorUpdatesSubscription = this.polygonsEditor.onUpdate().subscribe((update: PolygonEditUpdate) => {
       if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
         this.handleCreateUpdates(update);
       } else if (update.editMode === EditModes.EDIT) {
@@ -162,6 +163,7 @@ export class PolygonsEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
+          this.cesiumService.getScene(),
           update.polygonOptions,
         );
         break;
@@ -231,6 +233,7 @@ export class PolygonsEditorComponent implements OnDestroy {
           this.editPointsLayer,
           this.editPolylinesLayer,
           this.coordinateConverter,
+          this.cesiumService.getScene(),
           update.polygonOptions,
           update.positions,
         );
@@ -304,6 +307,7 @@ export class PolygonsEditorComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.editorUpdatesSubscription.unsubscribe();
     this.polygonsManager.clear();
   }
 

@@ -6,7 +6,7 @@ import { EditActions } from '../../models/edit-actions.enum';
 import { AcLayerComponent } from '../../../angular-cesium/components/ac-layer/ac-layer.component';
 import { CoordinateConverter } from '../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { MapEventsManagerService } from '../../../angular-cesium/services/map-events-mananger/map-events-manager';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { CameraService } from '../../../angular-cesium/services/camera/camera.service';
 import { EditPoint } from '../../models/edit-point';
 import { PointsEditorService } from '../../services/entity-editors/points-editor/points-editor.service';
@@ -70,6 +70,7 @@ import { LabelProps } from '../../models/label-props';
 })
 export class PointsEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: PointEditUpdate, labels: LabelProps[]) => LabelProps[];
+  private editorUpdatesSubscription: Subscription;
   public Cesium = Cesium;
   public editPoint$ = new Subject<AcNotification>();
   public pointLabels$ = new Subject<AcNotification>();
@@ -90,7 +91,7 @@ export class PointsEditorComponent implements OnDestroy {
   }
 
   private startListeningToEditorUpdates() {
-    this.pointsEditor.onUpdate().subscribe((update: PointEditUpdate) => {
+    this.editorUpdatesSubscription = this.pointsEditor.onUpdate().subscribe((update: PointEditUpdate) => {
       if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
         this.handleCreateUpdates(update);
       } else if (update.editMode === EditModes.EDIT) {
@@ -235,6 +236,7 @@ export class PointsEditorComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.editorUpdatesSubscription.unsubscribe();
     this.pointsManager.clear();
   }
 

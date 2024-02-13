@@ -6,7 +6,7 @@ import { EditActions } from '../../models/edit-actions.enum';
 import { AcLayerComponent } from '../../../angular-cesium/components/ac-layer/ac-layer.component';
 import { CoordinateConverter } from '../../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
 import { MapEventsManagerService } from '../../../angular-cesium/services/map-events-mananger/map-events-manager';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { CameraService } from '../../../angular-cesium/services/camera/camera.service';
 import { EditPoint } from '../../models/edit-point';
 import { EllipsesManagerService } from '../../services/entity-editors/ellipses-editor/ellipses-manager.service';
@@ -90,6 +90,7 @@ import { EditableEllipse } from '../../models/editable-ellipse';
 })
 export class EllipsesEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: EllipseEditUpdate, labels: LabelProps[]) => LabelProps[];
+  private editorUpdatesSubscription: Subscription;
   public Cesium = Cesium;
   public editPoints$ = new Subject<AcNotification>();
   public editEllipses$ = new Subject<AcNotification>();
@@ -110,7 +111,7 @@ export class EllipsesEditorComponent implements OnDestroy {
   }
 
   private startListeningToEditorUpdates() {
-    this.ellipsesEditor.onUpdate().subscribe(update => {
+    this.editorUpdatesSubscription = this.ellipsesEditor.onUpdate().subscribe(update => {
       if (update.editMode === EditModes.CREATE || update.editMode === EditModes.CREATE_OR_EDIT) {
         this.handleCreateUpdates(update);
       } else if (update.editMode === EditModes.EDIT) {
@@ -292,6 +293,7 @@ export class EllipsesEditorComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.editorUpdatesSubscription.unsubscribe();
     this.ellipsesManager.clear();
   }
 

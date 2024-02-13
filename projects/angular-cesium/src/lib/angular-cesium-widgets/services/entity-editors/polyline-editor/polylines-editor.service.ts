@@ -44,6 +44,7 @@ export const DEFAULT_POLYLINE_OPTIONS: PolylineEditOptions = {
     clampToGround: false,
     zIndex: 0,
     classificationType: Cesium.ClassificationType.BOTH,
+    useGroundPrimitiveOutline: false
   },
   clampHeightTo3D: false,
   clampHeightTo3DOptions: {
@@ -517,7 +518,7 @@ export class PolylinesEditorService {
         console.warn('Point color and outline color must have alpha in order to make the editor work properly on 3D');
       }
 
-      polylineOptions.allowDrag = false;
+      polylineOptions.allowDrag = !!options.allowDrag;
       polylineOptions.polylineProps.clampToGround = true;
       polylineOptions.pointProps.heightReference = polylineOptions.clampHeightTo3DOptions.clampToTerrain ?
         Cesium.HeightReference.CLAMP_TO_GROUND : Cesium.HeightReference.RELATIVE_TO_GROUND;

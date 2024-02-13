@@ -542,7 +542,7 @@ export class PolygonsEditorService {
         console.warn('Point color and outline color must have alpha in order to make the editor work properly on 3D');
       }
 
-      polygonOptions.allowDrag = false;
+      polygonOptions.allowDrag = !!options.allowDrag;
       polygonOptions.polylineProps.clampToGround = true;
       polygonOptions.pointProps.heightReference = polygonOptions.clampHeightTo3DOptions.clampToTerrain ?
         Cesium.HeightReference.CLAMP_TO_GROUND : Cesium.HeightReference.RELATIVE_TO_GROUND;
