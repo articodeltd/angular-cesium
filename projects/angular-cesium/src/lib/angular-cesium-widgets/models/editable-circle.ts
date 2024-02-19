@@ -121,6 +121,7 @@ export class EditableCircle extends AcEntity {
     if (!this._outlineArc) {
       this.createOutlineArc();
     } else {
+      this._outlineArc.center = this.getCenter();
       this._outlineArc.radius = this.getRadius();
     }
 

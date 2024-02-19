@@ -1,3 +1,7 @@
+## 0.77
+### Fixes
+* Fix outlineArc center when use setManually in EditableCircle
+
 ## 0.76
 ### Fixes
 * Fix editors update subscription not being unsubscribed on destroy
